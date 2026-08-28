@@ -56,6 +56,8 @@ Not indexed. Canonical points to the clean parent. Out of the sitemap. No crawla
 
 Language first, then country, then place. Unambiguous across Europe, no city-name collisions.
 
+**Open: what lives at `/`?** The table above starts at `/de/`, which leaves the root undecided. Two options: `/` 301s to `/de/`, or `/` is the home page and the `/de/` prefix only appears once a second locale exists. **Recommendation: `/` redirects to `/de/`** — URL shape is expensive to change later, and the prefix is already in every other route. The current holding page sits at `/` because it is not a locale page; the guardrails permit both until this is settled.
+
 **Market pages sit outside the geography tree on purpose** — a market never needs a new URL if its city or region classification changes.
 
 ---
@@ -124,16 +126,22 @@ Recurrence rules are stored *as well*, as RRULE strings feeding a generator **ha
 
 ## CI must enforce this
 
-The gate above is worth nothing if a human has to remember it. The build fails on:
+The gate above is worth nothing if a human has to remember it.
 
-- **Route allowlist** — a URL matching no known pattern fails the build
-- **URL-to-entity ratio** ≤ 2.0
-- **Minimum content per page type**, asserted against the built HTML
-- **The 120-day horizon** — no occurrence beyond it
-- **Explicit image dimensions** — v1 had a real layout-shift bug
-- **Valid structured data**
+**Implemented** in `scripts/guardrails.mjs`, configured by `guardrails.config.json`, run by `npm run verify` and by `.github/workflows/ci.yml` on every push. Deploy runs after the checks, so red blocks it.
 
-Deploy runs after the checks, so red blocks it.
+| # | Check | Notes |
+|---|---|---|
+| 1 | **Route allowlist** | A URL matching no allowed pattern fails. The two shapes that killed v1 are named and rejected explicitly: a fourth geography segment (`/de/schweiz/winterthur/samstag`) and market × date (`/de/markt/x/2026-07-05`). Non-ASCII slugs also fail — slugs are transliterated, `zuerich` not `zürich`. |
+| 2 | **URL-to-entity ratio** | Ceiling 2.0, target ~1.2. Reads `data/entities.json`. **Fails, not skips**, if content pages exist without that file — unverifiable is not the same as fine. |
+| 3 | **Content floor** | Minimum visible characters in `<main>`, per page type, asserted against built HTML. |
+| 4 | **120-day horizon** | No occurrence row beyond it. Reads `data/occurrences.json`. |
+| 5 | **Explicit image dimensions** | Every `<img>` needs width and height. v1 had a real layout-shift bug. |
+| 6 | **Structured data** | Present where required, parses, and only expected `@type` values. |
+
+Verified on setup: both v1 killer URL shapes were rebuilt deliberately, both were rejected, exit code 1.
+
+**Known limitation.** Region and city URLs are structurally identical — `/de/deutschland/nordrhein-westfalen/` and `/de/deutschland/koeln/` have the same shape — so check 1 cannot tell them apart by pattern alone and treats both as "region or city". Once the geography data exists, the check should validate against the real slug lists instead of a regex. That is stronger anyway: it enforces *a page exists because there is content for it* directly.
 
 ---
 

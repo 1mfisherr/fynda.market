@@ -14,6 +14,17 @@ Read only what the task needs. Every file loaded is context spent.
 | `NAMING.md` | The name, and the domain-checking method | Rarely. Domain or brand work |
 | `IDEAS.md` | Parked, not committed | Checking whether an idea was already considered |
 
+Outside `docs/`:
+
+| Path | What it is |
+|---|---|
+| `../README.md` | Repo readme — commands, the guardrails, layout |
+| `../guardrails.config.json` | The architecture rules, as machine-checked config |
+| `../scripts/guardrails.mjs` | The six checks that block deploy |
+| `../src/styles/tokens.css` | Single source of truth for colour, type, space, motion |
+| `../design/` | Design canvas and mockups — open `fynda-startseite.html` |
+| `../data/` | Generated files the guardrails read. See its own readme |
+
 `archive/` holds prior research — long, partly superseded. **Don't read it unless asked for something specific.**
 
 ## Keeping these current

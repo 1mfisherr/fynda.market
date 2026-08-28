@@ -1,7 +1,8 @@
 # Fynda
 
 A European flea-market platform. Pilot in Switzerland, then Germany, then wider Europe.
-Live at `fynda.market` (not yet built — currently planning).
+Repo: `github.com/1mfisherr/fynda.market`. Will live at `fynda.market`.
+The build pipeline exists (Astro skeleton, design tokens, six CI guardrails). No product pages yet — see `docs/PLAN.md`.
 
 Rebuild of fleafind.ch, which ranked #1 in Switzerland and then lost ~97% of its traffic to a Google spam update on 2026-08-22.
 
@@ -37,6 +38,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 | **Newsletter** | Live from day one, city-segmented, list in our own Postgres |
 | **URL shape** | `/de/deutschland/koeln/`, markets at `/de/markt/[slug]/` |
 | **Multi-country data model from commit one** | Even though one country ships first |
+| **Guardrails are architecture** | `guardrails.config.json` encodes `ARCHITECTURE.md`. Loosening a threshold to make a build pass means updating the doc in the same commit — or not doing it |
 
 ## What is deliberately open
 
@@ -55,6 +57,7 @@ fleafind.ch generated **~8,500 URLs for 157 markets**. Occurrence pages had no f
 Applied:
 - Any page generator needs a **hard cap** (dates: 120 days) and a **minimum content floor**.
 - **CI enforces both** and fails the build. Rules a machine doesn't check will drift.
+  Implemented: `scripts/guardrails.mjs`, run by `npm run verify` and by CI on every push.
 - A locale exists only when its content exists. No locale matrices.
 
 This is not a reason to be timid about page types. Date pages were the best-converting pages on v1. The failure was unbounded generation, not any particular page type.

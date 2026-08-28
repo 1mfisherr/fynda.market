@@ -118,9 +118,19 @@ Home · market · city · region. Filters work from day one but are query parame
 ## Still open
 
 - **The two Phase 0 decisions.** Everything downstream bends on them.
+- **What lives at `/`?** `ARCHITECTURE.md` starts its URL table at `/de/`, which leaves the root undecided. Either `/` 301s to `/de/`, or `/` is home and the `/de/` prefix waits for a second locale. **Recommendation: `/` redirects to `/de/`** — URL shape is expensive to change later and the prefix is already in every other route. Cheap to settle now, annoying after launch. The guardrails permit both until it is decided.
 - **Would vendors pay for anything?** Unconfirmed. Five vendor conversations settle it. Parked in `IDEAS.md`.
 - **CH-wide launch, or beachhead-only launch?** `ARCHITECTURE.md` assumes ~230 pages covering Switzerland. The cold-start playbook says depth beats breadth. **Recommendation: publish CH-wide for SEO, but concentrate verification, photography and organiser contact in one region.** Breadth of pages, depth of truth. Not yet agreed.
 - **What exactly organisers get on day one.** Shortlist: a listing page they control, help fixing their Google Business Profile, one-click cancellation broadcast, a printable QR poster. The cancellation broadcast is the strongest candidate — it is their worst moment and our best trust asset.
+
+---
+
+## Conventions worth not relearning
+
+- `npm run verify` before every push. It is what CI runs.
+- Guardrails that report `SKIP` are waiting on data, not passing. `data/README.md` says what they need.
+- Colour, type, spacing and motion come from `src/styles/tokens.css`. Nothing is hardcoded in a component.
+- German copy is not final until a native speaker has read it.
 
 ---
 

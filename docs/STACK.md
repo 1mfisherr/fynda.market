@@ -1,5 +1,7 @@
 # Tech Stack — Recommendation
 
+**Status:** the Astro skeleton, design tokens and CI guardrails are built and pushed. Sections 1, 6 and parts of 9 are implemented; the rest is still recommendation. Accounts (Cloudflare, Supabase, Resend, Plausible) are not yet created — see `PLAN.md` Phase 1.
+
 Written 2026-08-27, against `ARCHITECTURE_PROPOSAL_V1.md`, `COLLAPSE_CAUSE.md`, `SEARCH_BEHAVIOUR.md`, `SERP_EVIDENCE.md`, `ARCHITECTURE_IDEAS.md`, `STRATEGY_DEEP_DIVE.md`, and the predecessor's known failure modes (unbounded page generation, Vercel middleware invoicing 378K invocations/month, egress costs, App Router cache staleness, unguarded Suspense layout shift).
 
 **Epistemic labels:** `[VERIFIED]` = checked against the named source on 2026-08-27, URL given · `[REPORTED]` = secondary source, not confirmed on the vendor's page today · `[JUDGEMENT]` = engineering opinion, argued not measured. Pricing pages change; every number below carries its check date implicitly (2026-08-27) and should be re-verified before contracts are signed.
