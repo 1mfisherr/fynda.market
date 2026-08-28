@@ -1,0 +1,44 @@
+{
+  "artboards": [
+    { "file": "Marke.dc.html", "title": "Marke — Fundament", "x": 0, "y": 0, "w": 680, "h": 1180 },
+    { "file": "Main.dc.html", "title": "Startseite — 390", "x": 800, "y": 0, "w": 390, "h": 1600 }
+  ],
+  "annotations": [
+    {
+      "id": "note-regel",
+      "x": -380,
+      "y": 0,
+      "w": 320,
+      "text": "DIE EINE REGEL\n\nWeiss, Schwarz, und eine Farbe — die Farbe markiert nur das Datum und ob es stattfindet.\n\nDas ist direkt von DICE geklaut: dort ist das Datum gelb auf schwarz. Auf Weiss wird Gelb unlesbar, also übernimmt der Akzent die Rolle.\n\nÜberall sonst: schwarz auf weiss. Wie Notion."
+    },
+    {
+      "id": "note-woher",
+      "x": -380,
+      "y": 330,
+      "w": 320,
+      "text": "WOHER WAS KOMMT\n\nDICE → Datum in Farbe, grosse fette Headline, Bewegung beim Laden.\n\nAirbnb → Bildkarten, «Bestätigt»-Badge auf dem Bild, Herz zum Merken, freundliche Suchleiste, untere Leiste.\n\nNotion → kräftige Farben ausschliesslich in kleinen Icons.\n\nGetYourGuide → die Warnung. Sauber, aber ohne Vibe."
+    },
+    {
+      "id": "note-bewegung",
+      "x": 1250,
+      "y": 0,
+      "w": 300,
+      "text": "BEWEGUNG\n\nSeite neu laden (oder Ansicht wechseln), dann läuft die Einblendung: von oben nach unten gestaffelt, die Karten seitlich rein.\n\nDas ist das «lebendig» von DICE — ohne dass man aufs Lesen warten muss."
+    },
+    {
+      "id": "note-farbe",
+      "x": 1250,
+      "y": 300,
+      "w": 300,
+      "text": "DREI AKZENTE ZUR WAHL\n\nZinnober (aktiv), Fuchsia, Ultramarin.\n\nFarbfeld oben am Entwurf antippen — das ganze System wechselt sofort, auf beiden Boards.\n\nDas ist die einzige grosse Farbentscheidung. Alles andere ist schwarz auf weiss."
+    },
+    {
+      "id": "note-veranstalter",
+      "x": 1250,
+      "y": 620,
+      "w": 300,
+      "text": "VERANSTALTER IN DER UNTEREN LEISTE\n\nDu wolltest die Veranstalter-Seite stärker pushen — so wie DICE die App pusht.\n\nDeshalb sitzt «Veranstalter» als vierter Punkt fix in der unteren Leiste, auf jedem Bildschirm sichtbar. Nicht im Menü versteckt."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

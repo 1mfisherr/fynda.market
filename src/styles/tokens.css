@@ -1,0 +1,139 @@
+/*
+  Fynda design tokens — the single source of truth.
+
+  Rule from docs/DESIGN.md: nothing is hardcoded in a component. Changing a
+  colour here changes it everywhere. Token names are semantic, never literal —
+  --color-accent, not --color-orange, because the literal stops being true the
+  moment the colour changes.
+
+  The one brand rule (docs/BRAND.md): the accent marks ONLY the date and
+  whether a market is happening. Never decoration, never two things at once.
+*/
+
+:root {
+  /* ---- colour ---------------------------------------------------------- */
+  --color-accent: #FF4A2B;
+  --color-accent-hover: #E03B1E;
+
+  --color-ink: #111110;
+  --color-grey: #6E6C68;
+  --color-quiet: #9A968F;
+  --color-line: #E8E6E2;
+  --color-paper: #F5F4F2;
+  --color-surface: #FFFFFF;
+
+  /* status — never colour alone, always paired with a word */
+  --color-status-confirmed: var(--color-accent);
+  --color-status-cancelled: #9A968F;
+  --color-status-unverified: #9A968F;
+
+  /* category — icons only, never as fill or text */
+  --color-cat-floh: #FF4A2B;
+  --color-cat-halle: #3D5AFE;
+  --color-cat-nacht: #7C3AED;
+  --color-cat-kinder: #F5A524;
+  --color-cat-troedel: #E4007F;
+
+  /* ---- type ------------------------------------------------------------ */
+  --font-sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  --text-display: 38px;
+  --text-section: 21px;
+  --text-title: 17px;
+  --text-date: 15px;
+  --text-body: 16px;
+  --text-small: 13px;
+  --text-micro: 12px;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  --tracking-display: -0.045em;
+  --tracking-section: -0.025em;
+  --tracking-title: -0.015em;
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.3;
+  --leading-body: 1.55;
+
+  /* ---- space — 4px base ------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ---- shape ----------------------------------------------------------- */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* ---- motion ---------------------------------------------------------- */
+  /* 150-250ms. Anything slower feels broken on a phone. */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+  --ease-base: cubic-bezier(0.16, 0.84, 0.44, 1);
+
+  /* ---- layout ---------------------------------------------------------- */
+  --measure: 66ch;
+  --tap-min: 44px; /* WCAG 2.2 floor is 24px; we design to 44. */
+}
+
+/* ---- reset ------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* WCAG 2.2 — 2 px perimeter, 3:1 against both states. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* WCAG 2.2 — and an EU accessibility requirement, not a nicety. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap">
+  <style>
+    body { margin: 0; font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif; background: #FFFFFF; }
+    a { color: #FF4A2B; text-decoration: none; }
+    a:hover { color: #E03B1E; }
+    * { box-sizing: border-box; }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+    .r { animation: riseIn .6s cubic-bezier(.16,.84,.44,1) both; }
+    .s { animation: slideIn .6s cubic-bezier(.16,.84,.44,1) both; }
+    .d1 { animation-delay: .04s } .d2 { animation-delay: .10s } .d3 { animation-delay: .16s }
+    .d4 { animation-delay: .24s } .d5 { animation-delay: .32s } .d6 { animation-delay: .40s }
+    .d7 { animation-delay: .46s } .d8 { animation-delay: .52s } .d9 { animation-delay: .58s }
+    .d10 { animation-delay: .64s } .d11 { animation-delay: .70s }
+    @media (prefers-reduced-motion: reduce) { .r, .s { animation: none } }
+  </style>
+</helmet>
+
+<div style="width: 390px; background: #FFFFFF; position: relative; overflow: hidden">
+
+  <div class="r d1" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 10px">
+    <div style="font-size: 24px; font-weight: 800; letter-spacing: -0.045em; color: #111110">fynda<span style="color: {{accent}}">.</span></div>
+    <div style="display: flex; align-items: center; gap: 6px">
+      <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+      </div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="r d2" style="padding: 10px 20px 0">
+    <div style="font-size: 38px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; color: #111110">Irgendwo ist<br>immer Markt.</div>
+    <div style="font-size: 16px; line-height: 1.5; color: #6E6C68; margin-top: 10px">Flohmärkte in der Schweiz — mit Daten, die stimmen.</div>
+  </div>
+
+  <div class="r d3" style="padding: 18px 20px 0">
+    <div style="display: flex; align-items: center; gap: 12px; height: 60px; padding: 0 8px 0 20px; background: #FFFFFF; border: 1px solid #E8E6E2; border-radius: 30px; box-shadow: 0 4px 16px rgba(17,17,16,0.07)">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <div style="flex: 1; min-width: 0">
+        <div style="font-size: 15px; font-weight: 600; color: #111110">Zürich</div>
+        <div style="font-size: 13px; color: #9A968F">Dieses Wochenende · 50 km</div>
+      </div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="r d4" style="display: flex; gap: 8px; padding: 16px 20px 0; overflow: hidden">
+    <div style="height: 40px; padding: 0 16px; display: flex; align-items: center; background: #111110; border-radius: 20px; font-size: 14px; font-weight: 600; color: #FFFFFF; white-space: nowrap">Wochenende</div>
+    <div style="height: 40px; padding: 0 16px; display: flex; align-items: center; background: #F5F4F2; border-radius: 20px; font-size: 14px; font-weight: 500; color: #6E6C68; white-space: nowrap">Heute</div>
+    <div style="height: 40px; padding: 0 16px; display: flex; align-items: center; background: #F5F4F2; border-radius: 20px; font-size: 14px; font-weight: 500; color: #6E6C68; white-space: nowrap">Nächste Woche</div>
+  </div>
+
+  <div style="padding: 30px 0 0">
+    <div class="r d5" style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px 14px">
+      <div style="font-size: 21px; font-weight: 700; letter-spacing: -0.025em; color: #111110">Dieses Wochenende</div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </div>
+
+    <div style="display: flex; gap: 14px; padding: 0 20px; overflow: hidden">
+
+      <div class="s d6" style="width: 224px; flex-shrink: 0">
+        <div style="position: relative; height: 176px; border-radius: 16px; overflow: hidden; background: #F0E6DC">
+          <svg viewBox="0 0 224 176" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true">
+            <g fill="#C9A886">
+              <path d="M40 118h80v8H40z"></path><path d="M46 100h68v16H46z"></path><path d="M54 84h52v14H54z"></path>
+              <path d="M56 126h8v30h-8z"></path><path d="M96 126h8v30h-8z"></path>
+            </g>
+            <g fill="#A8845E">
+              <circle cx="164" cy="82" r="24"></circle><path d="M158 106h12v50h-12z"></path>
+              <path d="M140 150h48a6 6 0 0 1 6 6v4h-60v-4a6 6 0 0 1 6-6z"></path>
+            </g>
+          </svg>
+          <div style="position: absolute; top: 12px; left: 12px; display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #FFFFFF; border-radius: 15px; box-shadow: 0 1px 4px rgba(17,17,16,0.14)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"></path></svg>
+            <span style="font-size: 12px; font-weight: 700; color: #111110">Bestätigt</span>
+          </div>
+          <div style="position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(17,17,16,0.25)" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+          </div>
+        </div>
+        <div style="font-size: 17px; font-weight: 700; letter-spacing: -0.015em; color: #111110; margin-top: 11px; line-height: 1.25">Flohmarkt Kanzlei</div>
+        <div style="font-size: 14px; font-weight: 700; color: {{accent}}; margin-top: 3px">Sa 29. Aug · 08:00</div>
+        <div style="font-size: 14px; color: #6E6C68; margin-top: 2px">Zürich · 1,2 km</div>
+      </div>
+
+      <div class="s d7" style="width: 224px; flex-shrink: 0">
+        <div style="position: relative; height: 176px; border-radius: 16px; overflow: hidden; background: #E4E9EE">
+          <svg viewBox="0 0 224 176" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true">
+            <g fill="#A6B4C2">
+              <circle cx="88" cy="76" r="38"></circle><circle cx="88" cy="76" r="11" fill="#E4E9EE"></circle>
+              <path d="M40 132h96v9H40z"></path>
+            </g>
+            <g fill="#8496A8">
+              <rect x="150" y="70" width="52" height="52" rx="6"></rect>
+              <path d="M158 132h36v22h-36z"></path>
+            </g>
+          </svg>
+          <div style="position: absolute; top: 12px; left: 12px; display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #FFFFFF; border-radius: 15px; box-shadow: 0 1px 4px rgba(17,17,16,0.14)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"></path></svg>
+            <span style="font-size: 12px; font-weight: 700; color: #111110">Bestätigt</span>
+          </div>
+          <div style="position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(17,17,16,0.25)" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+          </div>
+        </div>
+        <div style="font-size: 17px; font-weight: 700; letter-spacing: -0.015em; color: #111110; margin-top: 11px; line-height: 1.25">Flohmarkt Bürkliplatz</div>
+        <div style="font-size: 14px; font-weight: 700; color: {{accent}}; margin-top: 3px">Sa 29. Aug · 06:00</div>
+        <div style="font-size: 14px; color: #6E6C68; margin-top: 2px">Zürich · 2,4 km</div>
+      </div>
+
+      <div class="s d8" style="width: 60px; flex-shrink: 0"><div style="height: 176px; border-radius: 16px; background: #F5F4F2"></div></div>
+    </div>
+  </div>
+
+  <div style="padding: 32px 0 0">
+    <div class="r d8" style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px 6px">
+      <div style="font-size: 21px; font-weight: 700; letter-spacing: -0.025em; color: #111110">Beliebt in deiner Nähe</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column">
+
+      <div class="r d9" style="display: grid; grid-template-columns: 76px minmax(0,1fr) 28px; gap: 14px; align-items: center; padding: 14px 20px">
+        <div style="height: 76px; border-radius: 12px; overflow: hidden; background: #F0E6DC; position: relative">
+          <svg viewBox="0 0 76 76" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true">
+            <g fill="#C9A886"><path d="M14 48h48v5H14z"></path><path d="M18 38h40v9H18z"></path><path d="M24 30h28v7H24z"></path><path d="M22 53h5v14h-5z"></path><path d="M49 53h5v14h-5z"></path></g>
+          </svg>
+        </div>
+        <div style="min-width: 0">
+          <div style="font-size: 16px; font-weight: 700; letter-spacing: -0.015em; color: #111110; line-height: 1.3">Flohmarkt am See, Wollishofen</div>
+          <div style="font-size: 14px; font-weight: 700; color: {{accent}}; margin-top: 3px">So 30. Aug · 09:00–17:00</div>
+          <div style="font-size: 14px; color: #6E6C68; margin-top: 1px">Zürich · 4,1 km</div>
+        </div>
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#C4C1BC" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+      </div>
+
+      <div class="r d10" style="display: grid; grid-template-columns: 76px minmax(0,1fr) 28px; gap: 14px; align-items: center; padding: 14px 20px">
+        <div style="height: 76px; border-radius: 12px; overflow: hidden; background: #EDE7F5; position: relative">
+          <svg viewBox="0 0 76 76" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true">
+            <g fill="#B9A8D6"><circle cx="38" cy="30" r="16"></circle><path d="M34 46h8v22h-8z"></path><path d="M22 64h32a5 5 0 0 1 5 5v2H17v-2a5 5 0 0 1 5-5z"></path></g>
+          </svg>
+        </div>
+        <div style="min-width: 0">
+          <div style="font-size: 16px; font-weight: 700; letter-spacing: -0.015em; color: #111110; line-height: 1.3">Nachtflohmarkt Markthalle</div>
+          <div style="font-size: 14px; font-weight: 700; color: {{accent}}; margin-top: 3px">Sa 29. Aug · 18:00–23:00</div>
+          <div style="font-size: 14px; color: #6E6C68; margin-top: 1px">Basel · 82 km</div>
+        </div>
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#C4C1BC" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+      </div>
+
+      <div class="r d11" style="display: grid; grid-template-columns: 76px minmax(0,1fr) 28px; gap: 14px; align-items: center; padding: 14px 20px">
+        <div style="height: 76px; border-radius: 12px; overflow: hidden; background: #F5F4F2; position: relative">
+          <svg viewBox="0 0 76 76" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true">
+            <g fill="#D6D3CD"><rect x="20" y="22" width="36" height="36" rx="4"></rect><circle cx="38" cy="40" r="10" fill="#F5F4F2"></circle></g>
+          </svg>
+        </div>
+        <div style="min-width: 0">
+          <div style="font-size: 16px; font-weight: 700; color: #9A968F; line-height: 1.3; text-decoration: line-through; text-decoration-color: #D6D3CD">Flohmarkt Rathausplatz</div>
+          <div style="font-size: 14px; font-weight: 700; color: #9A968F; margin-top: 3px">Abgesagt — Wetter</div>
+          <div style="font-size: 14px; color: #9A968F; margin-top: 1px">Wettingen · 22 km · nächster Termin 26. Sept</div>
+        </div>
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6D3CD" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="r d11" style="padding: 26px 20px 0">
+    <div style="font-size: 21px; font-weight: 700; letter-spacing: -0.025em; color: #111110; margin-bottom: 16px">Was für ein Markt?</div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <div style="width: 100%; height: 56px; border-radius: 14px; background: #FF4A2B; display: flex; align-items: center; justify-content: center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1.2 10.2A2 2 0 0 1 16.8 21H7.2a2 2 0 0 1-2-1.8L4 9Z"></path><path d="M8 9V6a4 4 0 0 1 8 0v3"></path></svg>
+        </div>
+        <div style="font-size: 12px; font-weight: 600; color: #111110">Floh</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <div style="width: 100%; height: 56px; border-radius: 14px; background: #3D5AFE; display: flex; align-items: center; justify-content: center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"></path><path d="M5 10v10h14V10"></path><path d="M9 20v-6h6v6"></path></svg>
+        </div>
+        <div style="font-size: 12px; font-weight: 600; color: #111110">Halle</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <div style="width: 100%; height: 56px; border-radius: 14px; background: #7C3AED; display: flex; align-items: center; justify-content: center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"></path></svg>
+        </div>
+        <div style="font-size: 12px; font-weight: 600; color: #111110">Nacht</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <div style="width: 100%; height: 56px; border-radius: 14px; background: #F5A524; display: flex; align-items: center; justify-content: center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"></circle><path d="M6 21v-3a6 6 0 0 1 12 0v3"></path></svg>
+        </div>
+        <div style="font-size: 12px; font-weight: 600; color: #111110">Kinder</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="r d11" style="margin: 30px 20px 0; background: #F5F4F2; border-radius: 20px; padding: 26px 22px">
+    <div style="font-size: 26px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.08; color: #111110">Sie organisieren<br>einen Markt?</div>
+    <div style="font-size: 15px; line-height: 1.5; color: #6E6C68; margin-top: 10px">Termine eintragen, Absagen melden. Kostenlos, ohne Konto.</div>
+    <div style="display: flex; align-items: center; justify-content: center; height: 52px; margin-top: 18px; background: #111110; border-radius: 26px; font-size: 16px; font-weight: 700; color: #FFFFFF">Markt eintragen</div>
+  </div>
+
+  <div style="height: 24px"></div>
+
+  <div style="position: sticky; bottom: 0; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); background: rgba(255,255,255,0.94); border-top: 1px solid #E8E6E2; padding: 8px 0 16px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <span style="font-size: 11px; font-weight: 600; color: {{accent}}">Entdecken</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#9A968F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"></path></svg>
+      <span style="font-size: 11px; font-weight: 500; color: #9A968F">Gemerkt</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#9A968F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Z"></path><path d="M9 4v13"></path><path d="M15 6.5v13"></path></svg>
+      <span style="font-size: 11px; font-weight: 500; color: #9A968F">Karte</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#9A968F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V9l9-5 9 5v11"></path><path d="M3 20h18"></path><path d="M10 20v-6h4v6"></path></svg>
+      <span style="font-size: 11px; font-weight: 500; color: #9A968F">Veranstalter</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#FF4A2B","options":["#FF4A2B","#E4007F","#2D3DFF","#F5A524"],"section":"Marke"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#FF4A2B' };
+  }
+}
+</script>
+</body>
+</html>
