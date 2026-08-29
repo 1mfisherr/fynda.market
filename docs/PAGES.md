@@ -156,6 +156,41 @@ Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bot
 
 **Above the fold carries what, when, is it on, and the main action.** 57% of viewing time is spent there, and a first screen that is too dense gets read by nobody.
 
+### What visitors actually care about
+
+From 636 reviews of 90 markets across Zürich, Berlin, Hamburg, Munich, Cologne, Frankfurt, Düsseldorf and Stuttgart, 2026-08-29. Percentages are how often a concern appears.
+
+| Concern | Reviews | Do we hold it? |
+|---|---|---|
+| **Size / stall count / how long it takes** | **51%** | No |
+| Price level, and whether haggling is normal | 38% | No |
+| **Private sellers vs professional traders vs Neuware** | **28%** | No |
+| Timing — when to arrive | 22% | Only official hours |
+| Food on site | 22% | No |
+| Weather, covered vs open air | 21% | No |
+| Crowding | 19% | No |
+| Goods quality (Ramsch / Neuware) | 17% | No |
+| Dates, frequency, season | 17% | **Yes** |
+| Getting there, parking | 10% | Address only |
+| Kids, strollers | 9% | No |
+| Toilets | 2% | No |
+| Dogs | 2% | No |
+| Entry fee | 1.5% — but the angriest reviews on the internet | **Yes** |
+
+**We hold the two things everyone already publishes, and almost nothing people actually decide on.** These are the fields the import and the verification visits have to capture. In rough order of value:
+
+1. **Stall count**, plus a bad-weather figure — "bei nicht optimalem Wetter ist nicht die gesamte Fläche mit Ständen gefüllt".
+2. **Who is allowed to sell** — private only / mixed / trader-heavy / Neuware allowed. The strongest quality axis in the corpus and nobody publishes it. Visitors' own shorthand for a bad market is "Handyschalen".
+3. **Price level**, partly derivable: visitors state the mechanism themselves — "horrende Standmieten treiben die Verkaufspreise in die Höhe". Publishing the stall fee is a buyer-side signal disguised as an organiser fact.
+4. **Real timing, not opening hours** — when the good stuff is gone, when it is busiest, when sellers start packing up. Advertised hours are wrong in both directions and everyone knows it. This is the field that cannot be scraped, which is why it is defensible.
+5. **Getting there as advice, not an address** — "keine Besucherparkplätze, unbedingt mit der S-Bahn".
+6. **Covered / open-air, plus ground surface** — decides shoes and strollers, and whether rain matters.
+7. Dogs, toilets, stroller aisles — 2% each, binary, unavailable anywhere, and each one ruins a trip if wrong.
+
+**People judge markets relatively, not absolutely.** The corpus is full of "besser als Mauerpark", "hochwertiger als sein kleiner Bruder auf dem Kanzleiareal", "am Mauerpark ist doch mehr los". A same-day side-by-side of nearby markets on size, seller mix and price matches how the decision is actually made — and it is a page type, not a field.
+
+**And the incumbent has publicly given up on accuracy.** flohmarkttermine.ch's own home page: *"Bitte bei Fragen zu einzelnen Anlässen immer direkt die entsprechenden Veranstalter kontaktieren, n i ch t uns!!!"*
+
 ### What we hold, and how much of it
 
 Measured from the v1 database: name, date, city, status 100% · times 98% · entry fee 97% · organiser website 95% · organiser name 94% · recurrence phrase 79% · confirmed-on date 62% · **real photos 0%** (every image is a shared generic file or stock).
