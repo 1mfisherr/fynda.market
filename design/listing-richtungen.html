@@ -1,0 +1,318 @@
+<title>Fynda Listing Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#FF4A2B; --ink:#111110; --grey:#6E6C68; --quiet:#9A968F;
+  --line:#E8E6E2; --paper:#F5F4F2; --white:#fff;
+  --sans:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:#33322F;color:var(--ink);
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
+  padding:28px 20px 60px;-webkit-font-smoothing:antialiased}
+.lab{max-width:1700px;margin:0 auto}
+.labhead{color:#fff;margin-bottom:26px;max-width:900px}
+.labhead h1{font-size:26px;font-weight:800;letter-spacing:-.04em}
+.labhead p{font-size:14px;color:#B9B5AE;margin-top:8px;line-height:1.5}
+.rack{display:flex;gap:22px;align-items:flex-start;overflow-x:auto;padding-bottom:20px}
+.col{flex:0 0 375px}
+.cap{color:#fff;margin-bottom:10px}
+.cap b{display:block;font-size:15px;font-weight:800;letter-spacing:-.02em}
+.cap span{display:block;font-size:12px;color:#B9B5AE;margin-top:3px;line-height:1.45}
+.ph{width:375px;background:var(--white);border-radius:12px;overflow:hidden;
+  height:812px;overflow-y:auto;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.ph::-webkit-scrollbar{width:0}
+
+/* shared chrome */
+.bar{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px 12px;border-bottom:1px solid var(--line)}
+.wm{font-size:17px;font-weight:800;letter-spacing:-.045em}
+.wm i{color:var(--accent);font-style:normal}
+.h1{font-size:23px;font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.sub{font-size:13px;color:var(--grey);margin-top:5px}
+.chips{display:flex;gap:6px;padding:12px 18px;overflow-x:auto}
+.chip{font-size:12.5px;font-weight:600;padding:6px 11px;border:1px solid var(--line);
+  border-radius:100px;color:var(--grey);white-space:nowrap}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ============ A · ABFAHRT ============ */
+.A .head{padding:16px 18px 12px}
+.A .band{display:flex;align-items:baseline;gap:10px;padding:16px 18px 5px;
+  border-top:2px solid var(--ink)}
+.A .band b{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.A .band span{font-size:11px;color:var(--quiet);letter-spacing:.1em;
+  text-transform:uppercase;margin-left:auto;font-weight:600}
+.A .r{display:grid;grid-template-columns:52px 30px 1fr;gap:0 10px;
+  padding:11px 18px;border-top:1px solid var(--line);align-items:start}
+.A .t{font-size:19px;font-weight:700;letter-spacing:-.03em;color:var(--accent);line-height:1.05}
+.A .t small{display:block;font-size:11px;font-weight:500;color:var(--quiet);
+  letter-spacing:0;margin-top:2px}
+.A .code{font-size:10.5px;font-weight:800;letter-spacing:.02em;color:#fff;background:var(--ink);
+  border-radius:3px;padding:3px 0;text-align:center;margin-top:2px}
+.A .code.h{background:#3D5AFE}.A .code.n{background:#7C3AED}.A .code.k{background:#F5A524;color:var(--ink)}
+.A .nm{font-size:15.5px;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.A .via{font-size:12.5px;color:var(--grey);line-height:1.4;margin-top:3px}
+.A .via i{font-style:normal;color:var(--quiet)}
+.A .fr{font-size:11.5px;color:var(--quiet);margin-top:4px}
+.A .off .nm{text-decoration:line-through;color:var(--quiet)}
+.A .off .t{color:var(--quiet);text-decoration:line-through}
+.A .offtag{font-size:11.5px;font-weight:700;color:var(--ink);margin-top:4px}
+
+/* ============ B · BROADSHEET ============ */
+.B .masth{padding:18px 18px 12px;border-bottom:3px solid var(--ink)}
+.B .day{display:flex;align-items:baseline;gap:8px;padding:20px 18px 8px}
+.B .day b{font-size:26px;font-weight:800;letter-spacing:-.05em}
+.B .day em{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--grey)}
+.B .day s{flex:1;height:1px;background:var(--ink);text-decoration:none;
+  transform:translateY(-4px)}
+.B .day u{text-decoration:none;font-size:11px;color:var(--quiet);font-weight:600}
+.B .e{padding:9px 18px;font-size:14px;line-height:1.5;border-top:1px solid var(--line)}
+.B .e:first-of-type{border-top:0}
+.B .e b{font-weight:700;letter-spacing:-.01em}
+.B .e .tm{color:var(--accent);font-weight:700}
+.B .e span{color:var(--grey)}
+.B .e .q{color:var(--quiet);font-size:12px;display:block;margin-top:2px}
+
+/* ============ C · STREIFEN ============ */
+.C .strip{display:grid;grid-template-columns:58px 1fr}
+.C .d{border-top:1px solid var(--line);padding:10px 0 10px 18px;text-align:left}
+.C .d b{font-size:17px;font-weight:700;letter-spacing:-.03em;display:block;line-height:1}
+.C .d span{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--quiet);display:block;margin-top:3px}
+.C .d.on b{color:var(--accent)}
+.C .d.on span{color:var(--accent)}
+.C .c{border-top:1px solid var(--line);padding:10px 18px 10px 0}
+.C .c.empty{color:var(--quiet);font-size:12.5px;padding-top:13px}
+.C .m{font-size:15px;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.C .m+.m{margin-top:9px}
+.C .mm{font-size:12.5px;color:var(--grey);margin-top:2px}
+.C .mm b{color:var(--accent);font-weight:700}
+.C .wk{background:var(--paper)}
+
+/* ============ D · KATALOG ============ */
+.D .kh{padding:20px 18px 14px;border-bottom:1px solid var(--ink)}
+.D .kh .no{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--quiet)}
+.D .l{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 18px;
+  border-bottom:1px solid var(--line)}
+.D .n{font-size:12px;font-weight:700;color:var(--quiet);padding-top:3px;letter-spacing:.02em}
+.D .ln{font-size:15.5px;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.D .lm{font-size:12.5px;color:var(--grey);line-height:1.5;margin-top:4px}
+.D .lm b{color:var(--accent);font-weight:700}
+.D .lm em{font-style:normal;color:var(--quiet)}
+
+@media (max-width: 900px){
+  body{padding:20px 14px 48px}
+  .rack{flex-direction:column;overflow-x:visible;gap:30px}
+  .col{flex:0 0 auto;width:100%;max-width:375px;margin-inline:auto}
+  .ph{width:100%;height:auto;max-height:none;overflow-y:visible}
+  .labhead h1{font-size:21px}
+}
+</style>
+
+<div class="lab">
+<div class="labhead">
+  <h1>Four listing languages — Zürich, same data, 375&nbsp;px</h1>
+  <p>Identical content in all four: six real markets, real September 2026 dates, real Fynda tokens
+     (#FF4A2B on dates and status only), Schibsted&nbsp;Grotesk, tabular figures on. No photographs anywhere.</p>
+</div>
+
+<div class="rack">
+
+<!-- ============================== A ============================== -->
+<div class="col">
+  <div class="cap"><b>A · ABFAHRT — the departure board</b>
+  <span>Time owns the leading column. Hour/day bands. Type code as a line number.</span></div>
+  <div class="ph A">
+    <div class="bar"><div class="wm">fynda<i>.</i></div><div style="font-size:12px;color:var(--grey);font-weight:600">Gemerkt</div></div>
+    <div class="head">
+      <div class="h1">Flohmärkte in Zürich 2026</div>
+      <div class="sub">7 Märkte · 23 Termine bis Dezember</div>
+    </div>
+    <div class="chips"><span class="chip on">Alle</span><span class="chip">Heute</span><span class="chip">Wochenende</span><span class="chip">Nächste Woche</span></div>
+
+    <div class="band"><b>Sa 5. September</b><span>Zeit · Art</span></div>
+    <div class="r">
+      <div class="t">06:00<small>–17:00</small></div><div class="code">FM</div>
+      <div><div class="nm">Flohmarkt Bürkliplatz</div>
+      <div class="via">Bürkliplatz <i>·</i> 8001 Zürich <i>·</i> Eintritt frei</div>
+      <div class="fr">Bestätigt am 22.08. durch den Veranstalter</div></div>
+    </div>
+    <div class="r">
+      <div class="t">08:00<small>–16:00</small></div><div class="code">FM</div>
+      <div><div class="nm">Flohmarkt Kanzlei</div>
+      <div class="via">Kanzleistrasse 56 <i>·</i> 8004 Zürich <i>·</i> Eintritt frei</div>
+      <div class="fr">Bestätigt am 19.08. durch den Veranstalter</div></div>
+    </div>
+    <div class="r off">
+      <div class="t">09:00<small>–17:00</small></div><div class="code">FM</div>
+      <div><div class="nm">Flohmarkt am See, Wollishofen</div>
+      <div class="via">Seestrasse <i>·</i> 8038 Zürich</div>
+      <div class="offtag">Fällt aus — Unwetterwarnung</div>
+      <div class="fr">Nächster Termin: Sa 3. Oktober</div></div>
+    </div>
+
+    <div class="band"><b>So 6. September</b><span>Zeit · Art</span></div>
+    <div class="r">
+      <div class="t">10:00<small>–17:00</small></div><div class="code h">HF</div>
+      <div><div class="nm">Hallenflohmarkt Winterthur</div>
+      <div class="via">Eulachhallen <i>·</i> 8400 Winterthur <i>·</i> 25 km <i>·</i> CHF 3</div>
+      <div class="fr">Bestätigt am 21.08. durch den Veranstalter</div></div>
+    </div>
+
+    <div class="band"><b>Sa 12. September</b><span>Zeit · Art</span></div>
+    <div class="r">
+      <div class="t">09:00<small>–16:00</small></div><div class="code">FM</div>
+      <div><div class="nm">Flohmarkt Rathausplatz</div>
+      <div class="via">Rathausplatz <i>·</i> 5430 Wettingen <i>·</i> 21 km</div>
+      <div class="fr">Noch nicht bestätigt</div></div>
+    </div>
+    <div class="r">
+      <div class="t">18:00<small>–23:00</small></div><div class="code n">NF</div>
+      <div><div class="nm">Nachtflohmarkt Markthalle</div>
+      <div class="via">Steinentorberg 20 <i>·</i> 4051 Basel <i>·</i> 87 km <i>·</i> CHF 5</div>
+      <div class="fr">Bestätigt am 14.08. durch den Veranstalter</div></div>
+    </div>
+    <div class="band"><b>Sa 19. September</b><span>Zeit · Art</span></div>
+    <div class="r">
+      <div class="t">08:00<small>–16:00</small></div><div class="code">FM</div>
+      <div><div class="nm">Flohmarkt Kanzlei</div>
+      <div class="via">Kanzleistrasse 56 <i>·</i> 8004 Zürich <i>·</i> Eintritt frei</div>
+      <div class="fr">Bestätigt am 19.08. durch den Veranstalter</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== B ============================== -->
+<div class="col">
+  <div class="cap"><b>B · DIE ZEILE — the broadsheet listing</b>
+  <span>Newspaper agenda page. Entries run in as sentences, not cards.</span></div>
+  <div class="ph B">
+    <div class="bar"><div class="wm">fynda<i>.</i></div><div style="font-size:12px;color:var(--grey);font-weight:600">Gemerkt</div></div>
+    <div class="masth">
+      <div class="h1">Flohmärkte in Zürich 2026</div>
+      <div class="sub">7 Märkte · 23 Termine bis Dezember</div>
+    </div>
+    <div class="chips"><span class="chip on">Alle</span><span class="chip">Heute</span><span class="chip">Wochenende</span><span class="chip">Nächste Woche</span></div>
+
+    <div class="day"><b>05</b><em>Samstag September</em><s></s><u>3</u></div>
+    <div class="e"><b>Flohmarkt Bürkliplatz</b> <span>— Bürkliplatz, 8001 Zürich.</span>
+      <span class="tm">06:00–17:00</span><span>, Eintritt frei.</span>
+      <span class="q">Bestätigt am 22.08. durch den Veranstalter</span></div>
+    <div class="e"><b>Flohmarkt Kanzlei</b> <span>— Kanzleistrasse 56, 8004 Zürich.</span>
+      <span class="tm">08:00–16:00</span><span>, Eintritt frei.</span>
+      <span class="q">Bestätigt am 19.08. durch den Veranstalter</span></div>
+    <div class="e"><b style="text-decoration:line-through;color:var(--quiet)">Flohmarkt am See, Wollishofen</b>
+      <span>— Seestrasse, 8038 Zürich.</span> <b>Fällt aus</b><span> — Unwetterwarnung.</span>
+      <span class="q">Nächster Termin: Sa 3. Oktober</span></div>
+
+    <div class="day"><b>06</b><em>Sonntag September</em><s></s><u>1</u></div>
+    <div class="e"><b>Hallenflohmarkt Winterthur</b> <span>— Eulachhallen, 8400 Winterthur, 25 km.</span>
+      <span class="tm">10:00–17:00</span><span>, CHF 3.</span>
+      <span class="q">Bestätigt am 21.08. durch den Veranstalter</span></div>
+
+    <div class="day"><b>12</b><em>Samstag September</em><s></s><u>2</u></div>
+    <div class="e"><b>Flohmarkt Rathausplatz</b> <span>— Rathausplatz, 5430 Wettingen, 21 km.</span>
+      <span class="tm">09:00–16:00</span><span>.</span>
+      <span class="q">Noch nicht bestätigt</span></div>
+    <div class="e"><b>Nachtflohmarkt Markthalle</b> <span>— Steinentorberg 20, 4051 Basel, 87 km.</span>
+      <span class="tm">18:00–23:00</span><span>, CHF 5.</span>
+      <span class="q">Bestätigt am 14.08. durch den Veranstalter</span></div>
+
+    <div class="day"><b>19</b><em>Samstag September</em><s></s><u>1</u></div>
+    <div class="e"><b>Flohmarkt Kanzlei</b> <span>— Kanzleistrasse 56, 8004 Zürich.</span>
+      <span class="tm">08:00–16:00</span><span>, Eintritt frei.</span>
+      <span class="q">Bestätigt am 19.08. durch den Veranstalter</span></div>
+  </div>
+</div>
+
+<!-- ============================== C ============================== -->
+<div class="col">
+  <div class="cap"><b>C · DER STREIFEN — the linear calendar</b>
+  <span>The month itself is the page. Gaps stay visible; rhythm becomes readable.</span></div>
+  <div class="ph C">
+    <div class="bar"><div class="wm">fynda<i>.</i></div><div style="font-size:12px;color:var(--grey);font-weight:600">Gemerkt</div></div>
+    <div style="padding:16px 18px 12px">
+      <div class="h1">Flohmärkte in Zürich 2026</div>
+      <div class="sub">7 Märkte · 23 Termine bis Dezember</div>
+    </div>
+    <div class="chips"><span class="chip on">September</span><span class="chip">Oktober</span><span class="chip">November</span></div>
+    <div class="strip">
+      <div class="d"><b>03</b><span>Do</span></div><div class="c empty">—</div>
+      <div class="d"><b>04</b><span>Fr</span></div><div class="c empty">—</div>
+      <div class="d on wk"><b>05</b><span>Sa</span></div>
+      <div class="c wk">
+        <div class="m">Flohmarkt Bürkliplatz</div><div class="mm"><b>06:00–17:00</b> · Bürkliplatz</div>
+        <div class="m">Flohmarkt Kanzlei</div><div class="mm"><b>08:00–16:00</b> · Kanzleistrasse 56</div>
+        <div class="m" style="text-decoration:line-through;color:var(--quiet)">Flohmarkt am See</div>
+        <div class="mm">Fällt aus — Unwetterwarnung</div>
+      </div>
+      <div class="d on wk"><b>06</b><span>So</span></div>
+      <div class="c wk"><div class="m">Hallenflohmarkt Winterthur</div>
+        <div class="mm"><b>10:00–17:00</b> · Eulachhallen · 25 km</div></div>
+      <div class="d"><b>07</b><span>Mo</span></div><div class="c empty">—</div>
+      <div class="d"><b>08</b><span>Di</span></div><div class="c empty">—</div>
+      <div class="d"><b>09</b><span>Mi</span></div><div class="c empty">—</div>
+      <div class="d"><b>10</b><span>Do</span></div><div class="c empty">—</div>
+      <div class="d"><b>11</b><span>Fr</span></div><div class="c empty">—</div>
+      <div class="d on wk"><b>12</b><span>Sa</span></div>
+      <div class="c wk">
+        <div class="m">Flohmarkt Rathausplatz</div><div class="mm"><b>09:00–16:00</b> · Wettingen · 21 km</div>
+        <div class="m">Nachtflohmarkt Markthalle</div><div class="mm"><b>18:00–23:00</b> · Basel · 87 km</div>
+      </div>
+      <div class="d wk"><b>13</b><span>So</span></div><div class="c empty wk">—</div>
+      <div class="d"><b>14</b><span>Mo</span></div><div class="c empty">—</div>
+      <div class="d"><b>15</b><span>Di</span></div><div class="c empty">—</div>
+      <div class="d"><b>16</b><span>Mi</span></div><div class="c empty">—</div>
+      <div class="d"><b>17</b><span>Do</span></div><div class="c empty">—</div>
+      <div class="d"><b>18</b><span>Fr</span></div><div class="c empty">—</div>
+      <div class="d on wk"><b>19</b><span>Sa</span></div>
+      <div class="c wk"><div class="m">Flohmarkt Kanzlei</div>
+        <div class="mm"><b>08:00–16:00</b> · Kanzleistrasse 56</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== D ============================== -->
+<div class="col">
+  <div class="cap"><b>D · KATALOG — the fair catalogue</b>
+  <span>Numbered lots. Quiet, print-derived, reference-book authority.</span></div>
+  <div class="ph D">
+    <div class="bar"><div class="wm">fynda<i>.</i></div><div style="font-size:12px;color:var(--grey);font-weight:600">Gemerkt</div></div>
+    <div class="kh">
+      <div class="no">Verzeichnis · Kanton Zürich</div>
+      <div class="h1" style="margin-top:8px">Flohmärkte in Zürich 2026</div>
+      <div class="sub">7 Märkte · 23 Termine bis Dezember</div>
+    </div>
+    <div class="chips"><span class="chip on">Alle</span><span class="chip">Heute</span><span class="chip">Wochenende</span><span class="chip">Nächste Woche</span></div>
+    <div class="l"><div class="n">01</div><div>
+      <div class="ln">Flohmarkt Bürkliplatz</div>
+      <div class="lm"><b>Sa 5. Sep · 06:00–17:00</b><br>Bürkliplatz, 8001 Zürich · Eintritt frei<br>
+      <em>Wöchentlich, Mai–Oktober · bestätigt 22.08.</em></div></div></div>
+    <div class="l"><div class="n">02</div><div>
+      <div class="ln">Flohmarkt Kanzlei</div>
+      <div class="lm"><b>Sa 5. Sep · 08:00–16:00</b><br>Kanzleistrasse 56, 8004 Zürich · Eintritt frei<br>
+      <em>Wöchentlich, ganzjährig · bestätigt 19.08.</em></div></div></div>
+    <div class="l"><div class="n">03</div><div>
+      <div class="ln" style="text-decoration:line-through;color:var(--quiet)">Flohmarkt am See, Wollishofen</div>
+      <div class="lm"><b>Sa 5. Sep — fällt aus</b><br>Seestrasse, 8038 Zürich<br>
+      <em>Unwetterwarnung · nächster Termin 3. Okt</em></div></div></div>
+    <div class="l"><div class="n">04</div><div>
+      <div class="ln">Hallenflohmarkt Winterthur</div>
+      <div class="lm"><b>So 6. Sep · 10:00–17:00</b><br>Eulachhallen, 8400 Winterthur · 25 km · CHF 3<br>
+      <em>Monatlich · bestätigt 21.08.</em></div></div></div>
+    <div class="l"><div class="n">05</div><div>
+      <div class="ln">Flohmarkt Rathausplatz</div>
+      <div class="lm"><b>Sa 12. Sep · 09:00–16:00</b><br>Rathausplatz, 5430 Wettingen · 21 km<br>
+      <em>Saisonal · noch nicht bestätigt</em></div></div></div>
+    <div class="l"><div class="n">06</div><div>
+      <div class="ln">Nachtflohmarkt Markthalle</div>
+      <div class="lm"><b>Sa 12. Sep · 18:00–23:00</b><br>Steinentorberg 20, 4051 Basel · 87 km · CHF 5<br>
+      <em>Monatlich · bestätigt 14.08.</em></div></div></div>
+  </div>
+</div>
+
+</div>
+</div>
