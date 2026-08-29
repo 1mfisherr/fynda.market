@@ -16,6 +16,26 @@ Nothing here is scoped or promised. An idea leaves this file only when someone w
 
 **Risks:** far smaller search volume than the visitor side, so this can never be the traffic engine. Two-sided cold start. And it is a second product surface — founder burnout is the named top risk. If built, it sits **on top of** the visitor directory and the same database, never instead of it.
 
+## Multi-market routing — parked with evidence, 2026-08-29
+
+**The behaviour is real. The feature is not worth building, and the obvious version is our exact trap.**
+
+People do chain markets: Luzern's own tourism blog runs a "Tour-de-Flohmarkt" piece recommending two in one afternoon, and Spreewald's Christmas-market page tells readers to plan a tour and then provides no route. **Nobody in Europe helps them** — verified across brocabrac, MFT, flohmarktheld, FlohScout, flohmarktkompass and the rest. FlohScout's advertised "Echtzeit-Routenplaner" is navigation to a single market.
+
+Why it stays parked:
+
+- **Zero search demand.** Not one query in v1's 1,000-query, 90-day export contains route, tour, circuit, Rundgang or mehrere. Confirmed by hand. It cannot serve an SEO acquisition thesis.
+- **Routing is not what wins.** In the US, LuckySale is the only app that reasons about closing times — the hard part — and it has 23 ratings. The category leader has no routing and 12,000 ratings at 4.9 stars. Its users complain about stale data, which is the moat we already have.
+- **Routes cannot be pages.** Six Zürich markets on one Saturday is 50 route URLs per city-day, ~26,000 across ten cities — three times what killed v1. Our guardrails already reject `/de/route/zuerich/2026-09-12/` as geo × time.
+- **The distances are trivial.** Bürkliplatz → Helvetiaplatz 1.5 km. Basel Petersplatz → Vogesenplatz 950 m. That needs a sentence, not a planner.
+- **Optimising by distance is wrong anyway.** The category rule is "go early, the good stock is gone by ten", so the right first stop is the *best* market, not the nearest.
+
+**Worth building instead, on the market page under the directions button:** "Am selben Tag in der Nähe" — two or three markets, with distance and the times that constrain the order (Wollishofen opens at 11:00, so it cannot be first; Luzern Vögeligärtli closes at 14:00). One `ST_DWithin` query, no new URL. If nobody clicks the second market, a route planner would have failed too.
+
+**And it is a Germany feature, not a Swiss one.** Berlin has ~11 Sunday markets running at once; Swiss Sundays are thin and scattered.
+
+**Related finding worth acting on separately:** Swiss flea markets are a **Saturday** thing, but people search Sunday — `sonntag` outdraws `samstag` 57 clicks to 25. Answering a Sunday search well ("nothing today, here is Saturday") is the more interesting opportunity.
+
 ## Worth stealing
 
 `[VERIFIED 2026-08-29 — see` `reference/competitors.md`]`
