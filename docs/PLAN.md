@@ -14,6 +14,10 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 
 **3.2 is done.** The schema is in `supabase/migrations/20260829120000_initial_schema.sql` and applies cleanly to Postgres 16 + PostGIS 3.4; `supabase/tests/schema_test.sql` holds 15 behavioural assertions and they all pass. The reasoning is in `ARCHITECTURE.md` §Data model.
 
+**The home page is built** at `/de/`, from the design in `design/Main.dc.html`: hero, search, date chips, a weekend rail, an upcoming list, the category grid, the organiser CTA and the tab bar. Components live in `src/components/`, the query layer in `src/lib/`.
+
+**It renders sample data.** `src/lib/fixtures.ts` holds six markets shaped exactly like what `publishable_markets` returns. The build prints a warning every time it uses them, and `getMarkets()` throws rather than falling back if `FYNDA_DATA_SOURCE=supabase`. **Nothing may be deployed until 1.4 and 3.4 are done.**
+
 **Next: 3.3, the analytics event schema.** Events not collected cannot be recovered, so this lands before any page ships. Read v1's `analytics_events` and `outbound_click_events` first — 12,385 rows and the hashing was already right.
 
 ### Where the data comes from
@@ -65,8 +69,8 @@ Each step is cheap here and expensive if done later.
 | 3.4 | Import and clean v1 data, every fact with a source | Everything else is a view over this |
 | 3.5 | Decide German text search (`STACK.md`) | Changing it later is a re-index |
 | 3.6 | Market page — one `Event` only, `eventStatus` wired | The atom |
-| 3.7 | Card component | |
-| 3.8 | City + region pages, then home | Views over the atom |
+| ~~3.7~~ | ~~Card component~~ | **Done 2026-08-29.** `MarketPoster` (rail) and `MarketRow` (list), plus the no-photo illustration set |
+| 3.8 | City + region pages | Views over the atom. **Home shipped early** (2026-08-29) against fixtures |
 | 3.9 | Filters as query parameters; date chips | Never indexable URLs |
 | 3.10 | Organiser CTA + contact form | |
 | 3.11 | Newsletter, ICS export, saved markets | None depend on Google |
@@ -97,6 +101,7 @@ Each step is cheap here and expensive if done later.
 
 ## Still open
 
+- **Distance on cards.** The design shows "Zürich · 1,2 km". A static build cannot know where the reader is, so the cards show the city only. Distance needs either geolocation in the browser or the radius API — decide which when `/umkreis/` is built, and do not fake it in the meantime.
 - **Where the photos come from.** No competitor manages this, because organisers do not supply images. Likely shape: real photography in the beachhead, a designed no-photo state elsewhere. Decide before the card component.
 - **The tag taxonomy.** Keep it small — 60+ categories is the pattern that killed v1.
 - **What each page contains.** Field order, above the fold, freshness signal, cancelled state.

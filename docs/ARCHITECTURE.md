@@ -50,7 +50,7 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 
 Language first, then country, then place — unambiguous across Europe, no city-name collisions. **Market pages sit outside the geography tree on purpose:** a market never needs a new URL if its city or region classification changes.
 
-`/` redirects to `/de/`. The holding page currently sits at `/`; guardrails permit both until the redirect ships.
+`/` redirects to `/de/` — shipped 2026-08-29. Astro emits a redirect stub there, which the guardrails treat as **not a page**: exempt from the content floor and excluded from the URL-to-entity ratio, because a redirect carries no content and competes for no query. It is still checked against the route allowlist — a redirect pointing at a forbidden URL is still a forbidden URL.
 
 ## How a page type graduates
 

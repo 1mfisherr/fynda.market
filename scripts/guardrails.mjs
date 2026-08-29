@@ -71,11 +71,26 @@ function urlFor(file) {
   return rel === '' ? '/' : `/${rel}/`;
 }
 
-const pages = pageFiles.map((file) => ({
-  file,
-  url: urlFor(file),
-  html: readFileSync(file, 'utf8'),
-}));
+/**
+ * A redirect stub is a near-empty file whose only job is to send the browser
+ * somewhere else — Astro emits one for every entry in `redirects`. It is not a
+ * page: it carries no content, is not indexable, and does not compete for a
+ * query. So it is exempt from the content floor and is not counted in the
+ * URL-to-entity ratio. It IS still checked against the route allowlist, because
+ * a redirect pointing at a forbidden URL is still a forbidden URL.
+ */
+function isRedirectStub(html) {
+  return /<meta[^>]+http-equiv=["']refresh["']/i.test(html);
+}
+
+const allPages = pageFiles.map((file) => {
+  const html = readFileSync(file, 'utf8');
+  return { file, url: urlFor(file), html, redirect: isRedirectStub(html) };
+});
+
+/** Real pages: everything the index can actually land on. */
+const pages = allPages.filter((p) => !p.redirect);
+const redirectCount = allPages.length - pages.length;
 
 /** Which allowlist rule a URL matches, or null. */
 function routeTypeOf(url) {
@@ -111,7 +126,7 @@ check('Route allowlist', () => {
   const problems = [];
   const badUrls = new Set();
 
-  for (const page of pages) {
+  for (const page of allPages) {
     for (const rule of config.routes.forbid) {
       if (new RegExp(rule.pattern).test(page.url)) {
         badUrls.add(page.url);
@@ -125,9 +140,10 @@ check('Route allowlist', () => {
   }
 
   if (badUrls.size) {
-    return fail(`${badUrls.size} of ${pages.length} URLs are not permitted`, problems);
+    return fail(`${badUrls.size} of ${allPages.length} URLs are not permitted`, problems);
   }
-  return pass(`${pages.length} URLs, all match an allowed pattern`);
+  const note = redirectCount ? ` (+${redirectCount} redirect stub${redirectCount > 1 ? 's' : ''})` : '';
+  return pass(`${pages.length} URLs, all match an allowed pattern${note}`);
 });
 
 /* -------------------------------------------------------------------------- */

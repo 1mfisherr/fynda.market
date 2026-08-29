@@ -1,51 +1,287 @@
 ---
+/**
+ * The home page.
+ *
+ * docs/ARCHITECTURE.md: home carries "today / this weekend" without needing a
+ * URL for it. Every filter on this page is a query parameter or client-side
+ * state — never an indexable URL. That is the rule v1 broke.
+ *
+ * Layout follows design/Main.dc.html (390px artboard) and scales up from there.
+ */
 import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import MarketPoster from '../../components/MarketPoster.astro';
+import MarketRow from '../../components/MarketRow.astro';
+import { getMarkets, onThisWeekend, upNext } from '../../lib/markets';
+import { todayIso } from '../../lib/format';
 
-// Holding page. The real homepage is Phase 4 in docs/PLAN.md and depends on
-// the data model (Phase 3). This page exists so the build, the tokens, the
-// fonts and the CI guardrails are proven end to end from commit one.
+const markets = await getMarkets();
+const today = todayIso();
+const weekend = onThisWeekend(markets, today);
+const later = upNext(markets, weekend, today);
+
+const KINDS = [
+  { key: 'flohmarkt', label: 'Floh', icon: 'stall', colour: 'var(--color-cat-floh)' },
+  { key: 'hallenflohmarkt', label: 'Halle', icon: 'hall', colour: 'var(--color-cat-halle)' },
+  { key: 'nachtflohmarkt', label: 'Nacht', icon: 'moon', colour: 'var(--color-cat-nacht)' },
+  { key: 'kinderflohmarkt', label: 'Kinder', icon: 'child', colour: 'var(--color-cat-kinder)' },
+] as const;
+
+// WebSite and Organization only. An Event here would fail guardrail check 6:
+// Google supports the event experience only on pages about a single event.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://fynda.market/#website',
+      url: 'https://fynda.market/',
+      name: 'Fynda',
+      inLanguage: 'de-CH',
+      description: 'Flohmärkte in der Schweiz, mit Daten die stimmen.',
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://fynda.market/#organisation',
+      name: 'Fynda',
+      url: 'https://fynda.market/',
+    },
+  ],
+};
 ---
 
 <Base
-  title="Fynda — Flohmärkte in der Schweiz"
-  description="Flohmärkte in der Schweiz, mit Daten die stimmen. Fynda wird gerade gebaut."
+  title="Flohmärkte in der Schweiz — Fynda"
+  description="Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive."
 >
-  <main class="page">
-    <div class="mark">fynda<span class="dot">.</span></div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
-    <h1>Irgendwo ist immer Markt.</h1>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 
-    <p class="lede">
-      Flohmärkte in der Schweiz — mit Daten, die stimmen. Welcher Markt findet
-      statt, wo, und wann. Ohne raten.
-    </p>
+  <header class="topbar rise d1">
+    <a class="mark" href="/de/">fynda<span class="dot">.</span></a>
+    <nav class="topnav" aria-label="Schnellzugriff">
+      <a class="iconbtn" href="/de/gemerkt/" aria-label="Gemerkte Märkte"><Icon name="heart" /></a>
+      <button class="iconbtn" type="button" aria-label="Menü" aria-expanded="false"><Icon name="menu" strokeWidth={2} /></button>
+    </nav>
+  </header>
 
-    <p class="body">
-      Wir bauen gerade daran. Jeder Termin bekommt eine Quelle und ein Datum,
-      damit niemand mehr an einen abgesagten Markt fährt. Absagen werden
-      gemeldet, sobald wir davon wissen.
-    </p>
+  <main id="inhalt">
+    <section class="hero rise d2">
+      <h1>Irgendwo ist<br />immer Markt.</h1>
+      <p class="lede">Flohmärkte in der Schweiz — mit Daten, die stimmen.</p>
+    </section>
 
-    <section class="panel">
-      <h2>Sie organisieren einen Markt?</h2>
-      <p>
-        Tragen Sie Ihren Termin ein, melden Sie Absagen, korrigieren Sie
-        Angaben. Kostenlos, ohne Konto. Wir helfen Ihnen auch, Ihren
-        Google-Eintrag richtig zu setzen — dort suchen die meisten zuerst.
+    <form class="search rise d3" action="/umkreis/" method="get" role="search">
+      <label class="visually-hidden" for="ort">Ort</label>
+      <Icon name="search" size={19} strokeWidth={2.2} class="search-icon" />
+      <div class="search-fields">
+        <input id="ort" name="ort" type="search" value="Zürich" autocomplete="address-level2" />
+        <p class="search-hint">Dieses Wochenende · 50 km</p>
+      </div>
+      <input type="hidden" name="km" value="50" />
+      <button class="go" type="submit" aria-label="Märkte suchen">
+        <Icon name="arrow-right" size={19} strokeWidth={2.6} />
+      </button>
+    </form>
+
+    <!-- Filters, never URLs. These narrow the list below in place. -->
+    <div class="chips rise d4" role="group" aria-label="Zeitraum">
+      <button type="button" class="chip is-on" data-range="all" aria-pressed="true">Alle</button>
+      <button type="button" class="chip" data-range="today" aria-pressed="false">Heute</button>
+      <button type="button" class="chip" data-range="weekend" aria-pressed="false">Wochenende</button>
+      <button type="button" class="chip" data-range="week" aria-pressed="false">Nächste Woche</button>
+    </div>
+
+    {weekend.length > 0 && (
+      <section class="block">
+        <div class="block-head rise d5">
+          <h2>Dieses Wochenende</h2>
+          <a class="more" href="/umkreis/?zeit=wochenende" aria-label="Alle Märkte am Wochenende">
+            <Icon name="arrow-right" size={20} strokeWidth={2.2} />
+          </a>
+        </div>
+        <div class="rail">
+          {weekend.map((m, i) => (
+            <div class={`slide d${Math.min(6 + i, 11)}`}>
+              <MarketPoster market={m} priority={i === 0} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="block">
+      <div class="block-head rise d8">
+        <h2>Kommende Termine</h2>
+      </div>
+
+      <div class="list" id="liste">
+        {later.map((m) => <MarketRow market={m} />)}
+      </div>
+
+      <p class="empty" id="leer" hidden>
+        Für diesen Zeitraum ist nichts eingetragen. Probier «Alle» — oder schau am Wochenende
+        wieder vorbei, dann ist am meisten los.
       </p>
-      <a class="action" href="mailto:hallo@fynda.market">hallo@fynda.market</a>
+    </section>
+
+    <section class="block kinds rise d9">
+      <h2>Was für ein Markt?</h2>
+      <ul class="kindgrid">
+        {KINDS.map((k) => (
+          <li>
+            <a href={`/umkreis/?typ=${k.key}`}>
+              <span class="tile" style={`background:${k.colour}`}>
+                <Icon name={k.icon} size={24} strokeWidth={2} />
+              </span>
+              <span class="kindlabel">{k.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cta rise d10">
+      <h2>Sie organisieren<br />einen Markt?</h2>
+      <p>Termine eintragen, Absagen melden. Kostenlos, ohne Konto.</p>
+      <a class="action" href="/de/veranstalter/">Markt eintragen</a>
     </section>
   </main>
+
+  <nav class="tabbar" aria-label="Hauptnavigation">
+    <a href="/de/" aria-current="page"><Icon name="compass" size={22} /><span>Entdecken</span></a>
+    <a href="/de/gemerkt/"><Icon name="bookmark" size={22} /><span>Gemerkt</span></a>
+    <a href="/de/karte/"><Icon name="map" size={22} /><span>Karte</span></a>
+    <a href="/de/veranstalter/"><Icon name="megaphone" size={22} /><span>Veranstalter</span></a>
+  </nav>
 </Base>
 
+<script>
+  // Two jobs, both of which exist because the HTML is static and the build is
+  // hours old by the time someone reads it (docs/STACK.md: "today / this
+  // weekend" must never be baked into HTML that can go stale overnight).
+  //
+  //   1. drop anything already in the past
+  //   2. let the chips narrow the list without a page load or a new URL
+  const list = document.getElementById('liste');
+  const empty = document.getElementById('leer');
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
+
+  if (list && empty) {
+    const iso = (d: Date) =>
+      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    const now = new Date();
+    const today = iso(now);
+
+    const day = now.getDay();
+    const sat = new Date(now);
+    sat.setDate(day === 0 ? now.getDate() - 1 : now.getDate() + ((6 - day + 7) % 7));
+    const sun = new Date(sat);
+    sun.setDate(sat.getDate() + 1);
+
+    const weekEnd = new Date(now);
+    weekEnd.setDate(now.getDate() + 7);
+
+    const rows = Array.from(list.children) as HTMLElement[];
+
+    const inRange = (date: string, range: string) => {
+      if (date < today) return false;
+      if (range === 'today') return date === today;
+      if (range === 'weekend') return date >= iso(sat) && date <= iso(sun);
+      if (range === 'week') return date <= iso(weekEnd);
+      return true;
+    };
+
+    const apply = (range: string) => {
+      let shown = 0;
+      for (const row of rows) {
+        const date = row.querySelector('[data-date]')?.getAttribute('data-date');
+        const ok = date ? inRange(date, range) : false;
+        row.hidden = !ok;
+        if (ok) shown++;
+      }
+      empty.hidden = shown > 0;
+    };
+
+    for (const chip of chips) {
+      chip.addEventListener('click', () => {
+        for (const other of chips) {
+          const on = other === chip;
+          other.classList.toggle('is-on', on);
+          other.setAttribute('aria-pressed', String(on));
+        }
+        apply(chip.dataset.range ?? 'all');
+      });
+    }
+
+    // "Alle" is the server-rendered state, so this only prunes dates that went
+    // past since the build. The chips are an enhancement, never a gate: with no
+    // JavaScript the full upcoming list is still there.
+    apply('all');
+  }
+</script>
+
 <style>
-  .page {
-    max-width: 34rem;
-    margin: 0 auto;
-    padding: var(--space-8) var(--space-5);
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    border-radius: 0 0 var(--radius-sm) 0;
+  }
+
+  .skip:focus {
+    left: 0;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* ---- entrance: staggered, and never delays reading ------------------- */
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .rise { animation: riseIn 600ms var(--ease-base) both; }
+  .slide { animation: slideIn 600ms var(--ease-base) both; }
+
+  .d1 { animation-delay: 40ms }   .d2 { animation-delay: 100ms }
+  .d3 { animation-delay: 160ms }  .d4 { animation-delay: 240ms }
+  .d5 { animation-delay: 320ms }  .d6 { animation-delay: 400ms }
+  .d7 { animation-delay: 460ms }  .d8 { animation-delay: 520ms }
+  .d9 { animation-delay: 580ms }  .d10 { animation-delay: 640ms }
+  .d11 { animation-delay: 700ms }
+
+  /* ---- shell ----------------------------------------------------------- */
+  .topbar,
+  main,
+  .tabbar {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .topbar {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-5) var(--space-2);
   }
 
   .mark {
@@ -54,67 +290,276 @@ import Base from '../../layouts/Base.astro';
     letter-spacing: var(--tracking-display);
   }
 
-  .dot {
-    color: var(--color-accent);
+  .dot { color: var(--color-accent); }
+
+  .topnav { display: flex; align-items: center; gap: var(--space-1); }
+
+  .iconbtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    border: 0;
+    padding: 0;
+    background: none;
+    border-radius: var(--radius-pill);
+    color: var(--color-ink);
+    cursor: pointer;
   }
 
+  /* ---- hero ------------------------------------------------------------ */
+  .hero { padding: var(--space-3) var(--space-5) 0; }
+
   h1 {
-    margin: var(--space-4) 0 0;
+    margin: 0;
     font-size: var(--text-display);
     font-weight: var(--weight-black);
     letter-spacing: var(--tracking-display);
     line-height: var(--leading-tight);
-    text-wrap: balance;
   }
 
   .lede {
-    margin: 0;
-    font-size: 18px;
-    color: var(--color-ink);
-  }
-
-  .body {
-    margin: 0;
+    margin: var(--space-3) 0 0;
+    font-size: var(--text-body);
     color: var(--color-grey);
   }
 
-  .panel {
-    margin-top: var(--space-4);
-    padding: var(--space-5);
-    background: var(--color-paper);
-    border-radius: var(--radius-lg);
+  /* ---- search ---------------------------------------------------------- */
+  .search {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: var(--space-3);
+    height: 60px;
+    margin: var(--space-5) var(--space-5) 0;
+    padding: 0 var(--space-2) 0 var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 16px rgb(17 17 16 / 7%);
   }
 
-  .panel h2 {
+  .search-icon { color: var(--color-ink); flex-shrink: 0; }
+
+  .search-fields { flex: 1; min-width: 0; }
+
+  .search-fields input {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    font-size: var(--text-date);
+    font-weight: var(--weight-semibold);
+    color: var(--color-ink);
+  }
+
+  .search-fields input:focus { outline: none; }
+  .search:focus-within { border-color: var(--color-ink); }
+
+  .search-hint {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--color-quiet);
+  }
+
+  .go {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    flex-shrink: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: var(--color-surface);
+    cursor: pointer;
+    transition: background var(--duration-base) var(--ease-base);
+  }
+
+  .go:hover { background: var(--color-accent-hover); }
+
+  /* ---- chips ----------------------------------------------------------- */
+  .chips {
+    display: flex;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5) 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .chips::-webkit-scrollbar { display: none; }
+
+  .chip {
+    height: 40px;
+    padding: 0 var(--space-4);
+    flex-shrink: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-paper);
+    font: inherit;
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-grey);
+    cursor: pointer;
+    transition: background var(--duration-base) var(--ease-base),
+                color var(--duration-base) var(--ease-base);
+  }
+
+  .chip.is-on {
+    background: var(--color-ink);
+    color: var(--color-surface);
+    font-weight: var(--weight-semibold);
+  }
+
+  /* ---- blocks ---------------------------------------------------------- */
+  .block { padding-top: var(--space-6); }
+
+  .block-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-5) var(--space-3);
+  }
+
+  h2 {
     margin: 0;
     font-size: var(--text-section);
     font-weight: var(--weight-bold);
     letter-spacing: var(--tracking-section);
   }
 
-  .panel p {
+  .more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    margin-right: calc(var(--space-3) * -1);
+    color: var(--color-ink);
+  }
+
+  .rail {
+    display: flex;
+    gap: var(--space-4);
+    padding: 0 var(--space-5) var(--space-1);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .rail::-webkit-scrollbar { display: none; }
+  .slide { scroll-snap-align: start; }
+
+  .empty {
     margin: 0;
-    font-size: var(--text-body);
+    padding: var(--space-5);
+    color: var(--color-grey);
+    font-size: var(--text-date);
+  }
+
+  /* ---- categories ------------------------------------------------------ */
+  .kinds { padding-inline: var(--space-5); }
+  .kinds h2 { margin-bottom: var(--space-4); }
+
+  .kindgrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .kindgrid a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 14px;
+    color: var(--color-surface);
+    transition: transform var(--duration-base) var(--ease-base);
+  }
+
+  .kindgrid a:hover .tile { transform: translateY(-2px); }
+
+  .kindlabel {
+    font-size: var(--text-micro);
+    font-weight: var(--weight-semibold);
+  }
+
+  /* ---- organiser ------------------------------------------------------- */
+  .cta {
+    margin: var(--space-6) var(--space-5) 0;
+    padding: 26px 22px;
+    background: var(--color-paper);
+    border-radius: var(--radius-lg);
+  }
+
+  .cta h2 {
+    font-size: 26px;
+    font-weight: var(--weight-black);
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .cta p {
+    margin: var(--space-3) 0 0;
+    font-size: var(--text-date);
     color: var(--color-grey);
   }
 
   .action {
-    align-self: flex-start;
-    min-height: var(--tap-min);
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    padding: 0 var(--space-5);
+    justify-content: center;
+    height: 52px;
+    margin-top: var(--space-5);
     background: var(--color-ink);
     color: var(--color-surface);
     border-radius: var(--radius-pill);
+    font-size: var(--text-body);
     font-weight: var(--weight-bold);
     transition: background var(--duration-base) var(--ease-base);
   }
 
-  .action:hover {
-    background: var(--color-accent);
+  .action:hover { background: var(--color-accent); }
+
+  /* ---- tab bar --------------------------------------------------------- */
+  .tabbar {
+    position: sticky;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: var(--space-6);
+    padding: var(--space-2) 0 var(--space-4);
+    background: rgb(255 255 255 / 94%);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .tabbar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: var(--tap-min);
+    font-size: 11px;
+    font-weight: var(--weight-medium);
+    color: var(--color-quiet);
+  }
+
+  .tabbar a[aria-current='page'] {
+    color: var(--color-accent);
+    font-weight: var(--weight-semibold);
   }
 </style>

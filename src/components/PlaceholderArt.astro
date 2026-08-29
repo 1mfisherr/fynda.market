@@ -1,0 +1,117 @@
+---
+/**
+ * The no-photo state.
+ *
+ * docs/PRODUCT.md: no flea-market directory in three countries uses photos,
+ * because organisers rarely supply one. So this is the DEFAULT card state, not
+ * the edge case, and docs/BRAND.md calls the illustration set permanent
+ * furniture rather than a stopgap: an empty grey box is what makes a directory
+ * look dead.
+ *
+ * Flat objects on a tinted ground, one per market kind, deterministic per slug
+ * so a market's card looks the same on every page it appears on.
+ */
+import type { MarketKind } from '../lib/types';
+
+interface Props {
+  kind: MarketKind;
+  seed: string;
+  rounded?: 'sm' | 'md';
+}
+
+const { kind, seed, rounded = 'md' } = Astro.props;
+
+const PALETTES = [
+  { ground: '#F0E6DC', ink: '#C9A886', deep: '#A8845E' }, // warm sand
+  { ground: '#E4E9EE', ink: '#A6B4C2', deep: '#8496A8' }, // cool grey-blue
+  { ground: '#EDE7F5', ink: '#B9AAD4', deep: '#9787BC' }, // muted violet
+  { ground: '#E6EDE7', ink: '#A9C0AE', deep: '#87A38E' }, // sage
+];
+
+// Stable hash so the same market always gets the same ground.
+let h = 0;
+for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+const p = PALETTES[h % PALETTES.length];
+
+const radius = rounded === 'sm' ? 'var(--radius-sm)' : 'var(--radius-md)';
+---
+
+<div class="art" style={`background:${p.ground}; border-radius:${radius}`}>
+  <svg viewBox="0 0 224 176" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    {(kind === 'flohmarkt' || kind === 'strassenmarkt' || kind === 'troedelmarkt') && (
+      <>
+        {/* a table of things, and a standing lamp */}
+        <g fill={p.ink}>
+          <path d="M40 118h80v8H40z" /><path d="M46 100h68v16H46z" /><path d="M54 84h52v14H54z" />
+          <path d="M56 126h8v30h-8z" /><path d="M96 126h8v30h-8z" />
+        </g>
+        <g fill={p.deep}>
+          <circle cx="164" cy="82" r="24" /><path d="M158 106h12v50h-12z" />
+          <path d="M140 150h48a6 6 0 0 1 6 6v4h-60v-4a6 6 0 0 1 6-6z" />
+        </g>
+      </>
+    )}
+    {kind === 'hallenflohmarkt' && (
+      <>
+        {/* a hall roof over crates */}
+        <g fill={p.deep}><path d="M28 76 112 34l84 42v10H28z" /></g>
+        <g fill={p.ink}>
+          <rect x="48" y="98" width="52" height="42" rx="4" />
+          <rect x="112" y="110" width="64" height="30" rx="4" />
+          <path d="M40 148h144v8H40z" />
+        </g>
+      </>
+    )}
+    {kind === 'nachtflohmarkt' && (
+      <>
+        {/* a moon over a lit stall */}
+        <g fill={p.deep}><circle cx="168" cy="52" r="22" /><circle cx="158" cy="46" r="20" fill={p.ground} /></g>
+        <g fill={p.ink}>
+          <path d="M44 92h96l-10-22H54l-10 22Z" /><path d="M52 92v64h80V92" />
+          <path d="M78 156v-34h28v34" fill={p.deep} />
+        </g>
+      </>
+    )}
+    {kind === 'kinderflohmarkt' && (
+      <>
+        {/* a rocking horse and blocks */}
+        <g fill={p.ink}>
+          <circle cx="96" cy="70" r="26" /><circle cx="96" cy="70" r="9" fill={p.ground} />
+          <path d="M56 120h80v10H56z" />
+        </g>
+        <g fill={p.deep}>
+          <rect x="146" y="86" width="34" height="34" rx="5" />
+          <rect x="150" y="126" width="26" height="26" rx="5" />
+        </g>
+      </>
+    )}
+    {(kind === 'brocante' || kind === 'antikmarkt') && (
+      <>
+        {/* a clock and a chair */}
+        <g fill={p.deep}>
+          <circle cx="150" cy="74" r="28" /><circle cx="150" cy="74" r="19" fill={p.ground} />
+          <path d="M138 106h24v52h-24z" />
+        </g>
+        <g fill={p.ink}>
+          <path d="M56 66h10v92H56z" /><path d="M56 100h56v12H56z" /><path d="M102 100h10v58h-10z" />
+        </g>
+      </>
+    )}
+  </svg>
+</div>
+
+<style>
+  .art {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .art svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

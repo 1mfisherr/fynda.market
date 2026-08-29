@@ -34,6 +34,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_CH" />
+
+    <!-- Structured data and anything else page-specific. Guardrail check 6
+         polices what may appear here. -->
+    <slot name="head" />
   </head>
   <body>
     <slot />

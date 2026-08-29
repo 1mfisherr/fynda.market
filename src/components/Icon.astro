@@ -1,0 +1,53 @@
+---
+/**
+ * The icon set. One file so stroke weight and geometry stay consistent —
+ * BRAND.md treats icons as the only place strong colour is allowed, so they
+ * have to look like one family.
+ *
+ * Icons are decorative unless given a label; a labelled icon gets a title and
+ * an accessible role, an unlabelled one is hidden from screen readers.
+ */
+interface Props {
+  name:
+    | 'search' | 'heart' | 'menu' | 'arrow-right' | 'check' | 'chevron-right'
+    | 'compass' | 'bookmark' | 'map' | 'megaphone'
+    | 'stall' | 'hall' | 'moon' | 'child';
+  size?: number;
+  label?: string;
+  strokeWidth?: number;
+  class?: string;
+}
+
+const { name, size = 22, label, strokeWidth = 1.9, class: className } = Astro.props;
+const a11y = label
+  ? ({ role: 'img' as const, 'aria-label': label })
+  : ({ 'aria-hidden': 'true' as const, focusable: 'false' as const });
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  {...a11y}
+>
+  {name === 'search' && <><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></>}
+  {name === 'heart' && <path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z" />}
+  {name === 'menu' && <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>}
+  {name === 'arrow-right' && <><path d="M5 12h13" /><path d="m12 5 7 7-7 7" /></>}
+  {name === 'check' && <path d="m4 12 5.5 5.5L20 7" />}
+  {name === 'chevron-right' && <path d="m9 5 7 7-7 7" />}
+  {name === 'compass' && <><circle cx="12" cy="12" r="9" /><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" /></>}
+  {name === 'bookmark' && <path d="M6 4h12v16l-6-4-6 4V4Z" />}
+  {name === 'map' && <><path d="m9 5 6 2 5-2v12l-5 2-6-2-5 2V7l5-2Z" /><path d="M9 5v12" /><path d="M15 7v12" /></>}
+  {name === 'megaphone' && <><path d="M4 10v4a1 1 0 0 0 1 1h3l7 4V5L8 9H5a1 1 0 0 0-1 1Z" /><path d="M18 9a4 4 0 0 1 0 6" /></>}
+  {name === 'stall' && <><path d="M4 9h16l-1.5-4h-13L4 9Z" /><path d="M5 9v10h14V9" /><path d="M9 19v-5h6v5" /></>}
+  {name === 'hall' && <><path d="M3 10 12 4l9 6" /><path d="M5 10v9h14v-9" /><path d="M9 19v-6h6v6" /></>}
+  {name === 'moon' && <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />}
+  {name === 'child' && <><circle cx="12" cy="6" r="2.4" /><path d="M9 21v-5H7.5l1.7-4.6A3 3 0 0 1 12 9.5a3 3 0 0 1 2.8 1.9L16.5 16H15v5" /></>}
+</svg>
