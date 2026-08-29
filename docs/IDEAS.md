@@ -32,6 +32,10 @@ Why it stays parked:
 
 **Worth building instead, on the market page under the directions button:** "Am selben Tag in der Nähe" — two or three markets, with distance and the times that constrain the order (Wollishofen opens at 11:00, so it cannot be first; Luzern Vögeligärtli closes at 14:00). One `ST_DWithin` query, no new URL. If nobody clicks the second market, a route planner would have failed too.
 
+**If it is ever built, build it curated, not generated.** Lange Nacht der Museen Berlin is the closest analogue that exists — ~10 editor-written routes at `/route/{slug}/`, each card reading `5 Stopps · 2 km · Zu Fuss`, plus accessibility as route types (DGS-Route, Rolli-Route). One static page an editor made, which passes the content floor honestly. Komoot's generated `smarttour` pages are the opposite — the "URL pattern permits it" machine that killed v1, survivable only on their domain authority.
+
+**The durable finding, worth acting on outside routing entirely: nobody at scale reasons about closing times.** Google Maps warns that a place may be shut when you arrive but never reorders, and adding a second stop removes "arrive by" altogether. Roadtrippers users have been asking for arrival times since 2022 — "trip planning is worthless without this function". Flea markets have brutal pack-up times, and we hold times on 98% of dates. **"Bis 13:00 — danach wird abgebaut" is a decision-changing sentence nobody in the category writes.**
+
 **And it is a Germany feature, not a Swiss one.** Berlin has ~11 Sunday markets running at once; Swiss Sundays are thin and scattered.
 
 **Related finding worth acting on separately:** Swiss flea markets are a **Saturday** thing, but people search Sunday — `sonntag` outdraws `samstag` 57 clicks to 25. Answering a Sunday search well ("nothing today, here is Saturday") is the more interesting opportunity.
