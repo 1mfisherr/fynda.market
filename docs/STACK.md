@@ -80,6 +80,8 @@ Two pieces, and they are not the same thing: **Metabase is a dashboard that read
 
 Not GA4: needs consent, and v1 showed it goes unanswered in a crisis anyway.
 
+**Decided 2026-08-29, in the schema.** No persistent visitor identifier of any kind — v1 carried an `anonymous_id` that survived across days, which is precisely what triggers consent. All that remains is `HMAC(ip + user agent, salt)` with the salt rotating daily: it counts a visitor within one day and is useless the next. The cost is accepted — no cross-day funnels, no returning-visitor rate. Raw events are deleted after 90 days; the daily aggregate is kept forever, and pruning refuses to run for any day that was never rolled up.
+
 **Design the event schema before the first page ships** (`PLAN.md` step 3.3). Events not collected cannot be recovered. At minimum: search performed, results viewed, result clicked, market viewed, add-to-calendar, directions clicked, organiser contact clicked, newsletter signup, filter changed, and **no-results** — the most valuable and the most commonly forgotten.
 
 ## What not to use

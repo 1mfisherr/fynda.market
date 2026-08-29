@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 const containerName = 'fynda-db-test';
 const repositoryRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const migrationsDirectory = join(repositoryRoot, 'supabase', 'migrations');
-const schemaTest = join(repositoryRoot, 'supabase', 'tests', 'schema_test.sql');
+const testsDirectory = join(repositoryRoot, 'supabase', 'tests');
 const passLines = [];
 let containerStarted = false;
 
@@ -129,9 +129,21 @@ try {
   for (const migrationFile of migrationFiles) {
     applySqlFile(migrationFile);
   }
-  applySqlFile(schemaTest);
+  // Every test file in supabase/tests, so adding a suite needs no runner change.
+  const testFiles = readdirSync(testsDirectory)
+    .filter((fileName) => fileName.endsWith('.sql'))
+    .sort((left, right) => left.localeCompare(right))
+    .map((fileName) => join(testsDirectory, fileName));
 
-  console.log(`\n${passLines.length} PASS lines; database schema tests passed.`);
+  if (testFiles.length === 0) {
+    throw new Error('no test files found in supabase/tests');
+  }
+
+  for (const testFile of testFiles) {
+    applySqlFile(testFile);
+  }
+
+  console.log(`\n${passLines.length} PASS lines across ${testFiles.length} suite(s); database schema tests passed.`);
 } catch (error) {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;

@@ -18,11 +18,16 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 
 **It renders sample data.** `src/lib/fixtures.ts` holds six markets shaped exactly like what `publishable_markets` returns. The build prints a warning every time it uses them, and `getMarkets()` throws rather than falling back if `FYNDA_DATA_SOURCE=supabase`. **Nothing may be deployed until 1.4 and 3.4 are done.**
 
-**Next: 3.3, the analytics event schema.** Events not collected cannot be recovered, so this lands before any page ships. Read v1's `analytics_events` and `outbound_click_events` first — 12,385 rows and the hashing was already right.
+**3.3 is done.** `supabase/migrations/20260829130000_analytics_events.sql`, with 17 tests. v1's best idea is carried over — the event registry enforced as a database constraint, so a broken collector cannot persist arbitrary or identifying keys. Three things changed: no persistent visitor identifier at all (a rotating daily hash only), `no_results` as its own event rather than a search with zero results, and retention that actually prunes. v1 monitored storage and never deleted anything.
+
+**Next: 3.4, the import** — blocked on credentials, see below.
 
 ### Where the data comes from
 
 **Supabase is the only source. Re-dump from the live v1 Supabase project before any import.**
+
+**To unblock 3.4, `.env` needs filling in** (copy `.env.example`, never commit it):
+`SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for the new project, and `V1_DATABASE_URL` — the v1 project's connection string, from its Supabase dashboard under Project Settings → Database.
 
 The local copy in `~/Documents/fleafind-backups/2026-08-29/` (193 markets, 2,363 dates, 12,385 analytics events) is a **snapshot that ages**, and any local Docker/`supabase start` database is a stale dev copy that must never be treated as truth. Use them to read shapes and counts, never as the import source.
 
@@ -37,7 +42,7 @@ The local copy in `~/Documents/fleafind-backups/2026-08-29/` (193 markets, 2,363
 | ~~1.1~~ | ~~GitHub repo~~ | Done — `github.com/1mfisherr/fynda.market` |
 | 1.2 | Register `fynda.market` | Only this one domain |
 | 1.3 | Cloudflare account | Workers + R2 |
-| 1.4 | Supabase project | **Region `eu-central-2` (Zurich)** |
+| ~~1.4~~ | ~~Supabase project~~ | Created 2026-08-29. Credentials still need to reach `.env` |
 | 1.5 | Resend account | Newsletter sending |
 | 1.6 | A host for Metabase | ~$5–15/mo |
 | 1.7 | Google Search Console | Verify the day the domain exists |
@@ -65,8 +70,8 @@ Each step is cheap here and expensive if done later.
 |---|---|---|
 | ~~3.1~~ | ~~Upgrade to Astro 7~~ | **Done 2026-08-29.** 7.2.9; TypeScript pinned to `^6` (TS 7 conflicts with `@astrojs/check`) |
 | ~~3.2~~ | ~~Schema + first migration; PostGIS into `extensions`~~ | **Done 2026-08-29.** 14 tables, 3 publishability views, radius search, RLS deny-by-default |
-| **3.3** | **Analytics event schema** | **Next.** Events not collected cannot be recovered |
-| 3.4 | Import and clean v1 data, every fact with a source | Everything else is a view over this |
+| ~~3.3~~ | ~~Analytics event schema~~ | **Done 2026-08-29.** Event registry enforced in the database, no persistent identifier, retention that prunes |
+| **3.4** | **Import and clean v1 data, every fact with a source** | **Next.** Blocked on `.env` credentials |
 | 3.5 | Decide German text search (`STACK.md`) | Changing it later is a re-index |
 | 3.6 | Market page — one `Event` only, `eventStatus` wired | The atom |
 | ~~3.7~~ | ~~Card component~~ | **Done 2026-08-29.** `MarketPoster` (rail) and `MarketRow` (list), plus the no-photo illustration set |
