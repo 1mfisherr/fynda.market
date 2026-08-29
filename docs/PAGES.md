@@ -134,13 +134,49 @@ Same blocks as the city page, plus a **list of cities in the canton that actuall
 
 ---
 
+---
+
+## What goes inside a block
+
+Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bottom.
+
+**The deciding attribute is the date.** NN/g found price is the one thing every user asks for, across 22 years of testing. Every listing product has an equivalent. Ours is the date and whether it is happening — not the entry fee, which is free or trivial and decides nothing. That is why the accent colour is on dates and status and nothing else.
+
+**Three attributes decide whether someone travels, and we hold none of them:** distance, size (roughly how many stalls), and indoor/outdoor. Distance is computable in the browser. Size and indoor/outdoor get captured during the import and the verification visits. Worth more than any layout change.
+
+**Cards need the same fields in the same order, every time.** Baymard found 64% of sites are inconsistent here, and in testing people left — gaps read as a poor selection rather than missing data. Practical effect: the recurrence phrase (79% coverage) comes off cards and lives on the market page.
+
+**Each attribute is its own element**, never one run-on line, and never inside the title — 40% of sites get this wrong. Name, date, place, status are four things with four treatments.
+
+**Three status badges, no more:** Bestätigt · Nicht bestätigt · Abgesagt. NN/g put the clutter limit at 2–3. So no "Neu" or "Beliebt" badge — it would cost the meaning of the three that matter.
+
+**Above the fold carries what, when, is it on, and the main action.** 57% of viewing time is spent there, and a first screen that is too dense gets read by nobody.
+
+### What we hold, and how much of it
+
+Measured from the v1 database: name, date, city, status 100% · times 98% · entry fee 97% · organiser website 95% · organiser name 94% · recurrence phrase 79% · confirmed-on date 62% · **real photos 0%** (every image is a shared generic file or stock).
+
+### Ideas, decided
+
+**Build:** size dots, indoor/outdoor, distance on card, save/merken.
+**Later:** reliability score ("ran 11 of its last 12 dates" — nobody else can compute this, our ledger can), "jetzt geöffnet", calendar export as a quiet control.
+**Maybe:** weather — real decision value outdoors, but a wrong forecast damages the trust we sell, and it means nothing until indoor/outdoor exists.
+**No:** reviews, ratings, related markets, embedded map, share buttons, entry fee on cards, badges beyond the three.
+
+### Sources
+
+[The Anatomy of a List Entry](https://www.nngroup.com/articles/list-entries/), [Defer Secondary Content for Mobile](https://www.nngroup.com/articles/defer-secondary-content-for-mobile/), [Scrolling and Attention](https://www.nngroup.com/articles/scrolling-and-attention/) and [Trustworthiness in Web Design](https://www.nngroup.com/articles/trustworthy-design/) — NN/g. [Product Listing Information](https://baymard.com/blog/list-item-design-ecommerce) — Baymard.
+
+---
+
 ## What this changes in what is already built
 
-1. **The market page's directions link must become the primary button.** It is 55% of all outbound clicks and it is currently a secondary outline button.
+1. **Directions becomes the primary button on the market page, above the fold.** Measured at 375×812 it sits at 859px — below the fold, behind the whole date list — while being 55% of all outbound clicks.
 2. **The organiser website needs a real button.** 45% of outbound clicks, currently not on the page at all.
-3. **The home page's search control must not read as a text search.** It should say place, period and radius.
+3. **The home search control reads as place + period + radius**, not a text search, and it shrinks so a market card is visible in the first screen.
 4. **Category tiles move below the lists.**
-5. **City page titles must carry the year.**
+5. **City page titles carry the year.**
+6. **The recurrence phrase comes off cards** (79% coverage).
 
 ---
 
