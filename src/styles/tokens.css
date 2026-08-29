@@ -82,6 +82,13 @@
   --duration-slow: 250ms;
   --ease-base: cubic-bezier(0.16, 0.84, 0.44, 1);
 
+  /* ---- figures --------------------------------------------------------- */
+  /* Schibsted Grotesk's digits are proportional — the 1 is 56% the width of
+     the 0 — so any column of times visibly wobbles (08:30 above 11:00). The
+     family ships tabular figures; this turns them on wherever digits line up.
+     Measured from the font's own glyph advances, 2026-08-29. */
+  --figures-tabular: tabular-nums;
+
   /* ---- layout ---------------------------------------------------------- */
   --measure: 66ch;
   --tap-min: 44px; /* WCAG 2.2 floor is 24px; we design to 44. */
@@ -96,6 +103,12 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+}
+
+/* Dates and times are the product; they line up. */
+time,
+.tabular {
+  font-variant-numeric: var(--figures-tabular);
 }
 
 body {
