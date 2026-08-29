@@ -122,12 +122,13 @@ Each step is cheap here and expensive if done later.
 - **One guardrail fix** left from `ARCHITECTURE.md`: the content floor counts characters, and should count verified facts. Generated prose can satisfy a character count without adding anything real. Fix before any bulk description generation. (The one-`Event`-per-page rule shipped 2026-08-29.)
 - **Would vendors pay for anything?** Five conversations settle it. Parked in `IDEAS.md`.
 
-## Next build steps, in order (from `PAGES.md`)
+## Next build steps, in order (from `PAGES.md` and `CONTENT.md`)
 
-1. Market page: directions becomes the primary button, organiser website gets a real one.
-2. Home: search control reads as place + period + radius; category tiles move below the lists.
-3. City page, with the year in the title.
-4. Region page, thin, reviewed after four weeks.
+1. **Market page:** directions becomes the primary button and moves above the fold — it is currently at 859px on a 375×812 screen, below the fold, while being 55% of all outbound clicks. Organiser website gets a real secondary button. Hero illustration shrinks.
+2. **Home:** search control reads as place + period + radius; category tiles move below the lists.
+3. **City page**, with the year in the title.
+4. **Region page**, thin, reviewed after four weeks.
+5. **Import captures two new fields** — market size and indoor/outdoor. Both are tier 1 (they decide whether someone travels) and we hold neither. Higher value than any layout change above.
 
 ## Conventions
 
