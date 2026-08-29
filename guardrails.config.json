@@ -8,9 +8,10 @@
     "allow": [
       { "name": "home", "pattern": "^/$" },
       { "name": "locale home", "pattern": "^/de/$" },
-      { "name": "country", "pattern": "^/de/[a-z0-9-]+/$" },
-      { "name": "region or city", "pattern": "^/de/[a-z0-9-]+/[a-z0-9-]+/$" },
-      { "name": "market", "pattern": "^/de/markt/[a-z0-9-]+/$" }
+      { "_comment": "Market pages sit outside the geography tree, so they are matched FIRST and the place patterns explicitly exclude the markt/ segment. Without that, /de/markt/x/ matches the city pattern, which silently applies the wrong content floor and the wrong Event rule.",
+        "name": "market", "pattern": "^/de/markt/[a-z0-9-]+/$" },
+      { "name": "country", "pattern": "^/de/(?!markt/)[a-z0-9-]+/$" },
+      { "name": "region or city", "pattern": "^/de/(?!markt/)[a-z0-9-]+/[a-z0-9-]+/$" }
     ],
     "forbid": [
       {

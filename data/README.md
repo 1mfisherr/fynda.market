@@ -9,6 +9,8 @@ Committed so CI can verify without a database connection.
 | `entities.json` | `{ "markets": 0, "cities": 0, "regions": 0 }` | URL-to-entity ratio check |
 | `occurrences.json` | `[{ "marketSlug": "...", "date": "2026-09-14" }, ...]` | 120-day horizon check |
 
-Neither exists yet — the data model is Phase 3 in [`../docs/PLAN.md`](../docs/PLAN.md).
+Both are written by `scripts/emit-data.mjs`, which runs as `prebuild` — so `npm run build` and `npm run verify` cannot forget it. It imports the same query layer the pages use, rather than keeping a second copy of the logic that could drift.
 
-Until they do, those two guardrails report `SKIP` rather than passing silently. The moment market or place pages exist without `entities.json`, the ratio check **fails** instead of skipping — a missing entity count means the ratio cannot be verified, and unverifiable is not the same as fine.
+If market or place pages ever exist without `entities.json`, the ratio check **fails** rather than skipping — a missing entity count means the ratio cannot be verified, and unverifiable is not the same as fine.
+
+`occurrences.json` contains only dates inside the 120-day horizon, clamped by the same function the templates use. The file cannot claim a build is clean while a template renders something further out.

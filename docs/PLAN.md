@@ -20,6 +20,10 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 
 **3.3 is done.** `supabase/migrations/20260829130000_analytics_events.sql`, with 17 tests. v1's best idea is carried over — the event registry enforced as a database constraint, so a broken collector cannot persist arbitrary or identifying keys. Three things changed: no persistent visitor identifier at all (a rotating daily hash only), `no_results` as its own event rather than a search with zero results, and retention that actually prunes. v1 monitored storage and never deleted anything.
 
+**The market page is built** (`/de/markt/[slug]/`) — the atom. Exactly one schema.org `Event`, `eventStatus` wired, `startDate` carrying the venue's UTC offset, the cancellation stated with its reason and the next real date, and freshness said plainly: "Bestätigt am 28. Aug".
+
+**All six guardrails now PASS with no SKIPs** for the first time. `npm run build` runs the data build first (`scripts/emit-data.mjs`), which writes `data/entities.json` and `data/occurrences.json` from the same query layer the pages use — so the ratio and horizon checks measure the real thing.
+
 **Next: 3.4, the import** — blocked on credentials, see below.
 
 ### Where the data comes from
@@ -73,7 +77,7 @@ Each step is cheap here and expensive if done later.
 | ~~3.3~~ | ~~Analytics event schema~~ | **Done 2026-08-29.** Event registry enforced in the database, no persistent identifier, retention that prunes |
 | **3.4** | **Import and clean v1 data, every fact with a source** | **Next.** Blocked on `.env` credentials |
 | 3.5 | Decide German text search (`STACK.md`) | Changing it later is a re-index |
-| 3.6 | Market page — one `Event` only, `eventStatus` wired | The atom |
+| ~~3.6~~ | ~~Market page — one `Event` only, `eventStatus` wired~~ | **Done 2026-08-29.** Horizon clamp applied at render, not just in the database |
 | ~~3.7~~ | ~~Card component~~ | **Done 2026-08-29.** `MarketPoster` (rail) and `MarketRow` (list), plus the no-photo illustration set |
 | 3.8 | City + region pages | Views over the atom. **Home shipped early** (2026-08-29) against fixtures |
 | 3.9 | Filters as query parameters; date chips | Never indexable URLs |

@@ -1,0 +1,347 @@
+---
+/**
+ * The market page. The atom every other page is a view over.
+ *
+ * Two rules from docs/ARCHITECTURE.md are enforced here and nowhere else:
+ *
+ * 1. EXACTLY ONE Event in the structured data — the next occurrence. Google
+ *    supports the event experience only on pages focused on a single event,
+ *    and a violation draws a manual action rather than a quiet demotion. Later
+ *    dates are visible content, never markup. Guardrail check 6 fails the
+ *    build if this page ever emits two.
+ *
+ * 2. Nothing beyond the 120-day horizon is rendered, whatever the database
+ *    holds. A confirmed date next June is a real fact and is stored; it is not
+ *    published until it comes inside the window.
+ */
+import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
+import PlaceholderArt from '../../../components/PlaceholderArt.astro';
+import { getMarkets, withinHorizon } from '../../../lib/markets';
+import { formatDate, formatTimeRange, formatWhen, toIsoWithOffset, formatDateShort } from '../../../lib/format';
+import type { Market } from '../../../lib/types';
+
+export async function getStaticPaths() {
+  const markets = await getMarkets();
+  return markets.map((market) => ({ params: { slug: market.slug }, props: { market } }));
+}
+
+interface Props {
+  market: Market;
+}
+
+const { market } = Astro.props;
+const next = market.next;
+const cancelled = next?.status === 'cancelled';
+
+// Everything publishable, soonest first. The clamp is the horizon rule.
+const dates = withinHorizon([next, ...market.upcoming].filter(Boolean) as NonNullable<typeof next>[])
+  .sort((a, b) => (a.date < b.date ? -1 : 1));
+
+const STATUS_LABEL = {
+  confirmed: 'Bestätigt',
+  tentative: 'Vorläufig',
+  cancelled: 'Abgesagt',
+  unverified: 'Nicht bestätigt',
+} as const;
+
+const EVENT_STATUS = {
+  confirmed: 'https://schema.org/EventScheduled',
+  tentative: 'https://schema.org/EventScheduled',
+  unverified: 'https://schema.org/EventScheduled',
+  cancelled: 'https://schema.org/EventCancelled',
+} as const;
+
+const KIND_LABEL: Record<string, string> = {
+  flohmarkt: 'Flohmarkt',
+  hallenflohmarkt: 'Hallenflohmarkt',
+  nachtflohmarkt: 'Nachtflohmarkt',
+  kinderflohmarkt: 'Kinderflohmarkt',
+  troedelmarkt: 'Trödelmarkt',
+  brocante: 'Brocante',
+  antikmarkt: 'Antikmarkt',
+  strassenmarkt: 'Strassenmarkt',
+};
+
+const site = 'https://fynda.market';
+const url = `${site}/de/markt/${market.slug}/`;
+
+// ONE Event. Not a list, not one per date.
+const event = next
+  ? {
+      '@type': 'Event',
+      name: market.name,
+      // ISO 8601 with the venue's UTC offset. Without it the markup is invalid.
+      startDate: toIsoWithOffset(next.date, next.startTime, market.timezone),
+      ...(next.endTime
+        ? { endDate: toIsoWithOffset(next.date, next.endTime, market.timezone) }
+        : {}),
+      // Kept even when cancelled — removing startDate breaks the markup, and
+      // the cancellation is the most useful thing on the page.
+      eventStatus: EVENT_STATUS[next.status],
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      location: {
+        '@type': 'Place',
+        name: market.venueName,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: market.addressLine,
+          postalCode: market.postalCode,
+          addressLocality: market.city,
+          addressCountry: 'CH',
+        },
+        geo: { '@type': 'GeoCoordinates', latitude: market.lat, longitude: market.lng },
+      },
+      url,
+    }
+  : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...(event ? [event] : []),
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` },
+        { '@type': 'ListItem', position: 2, name: market.city, item: `${site}/de/schweiz/` },
+        { '@type': 'ListItem', position: 3, name: market.name, item: url },
+      ],
+    },
+  ],
+};
+
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}`;
+---
+
+<Base
+  title={`${market.name}, ${market.city} — Termine ${new Date().getFullYear()} | Fynda`}
+  description={`${KIND_LABEL[market.kind]} in ${market.city}: nächster Termin, Öffnungszeiten und Adresse. ${next ? `Nächster Termin ${formatDate(next.date)}.` : ''}`}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="topbar">
+    <a class="back" href="/de/" aria-label="Zurück zur Startseite">
+      <Icon name="chevron-right" size={22} strokeWidth={2.2} />
+    </a>
+    <a class="mark" href="/de/">fynda<span class="dot">.</span></a>
+  </header>
+
+  <main id="inhalt">
+    <div class="hero">
+      {market.imageUrl ? (
+        <img src={market.imageUrl} alt="" width="720" height="360" />
+      ) : (
+        <PlaceholderArt kind={market.kind} seed={market.slug} />
+      )}
+    </div>
+
+    <div class="head">
+      <p class="kind">{KIND_LABEL[market.kind]} · {market.city}</p>
+      <h1>{market.name}</h1>
+
+      {next && (
+        <p class:list={['nextdate', { off: cancelled }]}>
+          {cancelled
+            ? `Abgesagt${next.cancellationNote ? ` · ${next.cancellationNote}` : ''}`
+            : formatWhen(next.date, next.startTime, next.endTime)}
+        </p>
+      )}
+
+      {/* Freshness, stated plainly. Nobody in the category does this — see
+          docs/PRODUCT.md. It is the trust signal and the AI-citation signal. */}
+      <p class="freshness">
+        {next?.confirmedAt
+          ? `Bestätigt am ${formatDateShort(next.confirmedAt)}`
+          : 'Noch nicht mit dem Veranstalter bestätigt'}
+      </p>
+    </div>
+
+    {cancelled && (
+      <aside class="notice">
+        <strong>Dieser Termin fällt aus.</strong>
+        <span>
+          {next?.cancellationNote ? `Grund: ${next.cancellationNote}. ` : ''}
+          {dates.length > 1
+            ? `Der nächste geplante Termin ist der ${formatDateShort(dates[1].date)}.`
+            : 'Ein neuer Termin ist noch nicht bekannt.'}
+        </span>
+      </aside>
+    )}
+
+    <section class="block">
+      <h2>Termine</h2>
+      <ul class="dates">
+        {dates.map((o) => (
+          <li class:list={{ off: o.status === 'cancelled' }}>
+            <span class="d">{formatDate(o.date)}</span>
+            <span class="t">{formatTimeRange(o.startTime, o.endTime) ?? 'Zeit noch offen'}</span>
+            <span class:list={['s', o.status]}>{STATUS_LABEL[o.status]}</span>
+          </li>
+        ))}
+      </ul>
+      {dates.length === 0 && (
+        <p class="muted">Für die nächsten Monate ist kein Termin bestätigt.</p>
+      )}
+      <p class="muted small">
+        Wir zeigen Termine bis 120 Tage im Voraus. Spätere Termine erscheinen, sobald sie
+        näher rücken.
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>Ort</h2>
+      <p class="addr">
+        <strong>{market.venueName}</strong><br />
+        {market.addressLine}<br />
+        {market.postalCode} {market.city}
+      </p>
+      <a class="secondary" href={mapsUrl} rel="noopener nofollow" target="_blank">
+        <Icon name="map" size={18} strokeWidth={2} /> Route öffnen
+      </a>
+    </section>
+
+    <section class="cta">
+      <h2>Stimmt etwas nicht?</h2>
+      <p>
+        Termin verschoben, abgesagt oder die Adresse falsch? Sagen Sie uns Bescheid — wir
+        prüfen es und schreiben dazu, wann wir es zuletzt bestätigt haben.
+      </p>
+      <a class="action" href="/de/melden/">Korrektur melden</a>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 0; top: 0; z-index: 10; padding: var(--space-3) var(--space-4); background: var(--color-ink); color: var(--color-surface); }
+
+  .topbar, main { max-width: 720px; margin-inline: auto; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+  }
+
+  /* Rotated here, not on the icon: Astro scopes styles to this template, so a
+     class handed to a child component never matches. */
+  .back { transform: rotate(180deg); display: inline-flex; width: var(--tap-min); height: var(--tap-min); align-items: center; justify-content: center; margin-left: calc(var(--space-3) * -1); }
+  .mark { font-size: 20px; font-weight: var(--weight-black); letter-spacing: var(--tracking-display); }
+  .dot { color: var(--color-accent); }
+
+  .hero {
+    height: 220px;
+    margin: 0 var(--space-5);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-paper);
+  }
+
+  .hero img { width: 100%; height: 100%; object-fit: cover; }
+
+  .head { padding: var(--space-5); }
+
+  .kind { margin: 0; font-size: var(--text-small); font-weight: var(--weight-semibold); color: var(--color-quiet); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  h1 {
+    margin: var(--space-2) 0 0;
+    font-size: 30px;
+    font-weight: var(--weight-black);
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .nextdate {
+    margin: var(--space-3) 0 0;
+    font-size: 18px;
+    font-weight: var(--weight-bold);
+    color: var(--color-accent);
+  }
+
+  .nextdate.off { color: var(--color-status-cancelled); text-decoration: line-through; text-decoration-color: var(--color-line); }
+
+  .freshness { margin: var(--space-1) 0 0; font-size: var(--text-small); color: var(--color-quiet); }
+
+  .notice {
+    display: block;
+    margin: 0 var(--space-5);
+    padding: var(--space-4);
+    border: 1px solid var(--color-line);
+    border-left: 3px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-date);
+    color: var(--color-grey);
+  }
+
+  .notice strong { display: block; color: var(--color-ink); }
+
+  .block { padding: var(--space-6) var(--space-5) 0; }
+
+  h2 { margin: 0 0 var(--space-3); font-size: var(--text-section); font-weight: var(--weight-bold); letter-spacing: var(--tracking-section); }
+
+  .dates { margin: 0; padding: 0; list-style: none; }
+
+  .dates li {
+    display: grid;
+    grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) auto;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: var(--text-date);
+  }
+
+  .dates .d { font-weight: var(--weight-bold); }
+  .dates .t { color: var(--color-grey); }
+
+  .dates .s { font-size: var(--text-micro); font-weight: var(--weight-bold); color: var(--color-quiet); }
+  .dates .s.confirmed { color: var(--color-accent); }
+  .dates li.off .d, .dates li.off .t { color: var(--color-quiet); text-decoration: line-through; text-decoration-color: var(--color-line); }
+
+  .muted { color: var(--color-grey); font-size: var(--text-date); }
+  .small { font-size: var(--text-small); color: var(--color-quiet); }
+
+  .addr { margin: 0 0 var(--space-4); font-size: var(--text-body); line-height: var(--leading-body); }
+
+  .secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap-min);
+    padding: 0 var(--space-5);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-date);
+    font-weight: var(--weight-semibold);
+  }
+
+  .secondary:hover { border-color: var(--color-ink); }
+
+  .cta {
+    margin: var(--space-6) var(--space-5) var(--space-7);
+    padding: var(--space-5);
+    background: var(--color-paper);
+    border-radius: var(--radius-lg);
+  }
+
+  .cta p { margin: 0; color: var(--color-grey); font-size: var(--text-date); }
+
+  .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: var(--space-4);
+    padding: 0 var(--space-6);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    border-radius: var(--radius-pill);
+    font-weight: var(--weight-bold);
+  }
+
+  .action:hover { background: var(--color-accent); }
+</style>

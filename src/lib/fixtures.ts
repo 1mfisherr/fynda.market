@@ -15,7 +15,7 @@
  */
 
 import type { Market } from './types';
-import { thisWeekend, parseDate, toIso } from './format';
+import { thisWeekend, parseDate, toIso } from './format.ts';
 
 /** Dates are generated relative to the build date so the page is never empty. */
 function weekendDates() {

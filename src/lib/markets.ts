@@ -8,11 +8,37 @@
  */
 
 import type { Market, Occurrence } from './types';
-import { sampleMarkets } from './fixtures';
-import { thisWeekend, todayIso } from './format';
+import { sampleMarkets } from './fixtures.ts';
+import { thisWeekend, todayIso } from './format.ts';
 
-// Server-side only. Astro exposes non-PUBLIC_ vars to the build, not the client.
-const source = import.meta.env.FYNDA_DATA_SOURCE ?? 'fixtures';
+/**
+ * Server-side only; Astro exposes non-PUBLIC_ vars to the build, not the client.
+ * Read via both paths so this module works inside Astro (import.meta.env) and
+ * under plain Node, which is how scripts/emit-data.mjs runs it.
+ */
+const env: Record<string, string | undefined> =
+  (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env ??
+  (globalThis as { process?: { env: Record<string, string | undefined> } }).process?.env ??
+  {};
+
+const source = env.FYNDA_DATA_SOURCE ?? 'fixtures';
+
+/**
+ * The publication horizon, in days. Must match occurrenceHorizonDays in
+ * guardrails.config.json and the trigger in the initial migration.
+ *
+ * The database stores a human-confirmed date however far out it is — that is a
+ * real fact. This is the other half of the rule: nothing beyond the horizon is
+ * ever rendered. Storage is not the risk, publication is.
+ */
+export const HORIZON_DAYS = 120;
+
+export function withinHorizon(dates: Occurrence[], today = todayIso()): Occurrence[] {
+  const limit = new Date(today);
+  limit.setDate(limit.getDate() + HORIZON_DAYS);
+  const limitIso = limit.toISOString().slice(0, 10);
+  return dates.filter((o) => o.date >= today && o.date <= limitIso);
+}
 
 let warned = false;
 
