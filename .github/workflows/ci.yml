@@ -32,3 +32,61 @@ jobs:
 
       - name: Guardrails
         run: npm run guardrails
+
+  schema:
+    name: Schema tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    services:
+      postgres:
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 1s
+          --health-timeout 5s
+          --health-retries 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply schema and run tests
+        env:
+          PGPASSWORD: test
+        run: |
+          set -euo pipefail
+
+          output_file="$(mktemp)"
+          trap 'rm -f "$output_file"' EXIT
+
+          psql \
+            -h localhost \
+            -U postgres \
+            -d postgres \
+            -v ON_ERROR_STOP=1 \
+            -c 'create database fynda_test template template0'
+
+          while IFS= read -r -d '' migration; do
+            psql \
+              -h localhost \
+              -U postgres \
+              -d fynda_test \
+              -v ON_ERROR_STOP=1 \
+              -f "$migration" 2>&1 | tee -a "$output_file"
+          done < <(find supabase/migrations -type f -name '*.sql' -print0 | sort -z)
+
+          psql \
+            -h localhost \
+            -U postgres \
+            -d fynda_test \
+            -v ON_ERROR_STOP=1 \
+            -f supabase/tests/schema_test.sql 2>&1 | tee -a "$output_file"
+
+          if grep -Eq '\b(FAIL|ERROR)\b' "$output_file"; then
+            echo 'Schema output contains FAIL or ERROR.'
+            exit 1
+          fi
