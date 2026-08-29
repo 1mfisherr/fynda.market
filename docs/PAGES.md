@@ -189,6 +189,8 @@ From 636 reviews of 90 markets across Zürich, Berlin, Hamburg, Munich, Cologne,
 
 **People judge markets relatively, not absolutely.** The corpus is full of "besser als Mauerpark", "hochwertiger als sein kleiner Bruder auf dem Kanzleiareal", "am Mauerpark ist doch mehr los". A same-day side-by-side of nearby markets on size, seller mix and price matches how the decision is actually made — and it is a page type, not a field.
 
+**The question people are actually asking is "lohnt sich das?"** It is in eight German YouTube titles verbatim — *FLOHMARKT LOHNT SICH DAS NOCH?*, *Lohnt sich noch der Flohmarkt Besuch?*, *Krasses Regenwetter — Hat es sich gelohnt?* — and whole blog posts are framed around it. That is the decision being made before someone gets in the car, and it is the sentence our pages have to answer. Not "when is it on" — "is it worth the trip".
+
 **And the incumbent has publicly given up on accuracy.** flohmarkttermine.ch's own home page: *"Bitte bei Fragen zu einzelnen Anlässen immer direkt die entsprechenden Veranstalter kontaktieren, n i ch t uns!!!"*
 
 ### What we hold, and how much of it
