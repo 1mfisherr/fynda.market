@@ -1,16 +1,14 @@
 # Architecture
 
-The page structure, the URL shape, and the rule that keeps it safe.
+Page types, URL shape, the data model, and the rule that keeps them safe.
 
 ---
 
 ## The governing idea
 
-> **Launch with the fewest page types that could not possibly be mistaken for spam. Everything else is a filter. Filters become pages only when they earn it.**
+> **A page exists because there is content for it — never because a URL pattern permits it.**
 
-Users lose nothing — date, radius and category filtering all work from day one. Those filters simply aren't indexable URLs yet. Google meets a small, dense, obviously useful site and watches it grow.
-
-This makes growth **additive**. Promoting a filter to a real page later is a contained change, not a rebuild.
+Launch with the fewest page types that could not be mistaken for spam. Everything else is a filter. Filters become pages only by passing the gate below. Users lose nothing — date, radius and category filtering all work from day one; they just aren't indexable URLs yet.
 
 ---
 
@@ -23,26 +21,22 @@ This makes growth **additive**. Promoting a filter to a real page later is a con
 | **City page** | city *that has markets* | ~50 |
 | **Region page** | canton / Bundesland | ~26 |
 
-**~230 pages.** Roughly 1.2 URLs per market. v1 was ~60.
+**~230 pages, ~1.2 per market.** v1 was ~60 per market.
 
-Every one is content-backed by definition — a city page exists *because* markets exist there.
-
-**Why these four:** city pages were by far the best performers on v1 (25.5 clicks/page vs 4.9 for market pages). Market pages are the atom everything else is a view over. Region pages are cheap and German demand for them is large. Home carries "today / this weekend" without needing a URL for it.
-
----
+City pages were by far v1's best performers (25.5 clicks/page vs 4.9 for market pages). Market pages are the atom everything else is a view over. Region pages are cheap and German demand for them is large. Home carries "today / this weekend" without needing a URL for it.
 
 ## Everything else is a query parameter
 
-Not indexed. Canonical points to the clean parent. Out of the sitemap. No crawlable links pointing at them.
+Not indexed, canonical points to the clean parent, out of the sitemap, no crawlable links pointing at them.
 
 ```
 /de/deutschland/koeln?datum=2026-09-14
 /de/deutschland/koeln?typ=kinderflohmarkt
-/de/deutschland/nordrhein-westfalen?wochenende=1
+/de/deutschland/koeln?tag=indoor
 /umkreis?lat=50.93&lng=6.96&km=30      <- the "in der Nähe" answer
 ```
 
----
+**Tags ship day one in the data model and as filters, never as URLs.** Two rules keep them from becoming the v1 failure: the set stays small (a tag that can't be applied confidently from data we hold does not exist), and a tag becomes a page only through the gate. Tags are a monetisation hook later, so model them properly now — a real table with stable slugs and per-locale labels, not a text column.
 
 ## URL shape
 
@@ -54,96 +48,135 @@ Not indexed. Canonical points to the clean parent. Out of the sitemap. No crawla
 /de/markt/[slug]/                       market
 ```
 
-Language first, then country, then place. Unambiguous across Europe, no city-name collisions.
+Language first, then country, then place — unambiguous across Europe, no city-name collisions. **Market pages sit outside the geography tree on purpose:** a market never needs a new URL if its city or region classification changes.
 
-**Open: what lives at `/`?** The table above starts at `/de/`, which leaves the root undecided. Two options: `/` 301s to `/de/`, or `/` is the home page and the `/de/` prefix only appears once a second locale exists. **Recommendation: `/` redirects to `/de/`** — URL shape is expensive to change later, and the prefix is already in every other route. The current holding page sits at `/` because it is not a locale page; the guardrails permit both until this is settled.
-
-**Market pages sit outside the geography tree on purpose** — a market never needs a new URL if its city or region classification changes.
-
----
+`/` redirects to `/de/`. The holding page currently sits at `/`; guardrails permit both until the redirect ships.
 
 ## How a page type graduates
 
-A filter becomes an indexable page type only after passing all four:
+All four tests, in order:
 
-1. **Density** — would the average instance have real content? Floor: **≥5 markets**, and **≥80% of instances** clear it. If most instances would be near-empty, it is never built.
-2. **Demand** — is the query actually asked? Evidence from Search Console, autocomplete, or keyword data.
-3. **Probation** — build **≤10 hand-checked instances**, wait **4 weeks** of real data, keep or kill on evidence.
-4. **Scale** — only after probation, and only to instances that individually pass the density floor.
+1. **Density** — at least 5 markets on the average instance, and 80% of instances clear it.
+2. **Demand** — the query is actually asked (Search Console, autocomplete, keyword data).
+3. **Probation** — 10 hand-checked instances at most, 4 weeks of real data, keep or kill on evidence.
+4. **Scale** — only after probation, only to instances that individually pass the density floor.
 
-### Graduation queue, best first
+Queue, best first: region x time (`/de/deutschland/nordrhein-westfalen/heute`) · national date (`/de/termine/2026-09-14`, best CTR on v1 at 14.8%) · month · city x category. **City x date is what died. Probably never.**
 
-| Candidate | Density risk |
-|---|---|
-| `/de/deutschland/nordrhein-westfalen/heute` (region × time) | **Low — best first candidate.** Big German demand, regions stay full |
-| `/de/termine/2026-09-14` (national date) | Low. Best CTR on v1 (14.8%), nationally scoped so always full |
-| `/de/termine/september-2026` (month) | Low |
-| `/de/deutschland/koeln/kinderflohmarkt` (city × category) | Medium — gate per city |
-| `/de/deutschland/koeln/2026-09-14` (city × date) | **High. This is what died. Probably never** |
+The pattern this produces on its own: big geography x time is safe, small geography x time is not.
 
-The pattern the gate produces on its own: **big geography × time is safe, small geography × time is not.** No rule needed — density measures it.
-
----
-
-## Not at launch, deliberately
-
-These are choices, not oversights:
-
-- **No date pages** — despite being the best-converting type on v1. Month-2 graduation candidate, not a launch type.
-- **No category pages** — same reasoning.
-- **No per-date market pages** — the known failure.
-- **No `/heute/` URLs** — served as content on home and city pages.
-- **One language** until a second has real content behind it.
+**Deliberately not at launch:** date pages, category pages, per-date market pages, `/heute/` URLs, a second language.
 
 ---
 
 ## Data model
 
-Geography tree → `country → region → city → venue`, then `market`, then concrete `occurrence` rows.
+`[DECIDED 2026-08-29, after reading all 24 v1 migrations]`
 
-**Two things that are load-bearing:**
-
-**1. Per-fact provenance.** Every fact carries its own source and timestamp, in an append-only ledger:
+Shipped: `supabase/migrations/20260829120000_initial_schema.sql`, with behavioural tests in `supabase/tests/schema_test.sql` (15 assertions, all passing against Postgres 16 + PostGIS 3.4).
 
 ```
-market exists            → organiser,      2026-03-01
-runs Sundays 10–18       → organiser,      2026-03-01
-14 Sept confirmed        → city website,   2026-08-20
-has food stalls          → our visit,      2025-09-08
+countries -> regions -> cities -> venues -> markets -> occurrences
+
+slugs   (entity_type, entity_id, locale, slug)          -- a row exists = that locale exists
+texts   (entity_type, entity_id, locale, field, value)  -- names, descriptions
+facts   (entity_type, entity_id, field, value, source_type, source_ref,
+         observed_at, recorded_at, confidence, superseded_by)
+
+tags, market_tags, organisers, market_private, reports
 ```
 
-Not one timestamp per market. A market's *existence* stays true for years; *this Sunday's date* is worth a week. Per-fact provenance is what makes honest freshness possible, and freshness is both the trust signal and the AI-citation signal.
+### What v1 got right — carried over
 
-**2. Multi-country from commit one.** Even though one country ships first. Retrofitting geography is the expensive mistake.
+- **Venues separate from markets.** Two markets on one Marktplatz share an address, a `google_place_id` and a timezone. Timezone on the venue is what makes a correct `startDate` offset possible.
+- **Concrete occurrence rows** with status confirmed / tentative / cancelled and a cancellation note. Maps 1:1 onto Schema.org `eventStatus`.
+- **`market_private`** as its own table — organiser email, source URL, raw import. Personal data can't leak through a permissive read policy because it isn't in the readable table.
+- **Indexability computed in SQL.** v1 derived "should this city page exist" from live content counts. Best idea in that schema; it puts the governing rule in the database, not only in CI.
+- **Write-time consistency triggers.** Cheap, and they caught real corruption.
+
+### What v1 got wrong — not carried over
+
+| v1 | Why it goes |
+|---|---|
+| `slug_de`, `slug_fr`, `slug_it`, `slug_en` all `NOT NULL` on every place; `description_en/fr/it` on every market | The locale matrix baked into the schema. Four locales feel free when the columns already exist. Replaced by row-per-locale `slugs` and `texts` — adding a locale becomes work again, which is the point |
+| `lat`/`lng` as plain numbers | PostGIS was installed and never used. Radius search *is* the product, so `venues.point geography(Point,4326)` with a GIST index |
+| `markets.city` and `markets.canton` as text beside `municipality_id` | Two sources of truth; v1 needed a trigger to police the drift. Geography joins through the tree, always |
+| No `countries` table (`'CH'` was a column default) | Multi-country from commit one |
+| `pg_trgm` and `unaccent` in the `public` schema | Belong in `extensions`, with PostGIS. **Not relocatable once created** |
+| One `last_verified_at` per market | Per-fact provenance is the moat. A market's *existence* stays true for years; *this Sunday's date* is worth a week |
+| No tags table | Decided for day one |
+| `market_group` as a text key matched by convention | A real self-referencing key, `markets.hub_market_id` |
+| Nothing capped the date horizon in the database | See decision 3 below |
+
+`municipalities` is renamed `cities` — a Swiss administrative word that doesn't travel to Germany.
+
+### Provenance
+
+Every fact carries its own source and timestamp in an append-only ledger. Nothing is overwritten, only superseded.
+
+```
+market exists            -> organiser,      2026-03-01
+runs Sundays 10-18       -> organiser,      2026-03-01
+14 Sept confirmed        -> city website,   2026-08-20
+```
+
+The freshness queue is a view over this table: staleness x traffic x volatility, all three computable from `facts` alone. It is also what makes "Bestätigt am 12.08." honest — the trust signal and the AI-citation signal are the same string.
+
+### Three decisions that were open
+
+**1. One region level, not three.** v1 had cantons, metro regions and tourism regions, joined through a table carrying roles and priorities. Fynda has **one kind: the country's official first-level unit** — canton in CH, Bundesland in DE. That is the level with measured search demand (`flohmarkt nrw`, `flohmarkt bayern`), and its boundaries are official rather than argued. A city has exactly one, so it is a plain foreign key and the join table disappears.
+
+*"But Zürich should include Dietikon."* That is what the radius filter answers, and it answers it better — without a page.
+
+**2. The country is a real level in the tree, with its own slug row.** `schweiz` / `suisse` / `svizzera` is translatable text, so it is data, not a string hardcoded into a route. Same `slugs` table as everything else. No special cases anywhere in the tree.
+
+**3. The 120-day horizon binds generated dates, not stored ones.** A database rule that compares against "today" can't be a plain constraint, because today keeps changing — it has to be a trigger that runs on write. So:
+
+- **Generated occurrences** (expanded from a recurrence rule) are refused beyond 120 days. This is where the 8,500-URL failure came from, and it is now unavailable.
+- **Hand-entered confirmed dates are not capped.** If an organiser says the big annual market is next June, that is a real verified fact and the database stores it.
+- **CI enforces the horizon at the output layer** — no *rendered* occurrence beyond 120 days, whatever its origin.
+
+Storage is not the risk. Publication is.
 
 ### Dates
 
-**Concrete occurrence rows, always.** People search and filter by specific dates — `flohmarkt 2.8.26` is a real query shape with 29% click-through. Dates must be queryable and displayable regardless of what sits underneath.
+**Concrete occurrence rows, always** — `flohmarkt 2.8.26` is a real query shape with 29% click-through, so dates must be queryable and displayable regardless of what sits underneath.
 
-Recurrence rules are stored *as well*, as RRULE strings feeding a generator **hard-capped at 120 days**. Pages render rows, never rules.
+Recurrence is stored too: an RFC 5545 `RRULE` plus the human phrase ("jeden 1. Sonntag, März–Oktober"). A generator expands it into rows marked `origin='generated', status='unverified'`, capped as above; the freshness loop flips them to confirmed before the date arrives. **Pages render rows, never rules.**
+
+The gap between what the rule predicted and what was confirmed is the reliability score nobody else can compute.
 
 ---
 
-## CI must enforce this
+## Structured data — one rule that shapes the market page
 
-The gate above is worth nothing if a human has to remember it.
+`[VERIFIED 2026-08-29 against` [Google's Event docs](https://developers.google.com/search/docs/appearance/structured-data/event)`]`
 
-**Implemented** in `scripts/guardrails.mjs`, configured by `guardrails.config.json`, run by `npm run verify` and by `.github/workflows/ci.yml` on every push. Deploy runs after the checks, so red blocks it.
+> **"The event experience on Google only supports pages that focus on a single event."**
 
-| # | Check | Notes |
-|---|---|---|
-| 1 | **Route allowlist** | A URL matching no allowed pattern fails. The two shapes that killed v1 are named and rejected explicitly: a fourth geography segment (`/de/schweiz/winterthur/samstag`) and market × date (`/de/markt/x/2026-07-05`). Non-ASCII slugs also fail — slugs are transliterated, `zuerich` not `zürich`. |
-| 2 | **URL-to-entity ratio** | Ceiling 2.0, target ~1.2. Reads `data/entities.json`. **Fails, not skips**, if content pages exist without that file — unverifiable is not the same as fine. |
-| 3 | **Content floor** | Minimum visible characters in `<main>`, per page type, asserted against built HTML. |
-| 4 | **120-day horizon** | No occurrence row beyond it. Reads `data/occurrences.json`. |
-| 5 | **Explicit image dimensions** | Every `<img>` needs width and height. v1 had a real layout-shift bug. |
-| 6 | **Structured data** | Present where required, parses, and only expected `@type` values. |
+A market page carries many occurrence rows by design. So it emits **exactly one `Event`** — the next occurrence — plus `Place` and `BreadcrumbList`. Later dates are visible content, not markup. City and region pages emit no `Event` at all. Violations here draw a manual action, not a silent demotion.
 
-Verified on setup: both v1 killer URL shapes were rebuilt deliberately, both were rejected, exit code 1.
+Required, all three or the markup is invalid: `name` (the event, never the venue), `startDate` (ISO-8601 **with timezone offset**), `location` (both a name and a full address).
 
-**Known limitation.** Region and city URLs are structurally identical — `/de/deutschland/nordrhein-westfalen/` and `/de/deutschland/koeln/` have the same shape — so check 1 cannot tell them apart by pattern alone and treats both as "region or city". Once the geography data exists, the check should validate against the real slug lists instead of a regex. That is stronger anyway: it enforces *a page exists because there is content for it* directly.
+**`eventStatus` is the cancellation feature, already standardised:** `EventScheduled` · `EventCancelled` · `EventPostponed` · `EventRescheduled`. **Keep `startDate` when cancelled** — removing it breaks the markup. Nobody in the category uses this, and it is free.
+
+**Enforced 2026-08-29.** Guardrail check 6 now fails a build that emits more than one `Event` on any page, or any `Event` on a page type other than `market` (`maxEventsPerPage`, `eventAllowedOn` in `guardrails.config.json`). Both branches are covered by a deliberate-failure test.
+
+## Generated prose
+
+Google's scaled-content policy says "no matter how it's created", so AI-drafted descriptions published across thousands of pages sit squarely inside it. The working line:
+
+> Generated prose may *present* facts we hold. It may not *substitute* for facts we do not hold.
+
+A market with a verified address, dates, times and an organiser can carry generated connective prose. A market with a name and a postcode cannot be padded up to the content floor. **Open: the content floor should count verified facts, not characters** — today it counts characters, which generated text satisfies without adding anything real. Fix before any bulk generation runs.
+
+## Multi-locale, when it happens
+
+Switzerland has three language regions, so this is real rather than vanity. The rules that catch people: return links are mandatory (if page X declares Y, Y must declare X or the whole annotation is ignored); every page references itself; fully-qualified URLs only; `de-CH` is valid, `EU` and `UK` are not; `x-default` for the fallback.
+
+Partial translation is fine — versions count as duplicates only if the *main content* is untranslated. Which is why locale is not a page multiplier: **a locale earns a page when its content is translated, not when the template is.**
 
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-27
+last_reviewed: 2026-08-29

@@ -252,6 +252,7 @@ check('Structured data', () => {
   const problems = [];
   const requireOn = new Set(config.structuredData.requireOn);
   const allowed = new Set(config.structuredData.allowedTypes);
+  const eventAllowedOn = new Set(config.structuredData.eventAllowedOn ?? []);
 
   for (const page of pages) {
     const type = routeTypeOf(page.url);
@@ -263,6 +264,8 @@ check('Structured data', () => {
       problems.push(`${page.url}  — "${type}" pages must carry structured data, found none`);
       continue;
     }
+
+    let eventCount = 0;
 
     for (const block of blocks) {
       const json = block.replace(/^<script[^>]*>/i, '').replace(/<\/script>$/i, '');
@@ -277,12 +280,28 @@ check('Structured data', () => {
         const t = node['@type'];
         if (!t) problems.push(`${page.url}  — ld+json node has no @type`);
         else if (!allowed.has(t)) problems.push(`${page.url}  — unexpected @type "${t}"`);
+        if (t === 'Event') eventCount++;
       }
+    }
+
+    // Google: "The event experience on Google only supports pages that focus on
+    // a single event." A market page carries many occurrence rows by design, so
+    // it emits exactly one Event — the next occurrence — and renders the rest as
+    // visible content. Violations here draw a manual action, not a demotion.
+    if (eventCount > 1) {
+      problems.push(
+        `${page.url}  — ${eventCount} Event blocks. A page may emit at most one; later dates are content, not markup.`
+      );
+    }
+    if (eventCount > 0 && !eventAllowedOn.has(type)) {
+      problems.push(
+        `${page.url}  — "${type}" pages must not emit an Event. Only ${[...eventAllowedOn].join(', ')} pages may.`
+      );
     }
   }
 
   if (problems.length) return fail(`${problems.length} structured-data problem(s)`, problems);
-  return pass('structured data present and valid where required');
+  return pass('structured data present and valid, at most one Event per page');
 });
 
 /* -------------------------------------------------------------------------- */

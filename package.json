@@ -15,10 +15,10 @@
     "verify": "npm run build && npm run guardrails"
   },
   "dependencies": {
-    "astro": "^5.6.1"
+    "astro": "^7.2.9"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "typescript": "^5.9.2"
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
   }
 }

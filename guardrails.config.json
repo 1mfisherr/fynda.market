@@ -49,6 +49,10 @@
 
   "structuredData": {
     "requireOn": ["market"],
-    "allowedTypes": ["Event", "Place", "BreadcrumbList", "WebSite", "Organization", "ItemList"]
+    "allowedTypes": ["Event", "Place", "BreadcrumbList", "WebSite", "Organization", "ItemList"],
+
+    "_eventComment": "Google supports the event experience only on pages focused on a single event. A market page emits exactly one Event — the next occurrence — plus Place and BreadcrumbList. Later dates are visible content, not markup. City and region pages emit no Event at all.",
+    "maxEventsPerPage": 1,
+    "eventAllowedOn": ["market"]
   }
 }

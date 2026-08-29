@@ -34,7 +34,11 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 | **Organiser surface from day one** | Even if v1 is just "contact us by email" |
 | **Stack** | Astro (static) + Cloudflare Workers + Supabase/PostGIS. See `docs/STACK.md`. **Cloudflare, not Vercel** — Vercel re-introduces the caching layers that broke v1 |
 | **Brand** | White, near-black, one accent that marks only dates and status. Schibsted Grotesk. See `docs/BRAND.md` |
-| **Analytics** | Plausible cloud (EU) + Search Console. No GA4, no cookie banner |
+| **What Fynda is** | **A visitor tool.** SEO is the acquisition base. Organiser tooling evolves later; at launch it is a "own your market" CTA and a contact form |
+| **Analytics** | **Self-hosted Metabase over our own Postgres.** Own the data, collect everything, keep it private. Metabase is the dashboard — the event collection layer is separate. Plus Search Console. No GA4 |
+| **Data source** | **The live v1 Supabase project, always.** Re-dump before any import. Local backups age and a local Docker/`supabase start` database is a stale dev copy — read them for shape, never import from them |
+| **Photos** | Every market gets one. A deliberate break from the category |
+| **Tags** | From day one, small set, **filters not URLs** |
 | **Newsletter** | Live from day one, city-segmented, list in our own Postgres |
 | **URL shape** | `/de/deutschland/koeln/`, markets at `/de/markt/[slug]/` |
 | **Multi-country data model from commit one** | Even though one country ships first |
@@ -42,7 +46,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 
 ## What is deliberately open
 
-The product could be a visitor directory, or infrastructure that organisers use to be found. That is not decided, and it changes what gets built. Don't assume.
+Which region gets depth first. Where the photos come from. The tag taxonomy. What each page contains. See `PLAN.md` "Still open" — don't assume answers to these.
 
 ---
 
