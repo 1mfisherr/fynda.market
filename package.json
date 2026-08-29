@@ -11,6 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "db:test": "node scripts/db-test.mjs",
     "guardrails": "node scripts/guardrails.mjs",
     "verify": "npm run build && npm run guardrails"
   },
