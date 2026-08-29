@@ -1,0 +1,475 @@
+<title>Fynda Abfahrtstafel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+
+<style>
+  :root{
+    --paper:#FFFFFF; --panel:#F5F4F2; --ink:#111110; --grey:#6E6C68;
+    --quiet:#9A968F; --line:#E8E6E2; --accent:#FF4A2B; --stage:#33322F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141413; --panel:#1D1D1A; --ink:#F2F1EE; --grey:#A8A49C;
+      --quiet:#7E7A73; --line:#2C2C28; --accent:#FF6347; --stage:#0A0A09;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141413; --panel:#1D1D1A; --ink:#F2F1EE; --grey:#A8A49C;
+    --quiet:#7E7A73; --line:#2C2C28; --accent:#FF6347; --stage:#0A0A09;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    background:var(--stage); color:var(--ink);
+    font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+    font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1;
+    -webkit-font-smoothing:antialiased;
+    padding:28px 20px 60px;
+  }
+
+  .lab{max-width:1240px;margin:0 auto}
+  .labhead{color:#fff;max-width:640px;margin-bottom:26px}
+  .labhead .mk{font-size:17px;font-weight:800;letter-spacing:-.045em}
+  .labhead .mk span{color:var(--accent)}
+  .labhead h1{font-size:25px;font-weight:800;letter-spacing:-.04em;margin-top:12px;line-height:1.12}
+  .labhead p{font-size:14px;color:#B9B5AE;margin-top:8px;line-height:1.5}
+
+  .rack{display:flex;gap:24px;align-items:flex-start;overflow-x:auto;padding-bottom:16px}
+  .col{flex:0 0 375px}
+  .cap{color:#fff;margin-bottom:10px}
+  .cap b{display:block;font-size:14px;font-weight:800;letter-spacing:-.02em}
+  .cap span{display:block;font-size:12px;color:#B9B5AE;margin-top:3px;line-height:1.45}
+
+  .ph{width:375px;background:var(--paper);border-radius:14px;overflow:hidden;
+      box-shadow:0 10px 34px rgba(0,0,0,.34)}
+
+  /* ---------- chrome ---------- */
+  .bar{display:flex;align-items:center;justify-content:space-between;
+       padding:13px 16px;border-bottom:1px solid var(--line)}
+  .logo{font-size:19px;font-weight:800;letter-spacing:-.045em}
+  .logo span{color:var(--accent)}
+  .barlink{font-size:12px;font-weight:600;color:var(--grey)}
+
+  .head{padding:16px 16px 12px}
+  .head h2{font-size:23px;font-weight:800;letter-spacing:-.04em;line-height:1.08}
+  .head .sub{margin-top:5px;font-size:13px;color:var(--grey)}
+
+  .chips{display:flex;gap:5px;padding:0 16px 12px;overflow-x:auto;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{height:30px;padding:0 12px;display:flex;align-items:center;flex-shrink:0;
+        border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:600;color:var(--grey)}
+  .chip.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+  /* ---------- the board ---------- */
+  .band{display:flex;align-items:baseline;justify-content:space-between;
+        padding:12px 16px 6px;border-top:2px solid var(--ink);
+        margin-top:4px;background:var(--paper)}
+  .band b{font-size:13px;font-weight:800;letter-spacing:.06em}
+  .band span{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--quiet)}
+
+  .row{display:grid;grid-template-columns:56px 1fr;gap:12px;
+       padding:11px 16px;border-bottom:1px solid var(--line)}
+
+  .t .a{font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--accent);line-height:1.05}
+  .t .b{font-size:11px;font-weight:600;color:var(--quiet);margin-top:1px}
+  .t .code{display:inline-block;margin-top:6px;padding:1px 5px;border:1px solid var(--ink);
+           border-radius:3px;font-size:9px;font-weight:800;letter-spacing:.08em}
+
+  .n{font-size:16px;font-weight:700;letter-spacing:-.015em;line-height:1.22}
+  .via{margin-top:3px;font-size:12.5px;color:var(--grey);line-height:1.4}
+
+  /* the fields nobody publishes */
+  .facts{margin-top:5px;font-size:12.5px;font-weight:600;line-height:1.45}
+  .facts .k{color:var(--ink)}
+  .facts .sep{color:var(--line);margin:0 4px}
+  .facts .warn{color:var(--grey);font-weight:500}
+
+  .fresh{margin-top:5px;font-size:11px;color:var(--quiet);font-weight:600}
+
+  .row.off .n{color:var(--quiet);text-decoration:line-through;text-decoration-color:var(--line)}
+  .row.off .t .a{color:var(--quiet);text-decoration:line-through;text-decoration-color:var(--line)}
+  .row.off .via,.row.off .facts{color:var(--quiet)}
+  .row.off .facts .k{color:var(--quiet)}
+  .reason{margin-top:4px;font-size:12.5px;font-weight:700;color:var(--ink)}
+
+  /* comparison */
+  .cmp{padding:16px}
+  .cmp h3{font-size:16px;font-weight:800;letter-spacing:-.025em}
+  .cmp p{font-size:12px;color:var(--grey);margin-top:3px}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+  th{text-align:left;font-size:9.5px;font-weight:700;letter-spacing:.08em;
+     color:var(--quiet);padding:0 6px 5px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:8px 6px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td.nm{font-weight:700}
+  td.num{white-space:nowrap;font-weight:600}
+  .best{color:var(--accent);font-weight:800}
+
+  /* ---------- market page ---------- */
+  .mhead{padding:16px}
+  .mkind{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--quiet);text-transform:uppercase}
+  .mhead h2{margin-top:6px;font-size:25px;font-weight:800;letter-spacing:-.04em;line-height:1.06}
+  .mdate{margin-top:10px;font-size:19px;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+  .mpack{margin-top:3px;font-size:13px;font-weight:700}
+  .mfresh{margin-top:4px;font-size:12px;color:var(--quiet);font-weight:600}
+
+  .acts{display:grid;grid-template-columns:1fr auto;gap:8px;padding:0 16px 16px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:6px;height:46px;
+       background:var(--ink);color:var(--paper);border-radius:999px;font-size:14px;font-weight:700}
+  .btn2{display:flex;align-items:center;justify-content:center;height:46px;padding:0 16px;
+        border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:700}
+
+  .sec{padding:16px;border-top:8px solid var(--panel)}
+  .sec h3{font-size:15px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13.5px}
+  .kv dt{color:var(--grey)}
+  .kv dd{font-weight:700;text-align:right}
+  .kv dd small{display:block;font-weight:500;color:var(--grey);font-size:11.5px}
+
+  /* timing strip — the field that cannot be scraped */
+  .clock{margin-top:2px}
+  .slot{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:7px 0;
+        border-bottom:1px solid var(--line);font-size:13px}
+  .slot:last-child{border-bottom:0}
+  .slot .h{font-weight:800;color:var(--quiet);font-size:12.5px}
+  .slot.now .h{color:var(--accent)}
+  .slot b{font-weight:700}
+  .slot span{display:block;color:var(--grey);font-size:12px;margin-top:1px}
+
+  .prac{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .p{padding:5px 10px;border:1px solid var(--line);border-radius:6px;font-size:12px;font-weight:600}
+  .p.no{color:var(--quiet)}
+  .p b{font-weight:800}
+
+  .getthere{font-size:13.5px;line-height:1.5}
+  .getthere b{font-weight:700}
+
+  .nearby{margin-top:2px}
+  .nb{display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 0;
+      border-bottom:1px solid var(--line);font-size:13px}
+  .nb:last-child{border-bottom:0}
+  .nb b{font-weight:700}
+  .nb span{display:block;color:var(--grey);font-size:12px;margin-top:1px}
+  .nb .d{font-weight:700;color:var(--grey);white-space:nowrap;font-size:12px}
+
+  .notes{max-width:760px;margin:34px auto 0;color:#fff}
+  .notes h3{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#B9B5AE}
+  .notes ol{margin-top:12px;padding-left:1.1em}
+  .notes li{margin-bottom:11px;font-size:14.5px;line-height:1.5}
+  .notes li::marker{color:var(--accent);font-weight:700}
+  .notes .s{color:#B9B5AE;font-size:13.5px}
+  .notes q{color:#D8D4CD;font-style:italic}
+
+  @media (max-width:900px){
+    body{padding:20px 14px 44px}
+    .rack{flex-direction:column;gap:28px}
+    .col{flex:0 0 auto;width:100%;max-width:375px;margin-inline:auto}
+    .ph{width:100%}
+    .labhead h1{font-size:21px}
+  }
+</style>
+
+<div class="lab">
+
+  <div class="labhead">
+    <div class="mk">fynda<span>.</span></div>
+    <h1>Die Abfahrtstafel</h1>
+    <p>No thumbnails, no chevrons, no cards. Time owns the leading column, because the date
+    is what converts. And the rows carry the things 636 real reviews say people actually
+    decide on — none of which any competitor publishes.</p>
+  </div>
+
+  <div class="rack">
+
+    <!-- ============ 1. THE LIST ============ -->
+    <div class="col">
+      <div class="cap">
+        <b>Stadtseite — Zürich</b>
+        <span>A departure board. Cancelled services stay on the board, the way real timetables show them.</span>
+      </div>
+
+      <div class="ph">
+        <div class="bar">
+          <div class="logo">fynda<span>.</span></div>
+          <div class="barlink">Gemerkt</div>
+        </div>
+
+        <div class="head">
+          <h2>Flohmärkte in Zürich 2026</h2>
+          <div class="sub">7 Märkte · 23 Termine bis Dezember · zuletzt geprüft heute</div>
+        </div>
+
+        <div class="chips">
+          <div class="chip on">Alle</div>
+          <div class="chip">Heute</div>
+          <div class="chip">Wochenende</div>
+          <div class="chip">Nur Private</div>
+        </div>
+
+        <div class="band"><b>SA 5. SEPTEMBER</b><span>ZEIT · ART</span></div>
+
+        <div class="row">
+          <div class="t">
+            <div class="a">06:00</div>
+            <div class="b">–17:00</div>
+            <div class="code">FM</div>
+          </div>
+          <div>
+            <div class="n">Flohmarkt Bürkliplatz</div>
+            <div class="via">Bürkliplatz · 2,4 km · Eintritt frei</div>
+            <div class="facts">
+              <span class="k">~250 Stände</span><span class="sep">·</span><span class="k">nur Private</span><span class="sep">·</span><span class="k">Flohmarktpreise</span>
+            </div>
+            <div class="fresh">Bestätigt am 24.08. durch den Veranstalter</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="t">
+            <div class="a">08:00</div>
+            <div class="b">–16:00</div>
+            <div class="code">FM</div>
+          </div>
+          <div>
+            <div class="n">Flohmarkt Kanzlei</div>
+            <div class="via">Kanzleiareal · 1,2 km · Eintritt frei</div>
+            <div class="facts">
+              <span class="k">~120 Stände</span><span class="sep">·</span><span class="k">gemischt</span><span class="sep">·</span><span class="warn">einige Neuware</span>
+            </div>
+            <div class="fresh">Bestätigt am 26.08. durch den Veranstalter</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="t">
+            <div class="a">11:00</div>
+            <div class="b">–17:00</div>
+            <div class="code">FM</div>
+          </div>
+          <div>
+            <div class="n">Flohmarkt am See, Wollishofen</div>
+            <div class="via">Mythenquai · 4,1 km · Eintritt frei</div>
+            <div class="facts">
+              <span class="k">~60 Stände</span><span class="sep">·</span><span class="k">nur Private</span><span class="sep">·</span><span class="warn">öffnet erst um 11:00</span>
+            </div>
+            <div class="fresh">Bestätigt am 25.08. durch den Veranstalter</div>
+          </div>
+        </div>
+
+        <div class="row off">
+          <div class="t">
+            <div class="a">09:00</div>
+            <div class="b">–16:00</div>
+            <div class="code">FM</div>
+          </div>
+          <div>
+            <div class="n">Flohmarkt Rathausplatz, Wettingen</div>
+            <div class="reason">Fällt aus — Wetter</div>
+            <div class="via">Nächster Termin: Sa 26. September</div>
+            <div class="fresh">Gemeldet am 28.08. um 07:40 durch den Veranstalter</div>
+          </div>
+        </div>
+
+        <div class="band"><b>SA 12. SEPTEMBER</b><span>ZEIT · ART</span></div>
+
+        <div class="row">
+          <div class="t">
+            <div class="a">18:00</div>
+            <div class="b">–23:00</div>
+            <div class="code">NM</div>
+          </div>
+          <div>
+            <div class="n">Nachtflohmarkt Markthalle</div>
+            <div class="via">Markthalle · 82 km · Eintritt CHF 3</div>
+            <div class="facts">
+              <span class="k">~80 Stände</span><span class="sep">·</span><span class="k">gedeckt</span><span class="sep">·</span><span class="k">gemischt</span>
+            </div>
+            <div class="fresh">Noch nicht bestätigt — wir haben angefragt</div>
+          </div>
+        </div>
+
+        <!-- people judge relatively, so let them -->
+        <div class="cmp">
+          <h3>Am selben Tag, nebeneinander</h3>
+          <p>Weil man Märkte nicht einzeln beurteilt, sondern vergleicht.</p>
+          <table>
+            <thead>
+              <tr><th>Markt</th><th>Stände</th><th>Verkäufer</th><th>Preise</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nm">Bürkliplatz</td>
+                <td class="num best">~250</td>
+                <td class="num">nur Private</td>
+                <td class="num">Floh</td>
+              </tr>
+              <tr>
+                <td class="nm">Kanzlei</td>
+                <td class="num">~120</td>
+                <td class="num">gemischt</td>
+                <td class="num">Floh</td>
+              </tr>
+              <tr>
+                <td class="nm">Wollishofen</td>
+                <td class="num">~60</td>
+                <td class="num">nur Private</td>
+                <td class="num">günstig</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 2. THE MARKET PAGE ============ -->
+    <div class="col">
+      <div class="cap">
+        <b>Marktseite</b>
+        <span>Everything below the buttons is a field no directory in three countries publishes.</span>
+      </div>
+
+      <div class="ph">
+        <div class="bar">
+          <div class="logo">fynda<span>.</span></div>
+          <div class="barlink">Merken</div>
+        </div>
+
+        <div class="mhead">
+          <div class="mkind">Flohmarkt · Zürich</div>
+          <h2>Flohmarkt Bürkliplatz</h2>
+          <div class="mdate">Sa 5. September · 06:00–17:00</div>
+          <div class="mpack">Ab 15:00 wird abgebaut.</div>
+          <div class="mfresh">Bestätigt am 24.08. durch den Veranstalter</div>
+        </div>
+
+        <div class="acts">
+          <div class="btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Route
+          </div>
+          <div class="btn2">Veranstalter</div>
+        </div>
+
+        <div class="sec">
+          <h3>Was Sie erwartet</h3>
+          <dl class="kv">
+            <dt>Stände</dt><dd>~250<small>bei Regen deutlich weniger</small></dd>
+            <dt>Verkäufer</dt><dd>nur Private<small>keine Neuware zugelassen</small></dd>
+            <dt>Preise</dt><dd>Flohmarktpreise<small>handeln ist üblich</small></dd>
+            <dt>Standmiete</dt><dd>CHF 30 / Laufmeter</dd>
+            <dt>Eintritt</dt><dd>frei</dd>
+            <dt>Gelände</dt><dd>offen<small>Asphalt, bei Regen kein Problem</small></dd>
+          </dl>
+        </div>
+
+        <div class="sec">
+          <h3>Wann hingehen</h3>
+          <div class="clock">
+            <div class="slot"><div class="h">06:00</div><div><b>Aufbau, erste Stände</b><span>Händler und Sammler sind schon da</span></div></div>
+            <div class="slot now"><div class="h">07–09</div><div><b>Die Raritäten</b><span>Wer etwas Bestimmtes sucht, kommt jetzt</span></div></div>
+            <div class="slot"><div class="h">10–12</div><div><b>Am vollsten</b><span>Schwer durchzukommen, mit Kinderwagen mühsam</span></div></div>
+            <div class="slot"><div class="h">ab 14</div><div><b>Schnäppchenzeit</b><span>Viele wollen ihr Zeug nicht heimtragen</span></div></div>
+            <div class="slot"><div class="h">15:00</div><div><b>Abbau beginnt</b><span>Offiziell bis 17:00, faktisch früher</span></div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h3>Hinkommen</h3>
+          <p class="getthere">
+            <b>Nicht mit dem Auto.</b> Rund um den Bürkliplatz gibt es keine Besucherparkplätze,
+            das nächste Parkhaus ist teuer und am Samstagmorgen voll.
+            Tram 2, 8, 9 und 11 halten direkt am Platz.
+          </p>
+          <div class="prac" style="margin-top:12px">
+            <div class="p">WC <b>ja</b></div>
+            <div class="p no">Hunde <b>nein</b></div>
+            <div class="p">Kinderwagen <b>breite Gänge</b></div>
+            <div class="p">Essen <b>wenige Stände</b></div>
+            <div class="p">Bargeld <b>mitnehmen</b></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h3>Am selben Tag in der Nähe</h3>
+          <div class="nearby">
+            <div class="nb">
+              <div><b>Flohmarkt Kanzlei</b><span>08:00–16:00 · ~120 Stände</span></div>
+              <div class="d">1,5 km</div>
+            </div>
+            <div class="nb">
+              <div><b>Flohmarkt am See</b><span>öffnet erst 11:00 · ~60 Stände</span></div>
+              <div class="d">3,5 km</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h3>War es anders?</h3>
+          <p class="getthere" style="color:var(--grey);font-size:12.5px">
+            Der Markt fand nicht statt, war schon vorbei oder ganz anders als hier beschrieben?
+            Sagen Sie es uns — das ändert die Seite noch heute.
+          </p>
+          <div class="prac" style="margin-top:10px">
+            <div class="p"><b>Fand nicht statt</b></div>
+            <div class="p"><b>War schon vorbei</b></div>
+            <div class="p"><b>Etwas anderes</b></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h3>Termine</h3>
+          <div class="slot"><div class="h">Sa 5.9.</div><div><b>06:00–17:00</b><span>Bestätigt am 24.08.</span></div></div>
+          <div class="slot"><div class="h">Sa 12.9.</div><div><b>06:00–17:00</b><span>Bestätigt am 24.08.</span></div></div>
+          <div class="slot"><div class="h">Sa 19.9.</div><div><b>06:00–17:00</b><span>Noch nicht bestätigt</span></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="notes">
+    <h3>Warum das hier steht</h3>
+    <ol>
+      <li><b>„~250 Stände · nur Private · Flohmarktpreise"</b>
+        <span class="s">Size is the single biggest concern in the review corpus — 51%. Who is allowed
+        to sell is 28% and is the strongest quality axis anyone names. Price level is 38%.
+        <b>No directory in Germany, Switzerland or France publishes any of the three.</b></span></li>
+
+      <li><b>„Ab 15:00 wird abgebaut"</b>
+        <span class="s">Advertised hours are wrong in both directions and everyone knows it.
+        <q>Ich bin einmal etwas spät dran gewesen und habe es direkt bereut … man sieht die ersten
+        zusammen packen und hat noch nicht mal ein Drittel durch.</q> The timing strip is the field
+        that cannot be scraped, which is exactly why it is defensible.</span></li>
+
+      <li><b>Der Vergleich nebeneinander</b>
+        <span class="s">People never judge a market on its own — <q>besser als Mauerpark</q>,
+        <q>hochwertiger als sein kleiner Bruder auf dem Kanzleiareal</q>, <q>am Mauerpark ist
+        doch mehr los</q>. So show them side by side, on the axes they actually use.</span></li>
+
+      <li><b>„Nicht mit dem Auto"</b>
+        <span class="s">Parking is 10% of reviews and the useful answer is always advice, never an
+        address: <q>Es gibt keine weiteren Parkplätze für Besucher. Deshalb unbedingt mit der
+        S-Bahn anreisen.</q></span></li>
+
+      <li><b>Hunde nein · WC ja · Kinderwagen breite Gänge</b>
+        <span class="s">2% of reviews each, unavailable anywhere, and each one ruins a trip if you
+        get it wrong. <q>Den Hund jedoch besser zu Hause lassen — Hunde sind auf dem Flohmarkt
+        nämlich nicht erlaubt.</q></span></li>
+
+      <li><b>„Fand nicht statt" — drei Knöpfe</b>
+        <span class="s">The single most-upvoted review across every German flea-market app is
+        asking for exactly this: <q>Warum hat man keine Möglichkeit Termine zu melden, zb fällt
+        ein Termin aus.</q> 24 upvotes. Nobody in the category has a report button —
+        marktcom's app sits at <b>1.98 stars from 109 ratings</b>, and "umsonst hingefahren"
+        runs through the reviews like a refrain.</span></li>
+
+      <li><b>Der abgesagte Markt bleibt auf der Tafel</b>
+        <span class="s">Struck through, with the reason and the time it was reported. Real timetables
+        show cancelled services; every competitor deletes them. This is the one row that proves the
+        whole site is maintained.</span></li>
+    </ol>
+  </div>
+
+</div>
