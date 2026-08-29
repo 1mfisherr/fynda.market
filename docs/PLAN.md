@@ -14,7 +14,7 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 
 **3.2 is done.** The schema is in `supabase/migrations/20260829120000_initial_schema.sql` and applies cleanly to Postgres 16 + PostGIS 3.4; `supabase/tests/schema_test.sql` holds 15 behavioural assertions and they all pass. The reasoning is in `ARCHITECTURE.md` §Data model.
 
-**The home page and market page are built, but the page plan is not.** Delfim's call, 2026-08-29: we are not building further pages until there is a researched product plan saying **which pages exist, why, what is on each one, in what order, and why**. Nothing gets built because a URL pattern allows it — and nothing gets a block on it because a competitor has one. That plan is the next piece of work.
+**The page plan is written: `PAGES.md`.** Which pages exist, why, what is on each and in what order — decided from v1's own Search Console and event data rather than taste. It closes the "what each page contains" question and lists five changes to what is already built.
 
 **The home page is built** at `/de/`, from the design in `design/Main.dc.html`: hero, search, date chips, a weekend rail, an upcoming list, the category grid, the organiser CTA and the tab bar. Components live in `src/components/`, the query layer in `src/lib/`.
 
@@ -35,7 +35,7 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 **To unblock 3.4, `.env` needs filling in** (copy `.env.example`, never commit it):
 `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for the new project, and `V1_DATABASE_URL` — the v1 project's connection string, from its Supabase dashboard under Project Settings → Database.
 
-The local copy in `~/Documents/fleafind-backups/2026-08-29/` (193 markets, 2,363 dates, 12,385 analytics events) is a **snapshot that ages**, and any local Docker/`supabase start` database is a stale dev copy that must never be treated as truth. Use them to read shapes and counts, never as the import source.
+The local copy in `~/Documents/fleafind-backups/2026-08-29/` — **161 markets (157 active), 2,357 dates, 12,379 analytics events, 6,329 outbound clicks**, counted by loading it, not by trusting an earlier note — is a **snapshot that ages**, and any local Docker/`supabase start` database is a stale dev copy that must never be treated as truth. Use them to read shapes and counts, never as the import source.
 
 `~/Documents/fleafind/supabase/migrations/` holds v1's 24 migrations — read for decisions, not for schema to copy. The verdict on each is in `ARCHITECTURE.md`.
 
@@ -117,11 +117,17 @@ Each step is cheap here and expensive if done later.
 - **Distance on cards.** The design shows "Zürich · 1,2 km". A static build cannot know where the reader is, so the cards show the city only. Distance needs either geolocation in the browser or the radius API — decide which when `/umkreis/` is built, and do not fake it in the meantime.
 - **Where the photos come from.** No competitor manages this, because organisers do not supply images. Likely shape: real photography in the beachhead, a designed no-photo state elsewhere. Decide before the card component.
 - **The tag taxonomy.** Keep it small — 60+ categories is the pattern that killed v1.
-- **What each page contains.** Field order, above the fold, freshness signal, cancelled state.
 - **The beachhead region.** Zürich or Luzern.
 - **German text search** — step 3.5, and it has to be settled before the search box exists.
 - **One guardrail fix** left from `ARCHITECTURE.md`: the content floor counts characters, and should count verified facts. Generated prose can satisfy a character count without adding anything real. Fix before any bulk description generation. (The one-`Event`-per-page rule shipped 2026-08-29.)
 - **Would vendors pay for anything?** Five conversations settle it. Parked in `IDEAS.md`.
+
+## Next build steps, in order (from `PAGES.md`)
+
+1. Market page: directions becomes the primary button, organiser website gets a real one.
+2. Home: search control reads as place + period + radius; category tiles move below the lists.
+3. City page, with the year in the title.
+4. Region page, thin, reviewed after four weeks.
 
 ## Conventions
 

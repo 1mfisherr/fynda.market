@@ -6,7 +6,8 @@ Read only what the task needs. Every line loaded is context spent.
 |---|---|
 | `../CLAUDE.md` | Always. How to work here, what's settled |
 | `PLAN.md` | **First, every session.** Where we are, build order, what's open |
-| `ARCHITECTURE.md` | Pages, URLs, the data model, structured data |
+| `ARCHITECTURE.md` | URLs, the data model, structured data, the page-type gate |
+| `PAGES.md` | What is on each page and why. Read before building any page |
 | `STACK.md` | Technical choices and the constraints behind them |
 | `PRODUCT.md` | Demand, competitors, the moat |
 | `BRAND.md` | Identity and the design system |
