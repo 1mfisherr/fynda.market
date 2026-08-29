@@ -53,7 +53,11 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | Organiser CTA | The supply side is the revenue thesis, and it must exist from day one |
 | Bottom bar | Mobile is 81%. Thumb-reach navigation, and it keeps "Veranstalter" permanently visible |
 
-**Deliberately not here:** a big search field, a map, a newsletter box above the fold (1.1% conversion does not earn that space), and any city or region link list — a link farm is how a home page starts looking like a doorway.
+Then, below the markets: **city list with counts, canton list, market types, "Woher unsere Daten kommen" (three steps), live numbers, newsletter, organiser CTA, FAQ, and a proper footer.**
+
+**Corrected 2026-08-29.** An earlier version of this doc kept the home page to one screen and ruled out city link lists as a doorway pattern. Both were wrong. Eventbrite, Tutti, Vinted and meine-flohmarkt-termine all run long home pages ending in place and category link lists — MFT alone lists 10 postal areas, 20 cities, 16 Bundesländer and ~60 categories. A curated list of cities that have markets is navigation, and it points at our best-earning page type. The doorway problem was *generated combinations* — city × weekday × category — not links to pages that exist. What we still will not copy is MFT's 60 categories; ours is five.
+
+**Deliberately not here:** a big search field, a map, and a newsletter box above the fold (1.1% conversion does not earn that space).
 
 **Measured by:** click-through from home into a market page.
 
