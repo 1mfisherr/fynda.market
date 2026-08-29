@@ -7,7 +7,25 @@
 -- v1's analytics schema was the best thing in that repo and most of it is
 -- carried over — in particular the event registry enforced as a database
 -- constraint, so a broken collector cannot quietly persist arbitrary or
--- identifying keys. Three things change. They are marked DIFFERENT FROM v1.
+-- identifying keys.
+--
+-- COLLECTION POSTURE, decided by Delfim 2026-08-29, after this file first
+-- shipped with the opposite default:
+--
+--   Collect as much as we can, anonymise it, and keep it. The event stream is
+--   a product asset and a monetisation path, not a cost to be minimised.
+--
+-- That is implemented as two layers:
+--
+--   1. UNCONDITIONAL, server-side at the edge. No device storage, so no
+--      consent needed: every event, the journey, session, referrer, country,
+--      device. This runs for 100% of visitors.
+--   2. CONSENTED, a persistent visitor_id that survives across days, enabling
+--      real funnels and returning-visitor rates. Null unless consent_state is
+--      'granted'. Switzerland is transparency/opt-out based, so this can run
+--      from day one; Germany's opt-in regime is a launch-time question.
+--
+-- Nothing is deleted. See the rollup section.
 --
 -- The question this table exists to answer, from the week the traffic died:
 --   WHICH PAGE TYPE IS DECAYING?
@@ -27,23 +45,21 @@ create table public.analytics_events (
   event_name     text not null,
   schema_version smallint not null default 1,
 
-  -- DIFFERENT FROM v1 (1/3): there is no persistent visitor identifier.
-  --
-  -- v1 carried an `anonymous_id uuid` — a browser-stored id that survives
-  -- across days — plus a table linking it to newsletter subscribers. That is a
-  -- persistent per-person identifier, which is exactly what triggers consent
-  -- under ePrivacy and what makes "we don't track you" untrue.
-  --
-  -- All that remains is a daily hash: HMAC(ip + user agent, salt), where the
-  -- salt rotates every day. It counts a visitor within one day and is useless
-  -- the next, which is the whole point.
-  --
-  -- The cost is real and accepted: no cross-day funnels, no returning-visitor
-  -- rate. STACK.md §Analytics takes that trade deliberately.
+  -- Layer 1, always present: HMAC(ip + user agent, salt) with the salt rotating
+  -- daily. Counts a visitor within one day without identifying them, and needs
+  -- no device storage. Every row has one.
   visitor_day_hash text not null,
 
-  -- Joins the events of one page view together (a search and the click that
-  -- followed it). Generated per request, never stored anywhere else.
+  -- Layer 2, present only with consent: survives across days, which is what
+  -- makes returning-visitor rates and multi-day funnels possible. The check
+  -- below makes it structurally impossible to write one without consent.
+  visitor_id     uuid,
+  consent_state  text not null default 'none',
+
+  -- One visit. Groups the events of a single sitting without needing identity.
+  session_id     uuid,
+
+  -- Joins the events of one page view (a search and the click that followed).
   page_view_id   uuid,
 
   locale         text,
@@ -76,8 +92,8 @@ create table public.analytics_events (
     event_name = any (array[
       'page_view',
       'search',
-      -- DIFFERENT FROM v1 (2/3): no_results is its own event, not a search
-      -- with results_count = 0. STACK.md calls it "the most valuable and most
+      -- DIFFERENT FROM v1: no_results is its own event, not a search with
+      -- results_count = 0. STACK.md calls it "the most valuable and most
       -- commonly forgotten" event, and it is forgotten precisely because it
       -- hides inside another one. A separate name cannot be missed in a query.
       'no_results',
@@ -142,13 +158,22 @@ create table public.analytics_events (
   constraint analytics_events_country_check check (
     country is null or country ~ '^[A-Z]{2}$'
   ),
+  constraint analytics_events_consent_state_check
+    check (consent_state = any (array['none', 'granted'])),
+
+  -- The rule the second layer rests on, enforced rather than trusted: a
+  -- persistent id cannot exist on a row that did not consent to one.
+  constraint analytics_events_visitor_id_requires_consent
+    check (visitor_id is null or consent_state = 'granted'),
+
+  -- Roomier than v1's 2KB. We are collecting more per event on purpose.
   constraint analytics_events_props_object_check check (
-    jsonb_typeof(props) = 'object' and octet_length(props::text) <= 2048
+    jsonb_typeof(props) = 'object' and octet_length(props::text) <= 8192
   )
 );
 
 comment on table public.analytics_events is
-  'First-party events, collected server-side at the edge. No cookies, no localStorage id, no cross-site tracking, no raw IP. Raw rows are deleted after the retention window; the daily rollup keeps the trend forever.';
+  'First-party events, collected server-side at the edge. Never a raw IP and never cross-site. Two identity layers: visitor_day_hash always, visitor_id only with consent. Rows are kept indefinitely — this stream is a product asset.';
 
 comment on column public.analytics_events.page_type is
   'On every event, deliberately. This is the column that answers "which page type is decaying" — the question v1 could not answer during its collapse.';
@@ -261,13 +286,15 @@ create index analytics_events_market_idx on public.analytics_events (market_id, 
 /* ---------------------------------------------------------------------------
  * daily rollup
  *
- * DIFFERENT FROM v1 (3/3): v1 monitored storage and never pruned anything. It
- * had a view called analytics_storage_status whose own comment admitted "this
- * monitors storage only; it does not prune or enforce retention".
+ * Raw events are kept indefinitely — decided 2026-08-29. The rollup is not a
+ * retention mechanism, it is a speed one: "clicks per page type per day" over
+ * years of raw rows is a slow query to run on every dashboard load, and the
+ * answer never changes once a day is closed.
  *
- * Keeping raw events forever is the easy default and the wrong one: it is the
- * position hardest to defend and the least useful, because trends live in
- * aggregates. So the rollup is permanent and the raw rows are not.
+ * There is deliberately no prune function. An earlier version of this file had
+ * one; if a retention policy is ever needed it should arrive as its own
+ * migration, reviewed on its own merits, not sit here waiting to be scheduled
+ * by accident.
  * ------------------------------------------------------------------------- */
 
 create table public.analytics_daily (
@@ -280,7 +307,7 @@ create table public.analytics_daily (
 );
 
 comment on table public.analytics_daily is
-  'Permanent aggregates. No identifiers, nothing per-person. This is what survives the retention window and what the decay alert reads.';
+  'Aggregates for speed, not for retention — raw events are kept. No identifiers, nothing per-person. This is what the decay alert reads.';
 
 create or replace function public.analytics_rollup(p_day date default (current_date - 1))
   returns integer
@@ -307,43 +334,6 @@ begin
 
   get diagnostics written = row_count;
   return written;
-end
-$$;
-
-/**
- * Delete raw events past the retention window.
- *
- * Refuses to run for any day that has not been rolled up yet — deleting raw
- * rows that were never aggregated destroys the record silently, and a cron job
- * that outruns the rollup is exactly how that happens.
- */
-create or replace function public.analytics_prune(p_retain_days integer default 90)
-  returns integer
-  language plpgsql
-  set search_path = public, pg_catalog
-as $$
-declare
-  cutoff date := current_date - p_retain_days;
-  unrolled date;
-  removed integer;
-begin
-  select min(e.occurred_at::date) into unrolled
-  from public.analytics_events e
-  where e.occurred_at < cutoff::timestamptz
-    and not exists (
-      select 1 from public.analytics_daily d where d.day = e.occurred_at::date
-    );
-
-  if unrolled is not null then
-    raise exception
-      'refusing to prune: % has raw events that were never rolled up. Run analytics_rollup for it first.',
-      unrolled
-      using errcode = 'raise_exception';
-  end if;
-
-  delete from public.analytics_events where occurred_at < cutoff::timestamptz;
-  get diagnostics removed = row_count;
-  return removed;
 end
 $$;
 

@@ -14,6 +14,8 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 
 **3.2 is done.** The schema is in `supabase/migrations/20260829120000_initial_schema.sql` and applies cleanly to Postgres 16 + PostGIS 3.4; `supabase/tests/schema_test.sql` holds 15 behavioural assertions and they all pass. The reasoning is in `ARCHITECTURE.md` §Data model.
 
+**The home page and market page are built, but the page plan is not.** Delfim's call, 2026-08-29: we are not building further pages until there is a researched product plan saying **which pages exist, why, what is on each one, in what order, and why**. Nothing gets built because a URL pattern allows it — and nothing gets a block on it because a competitor has one. That plan is the next piece of work.
+
 **The home page is built** at `/de/`, from the design in `design/Main.dc.html`: hero, search, date chips, a weekend rail, an upcoming list, the category grid, the organiser CTA and the tab bar. Components live in `src/components/`, the query layer in `src/lib/`.
 
 **It renders sample data.** `src/lib/fixtures.ts` holds six markets shaped exactly like what `publishable_markets` returns. The build prints a warning every time it uses them, and `getMarkets()` throws rather than falling back if `FYNDA_DATA_SOURCE=supabase`. **Nothing may be deployed until 1.4 and 3.4 are done.**
@@ -97,6 +99,8 @@ Each step is cheap here and expensive if done later.
 | Tags | From day one. Small set. **Filters, not URLs** |
 | Photos | Every market gets one. Source still open |
 | Analytics | Own events in Postgres + self-hosted Metabase. No Plausible, no GA4 |
+| Analytics posture | **Collect as much as we can, anonymise, keep it.** Two layers: a daily hash for everyone (no consent needed), a persistent id for those who consent. **Nothing is ever deleted** |
+| Launch scope | **All of Switzerland**, with verification and photos concentrated in one region |
 | Monetisation | Deferred. Second-hand shops and featured markets are the intended surfaces |
 | Multi-country | Structure for it from day one; ship one country |
 | Hosting | Cloudflare, not Vercel |
@@ -115,7 +119,6 @@ Each step is cheap here and expensive if done later.
 - **The tag taxonomy.** Keep it small — 60+ categories is the pattern that killed v1.
 - **What each page contains.** Field order, above the fold, freshness signal, cancelled state.
 - **The beachhead region.** Zürich or Luzern.
-- **CH-wide or beachhead-only at launch?** Recommendation: publish CH-wide for SEO, concentrate verification and photography in one region.
 - **German text search** — step 3.5, and it has to be settled before the search box exists.
 - **One guardrail fix** left from `ARCHITECTURE.md`: the content floor counts characters, and should count verified facts. Generated prose can satisfy a character count without adding anything real. Fix before any bulk description generation. (The one-`Event`-per-page rule shipped 2026-08-29.)
 - **Would vendors pay for anything?** Five conversations settle it. Parked in `IDEAS.md`.

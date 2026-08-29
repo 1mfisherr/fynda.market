@@ -80,7 +80,24 @@ Two pieces, and they are not the same thing: **Metabase is a dashboard that read
 
 Not GA4: needs consent, and v1 showed it goes unanswered in a crisis anyway.
 
-**Decided 2026-08-29, in the schema.** No persistent visitor identifier of any kind — v1 carried an `anonymous_id` that survived across days, which is precisely what triggers consent. All that remains is `HMAC(ip + user agent, salt)` with the salt rotating daily: it counts a visitor within one day and is useless the next. The cost is accepted — no cross-day funnels, no returning-visitor rate. Raw events are deleted after 90 days; the daily aggregate is kept forever, and pruning refuses to run for any day that was never rolled up.
+### Collection posture — decided by Delfim, 2026-08-29
+
+**Collect as much as we can, anonymise it, keep it.** The event stream is a product asset and a monetisation path, not a cost to be minimised. **Nothing is deleted** — there is deliberately no prune function, and the daily rollup exists for query speed, not retention.
+
+Two identity layers, because they have different legal footings and it is not either/or:
+
+| Layer | Applies to | Needs consent | Gives us |
+|---|---|---|---|
+| `visitor_day_hash` — `HMAC(ip + user agent, salt)`, salt rotates daily | **100% of visitors** | No. Nothing is stored on the device | Every event, the full journey, session, referrer, country, device, daily visitor counts |
+| `visitor_id` — persistent, survives across days | Consenting visitors | Yes, in the EU | Returning-visitor rate, multi-day funnels, cohort retention |
+
+The database enforces the boundary rather than trusting the collector: `visitor_id` cannot be written on a row whose `consent_state` is not `granted`.
+
+**Switzerland is transparency/opt-out based, not opt-in**, so both layers can run from day one of the pilot. Germany's opt-in regime is what makes the banner question real — settle it at German launch, not before. `[JUDGEMENT — not legal advice; worth an hour of a Swiss lawyer's time before monetisation, not before launch]`
+
+Never a raw IP, never a user agent stored verbatim, never cross-site.
+
+
 
 **Design the event schema before the first page ships** (`PLAN.md` step 3.3). Events not collected cannot be recovered. At minimum: search performed, results viewed, result clicked, market viewed, add-to-calendar, directions clicked, organiser contact clicked, newsletter signup, filter changed, and **no-results** — the most valuable and the most commonly forgotten.
 

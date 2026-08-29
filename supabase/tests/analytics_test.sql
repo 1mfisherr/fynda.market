@@ -109,9 +109,32 @@ select pg_temp.expect(
   not exists (
     select 1 from information_schema.columns
     where table_schema = 'public' and table_name = 'analytics_events'
-      and column_name in ('anonymous_id', 'ip', 'ip_address', 'user_agent', 'email')
+      and column_name in ('ip', 'ip_address', 'user_agent', 'email')
   ),
-  'there is no persistent identifier, raw IP or user agent column'
+  'no raw IP, user agent or email column exists'
+);
+
+-- The second identity layer: allowed, but only with consent.
+select pg_temp.expect_failure(format($sql$
+  insert into public.analytics_events
+    (occurred_at, event_name, visitor_day_hash, visitor_id, props)
+  values (now(), 'page_view', %L, gen_random_uuid(), '{}'::jsonb)
+$sql$, :hash), 'a persistent visitor id without consent is refused');
+
+insert into public.analytics_events
+  (occurred_at, event_name, visitor_day_hash, visitor_id, consent_state, session_id, page_type, props)
+values
+  (now(), 'page_view', :hash, gen_random_uuid(), 'granted', gen_random_uuid(), 'market', '{}'::jsonb);
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.analytics_events where visitor_id is not null),
+  'a persistent visitor id with consent is accepted'
+);
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.analytics_events where consent_state = 'granted')
+    and (select count(*) > 1 from public.analytics_events),
+  'unconsented visitors are still fully recorded, they just carry no persistent id'
 );
 
 /* -- 6. page_type is constrained to the page types we actually have -------- */
@@ -133,26 +156,20 @@ select pg_temp.expect(
   'the rollup accounts for every raw event'
 );
 
--- Backdate one event past the window, without rolling that day up.
-update public.analytics_events
-   set occurred_at = now() - interval '200 days'
- where event_name = 'no_results';
-
-select pg_temp.expect_failure(
-  'select public.analytics_prune(90)',
-  'pruning is refused while an old day has never been rolled up'
-);
-
-select public.analytics_rollup((now() - interval '200 days')::date);
+-- Nothing deletes events, so re-running a rollup must not double-count.
+select public.analytics_rollup(current_date);
 
 select pg_temp.expect(
-  (select public.analytics_prune(90)) = 1,
-  'pruning removes the old raw event once its day is aggregated'
+  (select sum(events) from public.analytics_daily) = (select count(*) from public.analytics_events),
+  'rerunning the rollup for a day does not double-count it'
 );
 
 select pg_temp.expect(
-  (select sum(events) from public.analytics_daily) > (select count(*) from public.analytics_events),
-  'the aggregate outlives the raw rows it was built from'
+  not exists (
+    select 1 from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+    where n.nspname = 'public' and p.proname like '%prune%'
+  ),
+  'no prune function exists — events are kept'
 );
 
 /* -- 8. search console ----------------------------------------------------- */
