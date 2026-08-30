@@ -6,20 +6,26 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 ## Now
 
-**The database is live.** Supabase in `eu-west-1`, Postgres 17.6, both migrations applied, PostGIS in `extensions`, RLS on every table. `scripts/db.mjs` is how scripts connect.
+Updated 2026-08-30, end of session.
 
-**The design is approved:** `design/fynda-v5.html` — the Linientafel. A departure board, the date leading, market type as a line colour, photographs. `PAGES.md` says what is on each page and why; `BRAND.md` carries the amended colour rule.
+**Database is live.** Supabase, `eu-west-1`, Postgres 17.6. Both migrations applied, PostGIS in `extensions`, RLS on every table, 17 tables and 5 views. Credentials in `.env.local`; `scripts/db.mjs` is how scripts connect.
 
-**Built so far:** home and market pages in the old card style, against sample data. Both get rebuilt to the approved design.
+**Design is approved and built.** `design/fynda-v5.html` is the reference — the Linientafel: a departure board, the date leading, market type as a line colour, cancelled markets kept on the board. Home, market and city pages are all rebuilt to it. `npm run verify` green, `npm run check` clean, one `Event` per market page and none elsewhere.
 
-**Next, in order:**
+**Everything on the site is still sample data** from `src/lib/fixtures.ts`. The build warns every time it uses it, and `getMarkets()` throws rather than falling back once `FYNDA_DATA_SOURCE=supabase`. Nothing can be deployed until the import runs.
 
-1. **3.4 — import the v1 data** (Claude). 161 markets, 2,357 dates, every fact with a source, from the live fleafind database. This unblocks everything else.
-2. **Rebuild the pages to the Linientafel** (Codex, from the plan handed over 2026-08-30).
-3. **City and region pages.**
-4. Then 3.5 German text search, 3.9 filters, 3.10 organiser CTA.
+**No photographs exist.** Listings use the illustration set, which is the designed default, not a stopgap.
 
-**The honest gap:** the design shows stall counts, seller mix, packing-up times, dogs, toilets and travel advice. We hold none of them. A block renders only when its data exists — no placeholders, no invented figures. See `PAGES.md` §The fields we do not have.
+### Next, in order
+
+1. **3.4 — import the v1 data.** 161 markets, 2,357 dates from the live fleafind database, every fact with a source into the `facts` ledger. Swap `getMarkets()` from fixtures to Supabase. This unblocks everything.
+2. **Region page** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. It is built for Germany more than Switzerland.
+3. **3.5 — decide German text search** before any search box exists.
+4. **3.9 filters, 3.10 organiser CTA, 3.11 newsletter and ICS.**
+
+### The honest gap
+
+The design shows stall counts, seller mix, packing-up times, dogs, toilets and travel advice. **We hold none of them.** The types carry them as optional fields and a block renders only when its data exists — no placeholders, no invented figures. They get captured during the import, from organisers, and from the report buttons on the market page. See `PAGES.md` §The fields we do not have.
 
 ### Where the data comes from
 
@@ -73,8 +79,8 @@ Each step is cheap here and expensive if done later.
 | **3.4** | **Import and clean v1 data, every fact with a source** | **Next.** Blocked on `.env` credentials |
 | 3.5 | Decide German text search (`STACK.md`) | Changing it later is a re-index |
 | ~~3.6~~ | ~~Market page — one `Event` only, `eventStatus` wired~~ | **Done 2026-08-29.** Horizon clamp applied at render, not just in the database |
-| ~~3.7~~ | ~~Card component~~ | **Done 2026-08-29.** `MarketPoster` (rail) and `MarketRow` (list), plus the no-photo illustration set |
-| 3.8 | City + region pages | Views over the atom. **Home shipped early** (2026-08-29) against fixtures |
+| ~~3.7~~ | ~~Card component~~ | **Replaced 2026-08-30** by the Linientafel components: `DateBand`, `LineCode`, `MarketRow`, `PhotoOrArt`, `TypeLegend` |
+| ~~3.8~~ | ~~City page~~ | **Done 2026-08-30.** `/de/schweiz/[stadt]/`, year in the title. Region page still to do |
 | 3.9 | Filters as query parameters; date chips | Never indexable URLs |
 | 3.10 | Organiser CTA + contact form | |
 | 3.11 | Newsletter, ICS export, saved markets | None depend on Google |
@@ -134,4 +140,4 @@ Each step is cheap here and expensive if done later.
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-29
+last_reviewed: 2026-08-30
