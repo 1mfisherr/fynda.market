@@ -1,132 +1,55 @@
 ---
-/**
- * The list row — 76px thumbnail, name, date, place.
- *
- * This is the shape the whole category uses (docs/PRODUCT.md: results grouped
- * under day headings, sorted chronologically, never by relevance). The two
- * things nobody else does are visible here: a cancelled row keeps its place
- * and says why, and it shows the next date instead of just disappearing.
- */
 import type { Market } from '../lib/types';
-import { formatWhen, formatDateShort } from '../lib/format';
-import PlaceholderArt from './PlaceholderArt.astro';
-import Icon from './Icon.astro';
+import { MARKET_LINE } from '../lib/markets';
+import { formatDateShort, formatTime } from '../lib/format';
+import LineCode from './LineCode.astro';
+import PhotoOrArt from './PhotoOrArt.astro';
 
-interface Props {
-  market: Market;
-}
-
+interface Props { market: Market; }
 const { market } = Astro.props;
-const o = market.next;
-const cancelled = o?.status === 'cancelled';
-const nextAfter = market.upcoming.find((u) => u.status !== 'cancelled');
+const occurrence = market.next;
+const cancelled = occurrence?.status === 'cancelled';
+const line = MARKET_LINE[market.kind];
+const facts = [
+  market.stallCount ? `~${market.stallCount} Stände` : undefined,
+  market.sellerMix === 'private' ? 'nur Private' : market.sellerMix === 'mixed' ? 'Private und Händler' : market.sellerMix === 'trader' ? 'Händler' : market.sellerMix === 'new_goods' ? 'Neuware' : undefined,
+].filter(Boolean);
+const entry = market.entryFee === 0 ? 'frei' : market.entryFee ? `${market.entryFee} CHF` : undefined;
 ---
 
-<article class:list={['row', { cancelled }]}>
-  <div class="thumb">
-    {market.imageUrl ? (
-      <img src={market.imageUrl} alt="" width="76" height="76" loading="lazy" decoding="async" />
-    ) : (
-      <PlaceholderArt kind={market.kind} seed={market.slug} rounded="sm" />
-    )}
+<article class:list={['row', { cancelled }]} data-date={occurrence?.date}>
+  <i class="rail" style={cancelled ? undefined : `background:var(${line.token})`}></i>
+  <div class="time">
+    {occurrence?.startTime && <strong>{formatTime(occurrence.startTime)}</strong>}
+    {occurrence?.endTime && <span>–{formatTime(occurrence.endTime)}</span>}
+    <LineCode kind={market.kind} muted={cancelled} />
   </div>
-
-  <div class="text">
+  <div class="details">
     <h3 class="name"><a href={`/de/markt/${market.slug}/`}>{market.name}</a></h3>
-
-    {o && (
-      <p class="when" data-date={o.date}>
-        {cancelled
-          ? `Abgesagt${o.cancellationNote ? ` · ${o.cancellationNote}` : ''}`
-          : formatWhen(o.date, o.startTime, o.endTime)}
-      </p>
-    )}
-
-    <p class="where">
-      {market.city}
-      {cancelled && nextAfter && <> · nächster Termin {formatDateShort(nextAfter.date)}</>}
-    </p>
+    <p class="via">{market.venueName} · {market.city}{entry ? ` · ${entry}` : ''}</p>
+    {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
+    {cancelled ? <p class="reason">Fällt aus{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">Bestätigt am {formatDateShort(occurrence.confirmedAt)}.</p>}
   </div>
-
-  <Icon name="chevron-right" size={20} strokeWidth={2.2} class="chev" />
+  <div class="photo"><PhotoOrArt market={market} width={74} height={74} /></div>
 </article>
 
 <style>
-  .row {
-    position: relative;
-    display: grid;
-    grid-template-columns: 76px minmax(0, 1fr) 24px;
-    gap: var(--space-4);
-    align-items: center;
-    padding: var(--space-4) var(--space-5);
-  }
-
-  .row + .row {
-    border-top: 1px solid var(--color-line);
-  }
-
-  .thumb {
-    height: 76px;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    background: var(--color-paper);
-  }
-
-  .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .text {
-    min-width: 0;
-  }
-
-  .name {
-    margin: 0;
-    font-size: var(--text-body);
-    font-weight: var(--weight-bold);
-    letter-spacing: var(--tracking-title);
-    line-height: var(--leading-snug);
-  }
-
-  .name a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-  }
-
-  .when {
-    font-variant-numeric: var(--figures-tabular);
-    margin: var(--space-1) 0 0;
-    font-size: var(--text-date);
-    font-weight: var(--weight-bold);
-    color: var(--color-accent);
-  }
-
-  .where {
-    margin: 1px 0 0;
-    font-size: var(--text-date);
-    color: var(--color-grey);
-  }
-
-  .chev {
-    color: var(--color-quiet);
-    justify-self: end;
-  }
-
-  .cancelled .name {
-    color: var(--color-quiet);
-    text-decoration: line-through;
-    text-decoration-color: var(--color-line);
-  }
-
-  .cancelled .when,
-  .cancelled .where {
-    color: var(--color-status-cancelled);
-  }
-
-  .cancelled .thumb {
-    opacity: 0.55;
-  }
+  .row { position:relative; display:grid; grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-photo); gap:var(--space-row); align-items:start; padding:var(--space-row-y) var(--space-page) var(--space-row-y) 0; border-bottom:var(--border-width) solid var(--color-line); }
+  .rail { align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
+  .time { padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
+  .time strong { display:block; font-size:var(--text-date); font-weight:var(--weight-black); letter-spacing:var(--tracking-title); line-height:1.1; }
+  .time span { display:block; margin-top:var(--space-half); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
+  .details { min-width:0; }
+  .name { margin:0; font-size:var(--text-row-name); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.22; }
+  .name a::after { position:absolute; inset:0; content:''; }
+  .via, .facts, .fresh, .reason { margin:0; }
+  .via { margin-top:var(--space-half); color:var(--color-grey); font-size:var(--text-micro); line-height:1.4; }
+  .facts { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.45; }
+  .fresh { margin-top:var(--space-1); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
+  .reason { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-bold); }
+  .photo { width:var(--row-photo); height:var(--row-photo); overflow:hidden; border-radius:var(--radius-photo); background:var(--color-paper); }
+  .cancelled .rail { background:var(--color-line); }
+  .cancelled .name, .cancelled .time strong { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
+  .cancelled .via { color:var(--color-quiet); }
+  .cancelled .photo { filter:grayscale(1); opacity:0.5; }
 </style>

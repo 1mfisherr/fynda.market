@@ -1,347 +1,50 @@
 ---
-/**
- * The market page. The atom every other page is a view over.
- *
- * Two rules from docs/ARCHITECTURE.md are enforced here and nowhere else:
- *
- * 1. EXACTLY ONE Event in the structured data — the next occurrence. Google
- *    supports the event experience only on pages focused on a single event,
- *    and a violation draws a manual action rather than a quiet demotion. Later
- *    dates are visible content, never markup. Guardrail check 6 fails the
- *    build if this page ever emits two.
- *
- * 2. Nothing beyond the 120-day horizon is rendered, whatever the database
- *    holds. A confirmed date next June is a real fact and is stored; it is not
- *    published until it comes inside the window.
- */
 import Base from '../../../layouts/Base.astro';
 import Icon from '../../../components/Icon.astro';
-import PlaceholderArt from '../../../components/PlaceholderArt.astro';
+import LineCode from '../../../components/LineCode.astro';
+import PhotoOrArt from '../../../components/PhotoOrArt.astro';
+import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
-import { formatDate, formatTimeRange, formatWhen, toIsoWithOffset, formatDateShort } from '../../../lib/format';
-import type { Market } from '../../../lib/types';
+import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset } from '../../../lib/format';
 
-export async function getStaticPaths() {
-  const markets = await getMarkets();
-  return markets.map((market) => ({ params: { slug: market.slug }, props: { market } }));
-}
-
-interface Props {
-  market: Market;
-}
-
+export async function getStaticPaths() { const markets = await getMarkets(); return markets.map((market) => ({ params: { slug: market.slug }, props: { market } })); }
 const { market } = Astro.props;
 const next = market.next;
 const cancelled = next?.status === 'cancelled';
-
-// Everything publishable, soonest first. The clamp is the horizon rule.
-const dates = withinHorizon([next, ...market.upcoming].filter(Boolean) as NonNullable<typeof next>[])
-  .sort((a, b) => (a.date < b.date ? -1 : 1));
-
-const STATUS_LABEL = {
-  confirmed: 'Bestätigt',
-  tentative: 'Vorläufig',
-  cancelled: 'Abgesagt',
-  unverified: 'Nicht bestätigt',
-} as const;
-
-const EVENT_STATUS = {
-  confirmed: 'https://schema.org/EventScheduled',
-  tentative: 'https://schema.org/EventScheduled',
-  unverified: 'https://schema.org/EventScheduled',
-  cancelled: 'https://schema.org/EventCancelled',
-} as const;
-
-const KIND_LABEL: Record<string, string> = {
-  flohmarkt: 'Flohmarkt',
-  hallenflohmarkt: 'Hallenflohmarkt',
-  nachtflohmarkt: 'Nachtflohmarkt',
-  kinderflohmarkt: 'Kinderflohmarkt',
-  troedelmarkt: 'Trödelmarkt',
-  brocante: 'Brocante',
-  antikmarkt: 'Antikmarkt',
-  strassenmarkt: 'Strassenmarkt',
-};
-
-const site = 'https://fynda.market';
-const url = `${site}/de/markt/${market.slug}/`;
-
-// ONE Event. Not a list, not one per date.
-const event = next
-  ? {
-      '@type': 'Event',
-      name: market.name,
-      // ISO 8601 with the venue's UTC offset. Without it the markup is invalid.
-      startDate: toIsoWithOffset(next.date, next.startTime, market.timezone),
-      ...(next.endTime
-        ? { endDate: toIsoWithOffset(next.date, next.endTime, market.timezone) }
-        : {}),
-      // Kept even when cancelled — removing startDate breaks the markup, and
-      // the cancellation is the most useful thing on the page.
-      eventStatus: EVENT_STATUS[next.status],
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      location: {
-        '@type': 'Place',
-        name: market.venueName,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: market.addressLine,
-          postalCode: market.postalCode,
-          addressLocality: market.city,
-          addressCountry: 'CH',
-        },
-        geo: { '@type': 'GeoCoordinates', latitude: market.lat, longitude: market.lng },
-      },
-      url,
-    }
-  : null;
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    ...(event ? [event] : []),
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` },
-        { '@type': 'ListItem', position: 2, name: market.city, item: `${site}/de/schweiz/` },
-        { '@type': 'ListItem', position: 3, name: market.name, item: url },
-      ],
-    },
-  ],
-};
-
+const dates = withinHorizon([next, ...market.upcoming].filter(Boolean) as NonNullable<typeof next>[]).sort((a, b) => a.date.localeCompare(b.date));
+const STATUS_LABEL = { confirmed: 'Bestätigt', tentative: 'Vorläufig', cancelled: 'Abgesagt', unverified: 'Nicht bestätigt' } as const;
+const EVENT_STATUS = { confirmed: 'https://schema.org/EventScheduled', tentative: 'https://schema.org/EventScheduled', unverified: 'https://schema.org/EventScheduled', cancelled: 'https://schema.org/EventCancelled' } as const;
+const KIND_LABEL: Record<string, string> = { flohmarkt: 'Flohmarkt', hallenflohmarkt: 'Hallenflohmarkt', nachtflohmarkt: 'Nachtflohmarkt', kinderflohmarkt: 'Kinderflohmarkt', troedelmarkt: 'Trödelmarkt', brocante: 'Brocante', antikmarkt: 'Antikmarkt', strassenmarkt: 'Strassenmarkt' };
+const site = 'https://fynda.market'; const url = `${site}/de/markt/${market.slug}/`;
+const event = next ? { '@type': 'Event', name: market.name, startDate: toIsoWithOffset(next.date, next.startTime, market.timezone), ...(next.endTime ? { endDate: toIsoWithOffset(next.date, next.endTime, market.timezone) } : {}), eventStatus: EVENT_STATUS[next.status], eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: { '@type': 'Place', name: market.venueName, address: { '@type': 'PostalAddress', streetAddress: market.addressLine, postalCode: market.postalCode, addressLocality: market.city, addressCountry: 'CH' }, geo: { '@type': 'GeoCoordinates', latitude: market.lat, longitude: market.lng } }, url } : null;
+const jsonLd = { '@context': 'https://schema.org', '@graph': [...(event ? [event] : []), { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` }, { '@type': 'ListItem', position: 2, name: market.city, item: `${site}/de/schweiz/` }, { '@type': 'ListItem', position: 3, name: market.name, item: url }] }] };
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}`;
+const date = next ? parseDate(next.date) : undefined;
+const weekday = date ? ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][date.getDay()] : undefined;
+const month = date ? ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'][date.getMonth()] : undefined;
+const facts = [market.stallCount ? ['Stände', `~${market.stallCount}${market.stallCountBadWeather ? `, bei schlechtem Wetter ~${market.stallCountBadWeather}` : ''}`] : undefined, market.sellerMix ? ['Verkäufer', { private: 'nur Private', mixed: 'Private und Händler', trader: 'Händler', new_goods: 'Neuware' }[market.sellerMix]] : undefined, market.priceLevel ? ['Preisniveau', { cheap: 'günstig', flohmarkt: 'Flohmarkt', trader: 'Händler' }[market.priceLevel]] : undefined, market.entryFee !== undefined ? ['Eintritt', market.entryFee === 0 ? 'frei' : `${market.entryFee} CHF`] : undefined, market.covered ? ['Gelände', { open: 'offen', partly: 'teilweise gedeckt', indoor: 'drinnen' }[market.covered]] : undefined, market.groundSurface ? ['Untergrund', market.groundSurface] : undefined].filter(Boolean) as [string, string][];
+const facilityItems = market.facilities ? [market.facilities.wc !== undefined ? ['WC', market.facilities.wc ? 'ja' : 'nein'] : undefined, market.facilities.dogs !== undefined ? ['Hunde', market.facilities.dogs ? 'ja' : 'nein'] : undefined, market.facilities.strollers ? ['Kinderwagen', market.facilities.strollers] : undefined, market.facilities.food ? ['Essen', market.facilities.food] : undefined, market.facilities.cash ? ['Bargeld', market.facilities.cash] : undefined].filter(Boolean) as [string, string][] : [];
 ---
-
-<Base
-  title={`${market.name}, ${market.city} — Termine ${new Date().getFullYear()} | Fynda`}
-  description={`${KIND_LABEL[market.kind]} in ${market.city}: nächster Termin, Öffnungszeiten und Adresse. ${next ? `Nächster Termin ${formatDate(next.date)}.` : ''}`}
->
+<Base title={`${market.name}, ${market.city} — Termine ${new Date().getFullYear()} | Fynda`} description={`${KIND_LABEL[market.kind]} in ${market.city}: nächster Termin, Öffnungszeiten und Adresse. ${next ? `Nächster Termin ${formatDate(next.date)}.` : ''}`}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
-
   <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-
-  <header class="topbar">
-    <a class="back" href="/de/" aria-label="Zurück zur Startseite">
-      <Icon name="chevron-right" size={22} strokeWidth={2.2} />
-    </a>
-    <a class="mark" href="/de/">fynda<span class="dot">.</span></a>
-  </header>
-
+  <header class="topbar"><a class="back" href="/de/" aria-label="Zurück zur Startseite"><Icon name="chevron-right" /></a><a class="mark" href="/de/">fynda<span>.</span></a></header>
   <main id="inhalt">
-    <div class="hero">
-      {market.imageUrl ? (
-        <img src={market.imageUrl} alt="" width="720" height="360" />
-      ) : (
-        <PlaceholderArt kind={market.kind} seed={market.slug} />
-      )}
-    </div>
-
-    <div class="head">
-      <p class="kind">{KIND_LABEL[market.kind]} · {market.city}</p>
-      <h1>{market.name}</h1>
-
-      {next && (
-        <p class:list={['nextdate', { off: cancelled }]}>
-          {cancelled
-            ? `Abgesagt${next.cancellationNote ? ` · ${next.cancellationNote}` : ''}`
-            : formatWhen(next.date, next.startTime, next.endTime)}
-        </p>
-      )}
-
-      {/* Freshness, stated plainly. Nobody in the category does this — see
-          docs/PRODUCT.md. It is the trust signal and the AI-citation signal. */}
-      <p class="freshness">
-        {next?.confirmedAt
-          ? `Bestätigt am ${formatDateShort(next.confirmedAt)}`
-          : 'Noch nicht mit dem Veranstalter bestätigt'}
-      </p>
-    </div>
-
-    {cancelled && (
-      <aside class="notice">
-        <strong>Dieser Termin fällt aus.</strong>
-        <span>
-          {next?.cancellationNote ? `Grund: ${next.cancellationNote}. ` : ''}
-          {dates.length > 1
-            ? `Der nächste geplante Termin ist der ${formatDateShort(dates[1].date)}.`
-            : 'Ein neuer Termin ist noch nicht bekannt.'}
-        </span>
-      </aside>
-    )}
-
-    <section class="block">
-      <h2>Termine</h2>
-      <ul class="dates">
-        {dates.map((o) => (
-          <li class:list={{ off: o.status === 'cancelled' }}>
-            <span class="d">{formatDate(o.date)}</span>
-            <span class="t">{formatTimeRange(o.startTime, o.endTime) ?? 'Zeit noch offen'}</span>
-            <span class:list={['s', o.status]}>{STATUS_LABEL[o.status]}</span>
-          </li>
-        ))}
-      </ul>
-      {dates.length === 0 && (
-        <p class="muted">Für die nächsten Monate ist kein Termin bestätigt.</p>
-      )}
-      <p class="muted small">
-        Wir zeigen Termine bis 120 Tage im Voraus. Spätere Termine erscheinen, sobald sie
-        näher rücken.
-      </p>
-    </section>
-
-    <section class="block">
-      <h2>Ort</h2>
-      <p class="addr">
-        <strong>{market.venueName}</strong><br />
-        {market.addressLine}<br />
-        {market.postalCode} {market.city}
-      </p>
-      <a class="secondary" href={mapsUrl} rel="noopener nofollow" target="_blank">
-        <Icon name="map" size={18} strokeWidth={2} /> Route öffnen
-      </a>
-    </section>
-
-    <section class="cta">
-      <h2>Stimmt etwas nicht?</h2>
-      <p>
-        Termin verschoben, abgesagt oder die Adresse falsch? Sagen Sie uns Bescheid — wir
-        prüfen es und schreiben dazu, wann wir es zuletzt bestätigt haben.
-      </p>
-      <a class="action" href="/de/melden/">Korrektur melden</a>
-    </section>
+    <div class="hero"><PhotoOrArt market={market} width={720} height={210} loading="eager" /><span class="type"><LineCode kind={market.kind} /> {KIND_LABEL[market.kind]}</span></div>
+    <div class="head"><h1>{market.name}</h1>{next && <div class:list={['date', { cancelled }]}><strong>{String(date?.getDate()).padStart(2, '0')}</strong><span><b>{weekday}, {month}</b>{formatTimeRange(next.startTime, next.endTime) && <em>{formatTimeRange(next.startTime, next.endTime)} Uhr</em>}</span></div>}{market.packUpFrom && <p class="pack">Ab {market.packUpFrom} wird abgebaut.</p>}<p class="freshness">{next?.confirmedAt ? `Bestätigt am ${formatDateShort(next.confirmedAt)} durch den Veranstalter` : 'Noch nicht mit dem Veranstalter bestätigt'}</p></div>
+    <div class="actions"><a class="route" href={mapsUrl} rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />Route</a><a class="organiser" href="#hinkommen">Veranstalter</a></div>
+    {facts.length > 0 && <section class="section"><h2>Was Sie erwartet</h2><dl>{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl></section>}
+    {market.timing && <section class="section"><h2>Wann hingehen</h2><div class="timing">{market.timing.map((slot) => <div><strong>{slot.from}</strong><span><b>{slot.label}</b>{slot.note && <em>{slot.note}</em>}</span></div>)}</div></section>}
+    {(market.gettingThere || facilityItems.length > 0) && <section class="section" id="hinkommen"><h2>Hinkommen</h2>{market.gettingThere && <p class="getting">{market.gettingThere}</p>}{facilityItems.length > 0 && <div class="facilities">{facilityItems.map(([label, value]) => <span>{label} <b>{value}</b></span>)}</div>}</section>}
+    <section class="section"><h2>Termine</h2><ul class="dates">{dates.map((occurrence) => <li class:list={{ cancelled: occurrence.status === 'cancelled' }}><strong>{formatDate(occurrence.date)}</strong>{formatTimeRange(occurrence.startTime, occurrence.endTime) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime)}</span>}<em>{STATUS_LABEL[occurrence.status]}</em></li>)}</ul></section>
+    <section class="section report"><h2>War es anders?</h2><p>Termin verschoben, abgesagt oder die Adresse falsch? Sagen Sie uns Bescheid — wir prüfen es und schreiben dazu, wann wir es zuletzt bestätigt haben.</p><div><a href="/de/melden/">Fand nicht statt</a><a href="/de/melden/">War schon vorbei</a><a href="/de/melden/">Etwas anderes</a></div></section>
+    <TypeLegend />
   </main>
 </Base>
-
 <style>
-  .skip { position: absolute; left: -9999px; }
-  .skip:focus { left: 0; top: 0; z-index: 10; padding: var(--space-3) var(--space-4); background: var(--color-ink); color: var(--color-surface); }
-
-  .topbar, main { max-width: 720px; margin-inline: auto; }
-
-  .topbar {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-5);
-  }
-
-  /* Rotated here, not on the icon: Astro scopes styles to this template, so a
-     class handed to a child component never matches. */
-  .back { transform: rotate(180deg); display: inline-flex; width: var(--tap-min); height: var(--tap-min); align-items: center; justify-content: center; margin-left: calc(var(--space-3) * -1); }
-  .mark { font-size: 20px; font-weight: var(--weight-black); letter-spacing: var(--tracking-display); }
-  .dot { color: var(--color-accent); }
-
-  .hero {
-    height: 220px;
-    margin: 0 var(--space-5);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--color-paper);
-  }
-
-  .hero img { width: 100%; height: 100%; object-fit: cover; }
-
-  .head { padding: var(--space-5); }
-
-  .kind { margin: 0; font-size: var(--text-small); font-weight: var(--weight-semibold); color: var(--color-quiet); text-transform: uppercase; letter-spacing: 0.04em; }
-
-  h1 {
-    margin: var(--space-2) 0 0;
-    font-size: 30px;
-    font-weight: var(--weight-black);
-    letter-spacing: -0.035em;
-    line-height: 1.08;
-  }
-
-  .nextdate {
-    margin: var(--space-3) 0 0;
-    font-size: 18px;
-    font-weight: var(--weight-bold);
-    color: var(--color-accent);
-  }
-
-  .nextdate.off { color: var(--color-status-cancelled); text-decoration: line-through; text-decoration-color: var(--color-line); }
-
-  .freshness { margin: var(--space-1) 0 0; font-size: var(--text-small); color: var(--color-quiet); }
-
-  .notice {
-    display: block;
-    margin: 0 var(--space-5);
-    padding: var(--space-4);
-    border: 1px solid var(--color-line);
-    border-left: 3px solid var(--color-ink);
-    border-radius: var(--radius-sm);
-    font-size: var(--text-date);
-    color: var(--color-grey);
-  }
-
-  .notice strong { display: block; color: var(--color-ink); }
-
-  .block { padding: var(--space-6) var(--space-5) 0; }
-
-  h2 { margin: 0 0 var(--space-3); font-size: var(--text-section); font-weight: var(--weight-bold); letter-spacing: var(--tracking-section); }
-
-  .dates { margin: 0; padding: 0; list-style: none; }
-
-  .dates li {
-    display: grid;
-    grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) auto;
-    gap: var(--space-3);
-    align-items: baseline;
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid var(--color-line);
-    font-size: var(--text-date);
-  }
-
-  .dates .d { font-weight: var(--weight-bold); }
-  .dates .t { color: var(--color-grey); }
-
-  .dates .s { font-size: var(--text-micro); font-weight: var(--weight-bold); color: var(--color-quiet); }
-  .dates .s.confirmed { color: var(--color-accent); }
-  .dates li.off .d, .dates li.off .t { color: var(--color-quiet); text-decoration: line-through; text-decoration-color: var(--color-line); }
-
-  .muted { color: var(--color-grey); font-size: var(--text-date); }
-  .small { font-size: var(--text-small); color: var(--color-quiet); }
-
-  .addr { margin: 0 0 var(--space-4); font-size: var(--text-body); line-height: var(--leading-body); }
-
-  .secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: var(--tap-min);
-    padding: 0 var(--space-5);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-pill);
-    font-size: var(--text-date);
-    font-weight: var(--weight-semibold);
-  }
-
-  .secondary:hover { border-color: var(--color-ink); }
-
-  .cta {
-    margin: var(--space-6) var(--space-5) var(--space-7);
-    padding: var(--space-5);
-    background: var(--color-paper);
-    border-radius: var(--radius-lg);
-  }
-
-  .cta p { margin: 0; color: var(--color-grey); font-size: var(--text-date); }
-
-  .action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    margin-top: var(--space-4);
-    padding: 0 var(--space-6);
-    background: var(--color-ink);
-    color: var(--color-surface);
-    border-radius: var(--radius-pill);
-    font-weight: var(--weight-bold);
-  }
-
-  .action:hover { background: var(--color-accent); }
+  .skip{position:absolute;left:-9999px}.skip:focus{left:0;top:0;z-index:1;padding:var(--space-3);background:var(--color-ink);color:var(--color-surface)}.topbar,main{max-width:var(--content-max);margin-inline:auto}.topbar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-page)}.back{display:grid;place-items:center;width:var(--tap-min);height:var(--tap-min);transform:rotate(180deg)}.mark{font-size:var(--text-title);font-weight:var(--weight-black);letter-spacing:var(--tracking-display)}.mark span{color:var(--color-accent)}
+  .hero{position:relative;height:var(--hero-height);overflow:hidden;background:var(--color-paper)}.type{position:absolute;top:var(--space-hero);left:var(--space-hero);display:flex;align-items:center;gap:var(--space-1);color:var(--color-white);font-size:var(--text-micro);font-weight:var(--weight-black);letter-spacing:.08em;text-transform:uppercase}.type :global(.code){margin-top:0}.head{padding:var(--space-hero) var(--space-page) 0}h1{margin:0;font-size:var(--text-market-name);font-weight:var(--weight-black);letter-spacing:-.04em;line-height:1.06}.date{display:grid;grid-template-columns:auto 1fr;gap:var(--space-3);align-items:center;margin-top:var(--space-hero)}.date>strong{color:var(--color-accent);font-size:var(--text-market-date);font-weight:var(--weight-black);letter-spacing:-.05em;line-height:.85}.date span b,.date span em{display:block}.date span b{font-size:var(--text-small);font-weight:var(--weight-black);letter-spacing:.08em;text-transform:uppercase}.date span em{margin-top:var(--space-half);color:var(--color-grey);font-size:var(--text-date);font-style:normal;font-weight:var(--weight-bold)}.date.cancelled>strong,.date.cancelled span{color:var(--color-quiet);text-decoration:line-through;text-decoration-color:var(--color-line)}.pack{margin:var(--space-2) 0 0;font-size:var(--text-small);font-weight:var(--weight-bold)}.freshness{margin:var(--space-half) 0 0;color:var(--color-quiet);font-size:var(--text-micro);font-weight:var(--weight-semibold)}
+  .actions{display:grid;gap:var(--space-2);padding:var(--space-hero) var(--space-page) var(--space-page)}.route,.organiser{display:flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:var(--button-height);border-radius:var(--radius-pill);font-size:var(--text-date);font-weight:var(--weight-bold)}.route{background:var(--color-ink);color:var(--color-surface)}.organiser{border:var(--border-width) solid var(--color-line)}.section{padding:var(--space-page);border-top:var(--section-divider) solid var(--color-paper)}h2{margin:0 0 var(--space-row);font-size:var(--text-date);font-weight:var(--weight-black);letter-spacing:var(--tracking-title)}dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-1) var(--space-hero);margin:0;font-size:var(--text-small)}dt{color:var(--color-grey)}dd{margin:0;text-align:right;font-weight:var(--weight-bold)}
+  .timing>div{display:grid;grid-template-columns:var(--row-time) 1fr;gap:var(--space-row);padding:var(--space-2) 0;border-bottom:var(--border-width) solid var(--color-line)}.timing>div:last-child{border-bottom:0}.timing>div>strong{color:var(--color-quiet);font-size:var(--text-micro);font-weight:var(--weight-black)}.timing b,.timing em{display:block;font-size:var(--text-small)}.timing em{margin-top:var(--space-half);color:var(--color-grey);font-style:normal}.getting{margin:0;font-size:var(--text-small)}.facilities{display:flex;flex-wrap:wrap;gap:var(--space-1);margin-top:var(--space-3)}.facilities span,.report a{padding:var(--space-1) var(--space-row);border:var(--border-width) solid var(--color-line);border-radius:var(--radius-photo);font-size:var(--text-micro);font-weight:var(--weight-semibold)}.facilities b{font-weight:var(--weight-black)}
+  .dates{margin:0;padding:0;list-style:none}.dates li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:var(--border-width) solid var(--color-line);font-size:var(--text-small)}.dates li>strong{font-weight:var(--weight-bold)}.dates li>span{color:var(--color-grey)}.dates li>em{color:var(--color-quiet);font-size:var(--text-micro);font-style:normal;font-weight:var(--weight-bold)}.dates li.cancelled>strong,.dates li.cancelled>span{color:var(--color-quiet);text-decoration:line-through;text-decoration-color:var(--color-line)}.report p{margin:0 0 var(--space-3);color:var(--color-grey);font-size:var(--text-small)}.report div{display:flex;flex-wrap:wrap;gap:var(--space-1)}
 </style>

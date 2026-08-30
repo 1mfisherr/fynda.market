@@ -1,0 +1,10 @@
+---
+import LineCode from './LineCode.astro';
+const items = [['flohmarkt', 'Flohmarkt'], ['hallenflohmarkt', 'Halle'], ['nachtflohmarkt', 'Nacht'], ['kinderflohmarkt', 'Kinder'], ['troedelmarkt', 'Trödel']] as const;
+---
+<aside class="legend" aria-label="Markttypen">{items.map(([kind, label]) => <span><LineCode kind={kind} /> {label}</span>)}</aside>
+<style>
+  .legend { display:flex; flex-wrap:wrap; gap:var(--space-2); padding:var(--space-page); border-top:var(--border-width) solid var(--color-line); }
+  .legend span { display:flex; align-items:center; gap:var(--space-1); color:var(--color-grey); font-size:var(--text-micro); font-weight:var(--weight-bold); }
+  .legend :global(.code) { margin-top:0; }
+</style>

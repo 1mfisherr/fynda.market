@@ -21,18 +21,34 @@
   --color-line: #E8E6E2;
   --color-paper: #F5F4F2;
   --color-surface: #FFFFFF;
+  --color-white: #FFFFFF;
+  --color-stage: #2A2926;
 
   /* status — never colour alone, always paired with a word */
   --color-status-confirmed: var(--color-accent);
   --color-status-cancelled: #9A968F;
   --color-status-unverified: #9A968F;
 
-  /* category — icons only, never as fill or text */
-  --color-cat-floh: #FF4A2B;
-  --color-cat-halle: #3D5AFE;
-  --color-cat-nacht: #7C3AED;
-  --color-cat-kinder: #F5A524;
-  --color-cat-troedel: #E4007F;
+  /* line colours — market type, like a transit map */
+  --line-floh: #FF4A2B;
+  --line-halle: #3D5AFE;
+  --line-nacht: #7C3AED;
+  --line-kinder: #F5A524;
+  --line-troedel: #E4007F;
+
+  /* illustration grounds */
+  --color-art-sand: #F0E6DC;
+  --color-art-sand-ink: #C9A886;
+  --color-art-sand-deep: #A8845E;
+  --color-art-blue: #E4E9EE;
+  --color-art-blue-ink: #A6B4C2;
+  --color-art-blue-deep: #8496A8;
+  --color-art-violet: #EDE7F5;
+  --color-art-violet-ink: #B9AAD4;
+  --color-art-violet-deep: #9787BC;
+  --color-art-sage: #E6EDE7;
+  --color-art-sage-ink: #A9C0AE;
+  --color-art-sage-deep: #87A38E;
 
   /* ---- type ------------------------------------------------------------ */
   --font-sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
@@ -44,6 +60,12 @@
   --text-body: 16px;
   --text-small: 13px;
   --text-micro: 12px;
+  --text-tiny: 10.5px;
+  --text-code: 8.5px;
+  --text-day-band: 44px;
+  --text-market-date: 40px;
+  --text-market-name: 25px;
+  --text-row-name: 15.5px;
 
   --weight-regular: 400;
   --weight-medium: 500;
@@ -68,8 +90,15 @@
   --space-6: 32px;
   --space-7: 48px;
   --space-8: 64px;
+  --space-half: 2px;
+  --space-row: 10px;
+  --space-row-y: 11px;
+  --space-page: 16px;
+  --space-hero: 14px;
 
   /* ---- shape ----------------------------------------------------------- */
+  --radius-xs: 3px;
+  --radius-photo: 8px;
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
@@ -92,6 +121,52 @@
   /* ---- layout ---------------------------------------------------------- */
   --measure: 66ch;
   --tap-min: 44px; /* WCAG 2.2 floor is 24px; we design to 44. */
+  --content-max: 720px;
+  --row-rail: 4px;
+  --row-time: 46px;
+  --row-photo: 74px;
+  --hero-height: 210px;
+  --button-height: 46px;
+  --border-width: 1px;
+  --section-divider: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-accent: #FF6347;
+    --color-accent-hover: #FF4A2B;
+    --color-ink: #F2F1EE;
+    --color-grey: #A8A49C;
+    --color-quiet: #7E7A73;
+    --color-line: #2C2C28;
+    --color-paper: #1D1D1A;
+    --color-surface: #141413;
+    --color-white: #FFFFFF;
+    --color-stage: #0A0A09;
+    --line-floh: #FF6347;
+    --line-halle: #6C82FF;
+    --line-nacht: #9A6BF5;
+    --line-kinder: #FFBB4D;
+    --line-troedel: #FF3FA0;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-accent: #FF6347;
+  --color-accent-hover: #FF4A2B;
+  --color-ink: #F2F1EE;
+  --color-grey: #A8A49C;
+  --color-quiet: #7E7A73;
+  --color-line: #2C2C28;
+  --color-paper: #1D1D1A;
+  --color-surface: #141413;
+  --color-white: #FFFFFF;
+  --color-stage: #0A0A09;
+  --line-floh: #FF6347;
+  --line-halle: #6C82FF;
+  --line-nacht: #9A6BF5;
+  --line-kinder: #FFBB4D;
+  --line-troedel: #FF3FA0;
 }
 
 /* ---- reset ------------------------------------------------------------- */

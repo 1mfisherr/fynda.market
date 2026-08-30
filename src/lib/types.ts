@@ -50,4 +50,15 @@ export interface Market {
   upcoming: Occurrence[];
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
   imageUrl?: string;
+  stallCount?: number;
+  stallCountBadWeather?: number;
+  sellerMix?: 'private' | 'mixed' | 'trader' | 'new_goods';
+  priceLevel?: 'cheap' | 'flohmarkt' | 'trader';
+  packUpFrom?: string;
+  entryFee?: number;
+  covered?: 'open' | 'partly' | 'indoor';
+  groundSurface?: string;
+  timing?: { from: string; label: string; note?: string }[];
+  gettingThere?: string;
+  facilities?: { wc?: boolean; dogs?: boolean; strollers?: string; food?: string; cash?: string };
 }

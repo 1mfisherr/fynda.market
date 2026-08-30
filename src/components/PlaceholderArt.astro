@@ -22,10 +22,10 @@ interface Props {
 const { kind, seed, rounded = 'md' } = Astro.props;
 
 const PALETTES = [
-  { ground: '#F0E6DC', ink: '#C9A886', deep: '#A8845E' }, // warm sand
-  { ground: '#E4E9EE', ink: '#A6B4C2', deep: '#8496A8' }, // cool grey-blue
-  { ground: '#EDE7F5', ink: '#B9AAD4', deep: '#9787BC' }, // muted violet
-  { ground: '#E6EDE7', ink: '#A9C0AE', deep: '#87A38E' }, // sage
+  { ground: 'var(--color-art-sand)', ink: 'var(--color-art-sand-ink)', deep: 'var(--color-art-sand-deep)' },
+  { ground: 'var(--color-art-blue)', ink: 'var(--color-art-blue-ink)', deep: 'var(--color-art-blue-deep)' },
+  { ground: 'var(--color-art-violet)', ink: 'var(--color-art-violet-ink)', deep: 'var(--color-art-violet-deep)' },
+  { ground: 'var(--color-art-sage)', ink: 'var(--color-art-sage-ink)', deep: 'var(--color-art-sage-deep)' },
 ];
 
 // Stable hash so the same market always gets the same ground.
