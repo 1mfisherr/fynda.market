@@ -8,24 +8,36 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 Updated 2026-08-30, end of session.
 
+**The v1 data is imported and the site builds on it.** `FYNDA_DATA_SOURCE=supabase npm run verify` produces **213 URLs for 212 entities** — a ratio of 1.00, against v1's 8,500 URLs for 157 markets — and all six guardrails pass. In the database: 161 markets, 2,357 occurrences, 55 cities, 14 cantons, 107 organisers, 1,782 facts. `scripts/import-v1.mjs` is the importer; `src/lib/supabase.ts` is the read.
+
+**Fixtures still work and are still the default.** `getMarkets()` reads Supabase only when `FYNDA_DATA_SOURCE=supabase` is set; without it the build warns and uses `src/lib/fixtures.ts`. Both paths are green.
+
 **Database is live.** Supabase, `eu-west-1`, Postgres 17.6. Both migrations applied, PostGIS in `extensions`, RLS on every table, 17 tables and 5 views. Credentials in `.env.local`; `scripts/db.mjs` is how scripts connect.
 
-**Design is approved and built.** `design/fynda-v5.html` is the reference — the Linientafel: a departure board, the date leading, market type as a line colour, cancelled markets kept on the board. Home, market and city pages are all rebuilt to it. `npm run verify` green, `npm run check` clean, one `Event` per market page and none elsewhere.
+**Design is approved and built.** `design/fynda-v5.html` is the reference — the Linientafel: a departure board, the date leading, market type as a line colour, cancelled markets kept on the board. Home, market and city pages are all rebuilt to it.
 
-**Everything on the site is still sample data** from `src/lib/fixtures.ts`. The build warns every time it uses it, and `getMarkets()` throws rather than falling back once `FYNDA_DATA_SOURCE=supabase`. Nothing can be deployed until the import runs.
-
-**No photographs exist.** Listings use the illustration set, which is the designed default, not a stopgap.
+**The photographs exist after all.** 151 webp files sit in `~/Documents/fleafind/public/images/`, and 150 markets point at them. They are not in this repo, so `markets.image_url` is null and listings use the illustration set. Each filename is recorded as an `image_url` fact, so moving the files across is a second pass, not a re-import. Delfim is bringing them.
 
 ### Next, in order
 
-1. **3.4 — import the v1 data.** 161 markets, 2,357 dates from the live fleafind database, every fact with a source into the `facts` ledger. Swap `getMarkets()` from fixtures to Supabase. This unblocks everything.
-2. **Region page** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. It is built for Germany more than Switzerland.
+1. **Region page** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. 14 cantons now have real content behind them.
+2. **Move the photographs in** and read the `image_url` facts back onto `markets.image_url`.
 3. **3.5 — decide German text search** before any search box exists.
 4. **3.9 filters, 3.10 organiser CTA, 3.11 newsletter and ICS.**
 
+### What the import decided
+
+Three v1 shapes did not survive the crossing, and each is written into `scripts/import-v1.mjs`:
+
+- **Free-text place names are gone.** `markets.city` disagreed with the venue's real city in 39 of 161 rows and `canton` held both `AG` and `Aargau`. Cities are built from `venues.city`, cantons from `markets.canton` normalised, with two source errors corrected by postal code (Pratteln → BL, Subingen → SO).
+- **Market kind is inferred from the name.** v1 knew three types; the Linientafel colours eight. 27 markets got a more specific line from their name, each written to `facts` as `inferred` so the guess is visible and a real source overrules it.
+- **Closed markets are imported, not published.** 4 permanently closed markets carry 279 future dates. They are in the database and excluded by `publishable_markets`.
+
+The importer is destructive on re-run by design: it deletes what it owns and reloads, so correcting it means editing it and running it again. That stops being the right tool the day anything is hand-entered.
+
 ### The honest gap
 
-The design shows stall counts, seller mix, packing-up times, dogs, toilets and travel advice. **We hold none of them.** The types carry them as optional fields and a block renders only when its data exists — no placeholders, no invented figures. They get captured during the import, from organisers, and from the report buttons on the market page. See `PAGES.md` §The fields we do not have.
+The design shows stall counts, seller mix, packing-up times, dogs, toilets and travel advice. **We hold none of them, and the import confirmed v1 never did either** — `market_private.raw_import_data` is empty in all 161 rows, and `market_type` is `permanent`/`temporary`, meaning recurring versus one-off, not indoor/outdoor. The types carry these as optional fields and a block renders only when its data exists — no placeholders, no invented figures. They now have to come from organisers and from the report buttons on the market page. See `PAGES.md` §The fields we do not have.
 
 ### Where the data comes from
 
@@ -76,7 +88,7 @@ Each step is cheap here and expensive if done later.
 | ~~3.1~~ | ~~Upgrade to Astro 7~~ | **Done 2026-08-29.** 7.2.9; TypeScript pinned to `^6` (TS 7 conflicts with `@astrojs/check`) |
 | ~~3.2~~ | ~~Schema + first migration; PostGIS into `extensions`~~ | **Done 2026-08-29.** 14 tables, 3 publishability views, radius search, RLS deny-by-default |
 | ~~3.3~~ | ~~Analytics event schema~~ | **Done 2026-08-29.** Event registry enforced in the database, no persistent identifier, retention that prunes |
-| **3.4** | **Import and clean v1 data, every fact with a source** | **Next.** Blocked on `.env` credentials |
+| ~~3.4~~ | ~~Import and clean v1 data, every fact with a source~~ | **Done 2026-08-30.** `scripts/import-v1.mjs`, `src/lib/supabase.ts`. 213 URLs for 212 entities |
 | 3.5 | Decide German text search (`STACK.md`) | Changing it later is a re-index |
 | ~~3.6~~ | ~~Market page — one `Event` only, `eventStatus` wired~~ | **Done 2026-08-29.** Horizon clamp applied at render, not just in the database |
 | ~~3.7~~ | ~~Card component~~ | **Replaced 2026-08-30** by the Linientafel components: `DateBand`, `LineCode`, `MarketRow`, `PhotoOrArt`, `TypeLegend` |
@@ -96,7 +108,7 @@ Each step is cheap here and expensive if done later.
 | Migrate from fleafind.ch? | **No. Nothing.** No content, no redirects. Old site stays untouched |
 | Organiser surface at launch | "Own your market" CTA + contact form |
 | Tags | From day one. Small set. **Filters, not URLs** |
-| Photos | Every market gets one. Source still open |
+| Photos | Every market gets one. 151 exist in the v1 repo, to be moved across |
 | Analytics | Own events in Postgres + self-hosted Metabase. No Plausible, no GA4 |
 | Analytics posture | **Collect as much as we can, anonymise, keep it.** Two layers: a daily hash for everyone (no consent needed), a persistent id for those who consent. **Nothing is ever deleted** |
 | Launch scope | **All of Switzerland**, with verification and photos concentrated in one region |
@@ -127,7 +139,7 @@ Each step is cheap here and expensive if done later.
 2. **Home:** search control reads as place + period + radius; category tiles move below the lists.
 3. **City page**, with the year in the title.
 4. **Region page**, thin, reviewed after four weeks.
-5. **Import captures two new fields** — market size and indoor/outdoor. Both are tier 1 (they decide whether someone travels) and we hold neither. Higher value than any layout change above.
+5. **Market size and indoor/outdoor.** Both are tier 1 — they decide whether someone travels — and the import proved v1 holds neither, so they cannot come from data. They have to be asked for. Higher value than any layout change above.
 
 ## Conventions
 

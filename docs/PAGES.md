@@ -53,7 +53,32 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | Organiser CTA | The supply side is the revenue thesis, and it must exist from day one |
 | Bottom bar | Mobile is 81%. Thumb-reach navigation, and it keeps "Veranstalter" permanently visible |
 
-Then, below the markets: **city list with counts, canton list, market types, "Woher unsere Daten kommen" (three steps), live numbers, newsletter, organiser CTA, FAQ, and a proper footer.**
+### Below the markets — decided 2026-08-30
+
+The order, and the rule that keeps it from becoming filler: **a block renders only when it has real content.** If nothing was cancelled this week, the cancellations block does not exist that week. That makes padding structurally impossible rather than a matter of taste.
+
+1. **Markets** — day-grouped. **4 per day, then "5 weitere anzeigen", then all of that day.** In place, client-side, never a new URL.
+2. **Newsletter** — intent is highest right after someone has scanned the list, not at the top.
+3. **Organiser CTA** — the supply side earns its place before navigation does.
+4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.
+5. **Cities with counts** — the one city component, linking to our best-earning page type.
+6. **Cantons**, compact pills — thin in CH, real for Germany.
+7. **Five market types** — 1.8% of clicks. Small, and first to cut.
+8. **Woher unsere Daten kommen** + live numbers.
+9. **FAQ**.
+10. **Footer** — legal and about. **No city list**: it duplicated block 5, and a bare link list is the doorway shape.
+
+**"Alle N Termine im Monat" was removed.** It pointed at a month page that does not exist, and creating one means a new page type clearing the graduation gate on evidence we do not have. Expanders, not links.
+
+### Where the radius centre comes from
+
+`cities.point` already holds a centroid per city, so:
+
+- **City page** — the centre is that city. Always right, no permission prompt.
+- **Home** — defaults to the largest city, remembers the last one chosen.
+- **"Meinen Standort verwenden"** — switches to browser geolocation for those who want it.
+
+**Distance renders only when the centre is known.** No geolocation and no city context means the card shows the city and no kilometres. We never print a distance we guessed.
 
 **Corrected 2026-08-29.** An earlier version of this doc kept the home page to one screen and ruled out city link lists as a doorway pattern. Both were wrong. Eventbrite, Tutti, Vinted and meine-flohmarkt-termine all run long home pages ending in place and category link lists — MFT alone lists 10 postal areas, 20 cities, 16 Bundesländer and ~60 categories. A curated list of cities that have markets is navigation, and it points at our best-earning page type. The doorway problem was *generated combinations* — city × weekday × category — not links to pages that exist. What we still will not copy is MFT's 60 categories; ours is five.
 
