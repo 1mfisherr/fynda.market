@@ -1,4 +1,4 @@
 project_id = "fynda"
 
 [db]
-major_version = 16
+major_version = 17

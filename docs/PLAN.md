@@ -32,7 +32,7 @@ Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, desig
 
 **Supabase is the only source. Re-dump from the live v1 Supabase project before any import.**
 
-**To unblock 3.4, `.env` needs filling in** (copy `.env.example`, never commit it):
+**Done 2026-08-30 — credentials live in `.env.local`.** For reference, what it holds (copy `.env.example`, never commit it):
 `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for the new project, and `V1_DATABASE_URL` — the v1 project's connection string, from its Supabase dashboard under Project Settings → Database.
 
 The local copy in `~/Documents/fleafind-backups/2026-08-29/` — **161 markets (157 active), 2,357 dates, 12,379 analytics events, 6,329 outbound clicks**, counted by loading it, not by trusting an earlier note — is a **snapshot that ages**, and any local Docker/`supabase start` database is a stale dev copy that must never be treated as truth. Use them to read shapes and counts, never as the import source.
@@ -48,7 +48,7 @@ The local copy in `~/Documents/fleafind-backups/2026-08-29/` — **161 markets (
 | ~~1.1~~ | ~~GitHub repo~~ | Done — `github.com/1mfisherr/fynda.market` |
 | 1.2 | Register `fynda.market` | Only this one domain |
 | 1.3 | Cloudflare account | Workers + R2 |
-| ~~1.4~~ | ~~Supabase project~~ | Created 2026-08-29 in **`eu-west-1` Ireland**, not Zurich — see `STACK.md`. Credentials still need to reach `.env` |
+| ~~1.4~~ | ~~Supabase project~~ | **Live 2026-08-30.** `eu-west-1` Ireland, Postgres 17.6. Both migrations pushed; PostGIS, pg_trgm, unaccent and pgcrypto all in `extensions`; 17 tables, 5 views, RLS on every table. Credentials in `.env.local` |
 | 1.5 | Resend account | Newsletter sending |
 | 1.6 | A host for Metabase | ~$5–15/mo |
 | 1.7 | Google Search Console | Verify the day the domain exists |
