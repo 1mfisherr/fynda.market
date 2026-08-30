@@ -1,0 +1,34 @@
+---
+/**
+ * Impressum — `/de/impressum/`.
+ *
+ * The Swiss legal notice. Required by law and read by almost nobody, so it
+ * stays a plain `.prose` page and nothing more. Details that are not settled
+ * yet (legal address, company form, registration number) are marked as
+ * placeholders rather than invented — a wrong address is worse than an
+ * honest gap, and Delfim fills these in once they exist.
+ */
+import Page from '../../layouts/Page.astro';
+---
+<Page title="Impressum — Fynda" description="Rechtliche Angaben zum Betreiber von Fynda." indexable={false}>
+  <div class="prose gutter">
+    <h1>Impressum</h1>
+    <p>Angaben gemäss den in der Schweiz geltenden gesetzlichen Vorgaben.</p>
+
+    <h2>Anbieter</h2>
+    <p>
+      Fynda<br />
+      [Rechtsform ergänzen]<br />
+      [Adresse ergänzen]
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: <a href="mailto:hallo@fynda.market">hallo@fynda.market</a></p>
+
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>[Name der verantwortlichen Person ergänzen]</p>
+
+    <h2>Handelsregister / UID</h2>
+    <p>[Ergänzen, sobald eine Eintragung besteht]</p>
+  </div>
+</Page>

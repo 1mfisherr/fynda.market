@@ -1,0 +1,15 @@
+# fynda.market
+#
+# Everything indexable is in the sitemap. The pages excluded from it also carry
+# a robots noindex tag — forms, legal text, saved markets and the radius view
+# are for people, not for the index.
+#
+# AI crawlers are deliberately allowed. Being the cited source is the strategy
+# (docs/PRODUCT.md): roughly two-thirds of sources cited by AI answers do not
+# rank in the top ten, and our verified dates are exactly what such an answer
+# needs to quote. Blocking them would be blocking the distribution channel.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://fynda.market/sitemap-index.xml

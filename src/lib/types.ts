@@ -57,6 +57,8 @@ export interface Market {
   upcoming: Occurrence[];
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
   imageUrl?: string;
+  /** The organiser's own page. Held for 153 of 157 markets and worth a button. */
+  websiteUrl?: string;
   stallCount?: number;
   stallCountBadWeather?: number;
   sellerMix?: 'private' | 'mixed' | 'trader' | 'new_goods';

@@ -170,9 +170,18 @@ check('URL-to-entity ratio', () => {
   const total = (entities.markets ?? 0) + (entities.cities ?? 0) + (entities.regions ?? 0);
   if (total === 0) return skip('entity count is zero — nothing to measure');
 
-  const ratio = pages.length / total;
+  // Utility and radius pages carry no entity and compete for no query — they are
+  // noindex forms, legal text and a filter view. Counting them would make the
+  // ratio measure something other than what it exists to measure: how many
+  // indexable URLs we mint per real thing in the world.
+  const counted = pages.filter((p) => {
+    const t = routeTypeOf(p.url);
+    return t !== 'utility' && t !== 'radius';
+  });
+
+  const ratio = counted.length / total;
   const max = config.urlToEntityRatio.max;
-  const shown = `${pages.length} URLs / ${total} entities = ${ratio.toFixed(2)}`;
+  const shown = `${counted.length} URLs / ${total} entities = ${ratio.toFixed(2)}`;
 
   if (ratio > max) {
     return fail(`${shown} — over the ceiling of ${max.toFixed(1)}`, [config.urlToEntityRatio.why]);
@@ -360,6 +369,34 @@ check('Style cohesion', () => {
       problems.push(
         `"${selector}" is styled by ${files.size} pages (${[...files].join(', ')}). ` +
         `Shared things belong in src/styles/base.css or a component, never in two <style> blocks.`
+      );
+    }
+  }
+
+  // --- a2. no class NAME owned by two pages --------------------------------
+  // Comparing whole selectors misses the case that actually bites: one page
+  // styles `.intro` and another `.intro p`. The strings differ, so the check
+  // above passes, while two pages have quietly grown their own version of the
+  // same block under the same name. Found five of these the day it was added.
+  //
+  // Names defined in base.css are the shared vocabulary and are meant to be
+  // reused — using `.button` on two pages is the system working.
+  const shared = new Set(
+    [...readFileSync(join(root, 'src/styles/base.css'), 'utf8').matchAll(/\.([a-zA-Z][\w-]*)/g)].map((m) => m[1])
+  );
+  const nameOwners = new Map();
+  for (const [selector, files] of owners) {
+    for (const [, name] of selector.matchAll(/\.([a-zA-Z][\w-]*)/g)) {
+      if (shared.has(name)) continue;
+      if (!nameOwners.has(name)) nameOwners.set(name, new Set());
+      for (const file of files) nameOwners.get(name).add(file);
+    }
+  }
+  for (const [name, files] of nameOwners) {
+    if (files.size > 1) {
+      problems.push(
+        `class ".${name}" is used by ${files.size} pages (${[...files].join(', ')}). ` +
+        `Either it is one thing — move it to src/styles/base.css — or it is two, and one needs a different name.`
       );
     }
   }

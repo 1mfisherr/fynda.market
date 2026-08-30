@@ -97,7 +97,7 @@ const facilityItems = market.facilities ? [
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
-  <div class="hero">
+  <div class="photo-hero">
     <PhotoOrArt market={market} width={720} height={210} loading="eager" />
     <span class="type eyebrow"><LineCode kind={market.kind} /> {kind.full}</span>
   </div>
@@ -119,10 +119,23 @@ const facilityItems = market.facilities ? [
     </p>
   </div>
 
-  {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold. */}
+  {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold.
+      The second button is the organiser's own page where we hold one, which is
+      153 of 157 markets; it used to scroll down this page instead. */}
   <div class="actions gutter">
     <Button href={mapsUrl} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />Route</Button>
-    <Button href="#hinkommen" block>Veranstalter</Button>
+    {market.websiteUrl
+      ? <Button href={market.websiteUrl} block rel="noopener nofollow" target="_blank">Website des Veranstalters</Button>
+      : <Button href="#hinkommen" block>Veranstalter</Button>}
+  </div>
+
+  {/* Both are retention, not decoration: a market in someone's calendar keeps
+      being useful without them returning, and a saved market is what the
+      Friday newsletter is eventually built on. Saving is localStorage only —
+      no account, docs/PLAN.md. */}
+  <div class="keep gutter">
+    <Button href={`/ics/${market.slug}.ics`} block>In Kalender eintragen</Button>
+    <Button block data-save={market.slug} aria-pressed="false">Merken</Button>
   </div>
 
   {market.description && (
@@ -171,10 +184,14 @@ const facilityItems = market.facilities ? [
 
   <Section level="sub" title="War es anders?">
     <p class="gutter meta">Termin verschoben, abgesagt oder die Adresse falsch? Sagen Sie uns Bescheid — wir prüfen es und schreiben dazu, wann wir es zuletzt bestätigt haben.</p>
+    {/* The market travels with the report. Asking someone to retype the name
+        of the page they are standing on is how a report form goes unused. */}
     <div class="report gutter">
-      <a class="chip" href="/de/melden/">Fand nicht statt</a>
-      <a class="chip" href="/de/melden/">War schon vorbei</a>
-      <a class="chip" href="/de/melden/">Etwas anderes</a>
+      {[['ausgefallen', 'Fand nicht statt'], ['vorbei', 'War schon vorbei'], ['anderes', 'Etwas anderes']].map(
+        ([grund, label]) => (
+          <a class="chip" href={`/de/melden/?markt=${encodeURIComponent(market.name)}&grund=${grund}`}>{label}</a>
+        )
+      )}
     </div>
   </Section>
 
@@ -182,7 +199,7 @@ const facilityItems = market.facilities ? [
 </Page>
 
 <style>
-  .hero { position: relative; height: var(--hero-height); overflow: hidden; background: var(--color-paper); }
+  .photo-hero { position: relative; height: var(--hero-height); overflow: hidden; background: var(--color-paper); }
   .type {
     position: absolute;
     inset-block-start: var(--space-hero);
@@ -226,7 +243,7 @@ const facilityItems = market.facilities ? [
   .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
   .freshness { margin-block-start: var(--space-half); }
 
-  .actions { display: grid; gap: var(--space-2); }
+  .actions, .keep { display: grid; gap: var(--space-2); }
 
   dl {
     display: grid;
@@ -285,3 +302,33 @@ const facilityItems = market.facilities ? [
   }
   .report { margin-block-start: var(--space-3); }
 </style>
+
+<script>
+  /**
+   * Saved markets live in the visitor's own browser. No account, no server, and
+   * nothing to leak — docs/PLAN.md settled "saved markets, no accounts". The
+   * /de/gemerkt/ page reads the same key.
+   */
+  const KEY = 'fynda:gemerkt';
+  const read = (): string[] => {
+    try { return JSON.parse(localStorage.getItem(KEY) ?? '[]'); } catch { return []; }
+  };
+
+  const button = document.querySelector<HTMLButtonElement>('[data-save]');
+  const slug = button?.dataset.save;
+
+  if (button && slug) {
+    const paint = (saved: boolean) => {
+      button.setAttribute('aria-pressed', String(saved));
+      button.textContent = saved ? 'Gemerkt' : 'Merken';
+    };
+    paint(read().includes(slug));
+
+    button.addEventListener('click', () => {
+      const saved = read();
+      const next = saved.includes(slug) ? saved.filter((s) => s !== slug) : [...saved, slug];
+      try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* private mode */ }
+      paint(next.includes(slug));
+    });
+  }
+</script>

@@ -1,0 +1,34 @@
+---
+/**
+ * One labelled control. The shape lives in styles/base.css so a page that needs
+ * a plain <input> can wear `.field` without importing anything.
+ *
+ * Forms on this site do not post anywhere yet — there is no runtime. Pages use
+ * these inside a `mailto:` flow or leave them disabled with an honest note. A
+ * form that silently discards what someone typed is worse than no form.
+ */
+interface Props {
+  label: string;
+  name: string;
+  type?: 'text' | 'email' | 'textarea' | 'select';
+  hint?: string;
+  required?: boolean;
+  placeholder?: string;
+  options?: string[];
+}
+const { label, name, type = 'text', hint, required = false, placeholder, options = [] } = Astro.props;
+const id = `f-${name}`;
+---
+<label class="field" for={id}>
+  <span>{label}{required && ' *'}</span>
+  {hint && <span class="hint">{hint}</span>}
+  {type === 'textarea' && <textarea id={id} name={name} required={required} placeholder={placeholder}></textarea>}
+  {type === 'select' && (
+    <select id={id} name={name} required={required}>
+      {options.map((option) => <option value={option}>{option}</option>)}
+    </select>
+  )}
+  {(type === 'text' || type === 'email') && (
+    <input id={id} type={type} name={name} required={required} placeholder={placeholder} />
+  )}
+</label>

@@ -14,7 +14,8 @@ import MarketRow from '../../../components/MarketRow.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
-import { dateCount, marketCount } from '../../../lib/vocabulary';
+import { formatDate, formatTimeRange } from '../../../lib/format';
+import { dateCount } from '../../../lib/vocabulary';
 import type { Market, Occurrence } from '../../../lib/types';
 
 export async function getStaticPaths() {
@@ -41,6 +42,30 @@ const groups = Object.values(
 ).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
 
 const year = new Date().getFullYear();
+
+/**
+ * The answer sentence, before the list. Tripadvisor opens a city page with the
+ * count in the title and one line that answers the query; it is also where AI
+ * answers are extracted from — 44% of citations come from the first 30% of a
+ * page. So: which market is next, when, and where.
+ */
+/**
+ * The count leads, but "Flohmarkt" is the query and must survive: nobody
+ * searches "7 Märkte in Luzern". Ranked-list shapes are what AI answers cite,
+ * and this is that shape without losing the head term.
+ */
+const heading = markets.length === 1
+  ? `Der Flohmarkt in ${city} ${year}`
+  : `Die ${markets.length} Flohmärkte in ${city} ${year}`;
+
+const soonest = rows.find((row) => row.next!.status !== 'cancelled');
+const answer = soonest
+  ? `Der nächste ist ${soonest.name} am ${formatDate(soonest.next!.date)}${
+      formatTimeRange(soonest.next!.startTime, soonest.next!.endTime)
+        ? `, ${formatTimeRange(soonest.next!.startTime, soonest.next!.endTime)} Uhr`
+        : ''
+    }, ${soonest.venueName}.`
+  : 'Zurzeit ist kein Termin bestätigt.';
 const site = 'https://fynda.market';
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -51,12 +76,13 @@ const jsonLd = {
   ],
 };
 ---
-<Page back title={`Flohmärkte in ${city} ${year} | Fynda`} description={`Flohmärkte in ${city}: Termine, Öffnungszeiten und Absagen.`}>
+<Page back title={`${heading} | Fynda`} description={`Flohmärkte in ${city}: Termine, Öffnungszeiten und Absagen.`}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
-  <section class="head gutter">
-    <h1>Flohmärkte in {city} {year}</h1>
-    <p class="meta">{marketCount(markets.length)} · {dateCount(rows.length)} · zuletzt geprüft heute</p>
+  <section class="page-head gutter">
+    <h1>{heading}</h1>
+    <p class="answer">{answer}</p>
+    <p class="meta">{dateCount(rows.length)} in den nächsten vier Monaten · zuletzt geprüft heute</p>
     <p class="meta">Alle bekannten Flohmärkte in {city}, Kanton {region} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.</p>
   </section>
 
@@ -83,10 +109,6 @@ const jsonLd = {
     action="Newsletter abonnieren"
   />
 </Page>
-
-<style>
-  .head p { margin-block-start: var(--space-2); }
-</style>
 
 <script>
   import { inWindow, type DateWindow } from '../../../lib/date-window';

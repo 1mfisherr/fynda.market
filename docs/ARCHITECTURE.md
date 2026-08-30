@@ -25,6 +25,10 @@ Launch with the fewest page types that could not be mistaken for spam. Everythin
 
 City pages were by far v1's best performers (25.5 clicks/page vs 4.9 for market pages). Market pages are the atom everything else is a view over. Region pages are cheap and German demand for them is large. Home carries "today / this weekend" without needing a URL for it.
 
+**Utility pages** — `/de/melden/`, `/de/newsletter/`, `/de/veranstalter/`, `/de/gemerkt/`, `/de/impressum/`, `/de/datenschutz/` — and the radius view `/umkreis/` are a fifth kind. They are **noindex, excluded from the sitemap, and excluded from the URL-to-entity ratio**, because they carry no entity and compete for no query. They have their own content floor (150) so a contact form is not judged as a thin country page. Added 2026-08-30.
+
+`/llms.txt` and `/ics/[slug].ics` are files, not pages: no URL competes for a query, so they do not enter the page count at all.
+
 ## Everything else is a query parameter
 
 Not indexed, canonical points to the clean parent, out of the sitemap, no crawlable links pointing at them.
@@ -193,6 +197,8 @@ And one that follows from the token layer: **no raw hex or px outside `tokens.cs
 **Vocabulary is code, not copy.** `src/lib/vocabulary.ts` holds every German string that names a domain concept — market kinds, status labels, plurals. Before it existed the kinds lived in three places and the legend said "Halle" where the market page said "Hallenflohmarkt".
 
 **Guardrail 7 is the only check that reads `src/` rather than `dist/`,** because the failure it catches is invisible in the output: three pages that each look fine and slowly stop looking like each other.
+
+It compares **class names, not just whole selectors.** The first version compared selector strings, so `.intro` on one page and `.intro p` on another looked unrelated — five shared names were hiding behind that hole, found the day it was closed. Names defined in `base.css` are exempt: reusing `.button` on two pages is the system working.
 
 **No CSS framework.** The token layer is better than what one would supply, and adopting one would mean discarding it.
 

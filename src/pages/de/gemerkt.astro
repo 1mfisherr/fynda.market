@@ -1,0 +1,94 @@
+---
+/**
+ * Saved markets — `/de/gemerkt/`.
+ *
+ * No accounts, ever (docs/PLAN.md). The list lives in the visitor's own browser
+ * under one localStorage key, which the market page's "Merken" button writes.
+ *
+ * Because the site is static, every market with an upcoming date is rendered
+ * here and the browser hides the ones that were not saved. That sounds wasteful
+ * and is not: it is the same payload the home page already ships, it needs no
+ * server, and it means a saved market still resolves if storage is cleared on
+ * one device but not another. The page is noindex — its content is different
+ * for every visitor, so there is nothing here for Google to hold.
+ */
+import Page from '../../layouts/Page.astro';
+import Button from '../../components/Button.astro';
+import DateBand from '../../components/DateBand.astro';
+import MarketRow from '../../components/MarketRow.astro';
+import Section from '../../components/Section.astro';
+import { getMarkets, withinHorizon } from '../../lib/markets';
+import type { Market, Occurrence } from '../../lib/types';
+
+const markets = await getMarkets();
+const rows = markets.flatMap((market) =>
+  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+    .map((next) => ({ ...market, next }))
+);
+const groups = Object.values(
+  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+---
+<Page back indexable={false} title="Gemerkte Märkte | Fynda" description="Ihre gemerkten Flohmärkte, mit den nächsten Terminen.">
+  <section class="page-head gutter">
+    <h1>Gemerkt</h1>
+    <p class="answer" id="summary">Noch nichts gemerkt.</p>
+    <p class="meta">Gemerkte Märkte bleiben in diesem Browser gespeichert — ohne Konto, ohne Anmeldung. Wer den Browser wechselt oder die Daten löscht, beginnt neu.</p>
+  </section>
+
+  <Section bleed>
+    <div id="list">
+      {groups.map((group) => (
+        <section class="day" data-day hidden>
+          <DateBand date={group[0].next!.date} count={group.length} />
+          {group.map((market) => <MarketRow market={market} />)}
+        </section>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta">
+      Auf jeder Marktseite gibt es «Merken». Gemerkte Märkte erscheinen hier mit ihren nächsten Terminen.
+    </p>
+    <div class="find gutter"><Button href="/de/" block>Märkte durchsuchen</Button></div>
+  </Section>
+</Page>
+
+<style>
+  .find { margin-block-start: var(--space-4); }
+</style>
+
+<script>
+  import { marketCount } from '../../lib/vocabulary';
+
+  /** The one key. The market page's "Merken" button writes the same one. */
+  const KEY = 'fynda:gemerkt';
+  const saved = (() => {
+    try { return new Set<string>(JSON.parse(localStorage.getItem(KEY) ?? '[]')); } catch { return new Set<string>(); }
+  })();
+
+  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const empty = document.getElementById('empty');
+  const summary = document.getElementById('summary');
+
+  let shown = 0;
+  const slugs = new Set<string>();
+
+  for (const day of days) {
+    let visibleInDay = 0;
+    for (const row of Array.from(day.querySelectorAll<HTMLElement>('[data-date]'))) {
+      // The row's only link is its market page, so the slug is already in the DOM.
+      const href = row.querySelector<HTMLAnchorElement>('a[href^="/de/markt/"]')?.getAttribute('href') ?? '';
+      const slug = href.split('/').filter(Boolean).at(-1) ?? '';
+      const keep = saved.has(slug);
+      row.hidden = !keep;
+      if (keep) { visibleInDay++; shown++; slugs.add(slug); }
+    }
+    day.hidden = visibleInDay === 0;
+  }
+
+  if (empty) empty.hidden = shown > 0;
+  if (summary) {
+    summary.textContent = shown === 0
+      ? 'Noch nichts gemerkt.'
+      : `${marketCount(slugs.size)} gemerkt, ${shown} kommende Termine.`;
+  }
+</script>

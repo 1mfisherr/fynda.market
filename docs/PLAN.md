@@ -20,17 +20,47 @@ Updated 2026-08-30, end of session.
 
 ### Next, in order
 
-1. **Region pages** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. 14 cantons have real content behind them, and the home page already lists them; the pills are unlinked until the pages exist.
+1. **Region pages** (`/de/schweiz/kanton/[kanton]/`) — the URL shape is settled (below); 8 cantons clear the density gate, 6 do not.
 2. **Photographs.** Move the 151 files in, then read the `image_url` facts back onto `markets.image_url`.
-3. **Desktop needs its own design.** Today it is the mobile column centred in a void. The Linientafel was designed at 375px and nothing above 900px has been drawn. The style refactor of 2026-08-30 means this is now one change in `base.css` and a handful of components, not fifteen.
-4. **3.5 — decide German text search** before any search box exists.
-5. **3.9 filters, 3.10 organiser CTA, 3.11 newsletter and ICS.**
+3. **Desktop needs its own design.** Today it is the mobile column centred in a void.
+4. **Make the forms real.** Every form is `mailto:` today. A Cloudflare Worker writing to `reports` and a newsletter table replaces that without changing any page's shape.
+5. **3.5 — decide German text search** before any search box exists.
 
-### The home page, rebuilt 2026-08-30
+### The launch surface — built 2026-08-30
 
-Built to the long version in `PAGES.md`: block order, the four-per-day rule with one expander per day, real canton pills, live counts. **A block renders only when it has content** — "Diese Woche abgesagt" is in the code and absent from the page today, because the next cancellation is 14 November.
+The site used to link to seven pages that did not exist: every market page offered three report buttons that 404'd, the home page's search submitted into nothing, and the footer's legal links went nowhere. All now exist, and a link check over `dist/` confirms **every one of 337 internal link targets resolves.**
 
-One open question the rebuild raises: `PAGES.md` describes both a "Dieses Wochenende" rail above the list *and* a day-grouped "Kommende Termine" list, while the dated block order that follows it starts at the list. Only the list is built — a rail would repeat the same rows the Wochenende chip already filters to. Decide before the rail is built, not after.
+`/de/melden/` · `/de/newsletter/` · `/de/veranstalter/` · `/de/gemerkt/` · `/de/impressum/` · `/de/datenschutz/` · `/umkreis/`
+
+Plus `sitemap-index.xml` (213 indexable URLs, no utility pages), `robots.txt`, `/llms.txt`, and `/ics/[slug].ics` for all 157 markets.
+
+**Forms do not post anywhere yet, and they say so.** Each opens the visitor's mail client with the values filled in. A form that silently discards what someone typed would be worse than no form; this is honest and costs no infrastructure. It is replaced by a Worker without the pages changing.
+
+### The three loops
+
+The product is one dataset and the loops that keep it alive. Every page is a rendering of the facts ledger; the work is the loops.
+
+- **Truth loop** — report buttons carry the market with them (`/de/melden/?markt=…&grund=…`) → we verify → "Bestätigt am" gets fresher. This is the differentiated dataset the spam update rewards and the quotable claim an AI answer needs.
+- **Weekend loop** — save a market or city → Friday digest → go → report → better digest. Saving is `localStorage`, no account. ICS is the same loop through the visitor's own calendar.
+- **Supply loop** — `/de/veranstalter/` is **"Das ist Ihre Marktseite"**, not "list your market". Single-player mode: useful to a church-bazaar organiser even if nobody else used Fynda. The data arrives as a by-product.
+
+### What we will not build
+
+On the record so it stops being re-proposed: **no region × category URLs, no PLZ zones, no `/heute/` URLs, no category pages, no per-date market pages, no city × date.** Eventbrite's own `/d/germany--berlin/flea-market/` page serves an AI webinar, a power-trading conference and a knitting course — the programmatic matrix generates the page, the inventory cannot fill it, so the definition loosens until it is garbage. Their model requires full pages; ours permits a page not to exist.
+
+### Canton URLs — decided 2026-08-30
+
+```
+/de/schweiz/zuerich/            city Zürich
+/de/schweiz/kanton/zuerich/     canton Zürich
+/de/deutschland/bundesland/bayern/
+```
+
+Five names collide (Zürich, Bern, Luzern, St. Gallen, Schaffhausen), and it is structural, not Swiss — Berlin, Hamburg and Bremen are city-states. **Booking.com (`/city/`, `/region/`), Eventbrite (`/d/`, `/e/`) and meine-flohmarkt-termine (`/ort/`, `/de/bundesland/`) all put the entity type in the path.** The type segment keeps the place name clean, which matters in Germany where the query is "flohmarkt bayern", never "flohmarkt bundesland bayern".
+
+Only 8 of 14 cantons have ≥5 markets, and the graduation gate wants 80%. **Ship the 8 that pass.** The other six keep their city pages.
+
+The guardrail change this needs is one literal allowlisted segment, nothing else: **a type segment partitions (one URL per canton), a facet multiplies (every place × seven weekdays).**
 
 ### What the import decided
 

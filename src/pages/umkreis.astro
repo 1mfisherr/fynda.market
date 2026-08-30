@@ -1,0 +1,272 @@
+---
+/**
+ * Radius view — `/umkreis/`.
+ *
+ * docs/ARCHITECTURE.md: "in der Nähe" is a query parameter, never a page type
+ * of its own — `/umkreis?lat=…&lng=…&km=…`. This is that filter view. It is
+ * the one thing a fully static build cannot do at build time: `lat`, `lng`
+ * and `km` live in the URL, and there is no server left at request time to
+ * read them (docs/STACK.md). So the whole answer has to ship twice — every
+ * market rendered into the HTML for the crawler and the no-JS visitor, and a
+ * client-side script that reads the query string (or geolocation) and
+ * narrows what is shown. Same shape as the city page's date filter, one
+ * dimension wider.
+ *
+ * `indexable={false}`: this is a filter, not a place or a market — there is
+ * nothing here a search result should point at instead of the city or market
+ * page underneath it.
+ */
+import Page from '../layouts/Page.astro';
+import Button from '../components/Button.astro';
+import DateBand from '../components/DateBand.astro';
+import DateFilters from '../components/DateFilters.astro';
+import MarketRow from '../components/MarketRow.astro';
+import Section from '../components/Section.astro';
+import { getMarkets, withinHorizon } from '../lib/markets';
+import { dateCount, marketCount } from '../lib/vocabulary';
+import type { Market, Occurrence } from '../lib/types';
+
+const markets = await getMarkets();
+const rows = markets.flatMap((market) =>
+  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+    .map((next) => ({ ...market, next }))
+);
+const groups = Object.values(
+  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+
+const RADII = [10, 25, 50, 100];
+const DEFAULT_KM = 50;
+---
+<Page indexable={false} title="Flohmärkte in der Nähe | Fynda" description="Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.">
+  <section class="intro gutter">
+    <h1>Flohmärkte in der Nähe</h1>
+    <p class="answer" id="status" aria-live="polite">Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.</p>
+    <p class="meta">{marketCount(markets.length)} · {dateCount(rows.length)}</p>
+  </section>
+
+  <div class="locate gutter">
+    <Button type="button" id="geo" variant="secondary">Meinen Standort verwenden</Button>
+  </div>
+
+  <div class="radius gutter" role="group" aria-label="Umkreis">
+    {RADII.map((km) => (
+      <button class="button" type="button" data-km={km} aria-pressed={km === DEFAULT_KM}>{km} km</button>
+    ))}
+  </div>
+
+  <DateFilters windows={['all', 'today', 'weekend', 'week']} label="Zeitraum" />
+
+  <Section bleed>
+    <div id="list">
+      {groups.map((group) => (
+        <section class="day" data-day>
+          <DateBand date={group[0].next!.date} count={group.length} />
+          {group.map((market) => (
+            /*
+              Coordinates travel on the wrapper around each row, not in a
+              separate slug -> {lat, lng} blob. MarketRow already renders one
+              element per occurrence and never sets its own margin, so a plain
+              wrapper div costs nothing visually; putting the data there means
+              the script never has to reconcile a row with its market by slug,
+              and there is exactly one wrapper per rendered occurrence, which
+              is exactly the granularity distance filtering needs.
+            */
+            <div class="pin" data-lat={market.lat} data-lng={market.lng}>
+              <MarketRow market={market} />
+              {/*
+                Empty and hidden until a real distance has been computed. This
+                is the "never show a distance we do not know" rule from
+                docs/PAGES.md made physical: there is no string here to leak,
+                only one the script writes after it has an actual origin.
+              */}
+              <p class="meta-quiet gutter" data-distance hidden></p>
+            </div>
+          ))}
+        </section>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta" hidden>Für diese Auswahl ist nichts eingetragen.</p>
+  </Section>
+</Page>
+
+<style>
+  /*
+    Everything shared — .button, .meta, .meta-quiet, .answer, .gutter — comes
+    from styles/base.css. What follows is only what this page owns. `.head`
+    and `.head p` already belong to the city page, so the intro block here
+    gets its own name rather than reusing that pair — guardrail 7 fails a
+    build the moment two pages define the same selector.
+  */
+  .intro p { margin-block-start: var(--space-2); }
+
+  .locate { margin-block-start: var(--space-3); }
+
+  .radius {
+    display: flex;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+    overflow-x: auto;
+  }
+</style>
+
+<script>
+  /**
+   * One combined pass, for the same reason home's date/expander pass is one
+   * function: date and distance interact. A row has to clear both to show,
+   * and when an origin is known the visible rows in a day are re-sorted
+   * nearest-first — so the two cannot be handled by independent handlers
+   * without one undoing the other's DOM order.
+   *
+   * Without an origin (no query string, geolocation not granted or denied)
+   * the day-grouped, chronological order from the server is exactly what
+   * stays on screen, and no `[data-distance]` label is ever unhidden. That is
+   * the static-build constraint and the "never fake a distance" rule meeting
+   * in one piece of code: this script is the only place a distance is ever
+   * computed, and it only runs once a real point exists.
+   */
+  import { inWindow, type DateWindow } from '../lib/date-window';
+
+  const dateButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const kmButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-km]'));
+  const geoButton = document.getElementById('geo');
+  const statusEl = document.getElementById('status');
+  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const empty = document.getElementById('empty');
+
+  let currentWindow: DateWindow = 'all';
+  let currentKm = 50;
+  let origin: { lat: number; lng: number } | null = null;
+
+  /** Great-circle distance in kilometres. Accurate to a few metres at this scale. */
+  function distanceKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+    const R = 6371;
+    const rad = (deg: number) => (deg * Math.PI) / 180;
+    const dLat = rad(lat2 - lat1);
+    const dLng = rad(lng2 - lng1);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLng / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  /** "1,2 km" — Swiss/German decimal comma, never a bare dot. */
+  function formatKm(km: number): string {
+    return `${km.toFixed(1).replace('.', ',')} km`;
+  }
+
+  function setStatus() {
+    if (!statusEl) return;
+    statusEl.textContent = origin
+      ? `Flohmärkte im Umkreis von ${currentKm} km, nach Entfernung sortiert.`
+      : 'Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.';
+  }
+
+  function apply() {
+    const now = new Date();
+    let shown = 0;
+
+    for (const day of days) {
+      const pins = Array.from(day.querySelectorAll<HTMLElement>('.pin'));
+
+      const evaluated = pins.map((pin) => {
+        const row = pin.querySelector<HTMLElement>('[data-date]');
+        const label = pin.querySelector<HTMLElement>('[data-distance]');
+        const dateOk = inWindow(row?.dataset.date ?? '', currentWindow, now);
+
+        let km: number | null = null;
+        if (origin) {
+          km = distanceKm(origin.lat, origin.lng, Number(pin.dataset.lat), Number(pin.dataset.lng));
+        }
+        const radiusOk = !origin || (km !== null && km <= currentKm);
+        const visible = dateOk && radiusOk;
+
+        if (label) {
+          if (visible && km !== null) {
+            label.textContent = formatKm(km);
+            label.hidden = false;
+          } else {
+            label.textContent = '';
+            label.hidden = true;
+          }
+        }
+
+        pin.hidden = !visible;
+        return { pin, km, visible };
+      });
+
+      // Nearest first — but only once a real distance exists. With no origin
+      // the day keeps the chronological order it was built with; there is
+      // nothing honest to sort it by.
+      if (origin) {
+        evaluated
+          .filter((e) => e.visible)
+          .sort((a, b) => (a.km ?? Infinity) - (b.km ?? Infinity))
+          .forEach((e) => day.appendChild(e.pin));
+      }
+
+      const dayShown = evaluated.filter((e) => e.visible).length;
+      day.hidden = dayShown === 0;
+      shown += dayShown;
+    }
+
+    if (empty) empty.hidden = shown > 0;
+  }
+
+  for (const button of dateButtons) {
+    button.addEventListener('click', () => {
+      for (const other of dateButtons) other.setAttribute('aria-pressed', String(other === button));
+      currentWindow = (button.dataset.filter ?? 'all') as DateWindow;
+      apply();
+    });
+  }
+
+  for (const button of kmButtons) {
+    button.addEventListener('click', () => {
+      for (const other of kmButtons) other.setAttribute('aria-pressed', String(other === button));
+      currentKm = Number(button.dataset.km ?? currentKm);
+      apply();
+    });
+  }
+
+  geoButton?.addEventListener('click', () => {
+    if (!('geolocation' in navigator)) return;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        origin = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setStatus();
+        apply();
+      },
+      () => {
+        origin = null;
+        if (statusEl) {
+          statusEl.textContent = 'Standort nicht verfügbar — bitte Umkreis manuell wählen. Ohne Standort keine Entfernungsangabe.';
+        }
+      },
+      { enableHighAccuracy: false, timeout: 8000 }
+    );
+  });
+
+  // The home page's search control submits here with `lat`, `lng` and `km`
+  // (docs/ARCHITECTURE.md: /umkreis?lat=…&lng=…&km=…). This is the only way a
+  // static build can ever learn a location — there is no server left at
+  // request time to read the query string for us.
+  const params = new URLSearchParams(window.location.search);
+  const latParam = params.get('lat');
+  const lngParam = params.get('lng');
+  if (latParam !== null && lngParam !== null) {
+    const lat = Number(latParam);
+    const lng = Number(lngParam);
+    if (Number.isFinite(lat) && Number.isFinite(lng)) origin = { lat, lng };
+  }
+
+  const kmParam = params.get('km');
+  if (kmParam !== null) {
+    const km = Number(kmParam);
+    if (Number.isFinite(km) && km > 0) {
+      currentKm = km;
+      for (const button of kmButtons) button.setAttribute('aria-pressed', String(Number(button.dataset.km) === km));
+    }
+  }
+
+  setStatus();
+  apply();
+</script>

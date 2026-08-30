@@ -17,6 +17,7 @@
     "prebuild": "node scripts/emit-data.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.9"
   },
   "devDependencies": {

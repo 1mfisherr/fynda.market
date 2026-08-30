@@ -170,6 +170,81 @@ p {
   width: 100%;
 }
 
+/* ---- prose ------------------------------------------------------------- */
+
+/*
+  Running text — legal pages, explanations, the answer paragraph at the top of a
+  listing page. Utility pages are mostly this, and without it each of them would
+  invent its own paragraph rhythm.
+*/
+.prose {
+  max-width: var(--measure);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
+
+.prose > * + * { margin-block-start: var(--space-3); }
+.prose h2 { margin-block-start: var(--space-6); }
+.prose a { text-decoration: underline; text-underline-offset: var(--space-half); }
+.prose strong { font-weight: var(--weight-bold); }
+
+/*
+  The answer, before the list. Tripadvisor opens a city page with one sentence
+  that answers the query, then the ranked entities. It is also where AI answers
+  are extracted from — 44% of citations come from the first 30% of a document.
+*/
+.answer {
+  font-size: var(--text-date);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+}
+
+/*
+  The block at the top of a page: title, the answer line, the quiet detail line.
+  Four pages had grown their own version of this under three different names
+  (.head, .intro, .hero) before it was named once.
+*/
+.page-head > * + * { margin-block-start: var(--space-2); }
+
+/* ---- forms ------------------------------------------------------------- */
+
+/*
+  Every form on the site is a stack of labelled controls. Defined once so the
+  melden, newsletter and veranstalter pages cannot drift into three form
+  designs — see components/Field.astro for the markup.
+*/
+.field { display: grid; gap: var(--space-1); }
+
+.field > span {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-bold);
+}
+
+.field > .hint {
+  color: var(--color-grey);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-regular);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-photo);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: var(--text-small);
+}
+
+.field textarea { min-height: calc(var(--tap-min) * 2); resize: vertical; }
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible { border-color: var(--color-ink); }
+
 /* ---- rules ------------------------------------------------------------- */
 
 .divider {

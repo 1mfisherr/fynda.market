@@ -10,6 +10,9 @@
       { "name": "locale home", "pattern": "^/de/$" },
       { "_comment": "Market pages sit outside the geography tree, so they are matched FIRST and the place patterns explicitly exclude the markt/ segment. Without that, /de/markt/x/ matches the city pattern, which silently applies the wrong content floor and the wrong Event rule.",
         "name": "market", "pattern": "^/de/markt/[a-z0-9-]+/$" },
+      { "_comment": "Utility pages: forms, legal, saved markets. Matched BEFORE country so they get their own content floor — a contact form is not a thin country page, it is a different kind of page. They are noindex and carry no entity, so they are excluded from the URL-to-entity ratio.",
+        "name": "utility", "pattern": "^/de/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz)/$" },
+      { "name": "radius", "pattern": "^/umkreis/$" },
       { "name": "country", "pattern": "^/de/(?!markt/)[a-z0-9-]+/$" },
       { "name": "region or city", "pattern": "^/de/(?!markt/)[a-z0-9-]+/[a-z0-9-]+/$" }
     ],
@@ -43,7 +46,9 @@
     "region or city": 300,
     "country": 300,
     "home": 200,
-    "locale home": 200
+    "locale home": 200,
+    "utility": 150,
+    "radius": 150
   },
 
   "occurrenceHorizonDays": 120,

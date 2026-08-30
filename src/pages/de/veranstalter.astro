@@ -1,0 +1,76 @@
+---
+/**
+ * Organiser page — `/de/veranstalter/`.
+ *
+ * Not "list your market with us". Fynda already lists markets whether or not
+ * an organiser ever showed up, so the honest framing is "claim the page that
+ * exists" — PRODUCT.md's single-player mode: give the organiser something
+ * useful even if nobody else uses the site yet. Audience is amateurs — clubs,
+ * schools, churches, municipalities — not businesses, so this stays warm and
+ * plain rather than reaching for platform language.
+ *
+ * No backend yet. The contact form opens a `mailto:`, same honest pattern as
+ * the newsletter page.
+ */
+import Page from '../../layouts/Page.astro';
+import Field from '../../components/Field.astro';
+import Button from '../../components/Button.astro';
+---
+<Page back title="Für Veranstalter — Fynda" description="Ihr Flohmarkt ist wahrscheinlich schon bei Fynda gelistet. Holen Sie sich Ihre Marktseite — kostenlos, ohne Konto.">
+  <section class="gutter">
+    <h1>Das ist Ihre Marktseite</h1>
+    <p class="answer">Ihr Flohmarkt ist wahrscheinlich schon bei uns gelistet. Holen Sie ihn sich.</p>
+  </section>
+
+  <div class="prose gutter">
+    <p>
+      Fynda sammelt Flohmärkte in der ganzen Schweiz, auch solche, deren
+      Veranstalter sich nie bei uns gemeldet haben. Ihr Markt hat deshalb
+      vermutlich schon eine Seite, mit Termin, Adresse und Öffnungszeiten. Sie
+      können diese Seite beanspruchen.
+    </p>
+    <h2>Was das bringt</h2>
+    <ul>
+      <li>Eine Nachricht von Ihnen genügt, und wir aktualisieren das Datum überall, wo es steht.</li>
+      <li>Eine Absage erreicht Besucherinnen und Besucher noch am selben Tag.</li>
+      <li>Eine Seite, die Sie von Ihrer eigenen Website oder einem Plakat aus verlinken können.</li>
+      <li>Bevor wir etwas an Ihrer Seite ändern, fragen wir Sie.</li>
+    </ul>
+    <p>Das Ganze ist kostenlos, für immer, und ohne Konto.</p>
+  </div>
+
+  <form class="stack gutter" id="veranstalter-form">
+    <Field label="Ihr Name" name="name" required />
+    <Field label="E-Mail-Adresse" name="email" type="email" required />
+    <Field label="Name des Marktes" name="markt" required />
+    <Field label="Ort" name="ort" required />
+    <Field label="Nachricht" name="nachricht" type="textarea" hint="Zum Beispiel: welches Datum wir aktualisieren sollen." />
+    <Button type="submit" variant="primary" block>Nachricht senden</Button>
+    <p class="meta">
+      Auch dieses Formular läuft im Moment per E-Mail an uns — wir melden uns
+      persönlich zurück, meist innert weniger Tage.
+    </p>
+  </form>
+</Page>
+
+<script>
+  const form = document.getElementById('veranstalter-form') as HTMLFormElement | null;
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const value = (key: string) => String(data.get(key) ?? '').trim();
+
+    const body = [
+      `Name: ${value('name')}`,
+      `E-Mail: ${value('email')}`,
+      `Markt: ${value('markt')}`,
+      `Ort: ${value('ort')}`,
+      '',
+      value('nachricht'),
+    ].join('\n');
+
+    const url = `mailto:hallo@fynda.market?subject=${encodeURIComponent('Veranstalter')}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
+  });
+</script>

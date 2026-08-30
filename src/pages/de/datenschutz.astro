@@ -1,0 +1,98 @@
+---
+/**
+ * Privacy policy — `/de/datenschutz/`.
+ *
+ * Has to say what the site actually does, not what a template says. Two facts
+ * make this page unusual for the category: there is no Google Analytics and
+ * no advertising cookie anywhere (docs/PLAN.md "Analytics posture"; the
+ * schema is `supabase/migrations/20260829130000_analytics_events.sql`), and
+ * every form on the site still runs on a plain `mailto:` because there is no
+ * backend yet — so this page describes the mailto reality, not a system that
+ * does not exist.
+ */
+import Page from '../../layouts/Page.astro';
+---
+<Page title="Datenschutz — Fynda" description="Was Fynda an Daten erhebt, wozu, und wo diese Daten liegen." indexable={false}>
+  <div class="prose gutter">
+    <h1>Datenschutz</h1>
+    <p>
+      Fynda zeigt Flohmärkte, ohne Nutzerinnen und Nutzer zu verkaufen. Es gibt kein Google Analytics,
+      keine Werbe-Cookies und keine Weitergabe an Werbenetzwerke. Diese Seite beschreibt, was wir
+      tatsächlich erheben — nicht, was eine Vorlage üblicherweise verspricht.
+    </p>
+
+    <h2>Verantwortlich</h2>
+    <p>
+      Fynda, E-Mail <a href="mailto:hallo@fynda.market">hallo@fynda.market</a>. Adresse und Rechtsform:
+      siehe <a href="/de/impressum/">Impressum</a>.
+    </p>
+
+    <h2>Analyse (Reichweitenmessung)</h2>
+    <p>
+      Wir betreiben eine eigene, selbst gehostete Analyse auf unserer eigenen Postgres-Datenbank und
+      werten sie mit selbst gehostetem Metabase aus. Die Daten verlassen unsere Infrastruktur nie und
+      werden an niemanden verkauft. Es gibt zwei Ebenen:
+    </p>
+    <ul>
+      <li>
+        <strong>Immer aktiv, ohne Einwilligung:</strong> Für jeden Besuch berechnen wir aus IP-Adresse
+        und Browserkennung einen Hash-Wert. Das dafür verwendete Geheimnis wechselt jeden Tag, sodass
+        derselbe Besuch am nächsten Tag einen anderen Wert ergibt — die Kennung lässt sich nicht auf
+        dich zurückführen und nicht über mehrere Tage verfolgen. Die IP-Adresse selbst speichern wir
+        nie im Klartext.
+      </li>
+      <li>
+        <strong>Nur mit ausdrücklicher Einwilligung:</strong> Eine dauerhafte, tagübergreifende Kennung,
+        die wiederkehrende Besuche erkennbar macht. Ohne Einwilligung wird sie nicht gespeichert.
+        Aktuell gibt es auf der Seite noch keinen Zustimmungs-Dialog, diese zweite Ebene ist also noch
+        nicht aktiv. [Ergänzen, sobald der Zustimmungs-Dialog lebt.]
+      </li>
+    </ul>
+    <p>
+      Erhoben werden unter anderem: welche Seite aufgerufen wurde, welcher Markt angeklickt wurde,
+      welche Filter benutzt wurden, grobes Land und Gerätetyp. Rohdaten werden unbegrenzt aufbewahrt,
+      damit sich Trends über Jahre verfolgen lassen — sie enthalten aber keinen Namen, keine
+      E-Mail-Adresse und keine Klartext-IP.
+    </p>
+
+    <h2>Google Search Console</h2>
+    <p>
+      Wir lesen aus, mit welchen Suchanfragen Besucherinnen und Besucher über Google zu Fynda finden.
+      Das liest nur Daten aus Googles eigenem Suchindex und bindet kein Tracking-Skript in diese Seite
+      ein.
+    </p>
+
+    <h2>Formulare</h2>
+    <p>
+      Melden-, Newsletter- und Veranstalter-Formular laufen aktuell alle über ein
+      <code>mailto:</code> — es gibt noch kein automatisches Versandsystem. Ein Klick auf «Senden»
+      öffnet Ihr eigenes E-Mail-Programm mit einer vorausgefüllten Nachricht; erst wenn Sie diese
+      E-Mail selbst abschickst, erhalten wir sie, direkt in unserem eigenen Postfach. Sobald der
+      Newsletter ein echtes Anmeldesystem hat, speichern wir Adressen in unserer eigenen Datenbank,
+      nicht bei einem externen Marketing-Anbieter. Für den Versand ist künftig ein
+      E-Mail-Versanddienst vorgesehen (Resend) — [ergänzen, sobald aktiv].
+    </p>
+
+    <h2>Gemerkte Märkte</h2>
+    <p>
+      Die Liste unter «Gemerkt» liegt ausschliesslich im lokalen Speicher Ihres Browsers
+      (<code>localStorage</code>). Sie wird nie an uns übertragen und verschwindet, wenn Sie den
+      Browser wechselst oder seine Daten löschst.
+    </p>
+
+    <h2>Deine Rechte</h2>
+    <p>
+      Für Auskunft, Berichtigung oder Löschung von Daten, die Sie uns per Formular geschickt haben
+      (zum Beispiel eine E-Mail-Adresse), schreib an
+      <a href="mailto:hallo@fynda.market">hallo@fynda.market</a>. Die anonymisierten Analyse-Hashes
+      lassen sich keiner Person zuordnen und deshalb nicht gezielt löschen.
+    </p>
+    <p>
+      Für Besucherinnen und Besucher aus der Schweiz gilt das Schweizer Datenschutzgesetz (nDSG). Sobald
+      Fynda in Deutschland aktiv ist, gilt zusätzlich die DSGVO.
+    </p>
+
+    <h2>Änderungen</h2>
+    <p>Diese Seite wird angepasst, sobald sich erhebt, was wir erheben, oder wie wir es tun.</p>
+  </div>
+</Page>

@@ -68,7 +68,7 @@ const questions = [
 <Page title="Flohmärkte in der Schweiz — Fynda" description="Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
-  <section class="hero gutter">
+  <section class="page-head gutter">
     <h1>Irgendwo ist<br />immer Markt.</h1>
     <p class="meta">Flohmärkte in der Schweiz — mit Daten, die stimmen.</p>
   </section>
@@ -104,7 +104,7 @@ const questions = [
 
   {cancelled.length > 0 && (
     <Section title="Diese Woche abgesagt">
-      <ul class="cancelled list-reset gutter">
+      <ul class="calloffs list-reset gutter">
         {cancelled.map((row) => (
           <li>
             <a href={`/de/markt/${row.slug}/`}>{row.name}</a>
@@ -147,8 +147,6 @@ const questions = [
 
 <style>
   /* Only what is genuinely this page's. Everything else is a component. */
-  .hero p { margin-block-start: var(--space-2); }
-
   .control {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -166,14 +164,14 @@ const questions = [
 
   .more { margin-block-start: var(--space-2); }
 
-  .cancelled li {
+  .calloffs li {
     display: grid;
     padding-block: var(--space-2);
     border-block-end: var(--border-width) solid var(--color-line);
     font-size: var(--text-small);
   }
-  .cancelled a { font-weight: var(--weight-bold); }
-  .cancelled em { font-style: normal; }
+  .calloffs a { font-weight: var(--weight-bold); }
+  .calloffs em { font-style: normal; }
 
   .steps { margin: 0; padding-inline-start: calc(var(--space-page) + var(--space-3)); font-size: var(--text-small); }
   .counts { margin-block-start: var(--space-3); }
