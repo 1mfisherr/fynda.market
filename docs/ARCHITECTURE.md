@@ -4,6 +4,18 @@ Page types, URL shape, the data model, and the rule that keeps them safe.
 
 ---
 
+## How to read this document
+
+**These are defaults, not laws.** Every rule here was written to stop a specific thing that went wrong on v1. A rule that is no longer stopping that thing, or that is now stopping something good, is a bug in this document — not a constraint on the project.
+
+Changing one is a normal move, not a transgression. The only requirement:
+
+> **Say what the rule was protecting against, say why that no longer applies or is outweighed, change the rule and the guardrail in the same commit.**
+
+What is *not* acceptable is silently routing around a rule, or loosening a threshold to make a build go green. That is how v1 died — not because a rule was broken, but because nobody noticed it had been.
+
+The one thing below that is close to a law is the governing idea, because it is the direct cause of the traffic loss. Even that is a statement about *empty* pages, and it should be read that way rather than as a ban on page types.
+
 ## The governing idea
 
 > **A page exists because there is content for it — never because a URL pattern permits it.**

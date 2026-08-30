@@ -1,0 +1,170 @@
+---
+/**
+ * City page — `/de/schweiz/[stadt]/`.
+ *
+ * The best-earning page type on v1 and the one the home page's city list points
+ * at. Unlike home it shows every date for the city: someone here has already
+ * chosen the place, so the list is the answer rather than a sample of it.
+ */
+import Page from '../../../layouts/Page.astro';
+import CtaCard from '../../../components/CtaCard.astro';
+import DateBand from '../../../components/DateBand.astro';
+import DateFilters from '../../../components/DateFilters.astro';
+import MarketRow from '../../../components/MarketRow.astro';
+import Section from '../../../components/Section.astro';
+import TypeLegend from '../../../components/TypeLegend.astro';
+import { getMarkets, withinHorizon, HORIZON_DAYS } from '../../../lib/markets';
+import { formatDate, formatTimeRange } from '../../../lib/format';
+import { LOCALES, cityPath, countryPath, type Locale } from '../../../lib/i18n';
+import { t } from '../../../lib/strings';
+import type { Market, Occurrence } from '../../../lib/types';
+
+/**
+ * One city page per city per locale. The city's slug is different in each —
+ * zuerich / zurich / zurigo — so the alternates cannot be derived from the path
+ * and are collected here, where every locale's markets are already loaded.
+ */
+export async function getStaticPaths() {
+  const byLocale = new Map<Locale, Market[]>();
+  for (const locale of LOCALES) byLocale.set(locale, await getMarkets(locale));
+
+  // marketSlug -> its city slug in every locale, so a page can link to itself
+  // in another language. Markets keep one slug across locales, so it is a
+  // reliable join key between the four result sets.
+  const cityOf = new Map<string, Partial<Record<Locale, { country: string; city: string }>>>();
+  for (const locale of LOCALES) {
+    for (const m of byLocale.get(locale)!) {
+      const entry = cityOf.get(m.slug) ?? {};
+      entry[locale] = { country: m.countrySlug, city: m.citySlug };
+      cityOf.set(m.slug, entry);
+    }
+  }
+
+  const paths = [];
+  for (const locale of LOCALES) {
+    const markets = byLocale.get(locale)!;
+    const cities = new Map(markets.map((m) => [m.citySlug, m]));
+    for (const [stadt, sample] of cities) {
+      const here = markets.filter((m) => m.citySlug === stadt);
+      const alternates = LOCALES.map((other) => {
+        const place = cityOf.get(here[0].slug)?.[other];
+        return place ? { locale: other, path: cityPath(other, place.country, place.city) } : null;
+      }).filter(Boolean) as { locale: Locale; path: string }[];
+
+      paths.push({
+        params: { locale, country: sample.countrySlug, stadt },
+        props: { locale, city: sample.city, stadt, region: sample.region, markets: here, alternates },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, city, stadt, region, markets, alternates } = Astro.props;
+const s = t(locale);
+const rows = markets.flatMap((market) =>
+  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+    .map((next) => ({ ...market, next }))
+);
+const groups = Object.values(
+  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+
+const year = new Date().getFullYear();
+
+/**
+ * The answer sentence, before the list. Tripadvisor opens a city page with the
+ * count in the title and one line that answers the query; it is also where AI
+ * answers are extracted from — 44% of citations come from the first 30% of a
+ * page. So: which market is next, when, and where.
+ */
+/**
+ * The count leads, but "Flohmarkt" is the query and must survive: nobody
+ * searches "7 Märkte in Luzern". Ranked-list shapes are what AI answers cite,
+ * and this is that shape without losing the head term.
+ */
+const heading = s.cityHeading(markets.length, city, year);
+
+// The earliest upcoming date, not the first row of an unsorted list: `rows` is
+// in market order, so `.find()` here answered with whichever market happened to
+// be first in the database.
+const soonest = [...rows]
+  .filter((row) => row.next!.status !== 'cancelled')
+  .sort((a, b) => a.next!.date.localeCompare(b.next!.date) || (a.next!.startTime ?? '').localeCompare(b.next!.startTime ?? ''))[0];
+const answer = soonest
+  ? s.cityNext(
+      soonest.name,
+      formatDate(soonest.next!.date, locale),
+      formatTimeRange(soonest.next!.startTime, soonest.next!.endTime, locale),
+      soonest.venueName
+    )
+  : s.cityNoDate;
+const site = 'https://fynda.market';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: markets[0].region, item: `${site}${countryPath(locale, markets[0].countrySlug)}` },
+    { '@type': 'ListItem', position: 2, name: city, item: `${site}${cityPath(locale, markets[0].countrySlug, stadt)}` },
+  ],
+};
+---
+<Page back locale={locale} alternates={alternates} title={`${heading} | Fynda`} description={s.cityIntro(city, region)}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <section class="page-head gutter">
+    <h1>{heading}</h1>
+    <p class="answer">{answer}</p>
+    <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))} · {s.lastChecked}</p>
+    <p class="meta">{s.cityIntro(city, region)}</p>
+  </section>
+
+  <DateFilters locale={locale} windows={['all', 'today', 'weekend']} />
+
+  <Section bleed>
+    <div id="list">
+      {groups.map((group) => (
+        <section class="day" data-day>
+          <DateBand date={group[0].next!.date} count={group.length} locale={locale} />
+          {group.map((market) => <MarketRow market={market} locale={locale} />)}
+        </section>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
+  </Section>
+
+  <TypeLegend locale={locale} />
+
+  <CtaCard locale={locale} kind="newsletter" body={`${s.newsletterBody} ${city}.`} />
+</Page>
+
+<script>
+  import { inWindow, type DateWindow } from '../../../lib/date-window';
+
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
+  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const empty = document.getElementById('empty');
+
+  const apply = (window: DateWindow) => {
+    const now = new Date();
+    let shown = 0;
+    for (const row of rows) {
+      const visible = inWindow(row.dataset.date ?? '', window, now);
+      row.hidden = !visible;
+      if (visible) shown++;
+    }
+    for (const day of days) {
+      day.hidden = !Array.from(day.querySelectorAll<HTMLElement>('[data-date]')).some((row) => !row.hidden);
+    }
+    if (empty) empty.hidden = shown > 0;
+  };
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
+      apply((button.dataset.filter ?? 'all') as DateWindow);
+    });
+  }
+  apply('all');
+</script>

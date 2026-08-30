@@ -42,7 +42,8 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 | **Newsletter** | Live from day one, city-segmented, list in our own Postgres |
 | **URL shape** | `/de/deutschland/koeln/`, markets at `/de/markt/[slug]/` |
 | **Multi-country data model from commit one** | Even though one country ships first |
-| **Guardrails are architecture** | `guardrails.config.json` encodes `ARCHITECTURE.md`. Loosening a threshold to make a build pass means updating the doc in the same commit — or not doing it |
+| **Guardrails are architecture** | `guardrails.config.json` encodes `ARCHITECTURE.md`. Loosening a threshold to make a red build go green is forbidden; deliberately changing a rule because the project outgrew it is normal — doc and config in the same commit |
+| **No rule here is permanent** | These docs were written early, by an AI, from what was known then. A rule that blocks something good is a bug in the doc. Propose the change, say what the rule was protecting against, and why that is outweighed. Never work around a rule silently |
 
 ## What is deliberately open
 

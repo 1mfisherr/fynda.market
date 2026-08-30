@@ -11,7 +11,6 @@ import Button from '../../components/Button.astro';
 import CtaCard from '../../components/CtaCard.astro';
 import DateBand from '../../components/DateBand.astro';
 import DateFilters from '../../components/DateFilters.astro';
-import Faq from '../../components/Faq.astro';
 import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
@@ -19,10 +18,20 @@ import Section from '../../components/Section.astro';
 import TypeLegend from '../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../lib/markets';
 import { formatDateShort } from '../../lib/format';
-import { dateCount, marketCount } from '../../lib/vocabulary';
+import { LOCALES, cityPath, homePath, marketPath } from '../../lib/i18n';
+import { t } from '../../lib/strings';
 import type { Market, Occurrence } from '../../lib/types';
 
-const markets = await getMarkets();
+export async function getStaticPaths() {
+  return LOCALES.map((locale) => ({
+    params: { locale },
+    props: { locale, alternates: LOCALES.map((l) => ({ locale: l, path: homePath(l) })) },
+  }));
+}
+
+const { locale, alternates } = Astro.props;
+const s = t(locale);
+const markets = await getMarkets(locale);
 const rows = markets.flatMap((market) =>
   withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
     .map((next) => ({ ...market, next }))
@@ -31,8 +40,9 @@ const groups = Object.values(
   rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
 ).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
 
-const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], 'de'));
-const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], 'de'));
+const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
+const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
+const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
 
 /**
  * Four markets per day, then the rest behind one button — PAGES.md. Every row
@@ -60,55 +70,51 @@ const jsonLd = {
   ],
 };
 
-const questions = [
-  { q: 'Woher kommen die Termine?', a: 'Von Veranstaltern und Quellen, die wir prüfen.' },
-  { q: 'Was tun bei einer Absage?', a: 'Wir zeigen sie sichtbar in der Liste.' },
-];
 ---
-<Page title="Flohmärkte in der Schweiz — Fynda" description="Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive.">
+<Page locale={locale} alternates={alternates} title={s.homeTitle} description={s.homeDescription}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
-    <h1>Irgendwo ist<br />immer Markt.</h1>
-    <p class="meta">Flohmärkte in der Schweiz — mit Daten, die stimmen.</p>
+    <h1>{s.heroLine1}<br />{s.heroLine2}</h1>
+    <p class="meta">{s.heroPromise}</p>
   </section>
 
   <form class="control" action="/umkreis/" method="get">
-    <label><b>Ort</b><span>Zürich</span></label>
-    <label><b>Zeitraum</b><span>Dieses Wochenende</span></label>
-    <label><b>Umkreis</b><span>50 km</span></label>
-    <Button type="submit" variant="primary" block>Anzeigen</Button>
+    <label><b>{s.controlPlace}</b><span>{cities[0]?.[1] ?? ''}</span></label>
+    <label><b>{s.controlPeriod}</b><span>{s.filterWeekend}</span></label>
+    <label><b>{s.controlRadius}</b><span>50 km</span></label>
+    <Button type="submit" variant="primary" block>{s.controlSubmit}</Button>
   </form>
 
-  <DateFilters />
+  <DateFilters locale={locale} />
 
-  <Section title="Kommende Termine" bleed>
+  <Section title={s.upcoming} bleed>
     <div id="list">
       {groups.map((group) => (
         <section class="day" data-day>
-          <DateBand date={group[0].next!.date} count={group.length} />
-          {group.map((market) => <MarketRow market={market} />)}
+          <DateBand date={group[0].next!.date} count={group.length} locale={locale} />
+          {group.map((market) => <MarketRow market={market} locale={locale} />)}
           {group.length > PER_DAY && (
             <div class="gutter more">
-              <Button variant="quiet" data-more hidden>{group.length - PER_DAY} weitere anzeigen</Button>
+              <Button variant="quiet" data-more hidden>{s.showMore(group.length - PER_DAY)}</Button>
             </div>
           )}
         </section>
       ))}
     </div>
-    <p id="empty" class="gutter meta" hidden>Für diesen Zeitraum ist nichts eingetragen.</p>
+    <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
 
-  <CtaCard title="Nichts verpassen" body="Neue Termine und Absagen in Ihrer Region." href="/de/newsletter/" action="Newsletter abonnieren" />
-  <CtaCard title="Sie organisieren einen Markt?" body="Termine eintragen, Absagen melden. Kostenlos, ohne Konto." href="/de/veranstalter/" action="Markt eintragen" />
+  <CtaCard kind="newsletter" locale={locale} />
+  <CtaCard kind="organiser" locale={locale} />
 
   {cancelled.length > 0 && (
-    <Section title="Diese Woche abgesagt">
+    <Section title={s.cancelledThisWeek}>
       <ul class="calloffs list-reset gutter">
         {cancelled.map((row) => (
           <li>
-            <a href={`/de/markt/${row.slug}/`}>{row.name}</a>
-            <span class="meta">{formatDateShort(row.next!.date)} · {row.city}</span>
+            <a href={marketPath(locale, row.slug)}>{row.name}</a>
+            <span class="meta">{formatDateShort(row.next!.date, locale)} · {row.city}</span>
             {row.next!.cancellationNote && <em class="meta-quiet">{row.next!.cancellationNote}</em>}
           </li>
         ))}
@@ -116,33 +122,34 @@ const questions = [
     </Section>
   )}
 
-  <Section title="Städte">
+  <Section title={s.cities}>
     <LinkList items={cities.map(([slug, city]) => ({
-      href: `/de/schweiz/${slug}/`,
+      href: cityPath(locale, countrySlug, slug),
       label: city,
-      meta: marketCount(markets.filter((m) => m.citySlug === slug).length),
+      meta: s.marketCount(markets.filter((m) => m.citySlug === slug).length),
     }))} />
   </Section>
 
-  <Section title="Kantone">
+  <Section title={s.regions}>
     <PillList items={regions.map(([slug, region]) => ({
       label: region,
       meta: String(markets.filter((m) => m.regionSlug === slug).length),
     }))} />
   </Section>
 
-  <Section title="Markttypen"><TypeLegend /></Section>
+  <Section title={s.marketTypes}><TypeLegend locale={locale} /></Section>
 
-  <Section title="Woher unsere Daten kommen">
+  <Section title={s.whereDataComes}>
     <ol class="steps gutter">
-      <li>Termine prüfen</li>
-      <li>Veranstalter bestätigen</li>
-      <li>Absagen sichtbar machen</li>
+      <li>{s.dataStep1}</li>
+      <li>{s.dataStep2}</li>
+      <li>{s.dataStep3}</li>
     </ol>
-    <p class="gutter meta counts">{marketCount(markets.length)} · {dateCount(rows.length)} · {cities.length} Städte · {regions.length} Kantone</p>
+    <p class="gutter meta counts">{s.marketCount(markets.length)} · {s.dateCount(rows.length)} · {cities.length} {s.cities} · {regions.length} {s.regions}</p>
   </Section>
 
-  <Section title="Fragen"><Faq items={questions} /></Section>
+  {/* The FAQ is real copy, not interface labels, so it waits for real copy in
+      each language rather than shipping a machine translation. docs/PLAN.md. */}
 </Page>
 
 <style>

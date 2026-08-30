@@ -16,14 +16,34 @@ import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset } from '../../../lib/format';
-import { EVENT_STATUS, LINES, MONTHS_LONG, STATUS_LABEL, WEEKDAYS_LONG } from '../../../lib/vocabulary';
+import { EVENT_STATUS, LINES } from '../../../lib/vocabulary';
+import { LOCALE, LOCALES, cityPath, countryPath, marketPath, utilityPath, type Locale } from '../../../lib/i18n';
+import { t } from '../../../lib/strings';
 
+/**
+ * One market page per locale. The slug is the same in every language — a market
+ * name is a proper noun — so an alternate is the same page under a different
+ * language and section word: /de/markt/x/, /fr/marche/x/, /it/mercato/x/.
+ */
 export async function getStaticPaths() {
-  const markets = await getMarkets();
-  return markets.map((market) => ({ params: { slug: market.slug }, props: { market } }));
+  const paths = [];
+  for (const locale of LOCALES) {
+    for (const market of await getMarkets(locale)) {
+      paths.push({
+        params: { locale, type: LOCALE[locale].segments.market, slug: market.slug },
+        props: {
+          locale,
+          market,
+          alternates: LOCALES.map((l) => ({ locale: l, path: marketPath(l, market.slug) })),
+        },
+      });
+    }
+  }
+  return paths;
 }
 
-const { market } = Astro.props;
+const { locale, market, alternates } = Astro.props;
+const s = t(locale);
 const next = market.next;
 const cancelled = next?.status === 'cancelled';
 const dates = withinHorizon([next, ...market.upcoming].filter(Boolean) as NonNullable<typeof next>[])
@@ -31,7 +51,7 @@ const dates = withinHorizon([next, ...market.upcoming].filter(Boolean) as NonNul
 const kind = LINES[market.kind];
 
 const site = 'https://fynda.market';
-const url = `${site}/de/markt/${market.slug}/`;
+const url = `${site}${marketPath(locale, market.slug)}`;
 const event = next ? {
   '@type': 'Event',
   name: market.name,
@@ -52,8 +72,8 @@ const jsonLd = {
   '@graph': [
     ...(event ? [event] : []),
     { '@type': 'BreadcrumbList', itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` },
-      { '@type': 'ListItem', position: 2, name: market.city, item: `${site}/de/schweiz/${market.citySlug}/` },
+      { '@type': 'ListItem', position: 1, name: market.region, item: `${site}${countryPath(locale, market.countrySlug)}` },
+      { '@type': 'ListItem', position: 2, name: market.city, item: `${site}${cityPath(locale, market.countrySlug, market.citySlug)}` },
       { '@type': 'ListItem', position: 3, name: market.name, item: url },
     ] },
   ],
@@ -61,8 +81,8 @@ const jsonLd = {
 
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}`;
 const date = next ? parseDate(next.date) : undefined;
-const weekday = date ? WEEKDAYS_LONG[date.getDay()] : undefined;
-const month = date ? MONTHS_LONG[date.getMonth()] : undefined;
+const weekday = date ? s.weekdaysLong[date.getDay()] : undefined;
+const month = date ? s.monthsLong[date.getMonth()] : undefined;
 
 /**
  * v1's address_line often already ends in the postcode and city ("Dynamo,
@@ -72,6 +92,14 @@ const month = date ? MONTHS_LONG[date.getMonth()] : undefined;
 const locality = [market.postalCode, market.city].filter(Boolean).join(' ');
 const showLocality = locality.length > 0 && !market.addressLine.includes(locality)
   && !market.addressLine.includes(market.city);
+
+/** Date status, in words. Never colour alone — docs/BRAND.md. */
+const STATUS: Record<Locale, Record<string, string>> = {
+  de: { confirmed: 'Bestätigt', tentative: 'Vorläufig', cancelled: 'Abgesagt', unverified: 'Nicht bestätigt' },
+  fr: { confirmed: 'Confirmé', tentative: 'Provisoire', cancelled: 'Annulé', unverified: 'Non confirmé' },
+  it: { confirmed: 'Confermato', tentative: 'Provvisorio', cancelled: 'Annullato', unverified: 'Non confermato' },
+  en: { confirmed: 'Confirmed', tentative: 'Provisional', cancelled: 'Cancelled', unverified: 'Not confirmed' },
+};
 
 const facts = [
   market.stallCount ? ['Stände', `~${market.stallCount}${market.stallCountBadWeather ? `, bei schlechtem Wetter ~${market.stallCountBadWeather}` : ''}`] : undefined,
@@ -92,8 +120,10 @@ const facilityItems = market.facilities ? [
 ---
 <Page
   back
-  title={`${market.name}, ${market.city} — Termine ${new Date().getFullYear()} | Fynda`}
-  description={`${kind.full} in ${market.city}: nächster Termin, Öffnungszeiten und Adresse. ${next ? `Nächster Termin ${formatDate(next.date)}.` : ''}`}
+  locale={locale}
+  alternates={alternates}
+  title={`${market.name}, ${market.city} — ${s.dates} ${new Date().getFullYear()} | Fynda`}
+  description={`${kind.full}, ${market.city}. ${next ? s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName) : s.cityNoDate}`}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
@@ -109,13 +139,13 @@ const facilityItems = market.facilities ? [
         <strong>{String(date?.getDate()).padStart(2, '0')}</strong>
         <span>
           <b class="eyebrow">{weekday}, {month}</b>
-          {formatTimeRange(next.startTime, next.endTime) && <em>{formatTimeRange(next.startTime, next.endTime)} Uhr</em>}
+          {formatTimeRange(next.startTime, next.endTime, locale) && <em>{formatTimeRange(next.startTime, next.endTime, locale)} {s.timeSuffix}</em>}
         </span>
       </div>
     )}
-    {market.packUpFrom && <p class="pack">Ab {market.packUpFrom} wird abgebaut.</p>}
+    {market.packUpFrom && <p class="pack">{s.packUpFrom(market.packUpFrom)}</p>}
     <p class="freshness meta-quiet">
-      {next?.confirmedAt ? `Bestätigt am ${formatDateShort(next.confirmedAt)} durch den Veranstalter` : 'Noch nicht mit dem Veranstalter bestätigt'}
+      {next?.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed}
     </p>
   </div>
 
@@ -123,10 +153,10 @@ const facilityItems = market.facilities ? [
       The second button is the organiser's own page where we hold one, which is
       153 of 157 markets; it used to scroll down this page instead. */}
   <div class="actions gutter">
-    <Button href={mapsUrl} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />Route</Button>
+    <Button href={mapsUrl} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />{s.route}</Button>
     {market.websiteUrl
-      ? <Button href={market.websiteUrl} block rel="noopener nofollow" target="_blank">Website des Veranstalters</Button>
-      : <Button href="#hinkommen" block>Veranstalter</Button>}
+      ? <Button href={market.websiteUrl} block rel="noopener nofollow" target="_blank">{s.organiserWebsite}</Button>
+      : <Button href="#hinkommen" block>{s.organiser}</Button>}
   </div>
 
   {/* Both are retention, not decoration: a market in someone's calendar keeps
@@ -134,8 +164,8 @@ const facilityItems = market.facilities ? [
       Friday newsletter is eventually built on. Saving is localStorage only —
       no account, docs/PLAN.md. */}
   <div class="keep gutter">
-    <Button href={`/ics/${market.slug}.ics`} block>In Kalender eintragen</Button>
-    <Button block data-save={market.slug} aria-pressed="false">Merken</Button>
+    <Button href={`/ics/${market.slug}.ics`} block>{s.addToCalendar}</Button>
+    <Button block data-save={market.slug} data-label-save={s.save} data-label-saved={s.savedState} aria-pressed="false">{s.save}</Button>
   </div>
 
   {market.description && (
@@ -143,13 +173,13 @@ const facilityItems = market.facilities ? [
   )}
 
   {facts.length > 0 && (
-    <Section level="sub" title="Was Sie erwartet">
+    <Section level="sub" title={s.whatToExpect}>
       <dl class="gutter">{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl>
     </Section>
   )}
 
   {market.timing && (
-    <Section level="sub" title="Wann hingehen">
+    <Section level="sub" title={s.whenToGo}>
       <div class="timing gutter">
         {market.timing.map((slot) => (
           <div><strong>{slot.from}</strong><span><b>{slot.label}</b>{slot.note && <em>{slot.note}</em>}</span></div>
@@ -158,7 +188,7 @@ const facilityItems = market.facilities ? [
     </Section>
   )}
 
-  <Section level="sub" title="Hinkommen" id="hinkommen">
+  <Section level="sub" title={s.gettingThere} id="hinkommen">
     <p class="address gutter">
       <b>{market.venueName}</b>
       <span>{market.addressLine}</span>
@@ -170,32 +200,32 @@ const facilityItems = market.facilities ? [
     )}
   </Section>
 
-  <Section level="sub" title="Termine">
+  <Section level="sub" title={s.dates}>
     <ul class="dates list-reset gutter">
       {dates.map((occurrence) => (
         <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
-          <strong>{formatDate(occurrence.date)}</strong>
-          {formatTimeRange(occurrence.startTime, occurrence.endTime) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime)}</span>}
-          <em>{STATUS_LABEL[occurrence.status]}</em>
+          <strong>{formatDate(occurrence.date, locale)}</strong>
+          {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
+          <em>{STATUS[locale][occurrence.status]}</em>
         </li>
       ))}
     </ul>
   </Section>
 
-  <Section level="sub" title="War es anders?">
-    <p class="gutter meta">Termin verschoben, abgesagt oder die Adresse falsch? Sagen Sie uns Bescheid — wir prüfen es und schreiben dazu, wann wir es zuletzt bestätigt haben.</p>
+  <Section level="sub" title={s.wasItDifferent}>
+    <p class="gutter meta">{s.reportIntro}</p>
     {/* The market travels with the report. Asking someone to retype the name
         of the page they are standing on is how a report form goes unused. */}
     <div class="report gutter">
-      {[['ausgefallen', 'Fand nicht statt'], ['vorbei', 'War schon vorbei'], ['anderes', 'Etwas anderes']].map(
+      {[['ausgefallen', s.reportDidNotHappen], ['vorbei', s.reportEndedEarly], ['anderes', s.reportSomethingElse]].map(
         ([grund, label]) => (
-          <a class="chip" href={`/de/melden/?markt=${encodeURIComponent(market.name)}&grund=${grund}`}>{label}</a>
+          <a class="chip" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}`}>{label}</a>
         )
       )}
     </div>
   </Section>
 
-  <TypeLegend />
+  <TypeLegend locale={locale} />
 </Page>
 
 <style>
@@ -320,7 +350,7 @@ const facilityItems = market.facilities ? [
   if (button && slug) {
     const paint = (saved: boolean) => {
       button.setAttribute('aria-pressed', String(saved));
-      button.textContent = saved ? 'Gemerkt' : 'Merken';
+      button.textContent = saved ? (button.dataset.labelSaved ?? '') : (button.dataset.labelSave ?? '');
     };
     paint(read().includes(slug));
 

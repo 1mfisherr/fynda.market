@@ -6,8 +6,14 @@
  */
 import LineCode from './LineCode.astro';
 import { LEGEND, LINES } from '../lib/vocabulary';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const s = t(locale);
 ---
-<aside class="legend gutter" aria-label="Markttypen">
+<aside class="legend gutter" aria-label={s.marketTypes}>
   {LEGEND.map((kind) => <span><LineCode kind={kind} /> {LINES[kind].short}</span>)}
 </aside>
 

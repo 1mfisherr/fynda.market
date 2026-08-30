@@ -14,6 +14,8 @@
 import Base from './Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
 
 interface Props {
   title: string;
@@ -23,15 +25,22 @@ interface Props {
   back?: boolean;
   /** Skip-link target and the main element's id. */
   mainId?: string;
+  locale?: Locale;
+  /** This page in every other language — see Base.astro. */
+  alternates?: { locale: Locale; path: string }[];
 }
-const { title, description, indexable = true, back = false, mainId = 'inhalt' } = Astro.props;
+const {
+  title, description, indexable = true, back = false, mainId = 'inhalt',
+  locale = DEFAULT_LOCALE, alternates = [],
+} = Astro.props;
+const s = t(locale);
 ---
-<Base title={title} description={description} indexable={indexable}>
+<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates}>
   <slot name="head" slot="head" />
-  <a class="skip button" href={`#${mainId}`}>Zum Inhalt springen</a>
-  <SiteHeader back={back} />
+  <a class="skip button" href={`#${mainId}`}>{s.skipToContent}</a>
+  <SiteHeader back={back} locale={locale} alternates={alternates} />
   <main id={mainId} class="stack wrapper"><slot /></main>
-  <SiteFooter />
+  <SiteFooter locale={locale} />
 </Base>
 
 <style>

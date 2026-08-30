@@ -8,6 +8,7 @@
  */
 
 import type { Market, Occurrence } from './types';
+import type { Locale } from './i18n.ts';
 import { sampleMarkets } from './fixtures.ts';
 import { thisWeekend, todayIso } from './format.ts';
 
@@ -49,10 +50,10 @@ let warned = false;
  * When Supabase exists this becomes a select over the `publishable_markets`
  * view, which already encodes the rule that a page needs content behind it.
  */
-export async function getMarkets(): Promise<Market[]> {
+export async function getMarkets(locale: Locale = 'de'): Promise<Market[]> {
   if (source === 'supabase') {
     const { fetchMarkets } = await import('./supabase.ts');
-    const markets = await fetchMarkets();
+    const markets = await fetchMarkets(locale);
     if (markets.length === 0) {
       // An empty result is a broken connection or an unimported database, not
       // a site with no markets. Building it would publish an empty directory.

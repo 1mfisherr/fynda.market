@@ -2,34 +2,40 @@
   "distDir": "dist",
   "dataDir": "data",
 
-  "_comment": "Enforces docs/ARCHITECTURE.md. Changing anything here is an architecture decision, not a config tweak — update the doc in the same commit.",
+  "_comment": "Enforces docs/ARCHITECTURE.md. These thresholds are defaults that encode past failures, not laws — see ARCHITECTURE.md 'How to read this document'. Changing one is a normal move: state what the rule was protecting against and why that is outweighed, and change the doc in the same commit. What is forbidden is loosening a number to make a red build go green.",
+
+  "_locales": ["de", "fr", "it", "en"],
+  "_localeComment": "Switzerland publishes in four languages; every other country will get its own plus English. A locale is not a page multiplier in the v1 sense — the same market in Italian is a full page with the same dates and address, not an empty cell in a matrix. See ARCHITECTURE.md 'Locales'.",
 
   "routes": {
+    "_localePrefix": "Every path starts with a locale. The section words are translated too — /de/markt/, /fr/marche/, /it/mercato/, /en/market/ — because a half-translated path reads as a bug to the person it is aimed at.",
     "allow": [
       { "name": "home", "pattern": "^/$" },
-      { "name": "locale home", "pattern": "^/de/$" },
-      { "_comment": "Market pages sit outside the geography tree, so they are matched FIRST and the place patterns explicitly exclude the markt/ segment. Without that, /de/markt/x/ matches the city pattern, which silently applies the wrong content floor and the wrong Event rule.",
-        "name": "market", "pattern": "^/de/markt/[a-z0-9-]+/$" },
-      { "_comment": "Utility pages: forms, legal, saved markets. Matched BEFORE country so they get their own content floor — a contact form is not a thin country page, it is a different kind of page. They are noindex and carry no entity, so they are excluded from the URL-to-entity ratio.",
-        "name": "utility", "pattern": "^/de/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz)/$" },
-      { "name": "radius", "pattern": "^/umkreis/$" },
-      { "name": "country", "pattern": "^/de/(?!markt/)[a-z0-9-]+/$" },
-      { "name": "region or city", "pattern": "^/de/(?!markt/)[a-z0-9-]+/[a-z0-9-]+/$" }
+      { "name": "locale home", "pattern": "^/(de|fr|it|en)/$" },
+      { "_comment": "Market pages sit outside the geography tree, so they are matched FIRST and the place patterns exclude the section words. Without that, /de/markt/x/ matches the city pattern, which silently applies the wrong content floor and the wrong Event rule.",
+        "name": "market", "pattern": "^/(de|fr|it|en)/(markt|marche|mercato|market)/[a-z0-9-]+/$" },
+      { "_comment": "Forms, legal text and saved markets. Noindex, out of the sitemap, out of the ratio. Matched before the country pattern so they get their own content floor.",
+        "name": "utility", "pattern": "^/(de|fr|it|en)/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz|signaler|organisateurs|favoris|mentions-legales|confidentialite|segnalare|organizzatori|salvati|note-legali|privacy|report|organisers|saved|imprint)/$" },
+      { "name": "radius", "pattern": "^/(umkreis|a-proximite|nei-dintorni|nearby)/$" },
+      { "name": "country", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/$" },
+      { "_comment": "The canton level. A type segment partitions — one URL per canton — where a facet multiplies, which is the distinction the forbid rule below is really about.",
+        "name": "region", "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(kanton|canton|cantone)/[a-z0-9-]+/$" },
+      { "name": "region or city", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/[a-z0-9-]+/$" }
     ],
     "forbid": [
       {
         "name": "geo x time (killed v1)",
-        "pattern": "^/de/[a-z0-9-]+/[a-z0-9-]+/[a-z0-9-]+/",
-        "why": "A fourth geography segment is what produced /de/schweiz/winterthur/samstag. Date, weekday and category are filters, not URLs."
+        "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(?!kanton/|canton/|cantone/)[a-z0-9-]+/[a-z0-9-]+/",
+        "why": "A fourth geography segment is what produced /de/schweiz/winterthur/samstag. Date, weekday and category are filters, not URLs. The canton segment is exempt because it names a level of the tree rather than slicing one."
       },
       {
         "name": "market x date (killed v1)",
-        "pattern": "^/de/markt/[a-z0-9-]+/[0-9]{4}-[0-9]{2}-[0-9]{2}",
+        "pattern": "^/(de|fr|it|en)/(markt|marche|mercato|market)/[a-z0-9-]+/[0-9]{4}-[0-9]{2}-[0-9]{2}",
         "why": "One weekly market produced 208 URLs this way. A market has one page; its dates are rows on it."
       },
       {
         "name": "non-ascii slug",
-        "pattern": "[^\\u0000-\\u007F]",
+        "pattern": "[^\u0000-\u007F]",
         "why": "Slugs are transliterated: zuerich, not zürich. Umlauts in URLs break sharing and analytics."
       }
     ]
@@ -37,7 +43,8 @@
 
   "urlToEntityRatio": {
     "max": 2.0,
-    "why": "v1 shipped ~8500 URLs for 157 markets. Roughly 1.2 is the target; 2.0 is the hard ceiling."
+    "perLocale": true,
+    "why": "v1 shipped ~8500 URLs for 157 markets. Roughly 1.2 is the target; 2.0 is the hard ceiling. Counted PER LOCALE: four languages of the same market is four full pages, not four empty cells, so the denominator is entities x locales. Changed 2026-08-31 — the old aggregate count would have blocked translation outright, which is the rule getting in the way of the product rather than protecting it."
   },
 
   "contentFloor": {
@@ -52,6 +59,8 @@
   },
 
   "occurrenceHorizonDays": 120,
+  "timeZone": "Europe/Zurich",
+  "site": "https://fynda.market",
 
   "styles": {
     "_comment": "Guardrail 7, and the only one that reads src/ rather than dist/. It encodes the two rules at the top of src/styles/base.css. Measured before that file existed: 10 selectors were defined by more than one page and 7 had already diverged, at three pages. The site is going to fourteen more.",

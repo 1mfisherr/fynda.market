@@ -44,6 +44,8 @@ export interface Market {
   /** Canton in CH, Bundesland in DE. One region level only — docs/ARCHITECTURE.md. */
   region: string;
   regionSlug: string;
+  /** "schweiz", "suisse", "svizzera", "switzerland" — the country in this locale. */
+  countrySlug: string;
   /** IANA zone from the venue. Required for a correct startDate offset. */
   timezone: string;
   venueName: string;

@@ -110,11 +110,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "brocante-de-rive-nyon",
-    "date": "2026-08-30",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "cd-schallplatten-boerse-bern",
     "date": "2026-12-12",
     "status": "confirmed"
@@ -332,11 +327,6 @@
   {
     "marketSlug": "flohmarkt-chilbiplatz-duebendorf",
     "date": "2026-09-26",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-dampfzentrale-bern",
-    "date": "2026-08-30",
     "status": "confirmed"
   },
   {
@@ -1605,6 +1595,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-rumine-lausanne-mardi",
+    "date": "2026-12-29",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-09-02",
     "status": "confirmed"
@@ -2057,11 +2052,6 @@
   {
     "marketSlug": "quartierflohmarkt-klybeck-kleinhueningen",
     "date": "2026-09-13",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "quartierflohmarkt-rosental-erlenmatt",
-    "date": "2026-08-30",
     "status": "confirmed"
   },
   {

@@ -2,19 +2,27 @@
 import type { Market } from '../lib/types';
 import { LINES } from '../lib/vocabulary';
 import { formatDateShort, formatTime } from '../lib/format';
+import { DEFAULT_LOCALE, marketPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
 import LineCode from './LineCode.astro';
 import PhotoOrArt from './PhotoOrArt.astro';
 
-interface Props { market: Market; }
-const { market } = Astro.props;
+interface Props { market: Market; locale?: Locale }
+const { market, locale = DEFAULT_LOCALE } = Astro.props;
+const s = t(locale);
 const occurrence = market.next;
 const cancelled = occurrence?.status === 'cancelled';
 const line = LINES[market.kind];
+/** "free" is the single most-read word on a row; it is not worth a key file. */
+const FREE: Record<Locale, string> = { de: 'frei', fr: 'entrée libre', it: 'ingresso libero', en: 'free' };
+const STALLS: Record<Locale, string> = { de: 'Stände', fr: 'stands', it: 'bancarelle', en: 'stalls' };
+const CANCELLED: Record<Locale, string> = { de: 'Fällt aus', fr: 'Annulé', it: 'Annullato', en: 'Cancelled' };
+
 const facts = [
-  market.stallCount ? `~${market.stallCount} Stände` : undefined,
+  market.stallCount ? `~${market.stallCount} ${STALLS[locale]}` : undefined,
   market.sellerMix === 'private' ? 'nur Private' : market.sellerMix === 'mixed' ? 'Private und Händler' : market.sellerMix === 'trader' ? 'Händler' : market.sellerMix === 'new_goods' ? 'Neuware' : undefined,
 ].filter(Boolean);
-const entry = market.entryFee === 0 ? 'frei' : market.entryFee ? `${market.entryFee} CHF` : undefined;
+const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market.entryFee} CHF` : undefined;
 ---
 
 <article class:list={['row', { cancelled }]} data-date={occurrence?.date}>
@@ -25,10 +33,10 @@ const entry = market.entryFee === 0 ? 'frei' : market.entryFee ? `${market.entry
     <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
   </div>
   <div class="details">
-    <h3 class="name"><a href={`/de/markt/${market.slug}/`}>{market.name}</a></h3>
+    <h3 class="name"><a href={marketPath(locale, market.slug)}>{market.name}</a></h3>
     <p class="via">{market.venueName} · {market.city}{entry ? ` · ${entry}` : ''}</p>
     {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
-    {cancelled ? <p class="reason">Fällt aus{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">Bestätigt am {formatDateShort(occurrence.confirmedAt)}.</p>}
+    {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedOn(formatDateShort(occurrence.confirmedAt, locale))}</p>}
   </div>
   <div class="photo"><PhotoOrArt market={market} width={74} height={74} /></div>
 </article>

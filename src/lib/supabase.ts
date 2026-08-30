@@ -22,6 +22,7 @@ interface Row {
   city_slug: string;
   region: string;
   region_slug: string;
+  country_slug: string;
   timezone: string;
   venue_name: string;
   address_line: string;
@@ -48,7 +49,7 @@ interface Row {
  */
 const SQL = `
   select
-    p.slug,
+    coalesce(sm.slug, p.slug)                      as slug,
     coalesce(nm.value, p.slug)                     as name,
     ds.value                                        as description,
     p.kind,
@@ -56,6 +57,7 @@ const SQL = `
     sc.slug                                         as city_slug,
     tr.value                                        as region,
     sr.slug                                         as region_slug,
+    sk.slug                                         as country_slug,
     v.timezone,
     v.name                                          as venue_name,
     v.address_line,
@@ -82,8 +84,10 @@ const SQL = `
   join public.texts tc on tc.entity_type = 'city' and tc.entity_id = p.city_id
                       and tc.locale = $1 and tc.field = 'name'
   join public.slugs sr on sr.entity_type = 'region' and sr.entity_id = p.region_id and sr.locale = $1
+  join public.slugs sk on sk.entity_type = 'country' and sk.entity_id = p.country_id and sk.locale = $1
   join public.texts tr on tr.entity_type = 'region' and tr.entity_id = p.region_id
                       and tr.locale = $1 and tr.field = 'name'
+  left join public.slugs sm on sm.entity_type = 'market' and sm.entity_id = p.id and sm.locale = $1
   left join public.texts nm on nm.entity_type = 'market' and nm.entity_id = p.id
                            and nm.locale = $1 and nm.field = 'name'
   left join public.texts ds on ds.entity_type = 'market' and ds.entity_id = p.id
@@ -134,6 +138,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         citySlug: row.city_slug,
         region: row.region,
         regionSlug: row.region_slug,
+        countrySlug: row.country_slug,
         timezone: row.timezone,
         venueName: row.venue_name,
         addressLine: row.address_line,

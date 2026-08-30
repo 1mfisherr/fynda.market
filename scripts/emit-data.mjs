@@ -19,6 +19,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { getMarkets, withinHorizon, HORIZON_DAYS } from '../src/lib/markets.ts';
+import { LOCALES } from '../src/lib/i18n.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(root, 'data');
@@ -31,6 +32,10 @@ const cities = new Set(markets.map((m) => m.city));
 const entities = {
   markets: markets.length,
   cities: cities.size,
+  // How many languages the same set of entities is published in. The ratio
+  // check divides by this: four languages of one market is four full pages,
+  // not four empty cells.
+  locales: LOCALES.length,
   // Regions are not modelled in the fixtures yet; the import (PLAN.md 3.4)
   // fills this in. Zero is honest, and the ratio check treats it as such.
   regions: 0,

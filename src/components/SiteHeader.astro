@@ -3,19 +3,38 @@
  * The masthead, once. It was re-typed in all three pages before this existed,
  * and had already drifted: two of them styled `header` differently.
  */
+import Icon from './Icon.astro';
+import { DEFAULT_LOCALE, LOCALE, homePath, utilityPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
 interface Props {
   /** A back chevron instead of nothing on the left. Deep pages set this. */
   back?: boolean;
+  locale?: Locale;
+  /** The same page in the other languages, for the switcher. */
+  alternates?: { locale: Locale; path: string }[];
 }
-const { back = false } = Astro.props;
-import Icon from './Icon.astro';
+const { back = false, locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
+const s = t(locale);
+const others = alternates.filter((a) => a.locale !== locale);
 ---
 <header class="site-header wrapper">
   <div class="lead">
-    {back && <a class="back" href="/de/" aria-label="Zurück zur Startseite"><Icon name="chevron-right" /></a>}
-    <a class="mark" href="/de/">fynda<span>.</span></a>
+    {back && <a class="back" href={homePath(locale)} aria-label={s.backToHome}><Icon name="chevron-right" /></a>}
+    <a class="mark" href={homePath(locale)}>fynda<span>.</span></a>
   </div>
-  <a class="saved" href="/de/gemerkt/">Gemerkt</a>
+  <div class="lead">
+    {/* Real links, not a script-driven picker: a language switcher that search
+        engines cannot follow is how one locale never gets discovered. */}
+    {others.length > 0 && (
+      <nav class="langs" aria-label={s.languageLabel}>
+        {others.map((alt) => (
+          <a href={alt.path} lang={LOCALE[alt.locale].tag} hreflang={LOCALE[alt.locale].tag}>{alt.locale.toUpperCase()}</a>
+        ))}
+      </nav>
+    )}
+    <a class="saved" href={utilityPath(locale, 'saved')}>{s.saved}</a>
+  </div>
 </header>
 
 <style>
@@ -28,6 +47,8 @@ import Icon from './Icon.astro';
     font-weight: var(--weight-bold);
   }
   .lead { display: flex; align-items: center; gap: var(--space-2); }
+  .langs { display: flex; gap: var(--space-1); color: var(--color-quiet); font-size: var(--text-micro); }
+  .langs a { padding-inline: var(--space-half); }
   /* One chevron in the icon set, pointed by the component that uses it. */
   .back {
     display: grid;

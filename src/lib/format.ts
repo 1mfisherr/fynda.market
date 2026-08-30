@@ -7,11 +7,16 @@
  * not have its date strings depend on which Node the build ran on.
  */
 
-const WEEKDAYS = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'] as const;
-const MONTHS = [
-  'Jan', 'Feb', 'März', 'Apr', 'Mai', 'Juni',
-  'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dez',
-] as const;
+import type { Locale } from './i18n';
+import { t } from './strings.ts';
+
+/**
+ * The locale decides the month names, not the runtime. Formatting still does
+ * not go through Intl: a directory whose whole product is dates should not have
+ * its date strings depend on which Node the build ran on, and Swiss German
+ * wants "Sept" where ICU gives "Sep".
+ */
+const names = (locale: Locale) => t(locale);
 
 /** Parse YYYY-MM-DD as a local calendar date, with no timezone shifting. */
 export function parseDate(iso: string): Date {
@@ -19,16 +24,23 @@ export function parseDate(iso: string): Date {
   return new Date(y, m - 1, d);
 }
 
-/** "Sa 29. Aug" */
-export function formatDate(iso: string): string {
+/**
+ * "Sa 29. Aug" in German, "Sat 29 Aug" in English. The ordinal dot is a German
+ * and Italian convention; French and English do not use it.
+ */
+export function formatDate(iso: string, locale: Locale = 'de'): string {
+  const s = names(locale);
   const d = parseDate(iso);
-  return `${WEEKDAYS[d.getDay()]} ${d.getDate()}. ${MONTHS[d.getMonth()]}`;
+  const dot = locale === 'de' ? '.' : '';
+  return `${s.weekdaysShort[d.getDay()]} ${d.getDate()}${dot} ${s.monthsShort[d.getMonth()]}`;
 }
 
 /** "29. Sept" — for secondary mentions where the weekday is noise. */
-export function formatDateShort(iso: string): string {
+export function formatDateShort(iso: string, locale: Locale = 'de'): string {
+  const s = names(locale);
   const d = parseDate(iso);
-  return `${d.getDate()}. ${MONTHS[d.getMonth()]}`;
+  const dot = locale === 'de' ? '.' : '';
+  return `${d.getDate()}${dot} ${s.monthsShort[d.getMonth()]}`;
 }
 
 /** "08:00" from "08:00" or "08:00:00". */
@@ -38,18 +50,21 @@ export function formatTime(time?: string): string | undefined {
 }
 
 /** "08:00–17:00", "ab 08:00", or undefined when we know neither. */
-export function formatTimeRange(start?: string, end?: string): string | undefined {
+export function formatTimeRange(start?: string, end?: string, locale: Locale = 'de'): string | undefined {
   const s = formatTime(start);
   const e = formatTime(end);
   if (s && e) return `${s}–${e}`;
-  if (s) return `ab ${s}`;
+  if (s) return `${FROM[locale]} ${s}`;
   return undefined;
 }
 
+/** "from 08:00" when only an opening time is known. */
+const FROM: Record<Locale, string> = { de: 'ab', fr: 'dès', it: 'dalle', en: 'from' };
+
 /** "Sa 29. Aug · 08:00–17:00" — the accent-coloured line on every card. */
-export function formatWhen(date: string, start?: string, end?: string): string {
-  const time = formatTimeRange(start, end);
-  return time ? `${formatDate(date)} · ${time}` : formatDate(date);
+export function formatWhen(date: string, start?: string, end?: string, locale: Locale = 'de'): string {
+  const time = formatTimeRange(start, end, locale);
+  return time ? `${formatDate(date, locale)} · ${time}` : formatDate(date, locale);
 }
 
 /** Today as YYYY-MM-DD in the given zone. Build-time default is Zurich. */

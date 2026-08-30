@@ -90,6 +90,9 @@ const allPages = pageFiles.map((file) => {
 
 /** Real pages: everything the index can actually land on. */
 const pages = allPages.filter((p) => !p.redirect);
+
+/** Absolute URLs, because that is what hreflang must carry. */
+const SITE = config.site ?? 'https://fynda.market';
 const redirectCount = allPages.length - pages.length;
 
 /** Which allowlist rule a URL matches, or null. */
@@ -167,7 +170,11 @@ check('URL-to-entity ratio', () => {
     );
   }
 
-  const total = (entities.markets ?? 0) + (entities.cities ?? 0) + (entities.regions ?? 0);
+  const entityCount = (entities.markets ?? 0) + (entities.cities ?? 0) + (entities.regions ?? 0);
+  // Per locale, when the config says so: the same market in Italian is a full
+  // page with the same dates and address, so it belongs in the denominator.
+  const locales = config.urlToEntityRatio.perLocale ? (entities.locales ?? 1) : 1;
+  const total = entityCount * locales;
   if (total === 0) return skip('entity count is zero — nothing to measure');
 
   // Utility and radius pages carry no entity and compete for no query — they are
@@ -181,7 +188,9 @@ check('URL-to-entity ratio', () => {
 
   const ratio = counted.length / total;
   const max = config.urlToEntityRatio.max;
-  const shown = `${counted.length} URLs / ${total} entities = ${ratio.toFixed(2)}`;
+  const shown = locales > 1
+    ? `${counted.length} URLs / ${entityCount} entities x ${locales} locales = ${ratio.toFixed(2)}`
+    : `${counted.length} URLs / ${total} entities = ${ratio.toFixed(2)}`;
 
   if (ratio > max) {
     return fail(`${shown} — over the ceiling of ${max.toFixed(1)}`, [config.urlToEntityRatio.why]);
@@ -225,7 +234,15 @@ check('Occurrence horizon', () => {
   if (rows.length === 0) return skip('no occurrence rows');
 
   const days = config.occurrenceHorizonDays;
-  const limit = new Date();
+  // "Today" is the venue's day, not UTC's. The build clamps dates in
+  // Europe/Zurich, so between midnight and 02:00 Swiss time a UTC-based limit
+  // here is a day short and fails a page that is correctly inside the horizon.
+  // One definition of today, or the check disagrees with the thing it checks.
+  const todayLocal = new Intl.DateTimeFormat('en-CA', {
+    timeZone: config.timeZone ?? 'Europe/Zurich',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+  const limit = new Date(`${todayLocal}T00:00:00Z`);
   limit.setUTCDate(limit.getUTCDate() + days);
 
   const beyond = rows
@@ -431,6 +448,52 @@ check('Style cohesion', () => {
   if (problems.length) return fail(`${problems.length} cohesion problem(s)`, problems);
   return pass(
     `${pageFilesSrc.length} pages share one style layer; no duplicated selectors, no hardcoded colours or sizes`
+  );
+});
+
+/* -------------------------------------------------------------------------- */
+/* 8. hreflang clusters                                                       */
+/*                                                                            */
+/* One error anywhere in a cluster makes Google discard the whole cluster, and */
+/* roughly three quarters of implementations in the wild contain one. The two  */
+/* that actually happen are a missing self-reference and a missing return      */
+/* link, so both are checked here rather than trusted.                         */
+/* -------------------------------------------------------------------------- */
+
+check('hreflang clusters', () => {
+  const locales = config._locales ?? [];
+  if (locales.length < 2) return skip('only one locale');
+
+  const alternates = new Map();
+  for (const page of pages) {
+    const found = [...page.html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)]
+      .filter(([, lang]) => lang !== 'x-default');
+    if (found.length > 0) {
+      alternates.set(new URL(page.url, SITE).href, new Map(found.map(([, lang, href]) => [lang, href])));
+    }
+  }
+
+  if (alternates.size === 0) return skip('no page declares an alternate yet');
+
+  const problems = [];
+  for (const [url, cluster] of alternates) {
+    const hrefs = [...cluster.values()];
+    if (!hrefs.includes(url)) {
+      problems.push(`${url} — does not list itself. Every member must include a self-reference.`);
+    }
+    for (const href of hrefs) {
+      const other = alternates.get(href);
+      if (!other) {
+        problems.push(`${url} — points at ${href}, which declares no alternates (or does not exist).`);
+      } else if (![...other.values()].includes(url)) {
+        problems.push(`${href} — does not link back to ${url}. A one-way link voids the cluster.`);
+      }
+    }
+  }
+
+  if (problems.length) return fail(`${problems.length} hreflang problem(s)`, problems);
+  return pass(
+    `${alternates.size} pages in complete ${locales.length}-language clusters, every return link present`
   );
 });
 

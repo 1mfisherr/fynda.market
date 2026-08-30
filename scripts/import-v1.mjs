@@ -35,6 +35,7 @@
  */
 
 import { withClient, DB_URL, V1_URL } from './db.mjs';
+import { slugify } from './slugify.mjs';
 
 const DRY_RUN = process.argv.includes('--dry-run');
 
@@ -102,23 +103,6 @@ const LOCALES = ['de', 'fr', 'it', 'en'];
 /* ---------------------------------------------------------------------------
  * slugs
  * ------------------------------------------------------------------------- */
-
-/**
- * ASCII, transliterated the German way: zuerich, not zurich and not zürich.
- * guardrails.config.json forbids umlauts in URLs; ü → u would collide Zürich
- * with a hypothetical Zurich and reads wrong to a German speaker.
- */
-export function slugify(value) {
-  return value
-    .normalize('NFC')
-    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
-    .replace(/Ä/g, 'Ae').replace(/Ö/g, 'Oe').replace(/Ü/g, 'Ue')
-    .replace(/ß/g, 'ss')
-    .normalize('NFD').replace(/[̀-ͯ]/g, '')   // é → e, à → a
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
 
 /* ---------------------------------------------------------------------------
  * read v1

@@ -4,19 +4,25 @@
  * pages, with the button styled separately in each. One card, four props.
  */
 import Button from './Button.astro';
+import { DEFAULT_LOCALE, utilityPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
 
 interface Props {
-  title: string;
-  body: string;
-  href: string;
-  action: string;
+  kind: 'newsletter' | 'organiser';
+  locale?: Locale;
+  /** Overrides the standard body — the city page names the city in it. */
+  body?: string;
 }
-const { title, body, href, action } = Astro.props;
+const { kind, locale = DEFAULT_LOCALE, body } = Astro.props;
+const s = t(locale);
+const copy = kind === 'newsletter'
+  ? { title: s.newsletterTitle, body: s.newsletterBody, action: s.newsletterAction, href: utilityPath(locale, 'newsletter') }
+  : { title: s.organiserTitle, body: s.organiserBody, action: s.organiserAction, href: utilityPath(locale, 'organiser') };
 ---
 <section class="cta">
-  <h2>{title}</h2>
-  <p class="meta">{body}</p>
-  <Button href={href} variant="primary" block>{action}</Button>
+  <h2>{copy.title}</h2>
+  <p class="meta">{body ?? copy.body}</p>
+  <Button href={copy.href} variant="primary" block>{copy.action}</Button>
 </section>
 
 <style>

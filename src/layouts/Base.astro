@@ -2,19 +2,30 @@
 import '../styles/tokens.css';
 import '../styles/base.css';
 
+import { DEFAULT_LOCALE, LOCALE, type Locale } from '../lib/i18n';
+
 interface Props {
   title: string;
   description: string;
   /** Set false on pages that must not be indexed (filter views, etc). */
   indexable?: boolean;
+  locale?: Locale;
+  /**
+   * The same page in the other languages. Every member must list every other
+   * member including itself, or Google discards the whole cluster — the single
+   * most common way hreflang is got wrong.
+   */
+  alternates?: { locale: Locale; path: string }[];
 }
 
-const { title, description, indexable = true } = Astro.props;
+const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const href = (path: string) => new URL(path, Astro.site).href;
+const fallback = alternates.find((a) => a.locale === DEFAULT_LOCALE);
 ---
 
 <!doctype html>
-<html lang="de-CH">
+<html lang={LOCALE[locale].tag}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,6 +33,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex, follow" />}
+
+    {/* Self-referencing included, per the return-link rule. x-default points at
+        German: it is the largest Swiss language and where the traffic is. */}
+    {indexable && alternates.map((alt) => (
+      <link rel="alternate" hreflang={LOCALE[alt.locale].tag} href={href(alt.path)} />
+    ))}
+    {indexable && fallback && <link rel="alternate" hreflang="x-default" href={href(fallback.path)} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,7 +52,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_CH" />
+    <meta property="og:locale" content={LOCALE[locale].tag.replace('-', '_')} />
 
     <!-- Structured data and anything else page-specific. Guardrail check 6
          polices what may appear here. -->
