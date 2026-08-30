@@ -1,17 +1,7 @@
 [
   {
     "marketSlug": "flohmarkt-kanzlei-zuerich",
-    "date": "2026-08-29",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-kanzlei-zuerich",
     "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-buerkliplatz-zuerich",
-    "date": "2026-08-29",
     "status": "confirmed"
   },
   {
@@ -23,11 +13,6 @@
     "marketSlug": "flohmarkt-am-see-wollishofen",
     "date": "2026-08-30",
     "status": "confirmed"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-markthalle-basel",
-    "date": "2026-08-29",
-    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-rathausplatz-wettingen",
