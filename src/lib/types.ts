@@ -35,8 +35,12 @@ export interface Occurrence {
 export interface Market {
   slug: string;
   name: string;
+  /** The German description, shown verbatim. Never generated — docs/BRAND.md. */
+  description?: string;
   kind: MarketKind;
   city: string;
+  /** The city's German URL slug, from the database. Never derived in a template. */
+  citySlug: string;
   /** IANA zone from the venue. Required for a correct startDate offset. */
   timezone: string;
   venueName: string;

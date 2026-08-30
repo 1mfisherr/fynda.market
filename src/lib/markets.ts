@@ -61,10 +61,14 @@ let warned = false;
  */
 export async function getMarkets(): Promise<Market[]> {
   if (source === 'supabase') {
-    // PLAN.md step 3.4. Failing loudly beats silently shipping sample rows.
-    throw new Error(
-      'FYNDA_DATA_SOURCE=supabase, but the Supabase query layer is not built yet (PLAN.md 3.4).'
-    );
+    const { fetchMarkets } = await import('./supabase.ts');
+    const markets = await fetchMarkets();
+    if (markets.length === 0) {
+      // An empty result is a broken connection or an unimported database, not
+      // a site with no markets. Building it would publish an empty directory.
+      throw new Error('FYNDA_DATA_SOURCE=supabase returned no markets. Run scripts/import-v1.mjs.');
+    }
+    return markets;
   }
 
   if (!warned) {

@@ -7,18 +7,16 @@ import { getMarkets, withinHorizon } from '../../../lib/markets';
 import type { Market, Occurrence } from '../../../lib/types';
 
 export async function getStaticPaths() {
-  const slugify = (value: string) => value.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const markets = await getMarkets();
-  const cities = [...new Set(markets.map((market) => market.city))];
-  return cities.map((city) => ({ params: { stadt: slugify(city) }, props: { city, markets: markets.filter((market) => market.city === city) } }));
+  const cities = new Map(markets.map((market) => [market.citySlug, market.city]));
+  return [...cities].map(([stadt, city]) => ({ params: { stadt }, props: { city, stadt, markets: markets.filter((market) => market.citySlug === stadt) } }));
 }
-const slugify = (value: string) => value.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const { city, markets } = Astro.props;
+const { city, stadt, markets } = Astro.props;
 const rows = markets.flatMap((market) => withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[]).map((next) => ({ ...market, next })));
 const groups = Object.values(rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
 const year = new Date().getFullYear();
 const site = 'https://fynda.market';
-const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` }, { '@type': 'ListItem', position: 2, name: city, item: `${site}/de/schweiz/${slugify(city)}/` }] };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` }, { '@type': 'ListItem', position: 2, name: city, item: `${site}/de/schweiz/${stadt}/` }] };
 ---
 <Base title={`Flohmärkte in ${city} ${year} | Fynda`} description={`Flohmärkte in ${city}: Termine, Öffnungszeiten und Absagen.`}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
