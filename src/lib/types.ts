@@ -41,6 +41,9 @@ export interface Market {
   city: string;
   /** The city's German URL slug, from the database. Never derived in a template. */
   citySlug: string;
+  /** Canton in CH, Bundesland in DE. One region level only — docs/ARCHITECTURE.md. */
+  region: string;
+  regionSlug: string;
   /** IANA zone from the venue. Required for a correct startDate offset. */
   timezone: string;
   venueName: string;

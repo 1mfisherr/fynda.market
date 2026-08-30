@@ -20,15 +20,17 @@ Updated 2026-08-30, end of session.
 
 ### Next, in order
 
-1. **Rebuild the home page to the long version** — block order and the 4-per-day rule are in `PAGES.md` §Below the markets. Newsletter and organiser CTA sit directly under the markets; the footer city list goes.
-2. **Region page** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. 14 cantons now have real content behind them.
-3. **Move the photographs in** and read the `image_url` facts back onto `markets.image_url`.
+1. **Region pages** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. 14 cantons have real content behind them, and the home page already lists them; the pills are unlinked until the pages exist.
+2. **Photographs.** Move the 151 files in, then read the `image_url` facts back onto `markets.image_url`.
+3. **Desktop needs its own design.** Today it is the mobile column centred in a void. The Linientafel was designed at 375px and nothing above 900px has been drawn.
 4. **3.5 — decide German text search** before any search box exists.
 5. **3.9 filters, 3.10 organiser CTA, 3.11 newsletter and ICS.**
 
-**Also open: a real desktop design.** Today desktop is the mobile column centred in a void. The board format gives us room — distance, stall count and seller mix in their own columns, filters persistent down the side rather than chips on top. Its own mockup, before launch but after the import.
+### The home page, rebuilt 2026-08-30
 
-**Building with real data:** `FYNDA_DATA_SOURCE=supabase npm run verify`. Without it the build uses fixtures, which is also what CI does, since CI has no database credentials. So `data/entities.json` in the repo reflects fixtures, and the meaningful ratio check is the one run locally against Supabase. **Real numbers, 2026-08-30: 213 URLs for 212 entities, ratio 1.00.** v1 was 8,500 URLs for 157 markets.
+Built to the long version in `PAGES.md`: block order, the four-per-day rule with one expander per day, real canton pills, live counts. **A block renders only when it has content** — "Diese Woche abgesagt" is in the code and absent from the page today, because the next cancellation is 14 November.
+
+One open question the rebuild raises: `PAGES.md` describes both a "Dieses Wochenende" rail above the list *and* a day-grouped "Kommende Termine" list, while the dated block order that follows it starts at the list. Only the list is built — a rail would repeat the same rows the Wochenende chip already filters to. Decide before the rail is built, not after.
 
 ### What the import decided
 

@@ -6,7 +6,7 @@ const day = parseDate(date);
 const weekday = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][day.getDay()];
 const month = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'][day.getMonth()];
 ---
-<header class="band"><strong class="day">{String(day.getDate()).padStart(2, '0')}</strong><span class="when">{weekday}<em>{month}</em></span><span class="count">{count} MÄRKTE</span></header>
+<header class="band"><strong class="day">{String(day.getDate()).padStart(2, '0')}</strong><span class="when">{weekday}<em>{month}</em></span><span class="count">{count} {count === 1 ? 'MARKT' : 'MÄRKTE'}</span></header>
 <style>
   .band { display:grid; grid-template-columns:auto 1fr auto; gap:var(--space-3); align-items:end; padding:var(--space-page) var(--space-page) var(--space-2); border-top:var(--border-width) solid var(--color-line); }
   .day { font-size:var(--text-day-band); font-weight:var(--weight-black); letter-spacing:-0.05em; line-height:0.86; }

@@ -20,6 +20,8 @@ interface Row {
   kind: MarketKind;
   city: string;
   city_slug: string;
+  region: string;
+  region_slug: string;
   timezone: string;
   venue_name: string;
   address_line: string;
@@ -51,6 +53,8 @@ const SQL = `
     p.kind,
     tc.value                                        as city,
     sc.slug                                         as city_slug,
+    tr.value                                        as region,
+    sr.slug                                         as region_slug,
     v.timezone,
     v.name                                          as venue_name,
     v.address_line,
@@ -75,6 +79,9 @@ const SQL = `
   join public.slugs sc on sc.entity_type = 'city' and sc.entity_id = p.city_id and sc.locale = $1
   join public.texts tc on tc.entity_type = 'city' and tc.entity_id = p.city_id
                       and tc.locale = $1 and tc.field = 'name'
+  join public.slugs sr on sr.entity_type = 'region' and sr.entity_id = p.region_id and sr.locale = $1
+  join public.texts tr on tr.entity_type = 'region' and tr.entity_id = p.region_id
+                      and tr.locale = $1 and tr.field = 'name'
   left join public.texts nm on nm.entity_type = 'market' and nm.entity_id = p.id
                            and nm.locale = $1 and nm.field = 'name'
   left join public.texts ds on ds.entity_type = 'market' and ds.entity_id = p.id
@@ -89,7 +96,10 @@ function toOccurrence(row: NonNullable<Row['occurrences']>[number]): Occurrence 
     endTime: row.end_time?.slice(0, 5) ?? undefined,
     status: row.status,
     cancellationNote: row.cancellation_note ?? undefined,
-    confirmedAt: row.confirmed_at ?? undefined,
+    // A timestamptz in the database, a calendar date on the page. The German
+    // formatters parse YYYY-MM-DD and nothing else, so it is narrowed here
+    // rather than in a template — "Bestätigt am NaN. undefined" otherwise.
+    confirmedAt: row.confirmed_at?.slice(0, 10) ?? undefined,
   };
 }
 
@@ -120,6 +130,8 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         kind: row.kind,
         city: row.city,
         citySlug: row.city_slug,
+        region: row.region,
+        regionSlug: row.region_slug,
         timezone: row.timezone,
         venueName: row.venue_name,
         addressLine: row.address_line,

@@ -21,7 +21,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', it
 <Base title={`Flohmärkte in ${city} ${year} | Fynda`} description={`Flohmärkte in ${city}: Termine, Öffnungszeiten und Absagen.`}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
   <header><a class="mark" href="/de/">fynda<span>.</span></a><a href="/de/gemerkt/">Gemerkt</a></header>
-  <main><section class="head"><h1>Flohmärkte in {city} {year}</h1><p>{markets.length} Märkte · {rows.length} Termine bis Dezember · zuletzt geprüft heute</p><p>Termine, Öffnungszeiten und Absagen.</p></section>
+  <main><section class="head"><h1>Flohmärkte in {city} {year}</h1><p>{markets.length} {markets.length === 1 ? 'Markt' : 'Märkte'} · {rows.length} Termine bis Dezember · zuletzt geprüft heute</p><p>Termine, Öffnungszeiten und Absagen.</p></section>
   <div class="filters" role="group" aria-label="Filter"><button class="active" type="button" data-filter="all">Alle</button><button type="button" data-filter="today">Heute</button><button type="button" data-filter="weekend">Wochenende</button><button type="button" data-filter="private">Nur Private</button></div>
   <div id="list">{groups.map((group) => <section class="day" data-day><DateBand date={group[0].next!.date} count={group.length} />{group.map((market) => <MarketRow market={market} />)}</section>)}</div>
   <p class="empty" id="empty" hidden>Für diesen Zeitraum ist nichts eingetragen.</p>
