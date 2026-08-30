@@ -131,43 +131,15 @@
   --section-divider: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-accent: #FF6347;
-    --color-accent-hover: #FF4A2B;
-    --color-ink: #F2F1EE;
-    --color-grey: #A8A49C;
-    --color-quiet: #7E7A73;
-    --color-line: #2C2C28;
-    --color-paper: #1D1D1A;
-    --color-surface: #141413;
-    --color-white: #FFFFFF;
-    --color-stage: #0A0A09;
-    --line-floh: #FF6347;
-    --line-halle: #6C82FF;
-    --line-nacht: #9A6BF5;
-    --line-kinder: #FFBB4D;
-    --line-troedel: #FF3FA0;
-  }
-}
 
-:root[data-theme="dark"] {
-  --color-accent: #FF6347;
-  --color-accent-hover: #FF4A2B;
-  --color-ink: #F2F1EE;
-  --color-grey: #A8A49C;
-  --color-quiet: #7E7A73;
-  --color-line: #2C2C28;
-  --color-paper: #1D1D1A;
-  --color-surface: #141413;
-  --color-white: #FFFFFF;
-  --color-stage: #0A0A09;
-  --line-floh: #FF6347;
-  --line-halle: #6C82FF;
-  --line-nacht: #9A6BF5;
-  --line-kinder: #FFBB4D;
-  --line-troedel: #FF3FA0;
-}
+
+/*
+  No dark theme, deliberately. docs/BRAND.md: "a good Sunday morning… no
+  countdowns, no dark mode, no aggressive colour". One ground, one palette.
+  A dark variant was added on 2026-08-30 and removed the same day — it made the
+  site render black for anyone whose phone is set to dark, which is not the
+  product. If a dark mode is ever wanted, it is a brand decision first.
+*/
 
 /* ---- reset ------------------------------------------------------------- */
 *,

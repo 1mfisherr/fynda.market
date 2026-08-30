@@ -1,0 +1,440 @@
+<title>Fynda Startseite v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+
+<style>
+  :root {
+    --paper:#FFFFFF; --panel:#F5F4F2; --ink:#111110; --grey:#6E6C68;
+    --quiet:#9A968F; --line:#E8E6E2; --accent:#FF4A2B;
+    --stage:#EDEBE7;
+    --sp1:4px; --sp2:8px; --sp3:12px; --sp4:16px; --sp5:20px; --sp6:32px;
+    --r-sm:12px; --r-md:16px; --r-lg:20px; --r-pill:999px;
+  }
+
+  * { box-sizing:border-box; }
+
+  body {
+    margin:0; background:var(--stage); color:var(--ink);
+    font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+
+  .page { max-width:44rem; margin-inline:auto; padding:28px 20px 56px; }
+
+  .intro { margin-bottom:24px; }
+  .intro .mark { font-size:18px; font-weight:800; letter-spacing:-0.045em; }
+  .intro .mark span { color:var(--accent); }
+  .intro h1 {
+    margin:12px 0 6px; font-size:26px; font-weight:800;
+    letter-spacing:-0.04em; line-height:1.1; text-wrap:balance;
+  }
+  .intro p { margin:0; color:var(--grey); font-size:15px; }
+
+  /* the phone stage */
+  .device {
+    width:390px; max-width:100%; margin-inline:auto;
+    background:var(--paper); border:1px solid var(--line);
+    border-radius:28px; overflow:hidden;
+    box-shadow:0 12px 40px rgb(17 17 16 / 12%);
+  }
+
+  .fold-note {
+    width:390px; max-width:100%; margin:6px auto 0;
+    font-size:11px; color:var(--quiet); text-align:right;
+    letter-spacing:0.04em; text-transform:uppercase; font-weight:700;
+  }
+
+  /* ---------- the mockup itself ---------- */
+  .app { padding-bottom:8px; }
+
+  .bar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 16px 8px;
+  }
+  .logo { font-size:21px; font-weight:800; letter-spacing:-0.045em; }
+  .logo span { color:var(--accent); }
+  .bar-actions { display:flex; gap:2px; }
+  .ib {
+    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink);
+  }
+
+  .hero { padding:2px 16px 0; }
+  .hero h2 {
+    margin:0; font-size:27px; font-weight:800;
+    letter-spacing:-0.045em; line-height:1.05;
+  }
+  .hero p { margin:6px 0 0; font-size:14px; color:var(--grey); }
+
+  /* place + period + radius — a filter, not a search box */
+  .control {
+    display:flex; align-items:stretch; gap:0;
+    margin:14px 16px 0; height:48px;
+    border:1px solid var(--line); border-radius:var(--r-pill);
+    background:var(--paper); overflow:hidden;
+  }
+  .control .seg {
+    display:flex; align-items:center; gap:6px; padding:0 12px;
+    font-size:14px; font-weight:600; white-space:nowrap;
+  }
+  .control .seg + .seg { border-left:1px solid var(--line); }
+  .control .seg.where { flex:1; min-width:0; }
+  .control .seg small { color:var(--quiet); font-weight:500; }
+  .control .go {
+    width:48px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    background:var(--ink); color:var(--paper);
+  }
+
+  .chips {
+    display:flex; gap:6px; padding:12px 16px 0;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip {
+    height:34px; padding:0 14px; display:flex; align-items:center; flex-shrink:0;
+    background:var(--panel); border-radius:var(--r-pill);
+    font-size:13px; font-weight:500; color:var(--grey);
+  }
+  .chip.on { background:var(--ink); color:var(--paper); font-weight:600; }
+
+  .sectionhead {
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding:22px 16px 10px;
+  }
+  .sectionhead h3 {
+    margin:0; font-size:19px; font-weight:700; letter-spacing:-0.025em;
+  }
+  .sectionhead .day { font-size:12px; font-weight:700; color:var(--quiet); }
+
+  /* ---- card ---- */
+  .list { display:flex; flex-direction:column; }
+
+  .card {
+    display:grid; grid-template-columns:72px minmax(0,1fr); gap:12px;
+    padding:12px 16px; align-items:start;
+  }
+  .card + .card { border-top:1px solid var(--line); }
+
+  .thumb {
+    height:72px; border-radius:var(--r-sm); overflow:hidden; position:relative;
+  }
+  .thumb svg { position:absolute; inset:0; width:100%; height:100%; }
+
+  .card .name {
+    margin:0; font-size:16px; font-weight:700; letter-spacing:-0.015em;
+    line-height:1.25;
+  }
+  .card .when {
+    margin:3px 0 0; font-size:14px; font-weight:700; color:var(--accent);
+  }
+
+  /* every attribute its own element, same order on every card */
+  .attrs {
+    display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+    margin-top:4px; font-size:13px; color:var(--grey);
+  }
+  .attrs .sep { color:var(--line); }
+  .attrs .dist { font-weight:600; color:var(--ink); }
+
+  .dots { display:inline-flex; gap:2px; align-items:center; }
+  .dots i {
+    width:5px; height:5px; border-radius:50%; background:var(--line);
+    display:block;
+  }
+  .dots i.f { background:var(--grey); }
+
+  .tag {
+    font-size:11px; font-weight:700; letter-spacing:0.02em;
+    padding:1px 6px; border-radius:4px; background:var(--panel); color:var(--grey);
+  }
+
+  .status {
+    display:inline-flex; align-items:center; gap:4px;
+    margin-top:6px; font-size:12px; font-weight:700;
+  }
+  .status.ok { color:var(--ink); }
+  .status.un { color:var(--quiet); }
+  .status.off { color:var(--quiet); }
+  .status .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .status.un .dot { background:var(--quiet); }
+  .status.off .dot { background:var(--quiet); }
+
+  .card.cancelled .name { color:var(--quiet); text-decoration:line-through; text-decoration-color:var(--line); }
+  .card.cancelled .when { color:var(--quiet); }
+  .card.cancelled .thumb { opacity:.5; }
+
+  /* categories, now below the lists */
+  .cats { padding:24px 16px 0; }
+  .cats h3 { margin:0 0 12px; font-size:19px; font-weight:700; letter-spacing:-0.025em; }
+  .catgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .cat { display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .cat .tile {
+    width:100%; height:48px; border-radius:14px; display:flex;
+    align-items:center; justify-content:center; color:#fff;
+  }
+  .cat span { font-size:11px; font-weight:600; }
+
+  .cta {
+    margin:24px 16px 0; padding:20px; background:var(--panel);
+    border-radius:var(--r-lg);
+  }
+  .cta h3 { margin:0; font-size:21px; font-weight:800; letter-spacing:-0.035em; line-height:1.1; }
+  .cta p { margin:8px 0 0; font-size:14px; color:var(--grey); }
+  .cta .btn {
+    display:flex; align-items:center; justify-content:center; height:46px;
+    margin-top:14px; background:var(--ink); color:var(--paper);
+    border-radius:var(--r-pill); font-size:15px; font-weight:700;
+  }
+
+  .tabs {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    margin-top:20px; padding:8px 0 12px;
+    border-top:1px solid var(--line);
+  }
+  .tab { display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; font-weight:600; color:var(--quiet); }
+  .tab.on { color:var(--accent); }
+
+  /* ---------- notes ---------- */
+  .changes { max-width:390px; margin:32px auto 0; }
+  .changes h3 {
+    margin:0 0 4px; font-size:12px; font-weight:700; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--quiet);
+  }
+  .changes ol { margin:12px 0 0; padding-left:1.1em; }
+  .changes li { margin-bottom:10px; font-size:15px; }
+  .changes li::marker { color:var(--accent); font-weight:700; }
+  .changes b { font-weight:700; }
+  .changes .sub { color:var(--grey); font-size:14px; }
+</style>
+
+<div class="page">
+
+  <div class="intro">
+    <div class="mark">fynda<span>.</span></div>
+    <h1>Startseite, zweite Fassung</h1>
+    <p>Same brand, rebuilt around what the data said. 390&nbsp;px — the size four out of five visitors use.</p>
+  </div>
+
+  <div class="device">
+    <div class="app">
+
+      <div class="bar">
+        <div class="logo">fynda<span>.</span></div>
+        <div class="bar-actions">
+          <div class="ib">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-8.8-1.6A5 5 0 0 0 3.2 6.6c-1 2.6.5 5 2 6.6l6.8 6.6 6.8-6.6c1.5-1.6 3-4 2-6.6Z"/></svg>
+          </div>
+          <div class="ib">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero">
+        <h2>Irgendwo ist immer Markt.</h2>
+        <p>Flohmärkte in der Schweiz — mit Daten, die stimmen.</p>
+      </div>
+
+      <div class="control">
+        <div class="seg where">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          Zürich <small>· 50 km</small>
+        </div>
+        <div class="seg">Wochenende</div>
+        <div class="go">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </div>
+
+      <div class="chips">
+        <div class="chip on">Alle</div>
+        <div class="chip">Heute</div>
+        <div class="chip">Wochenende</div>
+        <div class="chip">Nächste Woche</div>
+      </div>
+
+      <div class="sectionhead">
+        <h3>Samstag, 29. August</h3>
+        <div class="day">3 Märkte</div>
+      </div>
+
+      <div class="list">
+
+        <article class="card">
+          <div class="thumb" style="background:#E4E9EE">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <g fill="#A6B4C2"><path d="M12 46h48v5H12z"/><path d="M17 36h38v9H17z"/><path d="M23 28h26v7H23z"/><path d="M21 51h5v13h-5z"/><path d="M46 51h5v13h-5z"/></g>
+            </svg>
+          </div>
+          <div>
+            <h4 class="name">Flohmarkt Bürkliplatz</h4>
+            <p class="when">06:00–17:00</p>
+            <div class="attrs">
+              <span class="dist">2,4 km</span><span class="sep">·</span>
+              <span>Zürich</span><span class="sep">·</span>
+              <span class="dots" title="Sehr grosser Markt"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>
+              <span class="tag">Draussen</span>
+            </div>
+            <div class="status ok"><span class="dot"></span>Bestätigt am 24. Aug</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="background:#EDE7F5">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <g fill="#B9AAD4"><circle cx="30" cy="26" r="13"/><circle cx="30" cy="26" r="4.5" fill="#EDE7F5"/><path d="M14 46h44v5H14z"/></g>
+              <g fill="#9787BC"><rect x="44" y="30" width="16" height="16" rx="3"/><path d="M46 51h12v11H46z"/></g>
+            </svg>
+          </div>
+          <div>
+            <h4 class="name">Flohmarkt Kanzlei</h4>
+            <p class="when">08:00–16:00</p>
+            <div class="attrs">
+              <span class="dist">1,2 km</span><span class="sep">·</span>
+              <span>Zürich</span><span class="sep">·</span>
+              <span class="dots" title="Mittelgrosser Markt"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>
+              <span class="tag">Draussen</span>
+            </div>
+            <div class="status ok"><span class="dot"></span>Bestätigt am 26. Aug</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="background:#F0E6DC">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <g fill="#A8845E"><circle cx="52" cy="20" r="9"/><circle cx="48" cy="17" r="8" fill="#F0E6DC"/></g>
+              <g fill="#C9A886"><path d="M12 34h34l-4-9H16l-4 9Z"/><path d="M15 34v26h28V34"/></g>
+            </svg>
+          </div>
+          <div>
+            <h4 class="name">Nachtflohmarkt Markthalle</h4>
+            <p class="when">18:00–23:00</p>
+            <div class="attrs">
+              <span class="dist">82 km</span><span class="sep">·</span>
+              <span>Basel</span><span class="sep">·</span>
+              <span class="dots" title="Kleinerer Markt"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>
+              <span class="tag">Halle</span>
+            </div>
+            <div class="status un"><span class="dot"></span>Noch nicht bestätigt</div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="sectionhead">
+        <h3>Sonntag, 30. August</h3>
+        <div class="day">2 Märkte</div>
+      </div>
+
+      <div class="list">
+
+        <article class="card">
+          <div class="thumb" style="background:#E6EDE7">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <g fill="#A9C0AE"><path d="M12 46h48v5H12z"/><path d="M17 36h38v9H17z"/><path d="M23 28h26v7H23z"/></g>
+              <g fill="#87A38E"><circle cx="56" cy="26" r="8"/><path d="M53 34h6v22h-6z"/></g>
+            </svg>
+          </div>
+          <div>
+            <h4 class="name">Flohmarkt am See, Wollishofen</h4>
+            <p class="when">09:00–17:00</p>
+            <div class="attrs">
+              <span class="dist">4,1 km</span><span class="sep">·</span>
+              <span>Zürich</span><span class="sep">·</span>
+              <span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>
+              <span class="tag">Draussen</span>
+            </div>
+            <div class="status ok"><span class="dot"></span>Bestätigt am 25. Aug</div>
+          </div>
+        </article>
+
+        <article class="card cancelled">
+          <div class="thumb" style="background:#F0E6DC">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <g fill="#C9A886"><path d="M12 46h48v5H12z"/><path d="M17 36h38v9H17z"/><path d="M21 51h5v13h-5z"/><path d="M46 51h5v13h-5z"/></g>
+            </svg>
+          </div>
+          <div>
+            <h4 class="name">Flohmarkt Rathausplatz</h4>
+            <p class="when">Abgesagt · Wetter</p>
+            <div class="attrs">
+              <span class="dist">22 km</span><span class="sep">·</span>
+              <span>Wettingen</span><span class="sep">·</span>
+              <span>nächster Termin 26. Sept</span>
+            </div>
+            <div class="status off"><span class="dot"></span>Gemeldet am 28. Aug</div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="cats">
+        <h3>Was für ein Markt?</h3>
+        <div class="catgrid">
+          <div class="cat">
+            <div class="tile" style="background:#FF4A2B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1.5-4h-13L4 9Z"/><path d="M5 9v10h14V9"/></svg></div>
+            <span>Floh</span>
+          </div>
+          <div class="cat">
+            <div class="tile" style="background:#3D5AFE"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v9h14v-9"/></svg></div>
+            <span>Halle</span>
+          </div>
+          <div class="cat">
+            <div class="tile" style="background:#7C3AED"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></div>
+            <span>Nacht</span>
+          </div>
+          <div class="cat">
+            <div class="tile" style="background:#F5A524"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2.4"/><path d="M9 21v-5H7.5l1.7-4.6A3 3 0 0 1 12 9.5a3 3 0 0 1 2.8 1.9L16.5 16H15v5"/></svg></div>
+            <span>Kinder</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h3>Sie organisieren<br>einen Markt?</h3>
+        <p>Termine eintragen, Absagen melden. Kostenlos, ohne Konto.</p>
+        <div class="btn">Markt eintragen</div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab on">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
+          Entdecken
+        </div>
+        <div class="tab">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16l-6-4-6 4V4Z"/></svg>
+          Gemerkt
+        </div>
+        <div class="tab">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 6 2 5-2v12l-5 2-6-2-5 2V7l5-2Z"/><path d="M9 5v12"/><path d="M15 7v12"/></svg>
+          Karte
+        </div>
+        <div class="tab">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 0 0 1 1h3l7 4V5L8 9H5a1 1 0 0 0-1 1Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>
+          Veranstalter
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="changes">
+    <h3>Was sich ändert</h3>
+    <ol>
+      <li><b>The first market is visible without scrolling.</b>
+        <span class="sub">Before, you scrolled past a hero, a search bar and chips to reach one.</span></li>
+      <li><b>The search bar became a filter.</b>
+        <span class="sub">Ort · Umkreis · Zeitraum. Nobody typed searches on the old site — 64 in 26 days.</span></li>
+      <li><b>Cards show distance, size and indoor/outdoor.</b>
+        <span class="sub">The three things that decide whether you drive there. We don't have size or indoor/outdoor yet — they get captured during the import.</span></li>
+      <li><b>Freshness moved onto the card.</b>
+        <span class="sub">"Bestätigt am 24. Aug". Nobody else in the category shows this anywhere.</span></li>
+      <li><b>One list, grouped by day.</b>
+        <span class="sub">Replaces the side-scrolling weekend row. Side-scrolling hides markets — a list doesn't.</span></li>
+      <li><b>Category tiles moved below the markets.</b>
+        <span class="sub">They were 1.8% of clicks on the old site.</span></li>
+    </ol>
+  </div>
+
+</div>
