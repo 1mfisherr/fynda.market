@@ -1,56 +1,190 @@
 ---
-import Base from '../../layouts/Base.astro';
+/**
+ * Home — the long version, in the block order PAGES.md decided on 2026-08-30.
+ *
+ * The page is markup and data. Every visual decision below belongs to a
+ * component or to styles/base.css; what is left here is the order of the
+ * blocks and the rules that pick what goes in them.
+ */
+import Page from '../../layouts/Page.astro';
+import Button from '../../components/Button.astro';
+import CtaCard from '../../components/CtaCard.astro';
 import DateBand from '../../components/DateBand.astro';
+import DateFilters from '../../components/DateFilters.astro';
+import Faq from '../../components/Faq.astro';
+import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
+import PillList from '../../components/PillList.astro';
+import Section from '../../components/Section.astro';
 import TypeLegend from '../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../lib/markets';
 import { formatDateShort } from '../../lib/format';
+import { dateCount, marketCount } from '../../lib/vocabulary';
 import type { Market, Occurrence } from '../../lib/types';
 
 const markets = await getMarkets();
-const rows = markets.flatMap((market) => withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[]).map((next) => ({ ...market, next })));
-const groups = Object.values(rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})).sort((a,b) => a[0].next!.date.localeCompare(b[0].next!.date));
-const cities = [...new Map(markets.map((market) => [market.citySlug, market.city]))].sort((a, b) => a[1].localeCompare(b[1], 'de'));
-const regions = [...new Map(markets.map((market) => [market.regionSlug, market.region]))].sort((a, b) => a[1].localeCompare(b[1], 'de'));
+const rows = markets.flatMap((market) =>
+  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+    .map((next) => ({ ...market, next }))
+);
+const groups = Object.values(
+  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+
+const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], 'de'));
+const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], 'de'));
 
 /**
- * Four markets per day, then the rest behind one button — PAGES.md. The rows
- * are all in the HTML: hiding them from the crawler to save a scroll would
- * trade the thing that earns traffic for the thing that costs nothing.
+ * Four markets per day, then the rest behind one button — PAGES.md. Every row
+ * is in the HTML: hiding them from the crawler to save a scroll would trade the
+ * thing that earns traffic for the thing that costs nothing.
  */
 const PER_DAY = 4;
 
-/** "1 Markt", "2 Märkte". German has a singular and the list is full of ones. */
-const marktCount = (n: number) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}`;
-
 /**
  * Cancellations in the coming week. Nobody else in the category surfaces these
- * where people look, and the block renders only when there is something in it,
- * which is what stops the page filling with empty furniture.
+ * where people look. The block renders only when there is something in it,
+ * which is what stops the order below filling with empty furniture.
  */
 const inAWeek = (() => { const d = new Date(); d.setDate(d.getDate() + 7); return d.toISOString().slice(0, 10); })();
 const cancelled = rows
   .filter((row) => row.next!.status === 'cancelled' && row.next!.date <= inAWeek)
   .sort((a, b) => a.next!.date.localeCompare(b.next!.date));
-const jsonLd = { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebSite', '@id': 'https://fynda.market/#website', url: 'https://fynda.market/', name: 'Fynda', inLanguage: 'de-CH', description: 'Flohmärkte in der Schweiz, mit Daten die stimmen.' }, { '@type': 'Organization', '@id': 'https://fynda.market/#organisation', name: 'Fynda', url: 'https://fynda.market/' }] };
+
+const site = 'https://fynda.market';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': `${site}/#website`, url: `${site}/`, name: 'Fynda', inLanguage: 'de-CH', description: 'Flohmärkte in der Schweiz, mit Daten die stimmen.' },
+    { '@type': 'Organization', '@id': `${site}/#organisation`, name: 'Fynda', url: `${site}/` },
+  ],
+};
+
+const questions = [
+  { q: 'Woher kommen die Termine?', a: 'Von Veranstaltern und Quellen, die wir prüfen.' },
+  { q: 'Was tun bei einer Absage?', a: 'Wir zeigen sie sichtbar in der Liste.' },
+];
 ---
-<Base title="Flohmärkte in der Schweiz — Fynda" description="Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive.">
+<Page title="Flohmärkte in der Schweiz — Fynda" description="Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
-  <header><a class="mark" href="/de/">fynda<span>.</span></a><a href="/de/gemerkt/">Gemerkt</a></header>
-  <main><section class="hero"><h1>Irgendwo ist<br />immer Markt.</h1><p>Flohmärkte in der Schweiz — mit Daten, die stimmen.</p></section>
-  <form class="control" action="/umkreis/" method="get"><label><b>Ort</b><span>Zürich</span></label><label><b>Zeitraum</b><span>Dieses Wochenende</span></label><label><b>Umkreis</b><span>50 km</span></label><button type="submit">Anzeigen</button></form>
-  <div class="filters" role="group" aria-label="Zeitraum"><button class="active" type="button" data-filter="all">Alle</button><button type="button" data-filter="today">Heute</button><button type="button" data-filter="weekend">Wochenende</button><button type="button" data-filter="week">Nächste Woche</button></div>
-  <section class="list-section"><h2>Kommende Termine</h2><div id="list">{groups.map((group) => <section class="day" data-day><DateBand date={group[0].next!.date} count={group.length} />{group.map((market) => <MarketRow market={market} />)}{group.length > PER_DAY && <button class="more" type="button" data-more hidden>{group.length - PER_DAY} weitere anzeigen</button>}</section>)}</div><p id="empty" hidden>Für diesen Zeitraum ist nichts eingetragen.</p></section>
-  <section class="newsletter"><h2>Nichts verpassen</h2><p>Neue Termine und Absagen in Ihrer Region.</p><a href="/de/newsletter/">Newsletter abonnieren</a></section>
-  <section class="organiser"><h2>Sie organisieren einen Markt?</h2><p>Termine eintragen, Absagen melden. Kostenlos, ohne Konto.</p><a href="/de/veranstalter/">Markt eintragen</a></section>
-  {cancelled.length > 0 && <section class="cancelled"><h2>Diese Woche abgesagt</h2><ul>{cancelled.map((row) => <li><a href={`/de/markt/${row.slug}/`}>{row.name}</a><span>{formatDateShort(row.next!.date)} · {row.city}</span>{row.next!.cancellationNote && <em>{row.next!.cancellationNote}</em>}</li>)}</ul></section>}
-  <section class="links"><h2>Städte</h2><ul>{cities.map(([slug, city]) => <li><a href={`/de/schweiz/${slug}/`}>{city}</a><span>{marktCount(markets.filter((market) => market.citySlug === slug).length)}</span></li>)}</ul></section>
-  <section class="cantons"><h2>Kantone</h2><ul>{regions.map(([slug, region]) => <li data-canton={slug}>{region}<span>{markets.filter((market) => market.regionSlug === slug).length}</span></li>)}</ul></section>
-  <section class="types"><h2>Markttypen</h2><TypeLegend /></section>
-  <section class="info"><h2>Woher unsere Daten kommen</h2><ol><li>Termine prüfen</li><li>Veranstalter bestätigen</li><li>Absagen sichtbar machen</li></ol><p>{markets.length} Märkte · {rows.length} Termine · {cities.length} Städte · {regions.length} Kantone</p></section>
-  <section class="faq"><h2>Fragen</h2><details><summary>Woher kommen die Termine?</summary><p>Von Veranstaltern und Quellen, die wir prüfen.</p></details><details><summary>Was tun bei einer Absage?</summary><p>Wir zeigen sie sichtbar in der Liste.</p></details></section></main>
-  <footer>fynda.market · Flohmärkte in der Schweiz</footer>
-</Base>
+
+  <section class="hero gutter">
+    <h1>Irgendwo ist<br />immer Markt.</h1>
+    <p class="meta">Flohmärkte in der Schweiz — mit Daten, die stimmen.</p>
+  </section>
+
+  <form class="control" action="/umkreis/" method="get">
+    <label><b>Ort</b><span>Zürich</span></label>
+    <label><b>Zeitraum</b><span>Dieses Wochenende</span></label>
+    <label><b>Umkreis</b><span>50 km</span></label>
+    <Button type="submit" variant="primary" block>Anzeigen</Button>
+  </form>
+
+  <DateFilters />
+
+  <Section title="Kommende Termine" bleed>
+    <div id="list">
+      {groups.map((group) => (
+        <section class="day" data-day>
+          <DateBand date={group[0].next!.date} count={group.length} />
+          {group.map((market) => <MarketRow market={market} />)}
+          {group.length > PER_DAY && (
+            <div class="gutter more">
+              <Button variant="quiet" data-more hidden>{group.length - PER_DAY} weitere anzeigen</Button>
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta" hidden>Für diesen Zeitraum ist nichts eingetragen.</p>
+  </Section>
+
+  <CtaCard title="Nichts verpassen" body="Neue Termine und Absagen in Ihrer Region." href="/de/newsletter/" action="Newsletter abonnieren" />
+  <CtaCard title="Sie organisieren einen Markt?" body="Termine eintragen, Absagen melden. Kostenlos, ohne Konto." href="/de/veranstalter/" action="Markt eintragen" />
+
+  {cancelled.length > 0 && (
+    <Section title="Diese Woche abgesagt">
+      <ul class="cancelled list-reset gutter">
+        {cancelled.map((row) => (
+          <li>
+            <a href={`/de/markt/${row.slug}/`}>{row.name}</a>
+            <span class="meta">{formatDateShort(row.next!.date)} · {row.city}</span>
+            {row.next!.cancellationNote && <em class="meta-quiet">{row.next!.cancellationNote}</em>}
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )}
+
+  <Section title="Städte">
+    <LinkList items={cities.map(([slug, city]) => ({
+      href: `/de/schweiz/${slug}/`,
+      label: city,
+      meta: marketCount(markets.filter((m) => m.citySlug === slug).length),
+    }))} />
+  </Section>
+
+  <Section title="Kantone">
+    <PillList items={regions.map(([slug, region]) => ({
+      label: region,
+      meta: String(markets.filter((m) => m.regionSlug === slug).length),
+    }))} />
+  </Section>
+
+  <Section title="Markttypen"><TypeLegend /></Section>
+
+  <Section title="Woher unsere Daten kommen">
+    <ol class="steps gutter">
+      <li>Termine prüfen</li>
+      <li>Veranstalter bestätigen</li>
+      <li>Absagen sichtbar machen</li>
+    </ol>
+    <p class="gutter meta counts">{marketCount(markets.length)} · {dateCount(rows.length)} · {cities.length} Städte · {regions.length} Kantone</p>
+  </Section>
+
+  <Section title="Fragen"><Faq items={questions} /></Section>
+</Page>
+
+<style>
+  /* Only what is genuinely this page's. Everything else is a component. */
+  .hero p { margin-block-start: var(--space-2); }
+
+  .control {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-half);
+    margin-inline: var(--space-page);
+    padding: var(--space-2);
+    border-radius: var(--radius-photo);
+    background: var(--color-paper);
+  }
+  .control label { min-width: 0; padding: var(--space-1); font-size: var(--text-micro); }
+  .control b, .control span { display: block; }
+  .control b { color: var(--color-quiet); font-weight: var(--weight-semibold); }
+  .control span { overflow: hidden; font-weight: var(--weight-bold); text-overflow: ellipsis; white-space: nowrap; }
+  .control :global(.button) { grid-column: 1 / -1; }
+
+  .more { margin-block-start: var(--space-2); }
+
+  .cancelled li {
+    display: grid;
+    padding-block: var(--space-2);
+    border-block-end: var(--border-width) solid var(--color-line);
+    font-size: var(--text-small);
+  }
+  .cancelled a { font-weight: var(--weight-bold); }
+  .cancelled em { font-style: normal; }
+
+  .steps { margin: 0; padding-inline-start: calc(var(--space-page) + var(--space-3)); font-size: var(--text-small); }
+  .counts { margin-block-start: var(--space-3); }
+
+  /* Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    .control { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .control :global(.button) { grid-column: auto; }
+  }
+</style>
+
 <script>
   /**
    * One pass owns both rules, because they interact: the date chips decide
@@ -61,46 +195,32 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebSit
    * Everything is in the HTML already. Without JavaScript the page is the full
    * list, which is the right failure: the rows are what earns the traffic.
    */
+  import { inWindow, type DateWindow } from '../../lib/date-window';
+
   const PER_DAY = 4;
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
   const empty = document.getElementById('empty');
   const expanded = new Set<HTMLElement>();
-  const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
-  const apply = (filter: string) => {
+  const apply = (window: DateWindow) => {
     const now = new Date();
-    const today = iso(now);
-    const day = now.getDay();
-    const saturday = new Date(now);
-    saturday.setDate(now.getDate() + (day === 0 ? -1 : (6 - day + 7) % 7));
-    const sunday = new Date(saturday);
-    sunday.setDate(saturday.getDate() + 1);
-    const week = new Date(now);
-    week.setDate(now.getDate() + 7);
-
     let shown = 0;
 
     for (const section of days) {
       const rows = Array.from(section.querySelectorAll<HTMLElement>('[data-date]'));
-      const more = section.querySelector<HTMLButtonElement>('[data-more]');
-      const eligible = rows.filter((row) => {
-        const date = row.dataset.date ?? '';
-        return filter === 'all'
-          || (filter === 'today' && date === today)
-          || (filter === 'weekend' && date >= iso(saturday) && date <= iso(sunday))
-          || (filter === 'week' && date <= iso(week));
-      });
+      const more = section.querySelector<HTMLElement>('[data-more]');
+      const eligible = rows.filter((row) => inWindow(row.dataset.date ?? '', window, now));
 
       const open = expanded.has(section);
       const visible = open ? eligible : eligible.slice(0, PER_DAY);
       const visibleSet = new Set(visible);
       for (const row of rows) row.hidden = !visibleSet.has(row);
 
-      const hiddenCount = eligible.length - visible.length;
+      const remaining = eligible.length - visible.length;
       if (more) {
-        more.hidden = hiddenCount === 0;
-        more.textContent = `${hiddenCount} weitere anzeigen`;
+        more.hidden = remaining === 0;
+        more.textContent = `${remaining} weitere anzeigen`;
       }
 
       section.hidden = eligible.length === 0;
@@ -110,17 +230,17 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebSit
     if (empty) empty.hidden = shown > 0;
   };
 
-  let current = 'all';
+  let current: DateWindow = 'all';
   for (const section of days) {
-    section.querySelector<HTMLButtonElement>('[data-more]')?.addEventListener('click', () => {
+    section.querySelector<HTMLElement>('[data-more]')?.addEventListener('click', () => {
       expanded.add(section);
       apply(current);
     });
   }
   for (const button of buttons) {
     button.addEventListener('click', () => {
-      for (const other of buttons) other.classList.toggle('active', other === button);
-      current = button.dataset.filter ?? 'all';
+      for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
+      current = (button.dataset.filter ?? 'all') as DateWindow;
       // A new period is a new question; the days collapse back to four.
       expanded.clear();
       apply(current);
@@ -128,6 +248,3 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebSit
   }
   apply(current);
 </script>
-<style>
-  header,main,footer{max-width:var(--content-max);margin-inline:auto}header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-page);font-size:var(--text-small);font-weight:var(--weight-bold)}.mark{font-size:var(--text-title);font-weight:var(--weight-black);letter-spacing:var(--tracking-display)}.mark span{color:var(--color-accent)}.hero{padding:var(--space-page)}h1{margin:0;font-size:var(--text-display);font-weight:var(--weight-black);letter-spacing:var(--tracking-display);line-height:var(--leading-tight)}.hero p{margin:var(--space-2) 0 0;color:var(--color-grey);font-size:var(--text-small)}.control{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-half);margin:0 var(--space-page);padding:var(--space-2);background:var(--color-paper);border-radius:var(--radius-photo)}.control label{min-width:0;padding:var(--space-1);font-size:var(--text-micro)}.control b,.control span{display:block}.control b{color:var(--color-quiet);font-weight:var(--weight-semibold)}.control span{overflow:hidden;font-weight:var(--weight-bold);text-overflow:ellipsis;white-space:nowrap}.control button{grid-column:1/-1}.filters{display:flex;gap:var(--space-2);overflow-x:auto;padding:var(--space-page)}button{min-height:var(--tap-min);padding:0 var(--space-3);border:var(--border-width) solid var(--color-line);border-radius:var(--radius-pill);background:var(--color-surface);color:var(--color-ink);font:inherit;font-size:var(--text-small);font-weight:var(--weight-bold);white-space:nowrap}.filters button.active,.control button{background:var(--color-ink);color:var(--color-surface);border-color:var(--color-ink)}.list-section>h2,.links>h2,.cantons>h2,.types>h2,.info>h2,.newsletter>h2,.organiser>h2,.cancelled>h2,.faq>h2{margin:0;padding:0 var(--space-page) var(--space-3);font-size:var(--text-section);font-weight:var(--weight-bold);letter-spacing:var(--tracking-section)}#empty{padding:var(--space-page);color:var(--color-grey)}.links,.cantons,.types,.info,.newsletter,.organiser,.cancelled,.faq{padding:var(--space-6) 0 0}.more{display:block;width:calc(100% - var(--space-page) * 2);margin:var(--space-2) var(--space-page) 0;border-style:dashed;color:var(--color-grey)}.cancelled ul,.cantons ul{margin:0;padding:0 var(--space-page);list-style:none}.cancelled li{display:grid;padding:var(--space-2) 0;border-bottom:var(--border-width) solid var(--color-line);font-size:var(--text-small)}.cancelled a{font-weight:var(--weight-bold)}.cancelled span{color:var(--color-grey)}.cancelled em{margin-top:var(--space-half);color:var(--color-grey);font-size:var(--text-micro);font-style:normal}.cantons ul{display:flex;flex-wrap:wrap;gap:var(--space-1)}.cantons li{display:flex;gap:var(--space-1);align-items:center;padding:var(--space-1) var(--space-3);border:var(--border-width) solid var(--color-line);border-radius:var(--radius-pill);font-size:var(--text-micro);font-weight:var(--weight-bold)}.cantons span{color:var(--color-quiet)}.links ul{margin:0;padding:0 var(--space-page);list-style:none}.links li{display:flex;justify-content:space-between;padding:var(--space-2) 0;border-bottom:var(--border-width) solid var(--color-line);font-size:var(--text-small);font-weight:var(--weight-bold)}.links span,.links p,.info p{color:var(--color-grey);font-size:var(--text-small)}.links p,.info p{padding:0 var(--space-page)}.types :global(.legend){border-bottom:var(--border-width) solid var(--color-line)}.info ol{margin:0;padding:0 var(--space-page) 0 calc(var(--space-page) + var(--space-3));font-size:var(--text-small);line-height:var(--leading-body)}.newsletter,.organiser{margin:var(--space-page);padding:var(--space-5);background:var(--color-paper);border-radius:var(--radius-md)}.newsletter p,.organiser p,.faq p{color:var(--color-grey);font-size:var(--text-small)}.newsletter a,.organiser a{display:flex;align-items:center;justify-content:center;min-height:var(--tap-min);border-radius:var(--radius-pill);background:var(--color-ink);color:var(--color-surface);font-size:var(--text-small);font-weight:var(--weight-bold)}.faq{padding-bottom:var(--space-6)}.faq details{padding:var(--space-3) var(--space-page);border-bottom:var(--border-width) solid var(--color-line);font-size:var(--text-small)}summary{font-weight:var(--weight-bold)}footer{padding:var(--space-page);border-top:var(--border-width) solid var(--color-line);color:var(--color-quiet);font-size:var(--text-micro)}@media(min-width:900px){.control{grid-template-columns:repeat(4,minmax(0,1fr))}.control button{grid-column:auto}.list-section{max-width:var(--content-max)}}
-</style>

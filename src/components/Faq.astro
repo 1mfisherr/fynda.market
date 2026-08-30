@@ -1,0 +1,27 @@
+---
+/**
+ * Questions, as data. A page passes the list; it does not lay out <details>
+ * elements itself, so every FAQ on the site opens and reads the same way.
+ */
+export interface QuestionItem { q: string; a: string; }
+interface Props { items: QuestionItem[]; }
+const { items } = Astro.props;
+---
+<div class="faq">
+  {items.map((item) => (
+    <details>
+      <summary>{item.q}</summary>
+      <p class="meta">{item.a}</p>
+    </details>
+  ))}
+</div>
+
+<style>
+  details {
+    padding: var(--space-3) var(--space-page);
+    border-block-end: var(--border-width) solid var(--color-line);
+    font-size: var(--text-small);
+  }
+  summary { font-weight: var(--weight-bold); cursor: pointer; }
+  details p { margin-block-start: var(--space-2); }
+</style>

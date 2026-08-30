@@ -1,0 +1,178 @@
+/*
+  Element defaults and composition — the layer between tokens and components.
+
+  tokens.css says what a colour is. This says what a heading is. Components then
+  say only what is genuinely theirs, which is very little.
+
+  It exists because three pages had already re-styled `h1` three different ways
+  and `button` twice. A heading should look like a heading because it is one,
+  not because the page it landed on remembered to say so.
+
+  Two rules govern everything below, and they are enforced by guardrail 7:
+
+    1. No page defines a selector another page also defines. Shared things live
+       here or in a component, never twice in two <style> blocks.
+    2. A component never sets its own outer margin. Spacing between things is
+       the parent's job — see `.stack`. A component that ships a margin forces
+       every parent to undo it, which is how `:global(.code){margin-top:0}`
+       happened twice before this file existed.
+*/
+
+/* ---- headings ---------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: var(--weight-black);
+  line-height: var(--leading-tight);
+}
+
+h1 {
+  font-size: var(--text-display);
+  letter-spacing: var(--tracking-display);
+}
+
+/* Section headings across every page type. `.section-heading` is the same
+   thing where the element must stay an h2 for outline reasons but the page
+   needs the type ramp of a smaller one. */
+h2,
+.section-heading {
+  font-size: var(--text-section);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-section);
+  line-height: var(--leading-snug);
+}
+
+h3 {
+  font-size: var(--text-title);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-title);
+}
+
+/*
+  Two heading scales, both defined here, because the site has two kinds of
+  section and the difference is meaningful. A home-page section is a top-level
+  division of the site; a market-page section is a subsection of one entity, and
+  the approved design sets it smaller. Named once, so neither page invents it.
+*/
+h2[data-level='sub'] {
+  font-size: var(--text-date);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-title);
+}
+
+p {
+  margin: 0;
+}
+
+/* A caption, a source line, a count — the quiet text under something loud. */
+.meta {
+  color: var(--color-grey);
+  font-size: var(--text-small);
+}
+
+.meta-quiet {
+  color: var(--color-quiet);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+}
+
+/* Small caps-ish label: weekday over a date, "MÄRKTE" on the band. */
+.eyebrow {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+/* ---- lists ------------------------------------------------------------- */
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- composition ------------------------------------------------------- */
+
+/*
+  The one spacing primitive. A stack owns the gaps between its children, so no
+  child needs a margin of its own and no parent needs to cancel one.
+  `--stack-space` lets a stack be tighter or looser without a new class.
+*/
+.stack > * + * {
+  margin-block-start: var(--stack-space, var(--space-6));
+}
+
+/* The page gutter, in one place. Anything full-bleed simply omits it. */
+.gutter {
+  padding-inline: var(--space-page);
+}
+
+/* The reading column. `main`, `header` and `footer` all sit on it, which is
+   what stops the site drifting into three different widths. */
+.wrapper {
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+/* Full-bleed inside a gutter'd parent — a photo, a divider, a list of rows. */
+.bleed {
+  margin-inline: calc(var(--space-page) * -1);
+}
+
+/* ---- interactive ------------------------------------------------------- */
+
+/*
+  One button, everywhere. Before this there were four: a bare `button` rule in
+  two pages and two anchors dressed as buttons. See components/Button.astro for
+  the variants; this is the shape they all share.
+*/
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--tap-min);
+  padding-inline: var(--space-3);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-base),
+    border-color var(--duration-fast) var(--ease-base);
+}
+
+.button[data-variant='primary'],
+.button[aria-pressed='true'] {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-surface);
+}
+
+/* The expander at the foot of a day. Reads as "there is more here", not as an
+   action equal in weight to the markets above it. */
+.button[data-variant='quiet'] {
+  width: 100%;
+  border-style: dashed;
+  color: var(--color-grey);
+}
+
+/* A block button that fills its card. */
+.button[data-block] {
+  display: flex;
+  width: 100%;
+}
+
+/* ---- rules ------------------------------------------------------------- */
+
+.divider {
+  border: 0;
+  border-block-start: var(--border-width) solid var(--color-line);
+}

@@ -76,6 +76,8 @@
   --tracking-display: -0.045em;
   --tracking-section: -0.025em;
   --tracking-title: -0.015em;
+  --tracking-tight: -0.04em;   /* the market name and its big date */
+  --tracking-caps: 0.08em;     /* uppercase eyebrows only */
 
   --leading-tight: 1.02;
   --leading-snug: 1.3;
@@ -122,6 +124,9 @@
   --measure: 66ch;
   --tap-min: 44px; /* WCAG 2.2 floor is 24px; we design to 44. */
   --content-max: 720px;
+  /* The one breakpoint. A media query cannot read a custom property, so this
+     value is duplicated in the queries themselves — keep them in step. */
+  --breakpoint-wide: 900px;
   --row-rail: 4px;
   --row-time: 46px;
   --row-photo: 74px;

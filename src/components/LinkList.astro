@@ -1,0 +1,36 @@
+---
+/**
+ * A list of places with counts — the cities block on the home page, and the
+ * same shape a region page will want. PAGES.md keeps exactly one city
+ * component so the two never drift into two designs.
+ */
+export interface LinkItem {
+  href: string;
+  label: string;
+  /** The count or note on the right. Rendered only when present. */
+  meta?: string;
+}
+interface Props { items: LinkItem[]; }
+const { items } = Astro.props;
+---
+<ul class="link-list list-reset gutter">
+  {items.map((item) => (
+    <li>
+      <a href={item.href}>{item.label}</a>
+      {item.meta && <span class="meta">{item.meta}</span>}
+    </li>
+  ))}
+</ul>
+
+<style>
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    border-block-end: var(--border-width) solid var(--color-line);
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+  }
+  li:last-child { border-block-end: 0; }
+</style>

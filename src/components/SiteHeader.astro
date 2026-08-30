@@ -1,0 +1,47 @@
+---
+/**
+ * The masthead, once. It was re-typed in all three pages before this existed,
+ * and had already drifted: two of them styled `header` differently.
+ */
+interface Props {
+  /** A back chevron instead of nothing on the left. Deep pages set this. */
+  back?: boolean;
+}
+const { back = false } = Astro.props;
+import Icon from './Icon.astro';
+---
+<header class="site-header wrapper">
+  <div class="lead">
+    {back && <a class="back" href="/de/" aria-label="Zurück zur Startseite"><Icon name="chevron-right" /></a>}
+    <a class="mark" href="/de/">fynda<span>.</span></a>
+  </div>
+  <a class="saved" href="/de/gemerkt/">Gemerkt</a>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-page);
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+  }
+  .lead { display: flex; align-items: center; gap: var(--space-2); }
+  /* One chevron in the icon set, pointed by the component that uses it. */
+  .back {
+    display: grid;
+    place-items: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    margin-inline-start: calc(var(--space-3) * -1);
+    transform: rotate(180deg);
+  }
+  .mark {
+    font-size: var(--text-title);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-display);
+  }
+  /* The only decorative use of the accent on the site, and it is the logo. */
+  .mark span { color: var(--color-accent); }
+</style>

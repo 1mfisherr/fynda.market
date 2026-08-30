@@ -1,39 +1,120 @@
 ---
-import Base from '../../../layouts/Base.astro';
+/**
+ * City page — `/de/schweiz/[stadt]/`.
+ *
+ * The best-earning page type on v1 and the one the home page's city list points
+ * at. Unlike home it shows every date for the city: someone here has already
+ * chosen the place, so the list is the answer rather than a sample of it.
+ */
+import Page from '../../../layouts/Page.astro';
+import CtaCard from '../../../components/CtaCard.astro';
 import DateBand from '../../../components/DateBand.astro';
+import DateFilters from '../../../components/DateFilters.astro';
 import MarketRow from '../../../components/MarketRow.astro';
+import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
+import { dateCount, marketCount } from '../../../lib/vocabulary';
 import type { Market, Occurrence } from '../../../lib/types';
 
 export async function getStaticPaths() {
   const markets = await getMarkets();
   const cities = new Map(markets.map((market) => [market.citySlug, market.city]));
-  return [...cities].map(([stadt, city]) => ({ params: { stadt }, props: { city, stadt, markets: markets.filter((market) => market.citySlug === stadt) } }));
+  return [...cities].map(([stadt, city]) => ({
+    params: { stadt },
+    props: {
+      city,
+      stadt,
+      region: markets.find((market) => market.citySlug === stadt)!.region,
+      markets: markets.filter((market) => market.citySlug === stadt),
+    },
+  }));
 }
-const { city, stadt, markets } = Astro.props;
-const rows = markets.flatMap((market) => withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[]).map((next) => ({ ...market, next })));
-const groups = Object.values(rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+
+const { city, stadt, region, markets } = Astro.props;
+const rows = markets.flatMap((market) =>
+  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+    .map((next) => ({ ...market, next }))
+);
+const groups = Object.values(
+  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+
 const year = new Date().getFullYear();
 const site = 'https://fynda.market';
-const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` }, { '@type': 'ListItem', position: 2, name: city, item: `${site}/de/schweiz/${stadt}/` }] };
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Schweiz', item: `${site}/de/schweiz/` },
+    { '@type': 'ListItem', position: 2, name: city, item: `${site}/de/schweiz/${stadt}/` },
+  ],
+};
 ---
-<Base title={`Flohmärkte in ${city} ${year} | Fynda`} description={`Flohmärkte in ${city}: Termine, Öffnungszeiten und Absagen.`}>
+<Page back title={`Flohmärkte in ${city} ${year} | Fynda`} description={`Flohmärkte in ${city}: Termine, Öffnungszeiten und Absagen.`}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
-  <header><a class="mark" href="/de/">fynda<span>.</span></a><a href="/de/gemerkt/">Gemerkt</a></header>
-  <main><section class="head"><h1>Flohmärkte in {city} {year}</h1><p>{markets.length} {markets.length === 1 ? 'Markt' : 'Märkte'} · {rows.length} Termine bis Dezember · zuletzt geprüft heute</p><p>Termine, Öffnungszeiten und Absagen.</p></section>
-  <div class="filters" role="group" aria-label="Filter"><button class="active" type="button" data-filter="all">Alle</button><button type="button" data-filter="today">Heute</button><button type="button" data-filter="weekend">Wochenende</button><button type="button" data-filter="private">Nur Private</button></div>
-  <div id="list">{groups.map((group) => <section class="day" data-day><DateBand date={group[0].next!.date} count={group.length} />{group.map((market) => <MarketRow market={market} />)}</section>)}</div>
-  <p class="empty" id="empty" hidden>Für diesen Zeitraum ist nichts eingetragen.</p>
+
+  <section class="head gutter">
+    <h1>Flohmärkte in {city} {year}</h1>
+    <p class="meta">{marketCount(markets.length)} · {dateCount(rows.length)} · zuletzt geprüft heute</p>
+    <p class="meta">Alle bekannten Flohmärkte in {city}, Kanton {region} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.</p>
+  </section>
+
+  <DateFilters windows={['all', 'today', 'weekend']} label="Filter" />
+
+  <Section bleed>
+    <div id="list">
+      {groups.map((group) => (
+        <section class="day" data-day>
+          <DateBand date={group[0].next!.date} count={group.length} />
+          {group.map((market) => <MarketRow market={market} />)}
+        </section>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta" hidden>Für diesen Zeitraum ist nichts eingetragen.</p>
+  </Section>
+
   <TypeLegend />
-  <section class="newsletter"><h2>Nichts verpassen</h2><p>Neue Termine und Absagen für {city}.</p><a href="/de/newsletter/">Newsletter abonnieren</a></section></main>
-</Base>
-<script>
-  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]')); const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]')); const empty = document.getElementById('empty');
-  const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-  const apply = (filter: string) => { const today = iso(new Date()); const day = new Date().getDay(); const saturday = new Date(); saturday.setDate(saturday.getDate() + (day === 0 ? -1 : (6-day+7)%7)); const sunday = new Date(saturday); sunday.setDate(saturday.getDate()+1); let count=0; rows.forEach((row) => { const date=row.dataset.date ?? ''; const privateSeller=row.textContent?.includes('nur Private'); const show=filter==='all' || filter==='today' && date===today || filter==='weekend' && date>=iso(saturday) && date<=iso(sunday) || filter==='private' && privateSeller; row.hidden=!show; if(show) count++; }); document.querySelectorAll<HTMLElement>('[data-day]').forEach((section) => section.hidden=!Array.from(section.querySelectorAll<HTMLElement>('[data-date]')).some((row) => !row.hidden)); if(empty) empty.hidden=count>0; };
-  buttons.forEach((button) => button.addEventListener('click', () => { buttons.forEach((other) => other.classList.toggle('active', other===button)); apply(button.dataset.filter ?? 'all'); })); apply('all');
-</script>
+
+  <CtaCard
+    title="Nichts verpassen"
+    body={`Neue Termine und Absagen für ${city}.`}
+    href="/de/newsletter/"
+    action="Newsletter abonnieren"
+  />
+</Page>
+
 <style>
-  header,main{max-width:var(--content-max);margin-inline:auto}header{display:flex;justify-content:space-between;align-items:center;padding:var(--space-3) var(--space-page);font-size:var(--text-small);font-weight:var(--weight-bold)}.mark{font-size:var(--text-title);font-weight:var(--weight-black);letter-spacing:var(--tracking-display)}.mark span{color:var(--color-accent)}.head{padding:var(--space-page)}h1{margin:0;font-size:var(--text-display);font-weight:var(--weight-black);letter-spacing:var(--tracking-display);line-height:var(--leading-tight)}.head p{margin:var(--space-2) 0 0;color:var(--color-grey);font-size:var(--text-small)}.filters{display:flex;gap:var(--space-2);overflow-x:auto;padding:0 var(--space-page) var(--space-page)}button{min-height:var(--tap-min);padding:0 var(--space-3);border:var(--border-width) solid var(--color-line);border-radius:var(--radius-pill);background:var(--color-surface);color:var(--color-ink);font:inherit;font-size:var(--text-small);font-weight:var(--weight-bold);white-space:nowrap}button.active{background:var(--color-ink);color:var(--color-surface);border-color:var(--color-ink)}.empty{padding:var(--space-page);color:var(--color-grey)}.newsletter{margin:var(--space-page);padding:var(--space-5);background:var(--color-paper);border-radius:var(--radius-md)}.newsletter h2{margin:0;font-size:var(--text-section);letter-spacing:var(--tracking-section)}.newsletter p{color:var(--color-grey);font-size:var(--text-small)}.newsletter a{display:inline-flex;min-height:var(--tap-min);align-items:center;font-size:var(--text-small);font-weight:var(--weight-bold)}
+  .head p { margin-block-start: var(--space-2); }
 </style>
+
+<script>
+  import { inWindow, type DateWindow } from '../../../lib/date-window';
+
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
+  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const empty = document.getElementById('empty');
+
+  const apply = (window: DateWindow) => {
+    const now = new Date();
+    let shown = 0;
+    for (const row of rows) {
+      const visible = inWindow(row.dataset.date ?? '', window, now);
+      row.hidden = !visible;
+      if (visible) shown++;
+    }
+    for (const day of days) {
+      day.hidden = !Array.from(day.querySelectorAll<HTMLElement>('[data-date]')).some((row) => !row.hidden);
+    }
+    if (empty) empty.hidden = shown > 0;
+  };
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
+      apply((button.dataset.filter ?? 'all') as DateWindow);
+    });
+  }
+  apply('all');
+</script>

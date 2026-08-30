@@ -1,0 +1,38 @@
+---
+/**
+ * Compact pills with an optional count — cantons today, tags when filters
+ * arrive. Items without an href render as plain pills, which is how the
+ * cantons sit until the region pages exist: no dead links.
+ */
+export interface PillItem {
+  label: string;
+  meta?: string;
+  href?: string;
+}
+interface Props { items: PillItem[]; }
+const { items } = Astro.props;
+---
+<ul class="pills list-reset gutter">
+  {items.map((item) => (
+    <li>
+      {item.href
+        ? <a class="pill" href={item.href}>{item.label}{item.meta && <span>{item.meta}</span>}</a>
+        : <span class="pill">{item.label}{item.meta && <span>{item.meta}</span>}</span>}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .pills { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-micro);
+    font-weight: var(--weight-bold);
+  }
+  .pill span { color: var(--color-quiet); }
+</style>

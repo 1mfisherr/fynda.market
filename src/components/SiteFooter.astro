@@ -1,0 +1,25 @@
+---
+/**
+ * Deliberately not a link farm. PAGES.md: no city list down here — it
+ * duplicated the cities block and a bare link list is the doorway shape.
+ *
+ * Before this component the market and city pages had no footer at all.
+ */
+const year = new Date().getFullYear();
+---
+<footer class="site-footer wrapper">
+  <p>fynda.market · Flohmärkte in der Schweiz</p>
+  <p class="legal"><a href="/de/impressum/">Impressum</a> · <a href="/de/datenschutz/">Datenschutz</a> · © {year}</p>
+</footer>
+
+<style>
+  .site-footer {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-page);
+    border-block-start: var(--border-width) solid var(--color-line);
+    color: var(--color-quiet);
+    font-size: var(--text-micro);
+  }
+  .legal a { text-decoration: underline; text-underline-offset: var(--space-half); }
+</style>

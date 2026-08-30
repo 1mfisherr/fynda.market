@@ -22,7 +22,7 @@ Updated 2026-08-30, end of session.
 
 1. **Region pages** (`/de/schweiz/[kanton]/`) — thin, reviewed after four weeks. 14 cantons have real content behind them, and the home page already lists them; the pills are unlinked until the pages exist.
 2. **Photographs.** Move the 151 files in, then read the `image_url` facts back onto `markets.image_url`.
-3. **Desktop needs its own design.** Today it is the mobile column centred in a void. The Linientafel was designed at 375px and nothing above 900px has been drawn.
+3. **Desktop needs its own design.** Today it is the mobile column centred in a void. The Linientafel was designed at 375px and nothing above 900px has been drawn. The style refactor of 2026-08-30 means this is now one change in `base.css` and a handful of components, not fifteen.
 4. **3.5 — decide German text search** before any search box exists.
 5. **3.9 filters, 3.10 organiser CTA, 3.11 newsletter and ICS.**
 
@@ -153,6 +153,7 @@ Each step is cheap here and expensive if done later.
 - `npm run verify` before every push.
 - Guardrails reporting `SKIP` are waiting on data, not passing.
 - Colour, type, spacing and motion come from `src/styles/tokens.css`. Never hardcoded.
+- **Four style layers: tokens → base → components → pages.** A page styles only what nothing else can want; a component never sets its own outer margin; German that names a concept lives in `src/lib/vocabulary.ts`. Guardrail 7 enforces all three. See `ARCHITECTURE.md` §Style architecture.
 - German copy is not final until a native speaker reads it.
 - `guardrails.config.json` encodes architecture. Changing a threshold means changing `ARCHITECTURE.md` in the same commit — or not doing it.
 

@@ -1,0 +1,24 @@
+---
+/**
+ * One button. There were four: a bare `button` rule in two pages plus two
+ * anchors dressed as buttons in two more places, all drifting apart.
+ *
+ * The shape lives in styles/base.css as `.button`, so anything that must be a
+ * plain element (a filter chip inside a group, a form submit) can wear the same
+ * class without importing a component. This is the ergonomic wrapper.
+ */
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit';
+  variant?: 'primary' | 'secondary' | 'quiet';
+  /** Fill the width of the parent — a card's call to action. */
+  block?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+const { href, type = 'button', variant = 'secondary', block = false, class: extra, ...rest } = Astro.props;
+const classes = ['button', extra];
+---
+{href
+  ? <a href={href} class:list={classes} data-variant={variant} data-block={block ? '' : undefined} {...rest}><slot /></a>
+  : <button type={type} class:list={classes} data-variant={variant} data-block={block ? '' : undefined} {...rest}><slot /></button>}

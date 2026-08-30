@@ -48,6 +48,13 @@
 
   "occurrenceHorizonDays": 120,
 
+  "styles": {
+    "_comment": "Guardrail 7, and the only one that reads src/ rather than dist/. It encodes the two rules at the top of src/styles/base.css. Measured before that file existed: 10 selectors were defined by more than one page and 7 had already diverged, at three pages. The site is going to fourteen more.",
+    "noDuplicateSelectorsAcrossPages": true,
+    "noHardcodedColoursOrSizes": true,
+    "componentOuterMargin": "forbid"
+  },
+
   "structuredData": {
     "requireOn": ["market"],
     "allowedTypes": ["Event", "Place", "BreadcrumbList", "WebSite", "Organization", "ItemList"],

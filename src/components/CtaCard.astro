@@ -1,0 +1,31 @@
+---
+/**
+ * The newsletter and organiser blocks were the same card written twice, on two
+ * pages, with the button styled separately in each. One card, four props.
+ */
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+  action: string;
+}
+const { title, body, href, action } = Astro.props;
+---
+<section class="cta">
+  <h2>{title}</h2>
+  <p class="meta">{body}</p>
+  <Button href={href} variant="primary" block>{action}</Button>
+</section>
+
+<style>
+  .cta {
+    display: grid;
+    gap: var(--space-3);
+    margin-inline: var(--space-page);
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+    background: var(--color-paper);
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 import type { Market } from '../lib/types';
-import { MARKET_LINE } from '../lib/markets';
+import { LINES } from '../lib/vocabulary';
 import { formatDateShort, formatTime } from '../lib/format';
 import LineCode from './LineCode.astro';
 import PhotoOrArt from './PhotoOrArt.astro';
@@ -9,7 +9,7 @@ interface Props { market: Market; }
 const { market } = Astro.props;
 const occurrence = market.next;
 const cancelled = occurrence?.status === 'cancelled';
-const line = MARKET_LINE[market.kind];
+const line = LINES[market.kind];
 const facts = [
   market.stallCount ? `~${market.stallCount} Stände` : undefined,
   market.sellerMix === 'private' ? 'nur Private' : market.sellerMix === 'mixed' ? 'Private und Händler' : market.sellerMix === 'trader' ? 'Händler' : market.sellerMix === 'new_goods' ? 'Neuware' : undefined,
@@ -22,7 +22,7 @@ const entry = market.entryFee === 0 ? 'frei' : market.entryFee ? `${market.entry
   <div class="time">
     {occurrence?.startTime && <strong>{formatTime(occurrence.startTime)}</strong>}
     {occurrence?.endTime && <span>–{formatTime(occurrence.endTime)}</span>}
-    <LineCode kind={market.kind} muted={cancelled} />
+    <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
   </div>
   <div class="details">
     <h3 class="name"><a href={`/de/markt/${market.slug}/`}>{market.name}</a></h3>
@@ -39,6 +39,7 @@ const entry = market.entryFee === 0 ? 'frei' : market.entryFee ? `${market.entry
   .time { padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
   .time strong { display:block; font-size:var(--text-date); font-weight:var(--weight-black); letter-spacing:var(--tracking-title); line-height:1.1; }
   .time span { display:block; margin-top:var(--space-half); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
+  .line { display:block; margin-top:var(--space-2); }
   .details { min-width:0; }
   .name { margin:0; font-size:var(--text-row-name); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.22; }
   .name a::after { position:absolute; inset:0; content:''; }

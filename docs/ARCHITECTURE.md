@@ -170,6 +170,32 @@ Google's scaled-content policy says "no matter how it's created", so AI-drafted 
 
 A market with a verified address, dates, times and an organiser can carry generated connective prose. A market with a name and a postcode cannot be padded up to the content floor. **Open: the content floor should count verified facts, not characters** — today it counts characters, which generated text satisfies without adding anything real. Fix before any bulk generation runs.
 
+## Style architecture — the layer between tokens and pages
+
+**Added 2026-08-30**, after measuring the drift: at three pages, **10 selectors were defined by more than one page and 7 had already diverged.** `h1` meant three different things. The site is going to fourteen more pages.
+
+Four layers, each allowed to know only about the one below it:
+
+| Layer | File | Owns |
+|---|---|---|
+| **Tokens** | `src/styles/tokens.css` | What a colour, size, space and duration *are*. No selectors |
+| **Base** | `src/styles/base.css` | What an element *is* — headings, `.button`, `.meta` — plus composition: `.stack`, `.gutter`, `.wrapper` |
+| **Components** | `src/components/` | Only what is genuinely theirs. Scoped, per Astro's own recommendation |
+| **Pages** | `src/pages/` | Order and data. A page's `<style>` is what nothing else can want |
+
+Two rules, both enforced by guardrail 7:
+
+1. **No selector is defined by two pages.** Shared things move down a layer.
+2. **A component never sets its own outer margin.** Spacing between things belongs to the parent — that is what `.stack` is for. A component that ships a margin forces every parent to cancel it, which is how `:global(.code){margin-top:0}` came to exist in two places.
+
+And one that follows from the token layer: **no raw hex or px outside `tokens.css`.** The single exception is inside `@media`, because a media query cannot read a custom property.
+
+**Vocabulary is code, not copy.** `src/lib/vocabulary.ts` holds every German string that names a domain concept — market kinds, status labels, plurals. Before it existed the kinds lived in three places and the legend said "Halle" where the market page said "Hallenflohmarkt".
+
+**Guardrail 7 is the only check that reads `src/` rather than `dist/`,** because the failure it catches is invisible in the output: three pages that each look fine and slowly stop looking like each other.
+
+**No CSS framework.** The token layer is better than what one would supply, and adopting one would mean discarding it.
+
 ## Multi-locale, when it happens
 
 Switzerland has three language regions, so this is real rather than vanity. The rules that catch people: return links are mandatory (if page X declares Y, Y must declare X or the whole annotation is ignored); every page references itself; fully-qualified URLs only; `de-CH` is valid, `EU` and `UK` are not; `x-default` for the fallback.
@@ -179,4 +205,4 @@ Partial translation is fine — versions count as duplicates only if the *main c
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-29
+last_reviewed: 2026-08-30

@@ -1,0 +1,41 @@
+---
+/**
+ * A titled block of a page.
+ *
+ * Every page had its own `.links>h2,.types>h2,.info>h2…` chain listing which of
+ * its sections got heading styles — a list that had to be edited every time a
+ * block was added, and was already different on each page. A section is a
+ * section now.
+ *
+ * It sets no outer margin: the parent `.stack` owns the space above it.
+ */
+interface Props {
+  title?: string;
+  id?: string;
+  /** Rows and photos run edge to edge; prose and lists sit in the gutter. */
+  bleed?: boolean;
+  /**
+   * 'page' divides the site (home, city). 'sub' divides one entity (the market
+   * page), which the approved design sets smaller and separates with a band.
+   */
+  level?: 'page' | 'sub';
+}
+const { title, id, bleed = false, level = 'page' } = Astro.props;
+---
+<section id={id} class:list={['section', { sub: level === 'sub' }]}>
+  {title && <h2 class="gutter" data-level={level === 'sub' ? 'sub' : undefined}>{title}</h2>}
+  <div class:list={['body', { bleed }]}><slot /></div>
+</section>
+
+<style>
+  .body { margin-block-start: var(--space-3); }
+  /* The band that separates a market page's blocks. The stack above supplies
+     no gap here, because the band is the gap. */
+  .sub {
+    padding-block: var(--space-page);
+    border-block-start: var(--section-divider) solid var(--color-paper);
+  }
+  .sub > .body { margin-block-start: var(--space-row); }
+  /* Nothing to space away from when there is no heading. */
+  .section > .body:first-child { margin-block-start: 0; }
+</style>

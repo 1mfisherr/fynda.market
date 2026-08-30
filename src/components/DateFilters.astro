@@ -1,0 +1,33 @@
+---
+/**
+ * The date chips. Home offers four windows, a city page three — the same
+ * control either way, so it is one component with a list rather than two
+ * near-identical `.filters` rules in two pages.
+ *
+ * It renders buttons and nothing else. The page owns what filtering means for
+ * its own list; the shared date arithmetic lives in lib/date-window.ts.
+ */
+import type { DateWindow } from '../lib/date-window';
+
+const LABELS: Record<DateWindow, string> = {
+  all: 'Alle',
+  today: 'Heute',
+  weekend: 'Wochenende',
+  week: 'Nächste Woche',
+};
+
+interface Props {
+  windows?: DateWindow[];
+  label?: string;
+}
+const { windows = ['all', 'today', 'weekend', 'week'], label = 'Zeitraum' } = Astro.props;
+---
+<div class="filters gutter" role="group" aria-label={label}>
+  {windows.map((window, i) => (
+    <button class="button" type="button" aria-pressed={String(i === 0)} data-filter={window}>{LABELS[window]}</button>
+  ))}
+</div>
+
+<style>
+  .filters { display: flex; gap: var(--space-2); overflow-x: auto; }
+</style>

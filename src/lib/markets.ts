@@ -11,16 +11,6 @@ import type { Market, Occurrence } from './types';
 import { sampleMarkets } from './fixtures.ts';
 import { thisWeekend, todayIso } from './format.ts';
 
-export const MARKET_LINE = {
-  flohmarkt: { code: 'FM', token: '--line-floh' },
-  hallenflohmarkt: { code: 'HA', token: '--line-halle' },
-  nachtflohmarkt: { code: 'NA', token: '--line-nacht' },
-  kinderflohmarkt: { code: 'KI', token: '--line-kinder' },
-  troedelmarkt: { code: 'TR', token: '--line-troedel' },
-  brocante: { code: 'FM', token: '--line-floh' },
-  antikmarkt: { code: 'FM', token: '--line-floh' },
-  strassenmarkt: { code: 'FM', token: '--line-floh' },
-} as const;
 
 /**
  * Server-side only; Astro exposes non-PUBLIC_ vars to the build, not the client.

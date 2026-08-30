@@ -1,12 +1,12 @@
 ---
 import type { MarketKind } from '../lib/types';
-import { MARKET_LINE } from '../lib/markets';
+import { LINES } from '../lib/vocabulary';
 interface Props { kind: MarketKind; muted?: boolean; }
 const { kind, muted = false } = Astro.props;
-const line = MARKET_LINE[kind];
+const line = LINES[kind];
 ---
 <span class:list={['code', { muted }]} style={muted ? undefined : `background:var(${line.token})`}>{line.code}</span>
 <style>
-  .code { display:inline-block; margin-top:var(--space-2); padding:var(--space-half) var(--space-1); border-radius:var(--radius-xs); color:var(--color-white); font-size:var(--text-code); font-weight:var(--weight-black); letter-spacing:0.06em; line-height:1.2; }
+  .code { display:inline-block; padding:var(--space-half) var(--space-1); border-radius:var(--radius-xs); color:var(--color-white); font-size:var(--text-code); font-weight:var(--weight-black); letter-spacing:0.06em; line-height:1.2; }
   .code.muted { background:var(--color-quiet); }
 </style>

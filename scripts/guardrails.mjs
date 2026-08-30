@@ -49,11 +49,11 @@ const fail = (summary, examples = []) => ({ status: 'fail', summary, examples })
 /* collect the built pages                                                    */
 /* -------------------------------------------------------------------------- */
 
-function walk(dir, acc = []) {
+function walk(dir, acc = [], match = (entry) => entry === 'index.html') {
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
-    if (statSync(full).isDirectory()) walk(full, acc);
-    else if (entry === 'index.html') acc.push(full);
+    if (statSync(full).isDirectory()) walk(full, acc, match);
+    else if (match(entry)) acc.push(full);
   }
   return acc;
 }
@@ -318,6 +318,83 @@ check('Structured data', () => {
 
   if (problems.length) return fail(`${problems.length} structured-data problem(s)`, problems);
   return pass('structured data present and valid, at most one Event per page');
+});
+
+/* -------------------------------------------------------------------------- */
+/* 7. style cohesion                                                          */
+/*                                                                            */
+/* The one check that reads source rather than output, because the failure it  */
+/* catches is invisible in dist/: three pages that each look fine and slowly   */
+/* stop looking like each other. Measured 2026-08-30, before styles/base.css   */
+/* existed: 10 selectors defined in more than one page, 7 already diverged.    */
+/* -------------------------------------------------------------------------- */
+
+check('Style cohesion', () => {
+  const rules = config.styles;
+  if (!rules) return skip('no styles section in guardrails.config.json');
+
+  const srcDir = join(root, 'src');
+  const astro = walk(srcDir, [], (entry) => entry.endsWith('.astro'));
+  const pageFilesSrc = astro.filter((f) => f.includes(`${sep}pages${sep}`));
+  const problems = [];
+
+  const styleOf = (file) => {
+    const html = readFileSync(file, 'utf8');
+    return [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map((m) => m[1]).join('\n');
+  };
+  const rel = (file) => file.slice(root.length + 1).split(sep).join('/');
+
+  // --- a. no selector defined by two pages ---------------------------------
+  const owners = new Map();
+  for (const file of pageFilesSrc) {
+    const css = styleOf(file);
+    for (const [, raw] of css.matchAll(/([^{}@]+)\{[^{}]*\}/g)) {
+      const selector = raw.trim().replace(/\s+/g, ' ');
+      if (!selector || selector.startsWith('/*')) continue;
+      if (!owners.has(selector)) owners.set(selector, new Set());
+      owners.get(selector).add(rel(file));
+    }
+  }
+  for (const [selector, files] of owners) {
+    if (files.size > 1) {
+      problems.push(
+        `"${selector}" is styled by ${files.size} pages (${[...files].join(', ')}). ` +
+        `Shared things belong in src/styles/base.css or a component, never in two <style> blocks.`
+      );
+    }
+  }
+
+  // --- b. no raw colours or sizes outside the token file -------------------
+  // A media query cannot read a custom property, so px inside @media is the one
+  // place a literal is correct. Everything else names a token or it drifts.
+  for (const file of astro) {
+    const css = styleOf(file).replace(/@media[^{]*\{/g, '');
+    for (const [, literal] of css.matchAll(/(#[0-9a-fA-F]{3,8}\b|(?<![\w.-])\d+(?:\.\d+)?px)/g)) {
+      problems.push(`${rel(file)} — hardcoded "${literal}". Use a token from src/styles/tokens.css.`);
+    }
+  }
+
+  // --- c. a component must not set its own outer margin --------------------
+  // A component that ships a margin forces every parent to cancel it. That is
+  // how `:global(.code){margin-top:0}` came to exist in two places.
+  for (const file of astro.filter((f) => f.includes(`${sep}components${sep}`))) {
+    const css = styleOf(file);
+    for (const [, prop] of css.matchAll(/(?<![\w-])(margin(?:-block-start|-top|-block|-inline|-inline-start|-inline-end|-bottom|-block-end|-left|-right)?)\s*:(?![^;}]*\b0\b)/g)) {
+      // Only the outermost element is the parent's business; a margin between a
+      // component's own children is entirely its own affair. Flag the rules that
+      // could reach outside: the ones on the component root.
+      const rootRule = new RegExp(`(^|\})\s*\.[\w-]+\s*\{[^{}]*${prop}\s*:`, 'm');
+      if (rootRule.test(css) && rules.componentOuterMargin === 'forbid') {
+        problems.push(`${rel(file)} — "${prop}" on a component root. Spacing between things is the parent's job (.stack).`);
+        break;
+      }
+    }
+  }
+
+  if (problems.length) return fail(`${problems.length} cohesion problem(s)`, problems);
+  return pass(
+    `${pageFilesSrc.length} pages share one style layer; no duplicated selectors, no hardcoded colours or sizes`
+  );
 });
 
 /* -------------------------------------------------------------------------- */

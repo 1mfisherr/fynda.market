@@ -1,0 +1,48 @@
+---
+/**
+ * Every page's shell: head, masthead, main, footer.
+ *
+ * Base.astro owns <head> and nothing else. This owns the frame around the
+ * content, which is what stops each page from re-inventing it — before it
+ * existed the header was typed three times and the footer only once, so two of
+ * the three page types simply ended mid-air.
+ *
+ * `main` is a `.stack`, so the vertical rhythm between blocks is owned here and
+ * no block needs a margin of its own. A page that wants a tighter or looser
+ * rhythm sets --stack-space; it does not restyle its children.
+ */
+import Base from './Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  indexable?: boolean;
+  /** Deep pages show a back chevron in the masthead. */
+  back?: boolean;
+  /** Skip-link target and the main element's id. */
+  mainId?: string;
+}
+const { title, description, indexable = true, back = false, mainId = 'inhalt' } = Astro.props;
+---
+<Base title={title} description={description} indexable={indexable}>
+  <slot name="head" slot="head" />
+  <a class="skip button" href={`#${mainId}`}>Zum Inhalt springen</a>
+  <SiteHeader back={back} />
+  <main id={mainId} class="stack wrapper"><slot /></main>
+  <SiteFooter />
+</Base>
+
+<style>
+  /* Visible only when focused — the first thing a keyboard user meets. */
+  .skip {
+    position: absolute;
+    inset-inline-start: var(--space-page);
+    inset-block-start: var(--space-page);
+    z-index: 1;
+    transform: translateY(-200%);
+  }
+  .skip:focus-visible { transform: none; }
+  main { padding-block-end: var(--space-7); }
+</style>
