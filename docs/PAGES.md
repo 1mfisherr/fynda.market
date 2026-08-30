@@ -140,6 +140,22 @@ Same blocks as the city page, plus a **list of cities in the canton that actuall
 
 ---
 
+## The approved design
+
+**`design/fynda-v5.html`, approved 2026-08-30.** A departure board, not a card list.
+
+- **The date leads.** The day number is set at display size and heads its own band; the time is a detail inside the row. 38% of clicks carry a date.
+- **Colour means the type of market**, carried as a rail and a two-letter code, with a legend (`BRAND.md`).
+- **A cancelled market keeps its slot**, struck through, greyscale, with the reason and the time it was reported. Real timetables show cancelled services; every competitor deletes them.
+- **Photographs** in a row thumbnail, a market-page hero, and a strip showing the place at different hours.
+- No thumbnail-chevron rows, no cards, no `card`/`pill`/`tile`/`chip` vocabulary.
+
+### The fields we do not have
+
+The mockup shows stall counts, seller mix, packing-up times, dogs, toilets and travel advice. **We hold none of them.** They came from research into what decides a trip, not from our data.
+
+The rule for building it: **a block renders only when its data exists.** No placeholder, no "unbekannt" row, no invented figure. A market page with four facts and a confirmed date is honest and still better than every competitor. Where a gap is worth filling, the page offers the one-tap way to fill it — an organiser or a visitor answering is how the field gets populated, and that is the collection mechanism, not a decoration.
+
 ## What goes inside a block
 
 Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bottom.

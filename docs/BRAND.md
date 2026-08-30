@@ -1,6 +1,6 @@
 # Brand and design
 
-Identity and the system that carries it. Mockups live in `/design` — open `fynda-startseite.html`.
+Identity and the system that carries it. The approved design is `design/fynda-v5.html`.
 
 ---
 
@@ -14,9 +14,11 @@ That rules things out usefully: no countdowns, no "don't miss out", no dark mode
 
 ## The one rule
 
-> **White, near-black, and one colour. The colour marks only the date and whether it is happening.**
+> **Colour carries information or it does not appear.**
 
-Nowhere else. Not on buttons for decoration, not on section headers, not on two things at once. The most important fact on the page becomes the only coloured thing on the page — hierarchy and identity in one decision.
+Two colour systems, each with exactly one job. **The accent marks the date and whether it is happening** — nowhere else, not on buttons for decoration, not on section headers. **The line colours mark the type of market** — nothing else. Everything else is near-black on white.
+
+The most important fact on the page is the only accented thing on the page. Hierarchy and identity become one decision.
 
 | Token | Value | Use |
 |---|---|---|
@@ -28,7 +30,11 @@ Nowhere else. Not on buttons for decoration, not on section headers, not on two 
 | `--color-paper` | `#F5F4F2` | Panels, chips, image placeholders |
 | `--color-white` | `#FFFFFF` | Page ground |
 
-**Category colours — icons only, never fill or text:** Flohmarkt `#FF4A2B` · Halle `#3D5AFE` · Nacht `#7C3AED` · Kinder `#F5A524` · Trödel `#E4007F`
+**Category colours are the line colours.** Amended 2026-08-30, when the Linientafel design was approved. They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row and as a two-letter code. Never anywhere else, and never without a legend on the page.
+
+Flohmarkt `FM` `#FF4A2B` · Halle `HA` `#3D5AFE` · Nacht `NA` `#7C3AED` · Kinder `KI` `#F5A524` · Trödel `TR` `#E4007F`
+
+The earlier rule said "icons only, never as fill or text". That rule could not produce a system, only decoration. The test is unchanged in spirit: **colour must carry information.** The accent still marks dates and status and nothing else; the line colours mark type and nothing else. A cancelled market loses its line colour — the system says "not happening" without a badge.
 
 **Status:** confirmed uses the accent; cancelled greys out with a strikethrough; unverified stays grey and says so. **Never colour alone — always a word beside it.**
 
@@ -114,4 +120,4 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-29
+last_reviewed: 2026-08-30

@@ -6,27 +6,20 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 ## Now
 
-Repo and build pipeline work. `npm run verify` is green. Astro 7 skeleton, design tokens, six CI guardrails. No product pages yet.
+**The database is live.** Supabase in `eu-west-1`, Postgres 17.6, both migrations applied, PostGIS in `extensions`, RLS on every table. `scripts/db.mjs` is how scripts connect.
 
-**Fynda is a visitor tool.** SEO is how people find it. Organiser tooling comes later. **Switzerland is unclaimed** — no credible nationwide Swiss directory exists (`PRODUCT.md`). That is the opening.
+**The design is approved:** `design/fynda-v5.html` — the Linientafel. A departure board, the date leading, market type as a line colour, photographs. `PAGES.md` says what is on each page and why; `BRAND.md` carries the amended colour rule.
 
-**Approach:** build the site first, bring Swiss data in once it works. The domain is a few days away and blocks nothing.
+**Built so far:** home and market pages in the old card style, against sample data. Both get rebuilt to the approved design.
 
-**3.2 is done.** The schema is in `supabase/migrations/20260829120000_initial_schema.sql` and applies cleanly to Postgres 16 + PostGIS 3.4; `supabase/tests/schema_test.sql` holds 15 behavioural assertions and they all pass. The reasoning is in `ARCHITECTURE.md` §Data model.
+**Next, in order:**
 
-**The page plan is written: `PAGES.md`.** Which pages exist, why, what is on each and in what order — decided from v1's own Search Console and event data rather than taste. It closes the "what each page contains" question and lists five changes to what is already built.
+1. **3.4 — import the v1 data** (Claude). 161 markets, 2,357 dates, every fact with a source, from the live fleafind database. This unblocks everything else.
+2. **Rebuild the pages to the Linientafel** (Codex, from the plan handed over 2026-08-30).
+3. **City and region pages.**
+4. Then 3.5 German text search, 3.9 filters, 3.10 organiser CTA.
 
-**The home page is built** at `/de/`, from the design in `design/Main.dc.html`: hero, search, date chips, a weekend rail, an upcoming list, the category grid, the organiser CTA and the tab bar. Components live in `src/components/`, the query layer in `src/lib/`.
-
-**It renders sample data.** `src/lib/fixtures.ts` holds six markets shaped exactly like what `publishable_markets` returns. The build prints a warning every time it uses them, and `getMarkets()` throws rather than falling back if `FYNDA_DATA_SOURCE=supabase`. **Nothing may be deployed until 1.4 and 3.4 are done.**
-
-**3.3 is done.** `supabase/migrations/20260829130000_analytics_events.sql`, with 17 tests. v1's best idea is carried over — the event registry enforced as a database constraint, so a broken collector cannot persist arbitrary or identifying keys. Three things changed: no persistent visitor identifier at all (a rotating daily hash only), `no_results` as its own event rather than a search with zero results, and retention that actually prunes. v1 monitored storage and never deleted anything.
-
-**The market page is built** (`/de/markt/[slug]/`) — the atom. Exactly one schema.org `Event`, `eventStatus` wired, `startDate` carrying the venue's UTC offset, the cancellation stated with its reason and the next real date, and freshness said plainly: "Bestätigt am 28. Aug".
-
-**All six guardrails now PASS with no SKIPs** for the first time. `npm run build` runs the data build first (`scripts/emit-data.mjs`), which writes `data/entities.json` and `data/occurrences.json` from the same query layer the pages use — so the ratio and horizon checks measure the real thing.
-
-**Next: 3.4, the import** — blocked on credentials, see below.
+**The honest gap:** the design shows stall counts, seller mix, packing-up times, dogs, toilets and travel advice. We hold none of them. A block renders only when its data exists — no placeholders, no invented figures. See `PAGES.md` §The fields we do not have.
 
 ### Where the data comes from
 
