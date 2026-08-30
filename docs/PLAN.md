@@ -48,7 +48,7 @@ The local copy in `~/Documents/fleafind-backups/2026-08-29/` — **161 markets (
 | ~~1.1~~ | ~~GitHub repo~~ | Done — `github.com/1mfisherr/fynda.market` |
 | 1.2 | Register `fynda.market` | Only this one domain |
 | 1.3 | Cloudflare account | Workers + R2 |
-| ~~1.4~~ | ~~Supabase project~~ | Created 2026-08-29. Credentials still need to reach `.env` |
+| ~~1.4~~ | ~~Supabase project~~ | Created 2026-08-29 in **`eu-west-1` Ireland**, not Zurich — see `STACK.md`. Credentials still need to reach `.env` |
 | 1.5 | Resend account | Newsletter sending |
 | 1.6 | A host for Metabase | ~$5–15/mo |
 | 1.7 | Google Search Console | Verify the day the domain exists |
