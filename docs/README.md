@@ -15,7 +15,7 @@ Read only what the task needs. Every line loaded is context spent.
 
 **Reference — only when a specific fact is needed:** `reference/competitors.md` (site-by-site teardown), `reference/database-options.md` (verified pricing and limits).
 
-**Outside `docs/`:** `../guardrails.config.json` (architecture as machine-checked config) · `../scripts/guardrails.mjs` (the six checks that block deploy) · `../src/styles/tokens.css` (colour, type, space, motion) · `../design/` (mockups).
+**Outside `docs/`:** `../guardrails.config.json` (architecture as machine-checked config) · `../scripts/guardrails.mjs` (the eight checks that block deploy) · `../src/styles/tokens.css` and `../src/styles/base.css` (the style layers) · `../src/lib/i18n.ts` (locales, and every URL) · `../src/lib/strings.ts` (interface copy per language) · `../src/lib/vocabulary.ts` (domain words) · `../design/` (mockups).
 
 `archive/` is prior research. **Don't read it unless asked for something specific.**
 

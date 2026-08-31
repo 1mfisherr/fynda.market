@@ -24,22 +24,21 @@ Launch with the fewest page types that could not be mistaken for spam. Everythin
 
 ---
 
-## Launch: four indexable page types
+## Indexable page types
 
-| Page type | One per | Count at launch (CH) |
+| Page type | One per | Count (CH, per locale) |
 |---|---|---|
-| **Home** | site | 1 |
-| **Market page** | real market | ~150 |
-| **City page** | city *that has markets* | ~50 |
-| **Region page** | canton / Bundesland | ~26 |
+| **Locale home** | locale | 1 |
+| **Country** | country | 1 *(not built yet)* |
+| **Region** | canton / Bundesland | 8 of 14 *(not built yet)* |
+| **City** | city *that has markets* | 55 |
+| **Market** | real market | 157 |
 
-**~230 pages, ~1.2 per market.** v1 was ~60 per market.
+**852 indexable URLs today across four locales — 1.00 per entity per locale.** v1 was ~60 per market.
 
 City pages were by far v1's best performers (25.5 clicks/page vs 4.9 for market pages). Market pages are the atom everything else is a view over. Region pages are cheap and German demand for them is large. Home carries "today / this weekend" without needing a URL for it.
 
-**Utility pages** — `/de/melden/`, `/de/newsletter/`, `/de/veranstalter/`, `/de/gemerkt/`, `/de/impressum/`, `/de/datenschutz/` — and the radius view `/umkreis/` are a fifth kind. They are **noindex, excluded from the sitemap, and excluded from the URL-to-entity ratio**, because they carry no entity and compete for no query. They have their own content floor (150) so a contact form is not judged as a thin country page. Added 2026-08-30.
-
-`/llms.txt` and `/ics/[slug].ics` are files, not pages: no URL competes for a query, so they do not enter the page count at all.
+**A country page does not exist yet** and breadcrumbs already point at one. Build it with the region pages.
 
 ## Everything else is a query parameter
 
@@ -57,16 +56,51 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 ## URL shape
 
 ```
-/de/                                    language
-/de/deutschland/                        country
-/de/deutschland/nordrhein-westfalen/    region
-/de/deutschland/koeln/                  city
+/de/                                    locale home
+/de/schweiz/                            country
+/de/schweiz/kanton/zuerich/             region (canton / Bundesland)
+/de/schweiz/zuerich/                    city
 /de/markt/[slug]/                       market
+/de/melden/                             utility (noindex)
+/umkreis/                               radius view (noindex)
 ```
 
-Language first, then country, then place — unambiguous across Europe, no city-name collisions. **Market pages sit outside the geography tree on purpose:** a market never needs a new URL if its city or region classification changes.
+**Locale first, then country, then place.** The whole path is in the page's own language — country, section word and city name:
 
-`/` redirects to `/de/` — shipped 2026-08-29. Astro emits a redirect stub there, which the guardrails treat as **not a page**: exempt from the content floor and excluded from the URL-to-entity ratio, because a redirect carries no content and competes for no query. It is still checked against the route allowlist — a redirect pointing at a forbidden URL is still a forbidden URL.
+| | de | fr | it | en |
+|---|---|---|---|---|
+| country | `schweiz` | `suisse` | `svizzera` | `switzerland` |
+| market | `markt` | `marche` | `mercato` | `market` |
+| canton | `kanton` | `canton` | `cantone` | `canton` |
+| Zürich | `zuerich` | `zurich` | `zurigo` | `zurich` |
+
+Built only by `src/lib/i18n.ts`. A path assembled by hand is how `/it/frankreich/paris/` happens — right words, wrong language, invisible until a native speaker reads it.
+
+**Market pages sit outside the geography tree on purpose:** a market never needs a new URL if its city or region classification changes. **A market keeps one slug in every language** — its name is a proper noun.
+
+**The canton level uses a type segment** because five Swiss names are both a city and a canton (Zürich, Bern, Luzern, St. Gallen, Schaffhausen), and it is structural rather than Swiss: Berlin, Hamburg and Bremen are city-states. Booking.com, Eventbrite and meine-flohmarkt-termine all solve it the same way. **A type segment partitions — one URL per canton; a facet multiplies — every place × seven weekdays.** That distinction is what the forbid rules encode.
+
+**Utility pages** — the forms, legal text and saved markets — plus `/umkreis/` are **noindex, out of the sitemap, and out of the URL-to-entity ratio**: they carry no entity and compete for no query. They have their own content floor (150), because a contact form is not a thin country page.
+
+`/llms.txt` and `/ics/[slug].ics` are files, not pages; they never enter the page count.
+
+`/` redirects to `/de/`. Astro emits a redirect stub, which the guardrails treat as **not a page**: exempt from the content floor and the ratio, still checked against the route allowlist.
+
+## Locales
+
+**Switzerland publishes in de, fr, it and en. Every other country gets its own language plus English.** Decided 2026-08-31, and it was not a future concern — 31 of 157 markets (20%) are in French- or Italian-speaking Switzerland and were being served German pages.
+
+**A language version is not a facet combination.** City × weekday produces mostly empty cells; the same market in Italian is a full page with the same dates, address and status. That distinction is why the URL-to-entity ratio now counts **per locale** — the old aggregate count read four languages as 4.02 against a ceiling of 2.0 and would have blocked translation outright.
+
+The line that does matter is Google's: scaled content abuse covers pages generated *"through automated transformations like synonymizing, translating"* — **where little value is provided**. So:
+
+> **Localise the facts and the interface. Never mass-translate prose.**
+
+A market page's value is language-neutral data — date, time, address, coordinates, cancelled-or-not, confirmed-on. Interface strings (`src/lib/strings.ts`) are a few dozen phrases written once per language by a person. **Market descriptions are the only real prose, and appear in a language only after a human has read them.** They exist in the database in four languages from the v1 import and are deliberately not rendered.
+
+Place names and per-locale slugs live in the database (`slugs`, `texts`), written by `scripts/localise-places.mjs`. Only genuine exonyms are translated — Bâle, Zurigo, Coire; Lausanne stays Lausanne in all four.
+
+**hreflang** is emitted on every indexable page: every cluster member lists every other including itself, plus `x-default` → German. Guardrail 8 checks it, because one error voids a whole cluster and roughly three quarters of implementations in the wild carry one.
 
 ## How a page type graduates
 
@@ -214,13 +248,24 @@ It compares **class names, not just whole selectors.** The first version compare
 
 **No CSS framework.** The token layer is better than what one would supply, and adopting one would mean discarding it.
 
-## Multi-locale, when it happens
+## The eight guardrails
 
-Switzerland has three language regions, so this is real rather than vanity. The rules that catch people: return links are mandatory (if page X declares Y, Y must declare X or the whole annotation is ignored); every page references itself; fully-qualified URLs only; `de-CH` is valid, `EU` and `UK` are not; `x-default` for the fallback.
+`scripts/guardrails.mjs`, run by `npm run verify` and by CI. Config in `guardrails.config.json`.
 
-Partial translation is fine — versions count as duplicates only if the *main content* is untranslated. Which is why locale is not a page multiplier: **a locale earns a page when its content is translated, not when the template is.**
+| # | Check | Blocks |
+|---|---|---|
+| 1 | Route allowlist | A URL shape nobody decided on |
+| 2 | URL-to-entity ratio, **per locale** | Page count outrunning real things in the world |
+| 3 | Content floor | Pages too thin to deserve a URL |
+| 4 | Occurrence horizon (120 days) | The unbounded date expansion that killed v1 |
+| 5 | Explicit image dimensions | Layout shift |
+| 6 | Structured data, one `Event` per page | The markup Google gives a manual action for |
+| 7 | Style cohesion | Pages drifting into separate designs |
+| 8 | hreflang clusters | A one-way link voiding a whole language cluster |
+
+Checks 1–6 and 8 read `dist/`. Check 7 reads `src/`, because the failure it catches is invisible in the output.
 
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-30
+last_reviewed: 2026-08-31

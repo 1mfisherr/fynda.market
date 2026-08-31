@@ -35,7 +35,7 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 
 ---
 
-## Home — `/de/`
+## Home — `/{locale}/`
 
 **Who lands here:** brand and direct traffic, plus the head term `flohmarkt schweiz`. 4% of visitors. Do not optimise the site around it, and do not starve it either.
 
@@ -88,7 +88,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 
 ---
 
-## Market page — `/de/markt/[slug]/`
+## Market page — `/{locale}/{markt|marche|mercato|market}/[slug]/`
 
 **Who lands here:** name and venue queries (40% of clicks) — `flohmarkt mosergarten schaffhausen 2026`, `flohmarkt münsterplatz`. The highest-intent visitor on the site.
 
@@ -113,7 +113,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 
 ---
 
-## City page — `/de/schweiz/[city]/`
+## City page — `/{locale}/{country}/[city]/`
 
 **Who lands here:** the biggest and best-converting segment — `flohmarkt luzern 2026` was v1's single best query (148 clicks, 15.7% CTR). 38% of all clicks carry a city and a year.
 
@@ -136,7 +136,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 
 ---
 
-## Region page — `/de/schweiz/[canton]/`
+## Region page — `/{locale}/{country}/kanton/[canton]/`
 
 **Honest position: this is the weakest of the four, and it is built for Germany, not Switzerland.**
 

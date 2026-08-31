@@ -2,7 +2,7 @@
 
 A European flea-market platform. Pilot in Switzerland, then Germany, then wider Europe.
 Repo: `github.com/1mfisherr/fynda.market`. Will live at `fynda.market`.
-The build pipeline exists (Astro skeleton, design tokens, six CI guardrails). No product pages yet — see `docs/PLAN.md`.
+The site is built on the imported v1 data in four languages — 859 pages, eight CI guardrails. See `docs/PLAN.md` for where it stands and what is next.
 
 Rebuild of fleafind.ch, which ranked #1 in Switzerland and then lost ~97% of its traffic to a Google spam update on 2026-08-22.
 
@@ -29,6 +29,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 |---|---|
 | **Name** | Fynda, at `fynda.market` |
 | **Pilot market** | Switzerland (data exists from v1), then Germany |
+| **Languages** | CH: de, fr, it, en. Every other country: its language + English. Interface strings are written per language; prose ships only after a human reads it |
 | **Users pay nothing, ever** | Revenue is supply-side: organisers, local business advertising |
 | **Monetization deferred** | Build the hooks, defer the machinery. No AdSense |
 | **Organiser surface from day one** | Even if v1 is just "contact us by email" |
@@ -40,7 +41,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 | **Photos** | Every market gets one. A deliberate break from the category |
 | **Tags** | From day one, small set, **filters not URLs** |
 | **Newsletter** | Live from day one, city-segmented, list in our own Postgres |
-| **URL shape** | `/de/deutschland/koeln/`, markets at `/de/markt/[slug]/` |
+| **URL shape** | Locale, then country, then place — `/de/schweiz/zuerich/`, `/fr/suisse/lausanne/`. The whole path is in the page's language. Built only by `src/lib/i18n.ts` |
 | **Multi-country data model from commit one** | Even though one country ships first |
 | **Guardrails are architecture** | `guardrails.config.json` encodes `ARCHITECTURE.md`. Loosening a threshold to make a red build go green is forbidden; deliberately changing a rule because the project outgrew it is normal — doc and config in the same commit |
 | **No rule here is permanent** | These docs were written early, by an AI, from what was known then. A rule that blocks something good is a bug in the doc. Propose the change, say what the rule was protecting against, and why that is outweighed. Never work around a rule silently |
