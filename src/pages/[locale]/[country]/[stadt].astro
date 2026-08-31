@@ -11,11 +11,12 @@ import CtaCard from '../../../components/CtaCard.astro';
 import DateBand from '../../../components/DateBand.astro';
 import DateFilters from '../../../components/DateFilters.astro';
 import MarketRow from '../../../components/MarketRow.astro';
+import PillList from '../../../components/PillList.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon, HORIZON_DAYS } from '../../../lib/markets';
 import { formatDate, formatTimeRange } from '../../../lib/format';
-import { LOCALES, cityPath, countryPath, type Locale } from '../../../lib/i18n';
+import { LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
 import type { Market, Occurrence } from '../../../lib/types';
 
@@ -53,14 +54,14 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, country: sample.countrySlug, stadt },
-        props: { locale, city: sample.city, stadt, region: sample.region, markets: here, alternates },
+        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, alternates },
       });
     }
   }
   return paths;
 }
 
-const { locale, city, stadt, region, markets, alternates } = Astro.props;
+const { locale, city, stadt, region, regionSlug, markets, alternates } = Astro.props;
 const s = t(locale);
 const rows = markets.flatMap((market) =>
   withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
@@ -104,8 +105,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: markets[0].region, item: `${site}${countryPath(locale, markets[0].countrySlug)}` },
-    { '@type': 'ListItem', position: 2, name: city, item: `${site}${cityPath(locale, markets[0].countrySlug, stadt)}` },
+    { '@type': 'ListItem', position: 1, name: 'Fynda', item: `${site}${homePath(locale)}` },
+    { '@type': 'ListItem', position: 2, name: region, item: `${site}${regionPath(locale, markets[0].countrySlug, regionSlug)}` },
+    { '@type': 'ListItem', position: 3, name: city, item: `${site}${cityPath(locale, markets[0].countrySlug, stadt)}` },
   ],
 };
 ---
@@ -118,6 +120,8 @@ const jsonLd = {
     <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))} · {s.lastChecked}</p>
     <p class="meta">{s.cityIntro(city, region)}</p>
   </section>
+
+  <PillList items={[{ href: regionPath(locale, markets[0].countrySlug, regionSlug), label: s.regionLabel(region) }]} />
 
   <DateFilters locale={locale} windows={['all', 'today', 'weekend']} />
 

@@ -29,6 +29,7 @@ const markets = await getMarkets();
 // Distinct places, counted the way the ratio check counts pages: a city or
 // region earns a page by having content, so only places with a market count.
 const cities = new Set(markets.map((m) => m.city));
+const regions = new Set(markets.map((m) => m.regionSlug));
 const entities = {
   markets: markets.length,
   cities: cities.size,
@@ -36,9 +37,9 @@ const entities = {
   // check divides by this: four languages of one market is four full pages,
   // not four empty cells.
   locales: LOCALES.length,
-  // Regions are not modelled in the fixtures yet; the import (PLAN.md 3.4)
-  // fills this in. Zero is honest, and the ratio check treats it as such.
-  regions: 0,
+  // Counted from the markets, like the cities: a canton earns a page by having
+  // one, which is the same rule the canton route applies.
+  regions: regions.size,
 };
 
 // Every occurrence a page may render. The horizon clamp is applied here as

@@ -83,6 +83,13 @@ export interface Strings {
   lastChecked: string;
   inNextMonths: (n: number) => string;
 
+  /* canton page */
+  regionHeading: (n: number, region: string, year: number) => string;
+  regionIntro: (region: string) => string;
+  /** "Kanton Luzern". The city of Luzern and the canton share a name — the
+   *  label is what tells a link on the city page which one it means. */
+  regionLabel: (region: string) => string;
+
   /* counts */
   marketCount: (n: number) => string;
   dateCount: (n: number) => string;
@@ -168,6 +175,13 @@ const de: Strings = {
   lastChecked: 'zuletzt geprüft heute',
   inNextMonths: (n) => `in den nächsten ${n} Monaten`,
 
+  regionHeading: (n, region, year) =>
+    n === 1 ? `Der Flohmarkt im Kanton ${region} ${year}` : `Die ${n} Flohmärkte im Kanton ${region} ${year}`,
+  regionIntro: (region) =>
+    `Alle bekannten Flohmärkte im Kanton ${region} — nach Ort und Datum, mit Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
+
+  regionLabel: (region) => `Kanton ${region}`,
+
   marketCount: (n) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`,
 
@@ -251,6 +265,13 @@ const en: Strings = {
     `Every known flea market in ${city}, canton of ${region} — with dates, opening hours and cancellations. Cancelled dates stay visible.`,
   lastChecked: 'last checked today',
   inNextMonths: (n) => `in the next ${n} months`,
+
+  regionHeading: (n, region, year) =>
+    n === 1 ? `The flea market in the canton of ${region} ${year}` : `The ${n} flea markets in the canton of ${region} ${year}`,
+  regionIntro: (region) =>
+    `Every known flea market in the canton of ${region} — by town and by date, with opening hours and cancellations. Cancelled dates stay visible.`,
+
+  regionLabel: (region) => `Canton of ${region}`,
 
   marketCount: (n) => `${n} ${n === 1 ? 'market' : 'markets'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
@@ -340,6 +361,13 @@ const fr: Strings = {
   lastChecked: "dernière vérification aujourd'hui",
   inNextMonths: (n) => `dans les ${n} prochains mois`,
 
+  regionHeading: (n, region, year) =>
+    n === 1 ? `La brocante dans le canton de ${region} ${year}` : `Les ${n} brocantes dans le canton de ${region} ${year}`,
+  regionIntro: (region) =>
+    `Toutes les brocantes connues dans le canton de ${region} — par commune et par date, avec les horaires et les annulations. Les dates annulées restent visibles.`,
+
+  regionLabel: (region) => `Canton de ${region}`,
+
   marketCount: (n) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
@@ -423,6 +451,13 @@ const it: Strings = {
     `Tutti i mercatini delle pulci conosciuti a ${city}, Cantone ${region} — con date, orari di apertura e cancellazioni. Le date cancellate restano visibili.`,
   lastChecked: 'ultima verifica oggi',
   inNextMonths: (n) => `nei prossimi ${n} mesi`,
+
+  regionHeading: (n, region, year) =>
+    n === 1 ? `Il mercatino delle pulci nel Cantone ${region} ${year}` : `I ${n} mercatini delle pulci nel Cantone ${region} ${year}`,
+  regionIntro: (region) =>
+    `Tutti i mercatini delle pulci conosciuti nel Cantone ${region} — per località e per data, con orari di apertura e cancellazioni. Le date cancellate restano visibili.`,
+
+  regionLabel: (region) => `Cantone ${region}`,
 
   marketCount: (n) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'data' : 'date'}`,

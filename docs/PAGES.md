@@ -62,7 +62,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 3. **Organiser CTA** — the supply side earns its place before navigation does.
 4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.
 5. **Cities with counts** — the one city component, linking to our best-earning page type.
-6. **Cantons**, compact pills — thin in CH, real for Germany.
+6. **Cantons**, compact pills, linking to the canton pages — thin in CH, real for Germany.
 7. **Five market types** — 1.8% of clicks. Small, and first to cut.
 8. **Woher unsere Daten kommen** + live numbers.
 9. **FAQ**.
@@ -144,9 +144,11 @@ German demand for `flohmarkt nrw` and `flohmarkt bayern` is large and measured. 
 
 **The job:** catch Bundesland-level queries at German launch, and cover the gap between "my city has nothing" and "the whole country".
 
-Same blocks as the city page, plus a **list of cities in the canton that actually have markets** — the one place a place-link list is legitimate, because it is a genuine parent-child relationship rather than an invented facet.
+**Built, all 14.** The city list comes **first**, above the dates: the query behind "flohmarkt kanton zürich" is which towns nearby have one. That ordering is also what stops a one-market canton reading as a copy of its one city page. It is the one place a place-link list is legitimate, because it is a genuine parent-child relationship rather than an invented facet.
 
-**Ship them, keep them thin, and check after four weeks.** If Swiss canton pages earn nothing by then, they stay published for Germany and stop being a Swiss concern.
+**No density gate.** An earlier draft said ship only the 8 cantons with ≥5 markets. The content floor already measures the rendered page, which is the thing that actually matters, and the smallest canton page (Schaffhausen, 1 market) clears it at 822 characters against a floor of 300. A market-count threshold would have been a second, cruder guess at the same question.
+
+**Check after four weeks.** If Swiss canton pages earn nothing, they stay published for Germany and stop being a Swiss concern.
 
 ---
 

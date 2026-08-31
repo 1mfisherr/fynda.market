@@ -30,15 +30,15 @@ Launch with the fewest page types that could not be mistaken for spam. Everythin
 |---|---|---|
 | **Locale home** | locale | 1 |
 | **Country** | country | 1 *(not built yet)* |
-| **Region** | canton / Bundesland | 8 of 14 *(not built yet)* |
+| **Region** | canton *that has markets* | 14 |
 | **City** | city *that has markets* | 55 |
 | **Market** | real market | 157 |
 
-**852 indexable URLs today across four locales — 1.00 per entity per locale.** v1 was ~60 per market.
+**908 indexable URLs today across four locales — 1.00 per entity per locale.** v1 was ~60 per market.
 
 City pages were by far v1's best performers (25.5 clicks/page vs 4.9 for market pages). Market pages are the atom everything else is a view over. Region pages are cheap and German demand for them is large. Home carries "today / this weekend" without needing a URL for it.
 
-**A country page does not exist yet** and breadcrumbs already point at one. Build it with the region pages.
+**A country page does not exist yet.** Breadcrumbs no longer point at one — they run home → canton → city → market, every step a page that exists. The country step goes in when the page does.
 
 ## Everything else is a query parameter
 

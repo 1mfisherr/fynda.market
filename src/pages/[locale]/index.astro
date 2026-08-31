@@ -18,7 +18,7 @@ import Section from '../../components/Section.astro';
 import TypeLegend from '../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../lib/markets';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, homePath, marketPath } from '../../lib/i18n';
+import { LOCALES, cityPath, homePath, marketPath, regionPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 import type { Market, Occurrence } from '../../lib/types';
 
@@ -132,6 +132,7 @@ const jsonLd = {
 
   <Section title={s.regions}>
     <PillList items={regions.map(([slug, region]) => ({
+      href: regionPath(locale, countrySlug, slug),
       label: region,
       meta: String(markets.filter((m) => m.regionSlug === slug).length),
     }))} />

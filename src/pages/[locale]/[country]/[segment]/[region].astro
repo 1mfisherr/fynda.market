@@ -1,0 +1,183 @@
+---
+/**
+ * Canton page — `/de/schweiz/kanton/[kanton]/`.
+ *
+ * The type segment is what makes this level possible at all: five Swiss canton
+ * names are also city names, and Berlin and Hamburg are city-states, so the
+ * path has to say which kind of place it means. `kanton` / `canton` / `cantone`
+ * comes from LOCALE[locale].segments.region — never written into a template.
+ *
+ * It is not a bigger city page. The query behind "flohmarkt kanton zürich" is
+ * "which towns near me have one", so the towns come first, with their counts,
+ * and the dates follow. That is also what keeps a one-market canton from
+ * reading as a copy of its one city page.
+ *
+ * Every canton with a market gets a page. There is no density gate: the content
+ * floor is the gate, and it is measured on the rendered page rather than
+ * guessed from a market count.
+ */
+import Page from '../../../../layouts/Page.astro';
+import CtaCard from '../../../../components/CtaCard.astro';
+import DateBand from '../../../../components/DateBand.astro';
+import DateFilters from '../../../../components/DateFilters.astro';
+import LinkList from '../../../../components/LinkList.astro';
+import MarketRow from '../../../../components/MarketRow.astro';
+import Section from '../../../../components/Section.astro';
+import TypeLegend from '../../../../components/TypeLegend.astro';
+import { getMarkets, withinHorizon, HORIZON_DAYS } from '../../../../lib/markets';
+import { formatDate, formatTimeRange } from '../../../../lib/format';
+import { LOCALE, LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../../lib/i18n';
+import { t } from '../../../../lib/strings';
+import type { Market, Occurrence } from '../../../../lib/types';
+
+/**
+ * One page per canton per locale. The canton slug differs in each — zuerich /
+ * zurich / zurigo — so alternates are joined through a market slug, which is
+ * the one identifier that is the same across all four result sets.
+ */
+export async function getStaticPaths() {
+  const byLocale = new Map<Locale, Market[]>();
+  for (const locale of LOCALES) byLocale.set(locale, await getMarkets(locale));
+
+  const regionOf = new Map<string, Partial<Record<Locale, { country: string; region: string }>>>();
+  for (const locale of LOCALES) {
+    for (const m of byLocale.get(locale)!) {
+      const entry = regionOf.get(m.slug) ?? {};
+      entry[locale] = { country: m.countrySlug, region: m.regionSlug };
+      regionOf.set(m.slug, entry);
+    }
+  }
+
+  const paths = [];
+  for (const locale of LOCALES) {
+    const markets = byLocale.get(locale)!;
+    const regions = new Map(markets.map((m) => [m.regionSlug, m]));
+    for (const [region, sample] of regions) {
+      const here = markets.filter((m) => m.regionSlug === region);
+      const alternates = LOCALES.map((other) => {
+        const place = regionOf.get(here[0].slug)?.[other];
+        return place ? { locale: other, path: regionPath(other, place.country, place.region) } : null;
+      }).filter(Boolean) as { locale: Locale; path: string }[];
+
+      paths.push({
+        params: { locale, country: sample.countrySlug, segment: LOCALE[locale].segments.region, region },
+        props: { locale, region, regionName: sample.region, country: sample.countrySlug, markets: here, alternates },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, region, regionName, country, markets, alternates } = Astro.props;
+const s = t(locale);
+
+const rows = markets.flatMap((market) =>
+  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+    .map((next) => ({ ...market, next }))
+);
+const groups = Object.values(
+  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+
+/** Towns in this canton, most markets first: the ranking is the useful part. */
+const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))]
+  .map(([slug, city]) => ({ slug, city, count: markets.filter((m) => m.citySlug === slug).length }))
+  .sort((a, b) => b.count - a.count || a.city.localeCompare(b.city, locale));
+
+const year = new Date().getFullYear();
+const heading = s.regionHeading(markets.length, regionName, year);
+
+// The earliest non-cancelled date in the canton, sorted rather than found:
+// `rows` is in market order, not date order.
+const soonest = [...rows]
+  .filter((row) => row.next!.status !== 'cancelled')
+  .sort((a, b) => a.next!.date.localeCompare(b.next!.date) || (a.next!.startTime ?? '').localeCompare(b.next!.startTime ?? ''))[0];
+const answer = soonest
+  ? s.cityNext(
+      soonest.name,
+      formatDate(soonest.next!.date, locale),
+      formatTimeRange(soonest.next!.startTime, soonest.next!.endTime, locale),
+      `${soonest.venueName}, ${soonest.city}`
+    )
+  : s.cityNoDate;
+
+const site = 'https://fynda.market';
+// Home, then canton. The country page does not exist yet — docs/ARCHITECTURE.md
+// — and a breadcrumb whose item 404s is worse than a shorter breadcrumb. The
+// country step goes in when the page does.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Fynda', item: `${site}${homePath(locale)}` },
+    { '@type': 'ListItem', position: 2, name: regionName, item: `${site}${regionPath(locale, country, region)}` },
+  ],
+};
+---
+<Page back locale={locale} alternates={alternates} title={`${heading} | Fynda`} description={s.regionIntro(regionName)}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <section class="page-head gutter">
+    <h1>{heading}</h1>
+    <p class="answer">{answer}</p>
+    <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))} · {s.lastChecked}</p>
+    <p class="meta">{s.regionIntro(regionName)}</p>
+  </section>
+
+  <Section title={s.cities}>
+    <LinkList items={cities.map((c) => ({
+      href: cityPath(locale, country, c.slug),
+      label: c.city,
+      meta: s.marketCount(c.count),
+    }))} />
+  </Section>
+
+  <DateFilters locale={locale} windows={['all', 'today', 'weekend']} />
+
+  <Section bleed>
+    <div id="list">
+      {groups.map((group) => (
+        <section class="day" data-day>
+          <DateBand date={group[0].next!.date} count={group.length} locale={locale} />
+          {group.map((market) => <MarketRow market={market} locale={locale} />)}
+        </section>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
+  </Section>
+
+  <TypeLegend locale={locale} />
+
+  <CtaCard locale={locale} kind="newsletter" body={`${s.newsletterBody} ${regionName}.`} />
+</Page>
+
+<script>
+  import { inWindow, type DateWindow } from '../../../../lib/date-window';
+
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
+  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const empty = document.getElementById('empty');
+
+  const apply = (window: DateWindow) => {
+    const now = new Date();
+    let shown = 0;
+    for (const row of rows) {
+      const visible = inWindow(row.dataset.date ?? '', window, now);
+      row.hidden = !visible;
+      if (visible) shown++;
+    }
+    for (const day of days) {
+      day.hidden = !Array.from(day.querySelectorAll<HTMLElement>('[data-date]')).some((row) => !row.hidden);
+    }
+    if (empty) empty.hidden = shown > 0;
+  };
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
+      apply((button.dataset.filter ?? 'all') as DateWindow);
+    });
+  }
+  apply('all');
+</script>
