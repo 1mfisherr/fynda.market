@@ -8,23 +8,22 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 Updated 2026-08-31.
 
-**The site is built, on real data, in four languages.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **859 pages, all 8 guardrails green.** Ratio 1.00 (852 URLs / 212 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
+**The site is built, on real data, in four languages, with photographs.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **915 pages, all 8 guardrails green.** Ratio 1.00 (908 URLs / 226 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
 
 - **Database:** Supabase `eu-west-1`, Postgres 17.6. 161 markets, 2,357 occurrences, 55 cities, 14 cantons, 107 organisers, 1,782 facts. Credentials in `.env.local`; scripts connect via `scripts/db.mjs`.
-- **Locales:** de, fr, it, en. 852 pages in complete 4-language hreflang clusters.
-- **Live page types:** home, market, city, 7 utility pages, `/umkreis/`, plus `sitemap`, `robots.txt`, `/llms.txt`, and `/ics/[slug].ics` per market.
-- **Every internal link resolves** (1,016 checked). No page promises something that 404s.
+- **Locales:** de, fr, it, en. 908 pages in complete 4-language hreflang clusters. **Market descriptions render in all four** — the fr/it/en prose was reviewed 2026-08-31 and released.
+- **Live page types:** home, market, city, **canton**, 7 utility pages, `/umkreis/`, plus `sitemap`, `robots.txt`, `/llms.txt`, and `/ics/[slug].ics` per market.
+- **Photographs:** 135 photos on 146 of 157 market pages, each written at two sizes — a 1440px hero and a 148px square. A city page's images went from ~2.2 MB to 116 KB. 11 markets pointed at pexels stock URLs in v1 and keep the illustration instead — `docs/BRAND.md`. `scripts/import-images.mjs` re-encodes from the v1 repo and rewrites `markets.image_url` from the facts; `src/lib/images.ts` holds the naming rule both it and `PhotoOrArt` obey.
+- **Every internal link resolves** (18,622 checked), and **every breadcrumb `item` URL is a page that exists** (3,284 checked). No page promises something that 404s.
 - **Fixtures are still the default.** Without `FYNDA_DATA_SOURCE=supabase` the build warns and uses `src/lib/fixtures.ts`. Both paths green — CI has no database.
 
 ### Next, in order
 
-1. **Canton pages** `/{locale}/{country}/kanton/[canton]/` — shape settled below, guardrail already allows it. 8 of 14 cantons clear the density gate; ship those 8.
-2. **Utility page copy in fr/it/en.** Slugs are defined (`UTILITY` in `src/lib/i18n.ts`); only German exists, so `UTILITY_LOCALES = ['de']` and other locales link to the German page. Add a locale to that array once its copy exists.
-3. **Native review of the fr/it/en market descriptions.** Already in the database from v1, AI-generated, therefore not rendered. This review is the gate.
-4. **Photographs.** 151 webp files in `~/Documents/fleafind/public/images/`; each filename is already an `image_url` fact. Move them in, then read the facts back onto `markets.image_url`.
-5. **Desktop design.** Today it is the mobile column centred in a void; nothing above 900px has been drawn.
-6. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
-7. **German text search** — settle before any search box exists (`STACK.md`).
+1. **Utility page copy in fr/it/en.** Slugs are defined (`UTILITY` in `src/lib/i18n.ts`); only German exists, so `UTILITY_LOCALES = ['de']` and other locales link to the German page. Add a locale to that array once its copy exists.
+2. **Desktop design.** Today it is the mobile column centred in a void; nothing above 900px has been drawn.
+3. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
+4. **The country page** `/{locale}/{country}/`. The route is allowed and nothing is built. Breadcrumbs stopped pretending it exists; they should include it once it does.
+5. **German text search** — settle before any search box exists (`STACK.md`).
 
 ### The three loops
 
@@ -51,7 +50,7 @@ The design shows stall counts, seller mix, packing-up times, dogs, toilets, trav
 | Locales | **CH: de, fr, it, en. Every other country: its language + English** |
 | URL shape | `/{locale}/{country}/{city}/` · `/{locale}/{market-word}/{slug}/` · canton via a type segment. Whole path in the page's language |
 | Market slug | **One slug in every language.** A market name is a proper noun |
-| Photos | Every market gets one. 151 exist in the v1 repo, to be moved across |
+| Photos | 135 moved across from v1, on 146 of 157 markets. Stock never ships — the 11 pexels URLs v1 held were dropped, not imported |
 | Analytics | Own events in Postgres + self-hosted Metabase. No GA4, no Plausible. Daily hash for everyone, persistent id only on consent. Nothing deleted |
 | Launch scope | **All of Switzerland**, verification and photos concentrated in one region |
 | Monetisation | Deferred. Organisers and local business, never users |
@@ -79,7 +78,7 @@ The design shows stall counts, seller mix, packing-up times, dogs, toilets, trav
 
 Five names collide (Zürich, Bern, Luzern, St. Gallen, Schaffhausen) and it is structural, not Swiss — Berlin, Hamburg and Bremen are city-states. Booking.com (`/city/`, `/region/`), Eventbrite (`/d/`, `/e/`) and meine-flohmarkt-termine (`/ort/`, `/de/bundesland/`) all put the entity type in the path. It keeps the place name clean, which matters where the query is "flohmarkt bayern", never "flohmarkt bundesland bayern".
 
-Only 8 of 14 cantons have ≥5 markets, against a gate wanting 80%. **Ship the 8.** The others keep their city pages.
+**All 14 cantons have a page.** The density gate an earlier draft proposed (≥5 markets) was a second guess at a question the content floor already answers on the rendered page — and the smallest canton, Schaffhausen with one market, clears that floor at 822 characters against 300. The canton page leads with its city list rather than its dates, which is both the better answer to "flohmarkt kanton x" and what keeps a one-market canton from duplicating its one city page.
 
 ---
 

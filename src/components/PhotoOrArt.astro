@@ -1,8 +1,11 @@
 ---
 import type { Market } from '../lib/types';
+import { photoUrl } from '../lib/images';
 import PlaceholderArt from './PlaceholderArt.astro';
 interface Props { market: Market; width: number; height: number; loading?: 'eager' | 'lazy'; }
 const { market, width, height, loading = 'lazy' } = Astro.props;
+// A 74px square asks for the 148px file, not the 1440px hero — src/lib/images.ts.
+const src = market.imageUrl ? photoUrl(market.imageUrl, width) : undefined;
 ---
-{market.imageUrl ? <img src={market.imageUrl} alt="" {width} {height} {loading} decoding="async" /> : <PlaceholderArt kind={market.kind} seed={market.slug} rounded="sm" />}
+{src ? <img {src} alt="" {width} {height} {loading} decoding="async" /> : <PlaceholderArt kind={market.kind} seed={market.slug} rounded="sm" />}
 <style>img { display:block; width:100%; height:100%; object-fit:cover; }</style>
