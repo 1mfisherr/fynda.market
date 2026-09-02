@@ -14,7 +14,7 @@ const { locale = DEFAULT_LOCALE } = Astro.props;
 const s = t(locale);
 ---
 <aside class="legend gutter" aria-label={s.marketTypes}>
-  {LEGEND.map((kind) => <span><LineCode kind={kind} /> {LINES[kind].short}</span>)}
+  {LEGEND.map((kind) => <span><LineCode kind={kind} /> {LINES[kind].short[locale]}</span>)}
 </aside>
 
 <style>

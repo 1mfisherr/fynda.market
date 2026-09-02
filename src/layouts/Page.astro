@@ -40,7 +40,7 @@ const s = t(locale);
   <a class="skip button" href={`#${mainId}`}>{s.skipToContent}</a>
   <SiteHeader back={back} locale={locale} alternates={alternates} />
   <main id={mainId} class="stack wrapper"><slot /></main>
-  <SiteFooter locale={locale} />
+  <SiteFooter locale={locale} alternates={alternates} />
 </Base>
 
 <style>

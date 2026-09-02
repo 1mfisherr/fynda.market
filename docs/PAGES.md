@@ -62,11 +62,11 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 3. **Organiser CTA** — the supply side earns its place before navigation does.
 4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.
 5. **Cities with counts** — the one city component, linking to our best-earning page type.
-6. **Cantons**, compact pills, linking to the canton pages — thin in CH, real for Germany.
-7. **Five market types** — 1.8% of clicks. Small, and first to cut.
+6. **Cantons**, compact pills, linking to the canton pages — thin in CH, real for Germany. Cities and cantons each carry a one-line lede, because two lists of Swiss place names in a row do not say which is which.
+7. **Five market types** — icon on a coloured tile, name underneath. 1.8% of clicks, and first to cut, but it is what teaches the colour on every row.
 8. **Woher unsere Daten kommen** + live numbers.
-9. **FAQ**.
-10. **Footer** — legal and about. **No city list**: it duplicated block 5, and a bare link list is the doorway shape.
+9. **FAQ** — four questions, answers visible rather than folded into `<details>`. Text a reader cannot see is text an AI answer cannot cite, which is most of why the block exists.
+10. **Footer** — the forms, the legal text, saved markets, and the language switcher. **No city list**: it duplicated block 5, and a bare list of place links is the doorway shape.
 
 **"Alle N Termine im Monat" was removed.** It pointed at a month page that does not exist, and creating one means a new page type clearing the graduation gate on evidence we do not have. Expanders, not links.
 

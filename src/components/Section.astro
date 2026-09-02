@@ -12,23 +12,27 @@
 interface Props {
   title?: string;
   id?: string;
-  /** Rows and photos run edge to edge; prose and lists sit in the gutter. */
-  bleed?: boolean;
+  /** One line under the heading saying what the block is. */
+  lede?: string;
   /**
    * 'page' divides the site (home, city). 'sub' divides one entity (the market
    * page), which the approved design sets smaller and separates with a band.
    */
   level?: 'page' | 'sub';
 }
-const { title, id, bleed = false, level = 'page' } = Astro.props;
+const { title, id, lede, level = 'page' } = Astro.props;
 ---
 <section id={id} class:list={['section', { sub: level === 'sub' }]}>
   {title && <h2 class="gutter" data-level={level === 'sub' ? 'sub' : undefined}>{title}</h2>}
-  <div class:list={['body', { bleed }]}><slot /></div>
+  {lede && <p class="lede gutter meta">{lede}</p>}
+  <div class="body"><slot /></div>
 </section>
 
 <style>
   .body { margin-block-start: var(--space-3); }
+  /* The lede sits with the heading, so the body spaces away from it instead. */
+  .lede { margin-block-start: var(--space-1); }
+  .lede + .body { margin-block-start: var(--space-3); }
   /* The band that separates a market page's blocks. The stack above supplies
      no gap here, because the band is the gap. */
   .sub {

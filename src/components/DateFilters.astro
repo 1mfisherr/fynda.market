@@ -31,5 +31,10 @@ const LABELS: Record<DateWindow, string> = {
 </div>
 
 <style>
-  .filters { display: flex; gap: var(--space-2); overflow-x: auto; }
+  /* Wrap, never scroll. Four chips do not fit one phone line in any of our
+     languages — "La semaine prochaine" is twice the width of "Alle" — and a
+     sideways scrollbar under the hero read as a broken page. A second row of
+     chips does not. */
+  .filters { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .filters .button { padding-inline: var(--space-3); }
 </style>

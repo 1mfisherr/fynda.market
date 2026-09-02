@@ -1,27 +1,38 @@
 ---
 /**
- * Questions, as data. A page passes the list; it does not lay out <details>
- * elements itself, so every FAQ on the site opens and reads the same way.
+ * Questions, as data. A page passes the list; it does not lay out the items
+ * itself, so every FAQ on the site reads the same way.
+ *
+ * The answers are visible, not folded into <details>. Four short answers do not
+ * need hiding, a collapsed list tells a reader nothing about whether it is
+ * worth opening, and the text a person cannot see is text an AI answer cannot
+ * cite — which is most of the reason this block exists at all.
  */
 export interface QuestionItem { q: string; a: string; }
-interface Props { items: QuestionItem[]; }
+interface Props { items: readonly QuestionItem[]; }
 const { items } = Astro.props;
 ---
-<div class="faq">
+<dl class="faq gutter">
   {items.map((item) => (
-    <details>
-      <summary>{item.q}</summary>
-      <p class="meta">{item.a}</p>
-    </details>
+    <div class="q">
+      <dt>{item.q}</dt>
+      <dd class="meta">{item.a}</dd>
+    </div>
   ))}
-</div>
+</dl>
 
 <style>
-  details {
-    padding: var(--space-3) var(--space-page);
+  .faq { margin: 0; }
+  .q {
+    padding-block: var(--space-3);
     border-block-end: var(--border-width) solid var(--color-line);
-    font-size: var(--text-small);
   }
-  summary { font-weight: var(--weight-bold); cursor: pointer; }
-  details p { margin-block-start: var(--space-2); }
+  .q:last-child { border-block-end: 0; }
+  dt { font-size: var(--text-small); font-weight: var(--weight-bold); }
+  dd {
+    margin: 0;
+    margin-block-start: var(--space-1);
+    max-width: var(--measure);
+    line-height: var(--leading-body);
+  }
 </style>

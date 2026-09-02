@@ -11,7 +11,7 @@ interface Props {
   name:
     | 'search' | 'heart' | 'menu' | 'arrow-right' | 'check' | 'chevron-right'
     | 'compass' | 'bookmark' | 'map' | 'megaphone'
-    | 'stall' | 'hall' | 'moon' | 'child';
+    | 'stall' | 'hall' | 'moon' | 'child' | 'crate';
   size?: number;
   label?: string;
   strokeWidth?: number;
@@ -50,4 +50,5 @@ const a11y = label
   {name === 'hall' && <><path d="M3 10 12 4l9 6" /><path d="M5 10v9h14v-9" /><path d="M9 19v-6h6v6" /></>}
   {name === 'moon' && <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />}
   {name === 'child' && <><circle cx="12" cy="6" r="2.4" /><path d="M9 21v-5H7.5l1.7-4.6A3 3 0 0 1 12 9.5a3 3 0 0 1 2.8 1.9L16.5 16H15v5" /></>}
+  {name === 'crate' && <><path d="M4 8h16v11H4z" /><path d="m4 8 2-4h12l2 4" /><path d="M10 12h4" /></>}
 </svg>

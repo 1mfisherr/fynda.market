@@ -1,32 +1,101 @@
 ---
 /**
- * Deliberately not a link farm. PAGES.md: no city list down here — it
- * duplicated the cities block and a bare link list is the doorway shape.
+ * The foot of every page.
  *
- * Before this component the market and city pages had no footer at all.
+ * Deliberately not a link farm. PAGES.md: no city list down here — it
+ * duplicated the cities block further up, and a bare list of place links is
+ * the doorway shape that a spam update reads as a doorway. What is here is
+ * navigation to the pages that are not in the body of any listing: the forms,
+ * the legal text, and the visitor's own saved markets.
+ *
+ * Every link goes through utilityPath, so a locale without its own copy of a
+ * page links to the German one rather than to a 404 — see i18n.ts.
  */
-import { DEFAULT_LOCALE, utilityPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
 
-interface Props { locale?: Locale }
-const { locale = DEFAULT_LOCALE } = Astro.props;
+interface Props {
+  locale?: Locale;
+  /** The same page in the other languages — the switcher at the foot. */
+  alternates?: { locale: Locale; path: string }[];
+}
+const { locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
+const s = t(locale);
 const year = new Date().getFullYear();
+
+const fynda = [
+  { href: utilityPath(locale, 'organiser'), label: s.footerOrganisers },
+  { href: utilityPath(locale, 'newsletter'), label: s.footerNewsletter },
+  { href: utilityPath(locale, 'report'), label: s.footerReport },
+  { href: nearbyPath(), label: s.footerNearby },
+  { href: utilityPath(locale, 'saved'), label: s.saved },
+];
+const legal = [
+  { href: utilityPath(locale, 'imprint'), label: s.footerImprint },
+  { href: utilityPath(locale, 'privacy'), label: s.footerPrivacy },
+];
 ---
 <footer class="site-footer wrapper">
-  <p>fynda.market · Flohmärkte in der Schweiz</p>
-  <p class="legal">
-    <a href={utilityPath(locale, 'imprint')}>Impressum</a> ·
-    <a href={utilityPath(locale, 'privacy')}>Datenschutz</a> · © {year}
-  </p>
+  <div class="brand gutter">
+    <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
+    <p class="meta">{s.footerTagline}</p>
+  </div>
+
+  <div class="cols gutter">
+    <nav aria-labelledby="foot-fynda">
+      <h2 class="eyebrow" id="foot-fynda">{s.footerFynda}</h2>
+      <ul class="list-reset">{fynda.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </nav>
+    <nav aria-labelledby="foot-legal">
+      <h2 class="eyebrow" id="foot-legal">{s.footerLegal}</h2>
+      <ul class="list-reset">{legal.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </nav>
+  </div>
+
+  {alternates.length > 1 && (
+    <nav class="langs gutter" aria-label={s.languageLabel}>
+      {alternates.map((alt) => (
+        <a href={alt.path} lang={LOCALE[alt.locale].tag} hreflang={LOCALE[alt.locale].tag}
+           aria-current={alt.locale === locale ? 'true' : undefined}>{LOCALE[alt.locale].label}</a>
+      ))}
+    </nav>
+  )}
+
+  <p class="base gutter">© {year} Fynda</p>
 </footer>
 
 <style>
   .site-footer {
-    display: grid;
-    gap: var(--space-1);
-    padding: var(--space-page);
+    padding-block: var(--space-6) var(--space-7);
+    border-block-start: var(--border-width) solid var(--color-line);
+    background: var(--color-paper);
+    font-size: var(--text-small);
+  }
+  .site-footer > * + * { margin-block-start: var(--space-5); }
+
+  .mark {
+    font-size: var(--text-title);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-display);
+  }
+  /* The only decorative use of the accent on the site, and it is the logo. */
+  .mark span { color: var(--color-accent); }
+  .brand p { margin-block-start: var(--space-1); max-width: var(--measure); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+  .cols h2 { color: var(--color-quiet); }
+  .cols ul { margin-block-start: var(--space-2); }
+  .cols li + li { margin-block-start: var(--space-1); }
+  .cols a { display: inline-block; padding-block: var(--space-half); font-weight: var(--weight-semibold); }
+
+  .langs { display: flex; flex-wrap: wrap; gap: var(--space-3); color: var(--color-grey); font-size: var(--text-micro); }
+  .langs a { font-weight: var(--weight-semibold); }
+  .langs a[aria-current] { color: var(--color-ink); }
+
+  .base {
+    padding-block-start: var(--space-4);
     border-block-start: var(--border-width) solid var(--color-line);
     color: var(--color-quiet);
     font-size: var(--text-micro);
   }
-  .legal a { text-decoration: underline; text-underline-offset: var(--space-half); }
 </style>

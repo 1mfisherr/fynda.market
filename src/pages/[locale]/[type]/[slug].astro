@@ -127,13 +127,13 @@ const facilityItems = market.facilities ? [
   locale={locale}
   alternates={alternates}
   title={`${market.name}, ${market.city} — ${s.dates} ${new Date().getFullYear()} | Fynda`}
-  description={`${kind.full}, ${market.city}. ${next ? s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName) : s.cityNoDate}`}
+  description={`${kind.full[locale]}, ${market.city}. ${next ? s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName) : s.cityNoDate}`}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <div class="photo-hero">
     <PhotoOrArt market={market} width={720} height={210} loading="eager" />
-    <span class="type eyebrow"><LineCode kind={market.kind} /> {kind.full}</span>
+    <span class="type eyebrow"><LineCode kind={market.kind} /> {kind.full[locale]}</span>
   </div>
 
   <div class="head gutter">
@@ -166,10 +166,14 @@ const facilityItems = market.facilities ? [
   {/* Both are retention, not decoration: a market in someone's calendar keeps
       being useful without them returning, and a saved market is what the
       Friday newsletter is eventually built on. Saving is localStorage only —
-      no account, docs/PLAN.md. */}
+      no account, docs/PLAN.md.
+
+      They share a row rather than stacking full-width under Route. Four block
+      buttons of the same size made "Merken" look like as big a decision as
+      getting there, which it is not — Route is 55% of all outbound clicks. */}
   <div class="keep gutter">
-    <Button href={`/ics/${market.slug}.ics`} block>{s.addToCalendar}</Button>
-    <Button block data-save={market.slug} data-label-save={s.save} data-label-saved={s.savedState} aria-pressed="false">{s.save}</Button>
+    <Button href={`/ics/${market.slug}.ics`}><Icon name="check" size={16} />{s.addToCalendar}</Button>
+    <Button data-save={market.slug} data-label-save={s.save} data-label-saved={s.savedState} aria-pressed="false"><Icon name="bookmark" size={16} />{s.save}</Button>
   </div>
 
   {market.description && (
@@ -277,7 +281,12 @@ const facilityItems = market.facilities ? [
   .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
   .freshness { margin-block-start: var(--space-half); }
 
-  .actions, .keep { display: grid; gap: var(--space-2); }
+  .actions { display: grid; gap: var(--space-2); }
+  /* Two secondary actions side by side, one step quieter than the block
+     buttons above them. */
+  .keep { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .keep :global(.button) { min-width: 0; font-size: var(--text-micro); }
+  .keep :global(.button) { padding-inline: var(--space-2); }
 
   dl {
     display: grid;

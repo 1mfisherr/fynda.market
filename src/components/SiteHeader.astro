@@ -21,7 +21,7 @@ const others = alternates.filter((a) => a.locale !== locale);
 <header class="site-header wrapper">
   <div class="lead">
     {back && <a class="back" href={homePath(locale)} aria-label={s.backToHome}><Icon name="chevron-right" /></a>}
-    <a class="mark" href={homePath(locale)}>fynda<span>.</span></a>
+    <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
   </div>
   <div class="lead">
     {/* Real links, not a script-driven picker: a language switcher that search
@@ -59,7 +59,10 @@ const others = alternates.filter((a) => a.locale !== locale);
     transform: rotate(180deg);
   }
   .mark {
-    font-size: var(--text-title);
+    /* "fynda.market" is twice the width of "fynda." and has to share a phone
+       line with the language switcher and Gemerkt, so it takes the next step
+       down the type ramp rather than pushing them off the end. */
+    font-size: var(--text-date);
     font-weight: var(--weight-black);
     letter-spacing: var(--tracking-display);
   }

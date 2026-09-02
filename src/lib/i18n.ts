@@ -90,6 +90,14 @@ export const UTILITY = {
 export type UtilityKey = keyof typeof UTILITY;
 
 /**
+ * The radius view. It sits at `/umkreis/` with no locale prefix, because it is
+ * a filter over everything rather than a place, and only one of them is built —
+ * see guardrails.config.json, route "radius". UTILITY.nearby holds the slugs the
+ * other three will use; until those pages exist, everything points here.
+ */
+export const nearbyPath = () => `/${UTILITY.nearby[DEFAULT_LOCALE]}/`;
+
+/**
  * Locales whose utility pages actually exist. The forms and the legal text are
  * written prose, not interface labels, so they appear in a language when
  * somebody has written them in it — not when the router could.

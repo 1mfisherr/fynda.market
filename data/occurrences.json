@@ -1170,6 +1170,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "les-puces-du-cpo-lausanne",
+    "date": "2026-12-31",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "letziplunder-flohmarkt-basel",
     "date": "2026-09-19",
     "status": "confirmed"
@@ -1385,6 +1390,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+    "date": "2026-12-30",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2026-09-05",
     "status": "confirmed"
@@ -1507,11 +1517,6 @@
   {
     "marketSlug": "marche-calabash-lausanne",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mardi",
-    "date": "2026-09-01",
     "status": "confirmed"
   },
   {
@@ -1682,6 +1687,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-12-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-mercredi",
+    "date": "2026-12-30",
     "status": "confirmed"
   },
   {

@@ -8,6 +8,8 @@
  */
 import Page from '../../layouts/Page.astro';
 import Button from '../../components/Button.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
 import CtaCard from '../../components/CtaCard.astro';
 import DateBand from '../../components/DateBand.astro';
 import DateFilters from '../../components/DateFilters.astro';
@@ -15,10 +17,10 @@ import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
 import Section from '../../components/Section.astro';
-import TypeLegend from '../../components/TypeLegend.astro';
+import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets, withinHorizon } from '../../lib/markets';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, homePath, marketPath, regionPath } from '../../lib/i18n';
+import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 import type { Market, Occurrence } from '../../lib/types';
 
@@ -61,6 +63,12 @@ const cancelled = rows
   .filter((row) => row.next!.status === 'cancelled' && row.next!.date <= inAWeek)
   .sort((a, b) => a.next!.date.localeCompare(b.next!.date));
 
+/** The radius view offers these four; the home form has to offer the same. */
+const RADII = [10, 25, 50, 100];
+const PERIODS = {
+  all: s.filterAll, today: s.filterToday, weekend: s.filterWeekend, week: s.filterWeek,
+} as const;
+
 const site = 'https://fynda.market';
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -79,16 +87,40 @@ const jsonLd = {
     <p class="meta">{s.heroPromise}</p>
   </section>
 
-  <form class="control" action="/umkreis/" method="get">
-    <label><b>{s.controlPlace}</b><span>{cities[0]?.[1] ?? ''}</span></label>
-    <label><b>{s.controlPeriod}</b><span>{s.filterWeekend}</span></label>
-    <label><b>{s.controlRadius}</b><span>50 km</span></label>
-    <Button type="submit" variant="primary" block>{s.controlSubmit}</Button>
+  {/* Real controls, not three words dressed as fields. Choosing a town goes to
+      that town's page; leaving it on "Überall" goes to the radius view, which
+      is the only one of the two that has anything to do with kilometres. Free
+      text is deliberately absent — a search box needs the German text-search
+      decision PLAN.md still has open, and a box that finds nothing is worse
+      than no box. */}
+  <form class="search" action={nearbyPath()} method="get" data-city-base={countryPath(locale, countrySlug)}>
+    <label class="field">
+      <span>{s.controlPlace}</span>
+      <select name="ort">
+        <option value="">{s.controlAnywhere}</option>
+        {cities.map(([slug, city]) => <option value={slug}>{city}</option>)}
+      </select>
+    </label>
+    <div class="pair">
+      <label class="field">
+        <span>{s.controlPeriod}</span>
+        <select name="zeit">
+          {(['all', 'today', 'weekend', 'week'] as const).map((w) => (
+            <option value={w}>{PERIODS[w]}</option>
+          ))}
+        </select>
+      </label>
+      <label class="field">
+        <span>{s.controlRadius}</span>
+        <select name="km">{RADII.map((km) => <option value={km} selected={km === 50}>{km} km</option>)}</select>
+      </label>
+    </div>
+    <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
   </form>
 
   <DateFilters locale={locale} />
 
-  <Section title={s.upcoming} bleed>
+  <Section title={s.upcoming}>
     <div id="list">
       {groups.map((group) => (
         <section class="day" data-day>
@@ -122,7 +154,7 @@ const jsonLd = {
     </Section>
   )}
 
-  <Section title={s.cities}>
+  <Section title={s.cities} lede={s.citiesLede}>
     <LinkList items={cities.map(([slug, city]) => ({
       href: cityPath(locale, countrySlug, slug),
       label: city,
@@ -130,7 +162,7 @@ const jsonLd = {
     }))} />
   </Section>
 
-  <Section title={s.regions}>
+  <Section title={s.regions} lede={s.regionsLede}>
     <PillList items={regions.map(([slug, region]) => ({
       href: regionPath(locale, countrySlug, slug),
       label: region,
@@ -138,7 +170,7 @@ const jsonLd = {
     }))} />
   </Section>
 
-  <Section title={s.marketTypes}><TypeLegend locale={locale} /></Section>
+  <Section title={s.marketTypes} lede={s.typesLede}><TypeGrid locale={locale} /></Section>
 
   <Section title={s.whereDataComes}>
     <ol class="steps gutter">
@@ -149,26 +181,29 @@ const jsonLd = {
     <p class="gutter meta counts">{s.marketCount(markets.length)} · {s.dateCount(rows.length)} · {cities.length} {s.cities} · {regions.length} {s.regions}</p>
   </Section>
 
-  {/* The FAQ is real copy, not interface labels, so it waits for real copy in
-      each language rather than shipping a machine translation. docs/PLAN.md. */}
+  {/* Four answers, written per language like the rest of strings.ts — short,
+      factual, and about the one thing that makes this site different: whether
+      the date is true. Also the block AI answers quote from. */}
+  <Section title={s.questions}>
+    <Faq items={s.faq} />
+  </Section>
 </Page>
 
 <style>
   /* Only what is genuinely this page's. Everything else is a component. */
-  .control {
+
+  /* A card, not a grey tray. The place is the decision, so it gets the full
+     width; period and radius are adjustments to it and share a row. */
+  .search {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-half);
+    gap: var(--space-3);
     margin-inline: var(--space-page);
-    padding: var(--space-2);
-    border-radius: var(--radius-photo);
-    background: var(--color-paper);
+    padding: var(--space-4);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
   }
-  .control label { min-width: 0; padding: var(--space-1); font-size: var(--text-micro); }
-  .control b, .control span { display: block; }
-  .control b { color: var(--color-quiet); font-weight: var(--weight-semibold); }
-  .control span { overflow: hidden; font-weight: var(--weight-bold); text-overflow: ellipsis; white-space: nowrap; }
-  .control :global(.button) { grid-column: 1 / -1; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
 
   .more { margin-block-start: var(--space-2); }
 
@@ -186,10 +221,31 @@ const jsonLd = {
 
   /* Keep in step with --breakpoint-wide; a media query cannot read a token. */
   @media (min-width: 900px) {
-    .control { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .control :global(.button) { grid-column: auto; }
+    .search { grid-template-columns: 2fr 3fr auto; align-items: end; }
+    .pair { grid-template-columns: 1fr 1fr; }
+    .search :global(.button) { width: auto; }
   }
 </style>
+
+<script>
+  /**
+   * The search card routes itself. A town goes to that town's page carrying the
+   * period as a query parameter the city page reads; "Überall" falls through to
+   * the form's own action, the radius view, which is the only place a radius
+   * means anything. Without JS the form still submits there, which is a worse
+   * answer but never a broken one.
+   */
+  const search = document.querySelector<HTMLFormElement>('.search');
+  search?.addEventListener('submit', (event) => {
+    const data = new FormData(search);
+    const town = String(data.get('ort') ?? '');
+    if (!town) return;
+    event.preventDefault();
+    const period = String(data.get('zeit') ?? 'all');
+    const base = search.dataset.cityBase ?? '/';
+    location.href = `${base}${town}/${period === 'all' ? '' : `?zeit=${period}`}`;
+  });
+</script>
 
 <script>
   /**

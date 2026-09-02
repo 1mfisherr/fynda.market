@@ -11,16 +11,17 @@ Updated 2026-08-31.
 **The site is built, on real data, in four languages, with photographs.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **915 pages, all 8 guardrails green.** Ratio 1.00 (908 URLs / 226 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
 
 - **Database:** Supabase `eu-west-1`, Postgres 17.6. 161 markets, 2,357 occurrences, 55 cities, 14 cantons, 107 organisers, 1,782 facts. Credentials in `.env.local`; scripts connect via `scripts/db.mjs`.
-- **Locales:** de, fr, it, en. 908 pages in complete 4-language hreflang clusters. **Market descriptions render in all four** — the fr/it/en prose was reviewed 2026-08-31 and released.
+- **Locales:** de, fr, it, en. 908 pages in complete 4-language hreflang clusters. **Market descriptions render in all four** — the fr/it/en prose was reviewed 2026-08-31 and released. Market-kind names are per locale too; they were German everywhere until the types became a block of tiles on the French home page.
 - **Live page types:** home, market, city, **canton**, 7 utility pages, `/umkreis/`, plus `sitemap`, `robots.txt`, `/llms.txt`, and `/ics/[slug].ics` per market.
 - **Photographs:** 135 photos on 146 of 157 market pages, each written at two sizes — a 1440px hero and a 148px square. A city page's images went from ~2.2 MB to 116 KB. 11 markets pointed at pexels stock URLs in v1 and keep the illustration instead — `docs/BRAND.md`. `scripts/import-images.mjs` re-encodes from the v1 repo and rewrites `markets.image_url` from the facts; `src/lib/images.ts` holds the naming rule both it and `PhotoOrArt` obey.
-- **Every internal link resolves** (18,622 checked), and **every breadcrumb `item` URL is a page that exists** (3,284 checked). No page promises something that 404s.
+- **Every internal link resolves** (27,772 checked), and **every breadcrumb `item` URL is a page that exists**. No page promises something that 404s.
+- **Nothing scrolls sideways.** All 17 page types measured at phone width. `.bleed` used to pull rows 16px outside `main`, which has no gutter to escape — the page scrolled horizontally and every row's rail and time were clipped off the left edge. The class is gone.
 - **Fixtures are still the default.** Without `FYNDA_DATA_SOURCE=supabase` the build warns and uses `src/lib/fixtures.ts`. Both paths green — CI has no database.
 
 ### Next, in order
 
 1. **Utility page copy in fr/it/en.** Slugs are defined (`UTILITY` in `src/lib/i18n.ts`); only German exists, so `UTILITY_LOCALES = ['de']` and other locales link to the German page. Add a locale to that array once its copy exists.
-2. **Desktop design.** Today it is the mobile column centred in a void; nothing above 900px has been drawn.
+2. **Desktop design.** Today it is the mobile column centred in a void; nothing above 900px has been drawn. The home search card and the market-type tiles are the only two blocks with a wide layout so far.
 3. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
 4. **The country page** `/{locale}/{country}/`. The route is allowed and nothing is built. Breadcrumbs stopped pretending it exists; they should include it once it does.
 5. **German text search** — settle before any search box exists (`STACK.md`).

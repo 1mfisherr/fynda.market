@@ -1,0 +1,60 @@
+---
+/**
+ * The five market types, as tiles — the block above the FAQ on the home page.
+ *
+ * TypeLegend is the other half of this: a row of two-letter codes beside a
+ * list, explaining the badges on the rows next to it. This one is not a key,
+ * it is a block of the home page, so it gets the room the approved design gave
+ * it — the icon on a coloured tile, the word underneath.
+ *
+ * Both read LINES, so a kind cannot be one colour here and another there.
+ */
+import Icon from './Icon.astro';
+import { LEGEND, LINES } from '../lib/vocabulary';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const s = t(locale);
+---
+<ul class="types list-reset gutter" aria-label={s.marketTypes}>
+  {LEGEND.map((kind) => (
+    <li>
+      <span class="tile" style={`background:var(${LINES[kind].token})`}><Icon name={LINES[kind].icon} size={22} /></span>
+      <span class="label">{LINES[kind].short[locale]}</span>
+    </li>
+  ))}
+</ul>
+
+<style>
+  /* Five kinds, so five columns — they are equal members of one set and a
+     4 + 1 grid would read as a hierarchy that does not exist. */
+  .types {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+  .tile {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: var(--tap-min);
+    border-radius: var(--radius-sm);
+    color: var(--color-white);
+  }
+  .label {
+    overflow: hidden;
+    color: var(--color-ink);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-bold);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

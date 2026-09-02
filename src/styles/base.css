@@ -117,11 +117,6 @@ p {
   margin-inline: auto;
 }
 
-/* Full-bleed inside a gutter'd parent — a photo, a divider, a list of rows. */
-.bleed {
-  margin-inline: calc(var(--space-page) * -1);
-}
-
 /* ---- interactive ------------------------------------------------------- */
 
 /*

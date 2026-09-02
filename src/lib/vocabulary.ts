@@ -12,6 +12,7 @@
  * one-line change and a translation possible at all.
  */
 
+import type { Locale } from './i18n';
 import type { MarketKind, OccurrenceStatus } from './types';
 
 export interface Line {
@@ -19,29 +20,69 @@ export interface Line {
   code: string;
   /** The line colour token — docs/BRAND.md, market type as a transit line. */
   token: string;
-  /** In a legend, where the code is beside it and space is short. */
-  short: string;
-  /** In prose and page titles, where it stands alone. */
-  full: string;
+  /** In a legend or on a tile, where space is short. Per locale. */
+  short: Record<Locale, string>;
+  /** In prose and page titles, where it stands alone. Per locale. */
+  full: Record<Locale, string>;
   /** Whether this kind gets its own swatch in the legend. */
   inLegend: boolean;
+  /** The icon on the market-types block. Same set as components/Icon.astro. */
+  icon: 'stall' | 'hall' | 'moon' | 'child' | 'crate';
 }
 
 /**
  * Eight kinds, five lines. Brocante, Antikmarkt and Strassenmarkt ride the
  * Flohmarkt line: they are the same errand to a visitor, and PAGES.md caps the
  * legend at five because 60 categories is what killed v1.
+ *
+ * The names are per locale. They were German only, which was invisible while
+ * the legend was six words of grey text under a list — and stopped being
+ * invisible the moment the market types became a block of five coloured tiles
+ * on the French home page.
  */
 export const LINES: Record<MarketKind, Line> = {
-  flohmarkt: { code: 'FM', token: '--line-floh', short: 'Flohmarkt', full: 'Flohmarkt', inLegend: true },
-  hallenflohmarkt: { code: 'HA', token: '--line-halle', short: 'Halle', full: 'Hallenflohmarkt', inLegend: true },
-  nachtflohmarkt: { code: 'NA', token: '--line-nacht', short: 'Nacht', full: 'Nachtflohmarkt', inLegend: true },
-  kinderflohmarkt: { code: 'KI', token: '--line-kinder', short: 'Kinder', full: 'Kinderflohmarkt', inLegend: true },
-  troedelmarkt: { code: 'TR', token: '--line-troedel', short: 'Trödel', full: 'Trödelmarkt', inLegend: true },
-  brocante: { code: 'FM', token: '--line-floh', short: 'Brocante', full: 'Brocante', inLegend: false },
-  antikmarkt: { code: 'FM', token: '--line-floh', short: 'Antik', full: 'Antikmarkt', inLegend: false },
-  strassenmarkt: { code: 'FM', token: '--line-floh', short: 'Strasse', full: 'Strassenmarkt', inLegend: false },
+  flohmarkt: {
+    code: 'FM', token: '--line-floh', inLegend: true, icon: 'stall',
+    short: { de: 'Flohmarkt', fr: 'Brocante', it: 'Mercatino', en: 'Flea' },
+    full: { de: 'Flohmarkt', fr: 'Brocante', it: 'Mercatino delle pulci', en: 'Flea market' },
+  },
+  hallenflohmarkt: {
+    code: 'HA', token: '--line-halle', inLegend: true, icon: 'hall',
+    short: { de: 'Halle', fr: 'Couvert', it: 'Al coperto', en: 'Indoor' },
+    full: { de: 'Hallenflohmarkt', fr: 'Brocante couverte', it: 'Mercatino al coperto', en: 'Indoor flea market' },
+  },
+  nachtflohmarkt: {
+    code: 'NA', token: '--line-nacht', inLegend: true, icon: 'moon',
+    short: { de: 'Nacht', fr: 'Nocturne', it: 'Notturno', en: 'Night' },
+    full: { de: 'Nachtflohmarkt', fr: 'Brocante nocturne', it: 'Mercatino notturno', en: 'Night flea market' },
+  },
+  kinderflohmarkt: {
+    code: 'KI', token: '--line-kinder', inLegend: true, icon: 'child',
+    short: { de: 'Kinder', fr: 'Enfants', it: 'Bambini', en: 'Kids' },
+    full: { de: 'Kinderflohmarkt', fr: 'Vide-grenier enfants', it: 'Mercatino per bambini', en: "Children's flea market" },
+  },
+  troedelmarkt: {
+    code: 'TR', token: '--line-troedel', inLegend: true, icon: 'crate',
+    short: { de: 'Trödel', fr: 'Puces', it: 'Usato', en: 'Bric-a-brac' },
+    full: { de: 'Trödelmarkt', fr: 'Marché aux puces', it: "Mercato dell'usato", en: 'Bric-a-brac market' },
+  },
+  brocante: {
+    code: 'FM', token: '--line-floh', inLegend: false, icon: 'stall',
+    short: { de: 'Brocante', fr: 'Brocante', it: 'Brocante', en: 'Brocante' },
+    full: { de: 'Brocante', fr: 'Brocante', it: 'Brocante', en: 'Brocante' },
+  },
+  antikmarkt: {
+    code: 'FM', token: '--line-floh', inLegend: false, icon: 'stall',
+    short: { de: 'Antik', fr: 'Antiquités', it: 'Antiquariato', en: 'Antiques' },
+    full: { de: 'Antikmarkt', fr: "Marché d'antiquités", it: 'Mercato di antiquariato', en: 'Antiques market' },
+  },
+  strassenmarkt: {
+    code: 'FM', token: '--line-floh', inLegend: false, icon: 'stall',
+    short: { de: 'Strasse', fr: 'Rue', it: 'Strada', en: 'Street' },
+    full: { de: 'Strassenmarkt', fr: 'Marché de rue', it: 'Mercato di strada', en: 'Street market' },
+  },
 };
+
 
 export const LEGEND = (Object.keys(LINES) as MarketKind[]).filter((kind) => LINES[kind].inLegend);
 

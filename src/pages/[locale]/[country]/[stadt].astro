@@ -125,7 +125,7 @@ const jsonLd = {
 
   <DateFilters locale={locale} windows={['all', 'today', 'weekend']} />
 
-  <Section bleed>
+  <Section>
     <div id="list">
       {groups.map((group) => (
         <section class="day" data-day>
@@ -170,5 +170,12 @@ const jsonLd = {
       apply((button.dataset.filter ?? 'all') as DateWindow);
     });
   }
-  apply('all');
+
+  // The home page's search card sends the chosen period here. Pressing the
+  // matching chip rather than filtering directly keeps one code path, and
+  // leaves the control showing what is actually applied.
+  const wanted = new URLSearchParams(location.search).get('zeit');
+  const preset = buttons.find((button) => button.dataset.filter === wanted);
+  if (preset) preset.click();
+  else apply('all');
 </script>
