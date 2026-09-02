@@ -10,7 +10,7 @@ const day = parseDate(date);
 const weekday = s.weekdaysLong[day.getDay()];
 const month = s.monthsLong[day.getMonth()];
 ---
-<header class="band"><strong class="day">{String(day.getDate()).padStart(2, '0')}</strong><span class="when">{weekday}<em>{month}</em></span><span class="count">{s.marketCount(count).toUpperCase()}</span></header>
+<header class="band"><strong class="day">{String(day.getDate()).padStart(2, '0')}</strong><span class="when">{weekday}<em>{month}</em></span><span class="count" data-count data-one={s.marketCount(1)} data-other={s.marketCount(2)}>{s.marketCount(count).toUpperCase()}</span></header>
 <style>
   .band { display:grid; grid-template-columns:auto 1fr auto; gap:var(--space-3); align-items:end; padding:var(--space-page) var(--space-page) var(--space-2); border-top:var(--border-width) solid var(--color-line); }
   .day { font-size:var(--text-day-band); font-weight:var(--weight-black); letter-spacing:-0.05em; line-height:0.86; }

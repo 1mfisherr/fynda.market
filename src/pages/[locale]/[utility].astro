@@ -1,0 +1,252 @@
+---
+/**
+ * The four utility pages, in every language — `/de/melden/`, `/fr/signaler/`,
+ * `/it/salvati/`, `/en/newsletter/` and the rest.
+ *
+ * One route rather than four files times four locales. The three form pages are
+ * the same page with different words, so they are rendered from the data in
+ * lib/utility-copy.ts; "saved" is genuinely different and gets its own branch.
+ *
+ * The mailto serialiser is shared too. It used to be written out three times,
+ * once per page, each walking its own list of field names — so adding a field
+ * meant remembering to add it in two places. It now walks the form.
+ *
+ * The imprint and the privacy policy are NOT here. They are legal documents and
+ * stay German-only until a person writes them — see UTILITY_LOCALES in i18n.ts.
+ */
+import Page from '../../layouts/Page.astro';
+import Button from '../../components/Button.astro';
+import DateBand from '../../components/DateBand.astro';
+import Field from '../../components/Field.astro';
+import MarketRow from '../../components/MarketRow.astro';
+import Section from '../../components/Section.astro';
+import { getMarkets, withinHorizon } from '../../lib/markets';
+import { CONTACT, FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
+import {
+  UTILITY, UTILITY_LOCALES, homePath, marketPrefix, utilityAlternates,
+  type Locale, type UtilityKey,
+} from '../../lib/i18n';
+import { t } from '../../lib/strings';
+import type { Market, Occurrence } from '../../lib/types';
+
+/** The keys this route owns. Legal pages are static files under src/pages/de/. */
+const KEYS = ['report', 'newsletter', 'organiser', 'saved'] as const satisfies readonly UtilityKey[];
+
+export async function getStaticPaths() {
+  const keys = ['report', 'newsletter', 'organiser', 'saved'] as const;
+  return keys.flatMap((key) =>
+    UTILITY_LOCALES[key].map((locale) => ({
+      params: { locale, utility: UTILITY[key][locale] },
+      props: { locale, key },
+    }))
+  );
+}
+
+const { locale, key } = Astro.props as { locale: Locale; key: (typeof KEYS)[number] };
+const s = t(locale);
+const alternates = utilityAlternates(key);
+
+/* The saved page renders every market and lets the browser hide the ones that
+   were not saved — see the note in the script below. Only it needs the data. */
+let groups: Market[][] = [];
+if (key === 'saved') {
+  const markets = await getMarkets(locale);
+  const rows = markets.flatMap((market) =>
+    withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
+      .map((next) => ({ ...market, next }))
+  );
+  groups = Object.values(
+    rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
+  ).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+}
+
+const form = key === 'saved' ? null : FORMS[key as FormKey][locale];
+const saved = key === 'saved' ? SAVED[locale] : null;
+const copy = form ?? saved!;
+
+/**
+ * What the saved page's summary needs, as data on the element rather than as an
+ * import in the browser: importing strings.ts would ship all four languages'
+ * interface copy to a page that only ever speaks one. `marketCount` is
+ * "<n> <noun>" in every locale, so the noun is what is left once the number is
+ * taken off the front.
+ */
+const savedCopy = saved && {
+  summary: saved.summary,
+  one: s.marketCount(1).replace(/^1\s*/, ''),
+  other: s.marketCount(2).replace(/^2\s*/, ''),
+};
+---
+<Page
+  locale={locale}
+  alternates={alternates}
+  title={copy.title}
+  description={copy.description}
+  indexable={false}
+>
+  {form && (
+    <>
+      <section class="page-head gutter">
+        <h1>{form.heading}</h1>
+        <p class="answer">{form.answer}</p>
+      </section>
+
+      <div class="prose gutter">
+        {form.prose.map((paragraph) => <p>{paragraph}</p>)}
+        {form.listTitle && <h2>{form.listTitle}</h2>}
+        {form.list && <ul>{form.list.map((item) => <li>{item}</li>)}</ul>}
+        {form.after && <p>{form.after}</p>}
+      </div>
+
+      <form class="stack gutter" data-mail data-subject={form.subject}>
+        {form.fields.map((field) => (
+          <Field
+            label={field.label}
+            name={field.name}
+            type={field.type}
+            hint={field.hint}
+            required={field.required}
+            placeholder={field.placeholder}
+            options={field.options}
+          />
+        ))}
+        <Button type="submit" variant="primary" block>{form.submit}</Button>
+        <p class="meta">{form.note}</p>
+      </form>
+    </>
+  )}
+
+  {saved && (
+    <>
+      <section class="page-head gutter">
+        <h1>{saved.heading}</h1>
+        <p class="answer" id="summary" data-none={saved.none} data-copy={JSON.stringify(savedCopy)}>{saved.none}</p>
+        <p class="meta">{saved.note}</p>
+      </section>
+
+      <Section>
+        <div id="list" data-market-prefix={marketPrefix(locale)}>
+          {groups.map((group) => (
+            <section class="day" data-day hidden>
+              <DateBand date={group[0].next!.date} count={group.length} locale={locale} />
+              {group.map((market) => <MarketRow market={market} locale={locale} />)}
+            </section>
+          ))}
+        </div>
+        <p id="empty" class="gutter meta">{saved.empty}</p>
+        <div class="find gutter"><Button href={homePath(locale)} block>{saved.browse}</Button></div>
+      </Section>
+    </>
+  )}
+</Page>
+
+<style>
+  .find { margin-block-start: var(--space-4); }
+</style>
+
+<script>
+  /**
+   * One serialiser for all three forms. There is no backend yet (docs/PLAN.md),
+   * so submitting opens the visitor's own mail client with the answers filled
+   * in, and the page says so. A form that silently discards what someone typed
+   * is worse than no form.
+   *
+   * It walks the form rather than a hand-written list of field names, so the
+   * labels are whatever the page's own language calls them.
+   */
+  const CONTACT_EMAIL = 'hallo@fynda.market';
+  const form = document.querySelector<HTMLFormElement>('form[data-mail]');
+
+  if (form) {
+    /**
+     * The market page sends the market with the visitor:
+     * /fr/signaler/?markt=…&grund=… — someone who has just found a closed gate
+     * should not have to retype the name of the page they came from. The reason
+     * travels as an index-free key because the options are written per language
+     * but kept in the same order.
+     */
+    const params = new URLSearchParams(location.search);
+    const market = params.get('markt');
+    const reason = params.get('grund');
+    const marketField = form.elements.namedItem('markt') as HTMLInputElement | null;
+    if (market && marketField) marketField.value = market;
+    const reasonField = form.elements.namedItem('grund') as HTMLSelectElement | null;
+    const ORDER: Record<string, number> = { ausgefallen: 0, vorbei: 1, anderes: 3 };
+    if (reason && reasonField && reason in ORDER) reasonField.selectedIndex = ORDER[reason];
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const lines: string[] = [];
+      let subject = form.dataset.subject ?? 'Fynda';
+
+      for (const element of Array.from(form.elements)) {
+        const control = element as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+        if (!control.name) continue;
+        const value = String(control.value ?? '').trim();
+        if (!value) continue;
+        const label = form.querySelector(`label[for="f-${control.name}"] > span`)?.textContent ?? control.name;
+        lines.push(`${label.replace(/ \*$/, '')}: ${value}`);
+        if (control.name === 'markt') subject = `${subject}: ${value}`;
+      }
+
+      location.href = `mailto:${CONTACT_EMAIL}`
+        + `?subject=${encodeURIComponent(subject)}`
+        + `&body=${encodeURIComponent(lines.join('\n'))}`;
+    });
+  }
+</script>
+
+<script>
+  /**
+   * Saved markets. No accounts, ever (docs/PLAN.md): the list lives in this
+   * browser under one localStorage key, which the market page's save button
+   * writes.
+   *
+   * Every market with an upcoming date is in the HTML and the browser hides the
+   * ones that were not saved. That sounds wasteful and is not — it is the same
+   * payload the home page already ships, it needs no server, and the page is
+   * noindex because its content differs for every visitor.
+   */
+  import { syncDayCounts } from '../../lib/day-count';
+
+  const list = document.getElementById('list');
+  const summary = document.getElementById('summary');
+
+  if (list && summary) {
+    const KEY = 'fynda:gemerkt';
+    const stored = (() => {
+      try { return new Set<string>(JSON.parse(localStorage.getItem(KEY) ?? '[]')); }
+      catch { return new Set<string>(); }
+    })();
+
+    // A row's only link is its market page, and the prefix is in the markup so
+    // this does not have to know that French says /fr/marche/.
+    const prefix = list.dataset.marketPrefix ?? '/';
+    const days = Array.from(list.querySelectorAll<HTMLElement>('[data-day]'));
+    const empty = document.getElementById('empty');
+    const slugs = new Set<string>();
+    let shown = 0;
+
+    for (const day of days) {
+      let inDay = 0;
+      for (const row of Array.from(day.querySelectorAll<HTMLElement>('[data-date]'))) {
+        const href = row.querySelector<HTMLAnchorElement>(`a[href^="${prefix}"]`)?.getAttribute('href') ?? '';
+        const slug = href.split('/').filter(Boolean).at(-1) ?? '';
+        const keep = stored.has(slug);
+        row.hidden = !keep;
+        if (keep) { inDay++; shown++; slugs.add(slug); }
+      }
+      day.hidden = inDay === 0;
+    }
+
+    if (empty) empty.hidden = shown > 0;
+    syncDayCounts(list);
+    const copy = JSON.parse(summary.dataset.copy ?? '{}') as
+      { summary?: string; one?: string; other?: string };
+    summary.textContent = shown === 0
+      ? (summary.dataset.none ?? '')
+      : (copy.summary ?? '')
+          .replace('{markets}', `${slugs.size} ${slugs.size === 1 ? copy.one : copy.other}`)
+          .replace('{dates}', String(shown));
+  }
+</script>

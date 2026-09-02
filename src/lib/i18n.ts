@@ -68,8 +68,10 @@ export const cityPath = (locale: Locale, country: string, city: string) =>
 export const regionPath = (locale: Locale, country: string, region: string) =>
   `/${locale}/${country}/${LOCALE[locale].segments.region}/${region}/`;
 
-export const marketPath = (locale: Locale, slug: string) =>
-  `/${locale}/${LOCALE[locale].segments.market}/${slug}/`;
+/** Everything before the slug. The saved page matches links against it. */
+export const marketPrefix = (locale: Locale) => `/${locale}/${LOCALE[locale].segments.market}/`;
+
+export const marketPath = (locale: Locale, slug: string) => `${marketPrefix(locale)}${slug}/`;
 
 /**
  * Utility pages — the forms and the legal text. The key is stable; the slug is
@@ -98,20 +100,35 @@ export type UtilityKey = keyof typeof UTILITY;
 export const nearbyPath = () => `/${UTILITY.nearby[DEFAULT_LOCALE]}/`;
 
 /**
- * Locales whose utility pages actually exist. The forms and the legal text are
- * written prose, not interface labels, so they appear in a language when
- * somebody has written them in it — not when the router could.
+ * Which locales each utility page exists in — per page, not per locale, because
+ * they are not all the same kind of writing.
  *
- * Until then a French page's footer links to the German imprint, which is
- * honest and reachable. Linking to a French URL that 404s would not be.
+ * The four product pages are ours to write, and they are written. Leaving them
+ * German-only meant every French visitor who touched "Enregistré", a CTA or a
+ * report button was thrown back into German, which reads as a broken language
+ * switcher rather than as a missing page.
+ *
+ * The imprint and the privacy policy are legal documents. The German ones still
+ * carry unfilled placeholders, and a machine-translated privacy policy is the
+ * one kind of prose this project must not ship (docs/PLAN.md). They stay German
+ * until a person writes them, and a French page links to the German one, which
+ * is honest and reachable. Linking to a French URL that 404s would not be.
  */
-export const UTILITY_LOCALES: Locale[] = ['de'];
+export const UTILITY_LOCALES: Record<UtilityKey, Locale[]> = {
+  report: LOCALES,
+  newsletter: LOCALES,
+  organiser: LOCALES,
+  saved: LOCALES,
+  imprint: [DEFAULT_LOCALE],
+  privacy: [DEFAULT_LOCALE],
+  nearby: [DEFAULT_LOCALE],
+};
 
 export const utilityPath = (locale: Locale, key: UtilityKey) => {
-  const served = UTILITY_LOCALES.includes(locale) ? locale : DEFAULT_LOCALE;
+  const served = UTILITY_LOCALES[key].includes(locale) ? locale : DEFAULT_LOCALE;
   return `/${served}/${UTILITY[key][served]}/`;
 };
 
 /** Every locale that actually has this utility page, for hreflang. */
 export const utilityAlternates = (key: UtilityKey) =>
-  UTILITY_LOCALES.map((locale) => ({ locale, path: utilityPath(locale, key) }));
+  UTILITY_LOCALES[key].map((locale) => ({ locale, path: utilityPath(locale, key) }));

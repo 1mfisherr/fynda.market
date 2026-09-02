@@ -1,40 +1,268 @@
 ---
 /**
- * The date chips. Home offers four windows, a city page three — the same
- * control either way, so it is one component with a list rather than two
- * near-identical `.filters` rules in two pages.
+ * The date control: three chips and a calendar.
  *
- * It renders buttons and nothing else. The page owns what filtering means for
- * its own list; the shared date arithmetic lives in lib/date-window.ts.
+ * Every page that lists markets filters that list the same way, so the control
+ * is one component rather than a `.filters` rule in each page. What filtering
+ * *means* is still the page's business — the page listens for clicks on
+ * `[data-filter]` and hides its own rows. That is what lets the calendar work
+ * everywhere without a line changing in any of the four page scripts: a day in
+ * the grid is a `[data-filter]` button like any chip, carrying a date instead
+ * of a word, and lib/date-window.ts reads a YYYY-MM-DD window as "this day".
+ *
+ * "Nächste Woche" is gone. It was a coarse guess at the question the calendar
+ * answers exactly, and a fourth chip did not fit a phone line anyway.
+ *
+ * The grid covers the whole 120-day horizon, one month shown at a time. Days we
+ * have nothing for are not buttons: the point of the calendar is to show where
+ * the markets are, and a click that lands on an empty list is a dead end.
  */
+import Icon from './Icon.astro';
 import type { DateWindow } from '../lib/date-window';
+import { formatDateShort } from '../lib/format';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
+import { HORIZON_DAYS } from '../lib/markets';
 
 interface Props {
   windows?: DateWindow[];
   locale?: Locale;
+  /** The dates this page has markets on, as YYYY-MM-DD. */
+  dates?: string[];
 }
-const { windows = ['all', 'today', 'weekend', 'week'], locale = DEFAULT_LOCALE } = Astro.props;
+const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [] } = Astro.props;
 const s = t(locale);
-const LABELS: Record<DateWindow, string> = {
+const LABELS: Record<string, string> = {
   all: s.filterAll,
   today: s.filterToday,
   weekend: s.filterWeekend,
-  week: s.filterWeek,
 };
+const chips = windows.filter((w) => LABELS[w]);
+
+const has = new Set(dates);
+
+/* Built at build time, so "today" is the build's today — the same clock the
+   pages render their rows against, and the same 120-day horizon, so the grid
+   cannot offer a day the list does not contain. */
+const iso = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+const last = new Date(today);
+last.setDate(last.getDate() + HORIZON_DAYS);
+
+/** Monday first, which is how a Swiss calendar reads. Indexes into getDay(). */
+const WEEK = [1, 2, 3, 4, 5, 6, 0];
+
+interface Cell { date: string; day: number; label: string; has: boolean }
+const months: { label: string; cells: (Cell | null)[] }[] = [];
+const cursor = new Date(today.getFullYear(), today.getMonth(), 1);
+while (cursor <= last) {
+  const first = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
+  const length = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 0).getDate();
+  const cells: (Cell | null)[] = [];
+  for (let i = 0; i < WEEK.indexOf(first.getDay()); i++) cells.push(null);
+  for (let day = 1; day <= length; day++) {
+    const date = new Date(cursor.getFullYear(), cursor.getMonth(), day);
+    const value = iso(date);
+    cells.push(
+      date < today || date > last
+        ? null
+        : { date: value, day, label: formatDateShort(value, locale), has: has.has(value) }
+    );
+  }
+  months.push({ label: `${s.monthsLong[cursor.getMonth()]} ${cursor.getFullYear()}`, cells });
+  cursor.setMonth(cursor.getMonth() + 1);
+}
 ---
 <div class="filters gutter" role="group" aria-label={s.filterPeriodLabel}>
-  {windows.map((window, i) => (
+  {chips.map((window, i) => (
     <button class="button" type="button" aria-pressed={i === 0} data-filter={window}>{LABELS[window]}</button>
   ))}
+
+  <button class="button" type="button" data-cal-toggle aria-expanded="false" aria-controls="cal-panel">
+    <Icon name="calendar" size={16} /><span data-cal-label data-default={s.filterDate}>{s.filterDate}</span>
+  </button>
+
+  <div class="panel" id="cal-panel" data-cal-panel data-months={JSON.stringify(months.map((m) => m.label))}>
+    <div class="nav">
+      <button class="step" type="button" data-cal-step="-1" aria-label={s.calendarPrev}><Icon name="chevron-left" size={18} /></button>
+      <strong data-cal-month>{months[0]?.label}</strong>
+      <button class="step" type="button" data-cal-step="1" aria-label={s.calendarNext}><Icon name="chevron-right" size={18} /></button>
+    </div>
+
+    <div class="week" aria-hidden="true">{WEEK.map((d) => <span>{s.weekdaysShort[d]}</span>)}</div>
+
+    {months.map((month, i) => (
+      <div class="grid" data-cal-grid hidden={i > 0}>
+        {month.cells.map((cell) => (
+          cell === null
+            ? <span class="cell out"></span>
+            : cell.has
+              ? <button class="cell has" type="button" aria-pressed="false" data-filter={cell.date} data-label={cell.label}>{cell.day}</button>
+              : <span class="cell none">{cell.day}</span>
+        ))}
+      </div>
+    ))}
+
+    <p class="hint meta-quiet">{s.calendarHint}</p>
+  </div>
 </div>
 
 <style>
-  /* Wrap, never scroll. Four chips do not fit one phone line in any of our
-     languages — "La semaine prochaine" is twice the width of "Alle" — and a
-     sideways scrollbar under the hero read as a broken page. A second row of
-     chips does not. */
-  .filters { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-  .filters .button { padding-inline: var(--space-3); }
+  /* Wrap, never scroll. The chips do not fit one phone line in every one of our
+     languages — "Ce week-end" is three times the width of "Alle" — and a
+     sideways scrollbar under the hero read as a broken page. */
+  .filters { position: relative; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+  /* Anchored to the whole row rather than to the chip, so the panel can never
+     be the thing that puts the page back into horizontal scroll. */
+  .panel {
+    position: absolute;
+    inset-inline: var(--space-page);
+    inset-block-start: calc(100% + var(--space-2));
+    z-index: 5;
+    padding: var(--space-3);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 12%);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(calc(var(--space-1) * -1)) scale(0.98);
+    transform-origin: top center;
+    transition: opacity var(--duration-base) var(--ease-base),
+      transform var(--duration-base) var(--ease-base),
+      visibility var(--duration-base) var(--ease-base);
+  }
+  .filters[data-open] .panel { opacity: 1; visibility: visible; transform: none; }
+
+  /* The calendar chip is not in the `[data-filter]` group, so it cannot borrow
+     base.css's pressed state — it says the same thing in its own words. */
+  .button[data-chosen] {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+  .nav strong { font-size: var(--text-small); font-weight: var(--weight-bold); }
+  .step {
+    display: grid;
+    place-items: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    border: 0;
+    background: none;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+  .step[disabled] { color: var(--color-line); cursor: default; }
+
+  .week, .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--space-half); }
+  .week {
+    margin-block-start: var(--space-2);
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-bold);
+    text-align: center;
+  }
+  .grid { margin-block-start: var(--space-1); }
+
+  .cell {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border: 0;
+    border-radius: var(--radius-photo);
+    background: none;
+    font: inherit;
+    font-size: var(--text-micro);
+    font-variant-numeric: var(--figures-tabular);
+  }
+  .cell.none { color: var(--color-line); }
+  .cell.has {
+    color: var(--color-ink);
+    font-weight: var(--weight-black);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-base);
+  }
+  .cell.has:hover { background: var(--color-paper); }
+  .cell.has[aria-pressed='true'] { background: var(--color-ink); color: var(--color-surface); }
+
+  .hint { margin-block-start: var(--space-3); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .panel { transition-duration: 1ms; }
+  }
 </style>
+
+<script>
+  /**
+   * The panel, the month paging, and what the chip says. Choosing a day is not
+   * handled here: the cells are `[data-filter]` buttons, so the page's own
+   * filter script already owns them. This closes the panel afterwards and puts
+   * the chosen date on the chip.
+   */
+  const root = document.querySelector<HTMLElement>('.filters');
+  const toggle = root?.querySelector<HTMLButtonElement>('[data-cal-toggle]');
+  const panel = root?.querySelector<HTMLElement>('[data-cal-panel]');
+  const label = root?.querySelector<HTMLElement>('[data-cal-label]');
+  const monthName = root?.querySelector<HTMLElement>('[data-cal-month]');
+
+  if (root && toggle && panel && label) {
+    const grids = Array.from(panel.querySelectorAll<HTMLElement>('[data-cal-grid]'));
+    const steps = Array.from(panel.querySelectorAll<HTMLButtonElement>('[data-cal-step]'));
+    let names: string[] = [];
+    try { names = JSON.parse(panel.dataset.months ?? '[]'); } catch { names = []; }
+
+    const open = (next: boolean) => {
+      root.toggleAttribute('data-open', next);
+      toggle.setAttribute('aria-expanded', String(next));
+    };
+
+    let month = 0;
+    const showMonth = (index: number) => {
+      month = Math.min(Math.max(index, 0), grids.length - 1);
+      grids.forEach((grid, i) => { grid.hidden = i !== month; });
+      if (monthName && names[month]) monthName.textContent = names[month];
+      for (const step of steps) {
+        const target = month + Number(step.dataset.calStep);
+        step.disabled = target < 0 || target > grids.length - 1;
+      }
+    };
+    showMonth(0);
+
+    toggle.addEventListener('click', () => open(!root.hasAttribute('data-open')));
+    for (const step of steps) {
+      step.addEventListener('click', () => showMonth(month + Number(step.dataset.calStep)));
+    }
+
+    // A day was chosen. The filter has already been applied by the page's own
+    // handler, so all that is left is to name the day and get out of the way.
+    for (const cell of Array.from(panel.querySelectorAll<HTMLButtonElement>('.cell.has'))) {
+      cell.addEventListener('click', () => {
+        label.textContent = cell.dataset.label ?? '';
+        toggle.setAttribute('data-chosen', '');
+        open(false);
+      });
+    }
+
+    // Any other chip means the calendar is no longer the answer.
+    for (const chip of Array.from(root.querySelectorAll<HTMLButtonElement>('.button[data-filter]'))) {
+      chip.addEventListener('click', () => {
+        label.textContent = label.dataset.default ?? '';
+        toggle.removeAttribute('data-chosen');
+        open(false);
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      if (!root.contains(event.target as Node)) open(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && root.hasAttribute('data-open')) { open(false); toggle.focus(); }
+    });
+  }
+</script>

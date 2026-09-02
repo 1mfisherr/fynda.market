@@ -52,8 +52,12 @@ export interface Strings {
   filterAll: string;
   filterToday: string;
   filterWeekend: string;
-  filterWeek: string;
   filterPeriodLabel: string;
+  /** The calendar chip, before a day is chosen. */
+  filterDate: string;
+  calendarPrev: string;
+  calendarNext: string;
+  calendarHint: string;
 
   /* market page */
   route: string;
@@ -163,7 +167,10 @@ const de: Strings = {
   filterAll: 'Alle',
   filterToday: 'Heute',
   filterWeekend: 'Wochenende',
-  filterWeek: 'Nächste Woche',
+  filterDate: 'Datum',
+  calendarPrev: 'Vorheriger Monat',
+  calendarNext: 'Nächster Monat',
+  calendarHint: 'Nur Tage mit Märkten sind wählbar.',
   filterPeriodLabel: 'Zeitraum',
 
   route: 'Route',
@@ -280,7 +287,10 @@ const en: Strings = {
   filterAll: 'All',
   filterToday: 'Today',
   filterWeekend: 'This weekend',
-  filterWeek: 'Next week',
+  filterDate: 'Date',
+  calendarPrev: 'Previous month',
+  calendarNext: 'Next month',
+  calendarHint: 'Only days with markets can be chosen.',
   filterPeriodLabel: 'Period',
 
   route: 'Directions',
@@ -401,7 +411,10 @@ const fr: Strings = {
   filterAll: 'Tous',
   filterToday: "Aujourd'hui",
   filterWeekend: 'Ce week-end',
-  filterWeek: 'La semaine prochaine',
+  filterDate: 'Date',
+  calendarPrev: 'Mois précédent',
+  calendarNext: 'Mois suivant',
+  calendarHint: 'Seuls les jours avec des brocantes sont sélectionnables.',
   filterPeriodLabel: 'Période',
 
   route: 'Itinéraire',
@@ -518,7 +531,10 @@ const it: Strings = {
   filterAll: 'Tutti',
   filterToday: 'Oggi',
   filterWeekend: 'Fine settimana',
-  filterWeek: 'Prossima settimana',
+  filterDate: 'Data',
+  calendarPrev: 'Mese precedente',
+  calendarNext: 'Mese successivo',
+  calendarHint: 'Si possono scegliere solo i giorni con mercatini.',
   filterPeriodLabel: 'Periodo',
 
   route: 'Itinerario',

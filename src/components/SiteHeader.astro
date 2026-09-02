@@ -3,26 +3,23 @@
  * The masthead, once. It was re-typed in all three pages before this existed,
  * and had already drifted: two of them styled `header` differently.
  */
-import Icon from './Icon.astro';
 import { DEFAULT_LOCALE, LOCALE, homePath, utilityPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props {
-  /** A back chevron instead of nothing on the left. Deep pages set this. */
-  back?: boolean;
   locale?: Locale;
   /** The same page in the other languages, for the switcher. */
   alternates?: { locale: Locale; path: string }[];
 }
-const { back = false, locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
+const { locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
 const s = t(locale);
 const others = alternates.filter((a) => a.locale !== locale);
 ---
 <header class="site-header wrapper">
-  <div class="lead">
-    {back && <a class="back" href={homePath(locale)} aria-label={s.backToHome}><Icon name="chevron-right" /></a>}
-    <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
-  </div>
+  {/* The mark and nothing else. A back chevron used to sit here on deep pages,
+      which put the logo in a different place on every page but the home one —
+      and the browser already has a back button. */}
+  <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
   <div class="lead">
     {/* Real links, not a script-driven picker: a language switcher that search
         engines cannot follow is how one locale never gets discovered. */}
@@ -49,15 +46,6 @@ const others = alternates.filter((a) => a.locale !== locale);
   .lead { display: flex; align-items: center; gap: var(--space-2); }
   .langs { display: flex; gap: var(--space-1); color: var(--color-quiet); font-size: var(--text-micro); }
   .langs a { padding-inline: var(--space-half); }
-  /* One chevron in the icon set, pointed by the component that uses it. */
-  .back {
-    display: grid;
-    place-items: center;
-    width: var(--tap-min);
-    height: var(--tap-min);
-    margin-inline-start: calc(var(--space-3) * -1);
-    transform: rotate(180deg);
-  }
   .mark {
     /* "fynda.market" is twice the width of "fynda." and has to share a phone
        line with the language switcher and Gemerkt, so it takes the next step

@@ -66,7 +66,7 @@ const cancelled = rows
 /** The radius view offers these four; the home form has to offer the same. */
 const RADII = [10, 25, 50, 100];
 const PERIODS = {
-  all: s.filterAll, today: s.filterToday, weekend: s.filterWeekend, week: s.filterWeek,
+  all: s.filterAll, today: s.filterToday, weekend: s.filterWeekend,
 } as const;
 
 const site = 'https://fynda.market';
@@ -105,7 +105,7 @@ const jsonLd = {
       <label class="field">
         <span>{s.controlPeriod}</span>
         <select name="zeit">
-          {(['all', 'today', 'weekend', 'week'] as const).map((w) => (
+          {(['all', 'today', 'weekend'] as const).map((w) => (
             <option value={w}>{PERIODS[w]}</option>
           ))}
         </select>
@@ -118,7 +118,7 @@ const jsonLd = {
     <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
   </form>
 
-  <DateFilters locale={locale} />
+  <DateFilters locale={locale} dates={groups.map((g) => g[0].next!.date)} />
 
   <Section title={s.upcoming}>
     <div id="list">
@@ -128,7 +128,7 @@ const jsonLd = {
           {group.map((market) => <MarketRow market={market} locale={locale} />)}
           {group.length > PER_DAY && (
             <div class="gutter more">
-              <Button variant="quiet" data-more hidden>{s.showMore(group.length - PER_DAY)}</Button>
+              <Button variant="quiet" data-more data-more-label={s.showMore(0)} hidden>{s.showMore(group.length - PER_DAY)}</Button>
             </div>
           )}
         </section>
@@ -258,6 +258,7 @@ const jsonLd = {
    * list, which is the right failure: the rows are what earns the traffic.
    */
   import { inWindow, type DateWindow } from '../../lib/date-window';
+  import { syncDayCounts } from '../../lib/day-count';
 
   const PER_DAY = 4;
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
@@ -282,14 +283,20 @@ const jsonLd = {
       const remaining = eligible.length - visible.length;
       if (more) {
         more.hidden = remaining === 0;
-        more.textContent = `${remaining} weitere anzeigen`;
+        // The template is written per locale in strings.ts; only the count
+        // changes here, so the button never speaks German on a French page.
+        more.textContent = (more.dataset.moreLabel ?? '0').replace('0', String(remaining));
       }
 
+      // What the day band reports: everything that matched, including the rows
+      // folded behind the button — see lib/day-count.ts.
+      section.dataset.matched = String(eligible.length);
       section.hidden = eligible.length === 0;
       shown += visible.length;
     }
 
     if (empty) empty.hidden = shown > 0;
+    syncDayCounts();
   };
 
   let current: DateWindow = 'all';

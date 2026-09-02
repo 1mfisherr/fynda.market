@@ -114,7 +114,7 @@ const jsonLd = {
   ],
 };
 ---
-<Page back locale={locale} alternates={alternates} title={`${heading} | Fynda`} description={s.regionIntro(regionName)}>
+<Page locale={locale} alternates={alternates} title={`${heading} | Fynda`} description={s.regionIntro(regionName)}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
@@ -132,7 +132,7 @@ const jsonLd = {
     }))} />
   </Section>
 
-  <DateFilters locale={locale} windows={['all', 'today', 'weekend']} />
+  <DateFilters locale={locale} dates={groups.map((g) => g[0].next!.date)} />
 
   <Section>
     <div id="list">
@@ -153,6 +153,7 @@ const jsonLd = {
 
 <script>
   import { inWindow, type DateWindow } from '../../../../lib/date-window';
+  import { syncDayCounts } from '../../../../lib/day-count';
 
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
@@ -171,6 +172,7 @@ const jsonLd = {
       day.hidden = !Array.from(day.querySelectorAll<HTMLElement>('[data-date]')).some((row) => !row.hidden);
     }
     if (empty) empty.hidden = shown > 0;
+    syncDayCounts();
   };
 
   for (const button of buttons) {

@@ -55,7 +55,7 @@ const DEFAULT_KM = 50;
     ))}
   </div>
 
-  <DateFilters windows={['all', 'today', 'weekend', 'week']} />
+  <DateFilters dates={groups.map((g) => g[0].next!.date)} />
 
   <Section>
     <div id="list">
@@ -126,6 +126,7 @@ const DEFAULT_KM = 50;
    * computed, and it only runs once a real point exists.
    */
   import { inWindow, type DateWindow } from '../lib/date-window';
+  import { syncDayCounts } from '../lib/day-count';
 
   const dateButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const kmButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-km]'));
@@ -209,6 +210,7 @@ const DEFAULT_KM = 50;
     }
 
     if (empty) empty.hidden = shown > 0;
+    syncDayCounts();
   }
 
   for (const button of dateButtons) {

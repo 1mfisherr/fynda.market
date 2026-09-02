@@ -86,6 +86,24 @@ p {
   text-transform: uppercase;
 }
 
+/*
+  `hidden` has to win.
+
+  The browser's own rule is `[hidden] { display: none }`, which any author
+  `display` beats — and MarketRow's root is `display: grid`. So every list
+  filter on the site was setting `row.hidden = true` on rows that carried on
+  rendering: the date chips, the calendar, "4 per day then show more", and the
+  saved page, which showed markets nobody had saved. It looked like it worked
+  because a day with no matching rows is hidden as a whole, and a `<section>`
+  has no author display to defeat the rule.
+
+  This is what `!important` is for: an attribute that means "not on the page"
+  cannot be up for negotiation with a component's own layout.
+*/
+[hidden] {
+  display: none !important;
+}
+
 /* ---- lists ------------------------------------------------------------- */
 
 .list-reset {

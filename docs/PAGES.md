@@ -57,7 +57,7 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 
 The order, and the rule that keeps it from becoming filler: **a block renders only when it has real content.** If nothing was cancelled this week, the cancellations block does not exist that week. That makes padding structurally impossible rather than a matter of taste.
 
-1. **Markets** — day-grouped. **4 per day, then "5 weitere anzeigen", then all of that day.** In place, client-side, never a new URL.
+1. **Markets** — day-grouped. **4 per day, then "5 weitere anzeigen", then all of that day.** In place, client-side, never a new URL. The date control above it is three chips and a calendar: "Nächste Woche" was a coarse guess at the question the calendar answers exactly. A chosen day is a filter, never a URL.
 2. **Newsletter** — intent is highest right after someone has scanned the list, not at the top.
 3. **Organiser CTA** — the supply side earns its place before navigation does.
 4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.

@@ -9,7 +9,12 @@
  * filter that cannot be given a date cannot be reasoned about.
  */
 
-export type DateWindow = 'all' | 'today' | 'weekend' | 'week';
+/**
+ * The named windows, plus one specific day as a plain YYYY-MM-DD. The calendar
+ * picks a day, and it goes through the same control and the same filter as the
+ * chips — a date is a filter, never a URL (docs/ARCHITECTURE.md).
+ */
+export type DateWindow = 'all' | 'today' | 'weekend' | (string & {});
 
 /** YYYY-MM-DD in the visitor's own calendar, never UTC. */
 export const iso = (d: Date) =>
@@ -35,7 +40,6 @@ export function inWindow(date: string, window: DateWindow, now = new Date()): bo
     const { start, end } = weekendBounds(now);
     return date >= start && date <= end;
   }
-  const week = new Date(now);
-  week.setDate(now.getDate() + 7);
-  return date <= iso(week);
+  // Anything else is a day the visitor picked out of the calendar.
+  return date === window;
 }
