@@ -12,6 +12,7 @@
 
 import pg from 'pg';
 import type { Market, MarketKind, Occurrence, OccurrenceStatus } from './types';
+import { requireConnectionString } from './connection-string.ts';
 
 interface Row {
   slug: string;
@@ -114,10 +115,9 @@ function toOccurrence(row: NonNullable<Row['occurrences']>[number]): Occurrence 
 }
 
 export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
-  const connectionString = process.env.SUPABASE_DB_URL;
-  if (!connectionString) {
-    throw new Error('SUPABASE_DB_URL is not set. Copy .env.example to .env.local and fill it in.');
-  }
+  // Normalised, not read raw: a single leading space in the Cloudflare variable
+  // made `pg` read the host as `base` and the build died with ENOTFOUND.
+  const connectionString = requireConnectionString(process.env.SUPABASE_DB_URL, 'SUPABASE_DB_URL');
 
   // Supabase terminates unencrypted connections and its chain is not in Node's
   // store — the same trade scripts/db.mjs makes, for the same reason.

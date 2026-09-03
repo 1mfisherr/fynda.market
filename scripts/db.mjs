@@ -13,6 +13,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 
+import { requireConnectionString } from '../src/lib/connection-string.ts';
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 function loadEnv() {
@@ -32,12 +34,10 @@ function loadEnv() {
 
 const env = loadEnv();
 
-export const DB_URL = env.SUPABASE_DB_URL;
-export const V1_URL = env.V1_DATABASE_URL;
-
-if (!DB_URL) {
-  throw new Error('SUPABASE_DB_URL is not set. Copy .env.example to .env.local and fill it in.');
-}
+// Same normalisation the build uses, so a string that works in one place cannot
+// fail in the other. See src/lib/connection-string.ts.
+export const DB_URL = requireConnectionString(env.SUPABASE_DB_URL, 'SUPABASE_DB_URL');
+export const V1_URL = env.V1_DATABASE_URL && requireConnectionString(env.V1_DATABASE_URL, 'V1_DATABASE_URL');
 
 /** Supabase terminates unencrypted connections; its cert chain is not in Node's store. */
 const ssl = { rejectUnauthorized: false };
