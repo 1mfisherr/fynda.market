@@ -10,7 +10,7 @@ export default defineConfig({
   trailingSlash: 'always',
   redirects: { '/': '/de/' },
   build: {
-    // Emit /de/schweiz/zuerich/index.html rather than /de/schweiz/zuerich.html
+    // Emit /de/schweiz/zurich/index.html rather than /de/schweiz/zurich.html
     format: 'directory',
   },
   image: {

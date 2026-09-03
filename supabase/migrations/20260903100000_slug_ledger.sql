@@ -3,7 +3,7 @@
 -- Two changes, and they are the same change.
 --
 -- 1. A city, canton or market now carries the SAME slug in every language.
---    Zürich is /de/schweiz/zuerich/, /fr/suisse/zuerich/, /it/svizzera/zuerich/.
+--    Zürich is /de/schweiz/zurich/, /fr/suisse/zurich/, /it/svizzera/zurich/.
 --    The page still reads "Zurigo" in Italian — `texts` is untouched. Only the
 --    address stops moving. Of 55 Swiss cities, 45 already had one name in all
 --    four languages; the machinery existed for ten. A place name is a proper
@@ -54,7 +54,7 @@ comment on index public.slugs_one_current is
 -- wrong place after a rename.
 
 comment on column public.slugs.slug is
-  'ASCII, transliterated in the language the place actually speaks: zuerich and buelach are German towns, geneve and fribourg are French ones. Not blind accent-stripping — Hölstein BL and Holstein are different places. guardrails.config.json forbids non-ASCII in URLs.';
+  'ASCII, transliterated in the language the place actually speaks: buelach and duebendorf are German towns, geneve and fribourg are French ones. Zürich is the one place famous enough to take its international spelling, zurich. guardrails.config.json forbids non-ASCII in URLs.';
 
 comment on table public.slugs is
   'Every URL segment that names an entity, live and retired. Cities, cantons and markets carry one slug across all locales; only the country segment is translated. Written by scripts/localise-places.mjs.';

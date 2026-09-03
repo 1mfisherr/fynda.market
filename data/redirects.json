@@ -8,6 +8,10 @@
     "to": "/de/schweiz/geneve/"
   },
   {
+    "from": "/de/schweiz/zuerich/",
+    "to": "/de/schweiz/zurich/"
+  },
+  {
     "from": "/en/switzerland/geneva/",
     "to": "/en/switzerland/geneve/"
   },
@@ -16,8 +20,8 @@
     "to": "/en/switzerland/luzern/"
   },
   {
-    "from": "/en/switzerland/zurich/",
-    "to": "/en/switzerland/zuerich/"
+    "from": "/en/switzerland/zuerich/",
+    "to": "/en/switzerland/zurich/"
   },
   {
     "from": "/fr/suisse/bale/",
@@ -48,8 +52,8 @@
     "to": "/fr/suisse/thun/"
   },
   {
-    "from": "/fr/suisse/zurich/",
-    "to": "/fr/suisse/zuerich/"
+    "from": "/fr/suisse/zuerich/",
+    "to": "/fr/suisse/zurich/"
   },
   {
     "from": "/it/svizzera/basilea/",
@@ -84,8 +88,12 @@
     "to": "/it/svizzera/schaffhausen/"
   },
   {
+    "from": "/it/svizzera/zuerich/",
+    "to": "/it/svizzera/zurich/"
+  },
+  {
     "from": "/it/svizzera/zurigo/",
-    "to": "/it/svizzera/zuerich/"
+    "to": "/it/svizzera/zurich/"
   },
   {
     "from": "/de/schweiz/kanton/freiburg/",
@@ -104,6 +112,10 @@
     "to": "/de/schweiz/kanton/vaud/"
   },
   {
+    "from": "/de/schweiz/kanton/zuerich/",
+    "to": "/de/schweiz/kanton/zurich/"
+  },
+  {
     "from": "/en/switzerland/canton/geneva/",
     "to": "/en/switzerland/canton/geneve/"
   },
@@ -116,8 +128,8 @@
     "to": "/en/switzerland/canton/luzern/"
   },
   {
-    "from": "/en/switzerland/canton/zurich/",
-    "to": "/en/switzerland/canton/zuerich/"
+    "from": "/en/switzerland/canton/zuerich/",
+    "to": "/en/switzerland/canton/zurich/"
   },
   {
     "from": "/fr/suisse/canton/argovie/",
@@ -160,8 +172,8 @@
     "to": "/fr/suisse/canton/ticino/"
   },
   {
-    "from": "/fr/suisse/canton/zurich/",
-    "to": "/fr/suisse/canton/zuerich/"
+    "from": "/fr/suisse/canton/zuerich/",
+    "to": "/fr/suisse/canton/zurich/"
   },
   {
     "from": "/it/svizzera/cantone/argovia/",
@@ -208,7 +220,11 @@
     "to": "/it/svizzera/cantone/solothurn/"
   },
   {
+    "from": "/it/svizzera/cantone/zuerich/",
+    "to": "/it/svizzera/cantone/zurich/"
+  },
+  {
     "from": "/it/svizzera/cantone/zurigo/",
-    "to": "/it/svizzera/cantone/zuerich/"
+    "to": "/it/svizzera/cantone/zurich/"
   }
 ]

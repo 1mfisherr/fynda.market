@@ -36,7 +36,7 @@
       {
         "name": "non-ascii slug",
         "pattern": "[^\u0000-\u007F]",
-        "why": "Slugs are transliterated: zuerich, not zürich. Umlauts in URLs break sharing and analytics."
+        "why": "Slugs are ASCII: buelach, not bülach. Umlauts in URLs break sharing and analytics."
       }
     ]
   },

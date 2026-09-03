@@ -7,12 +7,17 @@
  */
 
 /**
- * ASCII, transliterated the German way: zuerich, not zurich and not zürich.
- * guardrails.config.json forbids umlauts in URLs; ü -> u would collide Zürich
- * with a hypothetical Zurich and reads wrong to a German speaker.
+ * ASCII, transliterated the German way: buelach, not bulach and not bülach.
+ * guardrails.config.json forbids umlauts in URLs, and Bülach and Dübendorf
+ * write themselves buelach.ch and duebendorf.ch — ü -> u reads wrong to the
+ * people who live there.
  *
  * French and Italian take the plain accent-stripping the same code gives them:
  * Genève -> geneve, Basilea Città -> basilea-citta.
+ *
+ * Which of the two a place gets is decided by the caller, not here:
+ * scripts/localise-places.mjs picks the name to slugify, and its SLUG_FROM map
+ * holds the exceptions (Zürich -> Zurich, Genf -> Genève).
  */
 export function slugify(value) {
   return value

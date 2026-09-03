@@ -58,8 +58,8 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 ```
 /de/                                    locale home
 /de/schweiz/                            country
-/de/schweiz/kanton/zuerich/             region (canton / Bundesland)
-/de/schweiz/zuerich/                    city
+/de/schweiz/kanton/zurich/              region (canton / Bundesland)
+/de/schweiz/zurich/                     city
 /de/markt/[slug]/                       market
 /de/melden/                             utility (noindex)
 /umkreis/                               radius view (noindex)
@@ -72,7 +72,7 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 | country | `schweiz` | `suisse` | `svizzera` | `switzerland` |
 | market | `markt` | `marche` | `mercato` | `market` |
 | canton | `kanton` | `canton` | `cantone` | `canton` |
-| Zürich | `zuerich` | `zuerich` | `zuerich` | `zuerich` |
+| Zürich | `zurich` | `zurich` | `zurich` | `zurich` |
 | Genève | `geneve` | `geneve` | `geneve` | `geneve` |
 
 Built only by `src/lib/i18n.ts`. A path assembled by hand is how `/it/frankreich/paris/` happens — right words, wrong language, invisible until a native speaker reads it.
@@ -87,7 +87,9 @@ Nobody large does this. Booking (46 languages), Tripadvisor and Airbnb never tra
 
 The country segment is the deliberate exception: `schweiz` / `suisse` / `svizzera` is a **word**, not a name. It belongs with `markt` / `marche` / `mercato` — a fixed hand-written set of about fifty that never grows with the data — and it is the segment `flohmarkt schweiz` is actually searched with.
 
-**The slug is transliterated in the language the place speaks, not blindly stripped of accents.** Bülach and Hölstein are German towns: `buelach`, `hoelstein` — stripping would give `holstein`, a different place in a different country. Genève and Fribourg are French towns and take the French form, not the German exonyms the import wrote. Where a commune's own name is dual (Biel/Bienne), the majority language wins.
+**The slug is transliterated in the language the place speaks, not blindly stripped of accents.** Bülach and Dübendorf are German towns and write themselves `buelach.ch` and `duebendorf.ch`. Genève and Fribourg are French towns and take the French form, not the German exonyms the import wrote. Where a commune's own name is dual (Biel/Bienne), the majority language wins.
+
+**Zürich is the one exception, and the list should stay one long:** `zurich`, because it is the single Swiss place with a settled accent-free form the whole world already uses — Booking, Airbnb, Tripadvisor and Google Maps all spell it that way — and the slug is now shared with the French, Italian and English pages. Fame, not a rule about umlauts. `scripts/localise-places.mjs`, `SLUG_FROM`.
 
 ### Retired addresses
 

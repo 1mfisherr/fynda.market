@@ -21,11 +21,11 @@
  * is the segment "flohmarkt schweiz" is actually searched with.
  *
  * The slug is transliterated in the language the place itself speaks, which is
- * not the same as stripping accents. Bülach and Hölstein are German towns, so
- * ü -> ue and ö -> oe: buelach, hoelstein. Blind stripping would give holstein,
- * which is a different place in a different country. Genève and Fribourg are
- * French towns, so they take the French form: geneve, fribourg — not the German
- * exonyms Genf and Freiburg that the import wrote.
+ * not the same as stripping accents: Bülach and Dübendorf are German towns and
+ * write themselves buelach.ch and duebendorf.ch. Genève and Fribourg are French
+ * towns and take the French form, not the German exonyms Genf and Freiburg that
+ * the import wrote. Zürich is the single exception in both directions — see
+ * SLUG_FROM below.
  *
  * Nothing here is translated by a machine. A place name is a fact with one
  * correct answer per language, so they are written out.
@@ -85,21 +85,31 @@ const CITIES = {
 };
 
 /**
- * The name the place calls itself, where that is not the German name the import
- * wrote. This is what the single slug is built from.
+ * The name the single slug is built from, where the German name in the database
+ * is the wrong one to build it from. Two kinds of entry, for two reasons.
  *
- * Only four places in Switzerland need it, and all four are French- or
- * Italian-speaking cantons that German-language sources name differently. Bern,
- * Graubünden and Basel-Landschaft are officially multilingual too, but their
- * majority language is German, so the German name is already the endonym.
+ * ENDONYMS. Genève, Fribourg, Ticino and Vaud are French- and Italian-speaking
+ * places that German sources name differently, and the import wrote the German
+ * exonym. The place's own name wins. Bern, Graubünden and Basel-Landschaft are
+ * officially multilingual too, but their majority language is German, so the
+ * German name is already the endonym. The tiebreaker, written down so it does
+ * not get re-decided per town: the name the commune itself registers, and where
+ * that is itself dual (Biel/Bienne), the majority language.
  *
- * The tiebreaker, written down so it does not get re-decided per town: the name
- * the commune itself registers, and where that is itself dual (Biel/Bienne),
- * the majority language.
+ * INTERNATIONAL FORMS. Zürich is `zurich`, not `zuerich`. It is the one Swiss
+ * place with a settled accent-free form that the whole world already uses —
+ * Booking, Airbnb, Tripadvisor and Google Maps all spell it that way — and this
+ * slug is now shared by the French, Italian and English pages as well. That is
+ * not true of Bülach or Dübendorf, whose own town councils write buelach.ch and
+ * duebendorf.ch; they keep the German transliteration. An exception list of one
+ * is the right size for "famous enough to have an international spelling".
  */
-const ENDONYM = {
-  region: { 'Genf': 'Genève', 'Freiburg': 'Fribourg', 'Tessin': 'Ticino', 'Waadt': 'Vaud' },
-  city: { 'Genf': 'Genève', 'Freiburg': 'Fribourg' },
+const SLUG_FROM = {
+  region: {
+    'Genf': 'Genève', 'Freiburg': 'Fribourg', 'Tessin': 'Ticino', 'Waadt': 'Vaud',
+    'Zürich': 'Zurich',
+  },
+  city: { 'Genf': 'Genève', 'Freiburg': 'Fribourg', 'Zürich': 'Zurich' },
 };
 
 async function main() {
@@ -133,12 +143,12 @@ async function main() {
       // locale. The row-per-locale shape is kept so that the query layer and
       // the country case stay a single code path.
       for (const region of regions) {
-        const slug = slugify(ENDONYM.region[region.name] ?? region.name);
+        const slug = slugify(SLUG_FROM.region[region.name] ?? region.name);
         add('region', region.id, locale, CANTONS[region.name]?.[locale] ?? region.name, slug);
       }
 
       for (const city of cities) {
-        const slug = slugify(ENDONYM.city[city.name] ?? city.name);
+        const slug = slugify(SLUG_FROM.city[city.name] ?? city.name);
         add('city', city.id, locale, CITIES[city.name]?.[locale] ?? city.name, slug);
       }
 

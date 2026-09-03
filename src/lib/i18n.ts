@@ -11,7 +11,7 @@
  * half-translated path reads as a bug to the person it is aimed at.
  *
  * Every NAME in the path is not. A city, a canton and a market carry ONE slug
- * across all four languages: `/de/schweiz/zuerich/` and `/it/svizzera/zuerich/`,
+ * across all four languages: `/de/schweiz/zurich/` and `/it/svizzera/zurich/`,
  * while the Italian page reads "Zurigo" throughout. A place name is a proper
  * noun, and an address that moves when a translation is corrected is an address
  * that breaks. Google reads language from hreflang, never from the path, so the

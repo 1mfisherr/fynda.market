@@ -11,8 +11,8 @@ Updated 2026-09-03.
 **The site is built, on real data, in four languages, with photographs.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **927 pages, all 9 guardrails green.** Ratio 1.00 (908 URLs / 226 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
 
 - **Database:** Supabase `eu-west-1`, Postgres 17.6. 161 markets, 2,357 occurrences, 55 cities, 14 cantons, 107 organisers, 1,782 facts. Credentials in `.env.local`; scripts connect via `scripts/db.mjs`.
-- **One slug per place.** A city, canton and market keep the same address in all four languages — `/de/schweiz/zuerich/`, `/it/svizzera/zuerich/`, with the page still reading "Zurigo". Changed 2026-09-03; 45 of 55 cities already had one name in all four, and the per-locale version meant fixing a translation rewrote live URLs. Only the country segment is still translated. `docs/ARCHITECTURE.md` §URL shape.
-- **Nothing that has been published can 404.** Retired slugs are kept forever and emitted as 301s in `_redirects` (53 today, from the rename above). A retired slug also stays reserved so it can never point at the wrong place later. Guardrail 9.
+- **One slug per place.** A city, canton and market keep the same address in all four languages — `/de/schweiz/zurich/`, `/it/svizzera/zurich/`, with the page still reading "Zurigo". Changed 2026-09-03; 45 of 55 cities already had one name in all four, and the per-locale version meant fixing a translation rewrote live URLs. Only the country segment is still translated. `docs/ARCHITECTURE.md` §URL shape.
+- **Nothing that has been published can 404.** Retired slugs are kept forever and emitted as 301s in `_redirects` (57 today, from the rename above). A retired slug also stays reserved so it can never point at the wrong place later. Guardrail 9.
 - **Locales:** de, fr, it, en. 908 pages in complete 4-language hreflang clusters. **Market descriptions render in all four** — the fr/it/en prose was reviewed 2026-08-31 and released. Market-kind names are per locale too; they were German everywhere until the types became a block of tiles on the French home page.
 - **Live page types:** home, market, city, **canton**, the four product utility pages in all four languages, two German-only legal pages, `/umkreis/`, plus `sitemap`, `robots.txt`, `/llms.txt`, and `/ics/[slug].ics` per market.
 - **Photographs:** 135 photos on 146 of 157 market pages, each written at two sizes — a 1440px hero and a 148px square. A city page's images went from ~2.2 MB to 116 KB. 11 markets pointed at pexels stock URLs in v1 and keep the illustration instead — `docs/BRAND.md`. `scripts/import-images.mjs` re-encodes from the v1 repo and rewrites `markets.image_url` from the facts; `src/lib/images.ts` holds the naming rule both it and `PhotoOrArt` obey.
@@ -53,7 +53,7 @@ The design shows stall counts, seller mix, packing-up times, dogs, toilets, trav
 | Migrate from fleafind.ch? | **No.** No content, and no redirects from the old domain. Old site untouched |
 | Locales | **CH: de, fr, it, en. Every other country: its language + English** |
 | URL shape | `/{locale}/{country}/{city}/` · `/{locale}/{market-word}/{slug}/` · canton via a type segment. The **words** in the path are translated; the **names** are not |
-| Place slugs | **One slug in every language**, for cities, cantons and markets — a place name is a proper noun. Only the country segment is still translated. Transliterated in the language the place speaks: `zuerich`, `buelach`, but `geneve`, `fribourg` |
+| Place slugs | **One slug in every language**, for cities, cantons and markets — a place name is a proper noun. Only the country segment is still translated. Transliterated in the language the place speaks — `buelach`, `duebendorf`, but `geneve`, `fribourg`. Zürich is `zurich`, the one place famous enough to have an international spelling |
 | Renames | **A published address never dies.** Old slugs are kept and served as 301s; guardrail 9 enforces it |
 | Photos | 135 moved across from v1, on 146 of 157 markets. Stock never ships — the 11 pexels URLs v1 held were dropped, not imported |
 | Analytics | Own events in Postgres + self-hosted Metabase. No GA4, no Plausible. Daily hash for everyone, persistent id only on consent. Nothing deleted |
@@ -76,8 +76,8 @@ The design shows stall counts, seller mix, packing-up times, dogs, toilets, trav
 ### Canton URLs
 
 ```
-/de/schweiz/zuerich/            city Zürich
-/de/schweiz/kanton/zuerich/     canton Zürich
+/de/schweiz/zurich/             city Zürich
+/de/schweiz/kanton/zurich/      canton Zürich
 /de/deutschland/bundesland/bayern/
 ```
 
