@@ -21,24 +21,20 @@ import { t } from '../../../lib/strings';
 import type { Market, Occurrence } from '../../../lib/types';
 
 /**
- * One city page per city per locale. The city's slug is different in each —
- * zuerich / zurich / zurigo — so the alternates cannot be derived from the path
- * and are collected here, where every locale's markets are already loaded.
+ * One city page per city per locale. A city carries the same slug in all four —
+ * Zürich is `zuerich` in every language — so the alternate paths differ only in
+ * the locale and the country segment, and are read straight off the slug.
  */
 export async function getStaticPaths() {
   const byLocale = new Map<Locale, Market[]>();
   for (const locale of LOCALES) byLocale.set(locale, await getMarkets(locale));
 
-  // marketSlug -> its city slug in every locale, so a page can link to itself
-  // in another language. Markets keep one slug across locales, so it is a
-  // reliable join key between the four result sets.
-  const cityOf = new Map<string, Partial<Record<Locale, { country: string; city: string }>>>();
+  // citySlug -> the country segment it sits under, per locale. The country is
+  // the one part of the path still translated (schweiz / suisse / svizzera),
+  // and it is looked up rather than assumed because a second country is coming.
+  const countryOf = new Map<Locale, Map<string, string>>();
   for (const locale of LOCALES) {
-    for (const m of byLocale.get(locale)!) {
-      const entry = cityOf.get(m.slug) ?? {};
-      entry[locale] = { country: m.countrySlug, city: m.citySlug };
-      cityOf.set(m.slug, entry);
-    }
+    countryOf.set(locale, new Map(byLocale.get(locale)!.map((m) => [m.citySlug, m.countrySlug])));
   }
 
   const paths = [];
@@ -48,8 +44,8 @@ export async function getStaticPaths() {
     for (const [stadt, sample] of cities) {
       const here = markets.filter((m) => m.citySlug === stadt);
       const alternates = LOCALES.map((other) => {
-        const place = cityOf.get(here[0].slug)?.[other];
-        return place ? { locale: other, path: cityPath(other, place.country, place.city) } : null;
+        const country = countryOf.get(other)!.get(stadt);
+        return country ? { locale: other, path: cityPath(other, country, stadt) } : null;
       }).filter(Boolean) as { locale: Locale; path: string }[];
 
       paths.push({

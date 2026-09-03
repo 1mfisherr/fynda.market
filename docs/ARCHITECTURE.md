@@ -65,18 +65,37 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 /umkreis/                               radius view (noindex)
 ```
 
-**Locale first, then country, then place.** The whole path is in the page's own language — country, section word and city name:
+**Locale first, then country, then place.** Every **word** in the path is in the page's own language. Every **name** in it is the same in all four:
 
 | | de | fr | it | en |
 |---|---|---|---|---|
 | country | `schweiz` | `suisse` | `svizzera` | `switzerland` |
 | market | `markt` | `marche` | `mercato` | `market` |
 | canton | `kanton` | `canton` | `cantone` | `canton` |
-| Zürich | `zuerich` | `zurich` | `zurigo` | `zurich` |
+| Zürich | `zuerich` | `zuerich` | `zuerich` | `zuerich` |
+| Genève | `geneve` | `geneve` | `geneve` | `geneve` |
 
 Built only by `src/lib/i18n.ts`. A path assembled by hand is how `/it/frankreich/paris/` happens — right words, wrong language, invisible until a native speaker reads it.
 
-**Market pages sit outside the geography tree on purpose:** a market never needs a new URL if its city or region classification changes. **A market keeps one slug in every language** — its name is a proper noun.
+### One slug per place
+
+**A city, a canton and a market carry one slug across all four languages.** The page still reads "Zurigo" in Italian; only the address stops moving. Changed 2026-09-03, replacing per-locale slugs.
+
+The rule it replaced looked right and was not. Of 55 Swiss cities, 45 already had one name in all four — the machinery existed for ten. What it cost was the opposite of small: the words in the path **were** the identity, so correcting a translation, merging a commune or adding a language rewrote live URLs, and every cross-language link had to be joined through a market slug because it could not be derived from the path.
+
+Nobody large does this. Booking (46 languages), Tripadvisor and Airbnb never translate the name. GetYourGuide does, but carries a numeric id — `kanton-genf-l73` — so the words are decoration; request a nonsense slug with the right id and it redirects to the real one. Google reads language from `hreflang`, never from the path, so the translated name bought nothing in search and cost every link.
+
+The country segment is the deliberate exception: `schweiz` / `suisse` / `svizzera` is a **word**, not a name. It belongs with `markt` / `marche` / `mercato` — a fixed hand-written set of about fifty that never grows with the data — and it is the segment `flohmarkt schweiz` is actually searched with.
+
+**The slug is transliterated in the language the place speaks, not blindly stripped of accents.** Bülach and Hölstein are German towns: `buelach`, `hoelstein` — stripping would give `holstein`, a different place in a different country. Genève and Fribourg are French towns and take the French form, not the German exonyms the import wrote. Where a commune's own name is dual (Biel/Bienne), the majority language wins.
+
+### Retired addresses
+
+**No address Fynda has published ever stops working.** A slug row is never deleted: when it is replaced it is marked `is_current = false` and stays forever, and the build turns those rows into 301s in `_redirects`, which Cloudflare Pages serves natively. A retired slug also stays reserved, so it can never be handed to a different entity and start pointing somewhere wrong.
+
+This is the guarantee GetYourGuide and Tripadvisor buy with an id in the path, without the id — which is the generated-directory look the v1 post-mortem says to avoid. It is not an edge case: Swiss communes merge constantly, roughly 3,000 down to 2,100 in thirty years. Guardrail 9 enforces it.
+
+**Market pages sit outside the geography tree on purpose:** a market never needs a new URL if its city or region classification changes.
 
 **The canton level uses a type segment** because five Swiss names are both a city and a canton (Zürich, Bern, Luzern, St. Gallen, Schaffhausen), and it is structural rather than Swiss: Berlin, Hamburg and Bremen are city-states. Booking.com, Eventbrite and meine-flohmarkt-termine all solve it the same way. **A type segment partitions — one URL per canton; a facet multiplies — every place × seven weekdays.** That distinction is what the forbid rules encode.
 
@@ -98,7 +117,7 @@ The line that does matter is Google's: scaled content abuse covers pages generat
 
 A market page's value is language-neutral data — date, time, address, coordinates, cancelled-or-not, confirmed-on. Interface strings (`src/lib/strings.ts`) are a few dozen phrases written once per language by a person. **Market descriptions are the only real prose, and appear in a language only after a human has read them.** They exist in the database in four languages from the v1 import and are deliberately not rendered.
 
-Place names and per-locale slugs live in the database (`slugs`, `texts`), written by `scripts/localise-places.mjs`. Only genuine exonyms are translated — Bâle, Zurigo, Coire; Lausanne stays Lausanne in all four.
+Place **names** live in the database (`texts`) per locale, written by `scripts/localise-places.mjs`. Only genuine exonyms are translated — Bâle, Zurigo, Coire; Lausanne stays Lausanne in all four. Place **slugs** are in `slugs` and are not per locale — see "One slug per place" above.
 
 **hreflang** is emitted on every indexable page: every cluster member lists every other including itself, plus `x-default` → German. Guardrail 8 checks it, because one error voids a whole cluster and roughly three quarters of implementations in the wild carry one.
 
@@ -248,7 +267,7 @@ It compares **class names, not just whole selectors.** The first version compare
 
 **No CSS framework.** The token layer is better than what one would supply, and adopting one would mean discarding it.
 
-## The eight guardrails
+## The nine guardrails
 
 `scripts/guardrails.mjs`, run by `npm run verify` and by CI. Config in `guardrails.config.json`.
 
@@ -262,6 +281,7 @@ It compares **class names, not just whole selectors.** The first version compare
 | 6 | Structured data, one `Event` per page | The markup Google gives a manual action for |
 | 7 | Style cohesion | Pages drifting into separate designs |
 | 8 | hreflang clusters | A one-way link voiding a whole language cluster |
+| 9 | Retired addresses still land | A rename silently killing every shared link and ranking |
 
 Checks 1–6 and 8 read `dist/`. Check 7 reads `src/`, because the failure it catches is invisible in the output.
 

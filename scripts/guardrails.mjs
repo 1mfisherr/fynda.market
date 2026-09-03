@@ -498,6 +498,57 @@ check('hreflang clusters', () => {
 });
 
 /* -------------------------------------------------------------------------- */
+/* 9. retired addresses still land                                            */
+/*                                                                            */
+/* The one rule the redirect ledger exists to enforce: an address Fynda has    */
+/* published never stops working. A rename that quietly dropped the old slug   */
+/* would take the shared links and the Google ranking with it, and nothing     */
+/* else in this file would notice — the new page builds perfectly.             */
+/*                                                                            */
+/* Three ways it can be wrong, all checked: a redirect pointing at a page that */
+/* does not exist, a redirect shadowing a live page, and data/redirects.json   */
+/* disagreeing with the _redirects file actually shipped to Cloudflare.        */
+/* -------------------------------------------------------------------------- */
+
+check('Retired addresses still land', () => {
+  const redirects = readData('redirects.json');
+  if (!redirects) return skip('no data/redirects.json — nothing has been renamed yet');
+  if (redirects.length === 0) return pass('nothing renamed yet, so no address has moved');
+
+  const live = new Set(pages.map((p) => p.url));
+  const shipped = join(distDir, '_redirects');
+  const body = existsSync(shipped) ? readFileSync(shipped, 'utf8') : '';
+  const problems = [];
+
+  // The ledger describes the real database. A fixtures build holds six markets
+  // and a handful of cities, so almost every target is legitimately absent from
+  // it — asserting otherwise would make the check fail loudest when it knows
+  // least. The target test therefore runs on the build that actually deploys.
+  const real = readData('entities.json')?.source === 'supabase';
+
+  for (const { from, to } of redirects) {
+    // A wildcard covers a whole subtree, so its target is a prefix rather than
+    // a page. The exact line emitted alongside it is what gets checked.
+    const splat = from.endsWith('*');
+
+    if (real && !splat && !live.has(to)) {
+      problems.push(`${from} -> ${to} — the target is not a page in this build.`);
+    }
+    if (!splat && live.has(from)) {
+      problems.push(`${from} — is both a live page and a redirect source. The redirect would shadow it.`);
+    }
+    if (!body.includes(`${from} ${to} 301`)) {
+      problems.push(`${from} — missing from dist/_redirects, so Cloudflare would serve a 404.`);
+    }
+  }
+
+  if (problems.length) return fail(`${problems.length} broken redirect(s)`, problems);
+  return real
+    ? pass(`${redirects.length} retired addresses, every one still lands on a page that exists`)
+    : pass(`${redirects.length} retired addresses shipped intact (targets checked on a database build)`);
+});
+
+/* -------------------------------------------------------------------------- */
 /* output                                                                     */
 /* -------------------------------------------------------------------------- */
 

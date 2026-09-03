@@ -8,7 +8,7 @@
   "_localeComment": "Switzerland publishes in four languages; every other country will get its own plus English. A locale is not a page multiplier in the v1 sense — the same market in Italian is a full page with the same dates and address, not an empty cell in a matrix. See ARCHITECTURE.md 'Locales'.",
 
   "routes": {
-    "_localePrefix": "Every path starts with a locale. The section words are translated too — /de/markt/, /fr/marche/, /it/mercato/, /en/market/ — because a half-translated path reads as a bug to the person it is aimed at.",
+    "_localePrefix": "Every path starts with a locale. The WORDS in a path are translated — /de/markt/, /fr/marche/, /it/mercato/, /en/market/, and the country segment schweiz/suisse/svizzera — because a half-translated path reads as a bug to the person it is aimed at. The NAMES are not: a city, canton and market carry one slug in all four languages, so these patterns match the same slug under every locale. See the slug_ledger migration.",
     "allow": [
       { "name": "home", "pattern": "^/$" },
       { "name": "locale home", "pattern": "^/(de|fr|it|en)/$" },

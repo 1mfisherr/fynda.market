@@ -1,4 +1,5 @@
 {
+  "source": "supabase",
   "markets": 157,
   "cities": 55,
   "locales": 4,

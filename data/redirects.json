@@ -1,0 +1,214 @@
+[
+  {
+    "from": "/de/schweiz/freiburg/",
+    "to": "/de/schweiz/fribourg/"
+  },
+  {
+    "from": "/de/schweiz/genf/",
+    "to": "/de/schweiz/geneve/"
+  },
+  {
+    "from": "/en/switzerland/geneva/",
+    "to": "/en/switzerland/geneve/"
+  },
+  {
+    "from": "/en/switzerland/lucerne/",
+    "to": "/en/switzerland/luzern/"
+  },
+  {
+    "from": "/en/switzerland/zurich/",
+    "to": "/en/switzerland/zuerich/"
+  },
+  {
+    "from": "/fr/suisse/bale/",
+    "to": "/fr/suisse/basel/"
+  },
+  {
+    "from": "/fr/suisse/berne/",
+    "to": "/fr/suisse/bern/"
+  },
+  {
+    "from": "/fr/suisse/coire/",
+    "to": "/fr/suisse/chur/"
+  },
+  {
+    "from": "/fr/suisse/lucerne/",
+    "to": "/fr/suisse/luzern/"
+  },
+  {
+    "from": "/fr/suisse/saint-gall/",
+    "to": "/fr/suisse/st-gallen/"
+  },
+  {
+    "from": "/fr/suisse/schaffhouse/",
+    "to": "/fr/suisse/schaffhausen/"
+  },
+  {
+    "from": "/fr/suisse/thoune/",
+    "to": "/fr/suisse/thun/"
+  },
+  {
+    "from": "/fr/suisse/zurich/",
+    "to": "/fr/suisse/zuerich/"
+  },
+  {
+    "from": "/it/svizzera/basilea/",
+    "to": "/it/svizzera/basel/"
+  },
+  {
+    "from": "/it/svizzera/berna/",
+    "to": "/it/svizzera/bern/"
+  },
+  {
+    "from": "/it/svizzera/coira/",
+    "to": "/it/svizzera/chur/"
+  },
+  {
+    "from": "/it/svizzera/friburgo/",
+    "to": "/it/svizzera/fribourg/"
+  },
+  {
+    "from": "/it/svizzera/ginevra/",
+    "to": "/it/svizzera/geneve/"
+  },
+  {
+    "from": "/it/svizzera/lucerna/",
+    "to": "/it/svizzera/luzern/"
+  },
+  {
+    "from": "/it/svizzera/san-gallo/",
+    "to": "/it/svizzera/st-gallen/"
+  },
+  {
+    "from": "/it/svizzera/sciaffusa/",
+    "to": "/it/svizzera/schaffhausen/"
+  },
+  {
+    "from": "/it/svizzera/zurigo/",
+    "to": "/it/svizzera/zuerich/"
+  },
+  {
+    "from": "/de/schweiz/kanton/freiburg/",
+    "to": "/de/schweiz/kanton/fribourg/"
+  },
+  {
+    "from": "/de/schweiz/kanton/genf/",
+    "to": "/de/schweiz/kanton/geneve/"
+  },
+  {
+    "from": "/de/schweiz/kanton/tessin/",
+    "to": "/de/schweiz/kanton/ticino/"
+  },
+  {
+    "from": "/de/schweiz/kanton/waadt/",
+    "to": "/de/schweiz/kanton/vaud/"
+  },
+  {
+    "from": "/en/switzerland/canton/geneva/",
+    "to": "/en/switzerland/canton/geneve/"
+  },
+  {
+    "from": "/en/switzerland/canton/grisons/",
+    "to": "/en/switzerland/canton/graubuenden/"
+  },
+  {
+    "from": "/en/switzerland/canton/lucerne/",
+    "to": "/en/switzerland/canton/luzern/"
+  },
+  {
+    "from": "/en/switzerland/canton/zurich/",
+    "to": "/en/switzerland/canton/zuerich/"
+  },
+  {
+    "from": "/fr/suisse/canton/argovie/",
+    "to": "/fr/suisse/canton/aargau/"
+  },
+  {
+    "from": "/fr/suisse/canton/bale-campagne/",
+    "to": "/fr/suisse/canton/basel-landschaft/"
+  },
+  {
+    "from": "/fr/suisse/canton/bale-ville/",
+    "to": "/fr/suisse/canton/basel-stadt/"
+  },
+  {
+    "from": "/fr/suisse/canton/berne/",
+    "to": "/fr/suisse/canton/bern/"
+  },
+  {
+    "from": "/fr/suisse/canton/grisons/",
+    "to": "/fr/suisse/canton/graubuenden/"
+  },
+  {
+    "from": "/fr/suisse/canton/lucerne/",
+    "to": "/fr/suisse/canton/luzern/"
+  },
+  {
+    "from": "/fr/suisse/canton/saint-gall/",
+    "to": "/fr/suisse/canton/st-gallen/"
+  },
+  {
+    "from": "/fr/suisse/canton/schaffhouse/",
+    "to": "/fr/suisse/canton/schaffhausen/"
+  },
+  {
+    "from": "/fr/suisse/canton/soleure/",
+    "to": "/fr/suisse/canton/solothurn/"
+  },
+  {
+    "from": "/fr/suisse/canton/tessin/",
+    "to": "/fr/suisse/canton/ticino/"
+  },
+  {
+    "from": "/fr/suisse/canton/zurich/",
+    "to": "/fr/suisse/canton/zuerich/"
+  },
+  {
+    "from": "/it/svizzera/cantone/argovia/",
+    "to": "/it/svizzera/cantone/aargau/"
+  },
+  {
+    "from": "/it/svizzera/cantone/basilea-campagna/",
+    "to": "/it/svizzera/cantone/basel-landschaft/"
+  },
+  {
+    "from": "/it/svizzera/cantone/basilea-citta/",
+    "to": "/it/svizzera/cantone/basel-stadt/"
+  },
+  {
+    "from": "/it/svizzera/cantone/berna/",
+    "to": "/it/svizzera/cantone/bern/"
+  },
+  {
+    "from": "/it/svizzera/cantone/friburgo/",
+    "to": "/it/svizzera/cantone/fribourg/"
+  },
+  {
+    "from": "/it/svizzera/cantone/ginevra/",
+    "to": "/it/svizzera/cantone/geneve/"
+  },
+  {
+    "from": "/it/svizzera/cantone/grigioni/",
+    "to": "/it/svizzera/cantone/graubuenden/"
+  },
+  {
+    "from": "/it/svizzera/cantone/lucerna/",
+    "to": "/it/svizzera/cantone/luzern/"
+  },
+  {
+    "from": "/it/svizzera/cantone/san-gallo/",
+    "to": "/it/svizzera/cantone/st-gallen/"
+  },
+  {
+    "from": "/it/svizzera/cantone/sciaffusa/",
+    "to": "/it/svizzera/cantone/schaffhausen/"
+  },
+  {
+    "from": "/it/svizzera/cantone/soletta/",
+    "to": "/it/svizzera/cantone/solothurn/"
+  },
+  {
+    "from": "/it/svizzera/cantone/zurigo/",
+    "to": "/it/svizzera/cantone/zuerich/"
+  }
+]

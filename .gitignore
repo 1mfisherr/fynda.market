@@ -12,3 +12,6 @@ Thumbs.db
 *.log
 .vercel/
 .wrangler/
+
+# Build output: written by scripts/emit-data.mjs from data/redirects.json.
+public/_redirects

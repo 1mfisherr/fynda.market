@@ -6,14 +6,21 @@
  * language a visitor from anywhere falls back to, and because a Swiss market is
  * worth finding by someone who reads neither German nor French.
  *
- * The whole path is in the page's own language, including the country and the
- * segment words: `/it/svizzera/mercato/…`, never `/it/schweiz/markt/…`. Google's
- * URL guidance is explicit that the words should be in the audience's language,
- * and a half-translated path reads as a bug to the person it is aimed at.
+ * Every WORD in the path is in the page's own language — the country and the
+ * segment words: `/it/svizzera/mercato/…`, never `/it/schweiz/markt/…`. A
+ * half-translated path reads as a bug to the person it is aimed at.
  *
- * Place names and place slugs are NOT here — they are per-locale rows in the
- * database (`slugs`, `texts`), written by scripts/localise-places.mjs. This file
- * holds only what is true of a locale itself.
+ * Every NAME in the path is not. A city, a canton and a market carry ONE slug
+ * across all four languages: `/de/schweiz/zuerich/` and `/it/svizzera/zuerich/`,
+ * while the Italian page reads "Zurigo" throughout. A place name is a proper
+ * noun, and an address that moves when a translation is corrected is an address
+ * that breaks. Google reads language from hreflang, never from the path, so the
+ * translated name bought nothing and cost every link. See the slug_ledger
+ * migration.
+ *
+ * Names and slugs are therefore NOT here — they are rows in the database
+ * (`slugs`, `texts`), written by scripts/localise-places.mjs. This file holds
+ * only what is true of a locale itself.
  */
 
 export type Locale = 'de' | 'fr' | 'it' | 'en';

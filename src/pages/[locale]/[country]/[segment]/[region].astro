@@ -31,21 +31,19 @@ import { t } from '../../../../lib/strings';
 import type { Market, Occurrence } from '../../../../lib/types';
 
 /**
- * One page per canton per locale. The canton slug differs in each — zuerich /
- * zurich / zurigo — so alternates are joined through a market slug, which is
- * the one identifier that is the same across all four result sets.
+ * One page per canton per locale. A canton carries the same slug in all four —
+ * Ticino is `ticino` in German too — so only the locale, the country segment
+ * and the type word (kanton / canton / cantone) change between alternates.
  */
 export async function getStaticPaths() {
   const byLocale = new Map<Locale, Market[]>();
   for (const locale of LOCALES) byLocale.set(locale, await getMarkets(locale));
 
-  const regionOf = new Map<string, Partial<Record<Locale, { country: string; region: string }>>>();
+  // regionSlug -> the country segment it sits under, per locale. See the city
+  // page: the country is the last translated part of the path.
+  const countryOf = new Map<Locale, Map<string, string>>();
   for (const locale of LOCALES) {
-    for (const m of byLocale.get(locale)!) {
-      const entry = regionOf.get(m.slug) ?? {};
-      entry[locale] = { country: m.countrySlug, region: m.regionSlug };
-      regionOf.set(m.slug, entry);
-    }
+    countryOf.set(locale, new Map(byLocale.get(locale)!.map((m) => [m.regionSlug, m.countrySlug])));
   }
 
   const paths = [];
@@ -55,8 +53,8 @@ export async function getStaticPaths() {
     for (const [region, sample] of regions) {
       const here = markets.filter((m) => m.regionSlug === region);
       const alternates = LOCALES.map((other) => {
-        const place = regionOf.get(here[0].slug)?.[other];
-        return place ? { locale: other, path: regionPath(other, place.country, place.region) } : null;
+        const country = countryOf.get(other)!.get(region);
+        return country ? { locale: other, path: regionPath(other, country, region) } : null;
       }).filter(Boolean) as { locale: Locale; path: string }[];
 
       paths.push({

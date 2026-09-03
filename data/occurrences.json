@@ -66,11 +66,6 @@
   },
   {
     "marketSlug": "brocante-17-terra-geneve",
-    "date": "2026-09-02",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "brocante-17-terra-geneve",
     "date": "2026-09-03",
     "status": "confirmed"
   },
@@ -1080,11 +1075,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "kinderflohmarkt-gz-schindlergut",
-    "date": "2026-09-02",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "les-puces-du-cpo-lausanne",
     "date": "2026-09-03",
     "status": "confirmed"
@@ -1302,11 +1292,6 @@
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
-    "date": "2026-09-02",
     "status": "confirmed"
   },
   {
@@ -1606,11 +1591,6 @@
   },
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
-    "date": "2026-09-02",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-09-09",
     "status": "confirmed"
   },
@@ -1865,8 +1845,8 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "mercatino-usato-paradiso-lugano",
-    "date": "2026-09-02",
+    "marketSlug": "marche-rumine-lausanne-vendredi",
+    "date": "2027-01-01",
     "status": "confirmed"
   },
   {

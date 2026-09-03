@@ -14,7 +14,7 @@
  * directly rather than keeping a second copy of the logic that could drift.
  */
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -23,6 +23,7 @@ import { LOCALES } from '../src/lib/i18n.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(root, 'data');
+const publicDir = join(root, 'public');
 
 const markets = await getMarkets();
 
@@ -31,6 +32,10 @@ const markets = await getMarkets();
 const cities = new Set(markets.map((m) => m.city));
 const regions = new Set(markets.map((m) => m.regionSlug));
 const entities = {
+  // Which data the build ran on. The redirect check needs it: a fixtures build
+  // holds six markets, so it cannot judge whether a retired address still lands
+  // on a real page, and must not pretend to.
+  source: process.env.FYNDA_DATA_SOURCE ?? 'fixtures',
   markets: markets.length,
   cities: cities.size,
   // How many languages the same set of entities is published in. The ratio
@@ -57,7 +62,34 @@ mkdirSync(dataDir, { recursive: true });
 writeFileSync(join(dataDir, 'entities.json'), JSON.stringify(entities, null, 2) + '\n');
 writeFileSync(join(dataDir, 'occurrences.json'), JSON.stringify(occurrences, null, 2) + '\n');
 
+/* --------------------------------------------------------------------------
+ * Redirects
+ *
+ * data/redirects.json is committed, like the other two files, because CI has no
+ * database and guardrail 9 has to be able to check that every retired address
+ * still lands somewhere real. It is rewritten only on a Supabase build — a
+ * fixtures build would otherwise erase the record of every URL we have moved.
+ * ------------------------------------------------------------------------ */
+
+const redirectsFile = join(dataDir, 'redirects.json');
+
+if ((process.env.FYNDA_DATA_SOURCE ?? 'fixtures') === 'supabase') {
+  const { buildRedirects } = await import('./redirects.mjs');
+  const redirects = await buildRedirects();
+  writeFileSync(redirectsFile, JSON.stringify(redirects, null, 2) + '\n');
+}
+
+const redirects = existsSync(redirectsFile) ? JSON.parse(readFileSync(redirectsFile, 'utf8')) : [];
+
+// public/_redirects is build output, not source — Astro copies it into dist/,
+// where Cloudflare Pages picks it up. It is gitignored; data/redirects.json is
+// the version-controlled half.
+const { formatRedirects } = await import('./redirects-format.mjs');
+mkdirSync(publicDir, { recursive: true });
+writeFileSync(join(publicDir, '_redirects'), formatRedirects(redirects));
+
 console.log(
   `  [data] ${entities.markets} markets, ${entities.cities} cities, ` +
-    `${occurrences.length} occurrences within ${HORIZON_DAYS} days`
+    `${occurrences.length} occurrences within ${HORIZON_DAYS} days, ` +
+    `${redirects.length} redirects`
 );

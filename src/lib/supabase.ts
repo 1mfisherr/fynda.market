@@ -80,14 +80,18 @@ const SQL = `
   from public.publishable_markets p
   join public.markets m on m.id = p.id
   join public.venues v on v.id = p.venue_id
-  join public.slugs sc on sc.entity_type = 'city' and sc.entity_id = p.city_id and sc.locale = $1
+  join public.slugs sc on sc.entity_type = 'city' and sc.entity_id = p.city_id
+                      and sc.locale = $1 and sc.is_current
   join public.texts tc on tc.entity_type = 'city' and tc.entity_id = p.city_id
                       and tc.locale = $1 and tc.field = 'name'
-  join public.slugs sr on sr.entity_type = 'region' and sr.entity_id = p.region_id and sr.locale = $1
-  join public.slugs sk on sk.entity_type = 'country' and sk.entity_id = p.country_id and sk.locale = $1
+  join public.slugs sr on sr.entity_type = 'region' and sr.entity_id = p.region_id
+                      and sr.locale = $1 and sr.is_current
+  join public.slugs sk on sk.entity_type = 'country' and sk.entity_id = p.country_id
+                      and sk.locale = $1 and sk.is_current
   join public.texts tr on tr.entity_type = 'region' and tr.entity_id = p.region_id
                       and tr.locale = $1 and tr.field = 'name'
-  left join public.slugs sm on sm.entity_type = 'market' and sm.entity_id = p.id and sm.locale = $1
+  left join public.slugs sm on sm.entity_type = 'market' and sm.entity_id = p.id
+                           and sm.locale = $1 and sm.is_current
   left join public.texts nm on nm.entity_type = 'market' and nm.entity_id = p.id
                            and nm.locale = $1 and nm.field = 'name'
   left join public.texts ds on ds.entity_type = 'market' and ds.entity_id = p.id
