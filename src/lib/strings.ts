@@ -41,6 +41,14 @@ export interface Strings {
   controlRadius: string;
   controlSubmit: string;
   upcoming: string;
+  /* The home page answers "this weekend", not "the next four months" — the
+     midweek block exists because seven markets is a block, not a list. */
+  thisWeekend: string;
+  thisWeekendLede: (n: number, from: string, to: string) => string;
+  alsoThisWeek: string;
+  alsoThisWeekLede: string;
+  /* A city list is one row per market; this is the chip that says so. */
+  allMarkets: string;
   cities: string;
   regions: string;
   marketTypes: string;
@@ -161,6 +169,11 @@ const de: Strings = {
   controlRadius: 'Umkreis',
   controlSubmit: 'Anzeigen',
   upcoming: 'Kommende Termine',
+  thisWeekend: 'Dieses Wochenende',
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from} und ${to}.`,
+  alsoThisWeek: 'Auch diese Woche',
+  alsoThisWeekLede: 'Die wenigen Märkte, die unter der Woche stattfinden.',
+  allMarkets: 'Alle Märkte',
   cities: 'Städte',
   regions: 'Kantone',
   marketTypes: 'Markttypen',
@@ -285,6 +298,11 @@ const en: Strings = {
   controlRadius: 'Within',
   controlSubmit: 'Show',
   upcoming: 'Upcoming dates',
+  thisWeekend: 'This weekend',
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from} and ${to}.`,
+  alsoThisWeek: 'Also this week',
+  alsoThisWeekLede: 'The few markets that run on weekdays.',
+  allMarkets: 'All markets',
   cities: 'Cities',
   regions: 'Cantons',
   marketTypes: 'Market types',
@@ -413,6 +431,11 @@ const fr: Strings = {
   controlRadius: 'Rayon',
   controlSubmit: 'Afficher',
   upcoming: 'Prochaines dates',
+  thisWeekend: 'Ce week-end',
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from} et le ${to}.`,
+  alsoThisWeek: 'Aussi cette semaine',
+  alsoThisWeekLede: 'Les quelques marchés qui ont lieu en semaine.',
+  allMarkets: 'Tous les marchés',
   cities: 'Villes',
   regions: 'Cantons',
   marketTypes: 'Types de marché',
@@ -537,6 +560,11 @@ const it: Strings = {
   controlRadius: 'Raggio',
   controlSubmit: 'Mostra',
   upcoming: 'Prossime date',
+  thisWeekend: 'Questo fine settimana',
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from} e il ${to}.`,
+  alsoThisWeek: 'Anche questa settimana',
+  alsoThisWeekLede: 'I pochi mercati che si tengono nei giorni feriali.',
+  allMarkets: 'Tutti i mercati',
   cities: 'Città',
   regions: 'Cantoni',
   marketTypes: 'Tipi di mercatino',

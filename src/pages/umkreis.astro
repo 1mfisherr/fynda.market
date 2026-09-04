@@ -18,22 +18,20 @@
  */
 import Page from '../layouts/Page.astro';
 import Button from '../components/Button.astro';
-import DateBand from '../components/DateBand.astro';
 import DateFilters from '../components/DateFilters.astro';
 import MarketRow from '../components/MarketRow.astro';
 import Section from '../components/Section.astro';
-import { getMarkets, withinHorizon } from '../lib/markets';
+import { getMarkets } from '../lib/markets';
+import { byMarket, datedRows } from '../lib/lists';
 import { dateCount, marketCount } from '../lib/vocabulary';
-import type { Market, Occurrence } from '../lib/types';
+
 
 const markets = await getMarkets();
-const rows = markets.flatMap((market) =>
-  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
-    .map((next) => ({ ...market, next }))
-);
-const groups = Object.values(
-  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
-).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+/* One row per market, like every other list on the site. Sorting by distance
+   only works on a flat list anyway: day bands would have re-sorted inside each
+   day and left the nearest market buried under a nearer day. */
+const rows = datedRows(markets);
+const list = byMarket(rows);
 
 const RADII = [10, 25, 50, 100];
 const DEFAULT_KM = 50;
@@ -55,35 +53,27 @@ const DEFAULT_KM = 50;
     ))}
   </div>
 
-  <DateFilters dates={groups.map((g) => g[0].next!.date)} />
+  <DateFilters allLabel="Alle Märkte" dates={list.map((m) => m.next.date)} />
 
   <Section>
     <div id="list">
-      {groups.map((group) => (
-        <section class="day" data-day>
-          <DateBand date={group[0].next!.date} count={group.length} />
-          {group.map((market) => (
-            /*
-              Coordinates travel on the wrapper around each row, not in a
-              separate slug -> {lat, lng} blob. MarketRow already renders one
-              element per occurrence and never sets its own margin, so a plain
-              wrapper div costs nothing visually; putting the data there means
-              the script never has to reconcile a row with its market by slug,
-              and there is exactly one wrapper per rendered occurrence, which
-              is exactly the granularity distance filtering needs.
-            */
-            <div class="pin" data-lat={market.lat} data-lng={market.lng}>
-              <MarketRow market={market} />
-              {/*
-                Empty and hidden until a real distance has been computed. This
-                is the "never show a distance we do not know" rule from
-                docs/PAGES.md made physical: there is no string here to leak,
-                only one the script writes after it has an actual origin.
-              */}
-              <p class="meta-quiet gutter" data-distance hidden></p>
-            </div>
-          ))}
-        </section>
+      {list.map((market) => (
+        /*
+          Coordinates travel on the wrapper around each row, not in a separate
+          slug -> {lat, lng} blob. MarketRow never sets its own margin, so a
+          plain wrapper costs nothing visually, and the script never has to
+          reconcile a row with its market by slug.
+        */
+        <div class="pin" data-lat={market.lat} data-lng={market.lng}>
+          <MarketRow market={market} mode="date" />
+          {/*
+            Empty and hidden until a real distance has been computed. This is
+            the "never show a distance we do not know" rule from docs/PAGES.md
+            made physical: there is no string here to leak, only one the script
+            writes after it has an actual origin.
+          */}
+          <p class="meta-quiet gutter" data-distance hidden></p>
+        </div>
       ))}
     </div>
     <p id="empty" class="gutter meta" hidden>Für diese Auswahl ist nichts eingetragen.</p>
@@ -126,13 +116,13 @@ const DEFAULT_KM = 50;
    * computed, and it only runs once a real point exists.
    */
   import { inWindow, type DateWindow } from '../lib/date-window';
-  import { syncDayCounts } from '../lib/day-count';
 
   const dateButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const kmButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-km]'));
   const geoButton = document.getElementById('geo');
   const statusEl = document.getElementById('status');
-  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const listEl = document.getElementById('list');
+  const pins = Array.from(document.querySelectorAll<HTMLElement>('.pin'));
   const empty = document.getElementById('empty');
 
   let currentWindow: DateWindow = 'all';
@@ -163,54 +153,45 @@ const DEFAULT_KM = 50;
 
   function apply() {
     const now = new Date();
-    let shown = 0;
 
-    for (const day of days) {
-      const pins = Array.from(day.querySelectorAll<HTMLElement>('.pin'));
+    const evaluated = pins.map((pin) => {
+      const row = pin.querySelector<HTMLElement>('[data-date]');
+      const label = pin.querySelector<HTMLElement>('[data-distance]');
+      const dateOk = inWindow(row?.dataset.date ?? '', currentWindow, now);
 
-      const evaluated = pins.map((pin) => {
-        const row = pin.querySelector<HTMLElement>('[data-date]');
-        const label = pin.querySelector<HTMLElement>('[data-distance]');
-        const dateOk = inWindow(row?.dataset.date ?? '', currentWindow, now);
-
-        let km: number | null = null;
-        if (origin) {
-          km = distanceKm(origin.lat, origin.lng, Number(pin.dataset.lat), Number(pin.dataset.lng));
-        }
-        const radiusOk = !origin || (km !== null && km <= currentKm);
-        const visible = dateOk && radiusOk;
-
-        if (label) {
-          if (visible && km !== null) {
-            label.textContent = formatKm(km);
-            label.hidden = false;
-          } else {
-            label.textContent = '';
-            label.hidden = true;
-          }
-        }
-
-        pin.hidden = !visible;
-        return { pin, km, visible };
-      });
-
-      // Nearest first — but only once a real distance exists. With no origin
-      // the day keeps the chronological order it was built with; there is
-      // nothing honest to sort it by.
+      let km: number | null = null;
       if (origin) {
-        evaluated
-          .filter((e) => e.visible)
-          .sort((a, b) => (a.km ?? Infinity) - (b.km ?? Infinity))
-          .forEach((e) => day.appendChild(e.pin));
+        km = distanceKm(origin.lat, origin.lng, Number(pin.dataset.lat), Number(pin.dataset.lng));
+      }
+      const radiusOk = !origin || (km !== null && km <= currentKm);
+      const visible = dateOk && radiusOk;
+
+      if (label) {
+        if (visible && km !== null) {
+          label.textContent = formatKm(km);
+          label.hidden = false;
+        } else {
+          label.textContent = '';
+          label.hidden = true;
+        }
       }
 
-      const dayShown = evaluated.filter((e) => e.visible).length;
-      day.hidden = dayShown === 0;
-      shown += dayShown;
+      pin.hidden = !visible;
+      return { pin, km, visible };
+    });
+
+    // Nearest first — but only once a real distance exists. With no origin the
+    // list keeps the chronological order it was built with; there is nothing
+    // honest to sort it by.
+    if (origin && listEl) {
+      evaluated
+        .filter((e) => e.visible)
+        .sort((a, b) => (a.km ?? Infinity) - (b.km ?? Infinity))
+        .forEach((e) => listEl.appendChild(e.pin));
     }
 
+    const shown = evaluated.filter((e) => e.visible).length;
     if (empty) empty.hidden = shown > 0;
-    syncDayCounts();
   }
 
   for (const button of dateButtons) {

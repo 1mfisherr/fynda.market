@@ -145,6 +145,10 @@
      it reserved 150px of white space on all 451 rows. Those facts render under
      the venue until the data exists — PLAN.md §The honest gap. */
   --row-fresh: 170px;
+  /* The date shape of a row: a display-size day number needs more than a time,
+     and the opening hours move out beside the name. See MarketRow. */
+  --row-date: 62px;
+  --row-hours: 96px;
   /* Wide only. The day is set beside its rows instead of in a band above
      them — which is what a departure board actually looks like. */
   --day-column: 160px;

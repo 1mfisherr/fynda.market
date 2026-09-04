@@ -48,7 +48,8 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | **Place + period + radius control** | Not a free-text search box (fact 2). A control that says where and when, because those are the two axes people actually filter on. Submits to a filter view, never a new indexable URL |
 | **Date chips** — Alle / Heute / Wochenende / Nächste Woche | The settled vocabulary of the category, and the filter people actually used |
 | **"Dieses Wochenende" rail** | Most flea markets are weekend events. This is the answer to the most common unstated question |
-| **"Kommende Termine" list** | Chronological, day-grouped — universal in this category, and the shape people expect |
+| **"Dieses Wochenende"** | Saturday and Sunday, day-grouped. The whole business is weekends: 38 markets on one Saturday and Sunday against 1–3 on any weekday |
+| **"Auch diese Woche"** | The weekday markets in the next seven days, one row per market. Seven of them all week — a block, not a list |
 | Category tiles | **Weak evidence: 1.8% of clicks.** Kept because they teach a first-time visitor what the site covers, but they sit *below* the lists, not above them. First candidate to cut if they earn nothing |
 | Organiser CTA | The supply side is the revenue thesis, and it must exist from day one |
 | Bottom bar | Mobile is 81%. Thumb-reach navigation, and it keeps "Veranstalter" permanently visible |
@@ -57,7 +58,7 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 
 The order, and the rule that keeps it from becoming filler: **a block renders only when it has real content.** If nothing was cancelled this week, the cancellations block does not exist that week. That makes padding structurally impossible rather than a matter of taste.
 
-1. **Markets** — day-grouped. **4 per day, then "5 weitere anzeigen", then all of that day.** In place, client-side, never a new URL. The date control above it is three chips and a calendar: "Nächste Woche" was a coarse guess at the question the calendar answers exactly. A chosen day is a filter, never a URL.
+1. **This weekend, day-grouped, then the midweek block.** No date chips and no calendar: they existed to make 451 rows navigable, and two labelled sections of forty-five rows are navigable already. Anyone who wants October uses the control above or their own city's page.
 2. **Newsletter** — intent is highest right after someone has scanned the list, not at the top.
 3. **Organiser CTA** — the supply side earns its place before navigation does.
 4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.
@@ -85,6 +86,23 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 **Deliberately not here:** a big search field, a map, and a newsletter box above the fold (1.1% conversion does not earn that space).
 
 **Measured by:** click-through from home into a market page.
+
+### One row per market, or one row per date
+
+**Decided 2026-09-04, and it governs every list on the site.**
+
+Until then every list was one row per date across the whole 120-day horizon. The home page was **451 rows for 108 markets** — Marché de Rumine printed **seventy times**, thirty screens of scrolling. The Zürich page was **61 rows for 14 markets**, under a heading that said 17.
+
+It is the mistake that killed fleafind.ch, one layer down: that site minted a URL per date; this one merely rendered one. Same instinct, quieter damage.
+
+**The rule: a row exists because it says something new.**
+
+- **Dates get rows where the date is the question** — a weekend, a chosen day. A weekend contains no repetition, so the departure board works exactly as designed.
+- **Markets get rows where the market is the question** — a city, a canton, the radius view, saved markets. The row carries `recurrence_text`, the organiser's own words: *"Jeden Samstag, ganzjährig"*. Held for **106 of 114** markets.
+
+Nothing is hidden either way. "Jeden Samstag, ganzjährig" tells a visitor more than eighteen identical Saturdays did, and it is the sentence an AI answer can quote. This also reverses the earlier "recurrence comes off cards" call: that was made when cards were dates, where the phrase was noise. On a market row it is the whole point.
+
+Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they cannot drift.
 
 ---
 
@@ -124,7 +142,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 | **`Flohmärkte in Luzern 2026` as the H1 and title** | The year is in 38% of queries. Omitting it forfeits the match |
 | One line: how many markets, how many upcoming dates | Immediate proof the page is not empty |
 | Date chips | Same control as home. Filters, never URLs |
-| **Chronological list, grouped under day headings** | Universal in the category. Nobody sorts by relevance |
+| **One row per market, soonest first** | Not one row per date. The row carries its next date, its hours and how often it runs |
 | Each row: name, date + time in accent, venue, freshness, status | The card doing its one job |
 | **A cancelled market stays in the list** | Struck through, with the reason. Removing it is what every competitor does and it is why they cannot be trusted |
 | Short city context paragraph | Real facts only — which markets are weekly, which are seasonal. Never generated padding (`ARCHITECTURE.md` §Generated prose) |
@@ -191,7 +209,7 @@ Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bot
 
 **Three attributes decide whether someone travels, and we hold none of them:** distance, size (roughly how many stalls), and indoor/outdoor. Distance is computable in the browser. Size and indoor/outdoor get captured during the import and the verification visits. Worth more than any layout change.
 
-**Cards need the same fields in the same order, every time.** Baymard found 64% of sites are inconsistent here, and in testing people left — gaps read as a poor selection rather than missing data. Practical effect: the recurrence phrase (79% coverage) comes off cards and lives on the market page.
+**Cards need the same fields in the same order, every time.** Baymard found 64% of sites are inconsistent here, and in testing people left — gaps read as a poor selection rather than missing data.
 
 **Each attribute is its own element**, never one run-on line, and never inside the title — 40% of sites get this wrong. Name, date, place, status are four things with four treatments.
 
@@ -260,9 +278,9 @@ Measured from the v1 database: name, date, city, status 100% · times 98% · ent
 3. **The home search control reads as place + period + radius**, not a text search, and it shrinks so a market card is visible in the first screen.
 4. **Category tiles move below the lists.**
 5. **City page titles carry the year.**
-6. **The recurrence phrase comes off cards** (79% coverage).
+6. **The recurrence phrase goes *on* cards** in a market list — reversed 2026-09-04, see below.
 
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-29
+last_reviewed: 2026-09-04

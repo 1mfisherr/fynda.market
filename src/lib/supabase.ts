@@ -33,6 +33,7 @@ interface Row {
   entry_fee: string | null;
   image_url: string | null;
   website_url: string | null;
+  recurrence_text: string | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -68,6 +69,7 @@ const SQL = `
     m.entry_fee,
     m.image_url,
     m.website_url,
+    m.recurrence_text,
     (
       select jsonb_agg(o order by o.date)
         from (
@@ -152,6 +154,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         next: nextIndex === -1 ? undefined : dates[nextIndex],
         upcoming: dates.filter((_, i) => i !== nextIndex),
         imageUrl: row.image_url ?? undefined,
+        recurrenceText: row.recurrence_text ?? undefined,
         websiteUrl: row.website_url ?? undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
       };

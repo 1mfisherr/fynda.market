@@ -1,14 +1,35 @@
 ---
+/**
+ * One row of a list. Two shapes, because a list asks one of two questions.
+ *
+ * `mode="time"` sits under a day band: the day is already known, so the row
+ * leads with the time. That is the weekend list.
+ *
+ * `mode="date"` stands on its own: the row leads with its own date and carries
+ * the recurrence phrase — "Jeden Samstag, ganzjährig". That is the city list,
+ * where the question is which markets exist rather than which day it is, and
+ * where one row per date meant printing the same market eighteen times
+ * (src/lib/lists.ts).
+ *
+ * One component rather than two, so the rail, the photo, the cancelled
+ * treatment and the wide layout cannot drift into two versions of themselves.
+ */
 import type { Market } from '../lib/types';
 import { LINES } from '../lib/vocabulary';
 import { formatDateShort, formatTime } from '../lib/format';
+import { countDates } from '../lib/lists';
 import { DEFAULT_LOCALE, marketPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 import LineCode from './LineCode.astro';
 import PhotoOrArt from './PhotoOrArt.astro';
 
-interface Props { market: Market; locale?: Locale }
-const { market, locale = DEFAULT_LOCALE } = Astro.props;
+interface Props {
+  market: Market;
+  locale?: Locale;
+  /** 'time' under a day band, 'date' standing alone. See above. */
+  mode?: 'time' | 'date';
+}
+const { market, locale = DEFAULT_LOCALE, mode = 'time' } = Astro.props;
 const s = t(locale);
 const occurrence = market.next;
 const cancelled = occurrence?.status === 'cancelled';
@@ -23,20 +44,43 @@ const facts = [
   market.sellerMix === 'private' ? 'nur Private' : market.sellerMix === 'mixed' ? 'Private und Händler' : market.sellerMix === 'trader' ? 'Händler' : market.sellerMix === 'new_goods' ? 'Neuware' : undefined,
 ].filter(Boolean);
 const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market.entryFee} CHF` : undefined;
+
+/* A date row prints its own day. The weekday is abbreviated because it sits in
+   a narrow column beside a display-size number, not in a band across the page. */
+const day = occurrence ? new Date(`${occurrence.date}T00:00:00`) : undefined;
+const weekday = day ? s.weekdaysLong[day.getDay()].slice(0, 2) : '';
+const month = day ? s.monthsLong[day.getMonth()].slice(0, 4) : '';
+
+/* The row stands for every date this market has, so it carries how many —
+   otherwise anything counting rows would count markets and call them dates. */
+const dateCount = mode === 'date' ? countDates(market) : undefined;
+
 ---
 
-<article class:list={['row', { cancelled }]} data-date={occurrence?.date}>
+<article class:list={['row', { cancelled, dated: mode === 'date' }]} data-date={occurrence?.date} data-dates={dateCount}>
   <i class="rail" style={cancelled ? undefined : `background:var(${line.token})`}></i>
-  <div class="time">
-    {occurrence?.startTime && <strong>{formatTime(occurrence.startTime)}</strong>}
-    {occurrence?.endTime && <span>–{formatTime(occurrence.endTime)}</span>}
-    <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
-  </div>
+  {mode === 'date' ? (
+    <div class="time">
+      {occurrence && <strong data-day>{String(day!.getDate()).padStart(2, '0')}</strong>}
+      {occurrence && <span data-when>{weekday} {month}</span>}
+      <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
+    </div>
+  ) : (
+    <div class="time">
+      {occurrence?.startTime && <strong>{formatTime(occurrence.startTime)}</strong>}
+      {occurrence?.endTime && <span>–{formatTime(occurrence.endTime)}</span>}
+      <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
+    </div>
+  )}
   <div class="details">
     <h3 class="name"><a href={marketPath(locale, market.slug)}>{market.name}</a></h3>
     <p class="via">{market.venueName} · {market.city}{entry ? ` · ${entry}` : ''}</p>
     {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
+    {mode === 'date' && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
   </div>
+  {mode === 'date' && occurrence?.startTime && (
+    <p class="hours">{formatTime(occurrence.startTime)}{occurrence.endTime && <span>–{formatTime(occurrence.endTime)}</span>}</p>
+  )}
   {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedOn(formatDateShort(occurrence.confirmedAt, locale))}</p>}
   <div class="photo"><PhotoOrArt market={market} width={74} height={74} /></div>
 </article>
@@ -54,6 +98,7 @@ const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market
     grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-photo);
     grid-template-areas:
       "rail time details photo"
+      "rail time hours   photo"
       "rail time fresh   photo";
     column-gap:var(--space-row);
     row-gap:var(--space-1);
@@ -63,6 +108,7 @@ const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market
   }
   .rail { grid-area:rail; align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
   .fresh, .reason { grid-area:fresh; }
+  .hours { grid-area:hours; }
   .time { grid-area:time; padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
   .time strong { display:block; font-size:var(--text-date); font-weight:var(--weight-black); letter-spacing:var(--tracking-title); line-height:1.1; }
   .time span { display:block; margin-top:var(--space-half); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
@@ -70,11 +116,23 @@ const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market
   .details { grid-area:details; min-width:0; }
   .name { margin:0; font-size:var(--text-row-name); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.22; }
   .name a::after { position:absolute; inset:0; content:''; }
-  .via, .facts, .fresh, .reason { margin:0; }
+  .via, .facts, .fresh, .reason, .rhythm, .hours { margin:0; }
   .via { margin-top:var(--space-half); color:var(--color-grey); font-size:var(--text-micro); line-height:1.4; }
   .facts { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.45; }
   .fresh { color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
   .reason { font-size:var(--text-micro); font-weight:var(--weight-bold); }
+
+  /*
+    The date shape. The row leads with its own day, and the recurrence phrase
+    is what replaces the seventeen other rows this market used to occupy — so
+    it is set as a fact, not as a caption.
+  */
+  .dated .time strong { font-size:var(--text-market-name); letter-spacing:var(--tracking-tight); line-height:1; color:var(--color-accent); }
+  .dated .time span { margin-top:var(--space-1); color:var(--color-ink); font-size:var(--text-micro); font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); text-transform:uppercase; }
+  .rhythm { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-bold); line-height:1.4; }
+  .hours { margin-top:var(--space-1); color:var(--color-grey); font-size:var(--text-micro); font-weight:var(--weight-semibold); }
+  .hours span { color:var(--color-quiet); }
+  .cancelled .rhythm { color:var(--color-quiet); }
   .photo { grid-area:photo; width:var(--row-photo); height:var(--row-photo); overflow:hidden; border-radius:var(--radius-photo); background:var(--color-paper); }
   .cancelled .rail { background:var(--color-line); }
   .cancelled .name, .cancelled .time strong { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
@@ -93,7 +151,14 @@ const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market
       grid-template-areas:"rail time details fresh photo";
       column-gap:var(--space-4);
     }
+    /* The date shape has a column more: the day number needs the room a time
+       does not, and the hours become a column of their own beside the name. */
+    .row.dated {
+      grid-template-columns:var(--row-rail) var(--row-date) minmax(0, 1fr) var(--row-hours) var(--row-fresh) var(--row-photo);
+      grid-template-areas:"rail time details hours fresh photo";
+    }
     /* Set on the name's first line rather than on the top of the box. */
-    .fresh, .reason { padding-top:var(--space-half); }
+    .fresh, .reason, .hours { padding-top:var(--space-half); }
+    .dated .hours { margin-top:0; }
   }
 </style>

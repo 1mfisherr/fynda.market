@@ -16,18 +16,17 @@
  */
 import Page from '../../layouts/Page.astro';
 import Button from '../../components/Button.astro';
-import DateBand from '../../components/DateBand.astro';
 import Field from '../../components/Field.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import Section from '../../components/Section.astro';
-import { getMarkets, withinHorizon } from '../../lib/markets';
+import { getMarkets } from '../../lib/markets';
+import { byMarket, datedRows, type Dated } from '../../lib/lists';
 import { FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
 import {
   UTILITY, UTILITY_LOCALES, homePath, marketPrefix, utilityAlternates,
   type Locale, type UtilityKey,
 } from '../../lib/i18n';
 import { t } from '../../lib/strings';
-import type { Market, Occurrence } from '../../lib/types';
 
 /** The keys this route owns. Legal pages are static files under src/pages/de/. */
 const KEYS = ['report', 'newsletter', 'organiser', 'saved'] as const satisfies readonly UtilityKey[];
@@ -47,17 +46,11 @@ const s = t(locale);
 const alternates = utilityAlternates(key);
 
 /* The saved page renders every market and lets the browser hide the ones that
-   were not saved — see the note in the script below. Only it needs the data. */
-let groups: Market[][] = [];
+   were not saved — see the note in the script below. Only it needs the data.
+   One row per market: you save a market, not a date. */
+let list: Dated[] = [];
 if (key === 'saved') {
-  const markets = await getMarkets(locale);
-  const rows = markets.flatMap((market) =>
-    withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
-      .map((next) => ({ ...market, next }))
-  );
-  groups = Object.values(
-    rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
-  ).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+  list = byMarket(datedRows(await getMarkets(locale)));
 }
 
 const form = key === 'saved' ? null : FORMS[key as FormKey][locale];
@@ -126,12 +119,7 @@ const savedCopy = saved && {
 
       <Section>
         <div id="list" data-market-prefix={marketPrefix(locale)}>
-          {groups.map((group) => (
-            <section class="day" data-day hidden>
-              <DateBand date={group[0].next!.date} count={group.length} locale={locale} />
-              {group.map((market) => <MarketRow market={market} locale={locale} />)}
-            </section>
-          ))}
+          {list.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
         </div>
         <p id="empty" class="gutter meta">{saved.empty}</p>
         <div class="find gutter"><Button href={homePath(locale)} block>{saved.browse}</Button></div>
@@ -208,8 +196,6 @@ const savedCopy = saved && {
    * payload the home page already ships, it needs no server, and the page is
    * noindex because its content differs for every visitor.
    */
-  import { syncDayCounts } from '../../lib/day-count';
-
   const list = document.getElementById('list');
   const summary = document.getElementById('summary');
 
@@ -223,31 +209,28 @@ const savedCopy = saved && {
     // A row's only link is its market page, and the prefix is in the markup so
     // this does not have to know that French says /fr/marche/.
     const prefix = list.dataset.marketPrefix ?? '/';
-    const days = Array.from(list.querySelectorAll<HTMLElement>('[data-day]'));
     const empty = document.getElementById('empty');
     const slugs = new Set<string>();
-    let shown = 0;
+    /* One row per market, so the row count is the market count. The dates it
+       stands for ride along on the row — see MarketRow's data-dates. */
+    let dates = 0;
 
-    for (const day of days) {
-      let inDay = 0;
-      for (const row of Array.from(day.querySelectorAll<HTMLElement>('[data-date]'))) {
-        const href = row.querySelector<HTMLAnchorElement>(`a[href^="${prefix}"]`)?.getAttribute('href') ?? '';
-        const slug = href.split('/').filter(Boolean).at(-1) ?? '';
-        const keep = stored.has(slug);
-        row.hidden = !keep;
-        if (keep) { inDay++; shown++; slugs.add(slug); }
-      }
-      day.hidden = inDay === 0;
+    for (const row of Array.from(list.querySelectorAll<HTMLElement>('[data-date]'))) {
+      const href = row.querySelector<HTMLAnchorElement>(`a[href^="${prefix}"]`)?.getAttribute('href') ?? '';
+      const slug = href.split('/').filter(Boolean).at(-1) ?? '';
+      const keep = stored.has(slug);
+      row.hidden = !keep;
+      if (keep) { slugs.add(slug); dates += Number(row.dataset.dates ?? 1); }
     }
 
+    const shown = slugs.size;
     if (empty) empty.hidden = shown > 0;
-    syncDayCounts(list);
     const copy = JSON.parse(summary.dataset.copy ?? '{}') as
       { summary?: string; one?: string; other?: string };
     summary.textContent = shown === 0
       ? (summary.dataset.none ?? '')
       : (copy.summary ?? '')
           .replace('{markets}', `${slugs.size} ${slugs.size === 1 ? copy.one : copy.other}`)
-          .replace('{dates}', String(shown));
+          .replace('{dates}', String(dates));
   }
 </script>

@@ -57,6 +57,13 @@ export interface Market {
   next?: Occurrence;
   /** Later dates. Visible content, never markup. */
   upcoming: Occurrence[];
+  /**
+   * How often it runs, in the organiser's own words — "Jeden Samstag,
+   * ganzjährig". Held for 106 of 114 markets, and it is what lets a list show
+   * one row per market instead of one row per date: the sentence says more
+   * than eighteen identical Saturdays did.
+   */
+  recurrenceText?: string;
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
   imageUrl?: string;
   /** The organiser's own page. Held for 153 of 157 markets and worth a button. */

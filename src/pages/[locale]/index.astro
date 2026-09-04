@@ -12,17 +12,16 @@ import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
 import CtaCard from '../../components/CtaCard.astro';
 import DayGroup from '../../components/DayGroup.astro';
-import DateFilters from '../../components/DateFilters.astro';
 import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
 import Section from '../../components/Section.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
-import { getMarkets, withinHorizon } from '../../lib/markets';
+import { getMarkets } from '../../lib/markets';
+import { datedRows, weekdaysSoon, weekendDays } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
 import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
-import type { Market, Occurrence } from '../../lib/types';
 
 export async function getStaticPaths() {
   return LOCALES.map((locale) => ({
@@ -34,24 +33,23 @@ export async function getStaticPaths() {
 const { locale, alternates } = Astro.props;
 const s = t(locale);
 const markets = await getMarkets(locale);
-const rows = markets.flatMap((market) =>
-  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
-    .map((next) => ({ ...market, next }))
-);
-const groups = Object.values(
-  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
-).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+const rows = datedRows(markets);
+
+/**
+ * The home page answers one question: what is on this weekend.
+ *
+ * It used to list every date in the 120-day horizon — 451 rows for 108
+ * markets, thirty screens of scrolling, with Marché de Rumine printed seventy
+ * times. Changed 2026-09-04; the reasoning is in src/lib/lists.ts. Anyone who
+ * wants October uses the control above, or their own city's page.
+ */
+const weekend = weekendDays(rows);
+const weekendCount = new Set(weekend.flat().map((row) => row.slug)).size;
+const midweek = weekdaysSoon(rows);
 
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
-
-/**
- * Four markets per day, then the rest behind one button — PAGES.md. Every row
- * is in the HTML: hiding them from the crawler to save a scroll would trade the
- * thing that earns traffic for the thing that costs nothing.
- */
-const PER_DAY = 4;
 
 /**
  * Cancellations in the coming week. Nobody else in the category surfaces these
@@ -118,23 +116,33 @@ const jsonLd = {
     <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
   </form>
 
-  <DateFilters locale={locale} dates={groups.map((g) => g[0].next!.date)} />
-
-  <Section title={s.upcoming}>
-    <div id="list">
-      {groups.map((group) => (
-        <DayGroup date={group[0].next!.date} count={group.length} locale={locale}>
+  {/* No date chips here any more. They existed to make 451 rows navigable;
+      two labelled sections of forty-five rows are navigable already, and a
+      calendar on this page would offer months the page no longer contains. */}
+  {weekend.length > 0 && (
+    <Section
+      title={s.thisWeekend}
+      lede={s.thisWeekendLede(
+        weekendCount,
+        formatDateShort(weekend[0][0].next.date, locale),
+        formatDateShort(weekend[weekend.length - 1][0].next.date, locale)
+      )}
+    >
+      {weekend.map((group) => (
+        <DayGroup date={group[0].next.date} count={group.length} locale={locale}>
           {group.map((market) => <MarketRow market={market} locale={locale} />)}
-          {group.length > PER_DAY && (
-            <div class="gutter more">
-              <Button variant="quiet" data-more data-more-label={s.showMore(0)} hidden>{s.showMore(group.length - PER_DAY)}</Button>
-            </div>
-          )}
         </DayGroup>
       ))}
-    </div>
-    <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
-  </Section>
+    </Section>
+  )}
+
+  {/* One row per market, because a Wednesday market that runs every week needs
+      one row for the same reason a Saturday one does. */}
+  {midweek.length > 0 && (
+    <Section title={s.alsoThisWeek} lede={s.alsoThisWeekLede}>
+      {midweek.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
+    </Section>
+  )}
 
   <CtaCard kind="newsletter" locale={locale} />
   <CtaCard kind="organiser" locale={locale} />
@@ -246,73 +254,3 @@ const jsonLd = {
   });
 </script>
 
-<script>
-  /**
-   * One pass owns both rules, because they interact: the date chips decide
-   * which rows are eligible, and only then does the four-per-day cap apply to
-   * what is left. Two independent handlers would fight over `hidden` and leave
-   * a day showing three rows behind a button offering five more.
-   *
-   * Everything is in the HTML already. Without JavaScript the page is the full
-   * list, which is the right failure: the rows are what earns the traffic.
-   */
-  import { inWindow, type DateWindow } from '../../lib/date-window';
-  import { syncDayCounts } from '../../lib/day-count';
-
-  const PER_DAY = 4;
-  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
-  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
-  const empty = document.getElementById('empty');
-  const expanded = new Set<HTMLElement>();
-
-  const apply = (window: DateWindow) => {
-    const now = new Date();
-    let shown = 0;
-
-    for (const section of days) {
-      const rows = Array.from(section.querySelectorAll<HTMLElement>('[data-date]'));
-      const more = section.querySelector<HTMLElement>('[data-more]');
-      const eligible = rows.filter((row) => inWindow(row.dataset.date ?? '', window, now));
-
-      const open = expanded.has(section);
-      const visible = open ? eligible : eligible.slice(0, PER_DAY);
-      const visibleSet = new Set(visible);
-      for (const row of rows) row.hidden = !visibleSet.has(row);
-
-      const remaining = eligible.length - visible.length;
-      if (more) {
-        more.hidden = remaining === 0;
-        // The template is written per locale in strings.ts; only the count
-        // changes here, so the button never speaks German on a French page.
-        more.textContent = (more.dataset.moreLabel ?? '0').replace('0', String(remaining));
-      }
-
-      // What the day band reports: everything that matched, including the rows
-      // folded behind the button — see lib/day-count.ts.
-      section.dataset.matched = String(eligible.length);
-      section.hidden = eligible.length === 0;
-      shown += visible.length;
-    }
-
-    if (empty) empty.hidden = shown > 0;
-    syncDayCounts();
-  };
-
-  let current: DateWindow = 'all';
-  for (const section of days) {
-    section.querySelector<HTMLElement>('[data-more]')?.addEventListener('click', () => {
-      expanded.add(section);
-      apply(current);
-    });
-  }
-  for (const button of buttons) {
-    button.addEventListener('click', () => {
-      for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
-      current = (button.dataset.filter ?? 'all') as DateWindow;
-      // A new period is a new question; the days collapse back to four.
-      expanded.clear();
-      apply(current);
-    });
-  }
-  apply(current);
-</script>

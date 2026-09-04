@@ -8,17 +8,17 @@
  */
 import Page from '../../../layouts/Page.astro';
 import CtaCard from '../../../components/CtaCard.astro';
-import DayGroup from '../../../components/DayGroup.astro';
 import DateFilters from '../../../components/DateFilters.astro';
 import MarketRow from '../../../components/MarketRow.astro';
 import PillList from '../../../components/PillList.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
-import { getMarkets, withinHorizon, HORIZON_DAYS } from '../../../lib/markets';
+import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
+import { byMarket, datedRows } from '../../../lib/lists';
 import { formatDate, formatTimeRange } from '../../../lib/format';
 import { LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
-import type { Market, Occurrence } from '../../../lib/types';
+import type { Market } from '../../../lib/types';
 
 /**
  * One city page per city per locale. A city carries the same slug in all four —
@@ -59,13 +59,10 @@ export async function getStaticPaths() {
 
 const { locale, city, stadt, region, regionSlug, markets, alternates } = Astro.props;
 const s = t(locale);
-const rows = markets.flatMap((market) =>
-  withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[])
-    .map((next) => ({ ...market, next }))
-);
-const groups = Object.values(
-  rows.reduce<Record<string, Market[]>>((all, row) => { (all[row.next!.date] ??= []).push(row); return all; }, {})
-).sort((a, b) => a[0].next!.date.localeCompare(b[0].next!.date));
+/* Every date, for the counts and the answer sentence; then one row per market,
+   which is what the page actually renders — src/lib/lists.ts. */
+const rows = datedRows(markets);
+const list = byMarket(rows);
 
 const year = new Date().getFullYear();
 
@@ -80,7 +77,11 @@ const year = new Date().getFullYear();
  * searches "7 Märkte in Luzern". Ranked-list shapes are what AI answers cite,
  * and this is that shape without losing the head term.
  */
-const heading = s.cityHeading(markets.length, city, year);
+/* The count is what the list holds, not what the city holds. `markets`
+   includes markets with no upcoming date, so the old heading said 17 over
+   fourteen rows — invisible while the list was 61 rows of repeats, and
+   the first thing anyone would count now that it is one row each. */
+const heading = s.cityHeading(list.length, city, year);
 
 // The earliest upcoming date, not the first row of an unsorted list: `rows` is
 // in market order, so `.find()` here answered with whichever market happened to
@@ -119,15 +120,14 @@ const jsonLd = {
 
   <PillList items={[{ href: regionPath(locale, markets[0].countrySlug, regionSlug), label: s.regionLabel(region) }]} />
 
-  <DateFilters locale={locale} dates={groups.map((g) => g[0].next!.date)} />
+  <DateFilters locale={locale} allLabel={s.allMarkets} dates={list.map((m) => m.next.date)} />
 
+  {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
+      under a heading that said 17; the recurrence phrase on each row says what
+      the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
     <div id="list">
-      {groups.map((group) => (
-        <DayGroup date={group[0].next!.date} count={group.length} locale={locale}>
-          {group.map((market) => <MarketRow market={market} locale={locale} />)}
-        </DayGroup>
-      ))}
+      {list.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
     </div>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
@@ -139,13 +139,16 @@ const jsonLd = {
 
 <script>
   import { inWindow, type DateWindow } from '../../../lib/date-window';
-  import { syncDayCounts } from '../../../lib/day-count';
 
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
-  const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
   const empty = document.getElementById('empty');
 
+  /**
+   * A row is a market, and it filters on the date it displays — so the day a
+   * visitor is shown and the day the chip matched can never disagree. There
+   * are no day bands to hide or recount any more.
+   */
   const apply = (window: DateWindow) => {
     const now = new Date();
     let shown = 0;
@@ -154,11 +157,7 @@ const jsonLd = {
       row.hidden = !visible;
       if (visible) shown++;
     }
-    for (const day of days) {
-      day.hidden = !Array.from(day.querySelectorAll<HTMLElement>('[data-date]')).some((row) => !row.hidden);
-    }
     if (empty) empty.hidden = shown > 0;
-    syncDayCounts();
   };
 
   for (const button of buttons) {
