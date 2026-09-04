@@ -19,6 +19,9 @@ Updated 2026-09-03.
 - **Every internal link resolves** (27,772 checked), and **every breadcrumb `item` URL is a page that exists**. No page promises something that 404s.
 - **Filters actually filter.** `MarketRow` sets `display: grid`, which beats the browser's `[hidden] { display: none }` — so every list filter on the site was marking rows hidden and rendering them anyway. It looked like it worked because an empty day is hidden as a whole. `base.css` now makes `[hidden]` win, and the day band's count is rewritten from what matched (`src/lib/day-count.ts`) rather than from what the page was built with.
 - **Nothing scrolls sideways.** All 17 page types measured at phone width. `.bleed` used to pull rows 16px outside `main`, which has no gutter to escape — the page scrolled horizontally and every row's rail and time were clipped off the left edge. The class is gone.
+- **The site is live** at `fynda-market.pages.dev`, published 2026-09-04. `npm run deploy` builds against the live database, runs all nine guardrails, and uploads `dist/` to Cloudflare Pages — nothing reaches the web that a guardrail failed. The custom domain is not attached yet.
+- **The build does NOT run on Cloudflare, deliberately.** Building there took five hours across six failed deploys, none of them about the site: the database password had to be copied into a second place and arrived first with a stray space and then as an API key, "Retry deployment" silently replays the old commit, the Git link dropped, and Supabase's direct host is IPv6-only. Building locally removes all of it — no password in Cloudflare, no dependency install on their builder, no Git integration in the path. The cost is that a push does not publish by itself. `scripts/deploy.mjs`.
+- **Use Supabase's session pooler, not the direct host.** `db.<ref>.supabase.co` resolves to IPv6 only, which is a coin flip on a home connection; `aws-1-eu-west-1.pooler.supabase.com:5432` is IPv4 and is what `.env.local` holds.
 - **Fixtures are still the default.** Without `FYNDA_DATA_SOURCE=supabase` the build warns and uses `src/lib/fixtures.ts`. Both paths green — CI has no database.
 
 ### Next, in order
@@ -91,8 +94,8 @@ Five names collide (Zürich, Bern, Luzern, St. Gallen, Schaffhausen) and it is s
 
 | # | Task | Notes |
 |---|---|---|
-| 1.2 | Register `fynda.market` | Only this one domain |
-| 1.3 | Cloudflare | Workers + R2 |
+| ~~1.2~~ | ~~Register `fynda.market`~~ | Done, at Cloudflare. Not yet attached to the Pages project |
+| ~~1.3~~ | ~~Cloudflare~~ | Done. Pages project `fynda-market`, deployed by `npm run deploy` |
 | 1.5 | Resend | Newsletter sending |
 | 1.6 | Metabase host | ~$5–15/mo |
 | 1.7 | Search Console | Verify the day the domain exists |
