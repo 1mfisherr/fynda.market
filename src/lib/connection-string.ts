@@ -48,9 +48,32 @@ export function normaliseConnectionString(raw: string): string {
   return value;
 }
 
-/** The string with its password replaced, safe to print in a build log. */
-export function redact(value: string): string {
-  return value.replace(/(:\/\/[^:/@]*:)[^@]*(@)/, '$1********$2');
+/**
+ * What a rejected value *is*, in words, never the value itself.
+ *
+ * The first version of this error printed the first 60 characters of what it
+ * was given. Someone pasted a Supabase secret API key into the variable, and
+ * the message copied that key verbatim into a build log — turning a
+ * configuration mistake into a leaked credential. A diagnostic must not be able
+ * to do that, so nothing here returns any part of the input.
+ *
+ * The named shapes are the three things people actually paste by mistake: both
+ * kinds of Supabase API key, and the older JWT-format one.
+ */
+export function describe(value: string): string {
+  if (value.startsWith('sb_secret_')) {
+    return 'a Supabase secret API key (starts "sb_secret_")';
+  }
+  if (value.startsWith('sb_publishable_')) {
+    return 'a Supabase publishable API key (starts "sb_publishable_")';
+  }
+  if (value.startsWith('eyJ')) {
+    return 'a JWT — probably a Supabase anon or service-role key';
+  }
+  if (/^https?:\/\//i.test(value)) {
+    return 'a web address (starts "http") — probably the Supabase project URL';
+  }
+  return `${value.length} characters, not starting with "postgresql://"`;
 }
 
 /**
@@ -71,9 +94,10 @@ export function requireConnectionString(raw: string | undefined, name: string): 
 
   if (!/^postgres(ql)?:\/\//i.test(value)) {
     throw new Error(
-      `${name} is not a Postgres connection string. It must start with "postgresql://" and ` +
-        `end with "/postgres", with nothing before or after it — no quotes, no "psql", no ` +
-        `"${name}=" prefix, no stray spaces. Got: ${JSON.stringify(redact(value).slice(0, 60))}...`
+      `${name} must be a Postgres connection string: it starts with "postgresql://" and ends ` +
+        `with "/postgres". Got ${describe(value)}. ` +
+        `The right value is in the Supabase dashboard under Connect -> URI — NOT under ` +
+        `Project Settings -> API, which is where the keys live.`
     );
   }
 
