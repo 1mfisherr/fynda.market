@@ -364,9 +364,16 @@ check('Style cohesion', () => {
   const pageFilesSrc = astro.filter((f) => f.includes(`${sep}pages${sep}`));
   const problems = [];
 
+  // Comments are stripped first. A comment is not CSS: it cannot make two pages
+  // diverge and it cannot hardcode anything. Leaving them in meant the
+  // literal-value check fired on prose — a comment explaining that Route sat
+  // 859px down the page read as a hardcoded size, which punished exactly the
+  // comments this codebase wants written.
   const styleOf = (file) => {
     const html = readFileSync(file, 'utf8');
-    return [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map((m) => m[1]).join('\n');
+    return [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)]
+      .map((m) => m[1].replace(/\/\*[\s\S]*?\*\//g, ''))
+      .join('\n');
   };
   const rel = (file) => file.slice(root.length + 1).split(sep).join('/');
 

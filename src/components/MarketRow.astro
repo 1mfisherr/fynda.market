@@ -36,29 +36,64 @@ const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market
     <h3 class="name"><a href={marketPath(locale, market.slug)}>{market.name}</a></h3>
     <p class="via">{market.venueName} · {market.city}{entry ? ` · ${entry}` : ''}</p>
     {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
-    {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedOn(formatDateShort(occurrence.confirmedAt, locale))}</p>}
   </div>
+  {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedOn(formatDateShort(occurrence.confirmedAt, locale))}</p>}
   <div class="photo"><PhotoOrArt market={market} width={74} height={74} /></div>
 </article>
 
 <style>
-  .row { position:relative; display:grid; grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-photo); gap:var(--space-row); align-items:start; padding:var(--space-row-y) var(--space-page) var(--space-row-y) 0; border-bottom:var(--border-width) solid var(--color-line); }
-  .rail { align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
-  .time { padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
+  /*
+    Named areas rather than an order-dependent column list, because the two
+    layouts place the same five children differently and the DOM must not move:
+    the freshness line sits under the name on a phone and in its own column
+    above the breakpoint, without changing places in the markup.
+  */
+  .row {
+    position:relative;
+    display:grid;
+    grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-photo);
+    grid-template-areas:
+      "rail time details photo"
+      "rail time fresh   photo";
+    column-gap:var(--space-row);
+    row-gap:var(--space-1);
+    align-items:start;
+    padding:var(--space-row-y) var(--space-page) var(--space-row-y) 0;
+    border-bottom:var(--border-width) solid var(--color-line);
+  }
+  .rail { grid-area:rail; align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
+  .fresh, .reason { grid-area:fresh; }
+  .time { grid-area:time; padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
   .time strong { display:block; font-size:var(--text-date); font-weight:var(--weight-black); letter-spacing:var(--tracking-title); line-height:1.1; }
   .time span { display:block; margin-top:var(--space-half); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
   .line { display:block; margin-top:var(--space-2); }
-  .details { min-width:0; }
+  .details { grid-area:details; min-width:0; }
   .name { margin:0; font-size:var(--text-row-name); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.22; }
   .name a::after { position:absolute; inset:0; content:''; }
   .via, .facts, .fresh, .reason { margin:0; }
   .via { margin-top:var(--space-half); color:var(--color-grey); font-size:var(--text-micro); line-height:1.4; }
   .facts { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.45; }
-  .fresh { margin-top:var(--space-1); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
-  .reason { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-bold); }
-  .photo { width:var(--row-photo); height:var(--row-photo); overflow:hidden; border-radius:var(--radius-photo); background:var(--color-paper); }
+  .fresh { color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
+  .reason { font-size:var(--text-micro); font-weight:var(--weight-bold); }
+  .photo { grid-area:photo; width:var(--row-photo); height:var(--row-photo); overflow:hidden; border-radius:var(--radius-photo); background:var(--color-paper); }
   .cancelled .rail { background:var(--color-line); }
   .cancelled .name, .cancelled .time strong { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
   .cancelled .via { color:var(--color-quiet); }
   .cancelled .photo { filter:grayscale(1); opacity:0.5; }
+
+  /*
+    One row, not three stacked lines. Above the breakpoint the width goes to
+    the two things a visitor actually decides on — what is there, and whether
+    the date is true — instead of to the gap between the name and the photo.
+    Keep in step with --breakpoint-wide; a media query cannot read a token.
+  */
+  @media (min-width: 900px) {
+    .row {
+      grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-fresh) var(--row-photo);
+      grid-template-areas:"rail time details fresh photo";
+      column-gap:var(--space-4);
+    }
+    /* Set on the name's first line rather than on the top of the box. */
+    .fresh, .reason { padding-top:var(--space-half); }
+  }
 </style>

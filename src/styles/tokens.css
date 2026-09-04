@@ -54,6 +54,9 @@
   --font-sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
 
   --text-display: 38px;
+  /* One step up above the breakpoint. 38px was chosen for a 375px screen; on a
+     desktop it reads as a subhead rather than as the page's title. */
+  --text-display-wide: 46px;
   --text-section: 21px;
   --text-title: 17px;
   --text-date: 15px;
@@ -124,13 +127,32 @@
   --measure: 66ch;
   --tap-min: 44px; /* WCAG 2.2 floor is 24px; we design to 44. */
   --content-max: 720px;
+  /* Above the breakpoint the same wrapper widens. One site width, not two:
+     header, main and footer all still sit on `.wrapper`, and prose stays
+     capped at --measure, so only lists and chrome spend the extra room. */
+  --content-max-wide: 1080px;
   /* The one breakpoint. A media query cannot read a custom property, so this
      value is duplicated in the queries themselves — keep them in step. */
   --breakpoint-wide: 900px;
   --row-rail: 4px;
   --row-time: 46px;
   --row-photo: 74px;
+  /* Wide only. The row gains a column rather than stretching: whether the date
+     is true gets the width, not the gap between the name and the photo.
+
+     There is no --row-facts. A column for stall count and seller mix was built
+     and removed on 2026-09-04: we hold neither for any of the 161 markets, so
+     it reserved 150px of white space on all 451 rows. Those facts render under
+     the venue until the data exists — PLAN.md §The honest gap. */
+  --row-fresh: 170px;
+  /* Wide only. The day is set beside its rows instead of in a band above
+     them — which is what a departure board actually looks like. */
+  --day-column: 160px;
+  /* Wide only. The market page's sticky action rail. Route is 55% of every
+     outbound click on the site; at this width it never leaves the screen. */
+  --side-column: 344px;
   --hero-height: 210px;
+  --hero-height-wide: 300px;
   --button-height: 46px;
   --border-width: 1px;
   --section-divider: 8px;

@@ -56,4 +56,12 @@ const others = alternates.filter((a) => a.locale !== locale);
   }
   /* The only decorative use of the accent on the site, and it is the logo. */
   .mark span { color: var(--color-accent); }
+
+  /* Nothing is competing for the line any more, so the mark goes back up the
+     type ramp. Keep in step with --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .site-header { padding-block: var(--space-4); }
+    .mark { font-size: var(--text-section); }
+    .lead { gap: var(--space-4); }
+  }
 </style>

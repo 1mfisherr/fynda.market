@@ -33,4 +33,15 @@ const { items } = Astro.props;
     font-weight: var(--weight-bold);
   }
   li:last-child { border-block-end: 0; }
+
+  /* One name per 1000px line is not a list, it is a ladder. Three columns keeps
+     the label and its count near each other, which is the point of the row.
+     Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    .link-list { columns: 3; column-gap: var(--space-7); }
+    li { break-inside: avoid; }
+    /* In columns the visually last item is not :last-child, so the rule the
+       mobile layout drops has to come back. */
+    li:last-child { border-block-end: var(--border-width) solid var(--color-line); }
+  }
 </style>

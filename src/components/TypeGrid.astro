@@ -57,4 +57,12 @@ const s = t(locale);
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  /* The tiles are a legend, not a hero. Given the whole width they become five
+     200px bars, so they stop at the reading column and the labels get the room
+     they were being clipped out of. Keep in step with --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .types { max-width: var(--content-max); gap: var(--space-3); }
+    .label { font-size: var(--text-micro); }
+  }
 </style>

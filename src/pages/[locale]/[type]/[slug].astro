@@ -130,112 +130,136 @@ const facilityItems = market.facilities ? [
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
-  <div class="photo-hero">
-    <PhotoOrArt market={market} width={720} height={210} loading="eager" />
-    <span class="type eyebrow"><LineCode kind={market.kind} /> {kind.full[locale]}</span>
-  </div>
-
-  <div class="head gutter">
-    <h1>{market.name}</h1>
-    {next && (
-      <div class:list={['date', { cancelled }]}>
-        <strong>{String(date?.getDate()).padStart(2, '0')}</strong>
-        <span>
-          <b class="eyebrow">{weekday}, {month}</b>
-          {formatTimeRange(next.startTime, next.endTime, locale) && <em>{formatTimeRange(next.startTime, next.endTime, locale)} {s.timeSuffix}</em>}
-        </span>
-      </div>
-    )}
-    {market.packUpFrom && <p class="pack">{s.packUpFrom(market.packUpFrom)}</p>}
-    <p class="freshness meta-quiet">
-      {next?.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed}
-    </p>
-  </div>
-
-  {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold.
-      The second button is the organiser's own page where we hold one, which is
-      153 of 157 markets; it used to scroll down this page instead. */}
-  <div class="actions gutter">
-    <Button href={mapsUrl} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />{s.route}</Button>
-    {market.websiteUrl
-      ? <Button href={market.websiteUrl} block rel="noopener nofollow" target="_blank">{s.organiserWebsite}</Button>
-      : <Button href="#hinkommen" block>{s.organiser}</Button>}
-  </div>
-
-  {/* Both are retention, not decoration: a market in someone's calendar keeps
-      being useful without them returning, and a saved market is what the
-      Friday newsletter is eventually built on. Saving is localStorage only —
-      no account, docs/PLAN.md.
-
-      They share a row rather than stacking full-width under Route. Four block
-      buttons of the same size made "Merken" look like as big a decision as
-      getting there, which it is not — Route is 55% of all outbound clicks. */}
-  <div class="keep gutter">
-    <Button href={`/ics/${market.slug}.ics`}><Icon name="check" size={16} />{s.addToCalendar}</Button>
-    <Button data-save={market.slug} data-label-save={s.save} data-label-saved={s.savedState} aria-pressed="false"><Icon name="bookmark" size={16} />{s.save}</Button>
-  </div>
-
-  {market.description && (
-    <Section level="sub"><p class="meta">{market.description}</p></Section>
-  )}
-
-  {facts.length > 0 && (
-    <Section level="sub" title={s.whatToExpect}>
-      <dl class="gutter">{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl>
-    </Section>
-  )}
-
-  {market.timing && (
-    <Section level="sub" title={s.whenToGo}>
-      <div class="timing gutter">
-        {market.timing.map((slot) => (
-          <div><strong>{slot.from}</strong><span><b>{slot.label}</b>{slot.note && <em>{slot.note}</em>}</span></div>
-        ))}
-      </div>
-    </Section>
-  )}
-
-  <Section level="sub" title={s.gettingThere} id="hinkommen">
-    <p class="address gutter">
-      <b>{market.venueName}</b>
-      <span>{market.addressLine}</span>
-      {showLocality && <span>{locality}</span>}
-    </p>
-    {market.gettingThere && <p class="getting gutter">{market.gettingThere}</p>}
-    {facilityItems.length > 0 && (
-      <div class="facilities gutter">{facilityItems.map(([label, value]) => <span class="chip">{label} <b>{value}</b></span>)}</div>
-    )}
-  </Section>
-
-  <Section level="sub" title={s.dates}>
-    <ul class="dates list-reset gutter">
-      {dates.map((occurrence) => (
-        <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
-          <strong>{formatDate(occurrence.date, locale)}</strong>
-          {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
-          <em>{STATUS[locale][occurrence.status]}</em>
-        </li>
-      ))}
-    </ul>
-  </Section>
-
-  <Section level="sub" title={s.wasItDifferent}>
-    <p class="gutter meta">{s.reportIntro}</p>
-    {/* The market travels with the report. Asking someone to retype the name
-        of the page they are standing on is how a report form goes unused. */}
-    <div class="report gutter">
-      {[['ausgefallen', s.reportDidNotHappen], ['vorbei', s.reportEndedEarly], ['anderes', s.reportSomethingElse]].map(
-        ([grund, label]) => (
-          <a class="chip" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}`}>{label}</a>
-        )
-      )}
+  {/* One grid, so the width above 900px can put the actions beside the page
+      instead of below it. The DOM order is the mobile order and the reading
+      order both — hero, title, what to do, then the detail — so nothing is
+      re-sequenced for sighted users only. */}
+  <div class="market">
+    <div class="photo-hero">
+      <PhotoOrArt market={market} width={720} height={210} loading="eager" />
+      <span class="type eyebrow"><LineCode kind={market.kind} /> {kind.full[locale]}</span>
     </div>
-  </Section>
 
-  <TypeLegend locale={locale} />
+    <div class="head gutter">
+      <h1>{market.name}</h1>
+      {next && (
+        <div class:list={['date', { cancelled }]}>
+          <strong>{String(date?.getDate()).padStart(2, '0')}</strong>
+          <span>
+            <b class="eyebrow">{weekday}, {month}</b>
+            {formatTimeRange(next.startTime, next.endTime, locale) && <em>{formatTimeRange(next.startTime, next.endTime, locale)} {s.timeSuffix}</em>}
+          </span>
+        </div>
+      )}
+      {market.packUpFrom && <p class="pack">{s.packUpFrom(market.packUpFrom)}</p>}
+      <p class="freshness meta-quiet">
+        {next?.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed}
+      </p>
+    </div>
+
+    {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold.
+        The second button is the organiser's own page where we hold one, which is
+        153 of 157 markets; it used to scroll down this page instead. */}
+    <div class="side">
+      <div class="actions gutter">
+        <Button href={mapsUrl} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />{s.route}</Button>
+        {market.websiteUrl
+          ? <Button href={market.websiteUrl} block rel="noopener nofollow" target="_blank">{s.organiserWebsite}</Button>
+          : <Button href="#hinkommen" block>{s.organiser}</Button>}
+      </div>
+
+      {/* Both are retention, not decoration: a market in someone's calendar keeps
+          being useful without them returning, and a saved market is what the
+          Friday newsletter is eventually built on. Saving is localStorage only —
+          no account, docs/PLAN.md.
+
+          They share a row rather than stacking full-width under Route. Four block
+          buttons of the same size made "Merken" look like as big a decision as
+          getting there, which it is not — Route is 55% of all outbound clicks. */}
+      <div class="keep gutter">
+        <Button href={`/ics/${market.slug}.ics`}><Icon name="check" size={16} />{s.addToCalendar}</Button>
+        <Button data-save={market.slug} data-label-save={s.save} data-label-saved={s.savedState} aria-pressed="false"><Icon name="bookmark" size={16} />{s.save}</Button>
+      </div>
+    </div>
+
+    <div class="detail">
+      {market.description && (
+        <Section level="sub"><p class="blurb meta">{market.description}</p></Section>
+      )}
+
+      {facts.length > 0 && (
+        <Section level="sub" title={s.whatToExpect}>
+          <dl class="gutter">{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl>
+        </Section>
+      )}
+
+      {market.timing && (
+        <Section level="sub" title={s.whenToGo}>
+          <div class="timing gutter">
+            {market.timing.map((slot) => (
+              <div><strong>{slot.from}</strong><span><b>{slot.label}</b>{slot.note && <em>{slot.note}</em>}</span></div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      <Section level="sub" title={s.gettingThere} id="hinkommen">
+        <p class="address gutter">
+          <b>{market.venueName}</b>
+          <span>{market.addressLine}</span>
+          {showLocality && <span>{locality}</span>}
+        </p>
+        {market.gettingThere && <p class="getting gutter">{market.gettingThere}</p>}
+        {facilityItems.length > 0 && (
+          <div class="facilities gutter">{facilityItems.map(([label, value]) => <span class="chip">{label} <b>{value}</b></span>)}</div>
+        )}
+      </Section>
+
+      <Section level="sub" title={s.dates}>
+        <ul class="dates list-reset gutter">
+          {dates.map((occurrence) => (
+            <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
+              <strong>{formatDate(occurrence.date, locale)}</strong>
+              {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
+              <em>{STATUS[locale][occurrence.status]}</em>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section level="sub" title={s.wasItDifferent}>
+        <p class="gutter meta">{s.reportIntro}</p>
+        {/* The market travels with the report. Asking someone to retype the name
+            of the page they are standing on is how a report form goes unused. */}
+        <div class="report gutter">
+          {[['ausgefallen', s.reportDidNotHappen], ['vorbei', s.reportEndedEarly], ['anderes', s.reportSomethingElse]].map(
+            ([grund, label]) => (
+              <a class="chip" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}`}>{label}</a>
+            )
+          )}
+        </div>
+      </Section>
+
+      <TypeLegend locale={locale} />
+  </div>
+</div>
 </Page>
 
 <style>
+  /*
+    Mobile: a plain column, and the gaps are the ones `main.stack` used to
+    supply — this grid took its place as main's only child, so it owns them
+    now. Above the breakpoint the same four blocks become two columns.
+  */
+  .market { display: grid; gap: var(--space-6); }
+  .side { display: grid; gap: var(--space-6); }
+  .detail { display: grid; gap: var(--space-6); }
+
+  /* Running text stops at the reading measure whatever the column is doing.
+     Unconditional, because the 720px layout was already setting it ~105
+     characters wide, which is long past comfortable at this size. */
+  .blurb { max-width: var(--measure); }
+
   .photo-hero { position: relative; height: var(--hero-height); overflow: hidden; background: var(--color-paper); }
   .type {
     position: absolute;
@@ -343,6 +367,53 @@ const facilityItems = market.facilities ? [
     text-decoration-color: var(--color-line);
   }
   .report { margin-block-start: var(--space-3); }
+
+  /*
+    The change worth the most on this page. Route is 55% of every outbound
+    click on the site and it sat 859px down — below the fold, behind the whole
+    date list. Here it is a rail beside the page that never leaves the screen.
+
+    `align-self: start` shrinks the rail to its own height while its grid area
+    stays the full height of the page, which is the box sticky then travels
+    inside. Keep in step with --breakpoint-wide; a media query cannot read a
+    token.
+  */
+  @media (min-width: 900px) {
+    .market {
+      grid-template-columns: minmax(0, 1fr) var(--side-column);
+      grid-template-areas:
+        "hero   side"
+        "head   side"
+        "detail side";
+      column-gap: var(--space-7);
+      align-items: start;
+    }
+    .photo-hero {
+      grid-area: hero;
+      height: var(--hero-height-wide);
+      margin-inline: var(--space-page);
+      border-radius: var(--radius-md);
+    }
+    .head { grid-area: head; }
+    .detail { grid-area: detail; }
+    /*
+      Two- and three-column blocks push their last column to the right edge, so
+      a wider container buys nothing but a longer gap between a label and its
+      value. They stop where the text does.
+    */
+    .dates, .timing, dl { max-width: var(--measure); }
+    .side {
+      grid-area: side;
+      position: sticky;
+      inset-block-start: var(--space-4);
+      align-self: start;
+      gap: var(--space-3);
+      margin-inline-end: var(--space-page);
+      padding-block: var(--space-4);
+      border: var(--border-width) solid var(--color-line);
+      border-radius: var(--radius-md);
+    }
+  }
 </style>
 
 <script>

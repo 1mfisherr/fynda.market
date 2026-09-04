@@ -93,6 +93,7 @@ No off-the-shelf theme, no UI-kit look. Use a headless library for the fiddly ac
 
 - **Answer first.** What, where, when, and *is it on* in the first screen — before navigation, hero or decoration. Also a citation rule: roughly 44% of AI citations come from the first 30% of a page.
 - **Mobile first, hard.** ~82% of v1 traffic was mobile. Thumb-zone actions, bottom-sheet filters, tap-to-route.
+- **Desktop is the same design, wider — never a second one.** One breakpoint at 900px. The extra width buys information (a day column, a freshness column, a sticky action rail), never a bigger gap; reading text stays at 66ch whatever the container does. `design/desktop-v1.html` is the drawing, approved 2026-09-04.
 - **Empty states still help.** "Nothing in Aachen this week — here are three within 30 km."
 - **Show freshness honestly.** "Bestätigt am 12.08. durch den Veranstalter" beats silence, and beats pretending.
 
@@ -120,4 +121,4 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-30
+last_reviewed: 2026-09-04

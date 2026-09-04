@@ -6,7 +6,7 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 ## Now
 
-Updated 2026-09-03.
+Updated 2026-09-04.
 
 **The site is built, on real data, in four languages, with photographs.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **927 pages, all 10 guardrails green.** Ratio 1.00 (908 URLs / 226 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
 
@@ -18,6 +18,8 @@ Updated 2026-09-03.
 - **Photographs:** 135 photos on 146 of 157 market pages, each written at two sizes — a 1440px hero and a 148px square. A city page's images went from ~2.2 MB to 116 KB. 11 markets pointed at pexels stock URLs in v1 and keep the illustration instead — `docs/BRAND.md`. `scripts/import-images.mjs` re-encodes from the v1 repo and rewrites `markets.image_url` from the facts; `src/lib/images.ts` holds the naming rule both it and `PhotoOrArt` obey.
 - **Every internal link resolves** (27,772 checked), and **every breadcrumb `item` URL is a page that exists**. No page promises something that 404s.
 - **Filters actually filter.** `MarketRow` sets `display: grid`, which beats the browser's `[hidden] { display: none }` — so every list filter on the site was marking rows hidden and rendering them anyway. It looked like it worked because an empty day is hidden as a whole. `base.css` now makes `[hidden]` win, and the day band's count is rewritten from what matched (`src/lib/day-count.ts`) rather than from what the page was built with.
+- **Desktop is drawn.** One breakpoint at 900px, where `.wrapper` widens from 720 to 1080 — the same wrapper, not a second one, so header, main and footer cannot drift apart. Four changes: the **day becomes a column beside its rows** and sticks while you scroll it (new `DayGroup` component, which also removes the day markup that was typed out on three pages); the **row gains a freshness column** instead of stretching; the **market page splits**, with Route and the organiser link in a rail that never leaves the screen — they used to sit 859px down, while directions are 55% of every outbound click; and prose caps itself at 66ch everywhere so nothing runs to 155 characters a line. Mobile is byte-for-byte unchanged, checked at 375px on every page type. Measured at 375 / 768 / 1024 / 1440 across 17 URLs: nothing overflows.
+- **A row has no facts column.** One was built and removed the same day: we hold stall counts and seller mix for none of the 161 markets, so it reserved 150px of white space on all 451 rows. Those facts render under the venue instead, and the column comes back when the data does.
 - **Nothing scrolls sideways.** All 17 page types measured at phone width. `.bleed` used to pull rows 16px outside `main`, which has no gutter to escape — the page scrolled horizontally and every row's rail and time were clipped off the left edge. The class is gone.
 - **The site is live at `fynda.market`**, published 2026-09-04. Two defects were found by verifying the live site and are fixed: every unknown URL returned HTTP 200 with the `/` redirect stub (no 404 page existed), and nine noindex utility pages were in the sitemap because the exclusion list named only the German slugs. Guardrail 10 now checks the sitemap is exactly the indexable pages. `npm run deploy` builds against the live database, runs all nine guardrails, and uploads `dist/` to Cloudflare Pages — nothing reaches the web that a guardrail failed. The custom domain is not attached yet.
 - **The build does NOT run on Cloudflare, deliberately.** Building there took five hours across six failed deploys, none of them about the site: the database password had to be copied into a second place and arrived first with a stray space and then as an API key, "Retry deployment" silently replays the old commit, the Git link dropped, and Supabase's direct host is IPv6-only. Building locally removes all of it — no password in Cloudflare, no dependency install on their builder, no Git integration in the path. The cost is that a push does not publish by itself. `scripts/deploy.mjs`.
@@ -28,10 +30,9 @@ Updated 2026-09-03.
 
 0. **Launched 2026-09-04.** Live at `fynda.market`, sitemap submitted. Nothing to do but wait for Google: first pages indexed in roughly 3-14 days, meaningful query data in weeks. Do not resubmit the sitemap or change URLs while that settles.
 1. **The last two German-only surfaces.** `UTILITY_LOCALES` in `src/lib/i18n.ts` is now per page, not per locale. Still German: `/umkreis/` (one page, no locale prefix — its copy has to move out of the template first) and the two legal pages, which are legal documents and need a person, not a translation. Everything else follows the visitor's language.
-2. **Desktop design.** Today it is the mobile column centred in a void; nothing above 900px has been drawn. The home search card and the market-type tiles are the only two blocks with a wide layout so far.
-3. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
-4. **The country page** `/{locale}/{country}/`. The route is allowed and nothing is built. Breadcrumbs stopped pretending it exists; they should include it once it does.
-5. **German text search** — settle before any search box exists (`STACK.md`).
+2. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
+3. **The country page** `/{locale}/{country}/`. The route is allowed and nothing is built. Breadcrumbs stopped pretending it exists; they should include it once it does.
+4. **German text search** — settle before any search box exists (`STACK.md`).
 
 ### The three loops
 
@@ -137,6 +138,7 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 - `npm run verify` before every push. Guardrails reporting `SKIP` are waiting on data, not passing.
 - **Rules here are defaults, not laws.** Changing one is normal: say what it protected against, why that is outweighed, change doc and config in the same commit. Never route around one silently. See `ARCHITECTURE.md` §How to read this document.
 - **Four style layers: tokens → base → components → pages.** A page styles only what nothing else could want; a component never sets its own outer margin. Guardrail 7 enforces it.
+- **One breakpoint, 900px, and one wrapper.** A media query cannot read a token, so `--breakpoint-wide` is duplicated in every query that uses it — the comment beside each says so. Anything that is read rather than scanned caps itself at `--measure`; a wider container is for lists and chrome only.
 - **No German string that names a concept lives in a template.** Interface copy is `src/lib/strings.ts`, domain vocabulary `src/lib/vocabulary.ts`, URLs are built by `src/lib/i18n.ts` — never assembled by hand.
 - **Translated prose ships when a human has read it**, never before. Interface strings are written per language; market descriptions wait.
 - Colour, type, spacing and motion come from `src/styles/tokens.css`. Never hardcoded.
@@ -144,4 +146,4 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-03
+last_reviewed: 2026-09-04

@@ -98,4 +98,19 @@ const legal = [
     color: var(--color-quiet);
     font-size: var(--text-micro);
   }
+
+  /* The brand sits beside its links rather than above them; the language
+     switcher and the copyright line still span the foot.
+     Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    .site-footer {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      column-gap: var(--space-7);
+      row-gap: var(--space-6);
+      align-items: start;
+    }
+    .site-footer > * + * { margin-block-start: 0; }
+    .langs, .base { grid-column: 1 / -1; }
+  }
 </style>

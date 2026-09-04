@@ -11,7 +11,7 @@ import Button from '../../components/Button.astro';
 import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
 import CtaCard from '../../components/CtaCard.astro';
-import DateBand from '../../components/DateBand.astro';
+import DayGroup from '../../components/DayGroup.astro';
 import DateFilters from '../../components/DateFilters.astro';
 import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
@@ -123,15 +123,14 @@ const jsonLd = {
   <Section title={s.upcoming}>
     <div id="list">
       {groups.map((group) => (
-        <section class="day" data-day>
-          <DateBand date={group[0].next!.date} count={group.length} locale={locale} />
+        <DayGroup date={group[0].next!.date} count={group.length} locale={locale}>
           {group.map((market) => <MarketRow market={market} locale={locale} />)}
           {group.length > PER_DAY && (
             <div class="gutter more">
               <Button variant="quiet" data-more data-more-label={s.showMore(0)} hidden>{s.showMore(group.length - PER_DAY)}</Button>
             </div>
           )}
-        </section>
+        </DayGroup>
       ))}
     </div>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>

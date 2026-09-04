@@ -66,8 +66,12 @@ p {
   margin: 0;
 }
 
-/* A caption, a source line, a count — the quiet text under something loud. */
+/* A caption, a source line, a count — the quiet text under something loud.
+   It is prose, so it stops where prose stops: on the wide wrapper these were
+   running to roughly 155 characters a line. A cap never widens anything, so
+   the short ones — a count, a date line — are unaffected. */
 .meta {
+  max-width: var(--measure);
   color: var(--color-grey);
   font-size: var(--text-small);
 }
@@ -129,10 +133,30 @@ p {
 }
 
 /* The reading column. `main`, `header` and `footer` all sit on it, which is
-   what stops the site drifting into three different widths. */
+   what stops the site drifting into three different widths.
+
+   Above the breakpoint it is the same wrapper, just wider — deliberately one
+   class rather than a second `.wrapper-wide` for pages to choose between,
+   because choosing is how a site ends up with three widths again. Things that
+   must stay narrow cap themselves: `.prose` and `.answer` at --measure, `h1`
+   below. */
 .wrapper {
   max-width: var(--content-max);
   margin-inline: auto;
+}
+
+/* Keep in step with --breakpoint-wide; a media query cannot read a token. */
+@media (min-width: 900px) {
+  .wrapper {
+    max-width: var(--content-max-wide);
+  }
+
+  /* A headline set for a 375px screen reads as a subhead on a desktop, and a
+     46px line running the full 1080px is unreadable — so both at once. */
+  h1 {
+    font-size: var(--text-display-wide);
+    max-width: 20ch;
+  }
 }
 
 /* ---- interactive ------------------------------------------------------- */
@@ -207,6 +231,7 @@ p {
   are extracted from — 44% of citations come from the first 30% of a document.
 */
 .answer {
+  max-width: var(--measure);
   font-size: var(--text-date);
   font-weight: var(--weight-bold);
   line-height: var(--leading-snug);

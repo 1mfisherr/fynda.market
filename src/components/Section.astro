@@ -30,8 +30,10 @@ const { title, id, lede, level = 'page' } = Astro.props;
 
 <style>
   .body { margin-block-start: var(--space-3); }
-  /* The lede sits with the heading, so the body spaces away from it instead. */
-  .lede { margin-block-start: var(--space-1); }
+  /* The lede sits with the heading, so the body spaces away from it instead.
+     It is a sentence, so it stops at the reading measure — given the whole
+     wrapper it ran to roughly 160 characters a line. */
+  .lede { max-width: var(--measure); margin-block-start: var(--space-1); }
   .lede + .body { margin-block-start: var(--space-3); }
   /* The band that separates a market page's blocks. The stack above supplies
      no gap here, because the band is the gap. */

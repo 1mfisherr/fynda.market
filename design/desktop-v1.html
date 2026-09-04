@@ -1,0 +1,550 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fynda — Desktop v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+
+<style>
+/* ------------------------------------------------------------------
+   Fynda desktop, first draft. 2026-09-04.
+
+   Same tokens as src/styles/tokens.css. No dark mode — BRAND.md.
+   The rule this draft obeys: desktop does NOT get a new design. It gets
+   the same departure board, with the extra width spent on information
+   instead of on air.
+   ------------------------------------------------------------------ */
+:root{
+  --accent:#FF4A2B; --ink:#111110; --grey:#6E6C68; --quiet:#9A968F;
+  --line:#E8E6E2; --paper:#F5F4F2; --white:#fff; --stage:#2A2926;
+  --l-floh:#FF4A2B; --l-halle:#3D5AFE; --l-nacht:#7C3AED;
+  --l-kinder:#F5A524; --l-troedel:#E4007F;
+
+  /* the one new token this draft proposes */
+  --content-max:720px;
+  --content-max-wide:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--stage);font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;
+  color:var(--ink);padding:30px 20px 70px;
+}
+.lab{max-width:1440px;margin:0 auto}
+.labhead{color:#fff;max-width:660px;margin-bottom:26px}
+.labhead .mk{font-size:17px;font-weight:800;letter-spacing:-.045em}
+.labhead .mk span{color:var(--accent)}
+.labhead h1{font-size:28px;font-weight:800;letter-spacing:-.04em;margin-top:10px;line-height:1.1}
+.labhead p{font-size:14px;line-height:1.6;color:#B5B1A8;margin-top:10px}
+.labhead p b{color:#fff;font-weight:700}
+h2.lab-h{color:#fff;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:44px 0 4px}
+.lab-note{color:#B5B1A8;font-size:13px;line-height:1.6;max-width:700px;margin-bottom:14px}
+.lab-note b{color:#fff;font-weight:700}
+.lab-note code{color:#fff;font-family:ui-monospace,monospace;font-size:12px}
+
+/* The frame is not a scaled screenshot — it is the real layout, at whatever
+   width the window gives it. Open this at 1440px to see it as designed. */
+.screen{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.vp{width:100%}
+
+/* ==================================================================
+   SITE STYLES — what would actually be written into the codebase
+   ================================================================== */
+.wrapper-wide{max-width:var(--content-max-wide);margin-inline:auto}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+/* ---- header: sits on the wide wrapper, so the mark is not marooned --- */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;font-size:13px;font-weight:700;border-bottom:1px solid var(--line)}
+.mark{font-size:17px;font-weight:800;letter-spacing:-.045em}
+.mark span{color:var(--accent)}
+.hnav{display:flex;align-items:center;gap:20px;font-size:13px}
+.hnav .langs{display:flex;gap:6px;color:var(--quiet);font-size:12px}
+
+/* ---- page head ------------------------------------------------------ */
+.page-head{padding:34px 16px 22px}
+.page-head h1{font-size:46px;font-weight:800;letter-spacing:-.045em;line-height:1.02;max-width:14ch}
+.page-head .promise{color:var(--grey);font-size:15px;margin-top:10px}
+.answer{font-size:17px;font-weight:700;line-height:1.3;margin-top:10px;max-width:60ch}
+.meta{color:var(--grey);font-size:13px}
+
+/* ---- the home search card: already 3-up at 900px, unchanged --------- */
+.search{display:grid;grid-template-columns:2fr 2fr 1fr auto;gap:12px;align-items:end;
+  margin:0 16px;padding:16px;border:1px solid var(--line);border-radius:16px}
+.field{display:grid;gap:4px}
+.field>span{font-size:12px;font-weight:700}
+.field select{width:100%;min-height:44px;padding:8px 12px;border:1px solid var(--line);
+  border-radius:8px;font:inherit;font-size:13px;background:#fff;color:var(--ink)}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;
+  padding-inline:16px;border:1px solid var(--line);border-radius:999px;background:#fff;
+  font:inherit;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+.button.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips{display:flex;gap:8px;padding:20px 16px 6px}
+
+/* ---- section -------------------------------------------------------- */
+.section{margin-top:34px}
+.section>h2{font-size:21px;font-weight:700;letter-spacing:-.025em;padding:0 16px 12px}
+.section .lede{color:var(--grey);font-size:13px;padding:0 16px 12px;margin-top:-8px}
+
+/* ==================================================================
+   THE DAY GROUP — the one structural change.
+   Mobile: a full-width band above its rows.
+   Desktop: the day becomes a column BESIDE its rows. That is what a real
+   timetable looks like, it sticks while you scroll that day, and it is
+   the width being spent on structure rather than on a 600px gap.
+   ================================================================== */
+.day{display:grid;grid-template-columns:160px minmax(0,1fr);border-top:1px solid var(--line)}
+.day-head{padding:16px 16px 24px;position:sticky;top:0;align-self:start;background:#fff}
+.day-head .num{font-size:44px;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--accent)}
+.day-head .dow{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.day-head .mon{font-size:12px;font-weight:600;color:var(--quiet);text-transform:uppercase;letter-spacing:.08em}
+.day-head .count{font-size:12px;font-weight:600;color:var(--quiet);margin-top:10px}
+.day-rows{border-left:1px solid var(--line)}
+
+/* ---- the row: gains COLUMNS, it does not stretch -------------------- */
+.row{display:grid;grid-template-columns:4px 58px minmax(0,1fr) 150px 132px 96px;
+  gap:14px;align-items:start;padding:14px 16px 14px 0;
+  border-bottom:1px solid var(--line);position:relative}
+.rail{align-self:stretch;min-height:74px;border-radius:0 3px 3px 0}
+.time{padding-top:2px}
+.time strong{display:block;font-size:15px;font-weight:800;letter-spacing:-.015em;line-height:1.1}
+.time span{display:block;margin-top:2px;color:var(--quiet);font-size:10.5px;font-weight:600}
+.code{display:inline-block;margin-top:8px;padding:1px 4px;border-radius:3px;color:#fff;
+  font-size:8.5px;font-weight:800;letter-spacing:.06em}
+.details{min-width:0}
+.name{font-size:15.5px;font-weight:700;letter-spacing:-.015em;line-height:1.22}
+.name a::after{position:absolute;inset:0;content:""}
+.via{margin-top:2px;color:var(--grey);font-size:12px;line-height:1.4}
+/* two columns that only exist at >=900px. On a phone this same content
+   stays stacked under .via, exactly as it does today. */
+.col-facts{font-size:12px;font-weight:600;line-height:1.45;padding-top:2px}
+.col-facts .none{color:var(--quiet);font-weight:500}
+.col-fresh{padding-top:2px;font-size:11px;font-weight:600;color:var(--quiet);line-height:1.4}
+.col-fresh b{display:block;color:var(--ink);font-weight:700;font-size:11px}
+.photo{width:96px;height:74px;overflow:hidden;border-radius:8px;background:var(--paper)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.row.cancelled .rail{background:var(--line)}
+.row.cancelled .name,.row.cancelled .time strong{color:var(--quiet);text-decoration:line-through;text-decoration-color:var(--line)}
+.row.cancelled .photo{filter:grayscale(1);opacity:.5}
+.row.cancelled .col-fresh b{color:var(--ink)}
+
+/* ---- link lists: columns, because they are only names --------------- */
+.cols{padding:0 16px;columns:4;column-gap:24px}
+.cols a{display:block;padding:7px 0;font-size:14px;font-weight:600;
+  border-bottom:1px solid var(--line);break-inside:avoid}
+.cols a i{font-style:normal;color:var(--quiet);font-weight:500;font-size:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px}
+.pill{padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:0 16px}
+.tile{border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+.tile .sw{width:34px;height:34px;border-radius:10px;margin:0 auto 10px}
+.tile b{font-size:13px;font-weight:700}
+
+/* ---- footer: four columns, on the wide wrapper ---------------------- */
+.site-footer{margin-top:48px;border-top:1px solid var(--line);background:var(--paper)}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;padding:34px 16px}
+.foot h3{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--quiet);margin-bottom:10px}
+.foot a{display:block;padding:4px 0;font-size:13px;font-weight:600}
+.foot .about{font-size:13px;color:var(--grey);line-height:1.6;max-width:34ch;margin-top:8px}
+
+/* ==================================================================
+   MARKET PAGE — two columns. The right rail is sticky and holds the two
+   actions that are the entire funnel (55% maps / 45% organiser). Today
+   they sit 859px down the page.
+   ================================================================== */
+.market{display:grid;grid-template-columns:minmax(0,1fr) 344px;gap:44px;
+  padding:0 16px 10px;align-items:start}
+.hero{height:280px;overflow:hidden;border-radius:12px;background:var(--paper);margin-top:20px}
+.hero img{width:100%;height:100%;object-fit:cover}
+.mtitle{margin-top:22px}
+.mtitle .kind{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.mtitle h1{font-size:38px;font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-top:8px}
+.mdate{display:flex;gap:14px;align-items:baseline;margin-top:18px}
+.mdate strong{font-size:40px;font-weight:800;letter-spacing:-.04em;color:var(--accent);line-height:1}
+.mdate .when b{display:block;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.mdate .when em{display:block;font-style:normal;font-size:15px;font-weight:700;margin-top:2px}
+.fresh{margin-top:10px;font-size:13px;font-weight:700}
+.fresh i{font-style:normal;color:var(--quiet);font-weight:600}
+.prose{max-width:66ch;font-size:15px;line-height:1.6;margin-top:22px}
+.sub{margin-top:34px}
+.sub h2{font-size:15px;font-weight:800;letter-spacing:-.015em;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.dates li{display:grid;grid-template-columns:110px 130px 1fr;gap:12px;list-style:none;
+  padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.dates li strong{font-weight:700}
+.dates li span{color:var(--grey)}
+.dates li em{font-style:normal;color:var(--quiet);font-size:12px;font-weight:700}
+.dates li.cancelled strong,.dates li.cancelled span{color:var(--quiet);text-decoration:line-through;text-decoration-color:var(--line)}
+
+.rail-side{position:sticky;top:20px;margin-top:20px;display:grid;gap:12px;
+  padding:20px;border:1px solid var(--line);border-radius:16px}
+.rail-side .button{width:100%}
+.rail-side .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rail-side .pair .button{font-size:12px;padding-inline:8px}
+.facts-box{margin-top:6px;border-top:1px solid var(--line);padding-top:14px;display:grid;gap:12px}
+.fact{display:grid;gap:2px}
+.fact strong{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--quiet)}
+.fact b{font-size:14px;font-weight:700}
+.fact span{font-size:13px;color:var(--grey)}
+.report{border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--grey)}
+.report a{text-decoration:underline;font-weight:700}
+</style>
+
+<div class="lab">
+
+<div class="labhead">
+  <div class="mk">fynda<span>.</span></div>
+  <h1>Desktop, first draft</h1>
+  <p>Measured at <b>1440×900</b>. Today every page is the 720px phone column centred in white — nothing above 900px has ever been drawn. <b>This is not a second design.</b> It is the same departure board with the extra width spent on information rather than on air. Four changes, in order of how much they matter.</p>
+  <p><b>1.</b> A wide wrapper (1080px) for lists and chrome; prose stays at 66ch. &nbsp;<b>2.</b> The day becomes a column beside its rows, not a band above them. &nbsp;<b>3.</b> The row gains columns — facts and freshness get their own — instead of stretching. &nbsp;<b>4.</b> The market page splits, and the two buttons that are the entire funnel become a sticky rail.</p>
+</div>
+
+<!-- ============================== HOME ============================== -->
+<h2 class="lab-h">1 · Home</h2>
+<p class="lab-note">The day number in a left column is the whole idea. At 1440px a full-width band leaves ~600px of nothing between “04 FREITAG” and “2 MÄRKTE”; as a column it becomes structure, it sticks while you scroll that day, and the rows finally read as a timetable. <b>The row now has five columns</b> — time, name, facts, freshness, photo — so the width carries the things a visitor decides on instead of a gap.</p>
+
+<div class="screen"><div class="vp">
+
+  <div class="wrapper-wide">
+    <header class="site-header">
+      <a class="mark" href="#">fynda<span>.</span>market</a>
+      <div class="hnav">
+        <nav class="langs"><a>FR</a><a>IT</a><a>EN</a></nav>
+        <a>Gemerkt</a>
+      </div>
+    </header>
+  </div>
+
+  <main class="wrapper-wide">
+    <section class="page-head">
+      <h1>Irgendwo ist immer Markt.</h1>
+      <p class="promise">Flohmärkte in der Schweiz — mit Daten, die stimmen.</p>
+    </section>
+
+    <form class="search">
+      <label class="field"><span>Ort</span><select><option>Überall</option></select></label>
+      <label class="field"><span>Zeitraum</span><select><option>Alle</option></select></label>
+      <label class="field"><span>Umkreis</span><select><option>50 km</option></select></label>
+      <button class="button primary" type="button">Anzeigen</button>
+    </form>
+
+    <div class="chips">
+      <button class="button primary" type="button">Alle</button>
+      <button class="button" type="button">Heute</button>
+      <button class="button" type="button">Wochenende</button>
+      <button class="button" type="button">Datum</button>
+    </div>
+
+    <section class="section">
+      <h2>Kommende Termine</h2>
+
+      <div class="day">
+        <div class="day-head">
+          <div class="num">04</div>
+          <div class="dow">Freitag</div>
+          <div class="mon">September</div>
+          <div class="count">2 Märkte</div>
+        </div>
+        <div class="day-rows">
+
+          <article class="row">
+            <i class="rail" style="background:var(--l-troedel)"></i>
+            <div class="time"><strong>08:00</strong><span>–19:00</span>
+              <span class="code" style="background:var(--l-troedel)">TR</span></div>
+            <div class="details">
+              <h3 class="name"><a href="#">Brocante mensuelle Galerie 17 Terra</a></h3>
+              <p class="via">Rue de la Terrassière 17 · Genf</p>
+            </div>
+            <div class="col-facts">Eintritt frei<br><span class="none">Grösse unbekannt</span></div>
+            <div class="col-fresh"><b>Bestätigt</b>15.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/brocante-17-terra-geneve.webp" alt="" width="96" height="74"></div>
+          </article>
+
+          <article class="row">
+            <i class="rail" style="background:var(--l-floh)"></i>
+            <div class="time"><strong>08:30</strong><span>–16:00</span>
+              <span class="code" style="background:var(--l-floh)">FM</span></div>
+            <div class="details">
+              <h3 class="name"><a href="#">Marché de Rumine</a></h3>
+              <p class="via">Place de la Riponne · Lausanne</p>
+            </div>
+            <div class="col-facts">Eintritt frei<br><span class="none">Grösse unbekannt</span></div>
+            <div class="col-fresh"><b>Bestätigt</b>02.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/brocante-lutry.webp" alt="" width="96" height="74"></div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-head">
+          <div class="num">05</div>
+          <div class="dow">Samstag</div>
+          <div class="mon">September</div>
+          <div class="count">26 Märkte</div>
+        </div>
+        <div class="day-rows">
+
+          <article class="row">
+            <i class="rail" style="background:var(--l-floh)"></i>
+            <div class="time"><strong>07:00</strong><span>–17:00</span>
+              <span class="code" style="background:var(--l-floh)">FM</span></div>
+            <div class="details">
+              <h3 class="name"><a href="#">Flohmarkt Bürkliplatz</a></h3>
+              <p class="via">Bürkliplatz · Zürich</p>
+            </div>
+            <div class="col-facts">Eintritt frei<br><span class="none">Grösse unbekannt</span></div>
+            <div class="col-fresh"><b>Bestätigt</b>28.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/flohmarkt-buerkliplatz-zuerich.webp" alt="" width="96" height="74"></div>
+          </article>
+
+          <article class="row">
+            <i class="rail" style="background:var(--l-floh)"></i>
+            <div class="time"><strong>07:30</strong><span>–16:00</span>
+              <span class="code" style="background:var(--l-floh)">FM</span></div>
+            <div class="details">
+              <h3 class="name"><a href="#">Flohmarkt Kanzlei</a></h3>
+              <p class="via">Kanzleistrasse 56 · Zürich</p>
+            </div>
+            <div class="col-facts">Eintritt frei<br><span class="none">Grösse unbekannt</span></div>
+            <div class="col-fresh"><b>Bestätigt</b>15.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/flohmarkt-kanzlei.webp" alt="" width="96" height="74"></div>
+          </article>
+
+          <article class="row cancelled">
+            <i class="rail"></i>
+            <div class="time"><strong>10:00</strong><span>–16:00</span>
+              <span class="code" style="background:var(--quiet)">HA</span></div>
+            <div class="details">
+              <h3 class="name"><a href="#">Rosenhof-Markt</a></h3>
+              <p class="via">Rosenhof · Zürich</p>
+            </div>
+            <div class="col-facts">Eintritt frei</div>
+            <div class="col-fresh"><b>Fällt aus</b>Baustelle, gemeldet 30.08.</div>
+            <div class="photo"><img src="https://fynda.market/images/baden-bazaar.webp" alt="" width="96" height="74"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Städte</h2>
+      <p class="lede">55 Städte mit mindestens einem Markt.</p>
+      <div class="cols">
+        <a href="#">Zürich <i>17</i></a><a href="#">Bern <i>12</i></a>
+        <a href="#">Genf <i>11</i></a><a href="#">Basel <i>9</i></a>
+        <a href="#">Lausanne <i>8</i></a><a href="#">Luzern <i>7</i></a>
+        <a href="#">Winterthur <i>6</i></a><a href="#">St. Gallen <i>5</i></a>
+        <a href="#">Aarau <i>4</i></a><a href="#">Baden <i>4</i></a>
+        <a href="#">Chur <i>3</i></a><a href="#">Thun <i>3</i></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Kantone</h2>
+      <p class="lede">14 Kantone.</p>
+      <div class="pills">
+        <span class="pill">Zürich</span><span class="pill">Bern</span><span class="pill">Waadt</span>
+        <span class="pill">Genf</span><span class="pill">Aargau</span><span class="pill">Luzern</span>
+        <span class="pill">St. Gallen</span><span class="pill">Basel-Stadt</span>
+        <span class="pill">Baselland</span><span class="pill">Solothurn</span>
+        <span class="pill">Thurgau</span><span class="pill">Schaffhausen</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Marktarten</h2>
+      <div class="tiles">
+        <div class="tile"><div class="sw" style="background:var(--l-floh)"></div><b>Flohmarkt</b></div>
+        <div class="tile"><div class="sw" style="background:var(--l-halle)"></div><b>Hallenflohmarkt</b></div>
+        <div class="tile"><div class="sw" style="background:var(--l-nacht)"></div><b>Nachtflohmarkt</b></div>
+        <div class="tile"><div class="sw" style="background:var(--l-kinder)"></div><b>Kinderflohmarkt</b></div>
+        <div class="tile"><div class="sw" style="background:var(--l-troedel)"></div><b>Trödelmarkt</b></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrapper-wide"><div class="foot">
+    <div>
+      <div class="mark">fynda<span>.</span>market</div>
+      <p class="about">Flohmärkte in der Schweiz. Termine mit Quelle, Datum und Stand — und wir sagen, wenn wir etwas nicht wissen.</p>
+    </div>
+    <div><h3>Fynda</h3><a>Für Veranstalter</a><a>Newsletter</a><a>Termin melden</a></div>
+    <div><h3>Finden</h3><a>In der Nähe</a><a>Gemerkt</a><a>Alle Städte</a></div>
+    <div><h3>Rechtliches</h3><a>Impressum</a><a>Datenschutz</a></div>
+  </div></div></footer>
+
+</div></div>
+
+<!-- ============================ MARKET ============================== -->
+<h2 class="lab-h">2 · Marktseite</h2>
+<p class="lab-note"><b>The fix that is worth the most.</b> PAGES.md measured the Route button at 859px down the page — below the fold, behind the whole date list — while directions are 55% of every outbound click on the site. On desktop the two actions become a sticky rail that never leaves the screen, and the address, times and entry fee move up beside them. The left column keeps the reading measure at 66ch, so the description does not become a 1000px line.</p>
+
+<div class="screen"><div class="vp">
+
+  <div class="wrapper-wide">
+    <header class="site-header">
+      <a class="mark" href="#">fynda<span>.</span>market</a>
+      <div class="hnav"><nav class="langs"><a>FR</a><a>IT</a><a>EN</a></nav><a>Gemerkt</a></div>
+    </header>
+  </div>
+
+  <main class="wrapper-wide">
+    <div class="market">
+      <div>
+        <div class="hero"><img src="https://fynda.market/images/flohmarkt-kanzlei.webp" alt="" width="700" height="280"></div>
+
+        <div class="mtitle">
+          <div class="kind">Flohmarkt · Zürich</div>
+          <h1>Flohmarkt Kanzlei</h1>
+        </div>
+
+        <div class="mdate">
+          <strong>05</strong>
+          <div class="when"><b>Samstag, September</b><em>07:30–16:00 Uhr</em></div>
+        </div>
+        <p class="fresh">Bestätigt am 15.08.2026 <i>durch den Veranstalter</i></p>
+
+        <p class="prose">Der grösste Secondhand-Flohmarkt der Schweiz — jeden Samstag, bei jedem Wetter, auf dem Kanzleiareal beim Helvetiaplatz. Wer früh kommt, findet die besten Stücke: von Vinyl und Vintage-Möbeln bis zu Werkzeug, Fahrrädern und Kleinmöbeln. Bar zahlen lohnt sich fast immer.</p>
+
+        <section class="sub">
+          <h2>Termine</h2>
+          <ul class="dates">
+            <li><strong>Sa, 05.09.</strong><span>07:30–16:00</span><em>Bestätigt 15.08.</em></li>
+            <li><strong>Sa, 12.09.</strong><span>07:30–16:00</span><em>Bestätigt 15.08.</em></li>
+            <li><strong>Sa, 19.09.</strong><span>07:30–16:00</span><em>Nicht bestätigt</em></li>
+            <li class="cancelled"><strong>Sa, 26.09.</strong><span>07:30–16:00</span><em>Fällt aus — Stadtfest</em></li>
+            <li><strong>Sa, 03.10.</strong><span>07:30–16:00</span><em>Nicht bestätigt</em></li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="rail-side">
+        <a class="button primary" href="#">Route</a>
+        <a class="button" href="#">Website des Veranstalters</a>
+        <div class="pair">
+          <button class="button" type="button">In Kalender</button>
+          <button class="button" type="button">Merken</button>
+        </div>
+
+        <div class="facts-box">
+          <div class="fact"><strong>Adresse</strong><b>Kanzleistrasse 56</b><span>8004 Zürich</span></div>
+          <div class="fact"><strong>Zeiten</strong><b>07:30–16:00 Uhr</b><span>Jeden Samstag</span></div>
+          <div class="fact"><strong>Eintritt</strong><b>frei</b></div>
+          <div class="fact"><strong>Veranstalter</strong><b>Stadt Zürich</b></div>
+        </div>
+
+        <p class="report">Stimmt etwas nicht? <a href="#">Korrektur melden</a></p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="wrapper-wide"><div class="foot">
+    <div>
+      <div class="mark">fynda<span>.</span>market</div>
+      <p class="about">Flohmärkte in der Schweiz. Termine mit Quelle, Datum und Stand.</p>
+    </div>
+    <div><h3>Fynda</h3><a>Für Veranstalter</a><a>Newsletter</a><a>Termin melden</a></div>
+    <div><h3>Finden</h3><a>In der Nähe</a><a>Gemerkt</a><a>Alle Städte</a></div>
+    <div><h3>Rechtliches</h3><a>Impressum</a><a>Datenschutz</a></div>
+  </div></div></footer>
+
+</div></div>
+
+<!-- ============================= CITY =============================== -->
+<h2 class="lab-h">3 · Stadtseite</h2>
+<p class="lab-note">The best-earning page type — 25.5 clicks per page on v1. It needs nothing new: the same day column and the same five-column row. The answer line stays at the reading measure, and the H1 keeps the year, because 38% of clicks carry one.</p>
+
+<div class="screen"><div class="vp">
+
+  <div class="wrapper-wide">
+    <header class="site-header">
+      <a class="mark" href="#">fynda<span>.</span>market</a>
+      <div class="hnav"><nav class="langs"><a>FR</a><a>IT</a><a>EN</a></nav><a>Gemerkt</a></div>
+    </header>
+  </div>
+
+  <main class="wrapper-wide">
+    <section class="page-head">
+      <h1 style="max-width:22ch;font-size:38px">Die 17 Flohmärkte in Zürich 2026</h1>
+      <p class="answer">Der nächste ist Flohmarkt Bürkliplatz am Sa, 5. Sept., 07:00–17:00 Uhr, Stadthausanlage.</p>
+      <p class="meta" style="margin-top:10px">17 Märkte · 248 Termine in 4 Monaten · zuletzt geprüft heute</p>
+    </section>
+
+    <div class="chips">
+      <button class="button primary" type="button">Alle</button>
+      <button class="button" type="button">Heute</button>
+      <button class="button" type="button">Wochenende</button>
+      <button class="button" type="button">Datum</button>
+    </div>
+
+    <section class="section">
+      <div class="day">
+        <div class="day-head">
+          <div class="num">05</div><div class="dow">Samstag</div>
+          <div class="mon">September</div><div class="count">3 Märkte</div>
+        </div>
+        <div class="day-rows">
+          <article class="row">
+            <i class="rail" style="background:var(--l-floh)"></i>
+            <div class="time"><strong>07:00</strong><span>–17:00</span><span class="code" style="background:var(--l-floh)">FM</span></div>
+            <div class="details"><h3 class="name"><a href="#">Flohmarkt Bürkliplatz</a></h3><p class="via">Stadthausanlage · Zürich</p></div>
+            <div class="col-facts">Eintritt frei<br><span class="none">Grösse unbekannt</span></div>
+            <div class="col-fresh"><b>Bestätigt</b>28.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/flohmarkt-buerkliplatz-zuerich.webp" alt="" width="96" height="74"></div>
+          </article>
+          <article class="row">
+            <i class="rail" style="background:var(--l-floh)"></i>
+            <div class="time"><strong>07:30</strong><span>–16:00</span><span class="code" style="background:var(--l-floh)">FM</span></div>
+            <div class="details"><h3 class="name"><a href="#">Flohmarkt Kanzlei</a></h3><p class="via">Kanzleistrasse 56 · Zürich</p></div>
+            <div class="col-facts">Eintritt frei<br><span class="none">Grösse unbekannt</span></div>
+            <div class="col-fresh"><b>Bestätigt</b>15.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/flohmarkt-kanzlei.webp" alt="" width="96" height="74"></div>
+          </article>
+          <article class="row">
+            <i class="rail" style="background:var(--l-halle)"></i>
+            <div class="time"><strong>10:00</strong><span>–16:00</span><span class="code" style="background:var(--l-halle)">HA</span></div>
+            <div class="details"><h3 class="name"><a href="#">Rosenhof-Markt</a></h3><p class="via">Rosenhof · Zürich</p></div>
+            <div class="col-facts">Eintritt frei</div>
+            <div class="col-fresh"><b>Nicht bestätigt</b>Quelle: Veranstalterseite</div>
+            <div class="photo"><img src="https://fynda.market/images/baden-bazaar.webp" alt="" width="96" height="74"></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-head">
+          <div class="num">06</div><div class="dow">Sonntag</div>
+          <div class="mon">September</div><div class="count">1 Markt</div>
+        </div>
+        <div class="day-rows">
+          <article class="row">
+            <i class="rail" style="background:var(--l-troedel)"></i>
+            <div class="time"><strong>11:00</strong><span>–17:00</span><span class="code" style="background:var(--l-troedel)">TR</span></div>
+            <div class="details"><h3 class="name"><a href="#">Flohmarkt am See Wollishofen</a></h3><p class="via">Strandbad Wollishofen · Zürich</p></div>
+            <div class="col-facts">Eintritt frei</div>
+            <div class="col-fresh"><b>Bestätigt</b>21.08.2026, Veranstalter</div>
+            <div class="photo"><img src="https://fynda.market/images/breitsch-maerit-bern.webp" alt="" width="96" height="74"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrapper-wide"><div class="foot">
+    <div><div class="mark">fynda<span>.</span>market</div>
+      <p class="about">Flohmärkte in der Schweiz. Termine mit Quelle, Datum und Stand.</p></div>
+    <div><h3>Fynda</h3><a>Für Veranstalter</a><a>Newsletter</a><a>Termin melden</a></div>
+    <div><h3>Finden</h3><a>In der Nähe</a><a>Gemerkt</a><a>Alle Städte</a></div>
+    <div><h3>Rechtliches</h3><a>Impressum</a><a>Datenschutz</a></div>
+  </div></div></footer>
+
+</div></div>
+
+<h2 class="lab-h">Was das kostet</h2>
+<p class="lab-note">One new token (<code>--content-max-wide: 1080px</code>) and one <code>@media (min-width:900px)</code> block per component — the breakpoint already exists in <code>tokens.css</code>. Nothing above changes the mobile layout, the markup order, or a single URL. The row keeps the same DOM: the two new columns hold what <code>.via</code> and <code>.fresh</code> already contain, moved sideways at ≥900px instead of stacked. <b>Guardrail 7</b> stays satisfied — the wide wrapper and the day column belong in <code>base.css</code>, the row columns in <code>MarketRow.astro</code>, the sticky rail in the market page.</p>
+
+</div>
+

@@ -1,0 +1,66 @@
+---
+/**
+ * One day of a list: the date, and the markets on it.
+ *
+ * The home, city and region pages had all three typed the same
+ * `<section class="day" data-day>` wrapper around a DateBand and a run of
+ * MarketRows. Three copies of a structure is how three copies of a layout
+ * start, so it is one component now.
+ *
+ * The `data-day` hook and the row order are what the filter scripts on those
+ * pages walk — see `[data-day]` and `[data-date]` there. Nothing about that
+ * changes; the rows simply live one level deeper.
+ *
+ * Mobile: the band is a full-width header above its rows, as before.
+ * Wide: the day becomes a column *beside* its rows and sticks while you scroll
+ * past them. That is what a departure board looks like, and it is the reason
+ * the extra width is worth having — at 1440px the band left ~600px of nothing
+ * between the day number and its count.
+ */
+import DateBand from './DateBand.astro';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+
+interface Props {
+  /** ISO date of the day this group covers. */
+  date: string;
+  /** How many markets are on it, before any filter runs. */
+  count: number;
+  locale?: Locale;
+}
+const { date, count, locale = DEFAULT_LOCALE } = Astro.props;
+---
+<section class="day" data-day>
+  <div class="head"><DateBand date={date} count={count} locale={locale} /></div>
+  {/* The rows and anything that belongs with them — the "5 weitere anzeigen"
+      expander on the home page arrives through this same slot, so it stays
+      inside the rows column rather than under the day number. */}
+  <div class="rows"><slot /></div>
+</section>
+
+<style>
+  /* The separator between days is owned here rather than by the band, because
+     at the wide layout the band no longer spans the list. */
+  .day { border-block-start: var(--border-width) solid var(--color-line); }
+
+  /* Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    .day {
+      display: grid;
+      grid-template-columns: var(--day-column) minmax(0, 1fr);
+    }
+    /*
+      `align-self: start` shrinks the head to its own height while its grid
+      area stays the full height of the day — which is exactly the box a
+      sticky element is then free to travel inside. Without it the item
+      stretches to fill the area and sticky has nowhere to go.
+    */
+    .head {
+      position: sticky;
+      inset-block-start: 0;
+      align-self: start;
+      /* Rows scroll under it, so it needs a ground of its own. */
+      background: var(--color-surface);
+    }
+    .rows { border-inline-start: var(--border-width) solid var(--color-line); }
+  }
+</style>

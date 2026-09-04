@@ -12,9 +12,19 @@ const month = s.monthsLong[day.getMonth()];
 ---
 <header class="band"><strong class="day">{String(day.getDate()).padStart(2, '0')}</strong><span class="when">{weekday}<em>{month}</em></span><span class="count" data-count data-one={s.marketCount(1)} data-other={s.marketCount(2)}>{s.marketCount(count).toUpperCase()}</span></header>
 <style>
-  .band { display:grid; grid-template-columns:auto 1fr auto; gap:var(--space-3); align-items:end; padding:var(--space-page) var(--space-page) var(--space-2); border-top:var(--border-width) solid var(--color-line); }
+  /* The separator above a day belongs to DayGroup, which still spans the whole
+     list at the wide layout where this band does not. */
+  .band { display:grid; grid-template-columns:auto 1fr auto; gap:var(--space-3); align-items:end; padding:var(--space-page) var(--space-page) var(--space-2); }
   .day { font-size:var(--text-day-band); font-weight:var(--weight-black); letter-spacing:-0.05em; line-height:0.86; }
   .when { font-size:var(--text-micro); font-weight:var(--weight-black); letter-spacing:0.1em; line-height:1.5; text-transform:uppercase; }
   .when em { display:block; color:var(--color-quiet); font-style:normal; font-weight:var(--weight-bold); }
   .count { padding-bottom:var(--space-half); color:var(--color-quiet); font-size:var(--text-micro); font-weight:var(--weight-bold); white-space:nowrap; }
+
+  /* Set beside its rows rather than across them, the band stacks: day number,
+     weekday, month, then the count. Same three parts, turned through 90°.
+     Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    .band { grid-template-columns:minmax(0, 1fr); gap:var(--space-1); align-items:start; padding-block-end:var(--space-6); }
+    .count { padding-bottom:0; padding-top:var(--space-1); }
+  }
 </style>
