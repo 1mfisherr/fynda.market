@@ -1,0 +1,63 @@
+---
+/**
+ * Not found.
+ *
+ * Without this file, Cloudflare Pages answers every unmatched path with the
+ * `/` redirect stub and **HTTP 200**. So `/de/schweiz/anything-at-all/` looked
+ * like a real page: a soft 404, on every wrong URL, site-wide.
+ *
+ * That is the v1 failure wearing a different hat. fleafind.ch was penalised for
+ * thousands of URLs with nothing behind them; a soft 404 lets a crawler
+ * *invent* those URLs and be told each one is fine. The rule in CLAUDE.md — a
+ * page exists because there is content for it — has to hold for pages we never
+ * generated too, and the only way to say that over HTTP is a 404 status.
+ *
+ * Astro emits this as `dist/404.html`, which Cloudflare Pages serves with a 404
+ * status automatically. No configuration, no Worker.
+ *
+ * It is one page, not four. A static host picks the 404 before it knows
+ * anything about the visitor, so there is no locale to read — the four language
+ * links below are the answer to that, and they are the only useful thing this
+ * page can offer.
+ */
+import Page from '../layouts/Page.astro';
+import { DEFAULT_LOCALE, LOCALE, LOCALES, homePath } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+const s = t(DEFAULT_LOCALE);
+---
+
+<Page
+  title={s.notFoundTitle}
+  description={s.notFoundBody}
+  indexable={false}
+  locale={DEFAULT_LOCALE}
+>
+  <section class="stack gutter">
+    <div class="page-head">
+      <h1>{s.notFoundHeading}</h1>
+      <p class="meta">{s.notFoundBody}</p>
+    </div>
+
+    <ul class="languages">
+      {LOCALES.map((locale) => (
+        <li>
+          <a class="button" href={homePath(locale)} hreflang={LOCALE[locale].tag}>
+            {LOCALE[locale].label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Page>
+
+<style>
+  /* The four doors out. A list, because that is what it is. */
+  .languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+  }
+</style>

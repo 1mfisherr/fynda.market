@@ -25,6 +25,11 @@ export interface Strings {
   backToHome: string;
   languageLabel: string;
 
+  /* not found */
+  notFoundTitle: string;
+  notFoundHeading: string;
+  notFoundBody: string;
+
   /* home */
   homeTitle: string;
   homeDescription: string;
@@ -141,6 +146,10 @@ const de: Strings = {
   skipToContent: 'Zum Inhalt springen',
   backToHome: 'Zurück zur Startseite',
   languageLabel: 'Sprache',
+
+  notFoundTitle: 'Seite nicht gefunden — Fynda',
+  notFoundHeading: 'Diese Seite gibt es nicht.',
+  notFoundBody: 'Vielleicht ist der Markt umgezogen, vielleicht stimmt die Adresse nicht. Von der Startseite aus finden Sie jeden Markt.',
 
   homeTitle: 'Flohmärkte in der Schweiz — Fynda',
   homeDescription: 'Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive.',
@@ -261,6 +270,10 @@ const en: Strings = {
   skipToContent: 'Skip to content',
   backToHome: 'Back to the home page',
   languageLabel: 'Language',
+
+  notFoundTitle: 'Page not found — Fynda',
+  notFoundHeading: 'This page does not exist.',
+  notFoundBody: 'The market may have moved, or the address may be wrong. Every market is reachable from the home page.',
 
   homeTitle: 'Flea markets in Switzerland — Fynda',
   homeDescription: 'Which flea market is on, where and when. Dates with a source and a date, cancellations included.',
@@ -386,6 +399,10 @@ const fr: Strings = {
   backToHome: "Retour à l'accueil",
   languageLabel: 'Langue',
 
+  notFoundTitle: 'Page introuvable — Fynda',
+  notFoundHeading: "Cette page n'existe pas.",
+  notFoundBody: "Le marché a peut-être changé d'adresse, ou l'adresse est incorrecte. Tous les marchés sont accessibles depuis la page d'accueil.",
+
   homeTitle: 'Brocantes en Suisse — Fynda',
   homeDescription: 'Quelle brocante a lieu, où et quand. Dates avec source, annulations comprises.',
   heroLine1: 'Il y a toujours',
@@ -505,6 +522,10 @@ const it: Strings = {
   skipToContent: 'Vai al contenuto',
   backToHome: 'Torna alla pagina iniziale',
   languageLabel: 'Lingua',
+
+  notFoundTitle: 'Pagina non trovata — Fynda',
+  notFoundHeading: 'Questa pagina non esiste.',
+  notFoundBody: "Il mercatino potrebbe aver cambiato indirizzo, oppure l'indirizzo non è corretto. Dalla pagina iniziale si raggiunge ogni mercatino.",
 
   homeTitle: 'Mercatini delle pulci in Svizzera — Fynda',
   homeDescription: 'Quale mercatino delle pulci si tiene, dove e quando. Date con fonte, comprese le cancellazioni.',

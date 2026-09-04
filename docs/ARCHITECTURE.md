@@ -107,6 +107,8 @@ This is the guarantee GetYourGuide and Tripadvisor buy with an id in the path, w
 
 `/` redirects to `/de/`. Astro emits a redirect stub, which the guardrails treat as **not a page**: exempt from the content floor and the ratio, still checked against the route allowlist.
 
+**A URL that does not exist returns 404.** `src/pages/404.astro` is not decoration: without it Cloudflare Pages answers every unmatched path with the `/` redirect stub and **HTTP 200**, so `/de/schweiz/anything-at-all/` looked like a real page. That is the v1 failure in another form — a crawler could invent URLs and be told each one was fine — and it made verification lie, because every check of a made-up URL passed. Found and fixed on launch day, 2026-09-04.
+
 ## Locales
 
 **Switzerland publishes in de, fr, it and en. Every other country gets its own language plus English.** Decided 2026-08-31, and it was not a future concern — 31 of 157 markets (20%) are in French- or Italian-speaking Switzerland and were being served German pages.
@@ -269,7 +271,7 @@ It compares **class names, not just whole selectors.** The first version compare
 
 **No CSS framework.** The token layer is better than what one would supply, and adopting one would mean discarding it.
 
-## The nine guardrails
+## The ten guardrails
 
 `scripts/guardrails.mjs`, run by `npm run verify` and by CI. Config in `guardrails.config.json`.
 
@@ -284,6 +286,7 @@ It compares **class names, not just whole selectors.** The first version compare
 | 7 | Style cohesion | Pages drifting into separate designs |
 | 8 | hreflang clusters | A one-way link voiding a whole language cluster |
 | 9 | Retired addresses still land | A rename silently killing every shared link and ranking |
+| 10 | Sitemap matches the indexable pages | Asking Google to index a page that tells it not to |
 
 Checks 1–6 and 8 read `dist/`. Check 7 reads `src/`, because the failure it catches is invisible in the output.
 

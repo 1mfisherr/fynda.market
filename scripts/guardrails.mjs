@@ -549,6 +549,54 @@ check('Retired addresses still land', () => {
 });
 
 /* -------------------------------------------------------------------------- */
+/* 10. the sitemap is exactly the indexable pages                             */
+/*                                                                            */
+/* The sitemap is the list of pages we ask Google to index, so it has to agree */
+/* with what those pages say about themselves. It did not: nine utility pages  */
+/* shipped carrying a robots noindex tag AND a sitemap entry, because the      */
+/* exclusion list in astro.config.mjs named only the German slugs. It hid for  */
+/* months because "newsletter" is spelled the same in all four languages, so   */
+/* the list looked complete.                                                   */
+/*                                                                            */
+/* Asking Google to index a page while telling it not to is a quality signal   */
+/* problem, and it is invisible in every other check here — both halves build  */
+/* perfectly. So the invariant is checked directly, in both directions.        */
+/* -------------------------------------------------------------------------- */
+
+check('Sitemap matches the indexable pages', () => {
+  const files = readdirSync(distDir).filter((f) => /^sitemap-\d+\.xml$/.test(f));
+  if (files.length === 0) return skip('no sitemap in dist');
+
+  const listed = new Set();
+  for (const file of files) {
+    const xml = readFileSync(join(distDir, file), 'utf8');
+    for (const [, loc] of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      listed.add(new URL(loc).pathname);
+    }
+  }
+
+  const problems = [];
+  let indexable = 0;
+
+  for (const page of pages) {
+    const noindex = /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(page.html);
+    if (noindex) {
+      if (listed.has(page.url)) {
+        problems.push(`${page.url} — carries robots noindex but is in the sitemap. Add it to NOINDEX in astro.config.mjs.`);
+      }
+    } else {
+      indexable++;
+      if (!listed.has(page.url)) {
+        problems.push(`${page.url} — is indexable but missing from the sitemap, so we are not asking Google for it.`);
+      }
+    }
+  }
+
+  if (problems.length) return fail(`${problems.length} sitemap disagreement(s)`, problems);
+  return pass(`${listed.size} URLs in the sitemap, exactly the ${indexable} indexable pages`);
+});
+
+/* -------------------------------------------------------------------------- */
 /* output                                                                     */
 /* -------------------------------------------------------------------------- */
 
