@@ -26,6 +26,7 @@ Updated 2026-09-03.
 
 ### Next, in order
 
+0. **Launched 2026-09-04.** Live at `fynda.market`, sitemap submitted. Nothing to do but wait for Google: first pages indexed in roughly 3-14 days, meaningful query data in weeks. Do not resubmit the sitemap or change URLs while that settles.
 1. **The last two German-only surfaces.** `UTILITY_LOCALES` in `src/lib/i18n.ts` is now per page, not per locale. Still German: `/umkreis/` (one page, no locale prefix — its copy has to move out of the template first) and the two legal pages, which are legal documents and need a person, not a translation. Everything else follows the visitor's language.
 2. **Desktop design.** Today it is the mobile column centred in a void; nothing above 900px has been drawn. The home search card and the market-type tiles are the only two blocks with a wide layout so far.
 3. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
@@ -98,7 +99,7 @@ Five names collide (Zürich, Bern, Luzern, St. Gallen, Schaffhausen) and it is s
 | ~~1.3~~ | ~~Cloudflare~~ | Done. Pages project `fynda-market`, deployed by `npm run deploy` |
 | 1.5 | Resend | Newsletter sending |
 | 1.6 | Metabase host | ~$5–15/mo |
-| 1.7 | Search Console | Verify the day the domain exists |
+| ~~1.7~~ | ~~Search Console~~ | Done 2026-09-04. Domain property, sitemap submitted. Expect no data for days — that is normal, not a fault |
 
 Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 
