@@ -21,7 +21,7 @@ import Field from '../../components/Field.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import Section from '../../components/Section.astro';
 import { getMarkets, withinHorizon } from '../../lib/markets';
-import { CONTACT, FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
+import { FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
 import {
   UTILITY, UTILITY_LOCALES, homePath, marketPrefix, utilityAlternates,
   type Locale, type UtilityKey,
@@ -154,7 +154,8 @@ const savedCopy = saved && {
    * It walks the form rather than a hand-written list of field names, so the
    * labels are whatever the page's own language calls them.
    */
-  const CONTACT_EMAIL = 'hallo@fynda.market';
+  import { CONTACT } from '../../lib/utility-copy';
+
   const form = document.querySelector<HTMLFormElement>('form[data-mail]');
 
   if (form) {
@@ -189,7 +190,7 @@ const savedCopy = saved && {
         if (control.name === 'markt') subject = `${subject}: ${value}`;
       }
 
-      location.href = `mailto:${CONTACT_EMAIL}`
+      location.href = `mailto:${CONTACT}`
         + `?subject=${encodeURIComponent(subject)}`
         + `&body=${encodeURIComponent(lines.join('\n'))}`;
     });

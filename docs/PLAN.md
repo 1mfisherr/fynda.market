@@ -135,7 +135,7 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 
 ## Conventions
 
-- `npm run verify` before every push. Guardrails reporting `SKIP` are waiting on data, not passing.
+- `npm run verify` before every push — **`astro check`, then the build, then the guardrails.** The type check used to run only in CI, so `astro.config.mjs` reached GitHub with three type errors that a local verify had reported as green. Guardrails reporting `SKIP` are waiting on data, not passing.
 - **Rules here are defaults, not laws.** Changing one is normal: say what it protected against, why that is outweighed, change doc and config in the same commit. Never route around one silently. See `ARCHITECTURE.md` §How to read this document.
 - **Four style layers: tokens → base → components → pages.** A page styles only what nothing else could want; a component never sets its own outer margin. Guardrail 7 enforces it.
 - **One breakpoint, 900px, and one wrapper.** A media query cannot read a token, so `--breakpoint-wide` is duplicated in every query that uses it — the comment beside each says so. Anything that is read rather than scanned caps itself at `--measure`; a wider container is for lists and chrome only.

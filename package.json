@@ -13,7 +13,7 @@
     "check": "astro check",
     "db:test": "node scripts/db-test.mjs",
     "guardrails": "node scripts/guardrails.mjs",
-    "verify": "npm run build && npm run guardrails",
+    "verify": "npm run check && npm run build && npm run guardrails",
     "prebuild": "node scripts/emit-data.mjs",
     "deploy": "node scripts/deploy.mjs"
   },

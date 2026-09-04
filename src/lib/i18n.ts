@@ -139,3 +139,17 @@ export const utilityPath = (locale: Locale, key: UtilityKey) => {
 /** Every locale that actually has this utility page, for hreflang. */
 export const utilityAlternates = (key: UtilityKey) =>
   UTILITY_LOCALES[key].map((locale) => ({ locale, path: utilityPath(locale, key) }));
+
+/**
+ * Every utility page, in every locale it is served in.
+ *
+ * It lives here rather than in astro.config.mjs because this file is the only
+ * place a URL is assembled — and because `Object.keys` returns `string[]`,
+ * which throws away the UtilityKey union the moment the config tries to do it
+ * itself. In TypeScript the narrowing is one cast; in a `// @ts-check`ed .mjs
+ * it was three type errors.
+ */
+export const utilityPaths = () =>
+  (Object.keys(UTILITY) as UtilityKey[]).flatMap((key) =>
+    UTILITY_LOCALES[key].map((locale) => utilityPath(locale, key))
+  );
