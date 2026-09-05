@@ -20,7 +20,7 @@ interface Props { locale?: Locale }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const s = t(locale);
 ---
-<a class="shortcut gutter" href="/" data-shortcut hidden>
+<a class="shortcut" href="/" data-shortcut hidden>
   <span class="text">
     <span class="eyebrow">{s.yourTown}</span>
     <b data-shortcut-name></b>
@@ -34,13 +34,13 @@ const s = t(locale);
     align-items: center;
     justify-content: space-between;
     gap: var(--space-3);
-    padding-block: var(--space-2);
+    padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-md);
     background: var(--color-ink);
     color: var(--color-surface);
   }
   .text { display: grid; }
-  .eyebrow { color: var(--color-quiet); }
+  .eyebrow { color: var(--color-quiet); font-size: var(--text-tiny); }
   /* One line of the row, not a section heading. At --text-section the town
      name was set larger than "Dieses Wochenende" below it, which made a
      shortcut read as the most important thing on the page. */
