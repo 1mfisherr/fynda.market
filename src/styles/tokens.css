@@ -157,7 +157,11 @@
     it is a wrap. --row-rail and --tap-min are the exceptions: a hairline has
     no text in it, and 44px is a WCAG floor rather than a size.
   */
-  --row-time: clamp(46px, calc(41.141px + 1.296vw), 59.8px);
+  /* 52, not 46: "08:00" at --text-date measures 47.4px, so the old column was
+     half a pixel too narrow and had been overflowing silently since it was
+     written. It only became visible when body got overflow-wrap: break-word,
+     which turned a hairline overflow into "09:0 / 0". */
+  --row-time: clamp(52px, calc(46.507px + 1.465vw), 67.6px);
   --row-photo: clamp(74px, calc(66.183px + 2.085vw), 96.2px);
   /* Wide only. The row gains a column rather than stretching: whether the date
      is true gets the width, not the gap between the name and the photo.

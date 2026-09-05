@@ -139,7 +139,11 @@ const dateCount = mode === 'date' ? countDates(market) : undefined;
   .rail { grid-area:rail; align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
   .fresh, .reason { grid-area:fresh; }
   .hours { grid-area:hours; }
+  /* A clock time is one token. It never breaks, whatever the column does —
+     body allows long words to break so German compounds fit, and "08:00" is
+     not a German compound. */
   .time { grid-area:time; padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
+  .time strong, .time span, .hours { white-space:nowrap; }
   .time strong { display:block; font-size:var(--text-date); font-weight:var(--weight-black); letter-spacing:var(--tracking-title); line-height:1.1; }
   .time span { display:block; margin-top:var(--space-half); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
   .line { display:block; margin-top:var(--space-2); }
