@@ -213,6 +213,8 @@ Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bot
 
 **Each attribute is its own element**, never one run-on line, and never inside the title — 40% of sites get this wrong. Name, date, place, status are four things with four treatments.
 
+**A row has one loud thing: the name.** Rhythm grey, venue quieter still — three weights, no ties. Two bold lines is the same as none. And **say the exception, never the rule**: a fact true of 96% of rows is furniture. `docs/BRAND.md`.
+
 **Three status badges, no more:** Bestätigt · Nicht bestätigt · Abgesagt. NN/g put the clutter limit at 2–3. So no "Neu" or "Beliebt" badge — it would cost the meaning of the three that matter.
 
 **Above the fold carries what, when, is it on, and the main action.** 57% of viewing time is spent there, and a first screen that is too dense gets read by nobody.

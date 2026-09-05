@@ -29,6 +29,7 @@
  */
 
 import { spawnSync } from 'node:child_process';
+import { readFileSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -81,11 +82,41 @@ function run(label, file, args) {
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+/*
+  Start from nothing.
+
+  A build that ran on fixtures leaves six invented markets in dist/, and a
+  later Supabase build does not necessarily remove them — on 2026-09-05 a stale
+  dist/ produced 956 pages where the database holds 927, and the guardrails
+  read the leftovers as real. That was caught locally. Uploaded, it would have
+  published fake markets to a live site.
+*/
+rmSync(join(root, 'dist'), { recursive: true, force: true });
+
 // `npm run verify` is build + guardrails, and prebuild is what emits data/.
 // Spelled out here so each step's failure names itself.
 run('Emitting data files', join(root, 'scripts/emit-data.mjs'), []);
 run('Building the site', binOf('astro'), ['build']);
 run('Checking guardrails', join(root, 'scripts/guardrails.mjs'), []);
+
+/*
+  And refuse outright to publish a fixtures build.
+
+  Cleaning dist/ removes the symptom; this removes the class. emit-data records
+  which source the build ran on, so there is no guessing: six sample markets
+  must never reach fynda.market, whatever else went wrong upstream.
+*/
+const built = JSON.parse(readFileSync(join(root, 'data/entities.json'), 'utf8'));
+if (built.source !== 'supabase') {
+  console.error(
+    `
+  This build ran on ${built.source}, not the database ` +
+    `(${built.markets} markets). Those are sample listings and must not be ` +
+    `published. Nothing was uploaded.
+`
+  );
+  process.exit(1);
+}
 
 run('Uploading to Cloudflare Pages', binOf('wrangler'), [
   'pages',

@@ -11,7 +11,9 @@
  * of a word, and lib/date-window.ts reads a YYYY-MM-DD window as "this day".
  *
  * "Nächste Woche" is gone. It was a coarse guess at the question the calendar
- * answers exactly, and a fourth chip did not fit a phone line anyway.
+ * answers exactly, and a fourth chip did not fit a phone line anyway. The three
+ * that remain fit on one line at 375px with 6px to spare, which is why the
+ * first chip is "Alle" and not "Alle Märkte" — that word cost a whole row.
  *
  * The grid covers the whole 120-day horizon, one month shown at a time. Days we
  * have nothing for are not buttons: the point of the calendar is to show where
@@ -29,16 +31,11 @@ interface Props {
   locale?: Locale;
   /** The dates this page has markets on, as YYYY-MM-DD. */
   dates?: string[];
-  /**
-   * What "no filter" is called. A date list unfilters to "Alle"; a list of one
-   * row per market unfilters to "Alle Märkte", which says what the rows are.
-   */
-  allLabel?: string;
 }
-const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [], allLabel } = Astro.props;
+const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [] } = Astro.props;
 const s = t(locale);
 const LABELS: Record<string, string> = {
-  all: allLabel ?? s.filterAll,
+  all: s.filterAll,
   today: s.filterToday,
   weekend: s.filterWeekend,
 };

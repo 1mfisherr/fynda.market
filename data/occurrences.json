@@ -1080,6 +1080,26 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "ladies-flohmarkt-fundus-root",
+    "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "ladies-flohmarkt-fundus-root",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "ladies-flohmarkt-fundus-root",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "les-puces-du-cpo-lausanne",
     "date": "2026-09-10",
     "status": "confirmed"
@@ -1985,6 +2005,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "night-flohmarkt-kloten",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "nostalgie-flohmarkt-worb-bern",
     "date": "2026-09-13",
     "status": "confirmed"
@@ -2217,6 +2242,11 @@
   {
     "marketSlug": "vide-grenier-lutry",
     "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "vide-grenier-sallaz-lausanne",
+    "date": "2026-09-13",
     "status": "confirmed"
   },
   {

@@ -13,6 +13,15 @@
  *
  * One component rather than two, so the rail, the photo, the cancelled
  * treatment and the wide layout cannot drift into two versions of themselves.
+ *
+ * **One loud thing per row: the name.** Everything under it steps down a
+ * weight — rhythm in grey, then the venue quieter still. Three levels, no
+ * ties. Until 2026-09-05 the name and the recurrence phrase were both bold
+ * ink, which gave the eye two winners and so no place to land; between them
+ * sat the least important fact on the row, louder than the rhythm.
+ *
+ * The order is the order of the decision: which market → how often can I go →
+ * where exactly.
  */
 import type { Market } from '../lib/types';
 import { LINES } from '../lib/vocabulary';
@@ -28,14 +37,18 @@ interface Props {
   locale?: Locale;
   /** 'time' under a day band, 'date' standing alone. See above. */
   mode?: 'time' | 'date';
+  /**
+   * Leave the city off. A city page's rows all sit under a heading naming that
+   * city, so printing it fourteen more times is fourteen more things to read
+   * and nothing more to learn. A canton or the home page still needs it.
+   */
+  omitCity?: boolean;
 }
-const { market, locale = DEFAULT_LOCALE, mode = 'time' } = Astro.props;
+const { market, locale = DEFAULT_LOCALE, mode = 'time', omitCity = false } = Astro.props;
 const s = t(locale);
 const occurrence = market.next;
 const cancelled = occurrence?.status === 'cancelled';
 const line = LINES[market.kind];
-/** "free" is the single most-read word on a row; it is not worth a key file. */
-const FREE: Record<Locale, string> = { de: 'frei', fr: 'entrée libre', it: 'ingresso libero', en: 'free' };
 const STALLS: Record<Locale, string> = { de: 'Stände', fr: 'stands', it: 'bancarelle', en: 'stalls' };
 const CANCELLED: Record<Locale, string> = { de: 'Fällt aus', fr: 'Annulé', it: 'Annullato', en: 'Cancelled' };
 
@@ -43,7 +56,20 @@ const facts = [
   market.stallCount ? `~${market.stallCount} ${STALLS[locale]}` : undefined,
   market.sellerMix === 'private' ? 'nur Private' : market.sellerMix === 'mixed' ? 'Private und Händler' : market.sellerMix === 'trader' ? 'Händler' : market.sellerMix === 'new_goods' ? 'Neuware' : undefined,
 ].filter(Boolean);
-const entry = market.entryFee === 0 ? FREE[locale] : market.entryFee ? `${market.entryFee} CHF` : undefined;
+/*
+  A price appears only when there is one. 151 of 157 markets are free and
+  exactly one charges, so the word "frei" was on 96% of rows carrying no
+  information at all — the rule being: say the exception, never the rule.
+  An unexpected entry fee is also the single thing visitors are angriest about
+  in the review corpus, which is an argument for showing a fee, not for
+  announcing its absence.
+*/
+const entry = market.entryFee ? `${market.entryFee} CHF` : undefined;
+
+/* Venue, then city where the page has not already said it, then a price if
+   there is one. Each part is dropped rather than emptied, so no row ever
+   renders a stray separator. */
+const place = [market.venueName, omitCity ? undefined : market.city, entry].filter(Boolean).join(' · ');
 
 /* A date row prints its own day. The weekday is abbreviated because it sits in
    a narrow column beside a display-size number, not in a band across the page. */
@@ -74,14 +100,14 @@ const dateCount = mode === 'date' ? countDates(market) : undefined;
   )}
   <div class="details">
     <h3 class="name"><a href={marketPath(locale, market.slug)}>{market.name}</a></h3>
-    <p class="via">{market.venueName} · {market.city}{entry ? ` · ${entry}` : ''}</p>
-    {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
     {mode === 'date' && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
+    <p class="via">{place}</p>
+    {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
   </div>
   {mode === 'date' && occurrence?.startTime && (
     <p class="hours">{formatTime(occurrence.startTime)}{occurrence.endTime && <span>–{formatTime(occurrence.endTime)}</span>}</p>
   )}
-  {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedOn(formatDateShort(occurrence.confirmedAt, locale))}</p>}
+  {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedShort(formatDateShort(occurrence.confirmedAt, locale))}</p>}
   <div class="photo"><PhotoOrArt market={market} width={74} height={74} /></div>
 </article>
 
@@ -106,6 +132,10 @@ const dateCount = mode === 'date' ? countDates(market) : undefined;
     padding:var(--space-row-y) var(--space-page) var(--space-row-y) 0;
     border-bottom:var(--border-width) solid var(--color-line);
   }
+  /* A day number over its weekday needs more room than "08:30" does, and it
+     needs it at every width — sized for a time, "SA" and "SEPT" fell onto two
+     lines on a phone. */
+  .row.dated { grid-template-columns:var(--row-rail) var(--row-date) minmax(0, 1fr) var(--row-photo); }
   .rail { grid-area:rail; align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
   .fresh, .reason { grid-area:fresh; }
   .hours { grid-area:hours; }
@@ -117,7 +147,12 @@ const dateCount = mode === 'date' ? countDates(market) : undefined;
   .name { margin:0; font-size:var(--text-row-name); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.22; }
   .name a::after { position:absolute; inset:0; content:''; }
   .via, .facts, .fresh, .reason, .rhythm, .hours { margin:0; }
-  .via { margin-top:var(--space-half); color:var(--color-grey); font-size:var(--text-micro); line-height:1.4; }
+  /*
+    The staircase. Three weights, no ties, in the order of the decision:
+    name (bold, ink) -> rhythm (semibold, grey) -> venue (regular, quiet).
+    Whatever is added to a row later has to find a step on it or stay off.
+  */
+  .via { margin-top:var(--space-1); color:var(--color-quiet); font-size:var(--text-micro); font-weight:var(--weight-regular); line-height:1.4; }
   .facts { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.45; }
   .fresh { color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
   .reason { font-size:var(--text-micro); font-weight:var(--weight-bold); }
@@ -129,14 +164,14 @@ const dateCount = mode === 'date' ? countDates(market) : undefined;
   */
   .dated .time strong { font-size:var(--text-market-name); letter-spacing:var(--tracking-tight); line-height:1; color:var(--color-accent); }
   .dated .time span { margin-top:var(--space-1); color:var(--color-ink); font-size:var(--text-micro); font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); text-transform:uppercase; }
-  .rhythm { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-bold); line-height:1.4; }
+  .rhythm { margin-top:var(--space-2); color:var(--color-grey); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.4; }
   .hours { margin-top:var(--space-1); color:var(--color-grey); font-size:var(--text-micro); font-weight:var(--weight-semibold); }
   .hours span { color:var(--color-quiet); }
   .cancelled .rhythm { color:var(--color-quiet); }
   .photo { grid-area:photo; width:var(--row-photo); height:var(--row-photo); overflow:hidden; border-radius:var(--radius-photo); background:var(--color-paper); }
   .cancelled .rail { background:var(--color-line); }
   .cancelled .name, .cancelled .time strong { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
-  .cancelled .via { color:var(--color-quiet); }
+  .cancelled .via, .cancelled .rhythm { color:var(--color-quiet); }
   .cancelled .photo { filter:grayscale(1); opacity:0.5; }
 
   /*

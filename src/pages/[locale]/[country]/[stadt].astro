@@ -115,22 +115,23 @@ const jsonLd = {
     <h1>{heading}</h1>
     <p class="answer">{answer}</p>
     <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))} · {s.lastChecked}</p>
-    <p class="meta">{s.cityIntro(city, region)}</p>
   </section>
 
-  <PillList items={[{ href: regionPath(locale, markets[0].countrySlug, regionSlug), label: s.regionLabel(region) }]} />
-
-  <DateFilters locale={locale} allLabel={s.allMarkets} dates={list.map((m) => m.next.date)} />
+  <DateFilters locale={locale} dates={list.map((m) => m.next.date)} />
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
       the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
     <div id="list">
-      {list.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
+      {list.map((market) => <MarketRow market={market} locale={locale} mode="date" omitCity />)}
     </div>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
+
+  {/* Navigation, so it sits after the thing people came for rather than
+      between the headline and the first market. */}
+  <PillList items={[{ href: regionPath(locale, markets[0].countrySlug, regionSlug), label: s.regionLabel(region) }]} />
 
   <TypeLegend locale={locale} />
 

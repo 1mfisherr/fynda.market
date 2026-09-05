@@ -219,6 +219,14 @@ body {
   font-size: var(--text-body);
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
+  /*
+    German compounds do not fit narrow columns. "Quartierflohmarkt
+    Klybeck/Kleinhüningen" spilled out of a market row at 360px, and
+    "Gemeinschaftszentrum" and "Schwamendingerplatz" are the same word waiting
+    to happen. This only takes effect when a single word genuinely cannot fit,
+    so it costs nothing anywhere else.
+  */
+  overflow-wrap: break-word;
 }
 
 a {

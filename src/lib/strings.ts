@@ -47,8 +47,6 @@ export interface Strings {
   thisWeekendLede: (n: number, from: string, to: string) => string;
   alsoThisWeek: string;
   alsoThisWeekLede: string;
-  /* A city list is one row per market; this is the chip that says so. */
-  allMarkets: string;
   cities: string;
   regions: string;
   marketTypes: string;
@@ -89,6 +87,14 @@ export interface Strings {
   reportEndedEarly: string;
   reportSomethingElse: string;
   confirmedOn: (date: string) => string;
+  /**
+   * The same fact, for a list row. "durch den Veranstalter" is true of every
+   * confirmed row we hold, so on a row it is nine words that separate nobody
+   * from anybody — and on a phone it wrapped the quietest line on the row onto
+   * two. The long form stays on the market page, where it is the sentence an
+   * AI answer quotes.
+   */
+  confirmedShort: (date: string) => string;
   notConfirmed: string;
   packUpFrom: (time: string) => string;
 
@@ -173,7 +179,6 @@ const de: Strings = {
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from} und ${to}.`,
   alsoThisWeek: 'Auch diese Woche',
   alsoThisWeekLede: 'Die wenigen Märkte, die unter der Woche stattfinden.',
-  allMarkets: 'Alle Märkte',
   cities: 'Städte',
   regions: 'Kantone',
   marketTypes: 'Markttypen',
@@ -212,6 +217,7 @@ const de: Strings = {
   reportEndedEarly: 'War schon vorbei',
   reportSomethingElse: 'Etwas anderes',
   confirmedOn: (date) => `Bestätigt am ${date} durch den Veranstalter`,
+  confirmedShort: (date) => `Bestätigt ${date}`,
   notConfirmed: 'Noch nicht mit dem Veranstalter bestätigt',
   packUpFrom: (time) => `Ab ${time} wird abgebaut.`,
 
@@ -302,7 +308,6 @@ const en: Strings = {
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from} and ${to}.`,
   alsoThisWeek: 'Also this week',
   alsoThisWeekLede: 'The few markets that run on weekdays.',
-  allMarkets: 'All markets',
   cities: 'Cities',
   regions: 'Cantons',
   marketTypes: 'Market types',
@@ -341,6 +346,7 @@ const en: Strings = {
   reportEndedEarly: 'Was already over',
   reportSomethingElse: 'Something else',
   confirmedOn: (date) => `Confirmed on ${date} with the organiser`,
+  confirmedShort: (date) => `Confirmed ${date}`,
   notConfirmed: 'Not yet confirmed with the organiser',
   packUpFrom: (time) => `Packing up starts at ${time}.`,
 
@@ -435,7 +441,6 @@ const fr: Strings = {
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from} et le ${to}.`,
   alsoThisWeek: 'Aussi cette semaine',
   alsoThisWeekLede: 'Les quelques marchés qui ont lieu en semaine.',
-  allMarkets: 'Tous les marchés',
   cities: 'Villes',
   regions: 'Cantons',
   marketTypes: 'Types de marché',
@@ -474,6 +479,7 @@ const fr: Strings = {
   reportEndedEarly: 'Était déjà terminé',
   reportSomethingElse: 'Autre chose',
   confirmedOn: (date) => `Confirmé le ${date} par l'organisateur`,
+  confirmedShort: (date) => `Confirmé le ${date}`,
   notConfirmed: "Pas encore confirmé avec l'organisateur",
   packUpFrom: (time) => `Démontage à partir de ${time}.`,
 
@@ -564,7 +570,6 @@ const it: Strings = {
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from} e il ${to}.`,
   alsoThisWeek: 'Anche questa settimana',
   alsoThisWeekLede: 'I pochi mercati che si tengono nei giorni feriali.',
-  allMarkets: 'Tutti i mercati',
   cities: 'Città',
   regions: 'Cantoni',
   marketTypes: 'Tipi di mercatino',
@@ -603,6 +608,7 @@ const it: Strings = {
   reportEndedEarly: 'Era già finito',
   reportSomethingElse: 'Altro',
   confirmedOn: (date) => `Confermato il ${date} dall'organizzatore`,
+  confirmedShort: (date) => `Confermato il ${date}`,
   notConfirmed: "Non ancora confermato con l'organizzatore",
   packUpFrom: (time) => `Lo smontaggio inizia alle ${time}.`,
 

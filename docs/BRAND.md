@@ -16,6 +16,12 @@ That rules things out usefully: no countdowns, no "don't miss out", no dark mode
 
 > **Colour carries information or it does not appear.**
 
+There is a second rule of the same shape, and it governs words rather than colour:
+
+> **Say the exception, never the rule.**
+
+151 of 157 markets are free, so the word "frei" appeared on 96% of rows and separated nobody from anybody. A price now shows only when there is one. The city was on every row of a city page. "durch den Veranstalter" was on every confirmed row. **If it is true of nearly every row, it is furniture, not information** — and it is the reason a list feels like too much to read.
+
 Two colour systems, each with exactly one job. **The accent marks the date and whether it is happening** — nowhere else, not on buttons for decoration, not on section headers. **The line colours mark the type of market** — nothing else. Everything else is near-black on white.
 
 The most important fact on the page is the only accented thing on the page. Hierarchy and identity become one decision.
@@ -92,6 +98,12 @@ This is architecture, not styling — it is what makes the site changeable years
 ## Built, not templated
 
 No off-the-shelf theme, no UI-kit look. Use a headless library for the fiddly accessibility-heavy parts (dialogs, comboboxes, date pickers), where the library ships behaviour and no appearance. **Behaviour borrowed, appearance ours.**
+
+## One loud thing
+
+A row has exactly one thing set loud: **the name**. Everything under it steps down a weight — the rhythm in grey, the venue quieter still. Three levels, no ties, in the order of the decision: *which market → how often can I go → where exactly.*
+
+Until 2026-09-05 the name and the recurrence phrase were both bold ink, and between them sat the least important fact on the row at a louder weight than either. Two winners is the same as none: the eye has nowhere to land. Anything added to a row later has to find a step on that staircase or stay off it.
 
 ## The UI serves the content
 

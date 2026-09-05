@@ -120,7 +120,6 @@ const jsonLd = {
     <h1>{heading}</h1>
     <p class="answer">{answer}</p>
     <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))} · {s.lastChecked}</p>
-    <p class="meta">{s.regionIntro(regionName)}</p>
   </section>
 
   <Section title={s.cities}>
@@ -131,7 +130,7 @@ const jsonLd = {
     }))} />
   </Section>
 
-  <DateFilters locale={locale} allLabel={s.allMarkets} dates={list.map((m) => m.next.date)} />
+  <DateFilters locale={locale} dates={list.map((m) => m.next.date)} />
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
