@@ -34,14 +34,17 @@ const s = t(locale);
     align-items: center;
     justify-content: space-between;
     gap: var(--space-3);
-    padding-block: var(--space-3);
+    padding-block: var(--space-2);
     border-radius: var(--radius-md);
     background: var(--color-ink);
     color: var(--color-surface);
   }
-  .text { display: grid; gap: var(--space-half); }
+  .text { display: grid; }
   .eyebrow { color: var(--color-quiet); }
-  .text b { font-size: var(--text-section); font-weight: var(--weight-black); letter-spacing: var(--tracking-section); }
+  /* One line of the row, not a section heading. At --text-section the town
+     name was set larger than "Dieses Wochenende" below it, which made a
+     shortcut read as the most important thing on the page. */
+  .text b { font-size: var(--text-title); font-weight: var(--weight-black); letter-spacing: var(--tracking-section); }
   .go { display: grid; place-items: center; }
 </style>
 

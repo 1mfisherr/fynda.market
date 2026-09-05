@@ -120,9 +120,18 @@ while (cursor <= last) {
 
   /* Anchored to the whole row rather than to the chip, so the panel can never
      be the thing that puts the page back into horizontal scroll. */
+  /* A calendar is seven columns of square days, so left to fill its container
+     it grows in both directions at once: in the home page's search card at
+     1440px the panel was the full card width and every day cell was a 150px
+     square. Its natural size is seven tap targets across — the WCAG 44px the
+     cells already have to clear — plus the gaps and its own padding. Below
+     that it still shrinks to the phone width, so the row never scrolls. */
   .panel {
     position: absolute;
     inset-inline: var(--space-page);
+    max-inline-size: calc(
+      var(--tap-min) * 7 + var(--space-half) * 6 + var(--space-3) * 2
+    );
     inset-block-start: calc(100% + var(--space-2));
     z-index: 5;
     padding: var(--space-3);
