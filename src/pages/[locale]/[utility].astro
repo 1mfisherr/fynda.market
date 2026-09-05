@@ -119,7 +119,7 @@ const savedCopy = saved && {
 
       <Section>
         <div id="list" data-market-prefix={marketPrefix(locale)}>
-          {list.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
+          {list.map((market) => <MarketRow market={market} locale={locale} showRhythm />)}
         </div>
         <p id="empty" class="gutter meta">{saved.empty}</p>
         <div class="find gutter"><Button href={homePath(locale)} block>{saved.browse}</Button></div>

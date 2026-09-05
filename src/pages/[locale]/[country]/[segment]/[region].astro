@@ -137,7 +137,10 @@ const jsonLd = {
       the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
     <div id="list">
-      {list.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
+      <div class="leads">
+        {list.slice(0, 2).map((market) => <MarketRow market={market} locale={locale} variant="feature" showRhythm />)}
+      </div>
+      {list.slice(2).map((market) => <MarketRow market={market} locale={locale} showRhythm />)}
     </div>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>

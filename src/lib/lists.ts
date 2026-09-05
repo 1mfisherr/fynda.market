@@ -35,8 +35,8 @@ export function datedRows(markets: Market[]): Dated[] {
   );
 }
 
-/** Rows grouped by day, earliest first — what a day band renders. */
-export function byDay(rows: Dated[]): Dated[][] {
+/** Rows grouped by day, earliest first. Internal: only weekendDays needs it. */
+function byDay(rows: Dated[]): Dated[][] {
   const days = new Map<string, Dated[]>();
   for (const row of rows) {
     const list = days.get(row.next.date) ?? [];
@@ -78,35 +78,59 @@ export function countDates(market: Market): number {
 }
 
 /**
- * The coming weekend, as day groups.
+ * The coming weekend, as day groups. Internal — weekendLead is the door.
  *
  * On a Sunday that is yesterday and today, not next week — someone looking on
  * Sunday morning wants today's markets. `weekendBounds` owns that rule; this
  * only selects against it, and drops a Saturday that has already passed.
  */
-export function weekendDays(rows: Dated[], now = new Date()): Dated[][] {
+function weekendDays(rows: Dated[], now = new Date()): Dated[][] {
   const { start, end } = weekendBounds(now);
   const today = iso(now);
   return byDay(rows.filter((row) => row.next.date >= start && row.next.date <= end && row.next.date >= today));
 }
 
 /**
- * The weekday markets in the next `days` days, one row per market.
+ * What the home page shows of the coming weekend.
  *
- * Midweek is not the business — seven markets across a whole week against
- * thirty-eight on one Saturday — so it is a short block under the weekend
- * rather than a second list of days. A Wednesday market that runs every week
- * needs one row for the same reason a Saturday one does.
+ * `count` markets, at most one per town, biggest towns first — then the total
+ * so the page can say how many it is not showing. A nationwide list helps
+ * nobody in particular: sorted by clock time it interleaved 22 towns at
+ * random. One per town reads as a country instead of as one city's diary, and
+ * the picker under it is the way out.
  */
-export function weekdaysSoon(rows: Dated[], now = new Date(), days = 7): Dated[] {
-  const limit = new Date(now);
-  limit.setDate(limit.getDate() + days);
-  const last = iso(limit);
-  const today = iso(now);
-  return byMarket(
-    rows.filter((row) => {
-      const weekday = new Date(`${row.next.date}T00:00:00`).getDay();
-      return weekday !== 0 && weekday !== 6 && row.next.date >= today && row.next.date <= last;
-    })
-  );
+export function weekendLead(
+  rows: Dated[],
+  count = 6,
+  now = new Date()
+): { lead: Dated[]; rest: Dated[]; total: number; from: string; to: string } {
+  const days = weekendDays(rows, now);
+  const all = days.flat();
+  const total = new Set(all.map((r) => r.slug)).size;
+
+  /* Towns with the most markets first — the closest we have to "somewhere a
+     visitor is likely to be" without asking anyone where they are. */
+  const size = new Map<string, number>();
+  for (const row of rows) size.set(row.citySlug, (size.get(row.citySlug) ?? 0) + 1);
+
+  const picked: Dated[] = [];
+  const towns = new Set<string>();
+  for (const row of [...all].sort((a, b) => (size.get(b.citySlug) ?? 0) - (size.get(a.citySlug) ?? 0))) {
+    if (towns.has(row.citySlug)) continue;
+    towns.add(row.citySlug);
+    picked.push(row);
+    if (picked.length === count) break;
+  }
+
+  /* Back into date order once chosen, so the block still reads chronologically. */
+  picked.sort((a, b) => a.next.date.localeCompare(b.next.date) ||
+    (a.next.startTime ?? '').localeCompare(b.next.startTime ?? ''));
+
+  return {
+    lead: picked.slice(0, 2),
+    rest: picked.slice(2),
+    total,
+    from: all[0]?.next.date ?? '',
+    to: all[all.length - 1]?.next.date ?? '',
+  };
 }

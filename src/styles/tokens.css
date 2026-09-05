@@ -150,34 +150,18 @@
   /* The one breakpoint. A media query cannot read a custom property, so this
      value is duplicated in the queries themselves — keep them in step. */
   --breakpoint-wide: 900px;
-  --row-rail: 4px;
   /*
     Every column that holds text is fluid on the same two anchors as the type
-    above. A fixed 46px column with 30% larger digits in it is not a column,
-    it is a wrap. --row-rail and --tap-min are the exceptions: a hairline has
-    no text in it, and 44px is a WCAG floor rather than a size.
+    above. A fixed column with 30% larger text in it is not a column, it is a
+    wrap. --tap-min is the exception: 44px is a WCAG floor, not a size.
   */
-  /* 52, not 46: "08:00" at --text-date measures 47.4px, so the old column was
-     half a pixel too narrow and had been overflowing silently since it was
-     written. It only became visible when body got overflow-wrap: break-word,
-     which turned a hairline overflow into "09:0 / 0". */
+  /* The label column on the market page's "Wann hingehen" block. 52 and not
+     46, because "08:00" at --text-date measures 47.4px and the narrower value
+     had been overflowing silently since it was written. */
   --row-time: clamp(52px, calc(46.507px + 1.465vw), 67.6px);
-  --row-photo: clamp(74px, calc(66.183px + 2.085vw), 96.2px);
-  /* Wide only. The row gains a column rather than stretching: whether the date
-     is true gets the width, not the gap between the name and the photo.
-
-     There is no --row-facts. A column for stall count and seller mix was built
-     and removed on 2026-09-04: we hold neither for any of the 161 markets, so
-     it reserved 150px of white space on all 451 rows. Those facts render under
-     the venue until the data exists — PLAN.md §The honest gap. */
-  --row-fresh: clamp(170px, calc(152.042px + 4.789vw), 221px);
-  /* The date shape of a row: a display-size day number needs more than a time,
-     and the opening hours move out beside the name. See MarketRow. */
-  --row-date: clamp(62px, calc(55.451px + 1.746vw), 80.6px);
-  --row-hours: clamp(96px, calc(85.859px + 2.704vw), 124.8px);
-  /* Wide only. The day is set beside its rows instead of in a band above
-     them — which is what a departure board actually looks like. */
-  --day-column: clamp(160px, calc(143.099px + 4.507vw), 208px);
+  /* The picture beside a compact row. Big enough to read as a photograph
+     rather than a smudge — 56px was a smudge. */
+  --row-thumb: clamp(72px, calc(64.394px + 2.028vw), 93.6px);
   /* Wide only. The market page's sticky action rail. Route is 55% of every
      outbound click on the site; at this width it never leaves the screen. */
   --side-column: clamp(344px, calc(307.662px + 9.69vw), 447.2px);

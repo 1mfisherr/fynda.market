@@ -40,6 +40,20 @@ export interface Line {
  * invisible the moment the market types became a block of five coloured tiles
  * on the French home page.
  */
+/**
+ * Which kinds earn a badge on a row.
+ *
+ * 41 of 45 rows on the home page were an ordinary Flohmarkt, so the badge said
+ * "this is a flea market" on a flea-market site — decoration on 91% of rows,
+ * against BRAND.md's rule that colour carries information or it does not
+ * appear. A badge now means "this one is not the usual thing", which is the
+ * only version of it worth the ink. Same rule as the entry fee and the city:
+ * say the exception, never the rule.
+ */
+export const BADGED_KINDS: ReadonlySet<MarketKind> = new Set<MarketKind>([
+  'hallenflohmarkt', 'nachtflohmarkt', 'kinderflohmarkt', 'troedelmarkt',
+]);
+
 export const LINES: Record<MarketKind, Line> = {
   flohmarkt: {
     code: 'FM', token: '--line-floh', inLegend: true, icon: 'stall',

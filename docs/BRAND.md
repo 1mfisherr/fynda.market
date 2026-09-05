@@ -99,6 +99,12 @@ This is architecture, not styling — it is what makes the site changeable years
 
 No off-the-shelf theme, no UI-kit look. Use a headless library for the fiddly accessibility-heavy parts (dialogs, comboboxes, date pickers), where the library ships behaviour and no appearance. **Behaviour borrowed, appearance ours.**
 
+## The picture is the argument
+
+A flea market is stuff you can see. Every market gets a picture — a photograph where we have one, an illustration from the permanent set where we do not — and it is sized to be a reason to go, not a smudge: **16:10 at full width on a lead, a square beside a compact row**. There is no empty box, ever: an empty grey square is what makes a directory look dead.
+
+A list opens with one or two markets at full size and continues compact. A block with one size in it has no rhythm, and rhythm is most of what separates a page from a database dump. Recorded 2026-09-05, after a version that shrank the picture to 56px and read as exactly that.
+
 ## One loud thing
 
 A row has exactly one thing set loud: **the name**. Everything under it steps down a weight — the rhythm in grey, the venue quieter still. Three levels, no ties, in the order of the decision: *which market → how often can I go → where exactly.*

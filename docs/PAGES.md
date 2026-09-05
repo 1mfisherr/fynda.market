@@ -43,22 +43,32 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 
 | Block | Why it is there |
 |---|---|
-| Wordmark + saved markets | Minimum chrome. The accent dot is the only colour above the fold besides dates |
-| **Headline + one line of promise** | This is the 4% who may not know what the site is. "Mit Daten, die stimmen" is the entire positioning |
-| **Place + period + radius control** | Not a free-text search box (fact 2). A control that says where and when, because those are the two axes people actually filter on. Submits to a filter view, never a new indexable URL |
-| **Date chips** — Alle / Heute / Wochenende / Nächste Woche | The settled vocabulary of the category, and the filter people actually used |
-| **"Dieses Wochenende" rail** | Most flea markets are weekend events. This is the answer to the most common unstated question |
-| **"Dieses Wochenende"** | Saturday and Sunday, day-grouped. The whole business is weekends: 38 markets on one Saturday and Sunday against 1–3 on any weekday |
-| **"Auch diese Woche"** | The weekday markets in the next seven days, one row per market. Seven of them all week — a block, not a list |
-| Category tiles | **Weak evidence: 1.8% of clicks.** Kept because they teach a first-time visitor what the site covers, but they sit *below* the lists, not above them. First candidate to cut if they earn nothing |
-| Organiser CTA | The supply side is the revenue thesis, and it must exist from day one |
-| Bottom bar | Mobile is 81%. Thumb-reach navigation, and it keeps "Veranstalter" permanently visible |
+| Wordmark + saved markets | Minimum chrome |
+| **The claim, and it is a number** | *"157 Flohmärkte in der Schweiz — jeder Termin mit Quelle und Prüfdatum."* The trust signal, the content that has to rank for the head term, and the sentence an AI answer can quote. One line, three jobs, before anything is asked of anyone |
+| **"Ihre Stadt" shortcut** | Empty for a stranger; on a return visit it is the town they picked, one tap from their city page. Browser storage, no account |
+| **Six markets this weekend** | Two at full size, four compact, one per town, biggest towns first. Then a button to all of them |
+| **"Wo sind Sie?"** | The place question, asked *after* the goods. Not a search box: v1 logged 64 on-site searches in 26 days against 281 filter uses |
+| Newsletter, organiser CTA | Intent is highest right after someone has scanned a list |
+| Cities, cantons, types, provenance, FAQ | Navigation and proof, in that order |
+| Footer | |
 
-### Below the markets — decided 2026-08-30
+### The search card is gone — decided 2026-09-05
+
+The home page used to open with a three-field form: place, period, radius. It is deleted.
+
+A form standing between a visitor and the goods asks for trust the page has not yet earned — [NN/g](https://www.nngroup.com/articles/trustworthy-design/) found users rule sites out in seconds when they cannot see what is on offer. Of the four comparable home pages torn down that day, three show real dated inventory before anything is asked (meine-flohmarkt-termine.de, eventfrog.ch, Time Out); the one that asks first, **brocabrac.fr, shows no listings on its home page at all.**
+
+Choosing a place now happens below the markets, where it reads as "and now make it yours" rather than "fill this in first".
+
+### Six markets, not all of them
+
+A nationwide list helps nobody in particular. Sorted by clock time it interleaved 22 towns at random — Genf, Aarau, Basel, Zürich, Dietikon, St. Gallen — so someone in Zürich read forty-five rows to find four. Six, one per town, biggest towns first, reads as a country rather than as one town's diary, and the picker underneath is the way out of it.
+
+### Below the markets — decided 2026-08-30, revised 2026-09-05
 
 The order, and the rule that keeps it from becoming filler: **a block renders only when it has real content.** If nothing was cancelled this week, the cancellations block does not exist that week. That makes padding structurally impossible rather than a matter of taste.
 
-1. **This weekend, day-grouped, then the midweek block.** No date chips and no calendar: they existed to make 451 rows navigable, and two labelled sections of forty-five rows are navigable already. Anyone who wants October uses the control above or their own city's page.
+1. **Six markets from this weekend, then the town picker.** No date chips and no calendar on this page: they existed to make 451 rows navigable, and six is navigable already. The midweek block is gone with them — seven markets across a week did not earn a section of its own once the page stopped trying to be a catalogue.
 2. **Newsletter** — intent is highest right after someone has scanned the list, not at the top.
 3. **Organiser CTA** — the supply side earns its place before navigation does.
 4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.
@@ -213,7 +223,9 @@ Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bot
 
 **Each attribute is its own element**, never one run-on line, and never inside the title — 40% of sites get this wrong. Name, date, place, status are four things with four treatments.
 
-**A row has one loud thing: the name.** Rhythm grey, venue quieter still — three weights, no ties. Two bold lines is the same as none. And **say the exception, never the rule**: a fact true of 96% of rows is furniture. `docs/BRAND.md`.
+**A list row comes in two sizes and they are one component.** `MarketRow` renders `variant="feature"` (picture above, name at display size — the lead of a block) and `variant="row"` (picture beside, compact). Home, city, canton, radius and saved all use it, so a change to a row is a change everywhere by construction. A block with one size in it has no rhythm, and rhythm is most of what stops a list reading as a database dump.
+
+**A row has one loud thing: the name.** Rhythm grey, venue quieter still — three weights, no ties. Two bold lines is the same as none. And **say the exception, never the rule**: a fact true of 96% of rows is furniture. `docs/BRAND.md`. Applied, a row omits the entry fee (151 of 157 markets are free), the city where the page already names it, the type badge unless the market is not an ordinary Flohmarkt (41 of 45 rows were), and **the freshness line unless it is bad news** — silence means confirmed and checked within 90 days, which is most rows. `src/lib/freshness.ts`.
 
 **Three status badges, no more:** Bestätigt · Nicht bestätigt · Abgesagt. NN/g put the clutter limit at 2–3. So no "Neu" or "Beliebt" badge — it would cost the meaning of the three that matter.
 
@@ -285,4 +297,4 @@ Measured from the v1 database: name, date, city, status 100% · times 98% · ent
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-04
+last_reviewed: 2026-09-05

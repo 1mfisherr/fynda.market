@@ -30,6 +30,11 @@ export interface Occurrence {
   cancellationNote?: string;
   /** When a human last confirmed this date with a source. */
   confirmedAt?: string;
+  /**
+   * Where the date came from. Only 'organiser' lets a page say the organiser
+   * stands behind it — everything else is us, reading a public source.
+   */
+  origin?: 'manual' | 'generated' | 'organiser' | 'import';
 }
 
 export interface Market {

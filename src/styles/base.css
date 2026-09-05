@@ -127,6 +127,24 @@ p {
   margin-block-start: var(--stack-space, var(--space-6));
 }
 
+/*
+  The leads of a list: one or two markets at full size before the compact rows.
+  Home, city and canton all open this way, so it is one rule here rather than
+  three `.leads` in three page files — which is also the only way guardrail 7
+  will allow three pages to share a class name.
+
+  A block with one size in it has no rhythm, and rhythm is most of what stops a
+  list reading as a database dump.
+*/
+.leads { display: grid; gap: var(--space-6); }
+
+/* Keep in step with the two-picture threshold; a media query cannot read a
+   token, and this one is not --breakpoint-wide: two photographs fit side by
+   side well before the layout goes wide. */
+@media (min-width: 720px) {
+  .leads { grid-template-columns: 1fr 1fr; gap: var(--space-7); }
+}
+
 /* The page gutter, in one place. Anything full-bleed simply omits it. */
 .gutter {
   padding-inline: var(--space-page);

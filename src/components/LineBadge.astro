@@ -1,0 +1,33 @@
+---
+/**
+ * A market kind as a coloured badge: the icon on the kind's colour.
+ *
+ * This used to be LineCode, and it drew a two-letter code — FM, HA, NA. The
+ * home page's TypeGrid drew the same five kinds as icons on the same colours,
+ * so one site had two visual languages for one idea, and the market page ended
+ * with a key explaining letters nobody had been taught. Both read LINES; now
+ * both draw the same mark.
+ */
+import Icon from './Icon.astro';
+import type { MarketKind } from '../lib/types';
+import { LINES } from '../lib/vocabulary';
+
+interface Props { kind: MarketKind; muted?: boolean; size?: number }
+const { kind, muted = false, size = 14 } = Astro.props;
+const line = LINES[kind];
+---
+<span class:list={['badge', { muted }]} style={muted ? undefined : `background:var(${line.token})`}>
+  <Icon name={line.icon} size={size} />
+</span>
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-half);
+    border-radius: var(--radius-xs);
+    color: var(--color-white);
+    line-height: 1;
+  }
+  .badge.muted { background: var(--color-quiet); }
+</style>

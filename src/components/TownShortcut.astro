@@ -1,0 +1,70 @@
+---
+/**
+ * The second visit.
+ *
+ * Hidden in the HTML, and revealed by the browser only when it already knows
+ * which town this visitor picked — so the page a crawler sees, and the page a
+ * stranger sees, are the one page written in `index.astro`. Nothing here is
+ * personalised on the server; there is no server.
+ *
+ * It links into the city page rather than rebuilding the home page around one
+ * town, for two reasons. The city page is already the answer to "what is on in
+ * my town", and it is the best-earning page type on the site by five times.
+ * Sending someone there in one tap is the whole point of remembering.
+ */
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+import Icon from './Icon.astro';
+
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const s = t(locale);
+---
+<a class="shortcut gutter" href="/" data-shortcut hidden>
+  <span class="text">
+    <span class="eyebrow">{s.yourTown}</span>
+    <b data-shortcut-name></b>
+  </span>
+  <span class="go"><Icon name="chevron-right" size={20} /></span>
+</a>
+
+<style>
+  .shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+  .text { display: grid; gap: var(--space-half); }
+  .eyebrow { color: var(--color-quiet); }
+  .text b { font-size: var(--text-section); font-weight: var(--weight-black); letter-spacing: var(--tracking-section); }
+  .go { display: grid; place-items: center; }
+</style>
+
+<script>
+  /**
+   * Written by TownPicker on this device. Anything unexpected in there means
+   * an older or hand-edited value, and the right answer is to stay hidden:
+   * the page is complete without this.
+   */
+  const KEY = 'fynda:stadt';
+  const el = document.querySelector<HTMLAnchorElement>('[data-shortcut]');
+  const name = el?.querySelector<HTMLElement>('[data-shortcut-name]');
+
+  if (el && name) {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) ?? 'null') as
+        { name?: string; href?: string } | null;
+      // Same-origin, root-relative only — never navigate somewhere storage says.
+      if (saved?.name && saved.href?.startsWith('/') && !saved.href.startsWith('//')) {
+        name.textContent = saved.name;
+        el.href = saved.href;
+        el.hidden = false;
+      }
+    } catch { /* nothing remembered, or it is not ours. Stay hidden. */ }
+  }
+</script>

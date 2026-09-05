@@ -1,0 +1,100 @@
+---
+/**
+ * "Wo sind Sie?" — the home page's one question, asked after the goods.
+ *
+ * It sits *below* the markets on purpose. Above them it is a form standing
+ * between a visitor and the thing they came for, which is the pattern the one
+ * competitor with no listings on its home page uses. Below them it reads as
+ * "and now make it yours".
+ *
+ * It is not a search box. v1 logged 64 on-site searches in 26 days, most of
+ * them a single letter, against 281 filter uses — people do not type here,
+ * they point.
+ *
+ * The choice is remembered in the browser, with no account, by the same
+ * mechanism as Gemerkt. On the next visit the home page opens with a shortcut
+ * straight into that town — see the script below and `TownShortcut`.
+ */
+import { DEFAULT_LOCALE, cityPath, nearbyPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+export interface Town {
+  slug: string;
+  name: string;
+  /** How many markets the town holds, all dates — not just this weekend. */
+  count: number;
+}
+
+interface Props {
+  towns: Town[];
+  countrySlug: string;
+  locale?: Locale;
+  /** Where "alle Städte" goes. */
+  allHref: string;
+  /** Every town on the site, not just the ones shown as buttons here. */
+  total: number;
+}
+const { towns, countrySlug, locale = DEFAULT_LOCALE, allHref, total } = Astro.props;
+const s = t(locale);
+---
+<section class="picker gutter" aria-labelledby="wo">
+  <h2 id="wo">{s.whereAreYou}</h2>
+  <p class="meta">{s.whereAreYouLede}</p>
+  <div class="towns">
+    <a class="town near" href={nearbyPath()}>{s.nearMe}</a>
+    {towns.map((town) => (
+      <a class="town" href={cityPath(locale, countrySlug, town.slug)} data-town={town.slug} data-name={town.name}>
+        {town.name}<i>{town.count}</i>
+      </a>
+    ))}
+    <a class="town" href={allHref}>{s.allTowns(total)}</a>
+  </div>
+</section>
+
+<style>
+  .picker {
+    padding-block: var(--space-5);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper);
+  }
+  .picker h2 { font-size: var(--text-section); font-weight: var(--weight-black); letter-spacing: var(--tracking-section); }
+  .picker > .meta { margin-block-start: var(--space-1); }
+  .towns { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block-start: var(--space-4); }
+  .town {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap-min);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    font-size: var(--text-row-name);
+    font-weight: var(--weight-bold);
+  }
+  .town i { color: var(--color-quiet); font-size: var(--text-small); font-style: normal; font-weight: var(--weight-semibold); }
+  .town.near { border-color: var(--color-ink); background: var(--color-ink); color: var(--color-surface); }
+</style>
+
+<script>
+  /**
+   * Remember the town, in this browser only.
+   *
+   * No account, no server, no cookie banner — the same localStorage the saved
+   * markets already use. The page is static and identical for everyone, so the
+   * crawler and the first-time visitor see exactly what is written above; the
+   * remembering is a courtesy layered on top and the page is whole without it.
+   */
+  const KEY = 'fynda:stadt';
+
+  for (const town of Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-town]'))) {
+    town.addEventListener('click', () => {
+      try {
+        localStorage.setItem(KEY, JSON.stringify({
+          slug: town.dataset.town, name: town.dataset.name, href: town.getAttribute('href'),
+        }));
+      } catch { /* private mode, or storage is full. The link still works. */ }
+    });
+  }
+</script>

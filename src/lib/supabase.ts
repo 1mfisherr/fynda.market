@@ -39,6 +39,7 @@ interface Row {
     start_time: string | null;
     end_time: string | null;
     status: OccurrenceStatus;
+    origin: Occurrence['origin'] | null;
     cancellation_note: string | null;
     confirmed_at: string | null;
   }[] | null;
@@ -73,7 +74,7 @@ const SQL = `
     (
       select jsonb_agg(o order by o.date)
         from (
-          select date::text, start_time::text, end_time::text, status,
+          select date::text, start_time::text, end_time::text, status, origin,
                  cancellation_note, confirmed_at
             from public.occurrences
            where market_id = p.id and date >= current_date
@@ -117,6 +118,7 @@ function toOccurrence(row: NonNullable<Row['occurrences']>[number]): Occurrence 
     // formatters parse YYYY-MM-DD and nothing else, so it is narrowed here
     // rather than in a template — "Bestätigt am NaN. undefined" otherwise.
     confirmedAt: row.confirmed_at?.slice(0, 10) ?? undefined,
+    origin: row.origin ?? undefined,
   };
 }
 

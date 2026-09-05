@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fynda — City page, four structures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+/* Low fidelity on purpose. Grey blocks, no photographs, no real names —
+   the question is which shape, not which shade. */
+:root{
+  --ink:#111110; --grey:#6E6C68; --quiet:#9A968F; --line:#D8D6D2;
+  --fill:#E4E2DE; --fill-2:#EFEDEA; --accent:#FF4A2B; --stage:#2A2926;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--stage);color:#fff;padding:30px 20px 80px;
+  font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.lab{max-width:1280px;margin:0 auto}
+.mk{font-size:17px;font-weight:800;letter-spacing:-.045em}
+.mk span{color:var(--accent)}
+h1{font-size:27px;font-weight:800;letter-spacing:-.04em;margin-top:10px;line-height:1.1}
+.intro{color:#B5B1A8;font-size:14px;line-height:1.6;margin-top:10px;max-width:620px}
+.intro b{color:#fff;font-weight:700}
+
+.opt{margin-top:52px;border-top:1px solid #46443F;padding-top:26px}
+.opt h2{font-size:19px;font-weight:800;letter-spacing:-.03em}
+.opt h2 em{font-style:normal;color:var(--accent)}
+.opt .say{color:#B5B1A8;font-size:13.5px;line-height:1.6;margin-top:8px;max-width:660px}
+.opt .say b{color:#fff;font-weight:700}
+.pair{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;margin-top:20px}
+.frame{background:#fff;border-radius:10px;padding:14px;color:var(--ink)}
+.frame.phone{width:300px}
+.frame.wide{width:640px}
+.cap{color:#8A867E;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+
+/* ---- wireframe primitives ---- */
+.bar{background:var(--fill);border-radius:3px;height:9px}
+.bar.s{height:7px;background:var(--fill-2)}
+.bar.t{height:13px;background:#CFCCC8}
+.bar.accent{background:var(--accent);opacity:.85}
+.w20{width:20%}.w30{width:30%}.w40{width:40%}.w50{width:50%}.w60{width:60%}.w70{width:70%}.w85{width:85%}.w100{width:100%}
+.stack>*+*{margin-top:6px}
+.pic{background:var(--fill);border-radius:6px}
+.rule{height:2px;background:var(--ink);border-radius:2px;margin:14px 0 10px}
+.rule.thin{height:1px;background:var(--line);margin:10px 0}
+.lbl{font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--quiet);margin-bottom:6px}
+.head{margin-bottom:14px}
+.chips{display:flex;gap:5px;margin:12px 0}
+.chip{height:22px;border-radius:99px;background:var(--fill-2);border:1px solid var(--line)}
+.chip.on{background:var(--ink)}
+
+/* A: lead + list */
+.rowc{display:grid;grid-template-columns:44px 1fr;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.rowc .pic{aspect-ratio:1}
+.wide .rowc{grid-template-columns:56px 1fr}
+
+/* B: card grid */
+.grid2{display:grid;grid-template-columns:1fr;gap:12px}
+.wide .grid2{grid-template-columns:1fr 1fr;gap:16px}
+.card{border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.card .pic{aspect-ratio:16/10;border-radius:0}
+.card .body{padding:9px}
+
+/* C: grouped by rhythm */
+.grp{margin-top:14px}
+.grp .gh{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+
+/* D: weekend bands */
+.band{border:1px solid var(--line);border-radius:9px;padding:10px;margin-top:10px}
+.band .bh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px}
+.mini{display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:center;padding:6px 0}
+.mini .pic{aspect-ratio:1;border-radius:5px}
+.wide .cols2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+</style>
+
+<div class="lab">
+  <div class="mk">fynda<span>.</span></div>
+  <h1>City page — four structures</h1>
+  <p class="intro">Zürich, 14 markets. Deliberately low fidelity: grey blocks, no photographs, no names. <b>The question is which shape, not which shade</b> — pick a structure and I will build it properly. Phone on the left, desktop on the right in each pair.</p>
+
+<!-- ============================== A ============================== -->
+<div class="opt">
+  <h2><em>A.</em> Lead + list</h2>
+  <p class="say">The next market at full size, then the other thirteen compact. <b>Same pattern as the home page you just approved</b>, so the site holds together with one idea. Strong first impression, and the rest stays dense enough to scan.<br><b>Weak spot:</b> the lead is only "next", which is not necessarily the best one.</p>
+  <div class="pair">
+    <div><div class="cap">Phone</div><div class="frame phone">
+      <div class="head stack"><div class="bar t w85"></div><div class="bar s w60"></div></div>
+      <div class="chips"><div class="chip on" style="width:52px"></div><div class="chip" style="width:56px"></div><div class="chip" style="width:74px"></div></div>
+      <div class="pic" style="aspect-ratio:16/10"></div>
+      <div class="stack" style="margin-top:9px"><div class="bar accent w30" style="height:7px"></div><div class="bar t w70"></div><div class="bar s w50"></div></div>
+      <div class="rule thin"></div>
+      <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w30" style="height:5px"></div><div class="bar w70"></div><div class="bar s w50"></div></div></div>
+      <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w30" style="height:5px"></div><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+      <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w30" style="height:5px"></div><div class="bar w85"></div><div class="bar s w50"></div></div></div>
+      <div class="rowc" style="border:0"><div class="pic"></div><div class="stack"><div class="bar accent w30" style="height:5px"></div><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+    </div></div>
+    <div><div class="cap">Desktop</div><div class="frame wide">
+      <div class="head stack"><div class="bar t w50"></div><div class="bar s w40"></div></div>
+      <div class="chips"><div class="chip on" style="width:52px"></div><div class="chip" style="width:56px"></div><div class="chip" style="width:74px"></div></div>
+      <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start">
+        <div><div class="pic" style="aspect-ratio:4/3"></div>
+          <div class="stack" style="margin-top:10px"><div class="bar accent w30" style="height:7px"></div><div class="bar t w70"></div><div class="bar s w50"></div></div></div>
+        <div>
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar accent w20" style="height:5px"></div><div class="bar w70"></div><div class="bar s w50"></div></div></div>
+          <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w20" style="height:5px"></div><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+          <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w20" style="height:5px"></div><div class="bar w85"></div><div class="bar s w50"></div></div></div>
+          <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w20" style="height:5px"></div><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+          <div class="rowc" style="border:0"><div class="pic"></div><div class="stack"><div class="bar accent w20" style="height:5px"></div><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============================== B ============================== -->
+<div class="opt">
+  <h2><em>B.</em> Card grid</h2>
+  <p class="say">Every market a card with a picture on top. <b>The most visual option and the least like a directory</b> — closest to how people browse things they might want. Two columns on desktop, one on a phone.<br><b>Weak spot:</b> no hierarchy at all, and fourteen equal cards is a long page on a phone. Cards also hide the date unless it is set loud.</p>
+  <div class="pair">
+    <div><div class="cap">Phone</div><div class="frame phone">
+      <div class="head stack"><div class="bar t w85"></div><div class="bar s w60"></div></div>
+      <div class="chips"><div class="chip on" style="width:52px"></div><div class="chip" style="width:56px"></div><div class="chip" style="width:74px"></div></div>
+      <div class="grid2">
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w30" style="height:6px"></div><div class="bar t w70"></div><div class="bar s w50"></div></div></div>
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w30" style="height:6px"></div><div class="bar t w60"></div><div class="bar s w40"></div></div></div>
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w30" style="height:6px"></div><div class="bar t w85"></div><div class="bar s w50"></div></div></div>
+      </div>
+    </div></div>
+    <div><div class="cap">Desktop</div><div class="frame wide">
+      <div class="head stack"><div class="bar t w50"></div><div class="bar s w40"></div></div>
+      <div class="chips"><div class="chip on" style="width:52px"></div><div class="chip" style="width:56px"></div><div class="chip" style="width:74px"></div></div>
+      <div class="grid2">
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w20" style="height:6px"></div><div class="bar t w70"></div><div class="bar s w50"></div></div></div>
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w20" style="height:6px"></div><div class="bar t w60"></div><div class="bar s w40"></div></div></div>
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w20" style="height:6px"></div><div class="bar t w85"></div><div class="bar s w50"></div></div></div>
+        <div class="card"><div class="pic"></div><div class="body stack"><div class="bar accent w20" style="height:6px"></div><div class="bar t w60"></div><div class="bar s w50"></div></div></div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============================== C ============================== -->
+<div class="opt">
+  <h2><em>C.</em> Grouped by how often it runs</h2>
+  <p class="say">Three groups: <b>every week</b> · <b>every month</b> · <b>rare — once or twice a year</b>. This is the only option that uses something no competitor has, and it answers the real question: <i>can I go any Saturday, or is this the one chance this year?</i> The rare group becomes genuinely urgent.<br><b>Weak spot:</b> a heading people have to read to understand, and the weekly group will be the biggest and least exciting.</p>
+  <div class="pair">
+    <div><div class="cap">Phone</div><div class="frame phone">
+      <div class="head stack"><div class="bar t w85"></div><div class="bar s w60"></div></div>
+      <div class="grp">
+        <div class="gh"><div class="lbl" style="margin:0">Nur dieses Jahr · 2</div></div>
+        <div class="rule" style="margin-top:0"></div>
+        <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar accent w40" style="height:6px"></div><div class="bar t w70"></div><div class="bar s w50"></div></div></div>
+        <div class="rowc" style="border:0"><div class="pic"></div><div class="stack"><div class="bar accent w40" style="height:6px"></div><div class="bar t w60"></div><div class="bar s w40"></div></div></div>
+      </div>
+      <div class="grp">
+        <div class="gh"><div class="lbl" style="margin:0">Jeden Monat · 4</div></div>
+        <div class="rule" style="margin-top:0"></div>
+        <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w50"></div></div></div>
+        <div class="rowc" style="border:0"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+      </div>
+      <div class="grp">
+        <div class="gh"><div class="lbl" style="margin:0">Jede Woche · 8</div></div>
+        <div class="rule" style="margin-top:0"></div>
+        <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w50"></div></div></div>
+        <div class="rowc" style="border:0"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w40"></div></div></div>
+      </div>
+    </div></div>
+    <div><div class="cap">Desktop</div><div class="frame wide">
+      <div class="head stack"><div class="bar t w50"></div><div class="bar s w40"></div></div>
+      <div class="grp">
+        <div class="lbl">Nur dieses Jahr · 2</div><div class="rule" style="margin-top:0"></div>
+        <div class="cols2">
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar accent w30" style="height:6px"></div><div class="bar t w70"></div><div class="bar s w50"></div></div></div>
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar accent w30" style="height:6px"></div><div class="bar t w60"></div><div class="bar s w40"></div></div></div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="lbl">Jeden Monat · 4</div><div class="rule" style="margin-top:0"></div>
+        <div class="cols2">
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w50"></div></div></div>
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+          <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w40"></div></div></div>
+          <div class="rowc"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w50"></div></div></div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="lbl">Jede Woche · 8</div><div class="rule" style="margin-top:0"></div>
+        <div class="cols2">
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+          <div class="rowc" style="padding-top:0"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w50"></div></div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============================== D ============================== -->
+<div class="opt">
+  <h2><em>D.</em> Weekend by weekend</h2>
+  <p class="say">The next four weekends as blocks, each listing what is on. <b>Answers "when shall I go" rather than "what exists"</b>, and it makes a plan rather than a directory. Also the shape closest to how the data actually behaves.<br><b>Weak spot:</b> the same weekly markets repeat in every block — the exact problem we just spent the day removing.</p>
+  <div class="pair">
+    <div><div class="cap">Phone</div><div class="frame phone">
+      <div class="head stack"><div class="bar t w85"></div><div class="bar s w60"></div></div>
+      <div class="band"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+        <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+        <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w50"></div></div></div>
+        <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+      </div>
+      <div class="band"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+        <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+        <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w50"></div></div></div>
+      </div>
+      <div class="band"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+        <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w40"></div></div></div>
+      </div>
+    </div></div>
+    <div><div class="cap">Desktop</div><div class="frame wide">
+      <div class="head stack"><div class="bar t w50"></div><div class="bar s w40"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px">
+        <div class="band" style="margin:0"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w50"></div></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w40"></div></div></div>
+        </div>
+        <div class="band" style="margin:0"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w50"></div></div></div>
+        </div>
+        <div class="band" style="margin:0"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w85"></div><div class="bar s w40"></div></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w60"></div><div class="bar s w50"></div></div></div>
+        </div>
+        <div class="band" style="margin:0"><div class="bh"><div class="bar accent w40" style="height:10px"></div><div class="bar s w20"></div></div>
+          <div class="mini"><div class="pic"></div><div class="stack"><div class="bar w70"></div><div class="bar s w40"></div></div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<div class="opt">
+  <h2>If you want my pick</h2>
+  <p class="say"><b>A, with C's grouping inside it.</b> A keeps the site consistent — one idea, home and city — and gives the page a face. C is the only one that says something no competitor can say, and "nur dieses Jahr" is the sentence that gets someone in the car. Together: lead with the next market at full size, then the rest under <i>rare / monthly / weekly</i>.<br><br>B is the prettiest and the least useful — fourteen equal cards is a long scroll and no answer. D is a good <i>home page</i> idea and the wrong city page: the weekly markets would repeat in every block.</p>
+</div>
+
+</div>

@@ -1,0 +1,542 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fynda — Grouped v4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --accent:#FF4A2B; --ink:#111110; --grey:#6E6C68; --quiet:#9A968F;
+  --line:#E8E6E2; --paper:#F5F4F2; --stage:#2A2926;
+  --l-halle:#3D5AFE; --l-nacht:#7C3AED; --l-kinder:#F5A524; --l-troedel:#E4007F;
+  --t-name:clamp(16px,calc(14.31px + .451vw),20.8px);
+  --t-body:clamp(13px,calc(11.627px + .366vw),16.9px);
+  --t-small:clamp(12px,calc(10.732px + .338vw),15.6px);
+  --t-city:clamp(19px,calc(16.99px + .535vw),24.7px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--stage);color:var(--ink);padding:26px 16px 70px;
+  font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+.lab{max-width:1200px;margin:0 auto}
+.labhead{color:#fff;max-width:640px}
+.labhead .mk{font-size:17px;font-weight:800;letter-spacing:-.045em}
+.labhead .mk span{color:var(--accent)}
+.labhead h1{font-size:26px;font-weight:800;letter-spacing:-.04em;margin-top:10px;line-height:1.12}
+.labhead p{font-size:13.5px;line-height:1.6;color:#B5B1A8;margin-top:10px}
+.labhead p b{color:#fff;font-weight:700}
+.tally{display:flex;gap:20px;flex-wrap:wrap;margin:16px 0 22px}
+.tally div{color:#B5B1A8;font-size:12px;line-height:1.35}
+.tally b{display:block;color:#fff;font-size:21px;font-weight:800;letter-spacing:-.03em}
+.panel{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.inner{max-width:1200px;margin:0 auto;padding:22px 16px 30px}
+a{color:inherit;text-decoration:none}
+
+h2.sec{font-size:var(--t-city);font-weight:800;letter-spacing:-.03em}
+p.lede{color:var(--grey);font-size:var(--t-body);margin-top:5px;margin-bottom:8px}
+
+/* ---- the city group: the structure that was missing ---- */
+.city{margin-top:26px}
+.city-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding-bottom:9px;border-bottom:2px solid var(--ink)}
+.city-head h3{font-size:var(--t-name);font-weight:800;letter-spacing:-.03em}
+.city-head span{color:var(--quiet);font-size:var(--t-small);font-weight:600;white-space:nowrap}
+
+/* ---- the row: no rail, no FM badge, no freshness unless it is news ---- */
+.row{display:grid;grid-template-columns:34px minmax(0,1fr) auto 56px;gap:12px;align-items:start;
+  padding:13px 0;border-bottom:1px solid var(--line)}
+.when{padding-top:2px;text-align:center}
+.when b{display:block;font-size:var(--t-small);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.when span{display:block;font-size:var(--t-small);font-weight:600;color:var(--quiet)}
+.name{font-size:var(--t-name);font-weight:700;letter-spacing:-.015em;line-height:1.22}
+.tag{display:inline-block;vertical-align:2px;margin-left:5px;padding:1px 6px;border-radius:999px;
+  color:#fff;font-size:10.5px;font-style:normal;font-weight:800;letter-spacing:.04em;white-space:nowrap}
+.where{margin-top:3px;color:var(--quiet);font-size:var(--t-small);line-height:1.4}
+.flag{margin-top:4px;font-size:var(--t-small);font-weight:700}
+.flag.warn{color:var(--grey)}
+.flag.bad{color:var(--accent)}
+.hours{padding-top:3px;color:var(--grey);font-size:var(--t-small);font-weight:600;white-space:nowrap}
+.photo{width:56px;height:56px;border-radius:8px;overflow:hidden;background:var(--paper)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+@media (min-width:900px){
+  .row{grid-template-columns:52px minmax(0,1fr) 120px 72px;gap:20px;padding:15px 0}
+  .photo{width:72px;height:72px}
+}
+</style>
+
+<div class="lab">
+<div class="labhead">
+  <div class="mk">fynda<span>.</span></div>
+  <h1>The weekend, grouped by city</h1>
+  <p>Live data, and this page is responsive — <b>drag the window narrow to check the phone</b>. No device frames; the layout is the thing being judged.</p>
+  <div class="tally">
+    <div><b>22 → 8</b>things to scan instead of<br>22 cities in random order</div>
+    <div><b>4 of 45</b>rows now carry a type badge,<br>where 41 carried the same one</div>
+    <div><b>10 of 39</b>rows say anything about freshness.<br>Silence means confirmed and recent</div>
+  </div>
+</div>
+
+<div class="panel"><div class="inner">
+  <h2 class="sec">Dieses Wochenende</h2>
+  <p class="lede">39 Märkte am 5. Sept und 6. Sept.</p>
+
+  
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>Basel</h3>
+        <span>7 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Petersplatz</h4>
+          <p class="where">Petersplatz</p>
+          <p class="flag warn">nicht bestätigt</p>
+        </div>
+        <p class="hours">07:30–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-petersplatz-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Vogesenplatz</h4>
+          <p class="where">Vogesenplatz 15</p>
+          <p class="flag warn">nicht bestätigt</p>
+        </div>
+        <p class="hours">08:00–18:30</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-vogesenplatz-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Bruderholzallee</h4>
+          <p class="where">Bruderholzallee</p>
+          
+        </div>
+        <p class="hours">10:00–17:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-bruderholzallee-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">NerdYartist</h4>
+          <p class="where">Wohnzimmer, Markthalle Basel</p>
+          <p class="flag warn">zuletzt geprüft 21. Mai</p>
+        </div>
+        <p class="hours">12:00–21:00</p>
+        <div class="photo"><img src="https://fynda.market/images/nerdyartist-markthalle-basel-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Nachtflohmarkt Markthalle Basel <i class="tag" style="background:var(--l-nacht)">Nacht</i></h4>
+          <p class="where">Steinentorberg 20</p>
+          
+        </div>
+        <p class="hours">17:00–22:00</p>
+        <div class="photo"><img src="https://fynda.market/images/nachtflohmarkt-markthalle-basel-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Hallenflohmarkt Markthalle Basel <i class="tag" style="background:var(--l-halle)">Halle</i></h4>
+          <p class="where">Steinentorberg 20</p>
+          <p class="flag warn">zuletzt geprüft 31. Mai</p>
+        </div>
+        <p class="hours">11:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/hallenflohmarkt-markthalle-basel-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Quartierflohmarkt Gellert</h4>
+          <p class="where">Christoph Merian-Platz</p>
+          
+        </div>
+        <p class="hours">11:00–17:00</p>
+        <div class="photo"><img src="https://fynda.market/images/quartierflohmarkt-gellert-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>Genf</h3>
+        <span>4 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Marché aux puces de Plainpalais</h4>
+          <p class="where">Plaine de Plainpalais</p>
+          
+        </div>
+        <p class="hours">06:30–18:15</p>
+        <div class="photo"><img src="https://fynda.market/images/marche-aux-puces-de-plainpalais-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Brocante mensuelle Galerie 17 Terra</h4>
+          <p class="where">Rue de la Terrassiere 17</p>
+          
+        </div>
+        <p class="hours"></p>
+        <div class="photo"><img src="https://fynda.market/images/brocante-17-terra-geneve-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Marché aux puces de Plainpalais</h4>
+          <p class="where">Plaine de Plainpalais</p>
+          
+        </div>
+        <p class="hours">06:30–18:15</p>
+        <div class="photo"><img src="https://fynda.market/images/marche-aux-puces-de-plainpalais-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Brocante mensuelle Galerie 17 Terra</h4>
+          <p class="where">Rue de la Terrassiere 17</p>
+          
+        </div>
+        <p class="hours"></p>
+        <div class="photo"><img src="https://fynda.market/images/brocante-17-terra-geneve-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>Zürich</h3>
+        <span>4 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Bürkliplatz</h4>
+          <p class="where">Stadthausanlage</p>
+          <p class="flag warn">zuletzt geprüft 22. Mai</p>
+        </div>
+        <p class="hours">07:00–17:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-buerkliplatz-zuerich-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Kanzlei</h4>
+          <p class="where">Kanzleistrasse 56</p>
+          
+        </div>
+        <p class="hours">07:20–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-kanzlei-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Rosenhof-Markt</h4>
+          <p class="where">Rosenhof</p>
+          <p class="flag warn">zuletzt geprüft 22. Mai</p>
+        </div>
+        <p class="hours">10:00–18:00</p>
+        <div class="photo"><img src="https://fynda.market/images/rosenhof-markt-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt am See Wollishofen</h4>
+          <p class="where">Gemeinschaftszentrum Wollishofen</p>
+          <p class="flag warn">zuletzt geprüft 22. Mai</p>
+        </div>
+        <p class="hours">11:00–17:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-am-see-wollishofen-zuerich-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>Lausanne</h3>
+        <span>3 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Marché de Rumine</h4>
+          <p class="where">Place de la Riponne</p>
+          
+        </div>
+        <p class="hours">08:30–13:00</p>
+        <div class="photo"><img src="https://fynda.market/images/marche-rumine-lausanne-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Vide-Dressing du Flon</h4>
+          <p class="where">Quartier du Flon</p>
+          
+        </div>
+        <p class="hours">09:00–18:00</p>
+        <div class="photo"><img src="https://fynda.market/images/ide-dressing-flon-lausanne-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Marché Calabash</h4>
+          <p class="where">Place de la Riponne</p>
+          
+        </div>
+        <p class="hours">08:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/marche-calabash-lausanne-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>Bern</h3>
+        <span>2 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Grosse Halle <i class="tag" style="background:var(--l-halle)">Halle</i></h4>
+          <p class="where">Schützenweg 1</p>
+          <p class="flag warn">zuletzt geprüft 20. Apr</p>
+        </div>
+        <p class="hours">09:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-grosse-halle-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Cozy Sunday Stellwerk Bern</h4>
+          <p class="where">Stellwerk Bern</p>
+          
+        </div>
+        <p class="hours">11:00–16:30</p>
+        <div class="photo"><img src="https://fynda.market/images/cozy-sunday-stellwerk-bern-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>Luzern</h3>
+        <span>2 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Luzerner Flohmarkt Vögeligärtli</h4>
+          <p class="where">Sempacherstrasse</p>
+          <p class="flag warn">zuletzt geprüft 20. Apr</p>
+        </div>
+        <p class="hours">07:00–14:00</p>
+        <div class="photo"><img src="https://fynda.market/images/luzerner-flohmarkt-voegeligaertli-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Strandgut-Flohmarkt Neubad</h4>
+          <p class="where">Bireggstrasse 36</p>
+          
+        </div>
+        <p class="hours">10:00–15:00</p>
+        <div class="photo"><img src="https://fynda.market/images/strandgut-flohmarkt-neubad-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+    <section class="city">
+      <a class="city-head" href="#">
+        <h3>St. Gallen</h3>
+        <span>2 Märkte</span>
+      </a>
+      
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Gallusplatz</h4>
+          <p class="where">Gallusplatz</p>
+          
+        </div>
+        <p class="hours">07:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-gallusplatz-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Quartier-Flohmarkt Areal Bach</h4>
+          <p class="where">Bachstrasse 10</p>
+          
+        </div>
+        <p class="hours">10:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/quartier-flohmarkt-area-bach-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+    </section>
+
+  <section class="city">
+    <a class="city-head" href="#">
+      <h3>Anderswo</h3>
+      <span>15 Märkte in 15 Orten</span>
+    </a>
+    
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Aarau</h4>
+          <p class="where">Markthalle · Aarau</p>
+          
+        </div>
+        <p class="hours">08:00–17:00</p>
+        <div class="photo"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Floh- und Antikmarkt Wynecenter Buchs</h4>
+          <p class="where">Wynecenter · Buchs AG</p>
+          <p class="flag warn">zuletzt geprüft 24. Apr</p>
+        </div>
+        <p class="hours">10:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/floh-und-antikmarkt-wynecenter-buchs-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Brocante de Carouge</h4>
+          <p class="where">Rue Saint-Joseph · Carouge</p>
+          
+        </div>
+        <p class="hours">09:00–17:00</p>
+        <div class="photo"><img src="https://fynda.market/images/brocante-de-carouge-geneve-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Gaenggali-Markt</h4>
+          <p class="where">Martinsplatz / Arcas · Chur</p>
+          
+        </div>
+        <p class="hours">07:00–14:00</p>
+        <div class="photo"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Dietikon</h4>
+          <p class="where">Bahnhofplatz / Kirchstrasse Dietikon · Dietikon</p>
+          
+        </div>
+        <p class="hours">08:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-dietikon-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Marché aux puces de Fribourg (Vieille Ville)</h4>
+          <p class="where">Autour de la Cathedrale Saint-Nicolas · Freiburg</p>
+          
+        </div>
+        <p class="hours">08:00–16:30</p>
+        <div class="photo"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Hofmattplatz Kriens</h4>
+          <p class="where">Hofmattplatz · Kriens</p>
+          
+        </div>
+        <p class="hours">08:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-hofmattplatz-kriens-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Liesberger Flohmarkt</h4>
+          <p class="where">Mehrzweckhalle Seemättli · Liesberg</p>
+          
+        </div>
+        <p class="hours">09:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/liesberger-flohmarkt-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Mercato dell'antiquariato Maghetti</h4>
+          <p class="where">Via Canova / Via Vegezzi / Piazzetta San Rocco · Lugano</p>
+          
+        </div>
+        <p class="hours">08:00–17:00</p>
+        <div class="photo"><img src="https://fynda.market/images/mercato-dell-antiquariato-maghetti-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>So</b><span>6.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Rueticenter Pratteln</h4>
+          <p class="where">Ruetiweg 9 · Pratteln</p>
+          
+        </div>
+        <p class="hours">08:30–15:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-rueticenter-pratteln-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Mosergarten</h4>
+          <p class="where">Mosergarten · Schaffhausen</p>
+          
+        </div>
+        <p class="hours">08:00–16:00</p>
+        <div class="photo"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Herbstmarkt und Kinderflohmarkt Schlieren <i class="tag" style="background:var(--l-kinder)">Kinder</i></h4>
+          <p class="where">Kirchgasse Schlieren · Schlieren</p>
+          
+        </div>
+        <p class="hours">09:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-schlieren-herbstmarkt-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Uster (Stadthausplatz)</h4>
+          <p class="where">Stadthausplatz · Uster</p>
+          
+        </div>
+        <p class="hours">08:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-uster-stadthausplatz-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Marché aux puces de Vevey</h4>
+          <p class="where">Place Robin · Vevey</p>
+          
+        </div>
+        <p class="hours"></p>
+        <div class="photo"></div>
+      </article>
+      <article class="row">
+        <div class="when"><b>Sa</b><span>5.</span></div>
+        <div class="body">
+          <h4 class="name">Flohmarkt Seeplatz Waedenswil</h4>
+          <p class="where">Seeplatz · Wädenswil</p>
+          
+        </div>
+        <p class="hours">08:00–16:00</p>
+        <div class="photo"><img src="https://fynda.market/images/flohmarkt-seeplatz-waedenswil-thumb.webp" alt="" loading="lazy"></div>
+      </article>
+  </section>
+</div></div>
+
+<div class="labhead" style="margin-top:34px">
+  <h1 style="font-size:20px">What changed, and why</h1>
+  <p><b>Grouped by city, biggest first.</b> The list was sorted by time of day, so Genf → Aarau → Basel → Zürich → Dietikon interleaved 22 cities at random and someone in Zürich had to read 45 rows to find four. Now you scan eight headings, find yours, and stop. Each heading links to that city's page — your best-earning page type.</p>
+  <p><b>The type badge only when it is not an ordinary Flohmarkt.</b> It was on 41 of 45 rows saying "this is a flea market", on a flea-market website. Four rows carry one now, and it means something. Same for the coloured rail: it is gone, because 91% of rows shared one colour and your own rule is that colour carries information or it does not appear.</p>
+  <p><b>Freshness only when it is news.</b> "Bestätigt 11. Juni" appeared 26 times on one screen. Silence now means confirmed and recent; the line appears when a date is unconfirmed, stale past 90 days, or cancelled — which is when you actually need to see it, and now you will.</p>
+  <p><b>Smaller photos, no empty boxes.</b> 56px on a phone. A 74px crowd photo was mush, and the six grey placeholders read as broken next to real ones — a market without a photo simply has no box.</p>
+</div>
+</div>

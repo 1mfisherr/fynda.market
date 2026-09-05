@@ -4,7 +4,7 @@
  * labels — which is how the legend said "Halle" while the market page said
  * "Hallenflohmarkt" for the same kind.
  */
-import LineCode from './LineCode.astro';
+import LineBadge from './LineBadge.astro';
 import { LEGEND, LINES } from '../lib/vocabulary';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
@@ -14,7 +14,7 @@ const { locale = DEFAULT_LOCALE } = Astro.props;
 const s = t(locale);
 ---
 <aside class="legend gutter" aria-label={s.marketTypes}>
-  {LEGEND.map((kind) => <span><LineCode kind={kind} /> {LINES[kind].short[locale]}</span>)}
+  {LEGEND.map((kind) => <span><LineBadge kind={kind} /> {LINES[kind].short[locale]}</span>)}
 </aside>
 
 <style>

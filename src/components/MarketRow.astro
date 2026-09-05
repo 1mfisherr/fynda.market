@@ -1,203 +1,121 @@
 ---
 /**
- * One row of a list. Two shapes, because a list asks one of two questions.
+ * A market in a list. **The only one on the site.**
  *
- * `mode="time"` sits under a day band: the day is already known, so the row
- * leads with the time. That is the weekend list.
+ * Home, city, canton, radius and saved all render this, so a change to a row
+ * is a change everywhere by construction rather than by discipline. It comes
+ * in two sizes and they share every part — the same day label, name, badge,
+ * flag, venue line and picture. Only the frame differs:
  *
- * `mode="date"` stands on its own: the row leads with its own date and carries
- * the recurrence phrase — "Jeden Samstag, ganzjährig". That is the city list,
- * where the question is which markets exist rather than which day it is, and
- * where one row per date meant printing the same market eighteen times
- * (src/lib/lists.ts).
+ *   variant="feature"  picture above, name at display size. The lead of a
+ *                      block. A page with one size on it has no rhythm.
+ *   variant="row"      picture beside, compact. Everything after the lead.
  *
- * One component rather than two, so the rail, the photo, the cancelled
- * treatment and the wide layout cannot drift into two versions of themselves.
+ * What a row does NOT say, and why (all one rule — say the exception, never
+ * the rule; BRAND.md):
  *
- * **One loud thing per row: the name.** Everything under it steps down a
- * weight — rhythm in grey, then the venue quieter still. Three levels, no
- * ties. Until 2026-09-05 the name and the recurrence phrase were both bold
- * ink, which gave the eye two winners and so no place to land; between them
- * sat the least important fact on the row, louder than the rhythm.
+ *   the entry fee   151 of 157 markets are free. A price appears only when
+ *                   there is one.
+ *   the city        omitted where the page already names it.
+ *   the freshness   silence means confirmed and recently checked. See
+ *                   src/lib/freshness.ts.
+ *   the kind        badged only when it is not an ordinary Flohmarkt, which
+ *                   was 41 of 45 rows. See vocabulary.ts BADGED_KINDS.
  *
- * The order is the order of the decision: which market → how often can I go →
- * where exactly.
+ * One loud thing per row: the name. Everything under it steps down a weight.
  */
 import type { Market } from '../lib/types';
-import { LINES } from '../lib/vocabulary';
-import { formatDateShort, formatTime } from '../lib/format';
-import { countDates } from '../lib/lists';
+import { BADGED_KINDS, LINES } from '../lib/vocabulary';
+import { formatTime } from '../lib/format';
+import { flagFor } from '../lib/freshness';
 import { DEFAULT_LOCALE, marketPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
-import LineCode from './LineCode.astro';
 import PhotoOrArt from './PhotoOrArt.astro';
 
 interface Props {
   market: Market;
   locale?: Locale;
-  /** 'time' under a day band, 'date' standing alone. See above. */
-  mode?: 'time' | 'date';
-  /**
-   * Leave the city off. A city page's rows all sit under a heading naming that
-   * city, so printing it fourteen more times is fourteen more things to read
-   * and nothing more to learn. A canton or the home page still needs it.
-   */
+  /** 'feature' leads a block; 'row' is everything after it. */
+  variant?: 'feature' | 'row';
+  /** Leave the city off where the page already names it. */
   omitCity?: boolean;
+  /** "Jeden Samstag, ganzjährig" — the line that replaces eighteen repeats. */
+  showRhythm?: boolean;
+  /** Rendered verbatim; the caller computed it and must never guess it. */
+  distance?: string;
 }
-const { market, locale = DEFAULT_LOCALE, mode = 'time', omitCity = false } = Astro.props;
+const {
+  market, locale = DEFAULT_LOCALE, variant = 'row',
+  omitCity = false, showRhythm = false, distance,
+} = Astro.props;
+
 const s = t(locale);
 const occurrence = market.next;
 const cancelled = occurrence?.status === 'cancelled';
+const flag = flagFor(occurrence, s, locale);
 const line = LINES[market.kind];
-const STALLS: Record<Locale, string> = { de: 'Stände', fr: 'stands', it: 'bancarelle', en: 'stalls' };
-const CANCELLED: Record<Locale, string> = { de: 'Fällt aus', fr: 'Annulé', it: 'Annullato', en: 'Cancelled' };
+const badge = BADGED_KINDS.has(market.kind) ? line.short[locale] : undefined;
 
-const facts = [
-  market.stallCount ? `~${market.stallCount} ${STALLS[locale]}` : undefined,
-  market.sellerMix === 'private' ? 'nur Private' : market.sellerMix === 'mixed' ? 'Private und Händler' : market.sellerMix === 'trader' ? 'Händler' : market.sellerMix === 'new_goods' ? 'Neuware' : undefined,
-].filter(Boolean);
-/*
-  A price appears only when there is one. 151 of 157 markets are free and
-  exactly one charges, so the word "frei" was on 96% of rows carrying no
-  information at all — the rule being: say the exception, never the rule.
-  An unexpected entry fee is also the single thing visitors are angriest about
-  in the review corpus, which is an argument for showing a fee, not for
-  announcing its absence.
-*/
-const entry = market.entryFee ? `${market.entryFee} CHF` : undefined;
-
-/* Venue, then city where the page has not already said it, then a price if
-   there is one. Each part is dropped rather than emptied, so no row ever
-   renders a stray separator. */
-const place = [market.venueName, omitCity ? undefined : market.city, entry].filter(Boolean).join(' · ');
-
-/* A date row prints its own day. The weekday is abbreviated because it sits in
-   a narrow column beside a display-size number, not in a band across the page. */
 const day = occurrence ? new Date(`${occurrence.date}T00:00:00`) : undefined;
-const weekday = day ? s.weekdaysLong[day.getDay()].slice(0, 2) : '';
-const month = day ? s.monthsLong[day.getMonth()].slice(0, 4) : '';
+const dayLabel = day ? `${s.weekdaysLong[day.getDay()].slice(0, 2)} ${day.getDate()}.` : '';
+const times = occurrence?.startTime
+  ? `${formatTime(occurrence.startTime)}${occurrence.endTime ? `–${formatTime(occurrence.endTime)}` : ''}`
+  : undefined;
 
-/* The row stands for every date this market has, so it carries how many —
-   otherwise anything counting rows would count markets and call them dates. */
-const dateCount = mode === 'date' ? countDates(market) : undefined;
+const entry = market.entryFee ? `${market.entryFee} CHF` : undefined;
+const where = [market.venueName, omitCity ? undefined : market.city, entry, distance]
+  .filter(Boolean).join(' · ');
 
+const size = variant === 'feature' ? 720 : 148;
 ---
 
-<article class:list={['row', { cancelled, dated: mode === 'date' }]} data-date={occurrence?.date} data-dates={dateCount}>
-  <i class="rail" style={cancelled ? undefined : `background:var(${line.token})`}></i>
-  {mode === 'date' ? (
-    <div class="time">
-      {occurrence && <strong data-day>{String(day!.getDate()).padStart(2, '0')}</strong>}
-      {occurrence && <span data-when>{weekday} {month}</span>}
-      <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
-    </div>
-  ) : (
-    <div class="time">
-      {occurrence?.startTime && <strong>{formatTime(occurrence.startTime)}</strong>}
-      {occurrence?.endTime && <span>–{formatTime(occurrence.endTime)}</span>}
-      <span class="line"><LineCode kind={market.kind} muted={cancelled} /></span>
-    </div>
-  )}
-  <div class="details">
-    <h3 class="name"><a href={marketPath(locale, market.slug)}>{market.name}</a></h3>
-    {mode === 'date' && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
-    <p class="via">{place}</p>
-    {facts.length > 0 && <p class="facts">{facts.join(' · ')}</p>}
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date}>
+  <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
+  <div class="body">
+    <p class="meta">
+      {dayLabel && <span class="day">{dayLabel}</span>}
+      {times && <span class="hours">{times}</span>}
+      {flag && <span class:list={['flag', flag.tone]}>{flag.text}</span>}
+    </p>
+    <h3 class="name">
+      <a href={marketPath(locale, market.slug)}>{market.name}</a>
+      {badge && <i class="badge" style={`background:var(${line.token})`}>{badge}</i>}
+    </h3>
+    {showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
+    <p class="where">{where}</p>
   </div>
-  {mode === 'date' && occurrence?.startTime && (
-    <p class="hours">{formatTime(occurrence.startTime)}{occurrence.endTime && <span>–{formatTime(occurrence.endTime)}</span>}</p>
-  )}
-  {cancelled ? <p class="reason">{CANCELLED[locale]}{occurrence?.cancellationNote ? ` — ${occurrence.cancellationNote}` : ''}</p> : occurrence?.confirmedAt && <p class="fresh">{s.confirmedShort(formatDateShort(occurrence.confirmedAt, locale))}</p>}
-  <div class="photo"><PhotoOrArt market={market} width={74} height={74} /></div>
 </article>
 
 <style>
-  /*
-    Named areas rather than an order-dependent column list, because the two
-    layouts place the same five children differently and the DOM must not move:
-    the freshness line sits under the name on a phone and in its own column
-    above the breakpoint, without changing places in the markup.
-  */
-  .row {
-    position:relative;
-    display:grid;
-    grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-photo);
-    grid-template-areas:
-      "rail time details photo"
-      "rail time hours   photo"
-      "rail time fresh   photo";
-    column-gap:var(--space-row);
-    row-gap:var(--space-1);
-    align-items:start;
-    padding:var(--space-row-y) var(--space-page) var(--space-row-y) 0;
-    border-bottom:var(--border-width) solid var(--color-line);
-  }
-  /* A day number over its weekday needs more room than "08:30" does, and it
-     needs it at every width — sized for a time, "SA" and "SEPT" fell onto two
-     lines on a phone. */
-  .row.dated { grid-template-columns:var(--row-rail) var(--row-date) minmax(0, 1fr) var(--row-photo); }
-  .rail { grid-area:rail; align-self:stretch; min-height:var(--row-photo); border-radius:0 var(--radius-xs) var(--radius-xs) 0; }
-  .fresh, .reason { grid-area:fresh; }
-  .hours { grid-area:hours; }
-  /* A clock time is one token. It never breaks, whatever the column does —
-     body allows long words to break so German compounds fit, and "08:00" is
-     not a German compound. */
-  .time { grid-area:time; padding-top:var(--space-half); font-variant-numeric:var(--figures-tabular); }
-  .time strong, .time span, .hours { white-space:nowrap; }
-  .time strong { display:block; font-size:var(--text-date); font-weight:var(--weight-black); letter-spacing:var(--tracking-title); line-height:1.1; }
-  .time span { display:block; margin-top:var(--space-half); color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
-  .line { display:block; margin-top:var(--space-2); }
-  .details { grid-area:details; min-width:0; }
-  .name { margin:0; font-size:var(--text-row-name); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.22; }
+  .card { position:relative; }
+  .pic { overflow:hidden; border-radius:var(--radius-sm); background:var(--color-paper); }
+  .body { min-width:0; }
+
+  /* The line above the name. The date is the one loud colour on the page —
+     BRAND.md allows the accent here and nowhere else in a list. */
+  .meta { display:flex; align-items:center; flex-wrap:wrap; gap:var(--space-2); margin:0; }
+  .day { color:var(--color-accent); font-size:var(--text-small); font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); text-transform:uppercase; white-space:nowrap; }
+  .hours { color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); white-space:nowrap; }
+  .flag { font-size:var(--text-small); font-weight:var(--weight-bold); }
+  .flag.warn { color:var(--color-grey); }
+  .flag.bad { color:var(--color-accent); }
+
+  /* One loud thing. Everything below it steps down a weight. */
+  .name { margin-block-start:var(--space-half); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.2; }
   .name a::after { position:absolute; inset:0; content:''; }
-  .via, .facts, .fresh, .reason, .rhythm, .hours { margin:0; }
-  /*
-    The staircase. Three weights, no ties, in the order of the decision:
-    name (bold, ink) -> rhythm (semibold, grey) -> venue (regular, quiet).
-    Whatever is added to a row later has to find a step on it or stay off.
-  */
-  .via { margin-top:var(--space-1); color:var(--color-quiet); font-size:var(--text-micro); font-weight:var(--weight-regular); line-height:1.4; }
-  .facts { margin-top:var(--space-1); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.45; }
-  .fresh { color:var(--color-quiet); font-size:var(--text-tiny); font-weight:var(--weight-semibold); }
-  .reason { font-size:var(--text-micro); font-weight:var(--weight-bold); }
+  .badge { display:inline-block; margin-inline-start:var(--space-2); padding:var(--space-half) var(--space-2); border-radius:var(--radius-pill); color:var(--color-white); font-size:var(--text-micro); font-style:normal; font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); vertical-align:var(--space-half); white-space:nowrap; }
+  .rhythm { margin:var(--space-1) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
+  .where { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-small); line-height:1.4; }
 
-  /*
-    The date shape. The row leads with its own day, and the recurrence phrase
-    is what replaces the seventeen other rows this market used to occupy — so
-    it is set as a fact, not as a caption.
-  */
-  .dated .time strong { font-size:var(--text-market-name); letter-spacing:var(--tracking-tight); line-height:1; color:var(--color-accent); }
-  .dated .time span { margin-top:var(--space-1); color:var(--color-ink); font-size:var(--text-micro); font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); text-transform:uppercase; }
-  .rhythm { margin-top:var(--space-2); color:var(--color-grey); font-size:var(--text-micro); font-weight:var(--weight-semibold); line-height:1.4; }
-  .hours { margin-top:var(--space-1); color:var(--color-grey); font-size:var(--text-micro); font-weight:var(--weight-semibold); }
-  .hours span { color:var(--color-quiet); }
-  .cancelled .rhythm { color:var(--color-quiet); }
-  .photo { grid-area:photo; width:var(--row-photo); height:var(--row-photo); overflow:hidden; border-radius:var(--radius-photo); background:var(--color-paper); }
-  .cancelled .rail { background:var(--color-line); }
-  .cancelled .name, .cancelled .time strong { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
-  .cancelled .via, .cancelled .rhythm { color:var(--color-quiet); }
-  .cancelled .photo { filter:grayscale(1); opacity:0.5; }
+  /* ---- the lead ---- */
+  .feature .pic { aspect-ratio:16 / 10; margin-block-end:var(--space-3); border-radius:var(--radius-md); }
+  .feature .name { font-size:var(--text-feature); font-weight:var(--weight-black); letter-spacing:var(--tracking-tight); line-height:1.14; }
 
-  /*
-    One row, not three stacked lines. Above the breakpoint the width goes to
-    the two things a visitor actually decides on — what is there, and whether
-    the date is true — instead of to the gap between the name and the photo.
-    Keep in step with --breakpoint-wide; a media query cannot read a token.
-  */
-  @media (min-width: 900px) {
-    .row {
-      grid-template-columns:var(--row-rail) var(--row-time) minmax(0, 1fr) var(--row-fresh) var(--row-photo);
-      grid-template-areas:"rail time details fresh photo";
-      column-gap:var(--space-4);
-    }
-    /* The date shape has a column more: the day number needs the room a time
-       does not, and the hours become a column of their own beside the name. */
-    .row.dated {
-      grid-template-columns:var(--row-rail) var(--row-date) minmax(0, 1fr) var(--row-hours) var(--row-fresh) var(--row-photo);
-      grid-template-areas:"rail time details hours fresh photo";
-    }
-    /* Set on the name's first line rather than on the top of the box. */
-    .fresh, .reason, .hours { padding-top:var(--space-half); }
-    .dated .hours { margin-top:0; }
-  }
+  /* ---- everything after it ---- */
+  .row { display:grid; grid-template-columns:var(--row-thumb) minmax(0, 1fr); gap:var(--space-4); align-items:center; padding-block:var(--space-4); border-block-end:var(--border-width) solid var(--color-line); }
+  .row .pic { aspect-ratio:1; }
+  .row .name { font-size:var(--text-row-name); }
+
+  .cancelled .name a { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
+  .cancelled .pic { filter:grayscale(1); opacity:0.55; }
 </style>

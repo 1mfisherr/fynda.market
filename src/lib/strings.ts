@@ -41,12 +41,21 @@ export interface Strings {
   controlRadius: string;
   controlSubmit: string;
   upcoming: string;
-  /* The home page answers "this weekend", not "the next four months" — the
-     midweek block exists because seven markets is a block, not a list. */
+  /* The home page answers "this weekend", not "the next four months". */
+  /* The claim, first thing on the home page: trust signal, head-term content
+     and the sentence an AI answer can quote, in one line. */
+  homePromise: (markets: number) => string;
+  homeProof: string;
   thisWeekend: string;
   thisWeekendLede: (n: number, from: string, to: string) => string;
-  alsoThisWeek: string;
-  alsoThisWeekLede: string;
+  allWeekend: (n: number) => string;
+  /* The home page's one question, asked below the markets — TownPicker. */
+  whereAreYou: string;
+  whereAreYouLede: string;
+  nearMe: string;
+  allTowns: (n: number) => string;
+  yourTown: string;
+  weekendHere: (city: string) => string;
   cities: string;
   regions: string;
   marketTypes: string;
@@ -56,7 +65,6 @@ export interface Strings {
   dataStep3: string;
   questions: string;
   cancelledThisWeek: string;
-  showMore: (n: number) => string;
   nothingInPeriod: string;
 
   /* filters */
@@ -86,16 +94,25 @@ export interface Strings {
   reportDidNotHappen: string;
   reportEndedEarly: string;
   reportSomethingElse: string;
-  confirmedOn: (date: string) => string;
   /**
-   * The same fact, for a list row. "durch den Veranstalter" is true of every
-   * confirmed row we hold, so on a row it is nine words that separate nobody
-   * from anybody — and on a phone it wrapped the quietest line on the row onto
-   * two. The long form stays on the market page, where it is the sentence an
-   * AI answer quotes.
+   * Who stands behind the date. No occurrence we hold came from an organiser
+   * — all 1,478 came from the v1 import — so the old "confirmed by the
+   * organiser" was claiming a source we do not have. We say what is true: we
+   * checked it, on this day.
    */
-  confirmedShort: (date: string) => string;
+  confirmedOn: (date: string) => string;
+  /** The stronger claim, for when an organiser actually tells us. Accented. */
+  organiserConfirmed: string;
+  /* The three things a list row may say about a date, and it says one only
+     when it is true — see src/lib/freshness.ts. Silence means confirmed and
+     recently checked, which is most rows. */
+  flagCancelled: string;
+  flagUnconfirmed: string;
+  flagStale: (date: string) => string;
   notConfirmed: string;
+  /** "Eintritt" / "frei" — the one fact under What to expect. */
+  entryLabel: string;
+  entryFree: string;
   packUpFrom: (time: string) => string;
 
   /* city page */
@@ -175,10 +192,17 @@ const de: Strings = {
   controlRadius: 'Umkreis',
   controlSubmit: 'Anzeigen',
   upcoming: 'Kommende Termine',
+  homePromise: (n) => `<b>${n} Flohmärkte</b> in der Schweiz — jeder Termin mit Quelle und Prüfdatum.`,
+  homeProof: 'Wir schreiben zu jedem Termin, wann wir ihn zuletzt beim Veranstalter bestätigt haben. Absagen bleiben stehen, mit Grund.',
   thisWeekend: 'Dieses Wochenende',
+  allWeekend: (n) => `Alle ${n} Märkte am Wochenende`,
+  whereAreYou: 'Wo sind Sie?',
+  whereAreYouLede: 'Einmal wählen — beim nächsten Besuch startet Fynda dort. Kein Konto.',
+  nearMe: 'In meiner Nähe',
+  allTowns: (n) => `Alle ${n} Städte`,
+  yourTown: 'Ihre Stadt',
+  weekendHere: (city) => `Dieses Wochenende in ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from} und ${to}.`,
-  alsoThisWeek: 'Auch diese Woche',
-  alsoThisWeekLede: 'Die wenigen Märkte, die unter der Woche stattfinden.',
   cities: 'Städte',
   regions: 'Kantone',
   marketTypes: 'Markttypen',
@@ -188,7 +212,6 @@ const de: Strings = {
   dataStep3: 'Absagen sichtbar machen',
   questions: 'Häufige Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
-  showMore: (n) => `${n} weitere anzeigen`,
   nothingInPeriod: 'Für diesen Zeitraum ist nichts eingetragen.',
 
   filterAll: 'Alle',
@@ -216,9 +239,14 @@ const de: Strings = {
   reportDidNotHappen: 'Fand nicht statt',
   reportEndedEarly: 'War schon vorbei',
   reportSomethingElse: 'Etwas anderes',
-  confirmedOn: (date) => `Bestätigt am ${date} durch den Veranstalter`,
-  confirmedShort: (date) => `Bestätigt ${date}`,
-  notConfirmed: 'Noch nicht mit dem Veranstalter bestätigt',
+  confirmedOn: (date) => `Von uns bestätigt am ${date}`,
+  organiserConfirmed: 'Vom Veranstalter bestätigt',
+  flagCancelled: 'Fällt aus',
+  flagUnconfirmed: 'Nicht bestätigt',
+  flagStale: (date) => `Zuletzt geprüft ${date}`,
+  notConfirmed: 'Aus öffentlicher Quelle',
+  entryLabel: 'Eintritt',
+  entryFree: 'frei',
   packUpFrom: (time) => `Ab ${time} wird abgebaut.`,
 
   cityHeading: (n, city, year) =>
@@ -304,10 +332,17 @@ const en: Strings = {
   controlRadius: 'Within',
   controlSubmit: 'Show',
   upcoming: 'Upcoming dates',
+  homePromise: (n) => `<b>${n} flea markets</b> in Switzerland — every date with a source and a check date.`,
+  homeProof: 'For every date we write down when we last confirmed it with the organiser. Cancellations stay on the page, with the reason.',
   thisWeekend: 'This weekend',
+  allWeekend: (n) => `All ${n} markets this weekend`,
+  whereAreYou: 'Where are you?',
+  whereAreYouLede: 'Choose once — next time Fynda starts there. No account.',
+  nearMe: 'Near me',
+  allTowns: (n) => `All ${n} towns`,
+  yourTown: 'Your town',
+  weekendHere: (city) => `This weekend in ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from} and ${to}.`,
-  alsoThisWeek: 'Also this week',
-  alsoThisWeekLede: 'The few markets that run on weekdays.',
   cities: 'Cities',
   regions: 'Cantons',
   marketTypes: 'Market types',
@@ -317,7 +352,6 @@ const en: Strings = {
   dataStep3: 'Show the cancellations',
   questions: 'Common questions',
   cancelledThisWeek: 'Cancelled this week',
-  showMore: (n) => `Show ${n} more`,
   nothingInPeriod: 'Nothing is listed for this period.',
 
   filterAll: 'All',
@@ -345,9 +379,14 @@ const en: Strings = {
   reportDidNotHappen: "Didn't happen",
   reportEndedEarly: 'Was already over',
   reportSomethingElse: 'Something else',
-  confirmedOn: (date) => `Confirmed on ${date} with the organiser`,
-  confirmedShort: (date) => `Confirmed ${date}`,
-  notConfirmed: 'Not yet confirmed with the organiser',
+  confirmedOn: (date) => `Confirmed by us on ${date}`,
+  organiserConfirmed: 'Confirmed by the organiser',
+  flagCancelled: 'Cancelled',
+  flagUnconfirmed: 'Not confirmed',
+  flagStale: (date) => `Last checked ${date}`,
+  notConfirmed: 'From a public source',
+  entryLabel: 'Entry',
+  entryFree: 'free',
   packUpFrom: (time) => `Packing up starts at ${time}.`,
 
   cityHeading: (n, city, year) =>
@@ -437,10 +476,17 @@ const fr: Strings = {
   controlRadius: 'Rayon',
   controlSubmit: 'Afficher',
   upcoming: 'Prochaines dates',
+  homePromise: (n) => `<b>${n} brocantes</b> en Suisse — chaque date avec sa source et sa date de vérification.`,
+  homeProof: "Pour chaque date, nous indiquons quand nous l'avons confirmée avec l'organisateur. Les annulations restent affichées, avec le motif.",
   thisWeekend: 'Ce week-end',
+  allWeekend: (n) => `Les ${n} marchés du week-end`,
+  whereAreYou: 'Où êtes-vous ?',
+  whereAreYouLede: 'Choisissez une fois — la prochaine visite commencera là. Sans compte.',
+  nearMe: 'Près de moi',
+  allTowns: (n) => `Les ${n} villes`,
+  yourTown: 'Votre ville',
+  weekendHere: (city) => `Ce week-end à ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from} et le ${to}.`,
-  alsoThisWeek: 'Aussi cette semaine',
-  alsoThisWeekLede: 'Les quelques marchés qui ont lieu en semaine.',
   cities: 'Villes',
   regions: 'Cantons',
   marketTypes: 'Types de marché',
@@ -450,7 +496,6 @@ const fr: Strings = {
   dataStep3: 'Afficher les annulations',
   questions: 'Questions fréquentes',
   cancelledThisWeek: 'Annulé cette semaine',
-  showMore: (n) => `Afficher ${n} de plus`,
   nothingInPeriod: "Rien n'est enregistré pour cette période.",
 
   filterAll: 'Tous',
@@ -478,9 +523,14 @@ const fr: Strings = {
   reportDidNotHappen: "N'a pas eu lieu",
   reportEndedEarly: 'Était déjà terminé',
   reportSomethingElse: 'Autre chose',
-  confirmedOn: (date) => `Confirmé le ${date} par l'organisateur`,
-  confirmedShort: (date) => `Confirmé le ${date}`,
-  notConfirmed: "Pas encore confirmé avec l'organisateur",
+  confirmedOn: (date) => `Vérifié par nous le ${date}`,
+  organiserConfirmed: "Confirmé par l'organisateur",
+  flagCancelled: 'Annulé',
+  flagUnconfirmed: 'Non confirmé',
+  flagStale: (date) => `Vérifié le ${date}`,
+  notConfirmed: 'Source publique',
+  entryLabel: 'Entrée',
+  entryFree: 'gratuite',
   packUpFrom: (time) => `Démontage à partir de ${time}.`,
 
   cityHeading: (n, city, year) =>
@@ -566,10 +616,17 @@ const it: Strings = {
   controlRadius: 'Raggio',
   controlSubmit: 'Mostra',
   upcoming: 'Prossime date',
+  homePromise: (n) => `<b>${n} mercatini</b> in Svizzera — ogni data con fonte e data di verifica.`,
+  homeProof: "Per ogni data indichiamo quando l'abbiamo confermata con l'organizzatore. Le cancellazioni restano visibili, con il motivo.",
   thisWeekend: 'Questo fine settimana',
+  allWeekend: (n) => `Tutti i ${n} mercatini del fine settimana`,
+  whereAreYou: 'Dove siete?',
+  whereAreYouLede: 'Scegliete una volta — alla prossima visita Fynda parte da lì. Senza account.',
+  nearMe: 'Vicino a me',
+  allTowns: (n) => `Tutte le ${n} città`,
+  yourTown: 'La vostra città',
+  weekendHere: (city) => `Questo fine settimana a ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from} e il ${to}.`,
-  alsoThisWeek: 'Anche questa settimana',
-  alsoThisWeekLede: 'I pochi mercati che si tengono nei giorni feriali.',
   cities: 'Città',
   regions: 'Cantoni',
   marketTypes: 'Tipi di mercatino',
@@ -579,7 +636,6 @@ const it: Strings = {
   dataStep3: 'Rendiamo visibili le cancellazioni',
   questions: 'Domande frequenti',
   cancelledThisWeek: 'Cancellato questa settimana',
-  showMore: (n) => `Mostra altri ${n}`,
   nothingInPeriod: 'Per questo periodo non risulta nulla.',
 
   filterAll: 'Tutti',
@@ -607,9 +663,14 @@ const it: Strings = {
   reportDidNotHappen: 'Non si è svolto',
   reportEndedEarly: 'Era già finito',
   reportSomethingElse: 'Altro',
-  confirmedOn: (date) => `Confermato il ${date} dall'organizzatore`,
-  confirmedShort: (date) => `Confermato il ${date}`,
-  notConfirmed: "Non ancora confermato con l'organizzatore",
+  confirmedOn: (date) => `Verificato da noi il ${date}`,
+  organiserConfirmed: "Confermato dall'organizzatore",
+  flagCancelled: 'Annullato',
+  flagUnconfirmed: 'Non confermato',
+  flagStale: (date) => `Verificato il ${date}`,
+  notConfirmed: 'Fonte pubblica',
+  entryLabel: 'Ingresso',
+  entryFree: 'gratuito',
   packUpFrom: (time) => `Lo smontaggio inizia alle ${time}.`,
 
   cityHeading: (n, city, year) =>

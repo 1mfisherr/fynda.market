@@ -10,7 +10,7 @@
 import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
 import Icon from '../../../components/Icon.astro';
-import LineCode from '../../../components/LineCode.astro';
+import LineBadge from '../../../components/LineBadge.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
@@ -109,7 +109,7 @@ const facts = [
   market.stallCount ? ['Stände', `~${market.stallCount}${market.stallCountBadWeather ? `, bei schlechtem Wetter ~${market.stallCountBadWeather}` : ''}`] : undefined,
   market.sellerMix ? ['Verkäufer', { private: 'nur Private', mixed: 'Private und Händler', trader: 'Händler', new_goods: 'Neuware' }[market.sellerMix]] : undefined,
   market.priceLevel ? ['Preisniveau', { cheap: 'günstig', flohmarkt: 'Flohmarkt', trader: 'Händler' }[market.priceLevel]] : undefined,
-  market.entryFee !== undefined ? ['Eintritt', market.entryFee === 0 ? 'frei' : `${market.entryFee} CHF`] : undefined,
+  market.entryFee !== undefined ? [s.entryLabel, market.entryFee === 0 ? s.entryFree : `${market.entryFee} CHF`] : undefined,
   market.covered ? ['Gelände', { open: 'offen', partly: 'teilweise gedeckt', indoor: 'drinnen' }[market.covered]] : undefined,
   market.groundSurface ? ['Untergrund', market.groundSurface] : undefined,
 ].filter(Boolean) as [string, string][];
@@ -137,7 +137,7 @@ const facilityItems = market.facilities ? [
   <div class="market">
     <div class="photo-hero">
       <PhotoOrArt market={market} width={720} height={210} loading="eager" />
-      <span class="type eyebrow"><LineCode kind={market.kind} /> {kind.full[locale]}</span>
+      <span class="type eyebrow"><LineBadge kind={market.kind} /> {kind.full[locale]}</span>
     </div>
 
     <div class="head gutter">
@@ -152,9 +152,20 @@ const facilityItems = market.facilities ? [
         </div>
       )}
       {market.packUpFrom && <p class="pack">{s.packUpFrom(market.packUpFrom)}</p>}
-      <p class="freshness meta-quiet">
-        {next?.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed}
-      </p>
+      {/* Who stands behind the date. Saying "not yet confirmed with the
+          organiser" told a visitor the one thing that destroys trust and was
+          not even true — we had confirmed it, just not with the organiser.
+          An organiser-sourced date is the strong claim and gets the accent;
+          docs/BRAND.md lets the accent mark date and status, and nothing else. */}
+      {next && (
+        next.origin === 'organiser' ? (
+          <p class="freshness organiser">{s.organiserConfirmed}</p>
+        ) : (
+          <p class="freshness meta-quiet">
+            {next.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed}
+          </p>
+        )
+      )}
     </div>
 
     {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold.
@@ -215,16 +226,27 @@ const facilityItems = market.facilities ? [
         )}
       </Section>
 
+      {/* A market between seasons has no date to show, and 40 of 157 are in
+          that state in September. The heading used to stand over an empty
+          list; the rhythm is what we do know — "Einmal jährlich, zwischen
+          April und Oktober" — and it is the honest answer to "when". */}
       <Section level="sub" title={s.dates}>
-        <ul class="dates list-reset gutter">
-          {dates.map((occurrence) => (
-            <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
-              <strong>{formatDate(occurrence.date, locale)}</strong>
-              {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
-              <em>{STATUS[locale][occurrence.status]}</em>
-            </li>
-          ))}
-        </ul>
+        {dates.length > 0 ? (
+          <ul class="dates list-reset gutter">
+            {dates.map((occurrence) => (
+              <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
+                <strong>{formatDate(occurrence.date, locale)}</strong>
+                {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
+                <em>{STATUS[locale][occurrence.status]}</em>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="gutter no-dates">
+            <strong>{s.cityNoDate}</strong>
+            {market.recurrenceText && <span>{market.recurrenceText}</span>}
+          </p>
+        )}
       </Section>
 
       <Section level="sub" title={s.wasItDifferent}>
@@ -361,6 +383,10 @@ const facilityItems = market.facilities ? [
   .dates li > strong { font-weight: var(--weight-bold); }
   .dates li > span { color: var(--color-grey); }
   .dates li > em { color: var(--color-quiet); font-size: var(--text-micro); font-style: normal; font-weight: var(--weight-bold); }
+  .no-dates { display: flex; flex-direction: column; gap: var(--space-half); max-width: var(--measure); }
+  .no-dates > strong { font-weight: var(--weight-bold); }
+  .no-dates > span { color: var(--color-grey); }
+  .freshness.organiser { color: var(--color-accent); font-weight: var(--weight-bold); }
   .dates li.cancelled > strong, .dates li.cancelled > span {
     color: var(--color-quiet);
     text-decoration: line-through;

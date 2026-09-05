@@ -65,7 +65,7 @@ const DEFAULT_KM = 50;
           reconcile a row with its market by slug.
         */
         <div class="pin" data-lat={market.lat} data-lng={market.lng}>
-          <MarketRow market={market} mode="date" />
+          <MarketRow market={market} showRhythm />
           {/*
             Empty and hidden until a real distance has been computed. This is
             the "never show a distance we do not know" rule from docs/PAGES.md

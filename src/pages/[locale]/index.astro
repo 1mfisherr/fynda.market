@@ -9,18 +9,18 @@
 import Page from '../../layouts/Page.astro';
 import Button from '../../components/Button.astro';
 import Faq from '../../components/Faq.astro';
-import Icon from '../../components/Icon.astro';
 import CtaCard from '../../components/CtaCard.astro';
-import DayGroup from '../../components/DayGroup.astro';
 import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
 import Section from '../../components/Section.astro';
+import TownPicker from '../../components/TownPicker.astro';
+import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
-import { datedRows, weekdaysSoon, weekendDays } from '../../lib/lists';
+import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
+import { LOCALES, cityPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
 export async function getStaticPaths() {
@@ -36,16 +36,16 @@ const markets = await getMarkets(locale);
 const rows = datedRows(markets);
 
 /**
- * The home page answers one question: what is on this weekend.
+ * The home page answers one question — what is on this weekend — and then asks
+ * one back: where are you.
  *
- * It used to list every date in the 120-day horizon — 451 rows for 108
- * markets, thirty screens of scrolling, with Marché de Rumine printed seventy
- * times. Changed 2026-09-04; the reasoning is in src/lib/lists.ts. Anyone who
- * wants October uses the control above, or their own city's page.
+ * It shows six markets, not all of them. A nationwide list is useless to any
+ * one person: sorted by clock time it interleaved 22 cities at random, and
+ * someone in Zürich had to read forty-five rows to find four. Six is a taste,
+ * one per town so it reads as a country rather than as one city's diary, and
+ * the picker underneath is the way out of it. `src/lib/lists.ts`.
  */
-const weekend = weekendDays(rows);
-const weekendCount = new Set(weekend.flat().map((row) => row.slug)).size;
-const midweek = weekdaysSoon(rows);
+const { lead, rest, total, from, to } = weekendLead(rows, 6);
 
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
@@ -61,12 +61,6 @@ const cancelled = rows
   .filter((row) => row.next!.status === 'cancelled' && row.next!.date <= inAWeek)
   .sort((a, b) => a.next!.date.localeCompare(b.next!.date));
 
-/** The radius view offers these four; the home form has to offer the same. */
-const RADII = [10, 25, 50, 100];
-const PERIODS = {
-  all: s.filterAll, today: s.filterToday, weekend: s.filterWeekend,
-} as const;
-
 const site = 'https://fynda.market';
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -80,69 +74,51 @@ const jsonLd = {
 <Page locale={locale} alternates={alternates} title={s.homeTitle} description={s.homeDescription}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
+  {/* The claim, and it is a number: the trust signal, the content that has to
+      rank for the head term, and the sentence an AI answer can quote — one
+      line doing three jobs. It comes before anything is asked of anyone.
+
+      The three-field search card that used to sit here is gone. It stood
+      between a visitor and the goods, and it is the shape of the one
+      competitor in the category whose home page shows no markets at all.
+      Choosing a place now happens below, once there is something to choose
+      about — components/TownPicker.astro. */}
   <section class="page-head gutter">
     <h1>{s.heroLine1}<br />{s.heroLine2}</h1>
-    <p class="meta">{s.heroPromise}</p>
+    <p class="promise" set:html={s.homePromise(markets.length)}></p>
+    <p class="meta">{s.homeProof}</p>
   </section>
 
-  {/* Real controls, not three words dressed as fields. Choosing a town goes to
-      that town's page; leaving it on "Überall" goes to the radius view, which
-      is the only one of the two that has anything to do with kilometres. Free
-      text is deliberately absent — a search box needs the German text-search
-      decision PLAN.md still has open, and a box that finds nothing is worse
-      than no box. */}
-  <form class="search" action={nearbyPath()} method="get" data-city-base={countryPath(locale, countrySlug)}>
-    <label class="field">
-      <span>{s.controlPlace}</span>
-      <select name="ort">
-        <option value="">{s.controlAnywhere}</option>
-        {cities.map(([slug, city]) => <option value={slug}>{city}</option>)}
-      </select>
-    </label>
-    <div class="pair">
-      <label class="field">
-        <span>{s.controlPeriod}</span>
-        <select name="zeit">
-          {(['all', 'today', 'weekend'] as const).map((w) => (
-            <option value={w}>{PERIODS[w]}</option>
-          ))}
-        </select>
-      </label>
-      <label class="field">
-        <span>{s.controlRadius}</span>
-        <select name="km">{RADII.map((km) => <option value={km} selected={km === 50}>{km} km</option>)}</select>
-      </label>
-    </div>
-    <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
-  </form>
+  {/* Empty until the browser says otherwise; see components/TownShortcut. */}
+  <TownShortcut locale={locale} />
 
-  {/* No date chips here any more. They existed to make 451 rows navigable;
-      two labelled sections of forty-five rows are navigable already, and a
-      calendar on this page would offer months the page no longer contains. */}
-  {weekend.length > 0 && (
-    <Section
-      title={s.thisWeekend}
-      lede={s.thisWeekendLede(
-        weekendCount,
-        formatDateShort(weekend[0][0].next.date, locale),
-        formatDateShort(weekend[weekend.length - 1][0].next.date, locale)
-      )}
-    >
-      {weekend.map((group) => (
-        <DayGroup date={group[0].next.date} count={group.length} locale={locale}>
-          {group.map((market) => <MarketRow market={market} locale={locale} />)}
-        </DayGroup>
-      ))}
+  {/* Two at full size, then four compact. A block with one size in it has no
+      rhythm, and rhythm is most of what stops a list reading as a database
+      dump. The picture is the argument — a flea market is stuff you can see. */}
+  {total > 0 && (
+    <Section title={s.thisWeekend} lede={s.thisWeekendLede(total, formatDateShort(from, locale), formatDateShort(to, locale))}>
+      <div class="leads gutter">
+        {lead.map((market) => <MarketRow market={market} locale={locale} variant="feature" />)}
+      </div>
+      <div class="gutter">
+        {rest.map((market) => <MarketRow market={market} locale={locale} />)}
+      </div>
+      <div class="gutter more">
+        <Button href={nearbyPath()} variant="quiet">{s.allWeekend(total)}</Button>
+      </div>
     </Section>
   )}
 
-  {/* One row per market, because a Wednesday market that runs every week needs
-      one row for the same reason a Saturday one does. */}
-  {midweek.length > 0 && (
-    <Section title={s.alsoThisWeek} lede={s.alsoThisWeekLede}>
-      {midweek.map((market) => <MarketRow market={market} locale={locale} mode="date" />)}
-    </Section>
-  )}
+  <TownPicker
+    locale={locale}
+    countrySlug={countrySlug}
+    allHref={nearbyPath()}
+    total={cities.length}
+    towns={cities
+      .map(([slug, city]) => ({ slug, name: city, count: markets.filter((m) => m.citySlug === slug).length }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, locale))
+      .slice(0, 7)}
+  />
 
   <CtaCard kind="newsletter" locale={locale} />
   <CtaCard kind="organiser" locale={locale} />
@@ -199,20 +175,19 @@ const jsonLd = {
 <style>
   /* Only what is genuinely this page's. Everything else is a component. */
 
-  /* A card, not a grey tray. The place is the decision, so it gets the full
-     width; period and radius are adjustments to it and share a row. */
-  .search {
-    display: grid;
-    gap: var(--space-3);
-    margin-inline: var(--space-page);
-    padding: var(--space-4);
-    border: var(--border-width) solid var(--color-line);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
+  /* The promise under the headline. One size up from body, because it is the
+     sentence the page exists to make. */
+  .promise {
+    margin-block-start: var(--space-3);
+    max-width: 30ch;
+    font-size: var(--text-feature);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-title);
+    line-height: 1.28;
   }
-  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .promise :global(b) { color: var(--color-accent); font-weight: var(--weight-black); }
 
-  .more { margin-block-start: var(--space-2); }
+  .more { margin-block-start: var(--space-4); }
 
   .calloffs li {
     display: grid;
@@ -227,30 +202,6 @@ const jsonLd = {
   .counts { margin-block-start: var(--space-3); }
 
   /* Keep in step with --breakpoint-wide; a media query cannot read a token. */
-  @media (min-width: 900px) {
-    .search { grid-template-columns: 2fr 3fr auto; align-items: end; }
-    .pair { grid-template-columns: 1fr 1fr; }
-    .search :global(.button) { width: auto; }
-  }
-</style>
 
-<script>
-  /**
-   * The search card routes itself. A town goes to that town's page carrying the
-   * period as a query parameter the city page reads; "Überall" falls through to
-   * the form's own action, the radius view, which is the only place a radius
-   * means anything. Without JS the form still submits there, which is a worse
-   * answer but never a broken one.
-   */
-  const search = document.querySelector<HTMLFormElement>('.search');
-  search?.addEventListener('submit', (event) => {
-    const data = new FormData(search);
-    const town = String(data.get('ort') ?? '');
-    if (!town) return;
-    event.preventDefault();
-    const period = String(data.get('zeit') ?? 'all');
-    const base = search.dataset.cityBase ?? '/';
-    location.href = `${base}${town}/${period === 'all' ? '' : `?zeit=${period}`}`;
-  });
-</script>
+</style>
 
