@@ -20,3 +20,5 @@ public/_redirects
 # on 2026-09-05 because it happened to exist at that moment.
 *.tmp.json
 *.tmp.*
+tmp-*
+*-tmp.*
