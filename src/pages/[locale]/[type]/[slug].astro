@@ -192,6 +192,13 @@ const facilityItems = market.facilities ? [
           </p>
         )
       )}
+      {/* Market level, and separate from the date above on purpose: v1 recorded
+          that an organiser confirmed the market's details, not one Saturday.
+          Saying it of a date would be a claim we cannot support. Shown on 33 of
+          157, dated, because a confirmation from April ages by September. */}
+      {market.verifiedBy === 'organiser' && (
+        <p class="freshness organiser">{s.organiserConfirmed}</p>
+      )}
     </div>
 
     {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold.

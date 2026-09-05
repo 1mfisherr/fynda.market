@@ -73,9 +73,10 @@ export interface Market {
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
   imageUrl?: string;
   /**
-   * Who last checked this market, and when. 'organiser' is the strong claim —
-   * 33 of 157 — and it is the only one the accent is spent on. It ages, so the
-   * date is always shown with it.
+   * Who last checked this market. 'organiser' is the strong claim — 33 of 157
+   * — and it is the only one the accent is spent on. `verifiedAt` is held but
+   * not rendered beside it: the badge says that an organiser stands behind the
+   * market, not when they last said so.
    */
   verifiedBy?: 'team' | 'organiser' | 'community';
   verifiedAt?: string;
