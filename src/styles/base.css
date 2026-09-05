@@ -150,13 +150,13 @@ p {
   .wrapper {
     max-width: var(--content-max-wide);
   }
+}
 
-  /* A headline set for a 375px screen reads as a subhead on a desktop, and a
-     46px line running the full 1080px is unreadable — so both at once. */
-  h1 {
-    font-size: var(--text-display-wide);
-    max-width: 20ch;
-  }
+/* A headline grows with the viewport on its own now — --text-display is fluid —
+   so all that is left here is the line length. Unconditional, because a long
+   headline is no more readable at 800px than at 1400px. */
+h1 {
+  max-width: 20ch;
 }
 
 /* ---- interactive ------------------------------------------------------- */

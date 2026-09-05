@@ -42,14 +42,18 @@ The earlier rule said "icons only, never as fill or text". That rule could not p
 
 **Schibsted Grotesk**, one family for everything. Nordic, very legible small, umlauts that hold up — and *fynda* is Swedish for bargain-hunting, so the choice has a reason beyond taste. Personality comes from colour, layout and motion, not a second typeface.
 
-| Role | Size / weight |
+**Every size is fluid.** The scale below is the phone size at 375px; each one grows smoothly to **1.3×** at 1440px and stops there. No steps, no second size at a breakpoint — one step at 900px made every window between 900 and 1440 wrong in the same way, just less. `src/styles/tokens.css` holds the generated `clamp()` for each; changing the 1.3 means regenerating all of them from the same two anchors.
+
+| Role | 375px → 1440px / weight |
 |---|---|
-| Display | 38–46 / 800, `-0.045em` |
-| Section | 21 / 700, `-0.025em` |
-| Title | 16–17 / 700, `-0.015em` |
-| **Date** | 14–15 / **700, accent** |
-| Body | 15–16 / 400 |
-| Small | 12–13 / 500, quiet |
+| Display | 38 → 49 / 800, `-0.045em` |
+| Section | 21 → 27 / 700, `-0.025em` |
+| Title | 17 → 22 / 700, `-0.015em` |
+| **Date** | 15 → 19.5 / **700, accent** |
+| Body | 16 → 21 / 400 |
+| Small | 13 → 17 / 500, quiet |
+
+Column widths that hold text are fluid on the same two anchors, or a 30% larger digit in a fixed column is not a column but a wrap. `--measure` is in `ch`, so the reading column follows the type by itself.
 
 ## Wordmark
 
@@ -93,7 +97,7 @@ No off-the-shelf theme, no UI-kit look. Use a headless library for the fiddly ac
 
 - **Answer first.** What, where, when, and *is it on* in the first screen — before navigation, hero or decoration. Also a citation rule: roughly 44% of AI citations come from the first 30% of a page.
 - **Mobile first, hard.** ~82% of v1 traffic was mobile. Thumb-zone actions, bottom-sheet filters, tap-to-route.
-- **Desktop is the same design, wider — never a second one.** One breakpoint at 900px. The extra width buys information (a day column, a freshness column, a sticky action rail), never a bigger gap; reading text stays at 66ch whatever the container does. `design/desktop-v1.html` is the drawing, approved 2026-09-04.
+- **Desktop is the same design, wider — never a second one.** One breakpoint at 900px for layout; type and the columns that hold it are fluid, with no breakpoint at all. The extra width buys information (a day column, a freshness column, a sticky action rail), never a bigger gap; reading text stays at 66ch whatever the container does. `design/desktop-v1.html` is the drawing, approved 2026-09-04.
 - **Empty states still help.** "Nothing in Aachen this week — here are three within 30 km."
 - **Show freshness honestly.** "Bestätigt am 12.08. durch den Veranstalter" beats silence, and beats pretending.
 
@@ -121,4 +125,4 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-04
+last_reviewed: 2026-09-05

@@ -66,11 +66,6 @@
   },
   {
     "marketSlug": "brocante-17-terra-geneve",
-    "date": "2026-09-04",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "brocante-17-terra-geneve",
     "date": "2026-09-05",
     "status": "confirmed"
   },
@@ -1300,6 +1295,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+    "date": "2027-01-03",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
     "date": "2026-09-09",
     "status": "confirmed"
@@ -1777,11 +1777,6 @@
   {
     "marketSlug": "marche-rumine-lausanne-samedi",
     "date": "2027-01-02",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-vendredi",
-    "date": "2026-09-04",
     "status": "confirmed"
   },
   {
