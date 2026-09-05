@@ -1,0 +1,79 @@
+# Metabase, on this machine only.
+#
+# Two containers: Metabase itself, and a Postgres for Metabase's own notebook —
+# the questions and dashboards you build. Metabase ships with a toy database
+# (H2) for that, and its own documentation says not to use it in production: it
+# corrupts, and losing it loses every dashboard. A second Postgres costs
+# nothing here and removes the whole class of problem.
+#
+# Nothing here touches Fynda's data. Metabase connects to Supabase separately,
+# read-only, and that connection is added in the browser on first run.
+#
+#   docker compose -f metabase/docker-compose.yml up -d      start
+#   docker compose -f metabase/docker-compose.yml down        stop
+#
+# Then open http://localhost:3000
+
+name: fynda-metabase
+
+services:
+  app-db:
+    # Metabase's own notebook. Small, and pinned: an unpinned tag can perform a
+    # major upgrade on a restart, which for Postgres means it refuses to start.
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: metabase
+      POSTGRES_USER: metabase
+      POSTGRES_PASSWORD: metabase-local-only
+    volumes:
+      - app-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U metabase"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  metabase:
+    # Pinned to the long-term release, supported until February 2027. `latest`
+    # is a trap: a restart can silently jump a major version and change the
+    # notebook's schema underneath you.
+    image: metabase/metabase:v0.58.14
+    ports:
+      - "3000:3000"
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_HOST: app-db
+      MB_DB_PORT: 5432
+      MB_DB_DBNAME: metabase
+      MB_DB_USER: metabase
+      MB_DB_PASS: metabase-local-only
+
+      # Encrypts the saved Supabase password inside the notebook. Keep it — if
+      # it changes, Metabase can no longer read its own stored connections.
+      MB_ENCRYPTION_SECRET_KEY: ${MB_ENCRYPTION_SECRET_KEY}
+
+      # Defaults to true, and a public link bypasses the login entirely — the
+      # filters can even be stripped off the URL to reveal the whole question.
+      MB_ENABLE_PUBLIC_SHARING: "false"
+
+      # "Own the data, keep it private" applies to our own usage too.
+      MB_ANON_TRACKING_ENABLED: "false"
+
+      # The default is twenty minutes. On a laptop that is a frozen tab, not a
+      # slow query — fail fast and fix the question instead.
+      MB_DB_QUERY_TIMEOUT_MINUTES: "2"
+
+      # One person does not need fifteen idle connections held open against
+      # Supabase's pooler.
+      MB_JDBC_DATA_WAREHOUSE_MAX_CONNECTION_POOL_SIZE: "5"
+
+      # Leave room for the OS; the JVM guesses badly inside a container.
+      JAVA_TOOL_OPTIONS: -Xmx2g
+    depends_on:
+      app-db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  app-db:

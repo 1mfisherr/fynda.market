@@ -22,3 +22,7 @@ public/_redirects
 *.tmp.*
 tmp-*
 *-tmp.*
+
+# Local Metabase read-only credential. Never committed.
+metabase-password.txt
+metabase/.env
