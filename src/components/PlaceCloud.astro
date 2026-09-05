@@ -1,0 +1,80 @@
+---
+/**
+ * Every place we cover, with the busy ones set louder.
+ *
+ * The home page's Städte block and the canton page's town list — one component,
+ * so the two cannot drift into two designs.
+ *
+ * It was 55 rows in alphabetical order, all the same weight, each with its
+ * count on the right. That is the wrong shape for this data:
+ *
+ *   32 of 55 towns have exactly one market
+ *   45 have two or fewer
+ *   Basel has 28, and sat sixth because B comes after A
+ *
+ * So the block printed "1 Markt" thirty-two times, and the biggest flea-market
+ * city in the country looked exactly like a village with one. Now the type
+ * weight carries the number and the alphabet keeps the order, so a reader can
+ * both scan for size and look a name up.
+ *
+ * **One size, not five.** A weighted block sized by type looks lively on a
+ * desktop and ragged in a 390px column, where 55 items at five sizes wrap into
+ * a mess. Weight and colour rank just as well and leave one clean line rhythm
+ * at every width — which matters, because 81% of this site is read on a phone.
+ *
+ * The count itself appears only above one. Same rule as everywhere else: say
+ * the exception, never the rule — BRAND.md.
+ */
+export interface Place {
+  href: string;
+  label: string;
+  /** How many markets the place holds. Drives the weight, and shown above 1. */
+  count: number;
+}
+interface Props { items: Place[] }
+const { items } = Astro.props;
+
+/**
+ * Four steps, not fifty-five.
+ *
+ * A continuous scale over this distribution is unreadable — 45 of 55 towns
+ * would sit inside the bottom eighth of it. The thresholds are where the real
+ * gaps are: one market, a couple, a proper handful, and the five towns that
+ * carry the country.
+ */
+const step = (n: number) => (n >= 10 ? 3 : n >= 4 ? 2 : n >= 2 ? 1 : 0);
+---
+<ul class="cloud list-reset gutter">
+  {items.map((item) => (
+    <li>
+      <a class={`place s${step(item.count)}`} href={item.href}>
+        {item.label}{item.count > 1 && <i>{item.count}</i>}
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .cloud { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-items: baseline; }
+
+  .place {
+    font-size: var(--text-row-name);
+    letter-spacing: var(--tracking-title);
+    line-height: 1.3;
+  }
+  .place i {
+    margin-inline-start: var(--space-1);
+    color: var(--color-quiet);
+    font-size: var(--text-small);
+    font-style: normal;
+    font-weight: var(--weight-semibold);
+  }
+
+  /* The ladder. Nothing here is size — see the note above. */
+  .s0 { color: var(--color-quiet); font-weight: var(--weight-regular); }
+  .s1 { color: var(--color-grey); font-weight: var(--weight-semibold); }
+  .s2 { color: var(--color-ink); font-weight: var(--weight-bold); }
+  .s3 { color: var(--color-ink); font-weight: var(--weight-black); }
+  /* The top step earns the accent on its number, and only there. */
+  .s3 i { color: var(--color-accent); }
+</style>

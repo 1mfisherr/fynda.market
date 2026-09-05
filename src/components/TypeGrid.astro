@@ -7,9 +7,11 @@
  * it is a block of the home page, so it gets the room the approved design gave
  * it — the icon on a coloured tile, the word underneath.
  *
- * Both read LINES, so a kind cannot be one colour here and another there.
+ * The mark itself is LineBadge, in its 'tile' shape — the same component the
+ * market page and the legend use inline. This file owns the grid and the
+ * labels, and nothing about how a kind is drawn.
  */
-import Icon from './Icon.astro';
+import LineBadge from './LineBadge.astro';
 import { LEGEND, LINES } from '../lib/vocabulary';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
@@ -21,7 +23,7 @@ const s = t(locale);
 <ul class="types list-reset gutter" aria-label={s.marketTypes}>
   {LEGEND.map((kind) => (
     <li>
-      <span class="tile" style={`background:var(${LINES[kind].token})`}><Icon name={LINES[kind].icon} size={22} /></span>
+      <LineBadge kind={kind} variant="tile" />
       <span class="label">{LINES[kind].short[locale]}</span>
     </li>
   ))}
@@ -40,14 +42,6 @@ const s = t(locale);
     flex-direction: column;
     align-items: center;
     gap: var(--space-1);
-  }
-  .tile {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: var(--tap-min);
-    border-radius: var(--radius-sm);
-    color: var(--color-white);
   }
   .label {
     overflow: hidden;

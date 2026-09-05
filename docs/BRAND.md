@@ -105,6 +105,10 @@ A flea market is stuff you can see. Every market gets a picture — a photograph
 
 A list opens with one or two markets at full size and continues compact. A block with one size in it has no rhythm, and rhythm is most of what separates a page from a database dump. Recorded 2026-09-05, after a version that shrank the picture to 56px and read as exactly that.
 
+## Rank with weight, not with size
+
+Where a block has to show that some things are bigger than others, **the type weight and colour do it, and the size stays put.** A block sized by value looks alive on a desktop and ragged on a phone, where fifty-five items at five sizes wrap into a mess — and a page read on a phone 81% of the time cannot afford that. Four steps, chosen at the real gaps in the data, not a continuous scale nobody can decode. `components/PlaceCloud.astro`.
+
 ## One loud thing
 
 A row has exactly one thing set loud: **the name**. Everything under it steps down a weight — the rhythm in grey, the venue quieter still. Three levels, no ties, in the order of the decision: *which market → how often can I go → where exactly.*

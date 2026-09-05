@@ -72,7 +72,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 2. **Newsletter** — intent is highest right after someone has scanned the list, not at the top.
 3. **Organiser CTA** — the supply side earns its place before navigation does.
 4. **Diese Woche abgesagt** — only when something was cancelled. Nobody else surfaces cancellations where people actually look; MFT buries them on a page you must know to visit.
-5. **Cities with counts** — the one city component, linking to our best-earning page type.
+5. **Cities, weighted by count** — one component (`PlaceCloud`), shared with the canton page so the two cannot drift. All 55 towns, alphabetical so a name can be looked up, with the **type weight carrying the number**: 32 of 55 towns have one market and Basel has 28, so 55 identical rows put the biggest flea-market city in the country sixth, behind Adliswil, and printed "1 Markt" thirty-two times. The count now appears only above one. Four steps in weight, not fifty-five in size — a size-weighted block is lively at 1200px and ragged in a 390px column, and 81% of this site is read on a phone. The block went from roughly four screens to one.
 6. **Cantons**, compact pills, linking to the canton pages — thin in CH, real for Germany. Cities and cantons each carry a one-line lede, because two lists of Swiss place names in a row do not say which is which.
 7. **Five market types** — icon on a coloured tile, name underneath. 1.8% of clicks, and first to cut, but it is what teaches the colour on every row.
 8. **Woher unsere Daten kommen** + live numbers.

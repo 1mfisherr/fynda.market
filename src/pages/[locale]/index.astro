@@ -10,7 +10,7 @@ import Page from '../../layouts/Page.astro';
 import Button from '../../components/Button.astro';
 import Faq from '../../components/Faq.astro';
 import CtaCard from '../../components/CtaCard.astro';
-import LinkList from '../../components/LinkList.astro';
+import PlaceCloud from '../../components/PlaceCloud.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
 import Icon from '../../components/Icon.astro';
@@ -176,10 +176,10 @@ const jsonLd = {
   )}
 
   <Section id="staedte" title={s.cities} lede={s.citiesLede}>
-    <LinkList items={cities.map(([slug, city]) => ({
+    <PlaceCloud items={cities.map(([slug, city]) => ({
       href: cityPath(locale, countrySlug, slug),
       label: city,
-      meta: s.marketCount(markets.filter((m) => m.citySlug === slug).length),
+      count: markets.filter((m) => m.citySlug === slug).length,
     }))} />
   </Section>
 

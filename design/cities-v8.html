@@ -1,0 +1,232 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fynda — Städte, four ways</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --accent:#FF4A2B; --ink:#111110; --grey:#6E6C68; --quiet:#9A968F;
+  --line:#E8E6E2; --paper:#F5F4F2; --stage:#2A2926;
+  --t-h2:clamp(21px,calc(18.8px + .59vw),27px);
+  --t-name:clamp(16px,calc(14.3px + .45vw),20px);
+  --t-body:clamp(13px,calc(11.6px + .37vw),16px);
+  --t-small:clamp(12.5px,calc(11.2px + .35vw),15.5px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--stage);color:#fff;padding:26px 16px 80px;overflow-wrap:break-word;
+  font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+.lab{max-width:1100px;margin:0 auto}
+.lab>.mk{font-size:17px;font-weight:800;letter-spacing:-.045em}
+.lab>.mk span{color:var(--accent)}
+.lab>h1{font-size:25px;font-weight:800;letter-spacing:-.04em;margin-top:10px;line-height:1.12}
+.note{color:#B5B1A8;font-size:13.5px;line-height:1.6;margin-top:10px;max-width:680px}
+.note b{color:#fff;font-weight:700}
+.tally{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0 6px}
+.tally div{color:#B5B1A8;font-size:12px;line-height:1.35}
+.tally b{display:block;color:#fff;font-size:22px;font-weight:800;letter-spacing:-.03em}
+.opt{margin-top:48px;border-top:1px solid #46443F;padding-top:24px}
+.opt h2{font-size:18px;font-weight:800;letter-spacing:-.03em}
+.opt h2 em{font-style:normal;color:var(--accent)}
+.say{color:#B5B1A8;font-size:13.5px;line-height:1.6;margin-top:8px;max-width:680px}
+.say b{color:#fff;font-weight:700}
+.panel{background:#fff;color:var(--ink);border-radius:12px;padding:22px 18px;margin-top:16px;
+  box-shadow:0 16px 40px rgba(0,0,0,.32)}
+a{color:inherit;text-decoration:none}
+.h{font-size:var(--t-h2);font-weight:800;letter-spacing:-.03em}
+.lede{color:var(--grey);font-size:var(--t-body);margin-top:4px;margin-bottom:16px}
+
+/* ---- shared pieces ---- */
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 15px;border-radius:99px;
+  border:1px solid var(--line);font-size:var(--t-small);font-weight:700}
+.pill i{font-style:normal;color:var(--quiet);font-weight:600;font-size:12px}
+
+/* A — a few big, the rest quiet */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}
+.tile{border:1px solid var(--line);border-radius:14px;padding:14px}
+.tile b{display:block;font-size:var(--t-name);font-weight:800;letter-spacing:-.02em}
+.tile span{display:block;margin-top:2px;color:var(--accent);font-size:var(--t-small);font-weight:800}
+.rest-h{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--quiet);margin:0 0 10px}
+
+/* B — by canton */
+.grp{margin-bottom:18px}
+.grp h4{font-size:var(--t-small);font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding-bottom:6px;margin-bottom:9px;border-bottom:1px solid var(--ink)}
+.grp h4 span{float:right;color:var(--quiet);font-weight:600;letter-spacing:0;text-transform:none}
+@media(min-width:760px){.cols{columns:2;column-gap:32px}.grp{break-inside:avoid}}
+
+/* C — weighted */
+.cloud{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
+.w{font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.w i{font-style:normal;color:var(--quiet);font-size:.7em;font-weight:600;margin-left:4px}
+
+/* D — ranked with a bar */
+.rank{display:grid;gap:0}
+@media(min-width:760px){.rank{grid-template-columns:1fr 1fr;column-gap:34px}}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr) 64px 34px;gap:10px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--line);font-size:var(--t-small)}
+.rrow b{font-weight:700}
+.bar{height:6px;border-radius:99px;background:var(--paper);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--accent);border-radius:99px}
+.rrow em{font-style:normal;color:var(--quiet);font-weight:600;text-align:right}
+
+/* now */
+.old li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);
+  font-size:var(--t-small);font-weight:700;list-style:none}
+.old li span{color:var(--grey)}
+</style>
+
+<div class="lab">
+  <div class="mk">fynda<span>.</span></div>
+  <h1>Städte — four ways</h1>
+  <p class="note">Live counts. The block is 55 rows in alphabetical order, every one the same weight. That is the wrong shape for this data:</p>
+  <div class="tally">
+    <div><b>32 of 55</b>towns have exactly<br>one market</div>
+    <div><b>45 of 55</b>have two or fewer</div>
+    <div><b>5</b>towns hold<br>more than four</div>
+    <div><b>Basel 28</b>sits sixth in the list,<br>because B comes after A</div>
+  </div>
+  <p class="note"><b>Every option keeps all 55 links</b> — the block is real navigation into the best-earning page type. What changes is the order and the weight. And all four drop “1 Markt”, which is printed 32 times today and is the same noise as “frei” on 151 rows.</p>
+
+<div class="opt">
+  <h2><em>Now.</em> Alphabetical, all equal</h2>
+  <div class="panel">
+    <div class="h">Städte</div>
+    <p class="lede">Orte mit mindestens einem bekannten Markt.</p>
+    <ul class="old"><li>Aarau<span>4 Märkte</span></li><li>Adliswil<span>1 Markt</span></li><li>Affoltern am Albis<span>1 Markt</span></li><li>Allschwil<span>1 Markt</span></li><li>Baden<span>2 Märkte</span></li><li>Basel<span>28 Märkte</span></li><li>Bern<span>14 Märkte</span></li><li>Beromünster<span>1 Markt</span></li><li>Bottmingen<span>1 Markt</span></li><li>Buchs AG<span>1 Markt</span></li>
+      <li style="border:0;color:var(--quiet);font-weight:600">… und 45 weitere</li></ul>
+  </div>
+</div>
+
+<div class="opt">
+  <h2><em>A.</em> Five big, fifty quiet</h2>
+  <p class="say">The towns with four or more get a tile and their count in the accent; the other 47 become pills, alphabetical. <b>Matches the data — five towns really do hold most of the country.</b> Shortest of the four on a phone, and the biggest cities stop hiding behind the alphabet.<br><b>Weak spot:</b> a hard line at four is arbitrary, and a town just under it looks demoted.</p>
+  <div class="panel">
+    <div class="h">Städte</div>
+    <p class="lede">55 Orte mit mindestens einem bekannten Markt.</p>
+    <div class="tiles"><a class="tile" href="#"><b>Basel</b><span>28 Märkte</span></a><a class="tile" href="#"><b>Zürich</b><span>17 Märkte</span></a><a class="tile" href="#"><b>Lausanne</b><span>15 Märkte</span></a><a class="tile" href="#"><b>Bern</b><span>14 Märkte</span></a><a class="tile" href="#"><b>Luzern</b><span>7 Märkte</span></a><a class="tile" href="#"><b>Aarau</b><span>4 Märkte</span></a><a class="tile" href="#"><b>Genf</b><span>4 Märkte</span></a><a class="tile" href="#"><b>St. Gallen</b><span>4 Märkte</span></a></div>
+    <p class="rest-h">Auch mit Markt</p>
+    <div class="pills"><a class="pill" href="#">Adliswil</a><a class="pill" href="#">Affoltern am Albis</a><a class="pill" href="#">Allschwil</a><a class="pill" href="#">Baden<i>2</i></a><a class="pill" href="#">Beromünster</a><a class="pill" href="#">Bottmingen</a><a class="pill" href="#">Buchs AG</a><a class="pill" href="#">Bülach</a><a class="pill" href="#">Bulle</a><a class="pill" href="#">Carouge</a><a class="pill" href="#">Chur<i>2</i></a><a class="pill" href="#">Dietikon<i>2</i></a><a class="pill" href="#">Dübendorf<i>2</i></a><a class="pill" href="#">Ebikon</a><a class="pill" href="#">Echichens</a><a class="pill" href="#">Freiburg<i>2</i></a><a class="pill" href="#">Hölstein</a><a class="pill" href="#">Kloten<i>2</i></a><a class="pill" href="#">Kriens</a><a class="pill" href="#">Lenzburg</a><a class="pill" href="#">Liebefeld</a><a class="pill" href="#">Liesberg</a><a class="pill" href="#">Lugano</a><a class="pill" href="#">Lutry<i>2</i></a><a class="pill" href="#">Muttenz</a><a class="pill" href="#">Nyon<i>2</i></a><a class="pill" href="#">Oetwil am See</a><a class="pill" href="#">Paradiso</a><a class="pill" href="#">Pratteln<i>3</i></a><a class="pill" href="#">Rafz</a><a class="pill" href="#">Reinach<i>2</i></a><a class="pill" href="#">Riehen<i>3</i></a><a class="pill" href="#">Root<i>2</i></a><a class="pill" href="#">Rümlang</a><a class="pill" href="#">Schaffhausen</a><a class="pill" href="#">Schlieren</a><a class="pill" href="#">Subingen</a><a class="pill" href="#">Thun</a><a class="pill" href="#">Uster<i>2</i></a><a class="pill" href="#">Vevey<i>2</i></a><a class="pill" href="#">Villeneuve</a><a class="pill" href="#">Wädenswil</a><a class="pill" href="#">Wettingen</a><a class="pill" href="#">Wetzikon</a><a class="pill" href="#">Winterthur<i>2</i></a><a class="pill" href="#">Worb</a><a class="pill" href="#">Yverdon-les-Bains</a></div>
+  </div>
+</div>
+
+<div class="opt">
+  <h2><em>B.</em> By canton</h2>
+  <p class="say">Fourteen groups, biggest first, towns inside each ordered by size. <b>The only option that adds information rather than rearranging it</b> — it tells a visitor where a town they do not know actually is, and it mirrors the canton pages directly below.<br><b>Weak spot:</b> fourteen headings for 55 towns is a lot of furniture, and six cantons hold only one or two towns.</p>
+  <div class="panel">
+    <div class="h">Städte</div>
+    <p class="lede">55 Orte in 14 Kantonen.</p>
+    <div class="cols">
+      <div class="grp">
+        <h4>Zürich<span>36 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Zürich<i>17</i></a><a class="pill" href="#">Dietikon<i>2</i></a><a class="pill" href="#">Dübendorf<i>2</i></a><a class="pill" href="#">Kloten<i>2</i></a><a class="pill" href="#">Uster<i>2</i></a><a class="pill" href="#">Winterthur<i>2</i></a><a class="pill" href="#">Adliswil</a><a class="pill" href="#">Affoltern am Albis</a><a class="pill" href="#">Bülach</a><a class="pill" href="#">Oetwil am See</a><a class="pill" href="#">Rafz</a><a class="pill" href="#">Rümlang</a><a class="pill" href="#">Schlieren</a><a class="pill" href="#">Wädenswil</a><a class="pill" href="#">Wetzikon</a></div>
+      </div>
+      <div class="grp">
+        <h4>Basel-Stadt<span>31 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Basel<i>28</i></a><a class="pill" href="#">Riehen<i>3</i></a></div>
+      </div>
+      <div class="grp">
+        <h4>Waadt<span>24 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Lausanne<i>15</i></a><a class="pill" href="#">Lutry<i>2</i></a><a class="pill" href="#">Nyon<i>2</i></a><a class="pill" href="#">Vevey<i>2</i></a><a class="pill" href="#">Echichens</a><a class="pill" href="#">Villeneuve</a><a class="pill" href="#">Yverdon-les-Bains</a></div>
+      </div>
+      <div class="grp">
+        <h4>Bern<span>17 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Bern<i>14</i></a><a class="pill" href="#">Liebefeld</a><a class="pill" href="#">Thun</a><a class="pill" href="#">Worb</a></div>
+      </div>
+      <div class="grp">
+        <h4>Luzern<span>12 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Luzern<i>7</i></a><a class="pill" href="#">Root<i>2</i></a><a class="pill" href="#">Beromünster</a><a class="pill" href="#">Ebikon</a><a class="pill" href="#">Kriens</a></div>
+      </div>
+      <div class="grp">
+        <h4>Basel-Landschaft<span>10 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Pratteln<i>3</i></a><a class="pill" href="#">Reinach<i>2</i></a><a class="pill" href="#">Allschwil</a><a class="pill" href="#">Bottmingen</a><a class="pill" href="#">Hölstein</a><a class="pill" href="#">Liesberg</a><a class="pill" href="#">Muttenz</a></div>
+      </div>
+      <div class="grp">
+        <h4>Aargau<span>9 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Aarau<i>4</i></a><a class="pill" href="#">Baden<i>2</i></a><a class="pill" href="#">Buchs AG</a><a class="pill" href="#">Lenzburg</a><a class="pill" href="#">Wettingen</a></div>
+      </div>
+      <div class="grp">
+        <h4>Genf<span>5 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Genf<i>4</i></a><a class="pill" href="#">Carouge</a></div>
+      </div>
+      <div class="grp">
+        <h4>St. Gallen<span>4 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">St. Gallen<i>4</i></a></div>
+      </div>
+      <div class="grp">
+        <h4>Freiburg<span>3 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Freiburg<i>2</i></a><a class="pill" href="#">Bulle</a></div>
+      </div>
+      <div class="grp">
+        <h4>Graubünden<span>2 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Chur<i>2</i></a></div>
+      </div>
+      <div class="grp">
+        <h4>Tessin<span>2 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Lugano</a><a class="pill" href="#">Paradiso</a></div>
+      </div>
+      <div class="grp">
+        <h4>Schaffhausen<span>1 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Schaffhausen</a></div>
+      </div>
+      <div class="grp">
+        <h4>Solothurn<span>1 Märkte</span></h4>
+        <div class="pills"><a class="pill" href="#">Subingen</a></div>
+      </div></div>
+  </div>
+</div>
+
+<div class="opt">
+  <h2><em>C.</em> Weighted — size is the count</h2>
+  <p class="say">All 55 in one block, alphabetical, with the type size carrying the number. <b>Densest and most alive</b>: Basel is visibly the biggest thing on the page without a single label, and the whole country fits in about one screen.<br><b>Weak spot:</b> it is a tag cloud, and tag clouds read as decorative. The smallest towns get quite small.</p>
+  <div class="panel">
+    <div class="h">Städte</div>
+    <p class="lede">55 Orte. Je grösser, desto mehr Märkte.</p>
+    <div class="cloud"><a class="w" href="#" style="font-size:20px;font-weight:800;color:var(--ink)">Aarau<i>4</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Adliswil</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Affoltern am Albis</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Allschwil</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Baden<i>2</i></a><a class="w" href="#" style="font-size:30px;font-weight:800;color:var(--ink)">Basel<i>28</i></a><a class="w" href="#" style="font-size:25px;font-weight:800;color:var(--ink)">Bern<i>14</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Beromünster</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Bottmingen</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Buchs AG</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Bülach</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Bulle</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Carouge</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Chur<i>2</i></a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Dietikon<i>2</i></a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Dübendorf<i>2</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Ebikon</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Echichens</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Freiburg<i>2</i></a><a class="w" href="#" style="font-size:20px;font-weight:800;color:var(--ink)">Genf<i>4</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Hölstein</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Kloten<i>2</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Kriens</a><a class="w" href="#" style="font-size:26px;font-weight:800;color:var(--ink)">Lausanne<i>15</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Lenzburg</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Liebefeld</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Liesberg</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Lugano</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Lutry<i>2</i></a><a class="w" href="#" style="font-size:22px;font-weight:800;color:var(--ink)">Luzern<i>7</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Muttenz</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Nyon<i>2</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Oetwil am See</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Paradiso</a><a class="w" href="#" style="font-size:19px;font-weight:600;color:var(--grey)">Pratteln<i>3</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Rafz</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Reinach<i>2</i></a><a class="w" href="#" style="font-size:19px;font-weight:600;color:var(--grey)">Riehen<i>3</i></a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Root<i>2</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Rümlang</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Schaffhausen</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Schlieren</a><a class="w" href="#" style="font-size:20px;font-weight:800;color:var(--ink)">St. Gallen<i>4</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Subingen</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Thun</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Uster<i>2</i></a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Vevey<i>2</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Villeneuve</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Wädenswil</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Wettingen</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Wetzikon</a><a class="w" href="#" style="font-size:18px;font-weight:600;color:var(--grey)">Winterthur<i>2</i></a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Worb</a><a class="w" href="#" style="font-size:17px;font-weight:600;color:var(--grey)">Yverdon-les-Bains</a><a class="w" href="#" style="font-size:26px;font-weight:800;color:var(--ink)">Zürich<i>17</i></a></div>
+  </div>
+</div>
+
+<div class="opt">
+  <h2><em>D.</em> Ranked, with a bar</h2>
+  <p class="say">Sorted by size, two columns, a bar for the shape. <b>The most honest ranking</b> — you can see at a glance that this is a five-city country — and it stays a list, which is what the block is.<br><b>Weak spot:</b> the bar is nearly invisible for the 45 towns with one or two, so most of the block is empty bars. Alphabetical lookup is gone.</p>
+  <div class="panel">
+    <div class="h">Städte</div>
+    <p class="lede">55 Orte, nach Anzahl Märkte.</p>
+    <div class="rank">
+      <a class="rrow" href="#"><b>Basel</b><span class="bar"><span style="width:100%"></span></span><em>28</em></a>
+      <a class="rrow" href="#"><b>Zürich</b><span class="bar"><span style="width:60.71428571428571%"></span></span><em>17</em></a>
+      <a class="rrow" href="#"><b>Lausanne</b><span class="bar"><span style="width:53.57142857142857%"></span></span><em>15</em></a>
+      <a class="rrow" href="#"><b>Bern</b><span class="bar"><span style="width:50%"></span></span><em>14</em></a>
+      <a class="rrow" href="#"><b>Luzern</b><span class="bar"><span style="width:25%"></span></span><em>7</em></a>
+      <a class="rrow" href="#"><b>Aarau</b><span class="bar"><span style="width:14.285714285714285%"></span></span><em>4</em></a>
+      <a class="rrow" href="#"><b>Genf</b><span class="bar"><span style="width:14.285714285714285%"></span></span><em>4</em></a>
+      <a class="rrow" href="#"><b>St. Gallen</b><span class="bar"><span style="width:14.285714285714285%"></span></span><em>4</em></a>
+      <a class="rrow" href="#"><b>Pratteln</b><span class="bar"><span style="width:10.714285714285714%"></span></span><em>3</em></a>
+      <a class="rrow" href="#"><b>Riehen</b><span class="bar"><span style="width:10.714285714285714%"></span></span><em>3</em></a>
+      <a class="rrow" href="#"><b>Baden</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Chur</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Dietikon</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Dübendorf</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Freiburg</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Kloten</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Lutry</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Nyon</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Reinach</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Root</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Uster</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Vevey</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Winterthur</b><span class="bar"><span style="width:7.142857142857142%"></span></span><em>2</em></a>
+      <a class="rrow" href="#"><b>Adliswil</b><span class="bar"><span style="width:4%"></span></span><em>1</em></a>
+    </div>
+    <p class="rest-h" style="margin-top:14px">Und 31 weitere</p>
+    <div class="pills"><a class="pill" href="#">Affoltern am Albis</a><a class="pill" href="#">Allschwil</a><a class="pill" href="#">Beromünster</a><a class="pill" href="#">Bottmingen</a><a class="pill" href="#">Buchs AG</a><a class="pill" href="#">Bülach</a><a class="pill" href="#">Bulle</a><a class="pill" href="#">Carouge</a><a class="pill" href="#">Ebikon</a><a class="pill" href="#">Echichens</a><a class="pill" href="#">Hölstein</a><a class="pill" href="#">Kriens</a><a class="pill" href="#">Lenzburg</a><a class="pill" href="#">Liebefeld</a><a class="pill" href="#">Liesberg</a><a class="pill" href="#">Lugano</a><a class="pill" href="#">Muttenz</a><a class="pill" href="#">Oetwil am See</a><a class="pill" href="#">Paradiso</a><a class="pill" href="#">Rafz</a><a class="pill" href="#">Rümlang</a><a class="pill" href="#">Schaffhausen</a><a class="pill" href="#">Schlieren</a><a class="pill" href="#">Subingen</a><a class="pill" href="#">Thun</a><a class="pill" href="#">Villeneuve</a><a class="pill" href="#">Wädenswil</a><a class="pill" href="#">Wettingen</a><a class="pill" href="#">Wetzikon</a><a class="pill" href="#">Worb</a><a class="pill" href="#">Yverdon-les-Bains</a></div>
+  </div>
+</div>
+
+<div class="opt">
+  <h2>If you want my pick</h2>
+  <p class="say"><b>A, and B if the canton pages matter to you.</b><br><br>A is the one that matches the data: five towns hold most of the country, and it says so in one glance without any new ideas on the page. It is also the shortest on a phone.<br><br>B is the only one that <i>adds</i> something — where a town is — and it feeds the canton block directly below it, which is otherwise a second list of Swiss place names with nothing to say which is which. If the German launch is going to lean on Bundesland pages, B is the pattern you want to have already built.<br><br>C is the prettiest and I would not ship it: a tag cloud says "we could not decide what matters". D is honest and boring, and forty-five empty bars is a bad look for a country with real coverage.</p>
+</div>
+</div>

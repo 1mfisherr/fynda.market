@@ -1,33 +1,61 @@
 ---
 /**
- * A market kind as a coloured badge: the icon on the kind's colour.
+ * A market kind as a coloured mark: the kind's icon on the kind's colour.
  *
- * This used to be LineCode, and it drew a two-letter code — FM, HA, NA. The
- * home page's TypeGrid drew the same five kinds as icons on the same colours,
- * so one site had two visual languages for one idea, and the market page ended
- * with a key explaining letters nobody had been taught. Both read LINES; now
- * both draw the same mark.
+ * The single owner of that mark, in both the shapes the site needs.
+ *
+ *   inline  a small badge beside a word — the market page's eyebrow, the legend.
+ *   tile    a full-width block filling its grid cell — the home page's TypeGrid.
+ *
+ * It has been split twice already. First into a two-letter code (FM, HA) on the
+ * market page while the home page drew icons, so one site had two visual
+ * languages for one idea. Then, once both drew icons, into two wrappers with
+ * their own padding and radius — same icon, different box, and changing one did
+ * nothing to the other. Both shapes live here now: change the padding, the
+ * radius or the colour once and every page follows.
  */
 import Icon from './Icon.astro';
 import type { MarketKind } from '../lib/types';
 import { LINES } from '../lib/vocabulary';
 
-interface Props { kind: MarketKind; muted?: boolean; size?: number }
-const { kind, muted = false, size = 14 } = Astro.props;
+interface Props {
+  kind: MarketKind;
+  /** 'inline' beside a word, 'tile' filling a grid cell. */
+  variant?: 'inline' | 'tile';
+  muted?: boolean;
+}
+const { kind, variant = 'inline', muted = false } = Astro.props;
 const line = LINES[kind];
 ---
-<span class:list={['badge', { muted }]} style={muted ? undefined : `background:var(${line.token})`}>
-  <Icon name={line.icon} size={size} />
+<span
+  class:list={['badge', variant, { muted }]}
+  style={muted ? undefined : `background:var(${line.token})`}
+>
+  <Icon name={line.icon} size={variant === 'tile' ? 22 : 14} />
 </span>
+
 <style>
   .badge {
+    color: var(--color-white);
+    line-height: 1;
+  }
+  .badge.muted { background: var(--color-quiet); }
+
+  .badge.inline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: var(--space-half);
     border-radius: var(--radius-xs);
-    color: var(--color-white);
-    line-height: 1;
   }
-  .badge.muted { background: var(--color-quiet); }
+
+  /* Fills the cell it is given — the grid decides the width, this decides the
+     height, so five of them line up without the grid knowing what is inside. */
+  .badge.tile {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: var(--tap-min);
+    border-radius: var(--radius-sm);
+  }
 </style>

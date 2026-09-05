@@ -19,7 +19,7 @@
 import Page from '../../../../layouts/Page.astro';
 import CtaCard from '../../../../components/CtaCard.astro';
 import DateFilters from '../../../../components/DateFilters.astro';
-import LinkList from '../../../../components/LinkList.astro';
+import PlaceCloud from '../../../../components/PlaceCloud.astro';
 import MarketRow from '../../../../components/MarketRow.astro';
 import Section from '../../../../components/Section.astro';
 import TypeLegend from '../../../../components/TypeLegend.astro';
@@ -123,10 +123,10 @@ const jsonLd = {
   </section>
 
   <Section title={s.cities}>
-    <LinkList items={cities.map((c) => ({
+    <PlaceCloud items={cities.map((c) => ({
       href: cityPath(locale, country, c.slug),
       label: c.city,
-      meta: s.marketCount(c.count),
+      count: c.count,
     }))} />
   </Section>
 

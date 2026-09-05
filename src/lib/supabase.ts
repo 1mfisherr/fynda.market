@@ -35,6 +35,8 @@ interface Row {
   website_url: string | null;
   recurrence_text: string | null;
   organiser_name: string | null;
+  verified_by: Market['verifiedBy'] | null;
+  verified_at: string | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -71,6 +73,8 @@ const SQL = `
     m.entry_fee,
     m.image_url,
     m.website_url,
+    m.verified_by,
+    m.verified_at,
     org.name                                        as organiser_name,
     coalesce(rt.value, m.recurrence_text)           as recurrence_text,
     (
@@ -164,6 +168,8 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         upcoming: dates.filter((_, i) => i !== nextIndex),
         imageUrl: row.image_url ?? undefined,
         recurrenceText: row.recurrence_text ?? undefined,
+        verifiedBy: row.verified_by ?? undefined,
+        verifiedAt: row.verified_at?.slice(0, 10) ?? undefined,
         organiserName: row.organiser_name ?? undefined,
         websiteUrl: row.website_url ?? undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
