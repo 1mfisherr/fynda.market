@@ -45,7 +45,7 @@ const rows = datedRows(markets);
  * one per town so it reads as a country rather than as one city's diary, and
  * the picker underneath is the way out of it. `src/lib/lists.ts`.
  */
-const { lead, rest, total, from, to } = weekendLead(rows, 6);
+const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
 
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
@@ -103,16 +103,26 @@ const jsonLd = {
       <div class="gutter">
         {rest.map((market) => <MarketRow market={market} locale={locale} />)}
       </div>
-      <div class="gutter more">
-        <Button href={nearbyPath()} variant="quiet">{s.allWeekend(total)}</Button>
-      </div>
+      {/* Opens in place. It used to link to /umkreis/, which is the radius
+          view and holds a different list — a button that says "all 38" and
+          then shows something else is worse than no button. */}
+      {more.length > 0 && (
+        <>
+          <div id="rest-of-weekend" hidden>
+            {more.map((market) => <MarketRow market={market} locale={locale} />)}
+          </div>
+          <div class="gutter more">
+            <Button variant="quiet" data-expand aria-controls="rest-of-weekend" aria-expanded="false">{s.allWeekend(total)}</Button>
+          </div>
+        </>
+      )}
     </Section>
   )}
 
   <TownPicker
     locale={locale}
     countrySlug={countrySlug}
-    allHref={nearbyPath()}
+    allHref="#staedte"
     total={cities.length}
     towns={cities
       .map(([slug, city]) => ({ slug, name: city, count: markets.filter((m) => m.citySlug === slug).length }))
@@ -137,7 +147,7 @@ const jsonLd = {
     </Section>
   )}
 
-  <Section title={s.cities} lede={s.citiesLede}>
+  <Section id="staedte" title={s.cities} lede={s.citiesLede}>
     <LinkList items={cities.map(([slug, city]) => ({
       href: cityPath(locale, countrySlug, slug),
       label: city,
@@ -171,6 +181,25 @@ const jsonLd = {
     <Faq items={s.faq} />
   </Section>
 </Page>
+
+<script>
+  /**
+   * "Alle 38 Märkte am Wochenende" opens the rest in place. No new URL, no
+   * navigation, and every row is in the HTML either way — hiding rows from a
+   * crawler to save a scroll trades the thing that earns traffic for the thing
+   * that costs nothing.
+   */
+  const button = document.querySelector<HTMLButtonElement>('[data-expand]');
+  const rest = document.getElementById('rest-of-weekend');
+
+  if (button && rest) {
+    button.addEventListener('click', () => {
+      rest.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+      button.hidden = true;
+    });
+  }
+</script>
 
 <style>
   /* Only what is genuinely this page's. Everything else is a component. */

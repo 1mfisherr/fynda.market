@@ -34,6 +34,7 @@ interface Row {
   image_url: string | null;
   website_url: string | null;
   recurrence_text: string | null;
+  organiser_name: string | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -70,6 +71,7 @@ const SQL = `
     m.entry_fee,
     m.image_url,
     m.website_url,
+    org.name                                        as organiser_name,
     coalesce(rt.value, m.recurrence_text)           as recurrence_text,
     (
       select jsonb_agg(o order by o.date)
@@ -84,6 +86,7 @@ const SQL = `
   from public.publishable_markets p
   join public.markets m on m.id = p.id
   join public.venues v on v.id = p.venue_id
+  left join public.organisers org on org.id = m.organiser_id
   join public.slugs sc on sc.entity_type = 'city' and sc.entity_id = p.city_id
                       and sc.locale = $1 and sc.is_current
   join public.texts tc on tc.entity_type = 'city' and tc.entity_id = p.city_id
@@ -161,6 +164,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         upcoming: dates.filter((_, i) => i !== nextIndex),
         imageUrl: row.image_url ?? undefined,
         recurrenceText: row.recurrence_text ?? undefined,
+        organiserName: row.organiser_name ?? undefined,
         websiteUrl: row.website_url ?? undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
       };

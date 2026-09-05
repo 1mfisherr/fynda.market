@@ -66,6 +66,32 @@ const event = next ? {
     geo: { '@type': 'GeoCoordinates', latitude: market.lat, longitude: market.lng },
   },
   url,
+  // Search Console asks for these four on every Event. We hold real values for
+  // all of them, so they are worth emitting — and only where we do: an absent
+  // field is a smaller problem than an invented one.
+  //
+  // `performer` is the fifth it asks for and is deliberately absent. A flea
+  // market has no act; naming one to satisfy a checklist is exactly the padding
+  // that got v1 classified as spam.
+  ...(market.imageUrl ? { image: [`${site}${market.imageUrl}`] } : {}),
+  ...(market.description ? { description: market.description } : {}),
+  ...(market.organiserName ? {
+    organizer: {
+      '@type': 'Organization',
+      name: market.organiserName,
+      ...(market.websiteUrl ? { url: market.websiteUrl } : {}),
+    },
+  } : {}),
+  ...(market.entryFee !== undefined ? {
+    offers: {
+      '@type': 'Offer',
+      price: market.entryFee,
+      priceCurrency: 'CHF',
+      availability: 'https://schema.org/InStock',
+      validFrom: `${next.date}T00:00:00`,
+      url,
+    },
+  } : {}),
 } : null;
 const jsonLd = {
   '@context': 'https://schema.org',

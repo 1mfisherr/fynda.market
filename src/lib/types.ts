@@ -72,6 +72,11 @@ export interface Market {
   recurrenceText?: string;
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
   imageUrl?: string;
+  /**
+   * Who runs it. Held for 155 of 157. Search Console asks for `organizer` on
+   * every Event; it is also the only name a visitor can hold responsible.
+   */
+  organiserName?: string;
   /** The organiser's own page. Held for 153 of 157 markets and worth a button. */
   websiteUrl?: string;
   stallCount?: number;

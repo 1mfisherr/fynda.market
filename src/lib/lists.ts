@@ -103,7 +103,7 @@ export function weekendLead(
   rows: Dated[],
   count = 6,
   now = new Date()
-): { lead: Dated[]; rest: Dated[]; total: number; from: string; to: string } {
+): { lead: Dated[]; rest: Dated[]; more: Dated[]; total: number; from: string; to: string } {
   const days = weekendDays(rows, now);
   const all = days.flat();
   const total = new Set(all.map((r) => r.slug)).size;
@@ -126,9 +126,19 @@ export function weekendLead(
   picked.sort((a, b) => a.next.date.localeCompare(b.next.date) ||
     (a.next.startTime ?? '').localeCompare(b.next.startTime ?? ''));
 
+  /* Everything the six did not cover, in date order. It is rendered too, and
+     hidden — "Alle 38" opens it in place. A button that says "all of them"
+     must not navigate to a page that holds something else. */
+  const chosen = new Set(picked);
+  const more = all
+    .filter((row) => !chosen.has(row))
+    .sort((a, b) => a.next.date.localeCompare(b.next.date) ||
+      (a.next.startTime ?? '').localeCompare(b.next.startTime ?? ''));
+
   return {
     lead: picked.slice(0, 2),
     rest: picked.slice(2),
+    more,
     total,
     from: all[0]?.next.date ?? '',
     to: all[all.length - 1]?.next.date ?? '',
