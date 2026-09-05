@@ -50,12 +50,7 @@ export interface Strings {
   thisWeekendLede: (n: number, from: string, to: string) => string;
   allWeekend: (n: number) => string;
   /* The home page's one question, asked below the markets — TownPicker. */
-  whereAreYou: string;
-  whereAreYouLede: string;
-  nearMe: string;
-  allTowns: (n: number) => string;
   yourTown: string;
-  weekendHere: (city: string) => string;
   cities: string;
   regions: string;
   marketTypes: string;
@@ -196,12 +191,7 @@ const de: Strings = {
   homeProof: 'Wir schreiben zu jedem Termin, wann wir ihn zuletzt beim Veranstalter bestätigt haben. Absagen bleiben stehen, mit Grund.',
   thisWeekend: 'Dieses Wochenende',
   allWeekend: (n) => `Alle ${n} Märkte am Wochenende`,
-  whereAreYou: 'Wo sind Sie?',
-  whereAreYouLede: 'Einmal wählen — beim nächsten Besuch startet Fynda dort. Kein Konto.',
-  nearMe: 'In meiner Nähe',
-  allTowns: (n) => `Alle ${n} Städte`,
   yourTown: 'Ihre Stadt',
-  weekendHere: (city) => `Dieses Wochenende in ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from} und ${to}.`,
   cities: 'Städte',
   regions: 'Kantone',
@@ -336,12 +326,7 @@ const en: Strings = {
   homeProof: 'For every date we write down when we last confirmed it with the organiser. Cancellations stay on the page, with the reason.',
   thisWeekend: 'This weekend',
   allWeekend: (n) => `All ${n} markets this weekend`,
-  whereAreYou: 'Where are you?',
-  whereAreYouLede: 'Choose once — next time Fynda starts there. No account.',
-  nearMe: 'Near me',
-  allTowns: (n) => `All ${n} towns`,
   yourTown: 'Your town',
-  weekendHere: (city) => `This weekend in ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from} and ${to}.`,
   cities: 'Cities',
   regions: 'Cantons',
@@ -480,12 +465,7 @@ const fr: Strings = {
   homeProof: "Pour chaque date, nous indiquons quand nous l'avons confirmée avec l'organisateur. Les annulations restent affichées, avec le motif.",
   thisWeekend: 'Ce week-end',
   allWeekend: (n) => `Les ${n} marchés du week-end`,
-  whereAreYou: 'Où êtes-vous ?',
-  whereAreYouLede: 'Choisissez une fois — la prochaine visite commencera là. Sans compte.',
-  nearMe: 'Près de moi',
-  allTowns: (n) => `Les ${n} villes`,
   yourTown: 'Votre ville',
-  weekendHere: (city) => `Ce week-end à ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from} et le ${to}.`,
   cities: 'Villes',
   regions: 'Cantons',
@@ -620,12 +600,7 @@ const it: Strings = {
   homeProof: "Per ogni data indichiamo quando l'abbiamo confermata con l'organizzatore. Le cancellazioni restano visibili, con il motivo.",
   thisWeekend: 'Questo fine settimana',
   allWeekend: (n) => `Tutti i ${n} mercatini del fine settimana`,
-  whereAreYou: 'Dove siete?',
-  whereAreYouLede: 'Scegliete una volta — alla prossima visita Fynda parte da lì. Senza account.',
-  nearMe: 'Vicino a me',
-  allTowns: (n) => `Tutte le ${n} città`,
   yourTown: 'La vostra città',
-  weekendHere: (city) => `Questo fine settimana a ${city}.`,
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from} e il ${to}.`,
   cities: 'Città',
   regions: 'Cantoni',

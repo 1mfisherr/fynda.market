@@ -13,14 +13,14 @@ import CtaCard from '../../components/CtaCard.astro';
 import LinkList from '../../components/LinkList.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
+import Icon from '../../components/Icon.astro';
 import Section from '../../components/Section.astro';
-import TownPicker from '../../components/TownPicker.astro';
 import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
+import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
 export async function getStaticPaths() {
@@ -46,6 +46,12 @@ const rows = datedRows(markets);
  * the picker underneath is the way out of it. `src/lib/lists.ts`.
  */
 const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
+
+/** The radius view offers these four; the home form has to offer the same. */
+const RADII = [10, 25, 50, 100];
+const PERIODS = {
+  all: s.filterAll, today: s.filterToday, weekend: s.filterWeekend,
+} as const;
 
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
@@ -92,6 +98,38 @@ const jsonLd = {
   {/* Empty until the browser says otherwise; see components/TownShortcut. */}
   <TownShortcut locale={locale} />
 
+  {/* Place, period, radius. Free text is deliberately absent — a search box
+      needs the German text-search decision PLAN.md still has open, and a box
+      that finds nothing is worse than no box.
+
+      This is also the site's only place-chooser. A separate row of town
+      buttons lived below the markets for a day; two ways to pick a town on
+      one page is the incoherence this page is supposed to be free of, and
+      the select already holds all 55. Choosing here is what the return-visit
+      shortcut above remembers. */}
+  <form class="search" action={nearbyPath()} method="get" data-city-base={countryPath(locale, countrySlug)}>
+    <label class="field">
+      <span>{s.controlPlace}</span>
+      <select name="ort">
+        <option value="">{s.controlAnywhere}</option>
+        {cities.map(([slug, city]) => <option value={slug}>{city}</option>)}
+      </select>
+    </label>
+    <div class="pair">
+      <label class="field">
+        <span>{s.controlPeriod}</span>
+        <select name="zeit">
+          {(['all', 'today', 'weekend'] as const).map((w) => <option value={w}>{PERIODS[w]}</option>)}
+        </select>
+      </label>
+      <label class="field">
+        <span>{s.controlRadius}</span>
+        <select name="km">{RADII.map((km) => <option value={km} selected={km === 50}>{km} km</option>)}</select>
+      </label>
+    </div>
+    <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
+  </form>
+
   {/* Two at full size, then four compact. A block with one size in it has no
       rhythm, and rhythm is most of what stops a list reading as a database
       dump. The picture is the argument — a flea market is stuff you can see. */}
@@ -119,16 +157,6 @@ const jsonLd = {
     </Section>
   )}
 
-  <TownPicker
-    locale={locale}
-    countrySlug={countrySlug}
-    allHref="#staedte"
-    total={cities.length}
-    towns={cities
-      .map(([slug, city]) => ({ slug, name: city, count: markets.filter((m) => m.citySlug === slug).length }))
-      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, locale))
-      .slice(0, 7)}
-  />
 
   <CtaCard kind="newsletter" locale={locale} />
   <CtaCard kind="organiser" locale={locale} />
@@ -184,6 +212,42 @@ const jsonLd = {
 
 <script>
   /**
+   * The search card routes itself, and remembers.
+   *
+   * A town goes to that town's page carrying the period as a query parameter
+   * the city page reads; "Überall" falls through to the form's own action, the
+   * radius view, which is the only place a radius means anything. Without JS
+   * the form still submits there, which is a worse answer but never a broken
+   * one.
+   *
+   * Choosing a town is also what the shortcut at the top of the page reads on
+   * the next visit — one place-chooser, one memory, no account. Same
+   * localStorage as Gemerkt.
+   */
+  const KEY = 'fynda:stadt';
+  const search = document.querySelector<HTMLFormElement>('.search');
+
+  search?.addEventListener('submit', (event) => {
+    const data = new FormData(search);
+    const town = String(data.get('ort') ?? '');
+    if (!town) return;
+    event.preventDefault();
+
+    const period = String(data.get('zeit') ?? 'all');
+    const base = search.dataset.cityBase ?? '/';
+    const href = `${base}${town}/`;
+    const name = search.querySelector<HTMLOptionElement>(`option[value="${town}"]`)?.textContent?.trim();
+
+    try {
+      if (name) localStorage.setItem(KEY, JSON.stringify({ slug: town, name, href }));
+    } catch { /* private mode. The navigation below still happens. */ }
+
+    location.href = period === 'all' ? href : `${href}?zeit=${period}`;
+  });
+</script>
+
+<script>
+  /**
    * "Alle 38 Märkte am Wochenende" opens the rest in place. No new URL, no
    * navigation, and every row is in the HTML either way — hiding rows from a
    * crawler to save a scroll trades the thing that earns traffic for the thing
@@ -206,6 +270,19 @@ const jsonLd = {
 
   /* The promise under the headline. One size up from body, because it is the
      sentence the page exists to make. */
+  /* A card, not a grey tray. The place is the decision, so it gets the full
+     width; period and radius are adjustments to it and share a row. */
+  .search {
+    display: grid;
+    gap: var(--space-3);
+    margin-inline: var(--space-page);
+    padding: var(--space-4);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+
   .promise {
     margin-block-start: var(--space-3);
     max-width: 30ch;

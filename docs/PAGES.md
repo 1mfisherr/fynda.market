@@ -47,18 +47,18 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | **The claim, and it is a number** | *"157 Flohmärkte in der Schweiz — jeder Termin mit Quelle und Prüfdatum."* The trust signal, the content that has to rank for the head term, and the sentence an AI answer can quote. One line, three jobs, before anything is asked of anyone |
 | **"Ihre Stadt" shortcut** | Empty for a stranger; on a return visit it is the town they picked, one tap from their city page. Browser storage, no account |
 | **Six markets this weekend** | Two at full size, four compact, one per town, biggest towns first. Then a button to all of them |
-| **"Wo sind Sie?"** | The place question, asked *after* the goods. Not a search box: v1 logged 64 on-site searches in 26 days against 281 filter uses |
+| **Place + period + radius** | Three selects and a button. Not free text — v1 logged 64 on-site searches in 26 days, most of them a single letter, against 281 filter uses. Choosing a town is also what the shortcut above remembers |
 | Newsletter, organiser CTA | Intent is highest right after someone has scanned a list |
 | Cities, cantons, types, provenance, FAQ | Navigation and proof, in that order |
 | Footer | |
 
-### The search card is gone — decided 2026-09-05
+### The search card — removed and restored, 2026-09-05
 
-The home page used to open with a three-field form: place, period, radius. It is deleted.
+It was deleted for half a day on the argument that a form standing between a visitor and the goods asks for trust the page has not earned — [NN/g](https://www.nngroup.com/articles/trustworthy-design/) found users rule sites out in seconds when they cannot see what is on offer, and of four comparable home pages torn down that day, the only one that asks before it shows anything (brocabrac.fr) has no listings on its home page at all.
 
-A form standing between a visitor and the goods asks for trust the page has not yet earned — [NN/g](https://www.nngroup.com/articles/trustworthy-design/) found users rule sites out in seconds when they cannot see what is on offer. Of the four comparable home pages torn down that day, three show real dated inventory before anything is asked (meine-flohmarkt-termine.de, eventfrog.ch, Time Out); the one that asks first, **brocabrac.fr, shows no listings on its home page at all.**
+**It came back, by the owner's call.** The research is about *ordering*, not about deleting a control: removing it took the period filter with it and left three buttons pointing at `/umkreis/`, two of which promised something that page does not hold. A control that exists and is honest beats a clean page that dead-ends.
 
-Choosing a place now happens below the markets, where it reads as "and now make it yours" rather than "fill this in first".
+It is the site's **only** place-chooser. A separate row of town buttons lived below the markets for a few hours; two ways to pick a town on one page is exactly the incoherence this page is meant to be free of.
 
 ### Six markets, not all of them
 
