@@ -29,7 +29,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 |---|---|
 | **Name** | Fynda, at `fynda.market` |
 | **Pilot market** | Switzerland (data exists from v1), then Germany |
-| **Languages** | CH: de, fr, it, en. Every other country: its language + English. Interface strings are written per language; prose ships only after a human reads it |
+| **Languages** | CH: de, fr, it, en. Every other country: its language + English. Interface strings are written per language. Prose ships in every locale we hold it for — it does not wait on a human read |
 | **Users pay nothing, ever** | Revenue is supply-side: organisers, local business advertising |
 | **Monetization deferred** | Build the hooks, defer the machinery. No AdSense |
 | **Organiser surface from day one** | Even if v1 is just "contact us by email" |

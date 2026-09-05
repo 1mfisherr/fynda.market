@@ -35,7 +35,7 @@ export interface Occurrence {
 export interface Market {
   slug: string;
   name: string;
-  /** The German description, shown verbatim. Never generated — docs/BRAND.md. */
+  /** The description in the requested locale, shown verbatim. */
   description?: string;
   kind: MarketKind;
   city: string;
@@ -59,9 +59,10 @@ export interface Market {
   upcoming: Occurrence[];
   /**
    * How often it runs, in the organiser's own words — "Jeden Samstag,
-   * ganzjährig". Held for 106 of 114 markets, and it is what lets a list show
+   * ganzjährig". Held for every active market, and it is what lets a list show
    * one row per market instead of one row per date: the sentence says more
-   * than eighteen identical Saturdays did.
+   * than eighteen identical Saturdays did. Localised in `texts`, falling back
+   * to the German `markets.recurrence_text`.
    */
   recurrenceText?: string;
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */

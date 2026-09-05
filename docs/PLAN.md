@@ -144,7 +144,7 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 - **Four style layers: tokens → base → components → pages.** A page styles only what nothing else could want; a component never sets its own outer margin. Guardrail 7 enforces it.
 - **One breakpoint, 900px, and one wrapper.** A media query cannot read a token, so `--breakpoint-wide` is duplicated in every query that uses it — the comment beside each says so. Anything that is read rather than scanned caps itself at `--measure`; a wider container is for lists and chrome only.
 - **No German string that names a concept lives in a template.** Interface copy is `src/lib/strings.ts`, domain vocabulary `src/lib/vocabulary.ts`, URLs are built by `src/lib/i18n.ts` — never assembled by hand.
-- **Translated prose ships when a human has read it**, never before. Interface strings are written per language; market descriptions wait.
+- **Translated prose ships as soon as we hold the row.** Interface strings are written per language; descriptions and recurrence text are stored per locale in `texts` and render immediately.
 - Colour, type, spacing and motion come from `src/styles/tokens.css`. Never hardcoded.
 
 ---

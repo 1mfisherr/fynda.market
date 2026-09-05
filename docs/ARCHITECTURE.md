@@ -119,7 +119,7 @@ The line that does matter is Google's: scaled content abuse covers pages generat
 
 > **Localise the facts and the interface. Never mass-translate prose.**
 
-A market page's value is language-neutral data — date, time, address, coordinates, cancelled-or-not, confirmed-on. Interface strings (`src/lib/strings.ts`) are a few dozen phrases written once per language by a person. **Market descriptions are the only real prose, and appear in a language only after a human has read them.** They exist in the database in four languages from the v1 import and are deliberately not rendered.
+A market page's value is language-neutral data — date, time, address, coordinates, cancelled-or-not, confirmed-on. Interface strings (`src/lib/strings.ts`) are a few dozen phrases written once per language by a person. Longer prose — descriptions, recurrence sentences — is stored per locale in `texts` and **ships as soon as the row exists**; there is no human-read gate. A locale still renders nothing unless its row is there, so coverage stays a fact about the data rather than a promise.
 
 Place **names** live in the database (`texts`) per locale, written by `scripts/localise-places.mjs`. Only genuine exonyms are translated — Bâle, Zurigo, Coire; Lausanne stays Lausanne in all four. Place **slugs** are in `slugs` and are not per locale — see "One slug per place" above.
 
@@ -152,7 +152,7 @@ Shipped: `supabase/migrations/20260829120000_initial_schema.sql`, with behaviour
 countries -> regions -> cities -> venues -> markets -> occurrences
 
 slugs   (entity_type, entity_id, locale, slug)          -- a row exists = that locale exists
-texts   (entity_type, entity_id, locale, field, value)  -- names, descriptions
+texts   (entity_type, entity_id, locale, field, value)  -- names, descriptions, recurrence text
 facts   (entity_type, entity_id, field, value, source_type, source_ref,
          observed_at, recorded_at, confidence, superseded_by)
 
@@ -161,7 +161,7 @@ tags, market_tags, organisers, market_private, reports
 
 ### What v1 got right — carried over
 
-- **Venues separate from markets.** Two markets on one Marktplatz share an address, a `google_place_id` and a timezone. Timezone on the venue is what makes a correct `startDate` offset possible.
+- **Venues separate from markets.** Two markets on one Marktplatz share an address and a timezone. Timezone on the venue is what makes a correct `startDate` offset possible.
 - **Concrete occurrence rows** with status confirmed / tentative / cancelled and a cancellation note. Maps 1:1 onto Schema.org `eventStatus`.
 - **`market_private`** as its own table — organiser email, source URL, raw import. Personal data can't leak through a permissive read policy because it isn't in the readable table.
 - **Indexability computed in SQL.** v1 derived "should this city page exist" from live content counts. Best idea in that schema; it puts the governing rule in the database, not only in CI.

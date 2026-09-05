@@ -69,7 +69,7 @@ const SQL = `
     m.entry_fee,
     m.image_url,
     m.website_url,
-    m.recurrence_text,
+    coalesce(rt.value, m.recurrence_text)           as recurrence_text,
     (
       select jsonb_agg(o order by o.date)
         from (
@@ -99,6 +99,10 @@ const SQL = `
                            and nm.locale = $1 and nm.field = 'name'
   left join public.texts ds on ds.entity_type = 'market' and ds.entity_id = p.id
                            and ds.locale = $1 and ds.field = 'description'
+  -- The German column is the fallback, so a locale we have not written yet
+  -- still renders the sentence we do hold rather than nothing.
+  left join public.texts rt on rt.entity_type = 'market' and rt.entity_id = p.id
+                           and rt.locale = $1 and rt.field = 'recurrence_text'
   order by p.slug
 `;
 
