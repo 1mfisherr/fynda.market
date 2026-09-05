@@ -1,5 +1,9 @@
 [
   {
+    "from": "/umkreis/",
+    "to": "/de/umkreis/"
+  },
+  {
     "from": "/de/schweiz/freiburg/",
     "to": "/de/schweiz/fribourg/"
   },

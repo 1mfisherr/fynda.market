@@ -1,32 +1,44 @@
 ---
 /**
- * Radius view — `/umkreis/`.
+ * Radius view — `/de/umkreis/`, `/fr/a-proximite/`, `/it/nei-dintorni/`,
+ * `/en/nearby/`.
  *
  * docs/ARCHITECTURE.md: "in der Nähe" is a query parameter, never a page type
- * of its own — `/umkreis?lat=…&lng=…&km=…`. This is that filter view. It is
- * the one thing a fully static build cannot do at build time: `lat`, `lng`
- * and `km` live in the URL, and there is no server left at request time to
- * read them (docs/STACK.md). So the whole answer has to ship twice — every
- * market rendered into the HTML for the crawler and the no-JS visitor, and a
- * client-side script that reads the query string (or geolocation) and
- * narrows what is shown. Same shape as the city page's date filter, one
- * dimension wider.
+ * of its own — `/{locale}/{nearby}?lat=…&lng=…&km=…`. This is that filter
+ * view. It is the one thing a fully static build cannot do at build time:
+ * `lat`, `lng` and `km` live in the URL, and there is no server left at
+ * request time to read them (docs/STACK.md). So the whole answer has to ship
+ * twice — every market rendered into the HTML for the crawler and the no-JS
+ * visitor, and a client-side script that reads the query string (or
+ * geolocation) and narrows what is shown. Same shape as the city page's date
+ * filter, one dimension wider.
+ *
+ * It is a component with four one-line pages under `src/pages/{locale}/`
+ * rather than a dynamic route, because `[locale]/[utility].astro` already owns
+ * that segment and two dynamic routes at the same depth is a collision waiting
+ * to be debugged. The slugs are four constants; four files say so plainly.
  *
  * `indexable={false}`: this is a filter, not a place or a market — there is
  * nothing here a search result should point at instead of the city or market
  * page underneath it.
  */
 import Page from '../layouts/Page.astro';
-import Button from '../components/Button.astro';
-import DateFilters from '../components/DateFilters.astro';
-import MarketRow from '../components/MarketRow.astro';
-import Section from '../components/Section.astro';
+import Button from './Button.astro';
+import DateFilters from './DateFilters.astro';
+import MarketRow from './MarketRow.astro';
+import Section from './Section.astro';
 import { getMarkets } from '../lib/markets';
 import { byMarket, datedRows } from '../lib/lists';
-import { dateCount, marketCount } from '../lib/vocabulary';
+import { utilityAlternates, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
 
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const s = t(locale);
 
-const markets = await getMarkets();
+const markets = await getMarkets(locale);
 /* One row per market, like every other list on the site. Sorting by distance
    only works on a flat list anyway: day bands would have re-sorted inside each
    day and left the nearest market buried under a nearer day. */
@@ -36,24 +48,44 @@ const list = byMarket(rows);
 const RADII = [10, 25, 50, 100];
 const DEFAULT_KM = 50;
 ---
-<Page indexable={false} title="Flohmärkte in der Nähe | Fynda" description="Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.">
+<Page
+  indexable={false}
+  locale={locale}
+  alternates={utilityAlternates('nearby')}
+  title={s.radiusTitle}
+  description={s.radiusDescription}
+>
   <section class="intro gutter">
-    <h1>Flohmärkte in der Nähe</h1>
-    <p class="answer" id="status" aria-live="polite">Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.</p>
-    <p class="meta">{marketCount(markets.length)} · {dateCount(rows.length)}</p>
+    <h1>{s.radiusHeading}</h1>
+    {/*
+      The two sentences the script swaps between travel on the element itself.
+      A component <script> is bundled once at build time and never sees
+      `locale`, so the alternative is one German string compiled into the
+      JavaScript of all four pages — which is exactly what kept this page
+      German after everything around it had been translated.
+    */}
+    <p
+      class="answer"
+      id="status"
+      aria-live="polite"
+      data-none={s.radiusNoLocation}
+      data-within={s.radiusWithin(0).replace('0', '{km}')}
+      data-denied={s.radiusDenied}
+    >{s.radiusNoLocation}</p>
+    <p class="meta">{s.marketCount(markets.length)} · {s.dateCount(rows.length)}</p>
   </section>
 
   <div class="locate gutter">
-    <Button type="button" id="geo" variant="secondary">Meinen Standort verwenden</Button>
+    <Button type="button" id="geo" variant="secondary">{s.radiusUseLocation}</Button>
   </div>
 
-  <div class="radius gutter" role="group" aria-label="Umkreis">
+  <div class="radius gutter" role="group" aria-label={s.radiusGroup}>
     {RADII.map((km) => (
       <button class="button" type="button" data-km={km} aria-pressed={km === DEFAULT_KM}>{km} km</button>
     ))}
   </div>
 
-  <DateFilters dates={list.map((m) => m.next.date)} />
+  <DateFilters locale={locale} dates={list.map((m) => m.next.date)} />
 
   <Section>
     <div id="list">
@@ -65,7 +97,7 @@ const DEFAULT_KM = 50;
           reconcile a row with its market by slug.
         */
         <div class="pin" data-lat={market.lat} data-lng={market.lng}>
-          <MarketRow market={market} showRhythm />
+          <MarketRow market={market} locale={locale} showRhythm />
           {/*
             Empty and hidden until a real distance has been computed. This is
             the "never show a distance we do not know" rule from docs/PAGES.md
@@ -76,7 +108,7 @@ const DEFAULT_KM = 50;
         </div>
       ))}
     </div>
-    <p id="empty" class="gutter meta" hidden>Für diese Auswahl ist nichts eingetragen.</p>
+    <p id="empty" class="gutter meta" hidden>{s.nothingForSelection}</p>
   </Section>
 </Page>
 
@@ -104,16 +136,20 @@ const DEFAULT_KM = 50;
   /**
    * One combined pass, for the same reason home's date/expander pass is one
    * function: date and distance interact. A row has to clear both to show,
-   * and when an origin is known the visible rows in a day are re-sorted
-   * nearest-first — so the two cannot be handled by independent handlers
-   * without one undoing the other's DOM order.
+   * and when an origin is known the visible rows are re-sorted nearest-first —
+   * so the two cannot be handled by independent handlers without one undoing
+   * the other's DOM order.
    *
    * Without an origin (no query string, geolocation not granted or denied)
-   * the day-grouped, chronological order from the server is exactly what
-   * stays on screen, and no `[data-distance]` label is ever unhidden. That is
-   * the static-build constraint and the "never fake a distance" rule meeting
-   * in one piece of code: this script is the only place a distance is ever
-   * computed, and it only runs once a real point exists.
+   * the chronological order from the server is exactly what stays on screen,
+   * and no `[data-distance]` label is ever unhidden. That is the static-build
+   * constraint and the "never fake a distance" rule meeting in one piece of
+   * code: this script is the only place a distance is ever computed, and it
+   * only runs once a real point exists.
+   *
+   * Every word it can say is read off `#status`'s data attributes, and the
+   * distance is formatted with the page's own `lang` — "1,2 km" in German and
+   * French, "1.2 km" in English. One script, four languages.
    */
   import { inWindow, type DateWindow } from '../lib/date-window';
 
@@ -129,6 +165,9 @@ const DEFAULT_KM = 50;
   let currentKm = 50;
   let origin: { lat: number; lng: number } | null = null;
 
+  const lang = document.documentElement.lang || 'de-CH';
+  const oneDecimal = new Intl.NumberFormat(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
   /** Great-circle distance in kilometres. Accurate to a few metres at this scale. */
   function distanceKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
     const R = 6371;
@@ -139,16 +178,16 @@ const DEFAULT_KM = 50;
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
 
-  /** "1,2 km" — Swiss/German decimal comma, never a bare dot. */
+  /** "1,2 km" in German and French, "1.2 km" in English. */
   function formatKm(km: number): string {
-    return `${km.toFixed(1).replace('.', ',')} km`;
+    return `${oneDecimal.format(km)} km`;
   }
 
   function setStatus() {
     if (!statusEl) return;
-    statusEl.textContent = origin
-      ? `Flohmärkte im Umkreis von ${currentKm} km, nach Entfernung sortiert.`
-      : 'Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.';
+    const none = statusEl.dataset.none ?? '';
+    const within = statusEl.dataset.within ?? '';
+    statusEl.textContent = origin ? within.replace('{km}', String(currentKm)) : none;
   }
 
   function apply() {
@@ -206,6 +245,7 @@ const DEFAULT_KM = 50;
     button.addEventListener('click', () => {
       for (const other of kmButtons) other.setAttribute('aria-pressed', String(other === button));
       currentKm = Number(button.dataset.km ?? currentKm);
+      setStatus();
       apply();
     });
   }
@@ -220,18 +260,16 @@ const DEFAULT_KM = 50;
       },
       () => {
         origin = null;
-        if (statusEl) {
-          statusEl.textContent = 'Standort nicht verfügbar — bitte Umkreis manuell wählen. Ohne Standort keine Entfernungsangabe.';
-        }
+        if (statusEl) statusEl.textContent = statusEl.dataset.denied ?? '';
       },
       { enableHighAccuracy: false, timeout: 8000 }
     );
   });
 
   // The home page's search control submits here with `lat`, `lng` and `km`
-  // (docs/ARCHITECTURE.md: /umkreis?lat=…&lng=…&km=…). This is the only way a
-  // static build can ever learn a location — there is no server left at
-  // request time to read the query string for us.
+  // (docs/ARCHITECTURE.md: /{locale}/{nearby}?lat=…&lng=…&km=…). This is the
+  // only way a static build can ever learn a location — there is no server
+  // left at request time to read the query string for us.
   const params = new URLSearchParams(window.location.search);
   const latParam = params.get('lat');
   const lngParam = params.get('lng');
@@ -249,6 +287,18 @@ const DEFAULT_KM = 50;
       for (const button of kmButtons) button.setAttribute('aria-pressed', String(Number(button.dataset.km) === km));
     }
   }
+
+  // The home page's search card sends the chosen date here as `zeit`, exactly
+  // as it does to a city page — a named window or one YYYY-MM-DD. This page
+  // read `lat`, `lng` and `km` and dropped it on the floor, so arriving from
+  // the search with a date chosen showed every market in the country.
+  //
+  // Pressing the matching control rather than filtering directly is the city
+  // page's pattern and keeps one code path: the chips and the calendar stay
+  // showing what is actually applied.
+  const wanted = params.get('zeit');
+  const preset = wanted && dateButtons.find((button) => button.dataset.filter === wanted);
+  if (preset) preset.click();
 
   setStatus();
   apply();

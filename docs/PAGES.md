@@ -56,7 +56,7 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 
 It was deleted for half a day on the argument that a form standing between a visitor and the goods asks for trust the page has not earned — [NN/g](https://www.nngroup.com/articles/trustworthy-design/) found users rule sites out in seconds when they cannot see what is on offer, and of four comparable home pages torn down that day, the only one that asks before it shows anything (brocabrac.fr) has no listings on its home page at all.
 
-**It came back, by the owner's call.** The research is about *ordering*, not about deleting a control: removing it took the period filter with it and left three buttons pointing at `/umkreis/`, two of which promised something that page does not hold. A control that exists and is honest beats a clean page that dead-ends.
+**It came back, by the owner's call.** The research is about *ordering*, not about deleting a control: removing it took the period filter with it and left three buttons pointing at the radius view, two of which promised something that page does not hold. A control that exists and is honest beats a clean page that dead-ends.
 
 It is the site's **only** place-chooser. A separate row of town buttons lived below the markets for a few hours; two ways to pick a town on one page is exactly the incoherence this page is meant to be free of.
 

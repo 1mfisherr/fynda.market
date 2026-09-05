@@ -16,7 +16,7 @@
         "name": "market", "pattern": "^/(de|fr|it|en)/(markt|marche|mercato|market)/[a-z0-9-]+/$" },
       { "_comment": "Forms, legal text and saved markets. Noindex, out of the sitemap, out of the ratio. Matched before the country pattern so they get their own content floor.",
         "name": "utility", "pattern": "^/(de|fr|it|en)/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz|signaler|organisateurs|favoris|mentions-legales|confidentialite|segnalare|organizzatori|salvati|note-legali|privacy|report|organisers|saved|imprint)/$" },
-      { "name": "radius", "pattern": "^/(umkreis|a-proximite|nei-dintorni|nearby)/$" },
+      { "name": "radius", "pattern": "^/(de|fr|it|en)/(umkreis|a-proximite|nei-dintorni|nearby)/$" },
       { "name": "country", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/$" },
       { "_comment": "The canton level. A type segment partitions — one URL per canton — where a facet multiplies, which is the distinction the forbid rule below is really about.",
         "name": "region", "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(kanton|canton|cantone)/[a-z0-9-]+/$" },

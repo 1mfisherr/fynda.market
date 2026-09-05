@@ -45,6 +45,16 @@ const COUNTRY_NOW = `
 `;
 
 /**
+ * Pages we have moved by hand, as opposed to places renamed in the database.
+ *
+ * The slug ledger only knows about entities. `/umkreis/` was a page of our own
+ * making — one unprefixed radius view — and it was published, so the rule is
+ * the same: a published address never dies. It now lives at `/de/umkreis/`
+ * with a sister in each of the other three languages.
+ */
+const MOVED = [{ from: '/umkreis/', to: '/de/umkreis/' }];
+
+/**
  * @returns {Promise<{from: string, to: string}[]>} in `_redirects` order —
  * exact paths first, wildcards last, because Cloudflare takes the first match.
  */
@@ -55,7 +65,7 @@ export async function buildRedirects() {
     const countryNow = new Map((await rows(COUNTRY_NOW)).map((r) => [r.locale, r.slug]));
     const retired = await rows(RETIRED);
 
-    const exact = [];
+    const exact = [...MOVED];
     const wildcard = [];
 
     for (const r of retired) {

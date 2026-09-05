@@ -98,13 +98,7 @@ export const UTILITY = {
 
 export type UtilityKey = keyof typeof UTILITY;
 
-/**
- * The radius view. It sits at `/umkreis/` with no locale prefix, because it is
- * a filter over everything rather than a place, and only one of them is built —
- * see guardrails.config.json, route "radius". UTILITY.nearby holds the slugs the
- * other three will use; until those pages exist, everything points here.
- */
-export const nearbyPath = () => `/${UTILITY.nearby[DEFAULT_LOCALE]}/`;
+
 
 /**
  * Which locales each utility page exists in — per page, not per locale, because
@@ -128,13 +122,23 @@ export const UTILITY_LOCALES: Record<UtilityKey, Locale[]> = {
   saved: LOCALES,
   imprint: [DEFAULT_LOCALE],
   privacy: [DEFAULT_LOCALE],
-  nearby: [DEFAULT_LOCALE],
+  nearby: LOCALES,
 };
 
 export const utilityPath = (locale: Locale, key: UtilityKey) => {
   const served = UTILITY_LOCALES[key].includes(locale) ? locale : DEFAULT_LOCALE;
   return `/${served}/${UTILITY[key][served]}/`;
 };
+
+/**
+ * The radius view — `/de/umkreis/`, `/fr/a-proximite/`, one per locale, like
+ * every other page on the site. It used to be a single unprefixed `/umkreis/`,
+ * which meant a French visitor pressing "À proximité" landed in German; the
+ * copy lived in the template, so the page could not follow the visitor's
+ * language until it moved into lib/strings.ts. See guardrails.config.json,
+ * route "radius".
+ */
+export const nearbyPath = (locale: Locale) => utilityPath(locale, 'nearby');
 
 /** Every locale that actually has this utility page, for hreflang. */
 export const utilityAlternates = (key: UtilityKey) =>

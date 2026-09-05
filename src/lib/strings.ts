@@ -62,6 +62,19 @@ export interface Strings {
   cancelledThisWeek: string;
   nothingInPeriod: string;
 
+  /* the radius view — /de/umkreis/, /fr/a-proximite/ and the other two */
+  radiusTitle: string;
+  radiusDescription: string;
+  radiusHeading: string;
+  /** No origin yet: every market, and not one distance claimed. */
+  radiusNoLocation: string;
+  radiusWithin: (km: number) => string;
+  radiusDenied: string;
+  radiusUseLocation: string;
+  /** aria-label on the km chips. */
+  radiusGroup: string;
+  nothingForSelection: string;
+
   /* filters */
   filterAll: string;
   filterToday: string;
@@ -203,6 +216,15 @@ const de: Strings = {
   questions: 'Häufige Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
   nothingInPeriod: 'Für diesen Zeitraum ist nichts eingetragen.',
+  radiusTitle: 'Flohmärkte in der Nähe | Fynda',
+  radiusDescription: 'Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.',
+  radiusHeading: 'Flohmärkte in der Nähe',
+  radiusNoLocation: 'Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.',
+  radiusWithin: (km) => `Flohmärkte im Umkreis von ${km} km, nach Entfernung sortiert.`,
+  radiusDenied: 'Standort nicht verfügbar — bitte Umkreis manuell wählen. Ohne Standort keine Entfernungsangabe.',
+  radiusUseLocation: 'Meinen Standort verwenden',
+  radiusGroup: 'Umkreis',
+  nothingForSelection: 'Für diese Auswahl ist nichts eingetragen.',
 
   filterAll: 'Alle',
   filterToday: 'Heute',
@@ -338,6 +360,15 @@ const en: Strings = {
   questions: 'Common questions',
   cancelledThisWeek: 'Cancelled this week',
   nothingInPeriod: 'Nothing is listed for this period.',
+  radiusTitle: 'Flea markets near me | Fynda',
+  radiusDescription: 'Flea markets near you: choose a radius and a period, sorted by distance.',
+  radiusHeading: 'Flea markets near me',
+  radiusNoLocation: 'No location known — every market we know of, with no distance given.',
+  radiusWithin: (km) => `Flea markets within ${km} km, sorted by distance.`,
+  radiusDenied: 'Location unavailable — pick a radius by hand. Without a location there is no distance to give.',
+  radiusUseLocation: 'Use my location',
+  radiusGroup: 'Radius',
+  nothingForSelection: 'Nothing is listed for this selection.',
 
   filterAll: 'All',
   filterToday: 'Today',
@@ -477,6 +508,15 @@ const fr: Strings = {
   questions: 'Questions fréquentes',
   cancelledThisWeek: 'Annulé cette semaine',
   nothingInPeriod: "Rien n'est enregistré pour cette période.",
+  radiusTitle: 'Brocantes à proximité | Fynda',
+  radiusDescription: 'Brocantes à proximité : choisissez un rayon et une période, triées par distance.',
+  radiusHeading: 'Brocantes à proximité',
+  radiusNoLocation: 'Aucune position connue — toutes les brocantes connues, sans distance.',
+  radiusWithin: (km) => `Brocantes dans un rayon de ${km} km, triées par distance.`,
+  radiusDenied: 'Position indisponible — choisissez un rayon manuellement. Sans position, aucune distance.',
+  radiusUseLocation: 'Utiliser ma position',
+  radiusGroup: 'Rayon',
+  nothingForSelection: "Rien n'est enregistré pour cette sélection.",
 
   filterAll: 'Tous',
   filterToday: "Aujourd'hui",
@@ -612,6 +652,15 @@ const it: Strings = {
   questions: 'Domande frequenti',
   cancelledThisWeek: 'Cancellato questa settimana',
   nothingInPeriod: 'Per questo periodo non risulta nulla.',
+  radiusTitle: 'Mercatini delle pulci nei dintorni | Fynda',
+  radiusDescription: 'Mercatini delle pulci nei dintorni: scelga raggio e periodo, ordinati per distanza.',
+  radiusHeading: 'Mercatini delle pulci nei dintorni',
+  radiusNoLocation: 'Nessuna posizione nota — tutti i mercatini conosciuti, senza distanza.',
+  radiusWithin: (km) => `Mercatini nel raggio di ${km} km, ordinati per distanza.`,
+  radiusDenied: 'Posizione non disponibile — scelga il raggio manualmente. Senza posizione non indichiamo distanze.',
+  radiusUseLocation: 'Usare la mia posizione',
+  radiusGroup: 'Raggio',
+  nothingForSelection: 'Per questa selezione non risulta nulla.',
 
   filterAll: 'Tutti',
   filterToday: 'Oggi',

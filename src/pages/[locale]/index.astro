@@ -18,6 +18,7 @@ import Section from '../../components/Section.astro';
 import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
+import DateFilters from '../../components/DateFilters.astro';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
 import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
@@ -49,10 +50,6 @@ const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
 
 /** The radius view offers these four; the home form has to offer the same. */
 const RADII = [10, 25, 50, 100];
-const PERIODS = {
-  all: s.filterAll, today: s.filterToday, weekend: s.filterWeekend,
-} as const;
-
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
@@ -107,7 +104,7 @@ const jsonLd = {
       one page is the incoherence this page is supposed to be free of, and
       the select already holds all 55. Choosing here is what the return-visit
       shortcut above remembers. */}
-  <form class="search" action={nearbyPath()} method="get" data-city-base={countryPath(locale, countrySlug)}>
+  <form class="search" action={nearbyPath(locale)} method="get" data-city-base={countryPath(locale, countrySlug)}>
     <label class="field">
       <span>{s.controlPlace}</span>
       <select name="ort">
@@ -115,18 +112,21 @@ const jsonLd = {
         {cities.map(([slug, city]) => <option value={slug}>{city}</option>)}
       </select>
     </label>
-    <div class="pair">
-      <label class="field">
-        <span>{s.controlPeriod}</span>
-        <select name="zeit">
-          {(['all', 'today', 'weekend'] as const).map((w) => <option value={w}>{PERIODS[w]}</option>)}
-        </select>
-      </label>
-      <label class="field">
-        <span>{s.controlRadius}</span>
-        <select name="km">{RADII.map((km) => <option value={km} selected={km === 50}>{km} km</option>)}</select>
-      </label>
+    {/* The same control every list page uses — chips plus a calendar of the
+        days that actually have markets. It used to be a three-option select
+        here, so the home page offered less than the page it sent you to, and
+        "a specific day" was answerable everywhere except where people start.
+        It is a row of chips, so it takes the full width rather than half of a
+        pair. The hidden input is what the form submits; the buttons set it. */}
+    <div class="field when">
+      <span>{s.controlPeriod}</span>
+      <DateFilters locale={locale} dates={rows.map((row) => row.next!.date)} />
     </div>
+    <input type="hidden" name="zeit" value="all" />
+    <label class="field">
+      <span>{s.controlRadius}</span>
+      <select name="km">{RADII.map((km) => <option value={km} selected={km === 50}>{km} km</option>)}</select>
+    </label>
     <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
   </form>
 
@@ -227,6 +227,22 @@ const jsonLd = {
   const KEY = 'fynda:stadt';
   const search = document.querySelector<HTMLFormElement>('.search');
 
+  /**
+   * The date control is DateFilters, the same component the city and radius
+   * pages use. There is no list on this page to filter, so a click here only
+   * records the answer in the hidden `zeit` input, which the destination page
+   * reads and applies. A calendar day writes a YYYY-MM-DD; a chip writes its
+   * own word. Both are windows lib/date-window.ts already understands.
+   */
+  const zeit = search?.querySelector<HTMLInputElement>('input[name="zeit"]');
+  const dateButtons = Array.from(search?.querySelectorAll<HTMLButtonElement>('[data-filter]') ?? []);
+  for (const button of dateButtons) {
+    button.addEventListener('click', () => {
+      for (const other of dateButtons) other.setAttribute('aria-pressed', String(other === button));
+      if (zeit) zeit.value = button.dataset.filter ?? 'all';
+    });
+  }
+
   search?.addEventListener('submit', (event) => {
     const data = new FormData(search);
     const town = String(data.get('ort') ?? '');
@@ -281,7 +297,8 @@ const jsonLd = {
     border-radius: var(--radius-md);
     background: var(--color-surface);
   }
-  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  /* The date control brings its own gutter; the card already has one. */
+  .when :global(.filters) { margin-inline: 0; }
 
   .promise {
     margin-block-start: var(--space-3);

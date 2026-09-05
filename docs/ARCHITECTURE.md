@@ -48,7 +48,7 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 /de/deutschland/koeln?datum=2026-09-14
 /de/deutschland/koeln?typ=kinderflohmarkt
 /de/deutschland/koeln?tag=indoor
-/umkreis?lat=50.93&lng=6.96&km=30      <- the "in der Nähe" answer
+/de/umkreis?lat=50.93&lng=6.96&km=30   <- the "in der Nähe" answer
 ```
 
 **Tags ship day one in the data model and as filters, never as URLs.** Two rules keep them from becoming the v1 failure: the set stays small (a tag that can't be applied confidently from data we hold does not exist), and a tag becomes a page only through the gate. Tags are a monetisation hook later, so model them properly now — a real table with stable slugs and per-locale labels, not a text column.
@@ -62,7 +62,7 @@ Not indexed, canonical points to the clean parent, out of the sitemap, no crawla
 /de/schweiz/zurich/                     city
 /de/markt/[slug]/                       market
 /de/melden/                             utility (noindex)
-/umkreis/                               radius view (noindex)
+/de/umkreis/                            radius view (noindex), one per locale
 ```
 
 **Locale first, then country, then place.** Every **word** in the path is in the page's own language. Every **name** in it is the same in all four:
@@ -101,7 +101,7 @@ This is the guarantee GetYourGuide and Tripadvisor buy with an id in the path, w
 
 **The canton level uses a type segment** because five Swiss names are both a city and a canton (Zürich, Bern, Luzern, St. Gallen, Schaffhausen), and it is structural rather than Swiss: Berlin, Hamburg and Bremen are city-states. Booking.com, Eventbrite and meine-flohmarkt-termine all solve it the same way. **A type segment partitions — one URL per canton; a facet multiplies — every place × seven weekdays.** That distinction is what the forbid rules encode.
 
-**Utility pages** — the forms, legal text and saved markets — plus `/umkreis/` are **noindex, out of the sitemap, and out of the URL-to-entity ratio**: they carry no entity and compete for no query. They have their own content floor (150), because a contact form is not a thin country page.
+**Utility pages** — the forms, legal text and saved markets — plus the radius view (`/de/umkreis/`, `/fr/a-proximite/`, `/it/nei-dintorni/`, `/en/nearby/`) are **noindex, out of the sitemap, and out of the URL-to-entity ratio**: they carry no entity and compete for no query. They have their own content floor (150), because a contact form is not a thin country page.
 
 `/llms.txt` and `/ics/[slug].ics` are files, not pages; they never enter the page count.
 
