@@ -38,6 +38,10 @@
  * Re-running is safe and idempotent: it re-encodes from the source every time
  * and rewrites the column from the facts, which are the source of truth for
  * which photo belongs to which market.
+ *
+ * Only facts that have not been superseded count. A market whose stock URL was
+ * later replaced by a real photograph has two rows in the ledger, and reading
+ * both would let the older one win on ordering alone.
  */
 
 import { existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
@@ -83,7 +87,8 @@ const onDisk = new Set(readdirSync(source));
 await withClient(DB_URL, async (client) => {
   const { rows: facts } = await client.query(
     `select entity_id, value from public.facts
-      where entity_type = 'market' and field = 'image_url'`
+      where entity_type = 'market' and field = 'image_url'
+        and superseded_by is null`
   );
 
   const stock = [];
