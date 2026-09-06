@@ -172,7 +172,7 @@ const savedCopy = saved && {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const lines: string[] = [];
-      let subject = form.dataset.subject ?? 'Fynda';
+      let subject = form.dataset.subject ?? 'fynda.market';
 
       for (const element of Array.from(form.elements)) {
         const control = element as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;

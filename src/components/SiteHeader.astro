@@ -78,10 +78,12 @@ const sections = [
   .langs { display: flex; gap: var(--space-1); color: var(--color-quiet); font-size: var(--text-micro); }
   .langs a { padding-inline: var(--space-half); }
   .mark {
-    /* "fynda.market" is twice the width of "fynda." and has to share a phone
-       line with the language switcher and Gemerkt, so it takes the next step
-       down the type ramp rather than pushing them off the end. */
-    font-size: var(--text-date);
+    /* The name is "fynda.market", the way Booking.com is not "Booking" — so
+       the whole thing is the logo and it is allowed to be read. It shares a
+       phone line with the language switcher and Gemerkt, which is why it once
+       took a step down the type ramp; measured at 375px it fits at this size
+       with room to spare, and it was too quiet to be the mark. */
+    font-size: var(--text-title);
     font-weight: var(--weight-black);
     letter-spacing: var(--tracking-display);
   }

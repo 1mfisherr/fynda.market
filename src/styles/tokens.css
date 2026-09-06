@@ -112,7 +112,10 @@
   --space-half: 2px;
   --space-row: 10px;
   --space-row-y: 11px;
-  --space-page: 16px;
+  /* The page gutter. Raised from 16px on 2026-09-06: at 16 the text sat
+     against the edge of the phone and the page read as cramped. Every block on
+     the site takes its horizontal room from this one value. */
+  --space-page: 20px;
   --space-hero: 14px;
 
   /* ---- shape ----------------------------------------------------------- */

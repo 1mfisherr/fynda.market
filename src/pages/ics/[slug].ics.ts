@@ -100,7 +100,7 @@ export const GET: APIRoute = ({ props }) => {
   const body = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Fynda//fynda.market//DE',
+    'PRODID:-//fynda.market//fynda.market//DE',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     ...dates.flatMap((occurrence) => event(market, occurrence, generatedAt)),

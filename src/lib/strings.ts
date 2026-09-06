@@ -147,6 +147,9 @@ export interface Strings {
   entryLabel: string;
   entryFree: string;
   packUpFrom: (time: string) => string;
+  /** Who runs it. Held for 94% of markets and, until 2026-09-06, only in the
+      structured data — a fact we had that nobody could read. */
+  hostedBy: (name: string) => string;
 
   /* city page */
   cityHeading: (n: number, city: string, year: number) => string;
@@ -222,11 +225,11 @@ const de: Strings = {
   languageLabel: 'Sprache',
   navLabel: 'Hauptnavigation',
 
-  notFoundTitle: 'Seite nicht gefunden — Fynda',
+  notFoundTitle: 'Seite nicht gefunden — fynda.market',
   notFoundHeading: 'Diese Seite gibt es nicht.',
   notFoundBody: 'Vielleicht ist der Markt umgezogen, vielleicht stimmt die Adresse nicht. Von der Startseite aus finden Sie jeden Markt.',
 
-  homeTitle: 'Flohmärkte in der Schweiz — Fynda',
+  homeTitle: 'Flohmärkte in der Schweiz — fynda.market',
   homeDescription: 'Welcher Flohmarkt findet statt, wo und wann. Termine mit Quelle und Datum, Absagen inklusive.',
   heroLine1: 'Irgendwo ist',
   heroLine2: 'immer Markt.',
@@ -253,7 +256,7 @@ const de: Strings = {
   questions: 'Häufige Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
   nothingInPeriod: 'Für diesen Zeitraum ist nichts eingetragen.',
-  radiusTitle: 'Flohmärkte in der Nähe | Fynda',
+  radiusTitle: 'Flohmärkte in der Nähe | fynda.market',
   radiusDescription: 'Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.',
   radiusHeading: 'Flohmärkte in der Nähe',
   radiusNoLocation: 'Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.',
@@ -303,6 +306,7 @@ const de: Strings = {
   entryLabel: 'Eintritt',
   entryFree: 'frei',
   packUpFrom: (time) => `Ab ${time} wird abgebaut.`,
+  hostedBy: (name) => `Veranstaltet von ${name}`,
 
   cityHeading: (n, city, year) =>
     n === 1 ? `Der Flohmarkt in ${city} ${year}` : `Die ${n} Flohmärkte in ${city} ${year}`,
@@ -331,7 +335,7 @@ const de: Strings = {
   ],
 
   footerTagline: 'Flohmärkte in der Schweiz. Termine mit Quelle, Absagen inklusive.',
-  footerFynda: 'Fynda',
+  footerFynda: 'fynda.market',
   footerLegal: 'Rechtliches',
   footerOrganisers: 'Für Veranstalter',
   footerNewsletter: 'Newsletter',
@@ -377,11 +381,11 @@ const en: Strings = {
   languageLabel: 'Language',
   navLabel: 'Main navigation',
 
-  notFoundTitle: 'Page not found — Fynda',
+  notFoundTitle: 'Page not found — fynda.market',
   notFoundHeading: 'This page does not exist.',
   notFoundBody: 'The market may have moved, or the address may be wrong. Every market is reachable from the home page.',
 
-  homeTitle: 'Flea markets in Switzerland — Fynda',
+  homeTitle: 'Flea markets in Switzerland — fynda.market',
   homeDescription: 'Which flea market is on, where and when. Dates with a source and a date, cancellations included.',
   heroLine1: "There's a market",
   heroLine2: 'on somewhere.',
@@ -408,7 +412,7 @@ const en: Strings = {
   questions: 'Common questions',
   cancelledThisWeek: 'Cancelled this week',
   nothingInPeriod: 'Nothing is listed for this period.',
-  radiusTitle: 'Flea markets near me | Fynda',
+  radiusTitle: 'Flea markets near me | fynda.market',
   radiusDescription: 'Flea markets near you: choose a radius and a period, sorted by distance.',
   radiusHeading: 'Flea markets near me',
   radiusNoLocation: 'No location known — every market we know of, with no distance given.',
@@ -458,6 +462,7 @@ const en: Strings = {
   entryLabel: 'Entry',
   entryFree: 'free',
   packUpFrom: (time) => `Packing up starts at ${time}.`,
+  hostedBy: (name) => `Organised by ${name}`,
 
   cityHeading: (n, city, year) =>
     n === 1 ? `The flea market in ${city} ${year}` : `The ${n} flea markets in ${city} ${year}`,
@@ -486,7 +491,7 @@ const en: Strings = {
   ],
 
   footerTagline: 'Flea markets in Switzerland. Dates with a source, cancellations included.',
-  footerFynda: 'Fynda',
+  footerFynda: 'fynda.market',
   footerLegal: 'Legal',
   footerOrganisers: 'For organisers',
   footerNewsletter: 'Newsletter',
@@ -536,11 +541,11 @@ const fr: Strings = {
   languageLabel: 'Langue',
   navLabel: 'Navigation principale',
 
-  notFoundTitle: 'Page introuvable — Fynda',
+  notFoundTitle: 'Page introuvable — fynda.market',
   notFoundHeading: "Cette page n'existe pas.",
   notFoundBody: "Le marché a peut-être changé d'adresse, ou l'adresse est incorrecte. Tous les marchés sont accessibles depuis la page d'accueil.",
 
-  homeTitle: 'Brocantes en Suisse — Fynda',
+  homeTitle: 'Brocantes en Suisse — fynda.market',
   homeDescription: 'Quelle brocante a lieu, où et quand. Dates avec source, annulations comprises.',
   heroLine1: 'Il y a toujours',
   heroLine2: 'une brocante quelque part.',
@@ -567,7 +572,7 @@ const fr: Strings = {
   questions: 'Questions fréquentes',
   cancelledThisWeek: 'Annulé cette semaine',
   nothingInPeriod: "Rien n'est enregistré pour cette période.",
-  radiusTitle: 'Brocantes à proximité | Fynda',
+  radiusTitle: 'Brocantes à proximité | fynda.market',
   radiusDescription: 'Brocantes à proximité : choisissez un rayon et une période, triées par distance.',
   radiusHeading: 'Brocantes à proximité',
   radiusNoLocation: 'Aucune position connue — toutes les brocantes connues, sans distance.',
@@ -617,6 +622,7 @@ const fr: Strings = {
   entryLabel: 'Entrée',
   entryFree: 'gratuite',
   packUpFrom: (time) => `Démontage à partir de ${time}.`,
+  hostedBy: (name) => `Organisé par ${name}`,
 
   cityHeading: (n, city, year) =>
     n === 1 ? `La brocante à ${city} ${year}` : `Les ${n} brocantes à ${city} ${year}`,
@@ -645,7 +651,7 @@ const fr: Strings = {
   ],
 
   footerTagline: 'Brocantes en Suisse. Des dates avec source, annulations comprises.',
-  footerFynda: 'Fynda',
+  footerFynda: 'fynda.market',
   footerLegal: 'Informations légales',
   footerOrganisers: 'Pour les organisateurs',
   footerNewsletter: 'Newsletter',
@@ -691,11 +697,11 @@ const it: Strings = {
   languageLabel: 'Lingua',
   navLabel: 'Navigazione principale',
 
-  notFoundTitle: 'Pagina non trovata — Fynda',
+  notFoundTitle: 'Pagina non trovata — fynda.market',
   notFoundHeading: 'Questa pagina non esiste.',
   notFoundBody: "Il mercatino potrebbe aver cambiato indirizzo, oppure l'indirizzo non è corretto. Dalla pagina iniziale si raggiunge ogni mercatino.",
 
-  homeTitle: 'Mercatini delle pulci in Svizzera — Fynda',
+  homeTitle: 'Mercatini delle pulci in Svizzera — fynda.market',
   homeDescription: 'Quale mercatino delle pulci si tiene, dove e quando. Date con fonte, comprese le cancellazioni.',
   heroLine1: 'Da qualche parte',
   heroLine2: "c'è sempre un mercatino.",
@@ -722,7 +728,7 @@ const it: Strings = {
   questions: 'Domande frequenti',
   cancelledThisWeek: 'Cancellato questa settimana',
   nothingInPeriod: 'Per questo periodo non risulta nulla.',
-  radiusTitle: 'Mercatini delle pulci nei dintorni | Fynda',
+  radiusTitle: 'Mercatini delle pulci nei dintorni | fynda.market',
   radiusDescription: 'Mercatini delle pulci nei dintorni: scelga raggio e periodo, ordinati per distanza.',
   radiusHeading: 'Mercatini delle pulci nei dintorni',
   radiusNoLocation: 'Nessuna posizione nota — tutti i mercatini conosciuti, senza distanza.',
@@ -772,6 +778,7 @@ const it: Strings = {
   entryLabel: 'Ingresso',
   entryFree: 'gratuito',
   packUpFrom: (time) => `Lo smontaggio inizia alle ${time}.`,
+  hostedBy: (name) => `Organizzato da ${name}`,
 
   cityHeading: (n, city, year) =>
     n === 1 ? `Il mercatino delle pulci a ${city} ${year}` : `I ${n} mercatini delle pulci a ${city} ${year}`,
@@ -800,7 +807,7 @@ const it: Strings = {
   ],
 
   footerTagline: 'Mercatini delle pulci in Svizzera. Date con fonte, cancellazioni comprese.',
-  footerFynda: 'Fynda',
+  footerFynda: 'fynda.market',
   footerLegal: 'Note legali',
   footerOrganisers: 'Per gli organizzatori',
   footerNewsletter: 'Newsletter',

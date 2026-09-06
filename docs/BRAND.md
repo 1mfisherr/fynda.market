@@ -36,7 +36,7 @@ The most important fact on the page is the only accented thing on the page. Hier
 | `--color-paper` | `#F5F4F2` | Panels, chips, image placeholders |
 | `--color-white` | `#FFFFFF` | Page ground |
 
-**Category colours are the line colours.** Amended 2026-08-30, when the Linientafel design was approved. They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row and as a two-letter code. Never anywhere else, and never without a legend on the page.
+**Category colours are the line colours.** Amended 2026-08-30, when the Linientafel design was approved. They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row, as a two-letter code, and as the fill of the market page's kind pill. That third form was added 2026-09-06: the pill was white text laid over a photograph, legible on a dark picture and invisible on a bright one. Never anywhere else, and never without a legend on the page — except on a market page, which shows one kind and needs no key to it.
 
 Flohmarkt `FM` `#FF4A2B` · Halle `HA` `#3D5AFE` · Nacht `NA` `#7C3AED` · Kinder `KI` `#F5A524` · Trödel `TR` `#E4007F`
 
@@ -63,7 +63,7 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Wordmark
 
-**`fynda.`** — Schibsted Grotesk 800, tight tracking, near-black, full stop in the accent. The dot is the mark; `fynda.market` reads as both a sentence and a logo. App mark: `f.` in white on a near-black rounded square.
+**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". Schibsted Grotesk 800, tight tracking, near-black, **the full stop in the accent** — the dot is the mark, and it is the one decorative use of the accent on the site. Written out in full everywhere the name appears: page titles, the footer, structured data, e-mail subjects. The only exception is the imprint and the privacy policy, where the operator's name is a legal statement rather than branding and waits on a person. App mark: `f.` in white on a near-black rounded square.
 
 ## Voice
 

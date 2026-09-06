@@ -11,7 +11,6 @@ import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
 import CtaCard from '../../../components/CtaCard.astro';
 import Icon from '../../../components/Icon.astro';
-import LineBadge from '../../../components/LineBadge.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
@@ -101,7 +100,7 @@ const jsonLd = {
     // pointed at a country page that has never been built, so the canton page
     // is what finally makes this trail true rather than plausible.
     { '@type': 'BreadcrumbList', itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Fynda', item: `${site}${homePath(locale)}` },
+      { '@type': 'ListItem', position: 1, name: 'fynda.market', item: `${site}${homePath(locale)}` },
       { '@type': 'ListItem', position: 2, name: market.region, item: `${site}${regionPath(locale, market.countrySlug, market.regionSlug)}` },
       { '@type': 'ListItem', position: 3, name: market.city, item: `${site}${cityPath(locale, market.countrySlug, market.citySlug)}` },
       { '@type': 'ListItem', position: 4, name: market.name, item: url },
@@ -208,7 +207,7 @@ const facilityItems = market.facilities ? [
 <Page
   locale={locale}
   alternates={alternates}
-  title={`${market.name}, ${market.city} — ${s.dates} ${new Date().getFullYear()} | Fynda`}
+  title={`${market.name}, ${market.city} — ${s.dates} ${new Date().getFullYear()} | fynda.market`}
   description={`${kind.full[locale]}, ${market.city}. ${next ? s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName) : s.cityNoDate}`}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
@@ -220,7 +219,13 @@ const facilityItems = market.facilities ? [
   <div class="market">
     <div class="photo-hero">
       <PhotoOrArt market={market} width={720} height={210} loading="eager" />
-      <span class="type eyebrow"><LineBadge kind={market.kind} /> {kind.full[locale]}</span>
+      {/* Filled, not white text laid over a photograph, where it was legible
+          on a dark picture and invisible on a bright one. The fill is the
+          kind's own line colour — docs/BRAND.md gives the line colours exactly
+          one job, marking the type of market, and this is it. */}
+      <span class="type eyebrow" style={`background: var(${kind.token})`}>
+        <Icon name={kind.icon} size={14} />{kind.full[locale]}
+      </span>
       {/* Saving and going are two different decisions. As a block button the
           same size as Route, Merken read as an equally large choice, which it
           is not — Route is 55% of every outbound click on the site. On the
@@ -235,6 +240,19 @@ const facilityItems = market.facilities ? [
     </div>
 
     <div class="head gutter">
+      {/* Orientation before identity — PAGES.md has always said the page opens
+          with kind and city, and only the kind was ever built. It is also the
+          only way off this page that is not a link out of the site: the
+          breadcrumb existed in the structured data and nowhere a person could
+          see it. Parent links, not a related-market list. */}
+      <p class="where">
+        <a href={cityPath(locale, market.countrySlug, market.citySlug)}>{market.city}</a>
+        <span aria-hidden="true">·</span>
+        {/* "Kanton Genf", not "Genf": Genève, Luzern, Zürich, Bern and five
+            more name both a city and its canton, so the bare pair read as the
+            same word printed twice. The label string exists for this. */}
+        <a href={regionPath(locale, market.countrySlug, market.regionSlug)}>{s.regionLabel(market.region)}</a>
+      </p>
       <h1>{market.name}</h1>
 
       {next && (
@@ -357,7 +375,13 @@ const facilityItems = market.facilities ? [
               <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
                 <strong>{formatDate(occurrence.date, locale)}</strong>
                 {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
-                <em>{STATUS[locale][occurrence.status]}</em>
+                {/* One row in the list can be today, and when it is, that is
+                    the only thing in the list worth colouring. Everything else
+                    says "Bestätigt", which is true of nearly every row and is
+                    therefore furniture — docs/BRAND.md. */}
+                {occurrence.date === today && occurrence.status !== 'cancelled'
+                  ? <em class="is-today">{s.statusToday}</em>
+                  : <em>{STATUS[locale][occurrence.status]}</em>}
               </li>
             ))}
           </ul>
@@ -368,6 +392,15 @@ const facilityItems = market.facilities ? [
           </p>
         )}
       </Section>
+
+      {/* Who runs it. Held for 94% of markets and, until now, printed only
+          into the structured data — a fact we had, that a person could not
+          read. It sits above the claim card on purpose: naming the organiser
+          and then saying nobody has taken this page over is the ask making its
+          own case. */}
+      {market.organiserName && (
+        <p class="host gutter">{s.hostedBy(market.organiserName)}</p>
+      )}
 
       {/* After the dates, not above them. An organiser looking their own market
           up will scroll; a visitor deciding whether to go should not have a
@@ -419,10 +452,28 @@ const facilityItems = market.facilities ? [
     display: flex;
     align-items: center;
     gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
     color: var(--color-white);
   }
 
+  /* The city and the canton, above the name. Quiet — they orient, they are not
+     the point of the page — but they are links, and until now this page had
+     none that stayed on the site. */
+  .where {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-end: var(--space-1);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+  }
+  .where a { color: var(--color-grey); }
+  .where > span { color: var(--color-line); }
+
   h1 { font-size: var(--text-market-name); letter-spacing: var(--tracking-tight); }
+
+  .host { font-size: var(--text-small); color: var(--color-grey); }
 
   /*
     The status line. The one loud thing above the fold, and the only accented
@@ -601,6 +652,9 @@ const facilityItems = market.facilities ? [
   .dates li > strong { font-weight: var(--weight-bold); }
   .dates li > span { color: var(--color-grey); }
   .dates li > em { color: var(--color-quiet); font-size: var(--text-micro); font-style: normal; font-weight: var(--weight-bold); }
+  /* The accent marks the date and whether it is happening — this is the second
+     of those, and the only row in the list that earns it. */
+  .dates li > em.is-today { color: var(--color-accent); }
   .no-dates { display: flex; flex-direction: column; gap: var(--space-half); max-width: var(--measure); }
   .no-dates > strong { font-weight: var(--weight-bold); }
   .no-dates > span { color: var(--color-grey); }

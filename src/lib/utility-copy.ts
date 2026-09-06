@@ -57,7 +57,7 @@ export type FormKey = 'report' | 'newsletter' | 'organiser';
 
 const report: Record<Locale, FormPage> = {
   de: {
-    title: 'Etwas melden — Fynda',
+    title: 'Etwas melden — fynda.market',
     description: 'Markt nicht gefunden, schon vorbei oder falsche Angaben? Meldung senden, wir prüfen von Hand.',
     heading: 'Etwas stimmt nicht?',
     answer: 'Sagen Sie uns, was Sie vor Ort erlebt haben — wir prüfen jede Meldung von Hand.',
@@ -80,7 +80,7 @@ const report: Record<Locale, FormPage> = {
     subject: 'Meldung',
   },
   fr: {
-    title: 'Signaler quelque chose — Fynda',
+    title: 'Signaler quelque chose — fynda.market',
     description: "Brocante introuvable, déjà terminée ou informations fausses ? Envoyez-nous un signalement, nous vérifions à la main.",
     heading: "Quelque chose ne joue pas ?",
     answer: 'Dites-nous ce que vous avez constaté sur place — nous vérifions chaque signalement à la main.',
@@ -103,7 +103,7 @@ const report: Record<Locale, FormPage> = {
     subject: 'Signalement',
   },
   it: {
-    title: 'Segnalare qualcosa — Fynda',
+    title: 'Segnalare qualcosa — fynda.market',
     description: 'Mercatino non trovato, già finito o dati sbagliati? Ci invii una segnalazione, verifichiamo a mano.',
     heading: 'Qualcosa non torna?',
     answer: 'Ci dica cosa ha trovato sul posto — verifichiamo ogni segnalazione a mano.',
@@ -126,7 +126,7 @@ const report: Record<Locale, FormPage> = {
     subject: 'Segnalazione',
   },
   en: {
-    title: 'Report something — Fynda',
+    title: 'Report something — fynda.market',
     description: "Market missing, already over, or the details wrong? Send us a report, we check every one by hand.",
     heading: 'Something not right?',
     answer: 'Tell us what you found on the day — we check every report by hand.',
@@ -156,7 +156,7 @@ const report: Record<Locale, FormPage> = {
 
 const newsletter: Record<Locale, FormPage> = {
   de: {
-    title: 'Newsletter — Fynda',
+    title: 'Newsletter — fynda.market',
     description: 'Jeden Freitag eine E-Mail: neue Termine und Absagen für Ihre Stadt. Kostenlos, ohne Konto.',
     heading: 'Newsletter',
     answer: 'Jeden Freitag eine E-Mail: was am Wochenende in Ihrer Stadt los ist.',
@@ -173,7 +173,7 @@ const newsletter: Record<Locale, FormPage> = {
     subject: 'Newsletter',
   },
   fr: {
-    title: 'Newsletter — Fynda',
+    title: 'Newsletter — fynda.market',
     description: 'Chaque vendredi un e-mail : nouvelles dates et annulations pour votre commune. Gratuit, sans compte.',
     heading: 'Newsletter',
     answer: 'Chaque vendredi un e-mail : ce qui se passe ce week-end près de chez vous.',
@@ -190,7 +190,7 @@ const newsletter: Record<Locale, FormPage> = {
     subject: 'Newsletter',
   },
   it: {
-    title: 'Newsletter — Fynda',
+    title: 'Newsletter — fynda.market',
     description: 'Ogni venerdì una e-mail: nuove date e cancellazioni per la Sua città. Gratuito, senza account.',
     heading: 'Newsletter',
     answer: 'Ogni venerdì una e-mail: cosa succede questo fine settimana nella Sua zona.',
@@ -207,7 +207,7 @@ const newsletter: Record<Locale, FormPage> = {
     subject: 'Newsletter',
   },
   en: {
-    title: 'Newsletter — Fynda',
+    title: 'Newsletter — fynda.market',
     description: 'One email every Friday: new dates and cancellations for your town. Free, no account.',
     heading: 'Newsletter',
     answer: "One email every Friday: what's on this weekend near you.",
@@ -231,12 +231,12 @@ const newsletter: Record<Locale, FormPage> = {
 
 const organiser: Record<Locale, FormPage> = {
   de: {
-    title: 'Für Veranstalter — Fynda',
-    description: 'Ihr Flohmarkt ist wahrscheinlich schon bei Fynda gelistet. Holen Sie sich Ihre Marktseite — kostenlos, ohne Konto.',
+    title: 'Für Veranstalter — fynda.market',
+    description: 'Ihr Flohmarkt ist wahrscheinlich schon bei fynda.market gelistet. Holen Sie sich Ihre Marktseite — kostenlos, ohne Konto.',
     heading: 'Das ist Ihre Marktseite',
     answer: 'Ihr Flohmarkt ist wahrscheinlich schon bei uns gelistet. Holen Sie ihn sich.',
     prose: [
-      'Fynda sammelt Flohmärkte in der ganzen Schweiz, auch solche, deren Veranstalter sich nie bei uns gemeldet haben. Ihr Markt hat deshalb vermutlich schon eine Seite, mit Termin, Adresse und Öffnungszeiten. Sie können diese Seite beanspruchen.',
+      'fynda.market sammelt Flohmärkte in der ganzen Schweiz, auch solche, deren Veranstalter sich nie bei uns gemeldet haben. Ihr Markt hat deshalb vermutlich schon eine Seite, mit Termin, Adresse und Öffnungszeiten. Sie können diese Seite beanspruchen.',
     ],
     listTitle: 'Was das bringt',
     list: [
@@ -258,12 +258,12 @@ const organiser: Record<Locale, FormPage> = {
     subject: 'Veranstalter',
   },
   fr: {
-    title: 'Pour les organisateurs — Fynda',
-    description: 'Votre brocante est probablement déjà sur Fynda. Réclamez votre page — gratuitement, sans compte.',
+    title: 'Pour les organisateurs — fynda.market',
+    description: 'Votre brocante est probablement déjà sur fynda.market. Réclamez votre page — gratuitement, sans compte.',
     heading: "C'est votre page",
     answer: 'Votre brocante est probablement déjà chez nous. Venez la chercher.',
     prose: [
-      "Fynda réunit les brocantes de toute la Suisse, y compris celles dont les organisateurs ne nous ont jamais contactés. Votre brocante a donc sans doute déjà une page, avec sa date, son adresse et ses horaires. Vous pouvez la réclamer.",
+      "fynda.market réunit les brocantes de toute la Suisse, y compris celles dont les organisateurs ne nous ont jamais contactés. Votre brocante a donc sans doute déjà une page, avec sa date, son adresse et ses horaires. Vous pouvez la réclamer.",
     ],
     listTitle: 'Ce que cela vous apporte',
     list: [
@@ -285,12 +285,12 @@ const organiser: Record<Locale, FormPage> = {
     subject: 'Organisateur',
   },
   it: {
-    title: 'Per gli organizzatori — Fynda',
-    description: 'Il Suo mercatino è probabilmente già su Fynda. Rivendichi la Sua pagina — gratis, senza account.',
+    title: 'Per gli organizzatori — fynda.market',
+    description: 'Il Suo mercatino è probabilmente già su fynda.market. Rivendichi la Sua pagina — gratis, senza account.',
     heading: 'Questa è la Sua pagina',
     answer: 'Il Suo mercatino è probabilmente già da noi. Se lo prenda.',
     prose: [
-      'Fynda raccoglie i mercatini di tutta la Svizzera, anche quelli i cui organizzatori non ci hanno mai contattato. Il Suo mercatino ha quindi probabilmente già una pagina, con data, indirizzo e orari. Può rivendicarla.',
+      'fynda.market raccoglie i mercatini di tutta la Svizzera, anche quelli i cui organizzatori non ci hanno mai contattato. Il Suo mercatino ha quindi probabilmente già una pagina, con data, indirizzo e orari. Può rivendicarla.',
     ],
     listTitle: 'A cosa serve',
     list: [
@@ -312,12 +312,12 @@ const organiser: Record<Locale, FormPage> = {
     subject: 'Organizzatore',
   },
   en: {
-    title: 'For organisers — Fynda',
-    description: 'Your flea market is probably already on Fynda. Claim your page — free, no account.',
+    title: 'For organisers — fynda.market',
+    description: 'Your flea market is probably already on fynda.market. Claim your page — free, no account.',
     heading: 'This is your page',
     answer: 'Your flea market is probably already with us. Come and claim it.',
     prose: [
-      'Fynda collects flea markets across the whole of Switzerland, including ones whose organisers never got in touch. So your market probably already has a page, with its date, address and opening hours. You can claim it.',
+      'fynda.market collects flea markets across the whole of Switzerland, including ones whose organisers never got in touch. So your market probably already has a page, with its date, address and opening hours. You can claim it.',
     ],
     listTitle: 'What you get',
     list: [
@@ -365,7 +365,7 @@ export interface SavedPage {
 
 export const SAVED: Record<Locale, SavedPage> = {
   de: {
-    title: 'Gemerkte Märkte | Fynda',
+    title: 'Gemerkte Märkte | fynda.market',
     description: 'Ihre gemerkten Flohmärkte, mit den nächsten Terminen.',
     heading: 'Gemerkt',
     none: 'Noch nichts gemerkt.',
@@ -375,7 +375,7 @@ export const SAVED: Record<Locale, SavedPage> = {
     summary: '{markets} gemerkt, {dates} kommende Termine.',
   },
   fr: {
-    title: 'Brocantes enregistrées | Fynda',
+    title: 'Brocantes enregistrées | fynda.market',
     description: 'Vos brocantes enregistrées, avec leurs prochaines dates.',
     heading: 'Enregistré',
     none: "Rien d'enregistré pour l'instant.",
@@ -385,7 +385,7 @@ export const SAVED: Record<Locale, SavedPage> = {
     summary: '{markets} enregistrées, {dates} dates à venir.',
   },
   it: {
-    title: 'Mercatini salvati | Fynda',
+    title: 'Mercatini salvati | fynda.market',
     description: 'I Suoi mercatini salvati, con le prossime date.',
     heading: 'Salvati',
     none: 'Non ha ancora salvato nulla.',
@@ -395,7 +395,7 @@ export const SAVED: Record<Locale, SavedPage> = {
     summary: '{markets} salvati, {dates} date in arrivo.',
   },
   en: {
-    title: 'Saved markets | Fynda',
+    title: 'Saved markets | fynda.market',
     description: 'Your saved flea markets, with their next dates.',
     heading: 'Saved',
     none: 'Nothing saved yet.',

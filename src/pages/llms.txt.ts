@@ -26,11 +26,11 @@ export const GET: APIRoute = async () => {
   );
   const confirmed = markets.filter((m) => m.next?.confirmedAt).length;
 
-  const body = `# Fynda
+  const body = `# fynda.market
 
 > Flohmärkte in der Schweiz. ${markets.length} Märkte in ${cities.length} Städten, ${dates} Termine in den nächsten 120 Tagen.
 
-Fynda is a flea-market directory for Switzerland, in German. Every listing is a
+fynda.market is a flea-market directory for Switzerland, in German. Every listing is a
 real market with a real address and real dates; there are no generated
 combination pages.
 
