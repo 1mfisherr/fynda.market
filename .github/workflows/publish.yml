@@ -1,0 +1,61 @@
+name: Publish
+
+# Why this exists.
+#
+# The site is static: every page is a file written at build time. "Dieses
+# Wochenende", "Heute" and the weekend list are baked into those files, so a
+# site built on Friday still calls last weekend "this weekend" on the Saturday
+# after. Until this workflow, the only thing that rebuilt fynda.market was
+# `npm run deploy` on one laptop — which meant a holiday was a fortnight of a
+# front page telling people about markets that had already happened.
+#
+# This runs on GitHub's machines. Nothing here needs anyone's computer to be
+# switched on.
+#
+# It is the same script that runs locally — scripts/deploy.mjs — so there is
+# one publishing path, not two that can drift. That script wipes dist/, builds
+# against the live database, runs all ten guardrails, refuses to upload a
+# fixtures build, and only then talks to Cloudflare. A red guardrail here means
+# nothing is published and GitHub emails the failure.
+
+on:
+  schedule:
+    # 03:00 UTC — 05:00 in Swiss summer, 04:00 in winter. Cron has no notion of
+    # a timezone, and an hour either way does not matter for a daily rebuild.
+    - cron: '0 3 * * *'
+  # The button on the Actions tab, for publishing without waiting for tomorrow.
+  workflow_dispatch:
+
+# Two rebuilds uploading to Cloudflare at once would race. A run already in
+# flight finishes; a second waits rather than being thrown away, because the
+# later one is the one with the fresher data.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Build against the database and upload
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build and publish
+        env:
+          # scripts/db.mjs reads .env.local on a laptop and the environment
+          # here. Neither ever reaches a command line.
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          # What wrangler needs to upload without a browser login.
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/deploy.mjs

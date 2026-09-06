@@ -4,6 +4,11 @@
  * Reads .env.local (then .env) itself, so no secret is ever passed on a command
  * line where it would land in shell history or a process list.
  *
+ * On a machine with no such file — the scheduled rebuild runs on GitHub, not
+ * here — it falls back to the environment, which is where GitHub puts a
+ * repository secret. The file wins where both exist, so a local .env.local is
+ * still the source of truth on this laptop.
+ *
  *   import { query, withClient, V1_URL } from './db.mjs';
  *   const rows = await query('select count(*) from markets');
  */
@@ -34,10 +39,13 @@ function loadEnv() {
 
 const env = loadEnv();
 
+/** The file if there is one, the environment if there is not. */
+const from = (name) => env[name] ?? process.env[name];
+
 // Same normalisation the build uses, so a string that works in one place cannot
 // fail in the other. See src/lib/connection-string.ts.
-export const DB_URL = requireConnectionString(env.SUPABASE_DB_URL, 'SUPABASE_DB_URL');
-export const V1_URL = env.V1_DATABASE_URL && requireConnectionString(env.V1_DATABASE_URL, 'V1_DATABASE_URL');
+export const DB_URL = requireConnectionString(from('SUPABASE_DB_URL'), 'SUPABASE_DB_URL');
+export const V1_URL = from('V1_DATABASE_URL') && requireConnectionString(from('V1_DATABASE_URL'), 'V1_DATABASE_URL');
 
 /** Supabase terminates unencrypted connections; its cert chain is not in Node's store. */
 const ssl = { rejectUnauthorized: false };
