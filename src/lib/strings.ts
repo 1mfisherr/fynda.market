@@ -179,6 +179,8 @@ export interface Strings {
   footerNearby: string;
   footerImprint: string;
   footerPrivacy: string;
+  footerTerms: string;
+  footerAbout: string;
 
   /* canton page */
   regionHeading: (n: number, region: string, year: number) => string;
@@ -343,6 +345,8 @@ const de: Strings = {
   footerNearby: 'In der Nähe',
   footerImprint: 'Impressum',
   footerPrivacy: 'Datenschutz',
+  footerTerms: 'Nutzungsbedingungen',
+  footerAbout: 'Über Fynda',
 
   regionHeading: (n, region, year) =>
     n === 1 ? `Der Flohmarkt im Kanton ${region} ${year}` : `Die ${n} Flohmärkte im Kanton ${region} ${year}`,
@@ -499,6 +503,8 @@ const en: Strings = {
   footerNearby: 'Near me',
   footerImprint: 'Imprint',
   footerPrivacy: 'Privacy',
+  footerTerms: 'Terms',
+  footerAbout: 'About Fynda',
 
   regionHeading: (n, region, year) =>
     n === 1 ? `The flea market in the canton of ${region} ${year}` : `The ${n} flea markets in the canton of ${region} ${year}`,
@@ -659,6 +665,8 @@ const fr: Strings = {
   footerNearby: 'À proximité',
   footerImprint: 'Mentions légales',
   footerPrivacy: 'Confidentialité',
+  footerTerms: "Conditions d'utilisation",
+  footerAbout: 'À propos',
 
   regionHeading: (n, region, year) =>
     n === 1 ? `La brocante dans le canton de ${region} ${year}` : `Les ${n} brocantes dans le canton de ${region} ${year}`,
@@ -815,6 +823,8 @@ const it: Strings = {
   footerNearby: 'Nei dintorni',
   footerImprint: 'Note legali',
   footerPrivacy: 'Privacy',
+  footerTerms: 'Condizioni generali',
+  footerAbout: 'Chi siamo',
 
   regionHeading: (n, region, year) =>
     n === 1 ? `Il mercatino delle pulci nel Cantone ${region} ${year}` : `I ${n} mercatini delle pulci nel Cantone ${region} ${year}`,

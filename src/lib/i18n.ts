@@ -93,6 +93,8 @@ export const UTILITY = {
   saved: { de: 'gemerkt', fr: 'favoris', it: 'salvati', en: 'saved' },
   imprint: { de: 'impressum', fr: 'mentions-legales', it: 'note-legali', en: 'imprint' },
   privacy: { de: 'datenschutz', fr: 'confidentialite', it: 'privacy', en: 'privacy' },
+  terms: { de: 'nutzungsbedingungen', fr: 'conditions-generales', it: 'condizioni-generali', en: 'terms' },
+  about: { de: 'ueber-uns', fr: 'a-propos', it: 'chi-siamo', en: 'about' },
   nearby: { de: 'umkreis', fr: 'a-proximite', it: 'nei-dintorni', en: 'nearby' },
 } as const;
 
@@ -109,19 +111,22 @@ export type UtilityKey = keyof typeof UTILITY;
  * report button was thrown back into German, which reads as a broken language
  * switcher rather than as a missing page.
  *
- * The imprint and the privacy policy are legal documents. The German ones still
- * carry unfilled placeholders, and a machine-translated privacy policy is the
- * one kind of prose this project must not ship (docs/PLAN.md). They stay German
- * until a person writes them, and a French page links to the German one, which
- * is honest and reachable. Linking to a French URL that 404s would not be.
+ * The four legal documents used to be German-only, on the grounds that a
+ * machine-translated privacy policy is the one kind of prose this project must
+ * not ship. That rule was protecting against a template nobody had read. What
+ * exists now is a human-written English original — Delfim's own text from
+ * fleafind.ch — so the four ship in every locale (src/lib/legal/). A French
+ * visitor dropped into German legal text is the worse outcome.
  */
 export const UTILITY_LOCALES: Record<UtilityKey, Locale[]> = {
   report: LOCALES,
   newsletter: LOCALES,
   organiser: LOCALES,
   saved: LOCALES,
-  imprint: [DEFAULT_LOCALE],
-  privacy: [DEFAULT_LOCALE],
+  imprint: LOCALES,
+  privacy: LOCALES,
+  terms: LOCALES,
+  about: LOCALES,
   nearby: LOCALES,
 };
 

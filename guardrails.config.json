@@ -15,7 +15,7 @@
       { "_comment": "Market pages sit outside the geography tree, so they are matched FIRST and the place patterns exclude the section words. Without that, /de/markt/x/ matches the city pattern, which silently applies the wrong content floor and the wrong Event rule.",
         "name": "market", "pattern": "^/(de|fr|it|en)/(markt|marche|mercato|market)/[a-z0-9-]+/$" },
       { "_comment": "Forms, legal text and saved markets. Noindex, out of the sitemap, out of the ratio. Matched before the country pattern so they get their own content floor.",
-        "name": "utility", "pattern": "^/(de|fr|it|en)/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz|signaler|organisateurs|favoris|mentions-legales|confidentialite|segnalare|organizzatori|salvati|note-legali|privacy|report|organisers|saved|imprint)/$" },
+        "name": "utility", "pattern": "^/(de|fr|it|en)/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz|nutzungsbedingungen|ueber-uns|signaler|organisateurs|favoris|mentions-legales|confidentialite|conditions-generales|a-propos|segnalare|organizzatori|salvati|note-legali|privacy|condizioni-generali|chi-siamo|report|organisers|saved|imprint|terms|about)/$" },
       { "name": "radius", "pattern": "^/(de|fr|it|en)/(umkreis|a-proximite|nei-dintorni|nearby)/$" },
       { "name": "country", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/$" },
       { "_comment": "The canton level. A type segment partitions — one URL per canton — where a facet multiplies, which is the distinction the forbid rule below is really about.",

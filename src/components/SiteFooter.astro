@@ -24,6 +24,7 @@ const s = t(locale);
 const year = new Date().getFullYear();
 
 const fynda = [
+  { href: utilityPath(locale, 'about'), label: s.footerAbout },
   { href: utilityPath(locale, 'organiser'), label: s.footerOrganisers },
   { href: utilityPath(locale, 'newsletter'), label: s.footerNewsletter },
   { href: utilityPath(locale, 'report'), label: s.footerReport },
@@ -33,6 +34,7 @@ const fynda = [
 const legal = [
   { href: utilityPath(locale, 'imprint'), label: s.footerImprint },
   { href: utilityPath(locale, 'privacy'), label: s.footerPrivacy },
+  { href: utilityPath(locale, 'terms'), label: s.footerTerms },
 ];
 ---
 <footer class="site-footer wrapper">

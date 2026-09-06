@@ -11,8 +11,9 @@
  * once per page, each walking its own list of field names — so adding a field
  * meant remembering to add it in two places. It now walks the form.
  *
- * The imprint and the privacy policy are NOT here. They are legal documents and
- * stay German-only until a person writes them — see UTILITY_LOCALES in i18n.ts.
+ * The four legal documents — about, imprint, privacy, terms — are the third
+ * branch. They are prose with headings and lists and nothing else, so they are
+ * rendered from lib/legal/ rather than from sixteen .astro files.
  */
 import Page from '../../layouts/Page.astro';
 import Button from '../../components/Button.astro';
@@ -22,17 +23,25 @@ import Section from '../../components/Section.astro';
 import { getMarkets } from '../../lib/markets';
 import { byMarket, datedRows, type Dated } from '../../lib/lists';
 import { FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
+import { LEGAL, LEGAL_KEYS, type LegalKey } from '../../lib/legal';
 import {
   UTILITY, UTILITY_LOCALES, homePath, marketPrefix, utilityAlternates,
   type Locale, type UtilityKey,
 } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
-/** The keys this route owns. Legal pages are static files under src/pages/de/. */
-const KEYS = ['report', 'newsletter', 'organiser', 'saved'] as const satisfies readonly UtilityKey[];
+/** Every key this route owns — which, since the legal pages moved in, is all of
+    them except the radius view. */
+const KEYS = [
+  'report', 'newsletter', 'organiser', 'saved',
+  'about', 'imprint', 'privacy', 'terms',
+] as const satisfies readonly UtilityKey[];
 
 export async function getStaticPaths() {
-  const keys = ['report', 'newsletter', 'organiser', 'saved'] as const;
+  const keys = [
+    'report', 'newsletter', 'organiser', 'saved',
+    'about', 'imprint', 'privacy', 'terms',
+  ] as const;
   return keys.flatMap((key) =>
     UTILITY_LOCALES[key].map((locale) => ({
       params: { locale, utility: UTILITY[key][locale] },
@@ -53,9 +62,10 @@ if (key === 'saved') {
   list = byMarket(datedRows(await getMarkets(locale)));
 }
 
-const form = key === 'saved' ? null : FORMS[key as FormKey][locale];
+const legal = LEGAL_KEYS.includes(key as LegalKey) ? LEGAL[key as LegalKey][locale] : null;
+const form = legal || key === 'saved' ? null : FORMS[key as FormKey][locale];
 const saved = key === 'saved' ? SAVED[locale] : null;
-const copy = form ?? saved!;
+const copy = form ?? saved ?? legal!;
 
 /**
  * What the saved page's summary needs, as data on the element rather than as an
@@ -109,6 +119,21 @@ const savedCopy = saved && {
     </>
   )}
 
+  {legal && (
+    <div class="prose gutter">
+      <h1>{legal.heading}</h1>
+      {legal.effective && <p class="meta effective">{legal.effective}</p>}
+      {legal.lede?.map((paragraph) => <p>{paragraph}</p>)}
+      {legal.blocks.map((block) => (
+        <>
+          {block.h && <h2>{block.h}</h2>}
+          {block.p?.map((paragraph) => <p>{paragraph}</p>)}
+          {block.ul && <ul>{block.ul.map((item) => <li>{item}</li>)}</ul>}
+        </>
+      ))}
+    </div>
+  )}
+
   {saved && (
     <>
       <section class="page-head gutter">
@@ -130,6 +155,11 @@ const savedCopy = saved && {
 
 <style>
   .find { margin-block-start: var(--space-4); }
+
+  /* The operator's name, town and address are one paragraph with line breaks in
+     it — a block of three <p> would be read as three separate statements. */
+  .prose p { white-space: pre-line; }
+  .effective { margin-block-start: calc(var(--space-2) * -1); }
 </style>
 
 <script>
