@@ -149,7 +149,8 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 
 ## Still open
 
-- **Distance on cards.** The radius view computes it from a known origin; a card shows the city only. Never print a distance we guessed.
+- **Distance on cards, and in the market page's decision strip.** No longer an open question, just an unfinished one: the blocker is that `fynda:stadt` stores `{name, href}` and no coordinates, so the browser knows which town was picked and not where it is. Fix is in the home page's town picker, not the market page — the empty `<li data-distance>` slot is already in the markup waiting for it. Never print a distance we guessed.
+- **Where an organiser's click lands.** The claim card and every form still open the visitor's mail client, which is honest and does not scale past a few dozen. Before any confirmation e-mail goes out there has to be somewhere for a "yes, it's on" to be recorded — a Cloudflare function writing a fact, `noindex` and outside the static build. Delfim already ran the ask by hand on v1 and got 30–40 replies, so demand is not the open part. **This is the next real decision.**
 - **The tag taxonomy.** Keep it small — 60+ categories killed v1. No market carries a tag yet.
 - **Whether the search card earns its place.** It sits above the content on the home page and does less work than what is below it; most arrivals come from Google already knowing their town, which is what the remembered-town shortcut serves. Now answerable from `filter_changed` events instead of taste — wait for them.
 - **When a dashboard is worth €6/month.** Metabase runs locally for nothing. The case for renting a host is being able to look without starting Docker, and it is not made yet.
@@ -157,6 +158,7 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 - **The four vanished markets** above: mark `permanently_closed` and lose their pages, or leave them.
 - **The beachhead region.** Zürich or Luzern.
 - **The content floor counts characters, and should count verified facts.** Prose can satisfy a character count without adding anything real. Fix before any bulk description generation — it is also what would let a description-free Italian page pass on its facts alone.
+- **Where the photographs come from.** One real one landed on 2026-09-06 — Plainpalais, supplied by the operator, replacing a v1 stock file on all three of its listings — and it is 750px wide where the layout wants 1440. That is the whole answer so far: 156 markets still show an illustration or a shared stock file. The route that scales is the organiser claim, not us shooting them; the route that works today is Delfim. Decide which before promising a photo per market.
 - **Would vendors pay for anything?** Five conversations settle it. Parked in `IDEAS.md`.
 - **Cross-border locales** (an Italian speaker searching for Paris). The structure allows it; let Search Console decide rather than guessing now.
 
