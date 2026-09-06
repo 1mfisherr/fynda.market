@@ -178,9 +178,11 @@ check('URL-to-entity ratio', () => {
   if (total === 0) return skip('entity count is zero — nothing to measure');
 
   // Utility and radius pages carry no entity and compete for no query — they are
-  // noindex forms, legal text and a filter view. Counting them would make the
-  // ratio measure something other than what it exists to measure: how many
-  // indexable URLs we mint per real thing in the world.
+  // forms, legal text and a filter view. Counting them would make the ratio
+  // measure something other than what it exists to measure: how many indexable
+  // URLs we mint per real thing in the world. About is indexable and still
+  // excluded here, because it is one page about the site rather than a page
+  // about a thing in the world; four URLs cannot move this number anyway.
   const counted = pages.filter((p) => {
     const t = routeTypeOf(p.url);
     return t !== 'utility' && t !== 'radius';

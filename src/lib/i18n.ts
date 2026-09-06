@@ -150,7 +150,19 @@ export const utilityAlternates = (key: UtilityKey) =>
   UTILITY_LOCALES[key].map((locale) => ({ locale, path: utilityPath(locale, key) }));
 
 /**
- * Every utility page, in every locale it is served in.
+ * The utility pages we DO ask Google for.
+ *
+ * Almost none of them: a form, a saved list and a filter view are pages for a
+ * person who is already here, and a legal document competes for no query. The
+ * exception is About, which is the one page that says a person is behind this
+ * site — the signal a directory recovering from a spam classification most
+ * needs to be able to show. It costs four URLs.
+ */
+export const INDEXED_UTILITY: UtilityKey[] = ['about'];
+
+/**
+ * Every utility page that carries a robots noindex, in every locale it is
+ * served in. astro.config.mjs subtracts exactly this from the sitemap.
  *
  * It lives here rather than in astro.config.mjs because this file is the only
  * place a URL is assembled — and because `Object.keys` returns `string[]`,
@@ -158,7 +170,7 @@ export const utilityAlternates = (key: UtilityKey) =>
  * itself. In TypeScript the narrowing is one cast; in a `// @ts-check`ed .mjs
  * it was three type errors.
  */
-export const utilityPaths = () =>
-  (Object.keys(UTILITY) as UtilityKey[]).flatMap((key) =>
-    UTILITY_LOCALES[key].map((locale) => utilityPath(locale, key))
-  );
+export const noindexPaths = () =>
+  (Object.keys(UTILITY) as UtilityKey[])
+    .filter((key) => !INDEXED_UTILITY.includes(key))
+    .flatMap((key) => UTILITY_LOCALES[key].map((locale) => utilityPath(locale, key)));

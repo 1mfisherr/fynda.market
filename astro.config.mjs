@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-import { utilityPaths } from './src/lib/i18n.ts';
+import { noindexPaths } from './src/lib/i18n.ts';
 
 /**
  * Every page that carries `indexable={false}`, as a set of paths.
@@ -17,8 +17,10 @@ import { utilityPaths } from './src/lib/i18n.ts';
  * A list that has to be "kept in step" by hand is a list that drifts. This one
  * is built from the same UTILITY map the pages are, so a new utility page or a
  * new locale cannot get it wrong. Guardrail 10 checks the result.
+ *
+ * About is the one utility page that is NOT in here — see INDEXED_UTILITY.
  */
-const NOINDEX = new Set(utilityPaths());
+const NOINDEX = new Set(noindexPaths());
 
 // Static output only. See docs/STACK.md — the predecessor's stale-page and
 // layout-shift bugs came from SSR caching layers that do not exist here.

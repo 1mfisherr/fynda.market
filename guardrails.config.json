@@ -14,7 +14,7 @@
       { "name": "locale home", "pattern": "^/(de|fr|it|en)/$" },
       { "_comment": "Market pages sit outside the geography tree, so they are matched FIRST and the place patterns exclude the section words. Without that, /de/markt/x/ matches the city pattern, which silently applies the wrong content floor and the wrong Event rule.",
         "name": "market", "pattern": "^/(de|fr|it|en)/(markt|marche|mercato|market)/[a-z0-9-]+/$" },
-      { "_comment": "Forms, legal text and saved markets. Noindex, out of the sitemap, out of the ratio. Matched before the country pattern so they get their own content floor.",
+      { "_comment": "Forms, legal text, About and saved markets. Out of the ratio, and noindex except About — the one page that says a person is behind the site, which is why it is in the sitemap. Matched before the country pattern so they get their own content floor.",
         "name": "utility", "pattern": "^/(de|fr|it|en)/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz|nutzungsbedingungen|ueber-uns|signaler|organisateurs|favoris|mentions-legales|confidentialite|conditions-generales|a-propos|segnalare|organizzatori|salvati|note-legali|privacy|condizioni-generali|chi-siamo|report|organisers|saved|imprint|terms|about)/$" },
       { "name": "radius", "pattern": "^/(de|fr|it|en)/(umkreis|a-proximite|nei-dintorni|nearby)/$" },
       { "name": "country", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/$" },

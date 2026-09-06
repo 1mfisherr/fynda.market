@@ -25,7 +25,7 @@ import { byMarket, datedRows, type Dated } from '../../lib/lists';
 import { FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
 import { LEGAL, LEGAL_KEYS, type LegalKey } from '../../lib/legal';
 import {
-  UTILITY, UTILITY_LOCALES, homePath, marketPrefix, utilityAlternates,
+  INDEXED_UTILITY, UTILITY, UTILITY_LOCALES, homePath, marketPrefix, utilityAlternates,
   type Locale, type UtilityKey,
 } from '../../lib/i18n';
 import { t } from '../../lib/strings';
@@ -85,7 +85,7 @@ const savedCopy = saved && {
   alternates={alternates}
   title={copy.title}
   description={copy.description}
-  indexable={false}
+  indexable={INDEXED_UTILITY.includes(key)}
 >
   {form && (
     <>
