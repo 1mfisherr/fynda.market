@@ -66,11 +66,6 @@
   },
   {
     "marketSlug": "brocante-17-terra-geneve",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "brocante-17-terra-geneve",
     "date": "2026-09-06",
     "status": "confirmed"
   },
@@ -211,11 +206,6 @@
   },
   {
     "marketSlug": "flohmarkt-aarau",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-aarau",
     "date": "2026-10-03",
     "status": "confirmed"
   },
@@ -255,18 +245,8 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "flohmarkt-bruderholzallee",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "flohmarkt-buelach-stadthalle",
     "date": "2026-10-03",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-buerkliplatz-zuerich",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -317,11 +297,6 @@
   {
     "marketSlug": "flohmarkt-dampfzentrale-bern",
     "date": "2026-09-27",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-dietikon",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -401,11 +376,6 @@
   },
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-10-03",
     "status": "confirmed"
   },
@@ -461,11 +431,6 @@
   },
   {
     "marketSlug": "flohmarkt-hofmattplatz-kriens",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-hofmattplatz-kriens",
     "date": "2026-09-19",
     "status": "confirmed"
   },
@@ -487,11 +452,6 @@
   {
     "marketSlug": "flohmarkt-hofmattplatz-kriens",
     "date": "2026-11-21",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-kanzlei-zuerich",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -596,11 +556,6 @@
   },
   {
     "marketSlug": "flohmarkt-mosergarten-schaffhausen",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-mosergarten-schaffhausen",
     "date": "2026-10-03",
     "status": "confirmed"
   },
@@ -627,11 +582,6 @@
   {
     "marketSlug": "flohmarkt-paulusheim-luzern",
     "date": "2026-09-12",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-petersplatz-basel",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -725,16 +675,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "flohmarkt-schlieren-herbstmarkt",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-seeplatz-waedenswil",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "flohmarkt-seeplatz-waedenswil",
     "date": "2026-10-03",
     "status": "confirmed"
@@ -806,17 +746,7 @@
   },
   {
     "marketSlug": "flohmarkt-uster-stadthausplatz",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-uster-stadthausplatz",
     "date": "2026-10-03",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-vogesenplatz-basel",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -997,11 +927,6 @@
   {
     "marketSlug": "fundus-flohmarkt-arena-root",
     "date": "2026-12-20",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "gaenggali-markt-chur",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -1201,11 +1126,6 @@
   },
   {
     "marketSlug": "luzerner-flohmarkt-voegeligaertli",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "luzerner-flohmarkt-voegeligaertli",
     "date": "2026-09-12",
     "status": "confirmed"
   },
@@ -1262,11 +1182,6 @@
   {
     "marketSlug": "maedelsflohmarkt-xxl-dietikon",
     "date": "2026-11-08",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-fribourg-cathedrale",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -1406,11 +1321,6 @@
   },
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2026-09-12",
     "status": "confirmed"
   },
@@ -1492,11 +1402,6 @@
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2027-01-02",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-vevey",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -1711,11 +1616,6 @@
   },
   {
     "marketSlug": "marche-rumine-lausanne-samedi",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-samedi",
     "date": "2026-09-12",
     "status": "confirmed"
   },
@@ -1896,11 +1796,6 @@
   },
   {
     "marketSlug": "mercato-antiquariato-maghetti-lugano",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "mercato-antiquariato-maghetti-lugano",
     "date": "2026-09-12",
     "status": "confirmed"
   },
@@ -1992,16 +1887,6 @@
   {
     "marketSlug": "musikflohmarkt-markthalle-basel",
     "date": "2026-12-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-markthalle-basel",
-    "date": "2026-09-05",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "nerdyartist-markthalle-basel",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -2097,11 +1982,6 @@
   {
     "marketSlug": "quartierflohmi-neu-allschwil",
     "date": "2026-09-20",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "rosenhof-markt-zuerich",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {
@@ -2222,11 +2102,6 @@
   {
     "marketSlug": "strassenflohmarkt-rafz",
     "date": "2026-09-19",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "vide-dressing-flon-lausanne",
-    "date": "2026-09-05",
     "status": "confirmed"
   },
   {

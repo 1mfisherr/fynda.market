@@ -24,6 +24,8 @@ export interface Strings {
   skipToContent: string;
   backToHome: string;
   languageLabel: string;
+  /** Names the header's section links for a screen reader. */
+  navLabel: string;
 
   /* not found */
   notFoundTitle: string;
@@ -55,9 +57,12 @@ export interface Strings {
   regions: string;
   marketTypes: string;
   whereDataComes: string;
-  dataStep1: string;
-  dataStep2: string;
-  dataStep3: string;
+  /**
+   * What the block used to say in three verbs. It is the sentence that
+   * separates this site from the category, so it carries a figure and names
+   * what we do with a cancellation.
+   */
+  dataProvenance: (dates: number) => string;
   questions: string;
   cancelledThisWeek: string;
   nothingInPeriod: string;
@@ -185,6 +190,7 @@ const de: Strings = {
   skipToContent: 'Zum Inhalt springen',
   backToHome: 'Zurück zur Startseite',
   languageLabel: 'Sprache',
+  navLabel: 'Hauptnavigation',
 
   notFoundTitle: 'Seite nicht gefunden — Fynda',
   notFoundHeading: 'Diese Seite gibt es nicht.',
@@ -205,14 +211,15 @@ const de: Strings = {
   thisWeekend: 'Dieses Wochenende',
   allWeekend: (n) => `Alle ${n} Märkte am Wochenende`,
   yourTown: 'Ihre Stadt',
-  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from} und ${to}.`,
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from}${to === from ? '' : ` und ${to}`}.`,
   cities: 'Städte',
   regions: 'Kantone',
   marketTypes: 'Markttypen',
   whereDataComes: 'Woher unsere Daten kommen',
-  dataStep1: 'Termine prüfen',
-  dataStep2: 'Quelle festhalten',
-  dataStep3: 'Absagen sichtbar machen',
+  dataProvenance: (n) =>
+    `Zu jedem der ${n} kommenden Termine gehört die Quelle, aus der er stammt, und das Datum, `
+    + 'an dem wir ihn zuletzt geprüft haben. Wo der Veranstalter selbst bestätigt hat, steht das dabei. '
+    + 'Abgesagte Termine löschen wir nicht — sie bleiben stehen, mit Grund.',
   questions: 'Häufige Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
   nothingInPeriod: 'Für diesen Zeitraum ist nichts eingetragen.',
@@ -329,6 +336,7 @@ const en: Strings = {
   skipToContent: 'Skip to content',
   backToHome: 'Back to the home page',
   languageLabel: 'Language',
+  navLabel: 'Main navigation',
 
   notFoundTitle: 'Page not found — Fynda',
   notFoundHeading: 'This page does not exist.',
@@ -349,14 +357,15 @@ const en: Strings = {
   thisWeekend: 'This weekend',
   allWeekend: (n) => `All ${n} markets this weekend`,
   yourTown: 'Your town',
-  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from} and ${to}.`,
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from}${to === from ? '' : ` and ${to}`}.`,
   cities: 'Cities',
   regions: 'Cantons',
   marketTypes: 'Market types',
   whereDataComes: 'Where our data comes from',
-  dataStep1: 'Check the dates',
-  dataStep2: 'Record the source',
-  dataStep3: 'Show the cancellations',
+  dataProvenance: (n) =>
+    `Every one of the ${n} upcoming dates carries the source it came from and the date we last `
+    + 'checked it. Where the organiser confirmed it themselves, we say so. Cancelled dates are not '
+    + 'deleted — they stay, with the reason.',
   questions: 'Common questions',
   cancelledThisWeek: 'Cancelled this week',
   nothingInPeriod: 'Nothing is listed for this period.',
@@ -477,6 +486,7 @@ const fr: Strings = {
   skipToContent: 'Passer au contenu',
   backToHome: "Retour à l'accueil",
   languageLabel: 'Langue',
+  navLabel: 'Navigation principale',
 
   notFoundTitle: 'Page introuvable — Fynda',
   notFoundHeading: "Cette page n'existe pas.",
@@ -497,14 +507,15 @@ const fr: Strings = {
   thisWeekend: 'Ce week-end',
   allWeekend: (n) => `Les ${n} marchés du week-end`,
   yourTown: 'Votre ville',
-  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from} et le ${to}.`,
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from}${to === from ? '' : ` et le ${to}`}.`,
   cities: 'Villes',
   regions: 'Cantons',
   marketTypes: 'Types de marché',
   whereDataComes: "D'où viennent nos données",
-  dataStep1: 'Vérifier les dates',
-  dataStep2: 'Noter la source',
-  dataStep3: 'Afficher les annulations',
+  dataProvenance: (n) =>
+    `Chacune des ${n} dates à venir porte la source dont elle provient et la date de notre dernière `
+    + "vérification. Lorsque l'organisateur l'a confirmée lui-même, nous le disons. Les dates annulées "
+    + 'ne sont pas supprimées — elles restent, avec le motif.',
   questions: 'Questions fréquentes',
   cancelledThisWeek: 'Annulé cette semaine',
   nothingInPeriod: "Rien n'est enregistré pour cette période.",
@@ -621,6 +632,7 @@ const it: Strings = {
   skipToContent: 'Vai al contenuto',
   backToHome: 'Torna alla pagina iniziale',
   languageLabel: 'Lingua',
+  navLabel: 'Navigazione principale',
 
   notFoundTitle: 'Pagina non trovata — Fynda',
   notFoundHeading: 'Questa pagina non esiste.',
@@ -641,14 +653,15 @@ const it: Strings = {
   thisWeekend: 'Questo fine settimana',
   allWeekend: (n) => `Tutti i ${n} mercatini del fine settimana`,
   yourTown: 'La vostra città',
-  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from} e il ${to}.`,
+  thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from}${to === from ? '' : ` e il ${to}`}.`,
   cities: 'Città',
   regions: 'Cantoni',
   marketTypes: 'Tipi di mercatino',
   whereDataComes: 'Da dove vengono i nostri dati',
-  dataStep1: 'Verifichiamo le date',
-  dataStep2: 'Registriamo la fonte',
-  dataStep3: 'Rendiamo visibili le cancellazioni',
+  dataProvenance: (n) =>
+    `Ognuna delle ${n} date in arrivo porta con sé la fonte da cui proviene e la data dell'ultima `
+    + "verifica. Quando è l'organizzatore stesso a confermarla, lo diciamo. Le date annullate non "
+    + 'vengono cancellate — restano, con il motivo.',
   questions: 'Domande frequenti',
   cancelledThisWeek: 'Cancellato questa settimana',
   nothingInPeriod: 'Per questo periodo non risulta nulla.',

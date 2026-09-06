@@ -86,10 +86,15 @@ const jsonLd = {
       competitor in the category whose home page shows no markets at all.
       Choosing a place now happens below, once there is something to choose
       about — components/TownPicker.astro. */}
-  <section class="page-head gutter">
+  <section class="page-head home-head gutter">
     <h1>{s.heroLine1}<br />{s.heroLine2}</h1>
-    <p class="promise" set:html={s.homePromise(markets.length)}></p>
-    <p class="meta">{s.homeProof}</p>
+    {/* The claim and the proof are one thought, so they move as one: under the
+        headline on a phone, beside it on a desk. The wrapper exists for that
+        and for nothing else. */}
+    <div class="says">
+      <p class="promise" set:html={s.homePromise(markets.length)}></p>
+      <p class="meta">{s.homeProof}</p>
+    </div>
   </section>
 
   {/* Empty until the browser says otherwise; see components/TownShortcut.
@@ -161,8 +166,13 @@ const jsonLd = {
   )}
 
 
-  <CtaCard kind="newsletter" locale={locale} />
-  <CtaCard kind="organiser" locale={locale} />
+  {/* Two full-width black buttons stacked one above the other were two equally
+      loud asks, and two equally loud asks are neither. Side by side above
+      900px, and only the first is filled — CtaCard takes `variant`. */}
+  <div class="asks gutter">
+    <CtaCard kind="newsletter" locale={locale} />
+    <CtaCard kind="organiser" locale={locale} variant="secondary" />
+  </div>
 
   {cancelled.length > 0 && (
     <Section title={s.cancelledThisWeek}>
@@ -186,7 +196,7 @@ const jsonLd = {
     }))} />
   </Section>
 
-  <Section title={s.regions} lede={s.regionsLede}>
+  <Section id="kantone" title={s.regions} lede={s.regionsLede}>
     <PillList items={regions.map(([slug, region]) => ({
       href: regionPath(locale, countrySlug, slug),
       label: region,
@@ -196,12 +206,11 @@ const jsonLd = {
 
   <Section title={s.marketTypes} lede={s.typesLede}><TypeGrid locale={locale} /></Section>
 
+  {/* "Termine prüfen · Quelle festhalten · Absagen sichtbar machen" was three
+      verbs and no content, in the one block that says why this site is not the
+      rest of the category. It is a sentence with the figure in it now. */}
   <Section title={s.whereDataComes}>
-    <ol class="steps gutter">
-      <li>{s.dataStep1}</li>
-      <li>{s.dataStep2}</li>
-      <li>{s.dataStep3}</li>
-    </ol>
+    <p class="proof gutter">{s.dataProvenance(rows.length)}</p>
     <p class="gutter meta counts">{s.marketCount(markets.length)} · {s.dateCount(rows.length)} · {cities.length} {s.cities} · {regions.length} {s.regions}</p>
   </Section>
 
@@ -341,10 +350,28 @@ const jsonLd = {
   .calloffs a { font-weight: var(--weight-bold); }
   .calloffs em { font-style: normal; }
 
-  .steps { margin: 0; padding-inline-start: calc(var(--space-page) + var(--space-3)); font-size: var(--text-small); }
+  .proof { max-width: var(--measure); line-height: var(--leading-body); }
   .counts { margin-block-start: var(--space-3); }
 
+  .asks { display: grid; gap: var(--space-4); }
+
   /* Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    /* The headline stopped at 11 characters a line and the claim sat under it,
+       so the page opened with its right half empty. Same two paragraphs, one
+       column over. `align-items: end` sits the claim on the headline's last
+       baseline rather than floating it at the top of a taller cell. */
+    .home-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: var(--space-7);
+      align-items: end;
+    }
+    .home-head > * + * { margin-block-start: 0; }
+    .says > * + * { margin-block-start: var(--space-2); }
+
+    .asks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
 
 </style>
 

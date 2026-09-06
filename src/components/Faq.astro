@@ -3,36 +3,90 @@
  * Questions, as data. A page passes the list; it does not lay out the items
  * itself, so every FAQ on the site reads the same way.
  *
- * The answers are visible, not folded into <details>. Four short answers do not
- * need hiding, a collapsed list tells a reader nothing about whether it is
- * worth opening, and the text a person cannot see is text an AI answer cannot
- * cite — which is most of the reason this block exists at all.
+ * Each answer folds into a `<details>`. The note that used to stand here said
+ * the opposite — that folding the text would put it beyond an AI answer and a
+ * crawler — and that is not true of `<details>`: the answer ships in the HTML
+ * whether or not it is open, Google indexes it under mobile-first indexing, and
+ * anything reading the page reads the whole element. What folding does change
+ * is real: four answers on a phone were four screens of prose between the
+ * markets and the foot of the page, and a reader who wanted one of them had to
+ * scroll past the other three.
+ *
+ * Folded at every width rather than open on a desk. CSS cannot open a
+ * `<details>`, so a page that wanted both would have to ship the answers open
+ * and close them with JavaScript on load — which is a visible collapse on the
+ * one device the folding is for. One behaviour, no script.
  */
+import Icon from './Icon.astro';
+
 export interface QuestionItem { q: string; a: string; }
 interface Props { items: readonly QuestionItem[]; }
 const { items } = Astro.props;
 ---
-<dl class="faq gutter">
+<div class="faq gutter">
   {items.map((item) => (
-    <div class="q">
-      <dt>{item.q}</dt>
-      <dd class="meta">{item.a}</dd>
-    </div>
+    <details class="q">
+      <summary><span>{item.q}</span><Icon name="chevron-right" size={16} /></summary>
+      <p class="meta">{item.a}</p>
+    </details>
   ))}
-</dl>
+</div>
 
 <style>
-  .faq { margin: 0; }
   .q {
-    padding-block: var(--space-3);
     border-block-end: var(--border-width) solid var(--color-line);
   }
   .q:last-child { border-block-end: 0; }
-  dt { font-size: var(--text-small); font-weight: var(--weight-bold); }
-  dd {
+
+  summary {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+    justify-content: space-between;
+    /* The whole line is the control, so it gets a tap target rather than the
+       word alone. */
+    padding-block: var(--space-3);
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+    cursor: pointer;
+    list-style: none;
+  }
+  /* Safari draws its own triangle through ::-webkit-details-marker, which the
+     `list-style` above does not reach. */
+  summary::-webkit-details-marker { display: none; }
+
+  /* The site's own chevron rather than the browser's triangle — the same Icon
+     every other affordance uses, turned to point at the answer. It rotates,
+     which is what says "this opens" before anyone has clicked it.
+     tokens.css already zeroes every transition under prefers-reduced-motion,
+     so this needs no query of its own. */
+  summary :global(svg) {
+    flex: none;
+    color: var(--color-quiet);
+    transform: rotate(90deg);
+    transition: transform var(--duration-fast) var(--ease-base);
+  }
+  .q[open] summary :global(svg) { transform: rotate(-90deg); }
+
+  .q p {
     margin: 0;
-    margin-block-start: var(--space-1);
+    padding-block-end: var(--space-4);
     max-width: var(--measure);
     line-height: var(--leading-body);
+  }
+
+  /* Four folded questions are four lines on a desk, and a single column of
+     them leaves the rest of the width empty. The measure is unchanged — the
+     column is narrower, not the text.
+     Keep in step with --breakpoint-wide; a media query cannot read a token. */
+  @media (min-width: 900px) {
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--space-7);
+    }
+    /* The rule under the last question in a column would otherwise be missing
+       while the one beside it has one. */
+    .q:last-child { border-block-end: var(--border-width) solid var(--color-line); }
   }
 </style>

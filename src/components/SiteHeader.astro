@@ -3,7 +3,7 @@
  * The masthead, once. It was re-typed in all three pages before this existed,
  * and had already drifted: two of them styled `header` differently.
  */
-import { DEFAULT_LOCALE, LOCALE, homePath, utilityPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props {
@@ -14,12 +14,37 @@ interface Props {
 const { locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
 const s = t(locale);
 const others = alternates.filter((a) => a.locale !== locale);
+
+/**
+ * Above 900px the masthead had a logo, four language codes and Gemerkt in it,
+ * and scrolling was the only way to reach anything else. These are the three
+ * ways into the site that are not a market: the town list, the canton list and
+ * the radius view.
+ *
+ * Städte and Kantone are blocks of the home page rather than pages of their
+ * own, so they are anchors into it — honest from anywhere on the site, and
+ * they stop being anchors by themselves the day a country page exists.
+ *
+ * Labels are the footer's, not new ones: one word per idea across the site.
+ */
+const sections = [
+  { href: `${homePath(locale)}#staedte`, label: s.cities },
+  { href: `${homePath(locale)}#kantone`, label: s.regions },
+  { href: nearbyPath(locale), label: s.footerNearby },
+];
 ---
 <header class="site-header wrapper">
-  {/* The mark and nothing else. A back chevron used to sit here on deep pages,
-      which put the logo in a different place on every page but the home one —
-      and the browser already has a back button. */}
+  {/* No back chevron. It used to sit here on deep pages, which put the logo in
+      a different place on every page but the home one — and the browser
+      already has a back button. */}
   <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
+
+  {/* Hidden on a phone, where the line is already full — see the note in the
+      stylesheet below. The links exist in the footer at every width. */}
+  <nav class="sections" aria-label={s.navLabel}>
+    {sections.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+
   <div class="lead">
     {/* Real links, not a script-driven picker: a language switcher that search
         engines cannot follow is how one locale never gets discovered. */}
@@ -44,6 +69,12 @@ const others = alternates.filter((a) => a.locale !== locale);
     font-weight: var(--weight-bold);
   }
   .lead { display: flex; align-items: center; gap: var(--space-2); }
+
+  /* A phone header already carries the mark, four language codes and Gemerkt
+     on one line; a fourth group pushes something off the end. The same links
+     are in the footer, so nothing is unreachable — this is the desk getting
+     the room the phone does not have. */
+  .sections { display: none; }
   .langs { display: flex; gap: var(--space-1); color: var(--color-quiet); font-size: var(--text-micro); }
   .langs a { padding-inline: var(--space-half); }
   .mark {
@@ -63,5 +94,16 @@ const others = alternates.filter((a) => a.locale !== locale);
     .site-header { padding-block: var(--space-4); }
     .mark { font-size: var(--text-section); }
     .lead { gap: var(--space-4); }
+    /* `justify-content: space-between` would push the links to the middle of
+       the bar. They belong beside the mark, so the mark takes the slack. */
+    .mark { margin-inline-end: auto; }
+    .sections {
+      display: flex;
+      gap: var(--space-5);
+      margin-inline-end: var(--space-6);
+      color: var(--color-grey);
+      font-weight: var(--weight-semibold);
+    }
+    .sections a:hover { color: var(--color-ink); }
   }
 </style>

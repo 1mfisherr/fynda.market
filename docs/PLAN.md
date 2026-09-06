@@ -8,6 +8,11 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 Updated 2026-09-06.
 
+- **The desk gets eight changes, and the phone gets one.** All of them are CSS behind the 900px breakpoint plus two copy edits, so mobile is unchanged except where it was asked for. The masthead carries Städte, Kantone and In der Nähe above 900px — it held a logo, four language codes and Gemerkt, and scrolling was the only way to reach anything else. The claim moves beside the headline, which wraps at 11 characters and left the page opening with its right half empty. Newsletter and organiser share a row and only the first button is filled: two full-width black bars stacked were two equally loud asks, and two equally loud asks are neither. "Woher unsere Daten kommen" was three verbs with no content in the one block that says why this site is not the rest of the category, and is now a sentence carrying the figure. **The FAQ folds into `<details>` at every width, two columns on a desk** — the old rule said the opposite because folded text cannot be cited, which is not true of `<details>`: the answer ships in the HTML either way. `docs/PAGES.md` §Home.
+- **`CtaCard` no longer sets its own outer margin.** It carried `margin-inline`, so putting the two cards in a grid meant first cancelling a decision the component had made — the thing `base.css` warns about at the top of the file. Parents supply `.gutter`, as every other block does. Three call sites.
+- **Fixed: "14 Märkte am 6. Sept. und 6. Sept."** `weekendLead` returns the first and last date of the weekend it found; on a Sunday, Saturday is already filtered out and the two are the same date. The lede collapses them now, in all four locales.
+- **Left alone deliberately:** the Städte cloud already ranks by weight in four steps, on purpose and for the phone, and the market-type tiles already stop at the reading column, also on purpose. Both looked like desktop gaps from a screenshot and are documented decisions in the components themselves. The day is still printed on every row of the weekend block — removing it means re-introducing day grouping, which was deleted when the day moved into the row.
+
 **The site is built, on real data, in four languages, with photographs.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **931 pages, all 10 guardrails green.** Ratio 1.00 (908 URLs / 226 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
 
 - **The site records what happens on it, as of 2026-09-06.** Page views are counted at the edge in `functions/_middleware.ts` — before the HTML is served, no client JavaScript, so a blocker cannot remove them; views per page type is the number that would have shown v1's collapse and is the one that must have no holes. Interaction events (`functions/e.ts`) come from the browser, because "clicked directions" exists nowhere else. A visitor is counted, never identified: HMAC(ip + user agent) under a key carrying today's date, so the same person is one hash today and another tomorrow. No cookie, nothing on the device, no banner. `props` shapes are fixed by a check constraint per event — obey it exactly; it is what stops a second vocabulary appearing and splitting the numbers.
@@ -167,4 +172,4 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-05
+last_reviewed: 2026-09-06
