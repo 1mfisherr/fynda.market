@@ -124,16 +124,20 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 
 | Block | Why it is there |
 |---|---|
-| Photo or illustration | Never a stock photo (fact 7). The illustration is the honest default |
+| Photo or illustration, with **Merken on it** | Never a stock photo (fact 7). The illustration is the honest default. Saving and going are different decisions — as a block button beside Route, Merken read as an equally large choice, and Route is 55% of every outbound click |
 | Kind + city, then the name | Orientation before identity |
-| **Next date, in the accent colour** | The one fact they came for |
-| **Freshness line — "Bestätigt am 12.08."** | The single thing no competitor in three countries does. It is the trust signal and the sentence an AI answer can quote |
-| **Cancellation notice, when it applies** | With the reason and the next real date. Only 12 of 2,357 v1 dates were cancelled — rare, and the highest-value thing we will ever tell someone |
+| **The status line, in words** | *Heute · läuft gerade · endet in 6 Std.* — not `06`. A numeral does not tell anyone whether to get in the car, and this is also the one sentence an AI answer can quote whole. Today and tomorrow resolve in the build, which knows its own date; "läuft gerade" and the hours left are filled in by the browser, because a page written at 03:00 cannot know 14:00. Without JavaScript the page still says Heute and the times |
+| **Cancellation notice, when it applies** | With the reason. Only 12 of 2,357 v1 dates were cancelled — rare, and the highest-value thing we will ever tell someone. It was held in the database and never rendered until 2026-09-06 |
+| **The decision strip, and the check stamp under it** | Rhythm, number of upcoming dates, and — once the town picker stores coordinates — distance. Every segment computes from what we already hold, so it behaves the same for a German market we have never seen. A segment renders when its value exists and is otherwise absent: never a dash, never "unbekannt". **The stamp is the one line that never disappears** — with no confirmation date it says "Aus öffentlicher Quelle" rather than going quiet. It replaced two grey freshness lines and the `<dl>` |
 | **Directions button — primary** | 55% of all outbound clicks. This is the conversion |
 | **Organiser website — secondary** | 45% of outbound clicks. It earns a real button, not a footnote link |
 | All upcoming dates, with status | Visible content, never markup (one `Event` only). Capped at 120 days |
-| Address, times, entry fee | Held for 94–98% of markets |
+| Address, times | Held for 94–98% of markets |
 | Report-a-correction | Feeds the freshness ledger, and it is cheap trust |
+
+**Deliberately gone, 2026-09-06.** "Was Sie erwartet" standing over a lone "Eintritt: frei" — 151 of 157 markets are free, so it was furniture by `BRAND.md`'s own rule; an entry fee now shows only where there is one, and the block appears only when something real is in it. And the type legend, which teaches a colour system for reading lists, on the page of a single market.
+
+**The rule for a missing field, and it governs the whole page:** a block renders because its data exists; where the absence is itself informative we say the absent thing in words; and we never guess. No estimated distance, no assumed open-air, no invented opening time. A missing fact costs one line. A wrong fact costs the only thing we sell.
 
 **Deliberately not here:** related-market lists (a doorway pattern), reviews, ratings, an embedded map (weight, for a link that 55% will click anyway).
 
@@ -287,8 +291,8 @@ Measured from the v1 database: name, date, city, status 100% · times 98% · ent
 
 ## What this changes in what is already built
 
-1. **Directions becomes the primary button on the market page, above the fold.** Measured at 375×812 it sits at 859px — below the fold, behind the whole date list — while being 55% of all outbound clicks.
-2. **The organiser website needs a real button.** 45% of outbound clicks, currently not on the page at all.
+1. ~~Directions becomes the primary button on the market page, above the fold.~~ **Done.**
+2. ~~The organiser website needs a real button.~~ **Done.**
 3. **The home search control reads as place + period + radius**, not a text search, and it shrinks so a market card is visible in the first screen.
 4. **Category tiles move below the lists.**
 5. **City page titles carry the year.**

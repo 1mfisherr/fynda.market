@@ -162,6 +162,12 @@
   /* The picture beside a compact row. Big enough to read as a photograph
      rather than a smudge — 56px was a smudge. */
   --row-thumb: clamp(72px, calc(64.394px + 2.028vw), 93.6px);
+  /* The minimum column in the market page's decision strip, which `auto-fit`
+     then divides the band by. 96px is the width of the longest label we set
+     there ("Kommende Termine" wraps to two lines below it) at --text-tiny;
+     fluid on the same two anchors as everything else, or a 30% larger label at
+     1440px would wrap where the phone does not. */
+  --strip-column: clamp(96px, calc(85.859px + 2.704vw), 124.8px);
   /* Wide only. The market page's sticky action rail. Route is 55% of every
      outbound click on the site; at this width it never leaves the screen. */
   --side-column: clamp(344px, calc(307.662px + 9.69vw), 447.2px);

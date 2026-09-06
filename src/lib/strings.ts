@@ -116,6 +116,26 @@ export interface Strings {
   confirmedOn: (date: string) => string;
   /** The stronger claim, for when an organiser actually tells us. Accented. */
   organiserConfirmed: string;
+  /*
+     The status line on a market page. A visitor arrives asking "is it on?",
+     and "06" does not answer that — the word does, and it is also the sentence
+     an AI answer can quote.
+
+     Today and tomorrow are resolved during the build, which knows its own
+     date. `onRightNow` and the two ends-in strings are filled in by the
+     browser instead: the page is written at 03:00 and cannot know what the
+     hour will be when someone reads it. They are templates rather than
+     functions because the client script receives them as data attributes and
+     cannot call into this module.
+  */
+  statusToday: string;
+  statusTomorrow: string;
+  onRightNow: string;
+  /** `{h}` is replaced with whole hours remaining. */
+  endsInTemplate: string;
+  endsSoon: string;
+  /** Label under the recurrence phrase in the decision strip. */
+  howOften: string;
   /* The three things a list row may say about a date, and it says one only
      when it is true — see src/lib/freshness.ts. Silence means confirmed and
      recently checked, which is most rows. */
@@ -260,6 +280,12 @@ const de: Strings = {
   reportSomethingElse: 'Etwas anderes',
   confirmedOn: (date) => `Von uns bestätigt am ${date}`,
   organiserConfirmed: 'Vom Veranstalter bestätigt',
+  statusToday: 'Heute',
+  statusTomorrow: 'Morgen',
+  onRightNow: 'läuft gerade',
+  endsInTemplate: 'endet in {h} Std.',
+  endsSoon: 'endet in weniger als einer Stunde',
+  howOften: 'Rhythmus',
   flagCancelled: 'Fällt aus',
   flagUnconfirmed: 'Nicht bestätigt',
   flagStale: (date) => `Zuletzt geprüft ${date}`,
@@ -406,6 +432,12 @@ const en: Strings = {
   reportSomethingElse: 'Something else',
   confirmedOn: (date) => `Confirmed by us on ${date}`,
   organiserConfirmed: 'Confirmed by the organiser',
+  statusToday: 'Today',
+  statusTomorrow: 'Tomorrow',
+  onRightNow: 'on right now',
+  endsInTemplate: 'ends in {h} hrs',
+  endsSoon: 'ends within the hour',
+  howOften: 'How often',
   flagCancelled: 'Cancelled',
   flagUnconfirmed: 'Not confirmed',
   flagStale: (date) => `Last checked ${date}`,
@@ -556,6 +588,12 @@ const fr: Strings = {
   reportSomethingElse: 'Autre chose',
   confirmedOn: (date) => `Vérifié par nous le ${date}`,
   organiserConfirmed: "Confirmé par l'organisateur",
+  statusToday: "Aujourd'hui",
+  statusTomorrow: 'Demain',
+  onRightNow: 'en cours',
+  endsInTemplate: 'se termine dans {h} h',
+  endsSoon: "se termine dans moins d'une heure",
+  howOften: 'Fréquence',
   flagCancelled: 'Annulé',
   flagUnconfirmed: 'Non confirmé',
   flagStale: (date) => `Vérifié le ${date}`,
@@ -702,6 +740,12 @@ const it: Strings = {
   reportSomethingElse: 'Altro',
   confirmedOn: (date) => `Verificato da noi il ${date}`,
   organiserConfirmed: "Confermato dall'organizzatore",
+  statusToday: 'Oggi',
+  statusTomorrow: 'Domani',
+  onRightNow: 'in corso',
+  endsInTemplate: 'termina tra {h} ore',
+  endsSoon: "termina entro un'ora",
+  howOften: 'Cadenza',
   flagCancelled: 'Annullato',
   flagUnconfirmed: 'Non confermato',
   flagStale: (date) => `Verificato il ${date}`,

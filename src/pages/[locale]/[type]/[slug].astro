@@ -13,9 +13,8 @@ import Icon from '../../../components/Icon.astro';
 import LineBadge from '../../../components/LineBadge.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
-import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
-import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset } from '../../../lib/format';
+import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset, todayIso } from '../../../lib/format';
 import { EVENT_STATUS, LINES } from '../../../lib/vocabulary';
 import { LOCALE, LOCALES, cityPath, homePath, marketPath, regionPath, utilityPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
@@ -110,9 +109,51 @@ const jsonLd = {
 };
 
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}`;
-const date = next ? parseDate(next.date) : undefined;
-const weekday = date ? s.weekdaysLong[date.getDay()] : undefined;
-const month = date ? s.monthsLong[date.getMonth()] : undefined;
+
+/**
+ * The word the page leads with.
+ *
+ * Someone arrives asking whether it is on. "06" does not answer that; "Heute"
+ * does, and it is also the one sentence an AI answer can quote whole.
+ *
+ * Resolved here because the build knows its own date. Whether the market is
+ * open *at this minute* cannot be known at 03:00, so that half is left to the
+ * browser below — the page is correct without it.
+ */
+const today = todayIso();
+const tomorrow = (() => {
+  const d = parseDate(today);
+  d.setDate(d.getDate() + 1);
+  return [d.getFullYear(), d.getMonth() + 1, d.getDate()]
+    .map((n, i) => (i ? String(n).padStart(2, '0') : String(n)))
+    .join('-');
+})();
+const statusWord = !next
+  ? undefined
+  : next.date === today ? s.statusToday
+  : next.date === tomorrow ? s.statusTomorrow
+  : formatDate(next.date, locale);
+
+/** Only a date that is today, with both ends known, can be running right now. */
+const liveStart = next && next.date === today && next.startTime
+  ? toIsoWithOffset(next.date, next.startTime, market.timezone) : undefined;
+const liveEnd = next && next.date === today && next.endTime
+  ? toIsoWithOffset(next.date, next.endTime, market.timezone) : undefined;
+const canBeLive = !cancelled && Boolean(liveStart && liveEnd);
+
+/**
+ * One stamp, not the two grey lines this replaced. The date-level claim leads,
+ * because "is this Saturday on" is the question; the market-level confirmation
+ * follows it only when it says something the first clause did not. They stay
+ * distinct claims — v1 recorded that an organiser confirmed the market's
+ * details, never that they confirmed one Saturday.
+ */
+const stampMain = next?.origin === 'organiser'
+  ? s.organiserConfirmed
+  : next?.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed;
+const stampAlso = market.verifiedBy === 'organiser' && next?.origin !== 'organiser'
+  ? s.organiserConfirmed : undefined;
+const timeRange = next ? formatTimeRange(next.startTime, next.endTime, locale) : undefined;
 
 /**
  * v1's address_line often already ends in the postcode and city ("Dynamo,
@@ -135,7 +176,10 @@ const facts = [
   market.stallCount ? ['Stände', `~${market.stallCount}${market.stallCountBadWeather ? `, bei schlechtem Wetter ~${market.stallCountBadWeather}` : ''}`] : undefined,
   market.sellerMix ? ['Verkäufer', { private: 'nur Private', mixed: 'Private und Händler', trader: 'Händler', new_goods: 'Neuware' }[market.sellerMix]] : undefined,
   market.priceLevel ? ['Preisniveau', { cheap: 'günstig', flohmarkt: 'Flohmarkt', trader: 'Händler' }[market.priceLevel]] : undefined,
-  market.entryFee !== undefined ? [s.entryLabel, market.entryFee === 0 ? s.entryFree : `${market.entryFee} CHF`] : undefined,
+  // Say the exception, never the rule — docs/BRAND.md. 151 of 157 markets are
+  // free, so "Eintritt: frei" separated nobody from anybody and stood alone
+  // under a heading promising what to expect. A price shows when there is one.
+  market.entryFee ? [s.entryLabel, `${market.entryFee} CHF`] : undefined,
   market.covered ? ['Gelände', { open: 'offen', partly: 'teilweise gedeckt', indoor: 'drinnen' }[market.covered]] : undefined,
   market.groundSurface ? ['Untergrund', market.groundSurface] : undefined,
 ].filter(Boolean) as [string, string][];
@@ -164,41 +208,72 @@ const facilityItems = market.facilities ? [
     <div class="photo-hero">
       <PhotoOrArt market={market} width={720} height={210} loading="eager" />
       <span class="type eyebrow"><LineBadge kind={market.kind} /> {kind.full[locale]}</span>
+      {/* Saving and going are two different decisions. As a block button the
+          same size as Route, Merken read as an equally large choice, which it
+          is not — Route is 55% of every outbound click on the site. On the
+          picture it is still in the first screen and never in the way. */}
+      <Button
+        class="save"
+        data-save={market.slug}
+        data-label-save={s.save}
+        data-label-saved={s.savedState}
+        aria-pressed="false"
+      ><Icon name="bookmark" size={15} /><span data-save-label>{s.save}</span></Button>
     </div>
 
     <div class="head gutter">
       <h1>{market.name}</h1>
+
       {next && (
-        <div class:list={['date', { cancelled }]}>
-          <strong>{String(date?.getDate()).padStart(2, '0')}</strong>
-          <span>
-            <b class="eyebrow">{weekday}, {month}</b>
-            {formatTimeRange(next.startTime, next.endTime, locale) && <em>{formatTimeRange(next.startTime, next.endTime, locale)} {s.timeSuffix}</em>}
-          </span>
+        <div class:list={['status', { cancelled }]}>
+          <p class="word">
+            <strong>{statusWord}</strong>
+            {/* Revealed by the script below, and only while the market is
+                actually open. Hidden is the correct resting state: a static
+                page written at 03:00 cannot claim anything about 14:00. */}
+            {canBeLive && (
+              <span
+                class="live"
+                data-live
+                hidden
+                data-start={liveStart}
+                data-end={liveEnd}
+                data-on-now={s.onRightNow}
+                data-ends-in={s.endsInTemplate}
+                data-ends-soon={s.endsSoon}
+              ><i></i><b data-live-text></b></span>
+            )}
+          </p>
+          {timeRange && (
+            <p class="clock">{timeRange} {s.timeSuffix}<span data-ends hidden></span></p>
+          )}
+          {/* The single most useful thing we ever tell anyone, and the reason
+              this site deserves to exist. It was held in the database and
+              never rendered. */}
+          {cancelled && next.cancellationNote && <p class="reason">{next.cancellationNote}</p>}
         </div>
       )}
+
       {market.packUpFrom && <p class="pack">{s.packUpFrom(market.packUpFrom)}</p>}
-      {/* Who stands behind the date. Saying "not yet confirmed with the
-          organiser" told a visitor the one thing that destroys trust and was
-          not even true — we had confirmed it, just not with the organiser.
-          An organiser-sourced date is the strong claim and gets the accent;
-          docs/BRAND.md lets the accent mark date and status, and nothing else. */}
-      {next && (
-        next.origin === 'organiser' ? (
-          <p class="freshness organiser">{s.organiserConfirmed}</p>
-        ) : (
-          <p class="freshness meta-quiet">
-            {next.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed}
-          </p>
-        )
-      )}
-      {/* Market level, and separate from the date above on purpose: v1 recorded
-          that an organiser confirmed the market's details, not one Saturday.
-          Saying it of a date would be a claim we cannot support. Shown on 33 of
-          157, dated, because a confirmation from April ages by September. */}
-      {market.verifiedBy === 'organiser' && (
-        <p class="freshness organiser">{s.organiserConfirmed}</p>
-      )}
+
+      {/* The decision strip. Every segment is computed from what we already
+          hold, so it behaves identically for a market in Dortmund we have
+          never seen. A segment renders when its value exists and is simply
+          absent otherwise — never a dash, never "unbekannt".
+
+          Distance is the third segment and is not here yet: it needs the
+          visitor's own town, and `fynda:stadt` currently stores a name and a
+          href without coordinates. The slot is left for it. */}
+      <div class="strip">
+        <ul class="list-reset">
+          <li data-distance hidden><b data-distance-value></b><span data-distance-label></span></li>
+          {market.recurrenceText && <li><b>{market.recurrenceText}</b><span>{s.howOften}</span></li>}
+          {dates.length > 0 && <li><b>{dates.length}</b><span>{s.upcoming}</span></li>}
+        </ul>
+        <p class:list={['stamp', { organiser: next?.origin === 'organiser' }]}>
+          {stampMain}{stampAlso ? ` · ${stampAlso}` : ''}
+        </p>
+      </div>
     </div>
 
     {/* Directions is 55% of all outbound clicks — PAGES.md puts it above the fold.
@@ -221,8 +296,7 @@ const facilityItems = market.facilities ? [
           buttons of the same size made "Merken" look like as big a decision as
           getting there, which it is not — Route is 55% of all outbound clicks. */}
       <div class="keep gutter">
-        <Button href={`/ics/${market.slug}.ics`}><Icon name="check" size={16} />{s.addToCalendar}</Button>
-        <Button data-save={market.slug} data-label-save={s.save} data-label-saved={s.savedState} aria-pressed="false"><Icon name="bookmark" size={16} />{s.save}</Button>
+        <Button href={`/ics/${market.slug}.ics`} block><Icon name="check" size={16} />{s.addToCalendar}</Button>
       </div>
     </div>
 
@@ -295,7 +369,8 @@ const facilityItems = market.facilities ? [
         </div>
       </Section>
 
-      <TypeLegend locale={locale} />
+      {/* The type legend used to close this page. It teaches a colour system
+          for reading lists, and there is no list on the page of one market. */}
   </div>
 </div>
 </Page>
@@ -328,43 +403,132 @@ const facilityItems = market.facilities ? [
 
   h1 { font-size: var(--text-market-name); letter-spacing: var(--tracking-tight); }
 
-  .date {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-3);
-    align-items: center;
-    margin-block-start: var(--space-hero);
+  /*
+    The status line. The one loud thing above the fold, and the only accented
+    thing on the page — docs/BRAND.md lets the accent mark the date and whether
+    it is happening, and nothing else.
+  */
+  .status { margin-block-start: var(--space-hero); }
+  .word {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
   }
-  .date > strong {
+  .word > strong {
     color: var(--color-accent);
     font-size: var(--text-market-date);
     font-weight: var(--weight-black);
     letter-spacing: var(--tracking-tight);
     line-height: var(--leading-tight);
   }
-  .date span b, .date span em { display: block; }
-  .date span em {
-    margin-block-start: var(--space-half);
-    color: var(--color-grey);
-    font-size: var(--text-date);
-    font-style: normal;
-    font-weight: var(--weight-bold);
+  .live {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--color-accent);
+    font-size: var(--text-micro);
+    font-weight: var(--weight-black);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
   }
-  .date.cancelled > strong, .date.cancelled span {
+  /* `hidden` is the resting state of both of these, and a display rule above
+     would quietly beat the attribute. Keep these two next to the rules they
+     undo. */
+  .live[hidden] { display: none; }
+  /* The dot takes its size from the space scale — it is a mark, not a control,
+     so it has no size of its own to name. */
+  .live i {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-pill);
+    background: currentColor;
+  }
+  .clock {
+    margin-block-start: var(--space-half);
+    font-size: var(--text-date);
+    font-weight: var(--weight-bold);
+    font-variant-numeric: tabular-nums;
+  }
+  .clock span { color: var(--color-grey); font-weight: var(--weight-regular); }
+  .reason {
+    margin-block-start: var(--space-2);
+    max-width: var(--measure);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+  }
+  .status.cancelled > .word > strong {
     color: var(--color-quiet);
     text-decoration: line-through;
     text-decoration-color: var(--color-line);
   }
+  .status.cancelled .clock { color: var(--color-quiet); }
+
+  /*
+    The decision strip. Everything in it is computed from what we already hold,
+    a segment renders only when its value exists, and `auto-fit` means two
+    segments fill the band as evenly as four — so a thin market reads as
+    deliberate rather than broken.
+  */
+  .strip {
+    margin-block-start: var(--space-4);
+    max-width: var(--measure);
+    border-block: var(--border-width) solid var(--color-line);
+  }
+  .strip ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--strip-column), 1fr));
+    padding-block: var(--space-3);
+  }
+  .strip li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+    min-width: 0;
+    padding-inline: var(--space-3);
+    border-inline-start: var(--border-width) solid var(--color-line);
+  }
+  .strip li[hidden] { display: none; }
+  .strip li:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  .strip li b {
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-snug);
+  }
+  .strip li span {
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+  }
+  /* The one line that never disappears. Where we hold no confirmation date it
+     says so in words rather than going quiet — docs/PAGES.md. */
+  .stamp {
+    margin: 0;
+    padding-block-end: var(--space-3);
+    color: var(--color-quiet);
+    font-size: var(--text-micro);
+  }
+  .stamp.organiser { color: var(--color-accent); font-weight: var(--weight-bold); }
 
   .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
-  .freshness { margin-block-start: var(--space-half); }
 
   .actions { display: grid; gap: var(--space-2); }
-  /* Two secondary actions side by side, one step quieter than the block
-     buttons above them. */
-  .keep { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
-  .keep :global(.button) { min-width: 0; font-size: var(--text-micro); }
-  .keep :global(.button) { padding-inline: var(--space-2); }
+  .keep :global(.button) { font-size: var(--text-micro); }
+
+  /* Merken, on the picture. Top right, opposite the type badge. */
+  .photo-hero :global(.save) {
+    position: absolute;
+    inset-block-start: var(--space-hero);
+    inset-inline-end: var(--space-hero);
+    gap: var(--space-1);
+    min-height: 0;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-white);
+    font-size: var(--text-micro);
+  }
 
   dl {
     display: grid;
@@ -419,7 +583,6 @@ const facilityItems = market.facilities ? [
   .no-dates { display: flex; flex-direction: column; gap: var(--space-half); max-width: var(--measure); }
   .no-dates > strong { font-weight: var(--weight-bold); }
   .no-dates > span { color: var(--color-grey); }
-  .freshness.organiser { color: var(--color-accent); font-weight: var(--weight-bold); }
   .dates li.cancelled > strong, .dates li.cancelled > span {
     color: var(--color-quiet);
     text-decoration: line-through;
@@ -490,9 +653,13 @@ const facilityItems = market.facilities ? [
   const slug = button?.dataset.save;
 
   if (button && slug) {
+    // Write into the label, not the button: setting textContent on the button
+    // deleted the bookmark icon on first paint, so the icon never survived to
+    // be seen.
+    const label = button.querySelector<HTMLElement>('[data-save-label]');
     const paint = (saved: boolean) => {
       button.setAttribute('aria-pressed', String(saved));
-      button.textContent = saved ? (button.dataset.labelSaved ?? '') : (button.dataset.labelSave ?? '');
+      if (label) label.textContent = saved ? (button.dataset.labelSaved ?? '') : (button.dataset.labelSave ?? '');
     };
     paint(read().includes(slug));
 
@@ -502,5 +669,36 @@ const facilityItems = market.facilities ? [
       try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* private mode */ }
       paint(next.includes(slug));
     });
+  }
+
+  /**
+   * "Läuft gerade", and how long is left.
+   *
+   * The page is written by a build that runs at 03:00, so it can say which day
+   * a market is on and nothing about the hour. This is the other half, and it
+   * is strictly additive: with no JavaScript the page still says "Heute" and
+   * the opening times, which is the whole answer minus one detail.
+   */
+  const live = document.querySelector<HTMLElement>('[data-live]');
+  const startsAt = live?.dataset.start ? new Date(live.dataset.start) : undefined;
+  const endsAt = live?.dataset.end ? new Date(live.dataset.end) : undefined;
+
+  if (live && startsAt && endsAt && !Number.isNaN(startsAt.valueOf()) && !Number.isNaN(endsAt.valueOf())) {
+    const now = Date.now();
+    if (now >= startsAt.valueOf() && now < endsAt.valueOf()) {
+      const text = live.querySelector<HTMLElement>('[data-live-text]');
+      if (text) text.textContent = live.dataset.onNow ?? '';
+      live.hidden = false;
+
+      // Round up, so the last stretch reads "1 Std." rather than "0 Std.".
+      const hours = Math.ceil((endsAt.valueOf() - now) / 3_600_000);
+      const ends = document.querySelector<HTMLElement>('[data-ends]');
+      if (ends) {
+        ends.textContent = ` · ${hours <= 1
+          ? live.dataset.endsSoon ?? ''
+          : (live.dataset.endsIn ?? '').replace('{h}', String(hours))}`;
+        ends.hidden = false;
+      }
+    }
   }
 </script>
