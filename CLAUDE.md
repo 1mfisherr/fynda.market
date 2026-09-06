@@ -33,7 +33,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 | **Users pay nothing, ever** | Revenue is supply-side: organisers, local business advertising |
 | **Monetization deferred** | Build the hooks, defer the machinery. No AdSense |
 | **Organiser surface from day one** | Even if v1 is just "contact us by email" |
-| **Stack** | Astro (static) + Cloudflare Workers + Supabase/PostGIS. See `docs/STACK.md`. **Cloudflare, not Vercel** — Vercel re-introduces the caching layers that broke v1 |
+| **Stack** | Astro (static) + Cloudflare Workers + Supabase/PostGIS. See `docs/STACK.md`. **Cloudflare, not Vercel** — Vercel bills per invocation and per GB, which is one of the two things that cost v1 money. Caching did not break v1; unbounded page generation did |
 | **Brand** | White, near-black, one accent that marks only dates and status. Schibsted Grotesk. See `docs/BRAND.md` |
 | **What Fynda is** | **A visitor tool.** SEO is the acquisition base. Organiser tooling evolves later; at launch it is a "own your market" CTA and a contact form |
 | **Analytics** | **Self-hosted Metabase over our own Postgres.** Own the data, collect everything, keep it private. Metabase is the dashboard — the event collection layer is separate. Plus Search Console. No GA4 |

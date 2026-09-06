@@ -6,10 +6,13 @@ Where the project stands and what happens next. **Read this first in any new ses
 
 ## Now
 
-Updated 2026-09-05.
+Updated 2026-09-06.
 
 **The site is built, on real data, in four languages, with photographs.** `FYNDA_DATA_SOURCE=supabase npm run verify` → **931 pages, all 10 guardrails green.** Ratio 1.00 (908 URLs / 226 entities × 4 locales), against v1's 8,500 URLs for 157 markets.
 
+- **The site records what happens on it, as of 2026-09-06.** Page views are counted at the edge in `functions/_middleware.ts` — before the HTML is served, no client JavaScript, so a blocker cannot remove them; views per page type is the number that would have shown v1's collapse and is the one that must have no holes. Interaction events (`functions/e.ts`) come from the browser, because "clicked directions" exists nowhere else. A visitor is counted, never identified: HMAC(ip + user agent) under a key carrying today's date, so the same person is one hash today and another tomorrow. No cookie, nothing on the device, no banner. `props` shapes are fixed by a check constraint per event — obey it exactly; it is what stops a second vocabulary appearing and splitting the numbers.
+- **The dashboard is Metabase, on this machine, for nothing.** `docker compose -f metabase/docker-compose.yml up -d`, then `localhost:3000`. Its own notebook is a real Postgres, not the bundled H2 its docs warn against; the image is pinned to the release supported into 2027; public sharing is off (it defaults on, and a public link bypasses the login). It reads through `metabase_ro`, which cannot write and cannot see `market_private` or `reports`. A rented host was priced at €6/month and deferred — there is nothing yet that a dashboard would show and a query would not.
+- **Search Console comes in by hand.** The API wanted a Google Cloud project, which wanted a credit card. `scripts/import-gsc.mjs` loads the free CSV export instead; `metabase/README.md` has the five-step routine. Google keeps **16 months** and never backfills, so the habit matters more than the schedule.
 - **Database:** Supabase `eu-west-1`, Postgres 17.6. 161 markets, 2,357 occurrences, 55 cities, 14 cantons, 107 organisers, 1,782 facts. Credentials in `.env.local`; scripts connect via `scripts/db.mjs`.
 - **One slug per place.** A city, canton and market keep the same address in all four languages — `/de/schweiz/zurich/`, `/it/svizzera/zurich/`, with the page still reading "Zurigo". Changed 2026-09-03; 45 of 55 cities already had one name in all four, and the per-locale version meant fixing a translation rewrote live URLs. Only the country segment is still translated. `docs/ARCHITECTURE.md` §URL shape.
 - **Nothing that has been published can 404.** Retired slugs are kept forever and emitted as 301s in `_redirects` (57 today, from the rename above). A retired slug also stays reserved so it can never point at the wrong place later. Guardrail 9.
@@ -39,10 +42,12 @@ Updated 2026-09-05.
 ### Next, in order
 
 0. **Launched 2026-09-04.** Live at `fynda.market`, sitemap submitted. Nothing to do but wait for Google: first pages indexed in roughly 3-14 days, meaningful query data in weeks. Do not resubmit the sitemap or change URLs while that settles.
-1. **The legal pages, and only those.** The imprint and the privacy policy are the last German-only surfaces, and they need a person, not a translation — a machine-translated privacy policy is the one prose this project must not ship. A French page links to the German one, which is honest and reachable.
-2. **Make the forms real.** All `mailto:` today. A Cloudflare Worker writing to `reports` plus a newsletter table replaces them without changing any page.
-3. **The country page** `/{locale}/{country}/`. The route is allowed and nothing is built. Breadcrumbs stopped pretending it exists; they should include it once it does.
-4. **German text search** — settle before any search box exists (`STACK.md`).
+1. **Wait a week, then read the numbers.** Collection started 2026-09-06 and the site launched on the 4th; there is not yet enough of either to decide anything from. One Search Console export and seven days of events come before the next product judgement, not after it. Resisting this is how a site gets rebuilt around a guess.
+2. **Make the forms real.** All `mailto:` today, which means a cancellation nobody can report and a newsletter nobody joins. Two of the three loops below are stalled on it, and the collector already proves the shape: a Pages Function writing to `reports` and a newsletter table, no page changed. **The highest-value build on this list.**
+3. **The legal pages, and only those.** The imprint and the privacy policy are the last German-only surfaces, and they need a person, not a translation — a machine-translated privacy policy is the one prose this project must not ship. A French page links to the German one, which is honest and reachable.
+4. **Ask organisers for size and indoor/outdoor.** The two facts that decide whether someone drives forty minutes, held for none of 161 markets, and unobtainable by scraping. This is what the organiser page is actually for, and the honest reason for an organiser to talk to us.
+5. **The country page** `/{locale}/{country}/`. The route is allowed and nothing is built. Breadcrumbs stopped pretending it exists; they should include it once it does.
+6. **German text search** — settle before any search box exists (`STACK.md`). v1's evidence says this is not urgent: 64 on-site searches in 26 days, most of them a single letter, against 281 filter uses.
 
 ### The three loops
 
@@ -109,7 +114,7 @@ Five names collide (Zürich, Bern, Luzern, St. Gallen, Schaffhausen) and it is s
 | ~~1.2~~ | ~~Register `fynda.market`~~ | Done, at Cloudflare. Not yet attached to the Pages project |
 | ~~1.3~~ | ~~Cloudflare~~ | Done. Pages project `fynda-market`, deployed by `npm run deploy` |
 | 1.5 | Resend | Newsletter sending |
-| 1.6 | Metabase host | ~$5–15/mo |
+| ~~1.6~~ | ~~Metabase host~~ | Not needed. Runs locally under Docker for nothing — `metabase/README.md`. Revisit only when looking without starting Docker is worth €6/mo |
 | ~~1.7~~ | ~~Search Console~~ | Done 2026-09-04. Domain property, sitemap submitted. Expect no data for days — that is normal, not a fault |
 
 Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
@@ -136,6 +141,8 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 
 - **Distance on cards.** The radius view computes it from a known origin; a card shows the city only. Never print a distance we guessed.
 - **The tag taxonomy.** Keep it small — 60+ categories killed v1. No market carries a tag yet.
+- **Whether the search card earns its place.** It sits above the content on the home page and does less work than what is below it; most arrivals come from Google already knowing their town, which is what the remembered-town shortcut serves. Now answerable from `filter_changed` events instead of taste — wait for them.
+- **When a dashboard is worth €6/month.** Metabase runs locally for nothing. The case for renting a host is being able to look without starting Docker, and it is not made yet.
 - **Zofingen is filed under the city of Aarau.** It is its own town 25km away. Fixing it means creating a city, which mints eight new page addresses — a URL change, so it waits for a decision.
 - **The four vanished markets** above: mark `permanently_closed` and lose their pages, or leave them.
 - **The beachhead region.** Zürich or Luzern.
@@ -154,6 +161,8 @@ Done: GitHub repo, Supabase project, Astro skeleton + guardrails.
 - **No German string that names a concept lives in a template.** Interface copy is `src/lib/strings.ts`, domain vocabulary `src/lib/vocabulary.ts`, URLs are built by `src/lib/i18n.ts` — never assembled by hand.
 - **Translated prose ships as soon as we hold the row.** Interface strings are written per language; descriptions and recurrence text are stored per locale in `texts` and render immediately.
 - Colour, type, spacing and motion come from `src/styles/tokens.css`. Never hardcoded.
+- **Every table has RLS on with no policies, so the default answer to any row is "no".** The site builds only because it connects as the owner, which is exempt. A new role does not get an error, it gets an empty database — and `BYPASSRLS` is an attribute, not a privilege, so granting it to a group role changes nothing for the user that logs in. Two hours went here; check what a new role can actually *see*, not just connect to.
+- **An analytics insert that fails is silent.** It is fired into `waitUntil()` so it cannot slow a page, which also means a rejected row leaves no trace but an empty table. `functions/_collect.ts` logs rejections for that reason — read the Cloudflare log before believing there was no traffic.
 
 ---
 
