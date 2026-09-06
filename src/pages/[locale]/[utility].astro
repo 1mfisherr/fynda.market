@@ -159,6 +159,12 @@ const savedCopy = saved && {
     const reason = params.get('grund');
     const marketField = form.elements.namedItem('markt') as HTMLInputElement | null;
     if (market && marketField) marketField.value = market;
+    // The claim card on a market page sends the town as well, so an organiser
+    // arrives at a form with the two identifying fields already filled and only
+    // their own name and address left to add.
+    const town = params.get('ort');
+    const townField = form.elements.namedItem('ort') as HTMLInputElement | null;
+    if (town && townField) townField.value = town;
     const reasonField = form.elements.namedItem('grund') as HTMLSelectElement | null;
     const ORDER: Record<string, number> = { ausgefallen: 0, vorbei: 1, anderes: 3 };
     if (reason && reasonField && reason in ORDER) reasonField.selectedIndex = ORDER[reason];

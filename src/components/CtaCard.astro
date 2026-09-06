@@ -14,26 +14,37 @@ import { DEFAULT_LOCALE, utilityPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props {
-  kind: 'newsletter' | 'organiser';
+  /**
+   * `claim` is the organiser card addressed to one market rather than to the
+   * country. It is the same ask and the same destination; only the words and
+   * the pre-filled form differ, so it belongs here rather than in a fourth
+   * component that would drift.
+   */
+  kind: 'newsletter' | 'organiser' | 'claim';
   locale?: Locale;
   /** Overrides the standard body — the city page names the city in it. */
   body?: string;
+  /** Overrides the destination — the claim card carries its market in the query. */
+  href?: string;
   /**
    * How loud the button is. Where two cards sit together only one of them can
    * be the filled one, or neither reads as the thing to do.
    */
   variant?: 'primary' | 'secondary';
 }
-const { kind, locale = DEFAULT_LOCALE, body, variant = 'primary' } = Astro.props;
+const { kind, locale = DEFAULT_LOCALE, body, href, variant = 'primary' } = Astro.props;
 const s = t(locale);
-const copy = kind === 'newsletter'
-  ? { title: s.newsletterTitle, body: s.newsletterBody, action: s.newsletterAction, href: utilityPath(locale, 'newsletter') }
-  : { title: s.organiserTitle, body: s.organiserBody, action: s.organiserAction, href: utilityPath(locale, 'organiser') };
+const COPY = {
+  newsletter: { title: s.newsletterTitle, body: s.newsletterBody, action: s.newsletterAction, key: 'newsletter' },
+  organiser: { title: s.organiserTitle, body: s.organiserBody, action: s.organiserAction, key: 'organiser' },
+  claim: { title: s.claimTitle, body: s.claimBody, action: s.claimAction, key: 'organiser' },
+} as const;
+const copy = COPY[kind];
 ---
 <section class="cta">
   <h2>{copy.title}</h2>
   <p class="meta">{body ?? copy.body}</p>
-  <Button href={copy.href} variant={variant} block>{copy.action}</Button>
+  <Button href={href ?? utilityPath(locale, copy.key)} variant={variant} block>{copy.action}</Button>
 </section>
 
 <style>

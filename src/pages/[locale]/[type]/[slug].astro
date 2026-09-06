@@ -9,6 +9,7 @@
  */
 import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
+import CtaCard from '../../../components/CtaCard.astro';
 import Icon from '../../../components/Icon.astro';
 import LineBadge from '../../../components/LineBadge.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
@@ -154,6 +155,18 @@ const stampMain = next?.origin === 'organiser'
 const stampAlso = market.verifiedBy === 'organiser' && next?.origin !== 'organiser'
   ? s.organiserConfirmed : undefined;
 const timeRange = next ? formatTimeRange(next.startTime, next.endTime, locale) : undefined;
+
+/**
+ * The claim card, on every market no organiser stands behind — 128 of 161.
+ *
+ * A market whose stamp already reads "Vom Veranstalter bestätigt" is not asked
+ * again: asking would call our own stamp into question on the one page where
+ * it is doing the most work. The market travels in the query so nobody has to
+ * retype the name of the page they came from, the same way the report links do.
+ */
+const claimed = market.verifiedBy === 'organiser';
+const claimHref = `${utilityPath(locale, 'organiser')}`
+  + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`;
 
 /**
  * v1's address_line often already ends in the postcode and city ("Dynamo,
@@ -355,6 +368,14 @@ const facilityItems = market.facilities ? [
           </p>
         )}
       </Section>
+
+      {/* After the dates, not above them. An organiser looking their own market
+          up will scroll; a visitor deciding whether to go should not have a
+          supply ask standing between them and the date. Paper, not the dark
+          card the mockup drew: on 128 pages it must not out-shout Route. */}
+      {!claimed && (
+        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="secondary" /></div>
+      )}
 
       <Section level="sub" title={s.wasItDifferent}>
         <p class="gutter meta">{s.reportIntro}</p>

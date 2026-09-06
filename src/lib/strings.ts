@@ -193,6 +193,16 @@ export interface Strings {
   newsletterBody: string;
   newsletterAction: string;
   organiserTitle: string;
+  /*
+     The same ask as the organiser card, addressed to one market instead of to
+     the country. It is on the page of every market no organiser stands behind
+     — 128 of 161 — which is where an organiser looking themselves up will
+     actually be. Yelp, TripAdvisor and Apple all put the claim on the listing
+     rather than on a marketing page, for the same reason.
+  */
+  claimTitle: string;
+  claimBody: string;
+  claimAction: string;
   organiserBody: string;
   organiserAction: string;
 
@@ -344,6 +354,9 @@ const de: Strings = {
   newsletterBody: 'Neue Termine und Absagen in Ihrer Region.',
   newsletterAction: 'Newsletter abonnieren',
   organiserTitle: 'Sie organisieren einen Markt?',
+  claimTitle: 'Diesen Markt betreut noch niemand',
+  claimBody: 'Sind Sie der Veranstalter? Termine und Absagen selbst pflegen — kostenlos, ohne Konto.',
+  claimAction: 'Markt übernehmen',
   organiserBody: 'Termine eintragen, Absagen melden. Kostenlos, ohne Konto.',
   organiserAction: 'Markt eintragen',
 
@@ -496,6 +509,9 @@ const en: Strings = {
   newsletterBody: 'New dates and cancellations in your area.',
   newsletterAction: 'Subscribe',
   organiserTitle: 'Do you run a market?',
+  claimTitle: 'Nobody looks after this market yet',
+  claimBody: 'Are you the organiser? Keep the dates and cancellations current yourself — free, no account.',
+  claimAction: 'Claim this market',
   organiserBody: 'Add dates, report cancellations. Free, no account.',
   organiserAction: 'Add your market',
 
@@ -652,6 +668,9 @@ const fr: Strings = {
   newsletterBody: 'Nouvelles dates et annulations dans votre région.',
   newsletterAction: "S'abonner à la newsletter",
   organiserTitle: 'Vous organisez une brocante ?',
+  claimTitle: "Personne ne s'occupe encore de cette brocante",
+  claimBody: "Vous êtes l'organisateur ? Tenez les dates et les annulations à jour vous-même — gratuitement, sans compte.",
+  claimAction: 'Réclamer cette brocante',
   organiserBody: 'Ajoutez vos dates, signalez les annulations. Gratuit, sans compte.',
   organiserAction: 'Ajouter votre brocante',
 
@@ -804,6 +823,9 @@ const it: Strings = {
   newsletterBody: 'Nuove date e cancellazioni nella Sua regione.',
   newsletterAction: 'Iscriversi alla newsletter',
   organiserTitle: 'Organizza un mercatino?',
+  claimTitle: 'Questo mercatino non è ancora seguito da nessuno',
+  claimBody: "È lei l'organizzatore? Aggiorni date e annullamenti in prima persona — gratis, senza account.",
+  claimAction: 'Rivendica questo mercatino',
   organiserBody: 'Inserisca le date, segnali le cancellazioni. Gratuito, senza account.',
   organiserAction: 'Inserire il mercatino',
 

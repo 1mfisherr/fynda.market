@@ -133,6 +133,7 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 | **Organiser website — secondary** | 45% of outbound clicks. It earns a real button, not a footnote link |
 | All upcoming dates, with status | Visible content, never markup (one `Event` only). Capped at 120 days |
 | Address, times | Held for 94–98% of markets |
+| **"Diesen Markt betreut noch niemand"** | On the 124 of 157 markets no organiser stands behind, after the dates. Yelp, TripAdvisor and Apple all put the claim on the listing rather than on a marketing page, because that is where an organiser looking themselves up actually is — and it turns every market page into supply acquisition at no cost. It carries the market and town in the query, so the form is already half filled when they arrive. A market whose stamp reads "Vom Veranstalter bestätigt" is never asked: asking would call our own stamp into question |
 | Report-a-correction | Feeds the freshness ledger, and it is cheap trust |
 
 **Deliberately gone, 2026-09-06.** "Was Sie erwartet" standing over a lone "Eintritt: frei" — 151 of 157 markets are free, so it was furniture by `BRAND.md`'s own rule; an entry fee now shows only where there is one, and the block appears only when something real is in it. And the type legend, which teaches a colour system for reading lists, on the page of a single market.
