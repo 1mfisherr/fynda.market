@@ -53,18 +53,27 @@ async function hmacHex(key: string, message: string): Promise<string> {
  * report success even if Telegram is down or was never configured.
  */
 async function ping(env: Env, text: string): Promise<void> {
-  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) return;
+  // Trimmed, and not optional. A secret set by piping a value into the CLI
+  // arrives with the shell's trailing newline attached, which puts a line break
+  // inside the request URL and inside the chat id. The first signup notified
+  // nobody and said nothing about why.
+  const token = env.TELEGRAM_BOT_TOKEN?.trim();
+  const chat = env.TELEGRAM_CHAT_ID?.trim();
+  if (!token || !chat) return;
+
   try {
-    await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: env.TELEGRAM_CHAT_ID,
-        text,
-        disable_web_page_preview: true,
-      }),
+      body: JSON.stringify({ chat_id: chat, text, disable_web_page_preview: true }),
     });
-  } catch { /* a missed notification is not worth failing a signup over */ }
+    // Telegram answers 200 with ok:false for a bad chat id, so the status alone
+    // is not the answer. This line is the difference between a silent failure
+    // and a findable one.
+    if (!res.ok) console.log('telegram rejected', res.status, await res.text());
+  } catch (error) {
+    console.log('telegram unreachable', String(error));
+  }
 }
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUntil }) => {
