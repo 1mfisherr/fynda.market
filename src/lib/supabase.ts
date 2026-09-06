@@ -22,6 +22,7 @@ interface Row {
   city: string;
   city_slug: string;
   region: string;
+  id: string;
   region_slug: string;
   country_slug: string;
   timezone: string;
@@ -55,6 +56,7 @@ interface Row {
  */
 const SQL = `
   select
+    p.id,
     coalesce(sm.slug, p.slug)                      as slug,
     coalesce(nm.value, p.slug)                     as name,
     ds.value                                        as description,
@@ -149,6 +151,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
       const nextIndex = dates.findIndex((o) => o.status !== 'cancelled');
 
       return {
+        id: row.id,
         slug: row.slug,
         name: row.name,
         description: row.description ?? undefined,

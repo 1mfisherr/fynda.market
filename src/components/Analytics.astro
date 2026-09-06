@@ -1,0 +1,175 @@
+---
+/**
+ * The events only a browser can see.
+ *
+ * Page views are NOT sent from here — they are counted at the edge in
+ * functions/_middleware.ts, where an ad blocker cannot remove them. This file
+ * covers the other half: what someone did once the page was in front of them.
+ * Losing some of that to a blocker is acceptable; losing page views is not.
+ *
+ * Every event's `props` shape is fixed by a check constraint on
+ * analytics_events — exact key names, exact allowed values. That is deliberate
+ * and worth obeying to the letter: it is what stops this file inventing a
+ * second vocabulary six months from now and quietly splitting the numbers in
+ * two. If a value here is wrong the row is rejected, which is the correct
+ * failure and the reason the collector logs rejections.
+ *
+ * It listens at the document rather than asking every component to report
+ * itself, so adding a link to a page never means remembering to instrument it.
+ */
+---
+<script>
+  const ENDPOINT = '/e';
+
+  /** One id per tab, gone when the tab closes. Groups a sitting; not identity. */
+  const sessionId = (() => {
+    try {
+      const key = 'fynda:session';
+      let id = sessionStorage.getItem(key);
+      if (!id) { id = crypto.randomUUID(); sessionStorage.setItem(key, id); }
+      return id;
+    } catch { return crypto.randomUUID(); }
+  })();
+
+  /** One id per page load, so a click can be tied to the view it came from. */
+  const pageViewId = crypto.randomUUID();
+
+  function send(event_name: string, props: Record<string, unknown>, el?: Element | null) {
+    const market = el?.closest<HTMLElement>('[data-market]')?.dataset.market;
+    const body = JSON.stringify({
+      event_name,
+      path: location.pathname,
+      session_id: sessionId,
+      page_view_id: pageViewId,
+      market_id: market ?? null,
+      props,
+    });
+
+    // sendBeacon survives the page being torn down by the navigation the click
+    // just started — which is exactly when an outbound click happens.
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'application/json' }));
+        return;
+      }
+    } catch { /* fall through */ }
+    fetch(ENDPOINT, { method: 'POST', body, keepalive: true, headers: { 'Content-Type': 'application/json' } })
+      .catch(() => { /* analytics never breaks a page */ });
+  }
+
+  /** The constraint wants a bare lowercase hostname and nothing else. */
+  const hostOf = (href: string) => {
+    try { return new URL(href, location.origin).hostname.toLowerCase(); } catch { return ''; }
+  };
+
+  /**
+   * Which list a row was clicked in, in the constraint's own vocabulary.
+   *
+   * Decided by the page, not by a container: `#list` is the row holder on the
+   * city page, the saved page AND the radius view, so keying off it labelled
+   * every city-page click "nearby". The path is the thing that actually
+   * differs.
+   */
+  const RADIUS_PAGE = /^\/(de|fr|it|en)\/(umkreis|a-proximite|nei-dintorni|nearby)\//;
+  const HOME_PAGE = /^\/(de|fr|it|en)\/$/;
+  function surfaceOf(el: Element): string {
+    if (RADIUS_PAGE.test(location.pathname)) return 'nearby';
+    // The home page leads with the weekend; anything below it is still a list.
+    if (HOME_PAGE.test(location.pathname) && el.closest('section')?.querySelector('h2')) {
+      return 'weekend_rail';
+    }
+    return 'list';
+  }
+
+  /** Where a row sat when it was clicked — 1-based, as a person would count. */
+  function positionOf(el: Element): number {
+    const row = el.closest('[data-date], .pin, li');
+    if (!row?.parentElement) return 0;
+    return [...row.parentElement.children].indexOf(row) + 1;
+  }
+
+  document.addEventListener('click', (event) => {
+    const el = (event.target as Element | null)?.closest?.('a, button');
+    if (!el) return;
+    const href = el.getAttribute('href');
+
+    // Leaving the site is the conversion: on v1, 55% of it was directions and
+    // 45% the organiser's own page. PAGES.md calls this the whole funnel.
+    if (href && /^https?:/i.test(href) && !href.startsWith(location.origin)) {
+      const maps = /google\.[a-z.]+\/maps|maps\.app\.goo\.gl|openstreetmap|apple\.com\/maps/i.test(href);
+      send('outbound_click', {
+        click_type: maps ? 'maps' : 'organiser_website',
+        destination_host: hostOf(href),
+      }, el);
+      return;
+    }
+
+    if (href?.endsWith('.ics')) { send('calendar_add', { method: 'ics' }, el); return; }
+
+    // A row's link into a market page: how a list becomes a visit.
+    if (href && /\/(markt|marche|mercato|market)\/[a-z0-9-]+\/$/.test(href)) {
+      send('market_click', { position: positionOf(el), surface: surfaceOf(el) }, el);
+      return;
+    }
+
+    // The date control and the radius buttons are both filters. `zeit` carries
+    // a named window or one YYYY-MM-DD, which is what date-window.ts reads.
+    const filter = (el as HTMLElement).dataset.filter;
+    if (filter) { send('filter_changed', { filter: 'zeit', value: filter }, el); return; }
+
+    const km = (el as HTMLElement).dataset.km;
+    if (km) { send('filter_changed', { filter: 'umkreis', value: km }, el); return; }
+
+    if ((el as HTMLElement).dataset.save !== undefined) {
+      // The button reports what it became, so add and remove stay separable.
+      const added = el.getAttribute('aria-pressed') !== 'true';
+      send('market_save', { action: added ? 'add' : 'remove' }, el);
+      return;
+    }
+
+    if (href && /\/(melden|report|signaler|segnalare)\//.test(href)) {
+      const grund = new URLSearchParams(href.split('?')[1] ?? '').get('grund');
+      send('report_open', { kind: grund === 'ausgefallen' ? 'cancellation' : 'correction' }, el);
+    }
+  }, { capture: true, passive: true });
+
+  document.addEventListener('submit', (event) => {
+    const form = event.target as HTMLFormElement | null;
+    if (!form) return;
+
+    // The search card is a place-and-time chooser, not a text search — the site
+    // has no free-text box, and v1's data says nobody wanted one. So it reports
+    // the two filters it actually sets rather than a `search` event with a
+    // `term` nobody typed.
+    if (form.classList.contains('search')) {
+      const data = new FormData(form);
+      const ort = String(data.get('ort') ?? '');
+      const zeit = String(data.get('zeit') ?? '');
+      if (ort) send('filter_changed', { filter: 'ort', value: ort }, form);
+      if (zeit) send('filter_changed', { filter: 'zeit', value: zeit }, form);
+    }
+
+    if (form.dataset.newsletter !== undefined) send('newsletter_submit', { outcome: 'ok' }, form);
+  }, { capture: true, passive: true });
+
+  /**
+   * "Nothing matched" is the most valuable event and the most commonly missed,
+   * because it usually hides inside a search that returned zero rows. It has
+   * its own name in the schema so a query cannot overlook it.
+   *
+   * The constraint wants a `term` — it was designed for a typed search. Ours is
+   * the filter the visitor actually expressed, which is the same question asked
+   * a different way: a date, a radius, or the word for "everything".
+   */
+  const empty = document.getElementById('empty');
+  if (empty) {
+    let last = empty.hidden;
+    new MutationObserver(() => {
+      if (empty.hidden === last) return;
+      last = empty.hidden;
+      if (empty.hidden) return;
+      const chosen = document.querySelector<HTMLElement>('[data-filter][aria-pressed="true"]');
+      send('no_results', { term: chosen?.dataset.filter || 'alle' }, empty);
+    }).observe(empty, { attributes: true, attributeFilter: ['hidden'] });
+  }
+</script>

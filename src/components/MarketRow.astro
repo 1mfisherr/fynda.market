@@ -69,7 +69,7 @@ const where = [market.venueName, omitCity ? undefined : market.city, entry, dist
 const size = variant === 'feature' ? 720 : 148;
 ---
 
-<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date}>
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date} data-market={market.id}>
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
   <div class="body">
     <p class="meta">

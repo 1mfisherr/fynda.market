@@ -22,6 +22,7 @@ const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternate
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const href = (path: string) => new URL(path, Astro.site).href;
 const fallback = alternates.find((a) => a.locale === DEFAULT_LOCALE);
+import Analytics from '../components/Analytics.astro';
 ---
 
 <!doctype html>
@@ -60,5 +61,8 @@ const fallback = alternates.find((a) => a.locale === DEFAULT_LOCALE);
   </head>
   <body>
     <slot />
+    {/* Interaction events only. Page views are counted at the edge, in
+        functions/_middleware.ts, so a blocker cannot remove them. */}
+    <Analytics />
   </body>
 </html>

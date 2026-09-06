@@ -38,6 +38,12 @@ export interface Occurrence {
 }
 
 export interface Market {
+  /**
+   * The database id. Not for URLs — that is `slug` — but analytics_events
+   * stores market_id, and a click on a city page has to be able to say which
+   * market it was about. The path alone cannot: it names the city.
+   */
+  id: string;
   slug: string;
   name: string;
   /** The description in the requested locale, shown verbatim. */

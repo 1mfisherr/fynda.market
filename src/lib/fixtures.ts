@@ -32,6 +32,8 @@ export function sampleMarkets(): Market[] {
 
   return [
     {
+      id: '00000000-0000-4000-8000-000000000001',
+
       slug: 'flohmarkt-kanzlei-zuerich',
       recurrenceText: 'Jeden Samstag, ganzjährig',
       name: 'Flohmarkt Kanzlei',
@@ -58,6 +60,8 @@ export function sampleMarkets(): Market[] {
       groundSurface: 'Asphalt',
     },
     {
+      id: '00000000-0000-4000-8000-000000000002',
+
       slug: 'flohmarkt-buerkliplatz-zuerich',
       recurrenceText: 'Jeden Samstag, Mai–Oktober',
       name: 'Flohmarkt Bürkliplatz',
@@ -94,6 +98,8 @@ export function sampleMarkets(): Market[] {
       facilities: { wc: true, dogs: false, strollers: 'breite Gänge', cash: 'mitnehmen' },
     },
     {
+      id: '00000000-0000-4000-8000-000000000003',
+
       slug: 'flohmarkt-am-see-wollishofen',
       recurrenceText: 'Jeden 1. Sonntag des Monats von April bis Oktober',
       name: 'Flohmarkt am See, Wollishofen',
@@ -115,6 +121,8 @@ export function sampleMarkets(): Market[] {
       covered: 'partly',
     },
     {
+      id: '00000000-0000-4000-8000-000000000004',
+
       slug: 'nachtflohmarkt-markthalle-basel',
       recurrenceText: 'Mehrmals jährlich',
       name: 'Nachtflohmarkt Markthalle',
@@ -134,6 +142,8 @@ export function sampleMarkets(): Market[] {
       upcoming: [],
     },
     {
+      id: '00000000-0000-4000-8000-000000000005',
+
       slug: 'flohmarkt-rathausplatz-wettingen',
       recurrenceText: 'Erster Samstag des Monats, März–November',
       name: 'Flohmarkt Rathausplatz',
@@ -160,6 +170,8 @@ export function sampleMarkets(): Market[] {
       upcoming: [{ date: later, startTime: '09:00', endTime: '16:00', status: 'tentative' }],
     },
     {
+      id: '00000000-0000-4000-8000-000000000006',
+
       slug: 'hallenflohmarkt-winterthur',
       recurrenceText: 'Zweimal jährlich, im Frühling und Herbst',
       name: 'Hallenflohmarkt Winterthur',
