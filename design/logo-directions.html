@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap">
+<div id="fynda-logo-study">
+  <div class="viz-controls">
+    <label class="form-label">Explore a direction
+      <select class="form-select" id="fynda-direction">
+        <option value="signature">01 · The signature — f.</option>
+        <option value="stall">02 · The Sunday stall</option>
+        <option value="found">03 · The found dot</option>
+      </select>
+    </label>
+    <label class="form-check"><input type="checkbox" class="form-check-input" id="fynda-mono"><span class="form-check-label">One colour</span></label>
+  </div>
+  <div class="fl-board" data-direction="signature">
+    <div class="fl-top"><span>IDENTITY EXPLORATIONS</span><span>SEPTEMBER 2026 · CONCEPTS</span></div>
+    <div class="fl-hero">
+      <div class="fl-mark fl-large" role="img" aria-label="Selected fynda.market symbol"><span class="fl-letter">f</span><i class="fl-roof"></i><i class="fl-post"></i><i class="fl-corner one"></i><i class="fl-corner two"></i><i class="fl-dot"></i></div>
+      <div class="fl-wordmark">fynda<span>.</span>market</div>
+    </div>
+    <div class="fl-caption"><span id="fl-name">01 / THE SIGNATURE</span><span>Schibsted Grotesk 800</span></div>
+    <div class="fl-tests">
+      <div><div class="fl-label">BROWSER TAB</div><div class="fl-browser"><div class="fl-tab"><span class="fl-mark" style="--size:16px" aria-hidden="true"></span><span>fynda.market</span><span class="fl-close">×</span></div></div></div>
+      <div><div class="fl-label">ACTUAL SIZES</div><div class="fl-sizes"><div><span class="fl-mark" style="--size:16px" aria-hidden="true"></span><small>16 px</small></div><div><span class="fl-mark" style="--size:32px" aria-hidden="true"></span><small>32 px</small></div><div><span class="fl-mark" style="--size:48px" aria-hidden="true"></span><small>48 px</small></div></div></div>
+    </div>
+    <div class="fl-applications">
+      <div class="fl-header"><div class="fl-label">MOBILE HEADER</div><div class="fl-phonebar"><span class="fl-wordmark">fynda<span>.</span>market</span><span class="fl-lang">DE</span></div><div class="fl-line"></div></div>
+      <div class="fl-avatar"><div class="fl-label">PROFILE / APP</div><span class="fl-mark" style="--size:72px" role="img" aria-label="Profile icon preview"></span></div>
+    </div>
+    <div class="fl-comparison">
+      <div data-direction="signature"><span class="fl-mark" style="--size:48px" aria-hidden="true"></span><span>01 · Signature</span></div>
+      <div data-direction="stall"><span class="fl-mark" style="--size:48px" aria-hidden="true"></span><span>02 · Sunday stall</span></div>
+      <div data-direction="found"><span class="fl-mark" style="--size:48px" aria-hidden="true"></span><span>03 · Found dot</span></div>
+    </div>
+  </div>
+</div>
+<style>
+#fynda-logo-study .fl-board{--ink:#111110;--spot:#ff4a2b;--white:#fff;--paper:#f5f4f2;--line:#e8e6e2;margin-top:18px;padding:28px;background:var(--white);color:var(--ink);font-family:'Schibsted Grotesk',sans-serif;border:1px solid var(--line);border-radius:4px}
+#fynda-logo-study .fl-board.mono{--spot:#111110}
+#fynda-logo-study .fl-top,#fynda-logo-study .fl-caption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:11px;letter-spacing:.07em;color:#6e6c68}
+#fynda-logo-study .fl-hero{display:flex;align-items:center;justify-content:center;gap:24px;min-height:216px;flex-wrap:wrap;padding:26px 0}
+#fynda-logo-study .fl-wordmark{font-size:clamp(29px,5.7vw,49px);font-weight:800;line-height:1.1;letter-spacing:-.055em;white-space:nowrap}
+#fynda-logo-study .fl-wordmark span{color:var(--spot)}
+#fynda-logo-study .fl-mark{--size:64px;width:var(--size);height:var(--size);position:relative;display:inline-block;flex-shrink:0;background:var(--ink);border-radius:24%;vertical-align:middle;color:var(--white);font-style:normal}
+#fynda-logo-study .fl-large{--size:96px}
+#fynda-logo-study .fl-mark i{position:absolute;display:none;box-sizing:border-box}
+#fynda-logo-study .fl-letter{display:none;position:absolute;left:24%;top:1%;font-size:calc(var(--size)*.84);font-weight:800;line-height:1;letter-spacing:0}
+#fynda-logo-study .fl-dot{display:block!important;width:16%;height:16%;border-radius:50%;background:var(--spot);right:19%;bottom:21%}
+#fynda-logo-study [data-direction="signature"] .fl-letter{display:block}
+#fynda-logo-study [data-direction="stall"] .fl-letter,#fynda-logo-study [data-direction="found"] .fl-letter{display:none}
+#fynda-logo-study [data-direction="stall"] .fl-roof{display:block;left:19%;top:23%;width:62%;height:25%;border-radius:45% 45% 20% 20%;background:var(--white)}
+#fynda-logo-study [data-direction="stall"] .fl-post{display:block;left:25%;top:43%;width:14%;height:34%;background:var(--white)}
+#fynda-logo-study [data-direction="stall"] .fl-dot{right:25%;bottom:23%}
+#fynda-logo-study [data-direction="found"] .fl-corner{display:block;width:31%;height:31%;border-color:var(--white);border-style:solid;border-width:0}
+#fynda-logo-study [data-direction="found"] .one{left:19%;top:19%;border-left-width:calc(var(--size)*.105);border-top-width:calc(var(--size)*.105);border-radius:10% 0 0 0}
+#fynda-logo-study [data-direction="found"] .two{right:19%;bottom:19%;border-right-width:calc(var(--size)*.105);border-bottom-width:calc(var(--size)*.105);border-radius:0 0 10% 0}
+#fynda-logo-study [data-direction="found"] .fl-dot{width:23%;height:23%;right:38.5%;bottom:38.5%}
+#fynda-logo-study .mono .fl-mark .fl-dot{background:var(--white)}
+#fynda-logo-study .fl-tests{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px;border-top:1px solid var(--line);padding-top:22px}
+#fynda-logo-study .fl-label{font-size:11px;letter-spacing:.1em;color:#6e6c68;margin-bottom:16px}
+#fynda-logo-study .fl-browser{background:#e8e6e2;padding:9px 9px 0;border-radius:9px 9px 0 0;height:71px}
+#fynda-logo-study .fl-tab{display:flex;gap:9px;align-items:center;background:#fff;border-radius:8px 8px 0 0;padding:11px;font-size:12px}
+#fynda-logo-study .fl-close{margin-left:auto;color:#6e6c68}
+#fynda-logo-study .fl-sizes{display:flex;align-items:flex-start;gap:27px}
+#fynda-logo-study .fl-sizes>div{display:flex;align-items:center;flex-direction:column;justify-content:flex-end;height:72px;gap:8px}
+#fynda-logo-study small{font-size:11px;color:#6e6c68}
+#fynda-logo-study .fl-applications{display:grid;grid-template-columns:1fr 120px;gap:28px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+#fynda-logo-study .fl-phonebar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:335px;height:60px}
+#fynda-logo-study .fl-phonebar .fl-wordmark{font-size:28px}
+#fynda-logo-study .fl-lang{font-size:12px;font-weight:700}
+#fynda-logo-study .fl-line{height:1px;background:var(--line);max-width:335px}
+#fynda-logo-study .fl-comparison{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;margin-top:28px;border-top:1px solid var(--line);padding-top:22px}
+#fynda-logo-study .fl-comparison>div{display:flex;align-items:center;gap:10px;font-size:11px}
+#fynda-logo-study .fl-comparison [data-direction="signature"] .fl-roof,#fynda-logo-study .fl-comparison [data-direction="signature"] .fl-post,#fynda-logo-study .fl-comparison [data-direction="signature"] .fl-corner,#fynda-logo-study .fl-comparison [data-direction="stall"] .fl-corner,#fynda-logo-study .fl-comparison [data-direction="found"] .fl-roof,#fynda-logo-study .fl-comparison [data-direction="found"] .fl-post{display:none}
+#fynda-logo-study .fl-comparison [data-direction="signature"] .fl-dot{width:16%;height:16%;right:19%;bottom:21%}
+#fynda-logo-study .fl-comparison [data-direction="stall"] .fl-dot{width:16%;height:16%;right:25%;bottom:23%}
+@media(max-width:520px){#fynda-logo-study .fl-board{padding:18px}#fynda-logo-study .fl-hero{flex-direction:column;gap:22px;min-height:230px}#fynda-logo-study .fl-tests{grid-template-columns:1fr;gap:20px}#fynda-logo-study .fl-applications{grid-template-columns:1fr}#fynda-logo-study .fl-comparison{gap:16px}#fynda-logo-study .fl-comparison>div{flex-direction:column;align-items:flex-start;gap:8px}#fynda-logo-study .fl-phonebar .fl-wordmark{font-size:27px}}
+</style>
+<script>
+(()=>{
+  const root=document.getElementById('fynda-logo-study');
+  const board=root.querySelector('.fl-board');
+  const contents=root.querySelector('.fl-large').innerHTML;
+  root.querySelectorAll('.fl-mark:not(.fl-large)').forEach(mark=>{mark.innerHTML=contents});
+  root.querySelectorAll('.fl-comparison>div').forEach(item=>{
+    const kind=item.dataset.direction;
+    item.querySelector('.fl-letter').style.display=kind==='signature'?'block':'none';
+  });
+  const names={signature:'01 / THE SIGNATURE',stall:'02 / THE SUNDAY STALL',found:'03 / THE FOUND DOT'};
+  root.querySelector('#fynda-direction').addEventListener('change',event=>{
+    board.dataset.direction=event.target.value;
+    root.querySelector('#fl-name').textContent=names[event.target.value];
+  });
+  root.querySelector('#fynda-mono').addEventListener('change',event=>board.classList.toggle('mono',event.target.checked));
+})();
+</script>

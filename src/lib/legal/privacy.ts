@@ -88,8 +88,8 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         h: '5. Joining the newsletter',
         p: [
-          'The newsletter form does not yet run on an automatic system. Pressing send opens your own mail program with a message already written, addressed to hallo@fynda.market. You see it before it goes, and nothing reaches us until you send it yourself.',
-          'When it does, we hold your email address, the city you chose and the language you wrote in, in our own database, and we use them to send the newsletter you asked for and to keep a record of your consent.',
+          'When you sign up, we save your email address, the town you chose and the language of the page in our own database, and we use them to send the newsletter you asked for. The subscription is active immediately — there is no confirmation email to click.',
+          'Alongside it we record when you signed up, which page you signed up from, the consent wording you were shown, and a one-way hashed version of your IP address, so that the consent can be shown rather than asserted. The IP address itself is never stored.',
           'The legal basis for this processing is your consent. You can withdraw it at any time by writing to hallo@fynda.market, or through the unsubscribe link in any newsletter.',
           'When you unsubscribe, we delete the information that could identify you from the active newsletter list and keep only a minimal suppression record — your email address and the dates you signed up and unsubscribed — so that we do not accidentally contact you again and can show a reliable record of your consent and its withdrawal.',
           'We do not use an external marketing platform. If we later add an email delivery service to send the newsletter, this page will name it before it is used.',
@@ -324,8 +324,8 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         h: '5. Newsletter-Anmeldung',
         p: [
-          'Das Newsletter-Formular läuft noch nicht über ein automatisches System. Ein Klick auf «Senden» öffnet Ihr eigenes E-Mail-Programm mit einer bereits geschriebenen Nachricht an hallo@fynda.market. Sie sehen sie, bevor sie abgeht, und bei uns kommt nichts an, bevor Sie sie selbst abschicken.',
-          'Wenn sie ankommt, halten wir Ihre E-Mail-Adresse, die gewählte Stadt und die Sprache, in der Sie geschrieben haben, in unserer eigenen Datenbank und nutzen sie, um Ihnen den gewünschten Newsletter zu schicken und Ihre Einwilligung nachweisen zu können.',
+          'Wenn Sie sich anmelden, speichern wir Ihre E-Mail-Adresse, die gewählte Stadt und die Sprache der Seite in unserer eigenen Datenbank und nutzen sie, um Ihnen den gewünschten Newsletter zu schicken. Die Anmeldung ist sofort aktiv — es gibt keine Bestätigungsmail zum Anklicken.',
+          'Dazu halten wir fest, wann und von welcher Seite aus die Anmeldung kam, welchen Zustimmungstext Sie dabei gesehen haben, und eine gehashte, nicht rückrechenbare Fassung Ihrer IP-Adresse, damit sich die Einwilligung belegen lässt. Die IP-Adresse selbst speichern wir nie.',
           'Rechtsgrundlage dafür ist Ihre Einwilligung. Sie können sie jederzeit widerrufen, indem Sie an hallo@fynda.market schreiben oder den Abmeldelink in einem Newsletter nutzen.',
           'Bei einer Abmeldung löschen wir die Angaben, die Sie identifizieren könnten, aus der aktiven Newsletter-Liste und behalten nur einen minimalen Sperreintrag — Ihre E-Mail-Adresse sowie das Datum der Anmeldung und der Abmeldung — damit wir Sie nicht versehentlich erneut anschreiben und Einwilligung wie Widerruf belegen können.',
           'Wir nutzen keine externe Marketing-Plattform. Sollten wir später einen Versanddienst für den Newsletter einsetzen, wird er auf dieser Seite genannt, bevor er zum Einsatz kommt.',
@@ -562,8 +562,8 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         h: '5. Inscription à la newsletter',
         p: [
-          "Le formulaire de newsletter ne fonctionne pas encore avec un système automatique. Cliquer sur « Envoyer » ouvre votre propre logiciel de messagerie avec un message déjà rédigé, adressé à hallo@fynda.market. Vous le voyez avant qu'il ne parte, et rien ne nous parvient tant que vous ne l'envoyez pas vous-même.",
-          "Lorsqu'il nous parvient, nous conservons votre adresse e-mail, la ville que vous avez choisie et la langue dans laquelle vous avez écrit, dans notre propre base de données, afin de vous envoyer la newsletter demandée et de garder une trace de votre consentement.",
+          "Lorsque vous vous inscrivez, nous enregistrons votre adresse e-mail, la commune que vous avez choisie et la langue de la page dans notre propre base de données, afin de vous envoyer la newsletter demandée. L'inscription est active immédiatement — il n'y a pas d'e-mail de confirmation à cliquer.",
+          "Nous enregistrons également la date de votre inscription, la page depuis laquelle elle a été faite, le texte de consentement qui vous a été montré et une empreinte irréversible de votre adresse IP, afin de pouvoir démontrer ce consentement. L'adresse IP elle-même n'est jamais conservée.",
           "La base légale de ce traitement est votre consentement. Vous pouvez le retirer à tout moment en écrivant à hallo@fynda.market ou via le lien de désinscription présent dans chaque newsletter.",
           "Lors d'une désinscription, nous supprimons de la liste active les informations qui pourraient vous identifier et ne conservons qu'un enregistrement minimal de suppression — votre adresse e-mail et les dates d'inscription et de désinscription — afin de ne pas vous recontacter par erreur et de pouvoir démontrer votre consentement et son retrait.",
           "Nous n'utilisons aucune plateforme marketing externe. Si nous ajoutons plus tard un service d'envoi pour la newsletter, il sera nommé sur cette page avant d'être utilisé.",
@@ -800,8 +800,8 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         h: '5. Iscrizione alla newsletter',
         p: [
-          'Il modulo della newsletter non funziona ancora con un sistema automatico. Premere «Invia» apre il Suo programma di posta con un messaggio già scritto, indirizzato a hallo@fynda.market. Lo vede prima che parta e a noi non arriva nulla finché non lo invia Lei.',
-          'Quando arriva, conserviamo il Suo indirizzo e-mail, la città che ha scelto e la lingua in cui ha scritto nella nostra banca dati, e li usiamo per inviarLe la newsletter richiesta e per documentare il Suo consenso.',
+          'Quando si iscrive, salviamo il Suo indirizzo e-mail, la città che ha scelto e la lingua della pagina nella nostra banca dati, e li usiamo per inviarLe la newsletter richiesta. L’iscrizione è attiva subito — non c’è alcuna e-mail di conferma da cliccare.',
+          'Registriamo inoltre quando si è iscritto, da quale pagina, il testo di consenso che Le è stato mostrato e una versione irreversibile del Suo indirizzo IP, così da poter documentare il consenso. L’indirizzo IP in sé non viene mai conservato.',
           'La base giuridica di questo trattamento è il Suo consenso. Può revocarlo in qualsiasi momento scrivendo a hallo@fynda.market o tramite il link di disiscrizione presente in ogni newsletter.',
           'In caso di disiscrizione cancelliamo dalla lista attiva le informazioni che potrebbero identificarLa e conserviamo soltanto una registrazione minima di soppressione — il Suo indirizzo e-mail e le date di iscrizione e disiscrizione — per non contattarLa di nuovo per errore e per poter documentare consenso e revoca.',
           'Non usiamo alcuna piattaforma di marketing esterna. Se in futuro aggiungeremo un servizio di invio per la newsletter, sarà indicato su questa pagina prima di essere utilizzato.',

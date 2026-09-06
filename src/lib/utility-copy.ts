@@ -44,9 +44,18 @@ export interface FormPage {
   after?: string;
   fields: FormField[];
   submit: string;
+  /**
+   * The line under the button. On the newsletter page it is also the consent
+   * text: whatever it says is what gets stored alongside the address, so that
+   * what someone agreed to can be shown rather than asserted.
+   */
   note: string;
   /** The mailto subject. The market name is appended where there is one. */
   subject: string;
+  /** Newsletter only: shown in place of the form once the address is saved. */
+  success?: string;
+  /** Newsletter only: shown when saving failed and the mail program opens instead. */
+  failure?: string;
 }
 
 export type FormKey = 'report' | 'newsletter' | 'organiser';
@@ -162,15 +171,17 @@ const newsletter: Record<Locale, FormPage> = {
     answer: 'Jeden Freitag eine E-Mail: was am Wochenende in Ihrer Stadt los ist.',
     prose: [
       'Flohmärkte laufen im Wochenrhythmus, also läuft die E-Mail auch so: einmal pro Woche, freitags, nie öfter. Für eine Stadt oder eine Region — neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren.',
-      'Kostenlos, ohne Konto, ohne Werbung. Sie melden sich mit Ihrer E-Mail-Adresse an, wir bestätigen sie, und ab dann bekommen Sie freitags eine Nachricht — mehr nicht.',
+      'Kostenlos, ohne Konto, ohne Werbung. Sie tragen Ihre E-Mail-Adresse ein, sind sofort dabei und können sich mit einem Klick in jeder E-Mail wieder abmelden.',
     ],
     fields: [
       { name: 'email', label: 'E-Mail-Adresse', type: 'email', required: true, placeholder: 'ihre@email.ch' },
       { name: 'stadt', label: 'Stadt', hint: 'Leer lassen für die ganze Schweiz.', placeholder: 'z. B. Zürich' },
     ],
     submit: 'Anmelden',
-    note: 'Die Anmeldung läuft im Moment noch per E-Mail an uns — es gibt noch kein automatisches Versandsystem. Wir bestätigen jede Adresse persönlich, bevor wir etwas verschicken.',
+    note: 'Kostenlos. Wir schreiben Ihnen nur den Newsletter, den Sie hier bestellen, und geben Ihre Adresse an niemanden weiter. Abmelden können Sie sich jederzeit.',
     subject: 'Newsletter',
+    success: 'Sie sind dabei. Die nächste E-Mail kommt am Freitag.',
+    failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Nachricht einfach so.',
   },
   fr: {
     title: 'Newsletter — fynda.market',
@@ -179,15 +190,17 @@ const newsletter: Record<Locale, FormPage> = {
     answer: 'Chaque vendredi un e-mail : ce qui se passe ce week-end près de chez vous.',
     prose: [
       "Les brocantes suivent un rythme hebdomadaire, l'e-mail aussi : une fois par semaine, le vendredi, jamais plus souvent. Pour une commune ou une région — les nouvelles dates et les annulations, pour que vous ne fassiez pas le déplacement pour rien.",
-      "Gratuit, sans compte, sans publicité. Vous vous inscrivez avec votre adresse e-mail, nous la confirmons, et vous recevez ensuite un message le vendredi — rien de plus.",
+      "Gratuit, sans compte, sans publicité. Vous saisissez votre adresse e-mail, vous êtes inscrit immédiatement, et vous pouvez vous désinscrire en un clic depuis n'importe quel e-mail.",
     ],
     fields: [
       { name: 'email', label: 'Adresse e-mail', type: 'email', required: true, placeholder: 'votre@email.ch' },
       { name: 'stadt', label: 'Commune', hint: 'Laissez vide pour toute la Suisse.', placeholder: 'p. ex. Lausanne' },
     ],
     submit: "S'inscrire",
-    note: "L'inscription passe pour l'instant par un e-mail qui nous est adressé — il n'y a pas encore de système d'envoi automatique. Nous confirmons chaque adresse personnellement avant d'envoyer quoi que ce soit.",
+    note: "Gratuit. Nous ne vous écrivons que la newsletter demandée ici et ne transmettons votre adresse à personne. Vous pouvez vous désinscrire à tout moment.",
     subject: 'Newsletter',
+    success: "C'est fait. Le prochain e-mail part vendredi.",
+    failure: "Cela n'a pas fonctionné. Nous ouvrons votre logiciel de messagerie — envoyez-nous simplement le message.",
   },
   it: {
     title: 'Newsletter — fynda.market',
@@ -196,15 +209,17 @@ const newsletter: Record<Locale, FormPage> = {
     answer: 'Ogni venerdì una e-mail: cosa succede questo fine settimana nella Sua zona.',
     prose: [
       "I mercatini seguono un ritmo settimanale, e così anche l'e-mail: una volta alla settimana, il venerdì, mai più spesso. Per una città o una regione — le nuove date e le cancellazioni, così non fa il viaggio per niente.",
-      'Gratuito, senza account, senza pubblicità. Si iscrive con il Suo indirizzo e-mail, noi lo confermiamo, e da lì riceve un messaggio il venerdì — nient’altro.',
+      'Gratuito, senza account, senza pubblicità. Inserisce il Suo indirizzo e-mail, è iscritto subito e può disiscriversi con un clic da qualsiasi e-mail.',
     ],
     fields: [
       { name: 'email', label: 'Indirizzo e-mail', type: 'email', required: true, placeholder: 'sua@email.ch' },
       { name: 'stadt', label: 'Città', hint: 'Lasci vuoto per tutta la Svizzera.', placeholder: 'per es. Lugano' },
     ],
     submit: 'Iscriversi',
-    note: "L'iscrizione passa per ora da una e-mail a noi — non esiste ancora un sistema di invio automatico. Confermiamo ogni indirizzo personalmente prima di inviare qualcosa.",
+    note: 'Gratuito. Le scriviamo solo la newsletter che richiede qui e non cediamo il Suo indirizzo a nessuno. Può disiscriversi in qualsiasi momento.',
     subject: 'Newsletter',
+    success: 'È fatta. La prossima e-mail parte venerdì.',
+    failure: 'Non ha funzionato. Apriamo il Suo programma di posta — ci mandi semplicemente il messaggio.',
   },
   en: {
     title: 'Newsletter — fynda.market',
@@ -213,15 +228,17 @@ const newsletter: Record<Locale, FormPage> = {
     answer: "One email every Friday: what's on this weekend near you.",
     prose: [
       'Flea markets run on a weekly rhythm, so the email does too: once a week, on a Friday, never more often. For one town or one region — the dates that have been added, and the cancellations, so you do not make the trip for nothing.',
-      'Free, no account, no advertising. You sign up with your email address, we confirm it, and from then on you get a message on Fridays. That is all.',
+      'Free, no account, no advertising. You put in your email address, you are on the list straight away, and you can leave in one click from any email.',
     ],
     fields: [
       { name: 'email', label: 'Email address', type: 'email', required: true, placeholder: 'you@email.ch' },
       { name: 'stadt', label: 'Town', hint: 'Leave empty for the whole of Switzerland.', placeholder: 'e.g. Zürich' },
     ],
     submit: 'Sign up',
-    note: 'Signing up currently goes through an email to us — there is no automatic sending system yet. We confirm every address personally before we send anything.',
+    note: 'Free. We only send you the newsletter you ask for here, and we never pass your address to anyone. You can unsubscribe at any time.',
     subject: 'Newsletter',
+    success: "You're in. The next email goes out on Friday.",
+    failure: 'That did not work. We are opening your mail program instead — just send us the message.',
   },
 };
 

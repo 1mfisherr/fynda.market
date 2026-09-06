@@ -101,7 +101,13 @@ const savedCopy = saved && {
         {form.after && <p>{form.after}</p>}
       </div>
 
-      <form class="stack gutter" data-mail data-subject={form.subject}>
+      <form
+        class="stack gutter"
+        data-mail
+        data-subject={form.subject}
+        data-subscribe={key === 'newsletter' ? '' : undefined}
+        data-consent={key === 'newsletter' ? form.note : undefined}
+      >
         {form.fields.map((field) => (
           <Field
             label={field.label}
@@ -113,9 +119,24 @@ const savedCopy = saved && {
             options={field.options}
           />
         ))}
+
+        {/* The honeypot. Hidden from people and from screen readers, so anything
+            in it came from a bot. Not `display:none` alone — some bots skip
+            those — but off-screen and untabbable as well. */}
+        {key === 'newsletter' && (
+          <div class="trap" aria-hidden="true">
+            <label for="f-website">Website</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+        )}
+
         <Button type="submit" variant="primary" block>{form.submit}</Button>
         <p class="meta">{form.note}</p>
       </form>
+
+      {key === 'newsletter' && (
+        <p class="gutter answer" id="signup-done" hidden data-success={form.success}></p>
+      )}
     </>
   )}
 
@@ -155,6 +176,14 @@ const savedCopy = saved && {
 
 <style>
   .find { margin-block-start: var(--space-4); }
+
+  /* Off-screen rather than display:none — a bot that skips hidden fields still
+     fills this one in, and a person never sees it or tabs to it. Taken out of
+     flow, so it needs no size of its own. */
+  .trap {
+    position: absolute;
+    inset-inline-start: -9999px;
+  }
 
   /* The operator's name, town and address are one paragraph with line breaks in
      it — a block of three <p> would be read as three separate statements. */
@@ -199,8 +228,68 @@ const savedCopy = saved && {
     const ORDER: Record<string, number> = { ausgefallen: 0, vorbei: 1, anderes: 3 };
     if (reason && reasonField && reason in ORDER) reasonField.selectedIndex = ORDER[reason];
 
+    /**
+     * The newsletter is the one form with somewhere to go: it posts to /n and
+     * the page says "you're in" without leaving. Everything else still opens
+     * the visitor's own mail program, because there is nowhere yet to put it.
+     *
+     * If the post fails for any reason — offline, endpoint down, database
+     * unreachable — it falls through to that same mail program, so a broken
+     * signup can never be worse than the mailto it replaced.
+     */
+    const opened = Date.now();
+    const subscribe = form.hasAttribute('data-subscribe');
+    const done = document.getElementById('signup-done');
+
+    async function trySubscribe(): Promise<boolean> {
+      const email = (form!.elements.namedItem('email') as HTMLInputElement | null)?.value.trim();
+      if (!email) return false;
+      const town = (form!.elements.namedItem('stadt') as HTMLInputElement | null)?.value.trim();
+      const trap = (form!.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '';
+
+      const res = await fetch('/n', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          town,
+          website: trap,
+          elapsed_ms: Date.now() - opened,
+          path: location.pathname,
+          consent_text: form!.dataset.consent ?? null,
+        }),
+      });
+      return res.ok;
+    }
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+
+      if (subscribe && done) {
+        const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+        if (button) button.disabled = true;
+        void trySubscribe()
+          .then((ok) => {
+            if (!ok) throw new Error('not saved');
+            form.hidden = true;
+            done.textContent = done.dataset.success ?? '';
+            done.hidden = false;
+            done.setAttribute('tabindex', '-1');
+            done.focus();
+          })
+          .catch(() => {
+            if (button) button.disabled = false;
+            sendByMail(form as HTMLFormElement);
+          });
+        return;
+      }
+
+      sendByMail(form as HTMLFormElement);
+    });
+
+    /* Takes the form rather than closing over it: a function declaration outlives
+       the `if (form)` that narrowed it away from null. */
+    function sendByMail(form: HTMLFormElement) {
       const lines: string[] = [];
       let subject = form.dataset.subject ?? 'fynda.market';
 
@@ -217,7 +306,7 @@ const savedCopy = saved && {
       location.href = `mailto:${CONTACT}`
         + `?subject=${encodeURIComponent(subject)}`
         + `&body=${encodeURIComponent(lines.join('\n'))}`;
-    });
+    }
   }
 </script>
 
