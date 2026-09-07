@@ -6,6 +6,12 @@ Read against `docs/BRAND.md`, `docs/PRODUCT.md`, `docs/PLAN.md`, the existing br
 
 ## Recommendation
 
+**Current direction:** founder responded positively to v5 and requested more polish and life. `screens/logo-wordmark-v6.png` explores fuller curved lettering and a more expressive standalone `y`, plus a vermilion reverse application. The slogan in the mockup is exploratory copy. This is still generated concept artwork; letterforms vary between applications and must be unified in final vector artwork before use.
+
+The founder liked v4's character and requested iconic-brand references (Apple, Google, Revolut, Wise, Airbnb, Nike, McDonald's). Follow-up concept: `screens/logo-wordmark-v5.png`, lighter lettering and a standalone curved `y`. [Google's identity study](https://design.google/library/evolving-google-identity) directly informs keeping the compact mark related to the full wordmark. V5 is for review, not approval or production; retain v4 for comparison.
+
+**Latest review concept:** `screens/logo-wordmark-v4.png`. After rejection of the first two rounds, explore softer custom lettering with a curved `y` as the compact mark. This moves away from the current Schibsted Grotesk and needs founder review; it is not an approved replacement. Research references: [COLLINS / Mailchimp](https://wearecollins.com/case-studies/mailchimp/) for preserving character across an identity, and [BUCK / Eventbrite](https://buck.co/work/eventbrite) for expressing the feeling of gathering through the mark. Generated artwork is illustrative, not production typography or a tested favicon.
+
 Side-by-side generated concept board: `screens/logo-comparison-v2.png`. This illustrates the same three directions with a more literal stall variant; typography and tiny icon samples are illustrative, not production assets or pixel-size verification. The recommendation remains Signature; no direction is approved yet.
 
 **The founder rejected Signature: the white lowercase f on a dark square resembles Facebook. Do not develop it further.** New generated exploration: `screens/logo-new-directions-v3.png`, comparing a folded canopy, joined `fm`, and a knot. These are illustrative concepts, not final vector or favicon files. Keep the full `fynda.market` wordmark. No new symbol is selected.
