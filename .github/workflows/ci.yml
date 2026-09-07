@@ -70,6 +70,27 @@ jobs:
             -v ON_ERROR_STOP=1 \
             -c 'create database fynda_test template template0'
 
+          # Supabase ships three roles that a plain Postgres does not have, and
+          # the migrations grant to all three. Creating them here means CI runs
+          # the real GRANT statements instead of skipping past them, so a grant
+          # naming a table that no longer exists fails the build.
+          psql \
+            -h localhost \
+            -U postgres \
+            -d fynda_test \
+            -v ON_ERROR_STOP=1 \
+            -c "do \$\$ begin
+                  if not exists (select 1 from pg_roles where rolname = 'anon') then
+                    create role anon nologin;
+                  end if;
+                  if not exists (select 1 from pg_roles where rolname = 'authenticated') then
+                    create role authenticated nologin;
+                  end if;
+                  if not exists (select 1 from pg_roles where rolname = 'service_role') then
+                    create role service_role nologin bypassrls;
+                  end if;
+                end \$\$"
+
           while IFS= read -r -d '' migration; do
             psql \
               -h localhost \
