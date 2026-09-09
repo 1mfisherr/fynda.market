@@ -8,8 +8,12 @@
  *
  * They are data rather than four templates times four languages, because the
  * three form pages are the same page: a heading, an answer, some prose, a list
- * of fields, and an honest note that the form opens a mail client. Writing that
- * shape once means a new locale is a new column here, not twelve new files.
+ * of fields, and a note saying what happens when the button is pressed. Writing
+ * that shape once means a new locale is a new column here, not twelve new files.
+ *
+ * All three now post to an endpoint of their own — /n, /r and /o — so the note
+ * no longer has to apologise for a mail program. The mailto serialiser stays as
+ * the last resort after a failed retry, which is why `subject` is still here.
  *
  * The legal pages are deliberately NOT here. An Impressum and a privacy policy
  * are legal documents, the German ones still carry unfilled placeholders, and a
@@ -22,6 +26,21 @@ import type { Locale } from './i18n';
 
 export const CONTACT = 'contact@fynda.market';
 
+/**
+ * One choice in a select.
+ *
+ * The value is the same in every language and the label is not. It used to be
+ * one string doing both jobs, which meant the browser posted a German sentence
+ * to an endpoint whose check constraint spells its reasons in English, and the
+ * market page had to prefill the control by counting positions in the list. A
+ * reordered option would have silently changed what a report meant.
+ */
+export interface FormOption {
+  /** What is posted. Matches `reports.report_type` exactly. */
+  value: string;
+  label: string;
+}
+
 export interface FormField {
   name: string;
   label: string;
@@ -29,8 +48,7 @@ export interface FormField {
   hint?: string;
   required?: boolean;
   placeholder?: string;
-  /** Same order in every language: the market page prefills by index. */
-  options?: string[];
+  options?: FormOption[];
 }
 
 export interface FormPage {
@@ -50,24 +68,32 @@ export interface FormPage {
    * what someone agreed to can be shown rather than asserted.
    */
   note: string;
-  /** The mailto subject. The market name is appended where there is one. */
+  /**
+   * The mailto subject, used only by the fallback: every form posts to its own
+   * endpoint now, and the mail program opens after a second failure that was
+   * ours. The market name is appended where there is one.
+   */
   subject: string;
-  /** Newsletter only: shown in place of the form once the address is saved. */
+  /** Shown in place of the form once it has been sent. */
   success?: string;
-  /** Newsletter only: shown when saving failed and the mail program opens instead. */
+  /** Shown when the save failed twice and the mail program opens instead. */
   failure?: string;
   /**
-   * Newsletter only: what the page says when something goes wrong, under the
-   * field it belongs to.
+   * What the page says when something goes wrong, under the field it belongs to.
    *
-   * These existed nowhere until now. A failed signup opened the visitor's mail
-   * program without a word of explanation, and a mistyped address did the same
-   * — so the one thing the person could act on, their own typo, was the one
-   * thing the page never mentioned.
+   * These existed nowhere until the newsletter got them. A failed submission
+   * opened the visitor's mail program without a word of explanation, and a
+   * mistyped address did the same — so the one thing the person could act on,
+   * their own typo, was the one thing the page never mentioned.
+   *
+   * `empty` is the newsletter's alone: it is the only form that turns the
+   * browser's own required-field checking off, because it is the only one whose
+   * single field is worth interrupting someone over. The other two let the
+   * browser ask for a missing field in its own words.
    */
   errors?: {
-    /** Submitted with nothing in the field. */
-    empty: string;
+    /** Submitted with nothing in the field. Newsletter only. */
+    empty?: string;
     /** Submitted with something that is not an address. */
     invalid: string;
     /** Saved nowhere: endpoint down, database unreachable, anything at our end. */
@@ -94,18 +120,25 @@ const report: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'grund', label: 'Was ist passiert?', type: 'select', required: true, options: [
-        'Der Markt fand nicht statt',
-        'Der Markt war früher vorbei',
-        'Adresse oder Zeit stimmt nicht',
-        'Etwas anderes',
+        { value: 'cancelled', label: 'Der Markt fand nicht statt' },
+        { value: 'wrong_date', label: 'Der Markt war früher vorbei' },
+        { value: 'wrong_location', label: 'Adresse oder Zeit stimmt nicht' },
+        { value: 'other', label: 'Etwas anderes' },
       ] },
       { name: 'markt', label: 'Welcher Markt?', required: true, placeholder: 'z. B. Flohmarkt Zürich Bürkliplatz' },
       { name: 'email', label: 'E-Mail (optional)', type: 'email', hint: 'Falls wir zurückschreiben dürfen.' },
       { name: 'nachricht', label: 'Nachricht (optional)', type: 'textarea', placeholder: 'Was genau haben Sie festgestellt?' },
     ],
     submit: 'Meldung senden',
-    note: `Absenden öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht an ${CONTACT} — es gibt noch kein automatisches Versandsystem. Sie sehen die Nachricht, bevor sie abgeschickt wird.`,
+    note: 'Ihre Meldung kommt direkt bei uns an — kein E-Mail-Programm, keine Anmeldung. Wir prüfen jede Meldung von Hand, bevor sich auf der Marktseite etwas ändert.',
     subject: 'Meldung',
+    success: 'Danke — Ihre Meldung ist angekommen. Wir prüfen sie von Hand, in der Regel innert ein bis zwei Tagen.',
+    failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Meldung einfach so.',
+    errors: {
+      invalid: 'Diese E-Mail-Adresse sieht nicht richtig aus. Bitte prüfen Sie sie noch einmal.',
+      failed: 'Das hat gerade nicht geklappt. Versuchen Sie es bitte noch einmal.',
+      offline: 'Keine Verbindung. Prüfen Sie Ihr Netz und versuchen Sie es noch einmal.',
+    },
   },
   fr: {
     title: 'Signaler quelque chose — fynda.market',
@@ -117,18 +150,25 @@ const report: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'grund', label: "Que s'est-il passé ?", type: 'select', required: true, options: [
-        "La brocante n'a pas eu lieu",
-        'La brocante était déjà terminée',
-        "L'adresse ou l'horaire est faux",
-        'Autre chose',
+        { value: 'cancelled', label: "La brocante n'a pas eu lieu" },
+        { value: 'wrong_date', label: 'La brocante était déjà terminée' },
+        { value: 'wrong_location', label: "L'adresse ou l'horaire est faux" },
+        { value: 'other', label: 'Autre chose' },
       ] },
       { name: 'markt', label: 'Quelle brocante ?', required: true, placeholder: 'p. ex. Brocante de Plainpalais' },
       { name: 'email', label: 'E-mail (facultatif)', type: 'email', hint: 'Si nous pouvons vous répondre.' },
       { name: 'nachricht', label: 'Message (facultatif)', type: 'textarea', placeholder: "Qu'avez-vous constaté exactement ?" },
     ],
     submit: 'Envoyer le signalement',
-    note: `Envoyer ouvre votre logiciel de messagerie avec un message prérempli à ${CONTACT} — il n'y a pas encore de système d'envoi automatique. Vous voyez le message avant qu'il ne parte.`,
+    note: "Votre signalement nous parvient directement — pas de logiciel de messagerie, pas d'inscription. Nous vérifions chaque signalement à la main avant de modifier la page.",
     subject: 'Signalement',
+    success: 'Merci — votre signalement nous est parvenu. Nous le vérifions à la main, en général en un à deux jours.',
+    failure: "Cela n'a pas fonctionné. Nous ouvrons votre logiciel de messagerie — envoyez-nous simplement le signalement.",
+    errors: {
+      invalid: 'Cette adresse e-mail ne semble pas correcte. Merci de la vérifier.',
+      failed: "Cela n'a pas fonctionné. Merci de réessayer.",
+      offline: 'Pas de connexion. Vérifiez votre réseau et réessayez.',
+    },
   },
   it: {
     title: 'Segnalare qualcosa — fynda.market',
@@ -140,18 +180,25 @@ const report: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'grund', label: 'Che cosa è successo?', type: 'select', required: true, options: [
-        'Il mercatino non si è svolto',
-        'Il mercatino era già finito',
-        "L'indirizzo o l'orario non è corretto",
-        'Altro',
+        { value: 'cancelled', label: 'Il mercatino non si è svolto' },
+        { value: 'wrong_date', label: 'Il mercatino era già finito' },
+        { value: 'wrong_location', label: "L'indirizzo o l'orario non è corretto" },
+        { value: 'other', label: 'Altro' },
       ] },
       { name: 'markt', label: 'Quale mercatino?', required: true, placeholder: 'per es. Mercatino di Lugano' },
       { name: 'email', label: 'E-mail (facoltativo)', type: 'email', hint: 'Se possiamo risponderLe.' },
       { name: 'nachricht', label: 'Messaggio (facoltativo)', type: 'textarea', placeholder: 'Che cosa ha constatato esattamente?' },
     ],
     submit: 'Inviare la segnalazione',
-    note: `L'invio apre il Suo programma di posta con un messaggio precompilato a ${CONTACT} — non esiste ancora un sistema di invio automatico. Vede il messaggio prima che parta.`,
+    note: 'La Sua segnalazione arriva direttamente a noi — nessun programma di posta, nessuna registrazione. Controlliamo ogni segnalazione a mano prima di cambiare la pagina.',
     subject: 'Segnalazione',
+    success: 'Grazie — la Sua segnalazione è arrivata. La controlliamo a mano, di solito in uno o due giorni.',
+    failure: 'Non ha funzionato. Apriamo il Suo programma di posta — ci mandi semplicemente la segnalazione.',
+    errors: {
+      invalid: 'Questo indirizzo e-mail non sembra corretto. Lo controlli ancora una volta.',
+      failed: 'Non ha funzionato. Riprovi, per favore.',
+      offline: 'Nessuna connessione. Controlli la rete e riprovi.',
+    },
   },
   en: {
     title: 'Report something — fynda.market',
@@ -163,18 +210,25 @@ const report: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'grund', label: 'What happened?', type: 'select', required: true, options: [
-        'The market did not happen',
-        'The market was already over',
-        'The address or the time is wrong',
-        'Something else',
+        { value: 'cancelled', label: 'The market did not happen' },
+        { value: 'wrong_date', label: 'The market was already over' },
+        { value: 'wrong_location', label: 'The address or the time is wrong' },
+        { value: 'other', label: 'Something else' },
       ] },
       { name: 'markt', label: 'Which market?', required: true, placeholder: 'e.g. Flohmarkt Zürich Bürkliplatz' },
       { name: 'email', label: 'Email (optional)', type: 'email', hint: 'If we may write back.' },
       { name: 'nachricht', label: 'Message (optional)', type: 'textarea', placeholder: 'What exactly did you find?' },
     ],
     submit: 'Send report',
-    note: `Sending opens your own mail program with a message already filled in to ${CONTACT} — there is no automatic sending system yet. You see the message before it goes.`,
+    note: 'Your report reaches us directly — no mail program, no sign-up. We check every report by hand before anything changes on the market page.',
     subject: 'Report',
+    success: 'Thanks — your report has arrived. We check it by hand, usually within a day or two.',
+    failure: 'That did not work. We are opening your mail program instead — just send us the report.',
+    errors: {
+      invalid: 'That email address does not look right. Please check it.',
+      failed: 'That did not work. Please try again.',
+      offline: 'No connection. Check your network and try again.',
+    },
   },
 };
 
@@ -314,8 +368,15 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Nachricht (optional)', type: 'textarea', hint: 'Zum Beispiel: welches Datum wir aktualisieren sollen.' },
     ],
     submit: 'Nachricht senden',
-    note: 'Auch dieses Formular läuft im Moment per E-Mail an uns — wir melden uns persönlich zurück, meist innert weniger Tage.',
+    note: 'Ihre Nachricht kommt direkt bei uns an. Delfim schreibt Ihnen persönlich zurück, meist innert weniger Tage — kostenlos und ohne Konto.',
     subject: 'Veranstalter',
+    success: 'Danke — Ihre Nachricht ist angekommen. Delfim schreibt Ihnen persönlich zurück, meist innert weniger Tage.',
+    failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Nachricht einfach so.',
+    errors: {
+      invalid: 'Diese E-Mail-Adresse sieht nicht richtig aus. Bitte prüfen Sie sie noch einmal.',
+      failed: 'Das hat gerade nicht geklappt. Versuchen Sie es bitte noch einmal.',
+      offline: 'Keine Verbindung. Prüfen Sie Ihr Netz und versuchen Sie es noch einmal.',
+    },
   },
   fr: {
     title: 'Pour les organisateurs — fynda.market',
@@ -341,8 +402,15 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Message (facultatif)', type: 'textarea', hint: 'Par exemple : quelle date nous devons mettre à jour.' },
     ],
     submit: 'Envoyer le message',
-    note: "Ce formulaire passe lui aussi pour l'instant par un e-mail qui nous est adressé — nous vous répondons personnellement, en général en quelques jours.",
+    note: "Votre message nous parvient directement. Delfim vous répond personnellement, en général en quelques jours — gratuitement et sans compte.",
     subject: 'Organisateur',
+    success: 'Merci — votre message nous est parvenu. Delfim vous répondra personnellement, en général en quelques jours.',
+    failure: "Cela n'a pas fonctionné. Nous ouvrons votre logiciel de messagerie — envoyez-nous simplement le message.",
+    errors: {
+      invalid: 'Cette adresse e-mail ne semble pas correcte. Merci de la vérifier.',
+      failed: "Cela n'a pas fonctionné. Merci de réessayer.",
+      offline: 'Pas de connexion. Vérifiez votre réseau et réessayez.',
+    },
   },
   it: {
     title: 'Per gli organizzatori — fynda.market',
@@ -368,8 +436,15 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Messaggio (facoltativo)', type: 'textarea', hint: 'Per esempio: quale data dobbiamo aggiornare.' },
     ],
     submit: 'Inviare il messaggio',
-    note: 'Anche questo modulo passa per ora da una e-mail a noi — Le rispondiamo personalmente, di solito in pochi giorni.',
+    note: 'Il Suo messaggio arriva direttamente a noi. Delfim Le risponde personalmente, di solito in pochi giorni — gratuitamente e senza account.',
     subject: 'Organizzatore',
+    success: 'Grazie — il Suo messaggio è arrivato. Delfim Le risponderà personalmente, di solito in pochi giorni.',
+    failure: 'Non ha funzionato. Apriamo il Suo programma di posta — ci mandi semplicemente il messaggio.',
+    errors: {
+      invalid: 'Questo indirizzo e-mail non sembra corretto. Lo controlli ancora una volta.',
+      failed: 'Non ha funzionato. Riprovi, per favore.',
+      offline: 'Nessuna connessione. Controlli la rete e riprovi.',
+    },
   },
   en: {
     title: 'For organisers — fynda.market',
@@ -395,8 +470,15 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Message (optional)', type: 'textarea', hint: 'For example: which date we should update.' },
     ],
     submit: 'Send message',
-    note: 'This form also runs on an email to us for now — we reply personally, usually within a few days.',
+    note: 'Your message reaches us directly. Delfim replies personally, usually within a few days — free, and with no account.',
     subject: 'Organiser',
+    success: 'Thanks — your message has arrived. Delfim will write back personally, usually within a few days.',
+    failure: 'That did not work. We are opening your mail program instead — just send us the message.',
+    errors: {
+      invalid: 'That email address does not look right. Please check it.',
+      failed: 'That did not work. Please try again.',
+      offline: 'No connection. Check your network and try again.',
+    },
   },
 };
 

@@ -92,7 +92,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
           'Alongside it we record when you signed up, which page you signed up from, the consent wording you were shown, and a one-way hashed version of your IP address, so that the consent can be shown rather than asserted. The IP address itself is never stored.',
           'The legal basis for this processing is your consent. You can withdraw it at any time by writing to contact@fynda.market, or through the unsubscribe link in any newsletter.',
           'When you unsubscribe, we delete the information that could identify you from the active newsletter list and keep only a minimal suppression record — your email address and the dates you signed up and unsubscribed — so that we do not accidentally contact you again and can show a reliable record of your consent and its withdrawal.',
-          'We do not use an external marketing platform. If we later add an email delivery service to send the newsletter, this page will name it before it is used.',
+          'To deliver our emails we use Resend (Resend Inc., USA) as a processor. Resend receives your email address and the contents of the individual message, for the sole purpose of delivering it. We do not use a marketing platform that manages contacts on our behalf or analyses your behaviour: the list itself lives in our own database.',
         ],
       },
       {
@@ -110,7 +110,9 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          'These forms also open your own mail program today, so your message arrives in our mailbox and nowhere else. We use it to respond, investigate the request, correct listings and keep Fynda’s market information accurate.',
+          'This information is stored in our own database, together with the language and the page the form was sent from, and a one-way hashed value of your IP address; the IP address itself is not stored. We use it to respond, investigate the request, correct listings and keep Fynda’s market information accurate.',
+          'If you give us an email address, you receive a short acknowledgement, sent through Resend (see section 5). For a report the address is optional — without it we simply cannot write back. The legal basis is our legitimate interest in keeping the published market information accurate and, for an organiser enquiry, in establishing that contact.',
+          'Reports and organiser enquiries are not deleted automatically: they are the record of when a detail was last checked, and that record is the core of what Fynda offers. You can ask for deletion at any time.',
         ],
       },
       {
@@ -328,7 +330,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
           'Dazu halten wir fest, wann und von welcher Seite aus die Anmeldung kam, welchen Zustimmungstext Sie dabei gesehen haben, und eine gehashte, nicht rückrechenbare Fassung Ihrer IP-Adresse, damit sich die Einwilligung belegen lässt. Die IP-Adresse selbst speichern wir nie.',
           'Rechtsgrundlage dafür ist Ihre Einwilligung. Sie können sie jederzeit widerrufen, indem Sie an contact@fynda.market schreiben oder den Abmeldelink in einem Newsletter nutzen.',
           'Bei einer Abmeldung löschen wir die Angaben, die Sie identifizieren könnten, aus der aktiven Newsletter-Liste und behalten nur einen minimalen Sperreintrag — Ihre E-Mail-Adresse sowie das Datum der Anmeldung und der Abmeldung — damit wir Sie nicht versehentlich erneut anschreiben und Einwilligung wie Widerruf belegen können.',
-          'Wir nutzen keine externe Marketing-Plattform. Sollten wir später einen Versanddienst für den Newsletter einsetzen, wird er auf dieser Seite genannt, bevor er zum Einsatz kommt.',
+          'Für den Versand nutzen wir Resend (Resend Inc., USA) als Auftragsverarbeiter. Resend erhält Ihre E-Mail-Adresse und den Inhalt der jeweiligen E-Mail, ausschliesslich um sie zuzustellen. Eine Marketing-Plattform, die Kontakte für uns verwaltet oder Ihr Verhalten auswertet, setzen wir nicht ein: die Liste selbst liegt in unserer eigenen Datenbank.',
         ],
       },
       {
@@ -346,7 +348,9 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          'Auch diese Formulare öffnen heute Ihr eigenes E-Mail-Programm, Ihre Nachricht landet also in unserem Postfach und sonst nirgends. Wir nutzen sie, um zu antworten, dem Hinweis nachzugehen, Einträge zu korrigieren und die Marktangaben auf Fynda richtig zu halten.',
+          'Diese Angaben werden in unserer eigenen Datenbank gespeichert, zusammen mit der Sprache und der Seite, von der das Formular abgeschickt wurde, und einem einweg-gehashten Wert Ihrer IP-Adresse; die IP-Adresse selbst wird nicht gespeichert. Wir nutzen sie, um zu antworten, dem Hinweis nachzugehen, Einträge zu korrigieren und die Marktangaben auf Fynda richtig zu halten.',
+          'Wenn Sie eine E-Mail-Adresse angeben, erhalten Sie eine kurze Empfangsbestätigung, versendet über Resend (siehe Abschnitt 5). Bei einer Meldung ist die Adresse freiwillig — ohne sie können wir nur nicht zurückschreiben. Rechtsgrundlage ist unser berechtigtes Interesse daran, die veröffentlichten Marktangaben richtig zu halten, und bei einer Anfrage von Veranstaltern die Anbahnung des Kontakts.',
+          'Meldungen und Anfragen von Veranstaltern löschen wir nicht automatisch: sie sind der Nachweis dafür, wann eine Angabe zuletzt geprüft wurde, und dieser Nachweis ist der Kern dessen, was Fynda anbietet. Sie können jederzeit die Löschung verlangen.',
         ],
       },
       {
@@ -566,7 +570,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
           "Nous enregistrons également la date de votre inscription, la page depuis laquelle elle a été faite, le texte de consentement qui vous a été montré et une empreinte irréversible de votre adresse IP, afin de pouvoir démontrer ce consentement. L'adresse IP elle-même n'est jamais conservée.",
           "La base légale de ce traitement est votre consentement. Vous pouvez le retirer à tout moment en écrivant à contact@fynda.market ou via le lien de désinscription présent dans chaque newsletter.",
           "Lors d'une désinscription, nous supprimons de la liste active les informations qui pourraient vous identifier et ne conservons qu'un enregistrement minimal de suppression — votre adresse e-mail et les dates d'inscription et de désinscription — afin de ne pas vous recontacter par erreur et de pouvoir démontrer votre consentement et son retrait.",
-          "Nous n'utilisons aucune plateforme marketing externe. Si nous ajoutons plus tard un service d'envoi pour la newsletter, il sera nommé sur cette page avant d'être utilisé.",
+          "Pour l'envoi, nous faisons appel à Resend (Resend Inc., États-Unis) en tant que sous-traitant. Resend reçoit votre adresse e-mail et le contenu du message concerné, uniquement pour le remettre. Nous n'utilisons aucune plateforme marketing qui gérerait vos coordonnées ou analyserait votre comportement : la liste elle-même se trouve dans notre propre base de données.",
         ],
       },
       {
@@ -584,7 +588,9 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "Ces formulaires ouvrent eux aussi votre propre logiciel de messagerie aujourd'hui : votre message arrive dans notre boîte aux lettres et nulle part ailleurs. Nous l'utilisons pour répondre, examiner la demande, corriger les annonces et garder les informations de Fynda exactes.",
+          "Ces informations sont enregistrées dans notre propre base de données, avec la langue et la page depuis laquelle le formulaire a été envoyé, ainsi qu'une empreinte à sens unique de votre adresse IP ; l'adresse IP elle-même n'est pas conservée. Nous les utilisons pour répondre, examiner la demande, corriger les annonces et garder les informations de Fynda exactes.",
+          "Si vous indiquez une adresse e-mail, vous recevez un bref accusé de réception, envoyé via Resend (voir la section 5). Pour un signalement, l'adresse est facultative — sans elle, nous ne pouvons simplement pas vous répondre. La base légale est notre intérêt légitime à garder exactes les informations publiées et, pour une demande d'organisateur, l'établissement de ce contact.",
+          "Les signalements et les demandes d'organisateurs ne sont pas supprimés automatiquement : ils constituent la preuve de la date à laquelle une information a été vérifiée, et cette preuve est le cœur de ce que propose Fynda. Vous pouvez demander leur suppression à tout moment.",
         ],
       },
       {
@@ -804,7 +810,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
           'Registriamo inoltre quando si è iscritto, da quale pagina, il testo di consenso che Le è stato mostrato e una versione irreversibile del Suo indirizzo IP, così da poter documentare il consenso. L’indirizzo IP in sé non viene mai conservato.',
           'La base giuridica di questo trattamento è il Suo consenso. Può revocarlo in qualsiasi momento scrivendo a contact@fynda.market o tramite il link di disiscrizione presente in ogni newsletter.',
           'In caso di disiscrizione cancelliamo dalla lista attiva le informazioni che potrebbero identificarLa e conserviamo soltanto una registrazione minima di soppressione — il Suo indirizzo e-mail e le date di iscrizione e disiscrizione — per non contattarLa di nuovo per errore e per poter documentare consenso e revoca.',
-          'Non usiamo alcuna piattaforma di marketing esterna. Se in futuro aggiungeremo un servizio di invio per la newsletter, sarà indicato su questa pagina prima di essere utilizzato.',
+          'Per la spedizione ci avvaliamo di Resend (Resend Inc., USA) come responsabile del trattamento. Resend riceve il Suo indirizzo e-mail e il contenuto del singolo messaggio, unicamente per consegnarlo. Non usiamo alcuna piattaforma di marketing che gestisca i contatti per noi o analizzi il Suo comportamento: la lista si trova nella nostra banca dati.',
         ],
       },
       {
@@ -822,7 +828,9 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          'Anche questi moduli aprono oggi il Suo programma di posta: il messaggio arriva nella nostra casella e in nessun altro posto. Lo usiamo per risponderLe, verificare la segnalazione, correggere le schede e mantenere esatte le informazioni di Fynda.',
+          'Questi dati vengono salvati nella nostra banca dati, insieme alla lingua e alla pagina da cui il modulo è stato inviato e a un valore hash unidirezionale del Suo indirizzo IP; l\'indirizzo IP stesso non viene conservato. Li usiamo per risponderLe, verificare la segnalazione, correggere le schede e mantenere esatte le informazioni di Fynda.',
+          'Se indica un indirizzo e-mail riceve una breve conferma di ricezione, inviata tramite Resend (vedi sezione 5). Per una segnalazione l\'indirizzo è facoltativo — senza di esso non possiamo semplicemente risponderLe. La base giuridica è il nostro legittimo interesse a mantenere corrette le informazioni pubblicate e, per una richiesta di organizzatori, l\'avvio di tale contatto.',
+          'Segnalazioni e richieste di organizzatori non vengono cancellate automaticamente: sono la prova di quando un dato è stato verificato, e quella prova è il nucleo di ciò che Fynda offre. Può chiederne la cancellazione in qualsiasi momento.',
         ],
       },
       {

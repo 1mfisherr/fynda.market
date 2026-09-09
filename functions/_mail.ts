@@ -227,31 +227,44 @@ const range = (locale: Locale, from: string, to: string) => {
   return from === to ? fmt.format(asDate(from)) : `${fmt.format(asDate(from))} – ${fmt.format(asDate(to))}`;
 };
 
+
 /**
+ * The one column every mail this site sends is built in.
+ *
  * Built by hand rather than from the site's own components: mail clients throw
  * away stylesheets, ignore custom fonts and disagree about everything else, so
  * this is one column, inline styles and no images. The brand shows up as the
  * wordmark and the accent on the one link, and stops there.
+ *
+ * `footer` is optional because only one kind of mail has one. A newsletter must
+ * carry an unsubscribe link and an answer to a form must not: putting one on a
+ * transactional mail offers to unsubscribe somebody from a conversation they
+ * started, and teaches the mail client to file the answer as marketing.
  */
+function column(locale: Locale, body: string[], footer?: string): string {
+  const paragraphs = body
+    .map((line) => `<p style="margin:0 0 16px;">${escape(line)}</p>`)
+    .join('');
+
+  return `<!doctype html>
+<html lang="${locale}"><body style="margin:0;padding:24px;background:#ffffff;">
+<div style="max-width:520px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55;color:#16161a;">
+  <p style="margin:0 0 24px;font-size:20px;font-weight:700;letter-spacing:-0.01em;">fynda.market</p>
+  ${paragraphs}${footer ?? ''}
+</div>
+</body></html>`;
+}
+
 export function welcomeMail(locale: Locale, token: string): Omit<Mail, 'to'> {
   const copy = WELCOME[locale] ?? WELCOME.de;
   const url = unsubscribeUrl(token);
 
-  const paragraphs = copy.body
-    .map((line) => `<p style="margin:0 0 16px;">${escape(line)}</p>`)
-    .join('');
-
-  const html = `<!doctype html>
-<html lang="${locale}"><body style="margin:0;padding:24px;background:#ffffff;">
-<div style="max-width:520px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55;color:#16161a;">
-  <p style="margin:0 0 24px;font-size:20px;font-weight:700;letter-spacing:-0.01em;">fynda.market</p>
-  ${paragraphs}
+  const footer = `
   <p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;">
     <a href="${url}" style="color:#6b6b70;">${escape(copy.unsubscribe)}</a>
-  </p>
-</div>
-</body></html>`;
+  </p>`;
 
+  const html = column(locale, copy.body, footer);
   const text = `fynda.market\n\n${copy.body.join('\n\n')}\n\n${copy.unsubscribe}: ${url}\n`;
 
   return {
@@ -272,6 +285,111 @@ export function welcomeMail(locale: Locale, token: string): Omit<Mail, 'to'> {
 }
 
 /* -------------------------------------------------------------------------- */
+/* The two answers a form sends                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * What a report and a claim get back, in the language the form was in.
+ *
+ * Both are deliberately short and neither promises a date. What they do say is
+ * the one thing that makes the freshness stamp on every market page mean
+ * anything: a person reads this. `%s` is the market as the sender named it,
+ * quoted back so they can see we understood which one they meant — and so an
+ * organiser who claimed the wrong market notices straight away.
+ *
+ * No unsubscribe footer, and that is not an oversight: these are answers to
+ * something somebody sent us, not a list they joined.
+ */
+interface Ack {
+  subject: string;
+  body: string[];
+}
+
+const REPORT_ACK: Record<Locale, Ack> = {
+  de: {
+    subject: 'Danke — wir prüfen das',
+    body: [
+      'Ihre Meldung ist angekommen: %s.',
+      'Wir prüfen jede Meldung von Hand, bevor sich auf der Marktseite etwas ändert — und schreiben dort dann hin, wann wir das zuletzt geprüft haben. Das dauert in der Regel ein bis zwei Tage.',
+      'Automatisch ändert sich nichts. Das ist Absicht: ein falsch übernommener Hinweis wäre schlimmer als gar keiner.',
+    ],
+  },
+  fr: {
+    subject: 'Merci — nous vérifions',
+    body: [
+      'Votre signalement nous est parvenu : %s.',
+      "Nous vérifions chaque signalement à la main avant de modifier quoi que ce soit sur la page de la brocante — et nous y indiquons ensuite la date de cette vérification. Cela prend en général un à deux jours.",
+      "Rien ne change automatiquement. C'est voulu : une correction reprise à tort serait pire que pas de correction du tout.",
+    ],
+  },
+  it: {
+    subject: 'Grazie — controlliamo noi',
+    body: [
+      'La tua segnalazione è arrivata: %s.',
+      'Controlliamo ogni segnalazione a mano prima di cambiare qualcosa sulla pagina del mercato — e lì scriviamo poi quando lo abbiamo verificato. Di solito ci vogliono uno o due giorni.',
+      'Nulla cambia automaticamente. È voluto: una correzione presa per buona a torto sarebbe peggio di nessuna correzione.',
+    ],
+  },
+  en: {
+    subject: 'Thanks — we’ll check it',
+    body: [
+      'Your report has arrived: %s.',
+      'We check every report by hand before anything changes on the market page — and then we write there when we last checked. This usually takes a day or two.',
+      'Nothing changes automatically. That is deliberate: a correction taken on trust and wrong would be worse than none at all.',
+    ],
+  },
+};
+
+const CLAIM_ACK: Record<Locale, Ack> = {
+  de: {
+    subject: 'Ihre Marktseite — wir melden uns',
+    body: [
+      'Danke, dass Sie sich gemeldet haben: %s.',
+      'Delfim schreibt Ihnen persönlich zurück, meist innert weniger Tage. Bis dahin ändert sich an Ihrer Marktseite nichts — bevor wir dort etwas anfassen, fragen wir Sie.',
+      'Kostenlos, ohne Konto, für immer. Wenn Sie in der Zwischenzeit etwas ergänzen möchten, antworten Sie einfach auf diese E-Mail.',
+    ],
+  },
+  fr: {
+    subject: 'Votre page — nous vous répondons',
+    body: [
+      'Merci de nous avoir écrit : %s.',
+      "Delfim vous répondra personnellement, en général en quelques jours. D'ici là, rien ne change sur votre page — avant d'y toucher, nous vous demandons.",
+      "Gratuit, sans compte, pour toujours. Si vous voulez ajouter quelque chose entre-temps, répondez simplement à cet e-mail.",
+    ],
+  },
+  it: {
+    subject: 'La tua pagina — ti rispondiamo',
+    body: [
+      'Grazie per averci scritto: %s.',
+      'Delfim ti risponderà personalmente, di solito in pochi giorni. Fino ad allora sulla tua pagina non cambia nulla — prima di toccare qualcosa, te lo chiediamo.',
+      'Gratuito, senza account, per sempre. Se nel frattempo vuoi aggiungere qualcosa, rispondi semplicemente a questa e-mail.',
+    ],
+  },
+  en: {
+    subject: 'Your market page — we’ll be in touch',
+    body: [
+      'Thanks for getting in touch: %s.',
+      'Delfim will write back personally, usually within a few days. Until then nothing on your market page changes — before we touch anything there, we ask you.',
+      'Free, no account, forever. If you want to add something in the meantime, just reply to this e-mail.',
+    ],
+  },
+};
+
+/** The market name goes in as text; `column` escapes it on the way to the HTML. */
+function ack(locale: Locale, table: Record<Locale, Ack>, market: string): Omit<Mail, 'to'> {
+  const copy = table[locale] ?? table.de;
+  const body = copy.body.map((line) => line.replace('%s', market));
+  return {
+    subject: copy.subject,
+    html: column(locale, body),
+    text: `fynda.market\n\n${body.join('\n\n')}\n`,
+  };
+}
+
+export const reportAck = (locale: Locale, market: string) => ack(locale, REPORT_ACK, market);
+export const claimAck = (locale: Locale, market: string) => ack(locale, CLAIM_ACK, market);
+
+/* -------------------------------------------------------------------------- */
 /* The weekly digest                                                          */
 /* -------------------------------------------------------------------------- */
 
@@ -281,6 +399,13 @@ export function welcomeMail(locale: Locale, token: string): Omit<Mail, 'to'> {
  * Declared here rather than imported so that nothing in a Pages Function
  * depends on the site's own module graph. The shape is small enough that the
  * duplication costs less than the coupling would.
+ *
+ * The cost of that duplication, found 2026-09-09: this copy had drifted from
+ * the real one and was missing two fields the digest passes and this file
+ * reads. Nothing caught it, because `functions/` is excluded from tsconfig and
+ * `npm run check` therefore never looked at this file. `npm run check:functions`
+ * does, and it runs inside `verify` -- a duplicated interface is only a boundary
+ * if something compares it to the thing it duplicates.
  */
 export interface DigestLine {
   name: string;
@@ -305,6 +430,15 @@ export interface DigestIssue {
   town?: string;
   /** Shown large, above the lists. */
   lead?: DigestLine;
+  /**
+   * Whether the lead is a market in the reader's own town.
+   *
+   * It decides which day band the lead sits under, because a picture of
+   * somewhere they cannot get to is a worse opening than one of somewhere they
+   * can. src/lib/digest.ts computes it and this copy of the shape was missing
+   * it, for the reason at the top of this block.
+   */
+  leadInTown: boolean;
   own: DigestLine[];
   elsewhere: DigestLine[];
   total: number;
@@ -330,6 +464,8 @@ interface DigestCopy {
   nothingHere: string;
   cancelled: string;
   more: string;
+  /** The same link when what got cut was their own town's markets. */
+  moreTown: string;
   unsubscribe: string;
   /** Why they are getting this, above the unsubscribe link. */
   why: string;

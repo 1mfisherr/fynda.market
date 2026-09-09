@@ -11,10 +11,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:functions": "tsc -p tsconfig.functions.json",
     "test": "node --test \"src/**/*.test.ts\"",
     "db:test": "node scripts/db-test.mjs",
     "guardrails": "node scripts/guardrails.mjs",
-    "verify": "npm run check && npm run test && npm run build && npm run guardrails",
+    "verify": "npm run check && npm run check:functions && npm run test && npm run build && npm run guardrails",
     "digest": "node scripts/send-digest.mjs",
     "prebuild": "node scripts/emit-data.mjs",
     "deploy": "node scripts/deploy.mjs"

@@ -3,11 +3,12 @@
  * One labelled control. The shape lives in styles/base.css so a page that needs
  * a plain <input> can wear `.field` without importing anything.
  *
- * The newsletter form posts to `/n` and says so on the page. The report and
- * organiser forms still open the visitor's own mail client, because there is
- * nowhere yet to put what they say. A form that silently discards what someone
+ * All three forms post to an endpoint of their own now — /n, /r and /o — and
+ * each says so on its own page. A form that silently discards what someone
  * typed is worse than no form.
  */
+import type { FormOption } from '../lib/utility-copy';
+
 interface Props {
   label: string;
   name: string;
@@ -15,7 +16,7 @@ interface Props {
   hint?: string;
   required?: boolean;
   placeholder?: string;
-  options?: string[];
+  options?: FormOption[];
 }
 const { label, name, type = 'text', hint, required = false, placeholder, options = [] } = Astro.props;
 const id = `f-${name}`;
@@ -41,7 +42,7 @@ const describedBy = [hintId, errorId].filter(Boolean).join(' ');
   )}
   {type === 'select' && (
     <select id={id} name={name} required={required} aria-describedby={describedBy}>
-      {options.map((option) => <option value={option}>{option}</option>)}
+      {options.map((option) => <option value={option.value}>{option.label}</option>)}
     </select>
   )}
   {(type === 'text' || type === 'email') && (

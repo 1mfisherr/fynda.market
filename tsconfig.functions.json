@@ -1,0 +1,32 @@
+/*
+ * The type check for `functions/`, which the main tsconfig excludes.
+ *
+ * It excludes them for a good reason: a Pages Function runs on the Workers
+ * runtime, not in a browser and not in Node, so it needs Cloudflare's globals
+ * and must not inherit Astro's DOM lib. What was not intended is the
+ * consequence -- `npm run check` never looked at the endpoints at all, so the
+ * six files that take everything a visitor types were the only unchecked code
+ * in the repo.
+ *
+ * That was not theoretical. On 2026-09-09 it was hiding seven errors in
+ * `_mail.ts`: its own copy of the digest's shape had drifted from the real one
+ * in `src/lib/digest.ts` and was missing two fields it reads. The mail worked,
+ * because the values were being passed; nothing could have told us if they
+ * stopped being passed.
+ *
+ * Run by `npm run check:functions`, which `npm run verify` runs.
+ */
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "types": ["@cloudflare/workers-types"]
+  },
+  "include": ["functions/**/*.ts"]
+}

@@ -156,8 +156,17 @@ texts   (entity_type, entity_id, locale, field, value)  -- names, descriptions, 
 facts   (entity_type, entity_id, field, value, source_type, source_ref,
          observed_at, recorded_at, confidence, superseded_by)
 
-tags, market_tags, organisers, market_private, reports
+tags, market_tags, organisers, market_private, reports, organiser_claims
+newsletter_subscribers, newsletter_sends
 ```
+
+### The three tables a visitor can write to
+
+`newsletter_subscribers`, `reports` and `organiser_claims`, each through one Pages Function — `/n`, `/r`, `/o`. Same posture on all three: **row-level security on with no policy**, so a row is unreachable from the public internet; the Function writes as the service role, which bypasses RLS and still needs a plain table `GRANT`. Nothing on the published site reads them, because the published site is static files.
+
+**`reports.market_id` is nullable, deliberately** (`20260909120000`). A report from a market page carries the market's id and resolves; a report typed into the footer form names a market in words. `market_text` is kept in both cases — it is the evidence, the id is our reading of it — and a null id means a person has to match it, which is the whole of `reports_unmatched_idx`. The alternatives were dropping an unmatchable report or guessing a match, and the second is worse: it would attach a cancellation to a market that is running.
+
+**A claim is not a report.** A report says a fact is wrong; a claim says a person will answer for a market from now on. They are triaged differently and only one of them ends in the organiser relationship `PRODUCT.md` calls the moat, so `organiser_claims` is its own table.
 
 ### What v1 got right — carried over
 

@@ -165,7 +165,8 @@ const timeRange = next ? formatTimeRange(next.startTime, next.endTime, locale) :
  */
 const claimed = market.verifiedBy === 'organiser';
 const claimHref = `${utilityPath(locale, 'organiser')}`
-  + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`;
+  + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`
+  + `&mid=${market.id}`;
 
 /**
  * v1's address_line often already ends in the postcode and city ("Dynamo,
@@ -412,12 +413,19 @@ const facilityItems = market.facilities ? [
 
       <Section level="sub" title={s.wasItDifferent}>
         <p class="gutter meta">{s.reportIntro}</p>
-        {/* The market travels with the report. Asking someone to retype the name
-            of the page they are standing on is how a report form goes unused. */}
+        {/* The market travels with the report, as the name a person reads and as
+            the id the database needs -- so a report from here arrives already
+            attached to the right market rather than waiting for someone to
+            match a typed name. Asking someone to retype the name of the page
+            they are standing on is how a report form goes unused.
+
+            `grund` is the value the reports table stores, not a key of our own
+            mapped onto a position in the select. One vocabulary from the chip
+            to the column. */}
         <div class="report gutter">
-          {[['ausgefallen', s.reportDidNotHappen], ['vorbei', s.reportEndedEarly], ['anderes', s.reportSomethingElse]].map(
+          {[['cancelled', s.reportDidNotHappen], ['wrong_date', s.reportEndedEarly], ['other', s.reportSomethingElse]].map(
             ([grund, label]) => (
-              <a class="chip" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}`}>{label}</a>
+              <a class="chip" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}&mid=${market.id}`}>{label}</a>
             )
           )}
         </div>

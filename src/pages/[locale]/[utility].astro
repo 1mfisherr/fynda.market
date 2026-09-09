@@ -62,6 +62,21 @@ if (key === 'saved') {
   list = byMarket(datedRows(await getMarkets(locale)));
 }
 
+/**
+ * Where each form posts.
+ *
+ * One endpoint per form rather than one endpoint with a `kind` field: they
+ * validate different things, write to different tables and answer differently,
+ * and a single handler branching on a posted string is how one form's bug
+ * becomes all three. Single letters because these are not pages — /n, /u and
+ * /e were already this shape.
+ */
+const ENDPOINT: Record<FormKey, string> = {
+  newsletter: '/n',
+  report: '/r',
+  organiser: '/o',
+};
+
 const legal = LEGAL_KEYS.includes(key as LegalKey) ? LEGAL[key as LegalKey][locale] : null;
 const form = legal || key === 'saved' ? null : FORMS[key as FormKey][locale];
 const saved = key === 'saved' ? SAVED[locale] : null;
@@ -94,18 +109,20 @@ const savedCopy = saved && {
         <p class="answer">{form.answer}</p>
       </section>
 
-      {/* The three answers a signup can get, all in the page and all hidden
-          until one of them applies. The script reveals one by class; a form
-          the browser posted itself arrives back at `#signup-done` and CSS
-          `:target` reveals it with no script at all. Either way the words are
-          the page's own language and are written in exactly one place. */}
-      {key === 'newsletter' && (
-        <div class="gutter">
-          <p class="result answer" id="signup-done">{form.success}</p>
-          <p class="result answer" id="signup-invalid">{form.errors?.invalid}</p>
-          <p class="result answer" id="signup-failed">{form.errors?.failed}</p>
-        </div>
-      )}
+      {/* The three answers a form can get, all in the page and all hidden until
+          one of them applies. The script reveals one by class; a form the
+          browser posted itself arrives back at `#form-done` and CSS `:target`
+          reveals it with no script at all. Either way the words are the page's
+          own language and are written in exactly one place.
+
+          One set of ids for all three forms, because only one form is ever on a
+          page. They used to be `#signup-*`, which would have meant a second
+          vocabulary the moment the report form got the same treatment. */}
+      <div class="gutter">
+        <p class="result answer" id="form-done">{form.success}</p>
+        <p class="result answer" id="form-invalid">{form.errors?.invalid}</p>
+        <p class="result answer" id="form-failed">{form.errors?.failed}</p>
+      </div>
 
       {/* Above the prose, not below it. On a phone the first field used to sit
           750px down, behind ninety words nobody had asked for. The explanation
@@ -114,23 +131,28 @@ const savedCopy = saved && {
       <form
         class="stack gutter"
         data-mail
-        action={key === 'newsletter' ? '/n' : undefined}
-        method={key === 'newsletter' ? 'post' : undefined}
+        action={ENDPOINT[key as FormKey]}
+        method="post"
         data-subject={form.subject}
+        data-endpoint={ENDPOINT[key as FormKey]}
         data-subscribe={key === 'newsletter' ? '' : undefined}
         data-consent={key === 'newsletter' ? form.note : undefined}
-        data-errors={key === 'newsletter' ? JSON.stringify(form.errors ?? {}) : undefined}
+        data-errors={JSON.stringify(form.errors ?? {})}
       >
         {/* What the endpoint needs from a post the browser made on its own:
             which page it came from, which fixes the language and where to send
-            the visitor back to, and the exact words they agreed to. The script
-            sends the same two in its JSON. */}
+            the visitor back to. The script sends the same field in its JSON.
+
+            `mid` is the market this is about, and it is empty in the HTML on
+            purpose: these pages are static files shared by every visitor, so
+            the market can only come from the query string the market page put
+            it in. The script fills it; a visitor with no script posts without
+            it and the row is saved with the market they typed instead. */}
+        <input type="hidden" name="path" value={Astro.url.pathname} />
         {key === 'newsletter' && (
-          <>
-            <input type="hidden" name="path" value={Astro.url.pathname} />
-            <input type="hidden" name="consent_text" value={form.note} />
-          </>
+          <input type="hidden" name="consent_text" value={form.note} />
         )}
+        {key !== 'newsletter' && <input type="hidden" name="mid" value="" />}
 
         {form.fields.map((field) => (
           <Field
@@ -144,15 +166,14 @@ const savedCopy = saved && {
           />
         ))}
 
-        {/* The honeypot. Hidden from people and from screen readers, so anything
-            in it came from a bot. Not `display:none` alone — some bots skip
-            those — but off-screen and untabbable as well. */}
-        {key === 'newsletter' && (
-          <div class="trap" aria-hidden="true">
-            <label for="f-website">Website</label>
-            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
-          </div>
-        )}
+        {/* The honeypot, on every form now that every form writes a row.
+            Hidden from people and from screen readers, so anything in it came
+            from a bot. Not `display:none` alone — some bots skip those — but
+            off-screen and untabbable as well. */}
+        <div class="trap" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
 
         <Button type="submit" variant="primary" block>{form.submit}</Button>
         <p class="meta">{form.note}</p>
@@ -227,56 +248,69 @@ const savedCopy = saved && {
 
 <script>
   /**
-   * One serialiser for the two forms that still have nowhere to post — report
-   * and organiser. Submitting opens the visitor's own mail client with the
-   * answers filled in, and the page says so. The newsletter posts to `/n` and
-   * only falls back to this when a save has failed twice.
+   * The three forms, one script.
    *
-   * It walks the form rather than a hand-written list of field names, so the
-   * labels are whatever the page's own language calls them.
+   * Each posts to its own endpoint — /n the newsletter, /r a report, /o an
+   * organiser claim — and the page says what happened without leaving. All of
+   * this is an enhancement: the form carries `action` and `method` in the HTML,
+   * so with no JavaScript the browser posts it itself and the endpoint answers
+   * with a redirect to `#form-done`, which CSS `:target` reveals. Nothing here
+   * is load-bearing.
+   *
+   * The mailto serialiser stays as the last resort, after a second failure that
+   * was ours. It walks the form rather than a hand-written list of field names,
+   * so the labels are whatever the page's own language calls them.
    */
   import { CONTACT } from '../../lib/utility-copy';
 
   const form = document.querySelector<HTMLFormElement>('form[data-mail]');
 
   if (form) {
-    /**
-     * The market page sends the market with the visitor:
-     * /fr/signaler/?markt=…&grund=… — someone who has just found a closed gate
-     * should not have to retype the name of the page they came from. The reason
-     * travels as an index-free key because the options are written per language
-     * but kept in the same order.
-     */
-    const params = new URLSearchParams(location.search);
-    const market = params.get('markt');
-    const reason = params.get('grund');
-    const marketField = form.elements.namedItem('markt') as HTMLInputElement | null;
-    if (market && marketField) marketField.value = market;
-    // The claim card on a market page sends the town as well, so an organiser
-    // arrives at a form with the two identifying fields already filled and only
-    // their own name and address left to add.
-    const town = params.get('ort');
-    const townField = form.elements.namedItem('ort') as HTMLInputElement | null;
-    if (town && townField) townField.value = town;
-    const reasonField = form.elements.namedItem('grund') as HTMLSelectElement | null;
-    const ORDER: Record<string, number> = { ausgefallen: 0, vorbei: 1, anderes: 3 };
-    if (reason && reasonField && reason in ORDER) reasonField.selectedIndex = ORDER[reason];
-
-    /**
-     * The newsletter is the one form with somewhere to go: it posts to /n and
-     * the page says "you're in" without leaving. Everything else still opens
-     * the visitor's own mail program, because there is nowhere yet to put it.
-     *
-     * If the post fails for any reason — offline, endpoint down, database
-     * unreachable — it falls through to that same mail program, so a broken
-     * signup can never be worse than the mailto it replaced.
-     */
+    const endpoint = form.dataset.endpoint ?? null;
     const subscribe = form.hasAttribute('data-subscribe');
     const errors = JSON.parse(form.dataset.errors ?? '{}') as Partial<
       Record<'empty' | 'invalid' | 'failed' | 'offline', string>
     >;
-    const emailField = form.elements.namedItem('email') as HTMLInputElement | null;
-    const emailError = document.getElementById('f-email-error');
+
+    /**
+     * The market page sends the market with the visitor:
+     * /fr/signaler/?markt=…&grund=…&mid=… — someone who has just found a closed
+     * gate should not have to retype the name of the page they came from.
+     *
+     * `grund` is now the same key the database stores and the select posts, so
+     * setting the control is one assignment. It used to be a made-up key mapped
+     * onto a position in the options list, which meant reordering the options
+     * silently changed what a report meant.
+     *
+     * `mid` is the market's id. It is what lets a report attach itself to the
+     * right market instead of waiting for someone to match a typed name, and it
+     * is checked at the endpoint rather than trusted — it arrives in a query
+     * string anyone can edit.
+     */
+    const params = new URLSearchParams(location.search);
+    const fill = (name: string, value: string | null) => {
+      const field = form.elements.namedItem(name) as
+        | HTMLInputElement
+        | HTMLSelectElement
+        | null;
+      if (field && value) field.value = value;
+    };
+
+    fill('markt', params.get('markt'));
+    // The claim card on a market page sends the town as well, so an organiser
+    // arrives at a form with the two identifying fields already filled and only
+    // their own name and address left to add.
+    fill('ort', params.get('ort'));
+    fill('mid', params.get('mid'));
+
+    const reason = params.get('grund');
+    const reasonField = form.elements.namedItem('grund') as HTMLSelectElement | null;
+    if (reason && reasonField) {
+      // Only if the select actually offers it. A hand-edited query string must
+      // not be able to put a value the endpoint would reject into the control.
+      const offered = Array.from(reasonField.options).some((o) => o.value === reason);
+      if (offered) reasonField.value = reason;
+    }
 
     /**
      * Milliseconds from the first touch of the form, not from page load.
@@ -286,7 +320,7 @@ const savedCopy = saved && {
      * was harmless only because the form sat 750px down: reaching it took
      * longer than the limit. Now that the form is at the top, that same floor
      * would start catching real people — and it answers with a success, so
-     * they would be told they were on a list they were never added to.
+     * they would be told something was saved that never was.
      *
      * Stays zero when nobody ever touched the form — an address filled in by a
      * password manager can involve no focus and no keystroke — and the
@@ -297,12 +331,21 @@ const savedCopy = saved && {
     form.addEventListener('focusin', touched);
     form.addEventListener('input', touched);
 
+    const emailField = form.elements.namedItem('email') as HTMLInputElement | null;
+    const emailError = document.getElementById('f-email-error');
+
     /*
-     * Turned off here rather than in the markup, which is the whole point: with
+     * The newsletter is the only form whose validation we take over, and it is
+     * turned off here rather than in the markup, which is the whole point: with
      * no script the browser's own `required` and `type="email"` checks are the
-     * only ones there are and must keep working. With a script we take over,
-     * because the browser's bubble speaks the browser's language rather than
-     * the page's, vanishes on its own, and tells a screen reader nothing.
+     * only ones there are and must keep working.
+     *
+     * The other two keep the browser's checking. Their required fields are
+     * ordinary text fields where the browser's own "please fill in this field"
+     * is both correct and in the reader's language, and interrupting a report
+     * about a market that did not happen to argue about form validation is the
+     * wrong thing to spend a person's patience on. Where we do have something
+     * better to say — a mistyped address, a save that failed — we say it below.
      */
     if (subscribe) form.noValidate = true;
 
@@ -328,8 +371,12 @@ const savedCopy = saved && {
     /* Checked when they leave the field, never while they are still typing:
        an address is invalid for as long as it takes to type one, and saying so
        at the third character is nagging rather than helping. Correcting it
-       clears the message immediately. */
-    if (subscribe && emailField) {
+       clears the message immediately.
+
+       On every form that has an address field, including the two where it is
+       optional — a report with a mistyped address is a reply that never
+       arrives, which is worse than no address at all. */
+    if (emailField) {
       emailField.addEventListener('blur', () => {
         const value = emailField.value.trim();
         if (value && !looksLikeAddress(value)) {
@@ -347,23 +394,32 @@ const savedCopy = saved && {
 
     type Outcome = 'ok' | 'invalid' | 'failed' | 'offline';
 
-    async function trySubscribe(): Promise<Outcome> {
-      const town = (form!.elements.namedItem('stadt') as HTMLInputElement | null)?.value.trim();
-      const trap = (form!.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '';
+    /**
+     * Everything the visitor typed, as JSON, plus the two things the page knows
+     * and they do not: how long they took, and which page this is.
+     *
+     * Built from the form's own controls rather than from a list of field names
+     * per form. Three forms with three hand-written payloads is three places to
+     * forget a field the day one is added.
+     */
+    async function send(): Promise<Outcome> {
+      const payload: Record<string, unknown> = {
+        elapsed_ms: firstTouch ? Date.now() - firstTouch : null,
+        path: location.pathname,
+      };
+
+      for (const element of Array.from(form!.elements)) {
+        const control = element as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+        if (!control.name || control.name === 'path') continue;
+        payload[control.name] = String(control.value ?? '').trim();
+      }
 
       let res: Response;
       try {
-        res = await fetch('/n', {
+        res = await fetch(endpoint!, {
           method: 'POST',
           headers: { 'content-type': 'application/json', accept: 'application/json' },
-          body: JSON.stringify({
-            email: emailField?.value.trim() ?? '',
-            town,
-            website: trap,
-            elapsed_ms: firstTouch ? Date.now() - firstTouch : null,
-            path: location.pathname,
-            consent_text: form!.dataset.consent ?? null,
-          }),
+          body: JSON.stringify(payload),
         });
       } catch {
         // The request never left the device.
@@ -378,27 +434,35 @@ const savedCopy = saved && {
     let failures = 0;
 
     form.addEventListener('submit', (event) => {
+      /* No endpoint means no script-driven submit: let the browser do whatever
+         the markup says, which for a form with no action is nothing at all. */
+      if (!endpoint) return;
       event.preventDefault();
 
-      if (!subscribe) {
-        sendByMail(form as HTMLFormElement);
-        return;
+      /* The newsletter checks its one field itself. The other two have already
+         been checked by the browser, which will not have let a submit event
+         reach here with a required field empty. */
+      if (subscribe) {
+        const value = emailField?.value.trim() ?? '';
+        if (!value) { showError(errors.empty ?? ''); return; }
+        if (!looksLikeAddress(value)) { showError(errors.invalid ?? ''); return; }
+      } else if (emailField) {
+        /* Optional on these two, so an empty one is fine and a wrong one is
+           not: it is the address a reply would go to. */
+        const value = emailField.value.trim();
+        if (value && !looksLikeAddress(value)) { showError(errors.invalid ?? ''); return; }
       }
-
-      const value = emailField?.value.trim() ?? '';
-      if (!value) { showError(errors.empty ?? ''); return; }
-      if (!looksLikeAddress(value)) { showError(errors.invalid ?? ''); return; }
 
       clearError();
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       if (button) button.disabled = true;
 
-      void trySubscribe().then((outcome) => {
+      void send().then((outcome) => {
         if (button) button.disabled = false;
 
         if (outcome === 'ok') {
           form.hidden = true;
-          const done = document.getElementById('signup-done');
+          const done = document.getElementById('form-done');
           if (done) {
             done.classList.add('shown');
             done.setAttribute('tabindex', '-1');
@@ -410,11 +474,12 @@ const savedCopy = saved && {
         if (outcome === 'invalid') { showError(errors.invalid ?? ''); return; }
 
         /*
-         * The mail program is the last resort now, not the first thing that
-         * happens. It used to open the moment anything went wrong, including a
-         * mistyped address — so the one problem the visitor could have fixed
-         * themselves was the one the page never mentioned. It opens only after
-         * a real retry of a failure that was ours.
+         * The mail program is the last resort, not the first thing that happens.
+         * It used to open the moment anything went wrong, including a mistyped
+         * address — so the one problem the visitor could have fixed themselves
+         * was the one the page never mentioned. It opens only after a real retry
+         * of a failure that was ours, and it is why every one of these forms
+         * still carries a mailto subject.
          */
         failures += 1;
         if (failures >= 2) { sendByMail(form as HTMLFormElement); return; }
@@ -432,8 +497,8 @@ const savedCopy = saved && {
       for (const element of Array.from(form.elements)) {
         const control = element as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
         if (!control.name) continue;
-        // The page path and the consent wording are for the endpoint, not for
-        // a person reading the mail this builds.
+        // The page path, the market id and the consent wording are for the
+        // endpoint, not for a person reading the mail this builds.
         if (control.type === 'hidden') continue;
         const value = String(control.value ?? '').trim();
         if (!value) continue;
