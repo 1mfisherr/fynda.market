@@ -241,10 +241,10 @@ const newsletter: Record<Locale, FormPage> = {
     title: 'Newsletter — fynda.market',
     description: 'Eine E-Mail pro Woche: neue Termine und Absagen für Ihre Stadt. Kostenlos, ohne Konto.',
     heading: 'Newsletter',
-    answer: 'Eine E-Mail pro Woche: was am Wochenende in Ihrer Stadt los ist. Wir starten in Kürze.',
+    answer: 'Jeden Freitagmorgen eine E-Mail: was am Wochenende in Ihrer Stadt los ist.',
     prose: [
-      'Flohmärkte laufen im Wochenrhythmus, also läuft die E-Mail auch so: einmal pro Woche, nie öfter. Für eine Stadt oder eine Region — neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren.',
-      'Kostenlos, ohne Konto, ohne Werbung. Der Newsletter ist gerade im Aufbau — tragen Sie sich jetzt ein, und Sie bekommen die erste Ausgabe. Abmelden können Sie sich mit einem Klick in jeder E-Mail.',
+      'Flohmärkte laufen im Wochenrhythmus, also läuft die E-Mail auch so: freitagmorgens, einmal pro Woche, nie öfter. Für eine Stadt oder eine Region — neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren.',
+      'Kostenlos, ohne Konto, ohne Werbung. Abmelden können Sie sich mit einem Klick in jeder E-Mail.',
     ],
     fields: [
       { name: 'email', label: 'E-Mail-Adresse', type: 'email', required: true, placeholder: 'ihre@email.ch' },
@@ -253,7 +253,7 @@ const newsletter: Record<Locale, FormPage> = {
     submit: 'Anmelden',
     note: 'Kostenlos. Wir schreiben Ihnen nur den Newsletter, den Sie hier bestellen, und geben Ihre Adresse an niemanden weiter. Abmelden können Sie sich jederzeit.',
     subject: 'Newsletter',
-    success: 'Sie stehen auf der Liste. Der Newsletter startet in Kürze — Sie bekommen die erste Ausgabe.',
+    success: 'Sie stehen auf der Liste. Die erste Ausgabe kommt am Freitagmorgen.',
     failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Nachricht einfach so.',
     errors: {
       empty: 'Bitte tragen Sie Ihre E-Mail-Adresse ein, damit wir wissen, wohin.',
@@ -266,10 +266,10 @@ const newsletter: Record<Locale, FormPage> = {
     title: 'Newsletter — fynda.market',
     description: 'Un e-mail par semaine : nouvelles dates et annulations pour votre commune. Gratuit, sans compte.',
     heading: 'Newsletter',
-    answer: 'Un e-mail par semaine : ce qui se passe ce week-end près de chez vous. Nous démarrons bientôt.',
+    answer: 'Un e-mail chaque vendredi matin : ce qui se passe ce week-end près de chez vous.',
     prose: [
       "Les brocantes suivent un rythme hebdomadaire, l'e-mail aussi : une fois par semaine, jamais plus souvent. Pour une commune ou une région — les nouvelles dates et les annulations, pour que vous ne fassiez pas le déplacement pour rien.",
-      "Gratuit, sans compte, sans publicité. L'e-mail est en cours de préparation — inscrivez-vous maintenant et vous recevrez le premier numéro. Vous pouvez vous désinscrire en un clic depuis n'importe quel e-mail.",
+      "Gratuit, sans compte, sans publicité. Vous pouvez vous désinscrire en un clic depuis n'importe quel e-mail.",
     ],
     fields: [
       { name: 'email', label: 'Adresse e-mail', type: 'email', required: true, placeholder: 'votre@email.ch' },
@@ -278,7 +278,7 @@ const newsletter: Record<Locale, FormPage> = {
     submit: "S'inscrire",
     note: "Gratuit. Nous ne vous écrivons que la newsletter demandée ici et ne transmettons votre adresse à personne. Vous pouvez vous désinscrire à tout moment.",
     subject: 'Newsletter',
-    success: "Vous êtes sur la liste. L'e-mail démarre bientôt — vous recevrez le premier numéro.",
+    success: "Vous êtes sur la liste. Le premier numéro arrive vendredi matin.",
     failure: "Cela n'a pas fonctionné. Nous ouvrons votre logiciel de messagerie — envoyez-nous simplement le message.",
     errors: {
       empty: "Indiquez votre adresse e-mail, que nous sachions où l'envoyer.",
@@ -291,10 +291,10 @@ const newsletter: Record<Locale, FormPage> = {
     title: 'Newsletter — fynda.market',
     description: 'Una e-mail alla settimana: nuove date e cancellazioni per la Sua città. Gratuito, senza account.',
     heading: 'Newsletter',
-    answer: 'Una e-mail alla settimana: cosa succede questo fine settimana nella Sua zona. Partiamo a breve.',
+    answer: 'Ogni venerdì mattina una e-mail: cosa succede questo fine settimana nella Sua zona.',
     prose: [
       "I mercatini seguono un ritmo settimanale, e così anche l'e-mail: una volta alla settimana, mai più spesso. Per una città o una regione — le nuove date e le cancellazioni, così non fa il viaggio per niente.",
-      'Gratuito, senza account, senza pubblicità. La newsletter è in preparazione — si iscriva ora e riceverà il primo numero. Può disiscriversi con un clic da qualsiasi e-mail.',
+      'Gratuito, senza account, senza pubblicità. Può disiscriversi con un clic da qualsiasi e-mail.',
     ],
     fields: [
       { name: 'email', label: 'Indirizzo e-mail', type: 'email', required: true, placeholder: 'sua@email.ch' },
@@ -303,7 +303,7 @@ const newsletter: Record<Locale, FormPage> = {
     submit: 'Iscriversi',
     note: 'Gratuito. Le scriviamo solo la newsletter che richiede qui e non cediamo il Suo indirizzo a nessuno. Può disiscriversi in qualsiasi momento.',
     subject: 'Newsletter',
-    success: 'È sulla lista. La newsletter parte a breve — riceverà il primo numero.',
+    success: 'È sulla lista. Il primo numero arriva venerdì mattina.',
     failure: 'Non ha funzionato. Apriamo il Suo programma di posta — ci mandi semplicemente il messaggio.',
     errors: {
       empty: 'Inserisca il Suo indirizzo e-mail, così sappiamo dove scriverLe.',
@@ -316,10 +316,10 @@ const newsletter: Record<Locale, FormPage> = {
     title: 'Newsletter — fynda.market',
     description: 'One email a week: new dates and cancellations for your town. Free, no account.',
     heading: 'Newsletter',
-    answer: "One email a week: what's on this weekend near you. Starting shortly.",
+    answer: "Every Friday morning, one email: what's on this weekend near you.",
     prose: [
       'Flea markets run on a weekly rhythm, so the email does too: once a week, never more often. For one town or one region — the dates that have been added, and the cancellations, so you do not make the trip for nothing.',
-      'Free, no account, no advertising. The email is being set up now — put your address in and you will get the first one. You can leave in one click from any email.',
+      'Free, no account, no advertising. You can leave in one click from any email.',
     ],
     fields: [
       { name: 'email', label: 'Email address', type: 'email', required: true, placeholder: 'you@email.ch' },
@@ -328,7 +328,7 @@ const newsletter: Record<Locale, FormPage> = {
     submit: 'Sign up',
     note: 'Free. We only send you the newsletter you ask for here, and we never pass your address to anyone. You can unsubscribe at any time.',
     subject: 'Newsletter',
-    success: "You're on the list. The email starts shortly — you'll get the first one.",
+    success: "You're on the list. The first one arrives on Friday morning.",
     failure: 'That did not work. We are opening your mail program instead — just send us the message.',
     errors: {
       empty: 'Enter your email address so we know where to send it.',

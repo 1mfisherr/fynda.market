@@ -150,17 +150,18 @@ interface Welcome {
  * coming and when, and carries the unsubscribe link that makes the next mail
  * lawful to send.
  *
- * It does not promise a date we cannot keep. The digest is built but not
- * switched on, so this says the weekly mail is being set up and that the
- * reader gets the first one — which is true — rather than naming a Friday that
- * will pass with nothing in their inbox. **Change this back, and the same
- * wording in `utility-copy.ts`, in the commit that sets NEWSLETTER_SENDING=on.**
+ * It names the day, because the day is now real: NEWSLETTER_SENDING was set
+ * on 2026-09-09 and the digest goes out at 06:00 UTC every Friday. For the two
+ * weeks before that these lines said the mail was "being set up" instead —
+ * true at the time, and the right thing to say rather than name a Friday that
+ * would pass with nothing in anybody's inbox. If sending is ever switched off
+ * again, put that hedge back in the same commit.
  */
 const WELCOME: Record<Locale, Welcome> = {
   de: {
     subject: 'Sie sind dabei — fynda.market',
     body: [
-      'Ihre E-Mail-Adresse steht auf der Liste. Der wöchentliche Newsletter ist gerade im Aufbau — Sie bekommen die erste Ausgabe, sobald sie fertig ist.',
+      'Ihre E-Mail-Adresse steht auf der Liste. Die erste Ausgabe kommt am Freitagmorgen.',
       'Neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren. Einmal pro Woche, nie öfter.',
       'Wenn Sie sich nicht angemeldet haben, ignorieren Sie diese E-Mail einfach — oder melden Sie sich unten mit einem Klick wieder ab.',
     ],
@@ -169,7 +170,7 @@ const WELCOME: Record<Locale, Welcome> = {
   fr: {
     subject: 'Vous êtes inscrit — fynda.market',
     body: [
-      "Votre adresse est sur la liste. L'e-mail hebdomadaire est en cours de préparation — vous recevrez le premier numéro dès qu'il sera prêt.",
+      "Votre adresse est sur la liste. Le premier numéro arrive vendredi matin.",
       'Les nouvelles dates ajoutées, et les annulations, pour ne pas vous déplacer pour rien. Une fois par semaine, jamais plus.',
       "Si vous ne vous êtes pas inscrit, ignorez simplement cet e-mail — ou désinscrivez-vous ci-dessous en un clic.",
     ],
@@ -178,7 +179,7 @@ const WELCOME: Record<Locale, Welcome> = {
   it: {
     subject: 'Sei iscritto — fynda.market',
     body: [
-      'Il tuo indirizzo è nella lista. La newsletter settimanale è in preparazione — riceverai il primo numero appena sarà pronta.',
+      'Il tuo indirizzo è nella lista. Il primo numero arriva venerdì mattina.',
       'Le nuove date aggiunte e le cancellazioni, per non fare il viaggio a vuoto. Una volta a settimana, mai di più.',
       'Se non ti sei iscritto tu, ignora questa e-mail — oppure cancellati qui sotto con un clic.',
     ],
@@ -187,7 +188,7 @@ const WELCOME: Record<Locale, Welcome> = {
   en: {
     subject: 'You’re in — fynda.market',
     body: [
-      'Your address is on the list. The weekly e-mail is being set up now — you’ll get the first one as soon as it is ready.',
+      'Your address is on the list. The first one arrives on Friday morning.',
       'New dates that have been added, and cancellations, so you don’t make the trip for nothing. Once a week, never more.',
       'If you didn’t sign up, just ignore this e-mail — or unsubscribe below in one click.',
     ],
