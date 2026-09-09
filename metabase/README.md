@@ -116,3 +116,59 @@ their own: v1's most valuable finding was that explicit-date searches
 
 Google keeps **16 months** and will not backfill further. Whatever you have not
 exported by then is gone for good, so the habit matters more than the schedule.
+
+---
+
+## The two queues a person has to answer
+
+Since 2026-09-09 the site's forms write rows rather than opening a mail
+program. A submission pings Telegram once, and a Telegram message is a doorbell,
+not a list — it is seen or it is missed. These two questions are the list.
+
+**Make them both, pin them to a dashboard, and look at it weekly.** A report
+nobody reads is worse than no report form, because the person who sent it
+believes somebody is checking.
+
+### Open reports
+
+```sql
+select r.submitted_at::date as sent,
+       r.report_type,
+       coalesce(m.slug, '— unmatched —') as market,
+       r.market_text as they_typed,
+       r.note,
+       r.email,
+       r.locale
+  from public.reports r
+  left join public.markets m on m.id = r.market_id
+ where not r.resolved
+ order by r.submitted_at desc;
+```
+
+`market_id` is null when the report came from the footer form and named a
+market in words. Those are the ones needing a human to match them; everything
+from a market page arrives already attached. Closing one is
+`update public.reports set resolved = true, resolved_at = now(), resolver_note = '…' where id = '…'`.
+
+### Organiser claims waiting for an answer
+
+```sql
+select c.created_at::date as sent,
+       c.organiser_name,
+       c.email,
+       coalesce(m.slug, '— unmatched —') as market,
+       c.market_text as they_typed,
+       c.town,
+       c.message,
+       c.locale
+  from public.organiser_claims c
+  left join public.markets m on m.id = c.market_id
+ where not c.handled
+ order by c.created_at desc;
+```
+
+This one decays. Somebody has offered to become the source of truth for a
+market and is waiting to hear back, and a fortnight's silence is the answer
+they will remember. `handled` is set by hand, with `handler_note` for what was
+agreed.
+
