@@ -152,4 +152,26 @@ grant usage on schema public to service_role;
 grant select, insert on public.reports to service_role;
 grant select, insert on public.organiser_claims to service_role;
 
+/*
+ * And SELECT on markets, which is not incidental.
+ *
+ * /r and /o check the market id that arrives in the query string before
+ * writing it, because a bad id would fail the insert on its foreign key and
+ * take the whole report with it. That check reads public.markets as the
+ * service role -- and grants in this schema are explicit per table, so without
+ * this line the check would be refused, quietly answer "no such market", and
+ * every report sent from a market page would land in the unmatched queue with
+ * its market id thrown away.
+ *
+ * Nothing would have looked broken. The form would say thank you, the row
+ * would be there, and the one thing that makes the report useful without a
+ * human reading it would be missing. This is the same missing GRANT that made
+ * every newsletter signup fail in September, found by reading rather than by
+ * losing reports for a fortnight.
+ *
+ * SELECT only, and only this table. The site's own build reads the database as
+ * the owner and is unaffected either way.
+ */
+grant select on public.markets to service_role;
+
 commit;

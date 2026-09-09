@@ -67,10 +67,12 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   const mid = text(body.mid, 64);
   const market_id = mid && (await marketExists(env, mid)) ? mid : null;
 
+  const town = text(body.ort, 120);
+
   const id = await insertRow(env, 'organiser_claims', {
     market_id,
     market_text,
-    town: text(body.ort, 120),
+    town,
     organiser_name,
     email,
     message: text(body.nachricht, 4000),
@@ -89,7 +91,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   const where = market_id ? '' : ' [unmatched]';
   waitUntil(ping(
     env,
-    `ORGANISER: ${market_text}${where}\n${organiser_name} <${email}>\n${text(body.ort, 120) ?? '—'} (${locale})`
+    `ORGANISER: ${market_text}${where}\n${organiser_name} <${email}>\n${town ?? '—'} (${locale})`
   ));
   waitUntil(sendMail(env, { to: email, ...claimAck(locale as Locale, market_text) }));
 

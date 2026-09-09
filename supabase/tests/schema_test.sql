@@ -199,4 +199,77 @@ select pg_temp.expect(
   'updated_at moves on write without the application setting it'
 );
 
+/* -- 9. what a visitor is allowed to send --------------------------------- */
+
+-- reports.market_id is nullable so that a report naming a market in words can
+-- be stored at all. The constraint is that *something* identifies the market:
+-- dropping an unmatchable report defeats the point of having the form, and
+-- guessing a match would attach a cancellation to a market that is running.
+
+insert into public.reports (market_id, market_text, report_type)
+values ('00000000-0000-0000-0000-0000000000d1', 'Flohmarkt Buerkliplatz', 'cancelled');
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.reports where market_id is not null),
+  'a report from a market page keeps the market it came from'
+);
+
+insert into public.reports (market_text, report_type)
+values ('the one by the lake, I think', 'other');
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.reports where market_id is null),
+  'a report that names a market only in words is still stored'
+);
+
+select pg_temp.expect_failure(
+  $$insert into public.reports (report_type) values ('other')$$,
+  'a report identifying no market at all is refused'
+);
+
+select pg_temp.expect_failure(
+  $$insert into public.reports (market_text, report_type) values ('   ', 'other')$$,
+  'whitespace does not count as naming a market'
+);
+
+-- organiser_claims. Both contact fields are required, because a claim nobody
+-- can answer is not a claim.
+
+insert into public.organiser_claims
+  (market_id, market_text, town, organiser_name, email, locale)
+values
+  ('00000000-0000-0000-0000-0000000000d2', 'Kanzleiareal', 'Zuerich',
+   'A. Muster', 'organiser@example.ch', 'de');
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.organiser_claims where not handled),
+  'a new claim starts unhandled, which is the whole queue'
+);
+
+insert into public.organiser_claims (market_text, organiser_name, email, locale)
+values ('a church bazaar we have never heard of', 'B. Muster', 'new@example.ch', 'fr');
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.organiser_claims where market_id is null),
+  'an organiser can claim a market we do not have a page for'
+);
+
+select pg_temp.expect_failure(
+  $$insert into public.organiser_claims (market_text, organiser_name, email, locale)
+    values ('x', 'C. Muster', 'Shouty@Example.CH', 'de')$$,
+  'an address is stored lowercase or not at all'
+);
+
+select pg_temp.expect_failure(
+  $$insert into public.organiser_claims (market_text, organiser_name, email, locale)
+    values ('x', 'D. Muster', 'not-an-address', 'de')$$,
+  'a claim with a malformed address is refused'
+);
+
+select pg_temp.expect_failure(
+  $$insert into public.organiser_claims (market_text, organiser_name, email, locale)
+    values ('x', 'E. Muster', 'someone@example.ch', 'es')$$,
+  'a claim in a locale the site does not have is refused'
+);
+
 rollback;
