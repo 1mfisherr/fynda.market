@@ -13,7 +13,7 @@ The technical choices and the constraints behind them. Written 2026-08-27, prune
 | Language | TypeScript strict, Zod at every boundary | Strong types are the code review a solo founder can't do |
 | Framework | **Astro 7, `output: 'static'`, Preact islands** | v1's two SEO bug classes — multi-layer cache staleness and Suspense layout shift — are structurally impossible in a static file. And a static build makes the CI guardrails checkable at all: the whole URL space exists as files in `dist/` |
 | Hosting | **Cloudflare Workers**, deployed by `wrangler` from GitHub Actions | Static requests are free and unlimited; egress is free. v1's 378K billable middleware invocations are unpriceable here. $0–5/mo |
-| Database | **Supabase Postgres + PostGIS**, region `eu-central-2` (Zurich) | Most AI-fluent database there is; radius search is one indexed function. Free tier carries the pilot |
+| Database | **Supabase Postgres + PostGIS**, region `eu-west-1` (Ireland) | Most AI-fluent database there is; radius search is one indexed function. Free tier carries the pilot |
 | Dates | Concrete rows; RRULE stored as a bounded generator | See `ARCHITECTURE.md` §Dates |
 | Background loops | GitHub Actions cron + Claude API + a `proposals` table + one admin page | Four loops at 0.1 events/second. Anything more is an operational dependency nobody can keep alive |
 | Analytics | Own events in our Postgres + self-hosted Metabase + the GSC API | See §Analytics |
