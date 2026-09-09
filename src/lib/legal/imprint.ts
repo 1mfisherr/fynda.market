@@ -20,7 +20,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         h: 'Website operator',
         p: [
           'Fynda is operated by:',
-          'Delfim Almeida\nZurich, Switzerland\nEmail: hallo@fynda.market',
+          'Delfim Almeida\nZurich, Switzerland\nEmail: contact@fynda.market',
           'Fynda is a digital directory for flea markets, brocantes and secondhand markets across Switzerland.',
         ],
       },
@@ -58,7 +58,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         h: 'Betreiber der Website',
         p: [
           'Fynda wird betrieben von:',
-          'Delfim Almeida\nZürich, Schweiz\nE-Mail: hallo@fynda.market',
+          'Delfim Almeida\nZürich, Schweiz\nE-Mail: contact@fynda.market',
           'Fynda ist ein digitales Verzeichnis für Flohmärkte, Brockenstuben und Secondhand-Märkte in der ganzen Schweiz.',
         ],
       },
@@ -96,7 +96,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         h: 'Exploitant du site',
         p: [
           'Fynda est exploité par :',
-          'Delfim Almeida\nZurich, Suisse\nCourriel : hallo@fynda.market',
+          'Delfim Almeida\nZurich, Suisse\nCourriel : contact@fynda.market',
           "Fynda est un annuaire numérique des brocantes, vide-greniers et marchés d'occasion en Suisse.",
         ],
       },
@@ -134,7 +134,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         h: 'Gestore del sito',
         p: [
           'Fynda è gestito da:',
-          'Delfim Almeida\nZurigo, Svizzera\nE-mail: hallo@fynda.market',
+          'Delfim Almeida\nZurigo, Svizzera\nE-mail: contact@fynda.market',
           "Fynda è un elenco digitale di mercatini delle pulci, mercatini dell'usato e mercati di seconda mano in tutta la Svizzera.",
         ],
       },

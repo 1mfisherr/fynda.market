@@ -33,7 +33,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '1. Who is responsible for your data?',
         p: [
           'Fynda is operated by:',
-          'Delfim Almeida\nZurich, Switzerland\nhallo@fynda.market',
+          'Delfim Almeida\nZurich, Switzerland\ncontact@fynda.market',
         ],
       },
       {
@@ -90,7 +90,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         p: [
           'When you sign up, we save your email address, the town you chose and the language of the page in our own database, and we use them to send the newsletter you asked for. The subscription is active immediately — there is no confirmation email to click.',
           'Alongside it we record when you signed up, which page you signed up from, the consent wording you were shown, and a one-way hashed version of your IP address, so that the consent can be shown rather than asserted. The IP address itself is never stored.',
-          'The legal basis for this processing is your consent. You can withdraw it at any time by writing to hallo@fynda.market, or through the unsubscribe link in any newsletter.',
+          'The legal basis for this processing is your consent. You can withdraw it at any time by writing to contact@fynda.market, or through the unsubscribe link in any newsletter.',
           'When you unsubscribe, we delete the information that could identify you from the active newsletter list and keep only a minimal suppression record — your email address and the dates you signed up and unsubscribed — so that we do not accidentally contact you again and can show a reliable record of your consent and its withdrawal.',
           'We do not use an external marketing platform. If we later add an email delivery service to send the newsletter, this page will name it before it is used.',
         ],
@@ -226,7 +226,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         p: [
           'Withdrawing consent does not affect processing that took place before it was withdrawn.',
-          'To make a request, email hallo@fynda.market. We may ask you to confirm your identity before acting on a request.',
+          'To make a request, email contact@fynda.market. We may ask you to confirm your identity before acting on a request.',
           'The daily-rotating analytics hashes cannot be linked to a person, so they cannot be looked up or deleted individually.',
           'You also have the right to complain to the Swiss Federal Data Protection and Information Commissioner.',
         ],
@@ -247,7 +247,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '16. Contact',
         p: [
           'For any privacy question or request, contact:',
-          'Delfim Almeida\nZurich, Switzerland\nhallo@fynda.market',
+          'Delfim Almeida\nZurich, Switzerland\ncontact@fynda.market',
         ],
       },
     ],
@@ -269,7 +269,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '1. Wer ist für Ihre Daten verantwortlich?',
         p: [
           'Fynda wird betrieben von:',
-          'Delfim Almeida\nZürich, Schweiz\nhallo@fynda.market',
+          'Delfim Almeida\nZürich, Schweiz\ncontact@fynda.market',
         ],
       },
       {
@@ -326,7 +326,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         p: [
           'Wenn Sie sich anmelden, speichern wir Ihre E-Mail-Adresse, die gewählte Stadt und die Sprache der Seite in unserer eigenen Datenbank und nutzen sie, um Ihnen den gewünschten Newsletter zu schicken. Die Anmeldung ist sofort aktiv — es gibt keine Bestätigungsmail zum Anklicken.',
           'Dazu halten wir fest, wann und von welcher Seite aus die Anmeldung kam, welchen Zustimmungstext Sie dabei gesehen haben, und eine gehashte, nicht rückrechenbare Fassung Ihrer IP-Adresse, damit sich die Einwilligung belegen lässt. Die IP-Adresse selbst speichern wir nie.',
-          'Rechtsgrundlage dafür ist Ihre Einwilligung. Sie können sie jederzeit widerrufen, indem Sie an hallo@fynda.market schreiben oder den Abmeldelink in einem Newsletter nutzen.',
+          'Rechtsgrundlage dafür ist Ihre Einwilligung. Sie können sie jederzeit widerrufen, indem Sie an contact@fynda.market schreiben oder den Abmeldelink in einem Newsletter nutzen.',
           'Bei einer Abmeldung löschen wir die Angaben, die Sie identifizieren könnten, aus der aktiven Newsletter-Liste und behalten nur einen minimalen Sperreintrag — Ihre E-Mail-Adresse sowie das Datum der Anmeldung und der Abmeldung — damit wir Sie nicht versehentlich erneut anschreiben und Einwilligung wie Widerruf belegen können.',
           'Wir nutzen keine externe Marketing-Plattform. Sollten wir später einen Versanddienst für den Newsletter einsetzen, wird er auf dieser Seite genannt, bevor er zum Einsatz kommt.',
         ],
@@ -464,7 +464,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         p: [
           'Ein Widerruf berührt nicht die Bearbeitung, die vor dem Widerruf stattgefunden hat.',
-          'Für eine Anfrage schreiben Sie an hallo@fynda.market. Wir können Sie bitten, Ihre Identität zu bestätigen, bevor wir handeln.',
+          'Für eine Anfrage schreiben Sie an contact@fynda.market. Wir können Sie bitten, Ihre Identität zu bestätigen, bevor wir handeln.',
           'Die täglich wechselnden Analyse-Hashes lassen sich keiner Person zuordnen und deshalb weder gezielt abfragen noch einzeln löschen.',
           'Sie haben ausserdem das Recht, sich beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) zu beschweren.',
         ],
@@ -485,7 +485,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '16. Kontakt',
         p: [
           'Für Fragen und Anliegen zum Datenschutz:',
-          'Delfim Almeida\nZürich, Schweiz\nhallo@fynda.market',
+          'Delfim Almeida\nZürich, Schweiz\ncontact@fynda.market',
         ],
       },
     ],
@@ -507,7 +507,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '1. Qui est responsable de vos données ?',
         p: [
           'Fynda est exploité par :',
-          'Delfim Almeida\nZurich, Suisse\nhallo@fynda.market',
+          'Delfim Almeida\nZurich, Suisse\ncontact@fynda.market',
         ],
       },
       {
@@ -564,7 +564,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         p: [
           "Lorsque vous vous inscrivez, nous enregistrons votre adresse e-mail, la commune que vous avez choisie et la langue de la page dans notre propre base de données, afin de vous envoyer la newsletter demandée. L'inscription est active immédiatement — il n'y a pas d'e-mail de confirmation à cliquer.",
           "Nous enregistrons également la date de votre inscription, la page depuis laquelle elle a été faite, le texte de consentement qui vous a été montré et une empreinte irréversible de votre adresse IP, afin de pouvoir démontrer ce consentement. L'adresse IP elle-même n'est jamais conservée.",
-          "La base légale de ce traitement est votre consentement. Vous pouvez le retirer à tout moment en écrivant à hallo@fynda.market ou via le lien de désinscription présent dans chaque newsletter.",
+          "La base légale de ce traitement est votre consentement. Vous pouvez le retirer à tout moment en écrivant à contact@fynda.market ou via le lien de désinscription présent dans chaque newsletter.",
           "Lors d'une désinscription, nous supprimons de la liste active les informations qui pourraient vous identifier et ne conservons qu'un enregistrement minimal de suppression — votre adresse e-mail et les dates d'inscription et de désinscription — afin de ne pas vous recontacter par erreur et de pouvoir démontrer votre consentement et son retrait.",
           "Nous n'utilisons aucune plateforme marketing externe. Si nous ajoutons plus tard un service d'envoi pour la newsletter, il sera nommé sur cette page avant d'être utilisé.",
         ],
@@ -702,7 +702,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         p: [
           "Le retrait du consentement n'affecte pas les traitements effectués avant ce retrait.",
-          "Pour une demande, écrivez à hallo@fynda.market. Nous pouvons vous demander de confirmer votre identité avant d'y donner suite.",
+          "Pour une demande, écrivez à contact@fynda.market. Nous pouvons vous demander de confirmer votre identité avant d'y donner suite.",
           "Les empreintes de mesure, qui changent chaque jour, ne peuvent être rattachées à personne : elles ne peuvent donc être ni consultées ni supprimées individuellement.",
           "Vous avez également le droit de déposer une réclamation auprès du Préposé fédéral à la protection des données et à la transparence.",
         ],
@@ -723,7 +723,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '16. Contact',
         p: [
           'Pour toute question ou demande relative à la confidentialité :',
-          'Delfim Almeida\nZurich, Suisse\nhallo@fynda.market',
+          'Delfim Almeida\nZurich, Suisse\ncontact@fynda.market',
         ],
       },
     ],
@@ -745,7 +745,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '1. Chi è responsabile dei Suoi dati?',
         p: [
           'Fynda è gestito da:',
-          'Delfim Almeida\nZurigo, Svizzera\nhallo@fynda.market',
+          'Delfim Almeida\nZurigo, Svizzera\ncontact@fynda.market',
         ],
       },
       {
@@ -802,7 +802,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         p: [
           'Quando si iscrive, salviamo il Suo indirizzo e-mail, la città che ha scelto e la lingua della pagina nella nostra banca dati, e li usiamo per inviarLe la newsletter richiesta. L’iscrizione è attiva subito — non c’è alcuna e-mail di conferma da cliccare.',
           'Registriamo inoltre quando si è iscritto, da quale pagina, il testo di consenso che Le è stato mostrato e una versione irreversibile del Suo indirizzo IP, così da poter documentare il consenso. L’indirizzo IP in sé non viene mai conservato.',
-          'La base giuridica di questo trattamento è il Suo consenso. Può revocarlo in qualsiasi momento scrivendo a hallo@fynda.market o tramite il link di disiscrizione presente in ogni newsletter.',
+          'La base giuridica di questo trattamento è il Suo consenso. Può revocarlo in qualsiasi momento scrivendo a contact@fynda.market o tramite il link di disiscrizione presente in ogni newsletter.',
           'In caso di disiscrizione cancelliamo dalla lista attiva le informazioni che potrebbero identificarLa e conserviamo soltanto una registrazione minima di soppressione — il Suo indirizzo e-mail e le date di iscrizione e disiscrizione — per non contattarLa di nuovo per errore e per poter documentare consenso e revoca.',
           'Non usiamo alcuna piattaforma di marketing esterna. Se in futuro aggiungeremo un servizio di invio per la newsletter, sarà indicato su questa pagina prima di essere utilizzato.',
         ],
@@ -940,7 +940,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       {
         p: [
           'La revoca del consenso non pregiudica i trattamenti avvenuti prima della revoca.',
-          'Per una richiesta scriva a hallo@fynda.market. Possiamo chiederLe di confermare la Sua identità prima di darvi seguito.',
+          'Per una richiesta scriva a contact@fynda.market. Possiamo chiederLe di confermare la Sua identità prima di darvi seguito.',
           'Gli hash di analisi, che cambiano ogni giorno, non sono riconducibili a una persona e non possono quindi essere consultati o cancellati singolarmente.',
           'Ha inoltre il diritto di rivolgersi all’Incaricato federale della protezione dei dati e della trasparenza.',
         ],
@@ -961,7 +961,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '16. Contatto',
         p: [
           'Per qualsiasi domanda o richiesta sulla privacy:',
-          'Delfim Almeida\nZurigo, Svizzera\nhallo@fynda.market',
+          'Delfim Almeida\nZurigo, Svizzera\ncontact@fynda.market',
         ],
       },
     ],

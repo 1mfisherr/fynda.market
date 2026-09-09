@@ -21,8 +21,8 @@
  * visitor more than eighteen identical Saturdays did.
  */
 import type { Market, Occurrence } from './types';
-import { iso, weekendBounds } from './date-window';
-import { withinHorizon } from './markets';
+import { iso, weekendBounds } from './date-window.ts';
+import { withinHorizon } from './markets.ts';
 
 /** A market paired with the one occurrence a row is about. */
 export type Dated = Market & { next: Occurrence };

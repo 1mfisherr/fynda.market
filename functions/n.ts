@@ -21,8 +21,9 @@
  */
 
 import { isProbablyBot, localeOf, type Env as CollectEnv } from './_collect';
+import { sendMail, welcomeMail, type Locale, type MailEnv } from './_mail';
 
-interface Env extends CollectEnv {
+interface Env extends CollectEnv, MailEnv {
   /** Optional. Set both and a signup pings Telegram; leave unset and it does not. */
   TELEGRAM_BOT_TOKEN?: string;
   TELEGRAM_CHAT_ID?: string;
@@ -35,6 +36,16 @@ const json = (status: number, body: Record<string, unknown>) =>
     status,
     headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
   });
+
+/**
+ * The answer to a form the browser posted itself, with no JavaScript in the
+ * way: send them back to the page they came from, at the fragment that reveals
+ * the right sentence. The page carries all three outcomes and CSS `:target`
+ * picks one, so the words stay in the visitor's own language and are written
+ * in exactly one place.
+ */
+const seeOther = (to: string) =>
+  new Response(null, { status: 303, headers: { location: to, 'cache-control': 'no-store' } });
 
 /** Same shape as the analytics visitor hash: hex, and never reversible to an IP. */
 async function hmacHex(key: string, message: string): Promise<string> {
@@ -83,24 +94,18 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   }
   if (isProbablyBot(request.headers.get('user-agent'))) return json(202, { ok: true });
 
+  /*
+   * Two encodings, one handler. `fetch` sends JSON; a browser posting the form
+   * on its own — no JavaScript, or a script that never loaded — sends
+   * urlencoded fields. The second is the one that has to keep working, because
+   * it is the one that needs nothing of the visitor's device.
+   */
   let body: Record<string, unknown>;
-  try { body = await request.json(); } catch { return json(400, { ok: false, error: 'bad_request' }); }
-
-  // 1. The honeypot. The field is in the form, hidden from people and from
-  //    screen readers; anything in it is a bot. Answer 202 so it learns nothing.
-  if (typeof body.website === 'string' && body.website.trim() !== '') return json(202, { ok: true });
-
-  // 2. Nobody reads a form, types an address and submits inside three seconds.
-  const elapsed = Number(body.elapsed_ms);
-  if (Number.isFinite(elapsed) && elapsed >= 0 && elapsed < 3000) return json(202, { ok: true });
-
-  const email = String(body.email ?? '').trim().toLowerCase();
-  if (!EMAIL.test(email) || email.length > 254) {
-    return json(422, { ok: false, error: 'email' });
-  }
-
-  const townRaw = String(body.town ?? '').trim();
-  const town = townRaw ? townRaw.slice(0, 80) : null;
+  try {
+    body = (request.headers.get('content-type') ?? '').includes('application/json')
+      ? await request.json()
+      : Object.fromEntries((await request.formData()).entries());
+  } catch { return json(400, { ok: false, error: 'bad_request' }); }
 
   let path: string | null = null;
   if (typeof body.path === 'string' && body.path.startsWith('/')) {
@@ -108,10 +113,54 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   }
   const locale = (path && localeOf(path)) ?? 'de';
 
+  /*
+   * How to answer. `fetch` asks for JSON and gets it; the browser's own form
+   * post gets sent back to the page. Both say the same three things.
+   */
+  const wantsJson = (request.headers.get('accept') ?? '').includes('application/json');
+  const back = path ?? '/';
+  const done = () => (wantsJson ? json(200, { ok: true }) : seeOther(`${back}#signup-done`));
+  /** Saved nothing on purpose, and says so to nobody: the caller is a bot. */
+  const quiet = () => (wantsJson ? json(202, { ok: true }) : seeOther(`${back}#signup-done`));
+  const failed = (status: number, error: string, hash: string) =>
+    wantsJson ? json(status, { ok: false, error }) : seeOther(`${back}#${hash}`);
+
+  // 1. The honeypot. The field is in the form, hidden from people and from
+  //    screen readers; anything in it is a bot. Answer 202 so it learns nothing.
+  if (typeof body.website === 'string' && body.website.trim() !== '') return quiet();
+
+  /*
+   * 2. Nobody focuses a field, types an address and submits inside one second.
+   *
+   * The number is milliseconds since the visitor first touched the form, NOT
+   * since the page loaded. It used to be since page load, with a three-second
+   * floor, which was invisible only because the form sat 750px down a page —
+   * reaching it took longer than the limit. The moment the form moves up, or
+   * appears on a city page, that floor starts catching real people and
+   * answering them "you're in" while saving nothing. A signup that is thrown
+   * away must never look like a signup that worked.
+   *
+   * Only checked when the browser actually sent a number. A form posted
+   * without JavaScript carries no timing, and an address filled in by a
+   * password manager may involve no keystrokes at all; neither is a bot.
+   */
+  const elapsed = body.elapsed_ms;
+  if (typeof elapsed === 'number' && Number.isFinite(elapsed) && elapsed >= 0 && elapsed < 1000) {
+    return quiet();
+  }
+
+  const email = String(body.email ?? '').trim().toLowerCase();
+  if (!EMAIL.test(email) || email.length > 254) {
+    return failed(422, 'email', 'signup-invalid');
+  }
+
+  const townRaw = String(body.town ?? body.stadt ?? '').trim();
+  const town = townRaw ? townRaw.slice(0, 80) : null;
+
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
     // Nothing is configured, so nothing can be saved. Say so plainly rather
     // than showing a success the visitor did not get.
-    return json(503, { ok: false, error: 'unavailable' });
+    return failed(503, 'unavailable', 'signup-failed');
   }
 
   const ip =
@@ -161,16 +210,20 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * duplicate-key error that the page would show as "something went wrong".
    * created_at and unsubscribe_token are left alone, so old unsubscribe links
    * keep working.
+   *
+   * The row comes back rather than nothing, because the welcome mail below
+   * needs the unsubscribe token and this is the only place it is knowable
+   * without a second query.
    */
   const res = await fetch(
-    `${env.SUPABASE_URL}/rest/v1/newsletter_subscribers?on_conflict=email`,
+    `${env.SUPABASE_URL}/rest/v1/newsletter_subscribers?on_conflict=email&select=unsubscribe_token`,
     {
       method: 'POST',
       headers: {
         apikey: env.SUPABASE_SERVICE_ROLE_KEY,
         Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
         'Content-Type': 'application/json',
-        Prefer: 'resolution=merge-duplicates,return=minimal',
+        Prefer: 'resolution=merge-duplicates,return=representation',
       },
       body: JSON.stringify(row),
     }
@@ -178,10 +231,24 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
 
   if (!res.ok) {
     console.log('newsletter insert rejected', res.status, await res.text());
-    return json(500, { ok: false, error: 'save_failed' });
+    return failed(500, 'save_failed', 'signup-failed');
   }
 
-  waitUntil(ping(env, `Newsletter: ${email}${town ? ` — ${town}` : ''} (${locale})`));
+  const saved = (await res.json().catch(() => [])) as Array<{ unsubscribe_token?: string }>;
+  const token = saved[0]?.unsubscribe_token;
 
-  return json(200, { ok: true });
+  /*
+   * Told, then welcomed — both after the row is safe, and neither awaited.
+   *
+   * The welcome mail is what proves the address works and what carries the
+   * unsubscribe link, which is why it goes out on every signup rather than
+   * waiting for the first digest. A signup with no token back, or with sending
+   * switched off, still succeeds: the address is on the list either way.
+   */
+  waitUntil(ping(env, `Newsletter: ${email}${town ? ` — ${town}` : ''} (${locale})`));
+  if (token) {
+    waitUntil(sendMail(env, { to: email, ...welcomeMail(locale as Locale, token) }));
+  }
+
+  return done();
 };

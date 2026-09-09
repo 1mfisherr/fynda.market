@@ -65,16 +65,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "brocante-17-terra-geneve",
-    "date": "2026-09-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "brocante-de-carouge-geneve",
-    "date": "2026-09-06",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "brocante-de-carouge-geneve",
     "date": "2026-10-04",
     "status": "confirmed"
@@ -135,11 +125,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "cozy-sunday-stellwerk-bern",
-    "date": "2026-09-06",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "fete-livres-disques-ouchy-lausanne",
     "date": "2026-10-04",
     "status": "confirmed"
@@ -157,11 +142,6 @@
   {
     "marketSlug": "floh-raritaetenmarkt-europaplatz-bern",
     "date": "2026-10-24",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "floh-und-antikmarkt-wynecenter-buchs",
-    "date": "2026-09-06",
     "status": "confirmed"
   },
   {
@@ -222,11 +202,6 @@
   {
     "marketSlug": "flohmarkt-adliswil",
     "date": "2026-10-24",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-am-see-wollishofen-zuerich",
-    "date": "2026-09-06",
     "status": "confirmed"
   },
   {
@@ -382,11 +357,6 @@
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-grosse-halle-bern",
-    "date": "2026-09-06",
     "status": "confirmed"
   },
   {
@@ -657,11 +627,6 @@
   {
     "marketSlug": "flohmarkt-ruemlang",
     "date": "2026-09-19",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-rueticenter-pratteln",
-    "date": "2026-09-06",
     "status": "confirmed"
   },
   {
@@ -951,11 +916,6 @@
   },
   {
     "marketSlug": "hallenflohmarkt-markthalle-basel",
-    "date": "2026-09-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "hallenflohmarkt-markthalle-basel",
     "date": "2026-10-03",
     "status": "confirmed"
   },
@@ -1110,13 +1070,13 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "letziplunder-flohmarkt-basel",
-    "date": "2026-09-19",
+    "marketSlug": "les-puces-du-cpo-lausanne",
+    "date": "2027-01-07",
     "status": "confirmed"
   },
   {
-    "marketSlug": "liesberger-flohmarkt",
-    "date": "2026-09-06",
+    "marketSlug": "letziplunder-flohmarkt-basel",
+    "date": "2026-09-19",
     "status": "confirmed"
   },
   {
@@ -1207,11 +1167,6 @@
   {
     "marketSlug": "marche-aux-puces-fribourg-place-python",
     "date": "2026-11-28",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
-    "date": "2026-09-06",
     "status": "confirmed"
   },
   {
@@ -1317,6 +1272,11 @@
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
     "date": "2026-12-30",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+    "date": "2027-01-06",
     "status": "confirmed"
   },
   {
@@ -1426,11 +1386,6 @@
   },
   {
     "marketSlug": "marche-calabash-lausanne",
-    "date": "2026-09-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-calabash-lausanne",
     "date": "2026-10-04",
     "status": "confirmed"
   },
@@ -1442,11 +1397,6 @@
   {
     "marketSlug": "marche-calabash-lausanne",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mardi",
-    "date": "2026-09-08",
     "status": "confirmed"
   },
   {
@@ -1527,6 +1477,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-mardi",
     "date": "2026-12-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-mardi",
+    "date": "2027-01-05",
     "status": "confirmed"
   },
   {
@@ -1612,6 +1567,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-12-30",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-mercredi",
+    "date": "2027-01-06",
     "status": "confirmed"
   },
   {
@@ -1946,22 +1906,12 @@
   },
   {
     "marketSlug": "quartier-flohmarkt-areal-bach",
-    "date": "2026-09-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "quartier-flohmarkt-areal-bach",
     "date": "2026-09-20",
     "status": "confirmed"
   },
   {
     "marketSlug": "quartier-flohmarkt-areal-bach",
     "date": "2026-10-04",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "quartierflohmarkt-gellert",
-    "date": "2026-09-06",
     "status": "confirmed"
   },
   {
@@ -2058,11 +2008,6 @@
     "marketSlug": "slow-fashion-market-lausanne",
     "date": "2026-10-04",
     "status": "tentative"
-  },
-  {
-    "marketSlug": "strandgut-flohmarkt-neubad-luzern",
-    "date": "2026-09-06",
-    "status": "confirmed"
   },
   {
     "marketSlug": "strandgut-flohmarkt-neubad-luzern",

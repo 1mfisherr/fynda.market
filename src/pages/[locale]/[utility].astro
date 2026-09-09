@@ -94,20 +94,44 @@ const savedCopy = saved && {
         <p class="answer">{form.answer}</p>
       </section>
 
-      <div class="prose gutter">
-        {form.prose.map((paragraph) => <p>{paragraph}</p>)}
-        {form.listTitle && <h2>{form.listTitle}</h2>}
-        {form.list && <ul>{form.list.map((item) => <li>{item}</li>)}</ul>}
-        {form.after && <p>{form.after}</p>}
-      </div>
+      {/* The three answers a signup can get, all in the page and all hidden
+          until one of them applies. The script reveals one by class; a form
+          the browser posted itself arrives back at `#signup-done` and CSS
+          `:target` reveals it with no script at all. Either way the words are
+          the page's own language and are written in exactly one place. */}
+      {key === 'newsletter' && (
+        <div class="gutter">
+          <p class="result answer" id="signup-done">{form.success}</p>
+          <p class="result answer" id="signup-invalid">{form.errors?.invalid}</p>
+          <p class="result answer" id="signup-failed">{form.errors?.failed}</p>
+        </div>
+      )}
 
+      {/* Above the prose, not below it. On a phone the first field used to sit
+          750px down, behind ninety words nobody had asked for. The explanation
+          is still here for whoever wants it — underneath, where an explanation
+          belongs. */}
       <form
         class="stack gutter"
         data-mail
+        action={key === 'newsletter' ? '/n' : undefined}
+        method={key === 'newsletter' ? 'post' : undefined}
         data-subject={form.subject}
         data-subscribe={key === 'newsletter' ? '' : undefined}
         data-consent={key === 'newsletter' ? form.note : undefined}
+        data-errors={key === 'newsletter' ? JSON.stringify(form.errors ?? {}) : undefined}
       >
+        {/* What the endpoint needs from a post the browser made on its own:
+            which page it came from, which fixes the language and where to send
+            the visitor back to, and the exact words they agreed to. The script
+            sends the same two in its JSON. */}
+        {key === 'newsletter' && (
+          <>
+            <input type="hidden" name="path" value={Astro.url.pathname} />
+            <input type="hidden" name="consent_text" value={form.note} />
+          </>
+        )}
+
         {form.fields.map((field) => (
           <Field
             label={field.label}
@@ -134,9 +158,12 @@ const savedCopy = saved && {
         <p class="meta">{form.note}</p>
       </form>
 
-      {key === 'newsletter' && (
-        <p class="gutter answer" id="signup-done" hidden data-success={form.success}></p>
-      )}
+      <div class="prose gutter">
+        {form.prose.map((paragraph) => <p>{paragraph}</p>)}
+        {form.listTitle && <h2>{form.listTitle}</h2>}
+        {form.list && <ul>{form.list.map((item) => <li>{item}</li>)}</ul>}
+        {form.after && <p>{form.after}</p>}
+      </div>
     </>
   )}
 
@@ -177,6 +204,13 @@ const savedCopy = saved && {
 <style>
   .find { margin-block-start: var(--space-4); }
 
+  /* The three signup answers. One of them is revealed either by the script or,
+     when there is none, by the fragment the endpoint redirects to — `:target`
+     is what makes the form work with JavaScript switched off. */
+  .result { display: none; }
+  .result.shown,
+  .result:target { display: block; }
+
   /* Off-screen rather than display:none — a bot that skips hidden fields still
      fills this one in, and a person never sees it or tabs to it. Taken out of
      flow, so it needs no size of its own. */
@@ -193,10 +227,10 @@ const savedCopy = saved && {
 
 <script>
   /**
-   * One serialiser for all three forms. There is no backend yet (docs/PLAN.md),
-   * so submitting opens the visitor's own mail client with the answers filled
-   * in, and the page says so. A form that silently discards what someone typed
-   * is worse than no form.
+   * One serialiser for the two forms that still have nowhere to post — report
+   * and organiser. Submitting opens the visitor's own mail client with the
+   * answers filled in, and the page says so. The newsletter posts to `/n` and
+   * only falls back to this when a save has failed twice.
    *
    * It walks the form rather than a hand-written list of field names, so the
    * labels are whatever the page's own language calls them.
@@ -237,54 +271,156 @@ const savedCopy = saved && {
      * unreachable — it falls through to that same mail program, so a broken
      * signup can never be worse than the mailto it replaced.
      */
-    const opened = Date.now();
     const subscribe = form.hasAttribute('data-subscribe');
-    const done = document.getElementById('signup-done');
+    const errors = JSON.parse(form.dataset.errors ?? '{}') as Partial<
+      Record<'empty' | 'invalid' | 'failed' | 'offline', string>
+    >;
+    const emailField = form.elements.namedItem('email') as HTMLInputElement | null;
+    const emailError = document.getElementById('f-email-error');
 
-    async function trySubscribe(): Promise<boolean> {
-      const email = (form!.elements.namedItem('email') as HTMLInputElement | null)?.value.trim();
-      if (!email) return false;
+    /**
+     * Milliseconds from the first touch of the form, not from page load.
+     *
+     * The endpoint uses it to throw away a fill no person could have typed. It
+     * used to be measured from page load against a three-second floor, which
+     * was harmless only because the form sat 750px down: reaching it took
+     * longer than the limit. Now that the form is at the top, that same floor
+     * would start catching real people — and it answers with a success, so
+     * they would be told they were on a list they were never added to.
+     *
+     * Stays zero when nobody ever touched the form — an address filled in by a
+     * password manager can involve no focus and no keystroke — and the
+     * endpoint then skips the check rather than guessing.
+     */
+    let firstTouch = 0;
+    const touched = () => { if (!firstTouch) firstTouch = Date.now(); };
+    form.addEventListener('focusin', touched);
+    form.addEventListener('input', touched);
+
+    /*
+     * Turned off here rather than in the markup, which is the whole point: with
+     * no script the browser's own `required` and `type="email"` checks are the
+     * only ones there are and must keep working. With a script we take over,
+     * because the browser's bubble speaks the browser's language rather than
+     * the page's, vanishes on its own, and tells a screen reader nothing.
+     */
+    if (subscribe) form.noValidate = true;
+
+    /* Loose on purpose. This decides whether to interrupt someone, so it may
+       only reject what is certainly wrong; the endpoint is the real check. */
+    const looksLikeAddress = (value: string) => /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(value);
+
+    function showError(message: string) {
+      if (!emailError || !emailField) return;
+      emailError.textContent = message;
+      emailError.hidden = false;
+      emailField.setAttribute('aria-invalid', 'true');
+      emailField.focus();
+    }
+
+    function clearError() {
+      if (!emailError || !emailField) return;
+      emailError.hidden = true;
+      emailError.textContent = '';
+      emailField.removeAttribute('aria-invalid');
+    }
+
+    /* Checked when they leave the field, never while they are still typing:
+       an address is invalid for as long as it takes to type one, and saying so
+       at the third character is nagging rather than helping. Correcting it
+       clears the message immediately. */
+    if (subscribe && emailField) {
+      emailField.addEventListener('blur', () => {
+        const value = emailField.value.trim();
+        if (value && !looksLikeAddress(value)) {
+          if (emailError) {
+            emailError.textContent = errors.invalid ?? '';
+            emailError.hidden = false;
+          }
+          emailField.setAttribute('aria-invalid', 'true');
+        } else {
+          clearError();
+        }
+      });
+      emailField.addEventListener('input', clearError);
+    }
+
+    type Outcome = 'ok' | 'invalid' | 'failed' | 'offline';
+
+    async function trySubscribe(): Promise<Outcome> {
       const town = (form!.elements.namedItem('stadt') as HTMLInputElement | null)?.value.trim();
       const trap = (form!.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '';
 
-      const res = await fetch('/n', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          town,
-          website: trap,
-          elapsed_ms: Date.now() - opened,
-          path: location.pathname,
-          consent_text: form!.dataset.consent ?? null,
-        }),
-      });
-      return res.ok;
+      let res: Response;
+      try {
+        res = await fetch('/n', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', accept: 'application/json' },
+          body: JSON.stringify({
+            email: emailField?.value.trim() ?? '',
+            town,
+            website: trap,
+            elapsed_ms: firstTouch ? Date.now() - firstTouch : null,
+            path: location.pathname,
+            consent_text: form!.dataset.consent ?? null,
+          }),
+        });
+      } catch {
+        // The request never left the device.
+        return 'offline';
+      }
+
+      if (res.ok) return 'ok';
+      return res.status === 422 ? 'invalid' : 'failed';
     }
+
+    /* Counts only the failures that were ours. A typo is not an attempt. */
+    let failures = 0;
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      if (subscribe && done) {
-        const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-        if (button) button.disabled = true;
-        void trySubscribe()
-          .then((ok) => {
-            if (!ok) throw new Error('not saved');
-            form.hidden = true;
-            done.textContent = done.dataset.success ?? '';
-            done.hidden = false;
-            done.setAttribute('tabindex', '-1');
-            done.focus();
-          })
-          .catch(() => {
-            if (button) button.disabled = false;
-            sendByMail(form as HTMLFormElement);
-          });
+      if (!subscribe) {
+        sendByMail(form as HTMLFormElement);
         return;
       }
 
-      sendByMail(form as HTMLFormElement);
+      const value = emailField?.value.trim() ?? '';
+      if (!value) { showError(errors.empty ?? ''); return; }
+      if (!looksLikeAddress(value)) { showError(errors.invalid ?? ''); return; }
+
+      clearError();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (button) button.disabled = true;
+
+      void trySubscribe().then((outcome) => {
+        if (button) button.disabled = false;
+
+        if (outcome === 'ok') {
+          form.hidden = true;
+          const done = document.getElementById('signup-done');
+          if (done) {
+            done.classList.add('shown');
+            done.setAttribute('tabindex', '-1');
+            done.focus();
+          }
+          return;
+        }
+
+        if (outcome === 'invalid') { showError(errors.invalid ?? ''); return; }
+
+        /*
+         * The mail program is the last resort now, not the first thing that
+         * happens. It used to open the moment anything went wrong, including a
+         * mistyped address — so the one problem the visitor could have fixed
+         * themselves was the one the page never mentioned. It opens only after
+         * a real retry of a failure that was ours.
+         */
+        failures += 1;
+        if (failures >= 2) { sendByMail(form as HTMLFormElement); return; }
+
+        showError(outcome === 'offline' ? errors.offline ?? '' : errors.failed ?? '');
+      });
     });
 
     /* Takes the form rather than closing over it: a function declaration outlives
@@ -296,10 +432,13 @@ const savedCopy = saved && {
       for (const element of Array.from(form.elements)) {
         const control = element as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
         if (!control.name) continue;
+        // The page path and the consent wording are for the endpoint, not for
+        // a person reading the mail this builds.
+        if (control.type === 'hidden') continue;
         const value = String(control.value ?? '').trim();
         if (!value) continue;
         const label = form.querySelector(`label[for="f-${control.name}"] > span`)?.textContent ?? control.name;
-        lines.push(`${label.replace(/ \*$/, '')}: ${value}`);
+        lines.push(`${label}: ${value}`);
         if (control.name === 'markt') subject = `${subject}: ${value}`;
       }
 

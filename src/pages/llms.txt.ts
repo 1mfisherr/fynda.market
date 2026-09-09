@@ -62,7 +62,7 @@ ${cities.map(([slug, name]) => `- [${name}](https://fynda.market/de/schweiz/${sl
 
 ## Contact
 
-Corrections and organiser enquiries: hallo@fynda.market
+Corrections and organiser enquiries: contact@fynda.market
 `;
 
   return new Response(body, {

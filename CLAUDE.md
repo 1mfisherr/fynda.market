@@ -2,7 +2,7 @@
 
 A European flea-market platform. Pilot in Switzerland, then Germany, then wider Europe.
 Repo: `github.com/1mfisherr/fynda.market`. Will live at `fynda.market`.
-The site is built on the imported v1 data in four languages — 859 pages, eight CI guardrails. See `docs/PLAN.md` for where it stands and what is next.
+The site is built on the imported v1 data in four languages — 944 pages, ten CI guardrails, live. See `docs/PLAN.md` for where it stands and what is next.
 
 Rebuild of fleafind.ch, which ranked #1 in Switzerland and then lost ~97% of its traffic to a Google spam update on 2026-08-22.
 
@@ -30,6 +30,7 @@ His German is limited. Anything requiring fluent German (phone calls with organi
 | **Name** | Fynda, at `fynda.market` |
 | **Pilot market** | Switzerland (data exists from v1), then Germany |
 | **Languages** | CH: de, fr, it, en. Every other country: its language + English. Interface strings are written per language. Prose ships in every locale we hold it for — it does not wait on a human read |
+| **Not a German-first site** | Fynda is European, not German. Nothing outside a locale's own copy may be German: e-mail addresses, slugs of shared things, internal names, defaults. Where one language has to stand for all of them, it is **English** — the one language every locale of the site already carries |
 | **Users pay nothing, ever** | Revenue is supply-side: organisers, local business advertising |
 | **Monetization deferred** | Build the hooks, defer the machinery. No AdSense |
 | **Organiser surface from day one** | Even if v1 is just "contact us by email" |

@@ -1,0 +1,85 @@
+name: Friday digest
+
+# The weekly e-mail the site promises.
+#
+# Same machine and same shape as the nightly publish: GitHub's runners, the
+# repo's own script, nothing that needs a laptop to be switched on. There is
+# deliberately no queue and no new infrastructure — Resend takes a hundred
+# addresses per call, which is the orchestration a list this size needs, and
+# scripts/send-digest.mjs writes one row per subscriber per issue before it
+# sends so a failed run can simply be run again.
+#
+# ---------------------------------------------------------------------------
+# THIS SENDS NOTHING UNTIL YOU TURN IT ON.
+#
+# The scheduled run is a dry run: it builds every issue, prints what it would
+# do, and mails nobody. To go live, set the repository variable
+# NEWSLETTER_SENDING to `on` (Settings → Secrets and variables → Actions →
+# Variables). Set it to anything else, or delete it, and the job goes back to
+# reporting without sending.
+#
+# Before flipping it, send yourself one: run this workflow by hand with
+# "only" set to your own address. That sends exactly one real e-mail,
+# regardless of the variable.
+#
+# It also needs RESEND_API_KEY as a repository *secret*. Without it the dry
+# run still works and a real send refuses to start.
+# ---------------------------------------------------------------------------
+
+on:
+  schedule:
+    # 06:00 UTC on Fridays — 08:00 in Swiss summer, 07:00 in winter. The
+    # nightly rebuild at 03:00 has long finished, so the dates this reads are
+    # the same ones the site is showing.
+    - cron: '0 6 * * 5'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Send one real issue to this address only (leave empty for a dry run)'
+        required: false
+        type: string
+
+# One issue at a time. A second run starting while the first is still going
+# would be safe — the database refuses a duplicate — but it would be confusing
+# to read afterwards, which is worse than waiting.
+concurrency:
+  group: digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    name: Build the weekend and send it
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # The digest reads live markets. Without this the script refuses to send
+      # at all, because getMarkets falls back to six sample markets and mailing
+      # invented listings to real people cannot be undone.
+      - name: Build and send
+        env:
+          FYNDA_DATA_SOURCE: supabase
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ONLY: ${{ inputs.only }}
+          SENDING: ${{ vars.NEWSLETTER_SENDING }}
+        run: |
+          if [ -n "$ONLY" ]; then
+            echo "Sending one issue to $ONLY."
+            node scripts/send-digest.mjs --send --only="$ONLY"
+          elif [ "$SENDING" = "on" ]; then
+            node scripts/send-digest.mjs --send
+          else
+            echo "NEWSLETTER_SENDING is not 'on'. Dry run — nobody will be mailed."
+            node scripts/send-digest.mjs
+          fi

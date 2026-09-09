@@ -20,7 +20,7 @@
 
 import type { Locale } from './i18n';
 
-export const CONTACT = 'hallo@fynda.market';
+export const CONTACT = 'contact@fynda.market';
 
 export interface FormField {
   name: string;
@@ -56,6 +56,25 @@ export interface FormPage {
   success?: string;
   /** Newsletter only: shown when saving failed and the mail program opens instead. */
   failure?: string;
+  /**
+   * Newsletter only: what the page says when something goes wrong, under the
+   * field it belongs to.
+   *
+   * These existed nowhere until now. A failed signup opened the visitor's mail
+   * program without a word of explanation, and a mistyped address did the same
+   * — so the one thing the person could act on, their own typo, was the one
+   * thing the page never mentioned.
+   */
+  errors?: {
+    /** Submitted with nothing in the field. */
+    empty: string;
+    /** Submitted with something that is not an address. */
+    invalid: string;
+    /** Saved nowhere: endpoint down, database unreachable, anything at our end. */
+    failed: string;
+    /** The request never left the device. */
+    offline: string;
+  };
 }
 
 export type FormKey = 'report' | 'newsletter' | 'organiser';
@@ -82,7 +101,7 @@ const report: Record<Locale, FormPage> = {
       ] },
       { name: 'markt', label: 'Welcher Markt?', required: true, placeholder: 'z. B. Flohmarkt Zürich Bürkliplatz' },
       { name: 'email', label: 'E-Mail (optional)', type: 'email', hint: 'Falls wir zurückschreiben dürfen.' },
-      { name: 'nachricht', label: 'Nachricht', type: 'textarea', placeholder: 'Was genau haben Sie festgestellt?' },
+      { name: 'nachricht', label: 'Nachricht (optional)', type: 'textarea', placeholder: 'Was genau haben Sie festgestellt?' },
     ],
     submit: 'Meldung senden',
     note: `Absenden öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht an ${CONTACT} — es gibt noch kein automatisches Versandsystem. Sie sehen die Nachricht, bevor sie abgeschickt wird.`,
@@ -105,7 +124,7 @@ const report: Record<Locale, FormPage> = {
       ] },
       { name: 'markt', label: 'Quelle brocante ?', required: true, placeholder: 'p. ex. Brocante de Plainpalais' },
       { name: 'email', label: 'E-mail (facultatif)', type: 'email', hint: 'Si nous pouvons vous répondre.' },
-      { name: 'nachricht', label: 'Message', type: 'textarea', placeholder: "Qu'avez-vous constaté exactement ?" },
+      { name: 'nachricht', label: 'Message (facultatif)', type: 'textarea', placeholder: "Qu'avez-vous constaté exactement ?" },
     ],
     submit: 'Envoyer le signalement',
     note: `Envoyer ouvre votre logiciel de messagerie avec un message prérempli à ${CONTACT} — il n'y a pas encore de système d'envoi automatique. Vous voyez le message avant qu'il ne parte.`,
@@ -128,7 +147,7 @@ const report: Record<Locale, FormPage> = {
       ] },
       { name: 'markt', label: 'Quale mercatino?', required: true, placeholder: 'per es. Mercatino di Lugano' },
       { name: 'email', label: 'E-mail (facoltativo)', type: 'email', hint: 'Se possiamo risponderLe.' },
-      { name: 'nachricht', label: 'Messaggio', type: 'textarea', placeholder: 'Che cosa ha constatato esattamente?' },
+      { name: 'nachricht', label: 'Messaggio (facoltativo)', type: 'textarea', placeholder: 'Che cosa ha constatato esattamente?' },
     ],
     submit: 'Inviare la segnalazione',
     note: `L'invio apre il Suo programma di posta con un messaggio precompilato a ${CONTACT} — non esiste ancora un sistema di invio automatico. Vede il messaggio prima che parta.`,
@@ -151,7 +170,7 @@ const report: Record<Locale, FormPage> = {
       ] },
       { name: 'markt', label: 'Which market?', required: true, placeholder: 'e.g. Flohmarkt Zürich Bürkliplatz' },
       { name: 'email', label: 'Email (optional)', type: 'email', hint: 'If we may write back.' },
-      { name: 'nachricht', label: 'Message', type: 'textarea', placeholder: 'What exactly did you find?' },
+      { name: 'nachricht', label: 'Message (optional)', type: 'textarea', placeholder: 'What exactly did you find?' },
     ],
     submit: 'Send report',
     note: `Sending opens your own mail program with a message already filled in to ${CONTACT} — there is no automatic sending system yet. You see the message before it goes.`,
@@ -166,79 +185,103 @@ const report: Record<Locale, FormPage> = {
 const newsletter: Record<Locale, FormPage> = {
   de: {
     title: 'Newsletter — fynda.market',
-    description: 'Jeden Freitag eine E-Mail: neue Termine und Absagen für Ihre Stadt. Kostenlos, ohne Konto.',
+    description: 'Eine E-Mail pro Woche: neue Termine und Absagen für Ihre Stadt. Kostenlos, ohne Konto.',
     heading: 'Newsletter',
-    answer: 'Jeden Freitag eine E-Mail: was am Wochenende in Ihrer Stadt los ist.',
+    answer: 'Eine E-Mail pro Woche: was am Wochenende in Ihrer Stadt los ist. Wir starten in Kürze.',
     prose: [
-      'Flohmärkte laufen im Wochenrhythmus, also läuft die E-Mail auch so: einmal pro Woche, freitags, nie öfter. Für eine Stadt oder eine Region — neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren.',
-      'Kostenlos, ohne Konto, ohne Werbung. Sie tragen Ihre E-Mail-Adresse ein, sind sofort dabei und können sich mit einem Klick in jeder E-Mail wieder abmelden.',
+      'Flohmärkte laufen im Wochenrhythmus, also läuft die E-Mail auch so: einmal pro Woche, nie öfter. Für eine Stadt oder eine Region — neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren.',
+      'Kostenlos, ohne Konto, ohne Werbung. Der Newsletter ist gerade im Aufbau — tragen Sie sich jetzt ein, und Sie bekommen die erste Ausgabe. Abmelden können Sie sich mit einem Klick in jeder E-Mail.',
     ],
     fields: [
       { name: 'email', label: 'E-Mail-Adresse', type: 'email', required: true, placeholder: 'ihre@email.ch' },
-      { name: 'stadt', label: 'Stadt', hint: 'Leer lassen für die ganze Schweiz.', placeholder: 'z. B. Zürich' },
+      { name: 'stadt', label: 'Stadt (optional)', hint: 'Leer lassen für die ganze Schweiz.', placeholder: 'z. B. Zürich' },
     ],
     submit: 'Anmelden',
     note: 'Kostenlos. Wir schreiben Ihnen nur den Newsletter, den Sie hier bestellen, und geben Ihre Adresse an niemanden weiter. Abmelden können Sie sich jederzeit.',
     subject: 'Newsletter',
-    success: 'Sie sind dabei. Die nächste E-Mail kommt am Freitag.',
+    success: 'Sie stehen auf der Liste. Der Newsletter startet in Kürze — Sie bekommen die erste Ausgabe.',
     failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Nachricht einfach so.',
+    errors: {
+      empty: 'Bitte tragen Sie Ihre E-Mail-Adresse ein, damit wir wissen, wohin.',
+      invalid: 'Das sieht nicht nach einer E-Mail-Adresse aus. Bitte prüfen Sie sie noch einmal.',
+      failed: `Das hat bei uns nicht geklappt. Versuchen Sie es noch einmal, oder schreiben Sie an ${CONTACT} — wir tragen Sie von Hand ein.`,
+      offline: 'Sie scheinen offline zu sein. Versuchen Sie es noch einmal, sobald Sie wieder Verbindung haben.',
+    },
   },
   fr: {
     title: 'Newsletter — fynda.market',
-    description: 'Chaque vendredi un e-mail : nouvelles dates et annulations pour votre commune. Gratuit, sans compte.',
+    description: 'Un e-mail par semaine : nouvelles dates et annulations pour votre commune. Gratuit, sans compte.',
     heading: 'Newsletter',
-    answer: 'Chaque vendredi un e-mail : ce qui se passe ce week-end près de chez vous.',
+    answer: 'Un e-mail par semaine : ce qui se passe ce week-end près de chez vous. Nous démarrons bientôt.',
     prose: [
-      "Les brocantes suivent un rythme hebdomadaire, l'e-mail aussi : une fois par semaine, le vendredi, jamais plus souvent. Pour une commune ou une région — les nouvelles dates et les annulations, pour que vous ne fassiez pas le déplacement pour rien.",
-      "Gratuit, sans compte, sans publicité. Vous saisissez votre adresse e-mail, vous êtes inscrit immédiatement, et vous pouvez vous désinscrire en un clic depuis n'importe quel e-mail.",
+      "Les brocantes suivent un rythme hebdomadaire, l'e-mail aussi : une fois par semaine, jamais plus souvent. Pour une commune ou une région — les nouvelles dates et les annulations, pour que vous ne fassiez pas le déplacement pour rien.",
+      "Gratuit, sans compte, sans publicité. L'e-mail est en cours de préparation — inscrivez-vous maintenant et vous recevrez le premier numéro. Vous pouvez vous désinscrire en un clic depuis n'importe quel e-mail.",
     ],
     fields: [
       { name: 'email', label: 'Adresse e-mail', type: 'email', required: true, placeholder: 'votre@email.ch' },
-      { name: 'stadt', label: 'Commune', hint: 'Laissez vide pour toute la Suisse.', placeholder: 'p. ex. Lausanne' },
+      { name: 'stadt', label: 'Commune (facultatif)', hint: 'Laissez vide pour toute la Suisse.', placeholder: 'p. ex. Lausanne' },
     ],
     submit: "S'inscrire",
     note: "Gratuit. Nous ne vous écrivons que la newsletter demandée ici et ne transmettons votre adresse à personne. Vous pouvez vous désinscrire à tout moment.",
     subject: 'Newsletter',
-    success: "C'est fait. Le prochain e-mail part vendredi.",
+    success: "Vous êtes sur la liste. L'e-mail démarre bientôt — vous recevrez le premier numéro.",
     failure: "Cela n'a pas fonctionné. Nous ouvrons votre logiciel de messagerie — envoyez-nous simplement le message.",
+    errors: {
+      empty: "Indiquez votre adresse e-mail, que nous sachions où l'envoyer.",
+      invalid: "Cela ne ressemble pas à une adresse e-mail. Vérifiez-la et réessayez.",
+      failed: `Cela n'a pas fonctionné chez nous. Réessayez, ou écrivez à ${CONTACT} et nous vous inscrirons à la main.`,
+      offline: "Vous semblez hors ligne. Réessayez dès que vous aurez du réseau.",
+    },
   },
   it: {
     title: 'Newsletter — fynda.market',
-    description: 'Ogni venerdì una e-mail: nuove date e cancellazioni per la Sua città. Gratuito, senza account.',
+    description: 'Una e-mail alla settimana: nuove date e cancellazioni per la Sua città. Gratuito, senza account.',
     heading: 'Newsletter',
-    answer: 'Ogni venerdì una e-mail: cosa succede questo fine settimana nella Sua zona.',
+    answer: 'Una e-mail alla settimana: cosa succede questo fine settimana nella Sua zona. Partiamo a breve.',
     prose: [
-      "I mercatini seguono un ritmo settimanale, e così anche l'e-mail: una volta alla settimana, il venerdì, mai più spesso. Per una città o una regione — le nuove date e le cancellazioni, così non fa il viaggio per niente.",
-      'Gratuito, senza account, senza pubblicità. Inserisce il Suo indirizzo e-mail, è iscritto subito e può disiscriversi con un clic da qualsiasi e-mail.',
+      "I mercatini seguono un ritmo settimanale, e così anche l'e-mail: una volta alla settimana, mai più spesso. Per una città o una regione — le nuove date e le cancellazioni, così non fa il viaggio per niente.",
+      'Gratuito, senza account, senza pubblicità. La newsletter è in preparazione — si iscriva ora e riceverà il primo numero. Può disiscriversi con un clic da qualsiasi e-mail.',
     ],
     fields: [
       { name: 'email', label: 'Indirizzo e-mail', type: 'email', required: true, placeholder: 'sua@email.ch' },
-      { name: 'stadt', label: 'Città', hint: 'Lasci vuoto per tutta la Svizzera.', placeholder: 'per es. Lugano' },
+      { name: 'stadt', label: 'Città (facoltativo)', hint: 'Lasci vuoto per tutta la Svizzera.', placeholder: 'per es. Lugano' },
     ],
     submit: 'Iscriversi',
     note: 'Gratuito. Le scriviamo solo la newsletter che richiede qui e non cediamo il Suo indirizzo a nessuno. Può disiscriversi in qualsiasi momento.',
     subject: 'Newsletter',
-    success: 'È fatta. La prossima e-mail parte venerdì.',
+    success: 'È sulla lista. La newsletter parte a breve — riceverà il primo numero.',
     failure: 'Non ha funzionato. Apriamo il Suo programma di posta — ci mandi semplicemente il messaggio.',
+    errors: {
+      empty: 'Inserisca il Suo indirizzo e-mail, così sappiamo dove scriverLe.',
+      invalid: 'Questo non sembra un indirizzo e-mail. Lo controlli e riprovi.',
+      failed: `Da parte nostra non ha funzionato. Riprovi, oppure scriva a ${CONTACT} e La iscriviamo a mano.`,
+      offline: 'Sembra che Lei sia offline. Riprovi appena torna la connessione.',
+    },
   },
   en: {
     title: 'Newsletter — fynda.market',
-    description: 'One email every Friday: new dates and cancellations for your town. Free, no account.',
+    description: 'One email a week: new dates and cancellations for your town. Free, no account.',
     heading: 'Newsletter',
-    answer: "One email every Friday: what's on this weekend near you.",
+    answer: "One email a week: what's on this weekend near you. Starting shortly.",
     prose: [
-      'Flea markets run on a weekly rhythm, so the email does too: once a week, on a Friday, never more often. For one town or one region — the dates that have been added, and the cancellations, so you do not make the trip for nothing.',
-      'Free, no account, no advertising. You put in your email address, you are on the list straight away, and you can leave in one click from any email.',
+      'Flea markets run on a weekly rhythm, so the email does too: once a week, never more often. For one town or one region — the dates that have been added, and the cancellations, so you do not make the trip for nothing.',
+      'Free, no account, no advertising. The email is being set up now — put your address in and you will get the first one. You can leave in one click from any email.',
     ],
     fields: [
       { name: 'email', label: 'Email address', type: 'email', required: true, placeholder: 'you@email.ch' },
-      { name: 'stadt', label: 'Town', hint: 'Leave empty for the whole of Switzerland.', placeholder: 'e.g. Zürich' },
+      { name: 'stadt', label: 'Town (optional)', hint: 'Leave empty for the whole of Switzerland.', placeholder: 'e.g. Zürich' },
     ],
     submit: 'Sign up',
     note: 'Free. We only send you the newsletter you ask for here, and we never pass your address to anyone. You can unsubscribe at any time.',
     subject: 'Newsletter',
-    success: "You're in. The next email goes out on Friday.",
+    success: "You're on the list. The email starts shortly — you'll get the first one.",
     failure: 'That did not work. We are opening your mail program instead — just send us the message.',
+    errors: {
+      empty: 'Enter your email address so we know where to send it.',
+      invalid: "That doesn't look like an email address. Check it and try again.",
+      failed: `That did not work at our end. Try again, or write to ${CONTACT} and we will add you by hand.`,
+      offline: 'You seem to be offline. Try again when you are back.',
+    },
   },
 };
 
@@ -268,7 +311,7 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'email', label: 'E-Mail-Adresse', type: 'email', required: true },
       { name: 'markt', label: 'Name des Marktes', required: true },
       { name: 'ort', label: 'Ort', required: true },
-      { name: 'nachricht', label: 'Nachricht', type: 'textarea', hint: 'Zum Beispiel: welches Datum wir aktualisieren sollen.' },
+      { name: 'nachricht', label: 'Nachricht (optional)', type: 'textarea', hint: 'Zum Beispiel: welches Datum wir aktualisieren sollen.' },
     ],
     submit: 'Nachricht senden',
     note: 'Auch dieses Formular läuft im Moment per E-Mail an uns — wir melden uns persönlich zurück, meist innert weniger Tage.',
@@ -295,7 +338,7 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'email', label: 'Adresse e-mail', type: 'email', required: true },
       { name: 'markt', label: 'Nom de la brocante', required: true },
       { name: 'ort', label: 'Commune', required: true },
-      { name: 'nachricht', label: 'Message', type: 'textarea', hint: 'Par exemple : quelle date nous devons mettre à jour.' },
+      { name: 'nachricht', label: 'Message (facultatif)', type: 'textarea', hint: 'Par exemple : quelle date nous devons mettre à jour.' },
     ],
     submit: 'Envoyer le message',
     note: "Ce formulaire passe lui aussi pour l'instant par un e-mail qui nous est adressé — nous vous répondons personnellement, en général en quelques jours.",
@@ -322,7 +365,7 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'email', label: 'Indirizzo e-mail', type: 'email', required: true },
       { name: 'markt', label: 'Nome del mercatino', required: true },
       { name: 'ort', label: 'Località', required: true },
-      { name: 'nachricht', label: 'Messaggio', type: 'textarea', hint: 'Per esempio: quale data dobbiamo aggiornare.' },
+      { name: 'nachricht', label: 'Messaggio (facoltativo)', type: 'textarea', hint: 'Per esempio: quale data dobbiamo aggiornare.' },
     ],
     submit: 'Inviare il messaggio',
     note: 'Anche questo modulo passa per ora da una e-mail a noi — Le rispondiamo personalmente, di solito in pochi giorni.',
@@ -349,7 +392,7 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'email', label: 'Email address', type: 'email', required: true },
       { name: 'markt', label: 'Name of the market', required: true },
       { name: 'ort', label: 'Town', required: true },
-      { name: 'nachricht', label: 'Message', type: 'textarea', hint: 'For example: which date we should update.' },
+      { name: 'nachricht', label: 'Message (optional)', type: 'textarea', hint: 'For example: which date we should update.' },
     ],
     submit: 'Send message',
     note: 'This form also runs on an email to us for now — we reply personally, usually within a few days.',

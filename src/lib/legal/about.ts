@@ -34,7 +34,7 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       {
         h: 'Help make it better',
         p: [
-          "Right now it's just me, building this properly, market by market. If you spot something wrong, reach out — it's the fastest way to make Fynda better for the next person. You can also reach me directly at hallo@fynda.market.",
+          "Right now it's just me, building this properly, market by market. If you spot something wrong, reach out — it's the fastest way to make Fynda better for the next person. You can also reach me directly at contact@fynda.market.",
         ],
       },
     ],
@@ -65,7 +65,7 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       {
         h: 'Helfen Sie mit',
         p: [
-          'Im Moment bin das nur ich, Markt für Markt. Wenn Ihnen etwas Falsches auffällt, schreiben Sie mir — das ist der schnellste Weg, Fynda für die nächste Person besser zu machen. Sie erreichen mich direkt unter hallo@fynda.market.',
+          'Im Moment bin das nur ich, Markt für Markt. Wenn Ihnen etwas Falsches auffällt, schreiben Sie mir — das ist der schnellste Weg, Fynda für die nächste Person besser zu machen. Sie erreichen mich direkt unter contact@fynda.market.',
         ],
       },
     ],
@@ -96,7 +96,7 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       {
         h: 'Aidez-nous à faire mieux',
         p: [
-          "Pour l'instant, il n'y a que moi, marché après marché. Si vous repérez une erreur, écrivez-moi — c'est le moyen le plus rapide d'améliorer Fynda pour la personne suivante. Vous pouvez me joindre directement à hallo@fynda.market.",
+          "Pour l'instant, il n'y a que moi, marché après marché. Si vous repérez une erreur, écrivez-moi — c'est le moyen le plus rapide d'améliorer Fynda pour la personne suivante. Vous pouvez me joindre directement à contact@fynda.market.",
         ],
       },
     ],
@@ -127,7 +127,7 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       {
         h: 'Ci aiuti a migliorarlo',
         p: [
-          'Per ora ci sono soltanto io, un mercatino alla volta. Se nota qualcosa di sbagliato, mi scriva — è il modo più veloce per rendere Fynda migliore per la persona successiva. Mi può raggiungere direttamente a hallo@fynda.market.',
+          'Per ora ci sono soltanto io, un mercatino alla volta. Se nota qualcosa di sbagliato, mi scriva — è il modo più veloce per rendere Fynda migliore per la persona successiva. Mi può raggiungere direttamente a contact@fynda.market.',
         ],
       },
     ],

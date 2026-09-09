@@ -3,9 +3,10 @@
  * One labelled control. The shape lives in styles/base.css so a page that needs
  * a plain <input> can wear `.field` without importing anything.
  *
- * Forms on this site do not post anywhere yet — there is no runtime. Pages use
- * these inside a `mailto:` flow or leave them disabled with an honest note. A
- * form that silently discards what someone typed is worse than no form.
+ * The newsletter form posts to `/n` and says so on the page. The report and
+ * organiser forms still open the visitor's own mail client, because there is
+ * nowhere yet to put what they say. A form that silently discards what someone
+ * typed is worse than no form.
  */
 interface Props {
   label: string;
@@ -18,17 +19,33 @@ interface Props {
 }
 const { label, name, type = 'text', hint, required = false, placeholder, options = [] } = Astro.props;
 const id = `f-${name}`;
+
+/**
+ * Every field carries an empty message of its own, hidden until something goes
+ * wrong. It is in the markup rather than created by script so that the control
+ * can point at it from the start: a description that appears only after the
+ * error does is announced late or not at all.
+ *
+ * The hint is described too, where there is one, so a screen reader reads the
+ * instruction and the error rather than only whichever came last.
+ */
+const hintId = hint ? `${id}-hint` : null;
+const errorId = `${id}-error`;
+const describedBy = [hintId, errorId].filter(Boolean).join(' ');
 ---
 <label class="field" for={id}>
-  <span>{label}{required && ' *'}</span>
-  {hint && <span class="hint">{hint}</span>}
-  {type === 'textarea' && <textarea id={id} name={name} required={required} placeholder={placeholder}></textarea>}
+  <span>{label}</span>
+  {hint && <span class="hint" id={hintId}>{hint}</span>}
+  {type === 'textarea' && (
+    <textarea id={id} name={name} required={required} placeholder={placeholder} aria-describedby={describedBy}></textarea>
+  )}
   {type === 'select' && (
-    <select id={id} name={name} required={required}>
+    <select id={id} name={name} required={required} aria-describedby={describedBy}>
       {options.map((option) => <option value={option}>{option}</option>)}
     </select>
   )}
   {(type === 'text' || type === 'email') && (
-    <input id={id} type={type} name={name} required={required} placeholder={placeholder} />
+    <input id={id} type={type} name={name} required={required} placeholder={placeholder} aria-describedby={describedBy} />
   )}
+  <p class="field-error" id={errorId} hidden></p>
 </label>

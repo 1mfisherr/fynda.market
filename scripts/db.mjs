@@ -42,6 +42,15 @@ const env = loadEnv();
 /** The file if there is one, the environment if there is not. */
 const from = (name) => env[name] ?? process.env[name];
 
+/**
+ * Any other secret, read the same way.
+ *
+ * The digest job needs the Resend key and this is already the file that knows
+ * where secrets live on a laptop and on GitHub. A second loader beside it
+ * would be a second set of rules about which wins.
+ */
+export const secret = (name) => from(name);
+
 // Same normalisation the build uses, so a string that works in one place cannot
 // fail in the other. See src/lib/connection-string.ts.
 export const DB_URL = requireConnectionString(from('SUPABASE_DB_URL'), 'SUPABASE_DB_URL');

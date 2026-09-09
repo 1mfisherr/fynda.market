@@ -28,7 +28,7 @@ The most important fact on the page is the only accented thing on the page. Hier
 
 | Token | Value | Use |
 |---|---|---|
-| `--color-accent` | **`#FF4A2B`** Zinnober | Dates, "findet statt", the logo dot, the primary action. Nothing else |
+| `--color-accent` | **`#FF4A2B`** Zinnober | Dates, "findet statt", the logo dot, the primary action, **a form error**. Nothing else |
 | `--color-ink` | `#111110` | All text, headings, primary buttons |
 | `--color-grey` | `#6E6C68` | Secondary text |
 | `--color-quiet` | `#9A968F` | Timestamps, provenance, disabled |
@@ -43,6 +43,8 @@ Flohmarkt `FM` `#FF4A2B` · Halle `HA` `#3D5AFE` · Nacht `NA` `#7C3AED` · Kind
 The earlier rule said "icons only, never as fill or text". That rule could not produce a system, only decoration. The test is unchanged in spirit: **colour must carry information.** The accent still marks dates and status and nothing else; the line colours mark type and nothing else. A cancelled market loses its line colour — the system says "not happening" without a badge.
 
 **Status:** confirmed uses the accent; cancelled greys out with a strikethrough; unverified stays grey and says so. **Never colour alone — always a word beside it.**
+
+A form error is status too, which is why it was added to the accent's list above rather than given a colour of its own. It obeys the same rule: the message is words, the accent border only repeats what the words already say, and neither appears without the other.
 
 ## Type
 
@@ -76,6 +78,20 @@ German first, Swiss market. `Sie` for organisers, `du` for visitors.
 - **Errors and empty states get the same care as headlines** — they are where trust is won.
 
 All German copy needs a native speaker's pass before it ships.
+
+## E-mail
+
+A mail client is not a browser: it throws away stylesheets, ignores web fonts, and a quarter of opens are in a dark mode the client applies itself. So the mails are one 600px column of tables with every colour written inline and a system font stack in place of Schibsted Grotesk.
+
+**Every market carries its photograph, in the mail as on the site.** It is the break from the category and the mail is no place to stop making the argument. **One market is shown large** with its wide photograph — theirs where they have a town, because a picture of somewhere they cannot get to is a worse opening than one of somewhere they can — and the rest are rows with the 148px square at 80px. Never the hero on a row: a dozen 1440px files is two megabytes of image for squares the size of a stamp. The heroes are not one shape (900×500 and 1440×1080 both exist), so the lead's height is left to the picture.
+
+**Eight markets, then the link.** The cap covers the whole mail, not one section of it: their own town has first claim and the rest of the country gets what is left. Whatever is cut is what "see all" is for, and it points at their own town's page when their town is what got cut. The mail is a prompt; the site is the list.
+
+WebP is fine: ~98% of clients render it and Gmail converts it server-side. Gmail and Apple Mail load images by default; classic Outlook for Windows does not, so every row reads without them — `alt` is empty on purpose, because the market's name is the next thing in the markup and a screen reader should not say it twice.
+
+The rules that carry over unchanged: **the accent marks the date**, said once on a day band rather than once per row, which is what keeps it loud; **only the exceptional market kinds carry a type badge** (`BADGED_KINDS`), because an ordinary flea market is the rule; and a cancelled market is struck through, says the word, and loses its type colour. The badge rides on the quiet line with the time and the town, not beside the name — a table cell has no width to push against, and a long name put the badge outside the card.
+
+Dark mode is defined for the clients that honour `prefers-color-scheme` and ignored by the ones that invert on their own — which is why nothing may depend on the `<style>` block surviving. `functions/_mail.ts`.
 
 ## Imagery
 

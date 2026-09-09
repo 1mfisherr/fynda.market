@@ -301,6 +301,20 @@ h1 {
 .field select:focus-visible,
 .field textarea:focus-visible { border-color: var(--color-ink); }
 
+/* What went wrong, under the field it belongs to. The accent marks status —
+   here the status of one answer — and never appears without the words that
+   say what it means, which is the rule in BRAND.md. The border repeats the
+   message rather than replacing it: colour is never the only signal. */
+.field-error {
+  color: var(--color-accent);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-bold);
+}
+
+.field input[aria-invalid='true'],
+.field select[aria-invalid='true'],
+.field textarea[aria-invalid='true'] { border-color: var(--color-accent); }
+
 /* ---- rules ------------------------------------------------------------- */
 
 .divider {
