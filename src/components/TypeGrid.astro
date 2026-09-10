@@ -56,7 +56,12 @@ const s = t(locale);
      200px bars, so they stop at the reading column and the labels get the room
      they were being clipped out of. Keep in step with --breakpoint-wide. */
   @media (min-width: 900px) {
-    .types { max-width: var(--content-max); gap: var(--space-3); }
+    /* Centred, because the cap is the point: five tiles held to 720px inside a
+       1200px wrapper sat against the left edge with 480px of nothing beside
+       them, which reads as a block that failed to load rather than one that
+       chose its width. A row of five equal things is symmetrical anyway — it
+       has no first column to line a heading up with. */
+    .types { max-width: var(--content-max); margin-inline: auto; gap: var(--space-3); }
     .label { font-size: var(--text-micro); }
   }
 </style>
