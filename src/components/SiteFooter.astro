@@ -125,8 +125,15 @@ const legal = [
     font-size: var(--text-micro);
   }
 
-  /* The brand sits beside its links rather than above them; the language
-     switcher and the copyright line still span the foot.
+  /* Two columns: everything about the site on the left, the signup down the
+     right, and the language switcher and copyright spanning the foot.
+
+     Every cell is placed rather than flowed. Left to the grid's own order the
+     signup took the right of the first row and the link columns took the left
+     of the second, so the first row was a 60px wordmark beside a 390px form —
+     a 330px hole — and the second was the links beside nothing at all. The two
+     halves of the footer were empty in opposite corners.
+
      Keep in step with --breakpoint-wide; a media query cannot read a token. */
   @media (min-width: 900px) {
     .site-footer {
@@ -137,6 +144,20 @@ const legal = [
       align-items: start;
     }
     .site-footer > * + * { margin-block-start: 0; }
+
+    .brand  { grid-area: 1 / 1; }
+    .cols   { grid-area: 2 / 1; }
+    .signup { grid-area: 1 / 2 / span 2 / auto; }
     .langs, .base { grid-column: 1 / -1; }
+
+    /* The rule and the space under it separate the signup from what follows it
+       in one stacked column. In two columns nothing follows it, so the rule was
+       a line drawn under the right-hand half of the footer and nothing else. */
+    .signup { padding-block: 0; border-block-end: 0; margin-block-end: 0; }
+
+    /* Hugging their content rather than halving 700px. Two lists of six short
+       links do not need 340px each, and at that width the second column reads
+       as unrelated to the first. */
+    .cols { grid-template-columns: repeat(2, minmax(0, max-content)); column-gap: var(--space-7); }
   }
 </style>
