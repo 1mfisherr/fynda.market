@@ -11,7 +11,9 @@
  * Every link goes through utilityPath, so a locale without its own copy of a
  * page links to the German one rather than to a 404 — see i18n.ts.
  */
+import SubscribeForm from './SubscribeForm.astro';
 import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
+import { regionOptions } from '../lib/regions';
 import { t } from '../lib/strings';
 
 interface Props {
@@ -22,6 +24,18 @@ interface Props {
 const { locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
 const s = t(locale);
 const year = new Date().getFullYear();
+
+/*
+ * The one signup that is on literally every page, legal text included, where a
+ * card would be noise. It carries the picker rather than a canton: the footer
+ * cannot know what the page is about, and the pages that can know already put
+ * the canton into a card of their own further up.
+ *
+ * It also owns the page's `#sub-*` result ids, because it is the only signup
+ * block guaranteed to be present — a visitor with no JavaScript is redirected
+ * here and lands on the answer.
+ */
+const cantons = await regionOptions(locale);
 
 const fynda = [
   { href: utilityPath(locale, 'about'), label: s.footerAbout },
@@ -41,6 +55,10 @@ const legal = [
   <div class="brand gutter">
     <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
     <p class="meta">{s.footerTagline}</p>
+  </div>
+
+  <div class="signup gutter">
+    <SubscribeForm locale={locale} options={cantons} variant="footer" anchors />
   </div>
 
   <div class="cols gutter">
@@ -67,6 +85,12 @@ const legal = [
 </footer>
 
 <style>
+  .signup {
+    padding-block: var(--space-4);
+    border-block-end: var(--border-width) solid var(--color-line);
+    margin-block-end: var(--space-4);
+  }
+
   .site-footer {
     padding-block: var(--space-6) var(--space-7);
     border-block-start: var(--border-width) solid var(--color-line);

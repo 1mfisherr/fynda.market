@@ -10,6 +10,7 @@
 import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
 import CtaCard from '../../../components/CtaCard.astro';
+import SubscribeForm from '../../../components/SubscribeForm.astro';
 import Icon from '../../../components/Icon.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
@@ -410,6 +411,14 @@ const facilityItems = market.facilities ? [
       {!claimed && (
         <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="secondary" /></div>
       )}
+
+      {/* The market page had no newsletter ask at all — only the claim card,
+          which is addressed to an organiser rather than to the visitor. This is
+          the page where somebody has already shown they care about one
+          particular Saturday in one particular canton, so the canton is known
+          and never asked for. On every market page, not only the unclaimed
+          ones: the visitor is the customer either way. */}
+      <div class="gutter"><SubscribeForm locale={locale} region={{ slug: market.regionSlug, label: s.regionLabel(market.region) }} /></div>
 
       <Section level="sub" title={s.wasItDifferent}>
         <p class="gutter meta">{s.reportIntro}</p>

@@ -17,7 +17,7 @@
  * guessed from a market count.
  */
 import Page from '../../../../layouts/Page.astro';
-import CtaCard from '../../../../components/CtaCard.astro';
+import SubscribeForm from '../../../../components/SubscribeForm.astro';
 import DateFilters from '../../../../components/DateFilters.astro';
 import PlaceCloud from '../../../../components/PlaceCloud.astro';
 import MarketRow from '../../../../components/MarketRow.astro';
@@ -147,7 +147,7 @@ const jsonLd = {
 
   <TypeLegend locale={locale} />
 
-  <div class="gutter"><CtaCard locale={locale} kind="newsletter" body={`${s.newsletterBody} ${regionName}.`} /></div>
+  <div class="gutter"><SubscribeForm locale={locale} region={{ slug: region, label: s.regionLabel(regionName) }} /></div>
 </Page>
 
 <script>

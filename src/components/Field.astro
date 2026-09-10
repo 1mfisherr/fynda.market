@@ -17,9 +17,17 @@ interface Props {
   required?: boolean;
   placeholder?: string;
   options?: FormOption[];
+  /** Namespaces the id, for a page carrying more than one of the same field. */
+  idPrefix?: string;
 }
-const { label, name, type = 'text', hint, required = false, placeholder, options = [] } = Astro.props;
-const id = `f-${name}`;
+const {
+  label, name, type = 'text', hint, required = false, placeholder, options = [], idPrefix = 'f',
+} = Astro.props;
+/* `f-email` was fine while only one form was ever on a page. The signup block
+   now sits in the footer of every page and in a card on most of them, so two
+   fields would answer to the same id and both labels would point at the first
+   one. The prefix is what keeps them apart. */
+const id = `${idPrefix}-${name}`;
 
 /**
  * Every field carries an empty message of its own, hidden until something goes

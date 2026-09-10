@@ -428,45 +428,46 @@ export interface DigestLine {
 export interface DigestIssue {
   from: string;
   to: string;
-  town?: string;
+  /** "Kanton Zürich", already in the reader's own language. */
+  region?: string;
   /** Shown large, above the lists. */
   lead?: DigestLine;
   /**
-   * Whether the lead is a market in the reader's own town.
+   * Whether the lead is a market in the reader's own canton.
    *
    * It decides which day band the lead sits under, because a picture of
    * somewhere they cannot get to is a worse opening than one of somewhere they
    * can. src/lib/digest.ts computes it and this copy of the shape was missing
    * it, for the reason at the top of this block.
    */
-  leadInTown: boolean;
+  leadInRegion: boolean;
   own: DigestLine[];
   elsewhere: DigestLine[];
   total: number;
-  more: { href: string; count: number; town?: string };
+  more: { href: string; count: number; region?: string };
 }
 
 interface DigestCopy {
   /** `{dates}` is the weekend, "12. – 13. September". */
   subject: string;
-  subjectTown: string;
+  subjectRegion: string;
   /** The line the inbox shows beside the subject. Numbers, front-loaded. */
-  preheaderTown: string;
+  preheaderRegion: string;
   preheaderNone: string;
   preheaderCountry: string;
   headline: string;
-  headlineTown: string;
+  headlineRegion: string;
   countOne: string;
   countMany: string;
-  /** The section label over their own town's markets. */
-  inTown: string;
+  /** The section label over their own canton's markets. */
+  inRegion: string;
   elsewhere: string;
-  /** Under their town's heading when we hold nothing for it. */
+  /** Under their canton's heading when nothing is on in it. */
   nothingHere: string;
   cancelled: string;
   more: string;
-  /** The same link when what got cut was their own town's markets. */
-  moreTown: string;
+  /** The same link when what got cut was their own canton's markets. */
+  moreRegion: string;
   unsubscribe: string;
   /** Why they are getting this, above the unsubscribe link. */
   why: string;
@@ -475,77 +476,77 @@ interface DigestCopy {
 const DIGEST: Record<Locale, DigestCopy> = {
   de: {
     subject: 'Flohmärkte am Wochenende — {dates}',
-    subjectTown: 'Flohmärkte in {town} — {dates}',
-    preheaderTown: '{own} in {town}, {rest} anderswo in der Schweiz.',
-    preheaderNone: 'Nichts in {town} an diesem Wochenende — aber {rest} anderswo.',
+    subjectRegion: 'Flohmärkte im {region} — {dates}',
+    preheaderRegion: '{own} im {region}, {rest} anderswo in der Schweiz.',
+    preheaderNone: 'Nichts im {region} an diesem Wochenende — aber {rest} anderswo.',
     preheaderCountry: 'Alle Flohmärkte des Wochenendes, mit den Absagen.',
     headline: 'Dieses Wochenende',
-    headlineTown: 'Dieses Wochenende in {town}',
+    headlineRegion: 'Dieses Wochenende im {region}',
     countOne: '{total} Flohmarkt',
     countMany: '{total} Flohmärkte',
-    inTown: 'In {town}',
+    inRegion: 'Im {region}',
     elsewhere: 'Anderswo in der Schweiz',
     nothingHere: 'Hier ist an diesem Wochenende nichts angekündigt.',
     cancelled: 'Abgesagt',
     more: 'Alle {count} Märkte ansehen',
-    moreTown: 'Alle {count} Märkte in {town}',
+    moreRegion: 'Alle {count} Märkte im {region}',
     unsubscribe: 'Abmelden',
     why: 'Sie bekommen diese E-Mail, weil Sie sich auf fynda.market dafür eingetragen haben.',
   },
   fr: {
     subject: 'Brocantes ce week-end — {dates}',
-    subjectTown: 'Brocantes à {town} — {dates}',
-    preheaderTown: '{own} à {town}, {rest} ailleurs en Suisse.',
-    preheaderNone: 'Rien à {town} ce week-end — mais {rest} ailleurs.',
+    subjectRegion: 'Brocantes dans le {region} — {dates}',
+    preheaderRegion: '{own} dans le {region}, {rest} ailleurs en Suisse.',
+    preheaderNone: 'Rien dans le {region} ce week-end — mais {rest} ailleurs.',
     preheaderCountry: 'Toutes les brocantes du week-end, annulations comprises.',
     headline: 'Ce week-end',
-    headlineTown: 'Ce week-end à {town}',
+    headlineRegion: 'Ce week-end dans le {region}',
     countOne: '{total} brocante',
     countMany: '{total} brocantes',
-    inTown: 'À {town}',
+    inRegion: 'Dans le {region}',
     elsewhere: 'Ailleurs en Suisse',
     nothingHere: "Rien n'est annoncé ici ce week-end.",
     cancelled: 'Annulée',
     more: 'Voir les {count} brocantes',
-    moreTown: 'Voir les {count} brocantes à {town}',
+    moreRegion: 'Voir les {count} brocantes dans le {region}',
     unsubscribe: 'Se désinscrire',
     why: 'Vous recevez cet e-mail parce que vous vous êtes inscrit sur fynda.market.',
   },
   it: {
     subject: 'Mercatini questo fine settimana — {dates}',
-    subjectTown: 'Mercatini a {town} — {dates}',
-    preheaderTown: '{own} a {town}, {rest} altrove in Svizzera.',
-    preheaderNone: 'Niente a {town} questo fine settimana — ma {rest} altrove.',
+    subjectRegion: 'Mercatini nel {region} — {dates}',
+    preheaderRegion: '{own} nel {region}, {rest} altrove in Svizzera.',
+    preheaderNone: 'Niente nel {region} questo fine settimana — ma {rest} altrove.',
     preheaderCountry: 'Tutti i mercatini del fine settimana, cancellazioni incluse.',
     headline: 'Questo fine settimana',
-    headlineTown: 'Questo fine settimana a {town}',
+    headlineRegion: 'Questo fine settimana nel {region}',
     countOne: '{total} mercatino',
     countMany: '{total} mercatini',
-    inTown: 'A {town}',
+    inRegion: 'Nel {region}',
     elsewhere: 'Altrove in Svizzera',
     nothingHere: 'Qui non è annunciato nulla per questo fine settimana.',
     cancelled: 'Annullato',
     more: 'Vedere tutti i {count} mercatini',
-    moreTown: 'Vedere tutti i {count} mercatini a {town}',
+    moreRegion: 'Vedere tutti i {count} mercatini nel {region}',
     unsubscribe: 'Cancellati',
     why: 'Riceve questa e-mail perché si è iscritto su fynda.market.',
   },
   en: {
     subject: 'Flea markets this weekend — {dates}',
-    subjectTown: 'Flea markets in {town} — {dates}',
-    preheaderTown: '{own} in {town}, {rest} elsewhere in Switzerland.',
-    preheaderNone: 'Nothing in {town} this weekend — but {rest} elsewhere.',
+    subjectRegion: 'Flea markets in the {region} — {dates}',
+    preheaderRegion: '{own} in the {region}, {rest} elsewhere in Switzerland.',
+    preheaderNone: 'Nothing in the {region} this weekend — but {rest} elsewhere.',
     preheaderCountry: 'Every flea market on this weekend, cancellations included.',
     headline: 'This weekend',
-    headlineTown: 'This weekend in {town}',
+    headlineRegion: 'This weekend in the {region}',
     countOne: '{total} flea market',
     countMany: '{total} flea markets',
-    inTown: 'In {town}',
+    inRegion: 'In the {region}',
     elsewhere: 'Elsewhere in Switzerland',
     nothingHere: 'Nothing is announced here this weekend.',
     cancelled: 'Cancelled',
     more: 'See all {count} markets',
-    moreTown: 'See all {count} markets in {town}',
+    moreRegion: 'See all {count} markets in the {region}',
     unsubscribe: 'Unsubscribe',
     why: 'You are getting this e-mail because you signed up for it on fynda.market.',
   },
@@ -726,36 +727,36 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
   const copy = DIGEST[locale] ?? DIGEST.de;
   const url = unsubscribeUrl(token);
   const dates = range(locale, issue.from, issue.to);
-  const town = issue.town ?? '';
+  const region = issue.region ?? '';
   const rest = issue.elsewhere.length;
 
-  const subject = town ? fill(copy.subjectTown, { town, dates }) : fill(copy.subject, { dates });
-  const headline = town ? fill(copy.headlineTown, { town }) : copy.headline;
+  const subject = region ? fill(copy.subjectRegion, { region, dates }) : fill(copy.subject, { dates });
+  const headline = region ? fill(copy.headlineRegion, { region }) : copy.headline;
   const count = fill(issue.total === 1 ? copy.countOne : copy.countMany, { total: issue.total });
 
-  const preheader = !town
+  const preheader = !region
     ? copy.preheaderCountry
     : issue.own.length === 0
-      ? fill(copy.preheaderNone, { town, rest })
-      : fill(copy.preheaderTown, { own: issue.own.length, town, rest });
+      ? fill(copy.preheaderNone, { region, rest })
+      : fill(copy.preheaderRegion, { own: issue.own.length, region, rest });
 
   /* The lead goes back into whichever list it came out of — the digest says
      which — so the day it falls on is printed once, by the band above it. */
   const leadPath = issue.lead?.path;
-  const ownLines = issue.leadInTown && issue.lead ? [issue.lead, ...issue.own] : issue.own;
-  const elseLines = !issue.leadInTown && issue.lead ? [issue.lead, ...issue.elsewhere] : issue.elsewhere;
+  const ownLines = issue.leadInRegion && issue.lead ? [issue.lead, ...issue.own] : issue.own;
+  const elseLines = !issue.leadInRegion && issue.lead ? [issue.lead, ...issue.elsewhere] : issue.elsewhere;
 
   const nothingRow = `<tr><td class="pad grey rule" style="${PAD}padding-top:12px;padding-bottom:12px;border-top:1px solid ${RULE};font-size:15px;color:${GREY};">${escape(copy.nothingHere)}</td></tr>`;
 
   let ownBlock = '';
   let elsewhereBlock = '';
 
-  if (!town) {
-    // No town, so nothing to divide into sections.
+  if (!region) {
+    // No canton, so nothing to divide into sections.
     elsewhereBlock = daysHtml(locale, elseLines, copy, leadPath);
   } else {
     ownBlock =
-      sectionHtml(fill(copy.inTown, { town })) +
+      sectionHtml(fill(copy.inRegion, { region })) +
       (ownLines.length ? daysHtml(locale, ownLines, copy, leadPath) : nothingRow);
 
     if (elseLines.length) {
@@ -763,8 +764,8 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
     }
   }
 
-  const moreLabel = issue.more.town
-    ? fill(copy.moreTown, { count: issue.more.count, town: issue.more.town })
+  const moreLabel = issue.more.region
+    ? fill(copy.moreRegion, { count: issue.more.count, region: issue.more.region })
     : fill(copy.more, { count: issue.more.count });
 
   const html = `<!doctype html>
@@ -846,10 +847,10 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
     }
   };
 
-  if (!town) {
+  if (!region) {
     textDays(elseLines);
   } else {
-    lines.push(fill(copy.inTown, { town }).toUpperCase(), '');
+    lines.push(fill(copy.inRegion, { region }).toUpperCase(), '');
     if (ownLines.length) textDays(ownLines);
     else lines.push(copy.nothingHere, '');
 

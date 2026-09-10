@@ -8,17 +8,18 @@
  * copy of the rules disagrees with the site within a month, and the e-mail is
  * the half nobody can correct afterwards.
  *
- * One issue for everybody, with the reader's own town lifted to the top. Not a
- * send per town: there are 55 of them and for a long time most will hold no
- * subscribers at all, which produces segments too small to learn anything from
- * and 55 jobs to keep working. The personal part is the ordering, and ordering
- * is free.
+ * One issue for everybody, with the reader's own canton lifted to the top. Not
+ * a send per canton, and not per town: fifty-five towns is fifty-five segments
+ * too small to learn anything from, and most of them empty. Fourteen cantons is
+ * a list worth cutting, and a canton is roughly how far a person drives on a
+ * Saturday. The personal part is the ordering, and ordering is free.
  */
 
 import { weekendBounds } from './date-window.ts';
 import { datedRows, weekendLead, type Dated } from './lists.ts';
-import { marketPath, cityPath, homePath, type Locale } from './i18n.ts';
+import { marketPath, regionPath, homePath, type Locale } from './i18n.ts';
 import { LINES, BADGED_KINDS } from './vocabulary.ts';
+import { t } from './strings.ts';
 import { thumbUrl } from './images.ts';
 import type { Market } from './types';
 
@@ -85,19 +86,25 @@ export interface Digest {
   /** The Saturday and the Sunday this issue is about. */
   from: string;
   to: string;
-  /** The town they asked for, as we hold it. Absent for a countrywide signup. */
-  town?: string;
+  /**
+   * The canton they asked for, as the reader sees it — "Kanton Zürich".
+   *
+   * A string rather than the slug and the label together: the mail is the only
+   * thing that reads it and the mail has no use for a slug. It was a pair for
+   * about ten minutes, long enough to render "Flohmärkte im [object Object]".
+   */
+  region?: string;
   /**
    * The one market shown large, with its wide photograph.
    *
-   * Taken from their own town where there is one, so the picture at the top of
+   * Taken from their own canton where there is one, so the picture at the top of
    * the mail is somewhere they could actually go. A list of identical rows
    * reads as a database; one of them at full size gives the thing a face.
    */
   lead?: DigestRow;
-  /** Whether the lead came out of their own town, which decides where it sits. */
-  leadInTown: boolean;
-  /** The rest of their town, after the lead was taken out of it. */
+  /** Whether the lead came out of their own canton, which decides where it sits. */
+  leadInRegion: boolean;
+  /** The rest of their canton, after the lead was taken out of it. */
   own: DigestRow[];
   /** A sample of the rest of the country, at most one market per town per day. */
   elsewhere: DigestRow[];
@@ -109,26 +116,8 @@ export interface Digest {
    * Their own town's page when we had to cut their town's list — that is the
    * page holding what they are missing. The home page otherwise.
    */
-  more: { href: string; count: number; town?: string };
+  more: { href: string; count: number; region?: string };
 }
-
-/**
- * Town names as typed by a person, reduced to something comparable.
- *
- * The field is free text, so the same place arrives as "Zürich", "Zurich",
- * "zurich " and "ZÜRICH". Folding happens here, where it is one function and
- * testable, rather than being asked of the visitor by a picker — a picker can
- * only offer towns we already have markets in, and someone in a town we do not
- * cover yet is exactly the person worth having on the list.
- */
-export const normaliseTown = (value: string): string =>
-  value
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    // The combining marks NFD just split off, so "Zürich" and "Zurich" meet.
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]+/g, '');
 
 function toRow(row: Dated, locale: Locale): DigestRow {
   const line = LINES[row.kind];
@@ -159,19 +148,19 @@ const byDateThenTime = (a: DigestRow, b: DigestRow) =>
 /**
  * The issue for one subscriber.
  *
- * `town` is whatever they typed, or nothing at all — an empty town means the
- * whole country, which is what the form's hint promises, and it simply leaves
- * `own` empty so the elsewhere block becomes the whole e-mail.
+ * `region` is a canton slug, or nothing at all — nothing means the whole
+ * country, which is what the picker's first option promises, and it simply
+ * leaves `own` empty so the elsewhere block becomes the whole e-mail.
  *
- * A town we hold no markets for behaves the same way, and that is on purpose:
- * an issue that says "nothing in Winterthur this weekend, but here is what is
- * on elsewhere" is worth opening. One that says nothing at all is not.
+ * A canton with nothing on this weekend behaves the same way, and that is on
+ * purpose: an issue that says "nothing in Aargau this weekend, but here is what
+ * is on elsewhere" is worth opening. One that says nothing at all is not.
  */
 export function buildDigest(
   markets: Market[],
-  options: { town?: string | null; locale: Locale; now?: Date; limit?: number }
+  options: { region?: string | null; locale: Locale; now?: Date; limit?: number }
 ): Digest {
-  const { town, locale, now = new Date(), limit = 8 } = options;
+  const { region, locale, now = new Date(), limit = 8 } = options;
   const { start, end } = weekendBounds(now);
 
   /* The same window the home page's weekend block uses, minus anything that
@@ -184,17 +173,18 @@ export function buildDigest(
     (row) => row.next.date >= floor && row.next.date <= end
   );
 
-  const wanted = town ? normaliseTown(town) : '';
-  const isTheirs = (row: Dated) =>
-    wanted !== '' &&
-    (normaliseTown(row.city) === wanted || normaliseTown(row.citySlug) === wanted);
+  /* A slug against a slug. The old version folded accents and case because the
+     town was typed; a canton now arrives as the same string the URL carries, so
+     there is nothing to fold. */
+  const wanted = region?.trim().toLowerCase() ?? '';
+  const isTheirs = (row: Dated) => wanted !== '' && row.regionSlug === wanted;
 
   /*
    * `limit` is the whole mail, not one section of it.
    *
-   * Their own town has first claim on it and the rest of the country gets what
-   * is left — so someone in a busy town sees eight of their own, someone in a
-   * quiet one sees their two and six from elsewhere, and nobody gets a mail
+   * Their own canton has first claim on it and the rest of the country gets
+   * what is left — so someone in a busy canton sees eight of their own, someone
+   * in a quiet one sees their two and six from elsewhere, and nobody gets a mail
    * that scrolls for a minute. Whatever is cut is what the "see all" link is
    * for; the mail is a prompt, the site is the list.
    */
@@ -232,29 +222,29 @@ export function buildDigest(
 
   /* Theirs if they have one, because a photograph of somewhere they cannot
      get to is a worse opening than one of somewhere they can. */
-  const leadInTown = own.length > 0;
+  const leadInRegion = own.length > 0;
   const lead = own.shift() ?? elsewhere.shift();
 
   /*
-   * "See all" points at whatever we cut. When their own town has more than
-   * fitted, that is their town's page; otherwise the weekend as a whole.
+   * "See all" points at whatever we cut. When their own canton holds more than
+   * fitted, that is the canton's page; otherwise the weekend as a whole.
    */
   const cut = theirs.length > ownRows.length;
   const first = theirs[0];
   const more = cut && first
     ? {
-        href: cityPath(locale, first.countrySlug, first.citySlug),
+        href: regionPath(locale, first.countrySlug, first.regionSlug),
         count: theirs.length,
-        town: first.city,
+        region: t(locale).regionLabel(first.region),
       }
     : { href: homePath(locale), count: new Set(weekend.map((row) => row.slug)).size };
 
   return {
     from: start,
     to: end,
-    town: town?.trim() || undefined,
+    region: first ? t(locale).regionLabel(first.region) : undefined,
     lead,
-    leadInTown,
+    leadInRegion,
     own,
     elsewhere,
     total: new Set(weekend.map((row) => row.slug)).size,
@@ -262,6 +252,6 @@ export function buildDigest(
   };
 }
 
-/** Nothing in their town and nothing anywhere else: do not send an empty issue. */
+/** Nothing in their canton and nothing anywhere else: do not send an empty issue. */
 export const isEmpty = (digest: Digest): boolean =>
   !digest.lead && digest.own.length === 0 && digest.elsewhere.length === 0;

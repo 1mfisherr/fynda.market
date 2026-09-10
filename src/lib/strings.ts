@@ -197,6 +197,12 @@ export interface Strings {
   newsletterTitle: string;
   newsletterBody: string;
   newsletterAction: string;
+  /** The signup block's body when the page knows which canton it is about. */
+  subscribeBodyRegion: (label: string) => string;
+  /** The picker's label, where the page cannot know. */
+  subscribeRegionLabel: string;
+  /** The picker's first option: no canton, the whole country. */
+  subscribeAnywhere: string;
   organiserTitle: string;
   /*
      The same ask as the organiser card, addressed to one market instead of to
@@ -358,6 +364,9 @@ const de: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`,
 
+  subscribeBodyRegion: (label) => `Neue Termine und Absagen im ${label}, jeden Freitagmorgen.`,
+  subscribeRegionLabel: 'Kanton',
+  subscribeAnywhere: 'Überall in der Schweiz',
   newsletterTitle: 'Nichts verpassen',
   newsletterBody: 'Neue Termine und Absagen in Ihrer Region.',
   newsletterAction: 'Newsletter abonnieren',
@@ -516,6 +525,9 @@ const en: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'market' : 'markets'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
+  subscribeBodyRegion: (label) => `New dates and cancellations in ${label}, every Friday morning.`,
+  subscribeRegionLabel: 'Canton',
+  subscribeAnywhere: 'Anywhere in Switzerland',
   newsletterTitle: "Don't miss one",
   newsletterBody: 'New dates and cancellations in your area.',
   newsletterAction: 'Subscribe',
@@ -678,6 +690,9 @@ const fr: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
+  subscribeBodyRegion: (label) => `Nouvelles dates et annulations dans le ${label}, chaque vendredi matin.`,
+  subscribeRegionLabel: 'Canton',
+  subscribeAnywhere: 'Partout en Suisse',
   newsletterTitle: 'Ne manquez rien',
   newsletterBody: 'Nouvelles dates et annulations dans votre région.',
   newsletterAction: "S'abonner à la newsletter",
@@ -836,6 +851,9 @@ const it: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'data' : 'date'}`,
 
+  subscribeBodyRegion: (label) => `Nuove date e cancellazioni nel ${label}, ogni venerdì mattina.`,
+  subscribeRegionLabel: 'Cantone',
+  subscribeAnywhere: 'Ovunque in Svizzera',
   newsletterTitle: 'Non perda nessuna data',
   newsletterBody: 'Nuove date e cancellazioni nella Sua regione.',
   newsletterAction: 'Iscriversi alla newsletter',

@@ -8,7 +8,7 @@
  * taken back — a mail that says a market is on when it was cancelled is a
  * wasted Saturday for whoever believed it.
  *
- * So: the date window, the town match, the size of the thing, and the
+ * So: the date window, the canton match, the size of the thing, and the
  * cancellations the copy promises. Not a coverage target.
  *
  *   npm test
@@ -17,7 +17,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildDigest, isEmpty, normaliseTown, type Digest, type DigestRow } from './digest.ts';
+import { buildDigest, isEmpty, type Digest, type DigestRow } from './digest.ts';
 import { weekendBounds, iso } from './date-window.ts';
 import type { Market, Occurrence } from './types.ts';
 
@@ -34,20 +34,22 @@ const monday = (() => {
 
 /*
  * The lead is lifted out of whichever list it came from, so a test that wants
- * "everything shown for their town" has to put it back. These two say what the
- * mail renders under each heading.
+ * "everything shown for their canton" has to put it back. These two say what
+ * the mail renders under each heading.
  */
-const inTown = (d: Digest): DigestRow[] => (d.leadInTown && d.lead ? [d.lead, ...d.own] : d.own);
-const away = (d: Digest): DigestRow[] => (!d.leadInTown && d.lead ? [d.lead, ...d.elsewhere] : d.elsewhere);
-const shown = (d: Digest): DigestRow[] => [...inTown(d), ...away(d)];
+const inRegion = (d: Digest): DigestRow[] => (d.leadInRegion && d.lead ? [d.lead, ...d.own] : d.own);
+const away = (d: Digest): DigestRow[] => (!d.leadInRegion && d.lead ? [d.lead, ...d.elsewhere] : d.elsewhere);
+const shown = (d: Digest): DigestRow[] => [...inRegion(d), ...away(d)];
 
-function market(
-  name: string,
-  city: string,
-  date: string,
-  extra: Partial<Occurrence> = {},
-  kind: Market['kind'] = 'flohmarkt'
-): Market {
+interface Options {
+  extra?: Partial<Occurrence>;
+  kind?: Market['kind'];
+  /** The canton slug. What a subscription is now for. */
+  region?: string;
+}
+
+function market(name: string, city: string, date: string, options: Options = {}): Market {
+  const { extra = {}, kind = 'flohmarkt', region = 'zurich' } = options;
   const slug = `${name}-${date}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   return {
     id: slug,
@@ -56,8 +58,8 @@ function market(
     kind,
     city,
     citySlug: city.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''),
-    region: 'Zürich',
-    regionSlug: 'zurich',
+    region: region.charAt(0).toUpperCase() + region.slice(1),
+    regionSlug: region,
     countrySlug: 'schweiz',
     timezone: 'Europe/Zurich',
     venueName: 'Platz',
@@ -72,61 +74,67 @@ function market(
 
 /* -------------------------------------------------------------------------- */
 
-test('normaliseTown folds case, accents and punctuation', () => {
-  assert.equal(normaliseTown('Zürich'), 'zurich');
-  assert.equal(normaliseTown('  ZURICH '), 'zurich');
-  assert.equal(normaliseTown('Zurich'), 'zurich');
-  assert.equal(normaliseTown('Genève'), 'geneve');
-  assert.equal(normaliseTown('La Chaux-de-Fonds'), 'lachauxdefonds');
-  // Different places must not collide just because they fold.
-  assert.notEqual(normaliseTown('Baden'), normaliseTown('Basel'));
-});
-
-test('their town comes back separately, however they spelled it', () => {
+test('a canton is matched on its slug, with nothing to fold', () => {
   const markets = [
     market('Bürkliplatz', 'Zürich', saturday),
-    market('Kanzlei', 'Zürich', sunday),
-    market('Plainpalais', 'Genève', saturday),
+    market('Winterthur Altstadt', 'Winterthur', sunday),
+    market('Plainpalais', 'Genève', saturday, { region: 'geneve' }),
   ];
 
-  for (const spelling of ['Zürich', 'zurich', ' ZÜRICH ']) {
-    const digest = buildDigest(markets, { town: spelling, locale: 'de', now });
-    assert.deepEqual(inTown(digest).map((r) => r.name), ['Bürkliplatz', 'Kanzlei'], spelling);
-    assert.deepEqual(away(digest).map((r) => r.name), ['Plainpalais'], spelling);
-  }
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  /* Winterthur is not Zürich the city, but it is Zürich the canton — which is
+     the whole reason the subscription is by canton. */
+  assert.deepEqual(inRegion(digest).map((r) => r.name), ['Bürkliplatz', 'Winterthur Altstadt']);
+  assert.deepEqual(away(digest).map((r) => r.name), ['Plainpalais']);
+});
+
+test('a made-up canton is simply not a canton', () => {
+  const markets = [market('Bürkliplatz', 'Zürich', saturday)];
+  /* The typed town "Ua" is what this replaces. An unknown slug cannot reach the
+     row at all now, and if one ever did it would read as the whole country. */
+  const digest = buildDigest(markets, { region: 'ua', locale: 'de', now });
+  assert.deepEqual(inRegion(digest), []);
+  assert.equal(away(digest).length, 1);
 });
 
 test('a market never appears twice', () => {
-  const markets = [market('Bürkliplatz', 'Zürich', saturday), market('Plainpalais', 'Genève', saturday)];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
+  const markets = [
+    market('Bürkliplatz', 'Zürich', saturday),
+    market('Plainpalais', 'Genève', saturday, { region: 'geneve' }),
+  ];
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
   const paths = shown(digest).map((r) => r.path);
   assert.equal(new Set(paths).size, paths.length);
 });
 
-test('no town means the whole country, and nothing is lost', () => {
-  const markets = [market('Bürkliplatz', 'Zürich', saturday), market('Plainpalais', 'Genève', saturday)];
-  const digest = buildDigest(markets, { town: null, locale: 'de', now });
+test('no canton means the whole country, and nothing is lost', () => {
+  const markets = [
+    market('Bürkliplatz', 'Zürich', saturday),
+    market('Plainpalais', 'Genève', saturday, { region: 'geneve' }),
+  ];
+  const digest = buildDigest(markets, { region: null, locale: 'de', now });
   assert.deepEqual(digest.own, []);
-  assert.equal(digest.leadInTown, false);
+  assert.equal(digest.leadInRegion, false);
   assert.equal(away(digest).length, 2);
   assert.equal(digest.total, 2);
 });
 
-test('a town we hold nothing for still gets an issue', () => {
-  const markets = [market('Bürkliplatz', 'Zürich', saturday)];
-  const digest = buildDigest(markets, { town: 'Winterthur', locale: 'de', now });
-  assert.deepEqual(inTown(digest), []);
+test('a canton with nothing on still gets an issue', () => {
+  const markets = [market('Plainpalais', 'Genève', saturday, { region: 'geneve' })];
+  const digest = buildDigest(markets, { region: 'aargau', locale: 'de', now });
+  assert.deepEqual(inRegion(digest), []);
   assert.equal(away(digest).length, 1);
-  assert.equal(digest.town, 'Winterthur');
   assert.equal(isEmpty(digest), false);
 });
 
 test('cancellations are carried, because the copy promises them', () => {
   const markets = [
-    market('Abgesagt', 'Zürich', saturday, { status: 'cancelled', cancellationNote: 'Wegen Regen' }),
+    market('Abgesagt', 'Zürich', saturday, {
+      extra: { status: 'cancelled', cancellationNote: 'Wegen Regen' },
+    }),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  const [row] = inTown(digest);
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  const [row] = inRegion(digest);
   assert.equal(row.cancelled, true);
   assert.equal(row.cancellationNote, 'Wegen Regen');
 });
@@ -137,81 +145,87 @@ test('the window is the weekend and nothing either side of it', () => {
     market('Sonntag', 'Zürich', sunday),
     market('Montag', 'Zürich', monday),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  assert.deepEqual(inTown(digest).map((r) => r.name).sort(), ['Samstag', 'Sonntag']);
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  assert.deepEqual(inRegion(digest).map((r) => r.name).sort(), ['Samstag', 'Sonntag']);
 });
 
 test('the mail is capped, and the cap covers the whole of it', () => {
-  /* Twelve in their town and four elsewhere. A mail that showed everything
-     would scroll for a minute; what is cut is what the "see all" link is for. */
   const markets = [
-    ...Array.from({ length: 12 }, (_, i) => market(`Zueri${i}`, 'Zürich', saturday)),
-    ...['Basel', 'Bern', 'Chur', 'Sion'].map((town) => market(`Weit-${town}`, town, saturday)),
+    ...Array.from({ length: 12 }, (_, i) => market(`Zueri${i}`, `Ort${i}`, saturday)),
+    ...['Basel', 'Bern', 'Chur', 'Sion'].map((town) =>
+      market(`Weit-${town}`, town, saturday, { region: town.toLowerCase() })
+    ),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
 
   assert.equal(shown(digest).length, 8);
-  // Their own town has first claim on the budget.
-  assert.equal(inTown(digest).length, 8);
+  // Their own canton has first claim on the budget.
+  assert.equal(inRegion(digest).length, 8);
   assert.equal(away(digest).length, 0);
-  // And the count is still the truth about the weekend.
   assert.equal(digest.total, 16);
 });
 
-test('a quiet town leaves the rest of the budget to everywhere else', () => {
+test('a quiet canton leaves the rest of the budget to everywhere else', () => {
   const markets = [
-    market('Einer', 'Winterthur', saturday),
-    ...['Basel', 'Bern', 'Chur', 'Sion', 'Thun', 'Aarau', 'Baden', 'Zug', 'Lugano'].map((town) =>
-      market(`Weit-${town}`, town, saturday)
+    market('Einer', 'Aarau', saturday, { region: 'aargau' }),
+    ...['Basel', 'Bern', 'Chur', 'Sion', 'Thun', 'Zug', 'Lugano', 'Genf'].map((town) =>
+      market(`Weit-${town}`, town, saturday, { region: town.toLowerCase() })
     ),
   ];
-  const digest = buildDigest(markets, { town: 'Winterthur', locale: 'de', now });
-  assert.equal(inTown(digest).length, 1);
+  const digest = buildDigest(markets, { region: 'aargau', locale: 'de', now });
+  assert.equal(inRegion(digest).length, 1);
   assert.equal(away(digest).length, 7);
   assert.equal(shown(digest).length, 8);
 });
 
-test('"see all" points at their town when their town is what got cut', () => {
-  const markets = Array.from({ length: 12 }, (_, i) => market(`Zueri${i}`, 'Zürich', saturday));
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
+test('"see all" points at their canton when their canton is what got cut', () => {
+  const markets = Array.from({ length: 12 }, (_, i) => market(`Zueri${i}`, `Ort${i}`, saturday));
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
   assert.equal(digest.more.count, 12);
-  assert.equal(digest.more.town, 'Zürich');
+  // The label a reader sees, not the bare name: "Kanton Zurich".
+  assert.equal(digest.more.region, 'Kanton Zurich');
   assert.ok(digest.more.href.includes('zurich'), digest.more.href);
 });
 
 test('"see all" points at the weekend when nothing of theirs was cut', () => {
-  const markets = [market('Einer', 'Zürich', saturday), market('Weit', 'Basel', saturday)];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  assert.equal(digest.more.town, undefined);
+  const markets = [
+    market('Einer', 'Zürich', saturday),
+    market('Weit', 'Basel', saturday, { region: 'basel' }),
+  ];
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  assert.equal(digest.more.region, undefined);
   assert.equal(digest.more.count, 2);
   assert.equal(digest.more.href, '/de/');
 });
 
-test('the lead comes from their own town when they have one', () => {
-  const markets = [market('Zueri', 'Zürich', saturday), market('Weit', 'Basel', saturday)];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  assert.equal(digest.leadInTown, true);
+test('the lead comes from their own canton when they have one', () => {
+  const markets = [
+    market('Zueri', 'Zürich', saturday),
+    market('Weit', 'Basel', saturday, { region: 'basel' }),
+  ];
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  assert.equal(digest.leadInRegion, true);
   assert.equal(digest.lead?.name, 'Zueri');
   // The wide photograph, which only the lead is shown at.
   assert.ok(digest.lead?.hero?.endsWith('.webp'));
   assert.ok(!digest.lead?.hero?.includes('-thumb'));
 });
 
-test('with nothing in their town the lead comes from elsewhere', () => {
-  const markets = [market('Weit', 'Basel', saturday)];
-  const digest = buildDigest(markets, { town: 'Winterthur', locale: 'de', now });
-  assert.equal(digest.leadInTown, false);
+test('with nothing in their canton the lead comes from elsewhere', () => {
+  const markets = [market('Weit', 'Basel', saturday, { region: 'basel' })];
+  const digest = buildDigest(markets, { region: 'aargau', locale: 'de', now });
+  assert.equal(digest.leadInRegion, false);
   assert.equal(digest.lead?.name, 'Weit');
 });
 
 test('elsewhere shows at most one market per town per day', () => {
   const markets = [
-    market('Eins', 'Basel', saturday),
-    market('Zwei', 'Basel', saturday),
-    market('Drei', 'Basel', sunday),
-    market('Vier', 'Bern', saturday),
+    market('Eins', 'Basel', saturday, { region: 'basel' }),
+    market('Zwei', 'Basel', saturday, { region: 'basel' }),
+    market('Drei', 'Basel', sunday, { region: 'basel' }),
+    market('Vier', 'Bern', saturday, { region: 'bern' }),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
   const seen = away(digest).map((r) => `${r.town}|${r.date}`);
   assert.equal(new Set(seen).size, seen.length);
   // Basel twice is fine — a Saturday market and a Sunday one are different days out.
@@ -220,16 +234,16 @@ test('elsewhere shows at most one market per town per day', () => {
 });
 
 test('both days of the weekend get a share of the budget', () => {
-  /* Six Saturday markets in towns that all out-rank the Sunday one. Ranked
-     over the whole weekend at once, a budget of two returns two Saturdays and
-     the Sunday market is never seen. */
+  /* Six Saturday markets in towns that all out-rank the Sunday one. Ranked over
+     the whole weekend at once, a budget of two returns two Saturdays and the
+     Sunday market is never seen. */
   const markets = [
     ...['Basel', 'Bern', 'Luzern', 'Chur', 'Sion', 'Thun'].map((town, i) =>
-      market(`Sam${i}`, town, saturday)
+      market(`Sam${i}`, town, saturday, { region: town.toLowerCase() })
     ),
-    market('Sonntagsmarkt', 'Aarau', sunday),
+    market('Sonntagsmarkt', 'Aarau', sunday, { region: 'aargau' }),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now, limit: 2 });
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now, limit: 2 });
   assert.equal(away(digest).length, 2);
   assert.deepEqual(
     [...new Set(away(digest).map((r) => r.date))].sort(),
@@ -238,53 +252,56 @@ test('both days of the weekend get a share of the budget', () => {
 });
 
 test('an empty weekend is an empty issue, and is not sent', () => {
-  const digest = buildDigest([], { town: 'Zürich', locale: 'de', now });
+  const digest = buildDigest([], { region: 'zurich', locale: 'de', now });
   assert.equal(isEmpty(digest), true);
 });
 
 test('rows are in date order, earliest first', () => {
   const markets = [market('Sonntag', 'Zürich', sunday), market('Samstag', 'Zürich', saturday)];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  assert.deepEqual(inTown(digest).map((r) => r.date), [saturday, sunday].sort());
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  assert.deepEqual(inRegion(digest).map((r) => r.date), [saturday, sunday].sort());
 });
 
 test('the path is in the subscriber own language', () => {
   const markets = [market('Bürkliplatz', 'Zürich', saturday)];
-  const de = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  const fr = buildDigest(markets, { town: 'Zürich', locale: 'fr', now });
-  assert.ok(inTown(de)[0].path.startsWith('/de/'));
-  assert.ok(inTown(fr)[0].path.startsWith('/fr/'));
-  assert.notEqual(inTown(de)[0].path, inTown(fr)[0].path);
+  const de = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  const fr = buildDigest(markets, { region: 'zurich', locale: 'fr', now });
+  assert.ok(inRegion(de)[0].path.startsWith('/de/'));
+  assert.ok(inRegion(fr)[0].path.startsWith('/fr/'));
+  assert.notEqual(inRegion(de)[0].path, inRegion(fr)[0].path);
 });
 
 test('only the exceptional market kinds get a badge', () => {
   const markets = [
     market('Gewoehnlich', 'Zürich', saturday),
-    market('In der Halle', 'Zürich', saturday, {}, 'hallenflohmarkt'),
-    market('Fuer Kinder', 'Zürich', saturday, {}, 'kinderflohmarkt'),
-    market('Antik', 'Zürich', saturday, {}, 'antikmarkt'),
+    market('In der Halle', 'Zürich', saturday, { kind: 'hallenflohmarkt' }),
+    market('Fuer Kinder', 'Zürich', saturday, { kind: 'kinderflohmarkt' }),
+    market('Antik', 'Zürich', saturday, { kind: 'antikmarkt' }),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  const badges = Object.fromEntries(inTown(digest).map((r) => [r.name, r.badge?.label]));
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  const badges = Object.fromEntries(inRegion(digest).map((r) => [r.name, r.badge?.label]));
 
-  // Say the exception, never the rule: an ordinary flea market is the rule,
-  // and so is an antiques market, which is not in BADGED_KINDS.
+  // Say the exception, never the rule: an ordinary flea market is the rule, and
+  // so is an antiques market, which is not in BADGED_KINDS.
   assert.equal(badges['Gewoehnlich'], undefined);
   assert.equal(badges['Antik'], undefined);
   assert.equal(badges['In der Halle'], 'Halle');
   assert.equal(badges['Fuer Kinder'], 'Kinder');
 
   // And the colour is the site's own line colour for that kind.
-  const halle = inTown(digest).find((r) => r.name === 'In der Halle');
+  const halle = inRegion(digest).find((r) => r.name === 'In der Halle');
   assert.equal(halle?.badge?.colour, '#3D5AFE');
 });
 
 test('a cancelled market loses its type colour', () => {
   const markets = [
-    market('Abgesagt', 'Zürich', saturday, { status: 'cancelled' }, 'nachtflohmarkt'),
+    market('Abgesagt', 'Zürich', saturday, {
+      extra: { status: 'cancelled' },
+      kind: 'nachtflohmarkt',
+    }),
   ];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  const [row] = inTown(digest);
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  const [row] = inRegion(digest);
   assert.equal(row.cancelled, true);
   // The strikethrough and the word say it. A badge as well would be noise.
   assert.equal(row.badge, undefined);
@@ -292,9 +309,9 @@ test('a cancelled market loses its type colour', () => {
 
 test('a row carries the square photograph, never the hero', () => {
   const markets = [market('Erster', 'Zürich', saturday), market('Zweiter', 'Zürich', saturday)];
-  const digest = buildDigest(markets, { town: 'Zürich', locale: 'de', now });
-  // The second one is a row rather than the lead: 148px square, not the
-  // 1440px hero. A dozen heroes is two megabytes for squares the size of a stamp.
+  const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  // The second one is a row rather than the lead: 148px square, not the 1440px
+  // hero. A dozen heroes is two megabytes for squares the size of a stamp.
   const row = digest.own[0];
   assert.ok(row.image?.endsWith('-thumb.webp'), String(row.image));
 });
@@ -302,8 +319,8 @@ test('a row carries the square photograph, never the hero', () => {
 test('a market with no photograph simply has none', () => {
   const plain = market('Ohne Bild', 'Zürich', saturday);
   delete (plain as { imageUrl?: string }).imageUrl;
-  const digest = buildDigest([plain], { town: 'Zürich', locale: 'de', now });
-  const [row] = inTown(digest);
+  const digest = buildDigest([plain], { region: 'zurich', locale: 'de', now });
+  const [row] = inRegion(digest);
   assert.equal(row.image, undefined);
   assert.equal(row.hero, undefined);
 });

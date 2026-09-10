@@ -20,6 +20,8 @@ import Button from '../../components/Button.astro';
 import Field from '../../components/Field.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import Section from '../../components/Section.astro';
+import SubscribeForm from '../../components/SubscribeForm.astro';
+import { regionOptions } from '../../lib/regions';
 import { getMarkets } from '../../lib/markets';
 import { byMarket, datedRows, type Dated } from '../../lib/lists';
 import { FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
@@ -77,6 +79,10 @@ const ENDPOINT: Record<FormKey, string> = {
   organiser: '/o',
 };
 
+/* The newsletter page is the one signup a person arrives at on purpose, and
+   it is the one page with no canton of its own — so it draws the picker. */
+const cantons = key === 'newsletter' ? await regionOptions(locale) : [];
+
 const legal = LEGAL_KEYS.includes(key as LegalKey) ? LEGAL[key as LegalKey][locale] : null;
 const form = legal || key === 'saved' ? null : FORMS[key as FormKey][locale];
 const saved = key === 'saved' ? SAVED[locale] : null;
@@ -124,10 +130,19 @@ const savedCopy = saved && {
         <p class="result answer" id="form-failed">{form.errors?.failed}</p>
       </div>
 
+      {/* The newsletter page uses the same block as every other page, rather
+          than a form of its own. There was no reason for two: this one just
+          happens to be the page somebody arrives at on purpose, so it is the
+          one that draws the canton picker instead of carrying a canton. */}
+      {key === 'newsletter' && (
+        <div class="gutter"><SubscribeForm locale={locale} options={cantons} /></div>
+      )}
+
       {/* Above the prose, not below it. On a phone the first field used to sit
           750px down, behind ninety words nobody had asked for. The explanation
           is still here for whoever wants it — underneath, where an explanation
           belongs. */}
+      {key !== 'newsletter' && (
       <form
         class="stack gutter"
         data-mail
@@ -135,8 +150,6 @@ const savedCopy = saved && {
         method="post"
         data-subject={form.subject}
         data-endpoint={ENDPOINT[key as FormKey]}
-        data-subscribe={key === 'newsletter' ? '' : undefined}
-        data-consent={key === 'newsletter' ? form.note : undefined}
         data-errors={JSON.stringify(form.errors ?? {})}
       >
         {/* What the endpoint needs from a post the browser made on its own:
@@ -149,10 +162,7 @@ const savedCopy = saved && {
             it in. The script fills it; a visitor with no script posts without
             it and the row is saved with the market they typed instead. */}
         <input type="hidden" name="path" value={Astro.url.pathname} />
-        {key === 'newsletter' && (
-          <input type="hidden" name="consent_text" value={form.note} />
-        )}
-        {key !== 'newsletter' && <input type="hidden" name="mid" value="" />}
+        <input type="hidden" name="mid" value="" />
 
         {form.fields.map((field) => (
           <Field
@@ -178,6 +188,7 @@ const savedCopy = saved && {
         <Button type="submit" variant="primary" block>{form.submit}</Button>
         <p class="meta">{form.note}</p>
       </form>
+      )}
 
       <div class="prose gutter">
         {form.prose.map((paragraph) => <p>{paragraph}</p>)}

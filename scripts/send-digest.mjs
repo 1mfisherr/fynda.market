@@ -2,7 +2,7 @@
 /**
  * The Friday digest.
  *
- * One issue per subscriber: the coming weekend, their own town first, the rest
+ * One issue per subscriber: the coming weekend, their own canton first, the rest
  * of the country under it. Built from the same query layer and the same
  * weekend arithmetic as the pages (src/lib/digest.ts), so the e-mail and the
  * site cannot start disagreeing about what is on.
@@ -80,10 +80,15 @@ if (send && !RESEND_API_KEY) {
  * never selected — that is the suppression record the privacy policy promises.
  */
 const subscribers = await query(
-  `select s.id, s.email, s.town, s.locale, s.unsubscribe_token
+  `select s.id, s.email, s.locale, s.unsubscribe_token, sl.slug as region
      from newsletter_subscribers s
      left join newsletter_sends x
        on x.subscriber_id = s.id and x.issue_date = $1
+     -- The canton as the slug the site puts in its own URLs. One slug serves
+     -- every locale (docs/ARCHITECTURE.md), so the join is on the subscriber's
+     -- own language purely to pick one row.
+     left join slugs sl
+       on sl.entity_type = 'region' and sl.entity_id = s.region_id and sl.locale = s.locale
     where s.unsubscribed_at is null
       and x.subscriber_id is null
       ${only ? 'and lower(s.email) = $2' : ''}
@@ -115,7 +120,7 @@ let empty = 0;
 
 for (const subscriber of wanted) {
   const digest = buildDigest(marketsByLocale[subscriber.locale], {
-    town: subscriber.town,
+    region: subscriber.region,
     locale: subscriber.locale,
     now,
   });

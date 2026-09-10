@@ -43,29 +43,67 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    */
   const wantsJson = (request.headers.get('accept') ?? '').includes('application/json');
   const back = path ?? '/';
-  const done = () => (wantsJson ? json(200, { ok: true }) : seeOther(`${back}#form-done`));
+
+  /*
+   * Which set of result messages to land on. The utility pages own `#form-*`;
+   * the signup block that sits on every other page owns `#sub-*`. Without this
+   * the two would need one set of ids between them, and a page carrying both
+   * would have them twice.
+   */
+  const prefix = /^[a-z]{1,10}$/.test(String(body.anchor ?? '')) ? String(body.anchor) : 'form';
+  const done = () => (wantsJson ? json(200, { ok: true }) : seeOther(`${back}#${prefix}-done`));
   /** Saved nothing on purpose, and says so to nobody: the caller is a bot. */
-  const quiet = () => (wantsJson ? json(202, { ok: true }) : seeOther(`${back}#form-done`));
+  const quiet = () => (wantsJson ? json(202, { ok: true }) : seeOther(`${back}#${prefix}-done`));
   const failed = (status: number, error: string, hash: string) =>
-    wantsJson ? json(status, { ok: false, error }) : seeOther(`${back}#${hash}`);
+    wantsJson ? json(status, { ok: false, error }) : seeOther(`${back}#${prefix}-${hash}`);
 
   // The honeypot, and a fill no person could have typed. Both answer nothing.
   if (trapped(body) || tooFast(body)) return quiet();
 
   const email = text(body.email, 254)?.toLowerCase() ?? null;
-  if (!email || !EMAIL.test(email)) return failed(422, 'email', 'form-invalid');
+  if (!email || !EMAIL.test(email)) return failed(422, 'email', 'invalid');
 
-  const town = text(body.town ?? body.stadt, 80);
+  /*
+   * The canton, as a slug, resolved against the database rather than trusted.
+   *
+   * It used to be a town the visitor typed, which is how the first real signup
+   * arrived with the town "Ua". Nothing was wrong with the validation — the
+   * field should never have been a question. The form now carries the canton
+   * from the page the visitor was standing on, and posts the slug that is
+   * already public in that page's URL.
+   */
+  const slug = text(body.region, 80)?.toLowerCase() ?? null;
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
     // Nothing is configured, so nothing can be saved. Say so plainly rather
     // than showing a success the visitor did not get.
-    return failed(503, 'unavailable', 'form-failed');
+    return failed(503, 'unavailable', 'failed');
+  }
+
+  /*
+   * A slug we do not hold resolves to nothing, and nothing is what an absent
+   * one means too: the whole country. So a made-up value cannot reach the row
+   * the way a made-up town could.
+   */
+  let region_id: string | null = null;
+  if (slug && /^[a-z0-9-]+$/.test(slug)) {
+    const found = (await fetch(
+      `${env.SUPABASE_URL}/rest/v1/slugs?entity_type=eq.region&slug=eq.${encodeURIComponent(slug)}&select=entity_id&limit=1`,
+      {
+        headers: {
+          apikey: env.SUPABASE_SERVICE_ROLE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+        },
+      }
+    )
+      .then((r) => (r.ok ? r.json() : []))
+      .catch(() => [])) as Array<{ entity_id?: string }>;
+    region_id = found[0]?.entity_id ?? null;
   }
 
   const row: Record<string, unknown> = {
     email,
-    town,
+    region_id,
     locale,
     source_path: path,
     referrer_host: referrerHost(request),
@@ -89,7 +127,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   /*
    * Upsert on the address rather than a plain insert, which is why this does
    * not use `_form.ts`'s `insertRow`. A second signup from the same person
-   * updates their town and undoes an earlier unsubscribe — it must never fail
+   * updates their canton and undoes an earlier unsubscribe — it must never fail
    * with a duplicate-key error that the page would show as "something went
    * wrong". created_at and unsubscribe_token are left alone, so old unsubscribe
    * links keep working.
@@ -114,7 +152,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
 
   if (!res.ok) {
     console.log('newsletter insert rejected', res.status, await res.text());
-    return failed(500, 'save_failed', 'form-failed');
+    return failed(500, 'save_failed', 'failed');
   }
 
   const saved = (await res.json().catch(() => [])) as Array<{ unsubscribe_token?: string }>;
@@ -128,7 +166,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * waiting for the first digest. A signup with no token back, or with sending
    * switched off, still succeeds: the address is on the list either way.
    */
-  waitUntil(ping(env, `Newsletter: ${email}${town ? ` — ${town}` : ''} (${locale})`));
+  waitUntil(ping(env, `Newsletter: ${email}${region_id ? ` — ${slug}` : ''} (${locale})`));
   if (token) {
     waitUntil(sendMail(env, { to: email, ...welcomeMail(locale as Locale, token) }));
   }

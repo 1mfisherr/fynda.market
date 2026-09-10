@@ -1,0 +1,290 @@
+---
+/**
+ * The signup, wherever a person is standing.
+ *
+ * It used to be a card with a button that took people to a page with a form on
+ * it. A footer link and a card that leaves the page are the two worst places a
+ * signup can live: a form matched to the page it sits on converts several times
+ * what a generic one does, and the page someone has to travel to converts
+ * whoever was already determined enough to travel.
+ *
+ * **It never asks where the visitor is.** A market page, a city page and a
+ * canton page all carry the canton in their own URL, so the form carries it in
+ * a hidden field and shows one box. Only the pages that genuinely cannot know —
+ * home, nearby, saved, and the newsletter page itself — draw the picker.
+ *
+ * Canton and not city: fifty-five cities is fifty-five segments, most of them
+ * holding nobody; fourteen cantons is a list worth cutting. It is also roughly
+ * how far a person drives on a Saturday, so somebody in Uster gets Winterthur
+ * and Zürich rather than only Uster.
+ */
+import Button from './Button.astro';
+import Field from './Field.astro';
+import { FORMS } from '../lib/utility-copy';
+import { t } from '../lib/strings';
+import type { RegionOption } from '../lib/regions';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  /** The canton this page is about. Present means no picker. */
+  region?: Pick<RegionOption, 'slug' | 'label'>;
+  /** Every canton, for the pages that cannot know. Ignored when `region` is set. */
+  options?: RegionOption[];
+  /**
+   * `card` is the block on a content page. `footer` is the one line at the
+   * bottom of every page, including the legal ones where a card would be noise.
+   */
+  variant?: 'card' | 'footer';
+  /**
+   * Whether this instance owns the page's `#sub-*` result ids.
+   *
+   * Exactly one form per page may, or the ids repeat. The footer is on every
+   * page, so the footer owns them: a visitor with no JavaScript is redirected
+   * to `#sub-done` and the browser takes them to the foot of whatever page they
+   * were on. A card shows its own answer through the script instead.
+   */
+  anchors?: boolean;
+}
+
+const { locale, region, options = [], variant = 'card', anchors = false } = Astro.props;
+const s = t(locale);
+const copy = FORMS.newsletter[locale];
+
+const body = region ? s.subscribeBodyRegion(region.label) : s.newsletterBody;
+
+/* The picker is drawn only where the page cannot answer the question itself. */
+const picker = !region && options.length > 0;
+
+/* Unique per instance, and the same on every build: a page carries the card and
+   the footer at once, and two fields with the same id are two labels pointing at
+   the first one. Derived rather than random, because a random id would change
+   the HTML of all 944 pages every time the site is rebuilt. */
+const id = `sub-${variant}`;
+---
+<section class={`subscribe subscribe--${variant}`} data-subscribe-block>
+  {variant === 'card' && <h2>{s.newsletterTitle}</h2>}
+  <p class="meta body">{body}</p>
+
+  <form
+    class="subscribe-form"
+    action="/n"
+    method="post"
+    data-subscribe
+    data-errors={JSON.stringify(copy.errors ?? {})}
+    data-success={copy.success}
+  >
+    {/* What the endpoint needs from a post the browser made on its own: the
+        page it came from, which fixes the language and where to send the
+        visitor back to; the exact words they agreed to; and which fragment the
+        answer should land on, so this form's results and the utility pages'
+        never fight over one set of ids. */}
+    <input type="hidden" name="path" value={Astro.url.pathname} />
+    <input type="hidden" name="consent_text" value={copy.note} />
+    <input type="hidden" name="anchor" value="sub" />
+    {region && <input type="hidden" name="region" value={region.slug} />}
+
+    {/* The site's own field for both, so the label, the error slot and the aria
+        wiring are the ones every other form already uses. */}
+    {picker && (
+      <Field
+        label={s.subscribeRegionLabel}
+        name="region"
+        type="select"
+        idPrefix={id}
+        options={[
+          { value: '', label: s.subscribeAnywhere },
+          ...options.map((option) => ({ value: option.slug, label: option.label })),
+        ]}
+      />
+    )}
+
+    <Field
+      label={copy.fields[0].label}
+      name="email"
+      type="email"
+      required
+      placeholder={copy.fields[0].placeholder}
+      idPrefix={id}
+    />
+
+    {/* Hidden from people and from screen readers, so anything in it came from
+        a bot. Off-screen rather than `display:none` alone — some bots skip
+        those — and untabbable. */}
+    <div class="trap" aria-hidden="true">
+      <label for={`${id}-website`}>Website</label>
+      <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <Button type="submit" variant={variant === 'card' ? 'primary' : 'secondary'} block>
+      {copy.submit}
+    </Button>
+  </form>
+
+  <p class="meta note">{copy.note}</p>
+
+  {/* Shown in place of the form once the address is saved. The script reveals
+      it; the ids only exist on the instance that owns them. */}
+  <p class="subscribe-done" id={anchors ? 'sub-done' : undefined} hidden>{copy.success}</p>
+  {anchors && (
+    <>
+      <p class="subscribe-done" id="sub-invalid" hidden>{copy.errors?.invalid}</p>
+      <p class="subscribe-done" id="sub-failed" hidden>{copy.errors?.failed}</p>
+    </>
+  )}
+</section>
+
+<style>
+  .subscribe { display: grid; gap: var(--space-3); }
+
+  .subscribe--card {
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+    background: var(--color-paper);
+  }
+
+  .subscribe h2 { margin: 0; }
+  .subscribe .body { color: var(--color-grey); }
+
+  .subscribe-form { display: grid; gap: var(--space-3); }
+
+  /* The note is the consent wording, so it is never hidden and never shortened
+     — it is what the row records the visitor as having agreed to. */
+  .subscribe .note { font-size: var(--text-micro); color: var(--color-quiet); }
+
+  /* The footer's copy sits above a rule that already separates it from the
+     links, so it needs no panel of its own. */
+  .subscribe--footer { gap: var(--space-2); }
+  .subscribe--footer .body { font-weight: var(--weight-bold); color: var(--color-ink); }
+
+  /* Revealed by the script, or by `:target` when there is no script. */
+  .subscribe-done { font-weight: var(--weight-bold); }
+  .subscribe-done:target { display: block !important; }
+
+  .trap { position: absolute; inset-inline-start: -9999px; }
+</style>
+
+<script>
+  /**
+   * Every signup block on the page, submitted in place.
+   *
+   * All of it is an enhancement: each form carries `action="/n"` and
+   * `method="post"`, so with no JavaScript the browser posts it and the
+   * endpoint answers with a redirect to `#sub-done`, which the footer's copy
+   * of that message reveals through CSS `:target`. Nothing here is
+   * load-bearing.
+   */
+  const forms = document.querySelectorAll<HTMLFormElement>('form[data-subscribe]');
+
+  for (const form of forms) {
+    const block = form.closest('[data-subscribe-block]') as HTMLElement | null;
+    const email = form.elements.namedItem('email') as HTMLInputElement | null;
+    const error = form.querySelector<HTMLElement>('.field-error');
+    const done = block?.querySelector<HTMLElement>('.subscribe-done') ?? null;
+    const errors = JSON.parse(form.dataset.errors ?? '{}') as Partial<
+      Record<'empty' | 'invalid' | 'failed' | 'offline', string>
+    >;
+
+    if (!email) continue;
+
+    /* Milliseconds from the first touch of this form, not from page load. The
+       endpoint throws away a fill no person could have typed; measured from
+       page load it would throw away real people instead, and answer them with
+       a success. */
+    let firstTouch = 0;
+    const touched = () => { if (!firstTouch) firstTouch = Date.now(); };
+    form.addEventListener('focusin', touched);
+    form.addEventListener('input', touched);
+
+    // With a script we take over the checking, because the browser's own bubble
+    // speaks the browser's language rather than the page's and tells a screen
+    // reader nothing. With no script the browser's checks are all there is.
+    form.noValidate = true;
+
+    /* Loose on purpose: this decides whether to interrupt someone, so it may
+       only reject what is certainly wrong. The endpoint is the real check. */
+    const looksLikeAddress = (value: string) => /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(value);
+
+    const show = (message: string) => {
+      if (!error) return;
+      error.textContent = message;
+      error.hidden = false;
+      email.setAttribute('aria-invalid', 'true');
+      email.focus();
+    };
+
+    const clear = () => {
+      if (!error) return;
+      error.hidden = true;
+      error.textContent = '';
+      email.removeAttribute('aria-invalid');
+    };
+
+    /* After they leave the field, never while they are still typing: an address
+       is invalid for as long as it takes to type one. */
+    email.addEventListener('blur', () => {
+      const value = email.value.trim();
+      if (value && !looksLikeAddress(value)) {
+        if (error) { error.textContent = errors.invalid ?? ''; error.hidden = false; }
+        email.setAttribute('aria-invalid', 'true');
+      } else {
+        clear();
+      }
+    });
+    email.addEventListener('input', clear);
+
+    let failures = 0;
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const value = email.value.trim();
+      if (!value) { show(errors.empty ?? ''); return; }
+      if (!looksLikeAddress(value)) { show(errors.invalid ?? ''); return; }
+
+      clear();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (button) button.disabled = true;
+
+      const region = form.elements.namedItem('region') as
+        | HTMLInputElement
+        | HTMLSelectElement
+        | null;
+
+      void fetch('/n', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', accept: 'application/json' },
+        body: JSON.stringify({
+          email: value,
+          region: region?.value || null,
+          website: (form.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '',
+          elapsed_ms: firstTouch ? Date.now() - firstTouch : null,
+          path: location.pathname,
+          consent_text: (form.elements.namedItem('consent_text') as HTMLInputElement | null)?.value ?? null,
+        }),
+      })
+        .then((res) => (res.ok ? 'ok' : res.status === 422 ? 'invalid' : 'failed'))
+        .catch(() => 'offline')
+        .then((outcome) => {
+          if (button) button.disabled = false;
+
+          if (outcome === 'ok') {
+            form.hidden = true;
+            const note = block?.querySelector<HTMLElement>('.note');
+            if (note) note.hidden = true;
+            if (done) {
+              done.hidden = false;
+              done.setAttribute('tabindex', '-1');
+              done.focus();
+            }
+            return;
+          }
+
+          if (outcome === 'invalid') { show(errors.invalid ?? ''); return; }
+
+          failures += 1;
+          show(outcome === 'offline' ? errors.offline ?? '' : errors.failed ?? '');
+        });
+    });
+  }
+</script>

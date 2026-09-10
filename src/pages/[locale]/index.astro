@@ -10,6 +10,8 @@ import Page from '../../layouts/Page.astro';
 import Button from '../../components/Button.astro';
 import Faq from '../../components/Faq.astro';
 import CtaCard from '../../components/CtaCard.astro';
+import SubscribeForm from '../../components/SubscribeForm.astro';
+import { regionOptions } from '../../lib/regions';
 import PlaceCloud from '../../components/PlaceCloud.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
@@ -33,6 +35,10 @@ export async function getStaticPaths() {
 
 const { locale, alternates } = Astro.props;
 const s = t(locale);
+
+/* The home page cannot know where the visitor is, so its signup asks —
+   the only three page types that do. */
+const cantons = await regionOptions(locale);
 const markets = await getMarkets(locale);
 const rows = datedRows(markets);
 
@@ -170,7 +176,7 @@ const jsonLd = {
       loud asks, and two equally loud asks are neither. Side by side above
       900px, and only the first is filled — CtaCard takes `variant`. */}
   <div class="asks gutter">
-    <CtaCard kind="newsletter" locale={locale} />
+    <SubscribeForm locale={locale} options={cantons} />
     <CtaCard kind="organiser" locale={locale} variant="secondary" />
   </div>
 
