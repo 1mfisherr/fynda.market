@@ -235,10 +235,14 @@ select pg_temp.expect_failure(
 -- organiser_claims. Both contact fields are required, because a claim nobody
 -- can answer is not a claim.
 
+-- d1 and not d2: the cascade test above deletes d2 on purpose, to prove that
+-- removing a market takes its texts and slugs with it. Claiming a market that
+-- the same file has already deleted fails the foreign key, which is what CI was
+-- failing on.
 insert into public.organiser_claims
   (market_id, market_text, town, organiser_name, email, locale)
 values
-  ('00000000-0000-0000-0000-0000000000d2', 'Kanzleiareal', 'Zuerich',
+  ('00000000-0000-0000-0000-0000000000d1', 'Buerkliplatz', 'Zuerich',
    'A. Muster', 'organiser@example.ch', 'de');
 
 select pg_temp.expect(

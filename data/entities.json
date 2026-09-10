@@ -1,7 +1,7 @@
 {
-  "source": "supabase",
-  "markets": 157,
-  "cities": 55,
+  "source": "fixtures",
+  "markets": 6,
+  "cities": 4,
   "locales": 4,
-  "regions": 14
+  "regions": 3
 }

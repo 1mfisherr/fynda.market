@@ -27,6 +27,19 @@ jobs:
       - name: Typecheck
         run: npm run check
 
+      # functions/ is excluded from the site's tsconfig, for a good reason: a
+      # Pages Function needs Cloudflare's globals and must not inherit Astro's
+      # DOM lib. The consequence was that the six files receiving everything a
+      # visitor types were the only unchecked code in the repo.
+      - name: Typecheck the functions
+        run: npm run check:functions
+
+      # The digest is the one thing here that sends wrong information to real
+      # people and cannot be recalled. The tests existed and CI was not
+      # running them.
+      - name: Tests
+        run: npm test
+
       - name: Build
         run: npm run build
 
