@@ -51,6 +51,8 @@ export interface Strings {
   thisWeekend: string;
   thisWeekendLede: (n: number, from: string, to: string) => string;
   allWeekend: (n: number) => string;
+  /** The market page's dates list opens at five; this is the rest of it. */
+  allDates: (n: number) => string;
   /* The home page's one question, asked below the markets — TownPicker. */
   yourTown: string;
   cities: string;
@@ -279,6 +281,7 @@ const de: Strings = {
   homeProof: 'Wir schreiben zu jedem Termin, wann wir ihn zuletzt geprüft haben. Steht der Veranstalter dahinter, sagen wir das auch. Absagen bleiben stehen, mit Grund.',
   thisWeekend: 'Dieses Wochenende',
   allWeekend: (n) => `Alle ${n} Märkte am Wochenende`,
+  allDates: (n) => `Alle ${n} Termine`,
   yourTown: 'Ihre Stadt',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'} am ${from}${to === from ? '' : ` und ${to}`}.`,
   cities: 'Städte',
@@ -443,6 +446,7 @@ const en: Strings = {
   homeProof: 'For every date we write down when we last checked it. Where the organiser stands behind a market, we say so. Cancellations stay on the page, with the reason.',
   thisWeekend: 'This weekend',
   allWeekend: (n) => `All ${n} markets this weekend`,
+  allDates: (n) => `All ${n} dates`,
   yourTown: 'Your town',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'} on ${from}${to === from ? '' : ` and ${to}`}.`,
   cities: 'Cities',
@@ -611,6 +615,7 @@ const fr: Strings = {
   homeProof: "Pour chaque date, nous indiquons quand nous l'avons vérifiée. Quand l'organisateur confirme un marché, nous le signalons. Les annulations restent affichées, avec le motif.",
   thisWeekend: 'Ce week-end',
   allWeekend: (n) => `Les ${n} marchés du week-end`,
+  allDates: (n) => `Les ${n} dates`,
   yourTown: 'Votre ville',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'marché' : 'marchés'} le ${from}${to === from ? '' : ` et le ${to}`}.`,
   cities: 'Villes',
@@ -775,6 +780,7 @@ const it: Strings = {
   homeProof: "Per ogni data indichiamo quando l'abbiamo verificata. Quando l'organizzatore conferma un mercatino, lo segnaliamo. Le cancellazioni restano visibili, con il motivo.",
   thisWeekend: 'Questo fine settimana',
   allWeekend: (n) => `Tutti i ${n} mercatini del fine settimana`,
+  allDates: (n) => `Tutte le ${n} date`,
   yourTown: 'La vostra città',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercato' : 'mercati'} il ${from}${to === from ? '' : ` e il ${to}`}.`,
   cities: 'Città',

@@ -48,6 +48,18 @@ const next = market.next;
 const cancelled = next?.status === 'cancelled';
 const dates = withinHorizon([next, ...market.upcoming].filter(Boolean) as NonNullable<typeof next>[])
   .sort((a, b) => a.date.localeCompare(b.date));
+
+/**
+ * How many dates the list opens with.
+ *
+ * A weekly market inside the 120-day horizon is seventeen identical rows —
+ * same time, same "Bestätigt" — and they push the description, the report
+ * buttons and the claim card off the bottom of a phone. Five is the next
+ * month, which is as far ahead as anyone plans a Saturday.
+ *
+ * The rest are hidden, not dropped. They are what this page ranks for.
+ */
+const DATES_SHOWN = 5;
 const kind = LINES[market.kind];
 
 const site = 'https://fynda.market';
@@ -378,9 +390,10 @@ const facilityItems = market.facilities ? [
           April und Oktober" — and it is the honest answer to "when". */}
       <Section level="sub" title={s.dates}>
         {dates.length > 0 ? (
-          <ul class="dates list-reset gutter">
-            {dates.map((occurrence) => (
-              <li class:list={{ cancelled: occurrence.status === 'cancelled' }}>
+          <>
+          <ul class="dates list-reset gutter" id="all-dates">
+            {dates.map((occurrence, i) => (
+              <li class:list={{ cancelled: occurrence.status === 'cancelled' }} hidden={i >= DATES_SHOWN}>
                 <strong>{formatDate(occurrence.date, locale)}</strong>
                 {formatTimeRange(occurrence.startTime, occurrence.endTime, locale) && <span>{formatTimeRange(occurrence.startTime, occurrence.endTime, locale)}</span>}
                 {/* One row in the list can be today, and when it is, that is
@@ -393,6 +406,16 @@ const facilityItems = market.facilities ? [
               </li>
             ))}
           </ul>
+          {/* Opens in place. Every date is in the HTML either way — a weekly
+              market carries a year of them, and they are the reason this page
+              ranks; hiding rows from a crawler to save a scroll would trade
+              what earns the traffic for what costs nothing. */}
+          {dates.length > DATES_SHOWN && (
+            <div class="gutter more">
+              <Button variant="quiet" data-expand aria-controls="all-dates" aria-expanded="false">{s.allDates(dates.length)}</Button>
+            </div>
+          )}
+          </>
         ) : (
           <p class="gutter no-dates">
             <strong>{s.cityNoDate}</strong>
@@ -770,6 +793,25 @@ const facilityItems = market.facilities ? [
 </style>
 
 <script>
+  /**
+   * "Alle 17 Termine" opens the rest of the list in place.
+   *
+   * Same shape as the home page's weekend expander: no new URL, no navigation,
+   * and every row was already in the HTML — the button only stops hiding them.
+   * One-way, because a list that can be folded back up invites fiddling with
+   * it rather than reading it.
+   */
+  const expand = document.querySelector<HTMLButtonElement>('[data-expand]');
+  const list = document.getElementById('all-dates');
+
+  if (expand && list) {
+    expand.addEventListener('click', () => {
+      for (const row of Array.from(list.querySelectorAll<HTMLElement>('li[hidden]'))) row.hidden = false;
+      expand.setAttribute('aria-expanded', 'true');
+      expand.hidden = true;
+    });
+  }
+
   /**
    * Saved markets live in the visitor's own browser. No account, no server, and
    * nothing to leak — docs/PLAN.md settled "saved markets, no accounts". The

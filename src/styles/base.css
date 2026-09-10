@@ -211,6 +211,11 @@ h1 {
   color: var(--color-surface);
 }
 
+/* The row that holds an expander. Two pages have one now — the home page's
+   weekend list and the market page's dates — and guardrail 7 is right that the
+   spacing cannot be decided twice. */
+.more { margin-block-start: var(--space-4); }
+
 /* The expander at the foot of a day. Reads as "there is more here", not as an
    action equal in weight to the markets above it. */
 .button[data-variant='quiet'] {
