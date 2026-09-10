@@ -625,6 +625,39 @@ const facilityItems = market.facilities ? [
     font-size: var(--text-micro);
   }
 
+  /* Saved.
+     base.css fills any [aria-pressed] button with ink and paints its label
+     white. The rule above is more specific and put the white background back
+     while leaving the white text — so pressing Merken made the word vanish
+     into the button. The pressed state has to be restated wherever the resting
+     one is overridden. */
+  .photo-hero :global(.save[aria-pressed='true']) {
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+  /* And a saved bookmark is a filled one, which is the whole convention for
+     this icon everywhere it appears. */
+  .photo-hero :global(.save[aria-pressed='true'] svg) { fill: currentColor; }
+
+  /* One beat of acknowledgement. Saving is the only thing on this page that
+     changes nothing a person can see — no navigation, no new content — so the
+     button is the only place it can be confirmed.
+
+     Driven by an attribute the click sets, not by [aria-pressed]: the page
+     opens already pressed for a market this visitor saved last week, and
+     animating that would be the page reacting to nothing. Removing is not
+     animated either; undoing something does not want celebrating.
+
+     tokens.css already flattens every animation under prefers-reduced-motion. */
+  .photo-hero :global(.save[data-just-saved] svg) {
+    animation: save-pop var(--duration-slow) var(--ease-base);
+  }
+  @keyframes save-pop {
+    0% { transform: scale(1); }
+    45% { transform: scale(1.45); }
+    100% { transform: scale(1); }
+  }
+
   dl {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -761,11 +794,23 @@ const facilityItems = market.facilities ? [
     };
     paint(read().includes(slug));
 
+    // The pop is set here rather than off [aria-pressed], so it fires on the
+    // click and not on the first paint of a market that was already saved.
+    button.addEventListener('animationend', () => { delete button.dataset.justSaved; });
+
     button.addEventListener('click', () => {
       const saved = read();
       const next = saved.includes(slug) ? saved.filter((s) => s !== slug) : [...saved, slug];
       try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* private mode */ }
       paint(next.includes(slug));
+
+      if (next.includes(slug)) {
+        // Off, reflow, on — an animation does not restart while its attribute
+        // is still there, and saving twice in a row is one tap and an undo.
+        delete button.dataset.justSaved;
+        void button.offsetWidth;
+        button.dataset.justSaved = '';
+      }
     });
   }
 
