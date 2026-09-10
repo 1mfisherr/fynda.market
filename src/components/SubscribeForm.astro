@@ -28,8 +28,14 @@ import type { Locale } from '../lib/i18n';
 
 interface Props {
   locale: Locale;
-  /** The canton this page is about. A canton page, and only a canton page. */
-  region?: Pick<RegionOption, 'slug' | 'label'>;
+  /**
+   * The canton this page is about. A canton page, and only a canton page.
+   *
+   * The bare `name`, not `regionLabel`'s "Kanton Zürich" — nothing in this
+   * block says the word. The page's own heading still does, where it is what
+   * separates the canton from the city of the same name.
+   */
+  region?: Pick<RegionOption, 'slug' | 'name'>;
   /**
    * A place and a distance, for the pages where "near me" is the real question
    * — a city page and a market page. A canton is a blunt answer there:
@@ -58,13 +64,16 @@ const { locale, region, near, options = [], variant = 'card', anchors = false } 
 const s = t(locale);
 const copy = FORMS.newsletter[locale];
 
-/* One phrase, whichever shape this page knows: "im Kanton Zürich", or "im
-   Umkreis von 25 km um Zürich". strings.ts owns the prepositions. */
+/* One phrase, whichever shape this page knows: "für Zürich", or "im Umkreis
+   von 25 km um Zürich". strings.ts owns the prepositions — and the region one
+   is the form's own rather than the mail's, because a bare canton name takes a
+   different preposition from "Kanton Zürich" and not the same one in every
+   canton. */
 const km = near?.km ?? DEFAULT_RADIUS;
 const scope = near
   ? s.scopeRadius(km, near.name)
   : region
-    ? s.scopeRegion(region.label)
+    ? s.subscribeScopeRegion(region.name)
     : null;
 
 const body = scope ? s.subscribeBodyScope(scope) : s.newsletterBody;
@@ -107,7 +116,13 @@ const id = `sub-${variant}`;
     )}
 
     {/* The site's own field for both, so the label, the error slot and the aria
-        wiring are the ones every other form already uses. */}
+        wiring are the ones every other form already uses.
+
+        The options are bare names — "Zürich", "Wallis" — not `regionLabel`'s
+        "Kanton Zürich". Every option in this list is a canton, so the word is
+        the same on all fourteen rows and carries nothing; the page's own
+        heading and breadcrumb still say it, where it distinguishes the canton
+        from the city that shares its name. */}
     {picker && (
       <Field
         label={s.subscribeRegionLabel}
@@ -116,7 +131,7 @@ const id = `sub-${variant}`;
         idPrefix={id}
         options={[
           { value: '', label: s.subscribeAnywhere },
-          ...options.map((option) => ({ value: option.slug, label: option.label })),
+          ...options.map((option) => ({ value: option.slug, label: option.name })),
         ]}
       />
     )}

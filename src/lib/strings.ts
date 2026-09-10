@@ -207,11 +207,29 @@ export interface Strings {
    */
   scopeRegion: (label: string) => string;
   scopeRadius: (km: number, city: string) => string;
+  /**
+   * The same thing for the signup block, which says no canton anywhere.
+   *
+   * It cannot reuse `scopeRegion`: that one takes "Kanton Zürich" and puts a
+   * preposition in front of it, and the preposition a bare canton name wants
+   * is not one word in any of these languages — "in Zürich" but "im Wallis",
+   * "à Genève" but "dans le Jura". "für / for / pour / per" is the one that
+   * fits all fourteen without an article.
+   */
+  subscribeScopeRegion: (name: string) => string;
   /** The signup block's body when the page knows where it is about. */
   subscribeBodyScope: (scope: string) => string;
-  /** The picker's label, where the page cannot know. */
+  /**
+   * The picker's label, where the page cannot know.
+   *
+   * "Region", not "Kanton" — and the options below it are bare names rather
+   * than `regionLabel`'s "Kanton Zürich". A picker holding fourteen cantons
+   * and nothing else does not need to say the word fourteen times to be
+   * understood, and "Kanton" reads as administrative vocabulary in a form
+   * whose whole job is to be answered without thinking.
+   */
   subscribeRegionLabel: string;
-  /** The picker's first option: no canton, the whole country. */
+  /** The picker's first option: no region, the whole country. */
   subscribeAnywhere: string;
   organiserTitle: string;
   /*
@@ -375,9 +393,10 @@ const de: Strings = {
   dateCount: (n) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`,
 
   scopeRegion: (label) => `im ${label}`,
+  subscribeScopeRegion: (name) => `für ${name}`,
   scopeRadius: (km, city) => `im Umkreis von ${km} km um ${city}`,
   subscribeBodyScope: (scope) => `Neue Termine und Absagen ${scope}, jeden Freitagmorgen.`,
-  subscribeRegionLabel: 'Kanton',
+  subscribeRegionLabel: 'Region',
   subscribeAnywhere: 'Überall in der Schweiz',
   newsletterTitle: 'Nichts verpassen',
   newsletterBody: 'Neue Termine und Absagen in Ihrer Region.',
@@ -538,9 +557,10 @@ const en: Strings = {
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
   scopeRegion: (label) => `in the ${label}`,
+  subscribeScopeRegion: (name) => `for ${name}`,
   scopeRadius: (km, city) => `within ${km} km of ${city}`,
   subscribeBodyScope: (scope) => `New dates and cancellations ${scope}, every Friday morning.`,
-  subscribeRegionLabel: 'Canton',
+  subscribeRegionLabel: 'Region',
   subscribeAnywhere: 'Anywhere in Switzerland',
   newsletterTitle: "Don't miss one",
   newsletterBody: 'New dates and cancellations in your area.',
@@ -705,9 +725,10 @@ const fr: Strings = {
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
   scopeRegion: (label) => `dans le ${label}`,
+  subscribeScopeRegion: (name) => `pour ${name}`,
   scopeRadius: (km, city) => `dans un rayon de ${km} km autour de ${city}`,
   subscribeBodyScope: (scope) => `Nouvelles dates et annulations ${scope}, chaque vendredi matin.`,
-  subscribeRegionLabel: 'Canton',
+  subscribeRegionLabel: 'Région',
   subscribeAnywhere: 'Partout en Suisse',
   newsletterTitle: 'Ne manquez rien',
   newsletterBody: 'Nouvelles dates et annulations dans votre région.',
@@ -868,9 +889,10 @@ const it: Strings = {
   dateCount: (n) => `${n} ${n === 1 ? 'data' : 'date'}`,
 
   scopeRegion: (label) => `nel ${label}`,
+  subscribeScopeRegion: (name) => `per ${name}`,
   scopeRadius: (km, city) => `entro ${km} km da ${city}`,
   subscribeBodyScope: (scope) => `Nuove date e cancellazioni ${scope}, ogni venerdì mattina.`,
-  subscribeRegionLabel: 'Cantone',
+  subscribeRegionLabel: 'Regione',
   subscribeAnywhere: 'Ovunque in Svizzera',
   newsletterTitle: 'Non perda nessuna data',
   newsletterBody: 'Nuove date e cancellazioni nella Sua regione.',
