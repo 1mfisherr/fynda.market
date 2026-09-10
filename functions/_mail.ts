@@ -428,8 +428,15 @@ export interface DigestLine {
 export interface DigestIssue {
   from: string;
   to: string;
-  /** "Kanton Zürich", already in the reader's own language. */
-  region?: string;
+  /**
+   * Where this issue reaches, as a finished phrase in the reader's own
+   * language: "im Kanton Zürich", or "im Umkreis von 25 km um Zürich".
+   *
+   * A phrase and not a place, because a canton and a radius need different
+   * prepositions in every language and the mail has no business knowing which
+   * is which. src/lib/strings.ts builds it.
+   */
+  scope?: string;
   /** Shown large, above the lists. */
   lead?: DigestLine;
   /**
@@ -444,30 +451,30 @@ export interface DigestIssue {
   own: DigestLine[];
   elsewhere: DigestLine[];
   total: number;
-  more: { href: string; count: number; region?: string };
+  more: { href: string; count: number; scope?: string };
 }
 
 interface DigestCopy {
   /** `{dates}` is the weekend, "12. – 13. September". */
   subject: string;
-  subjectRegion: string;
+  subjectScope: string;
   /** The line the inbox shows beside the subject. Numbers, front-loaded. */
-  preheaderRegion: string;
+  preheaderScope: string;
   preheaderNone: string;
   preheaderCountry: string;
   headline: string;
-  headlineRegion: string;
+  headlineScope: string;
   countOne: string;
   countMany: string;
-  /** The section label over their own canton's markets. */
-  inRegion: string;
+  /** The section label over the markets near them. */
+  inScope: string;
   elsewhere: string;
   /** Under their canton's heading when nothing is on in it. */
   nothingHere: string;
   cancelled: string;
   more: string;
-  /** The same link when what got cut was their own canton's markets. */
-  moreRegion: string;
+  /** The same link when what got cut was the markets near them. */
+  moreScope: string;
   unsubscribe: string;
   /** Why they are getting this, above the unsubscribe link. */
   why: string;
@@ -476,77 +483,77 @@ interface DigestCopy {
 const DIGEST: Record<Locale, DigestCopy> = {
   de: {
     subject: 'Flohmärkte am Wochenende — {dates}',
-    subjectRegion: 'Flohmärkte im {region} — {dates}',
-    preheaderRegion: '{own} im {region}, {rest} anderswo in der Schweiz.',
-    preheaderNone: 'Nichts im {region} an diesem Wochenende — aber {rest} anderswo.',
+    subjectScope: 'Flohmärkte {scope} — {dates}',
+    preheaderScope: '{own} {scope}, {rest} anderswo in der Schweiz.',
+    preheaderNone: 'Nichts {scope} an diesem Wochenende — aber {rest} anderswo.',
     preheaderCountry: 'Alle Flohmärkte des Wochenendes, mit den Absagen.',
     headline: 'Dieses Wochenende',
-    headlineRegion: 'Dieses Wochenende im {region}',
+    headlineScope: 'Dieses Wochenende {scope}',
     countOne: '{total} Flohmarkt',
     countMany: '{total} Flohmärkte',
-    inRegion: 'Im {region}',
+    inScope: '{scope}',
     elsewhere: 'Anderswo in der Schweiz',
     nothingHere: 'Hier ist an diesem Wochenende nichts angekündigt.',
     cancelled: 'Abgesagt',
     more: 'Alle {count} Märkte ansehen',
-    moreRegion: 'Alle {count} Märkte im {region}',
+    moreScope: 'Alle {count} Märkte {scope}',
     unsubscribe: 'Abmelden',
     why: 'Sie bekommen diese E-Mail, weil Sie sich auf fynda.market dafür eingetragen haben.',
   },
   fr: {
     subject: 'Brocantes ce week-end — {dates}',
-    subjectRegion: 'Brocantes dans le {region} — {dates}',
-    preheaderRegion: '{own} dans le {region}, {rest} ailleurs en Suisse.',
-    preheaderNone: 'Rien dans le {region} ce week-end — mais {rest} ailleurs.',
+    subjectScope: 'Brocantes {scope} — {dates}',
+    preheaderScope: '{own} {scope}, {rest} ailleurs en Suisse.',
+    preheaderNone: 'Rien {scope} ce week-end — mais {rest} ailleurs.',
     preheaderCountry: 'Toutes les brocantes du week-end, annulations comprises.',
     headline: 'Ce week-end',
-    headlineRegion: 'Ce week-end dans le {region}',
+    headlineScope: 'Ce week-end {scope}',
     countOne: '{total} brocante',
     countMany: '{total} brocantes',
-    inRegion: 'Dans le {region}',
+    inScope: '{scope}',
     elsewhere: 'Ailleurs en Suisse',
     nothingHere: "Rien n'est annoncé ici ce week-end.",
     cancelled: 'Annulée',
     more: 'Voir les {count} brocantes',
-    moreRegion: 'Voir les {count} brocantes dans le {region}',
+    moreScope: 'Voir les {count} brocantes {scope}',
     unsubscribe: 'Se désinscrire',
     why: 'Vous recevez cet e-mail parce que vous vous êtes inscrit sur fynda.market.',
   },
   it: {
     subject: 'Mercatini questo fine settimana — {dates}',
-    subjectRegion: 'Mercatini nel {region} — {dates}',
-    preheaderRegion: '{own} nel {region}, {rest} altrove in Svizzera.',
-    preheaderNone: 'Niente nel {region} questo fine settimana — ma {rest} altrove.',
+    subjectScope: 'Mercatini {scope} — {dates}',
+    preheaderScope: '{own} {scope}, {rest} altrove in Svizzera.',
+    preheaderNone: 'Niente {scope} questo fine settimana — ma {rest} altrove.',
     preheaderCountry: 'Tutti i mercatini del fine settimana, cancellazioni incluse.',
     headline: 'Questo fine settimana',
-    headlineRegion: 'Questo fine settimana nel {region}',
+    headlineScope: 'Questo fine settimana {scope}',
     countOne: '{total} mercatino',
     countMany: '{total} mercatini',
-    inRegion: 'Nel {region}',
+    inScope: '{scope}',
     elsewhere: 'Altrove in Svizzera',
     nothingHere: 'Qui non è annunciato nulla per questo fine settimana.',
     cancelled: 'Annullato',
     more: 'Vedere tutti i {count} mercatini',
-    moreRegion: 'Vedere tutti i {count} mercatini nel {region}',
+    moreScope: 'Vedere tutti i {count} mercatini {scope}',
     unsubscribe: 'Cancellati',
     why: 'Riceve questa e-mail perché si è iscritto su fynda.market.',
   },
   en: {
     subject: 'Flea markets this weekend — {dates}',
-    subjectRegion: 'Flea markets in the {region} — {dates}',
-    preheaderRegion: '{own} in the {region}, {rest} elsewhere in Switzerland.',
-    preheaderNone: 'Nothing in the {region} this weekend — but {rest} elsewhere.',
+    subjectScope: 'Flea markets {scope} — {dates}',
+    preheaderScope: '{own} {scope}, {rest} elsewhere in Switzerland.',
+    preheaderNone: 'Nothing {scope} this weekend — but {rest} elsewhere.',
     preheaderCountry: 'Every flea market on this weekend, cancellations included.',
     headline: 'This weekend',
-    headlineRegion: 'This weekend in the {region}',
+    headlineScope: 'This weekend {scope}',
     countOne: '{total} flea market',
     countMany: '{total} flea markets',
-    inRegion: 'In the {region}',
+    inScope: '{scope}',
     elsewhere: 'Elsewhere in Switzerland',
     nothingHere: 'Nothing is announced here this weekend.',
     cancelled: 'Cancelled',
     more: 'See all {count} markets',
-    moreRegion: 'See all {count} markets in the {region}',
+    moreScope: 'See all {count} markets {scope}',
     unsubscribe: 'Unsubscribe',
     why: 'You are getting this e-mail because you signed up for it on fynda.market.',
   },
@@ -727,18 +734,18 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
   const copy = DIGEST[locale] ?? DIGEST.de;
   const url = unsubscribeUrl(token);
   const dates = range(locale, issue.from, issue.to);
-  const region = issue.region ?? '';
+  const scope = issue.scope ?? '';
   const rest = issue.elsewhere.length;
 
-  const subject = region ? fill(copy.subjectRegion, { region, dates }) : fill(copy.subject, { dates });
-  const headline = region ? fill(copy.headlineRegion, { region }) : copy.headline;
+  const subject = scope ? fill(copy.subjectScope, { scope, dates }) : fill(copy.subject, { dates });
+  const headline = scope ? fill(copy.headlineScope, { scope }) : copy.headline;
   const count = fill(issue.total === 1 ? copy.countOne : copy.countMany, { total: issue.total });
 
-  const preheader = !region
+  const preheader = !scope
     ? copy.preheaderCountry
     : issue.own.length === 0
-      ? fill(copy.preheaderNone, { region, rest })
-      : fill(copy.preheaderRegion, { own: issue.own.length, region, rest });
+      ? fill(copy.preheaderNone, { scope, rest })
+      : fill(copy.preheaderScope, { own: issue.own.length, scope, rest });
 
   /* The lead goes back into whichever list it came out of — the digest says
      which — so the day it falls on is printed once, by the band above it. */
@@ -751,12 +758,12 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
   let ownBlock = '';
   let elsewhereBlock = '';
 
-  if (!region) {
-    // No canton, so nothing to divide into sections.
+  if (!scope) {
+    // Nowhere in particular, so nothing to divide into sections.
     elsewhereBlock = daysHtml(locale, elseLines, copy, leadPath);
   } else {
     ownBlock =
-      sectionHtml(fill(copy.inRegion, { region })) +
+      sectionHtml(fill(copy.inScope, { scope })) +
       (ownLines.length ? daysHtml(locale, ownLines, copy, leadPath) : nothingRow);
 
     if (elseLines.length) {
@@ -764,8 +771,8 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
     }
   }
 
-  const moreLabel = issue.more.region
-    ? fill(copy.moreRegion, { count: issue.more.count, region: issue.more.region })
+  const moreLabel = issue.more.scope
+    ? fill(copy.moreScope, { count: issue.more.count, scope: issue.more.scope })
     : fill(copy.more, { count: issue.more.count });
 
   const html = `<!doctype html>
@@ -847,10 +854,10 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
     }
   };
 
-  if (!region) {
+  if (!scope) {
     textDays(elseLines);
   } else {
-    lines.push(fill(copy.inRegion, { region }).toUpperCase(), '');
+    lines.push(fill(copy.inScope, { scope }).toUpperCase(), '');
     if (ownLines.length) textDays(ownLines);
     else lines.push(copy.nothingHere, '');
 

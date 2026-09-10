@@ -72,7 +72,16 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * from the page the visitor was standing on, and posts the slug that is
    * already public in that page's URL.
    */
-  const slug = text(body.region, 80)?.toLowerCase() ?? null;
+  const regionSlug = text(body.region, 80)?.toLowerCase() ?? null;
+
+  /*
+   * The other shape: a place and a distance. A city page and a market page send
+   * this instead of a canton, because "near me" is the question those pages are
+   * about — a canton is thirty times bigger in Graubünden than in Zug, so the
+   * same subscription means very different things to two readers.
+   */
+  const citySlug = text(body.city, 80)?.toLowerCase() ?? null;
+  const radius = Number(body.radius);
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
     // Nothing is configured, so nothing can be saved. Say so plainly rather
@@ -85,25 +94,41 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * one means too: the whole country. So a made-up value cannot reach the row
    * the way a made-up town could.
    */
-  let region_id: string | null = null;
-  if (slug && /^[a-z0-9-]+$/.test(slug)) {
+  /* Captured after the guard above: inside a closure TypeScript widens
+     `env.X` back to possibly-undefined, because a closure could run later. */
+  const base = env.SUPABASE_URL;
+  const key = env.SUPABASE_SERVICE_ROLE_KEY;
+
+  const resolve = async (kind: 'region' | 'city', slug: string | null) => {
+    if (!slug || !/^[a-z0-9-]+$/.test(slug)) return null;
     const found = (await fetch(
-      `${env.SUPABASE_URL}/rest/v1/slugs?entity_type=eq.region&slug=eq.${encodeURIComponent(slug)}&select=entity_id&limit=1`,
-      {
-        headers: {
-          apikey: env.SUPABASE_SERVICE_ROLE_KEY,
-          Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
-        },
-      }
+      `${base}/rest/v1/slugs?entity_type=eq.${kind}&slug=eq.${encodeURIComponent(slug)}&select=entity_id&limit=1`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` } }
     )
       .then((r) => (r.ok ? r.json() : []))
       .catch(() => [])) as Array<{ entity_id?: string }>;
-    region_id = found[0]?.entity_id ?? null;
-  }
+    return found[0]?.entity_id ?? null;
+  };
+
+  /*
+   * A city wins where both arrive, because it is the more precise of the two
+   * and the database refuses a row holding both anyway — see the check
+   * constraint in migration 20260910160000.
+   */
+  const city_id = await resolve('city', citySlug);
+  const region_id = city_id ? null : await resolve('region', regionSlug);
+
+  /* Clamped rather than rejected: a radius nobody can type wrong. The offered
+     values are in src/lib/geo.ts. */
+  const radius_km = city_id
+    ? Math.min(200, Math.max(1, Number.isFinite(radius) ? Math.round(radius) : 25))
+    : null;
 
   const row: Record<string, unknown> = {
     email,
     region_id,
+    city_id,
+    radius_km,
     locale,
     source_path: path,
     referrer_host: referrerHost(request),
@@ -166,7 +191,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * waiting for the first digest. A signup with no token back, or with sending
    * switched off, still succeeds: the address is on the list either way.
    */
-  waitUntil(ping(env, `Newsletter: ${email}${region_id ? ` — ${slug}` : ''} (${locale})`));
+  const where = city_id ? `${radius_km} km um ${citySlug}` : region_id ? String(regionSlug) : '';
+  waitUntil(ping(env, `Newsletter: ${email}${where ? ` — ${where}` : ''} (${locale})`));
   if (token) {
     waitUntil(sendMail(env, { to: email, ...welcomeMail(locale as Locale, token) }));
   }

@@ -197,8 +197,18 @@ export interface Strings {
   newsletterTitle: string;
   newsletterBody: string;
   newsletterAction: string;
-  /** The signup block's body when the page knows which canton it is about. */
-  subscribeBodyRegion: (label: string) => string;
+  /**
+   * Where a subscription reaches, as a finished prepositional phrase.
+   *
+   * One string used by the form and by every line of the weekly mail, because
+   * the preposition differs per language and per shape — "im Kanton Zürich"
+   * against "im Umkreis von 25 km um Zürich" — and the mail has no business
+   * knowing either.
+   */
+  scopeRegion: (label: string) => string;
+  scopeRadius: (km: number, city: string) => string;
+  /** The signup block's body when the page knows where it is about. */
+  subscribeBodyScope: (scope: string) => string;
   /** The picker's label, where the page cannot know. */
   subscribeRegionLabel: string;
   /** The picker's first option: no canton, the whole country. */
@@ -364,7 +374,9 @@ const de: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`,
 
-  subscribeBodyRegion: (label) => `Neue Termine und Absagen im ${label}, jeden Freitagmorgen.`,
+  scopeRegion: (label) => `im ${label}`,
+  scopeRadius: (km, city) => `im Umkreis von ${km} km um ${city}`,
+  subscribeBodyScope: (scope) => `Neue Termine und Absagen ${scope}, jeden Freitagmorgen.`,
   subscribeRegionLabel: 'Kanton',
   subscribeAnywhere: 'Überall in der Schweiz',
   newsletterTitle: 'Nichts verpassen',
@@ -525,7 +537,9 @@ const en: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'market' : 'markets'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
-  subscribeBodyRegion: (label) => `New dates and cancellations in ${label}, every Friday morning.`,
+  scopeRegion: (label) => `in the ${label}`,
+  scopeRadius: (km, city) => `within ${km} km of ${city}`,
+  subscribeBodyScope: (scope) => `New dates and cancellations ${scope}, every Friday morning.`,
   subscribeRegionLabel: 'Canton',
   subscribeAnywhere: 'Anywhere in Switzerland',
   newsletterTitle: "Don't miss one",
@@ -690,7 +704,9 @@ const fr: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
 
-  subscribeBodyRegion: (label) => `Nouvelles dates et annulations dans le ${label}, chaque vendredi matin.`,
+  scopeRegion: (label) => `dans le ${label}`,
+  scopeRadius: (km, city) => `dans un rayon de ${km} km autour de ${city}`,
+  subscribeBodyScope: (scope) => `Nouvelles dates et annulations ${scope}, chaque vendredi matin.`,
   subscribeRegionLabel: 'Canton',
   subscribeAnywhere: 'Partout en Suisse',
   newsletterTitle: 'Ne manquez rien',
@@ -851,7 +867,9 @@ const it: Strings = {
   marketCount: (n) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'data' : 'date'}`,
 
-  subscribeBodyRegion: (label) => `Nuove date e cancellazioni nel ${label}, ogni venerdì mattina.`,
+  scopeRegion: (label) => `nel ${label}`,
+  scopeRadius: (km, city) => `entro ${km} km da ${city}`,
+  subscribeBodyScope: (scope) => `Nuove date e cancellazioni ${scope}, ogni venerdì mattina.`,
   subscribeRegionLabel: 'Cantone',
   subscribeAnywhere: 'Ovunque in Svizzera',
   newsletterTitle: 'Non perda nessuna data',

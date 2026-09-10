@@ -17,10 +17,11 @@
 
 import { weekendBounds } from './date-window.ts';
 import { datedRows, weekendLead, type Dated } from './lists.ts';
-import { marketPath, regionPath, homePath, type Locale } from './i18n.ts';
+import { marketPath, regionPath, homePath, nearbyPath, type Locale } from './i18n.ts';
 import { LINES, BADGED_KINDS } from './vocabulary.ts';
 import { t } from './strings.ts';
 import { thumbUrl } from './images.ts';
+import { distanceKm } from './geo.ts';
 import type { Market } from './types';
 
 /**
@@ -87,13 +88,15 @@ export interface Digest {
   from: string;
   to: string;
   /**
-   * The canton they asked for, as the reader sees it — "Kanton Zürich".
+   * Where this issue reaches, as a finished phrase in the reader's own
+   * language: "im Kanton Zürich", or "im Umkreis von 25 km um Zürich".
    *
-   * A string rather than the slug and the label together: the mail is the only
-   * thing that reads it and the mail has no use for a slug. It was a pair for
-   * about ten minutes, long enough to render "Flohmärkte im [object Object]".
+   * A phrase rather than a place, because the two shapes need different
+   * prepositions in every language and nothing downstream should have to know
+   * which one it is holding. It was a `{slug, label}` pair for about ten
+   * minutes, long enough to render "Flohmärkte im [object Object]".
    */
-  region?: string;
+  scope?: string;
   /**
    * The one market shown large, with its wide photograph.
    *
@@ -102,9 +105,9 @@ export interface Digest {
    * reads as a database; one of them at full size gives the thing a face.
    */
   lead?: DigestRow;
-  /** Whether the lead came out of their own canton, which decides where it sits. */
+  /** Whether the lead came out of their own area, which decides where it sits. */
   leadInRegion: boolean;
-  /** The rest of their canton, after the lead was taken out of it. */
+  /** The rest of their area, after the lead was taken out of it. */
   own: DigestRow[];
   /** A sample of the rest of the country, at most one market per town per day. */
   elsewhere: DigestRow[];
@@ -116,7 +119,7 @@ export interface Digest {
    * Their own town's page when we had to cut their town's list — that is the
    * page holding what they are missing. The home page otherwise.
    */
-  more: { href: string; count: number; region?: string };
+  more: { href: string; count: number; scope?: string };
 }
 
 function toRow(row: Dated, locale: Locale): DigestRow {
@@ -158,9 +161,23 @@ const byDateThenTime = (a: DigestRow, b: DigestRow) =>
  */
 export function buildDigest(
   markets: Market[],
-  options: { region?: string | null; locale: Locale; now?: Date; limit?: number }
+  options: {
+    /** A canton slug. What a canton page subscribes to. */
+    region?: string | null;
+    /**
+     * A point and a distance. What a city or a market page subscribes to,
+     * because "near me" is the question those pages are actually about and a
+     * canton is a blunt answer to it — Graubünden is thirty times the size of
+     * Zug, so the same subscription is a two-hour drive for one reader and a
+     * quarter of an hour for another.
+     */
+    near?: { lat: number; lng: number; km: number; city: string } | null;
+    locale: Locale;
+    now?: Date;
+    limit?: number;
+  }
 ): Digest {
-  const { region, locale, now = new Date(), limit = 8 } = options;
+  const { region, near, locale, now = new Date(), limit = 8 } = options;
   const { start, end } = weekendBounds(now);
 
   /* The same window the home page's weekend block uses, minus anything that
@@ -173,11 +190,17 @@ export function buildDigest(
     (row) => row.next.date >= floor && row.next.date <= end
   );
 
-  /* A slug against a slug. The old version folded accents and case because the
-     town was typed; a canton now arrives as the same string the URL carries, so
-     there is nothing to fold. */
+  /*
+   * Two shapes, one predicate. A canton is a slug against a slug — the old
+   * version folded accents and case because the town was typed, and a canton
+   * arrives as the string the URL already carries. A radius is the venue's own
+   * coordinates against the subscriber's, which is why `geo.ts` holds the
+   * distance formula the radius view also uses.
+   */
   const wanted = region?.trim().toLowerCase() ?? '';
-  const isTheirs = (row: Dated) => wanted !== '' && row.regionSlug === wanted;
+  const isTheirs = near
+    ? (row: Dated) => distanceKm(near.lat, near.lng, row.lat, row.lng) <= near.km
+    : (row: Dated) => wanted !== '' && row.regionSlug === wanted;
 
   /*
    * `limit` is the whole mail, not one section of it.
@@ -229,20 +252,36 @@ export function buildDigest(
    * "See all" points at whatever we cut. When their own canton holds more than
    * fitted, that is the canton's page; otherwise the weekend as a whole.
    */
-  const cut = theirs.length > ownRows.length;
+  /*
+   * The phrase every line of the mail hangs off, built here because this is
+   * where the locale strings live and the mail deliberately knows nothing
+   * about places.
+   */
+  const s = t(locale);
   const first = theirs[0];
+  const scope = near
+    ? s.scopeRadius(near.km, near.city)
+    : first
+      ? s.scopeRegion(s.regionLabel(first.region))
+      : undefined;
+
+  const cut = theirs.length > ownRows.length;
   const more = cut && first
     ? {
-        href: regionPath(locale, first.countrySlug, first.regionSlug),
+        /* Their canton's page, or — for a radius — the nearby view centred
+           where they are, which is the page holding what got cut. */
+        href: near
+          ? `${nearbyPath(locale)}?lat=${near.lat.toFixed(4)}&lng=${near.lng.toFixed(4)}&km=${near.km}`
+          : regionPath(locale, first.countrySlug, first.regionSlug),
         count: theirs.length,
-        region: t(locale).regionLabel(first.region),
+        scope,
       }
     : { href: homePath(locale), count: new Set(weekend.map((row) => row.slug)).size };
 
   return {
     from: start,
     to: end,
-    region: first ? t(locale).regionLabel(first.region) : undefined,
+    scope,
     lead,
     leadInRegion,
     own,

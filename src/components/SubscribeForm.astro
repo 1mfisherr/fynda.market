@@ -22,13 +22,20 @@ import Button from './Button.astro';
 import Field from './Field.astro';
 import { FORMS } from '../lib/utility-copy';
 import { t } from '../lib/strings';
+import { DEFAULT_RADIUS } from '../lib/geo';
 import type { RegionOption } from '../lib/regions';
 import type { Locale } from '../lib/i18n';
 
 interface Props {
   locale: Locale;
-  /** The canton this page is about. Present means no picker. */
+  /** The canton this page is about. A canton page, and only a canton page. */
   region?: Pick<RegionOption, 'slug' | 'label'>;
+  /**
+   * A place and a distance, for the pages where "near me" is the real question
+   * — a city page and a market page. A canton is a blunt answer there:
+   * Graubünden is thirty times the size of Zug.
+   */
+  near?: { slug: string; name: string; km?: number };
   /** Every canton, for the pages that cannot know. Ignored when `region` is set. */
   options?: RegionOption[];
   /**
@@ -47,14 +54,23 @@ interface Props {
   anchors?: boolean;
 }
 
-const { locale, region, options = [], variant = 'card', anchors = false } = Astro.props;
+const { locale, region, near, options = [], variant = 'card', anchors = false } = Astro.props;
 const s = t(locale);
 const copy = FORMS.newsletter[locale];
 
-const body = region ? s.subscribeBodyRegion(region.label) : s.newsletterBody;
+/* One phrase, whichever shape this page knows: "im Kanton Zürich", or "im
+   Umkreis von 25 km um Zürich". strings.ts owns the prepositions. */
+const km = near?.km ?? DEFAULT_RADIUS;
+const scope = near
+  ? s.scopeRadius(km, near.name)
+  : region
+    ? s.scopeRegion(region.label)
+    : null;
+
+const body = scope ? s.subscribeBodyScope(scope) : s.newsletterBody;
 
 /* The picker is drawn only where the page cannot answer the question itself. */
-const picker = !region && options.length > 0;
+const picker = !scope && options.length > 0;
 
 /* Unique per instance, and the same on every build: a page carries the card and
    the footer at once, and two fields with the same id are two labels pointing at
@@ -83,6 +99,12 @@ const id = `sub-${variant}`;
     <input type="hidden" name="consent_text" value={copy.note} />
     <input type="hidden" name="anchor" value="sub" />
     {region && <input type="hidden" name="region" value={region.slug} />}
+    {near && (
+      <>
+        <input type="hidden" name="city" value={near.slug} />
+        <input type="hidden" name="radius" value={String(km)} />
+      </>
+    )}
 
     {/* The site's own field for both, so the label, the error slot and the aria
         wiring are the ones every other form already uses. */}

@@ -44,12 +44,14 @@ const shown = (d: Digest): DigestRow[] => [...inRegion(d), ...away(d)];
 interface Options {
   extra?: Partial<Occurrence>;
   kind?: Market['kind'];
-  /** The canton slug. What a subscription is now for. */
+  /** The canton slug. What a canton page subscribes to. */
   region?: string;
+  /** Where the venue is, for the radius tests. Defaults to central Zürich. */
+  at?: { lat: number; lng: number };
 }
 
 function market(name: string, city: string, date: string, options: Options = {}): Market {
-  const { extra = {}, kind = 'flohmarkt', region = 'zurich' } = options;
+  const { extra = {}, kind = 'flohmarkt', region = 'zurich', at = ZURICH } = options;
   const slug = `${name}-${date}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   return {
     id: slug,
@@ -64,13 +66,18 @@ function market(name: string, city: string, date: string, options: Options = {})
     timezone: 'Europe/Zurich',
     venueName: 'Platz',
     addressLine: 'Platz 1',
-    lat: 47.37,
-    lng: 8.54,
+    lat: at.lat,
+    lng: at.lng,
     imageUrl: `/images/${slug}.webp`,
     next: { date, status: 'confirmed', startTime: '09:00', endTime: '16:00', ...extra },
     upcoming: [],
   };
 }
+
+/* Real places, so the distances in the radius tests are real distances. */
+const ZURICH = { lat: 47.3769, lng: 8.5417 };
+const WINTERTHUR = { lat: 47.5001, lng: 8.7386 };   // ~20 km from Zürich
+const BERN = { lat: 46.948, lng: 7.4474 };          // ~95 km from Zürich
 
 /* -------------------------------------------------------------------------- */
 
@@ -182,8 +189,8 @@ test('"see all" points at their canton when their canton is what got cut', () =>
   const markets = Array.from({ length: 12 }, (_, i) => market(`Zueri${i}`, `Ort${i}`, saturday));
   const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
   assert.equal(digest.more.count, 12);
-  // The label a reader sees, not the bare name: "Kanton Zurich".
-  assert.equal(digest.more.region, 'Kanton Zurich');
+  // The phrase a reader sees, prepositions and all.
+  assert.equal(digest.more.scope, 'im Kanton Zurich');
   assert.ok(digest.more.href.includes('zurich'), digest.more.href);
 });
 
@@ -193,7 +200,7 @@ test('"see all" points at the weekend when nothing of theirs was cut', () => {
     market('Weit', 'Basel', saturday, { region: 'basel' }),
   ];
   const digest = buildDigest(markets, { region: 'zurich', locale: 'de', now });
-  assert.equal(digest.more.region, undefined);
+  assert.equal(digest.more.scope, undefined);
   assert.equal(digest.more.count, 2);
   assert.equal(digest.more.href, '/de/');
 });
@@ -323,4 +330,75 @@ test('a market with no photograph simply has none', () => {
   const [row] = inRegion(digest);
   assert.equal(row.image, undefined);
   assert.equal(row.hero, undefined);
+});
+
+/* -------------------------------------------------------------------------- */
+/* Radius                                                                     */
+/* -------------------------------------------------------------------------- */
+
+test('a radius takes what is inside it and nothing beyond', () => {
+  const markets = [
+    market('Bürkliplatz', 'Zürich', saturday, { at: ZURICH }),
+    market('Altstadt', 'Winterthur', saturday, { at: WINTERTHUR }),
+    market('Bundesplatz', 'Bern', saturday, { at: BERN, region: 'bern' }),
+  ];
+
+  /* Ten kilometres reaches nothing but the city itself. */
+  const near = buildDigest(markets, {
+    near: { lat: ZURICH.lat, lng: ZURICH.lng, km: 10, city: 'Zürich' }, locale: 'de', now,
+  });
+  assert.deepEqual(inRegion(near).map((r) => r.name), ['Bürkliplatz']);
+
+  /* Thirty reaches Winterthur, which is the whole point — a canton
+     subscription would have caught it too, but a Zug one would not have
+     caught Zürich. */
+  const wider = buildDigest(markets, {
+    near: { lat: ZURICH.lat, lng: ZURICH.lng, km: 30, city: 'Zürich' }, locale: 'de', now,
+  });
+  assert.deepEqual(inRegion(wider).map((r) => r.name).sort(), ['Altstadt', 'Bürkliplatz']);
+
+  /* Bern is ninety-five kilometres away and stays outside all of them. */
+  assert.ok(!inRegion(wider).some((r) => r.name === 'Bundesplatz'));
+});
+
+test('a radius crosses a canton border, which is the reason it exists', () => {
+  const markets = [
+    market('Zueri', 'Zürich', saturday, { at: ZURICH }),
+    /* Physically 20 km away but in a different canton. A canton subscription
+       misses it; a radius does not. */
+    market('Nachbar', 'Baden', saturday, { at: WINTERTHUR, region: 'aargau' }),
+  ];
+
+  const byCanton = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  assert.deepEqual(inRegion(byCanton).map((r) => r.name), ['Zueri']);
+
+  const byRadius = buildDigest(markets, {
+    near: { lat: ZURICH.lat, lng: ZURICH.lng, km: 30, city: 'Zürich' }, locale: 'de', now,
+  });
+  assert.deepEqual(byRadius.own.length + 1, 2);
+});
+
+test('the scope phrase says which shape it is, in the right language', () => {
+  const markets = [market('Zueri', 'Zürich', saturday, { at: ZURICH })];
+  const near = { lat: ZURICH.lat, lng: ZURICH.lng, km: 25, city: 'Zürich' };
+
+  assert.equal(buildDigest(markets, { near, locale: 'de', now }).scope, 'im Umkreis von 25 km um Zürich');
+  assert.equal(buildDigest(markets, { near, locale: 'en', now }).scope, 'within 25 km of Zürich');
+  assert.equal(buildDigest(markets, { near, locale: 'fr', now }).scope, 'dans un rayon de 25 km autour de Zürich');
+  assert.equal(buildDigest(markets, { near, locale: 'it', now }).scope, 'entro 25 km da Zürich');
+
+  // And the canton shape still reads as a canton.
+  assert.equal(buildDigest(markets, { region: 'zurich', locale: 'de', now }).scope, 'im Kanton Zurich');
+});
+
+test('"see all" for a radius opens the nearby view centred on them', () => {
+  const markets = Array.from({ length: 12 }, (_, i) =>
+    market(`Nah${i}`, `Ort${i}`, saturday, { at: ZURICH })
+  );
+  const digest = buildDigest(markets, {
+    near: { lat: ZURICH.lat, lng: ZURICH.lng, km: 25, city: 'Zürich' }, locale: 'de', now,
+  });
+  assert.equal(digest.more.count, 12);
+  assert.ok(digest.more.href.startsWith('/de/umkreis/'), digest.more.href);
+  assert.ok(digest.more.href.includes('km=25'), digest.more.href);
 });

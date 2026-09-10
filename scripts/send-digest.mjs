@@ -80,7 +80,11 @@ if (send && !RESEND_API_KEY) {
  * never selected — that is the suppression record the privacy policy promises.
  */
 const subscribers = await query(
-  `select s.id, s.email, s.locale, s.unsubscribe_token, sl.slug as region
+  `select s.id, s.email, s.locale, s.unsubscribe_token, s.radius_km,
+          sl.slug as region,
+          ct.value as city_name,
+          extensions.st_y(c.point::extensions.geometry) as lat,
+          extensions.st_x(c.point::extensions.geometry) as lng
      from newsletter_subscribers s
      left join newsletter_sends x
        on x.subscriber_id = s.id and x.issue_date = $1
@@ -89,6 +93,12 @@ const subscribers = await query(
      -- own language purely to pick one row.
      left join slugs sl
        on sl.entity_type = 'region' and sl.entity_id = s.region_id and sl.locale = s.locale
+     -- A radius subscription measures from the city's centroid, and names the
+     -- city in the reader's own language.
+     left join cities c on c.id = s.city_id
+     left join texts ct
+       on ct.entity_type = 'city' and ct.entity_id = s.city_id
+      and ct.locale = s.locale and ct.field = 'name'
     where s.unsubscribed_at is null
       and x.subscriber_id is null
       ${only ? 'and lower(s.email) = $2' : ''}
@@ -119,8 +129,20 @@ const issues = [];
 let empty = 0;
 
 for (const subscriber of wanted) {
+  /* One shape or the other, never both: the check constraint on the table
+     guarantees it, so this only has to prefer the more precise one. */
+  const near = subscriber.lat != null && subscriber.lng != null
+    ? {
+        lat: Number(subscriber.lat),
+        lng: Number(subscriber.lng),
+        km: subscriber.radius_km ?? 25,
+        city: subscriber.city_name ?? '',
+      }
+    : null;
+
   const digest = buildDigest(marketsByLocale[subscriber.locale], {
     region: subscriber.region,
+    near,
     locale: subscriber.locale,
     now,
   });

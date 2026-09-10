@@ -165,18 +165,13 @@ const DEFAULT_KM = 50;
   let currentKm = 50;
   let origin: { lat: number; lng: number } | null = null;
 
+  /* The same formula the weekly digest filters on. Two copies of a distance
+     stay correct until one of them is fixed. */
+  import { distanceKm } from '../lib/geo';
+
   const lang = document.documentElement.lang || 'de-CH';
   const oneDecimal = new Intl.NumberFormat(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-  /** Great-circle distance in kilometres. Accurate to a few metres at this scale. */
-  function distanceKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
-    const R = 6371;
-    const rad = (deg: number) => (deg * Math.PI) / 180;
-    const dLat = rad(lat2 - lat1);
-    const dLng = rad(lng2 - lng1);
-    const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLng / 2) ** 2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }
 
   /** "1,2 km" in German and French, "1.2 km" in English. */
   function formatKm(km: number): string {
