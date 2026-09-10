@@ -290,6 +290,21 @@ const id = `sub-${variant}`;
         .then((outcome) => {
           if (button) button.disabled = false;
 
+          /* Tell the page what happened, in the words the analytics constraint
+             uses. Analytics.astro listens for this rather than for the submit,
+             because a submit event knows only that somebody pressed the button
+             — and a signup that was refused looks identical to one that
+             worked. The funnel is only worth having if the last step is true. */
+          form.dispatchEvent(new CustomEvent('fynda:newsletter', {
+            bubbles: true,
+            detail: {
+              outcome:
+                outcome === 'ok' ? 'ok'
+                : outcome === 'invalid' ? 'validation_error'
+                : 'server_error',
+            },
+          }));
+
           if (outcome === 'ok') {
             form.hidden = true;
             const note = block?.querySelector<HTMLElement>('.note');

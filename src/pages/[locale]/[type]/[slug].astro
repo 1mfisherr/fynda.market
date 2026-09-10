@@ -218,7 +218,13 @@ const facilityItems = market.facilities ? [
       instead of below it. The DOM order is the mobile order and the reading
       order both — hero, title, what to do, then the detail — so nothing is
       re-sequenced for sighted users only. */}
-  <div class="market">
+  {/* Which market this page is about, for Analytics.astro — it reads the
+      nearest `[data-market]` ancestor of whatever was clicked, and until now
+      only a list row carried one. So every directions click, every save and
+      every report opened from a market page arrived with a null market_id,
+      and "which markets earn the outbound clicks" — the site's whole funnel —
+      could only be answered by parsing the path back into a slug. */}
+  <div class="market" data-market={market.id}>
     <div class="photo-hero">
       <PhotoOrArt market={market} width={720} height={210} loading="eager" />
       {/* Filled, not white text laid over a photograph, where it was legible

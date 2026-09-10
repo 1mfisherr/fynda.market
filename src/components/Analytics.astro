@@ -128,8 +128,20 @@
     }
 
     if (href && /\/(melden|report|signaler|segnalare)\//.test(href)) {
+      // `grund` is the value the reports table stores — the same vocabulary the
+      // chip, the select and the column use. It said `ausgefallen` here until
+      // 2026-09-10, a German word from an earlier draft that nothing has sent
+      // since the keys became the database's own, so every cancellation was
+      // being filed as a correction.
       const grund = new URLSearchParams(href.split('?')[1] ?? '').get('grund');
-      send('report_open', { kind: grund === 'ausgefallen' ? 'cancellation' : 'correction' }, el);
+      send('report_open', { kind: grund === 'cancelled' ? 'cancellation' : 'correction' }, el);
+      return;
+    }
+
+    // The organiser's own ask: "this is my market". A different queue, a
+    // different person, and the start of the only relationship this site has.
+    if (href && /\/(veranstalter|organisateurs|organizzatori|organisers)\//.test(href)) {
+      send('report_open', { kind: 'organiser' }, el);
     }
   }, { capture: true, passive: true });
 
@@ -149,8 +161,27 @@
       if (zeit) send('filter_changed', { filter: 'zeit', value: zeit }, form);
     }
 
-    if (form.dataset.newsletter !== undefined) send('newsletter_submit', { outcome: 'ok' }, form);
   }, { capture: true, passive: true });
+
+  /**
+   * The signup reports its own outcome.
+   *
+   * This used to listen for a submit on `form[data-newsletter]` and record
+   * `outcome: 'ok'` for every one of them. Two things were wrong with it: the
+   * attribute was renamed to `data-subscribe` when the form moved onto every
+   * page, so nothing had matched it since — not one `newsletter_submit` row
+   * exists — and a submit event cannot know whether the address was accepted,
+   * so the outcome it recorded was a guess that was always the same.
+   *
+   * SubscribeForm knows the answer and says so. A visitor with JavaScript off
+   * posts the form itself and is counted by nothing here; that is the same
+   * trade as every other event in this file.
+   */
+  document.addEventListener('fynda:newsletter', (event) => {
+    const detail = (event as CustomEvent<{ outcome?: string }>).detail;
+    if (!detail?.outcome) return;
+    send('newsletter_submit', { outcome: detail.outcome }, event.target as Element);
+  });
 
   /**
    * "Nothing matched" is the most valuable event and the most commonly missed,

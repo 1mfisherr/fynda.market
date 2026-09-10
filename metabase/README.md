@@ -51,8 +51,21 @@ offered it.
 
 It is `metabase_ro`: read-only, forever. It cannot insert, update or delete
 anything. It cannot read `market_private` (organiser emails, admin notes) or
-`reports` (whatever a visitor typed into a form). Personal data does not reach
-a dashboard.
+`reports` (whatever a visitor typed into a form).
+
+**It does see personal data, and that is deliberate in two places.** An earlier
+version of this file claimed it saw none; that stopped being true the day the
+site started collecting addresses.
+
+- `newsletter_subscribers` — every address, with the page it was signed up
+  from. There is no useful newsletter question that does not read this table.
+- `open_reports` and `open_organiser_claims` — the two queues below. The base
+  `reports` table is still revoked; the view is the window, because a view runs
+  with its owner's rights and grants nothing on what it reads. The reporter's
+  address is in it because answering a report means writing back to them.
+
+What that means in practice: this dashboard is on one laptop, behind a login,
+and it is a place personal data reaches. It is not a screen to share.
 
 ## Files you must not commit
 
@@ -123,52 +136,70 @@ exported by then is gone for good, so the habit matters more than the schedule.
 
 Since 2026-09-09 the site's forms write rows rather than opening a mail
 program. A submission pings Telegram once, and a Telegram message is a doorbell,
-not a list — it is seen or it is missed. These two questions are the list.
+not a list — it is seen or it is missed. These two are the list.
 
-**Make them both, pin them to a dashboard, and look at it weekly.** A report
-nobody reads is worse than no report form, because the person who sent it
-believes somebody is checking.
+They are **views in the database**, not SQL to paste: `open_reports` and
+`open_organiser_claims`. Both are defined in
+`supabase/migrations/20260910190000_triage_views.sql`, which is where to change
+them — a question saved only inside Metabase lives in a Docker volume on one
+laptop and is reviewed by nobody.
+
+**Build the dashboard once, then look at it weekly.** A report nobody reads is
+worse than no report form, because the person who sent it believes somebody is
+checking.
+
+### Building it, once
+
+1. **+ New** → **Question** → **Raw Data** → **Fynda** → `Open Reports`
+2. **Save**, and when it offers, **Yes please** to add it to a new dashboard
+   called **Queue**
+3. Same again for `Open Organiser Claims`, saved onto the same dashboard
+4. On the dashboard: **⋮ → Edit** → the bell icon → **Set up an alert** →
+   *when this has results* → **daily**. That is the part that means you do not
+   have to remember to look.
 
 ### Open reports
 
+`market` is null when the report came from the footer form and named a market
+in words. Those are the ones needing a human to match them; everything sent
+from a market page arrives already attached, and `they_typed` is kept either
+way — it is the evidence, the id is our reading of it.
+
+Closing one, as the owner (Metabase cannot write):
+
 ```sql
-select r.submitted_at::date as sent,
-       r.report_type,
-       coalesce(m.slug, '— unmatched —') as market,
-       r.market_text as they_typed,
-       r.note,
-       r.email,
-       r.locale
-  from public.reports r
-  left join public.markets m on m.id = r.market_id
- where not r.resolved
- order by r.submitted_at desc;
+update public.reports
+   set resolved = true, resolved_at = now(), resolver_note = '…'
+ where id = '…';
 ```
 
-`market_id` is null when the report came from the footer form and named a
-market in words. Those are the ones needing a human to match them; everything
-from a market page arrives already attached. Closing one is
-`update public.reports set resolved = true, resolved_at = now(), resolver_note = '…' where id = '…'`.
+Nothing on the site changes because a report arrived. A person checks it, and
+only then does the market page move. That is the whole difference between a
+freshness stamp and a comment box.
 
 ### Organiser claims waiting for an answer
 
+Sort this one by `waiting_days`, not by date. It decays: somebody has offered
+to become the source of truth for a market and is waiting to hear back, and a
+fortnight's silence is the answer they will remember.
+
 ```sql
-select c.created_at::date as sent,
-       c.organiser_name,
-       c.email,
-       coalesce(m.slug, '— unmatched —') as market,
-       c.market_text as they_typed,
-       c.town,
-       c.message,
-       c.locale
-  from public.organiser_claims c
-  left join public.markets m on m.id = c.market_id
- where not c.handled
- order by c.created_at desc;
+update public.organiser_claims
+   set handled = true, handled_at = now(), handler_note = '…'
+ where id = '…';
 ```
 
-This one decays. Somebody has offered to become the source of truth for a
-market and is waiting to hear back, and a fortnight's silence is the answer
-they will remember. `handled` is set by hand, with `handler_note` for what was
-agreed.
+### If both are empty, check they can fill
+
+The endpoints behind them were dead from 2026-09-09 to 2026-09-10 — the
+migration that creates the tables had never been applied, so every report and
+every claim submitted in that window was refused and lost. An empty queue and a
+broken queue look identical from here. Posting one row to the live site is the
+only way to tell them apart:
+
+```bash
+curl -X POST https://fynda.market/r -H 'content-type: application/json' -H 'accept: application/json' -d '{"markt":"TEST - delete me","grund":"other","path":"/de/"}'
+```
+
+Then read `open_reports`, and delete the row.
 

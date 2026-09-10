@@ -28,6 +28,20 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (isProbablyBot(request.headers.get('user-agent'))) return response;
 
   const url = new URL(request.url);
+
+  /*
+   * `/` is not a page. It is a two-line HTML stub that redirects to /de/, and
+   * because it answers 200 with text/html it was passing every test above:
+   * 458 of the first 1,695 page views were it. Every one of them was recorded
+   * with no locale and a page type of `other`, and anyone who actually
+   * followed it was then counted a second time on the home page.
+   *
+   * Counting it as `home` would be the other wrong answer — it would fold the
+   * bots that never follow the redirect into the number for the page that has
+   * content on it.
+   */
+  if (url.pathname === '/') return response;
+
   waitUntil(
     collect(env, request, {
       event_name: 'page_view',
