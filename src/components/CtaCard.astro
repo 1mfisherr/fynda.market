@@ -50,9 +50,19 @@ const copy = COPY[kind];
 <style>
   .cta {
     display: grid;
+    /* Title and text take what they need; the third row takes the rest.
+       Without this the card's three rows shared the height equally whenever a
+       taller card sat beside it — on the home page the organiser card grew to
+       match the signup form and turned a 44px button into a 124px lozenge,
+       with the same slack opening up under the heading. */
+    grid-template-rows: auto auto 1fr;
     gap: var(--space-3);
     padding: var(--space-5);
     border-radius: var(--radius-md);
     background: var(--color-paper);
   }
+
+  /* Sitting on the floor of the card rather than floating in the slack. Where
+     the card is alone the row collapses to the button and this does nothing. */
+  .cta > :last-child { align-self: end; }
 </style>

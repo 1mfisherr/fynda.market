@@ -376,7 +376,12 @@ const jsonLd = {
     .home-head > * + * { margin-block-start: 0; }
     .says > * + * { margin-block-start: var(--space-2); }
 
-    .asks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* `start`, not the default stretch. The signup card is a form and the
+       organiser card is two lines and a button, so matching their heights
+       bought nothing but a 200px hole in the shorter one. Each card ends where
+       its content ends and both begin on the same line, which is the alignment
+       a reader actually notices. */
+    .asks { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   }
 
 </style>

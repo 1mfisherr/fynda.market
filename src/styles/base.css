@@ -219,6 +219,19 @@ h1 {
   color: var(--color-grey);
 }
 
+/* Keep in step with --breakpoint-wide; a media query cannot read a token. */
+@media (min-width: 900px) {
+  /* Full width is right on a phone, where it spans the column the rows are in.
+     At 1200 it was a 1160px dashed bar with six words floating in the middle of
+     it — the widest thing on the page, saying the least. Capped at the reading
+     column and centred, it reads as the quiet "there is more" it is meant to
+     be. */
+  .button[data-variant='quiet'] {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+}
+
 /* A block button that fills its card. */
 .button[data-block] {
   display: flex;
