@@ -21,7 +21,7 @@
  */
 import Icon from './Icon.astro';
 import type { DateWindow } from '../lib/date-window';
-import { formatDateShort } from '../lib/format';
+import { formatDateShort, thisWeekend, todayIso } from '../lib/format';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 import { HORIZON_DAYS } from '../lib/markets';
@@ -39,9 +39,23 @@ const LABELS: Record<string, string> = {
   today: s.filterToday,
   weekend: s.filterWeekend,
 };
-const chips = windows.filter((w) => LABELS[w]);
-
 const has = new Set(dates);
+
+/* A chip with nothing behind it is a dead end: Worb offered "Heute" and
+   "Wochenende" for a page whose next date was four weeks out, and a tap on
+   either emptied the list. Decided at build time, on the build's own today —
+   the nightly rebuild is what keeps "today" true. A page that passes no dates
+   (the home page's search card) keeps every chip, because the card sends the
+   choice to another page. */
+const buildToday = todayIso();
+const weekend = thisWeekend(buildToday);
+const offered = (w: string) => {
+  if (dates.length === 0 || w === 'all') return true;
+  if (w === 'today') return has.has(buildToday);
+  if (w === 'weekend') return dates.some((d) => d >= weekend.start && d <= weekend.end);
+  return true;
+};
+const chips = windows.filter((w) => LABELS[w] && offered(w));
 
 /* Built at build time, so "today" is the build's today — the same clock the
    pages render their rows against, and the same 120-day horizon, so the grid
@@ -117,6 +131,16 @@ while (cursor <= last) {
      languages — "Ce week-end" is three times the width of "Alle" — and a
      sideways scrollbar under the hero read as a broken page. */
   .filters { position: relative; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+  /* Four chips on one phone line, in French too. "Aujourd'hui" and "Ce
+     week-end" at the default chip padding are 366px of buttons in a 335px
+     column, and the fourth chip dropping to a second line was the thing that
+     pushed the first market off the first screen. Keep in step with
+     --breakpoint-wide's opposite: this is a phone rule. */
+  @media (max-width: 480px) {
+    .filters { gap: var(--space-1); }
+    .filters > .button { padding-inline: var(--space-2); }
+  }
 
   /* Anchored to the whole row rather than to the chip, so the panel can never
      be the thing that puts the page back into horizontal scroll. */

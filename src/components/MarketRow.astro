@@ -23,6 +23,10 @@
  *                   was 41 of 45 rows. See vocabulary.ts BADGED_KINDS.
  *
  * One loud thing per row: the name. Everything under it steps down a weight.
+ * The check stamp ("Zuletzt geprüft 22. Mai") used to share the first line
+ * with the date and the hours at the same size, and as the data aged it was
+ * on five rows in seven — three loud things. It is now the last line, quiet.
+ * A cancellation stays on the first line: that is status, and status is loud.
  */
 import type { Market } from '../lib/types';
 import { BADGED_KINDS, LINES } from '../lib/vocabulary';
@@ -43,10 +47,12 @@ interface Props {
   showRhythm?: boolean;
   /** Rendered verbatim; the caller computed it and must never guess it. */
   distance?: string;
+  /** Off where the page groups rows under a day header that already says it. */
+  showDay?: boolean;
 }
 const {
   market, locale = DEFAULT_LOCALE, variant = 'row',
-  omitCity = false, showRhythm = false, distance,
+  omitCity = false, showRhythm = false, distance, showDay = true,
 } = Astro.props;
 
 const s = t(locale);
@@ -57,7 +63,7 @@ const line = LINES[market.kind];
 const badge = BADGED_KINDS.has(market.kind) ? line.short[locale] : undefined;
 
 const day = occurrence ? new Date(`${occurrence.date}T00:00:00`) : undefined;
-const dayLabel = day ? `${s.weekdaysLong[day.getDay()].slice(0, 2)} ${day.getDate()}.` : '';
+const dayLabel = showDay && day ? `${s.weekdaysLong[day.getDay()].slice(0, 2)} ${day.getDate()}.` : '';
 const times = occurrence?.startTime
   ? `${formatTime(occurrence.startTime)}${occurrence.endTime ? `–${formatTime(occurrence.endTime)}` : ''}`
   : undefined;
@@ -75,7 +81,7 @@ const size = variant === 'feature' ? 720 : 148;
     <p class="meta">
       {dayLabel && <span class="day">{dayLabel}</span>}
       {times && <span class="hours">{times}</span>}
-      {flag && <span class:list={['flag', flag.tone]}>{flag.text}</span>}
+      {flag?.tone === 'bad' && <span class="flag bad">{flag.text}</span>}
     </p>
     <h3 class="name">
       <a href={marketPath(locale, market.slug)}>{market.name}</a>
@@ -83,6 +89,7 @@ const size = variant === 'feature' ? 720 : 148;
     </h3>
     {showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
     <p class="where">{where}</p>
+    {flag?.tone === 'warn' && <p class="check">{flag.text}</p>}
   </div>
 </article>
 
@@ -97,7 +104,6 @@ const size = variant === 'feature' ? 720 : 148;
   .day { color:var(--color-accent); font-size:var(--text-small); font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); text-transform:uppercase; white-space:nowrap; }
   .hours { color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); white-space:nowrap; }
   .flag { font-size:var(--text-small); font-weight:var(--weight-bold); }
-  .flag.warn { color:var(--color-grey); }
   .flag.bad { color:var(--color-accent); }
 
   /* One loud thing. Everything below it steps down a weight. */
@@ -106,6 +112,7 @@ const size = variant === 'feature' ? 720 : 148;
   .badge { display:inline-block; margin-inline-start:var(--space-2); padding:var(--space-half) var(--space-2); border-radius:var(--radius-pill); color:var(--color-white); font-size:var(--text-micro); font-style:normal; font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); vertical-align:var(--space-half); white-space:nowrap; }
   .rhythm { margin:var(--space-1) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
   .where { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-small); line-height:1.4; }
+  .check { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-micro); line-height:1.4; }
 
   /* ---- the lead ---- */
   .feature .pic { aspect-ratio:16 / 10; margin-block-end:var(--space-3); border-radius:var(--radius-md); }

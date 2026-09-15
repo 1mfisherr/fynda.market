@@ -26,6 +26,13 @@
  * That is the right trade while one person deploys and the data changes rarely.
  * If that stops being true, the fix is a scheduled job that runs this file, not
  * a return to building on Cloudflare.
+ *
+ *   npm run deploy -- --build-only
+ *
+ * Everything up to the upload: the real build in dist/, checked, published
+ * nowhere. Seeing a change against 157 real markets used to require being
+ * willing to publish it; `npm run preview` on the result is how a change is
+ * looked at before it goes live.
  */
 
 import { spawnSync } from 'node:child_process';
@@ -116,6 +123,11 @@ if (built.source !== 'supabase') {
 `
   );
   process.exit(1);
+}
+
+if (process.argv.includes('--build-only')) {
+  console.log('\n  Built and checked against the database. Nothing uploaded (--build-only).\n');
+  process.exit(0);
 }
 
 run('Uploading to Cloudflare Pages', binOf('wrangler'), [

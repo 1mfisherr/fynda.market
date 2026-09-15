@@ -155,15 +155,19 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 | Block | Why it is there |
 |---|---|
 | **`Flohmärkte in Luzern 2026` as the H1 and title** | The year is in 38% of queries. Omitting it forfeits the match |
-| One line: how many markets, how many upcoming dates | Immediate proof the page is not empty |
-| Date chips | Same control as home. Filters, never URLs |
-| **One row per market, soonest first** | Not one row per date. The row carries its next date, its hours and how often it runs |
-| Each row: name, date + time in accent, venue, freshness, status | The card doing its one job |
+| One sentence naming the next market, its date, hours and venue; then the count | The answer, before the list. **It is also the search snippet** (2026-09-15): the generic description earned page-one positions and no clicks |
+| Date chips, **only those with something behind them** | Same control as home. Filters, never URLs. A chip that empties the list is a dead end, so "Heute" and "Wochenende" are omitted at build time when no date matches |
+| **One row per market, soonest first, grouped under sticky day headers** (2026-09-15) | Not one row per date. The header carries the weekday, the date in the accent, and a count; a month label where the month turns. Rows carry hours, name, rhythm, venue — the date lives in the header. People scan headings, not rows |
+| **One feature row** — the next market — then compact rows with square thumbnails | Two features and a wrapped chip row put the first market name 1,300px down a phone; one feature puts three markets on the first screen. On a desk the feature sits picture-beside-words |
+| The check stamp on its own quiet last line; a cancellation stays loud on the first | One loud thing per row. As the data ages the stamp appears on most rows, and at the size of the hours it was a third loud thing |
 | **A cancelled market stays in the list** | Struck through, with the reason. Removing it is what every competitor does and it is why they cannot be trusted |
 | Short city context paragraph | Real facts only — which markets are weekly, which are seasonal. Never generated padding (`ARCHITECTURE.md` §Generated prose) |
+| Type legend, **only when a badged kind is on the page** | Otherwise it teaches a colour system nothing on the page uses |
 | Newsletter signup, **after** the list | 1.1% conversion means it belongs where intent is highest, not at the top |
 
 **Deliberately not here:** an `Event` block of any kind, a list of nearby cities (doorway risk), category sub-pages.
+
+**Under consideration (2026-09-15):** a "within 25 km" block of up to five market *rows* with distance, only on a city with fewer than three upcoming dates. Rows are content, not a link list, but the block must not count toward the content floor. Not built; Delfim's call.
 
 **Measured by:** clicks per page against v1's 25.5, and click-through into market pages.
 

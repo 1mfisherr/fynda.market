@@ -24,7 +24,7 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 
 ## Next, in order
 
-1. **City page snippets say when, not what.** The description on 55 city pages (×4) is "Alle bekannten Flohmärkte in Worb — mit Terminen…"; it should lead with the next date and venue the way the market page's does. Pages already on page one with no clicks are the cheapest clicks there are.
+1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
 2. **"Less often" / "pause" on the unsubscribe page.** Token, page and row all exist; today the page is a dead end.
 3. **Resend webhook for opens and clicks.** Nothing else can retire dead addresses, and dead addresses drag sender reputation down.
 4. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
@@ -50,6 +50,9 @@ Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 - **A Metabase host, €6/month.** Only when looking without starting Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
+- **The "within 25 km" block on sparse city pages.** Mocked, not built (`PAGES.md` §City page). Rows not links, capped at five, outside the content floor. Yes or no.
+- **Two newsletter forms in a row.** The card at the foot of home, city, canton and market pages is followed directly by the footer's own form. Removing the footer one on those pages empties the desktop footer's right column, so it needs a layout decision, not a one-liner.
+- **French and Italian prose is missing its accents in places** ("a decembre", "troisieme") — a v1 artefact, same as the German umlauts fixed on 2026-09-15 (102 rows). Needs a pass with a word list, or a native reader.
 
 ---
 

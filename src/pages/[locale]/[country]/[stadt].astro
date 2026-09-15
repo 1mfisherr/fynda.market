@@ -15,7 +15,8 @@ import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
 import { byMarket, datedRows } from '../../../lib/lists';
-import { formatDate, formatTimeRange } from '../../../lib/format';
+import { formatDate, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
+import { BADGED_KINDS } from '../../../lib/vocabulary';
 import { LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
 import type { Market } from '../../../lib/types';
@@ -118,6 +119,43 @@ const description = soonest
       Math.round(HORIZON_DAYS / 30)
     )
   : `${s.cityNoDate} ${s.cityIntro(city, region)}`;
+/**
+ * The list, grouped under the day it happens. It was fifteen rows each carrying
+ * its own "SA 19." — the same day four times over, and the month changing
+ * twice with nothing to say so. People scan headings, not rows (NN/g's
+ * eyetracking, and both product studies of 2026-09-15 said the same). So one
+ * header per day, sticky while its rows scroll past, and a month label where
+ * the month turns. The date in the header is where the accent lives now: once
+ * per day rather than once per row, which is what makes it mean something.
+ *
+ * Only the very first market is the feature. Two features and a two-line chip
+ * row put the first market name 1,300px down a phone; one puts three markets
+ * on the first screen.
+ */
+const today = todayIso();
+interface Group { date: string; label: string; weekday: string; monthLabel?: string; rows: typeof list }
+const groups: Group[] = [];
+for (const market of list) {
+  const date = market.next.date;
+  const last = groups[groups.length - 1];
+  if (last && last.date === date) { last.rows.push(market); continue; }
+  const d = parseDate(date);
+  const dot = locale === 'de' ? '.' : '';
+  const monthTurned = !last || last.date.slice(0, 7) !== date.slice(0, 7);
+  groups.push({
+    date,
+    weekday: date === today ? s.filterToday : s.weekdaysLong[d.getDay()],
+    label: `${d.getDate()}${dot} ${s.monthsLong[d.getMonth()]}`,
+    monthLabel: monthTurned && last ? `${s.monthsLong[d.getMonth()]} ${d.getFullYear()}` : undefined,
+    rows: [market],
+  });
+}
+
+/* The legend explains the badge colours. With no badged market on the page it
+   teaches a colour system nothing on the page uses — the market page dropped
+   it for the same reason. */
+const hasBadge = list.some((market) => BADGED_KINDS.has(market.kind));
+
 const site = 'https://fynda.market';
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -145,10 +183,19 @@ const jsonLd = {
       the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
     <div id="list">
-      <div class="leads">
-        {list.slice(0, 2).map((market) => <MarketRow market={market} locale={locale} variant="feature" showRhythm omitCity />)}
-      </div>
-      {list.slice(2).map((market) => <MarketRow market={market} locale={locale} showRhythm omitCity />)}
+      {groups.map((group, g) => (
+        <section class="day-group gutter" data-day={group.date}>
+          {group.monthLabel && <p class="month">{group.monthLabel}</p>}
+          <h2 class="day-head">
+            <span class="weekday">{group.weekday}</span>
+            <span class="date">{group.label}</span>
+            <span class="count" data-count data-of={group.rows.length}>{s.marketCount(group.rows.length)}</span>
+          </h2>
+          {group.rows.map((market, i) => (
+            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} showRhythm omitCity showDay={false} />
+          ))}
+        </section>
+      ))}
     </div>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
@@ -157,10 +204,55 @@ const jsonLd = {
       between the headline and the first market. */}
   <PillList items={[{ href: regionPath(locale, markets[0].countrySlug, regionSlug), label: s.regionLabel(region) }]} />
 
-  <TypeLegend locale={locale} />
+  {hasBadge && <TypeLegend locale={locale} />}
 
   <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} /></div>
 </Page>
+
+<style>
+  /* Sticky, opaque, thin: the one sticky element that earns its place, because
+     it is the list's own index rather than chrome. The rule beneath is grey —
+     the accent is the date and nothing else. */
+  .day-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: 0;
+    padding-block: var(--space-4) var(--space-2);
+    border-block-end: var(--border-width) solid var(--color-line);
+    background: var(--color-surface);
+    font-size: var(--text-date);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-title);
+    line-height: 1.2;
+  }
+  .day-head .date { color: var(--color-accent); font-weight: var(--weight-black); }
+  .day-head .count { margin-inline-start: auto; color: var(--color-quiet); font-size: var(--text-micro); font-weight: var(--weight-semibold); white-space: nowrap; }
+
+  .month {
+    margin: var(--space-6) 0 0;
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  /* The feature sits under a header now, so it needs the room a row gets. */
+  .day-group :global(.feature) { padding-block: var(--space-4); border-block-end: var(--border-width) solid var(--color-line); }
+
+  /* One feature, not two, so on a desk it no longer shares .leads' two-column
+     grid — and alone at 1200px a 16:10 picture is 750px of photograph before
+     the first name. Picture beside the words instead. Keep in step with
+     .leads' 720px threshold in base.css. */
+  @media (min-width: 720px) {
+    .day-group :global(.feature) { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center; }
+    .day-group :global(.feature .pic) { margin-block-end: 0; }
+  }
+</style>
 
 <script>
   import { inWindow, type DateWindow } from '../../../lib/date-window';
@@ -174,6 +266,7 @@ const jsonLd = {
    * visitor is shown and the day the chip matched can never disagree. There
    * are no day bands to hide or recount any more.
    */
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
   const apply = (window: DateWindow) => {
     const now = new Date();
     let shown = 0;
@@ -181,6 +274,11 @@ const jsonLd = {
       const visible = inWindow(row.dataset.date ?? '', window, now);
       row.hidden = !visible;
       if (visible) shown++;
+    }
+    // A day whose rows are all hidden hides with them; every row in a group
+    // shares its date, so the group is shown or hidden whole.
+    for (const group of groups) {
+      group.hidden = !inWindow(group.dataset.day ?? '', window, now);
     }
     if (empty) empty.hidden = shown > 0;
   };
