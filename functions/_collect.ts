@@ -77,6 +77,35 @@ export function isProbablyBot(ua: string | null): boolean {
   return /bot|crawler|spider|crawling|slurp|bingpreview|headless|lighthouse|curl|wget|python-requests|monitor|preview/i.test(ua);
 }
 
+/**
+ * Hosting and cloud networks. A person reads this site from Swisscom, Sunrise,
+ * Salt or a phone; a request from an Amazon or Hetzner address is a machine,
+ * whatever its user-agent string claims. Cloud providers only, no transit
+ * carriers, because the cost of a false positive is a real visitor.
+ */
+const DATACENTRE_ORG =
+  /amazon|aws|google cloud|microsoft|azure|digitalocean|hetzner|ovh|linode|akamai|alibaba|tencent|oracle|vultr|choopa|contabo|scaleway|leaseweb|m247|hostinger|ionos|fastly|huawei|upcloud|kamatera|hivelocity|colocrossing|quadranet|psychz|zenlayer|datacamp|servers\.com|hostwinds|hostroyale|packethub|g-core|gcore|stark industries|aeza|3xk|nybula|clouvider|bl networks|xtom|netcup|strato|serverion|hostpapa|rackspace|limestone|rackdog/i;
+
+/**
+ * The request-level check the two counters use. Adds two signals to the
+ * user-agent test above, both learned from the first ten days of data, when
+ * two thirds of "visitors" were sweeps that passed the string match:
+ *
+ * - the network Cloudflare says the request came from (`cf.asOrganization`);
+ * - whether the browser said what language it speaks. Every real browser
+ *   sends Accept-Language on every request; crawlers that fake a Chrome
+ *   user-agent very often forget it.
+ *
+ * Forms keep the narrower check: a person on a VPN that exits in a cloud
+ * should still be able to report a cancelled market.
+ */
+export function isProbablyBotRequest(request: Request): boolean {
+  if (isProbablyBot(request.headers.get('user-agent'))) return true;
+  if (!request.headers.get('accept-language')) return true;
+  const org = (request as Request & { cf?: { asOrganization?: string } }).cf?.asOrganization;
+  return !!org && DATACENTRE_ORG.test(org);
+}
+
 export function deviceClassOf(ua: string | null): string | null {
   if (!ua) return null;
   if (/tablet|ipad/i.test(ua)) return 'tablet';

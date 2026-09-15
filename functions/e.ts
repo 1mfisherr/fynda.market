@@ -11,7 +11,7 @@
  * forged body can add a noisy row but can never claim to be someone else.
  */
 
-import { collect, type Env, type EventName, isProbablyBot, pageTypeOf, localeOf } from './_collect';
+import { collect, type Env, type EventName, isProbablyBotRequest, pageTypeOf, localeOf } from './_collect';
 
 /** Everything except page_view, which is the edge's job. */
 const ALLOWED = new Set<EventName>([
@@ -33,7 +33,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   // no CORS header here on purpose.
   const origin = request.headers.get('origin');
   if (origin && new URL(origin).hostname !== new URL(request.url).hostname) return done();
-  if (isProbablyBot(request.headers.get('user-agent'))) return done();
+  if (isProbablyBotRequest(request)) return done();
 
   let body: Record<string, unknown>;
   try { body = await request.json(); } catch { return done(); }

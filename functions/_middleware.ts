@@ -15,7 +15,7 @@
  * slow or broken database costs the visitor nothing.
  */
 
-import { collect, isProbablyBot, pageTypeOf, localeOf, type Env } from './_collect';
+import { collect, isProbablyBotRequest, pageTypeOf, localeOf, type Env } from './_collect';
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, next, env, waitUntil } = context;
@@ -25,7 +25,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // counting them would inflate exactly the number we most need to trust.
   const isHtml = (response.headers.get('content-type') ?? '').includes('text/html');
   if (request.method !== 'GET' || response.status !== 200 || !isHtml) return response;
-  if (isProbablyBot(request.headers.get('user-agent'))) return response;
+  if (isProbablyBotRequest(request)) return response;
 
   const url = new URL(request.url);
 
