@@ -13,7 +13,7 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 | Framework | **Astro 7, `output: 'static'`, no islands** | v1's two SEO bug classes — cache staleness and Suspense layout shift — cannot happen in a static file. And the whole URL space exists as files in `dist/`, which is what makes the guardrails checkable at all |
 | Hosting | **Cloudflare Pages**, uploaded by `scripts/deploy.mjs` via `wrangler` | Static requests free and unlimited, egress free. v1's 378K billable middleware invocations are unpriceable here |
 | Publishing | **Locally or from GitHub Actions — never Cloudflare's own builder.** `publish.yml` runs the same `deploy.mjs` nightly at 03:00 UTC | Building on Cloudflare cost five hours across six failed deploys, none about the site: a password copied into a second place, a "retry" that replays the old commit, a Git link that dropped, an IPv6-only database host. Building elsewhere removes all of it |
-| Runtime code | **Pages Functions** in `functions/`: `_middleware.ts` (page views), `e.ts` (events), `n.ts` / `r.ts` / `o.ts` / `u.ts` (newsletter, report, claim, unsubscribe) | The only things a static site cannot do: count a visit and accept a form. Nothing reads the database at runtime |
+| Runtime code | **Pages Functions** in `functions/`: `_middleware.ts` (page views), `e.ts` (events), `n.ts` / `r.ts` / `o.ts` / `u.ts` (newsletter, report, claim, unsubscribe), `w.ts` (Resend's delivery webhook) | The only things a static site cannot do: count a visit and accept a form. Nothing reads the database at runtime |
 | Database | **Supabase Postgres 17 + PostGIS**, `eu-west-1`, read by the build through `pg` (`src/lib/supabase.ts`) | Radius search is one indexed function. Free tier carries the pilot |
 | "Today", "this weekend" | Baked in at the 03:00 build; whether a market is open *now* is filled in by the browser | A page written at 03:00 cannot know 14:00. Without JavaScript the page still says "Heute" and the hours |
 | Scheduled work | **GitHub Actions cron + plain Node scripts:** `publish.yml` nightly, `digest.yml` Friday 06:00 UTC | Two jobs. No Temporal, Airflow, n8n, LangChain. The AI-driven discovery and freshness loops with a `proposals` table are designed (below) and not built |
@@ -31,6 +31,7 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | `.env.local` and GitHub secrets | `deploy.mjs` |
 | `RESEND_API_KEY` | Cloudflare Pages secret and GitHub secret | Welcome mail, digest |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Cloudflare Pages secrets | The form ping (bot: @fyndamarketbot) |
+| `RESEND_WEBHOOK_SECRET` | Cloudflare Pages secret — **not set yet** | `functions/w.ts` verifies Resend's delivery events with it; until it is set the endpoint answers 503 |
 | `NEWSLETTER_SENDING` | GitHub Actions **variable**, `on` | Anything else turns the Friday run into a dry run — and put the "being set up" hedge back into `utility-copy.ts` and `_mail.ts` in the same commit |
 
 ## Verified constraints

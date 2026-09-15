@@ -157,7 +157,7 @@ facts   (entity_type, entity_id, field, value, source_type, source_ref,
          observed_at, recorded_at, confidence, superseded_by)
 
 tags, market_tags, organisers, market_private, reports, organiser_claims
-newsletter_subscribers, newsletter_sends
+newsletter_subscribers, newsletter_sends, newsletter_events
 ```
 
 ### The three tables a visitor can write to

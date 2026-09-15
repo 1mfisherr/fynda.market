@@ -235,6 +235,18 @@ for (let start = 0; start < issues.length; start += BATCH) {
     [ids]
   );
 
+  /* Resend's id per mail, so the webhook can say what happened to each. Same
+     order as the batch; a missing id (an odd answer) leaves the row as it was. */
+  if (result.ids?.length === ids.length) {
+    await query(
+      `update newsletter_sends s
+          set email_id = v.email_id
+         from unnest($1::uuid[], $2::text[]) as v(subscriber_id, email_id)
+        where s.subscriber_id = v.subscriber_id and s.issue_date = $3 and v.email_id <> ''`,
+      [ids, result.ids, issueDate]
+    );
+  }
+
   sent += result.sent;
   say(`  batch ${start / BATCH + 1}: ${result.sent} sent`);
 }

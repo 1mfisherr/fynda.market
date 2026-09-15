@@ -12,6 +12,10 @@ docker compose -f metabase/docker-compose.yml up -d
 First start takes a couple of minutes — it is building its own notebook
 database. Then open **http://localhost:3000**.
 
+## What happened to the mail
+
+`newsletter_delivery` is a view: one row per Friday issue with sent, delivered, opened, clicked, bounced and complained counts. It fills in once Resend's webhook is switched on (`docs/PLAN.md`). Opens undercount — a mail client that blocks images never records one.
+
 ## Stop it
 
 ```

@@ -98,7 +98,7 @@ export async function sendMail(env: MailEnv, mail: Mail): Promise<boolean> {
 export async function sendBatch(
   env: MailEnv,
   mails: Mail[]
-): Promise<{ sent: number; error?: string }> {
+): Promise<{ sent: number; ids?: string[]; error?: string }> {
   const key = env.RESEND_API_KEY?.trim();
   if (!key) return { sent: 0, error: 'no RESEND_API_KEY' };
   if (mails.length === 0) return { sent: 0 };
@@ -122,8 +122,12 @@ export async function sendBatch(
 
     if (!res.ok) return { sent: 0, error: `${res.status} ${await res.text()}` };
 
-    const body = (await res.json().catch(() => ({}))) as { data?: unknown[] };
-    return { sent: Array.isArray(body.data) ? body.data.length : mails.length };
+    // Resend answers with one id per mail, in the order they were sent. The
+    // digest writes them onto newsletter_sends; the webhook (w.ts) joins on
+    // them to say what happened to each mail afterwards.
+    const body = (await res.json().catch(() => ({}))) as { data?: { id?: string }[] };
+    const ids = Array.isArray(body.data) ? body.data.map((d) => d?.id ?? '') : [];
+    return { sent: ids.length || mails.length, ids };
   } catch (error) {
     return { sent: 0, error: String(error) };
   }

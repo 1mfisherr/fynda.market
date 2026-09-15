@@ -18,14 +18,14 @@ What is running:
 - **Search Console, export of 2026-09-12 (first nine days):** 96 clicks, 7,743 impressions, impressions climbing 55 → 2,030 a day, average position 15. 314 of 378 pages seen have no click yet. Market pages 51 clicks, city 27, canton 18. **City pages sit at position 5–8 with 100–200 impressions and no clicks** — Worb, Wettingen, Chur — and their search snippet is a generic sentence that never says when the next market is, where a market page's snippet does. Query shapes: place + "2026" is 40% of impressions; the titles already carry the year.
 - **Photographs.** Every market page has one at 1440px and 148px. One is real (Plainpalais, from the operator); 156 are illustrations or v1 files.
 
-What is not: organiser tooling beyond the claim form · tags on any market · a country page · text search · open/click tracking on mail · a distance on cards.
+What is not: organiser tooling beyond the claim form · tags on any market · a country page · text search · a distance on cards.
 
 ---
 
 ## Next, in order
 
 1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone, the within-25-km block on 28 sparse towns — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
-2. **Resend webhook for opens and clicks.** Nothing else can retire dead addresses, and dead addresses drag sender reputation down.
+2. **Switch the mail delivery webhook on — two clicks in Resend, Delfim's.** `functions/w.ts` is live and tested, the tables exist (migration `20260915200000`, applied), the privacy policy says what is tracked. What is missing: in Resend, *Webhooks → Add endpoint* `https://fynda.market/w` with the `email.*` events, then the signing secret it shows as the Cloudflare Pages secret `RESEND_WEBHOOK_SECRET`; and *Domains → fynda.market → open and click tracking on*. Until then the endpoint answers 503 and the Friday send records nothing after "sent". A sunset policy (retire addresses that never open) is the step after, once there is data.
 3. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
 4. **Ask organisers for size and indoor/outdoor.** The two facts that decide a forty-minute drive, held for none of 161 markets, and unobtainable by scraping. This is what the organiser page is for.
 5. **Country page** `/{locale}/{country}/`. Route allowed, nothing built; breadcrumbs join it when it exists.
