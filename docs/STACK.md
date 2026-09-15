@@ -49,7 +49,7 @@ Facts that cost money or a rebuild if wrong. Checked 2026-08-29 unless noted.
 
 **Postgres full-text search does not split German compounds.** `to_tsvector('german', ...)` will not match `Flohmarkt` inside `Kinderflohmarkt`, `Hallenflohmarkt` or `Nachtflohmarkt` — the category words this product is built on. Fixes, in order of likelihood: a Hunspell German dictionary as a text-search dictionary (**whether Supabase allows loading one is unverified**), `pg_trgm` trigram matching (noisier, works today), or an alias table per market type, which is probably wanted anyway since `Trödelmarkt` is dialect, not a synonym.
 
-**Decide before the search box is built** (`PLAN.md` Next §7). Cheap now, a re-index later.
+**Decide before the search box is built** (`PLAN.md` Next §6). Cheap now, a re-index later.
 
 ## Analytics
 

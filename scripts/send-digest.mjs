@@ -32,7 +32,7 @@
 
 import { query, withClient, DB_URL, secret } from './db.mjs';
 import { getMarkets } from '../src/lib/markets.ts';
-import { buildDigest, isEmpty } from '../src/lib/digest.ts';
+import { buildDigest, isEmpty, owedIssue } from '../src/lib/digest.ts';
 import { digestMail, sendBatch } from '../functions/_mail.ts';
 
 /* Resend's own ceiling. Also the unit of rollback: a batch either goes or it
@@ -79,8 +79,9 @@ if (send && !RESEND_API_KEY) {
  * exactly where it stopped. Unsubscribed addresses keep their row and are
  * never selected — that is the suppression record the privacy policy promises.
  */
-const subscribers = await query(
+const candidates = await query(
   `select s.id, s.email, s.locale, s.unsubscribe_token, s.radius_km,
+          s.cadence, s.paused_until::text as paused_until,
           sl.slug as region,
           ct.value as city_name,
           extensions.st_y(c.point::extensions.geometry) as lat,
@@ -106,6 +107,12 @@ const subscribers = await query(
   only ? [issueDate, only] : [issueDate]
 );
 
+/* The two quieter settings from the unsubscribe page — once a month, or a
+   pause — decide who is owed *this* issue. The rule lives in src/lib/digest.ts
+   with the tests; here it is one filter. */
+const subscribers = candidates.filter((s) =>
+  owedIssue({ cadence: s.cadence, pausedUntil: s.paused_until }, issueDate)
+);
 const wanted = limit ? subscribers.slice(0, limit) : subscribers;
 
 if (wanted.length === 0) {

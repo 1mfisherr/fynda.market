@@ -17,7 +17,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildDigest, isEmpty, type Digest, type DigestRow } from './digest.ts';
+import { buildDigest, isEmpty, owedIssue, type Digest, type DigestRow } from './digest.ts';
 import { weekendBounds, iso } from './date-window.ts';
 import type { Market, Occurrence } from './types.ts';
 
@@ -401,4 +401,25 @@ test('"see all" for a radius opens the nearby view centred on them', () => {
   assert.equal(digest.more.count, 12);
   assert.ok(digest.more.href.startsWith('/de/umkreis/'), digest.more.href);
   assert.ok(digest.more.href.includes('km=25'), digest.more.href);
+});
+
+/* ---- the quieter settings from the unsubscribe page --------------------- */
+
+test('weekly is owed every issue', () => {
+  assert.equal(owedIssue({ cadence: 'weekly' }, '2026-09-18'), true);
+  assert.equal(owedIssue({}, '2026-09-25'), true);
+});
+
+test('monthly is owed only the first Friday of the month', () => {
+  assert.equal(owedIssue({ cadence: 'monthly' }, '2026-10-02'), true);
+  assert.equal(owedIssue({ cadence: 'monthly' }, '2026-10-07'), true);
+  assert.equal(owedIssue({ cadence: 'monthly' }, '2026-10-09'), false);
+  assert.equal(owedIssue({ cadence: 'monthly' }, '2026-09-25'), false);
+});
+
+test('a pause holds until its date, and that date is the first issue back', () => {
+  assert.equal(owedIssue({ cadence: 'weekly', pausedUntil: '2026-12-14' }, '2026-12-11'), false);
+  assert.equal(owedIssue({ cadence: 'weekly', pausedUntil: '2026-12-11' }, '2026-12-11'), true);
+  assert.equal(owedIssue({ cadence: 'monthly', pausedUntil: '2026-12-01' }, '2026-12-04'), true);
+  assert.equal(owedIssue({ cadence: 'monthly', pausedUntil: '2026-12-01' }, '2026-12-11'), false);
 });

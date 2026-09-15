@@ -294,3 +294,23 @@ export function buildDigest(
 /** Nothing in their canton and nothing anywhere else: do not send an empty issue. */
 export const isEmpty = (digest: Digest): boolean =>
   !digest.lead && digest.own.length === 0 && digest.elsewhere.length === 0;
+
+/**
+ * Whether a subscriber is owed this issue, given the two quieter settings the
+ * unsubscribe page offers (migration 20260915180000):
+ *
+ *   cadence 'monthly'   only the first Friday of the month — the issue whose
+ *                       date falls in the first seven days;
+ *   paused_until        nothing before that date. The date itself is the
+ *                       first issue they get again.
+ *
+ * Unsubscribed rows never reach this: the sender's query excludes them.
+ */
+export function owedIssue(
+  subscriber: { cadence?: string | null; pausedUntil?: string | null },
+  issueDate: string
+): boolean {
+  if (subscriber.pausedUntil && issueDate < subscriber.pausedUntil) return false;
+  if (subscriber.cadence === 'monthly') return Number(issueDate.slice(8, 10)) <= 7;
+  return true;
+}

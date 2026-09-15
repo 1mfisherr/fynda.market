@@ -12,7 +12,7 @@ Updated 2026-09-15.
 
 What is running:
 
-- **Newsletter.** Signup on every page; a subscription is 25 km around a town, or a canton. Friday digest sends since 2026-09-11 (`digest.yml`, `NEWSLETTER_SENDING=on`, batches of 100 through Resend, one `newsletter_sends` row per subscriber per issue written *before* the send). Welcome mail and unsubscribe in all four languages. **1 active subscriber.**
+- **Newsletter.** Signup on every page; a subscription is 25 km around a town, or a canton. Friday digest sends since 2026-09-11 (`digest.yml`, `NEWSLETTER_SENDING=on`, batches of 100 through Resend, one `newsletter_sends` row per subscriber per issue written *before* the send). Welcome mail and unsubscribe in all four languages; **the unsubscribe page offers "once a month" and "pause three months"** instead of only the door (2026-09-15, migration `20260915180000`, applied). The link itself had been dead since the 10th — it sent a dropped column — and is fixed. **1 active subscriber.**
 - **Every form writes a row.** `/n` newsletter, `/r` report, `/o` organiser claim, `/u` unsubscribe — each pings Telegram. The queues are the views `open_reports` and `open_organiser_claims`; `metabase/README.md` turns them into a dashboard with a daily alert. **0 reports, 0 claims so far.**
 - **Analytics.** Page views counted at the edge, interactions from the browser, both into our Postgres since 2026-09-06. **Read 2026-09-15, ten days in:** a steady **10–25 Swiss visitors a day**, two thirds from Google, 60% on a phone; 77% see one page and leave, and the commonest thing done on a market page is an outbound click to Maps or the organiser — the job the page is for. Market pages land most, then city, then canton (Bern and Aargau land real visitors — the "weakest page type" is earning). Time chips get used; the place picker in the home search card was used **once** in two weeks. 0 newsletter signups from real visitors, 1 report, 1 save. **The bot filter reads the network, the Accept-Language header and the Sec-Fetch-Mode header since 2026-09-15**, not just the user-agent string — the last one is what stopped a residential-proxy crawl that sent the other two. Before that, two thirds of rows were sweeps and every count needed `country='CH'`; rows before 2026-09-15 08:00 UTC still do. Check the next morning's non-CH count to confirm it held.
 - **Search Console, export of 2026-09-12 (first nine days):** 96 clicks, 7,743 impressions, impressions climbing 55 → 2,030 a day, average position 15. 314 of 378 pages seen have no click yet. Market pages 51 clicks, city 27, canton 18. **City pages sit at position 5–8 with 100–200 impressions and no clicks** — Worb, Wettingen, Chur — and their search snippet is a generic sentence that never says when the next market is, where a market page's snippet does. Query shapes: place + "2026" is 40% of impressions; the titles already carry the year.
@@ -25,12 +25,11 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 ## Next, in order
 
 1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone, the within-25-km block on 28 sparse towns — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
-2. **"Less often" / "pause" on the unsubscribe page.** Token, page and row all exist; today the page is a dead end.
-3. **Resend webhook for opens and clicks.** Nothing else can retire dead addresses, and dead addresses drag sender reputation down.
-4. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
-5. **Ask organisers for size and indoor/outdoor.** The two facts that decide a forty-minute drive, held for none of 161 markets, and unobtainable by scraping. This is what the organiser page is for.
-6. **Country page** `/{locale}/{country}/`. Route allowed, nothing built; breadcrumbs join it when it exists.
-7. **German text search.** Settle the compound-word question (`STACK.md`) before any search box exists. Not urgent: v1 saw 64 searches in 26 days against 281 filter uses.
+2. **Resend webhook for opens and clicks.** Nothing else can retire dead addresses, and dead addresses drag sender reputation down.
+3. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
+4. **Ask organisers for size and indoor/outdoor.** The two facts that decide a forty-minute drive, held for none of 161 markets, and unobtainable by scraping. This is what the organiser page is for.
+5. **Country page** `/{locale}/{country}/`. Route allowed, nothing built; breadcrumbs join it when it exists.
+6. **German text search.** Settle the compound-word question (`STACK.md`) before any search box exists. Not urgent: v1 saw 64 searches in 26 days against 281 filter uses.
 
 ---
 
