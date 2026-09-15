@@ -52,7 +52,7 @@ Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
 - **The "within 25 km" block on sparse city pages.** Mocked, not built (`PAGES.md` §City page). Rows not links, capped at five, outside the content floor. Yes or no.
 - **Two newsletter forms in a row.** The card at the foot of home, city, canton and market pages is followed directly by the footer's own form. Removing the footer one on those pages empties the desktop footer's right column, so it needs a layout decision, not a one-liner.
-- **French and Italian prose is missing its accents in places** ("a decembre", "troisieme") — a v1 artefact, same as the German umlauts fixed on 2026-09-15 (102 rows). Needs a pass with a word list, or a native reader.
+- **Prose quality is now a spot-check, not a known defect.** 2026-09-15: umlauts restored in 102 German rows; accents restored in 79 French and Italian descriptions; six French rows that were German text translated; 27 German schedule clauses embedded in French, Italian and English prose translated. What remains is whatever a native reader finds.
 
 ---
 
