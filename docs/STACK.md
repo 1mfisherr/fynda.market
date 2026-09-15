@@ -31,7 +31,7 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | `.env.local` and GitHub secrets | `deploy.mjs` |
 | `RESEND_API_KEY` | Cloudflare Pages secret and GitHub secret | Welcome mail, digest |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Cloudflare Pages secrets | The form ping (bot: @fyndamarketbot) |
-| `RESEND_WEBHOOK_SECRET` | Cloudflare Pages secret — **not set yet** | `functions/w.ts` verifies Resend's delivery events with it; until it is set the endpoint answers 503 |
+| `RESEND_WEBHOOK_SECRET` | Cloudflare Pages secret | `functions/w.ts` verifies Resend's delivery events with it. A changed Pages secret needs a redeploy to be seen |
 | `NEWSLETTER_SENDING` | GitHub Actions **variable**, `on` | Anything else turns the Friday run into a dry run — and put the "being set up" hedge back into `utility-copy.ts` and `_mail.ts` in the same commit |
 
 ## Verified constraints
@@ -50,7 +50,7 @@ Facts that cost money or a rebuild if wrong. Checked 2026-08-29 unless noted.
 
 **Postgres full-text search does not split German compounds.** `to_tsvector('german', ...)` will not match `Flohmarkt` inside `Kinderflohmarkt`, `Hallenflohmarkt` or `Nachtflohmarkt` — the category words this product is built on. Fixes, in order of likelihood: a Hunspell German dictionary as a text-search dictionary (**whether Supabase allows loading one is unverified**), `pg_trgm` trigram matching (noisier, works today), or an alias table per market type, which is probably wanted anyway since `Trödelmarkt` is dialect, not a synonym.
 
-**Decide before the search box is built** (`PLAN.md` Next §6). Cheap now, a re-index later.
+**Decide before the search box is built** (`PLAN.md` Next §5). Cheap now, a re-index later.
 
 ## Analytics
 
