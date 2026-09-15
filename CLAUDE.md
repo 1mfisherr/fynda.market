@@ -26,7 +26,7 @@ Solo founder, non-technical, makes every final call. **You are the technical jud
 | | |
 |---|---|
 | `npm run verify` | Before every push. Types (site and `functions/`), 26 tests, build, ten guardrails. Builds from fixtures unless `FYNDA_DATA_SOURCE=supabase`; a guardrail saying `SKIP` is waiting on data, not passing |
-| `npm run deploy` | Builds against the live database, runs the guardrails, uploads to Cloudflare Pages. Refuses a fixtures build. GitHub runs the same script every night at 03:00 UTC. **`-- --build-only`** does everything but the upload; `npm run preview` then shows the real thing |
+| `npm run deploy` | Runs the tests, builds against the live database, runs the guardrails, uploads to Cloudflare Pages. Refuses a fixtures build. GitHub runs the same script every night at 03:00 UTC. **`-- --build-only`** does everything but the upload; `npm run preview` then shows the real thing |
 | `node scripts/migrate.mjs supabase/migrations/<file>.sql` | Applies one migration to the live database, in a transaction. **Nothing else applies migrations** — committing one does nothing |
 | `npm test` | The 26 digest tests |
 | `node scripts/send-digest.mjs` | Dry run of the Friday mail. `--send` sends, `--only=<address>` to one person |

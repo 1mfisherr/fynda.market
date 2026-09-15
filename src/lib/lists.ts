@@ -21,7 +21,7 @@
  * visitor more than eighteen identical Saturdays did.
  */
 import type { Market, Occurrence } from './types';
-import { DEFAULT_RADIUS, distanceKm } from './geo';
+import { DEFAULT_RADIUS, distanceKm } from './geo.ts';
 import { iso, weekendBounds } from './date-window.ts';
 import { withinHorizon } from './markets.ts';
 

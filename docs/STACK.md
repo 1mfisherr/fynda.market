@@ -63,7 +63,7 @@ The requirement is **own the data, collect everything, keep it private** — not
 
 **Reading.** Metabase under Docker on this machine, `metabase/README.md`. It reads as `metabase_ro`, which cannot see `reports` or `market_private` but can read the two triage views. Search Console is imported from the free CSV export by `scripts/import-gsc.mjs` — Google keeps 16 months and never backfills, so the habit matters more than the schedule.
 
-**Bots.** `isProbablyBot` checks the user-agent string only. Two thirds of raw events are crawlers that pass it; `request.cf` carries ASN and organisation and would separate a datacentre from a person.
+**Bots.** `isProbablyBotRequest` (2026-09-15) drops a request whose user-agent names a bot, that comes from a cloud or hosting network (`request.cf.asOrganization`), that sends no `Accept-Language`, or that sends no `Sec-Fetch-Mode` — every browser since 2023 sends the last two on every request, and an HTTP client wearing a browser's name does not. Forms use only the user-agent test, so a person on a VPN can still report a market.
 
 ## Designed, not built
 

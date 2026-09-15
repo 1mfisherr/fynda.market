@@ -161,7 +161,7 @@ const nearbyGroups = groupByDay(nearby, ({ market }) => market.next.date);
 /* The legend explains the badge colours. With no badged market on the page it
    teaches a colour system nothing on the page uses — the market page dropped
    it for the same reason. */
-const hasBadge = list.some((market) => BADGED_KINDS.has(market.kind));
+const hasBadge = [...list, ...nearby.map((n) => n.market)].some((market) => BADGED_KINDS.has(market.kind));
 
 const site = 'https://fynda.market';
 const jsonLd = {

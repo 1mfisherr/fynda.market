@@ -44,9 +44,9 @@ const has = new Set(dates);
 /* A chip with nothing behind it is a dead end: Worb offered "Heute" and
    "Wochenende" for a page whose next date was four weeks out, and a tap on
    either emptied the list. Decided at build time, on the build's own today —
-   the nightly rebuild is what keeps "today" true. A page that passes no dates
-   (the home page's search card) keeps every chip, because the card sends the
-   choice to another page. */
+   the nightly rebuild is what keeps "today" true. The home page's search card
+   passes every date in the country, so its chips only vanish on a day with no
+   market anywhere. */
 const buildToday = todayIso();
 const weekend = thisWeekend(buildToday);
 const offered = (w: string) => {

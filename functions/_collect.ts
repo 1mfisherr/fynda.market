@@ -94,7 +94,14 @@ const DATACENTRE_ORG =
  * - the network Cloudflare says the request came from (`cf.asOrganization`);
  * - whether the browser said what language it speaks. Every real browser
  *   sends Accept-Language on every request; crawlers that fake a Chrome
- *   user-agent very often forget it.
+ *   user-agent very often forget it;
+ * - whether it sent the Sec-Fetch-* headers. Every browser since 2023
+ *   (Chrome 76, Firefox 90, Safari 16.4) attaches `Sec-Fetch-Mode` to every
+ *   request it makes — page loads, fetches and beacons alike. An HTTP client
+ *   wearing a browser's user-agent string does not. The first two signals
+ *   alone let a full-site crawl through on the morning of 2026-09-15: 880
+ *   hits from residential addresses in a dozen countries, one per URL, with a
+ *   language header and a Chrome name, evenly across the four locales.
  *
  * Forms keep the narrower check: a person on a VPN that exits in a cloud
  * should still be able to report a cancelled market.
@@ -102,6 +109,7 @@ const DATACENTRE_ORG =
 export function isProbablyBotRequest(request: Request): boolean {
   if (isProbablyBot(request.headers.get('user-agent'))) return true;
   if (!request.headers.get('accept-language')) return true;
+  if (!request.headers.get('sec-fetch-mode')) return true;
   const org = (request as Request & { cf?: { asOrganization?: string } }).cf?.asOrganization;
   return !!org && DATACENTRE_ORG.test(org);
 }

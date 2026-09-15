@@ -76,7 +76,8 @@ const binOf = (pkg, key = pkg) => {
 
 function run(label, file, args) {
   console.log(`\n  ${label}\n`);
-  const result = spawnSync(process.execPath, [file, ...args], { stdio: 'inherit', env });
+  // A null file runs node itself with the args — for `node --test`.
+  const result = spawnSync(process.execPath, file ? [file, ...args] : args, { stdio: 'inherit', env });
   if (result.error) {
     console.error(`\n  ${label} could not start: ${result.error.message}\n`);
     process.exit(1);
@@ -102,6 +103,14 @@ rmSync(join(root, 'dist'), { recursive: true, force: true });
 
 // `npm run verify` is build + guardrails, and prebuild is what emits data/.
 // Spelled out here so each step's failure names itself.
+/*
+  The tests first. `verify` runs them and `deploy` did not, so on 2026-09-15
+  a broken import in lists.ts reached the live site through `deploy` while
+  `npm test` was red — and the nightly publish would have kept shipping it.
+  They take a fifth of a second; the type checks stay in `verify` and CI,
+  where a red one blocks the push rather than the publish.
+*/
+run('Running the tests', null, ['--test', join(root, 'src/lib/digest.test.ts')]);
 run('Emitting data files', join(root, 'scripts/emit-data.mjs'), []);
 run('Building the site', binOf('astro'), ['build']);
 run('Checking guardrails', join(root, 'scripts/guardrails.mjs'), []);
