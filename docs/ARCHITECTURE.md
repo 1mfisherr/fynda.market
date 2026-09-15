@@ -228,6 +228,19 @@ Recurrence is stored too: an RFC 5545 `RRULE` plus the human phrase ("jeden 1. S
 
 The gap between what the rule predicted and what was confirmed is the reliability score nobody else can compute.
 
+### Import
+
+**The live v1 Supabase project is the only source** (`V1_DATABASE_URL` in `.env.local`). `~/Documents/fleafind-backups/` and any local `supabase start` database are stale snapshots — read for shape, never import from. v1's 24 migrations in `~/Documents/fleafind/supabase/migrations/` are worth reading for decisions, not schema.
+
+**Scripts, in order:** `import-v1.mjs` → `localise-places.mjs` (per-locale names and slugs, idempotent) → `import-images.mjs` (reads only facts with `superseded_by is null`, or a superseded stock URL wins on ordering). The importer is destructive on re-run by design — it deletes what it owns and reloads. That stops being the right tool the day anything is hand-entered.
+
+What the import decided:
+
+- **Free-text place names are gone.** `markets.city` disagreed with the venue in 39 of 161 rows; `canton` held both `AG` and `Aargau`. Cities come from `venues.city`, cantons are normalised, two source errors were fixed by postal code (Pratteln → BL, Subingen → SO).
+- **Market kind is inferred from the name** where v1 knew only three types. 28 are written to `facts` as `inferred`, so the guess is visible and a real source overrules it.
+- **Closed markets are imported, not published.** 4 closed markets carry 279 future dates, excluded by `publishable_markets`.
+- **Stock never ships.** The 11 pexels URLs v1 held were dropped and replaced with real files on 2026-09-05.
+
 ---
 
 ## Structured data — one rule that shapes the market page
@@ -302,4 +315,4 @@ Checks 1–6 and 8 read `dist/`. Check 7 reads `src/`, because the failure it ca
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-31
+last_reviewed: 2026-09-15

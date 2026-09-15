@@ -1,8 +1,8 @@
 # Stack
 
-The technical choices and the constraints behind them. Written 2026-08-27, pruned 2026-08-29.
+What runs, where, and the constraints behind each choice. Written 2026-08-27 as a plan; rewritten 2026-09-15 to describe what is actually running.
 
-**One line:** Astro static on Cloudflare Workers, Supabase Postgres + PostGIS, background loops as GitHub Actions cron jobs calling the Claude API, self-hosted Metabase for analytics, Resend for email, photos in R2. **Roughly $30–50/month at launch.**
+**One line:** Astro static build, published to Cloudflare Pages by a script; Supabase Postgres + PostGIS read once per build; a handful of Pages Functions for the things a static site cannot do; GitHub Actions for the nightly rebuild and the Friday mail; Resend for e-mail; Metabase locally. **Cost today: the domain.**
 
 ---
 
@@ -10,112 +10,77 @@ The technical choices and the constraints behind them. Written 2026-08-27, prune
 
 | Component | Choice | Why |
 |---|---|---|
-| Language | TypeScript strict, Zod at every boundary | Strong types are the code review a solo founder can't do |
-| Framework | **Astro 7, `output: 'static'`, Preact islands** | v1's two SEO bug classes — multi-layer cache staleness and Suspense layout shift — are structurally impossible in a static file. And a static build makes the CI guardrails checkable at all: the whole URL space exists as files in `dist/` |
-| Hosting | **Cloudflare Workers**, deployed by `wrangler` from GitHub Actions | Static requests are free and unlimited; egress is free. v1's 378K billable middleware invocations are unpriceable here. $0–5/mo |
-| Database | **Supabase Postgres + PostGIS**, region `eu-west-1` (Ireland) | Most AI-fluent database there is; radius search is one indexed function. Free tier carries the pilot |
-| Dates | Concrete rows; RRULE stored as a bounded generator | See `ARCHITECTURE.md` §Dates |
-| Background loops | GitHub Actions cron + Claude API + a `proposals` table + one admin page | Four loops at 0.1 events/second. Anything more is an operational dependency nobody can keep alive |
-| Analytics | Own events in our Postgres + self-hosted Metabase + the GSC API | See §Analytics |
-| Email | Resend batch API; list and consent in our Postgres | City segmentation is a `where` clause, not a per-contact fee |
-| Images | R2 originals, Astro build-time optimisation, served static | $0, zero egress, explicit dimensions emitted by default |
+| Framework | **Astro 7, `output: 'static'`, no islands** | v1's two SEO bug classes — cache staleness and Suspense layout shift — cannot happen in a static file. And the whole URL space exists as files in `dist/`, which is what makes the guardrails checkable at all |
+| Hosting | **Cloudflare Pages**, uploaded by `scripts/deploy.mjs` via `wrangler` | Static requests free and unlimited, egress free. v1's 378K billable middleware invocations are unpriceable here |
+| Publishing | **Locally or from GitHub Actions — never Cloudflare's own builder.** `publish.yml` runs the same `deploy.mjs` nightly at 03:00 UTC | Building on Cloudflare cost five hours across six failed deploys, none about the site: a password copied into a second place, a "retry" that replays the old commit, a Git link that dropped, an IPv6-only database host. Building elsewhere removes all of it |
+| Runtime code | **Pages Functions** in `functions/`: `_middleware.ts` (page views), `e.ts` (events), `n.ts` / `r.ts` / `o.ts` / `u.ts` (newsletter, report, claim, unsubscribe) | The only things a static site cannot do: count a visit and accept a form. Nothing reads the database at runtime |
+| Database | **Supabase Postgres 17 + PostGIS**, `eu-west-1`, read by the build through `pg` (`src/lib/supabase.ts`) | Radius search is one indexed function. Free tier carries the pilot |
+| "Today", "this weekend" | Baked in at the 03:00 build; whether a market is open *now* is filled in by the browser | A page written at 03:00 cannot know 14:00. Without JavaScript the page still says "Heute" and the hours |
+| Scheduled work | **GitHub Actions cron + plain Node scripts:** `publish.yml` nightly, `digest.yml` Friday 06:00 UTC | Two jobs. No Temporal, Airflow, n8n, LangChain. The AI-driven discovery and freshness loops with a `proposals` table are designed (below) and not built |
+| E-mail | **Resend** batch API, one sender `Fynda <contact@fynda.market>`, list and consent in our Postgres. Inbound through Cloudflare Email Routing | Segmentation is a `where` clause, not a per-contact fee. Never Audiences/Broadcasts — they bill on stored contacts |
+| Images | **WebP in `public/images/`**, two sizes per market, committed | 157 markets × 2 files is small enough to live in git. R2 when it is not |
+| Analytics | Own events in our Postgres, read locally with Metabase; Search Console by CSV import | See §Analytics |
+| Language | TypeScript strict. `tsconfig.functions.json` checks `functions/` separately | A Pages Function needs Cloudflare's globals and must not inherit Astro's DOM lib |
+| Tests | Node's own runner, 26 tests, all on the digest | The digest is the one thing that sends wrong information to real people and cannot be taken back. Not a coverage target |
 
-**Never deploy through Cloudflare's auto-build.** The CI gate has to sit in front of the deploy step.
+## Secrets and where they live
+
+| Secret | Where | Used by |
+|---|---|---|
+| `SUPABASE_DB_URL`, `V1_DATABASE_URL` | `.env.local`; the first also a GitHub secret | Build, scripts, `publish.yml`, `digest.yml` |
+| `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | `.env.local` and GitHub secrets | `deploy.mjs` |
+| `RESEND_API_KEY` | Cloudflare Pages secret and GitHub secret | Welcome mail, digest |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Cloudflare Pages secrets | The form ping (bot: @fyndamarketbot) |
+| `NEWSLETTER_SENDING` | GitHub Actions **variable**, `on` | Anything else turns the Friday run into a dry run — and put the "being set up" hedge back into `utility-copy.ts` and `_mail.ts` in the same commit |
 
 ## Verified constraints
 
-Facts that cost money or a rebuild if got wrong. Checked 2026-08-29 unless noted.
+Facts that cost money or a rebuild if wrong. Checked 2026-08-29 unless noted.
 
-- **PostGIS must be installed into the `extensions` schema and cannot be moved afterwards** — not relocatable since PostGIS 2.3. Changing your mind means dropping and recreating it. Get it right in the first migration. ([docs](https://supabase.com/docs/guides/database/extensions/postgis))
-- **Region: `eu-west-1`, Ireland.** Decided 2026-08-29. Zurich (`eu-central-2`) was the earlier preference, and it was a preference, not a requirement — the site is statically built, so the database is read at build time rather than by visitors, and the latency difference reaches nobody. Ireland is in the EU, which is fine for Swiss personal data in both directions. What is given up is the ability to claim data never leaves Switzerland; our trust claim is about dates being right, not residency. **Region cannot be changed after project creation**, so this is now fixed unless the project is recreated.
-- **Cloudflare D1 has no geospatial capability at all** — R*Tree, Geopoly and SpatiaLite all unsupported. Radius search is the product, so D1 is disqualified as a primary store, not merely inconvenient. ([limits](https://developers.cloudflare.com/d1/platform/limits/))
-- **Cloudflare acquired Astro on 16 January 2026.** Framework and host are now one vendor; Astro stays open source. This retired the main risk in the hosting choice.
-- **Supabase free tier** — 500MB database, 5GB egress, pauses after 7 days of inactivity (the freshness loop writes daily, so that's moot). Pro is $25/mo. The whole Swiss + German dataset fits free for a long time; photos live in R2.
-- **Cloudflare Workers** — free plan 100k requests/day; paid $5/mo for 10M. Only API calls and the admin page invoke the Worker at all.
-- **R2** — 10GB and zero egress free, then $0.015/GB/month.
-- **Resend** — free 3,000 emails/month, 100/day; $20/mo Pro at 50k. Do not use Audiences/Broadcasts: marketing pricing bills on stored contacts.
+- **PostGIS lives in the `extensions` schema and cannot be moved afterwards.** Changing your mind means dropping and recreating it.
+- **Region `eu-west-1` (Ireland) cannot be changed after project creation.** Zurich was a preference, not a requirement: the database is read at build time, so latency reaches nobody. What is given up is the claim that data never leaves Switzerland; our trust claim is about dates being right.
+- **Cloudflare D1 has no geospatial capability at all.** Radius search is the product, so D1 is disqualified, not inconvenient.
+- **Supabase's direct host is IPv6-only.** Use the session pooler, `aws-1-eu-west-1.pooler.supabase.com:5432` (2026-09-04).
+- **Every table has RLS on with no policies.** The build connects as the owner, which is exempt; `metabase_ro` sees only what it is granted; the Functions write as the service role, which bypasses RLS and *still* needs a table `GRANT`. PostgREST refuses an upsert without SELECT (2026-09-06).
+- **Free tiers:** Supabase 500 MB / 5 GB egress, pauses after 7 days idle (the nightly build prevents it). Cloudflare Pages Functions 100k requests/day. Resend 3,000 mails/month, 100/day. All far above pilot scale.
+- **Cloudflare acquired Astro on 16 January 2026.** Framework and host are one vendor; Astro stays open source.
 
 ## The German compound-word trap
 
-**Postgres full-text search does not split German compound nouns.** `to_tsvector('german', ...)` will not match `Flohmarkt` inside `Kinderflohmarkt`, `Hallenflohmarkt` or `Nachtflohmarkt` — the exact category words this product is built on. The stock German dictionary stems; it does not decompound.
+**Postgres full-text search does not split German compounds.** `to_tsvector('german', ...)` will not match `Flohmarkt` inside `Kinderflohmarkt`, `Hallenflohmarkt` or `Nachtflohmarkt` — the category words this product is built on. Fixes, in order of likelihood: a Hunspell German dictionary as a text-search dictionary (**whether Supabase allows loading one is unverified**), `pg_trgm` trigram matching (noisier, works today), or an alias table per market type, which is probably wanted anyway since `Trödelmarkt` is dialect, not a synonym.
 
-The fix is a Hunspell/Ispell German dictionary configured as a text-search dictionary. **Whether Supabase permits loading custom dictionary files on a managed instance is unverified — check before relying on it.** Fallbacks: `pg_trgm` trigram matching (`flohmarkt` matches `kinderflohmarkt` naturally, at the cost of some noise), or an explicit alias table per market type — likely wanted anyway, since `Trödelmarkt` is an NRW dialect word rather than a synonym.
-
-**Decide before the search box is built.** Cheap now, a re-index later. (`PLAN.md` step 3.5.)
-
-## Reading the database
-
-Two read paths only, which is what keeps egress boring:
-
-1. **The build reads it once per build.** A typed query module, not a parity-checked JSON artefact. Rebuild twice daily (06:00 and 14:00 CET) plus an on-demand build when a proposal is approved.
-2. **The runtime API reads via `supabase-js`** (HTTP/PostgREST, works natively in Workers, no pool management) with Cloudflare's cache API in front at 60–300s.
-
-"Today / this weekend" state is computed client-side or by a small island against the API — never baked into HTML that can go stale overnight. v1's `force-dynamic` pages existed to solve exactly this; a two-line island solves it without a server.
-
-Radius search is `ST_DWithin` on `venues.point` with a GIST index — sub-10ms at this scale, cached 60s at the edge on a rounded lat/lng grid so nearby users share cache entries. Geometry lives on the venue, which is small and static; occurrences are filtered by market and date, never spatially. **There is no case for Typesense, Meilisearch or Algolia. Postgres does all of it.**
-
-## The background loops
-
-Four loops — discovery, freshness, performance, content proposals — as plain TypeScript scripts on GitHub Actions cron, calling the Claude API with Zod-validated structured outputs. Graduate a loop to the Claude Agent SDK only when it demonstrably needs multi-step tool use.
-
-- **Queue:** a `proposals` table (`kind, payload, evidence, status, created_by_loop, decided_by, decided_at`). Loops insert. **Nothing publishes without a row flipping to `approved`** — enforced by the write path, not by policy.
-- **Approval:** one server-rendered Astro admin route behind Cloudflare Access. Approving writes the fact with its provenance and fires the build webhook. A Telegram message is the doorbell, so nobody has to poll an admin page — v1's pattern, and it worked.
-- **Cost:** $10–30/month of Claude API at pilot scale, metered and capped with spend limits.
-
-No Temporal, Airflow, n8n or LangChain. Cron plus Postgres plus plain scripts is the entire requirement.
+**Decide before the search box is built** (`PLAN.md` Next §8). Cheap now, a re-index later.
 
 ## Analytics
 
-**Decided 2026-08-29.** The requirement is not "count pageviews privately" — it is **own the data, collect everything, keep it private.** This supersedes an earlier Plausible recommendation.
+The requirement is **own the data, collect everything, keep it private** — not "count pageviews". Metabase is a dashboard that reads a database; it collects nothing.
 
-Two pieces, and they are not the same thing: **Metabase is a dashboard that reads a database. It collects nothing.**
+**Collection.** `functions/_middleware.ts` counts page views at the edge before the HTML is served — no client JS, so a blocker cannot remove them. `functions/e.ts` takes interaction events from the browser, because "clicked directions" exists nowhere else. Both write `analytics_events` through `functions/_collect.ts`, whose `props` shapes are fixed by a check constraint per event: obey it exactly, or a second vocabulary splits the numbers. **Every row carries `page_type`** — the one property that would have shown v1's collapse.
 
-1. **Collection** — a Worker endpoint writing first-party events into our own Postgres. **Prefer server-side collection at the edge:** immune to ad blockers, no client JS, can't be broken by a consent tool. The cost is viewport and scroll data, which this product doesn't need. v1 already proved the pattern (`analytics_events`, `outbound_click_events`, 12,385 rows, and an `IP_HASH_PEPPER` showing the hashing was already right) — **read that schema before designing the new one.**
-2. **Reading** — Metabase, self-hosted against the same Postgres. ~$5–15/month for a small always-on host, plus occasional updates. That is the honest cost of owning the data.
-3. **Search Console** — pull the GSC API weekly into Postgres. **The more important half.** v1's collapse was visible in impressions before it was visible anywhere else. Alert on sustained per-page-type decline.
+**Identity.** A visitor is counted, never identified: `HMAC(ip + user agent)` under a key that carries the date, so one person is one hash today and another tomorrow. No cookie, nothing on the device, no banner. The schema also holds a consent-gated persistent `visitor_id`; nothing sets it yet. Switzerland is opt-out, so the daily hash runs from day one; Germany's opt-in regime is a German-launch question. *[Judgement, not legal advice — an hour of a Swiss lawyer before monetisation, not before launch.]*
 
-**Every event carries `page_type`.** That one property answers the only question that mattered during the collapse: *which page type is decaying.*
+**Retention.** Nothing is deleted; there is deliberately no prune. `analytics_daily` / `analytics_rollup()` exist for query speed and are not yet scheduled (`PLAN.md`).
 
-**Staying banner-free** constrains how, not whether: no cookies, no `localStorage` identifier, no cross-site tracking, no ad-network sharing — those are what trigger consent, not analytics as such. Never store a raw IP; hash it with a salt that rotates. Country derived from IP and then discarded is fine; a persistent per-person identifier is not. **The line moves if the data is ever used for advertising or sold on** — revisit before monetisation ships, not after.
+**Reading.** Metabase under Docker on this machine, `metabase/README.md`. It reads as `metabase_ro`, which cannot see `reports` or `market_private` but can read the two triage views. Search Console is imported from the free CSV export by `scripts/import-gsc.mjs` — Google keeps 16 months and never backfills, so the habit matters more than the schedule.
 
-Not GA4: needs consent, and v1 showed it goes unanswered in a crisis anyway.
+**Bots.** `isProbablyBot` checks the user-agent string only. Two thirds of raw events are crawlers that pass it; `request.cf` carries ASN and organisation and would separate a datacentre from a person.
 
-### Collection posture — decided by Delfim, 2026-08-29
+## Designed, not built
 
-**Collect as much as we can, anonymise it, keep it.** The event stream is a product asset and a monetisation path, not a cost to be minimised. **Nothing is deleted** — there is deliberately no prune function, and the daily rollup exists for query speed, not retention.
-
-Two identity layers, because they have different legal footings and it is not either/or:
-
-| Layer | Applies to | Needs consent | Gives us |
-|---|---|---|---|
-| `visitor_day_hash` — `HMAC(ip + user agent, salt)`, salt rotates daily | **100% of visitors** | No. Nothing is stored on the device | Every event, the full journey, session, referrer, country, device, daily visitor counts |
-| `visitor_id` — persistent, survives across days | Consenting visitors | Yes, in the EU | Returning-visitor rate, multi-day funnels, cohort retention |
-
-The database enforces the boundary rather than trusting the collector: `visitor_id` cannot be written on a row whose `consent_state` is not `granted`.
-
-**Switzerland is transparency/opt-out based, not opt-in**, so both layers can run from day one of the pilot. Germany's opt-in regime is what makes the banner question real — settle it at German launch, not before. `[JUDGEMENT — not legal advice; worth an hour of a Swiss lawyer's time before monetisation, not before launch]`
-
-Never a raw IP, never a user agent stored verbatim, never cross-site.
-
-
-
-**Design the event schema before the first page ships** (`PLAN.md` step 3.3). Events not collected cannot be recovered. At minimum: search performed, results viewed, result clicked, market viewed, add-to-calendar, directions clicked, organiser contact clicked, newsletter signup, filter changed, and **no-results** — the most valuable and the most commonly forgotten.
+Four AI loops — discovery, freshness, performance, content proposals — as plain scripts on GitHub Actions calling the Claude API with Zod-validated structured output, inserting into a `proposals` table (`kind, payload, evidence, status, …`). **Nothing publishes without a row flipping to `approved`**, enforced by the write path; approval is one admin route behind Cloudflare Access, Telegram as the doorbell. Budget $10–30/month, capped. Graduate to the Agent SDK only when a loop demonstrably needs multi-step tool use.
 
 ## What not to use
 
-| Tempting | Why it's wrong here |
+| Tempting | Why not |
 |---|---|
-| **Next.js on Vercel** | Re-couples us to the two cost mechanisms that burned v1 (billable invocations, egress) and the two bug classes that hurt its SEO. Peak AI familiarity doesn't compensate for a framework whose sharpest edges are where AI is most confidently wrong |
-| **A headless CMS** | The database *is* the CMS. A CMS adds a second source of truth and a second permission model, for a worse version of the `facts` table |
-| **An ORM with its own migration religion** (Prisma) | Puts a schema DSL between AI and the database it knows best. `supabase-js` at runtime, plain SQL migrations. Drizzle if typed query building is ever wanted |
-| **Self-hosting the boring parts** on a VPS | Saves ~$29/month, costs an unpaid sysadmin job held by someone who can't debug it at 2am. Metabase is the one deliberate exception, because owning the data requires it |
-| **A locale matrix** | One locale until a second has real content. Four locales x unbounded pages is the named killer |
-
-## Cost at launch
-
-Cloudflare $0–5 · Supabase $0 · Metabase host $5–15 · Resend $0 · R2 $0 · GitHub $0 · Claude API $10–30 · domain ~$3 → **roughly $30–50/month.** At 1M pageviews, about $150. No line item can surprise-10x without a config change that CI and spend caps sit in front of.
+| **Next.js on Vercel** | Re-couples us to the two cost mechanisms that burned v1 and the two bug classes that hurt its SEO |
+| **A headless CMS** | The database *is* the CMS. A CMS is a second source of truth for a worse version of `facts` |
+| **An ORM with a migration religion** (Prisma) | Plain SQL migrations, `pg` at build time. Drizzle if typed query building is ever wanted |
+| **A VPS for the boring parts** | Saves ~$29/month, costs an unpaid sysadmin job held by someone who can't debug it at 2am |
+| **Cloudflare's Git integration** | See Publishing above |
+| **A locale matrix** | Four locales × unbounded pages is the named killer |
 
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-29
+last_reviewed: 2026-09-15

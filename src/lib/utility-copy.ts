@@ -15,11 +15,8 @@
  * no longer has to apologise for a mail program. The mailto serialiser stays as
  * the last resort after a failed retry, which is why `subject` is still here.
  *
- * The legal pages are deliberately NOT here. An Impressum and a privacy policy
- * are legal documents, the German ones still carry unfilled placeholders, and a
- * machine-translated privacy policy is the one kind of prose this project
- * should never ship — docs/PLAN.md. They stay German-only until a person
- * writes them, and i18n.ts says so per page rather than per locale.
+ * The legal pages are deliberately NOT here: they are Delfim's own documents
+ * in src/lib/legal/, one file per page, in all four locales.
  */
 
 import type { Locale } from './i18n';

@@ -65,7 +65,7 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Wordmark
 
-**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". Schibsted Grotesk 800, tight tracking, near-black, **the full stop in the accent** — the dot is the mark, and it is the one decorative use of the accent on the site. Written out in full everywhere the name appears: page titles, the footer, structured data, e-mail subjects. The only exception is the imprint and the privacy policy, where the operator's name is a legal statement rather than branding and waits on a person. App mark: `f.` in white on a near-black rounded square.
+**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". Schibsted Grotesk 800, tight tracking, near-black, **the full stop in the accent** — the dot is the mark, and it is the one decorative use of the accent on the site. Written out in full everywhere the name appears: page titles, the footer, structured data, e-mail subjects. The only exception is the imprint and the privacy policy, where the operator's name is a legal statement rather than branding. App mark: not chosen — the `f.` tile was rejected; the curved-`y` wordmark direction is where it is heading.
 
 ## Voice
 
@@ -153,7 +153,7 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 
 ## To do
 
-- [ ] Confirm the accent (Zinnober vs Fuchsia vs Ultramarin)
+- [ ] The compact mark — wordmark v6 is the direction, nothing approved (`PLAN.md` §Still open)
 - [ ] Wordmark clear-space rules and the app icon at real sizes
 - [ ] Icon set: market types, status, actions
 - [ ] Illustration set: 8–12 objects, one style
@@ -163,4 +163,4 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-05
+last_reviewed: 2026-09-15

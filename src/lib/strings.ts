@@ -586,10 +586,9 @@ const en: Strings = {
   timeSuffix: '',
 };
 
-// French and Italian are written by a native speaker — see docs/PLAN.md. Until
-// then they fall back to German rather than shipping a machine translation,
-// which is both a quality decision and the thing Google's scaled-content policy
-// is actually about.
+// Interface strings are written per language (CLAUDE.md §Settled). A missing
+// key falls back to German rather than to a machine translation, which is both
+// a quality decision and the thing Google's scaled-content policy is about.
 const fr: Strings = {
   saved: 'Enregistré',
   skipToContent: 'Passer au contenu',

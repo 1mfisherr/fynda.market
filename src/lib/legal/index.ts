@@ -8,7 +8,7 @@
  * address, and every sentence in the privacy policy that described fleafind's
  * stack rather than Fynda's. See privacy.ts for what that meant.
  *
- * They ship in all four locales. docs/PLAN.md used to hold them German-only
+ * They ship in all four locales. An earlier plan held them German-only
  * with the reason "a machine-translated privacy policy is the one prose this
  * project must not ship", which was protecting against a template nobody had
  * read. That is no longer the situation: there is a human-written English

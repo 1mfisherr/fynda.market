@@ -5,7 +5,7 @@
  *
  * Every block renders only when its data exists. We hold stall counts, seller
  * mix and facilities for nobody yet, so those sections are simply absent rather
- * than filled with placeholders — PLAN.md §The honest gap.
+ * than filled with placeholders — PRODUCT.md §The three loops, "the honest gap".
  */
 import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
@@ -341,7 +341,7 @@ const facilityItems = market.facilities ? [
       {/* Both are retention, not decoration: a market in someone's calendar keeps
           being useful without them returning, and a saved market is what the
           Friday newsletter is eventually built on. Saving is localStorage only —
-          no account, docs/PLAN.md.
+          no account, PRODUCT.md §Settled.
 
           They share a row rather than stacking full-width under Route. Four block
           buttons of the same size made "Merken" look like as big a decision as
@@ -814,7 +814,7 @@ const facilityItems = market.facilities ? [
 
   /**
    * Saved markets live in the visitor's own browser. No account, no server, and
-   * nothing to leak — docs/PLAN.md settled "saved markets, no accounts". The
+   * nothing to leak — no accounts is settled, PRODUCT.md §Settled. The
    * /de/gemerkt/ page reads the same key.
    */
   const KEY = 'fynda:gemerkt';

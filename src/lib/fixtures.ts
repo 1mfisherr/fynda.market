@@ -1,9 +1,9 @@
 /**
  * SAMPLE DATA — not real listings, not for publication.
  *
- * The Supabase project does not exist yet (PLAN.md step 1.4) and the v1 import
- * is step 3.4. These rows exist so the templates can be built and reviewed
- * against realistic shapes: a confirmed market, an unverified one, a cancelled
+ * The default data source when FYNDA_DATA_SOURCE is unset, so CI and a plain
+ * `npm run verify` need no database. These rows exist so the templates can be
+ * built and reviewed against realistic shapes: a confirmed market, an unverified one, a cancelled
  * one with a reason, and one with no times known.
  *
  * They are shaped exactly like what `publishable_markets` will return, so

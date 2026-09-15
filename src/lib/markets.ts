@@ -66,7 +66,7 @@ export async function getMarkets(locale: Locale = 'de'): Promise<Market[]> {
     warned = true;
     console.warn(
       '\n  [data] Using SAMPLE markets from src/lib/fixtures.ts.\n' +
-        '        Not real listings. Must not be deployed. See PLAN.md 1.4 and 3.4.\n'
+        '        Not real listings. deploy.mjs refuses to publish this build.\n'
     );
   }
 

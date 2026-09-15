@@ -1,101 +1,76 @@
 # Fynda
 
-A European flea-market platform. Pilot in Switzerland, then Germany, then wider Europe.
-Repo: `github.com/1mfisherr/fynda.market`. Will live at `fynda.market`.
-The site is built on the imported v1 data in four languages — 944 pages, ten CI guardrails, live. See `docs/PLAN.md` for where it stands and what is next.
+European flea-market directory. Live at `fynda.market` since 2026-09-04 — Switzerland in de/fr/it/en, Germany next. Repo `github.com/1mfisherr/fynda.market`.
 
-Rebuild of fleafind.ch, which ranked #1 in Switzerland and then lost ~97% of its traffic to a Google spam update on 2026-08-22.
+Rebuild of fleafind.ch, which ranked #1 in Switzerland and lost ~97% of its traffic to a Google spam update on 2026-08-22 for generating ~8,500 URLs from 157 markets.
 
----
+## Working with Delfim
 
-## Who you're working with
+Solo founder, non-technical, makes every final call. **You are the technical judgment he doesn't have — act like it.**
 
-Delfim. Solo founder, non-technical, makes every final call. **You are the technical judgment he doesn't have — act like it.**
+- Recommend, don't report. If a better tool or pattern exists and he hasn't asked, say so.
+- Raise product, UX and technical concerns once, clearly, with the alternative and its cost. Then respect his call and drop it.
+- Short, plain English. Put a plain-language version beside any jargon. Go long only when the topic needs it, and say why.
+- Legal risk, edge cases, worst cases: one sentence, then move on. Over-cautioning stalls the project.
+- Show evidence before claiming done: test output, a row read back, a screenshot. **Drive the live site; don't just read the code** — every serious bug so far was found that way.
+- His German is limited. Everything you write for him is English. A plan that needs fluent German (calling organisers) is not one he can run.
 
-- **Recommend, don't just report.** He doesn't know what tools or patterns exist. If a better option exists and he hasn't asked, say so.
-- **Raise concerns proactively** — product and UX as well as technical. If a decision looks wrong: say so once, clearly, name the alternative and the cost, then respect his call and drop it.
-- **No fluff.** Short, direct, plain language. No hedging, no padding. Keep answers short by default; go long only when the topic needs it, and say why.
-- **Explain in plain English.** He is not technical. Jargon needs a plain-language version alongside it.
-- **Don't spiral.** Legal risk, edge cases, worst-case scenarios — mention once, briefly, then move on. Over-cautioning is a real failure mode here and it stalls the project.
-- **Verify before claiming done.** Show evidence: test output, a screenshot, the rendered page.
+## A session
 
-His German is limited. Anything requiring fluent German (phone calls with organisers) is not a plan he can execute — design around it.
+1. Read `docs/PLAN.md`. Then only the doc the task needs — map in `docs/README.md`. Never `docs/archive/` unless asked.
+2. Small and obviously safe → do it. Touches data, URLs or architecture → look, recommend, discuss, then build. Big or fuzzy → interview him, write a spec, build from it in a fresh session.
+3. A decision made is a line changed in the doc it belongs in, the same session. Before ending, update `PLAN.md`. Rewrite superseded text in place — git is the changelog, the docs are not.
 
----
+## Commands
 
-## What is settled
-
-| Decision | |
+| | |
 |---|---|
-| **Name** | Fynda, at `fynda.market` |
-| **Pilot market** | Switzerland (data exists from v1), then Germany |
-| **Languages** | CH: de, fr, it, en. Every other country: its language + English. Interface strings are written per language. Prose ships in every locale we hold it for — it does not wait on a human read |
-| **Not a German-first site** | Fynda is European, not German. Nothing outside a locale's own copy may be German: e-mail addresses, slugs of shared things, internal names, defaults. Where one language has to stand for all of them, it is **English** — the one language every locale of the site already carries |
-| **Users pay nothing, ever** | Revenue is supply-side: organisers, local business advertising |
-| **Monetization deferred** | Build the hooks, defer the machinery. No AdSense |
-| **Organiser surface from day one** | Even if v1 is just "contact us by email" |
-| **Stack** | Astro (static) + Cloudflare Workers + Supabase/PostGIS. See `docs/STACK.md`. **Cloudflare, not Vercel** — Vercel bills per invocation and per GB, which is one of the two things that cost v1 money. Caching did not break v1; unbounded page generation did |
-| **Brand** | White, near-black, one accent that marks only dates and status. Schibsted Grotesk. See `docs/BRAND.md` |
-| **What Fynda is** | **A visitor tool.** SEO is the acquisition base. Organiser tooling evolves later; at launch it is a "own your market" CTA and a contact form |
-| **Analytics** | **Self-hosted Metabase over our own Postgres.** Own the data, collect everything, keep it private. Metabase is the dashboard — the event collection layer is separate. Plus Search Console. No GA4 |
-| **Data source** | **The live v1 Supabase project, always.** Re-dump before any import. Local backups age and a local Docker/`supabase start` database is a stale dev copy — read them for shape, never import from them |
-| **Photos** | Every market gets one. A deliberate break from the category |
-| **Tags** | From day one, small set, **filters not URLs** |
-| **Newsletter** | Live from day one, city-segmented, list in our own Postgres |
-| **URL shape** | Locale, then country, then place — `/de/schweiz/zuerich/`, `/fr/suisse/lausanne/`. The whole path is in the page's language. Built only by `src/lib/i18n.ts` |
-| **Multi-country data model from commit one** | Even though one country ships first |
-| **Guardrails are architecture** | `guardrails.config.json` encodes `ARCHITECTURE.md`. Loosening a threshold to make a red build go green is forbidden; deliberately changing a rule because the project outgrew it is normal — doc and config in the same commit |
-| **No rule here is permanent** | These docs were written early, by an AI, from what was known then. A rule that blocks something good is a bug in the doc. Propose the change, say what the rule was protecting against, and why that is outweighed. Never work around a rule silently |
+| `npm run verify` | Before every push. Types (site and `functions/`), 26 tests, build, ten guardrails. Builds from fixtures unless `FYNDA_DATA_SOURCE=supabase`; a guardrail saying `SKIP` is waiting on data, not passing |
+| `npm run deploy` | Builds against the live database, runs the guardrails, uploads to Cloudflare Pages. Refuses a fixtures build. GitHub runs the same script every night at 03:00 UTC |
+| `node scripts/migrate.mjs supabase/migrations/<file>.sql` | Applies one migration to the live database, in a transaction. **Nothing else applies migrations** — committing one does nothing |
+| `npm test` | The 26 digest tests |
+| `node scripts/send-digest.mjs` | Dry run of the Friday mail. `--send` sends, `--only=<address>` to one person |
+| `docker compose -f metabase/docker-compose.yml up -d` | Metabase at `localhost:3000`. Docker often fails to start on this machine; say so rather than call untested SQL tested |
 
-## What is deliberately open
+`gh` is not installed. Credentials live in `.env.local`; scripts reach the database through `scripts/db.mjs` (`query(sql, params)`).
 
-Which region gets depth first. Where the photos come from. The tag taxonomy. What each page contains. See `PLAN.md` "Still open" — don't assume answers to these.
+## Settled — don't re-open
 
----
+| | |
+|---|---|
+| Name, domain | Fynda, `fynda.market` |
+| Markets | Switzerland now, Germany next. Multi-country data model since commit one |
+| Languages | CH: de, fr, it, en. Any other country: its own + English. A locale exists only where its content exists |
+| Not German-first | Nothing shared across locales is German — addresses, slugs, internal names, defaults. Where one language must stand for all, it is **English** |
+| Money | Users pay nothing, ever. Revenue is organisers and local advertising, deferred. No AdSense |
+| What it is | A visitor tool; SEO is the acquisition base. The organiser surface is a claim form and a contact address |
+| Stack | Astro static + Cloudflare Pages + Supabase/PostGIS. **Cloudflare, not Vercel.** `docs/STACK.md` |
+| URLs | `/{locale}/{country}/{city}/`. Words translated, names not. Built only by `src/lib/i18n.ts`. A published address never dies — 301s, guardrail 9 |
+| Imports | From the live v1 Supabase project only. Local backups and `supabase start` are stale — read for shape, never import |
+| Analytics | Our own events in our Postgres, read with self-hosted Metabase, plus Search Console by hand. No GA4, no cookies, no banner |
+| Brand | White, near-black, one accent for dates and status only. Schibsted Grotesk. `docs/BRAND.md` |
+| Tags | In the data model; filters, not URLs; small set |
+| Newsletter | Friday 06:00 UTC, list in our Postgres, a subscription is 25 km around a town or a canton |
+| Photos | Every market has one. Stock never ships |
 
-## The one thing that must not be repeated
+Every rule in these docs is current best judgment, not law. A rule that blocks something good is a bug in the doc: say what it protected against, why that is outweighed, and change doc and config in the same commit. Never route around one silently. The one forbidden move is loosening a guardrail threshold to turn a red build green.
 
-fleafind.ch generated **~8,500 URLs for 157 markets**. Occurrence pages had no future-date limit, multiplied across 4 locales. One weekly market produced 208 URLs. About 91% of the site earned nothing, and Google classified the pattern as spam.
+## The rule that must not be broken
 
-**The rule that came out of it:**
+v1 had no future-date limit on occurrence pages, times four locales. One weekly market made 208 URLs; 91% of the site earned nothing; Google called it spam.
 
 > **A page exists because there is content for it — never because a URL pattern permits it.**
 
-Applied:
-- Any page generator needs a **hard cap** (dates: 120 days) and a **minimum content floor**.
-- **CI enforces both** and fails the build. Rules a machine doesn't check will drift.
-  Implemented: `scripts/guardrails.mjs`, run by `npm run verify` and by CI on every push.
-- A locale exists only when its content exists. No locale matrices.
+Every page generator has a hard cap (dates: 120 days) and a minimum content floor, and `scripts/guardrails.mjs` fails the build on both. This is not a reason to be timid about page types — date pages converted best on v1. The failure was unbounded generation.
 
-This is not a reason to be timid about page types. Date pages were the best-converting pages on v1. The failure was unbounded generation, not any particular page type.
+## Gotchas that have each cost hours
 
----
+- **Every table has RLS on and no policies.** The build works because it connects as the owner. A new role gets an empty database, not an error — check what it can *see*.
+- **Verify cannot tell you a migration ran.** CI has no database. After applying one, post to the live endpoint and read the row back.
+- **`data/*.json` is build output and it is committed.** A fixtures `verify` overwrites it with six markets; check `git diff data/` before committing.
+- **Analytics inserts fail silently** (`waitUntil`). Read the Cloudflare log before believing there was no traffic.
+- **Use Supabase's session pooler**, `aws-1-eu-west-1.pooler.supabase.com`. The direct host is IPv6-only.
+- **Building against the database is `npm run deploy`, and that publishes.** There is no build-only flag yet.
+- `.claude/rules/` holds the rules for `functions/`, `supabase/migrations/` and `src/styles/`. They load when you touch those files.
 
-## Starting a session
-
-**Read `docs/PLAN.md` first.** It says where the project is and what happens next. Then load only the doc the task needs — the map is `docs/README.md`.
-
-The repo is the memory, not this chat. So:
-
-- **A decision made is a line changed, in the same session.** Not remembered, not "noted" — written into the doc it belongs in, immediately. An undocumented decision gets re-litigated next week.
-- **End of a session where anything was decided or learned: update `PLAN.md`'s "Now" and "Still open".** Two minutes. It is what makes the next session start from the right place instead of from scratch.
-- **Point at files, don't paste them.** Context is finite and every line spent re-explaining is a line not spent working.
-- **Superseded content gets rewritten, not appended to.** A doc that records its own history stops being readable.
-
-## How work happens
-
-- **Small and obviously safe** → just do it.
-- **Touches data, URLs, or architecture** → look at what exists, come back with a recommendation, discuss, then implement.
-- **Big or fuzzy idea** → interview him, write a spec, build from the spec in a fresh session.
-
-Nothing here is permanent. These notes are current best judgment, not law — if something looks stale or wrong, say so plainly and propose the change rather than silently working around it.
-
----
-
-## Documentation
-
-`docs/PLAN.md` first, every session. Then `docs/README.md` for the map. Load only what the task needs.
-
-**Keep the docs current.** At the end of a session where something was decided or learned, update the relevant doc — and write only the conclusion, not the journey. "The name is Fynda" beats three pages about how we got there. Context is finite; every line spent on history is a line not spent on the work.
-
-`docs/archive/` is prior research. **Do not read it unless explicitly asked** — it is long, some of it is superseded, and it will fill your context for no benefit.
+When compacting, keep the files changed, the commands run with their results, and every decision Delfim made.

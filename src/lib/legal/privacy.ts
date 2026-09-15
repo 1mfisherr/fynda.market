@@ -7,11 +7,11 @@
  * Analytics 4, Microsoft Clarity, Resend and a cookie-consent dialog. Fynda has
  * none of those. It is hosted on Cloudflare Pages, its analytics are self-hosted
  * on our own Postgres and read with our own Metabase, it sets no cookies at all,
- * and every form on the site is still a `mailto:` (docs/PLAN.md, "Make the forms
- * real"). This page describes that, not a template.
+ * and every form writes a row to our own database with Resend for the mail
+ * that follows. This page describes that, not a template.
  *
- * When the forms stop being mailto: and the newsletter runs on its own system,
- * sections 5 and 6 change here in the same commit.
+ * Sections 5 and 6 describe what the forms and the newsletter actually do.
+ * Change the mechanism, change them in the same commit.
  */
 import type { Locale } from '../i18n';
 import type { LegalDoc } from './doc';
