@@ -24,7 +24,7 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 
 ## Next, in order
 
-1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
+1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone, the within-25-km block on 28 sparse towns — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
 2. **"Less often" / "pause" on the unsubscribe page.** Token, page and row all exist; today the page is a dead end.
 3. **Resend webhook for opens and clicks.** Nothing else can retire dead addresses, and dead addresses drag sender reputation down.
 4. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
@@ -50,7 +50,6 @@ Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 - **A Metabase host, €6/month.** Only when looking without starting Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
-- **The "within 25 km" block on sparse city pages.** Mocked, not built (`PAGES.md` §City page). Rows not links, capped at five, outside the content floor. Yes or no.
 - **Two newsletter forms in a row.** The card at the foot of home, city, canton and market pages is followed directly by the footer's own form. Removing the footer one on those pages empties the desktop footer's right column, so it needs a layout decision, not a one-liner.
 - **Prose quality is now a spot-check, not a known defect.** 2026-09-15: umlauts restored in 102 German rows; accents restored in 79 French and Italian descriptions; six French rows that were German text translated; 27 German schedule clauses embedded in French, Italian and English prose translated. What remains is whatever a native reader finds.
 

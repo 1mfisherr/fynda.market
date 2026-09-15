@@ -301,7 +301,7 @@ It compares **class names, not just whole selectors.** The first version compare
 |---|---|---|
 | 1 | Route allowlist | A URL shape nobody decided on |
 | 2 | URL-to-entity ratio, **per locale** | Page count outrunning real things in the world |
-| 3 | Content floor | Pages too thin to deserve a URL |
+| 3 | Content floor | Pages too thin to deserve a URL. An `<aside data-outside-floor>` is not counted — another page's content shown here must never be what clears the floor |
 | 4 | Occurrence horizon (120 days) | The unbounded date expansion that killed v1 |
 | 5 | Explicit image dimensions | Layout shift |
 | 6 | Structured data, one `Event` per page | The markup Google gives a manual action for |

@@ -48,7 +48,7 @@
   },
 
   "contentFloor": {
-    "_comment": "Minimum visible text characters in <main>, per page type. A page below its floor should not exist.",
+    "_comment": "Minimum visible text characters in <main>, per page type. A page below its floor should not exist. A block marked <aside data-outside-floor> is not counted: it is another page's content shown here (the city page's within-25-km rows), and must never be what clears the floor.",
     "market": 400,
     "region or city": 300,
     "country": 300,

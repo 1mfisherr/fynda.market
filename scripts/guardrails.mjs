@@ -103,11 +103,20 @@ function routeTypeOf(url) {
   return null;
 }
 
-/** Visible text inside <main>, tags and script/style stripped. */
+/**
+ * Visible text inside <main>, tags and script/style stripped.
+ *
+ * An <aside data-outside-floor> is stripped too. It marks a block that is
+ * real content but not *this page's* content — the city page's "within 25 km"
+ * rows, which belong to other towns' pages. Counting them would let a city
+ * with nothing of its own clear the floor on its neighbours' markets, which is
+ * the exact failure the floor exists to catch.
+ */
 function mainText(html) {
   const main = html.match(/<main[\s\S]*?>([\s\S]*?)<\/main>/i);
   const body = main ? main[1] : html;
   return body
+    .replace(/<aside[^>]*data-outside-floor[^>]*>[\s\S]*?<\/aside>/gi, ' ')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')

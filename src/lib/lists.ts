@@ -21,6 +21,7 @@
  * visitor more than eighteen identical Saturdays did.
  */
 import type { Market, Occurrence } from './types';
+import { DEFAULT_RADIUS, distanceKm } from './geo';
 import { iso, weekendBounds } from './date-window.ts';
 import { withinHorizon } from './markets.ts';
 
@@ -143,4 +144,43 @@ export function weekendLead(
     from: all[0]?.next.date ?? '',
     to: all[all.length - 1]?.next.date ?? '',
   };
+}
+
+/** A market from another town, with its distance already computed. */
+export interface Nearby { market: Dated; km: number }
+
+/**
+ * The towns around a sparse city.
+ *
+ * Worb has one market and its next date was four weeks out; after that one row
+ * the page ended, with nothing for the person who searched "flohmarkt worb"
+ * this Saturday. Every competitor with a small-town page has the same dead
+ * end, except brocabrac, whose "Lyon et alentours (40 km)" is the one element
+ * that keeps such a page useful. So: when a city has fewer than three upcoming
+ * dates of its own, up to five market rows from within 25 km — the radius the
+ * newsletter already uses — soonest first, each with its distance. Lives
+ * here rather than in the page because Astro's getStaticPaths cannot see the
+ * page's own frontmatter.
+ *
+ * Rows, not links. PAGES.md rules out "a list of nearby cities" because a
+ * link wall on a thin page is what a doorway page looks like; five rows that
+ * say when, where and how far are the opposite of thin. Two guards keep it
+ * honest: the block is marked `data-outside-floor`, so the content floor
+ * (guardrail 3) never counts another town's markets as this page's; and the
+ * distance is from this city's own venues, not from a guessed centre.
+ */
+export const SPARSE_BELOW = 3;
+export const NEARBY_MAX = 5;
+export function nearbyMarkets(here: Market[], all: Market[]): Nearby[] {
+  if (datedRows(here).length >= SPARSE_BELOW) return [];
+  const anchors = here.filter((m) => Number.isFinite(m.lat) && Number.isFinite(m.lng));
+  if (anchors.length === 0) return [];
+  const lat = anchors.reduce((sum, m) => sum + m.lat, 0) / anchors.length;
+  const lng = anchors.reduce((sum, m) => sum + m.lng, 0) / anchors.length;
+  const own = new Set(here.map((m) => m.id));
+  return byMarket(datedRows(all.filter((m) => !own.has(m.id))))
+    .map((market) => ({ market, km: distanceKm(lat, lng, market.lat, market.lng) }))
+    .filter(({ km }) => km <= DEFAULT_RADIUS)
+    .sort((a, b) => a.market.next.date.localeCompare(b.market.next.date) || a.km - b.km)
+    .slice(0, NEARBY_MAX);
 }

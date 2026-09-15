@@ -167,7 +167,7 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 
 **Deliberately not here:** an `Event` block of any kind, a list of nearby cities (doorway risk), category sub-pages.
 
-**Under consideration (2026-09-15):** a "within 25 km" block of up to five market *rows* with distance, only on a city with fewer than three upcoming dates. Rows are content, not a link list, but the block must not count toward the content floor. Not built; Delfim's call.
+**"Im Umkreis von 25 km"** (built 2026-09-15, Delfim's call): on a city with fewer than three upcoming dates of its own, up to five market *rows* from other towns within 25 km, soonest first, each with its distance, under the same day headers. 28 of 56 city pages carry it. This is not the nearby-city link list ruled out above — rows say when, where and how far; a link wall says nothing. The block is an `<aside data-outside-floor>`, which guardrail 3 does not count, so another town's markets can never be what clears this page's floor. `src/lib/lists.ts` `nearbyMarkets`.
 
 **Measured by:** clicks per page against v1's 25.5, and click-through into market pages.
 

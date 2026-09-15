@@ -211,6 +211,9 @@ export interface Strings {
    */
   scopeRegion: (label: string) => string;
   scopeRadius: (km: number, city: string) => string;
+  /** The block of markets from the towns around a sparse city. */
+  nearbyHeading: (km: number) => string;
+  nearbyLede: (city: string) => string;
   /**
    * The same thing for the signup block, which says no canton anywhere.
    *
@@ -402,6 +405,8 @@ const de: Strings = {
   scopeRegion: (label) => `im ${label}`,
   subscribeScopeRegion: (name) => `für ${name}`,
   scopeRadius: (km, city) => `im Umkreis von ${km} km um ${city}`,
+  nearbyHeading: (km) => `Im Umkreis von ${km} km`,
+  nearbyLede: (city) => `Die nächsten Termine in den Orten um ${city}.`,
   subscribeBodyScope: (scope) => `Neue Termine und Absagen ${scope}, jeden Freitagmorgen.`,
   subscribeRegionLabel: 'Region',
   subscribeAnywhere: 'Überall in der Schweiz',
@@ -569,6 +574,8 @@ const en: Strings = {
   scopeRegion: (label) => `in the ${label}`,
   subscribeScopeRegion: (name) => `for ${name}`,
   scopeRadius: (km, city) => `within ${km} km of ${city}`,
+  nearbyHeading: (km) => `Within ${km} km`,
+  nearbyLede: (city) => `The next dates in the towns around ${city}.`,
   subscribeBodyScope: (scope) => `New dates and cancellations ${scope}, every Friday morning.`,
   subscribeRegionLabel: 'Region',
   subscribeAnywhere: 'Anywhere in Switzerland',
@@ -739,6 +746,8 @@ const fr: Strings = {
   scopeRegion: (label) => `dans le ${label}`,
   subscribeScopeRegion: (name) => `pour ${name}`,
   scopeRadius: (km, city) => `dans un rayon de ${km} km autour de ${city}`,
+  nearbyHeading: (km) => `Dans un rayon de ${km} km`,
+  nearbyLede: (city) => `Les prochaines dates dans les localités autour de ${city}.`,
   subscribeBodyScope: (scope) => `Nouvelles dates et annulations ${scope}, chaque vendredi matin.`,
   subscribeRegionLabel: 'Région',
   subscribeAnywhere: 'Partout en Suisse',
@@ -906,6 +915,8 @@ const it: Strings = {
   scopeRegion: (label) => `nel ${label}`,
   subscribeScopeRegion: (name) => `per ${name}`,
   scopeRadius: (km, city) => `entro ${km} km da ${city}`,
+  nearbyHeading: (km) => `Entro ${km} km`,
+  nearbyLede: (city) => `Le prossime date nelle località intorno a ${city}.`,
   subscribeBodyScope: (scope) => `Nuove date e cancellazioni ${scope}, ogni venerdì mattina.`,
   subscribeRegionLabel: 'Regione',
   subscribeAnywhere: 'Ovunque in Svizzera',
