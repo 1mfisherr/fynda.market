@@ -97,6 +97,27 @@ const answer = soonest
       soonest.venueName
     )
   : s.cityNoDate;
+/**
+ * The search snippet. It said "Alle bekannten Flohmärkte in Worb — mit
+ * Terminen, Öffnungszeiten und Absagen" on every city page, and Search
+ * Console's first nine days showed what that earns: Worb, Wettingen and Chur
+ * at position 5–8 with 100–200 impressions each and no clicks. The person
+ * searching "flohmarkt worb" wants to know when, and the market page's snippet
+ * already answers that. So the description is the answer sentence the page
+ * opens with, plus the count — the generic line stays only for a city with
+ * nothing upcoming, where it is the honest description.
+ */
+const description = soonest
+  ? s.cityDescription(
+      city,
+      soonest.name,
+      formatDate(soonest.next!.date, locale),
+      formatTimeRange(soonest.next!.startTime, soonest.next!.endTime, locale),
+      soonest.venueName,
+      rows.length,
+      Math.round(HORIZON_DAYS / 30)
+    )
+  : `${s.cityNoDate} ${s.cityIntro(city, region)}`;
 const site = 'https://fynda.market';
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -108,7 +129,7 @@ const jsonLd = {
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} title={`${heading} | fynda.market`} description={s.cityIntro(city, region)}>
+<Page locale={locale} alternates={alternates} title={`${heading} | fynda.market`} description={description}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">

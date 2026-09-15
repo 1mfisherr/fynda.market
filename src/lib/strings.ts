@@ -158,6 +158,8 @@ export interface Strings {
   cityNext: (name: string, date: string, time: string | undefined, venue: string) => string;
   cityNoDate: string;
   cityIntro: (city: string, region: string) => string;
+  /** The search snippet: the city is named because Google bolds the match. */
+  cityDescription: (city: string, name: string, date: string, time: string | undefined, venue: string, n: number, months: number) => string;
   lastChecked: string;
   inNextMonths: (n: number) => string;
 
@@ -352,6 +354,8 @@ const de: Strings = {
   cityNext: (name, date, time, venue) =>
     `Der nächste ist ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}.`,
   cityNoDate: 'Zurzeit ist kein Termin bestätigt.',
+  cityDescription: (city, name, date, time, venue, n, months) =>
+    `Nächster Flohmarkt in ${city}: ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}. ${n} ${n === 1 ? 'Termin' : 'Termine'} in den nächsten ${months} Monaten, mit Prüfdatum und Absagen.`,
   cityIntro: (city, region) =>
     `Alle bekannten Flohmärkte in ${city}, Kanton ${region} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
   lastChecked: 'zuletzt geprüft heute',
@@ -517,6 +521,8 @@ const en: Strings = {
   cityNext: (name, date, time, venue) =>
     `The next one is ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'No date is confirmed at the moment.',
+  cityDescription: (city, name, date, time, venue, n, months) =>
+    `Next flea market in ${city}: ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} in the next ${months} months, each with a check date, cancellations shown.`,
   cityIntro: (city, region) =>
     `Every known flea market in ${city}, canton of ${region} — with dates, opening hours and cancellations. Cancelled dates stay visible.`,
   lastChecked: 'last checked today',
@@ -685,6 +691,8 @@ const fr: Strings = {
   cityNext: (name, date, time, venue) =>
     `La prochaine est ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: "Aucune date n'est confirmée pour le moment.",
+  cityDescription: (city, name, date, time, venue, n, months) =>
+    `Prochaine brocante à ${city} : ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} dans les ${months} prochains mois, avec date de vérification et annulations.`,
   cityIntro: (city, region) =>
     `Toutes les brocantes connues à ${city}, canton de ${region} — dates, horaires et annulations. Les dates annulées restent visibles.`,
   lastChecked: "dernière vérification aujourd'hui",
@@ -850,6 +858,8 @@ const it: Strings = {
   cityNext: (name, date, time, venue) =>
     `Il prossimo è ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'Al momento non è confermata nessuna data.',
+  cityDescription: (city, name, date, time, venue, n, months) =>
+    `Prossimo mercatino delle pulci a ${city}: ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'data' : 'date'} nei prossimi ${months} mesi, con data di verifica e cancellazioni.`,
   cityIntro: (city, region) =>
     `Tutti i mercatini delle pulci conosciuti a ${city}, Cantone ${region} — con date, orari di apertura e cancellazioni. Le date cancellate restano visibili.`,
   lastChecked: 'ultima verifica oggi',
