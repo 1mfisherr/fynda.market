@@ -8,7 +8,7 @@ Updated 2026-09-15.
 
 ## Now
 
-**Live at `fynda.market` since 2026-09-04.** 944 pages from 157 published markets, 55 cities and 14 cantons in four locales; 912 indexable, 1.00 URL per entity per locale against v1's ~60. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and 26 tests gate every publish.
+**Live at `fynda.market` since 2026-09-04.** 948 pages from 157 published markets, 56 cities and 14 cantons in four locales; 916 indexable, 1.00 URL per entity per locale against v1's ~60. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and 26 tests gate every publish.
 
 What is running:
 
@@ -37,14 +37,13 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 
 - **The beachhead region** — Zürich or Luzern. Photos, descriptions and organiser outreach concentrate wherever this lands.
-- **The compact brand mark.** Wordmark v6 in `design/screens/`, curved-`y` direction; the `f.` tile was rejected. Nothing approved or installed. `design/logo-research.md`.
-- **Where photographs come from.** Organiser claims scale; Delfim shooting them works today. Decide before promising a real photo per market.
+- **The logo.** Delfim has one to bring in (2026-09-15); nothing to decide here until it arrives. `design/logo-research.md` is the earlier exploration.
+- ~~Where photographs come from~~ **Decided 2026-09-15:** the current photos stay; real ones arrive through organiser claims, not a shoot.
 - **Distance on cards and in the market page's decision strip.** Blocked because `fynda:stadt` stores a name and an href, not coordinates. The fix is in the home page's town picker; the `<li data-distance>` slot is already in the markup. Never print a guessed distance.
 - **Analytics vocabulary — one migration, three decisions.** `page_type` has no `utility` value, so the report pages (third-busiest thing on the site) land in `other`; `newsletter_form_view.placement` should name the form (`card|footer`), not the page; `organiser_contact` has no emitter. And `analytics_rollup()` is called by nothing — schedule it beside the digest or delete it.
-- **The tag taxonomy.** Small. 60+ categories killed v1.
+- **Tags.** Wanted, kept in the data model, not yet worth showing: nothing fills them and a tag that filters to nothing is a dead end. Revisit when organisers supply facts (Delfim, 2026-09-15). Small when it comes — 60+ categories killed v1.
 - **The content floor counts characters and should count verified facts.** Fix before any bulk prose generation.
-- **Zofingen is filed under Aarau**, 25 km away. Fixing it creates a city and mints eight URLs.
-- **Four vanished markets** — Eiszentrum Luzern, Mall of Switzerland Ebikon, GZ Hottingen, GZ Schindlergut — gone from their organisers' sites, still `active`. Close them or leave them.
+- ~~Four vanished markets~~ **Decided 2026-09-15: leave them.** Eiszentrum Luzern, Mall of Switzerland Ebikon, GZ Hottingen, GZ Schindlergut stay `active` with no dates; their pages say so.
 - **A Metabase host, €6/month.** Only when looking without starting Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
@@ -55,7 +54,7 @@ Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 
 ## Data
 
-161 markets, 2,357 occurrences, 55 cities, 14 cantons, 107 organisers, 1,782 facts (2026-09-05). Complete on all 161: descriptions, names, slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, 2 organiser contacts, every tag — and, for every market, size and indoor/outdoor. 37 of 157 have no announced date this month; that is Swiss September, not a fault.
+161 markets, 2,357 occurrences, 56 cities (Zofingen split from Aarau 2026-09-15), 14 cantons, 107 organisers, 1,782 facts (2026-09-05). Complete on all 161: descriptions, names, slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, 2 organiser contacts, every tag — and, for every market, size and indoor/outdoor. 37 of 157 have no announced date this month; that is Swiss September, not a fault.
 
 How the import works and what it decided: `ARCHITECTURE.md` §Import.
 

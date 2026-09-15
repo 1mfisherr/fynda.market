@@ -84,7 +84,11 @@ const year = new Date().getFullYear();
    includes markets with no upcoming date, so the old heading said 17 over
    fourteen rows — invisible while the list was 61 rows of repeats, and
    the first thing anyone would count now that it is one row each. */
-const heading = s.cityHeading(list.length, city, year);
+/* …except when the list is empty. Seven towns are between seasons, and "Die 0
+   Flohmärkte in Muttenz 2026" was their title in Google for a fortnight. With
+   nothing upcoming, the count is the markets the town has; the sentence under
+   it says there is no date. */
+const heading = s.cityHeading(list.length || markets.length, city, year);
 
 // The earliest upcoming date, not the first row of an unsorted list: `rows` is
 // in market order, so `.find()` here answered with whichever market happened to
