@@ -48,7 +48,7 @@ Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
 - **Two newsletter forms in a row.** The card at the foot of home, city, canton and market pages is followed directly by the footer's own form. Removing the footer one on those pages empties the desktop footer's right column, so it needs a layout decision, not a one-liner.
-- **Prose quality is now a spot-check, not a known defect.** 2026-09-15: umlauts restored in 102 German rows; accents restored in 79 French and Italian descriptions; six French rows that were German text translated; 27 German schedule clauses embedded in French, Italian and English prose translated. What remains is whatever a native reader finds.
+- **Prose quality is now a spot-check, not a known defect.** 2026-09-15: umlauts restored in 102 German rows; accents restored in 79 French and Italian descriptions; six French rows that were German, and two German rows that were Italian (Lugano), translated; 27 German schedule clauses embedded in other-language prose translated; **the rhythm line ("Jeden Samstag, Mai–Oktober") now exists in all four languages for every active market** — 118 markets had been showing the German one on the French, Italian and English pages. A check that a description carries its own language's function words finds nothing left. What remains is whatever a native reader finds.
 
 ---
 
