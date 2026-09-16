@@ -25,7 +25,7 @@ docker compose -f metabase/docker-compose.yml down
 Your questions and dashboards survive; they live in a Docker volume, not in the
 container.
 
-## Connecting it to Fynda's data — once, on first run
+## Connecting it to the database — once, on first run
 
 Metabase asks for a database on the setup screen. Use **Add a database** →
 PostgreSQL, and these values:
@@ -57,12 +57,13 @@ It is `metabase_ro`: read-only, forever. It cannot insert, update or delete
 anything. It cannot read `market_private` (organiser emails, admin notes) or
 `reports` (whatever a visitor typed into a form).
 
-**It does see personal data, and that is deliberate in two places.** An earlier
-version of this file claimed it saw none; that stopped being true the day the
-site started collecting addresses.
+**It does see personal data, and that is deliberate in three places.**
 
 - `newsletter_subscribers` — every address, with the page it was signed up
   from. There is no useful newsletter question that does not read this table.
+- `organisers` — the organiser's e-mail address, since the organiser mail
+  exists. `organiser_links`, `organiser_mail_sends` and `organiser_edits` are
+  revoked; `organiser_funnel` is the view for the answer rate.
 - `open_reports` and `open_organiser_claims` — the two queues below. The base
   `reports` table is still revoked; the view is the window, because a view runs
   with its owner's rights and grants nothing on what it reads. The reporter's

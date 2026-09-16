@@ -29,7 +29,7 @@ Launch with the fewest page types that could not be mistaken for spam. Everythin
 | Page type | One per | Count (CH, per locale) |
 |---|---|---|
 | **Locale home** | locale | 1 |
-| **Country** | country | 1 *(not built yet)* |
+| **Country** | country | 1 *(arrives with Germany)* |
 | **Region** | canton *that has markets* | 14 |
 | **City** | city *that has markets* | 55 |
 | **Market** | real market | 157 |
@@ -38,7 +38,7 @@ Launch with the fewest page types that could not be mistaken for spam. Everythin
 
 City pages were by far v1's best performers (25.5 clicks/page vs 4.9 for market pages). Market pages are the atom everything else is a view over. Region pages are cheap and German demand for them is large. Home carries "today / this weekend" without needing a URL for it.
 
-**A country page does not exist yet.** Breadcrumbs no longer point at one — they run home → canton → city → market, every step a page that exists. The country step goes in when the page does.
+**No country page yet** — it arrives with the second country, when it stops being a copy of the home page. Breadcrumbs run home → canton → city → market, every step a page that exists; the country step joins when the page does.
 
 ## Everything else is a query parameter
 
@@ -93,7 +93,7 @@ The country segment is the deliberate exception: `schweiz` / `suisse` / `svizzer
 
 ### Retired addresses
 
-**No address Fynda has published ever stops working.** A slug row is never deleted: when it is replaced it is marked `is_current = false` and stays forever, and the build turns those rows into 301s in `_redirects`, which Cloudflare Pages serves natively. A retired slug also stays reserved, so it can never be handed to a different entity and start pointing somewhere wrong.
+**No address fynda.market has published ever stops working.** A slug row is never deleted: when it is replaced it is marked `is_current = false` and stays forever, and the build turns those rows into 301s in `_redirects`, which Cloudflare Pages serves natively. A retired slug also stays reserved, so it can never be handed to a different entity and start pointing somewhere wrong.
 
 This is the guarantee GetYourGuide and Tripadvisor buy with an id in the path, without the id — which is the generated-directory look the v1 post-mortem says to avoid. It is not an edge case: Swiss communes merge constantly, roughly 3,000 down to 2,100 in thirty years. Guardrail 9 enforces it.
 
@@ -107,13 +107,13 @@ This is the guarantee GetYourGuide and Tripadvisor buy with an id in the path, w
 
 `/` redirects to `/de/`. Astro emits a redirect stub, which the guardrails treat as **not a page**: exempt from the content floor and the ratio, still checked against the route allowlist.
 
-**A URL that does not exist returns 404.** `src/pages/404.astro` is not decoration: without it Cloudflare Pages answers every unmatched path with the `/` redirect stub and **HTTP 200**, so `/de/schweiz/anything-at-all/` looked like a real page. That is the v1 failure in another form — a crawler could invent URLs and be told each one was fine — and it made verification lie, because every check of a made-up URL passed. Found and fixed on launch day, 2026-09-04.
+**A URL that does not exist returns 404.** `src/pages/404.astro` is not decoration: without it Cloudflare Pages answers every unmatched path with the `/` redirect stub and **HTTP 200**, so `/de/schweiz/anything-at-all/` looked like a real page. That is the v1 failure in another form — a crawler could invent URLs and be told each one was fine — and it makes verification lie, because every check of a made-up URL passes.
 
 ## Locales
 
-**Switzerland publishes in de, fr, it and en. Every other country gets its own language plus English.** Decided 2026-08-31, and it was not a future concern — 31 of 157 markets (20%) are in French- or Italian-speaking Switzerland and were being served German pages.
+**Switzerland publishes in de, fr, it and en. Every other country gets its own language plus English.** Not a future concern: 31 of 157 markets (20%) are in French- or Italian-speaking Switzerland.
 
-**A language version is not a facet combination.** City × weekday produces mostly empty cells; the same market in Italian is a full page with the same dates, address and status. That distinction is why the URL-to-entity ratio now counts **per locale** — the old aggregate count read four languages as 4.02 against a ceiling of 2.0 and would have blocked translation outright.
+**A language version is not a facet combination.** City × weekday produces mostly empty cells; the same market in Italian is a full page with the same dates, address and status. That distinction is why the URL-to-entity ratio counts **per locale** — an aggregate count reads four languages as 4.02 against a ceiling of 2.0 and would block translation outright.
 
 The line that does matter is Google's: scaled content abuse covers pages generated *"through automated transformations like synonymizing, translating"* — **where little value is provided**. So:
 
@@ -144,7 +144,7 @@ The pattern this produces on its own: big geography x time is safe, small geogra
 
 ## Data model
 
-`[DECIDED 2026-08-29, after reading all 24 v1 migrations]`
+Decided after reading all 24 v1 migrations.
 
 Shipped: `supabase/migrations/20260829120000_initial_schema.sql`, with behavioural tests in `supabase/tests/schema_test.sql` (15 assertions, all passing against Postgres 16 + PostGIS 3.4).
 
@@ -158,7 +158,7 @@ facts   (entity_type, entity_id, field, value, source_type, source_ref,
 
 tags, market_tags, organisers, market_private, reports, organiser_claims
 newsletter_subscribers, newsletter_sends, newsletter_events, newsletter_alerts
-organiser_links, organiser_mail_sends, organiser_answers, organiser_edits   -- 2026-09-16
+organiser_links, organiser_mail_sends, organiser_answers, organiser_edits
 admin_actions, publish_requests
 ```
 
@@ -172,7 +172,7 @@ admin_actions, publish_requests
 
 ### The organiser's identity is a link
 
-`[DECIDED 2026-09-16, research in reference/organiser-research/]` **No login, ever.** `organiser_links` holds one live row per organiser: the token in the URL is `HMAC(ADMIN_SIGNING_SECRET, link id)`, the table stores only its SHA-256, so a copy of the database yields no working link and the daily mail script (same secret on GitHub) can build the buttons without a token ever being stored. Minting a new link revokes the old.
+**No login, ever** (Delfim, 2026-09-16; research in `reference/organiser-research/`). `organiser_links` holds one live row per organiser: the token in the URL is `HMAC(ADMIN_SIGNING_SECRET, link id)`, the table stores only its SHA-256, so a copy of the database yields no working link and the daily mail script (same secret on GitHub) can build the buttons without a token ever being stored. Minting a new link revokes the old.
 
 Every button press is an `organiser_answers` row (`on | cancelled | changed`, scope `date | market`); every mail is an `organiser_mail_sends` row written *before* the send. Those two tables are the answer rate — the one number that decides whether more is built for organisers (`organiser_funnel` view). "On" sets `occurrences.origin = organiser` and `confirmed_at`; "cancelled, just this date" sets `status = cancelled, cancellation_note = organiser`; "the market has stopped" and free-text edits go to Delfim. The three facts an organiser supplies — `markets.stall_count`, `setting`, `rain_policy` — render only when set.
 
@@ -216,7 +216,7 @@ The freshness queue is a view over this table: staleness x traffic x volatility,
 
 ### Three decisions that were open
 
-**1. One region level, not three.** v1 had cantons, metro regions and tourism regions, joined through a table carrying roles and priorities. Fynda has **one kind: the country's official first-level unit** — canton in CH, Bundesland in DE. That is the level with measured search demand (`flohmarkt nrw`, `flohmarkt bayern`), and its boundaries are official rather than argued. A city has exactly one, so it is a plain foreign key and the join table disappears.
+**1. One region level, not three.** v1 had cantons, metro regions and tourism regions, joined through a table carrying roles and priorities. fynda.market has **one kind: the country's official first-level unit** — canton in CH, Bundesland in DE. That is the level with measured search demand (`flohmarkt nrw`, `flohmarkt bayern`), and its boundaries are official rather than argued. A city has exactly one, so it is a plain foreign key and the join table disappears.
 
 *"But Zürich should include Dietikon."* That is what the radius filter answers, and it answers it better — without a page.
 
@@ -249,13 +249,13 @@ What the import decided:
 - **Free-text place names are gone.** `markets.city` disagreed with the venue in 39 of 161 rows; `canton` held both `AG` and `Aargau`. Cities come from `venues.city`, cantons are normalised, two source errors were fixed by postal code (Pratteln → BL, Subingen → SO).
 - **Market kind is inferred from the name** where v1 knew only three types. 28 are written to `facts` as `inferred`, so the guess is visible and a real source overrules it.
 - **Closed markets are imported, not published.** 4 closed markets carry 279 future dates, excluded by `publishable_markets`.
-- **Stock never ships.** The 11 pexels URLs v1 held were dropped and replaced with real files on 2026-09-05.
+- **Stock never ships.** The 11 pexels URLs v1 held were dropped; every market has a real file or an illustration.
 
 ---
 
 ## Structured data — one rule that shapes the market page
 
-`[VERIFIED 2026-08-29 against` [Google's Event docs](https://developers.google.com/search/docs/appearance/structured-data/event)`]`
+Verified against [Google's Event docs](https://developers.google.com/search/docs/appearance/structured-data/event).
 
 > **"The event experience on Google only supports pages that focus on a single event."**
 
@@ -265,7 +265,7 @@ Required, all three or the markup is invalid: `name` (the event, never the venue
 
 **`eventStatus` is the cancellation feature, already standardised:** `EventScheduled` · `EventCancelled` · `EventPostponed` · `EventRescheduled`. **Keep `startDate` when cancelled** — removing it breaks the markup. Nobody in the category uses this, and it is free.
 
-**Enforced 2026-08-29.** Guardrail check 6 now fails a build that emits more than one `Event` on any page, or any `Event` on a page type other than `market` (`maxEventsPerPage`, `eventAllowedOn` in `guardrails.config.json`). Both branches are covered by a deliberate-failure test.
+**Enforced.** Guardrail check 6 fails a build that emits more than one `Event` on any page, or any `Event` on a page type other than `market` (`maxEventsPerPage`, `eventAllowedOn` in `guardrails.config.json`). Both branches are covered by a deliberate-failure test.
 
 ## Generated prose
 
@@ -277,7 +277,7 @@ A market with a verified address, dates, times and an organiser can carry genera
 
 ## Style architecture — the layer between tokens and pages
 
-**Added 2026-08-30**, after measuring the drift: at three pages, **10 selectors were defined by more than one page and 7 had already diverged.** `h1` meant three different things. The site is going to fourteen more pages.
+Measured at three pages, **10 selectors were defined by more than one page and 7 had already diverged** — `h1` meant three different things. Hence the layers, and guardrail 7.
 
 Four layers, each allowed to know only about the one below it:
 
@@ -325,4 +325,4 @@ Checks 1–6 and 8 read `dist/`. Check 7 reads `src/`, because the failure it ca
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-15
+last_reviewed: 2026-09-16

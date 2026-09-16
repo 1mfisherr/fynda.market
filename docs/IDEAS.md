@@ -16,7 +16,7 @@ Nothing here is scoped or promised. An idea leaves this file only when someone w
 
 **Risks:** far smaller search volume than the visitor side, so this can never be the traffic engine. Two-sided cold start. And it is a second product surface — founder burnout is the named top risk. If built, it sits **on top of** the visitor directory and the same database, never instead of it.
 
-## Multi-market routing — parked with evidence, 2026-08-29
+## Multi-market routing — parked with evidence
 
 **The behaviour is real. The feature is not worth building, and the obvious version is our exact trap.**
 
@@ -38,7 +38,7 @@ Why it stays parked:
 
 **And it is a Germany feature, not a Swiss one.** Berlin has ~11 Sunday markets running at once; Swiss Sundays are thin and scattered.
 
-**Correction, 2026-08-29:** an earlier version of this entry said multi-market trips were "barely articulated" in German writing. That was wrong, and it came from looking at the wrong corpus. German flea-market YouTube is full of it — *2 Flohmärkte auf einen Streich*, *3 Flohmärkte an nur einem Tag*, *24h jeden Flohmarkt in Hamburg besuchen*, blog posts split into Teil 1 and Teil 2 with the distance between them stated ("die 8 Kilometer rüber"). The behaviour is common and people make content about it. **What stays true is the thing that matters: they never search for a tool to plan it.** Zero route queries in 1,000. So the verdict is unchanged — it is real behaviour with no search demand, which makes it a feature, never a channel.
+**People do plan multi-market trips.** German flea-market YouTube is full of it — *2 Flohmärkte auf einen Streich*, *3 Flohmärkte an nur einem Tag*, *24h jeden Flohmarkt in Hamburg besuchen*, blog posts split into Teil 1 and Teil 2 with the distance between them stated ("die 8 Kilometer rüber"). The behaviour is common and people make content about it. **What stays true is the thing that matters: they never search for a tool to plan it.** Zero route queries in 1,000. So the verdict is unchanged — it is real behaviour with no search demand, which makes it a feature, never a channel.
 
 **Related finding worth acting on separately:** Swiss flea markets are a **Saturday** thing, but people search Sunday — `sonntag` outdraws `samstag` 57 clicks to 25. Answering a Sunday search well ("nothing today, here is Saturday") is the more interesting opportunity.
 
@@ -75,4 +75,4 @@ Settled: free for users, no paywalls, revenue is supply-side. Candidates: organi
 ---
 
 owner: Delfim
-last_reviewed: 2026-08-29
+last_reviewed: 2026-09-16

@@ -1,8 +1,8 @@
 # Stack
 
-What runs, where, and the constraints behind each choice. Written 2026-08-27 as a plan; rewritten 2026-09-15 to describe what is actually running.
+What runs, where, and the constraints behind each choice — what is actually running, not a plan.
 
-**One line:** Astro static build, published to Cloudflare Pages by a script; Supabase Postgres + PostGIS read once per build; a handful of Pages Functions for the things a static site cannot do; GitHub Actions for the nightly rebuild and the Friday mail; Resend for e-mail; Metabase locally. **Cost today: the domain.**
+**One line:** Astro static build, published to Cloudflare Pages by a script; Supabase Postgres + PostGIS read once per build; a handful of Pages Functions for the things a static site cannot do; GitHub Actions for the nightly rebuild, the Friday digest and the daily organiser mail; Resend for e-mail; Metabase locally. **Cost today: the domain.**
 
 ---
 
@@ -17,7 +17,7 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 | Database | **Supabase Postgres 17 + PostGIS**, `eu-west-1`, read by the build through `pg` (`src/lib/supabase.ts`) | Radius search is one indexed function. Free tier carries the pilot |
 | "Today", "this weekend" | Baked in at the 03:00 build; whether a market is open *now* is filled in by the browser | A page written at 03:00 cannot know 14:00. Without JavaScript the page still says "Heute" and the hours |
 | Scheduled work | **GitHub Actions cron + plain Node scripts:** `publish.yml` nightly (and on demand, `workflow_dispatch` from a Function when an organiser presses a button), `digest.yml` Friday 06:00 UTC, `organisers.yml` daily 06:00 UTC behind `ORGANISER_SENDING` | Three jobs. No Temporal, Airflow, n8n, LangChain. The AI-driven discovery and freshness loops with a `proposals` table are designed (below) and not built |
-| E-mail | **Resend** batch API, one sender `Fynda <contact@fynda.market>`, list and consent in our Postgres. Inbound through Cloudflare Email Routing | Segmentation is a `where` clause, not a per-contact fee. Never Audiences/Broadcasts — they bill on stored contacts |
+| E-mail | **Resend** batch API, one sender `fynda.market <contact@fynda.market>`, list and consent in our Postgres. Inbound through Cloudflare Email Routing | Segmentation is a `where` clause, not a per-contact fee. Never Audiences/Broadcasts — they bill on stored contacts |
 | Images | **WebP in `public/images/`**, two sizes per market, committed | 157 markets × 2 files is small enough to live in git. R2 when it is not |
 | Analytics | Own events in our Postgres, read locally with Metabase; Search Console by CSV import | See §Analytics |
 | Language | TypeScript strict. `tsconfig.functions.json` checks `functions/` separately | A Pages Function needs Cloudflare's globals and must not inherit Astro's DOM lib |
@@ -39,7 +39,7 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 
 ## Verified constraints
 
-Facts that cost money or a rebuild if wrong. Checked 2026-08-29 unless noted.
+Facts that cost money or a rebuild if wrong.
 
 - **PostGIS lives in the `extensions` schema and cannot be moved afterwards.** Changing your mind means dropping and recreating it.
 - **Region `eu-west-1` (Ireland) cannot be changed after project creation.** Zurich was a preference, not a requirement: the database is read at build time, so latency reaches nobody. What is given up is the claim that data never leaves Switzerland; our trust claim is about dates being right.
@@ -61,15 +61,13 @@ The requirement is **own the data, collect everything, keep it private** — not
 
 **Collection.** `functions/_middleware.ts` counts page views at the edge before the HTML is served — no client JS, so a blocker cannot remove them. `functions/e.ts` takes interaction events from the browser, because "clicked directions" exists nowhere else. Both write `analytics_events` through `functions/_collect.ts`, whose `props` shapes are fixed by a check constraint per event: obey it exactly, or a second vocabulary splits the numbers. **Every row carries `page_type`** — the one property that would have shown v1's collapse.
 
-**Identity.** A visitor is counted, never identified: `HMAC(ip + user agent)` under a key that carries the date, so one person is one hash today and another tomorrow. No cookie, nothing on the device, no banner. The schema also holds a consent-gated persistent `visitor_id`; nothing sets it yet. Switzerland is opt-out, so the daily hash runs from day one; Germany's opt-in regime is a German-launch question. *[Judgement, not legal advice — an hour of a Swiss lawyer before monetisation, not before launch.]*
+**Identity, two layers.** Layer 1, always: `HMAC(ip + user agent)` under a key that carries the date, so one person is one hash today and another tomorrow. Layer 2, with consent: `fynda_consent=granted` and `fynda_id` (a uuid, 13 months), both first-party cookies set by `CookieBanner.astro`; `_collect.ts` writes `visitor_id` only when the first says granted, and the table refuses it otherwise. "Only essential" keeps layer 1. Any third-party analytics tool loads only behind the same consent and is named in the privacy page the day it is added. Switzerland needs no banner for this; Germany does, so it exists from day one. *[Judgement, not legal advice — an hour of a lawyer before monetisation.]*
 
 **Retention.** Nothing is deleted; there is deliberately no prune, and no aggregate table — at ~100 rows a day Metabase reads the raw table directly. If that ever gets slow, an aggregate arrives as its own migration, on evidence.
 
 **Reading.** Metabase under Docker on this machine, `metabase/README.md`. It reads as `metabase_ro`, which cannot see `reports` or `market_private` but can read the two triage views. Search Console is imported from the free CSV export by `scripts/import-gsc.mjs` — Google keeps 16 months and never backfills, so the habit matters more than the schedule.
 
-**Bots.** `isProbablyBotRequest` (2026-09-15) drops a request whose user-agent names a bot, that comes from a cloud or hosting network (`request.cf.asOrganization`), that sends no `Accept-Language`, or that sends no `Sec-Fetch-Mode` — every browser since 2023 sends the last two on every request, and an HTTP client wearing a browser's name does not. Forms use only the user-agent test, so a person on a VPN can still report a market.
-
-**Identity, two layers** (2026-09-16). Layer 1, always: a daily-rotating hash of IP and user agent. Layer 2, with consent: `fynda_consent=granted` and `fynda_id` (a uuid, 13 months), both first-party cookies set by `CookieBanner.astro`; `_collect.ts` writes `visitor_id` only when the first says granted. "Only essential" keeps layer 1. Any third-party analytics tool loads only behind the same consent and is named in the privacy page the day it is added.
+**Bots.** `isProbablyBotRequest` drops a request whose user-agent names a bot, that comes from a cloud or hosting network (`request.cf.asOrganization`), that sends no `Accept-Language`, or that sends no `Sec-Fetch-Mode` — every browser since 2023 sends the last two on every request, and an HTTP client wearing a browser's name does not. Forms use only the user-agent test, so a person on a VPN can still report a market.
 
 ## Designed, not built
 
@@ -89,4 +87,4 @@ Four AI loops — discovery, freshness, performance, content proposals — as pl
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-15
+last_reviewed: 2026-09-16

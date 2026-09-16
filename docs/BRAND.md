@@ -31,12 +31,12 @@ The most important fact on the page is the only accented thing on the page. Hier
 | `--color-accent` | **`#FF4A2B`** Zinnober | Dates, "findet statt", the logo dot, the primary action, **a form error**. Nothing else |
 | `--color-ink` | `#111110` | All text, headings, primary buttons |
 | `--color-grey` | `#6E6C68` | Secondary text |
-| `--color-quiet` | `#75706A` | Timestamps, provenance, disabled. 4.6:1 on white — it was `#9A968F` until 2026-09-16, which failed contrast |
+| `--color-quiet` | `#75706A` | Timestamps, provenance, disabled. 4.6:1 on white; a lighter grey fails contrast on exactly the lines that carry the trust claim |
 | `--color-line` | `#E8E6E2` | Hairlines, borders |
 | `--color-paper` | `#F5F4F2` | Panels, chips, image placeholders |
 | `--color-white` | `#FFFFFF` | Page ground |
 
-**Category colours are the line colours.** Amended 2026-08-30, when the Linientafel design was approved. They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row, as a two-letter code, and as the fill of the market page's kind pill. That third form was added 2026-09-06: the pill was white text laid over a photograph, legible on a dark picture and invisible on a bright one. Never anywhere else, and never without a legend on the page — except on a market page, which shows one kind and needs no key to it.
+**Category colours are the line colours.** They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row, as a two-letter code, and as the fill of the market page's kind pill. That third form was added 2026-09-06: the pill was white text laid over a photograph, legible on a dark picture and invisible on a bright one. Never anywhere else, and never without a legend on the page — except on a market page, which shows one kind and needs no key to it.
 
 Flohmarkt `FM` `#FF4A2B` · Halle `HA` `#3D5AFE` · Nacht `NA` `#7C3AED` · Kinder `KI` `#F5A524` · Trödel `TR` `#E4007F`
 
@@ -129,7 +129,7 @@ Where a block has to show that some things are bigger than others, **the type we
 
 A row has exactly one thing set loud: **the name**. Everything under it steps down a weight — the rhythm in grey, the venue quieter still. Three levels, no ties, in the order of the decision: *which market → how often can I go → where exactly.*
 
-Until 2026-09-05 the name and the recurrence phrase were both bold ink, and between them sat the least important fact on the row at a louder weight than either. Two winners is the same as none: the eye has nowhere to land. Anything added to a row later has to find a step on that staircase or stay off it.
+Two winners is the same as none: the eye has nowhere to land. Anything added to a row has to find a step on that staircase or stay off it.
 
 ## The UI serves the content
 
@@ -163,4 +163,4 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-15
+last_reviewed: 2026-09-16

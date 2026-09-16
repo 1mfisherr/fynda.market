@@ -1,73 +1,62 @@
 # Plan
 
-Where the project stands and what happens next. **Read this first, every session. Update it before ending one.** Status, order, open decisions — never history; git and `archive/` hold that.
+What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-16, end of day.
+Updated 2026-09-16.
 
 ---
 
 ## Now
 
-**Live at `fynda.market` since 2026-09-04.** 948 pages from 157 published markets, 56 cities and 14 cantons in four locales; 916 indexable, 1.00 URL per entity per locale against v1's ~60. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and 26 tests gate every publish.
+Live at `fynda.market` since 2026-09-04: 157 published markets, 56 towns, 14 cantons, four locales, ~950 pages. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
 
-What is running:
+| Running | State |
+|---|---|
+| **Newsletter** | Friday digest since 2026-09-11, welcome and unsubscribe in four languages, pause and monthly options, Resend delivery events in. 1 subscriber |
+| **Forms** | `/n` `/r` `/o` `/u` write rows and ping Telegram; queues are the views `open_reports`, `open_organiser_claims` |
+| **Organisers** | Live 2026-09-16, proven end to end. Claim → Telegram Approve → personal link → seven-day mail with three buttons → stamp / cancellation / alert → edit page. Daily job runs as a **dry run** until `ORGANISER_SENDING=on` |
+| **Analytics** | Page views at the edge, interactions from the browser, our Postgres, Metabase. Two identity layers: a daily hash always, a cookie id with consent. 10–25 Swiss visitors a day, two thirds from Google, 60% on a phone |
+| **Search Console** | First nine days: 96 clicks, 7,700 impressions, position 15. City pages rank 5–8 with no clicks — rewritten 2026-09-15, re-read in October |
+| **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
+| **Photos** | Every market has one; one is real. Real ones arrive through organisers |
 
-- **Newsletter.** Signup on every page; a subscription is 25 km around a town, or a canton. Friday digest sends since 2026-09-11 (`digest.yml`, `NEWSLETTER_SENDING=on`, batches of 100 through Resend, one `newsletter_sends` row per subscriber per issue written *before* the send). Welcome mail and unsubscribe in all four languages; **the unsubscribe page offers "once a month" and "pause three months"** instead of only the door (2026-09-15, migration `20260915180000`, applied). The link itself had been dead since the 10th — it sent a dropped column — and is fixed. **Resend's delivery webhook is live** (`functions/w.ts`, `link.fynda.market` for click tracking, verified 2026-09-15 with a test issue: sent → delivered → opened → clicked). A permanent bounce or a complaint suppresses the address at once; `newsletter_delivery` is the dashboard view. **1 active subscriber.**
-- **Every form writes a row.** `/n` newsletter, `/r` report, `/o` organiser claim, `/u` unsubscribe — each pings Telegram. The queues are the views `open_reports` and `open_organiser_claims`; `metabase/README.md` turns them into a dashboard with a daily alert. **0 reports, 0 claims so far.**
-- **Analytics.** Page views counted at the edge, interactions from the browser, both into our Postgres since 2026-09-06. **Read 2026-09-15, ten days in:** a steady **10–25 Swiss visitors a day**, two thirds from Google, 60% on a phone; 77% see one page and leave, and the commonest thing done on a market page is an outbound click to Maps or the organiser — the job the page is for. Market pages land most, then city, then canton (Bern and Aargau land real visitors — the "weakest page type" is earning). Time chips get used; the place picker in the home search card was used **once** in two weeks. 0 newsletter signups from real visitors, 1 report, 1 save. **The bot filter reads the network, the Accept-Language header and the Sec-Fetch-Mode header since 2026-09-15**, not just the user-agent string — the last one is what stopped a residential-proxy crawl that sent the other two. Before that, two thirds of rows were sweeps and every count needed `country='CH'`; rows before 2026-09-15 08:00 UTC still do. Check the next morning's non-CH count to confirm it held.
-- **Search Console, export of 2026-09-12 (first nine days):** 96 clicks, 7,743 impressions, impressions climbing 55 → 2,030 a day, average position 15. 314 of 378 pages seen have no click yet. Market pages 51 clicks, city 27, canton 18. **City pages sit at position 5–8 with 100–200 impressions and no clicks** — Worb, Wettingen, Chur — and their search snippet is a generic sentence that never says when the next market is, where a market page's snippet does. Query shapes: place + "2026" is 40% of impressions; the titles already carry the year.
-- **Photographs.** Every market page has one at 1440px and 148px. One is real (Plainpalais, from the operator); 156 are illustrations or v1 files.
-
-What is not: tags on any market · a country page · text search · a distance on cards · organiser photo upload.
+Not built: tags on any market · country page · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
 
 ---
 
 ## Next, in order
 
-**Deadline: Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks. Order below is the route there; Swiss polish happens once, in week 5, not twice.
+**Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks.
 
-1. **Market watch agent.** Delfim is building one for fleafind and brings it here (2026-09-16); we adapt it for Fynda when it arrives. Weekly, per market: open the source URL, compare with what we hold, queue the findings. Same engine is the German intake tool.
-2. **Organisers — built 2026-09-16, days 1–4 of the spec; live.** No login: a personal link is the identity. A claim arrives in Telegram with Approve/Reject links; Approve mints the link and sends the welcome mail. Seven days before each date `organisers.yml` mails the organiser three buttons — *it's on / cancelled / something changed*. On and cancelled go live within the hour (a Function asks GitHub to publish); cancelled alerts every subscriber whose subscription covers the market; "the market has stopped" goes to Delfim. The edit page (`/a/{token}/edit`) takes dates, stalls, indoor/outdoor and the rain answer; photos arrive by reply. The market page's organiser block is the page's main ask; a claimed page shows the dated stamp and the owned line. **Measure the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers. **Proven end to end 2026-09-16 16:22:** GitHub sent the mail, Delfim pressed *Yes, it's on* on his phone, the stamp landed, the rebuild dispatched. Test data on Bergflohmarkt Chur reverted. **Next:** Delfim picks two or three organisers for round one; `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads the addresses he finds and sends the welcome; `ORGANISER_SENDING=on` (GitHub variable) turns the daily mail live. Not built: photo upload, the once-a-year season mail.
-3. ~~Performance~~ **Done 2026-09-16:** self-hosted font, 720px hero for phones, readable grey, tappable language links — Lighthouse mobile 89→99, first paint 2.8→1.2 s. Analytics vocabulary done the same day: `page_type` gained `utility` and `country`, `newsletter_form_view` (placement `card|footer|page`) and the `organiser_contact` funnel are emitted, `analytics_rollup()`/`analytics_daily` dropped. Migration `20260916120000`.
-4. **UI/UX, copy, branding pass** with the logo, all page types, four locales (week 5). **Started 2026-09-16:** one `Wordmark` component everywhere including Function pages and mails; the privacy page rewritten in a calm voice (reassurance first, mechanics later, nothing a future analytics tool would break); cookies with a banner and a returning-visitor id, live; "fynda.market" is the name on every page and mail, "no account needed" replaces "no account"; the organiser page describes what organisers actually get. **Left:** a visual pass at 375 and 1440 with the logo Delfim brings, and the copy changes he wants on the organiser page.
-5. **Analytics, next session:** send agents to work out what fynda.market should measure to improve the site and what a monetisable dataset looks like (Delfim, 2026-09-16); then GA4 / Clarity behind the consent already built, if they add anything our tables cannot.
-6. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
-7. Buffer (week 10).
+1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
+2. **Analytics.** Send agents to work out what to measure to improve the site and what a monetisable dataset looks like; then GA4 / Clarity behind the consent already built, if they add anything our tables cannot.
+3. **Visual pass** at 375 and 1440 with the logo Delfim brings; the organiser-page copy in his words.
+4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
+5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
+6. Buffer.
 
-The earlier list, folded into the above:
-
-1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone, the within-25-km block on 28 sparse towns — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
-4. **Country page** `/{locale}/{country}/`. Route allowed, nothing built; breadcrumbs join it when it exists.
-5. **German text search.** Settle the compound-word question (`STACK.md`) before any search box exists. Not urgent: v1 saw 64 searches in 26 days against 281 filter uses.
+Parked, not urgent: country page (arrives with Germany); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
 
 ---
 
-## Still open
+## Open decisions
 
-Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
+Each waits on Delfim or on data. Don't assume an answer.
 
-- **The beachhead region** — Zürich or Luzern. Photos, descriptions and organiser outreach concentrate wherever this lands.
-- **The logo.** Delfim has one to bring in (2026-09-15); nothing to decide here until it arrives. `design/logo-research.md` is the earlier exploration.
-- ~~Where photographs come from~~ **Decided 2026-09-15:** the current photos stay; real ones arrive through organiser claims, not a shoot.
-- **Distance on cards and in the market page's decision strip.** Blocked because `fynda:stadt` stores a name and an href, not coordinates. The fix is in the home page's town picker; the `<li data-distance>` slot is already in the markup. Never print a guessed distance.
-- **Tags.** Wanted, kept in the data model, not yet worth showing: nothing fills them and a tag that filters to nothing is a dead end. Revisit when organisers supply facts (Delfim, 2026-09-15). Small when it comes — 60+ categories killed v1.
-- **The content floor counts characters and should count verified facts.** Fix before any bulk prose generation.
-- ~~Four vanished markets~~ **Decided 2026-09-15: leave them.** Eiszentrum Luzern, Mall of Switzerland Ebikon, GZ Hottingen, GZ Schindlergut stay `active` with no dates; their pages say so.
-- **A Metabase host, €6/month.** Only when looking without starting Docker is worth it.
+- **Beachhead region** — Zürich or Luzern. Photos and outreach concentrate wherever this lands.
+- **Distance on cards.** Blocked: the town picker stores a name, not coordinates. Never print a guessed distance.
+- **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
+- **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
+- **Two newsletter forms in a row** on home, city, canton and market pages (card, then footer). Needs a layout decision, not a one-liner.
+- **A Metabase host, €6/month** — only when looking without Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
-- **Two newsletter forms in a row.** The card at the foot of home, city, canton and market pages is followed directly by the footer's own form. Removing the footer one on those pages empties the desktop footer's right column, so it needs a layout decision, not a one-liner.
-- **Prose quality is now a spot-check, not a known defect.** 2026-09-15: umlauts restored in 102 German rows; accents restored in 79 French and Italian descriptions; six French rows that were German, and two German rows that were Italian (Lugano), translated; 27 German schedule clauses embedded in other-language prose translated; **the rhythm line ("Jeden Samstag, Mai–Oktober") now exists in all four languages for every active market** — 118 markets had been showing the German one on the French, Italian and English pages. A check that a description carries its own language's function words finds nothing left. What remains is whatever a native reader finds.
+- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo arrives from Delfim, nothing to decide until then.
 
 ---
 
 ## Data
 
-161 markets, 2,357 occurrences, 56 cities (Zofingen split from Aarau 2026-09-15), 14 cantons, 107 organisers, 1,782 facts (2026-09-05). Complete on all 161: descriptions, names, slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, 2 organiser contacts, every tag — and, for every market, size and indoor/outdoor. 37 of 157 have no announced date this month; that is Swiss September, not a fault.
+161 markets, 2,357 occurrences, 56 towns, 14 cantons, 114 organisers (23 with an e-mail), 1,782 facts. Complete on all 161: descriptions, names and slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, every tag, and for every market size and indoor/outdoor — the organiser page collects those. Prose quality is a spot-check, not a known defect.
 
-How the import works and what it decided: `ARCHITECTURE.md` §Import.
-
----
-
-owner: Delfim
-last_reviewed: 2026-09-15
+How the import works: `ARCHITECTURE.md` §Import.

@@ -1,6 +1,6 @@
 # Product
 
-What Fynda is, and what we actually know about demand.
+What fynda.market is, and what we actually know about demand.
 
 ---
 
@@ -36,17 +36,17 @@ Two things this tells us:
 1. **UX is not the ranking lever.** marktcom ranks #1 with an ad-choked, layout-shifting mobile page. Being nicer will not outrank them. But a clean, well-structured page *is* an advantage for AI citation — and ad-funded incumbents structurally cannot follow us there.
 2. **They answer the wrong question.** MFT's "flea markets in NRW" page showed a funfair and two evening shopping markets — no flea markets. Build thousands of category x region pages and most cells are empty, so you loosen the definition until they fill. They cannot fix it without their page count collapsing. **Being correct is a defensible difference.**
 
-**Switzerland is unclaimed** `[VERIFIED 2026-08-29]`. No credible bilingual, nationwide Swiss directory exists — the best is run from Austria and German-only, the next is down with a PHP error, two have no search, one charges organisers CHF 3–15 per listing. Germany is fragmented too: `flohmarkt.de` 404s, `troedelmarkt.de` is parked.
+**Switzerland is unclaimed** . No credible bilingual, nationwide Swiss directory exists — the best is run from Austria and German-only, the next is down with a PHP error, two have no search, one charges organisers CHF 3–15 per listing. Germany is fragmented too: `flohmarkt.de` 404s, `troedelmarkt.de` is parked.
 
 Site-by-site detail lives in `reference/competitors.md`.
 
 ## Category conventions — settled, don't re-litigate
 
-`[VERIFIED 2026-08-29]`
+
 
 - **Results group under day headings, sorted chronologically.** Every functioning site does this. Nobody sorts by relevance or distance.
 - **Date filtering is chips, not calendars** — `Heute / Morgen / Dieses Wochenende / Nächstes Wochenende`. Four to five chips is the settled vocabulary; calendar pickers are a fallback.
-- **Nobody uses photos** — organiser-submitted markets rarely arrive with a usable image. Fynda breaks with this deliberately: every market page has one (`ARCHITECTURE.md` §Import), and where the real one is missing an illustration stands in. The card still has to work as text.
+- **Nobody uses photos** — organiser-submitted markets rarely arrive with a usable image. fynda.market breaks with this deliberately: every market page has one (`ARCHITECTURE.md` §Import), and where the real one is missing an illustration stands in. The card still has to work as text.
 - **Freshness is the industry's universal failure.** Only vide-greniers.org dates a record, and it says "published on", not "confirmed on". **Nobody anywhere shows when a date was last confirmed with the organiser.** Brocabrac's own help page tells users to phone ahead before travelling.
 - **Cancellations are near-invisible**, and calendar export is almost absent — one site in the whole set offers `.ics`.
 - **Nobody has an explicit page-count cap.** A documented, CI-enforced horizon would be genuinely unusual here.
@@ -70,7 +70,7 @@ The reference case: **Songkick** built the beloved consumer app and lost; **Band
 
 Applied here: **give organisers something they need, and the data arrives as a by-product.** Best candidate is one-click cancellation broadcast — an organiser's worst moment and our best trust asset, and the one thing nobody else does well.
 
-**The revenue warning** `[VERIFIED 2026-08-29]`: nobody in this category makes real money. Brocabrac's ad-free tier is 6 € a year; flohmarktkompass's organiser upsell is 5 €/month. That doesn't disprove the supply-side thesis, but nobody has proven it either. Defer the machinery.
+**The revenue warning** : nobody in this category makes real money. Brocabrac's ad-free tier is 6 € a year; flohmarktkompass's organiser upsell is 5 €/month. That doesn't disprove the supply-side thesis, but nobody has proven it either. Defer the machinery.
 
 ## The three loops
 
@@ -78,7 +78,7 @@ The product is one dataset plus the loops that keep it alive; every page is a re
 
 - **Truth loop** — report buttons carry the market with them → a person verifies → "Bestätigt am" gets fresher. The differentiated dataset the spam update rewards, and the quotable claim an AI answer needs.
 - **Weekend loop** — save a market → Friday digest → go → report → better digest. Saving is `localStorage`, no account; ICS is the same loop through the visitor's own calendar.
-- **Supply loop** — the organiser page says **"Das ist Ihre Marktseite"**, not "list your market". Useful to a church-bazaar organiser even if nobody else used Fynda; the data arrives as a by-product.
+- **Supply loop** — the organiser page says **"Das ist Ihre Marktseite"**, not "list your market". Useful to a church-bazaar organiser even if nobody else used fynda.market; the data arrives as a by-product.
 
 **The honest gap.** The design shows stall counts, seller mix, indoor/outdoor, packing-up times, toilets, travel advice. We hold none of them and v1 never did. Blocks render only when their data exists — no placeholders, no invented figures. A field goes on the page if we can compute it or someone else fills it in, never because we collect it market by market: that works across 157 and breaks at 10,000. **Size and indoor/outdoor are tier 1** — they decide whether someone travels — and have to be asked for.
 
@@ -86,7 +86,7 @@ The product is one dataset plus the loops that keep it alive; every page is a re
 
 - Free for users, forever. No subscriptions, no paywalls, no AdSense.
 - Revenue, when it comes, is organiser and local-business advertising.
-- **Fynda is a visitor tool, and organisers are how it stays true.** SEO is the acquisition base; an engaged organiser is what keeps a page fresh, and freshness is the differentiator. **Decided 2026-09-16:** the organiser surface is a personal link in an e-mail — no login, ever — and a three-button mail before each date. The market page's organiser block is the page's main ask. Research in `reference/organiser-research/`.
+- **fynda.market is a visitor tool, and organisers are how it stays true.** SEO is the acquisition base; an engaged organiser is what keeps a page fresh, and freshness is the differentiator. **Decided 2026-09-16:** the organiser surface is a personal link in an e-mail — no login, ever — and a three-button mail before each date. The market page's organiser block is the page's main ask. Research in `reference/organiser-research/`.
 - **No accounts, no reviews.** Saved markets live in `localStorage`; the newsletter is an address, not a login. A mascot is on hold.
 - **A map is a view, not the front door.** Nothing in the data suggests map-first demand.
 - **Launch scope is all of Switzerland**, with verification and photographs concentrated in one region once it is chosen.
@@ -95,4 +95,4 @@ The product is one dataset plus the loops that keep it alive; every page is a re
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-15
+last_reviewed: 2026-09-16

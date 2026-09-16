@@ -1,8 +1,8 @@
 # Pages
 
-Which pages exist, why, what is on each one, in what order, and why. Nothing ships without a reason on this page.
+Which pages exist, what is on each one, in what order, and why. Nothing ships without a reason on this page.
 
-Decided 2026-08-29 from v1's own data, not from taste: 90 days of Search Console (1,000 queries, 1,000 pages, 4,032 clicks), 12,379 first-party events, 6,329 outbound clicks, and the 161-market catalogue. Method note: the GSC export caps at 1,000 rows, so page-type totals below cover v1's **best** 1,000 URLs out of ~8,500 — the tail is worse than it looks here, not better.
+The reasons come from v1's own data, not from taste: 90 days of Search Console (1,000 queries, 1,000 pages, 4,032 clicks), 12,379 first-party events, 6,329 outbound clicks, and the 161-market catalogue. Method note: the GSC export caps at 1,000 rows, so page-type totals below cover v1's **best** 1,000 URLs out of ~8,500 — the tail is worse than it looks here, not better.
 
 ---
 
@@ -43,7 +43,7 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 
 | Block | Why it is there |
 |---|---|
-| Wordmark + saved markets | Minimum chrome. **Above 900px the masthead also carries Städte, Kantone and In der Nähe** — the three ways into the site that are not a market. It had a logo, four language codes and Gemerkt in it, and scrolling was the only way to reach anything else. The first two are anchors into the home page rather than pages of their own, and stop being anchors the day a country page exists. Hidden on a phone, where the line is already full; the same links are in the footer at every width |
+| Wordmark + saved markets | Minimum chrome. **Above 900px the masthead also carries Städte, Kantone and In der Nähe** — the three ways into the site that are not a market. The first two are anchors into the home page and become links the day a country page exists. Hidden on a phone, where the line is already full; the same links are in the footer at every width |
 | **The claim, and it is a number** | *"157 Flohmärkte in der Schweiz — jeder Termin mit Quelle und Prüfdatum."* The trust signal, the content that has to rank for the head term, and the sentence an AI answer can quote. One line, three jobs, before anything is asked of anyone. **Above 900px it sits beside the headline**, which otherwise wraps at 11 characters and leaves the page opening with its right half empty |
 | **"Ihre Stadt" shortcut** | Empty for a stranger; on a return visit it is the town they picked, one tap from their city page. Browser storage, no account |
 | **Six markets this weekend** | Two at full size, four compact, one per town, biggest towns first. Then a button to all of them |
@@ -52,19 +52,17 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | Cities, cantons, types, provenance, FAQ | Navigation and proof, in that order |
 | Footer | |
 
-### The search card — removed and restored, 2026-09-05
+### The search card stays
 
-It was deleted for half a day on the argument that a form standing between a visitor and the goods asks for trust the page has not earned — [NN/g](https://www.nngroup.com/articles/trustworthy-design/) found users rule sites out in seconds when they cannot see what is on offer, and of four comparable home pages torn down that day, the only one that asks before it shows anything (brocabrac.fr) has no listings on its home page at all.
+The research ([NN/g](https://www.nngroup.com/articles/trustworthy-design/)) says show the goods before asking anything — and it is about *ordering*, not about deleting a control. The card stays, by the owner's call, because it is the only honest home of the period filter and the radius: without it, buttons pointed at a page that does not hold them. A control that exists and is honest beats a clean page that dead-ends.
 
-**It came back, by the owner's call.** The research is about *ordering*, not about deleting a control: removing it took the period filter with it and left three buttons pointing at the radius view, two of which promised something that page does not hold. A control that exists and is honest beats a clean page that dead-ends.
-
-It is the site's **only** place-chooser. A separate row of town buttons lived below the markets for a few hours; two ways to pick a town on one page is exactly the incoherence this page is meant to be free of.
+It is the site's **only** place-chooser. Two ways to pick a town on one page is exactly the incoherence this page is meant to be free of.
 
 ### Six markets, not all of them
 
 A nationwide list helps nobody in particular. Sorted by clock time it interleaved 22 towns at random — Genf, Aarau, Basel, Zürich, Dietikon, St. Gallen — so someone in Zürich read forty-five rows to find four. Six, one per town, biggest towns first, reads as a country rather than as one town's diary, and the picker underneath is the way out of it.
 
-### Below the markets — decided 2026-08-30, revised 2026-09-05
+### Below the markets
 
 The order, and the rule that keeps it from becoming filler: **a block renders only when it has real content.** If nothing was cancelled this week, the cancellations block does not exist that week. That makes padding structurally impossible rather than a matter of taste.
 
@@ -76,7 +74,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 6. **Cantons**, compact pills, linking to the canton pages — thin in CH, real for Germany. Cities and cantons each carry a one-line lede, because two lists of Swiss place names in a row do not say which is which.
 7. **Five market types** — icon on a coloured tile, name underneath. 1.8% of clicks, and first to cut, but it is what teaches the colour on every row.
 8. **Woher unsere Daten kommen** — one sentence carrying the number of upcoming dates, then the live counts. It was three verbs — "Termine prüfen · Quelle festhalten · Absagen sichtbar machen" — which is no content at all in the one block that says why this site is not the rest of the category.
-9. **FAQ** — four questions, each folded into a `<details>`. **Changed 2026-09-06.** The rule here used to be the opposite, on the grounds that folded text cannot be cited by an AI answer or read by a crawler; that is not true of `<details>` — the answer ships in the HTML whether or not it is open, and mobile-first indexing reads it. What folding does change is real: four answers were four screens of prose on a phone, and someone who wanted one of them scrolled past the other three. Folded at every width, two columns above 900px. CSS cannot open a `<details>`, so "open on the desk, folded on the phone" would mean shipping them open and closing them with JavaScript on load — a visible collapse on the one device the folding is for.
+9. **FAQ** — four questions, each folded into a `<details>`. The answer ships in the HTML whether or not it is open, so a crawler and an AI answer read it; folding only changes what a phone shows, where four open answers were four screens of prose. Folded at every width, two columns above 900px — CSS cannot open a `<details>`, and closing them with JavaScript on load is a visible collapse on the one device the folding is for.
 10. **Footer** — the forms, the legal text, saved markets, and the language switcher. **No city list**: it duplicated block 5, and a bare list of place links is the doorway shape.
 
 **"Alle N Termine im Monat" was removed.** It pointed at a month page that does not exist, and creating one means a new page type clearing the graduation gate on evidence we do not have. Expanders, not links.
@@ -91,7 +89,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 
 **Distance renders only when the centre is known.** No geolocation and no city context means the card shows the city and no kilometres. We never print a distance we guessed.
 
-**Corrected 2026-08-29.** An earlier version of this doc kept the home page to one screen and ruled out city link lists as a doorway pattern. Both were wrong. Eventbrite, Tutti, Vinted and meine-flohmarkt-termine all run long home pages ending in place and category link lists — MFT alone lists 10 postal areas, 20 cities, 16 Bundesländer and ~60 categories. A curated list of cities that have markets is navigation, and it points at our best-earning page type. The doorway problem was *generated combinations* — city × weekday × category — not links to pages that exist. What we still will not copy is MFT's 60 categories; ours is five.
+**A long home page ending in place lists is navigation, not a doorway.** Eventbrite, Tutti, Vinted and meine-flohmarkt-termine all do it. A curated list of towns that have markets points at our best-earning page type. The doorway problem was *generated combinations* — city × weekday × category — never links to pages that exist. What we will not copy is MFT's 60 categories; ours is five.
 
 **Deliberately not here:** a big search field, a map, and a newsletter box above the fold (1.1% conversion does not earn that space).
 
@@ -99,18 +97,14 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 
 ### One row per market, or one row per date
 
-**Decided 2026-09-04, and it governs every list on the site.**
-
-Until then every list was one row per date across the whole 120-day horizon. The home page was **451 rows for 108 markets** — Marché de Rumine printed **seventy times**, thirty screens of scrolling. The Zürich page was **61 rows for 14 markets**, under a heading that said 17.
-
-It is the mistake that killed fleafind.ch, one layer down: that site minted a URL per date; this one merely rendered one. Same instinct, quieter damage.
+**It governs every list on the site.** One row per date across a 120-day horizon printed one market seventy times and made the home page thirty screens long — v1's mistake one layer down: that site minted a URL per date, this one would have rendered one.
 
 **The rule: a row exists because it says something new.**
 
 - **Dates get rows where the date is the question** — a weekend, a chosen day. A weekend contains no repetition, so the departure board works exactly as designed.
 - **Markets get rows where the market is the question** — a city, a canton, the radius view, saved markets. The row carries `recurrence_text`, the organiser's own words: *"Jeden Samstag, ganzjährig"*. Held for **106 of 114** markets.
 
-Nothing is hidden either way. "Jeden Samstag, ganzjährig" tells a visitor more than eighteen identical Saturdays did, and it is the sentence an AI answer can quote. This also reverses the earlier "recurrence comes off cards" call: that was made when cards were dates, where the phrase was noise. On a market row it is the whole point.
+Nothing is hidden either way. "Jeden Samstag, ganzjährig" tells a visitor more than eighteen identical Saturdays did, and it is the sentence an AI answer can quote. On a date row the phrase is noise; on a market row it is the whole point.
 
 Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they cannot drift.
 
@@ -127,16 +121,16 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 | Photo or illustration, with **Merken on it** | Never a stock photo (fact 7). The illustration is the honest default. Saving and going are different decisions — as a block button beside Route, Merken read as an equally large choice, and Route is 55% of every outbound click |
 | Kind + city, then the name | Orientation before identity |
 | **The status line, in words** | *Heute · läuft gerade · endet in 6 Std.* — not `06`. A numeral does not tell anyone whether to get in the car, and this is also the one sentence an AI answer can quote whole. Today and tomorrow resolve in the build, which knows its own date; "läuft gerade" and the hours left are filled in by the browser, because a page written at 03:00 cannot know 14:00. Without JavaScript the page still says Heute and the times |
-| **Cancellation notice, when it applies** | With the reason. Only 12 of 2,357 v1 dates were cancelled — rare, and the highest-value thing we will ever tell someone. It was held in the database and never rendered until 2026-09-06 |
-| **The decision strip, and the check stamp under it** | Rhythm, number of upcoming dates, and — once the town picker stores coordinates — distance. Every segment computes from what we already hold, so it behaves the same for a German market we have never seen. A segment renders when its value exists and is otherwise absent: never a dash, never "unbekannt". **The stamp is the one line that never disappears** — with no confirmation date it says "Aus öffentlicher Quelle" rather than going quiet. It replaced two grey freshness lines and the `<dl>` |
+| **Cancellation notice, when it applies** | With the reason. Only 12 of 2,357 v1 dates were cancelled — rare, and the highest-value thing we will ever tell someone |
+| **The decision strip, and the check stamp under it** | Rhythm, number of upcoming dates, and — once the town picker stores coordinates — distance. Every segment computes from what we already hold, so it behaves the same for a German market we have never seen. A segment renders when its value exists and is otherwise absent: never a dash, never "unbekannt". **The stamp is the one line that never disappears** — with no confirmation date it says "Aus öffentlicher Quelle" rather than going quiet |
 | **Directions button — primary** | 55% of all outbound clicks. This is the conversion |
 | **Organiser website — secondary** | 45% of outbound clicks. It earns a real button, not a footnote link |
 | All upcoming dates, with status | Visible content, never markup (one `Event` only). Capped at 120 days |
 | Address, times | Held for 94–98% of markets |
-| **"Ist das Ihr Markt?" — the page's main ask** | On every market no organiser has answered for, after the dates. **Changed 2026-09-16:** it was a footnote ("nobody looks after this market yet", paper card, quiet button) and it is now the filled button and an offer — *take it over, confirm dates, add a photo, cancel on a rainy morning; one click, no account; free, always.* Engaged organisers are what keep a page true, so this is the ask the page makes. Yelp, TripAdvisor and Apple all put the claim on the listing rather than on a marketing page, because that is where an organiser looking themselves up actually is. It carries the market and town in the query. A claimed page is never asked: it shows **"Vom Veranstalter bestätigt am <date>"** in the accent and one owned line — *Veranstaltet von X · rund 80 Stände · draussen · findet auch bei Regen statt* — each part only when the fact exists. What happens after the claim is `ARCHITECTURE.md` §The organiser's identity is a link |
+| **"Ist das Ihr Markt?" — the page's main ask** | On every market no organiser has answered for, after the dates: the filled button and an offer — *take it over, confirm dates, add a photo, cancel on a rainy morning; one click, no account needed; free, always.* Engaged organisers are what keep a page true, so this is the ask the page makes (Delfim, 2026-09-16). Yelp, TripAdvisor and Apple put the claim on the listing, not on a marketing page, because that is where an organiser looking themselves up is. It carries the market and town in the query. A claimed page is never asked: it shows **"Vom Veranstalter bestätigt am <date>"** in the accent and one owned line — *Veranstaltet von X · rund 80 Stände · draussen · findet auch bei Regen statt* — each part only when the fact exists. What happens after the claim: `ARCHITECTURE.md` §The organiser's identity is a link |
 | Report-a-correction | Feeds the freshness ledger, and it is cheap trust |
 
-**Deliberately gone, 2026-09-06.** "Was Sie erwartet" standing over a lone "Eintritt: frei" — 151 of 157 markets are free, so it was furniture by `BRAND.md`'s own rule; an entry fee now shows only where there is one, and the block appears only when something real is in it. And the type legend, which teaches a colour system for reading lists, on the page of a single market.
+**Deliberately absent:** a "what to expect" block over a lone "Eintritt: frei" — 151 of 157 markets are free, so it is furniture by `BRAND.md`'s rule; a fee shows only where there is one. And the type legend, which teaches a colour system for reading lists, on the page of a single market.
 
 **The rule for a missing field, and it governs the whole page:** a block renders because its data exists; where the absence is itself informative we say the absent thing in words; and we never guess. No estimated distance, no assumed open-air, no invented opening time. A missing fact costs one line. A wrong fact costs the only thing we sell.
 
@@ -155,9 +149,9 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 | Block | Why it is there |
 |---|---|
 | **`Flohmärkte in Luzern 2026` as the H1 and title** | The year is in 38% of queries. Omitting it forfeits the match |
-| One sentence naming the next market, its date, hours and venue; then the count | The answer, before the list. **It is also the search snippet** (2026-09-15): the generic description earned page-one positions and no clicks |
+| One sentence naming the next market, its date, hours and venue; then the count | The answer, before the list. **It is also the search snippet**: a generic description earned page-one positions and no clicks |
 | Date chips, **only those with something behind them** | Same control as home. Filters, never URLs. A chip that empties the list is a dead end, so "Heute" and "Wochenende" are omitted at build time when no date matches |
-| **One row per market, soonest first, grouped under sticky day headers** (2026-09-15) | Not one row per date. The header carries the weekday, the date in the accent, and a count; a month label where the month turns. Rows carry hours, name, rhythm, venue — the date lives in the header. People scan headings, not rows |
+| **One row per market, soonest first, grouped under sticky day headers** | Not one row per date. The header carries the weekday, the date in the accent, and a count; a month label where the month turns. Rows carry hours, name, rhythm, venue — the date lives in the header. People scan headings, not rows |
 | **One feature row** — the next market — then compact rows with square thumbnails | Two features and a wrapped chip row put the first market name 1,300px down a phone; one feature puts three markets on the first screen. On a desk the feature sits picture-beside-words |
 | The check stamp on its own quiet last line; a cancellation stays loud on the first | One loud thing per row. As the data ages the stamp appears on most rows, and at the size of the hours it was a third loud thing |
 | **A cancelled market stays in the list** | Struck through, with the reason. Removing it is what every competitor does and it is why they cannot be trusted |
@@ -167,7 +161,7 @@ Implemented in `src/lib/lists.ts`; `MarketRow` renders both shapes so they canno
 
 **Deliberately not here:** an `Event` block of any kind, a list of nearby cities (doorway risk), category sub-pages.
 
-**"Im Umkreis von 25 km"** (built 2026-09-15, Delfim's call): on a city with fewer than three upcoming dates of its own, up to five market *rows* from other towns within 25 km, soonest first, each with its distance, under the same day headers. 28 of 56 city pages carry it. This is not the nearby-city link list ruled out above — rows say when, where and how far; a link wall says nothing. The block is an `<aside data-outside-floor>`, which guardrail 3 does not count, so another town's markets can never be what clears this page's floor. `src/lib/lists.ts` `nearbyMarkets`.
+**"Im Umkreis von 25 km"** (Delfim's call): on a city with fewer than three upcoming dates of its own, up to five market *rows* from other towns within 25 km, soonest first, each with its distance, under the same day headers. 28 of 56 city pages carry it. This is not the nearby-city link list ruled out above — rows say when, where and how far; a link wall says nothing. The block is an `<aside data-outside-floor>`, which guardrail 3 does not count, so another town's markets can never be what clears this page's floor. `src/lib/lists.ts` `nearbyMarkets`.
 
 **Measured by:** clicks per page against v1's 25.5, and click-through into market pages.
 
@@ -222,11 +216,11 @@ The rule for building it: **a block renders only when its data exists.** No plac
 
 ## What goes inside a block
 
-Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bottom.
+From NN/g and Baymard listing studies. Sources at the bottom.
 
 **The deciding attribute is the date.** NN/g found price is the one thing every user asks for, across 22 years of testing. Every listing product has an equivalent. Ours is the date and whether it is happening — not the entry fee, which is free or trivial and decides nothing. That is why the accent colour is on dates and status and nothing else.
 
-**Three attributes decide whether someone travels, and we hold none of them:** distance, size (roughly how many stalls), and indoor/outdoor. Distance is computable in the browser. Size and indoor/outdoor get captured during the import and the verification visits. Worth more than any layout change.
+**Three attributes decide whether someone travels:** distance, size (roughly how many stalls), and indoor/outdoor — plus what rain does. Distance is computable in the browser once the town picker stores coordinates. Size, setting and the rain answer come from the organiser's edit page and render only when set. Worth more than any layout change.
 
 **Cards need the same fields in the same order, every time.** Baymard found 64% of sites are inconsistent here, and in testing people left — gaps read as a poor selection rather than missing data.
 
@@ -242,7 +236,7 @@ Researched from NN/g and Baymard listing studies, 2026-08-29. Sources at the bot
 
 ### What visitors actually care about
 
-From 636 reviews of 90 markets across Zürich, Berlin, Hamburg, Munich, Cologne, Frankfurt, Düsseldorf and Stuttgart, 2026-08-29. Percentages are how often a concern appears.
+From 636 reviews of 90 markets across Zürich, Berlin, Hamburg, Munich, Cologne, Frankfurt, Düsseldorf and Stuttgart. Percentages are how often a concern appears.
 
 | Concern | Reviews | Do we hold it? |
 |---|---|---|
@@ -283,7 +277,7 @@ Measured from the v1 database: name, date, city, status 100% · times 98% · ent
 
 ### Ideas, decided
 
-**Build:** size dots, indoor/outdoor, distance on card, save/merken.
+**Built:** save/merken; size, indoor/outdoor and the rain answer, from organisers. **Next:** distance on cards.
 **Later:** reliability score ("ran 11 of its last 12 dates" — nobody else can compute this, our ledger can), "jetzt geöffnet", calendar export as a quiet control.
 **Maybe:** weather — real decision value outdoors, but a wrong forecast damages the trust we sell, and it means nothing until indoor/outdoor exists.
 **No:** reviews, ratings, related markets, embedded map, share buttons, entry fee on cards, badges beyond the three.
@@ -294,16 +288,5 @@ Measured from the v1 database: name, date, city, status 100% · times 98% · ent
 
 ---
 
-## What this changes in what is already built
-
-1. ~~Directions becomes the primary button on the market page, above the fold.~~ **Done.**
-2. ~~The organiser website needs a real button.~~ **Done.**
-3. **The home search control reads as place + period + radius**, not a text search, and it shrinks so a market card is visible in the first screen.
-4. **Category tiles move below the lists.**
-5. **City page titles carry the year.**
-6. **The recurrence phrase goes *on* cards** in a market list — reversed 2026-09-04, see below.
-
----
-
 owner: Delfim
-last_reviewed: 2026-09-05
+last_reviewed: 2026-09-16
