@@ -38,6 +38,9 @@ interface Row {
   organiser_name: string | null;
   verified_by: Market['verifiedBy'] | null;
   verified_at: string | null;
+  stall_count: number | null;
+  setting: Market['setting'] | null;
+  rain_policy: Market['rainPolicy'] | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -77,6 +80,9 @@ const SQL = `
     m.website_url,
     m.verified_by,
     m.verified_at::date::text                        as verified_at,
+    m.stall_count,
+    m.setting,
+    m.rain_policy,
     org.name                                        as organiser_name,
     coalesce(rt.value, m.recurrence_text)           as recurrence_text,
     (
@@ -175,6 +181,9 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         verifiedAt: row.verified_at ?? undefined,
         organiserName: row.organiser_name ?? undefined,
         websiteUrl: row.website_url ?? undefined,
+        stallCount: row.stall_count ?? undefined,
+        setting: row.setting ?? undefined,
+        rainPolicy: row.rain_policy ?? undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
       };
     });

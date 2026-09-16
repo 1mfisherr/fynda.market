@@ -63,9 +63,48 @@ async function handle({ request, env, params, waitUntil }: Parameters<PagesFunct
   const locale = (organiser.locale ?? 'en') as Locale;
   const c = copyFor(locale);
 
+  /* ---- the edit page ---------------------------------------------------- */
+
   if (second === 'edit' || verb === 'changed') {
-    // Day 3 replaces this with the five-field page.
-    return page(locale, c.editSoonTitle, `<h1>${escape(c.editSoonTitle)}</h1><p>${escape(c.editSoonBody)}</p>`);
+    // /a/{token}/edit/{market}  or  /a/{token}/{occurrence}/changed
+    let marketId: string | null = second === 'edit' ? (UUID.test(verb) ? verb : null) : null;
+    if (verb === 'changed' && UUID.test(second)) {
+      const occ = await selectOne<Occurrence>(env, 'occurrences', `id=eq.${second}`, 'id,market_id,date,status');
+      marketId = occ?.market_id ?? null;
+    }
+
+    const mine = await selectRows<Market>(env, 'markets', `organiser_id=eq.${organiser.id}&status=eq.active`, 'id,slug,organiser_id,venue_id');
+    if (mine.length === 0) {
+      return page(locale, c.notYoursTitle, `<h1>${escape(c.notYoursTitle)}</h1><p>${escape(c.notYoursBody)}</p>`, { status: 403 });
+    }
+    if (!marketId && mine.length === 1) marketId = mine[0].id;
+
+    if (!marketId) {
+      // Several markets, none named: choose.
+      const rows = await Promise.all(mine.map(async (m) => {
+        const n = await labels(env, m, locale);
+        return `<p><a class="btn secondary" href="/a/${token}/edit/${m.id}">${escape(n.market)} — ${escape(n.town)}</a></p>`;
+      }));
+      return page(locale, c.chooseMarket, `<h1>${escape(c.chooseMarket)}</h1>${rows.join('')}`);
+    }
+
+    const market = mine.find((m) => m.id === marketId);
+    if (!market) {
+      return page(locale, c.notYoursTitle, `<h1>${escape(c.notYoursTitle)}</h1><p>${escape(c.notYoursBody)}</p>`, { status: 403 });
+    }
+
+    if (request.method === 'POST') {
+      const saved = await saveEdit(env, request, organiser, market);
+      waitUntil(requestPublish(env, `organiser edited ${market.slug}`));
+      const names = await labels(env, market, locale);
+      return page(locale, c.savedTitle, `
+        <h1 class="status">${escape(c.savedTitle)}</h1>
+        <p>${escape(c.savedBody)}</p>
+        <p class="meta">${escape(saved)}</p>
+        <p class="meta"><a href="https://fynda.market/${locale}/${MARKET_WORD[locale]}/${market.slug}/">${escape(names.market)}</a></p>`);
+    }
+
+    return editPage(env, token, market, locale, c);
   }
 
   if (!UUID.test(second) || !['on', 'cancelled'].includes(verb)) {
@@ -191,3 +230,175 @@ async function labels(env: Env, market: Market, locale: Locale): Promise<{ marke
 }
 
 export type { Organiser, OrganiserCopy };
+
+/* -------------------------------------------------------------------------- */
+/* The edit page                                                              */
+/* -------------------------------------------------------------------------- */
+
+interface Facts {
+  stall_count: number | null;
+  setting: string | null;
+  rain_policy: string | null;
+}
+
+interface Dated {
+  id: string;
+  date: string;
+  start_time: string | null;
+  end_time: string | null;
+  status: string;
+}
+
+const hm = (t: string | null) => (t ? t.slice(0, 5) : '');
+const today = () => new Date().toISOString().slice(0, 10);
+
+/** Upcoming dates the organiser can act on: from today, not cancelled, at most a year out. */
+async function upcoming(env: Env, marketId: string): Promise<Dated[]> {
+  const to = new Date(); to.setFullYear(to.getFullYear() + 1);
+  return selectRows<Dated>(
+    env, 'occurrences',
+    `market_id=eq.${marketId}&date=gte.${today()}&date=lte.${to.toISOString().slice(0, 10)}&status=neq.cancelled&order=date.asc&limit=24`,
+    'id,date,start_time,end_time,status'
+  );
+}
+
+async function editPage(env: Env, token: string, market: Market, locale: Locale, c: OrganiserCopy): Promise<Response> {
+  const [names, facts, dates] = await Promise.all([
+    labels(env, market, locale),
+    selectOne<Facts>(env, 'markets', `id=eq.${market.id}`, 'stall_count,setting,rain_policy'),
+    upcoming(env, market.id),
+  ]);
+
+  const radio = (name: string, value: string, label: string, current: string | null) =>
+    `<label><input type="radio" name="${name}" value="${value}"${current === value ? ' checked' : ''}><span>${escape(label)}</span></label>`;
+
+  const existing = dates.map((d) => `
+    <div class="row">
+      <span><b>${escape(dayLabel(locale, d.date))}</b></span>
+      <span>
+        <input type="time" name="start_${d.id}" value="${hm(d.start_time)}" style="width:auto"> – <input type="time" name="end_${d.id}" value="${hm(d.end_time)}" style="width:auto">
+        &nbsp; <label style="font-size:14px"><input type="checkbox" name="remove_${d.id}" value="1"> ${escape(c.removeLabel)}</label>
+      </span>
+    </div>`).join('');
+
+  const blank = [1, 2, 3].map((n) => `
+    <div class="row">
+      <span><label for="new_date_${n}" style="font-size:14px">${escape(c.newDateLabel.replace('%n', String(n)))}</label></span>
+      <span>
+        <input type="date" id="new_date_${n}" name="new_date_${n}" min="${today()}" style="width:auto">
+        <input type="time" name="new_start_${n}" style="width:auto"> – <input type="time" name="new_end_${n}" style="width:auto">
+      </span>
+    </div>`).join('');
+
+  const body = `
+    <h1>${escape(c.editTitle.replace('%m', names.market))}</h1>
+    <p class="meta">${escape(c.editIntro)}</p>
+    <form method="post" action="/a/${token}/edit/${market.id}">
+      <div class="field">
+        <label>${escape(c.datesLabel)}</label>
+        ${existing}${blank}
+      </div>
+      <div class="field">
+        <label for="stalls">${escape(c.stallsLabel)}</label>
+        <input type="number" id="stalls" name="stalls" min="1" max="5000" inputmode="numeric" value="${facts?.stall_count ?? ''}">
+      </div>
+      <div class="field">
+        <label>${escape(c.settingLabel)}</label>
+        <div class="seg">
+          ${radio('setting', 'indoor', c.settingIndoor, facts?.setting ?? null)}
+          ${radio('setting', 'outdoor', c.settingOutdoor, facts?.setting ?? null)}
+          ${radio('setting', 'both', c.settingBoth, facts?.setting ?? null)}
+        </div>
+      </div>
+      <div class="field">
+        <label>${escape(c.rainLabel)}</label>
+        <div class="seg">
+          ${radio('rain', 'runs', c.rainRuns, facts?.rain_policy ?? null)}
+          ${radio('rain', 'cancelled', c.rainCancelled, facts?.rain_policy ?? null)}
+          ${radio('rain', 'decided_on_the_day', c.rainDecided, facts?.rain_policy ?? null)}
+        </div>
+      </div>
+      <div class="field">
+        <label>${escape(c.photoLabel)}</label>
+        <p class="meta">${escape(c.photoHint)}</p>
+      </div>
+      <button class="btn" type="submit">${escape(c.save)}</button>
+    </form>`;
+
+  return page(locale, c.editTitle.replace('%m', names.market), body);
+}
+
+const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
+const DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Apply the form. Returns a one-line summary for the page and the log. */
+async function saveEdit(env: Env, request: Request, organiser: Organiser, market: Market): Promise<string> {
+  let form: FormData;
+  try { form = await request.formData(); } catch { return 'nothing read'; }
+  const get = (k: string) => String(form.get(k) ?? '').trim();
+  const now = new Date().toISOString();
+  const done: string[] = [];
+
+  /* The three facts. Empty means "unchanged", never "cleared". */
+  const patch: Record<string, unknown> = { updated_at: now };
+  const stalls = Number(get('stalls'));
+  if (get('stalls') && Number.isInteger(stalls) && stalls > 0 && stalls <= 5000) patch.stall_count = stalls;
+  const setting = get('setting');
+  if (['indoor', 'outdoor', 'both'].includes(setting)) patch.setting = setting;
+  const rain = get('rain');
+  if (['runs', 'cancelled', 'decided_on_the_day'].includes(rain)) patch.rain_policy = rain;
+  if (Object.keys(patch).length > 1) {
+    await updateRows(env, 'markets', `id=eq.${market.id}`, patch);
+    done.push(`${Object.keys(patch).length - 1} fact(s)`);
+  }
+
+  /* Existing dates: times changed, or removed (= cancelled by the organiser). */
+  const dates = await upcoming(env, market.id);
+  let removed = 0, retimed = 0;
+  for (const d of dates) {
+    if (get(`remove_${d.id}`) === '1') {
+      await updateRows(env, 'occurrences', `id=eq.${d.id}`, {
+        status: 'cancelled', origin: 'organiser', cancellation_note: 'organiser', updated_at: now,
+      });
+      removed += 1;
+      continue;
+    }
+    const start = get(`start_${d.id}`), end = get(`end_${d.id}`);
+    const change: Record<string, unknown> = {};
+    if (TIME.test(start) && start !== hm(d.start_time)) change.start_time = start;
+    if (TIME.test(end) && end !== hm(d.end_time)) change.end_time = end;
+    if (Object.keys(change).length) {
+      await updateRows(env, 'occurrences', `id=eq.${d.id}`, { ...change, origin: 'organiser', updated_at: now });
+      retimed += 1;
+    }
+  }
+  if (removed) done.push(`${removed} date(s) removed`);
+  if (retimed) done.push(`${retimed} time(s) changed`);
+
+  /* New dates: confirmed by the organiser on arrival. A duplicate date is
+     refused by the unique key and logged, not errored. */
+  let added = 0;
+  for (const n of [1, 2, 3]) {
+    const date = get(`new_date_${n}`);
+    if (!DATE.test(date) || date < today()) continue;
+    const start = get(`new_start_${n}`), end = get(`new_end_${n}`);
+    const row = await insertOne(env, 'occurrences', {
+      market_id: market.id, date,
+      start_time: TIME.test(start) ? start : null,
+      end_time: TIME.test(end) ? end : null,
+      status: 'confirmed', origin: 'organiser', confirmed_at: now,
+    });
+    if (row) added += 1;
+  }
+  if (added) done.push(`${added} date(s) added`);
+
+  if (done.length) {
+    await updateRows(env, 'markets', `id=eq.${market.id}`, { verified_by: 'organiser', verified_at: now, updated_at: now });
+  }
+  await insertOne(env, 'organiser_answers', {
+    organiser_id: organiser.id, market_id: market.id, answer: 'changed', scope: 'date',
+    ip_hash: await ipHash(env, request, 'answer'),
+  });
+
+  return done.length ? done.join(', ') : 'nothing changed';
+}

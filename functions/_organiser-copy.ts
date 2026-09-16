@@ -37,6 +37,29 @@ export interface OrganiserCopy {
   editSoonTitle: string;
   editSoonBody: string;
   toPage: string;
+  /** The edit page. */
+  chooseMarket: string;
+  editTitle: string;        // %m
+  editIntro: string;
+  datesLabel: string;
+  removeLabel: string;
+  newDateLabel: string;     // %n
+  fromLabel: string;
+  toLabel: string;
+  stallsLabel: string;
+  settingLabel: string;
+  settingIndoor: string;
+  settingOutdoor: string;
+  settingBoth: string;
+  rainLabel: string;
+  rainRuns: string;
+  rainCancelled: string;
+  rainDecided: string;
+  photoLabel: string;
+  photoHint: string;
+  save: string;
+  savedTitle: string;
+  savedBody: string;
 }
 
 export const COPY: Record<Locale, OrganiserCopy> = {
@@ -61,6 +84,28 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     editSoonTitle: 'Ihre Seite zum Bearbeiten kommt in Kürze',
     editSoonBody: 'Termine, Standzahl, drinnen oder draussen, Regen — in ein paar Tagen können Sie das hier selbst eintragen. Bis dahin: einfach auf unsere E-Mail antworten.',
     toPage: 'Zur Marktseite',
+    chooseMarket: 'Welcher Markt?',
+    editTitle: '%m — Ihre Seite',
+    editIntro: 'Termine, Standzahl, drinnen/draussen und Regen stehen innert einer Stunde auf Ihrer Seite. Ein Termin, den Sie hier entfernen, wird als abgesagt angezeigt.',
+    datesLabel: 'Nächste Termine',
+    removeLabel: 'Entfernen',
+    newDateLabel: 'Neuer Termin %n',
+    fromLabel: 'Von',
+    toLabel: 'Bis',
+    stallsLabel: 'Anzahl Stände (ungefähr)',
+    settingLabel: 'Drinnen oder draussen?',
+    settingIndoor: 'Drinnen',
+    settingOutdoor: 'Draussen',
+    settingBoth: 'Beides',
+    rainLabel: 'Findet der Markt bei Regen statt?',
+    rainRuns: 'Ja',
+    rainCancelled: 'Nein',
+    rainDecided: 'Wir entscheiden am Morgen',
+    photoLabel: 'Foto',
+    photoHint: 'Antworten Sie auf unsere E-Mail mit einem Foto — wir stellen es auf Ihre Seite.',
+    save: 'Speichern',
+    savedTitle: 'Gespeichert.',
+    savedBody: 'Ihre Seite wird innert einer Stunde aktualisiert.',
   },
   fr: {
     invalidTitle: "Ce lien n'est plus valable",
@@ -83,6 +128,28 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     editSoonTitle: 'Votre page à modifier arrive bientôt',
     editSoonBody: "Dates, nombre de stands, intérieur ou extérieur, pluie — dans quelques jours vous pourrez l'indiquer ici vous-même. En attendant : répondez simplement à notre e-mail.",
     toPage: 'Voir la page du marché',
+    chooseMarket: 'Quel marché ?',
+    editTitle: '%m — votre page',
+    editIntro: "Dates, nombre de stands, intérieur/extérieur et pluie apparaissent sur votre page dans l'heure. Une date que vous retirez ici est affichée comme annulée.",
+    datesLabel: 'Prochaines dates',
+    removeLabel: 'Retirer',
+    newDateLabel: 'Nouvelle date %n',
+    fromLabel: 'De',
+    toLabel: 'À',
+    stallsLabel: 'Nombre de stands (environ)',
+    settingLabel: 'Intérieur ou extérieur ?',
+    settingIndoor: 'Intérieur',
+    settingOutdoor: 'Extérieur',
+    settingBoth: 'Les deux',
+    rainLabel: 'Le marché a-t-il lieu sous la pluie ?',
+    rainRuns: 'Oui',
+    rainCancelled: 'Non',
+    rainDecided: 'Nous décidons le matin même',
+    photoLabel: 'Photo',
+    photoHint: 'Répondez à notre e-mail avec une photo — nous la mettons sur votre page.',
+    save: 'Enregistrer',
+    savedTitle: 'Enregistré.',
+    savedBody: "Votre page est mise à jour dans l'heure.",
   },
   it: {
     invalidTitle: 'Questo link non è più valido',
@@ -105,6 +172,28 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     editSoonTitle: 'La tua pagina da modificare arriva presto',
     editSoonBody: 'Date, numero di bancarelle, al coperto o all\'aperto, pioggia — tra qualche giorno potrai inserirlo qui tu stesso. Nel frattempo: rispondi semplicemente alla nostra e-mail.',
     toPage: 'Alla pagina del mercatino',
+    chooseMarket: 'Quale mercatino?',
+    editTitle: '%m — la tua pagina',
+    editIntro: "Date, numero di bancarelle, coperto/aperto e pioggia compaiono sulla tua pagina entro un'ora. Una data che togli qui viene mostrata come annullata.",
+    datesLabel: 'Prossime date',
+    removeLabel: 'Togli',
+    newDateLabel: 'Nuova data %n',
+    fromLabel: 'Dalle',
+    toLabel: 'Alle',
+    stallsLabel: 'Numero di bancarelle (circa)',
+    settingLabel: "Al coperto o all'aperto?",
+    settingIndoor: 'Al coperto',
+    settingOutdoor: "All'aperto",
+    settingBoth: 'Entrambi',
+    rainLabel: 'Il mercatino si fa con la pioggia?',
+    rainRuns: 'Sì',
+    rainCancelled: 'No',
+    rainDecided: 'Decidiamo la mattina stessa',
+    photoLabel: 'Foto',
+    photoHint: 'Rispondi alla nostra e-mail con una foto — la mettiamo sulla tua pagina.',
+    save: 'Salva',
+    savedTitle: 'Salvato.',
+    savedBody: "La tua pagina viene aggiornata entro un'ora.",
   },
   en: {
     invalidTitle: 'This link is no longer valid',
@@ -127,6 +216,28 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     editSoonTitle: 'Your edit page is coming shortly',
     editSoonBody: 'Dates, number of stalls, indoor or outdoor, rain — in a few days you can enter these here yourself. Until then, just reply to our e-mail.',
     toPage: 'To the market page',
+    chooseMarket: 'Which market?',
+    editTitle: '%m — your page',
+    editIntro: 'Dates, stall count, indoor/outdoor and rain show on your page within the hour. A date you remove here is shown as cancelled.',
+    datesLabel: 'Next dates',
+    removeLabel: 'Remove',
+    newDateLabel: 'New date %n',
+    fromLabel: 'From',
+    toLabel: 'To',
+    stallsLabel: 'Number of stalls (roughly)',
+    settingLabel: 'Indoor or outdoor?',
+    settingIndoor: 'Indoor',
+    settingOutdoor: 'Outdoor',
+    settingBoth: 'Both',
+    rainLabel: 'Does it run in the rain?',
+    rainRuns: 'Yes',
+    rainCancelled: 'No',
+    rainDecided: 'We decide that morning',
+    photoLabel: 'Photo',
+    photoHint: 'Reply to our e-mail with a photo — we put it on your page.',
+    save: 'Save',
+    savedTitle: 'Saved.',
+    savedBody: 'Your page updates within the hour.',
   },
 };
 

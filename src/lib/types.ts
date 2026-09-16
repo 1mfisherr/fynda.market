@@ -93,7 +93,10 @@ export interface Market {
   organiserName?: string;
   /** The organiser's own page. Held for 153 of 157 markets and worth a button. */
   websiteUrl?: string;
+  /** From the organiser, through their edit page. Rendered only when set. */
   stallCount?: number;
+  setting?: 'indoor' | 'outdoor' | 'both';
+  rainPolicy?: 'runs' | 'cancelled' | 'decided_on_the_day';
   stallCountBadWeather?: number;
   sellerMix?: 'private' | 'mixed' | 'trader' | 'new_goods';
   priceLevel?: 'cheap' | 'flohmarkt' | 'trader';

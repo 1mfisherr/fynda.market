@@ -162,7 +162,7 @@ const canBeLive = !cancelled && Boolean(liveStart && liveEnd);
  * details, never that they confirmed one Saturday.
  */
 const stampMain = next?.origin === 'organiser'
-  ? s.organiserConfirmed
+  ? (next.confirmedAt ? s.organiserConfirmedOn(formatDateShort(next.confirmedAt, locale)) : s.organiserConfirmed)
   : next?.confirmedAt ? s.confirmedOn(formatDateShort(next.confirmedAt, locale)) : s.notConfirmed;
 const stampAlso = market.verifiedBy === 'organiser' && next?.origin !== 'organiser'
   ? s.organiserConfirmed : undefined;
@@ -177,6 +177,20 @@ const timeRange = next ? formatTimeRange(next.startTime, next.endTime, locale) :
  * retype the name of the page they came from, the same way the report links do.
  */
 const claimed = market.verifiedBy === 'organiser';
+
+/**
+ * The owned line. Who runs it, and the three facts only an organiser can
+ * supply — stalls, indoor or outdoor, what rain does — each part only when it
+ * exists. On an unclaimed page it is the organiser's name alone, sitting above
+ * the ask so the ask makes its own case.
+ */
+const owned = [
+  market.organiserName ? s.hostedBy(market.organiserName) : undefined,
+  market.stallCount ? s.stallsAbout(market.stallCount) : undefined,
+  market.setting ? s.setting[market.setting] : undefined,
+  market.rainPolicy ? s.rain[market.rainPolicy] : undefined,
+].filter(Boolean) as string[];
+
 const claimHref = `${utilityPath(locale, 'organiser')}`
   + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`
   + `&mid=${market.id}`;
@@ -429,16 +443,17 @@ const facilityItems = market.facilities ? [
           read. It sits above the claim card on purpose: naming the organiser
           and then saying nobody has taken this page over is the ask making its
           own case. */}
-      {market.organiserName && (
-        <p class="host gutter">{s.hostedBy(market.organiserName)}</p>
+      {owned.length > 0 && (
+        <p class="host gutter">{owned.join(' · ')}</p>
       )}
 
       {/* After the dates, not above them. An organiser looking their own market
           up will scroll; a visitor deciding whether to go should not have a
-          supply ask standing between them and the date. Paper, not the dark
-          card the mockup drew: on 128 pages it must not out-shout Route. */}
+          supply ask standing between them and the date. Once there, though,
+          it is the page's main ask: engaged organisers are what keep the page
+          true (PRODUCT.md, 2026-09-16), so the button is the filled one. */}
       {!claimed && (
-        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="secondary" /></div>
+        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="primary" note={s.claimFree} /></div>
       )}
 
       {/* The market page had no newsletter ask at all — only the claim card,

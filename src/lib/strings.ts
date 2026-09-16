@@ -249,6 +249,14 @@ export interface Strings {
   claimTitle: string;
   claimBody: string;
   claimAction: string;
+  /** Under the button: the promise, three words. */
+  claimFree: string;
+  /** The organiser stamp with the date the organiser said so. */
+  organiserConfirmedOn: (date: string) => string;
+  /** The owned line: "about 120 stalls", the setting, the rain answer. */
+  stallsAbout: (n: number) => string;
+  setting: Record<'indoor' | 'outdoor' | 'both', string>;
+  rain: Record<'runs' | 'cancelled' | 'decided_on_the_day', string>;
   organiserBody: string;
   organiserAction: string;
 
@@ -414,9 +422,14 @@ const de: Strings = {
   newsletterBody: 'Neue Termine und Absagen in Ihrer Region.',
   newsletterAction: 'Newsletter abonnieren',
   organiserTitle: 'Sie organisieren einen Markt?',
-  claimTitle: 'Diesen Markt betreut noch niemand',
-  claimBody: 'Sind Sie der Veranstalter? Termine und Absagen selbst pflegen — kostenlos, ohne Konto.',
-  claimAction: 'Markt übernehmen',
+  claimTitle: 'Ist das Ihr Markt?',
+  claimBody: 'Übernehmen Sie ihn. Termine bestätigen, ein Foto ergänzen, an einem Regenmorgen absagen — ein Klick, kein Konto.',
+  claimAction: 'Das ist mein Markt',
+  claimFree: 'Kostenlos. Für immer.',
+  organiserConfirmedOn: (date) => `Vom Veranstalter bestätigt am ${date}`,
+  stallsAbout: (n) => `rund ${n} Stände`,
+  setting: { indoor: 'drinnen', outdoor: 'draussen', both: 'drinnen und draussen' },
+  rain: { runs: 'findet auch bei Regen statt', cancelled: 'bei Regen abgesagt', decided_on_the_day: 'bei Regen wird am Morgen entschieden' },
   organiserBody: 'Termine eintragen, Absagen melden. Kostenlos, ohne Konto.',
   organiserAction: 'Markt eintragen',
 
@@ -583,9 +596,14 @@ const en: Strings = {
   newsletterBody: 'New dates and cancellations in your area.',
   newsletterAction: 'Subscribe',
   organiserTitle: 'Do you run a market?',
-  claimTitle: 'Nobody looks after this market yet',
-  claimBody: 'Are you the organiser? Keep the dates and cancellations current yourself — free, no account.',
-  claimAction: 'Claim this market',
+  claimTitle: 'Is this your market?',
+  claimBody: 'Take it over. Confirm dates, add a photo, cancel on a rainy morning — one click, no account.',
+  claimAction: 'This is my market',
+  claimFree: 'Free. Always.',
+  organiserConfirmedOn: (date) => `Confirmed by the organiser on ${date}`,
+  stallsAbout: (n) => `about ${n} stalls`,
+  setting: { indoor: 'indoor', outdoor: 'outdoor', both: 'indoor and outdoor' },
+  rain: { runs: 'runs in the rain', cancelled: 'cancelled in rain', decided_on_the_day: 'rain: decided on the morning' },
   organiserBody: 'Add dates, report cancellations. Free, no account.',
   organiserAction: 'Add your market',
 
@@ -755,9 +773,14 @@ const fr: Strings = {
   newsletterBody: 'Nouvelles dates et annulations dans votre région.',
   newsletterAction: "S'abonner à la newsletter",
   organiserTitle: 'Vous organisez une brocante ?',
-  claimTitle: "Personne ne s'occupe encore de cette brocante",
-  claimBody: "Vous êtes l'organisateur ? Tenez les dates et les annulations à jour vous-même — gratuitement, sans compte.",
-  claimAction: 'Réclamer cette brocante',
+  claimTitle: "C'est votre brocante ?",
+  claimBody: "Prenez-la en main. Confirmer les dates, ajouter une photo, annuler un matin de pluie — un clic, sans compte.",
+  claimAction: "C'est ma brocante",
+  claimFree: 'Gratuit. Pour toujours.',
+  organiserConfirmedOn: (date) => `Confirmé par l'organisateur le ${date}`,
+  stallsAbout: (n) => `environ ${n} stands`,
+  setting: { indoor: 'en intérieur', outdoor: 'en extérieur', both: 'intérieur et extérieur' },
+  rain: { runs: 'a lieu même sous la pluie', cancelled: 'annulé en cas de pluie', decided_on_the_day: 'pluie : décidé le matin même' },
   organiserBody: 'Ajoutez vos dates, signalez les annulations. Gratuit, sans compte.',
   organiserAction: 'Ajouter votre brocante',
 
@@ -924,9 +947,14 @@ const it: Strings = {
   newsletterBody: 'Nuove date e cancellazioni nella Sua regione.',
   newsletterAction: 'Iscriversi alla newsletter',
   organiserTitle: 'Organizza un mercatino?',
-  claimTitle: 'Questo mercatino non è ancora seguito da nessuno',
-  claimBody: "È lei l'organizzatore? Aggiorni date e annullamenti in prima persona — gratis, senza account.",
-  claimAction: 'Rivendica questo mercatino',
+  claimTitle: 'È il tuo mercatino?',
+  claimBody: 'Prendilo in mano. Confermare le date, aggiungere una foto, annullare in una mattina di pioggia — un clic, senza account.',
+  claimAction: 'È il mio mercatino',
+  claimFree: 'Gratis. Per sempre.',
+  organiserConfirmedOn: (date) => `Confermato dall'organizzatore il ${date}`,
+  stallsAbout: (n) => `circa ${n} bancarelle`,
+  setting: { indoor: 'al coperto', outdoor: "all'aperto", both: "al coperto e all'aperto" },
+  rain: { runs: 'si fa anche con la pioggia', cancelled: 'annullato in caso di pioggia', decided_on_the_day: 'pioggia: si decide la mattina' },
   organiserBody: 'Inserisca le date, segnali le cancellazioni. Gratuito, senza account.',
   organiserAction: 'Inserire il mercatino',
 
