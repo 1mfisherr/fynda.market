@@ -14,6 +14,7 @@
 import Base from './Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
@@ -39,6 +40,7 @@ const s = t(locale);
   <SiteHeader locale={locale} alternates={alternates} />
   <main id={mainId} class="stack wrapper"><slot /></main>
   <SiteFooter locale={locale} alternates={alternates} />
+  <CookieBanner locale={locale} />
 </Base>
 
 <style>
