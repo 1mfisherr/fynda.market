@@ -71,6 +71,18 @@ async function handle({ request, env, params, waitUntil }: Parameters<PagesFunct
     if (verb === 'changed' && UUID.test(second)) {
       const occ = await selectOne<Occurrence>(env, 'occurrences', `id=eq.${second}`, 'id,market_id,date,status');
       marketId = occ?.market_id ?? null;
+      // The button press is the answer the funnel counts, so it is recorded
+      // here, with its date — the edit page's own form no longer knows which
+      // mail brought the organiser. Only for a date that is theirs.
+      if (occ && request.method === 'GET' && request.headers.get('sec-fetch-user') === '?1') {
+        const owner = await selectOne<Market>(env, 'markets', `id=eq.${occ.market_id}`, 'id,slug,organiser_id,venue_id');
+        if (owner?.organiser_id === organiser.id) {
+          await insertOne(env, 'organiser_answers', {
+            organiser_id: organiser.id, market_id: occ.market_id, occurrence_id: occ.id,
+            answer: 'changed', scope: 'date', ip_hash: await ipHash(env, request, 'answer'),
+          });
+        }
+      }
     }
 
     const mine = await selectRows<Market>(env, 'markets', `organiser_id=eq.${organiser.id}&status=eq.active`, 'id,slug,organiser_id,venue_id');
@@ -395,10 +407,10 @@ async function saveEdit(env: Env, request: Request, organiser: Organiser, market
   if (done.length) {
     await updateRows(env, 'markets', `id=eq.${market.id}`, { verified_by: 'organiser', verified_at: now, updated_at: now });
   }
-  await insertOne(env, 'organiser_answers', {
-    organiser_id: organiser.id, market_id: market.id, answer: 'changed', scope: 'date',
-    ip_hash: await ipHash(env, request, 'answer'),
-  });
+  // No answer row here: the press of "something changed" was recorded when the
+  // link was opened, with its date. A save from the welcome link is an edit,
+  // not an answer to a mail.
+  console.log(`organiser ${organiser.id} edited ${market.slug}: ${done.join(', ') || 'nothing'}`);
 
   return done.length ? done.join(', ') : 'nothing changed';
 }

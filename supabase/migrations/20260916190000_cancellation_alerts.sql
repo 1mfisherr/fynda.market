@@ -46,7 +46,7 @@ as $$
   join public.cities mc on mc.id = v.city_id
   join public.newsletter_subscribers s
     on s.unsubscribed_at is null
-   and (s.paused_until is null or s.paused_until < current_date)
+   and (s.paused_until is null or s.paused_until <= current_date)  -- same reading as the digest's owedIssue
    and (
         -- No canton and no town: the whole country, as the digest reads it.
         (s.region_id is null and s.city_id is null)

@@ -108,9 +108,12 @@ rmSync(join(root, 'dist'), { recursive: true, force: true });
   2026-09-16 a local deploy carried a new Function, a GitHub run from the older
   commit landed two minutes later, and the Function was gone until someone
   noticed a 404. Anything published from here must be on GitHub first, or the
-  next nightly publish quietly reverts it. Skipped in CI, where HEAD is origin.
+  next nightly publish quietly reverts it. Skipped in CI, where HEAD is origin,
+  and for --build-only, which uploads nothing and exists to preview a change
+  before it is committed.
 */
-if (!process.env.GITHUB_ACTIONS && !process.argv.includes('--allow-unpushed')) {
+const buildOnly = process.argv.includes('--build-only');
+if (!process.env.GITHUB_ACTIONS && !buildOnly && !process.argv.includes('--allow-unpushed')) {
   spawnSync('git', ['fetch', '--quiet', 'origin', 'main'], { cwd: root, stdio: 'inherit' });
   const ahead = spawnSync('git', ['rev-list', '--count', 'origin/main..HEAD'], { cwd: root, encoding: 'utf8' });
   const count = Number(ahead.stdout.trim());
