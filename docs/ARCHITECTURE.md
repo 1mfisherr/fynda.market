@@ -176,7 +176,7 @@ admin_actions, publish_requests
 
 Every button press is an `organiser_answers` row (`on | cancelled | changed`, scope `date | market`); every mail is an `organiser_mail_sends` row written *before* the send. Those two tables are the answer rate — the one number that decides whether more is built for organisers (`organiser_funnel` view). "On" sets `occurrences.origin = organiser` and `confirmed_at`; "cancelled, just this date" sets `status = cancelled, cancellation_note = organiser`; "the market has stopped" and free-text edits go to Delfim. The three facts an organiser supplies — `markets.stall_count`, `setting`, `rain_policy` — render only when set.
 
-**Delfim's decisions are `admin_actions`:** one row per Approve/Reject pair offered in Telegram, single use, fourteen days, signed with the same secret. `publish_requests` logs every on-demand rebuild a button press asked GitHub for, folded to one per ten minutes.
+**Delfim's decisions are `admin_actions`:** one row per Approve/Reject pair offered in Telegram, single use, fourteen days, signed with the same secret. `publish_requests` logs every on-demand rebuild a button press asked GitHub for, folded only within a minute of the last (a double-click); GitHub queues the rest.
 
 ### What v1 got right — carried over
 

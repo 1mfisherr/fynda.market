@@ -7,10 +7,13 @@
  * button press asks GitHub to run publish.yml now, the same path as the nightly
  * build: tests, build against the database, ten guardrails, upload.
  *
- * Debounced: ten presses in ten minutes are one build. publish.yml's own
- * concurrency group queues anything that overlaps. Every request is a row in
- * publish_requests, dispatched or folded, so "why didn't the site update" has
- * an answer.
+ * Debounced only against a double-click: a request within a minute of a
+ * dispatched one is folded. Anything wider risks folding into a build that
+ * has already read the database and finished — on 2026-09-16 a cancellation
+ * six minutes after an edit did exactly that and would have waited for 03:00.
+ * publish.yml's own concurrency group queues real overlaps, and a queued run
+ * reads fresh data. Every request is a row in publish_requests, dispatched or
+ * folded, so "why didn't the site update" has an answer.
  *
  * GITHUB_DISPATCH_TOKEN is a fine-grained token with Actions: write on this one
  * repository and nothing else. Without it, the row is written and the build
@@ -25,7 +28,7 @@ export interface PublishEnv extends RestEnv {
 
 const REPO = '1mfisherr/fynda.market';
 const WORKFLOW = 'publish.yml';
-const WINDOW_MS = 10 * 60 * 1000;
+const WINDOW_MS = 60 * 1000;
 
 export async function requestPublish(env: PublishEnv, reason: string): Promise<'dispatched' | 'folded' | 'no_token' | 'failed'> {
   const since = new Date(Date.now() - WINDOW_MS).toISOString();
