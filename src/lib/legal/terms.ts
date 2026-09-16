@@ -11,25 +11,25 @@ import type { LegalDoc } from './doc';
 
 export const TERMS: Record<Locale, LegalDoc> = {
   en: {
-    title: 'General Site Terms — Fynda',
-    description: 'How Fynda works, and what applies when you use the site or submit something through a form.',
+    title: 'General Site Terms — fynda.market',
+    description: 'How fynda.market works, and what applies when you use the site or submit something through a form.',
     heading: 'General Site Terms',
     effective: 'Effective from 6 September 2026',
     lede: [
-      'These terms explain how Fynda works, and what applies when you use fynda.market or submit something through our forms.',
+      'These terms explain how fynda.market works, and what applies when you use fynda.market or submit something through our forms.',
     ],
     blocks: [
       {
         h: '1. Who this covers',
         p: [
-          'Fynda is operated by Delfim Almeida, Zurich, Switzerland. These terms apply to anyone who browses fynda.market or submits a correction, market suggestion, or organiser contact through our forms.',
+          'fynda.market is operated by Delfim Almeida, Zurich, Switzerland. These terms apply to anyone who browses fynda.market or submits a correction, market suggestion, or organiser contact through our forms.',
         ],
       },
       {
-        h: '2. What Fynda is',
+        h: '2. What fynda.market is',
         p: [
-          'Fynda is a directory. We research and publish information about flea markets, brocantes, and secondhand events across Switzerland.',
-          "Fynda does not organise any of the listed markets, does not sell tickets or stands, and is not part of any agreement between a visitor and a market organiser. We don't control whether a market actually happens.",
+          'fynda.market is a directory. We research and publish information about flea markets, brocantes, and secondhand events across Switzerland.',
+          "fynda.market does not organise any of the listed markets, does not sell tickets or stands, and is not part of any agreement between a visitor and a market organiser. We don't control whether a market actually happens.",
         ],
       },
       {
@@ -51,11 +51,11 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "You give Fynda permission to verify, edit, translate, publish, or combine what you submit as part of running the directory. It stays yours — we're not taking ownership, just permission to use it for Fynda. Submitting something doesn't guarantee we'll publish it.",
+          "You give fynda.market permission to verify, edit, translate, publish, or combine what you submit as part of running the directory. It stays yours — we're not taking ownership, just permission to use it for fynda.market. Submitting something doesn't guarantee we'll publish it.",
         ],
       },
       {
-        h: '5. Using Fynda fairly',
+        h: '5. Using fynda.market fairly',
         p: ["Please don't:"],
         ul: [
           'send spam or malicious submissions;',
@@ -64,16 +64,16 @@ export const TERMS: Record<Locale, LegalDoc> = {
           'impersonate someone else;',
           'submit information you know is false;',
           'use automated tools to overload the site or bypass its normal controls;',
-          "copy Fynda's database or content to build a competing directory.",
+          "copy fynda.market's database or content to build a competing directory.",
         ],
       },
       {
-        p: ['Normal search engine crawling and sharing Fynda links is completely fine.'],
+        p: ['Normal search engine crawling and sharing fynda.market links is completely fine.'],
       },
       {
         h: '6. Ownership',
         p: [
-          "Fynda's own text, design, and database organisation belong to us and shouldn't be reused without permission. Third-party names, logos, photos, and organiser materials belong to their respective owners.",
+          "fynda.market's own text, design, and database organisation belong to us and shouldn't be reused without permission. Third-party names, logos, photos, and organiser materials belong to their respective owners.",
         ],
       },
       {
@@ -86,7 +86,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '8. Changes',
         p: [
-          "We can update Fynda, correct or remove listings, and update these terms as the site develops. If we make a significant change to these terms, we'll update the effective date above.",
+          "We can update fynda.market, correct or remove listings, and update these terms as the site develops. If we make a significant change to these terms, we'll update the effective date above.",
         ],
       },
       {
@@ -97,25 +97,25 @@ export const TERMS: Record<Locale, LegalDoc> = {
   },
 
   de: {
-    title: 'Nutzungsbedingungen — Fynda',
-    description: 'Wie Fynda funktioniert und was gilt, wenn Sie die Seite nutzen oder ein Formular abschicken.',
+    title: 'Nutzungsbedingungen — fynda.market',
+    description: 'Wie fynda.market funktioniert und was gilt, wenn Sie die Seite nutzen oder ein Formular abschicken.',
     heading: 'Allgemeine Nutzungsbedingungen',
     effective: 'Gültig ab 6. September 2026',
     lede: [
-      'Diese Bedingungen erklären, wie Fynda funktioniert und was gilt, wenn Sie fynda.market nutzen oder uns über eines unserer Formulare etwas schicken.',
+      'Diese Bedingungen erklären, wie fynda.market funktioniert und was gilt, wenn Sie fynda.market nutzen oder uns über eines unserer Formulare etwas schicken.',
     ],
     blocks: [
       {
         h: '1. Für wen das gilt',
         p: [
-          'Fynda wird betrieben von Delfim Almeida, Zürich, Schweiz. Diese Bedingungen gelten für alle, die fynda.market besuchen oder uns über unsere Formulare eine Korrektur, einen Marktvorschlag oder eine Veranstalter-Anfrage schicken.',
+          'fynda.market wird betrieben von Delfim Almeida, Zürich, Schweiz. Diese Bedingungen gelten für alle, die fynda.market besuchen oder uns über unsere Formulare eine Korrektur, einen Marktvorschlag oder eine Veranstalter-Anfrage schicken.',
         ],
       },
       {
-        h: '2. Was Fynda ist',
+        h: '2. Was fynda.market ist',
         p: [
-          'Fynda ist ein Verzeichnis. Wir recherchieren und veröffentlichen Angaben zu Flohmärkten, Brockenstuben und Secondhand-Anlässen in der ganzen Schweiz.',
-          'Fynda organisiert keinen der aufgeführten Märkte, verkauft keine Tickets und keine Standplätze und ist nicht Teil einer Vereinbarung zwischen Besucherinnen und Veranstaltern. Wir haben keinen Einfluss darauf, ob ein Markt tatsächlich stattfindet.',
+          'fynda.market ist ein Verzeichnis. Wir recherchieren und veröffentlichen Angaben zu Flohmärkten, Brockenstuben und Secondhand-Anlässen in der ganzen Schweiz.',
+          'fynda.market organisiert keinen der aufgeführten Märkte, verkauft keine Tickets und keine Standplätze und ist nicht Teil einer Vereinbarung zwischen Besucherinnen und Veranstaltern. Wir haben keinen Einfluss darauf, ob ein Markt tatsächlich stattfindet.',
         ],
       },
       {
@@ -137,11 +137,11 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          'Sie erlauben Fynda, das Eingereichte im Rahmen des Verzeichnisses zu prüfen, zu bearbeiten, zu übersetzen, zu veröffentlichen oder mit anderen Angaben zusammenzuführen. Es bleibt Ihres — wir übernehmen kein Eigentum, sondern nur die Erlaubnis zur Nutzung für Fynda. Eine Einreichung bedeutet nicht, dass wir sie veröffentlichen.',
+          'Sie erlauben fynda.market, das Eingereichte im Rahmen des Verzeichnisses zu prüfen, zu bearbeiten, zu übersetzen, zu veröffentlichen oder mit anderen Angaben zusammenzuführen. Es bleibt Ihres — wir übernehmen kein Eigentum, sondern nur die Erlaubnis zur Nutzung für fynda.market. Eine Einreichung bedeutet nicht, dass wir sie veröffentlichen.',
         ],
       },
       {
-        h: '5. Fairer Umgang mit Fynda',
+        h: '5. Fairer Umgang mit fynda.market',
         p: ['Bitte unterlassen Sie es:'],
         ul: [
           'Spam oder schädliche Einsendungen zu schicken;',
@@ -150,16 +150,16 @@ export const TERMS: Record<Locale, LegalDoc> = {
           'sich als jemand anderes auszugeben;',
           'Angaben zu machen, von denen Sie wissen, dass sie falsch sind;',
           'die Seite mit automatisierten Werkzeugen zu überlasten oder ihre üblichen Schutzmechanismen zu umgehen;',
-          'die Datenbank oder die Inhalte von Fynda zu kopieren, um ein konkurrierendes Verzeichnis aufzubauen.',
+          'die Datenbank oder die Inhalte von fynda.market zu kopieren, um ein konkurrierendes Verzeichnis aufzubauen.',
         ],
       },
       {
-        p: ['Normales Crawling durch Suchmaschinen und das Teilen von Fynda-Links sind völlig in Ordnung.'],
+        p: ['Normales Crawling durch Suchmaschinen und das Teilen von fynda.market-Links sind völlig in Ordnung.'],
       },
       {
         h: '6. Eigentum',
         p: [
-          'Texte, Gestaltung und Datenbankstruktur von Fynda gehören uns und dürfen nicht ohne Erlaubnis weiterverwendet werden. Namen, Logos, Fotos und Materialien Dritter gehören den jeweiligen Rechteinhabern.',
+          'Texte, Gestaltung und Datenbankstruktur von fynda.market gehören uns und dürfen nicht ohne Erlaubnis weiterverwendet werden. Namen, Logos, Fotos und Materialien Dritter gehören den jeweiligen Rechteinhabern.',
         ],
       },
       {
@@ -172,7 +172,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '8. Änderungen',
         p: [
-          'Wir können Fynda weiterentwickeln, Einträge korrigieren oder entfernen und diese Bedingungen anpassen. Bei einer wesentlichen Änderung aktualisieren wir das Datum oben.',
+          'Wir können fynda.market weiterentwickeln, Einträge korrigieren oder entfernen und diese Bedingungen anpassen. Bei einer wesentlichen Änderung aktualisieren wir das Datum oben.',
         ],
       },
       {
@@ -183,25 +183,25 @@ export const TERMS: Record<Locale, LegalDoc> = {
   },
 
   fr: {
-    title: "Conditions générales d'utilisation — Fynda",
-    description: "Comment Fynda fonctionne, et ce qui s'applique quand vous utilisez le site ou envoyez un formulaire.",
+    title: "Conditions générales d'utilisation — fynda.market",
+    description: "Comment fynda.market fonctionne, et ce qui s'applique quand vous utilisez le site ou envoyez un formulaire.",
     heading: "Conditions générales d'utilisation",
     effective: 'En vigueur depuis le 6 septembre 2026',
     lede: [
-      "Ces conditions expliquent comment Fynda fonctionne, et ce qui s'applique lorsque vous utilisez fynda.market ou nous envoyez quelque chose via l'un de nos formulaires.",
+      "Ces conditions expliquent comment fynda.market fonctionne, et ce qui s'applique lorsque vous utilisez fynda.market ou nous envoyez quelque chose via l'un de nos formulaires.",
     ],
     blocks: [
       {
         h: '1. Qui est concerné',
         p: [
-          "Fynda est exploité par Delfim Almeida, Zurich, Suisse. Ces conditions s'appliquent à toute personne qui consulte fynda.market ou nous envoie une correction, une suggestion de marché ou un message d'organisateur via nos formulaires.",
+          "fynda.market est exploité par Delfim Almeida, Zurich, Suisse. Ces conditions s'appliquent à toute personne qui consulte fynda.market ou nous envoie une correction, une suggestion de marché ou un message d'organisateur via nos formulaires.",
         ],
       },
       {
-        h: '2. Ce qu’est Fynda',
+        h: '2. Ce qu’est fynda.market',
         p: [
-          "Fynda est un annuaire. Nous recherchons et publions des informations sur les brocantes, vide-greniers et événements d'occasion en Suisse.",
-          "Fynda n'organise aucun des marchés répertoriés, ne vend ni billets ni emplacements, et n'est partie à aucun accord entre un visiteur et un organisateur. Nous ne contrôlons pas si un marché a réellement lieu.",
+          "fynda.market est un annuaire. Nous recherchons et publions des informations sur les brocantes, vide-greniers et événements d'occasion en Suisse.",
+          "fynda.market n'organise aucun des marchés répertoriés, ne vend ni billets ni emplacements, et n'est partie à aucun accord entre un visiteur et un organisateur. Nous ne contrôlons pas si un marché a réellement lieu.",
         ],
       },
       {
@@ -223,11 +223,11 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "Vous autorisez Fynda à vérifier, modifier, traduire, publier ou combiner ce que vous envoyez dans le cadre de l'annuaire. Cela reste à vous — nous n'en prenons pas la propriété, seulement l'autorisation de l'utiliser pour Fynda. Un envoi ne garantit pas que nous le publierons.",
+          "Vous autorisez fynda.market à vérifier, modifier, traduire, publier ou combiner ce que vous envoyez dans le cadre de l'annuaire. Cela reste à vous — nous n'en prenons pas la propriété, seulement l'autorisation de l'utiliser pour fynda.market. Un envoi ne garantit pas que nous le publierons.",
         ],
       },
       {
-        h: '5. Un usage correct de Fynda',
+        h: '5. Un usage correct de fynda.market',
         p: ['Merci de ne pas :'],
         ul: [
           'envoyer du spam ou des soumissions malveillantes ;',
@@ -236,16 +236,16 @@ export const TERMS: Record<Locale, LegalDoc> = {
           "usurper l'identité d'autrui ;",
           'transmettre des informations que vous savez fausses ;',
           "utiliser des outils automatisés pour surcharger le site ou contourner ses contrôles habituels ;",
-          'copier la base de données ou le contenu de Fynda pour créer un annuaire concurrent.',
+          'copier la base de données ou le contenu de fynda.market pour créer un annuaire concurrent.',
         ],
       },
       {
-        p: ["L'exploration normale par les moteurs de recherche et le partage de liens Fynda sont tout à fait bienvenus."],
+        p: ["L'exploration normale par les moteurs de recherche et le partage de liens fynda.market sont tout à fait bienvenus."],
       },
       {
         h: '6. Propriété',
         p: [
-          "Les textes, la conception et l'organisation de la base de données de Fynda nous appartiennent et ne doivent pas être réutilisés sans autorisation. Les noms, logos, photos et documents de tiers appartiennent à leurs titulaires respectifs.",
+          "Les textes, la conception et l'organisation de la base de données de fynda.market nous appartiennent et ne doivent pas être réutilisés sans autorisation. Les noms, logos, photos et documents de tiers appartiennent à leurs titulaires respectifs.",
         ],
       },
       {
@@ -258,7 +258,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '8. Modifications',
         p: [
-          "Nous pouvons faire évoluer Fynda, corriger ou retirer des annonces et modifier ces conditions. En cas de changement important, nous mettons à jour la date d'entrée en vigueur ci-dessus.",
+          "Nous pouvons faire évoluer fynda.market, corriger ou retirer des annonces et modifier ces conditions. En cas de changement important, nous mettons à jour la date d'entrée en vigueur ci-dessus.",
         ],
       },
       {
@@ -269,25 +269,25 @@ export const TERMS: Record<Locale, LegalDoc> = {
   },
 
   it: {
-    title: 'Condizioni generali — Fynda',
-    description: 'Come funziona Fynda e che cosa vale quando usa il sito o invia un modulo.',
+    title: 'Condizioni generali — fynda.market',
+    description: 'Come funziona fynda.market e che cosa vale quando usa il sito o invia un modulo.',
     heading: 'Condizioni generali di utilizzo',
     effective: 'In vigore dal 6 settembre 2026',
     lede: [
-      'Queste condizioni spiegano come funziona Fynda e che cosa vale quando usa fynda.market o ci invia qualcosa tramite uno dei nostri moduli.',
+      'Queste condizioni spiegano come funziona fynda.market e che cosa vale quando usa fynda.market o ci invia qualcosa tramite uno dei nostri moduli.',
     ],
     blocks: [
       {
         h: '1. A chi si applicano',
         p: [
-          'Fynda è gestito da Delfim Almeida, Zurigo, Svizzera. Queste condizioni valgono per chiunque consulti fynda.market o ci invii una correzione, la segnalazione di un mercatino o un messaggio come organizzatore tramite i nostri moduli.',
+          'fynda.market è gestito da Delfim Almeida, Zurigo, Svizzera. Queste condizioni valgono per chiunque consulti fynda.market o ci invii una correzione, la segnalazione di un mercatino o un messaggio come organizzatore tramite i nostri moduli.',
         ],
       },
       {
-        h: '2. Che cos’è Fynda',
+        h: '2. Che cos’è fynda.market',
         p: [
-          "Fynda è un elenco. Raccogliamo e pubblichiamo informazioni su mercatini delle pulci, mercatini dell'usato ed eventi di seconda mano in tutta la Svizzera.",
-          'Fynda non organizza nessuno dei mercatini elencati, non vende biglietti né banchi e non è parte di alcun accordo tra un visitatore e un organizzatore. Non abbiamo alcun controllo sul fatto che un mercatino si tenga davvero.',
+          "fynda.market è un elenco. Raccogliamo e pubblichiamo informazioni su mercatini delle pulci, mercatini dell'usato ed eventi di seconda mano in tutta la Svizzera.",
+          'fynda.market non organizza nessuno dei mercatini elencati, non vende biglietti né banchi e non è parte di alcun accordo tra un visitatore e un organizzatore. Non abbiamo alcun controllo sul fatto che un mercatino si tenga davvero.',
         ],
       },
       {
@@ -309,11 +309,11 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "Autorizza Fynda a verificare, modificare, tradurre, pubblicare o combinare quanto invia nell'ambito dell'elenco. Resta Suo — non ne acquisiamo la proprietà, soltanto il permesso di usarlo per Fynda. Un invio non garantisce che lo pubblicheremo.",
+          "Autorizza fynda.market a verificare, modificare, tradurre, pubblicare o combinare quanto invia nell'ambito dell'elenco. Resta Suo — non ne acquisiamo la proprietà, soltanto il permesso di usarlo per fynda.market. Un invio non garantisce che lo pubblicheremo.",
         ],
       },
       {
-        h: '5. Un uso corretto di Fynda',
+        h: '5. Un uso corretto di fynda.market',
         p: ['La preghiamo di non:'],
         ul: [
           'inviare spam o contenuti dannosi;',
@@ -322,16 +322,16 @@ export const TERMS: Record<Locale, LegalDoc> = {
           'spacciarsi per un’altra persona;',
           'trasmettere informazioni che sa essere false;',
           'usare strumenti automatici per sovraccaricare il sito o aggirarne i normali controlli;',
-          'copiare la banca dati o i contenuti di Fynda per costruire un elenco concorrente.',
+          'copiare la banca dati o i contenuti di fynda.market per costruire un elenco concorrente.',
         ],
       },
       {
-        p: ['La normale scansione da parte dei motori di ricerca e la condivisione dei link di Fynda vanno benissimo.'],
+        p: ['La normale scansione da parte dei motori di ricerca e la condivisione dei link di fynda.market vanno benissimo.'],
       },
       {
         h: '6. Proprietà',
         p: [
-          "I testi, la progettazione e l'organizzazione della banca dati di Fynda appartengono a noi e non vanno riutilizzati senza autorizzazione. Nomi, loghi, fotografie e materiali di terzi appartengono ai rispettivi titolari.",
+          "I testi, la progettazione e l'organizzazione della banca dati di fynda.market appartengono a noi e non vanno riutilizzati senza autorizzazione. Nomi, loghi, fotografie e materiali di terzi appartengono ai rispettivi titolari.",
         ],
       },
       {
@@ -344,7 +344,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '8. Modifiche',
         p: [
-          "Possiamo sviluppare Fynda, correggere o rimuovere schede e aggiornare queste condizioni. In caso di modifica sostanziale aggiorniamo la data d'entrata in vigore qui sopra.",
+          "Possiamo sviluppare fynda.market, correggere o rimuovere schede e aggiornare queste condizioni. In caso di modifica sostanziale aggiorniamo la data d'entrata in vigore qui sopra.",
         ],
       },
       {

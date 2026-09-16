@@ -26,7 +26,7 @@ export interface MailEnv {
  * Cloudflare Email Routing forwards to Delfim — so a reply lands somewhere a
  * person reads, rather than in a no-reply hole.
  */
-export const FROM = 'Fynda <contact@fynda.market>';
+export const FROM = 'fynda.market <contact@fynda.market>';
 export const SITE = 'https://fynda.market';
 
 export interface Mail {
@@ -352,32 +352,32 @@ const CLAIM_ACK: Record<Locale, Ack> = {
     subject: 'Ihre Marktseite — wir melden uns',
     body: [
       'Danke, dass Sie sich gemeldet haben: %s.',
-      'Delfim schreibt Ihnen persönlich zurück, meist innert weniger Tage. Bis dahin ändert sich an Ihrer Marktseite nichts — bevor wir dort etwas anfassen, fragen wir Sie.',
-      'Kostenlos, ohne Konto, für immer. Wenn Sie in der Zwischenzeit etwas ergänzen möchten, antworten Sie einfach auf diese E-Mail.',
+      'Delfim prüft Ihre Anfrage, und Sie erhalten Ihren persönlichen Link per E-Mail, meist innert eines Tages. Bis dahin ändert sich an Ihrer Marktseite nichts.',
+      'Kostenlos, für immer, kein Konto nötig. Wenn Sie in der Zwischenzeit etwas ergänzen möchten, antworten Sie einfach auf diese E-Mail.',
     ],
   },
   fr: {
     subject: 'Votre page — nous vous répondons',
     body: [
       'Merci de nous avoir écrit : %s.',
-      "Delfim vous répondra personnellement, en général en quelques jours. D'ici là, rien ne change sur votre page — avant d'y toucher, nous vous demandons.",
-      "Gratuit, sans compte, pour toujours. Si vous voulez ajouter quelque chose entre-temps, répondez simplement à cet e-mail.",
+      "Delfim vérifie votre demande et vous recevez votre lien personnel par e-mail, en général sous un jour. D'ici là, rien ne change sur votre page.",
+      "Gratuit, pour toujours, sans compte à créer. Si vous voulez ajouter quelque chose entre-temps, répondez simplement à cet e-mail.",
     ],
   },
   it: {
     subject: 'La tua pagina — ti rispondiamo',
     body: [
       'Grazie per averci scritto: %s.',
-      'Delfim ti risponderà personalmente, di solito in pochi giorni. Fino ad allora sulla tua pagina non cambia nulla — prima di toccare qualcosa, te lo chiediamo.',
-      'Gratuito, senza account, per sempre. Se nel frattempo vuoi aggiungere qualcosa, rispondi semplicemente a questa e-mail.',
+      'Delfim verifica la tua richiesta e ricevi il tuo link personale via e-mail, di solito entro un giorno. Fino ad allora sulla tua pagina non cambia nulla.',
+      'Gratuito, per sempre, nessun account richiesto. Se nel frattempo vuoi aggiungere qualcosa, rispondi semplicemente a questa e-mail.',
     ],
   },
   en: {
     subject: 'Your market page — we’ll be in touch',
     body: [
       'Thanks for getting in touch: %s.',
-      'Delfim will write back personally, usually within a few days. Until then nothing on your market page changes — before we touch anything there, we ask you.',
-      'Free, no account, forever. If you want to add something in the meantime, just reply to this e-mail.',
+      'Delfim checks your claim and you get your personal link by e-mail, usually within a day. Until then nothing on your market page changes.',
+      'Free, forever, no account needed. If you want to add something in the meantime, just reply to this e-mail.',
     ],
   },
 };
@@ -417,10 +417,10 @@ interface OrganiserWelcome {
 
 const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
   de: {
-    subject: 'Ihre Marktseite auf Fynda — Ihr persönlicher Link',
+    subject: 'Ihre Marktseite auf fynda.market — Ihr persönlicher Link',
     body: [
       'Guten Tag %n',
-      '%m gehört auf Fynda jetzt Ihnen. Unten ist Ihr persönlicher Link: er öffnet Ihre Marktseite zum Bearbeiten — Termine, Standzahl, drinnen oder draussen, was bei Regen gilt. Kein Passwort, kein Konto.',
+      '%m gehört auf fynda.market jetzt Ihnen. Unten ist Ihr persönlicher Link: er öffnet Ihre Marktseite zum Bearbeiten — Termine, Standzahl, drinnen oder draussen, was bei Regen gilt. Kein Passwort, kein Konto.',
       'Sieben Tage vor jedem Termin schicken wir Ihnen eine E-Mail mit drei Knöpfen: findet statt · abgesagt · etwas hat sich geändert. Ein Tipp, und Ihre Seite zeigt „Vom Veranstalter bestätigt“.',
     ],
     button: 'Meine Marktseite öffnen',
@@ -428,10 +428,10 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     photo: 'Ein Foto Ihres Marktes? Einfach als Antwort auf diese E-Mail — wir stellen es auf Ihre Seite.',
   },
   fr: {
-    subject: 'Votre page sur Fynda — votre lien personnel',
+    subject: 'Votre page sur fynda.market — votre lien personnel',
     body: [
       'Bonjour %n',
-      '%m est désormais à vous sur Fynda. Ci-dessous, votre lien personnel : il ouvre votre page pour la modifier — dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie. Pas de mot de passe, pas de compte.',
+      '%m est désormais à vous sur fynda.market. Ci-dessous, votre lien personnel : il ouvre votre page pour la modifier — dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie. Pas de mot de passe, pas de compte.',
       "Sept jours avant chaque date, nous vous envoyons un e-mail avec trois boutons : a lieu · annulé · quelque chose a changé. Un clic, et votre page affiche « Confirmé par l'organisateur ».",
     ],
     button: 'Ouvrir ma page',
@@ -439,10 +439,10 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     photo: 'Une photo de votre marché ? Répondez simplement à cet e-mail avec — nous la mettons sur votre page.',
   },
   it: {
-    subject: 'La tua pagina su Fynda — il tuo link personale',
+    subject: 'La tua pagina su fynda.market — il tuo link personale',
     body: [
       'Buongiorno %n',
-      '%m su Fynda ora è tuo. Qui sotto trovi il tuo link personale: apre la tua pagina per modificarla — date, numero di bancarelle, al coperto o all\'aperto, cosa succede se piove. Nessuna password, nessun account.',
+      '%m su fynda.market ora è tuo. Qui sotto trovi il tuo link personale: apre la tua pagina per modificarla — date, numero di bancarelle, al coperto o all\'aperto, cosa succede se piove. Nessuna password, nessun account.',
       "Sette giorni prima di ogni data ti mandiamo un'e-mail con tre pulsanti: si fa · annullato · qualcosa è cambiato. Un tocco, e la tua pagina mostra «Confermato dall'organizzatore».",
     ],
     button: 'Apri la mia pagina',
@@ -450,10 +450,10 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     photo: 'Una foto del tuo mercatino? Rispondi a questa e-mail allegandola — la mettiamo sulla tua pagina.',
   },
   en: {
-    subject: 'Your market page on Fynda — your personal link',
+    subject: 'Your market page on fynda.market — your personal link',
     body: [
       'Hello %n',
-      '%m is now yours on Fynda. Below is your personal link: it opens your market page for editing — dates, number of stalls, indoor or outdoor, what happens when it rains. No password, no account.',
+      '%m is now yours on fynda.market. Below is your personal link: it opens your market page for editing — dates, number of stalls, indoor or outdoor, what happens when it rains. No password, no account.',
       'Seven days before each date we send you an e-mail with three buttons: it\'s on · cancelled · something changed. One tap, and your page shows “Confirmed by the organiser”.',
     ],
     button: 'Open my market page',
@@ -508,7 +508,7 @@ interface Ask {
   subjectOne: string;   // %m market, %d date
   subjectMany: string;  // %n count
   hello: string;        // %n name
-  intro: string;        // one date: "Fynda lists your market on %d, %t at %p. Is that right?"
+  intro: string;        // one date: "fynda.market lists your market on %d, %t at %p. Is that right?"
   introMany: string;
   on: string;
   cancelled: string;
@@ -521,8 +521,8 @@ const ASK: Record<Locale, Ask> = {
     subjectOne: '%m, %d — findet statt?',
     subjectMany: '%n Termine nächste Woche — finden statt?',
     hello: 'Guten Tag %n',
-    intro: 'Fynda zeigt Ihren Markt am %d%t in %p. Stimmt das?',
-    introMany: 'Fynda zeigt diese Termine von Ihnen für nächste Woche. Stimmen sie?',
+    intro: 'fynda.market zeigt Ihren Markt am %d%t in %p. Stimmt das?',
+    introMany: 'fynda.market zeigt diese Termine von Ihnen für nächste Woche. Stimmen sie?',
     on: 'Ja, findet statt',
     cancelled: 'Abgesagt',
     changed: 'Etwas hat sich geändert',
@@ -532,8 +532,8 @@ const ASK: Record<Locale, Ask> = {
     subjectOne: '%m, %d — a lieu ?',
     subjectMany: '%n dates la semaine prochaine — ont lieu ?',
     hello: 'Bonjour %n',
-    intro: 'Fynda annonce votre marché le %d%t à %p. Est-ce exact ?',
-    introMany: 'Fynda annonce ces dates de votre part pour la semaine prochaine. Sont-elles exactes ?',
+    intro: 'fynda.market annonce votre marché le %d%t à %p. Est-ce exact ?',
+    introMany: 'fynda.market annonce ces dates de votre part pour la semaine prochaine. Sont-elles exactes ?',
     on: 'Oui, a lieu',
     cancelled: 'Annulé',
     changed: 'Quelque chose a changé',
@@ -543,8 +543,8 @@ const ASK: Record<Locale, Ask> = {
     subjectOne: '%m, %d — si fa?',
     subjectMany: '%n date la settimana prossima — si fanno?',
     hello: 'Buongiorno %n',
-    intro: 'Fynda annuncia il tuo mercatino il %d%t a %p. È corretto?',
-    introMany: 'Fynda annuncia queste tue date per la settimana prossima. Sono corrette?',
+    intro: 'fynda.market annuncia il tuo mercatino il %d%t a %p. È corretto?',
+    introMany: 'fynda.market annuncia queste tue date per la settimana prossima. Sono corrette?',
     on: 'Sì, si fa',
     cancelled: 'Annullato',
     changed: 'Qualcosa è cambiato',
@@ -554,8 +554,8 @@ const ASK: Record<Locale, Ask> = {
     subjectOne: '%m, %d — still on?',
     subjectMany: '%n dates next week — still on?',
     hello: 'Hello %n',
-    intro: 'Fynda lists your market on %d%t at %p. Is that right?',
-    introMany: 'Fynda lists these dates of yours for next week. Are they right?',
+    intro: 'fynda.market lists your market on %d%t at %p. Is that right?',
+    introMany: 'fynda.market lists these dates of yours for next week. Are they right?',
     on: "Yes, it's on",
     cancelled: 'Cancelled',
     changed: 'Something changed',

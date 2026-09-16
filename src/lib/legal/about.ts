@@ -10,15 +10,15 @@ import type { LegalDoc } from './doc';
 
 export const ABOUT: Record<Locale, LegalDoc> = {
   en: {
-    title: 'About Fynda',
-    description: 'Who is behind Fynda, and how the market information stays accurate.',
-    heading: 'About Fynda',
+    title: 'About fynda.market',
+    description: 'Who is behind fynda.market, and how the market information stays accurate.',
+    heading: 'About fynda.market',
     blocks: [
       {
         h: 'The story',
         p: [
-          "I'm Delfim, and I built Fynda because I kept finding out about flea markets after they'd already happened. A friend would mention one, or I'd see photos online — always a day too late. Switzerland has hundreds of these markets, but no single place actually tracks them properly: dates change, markets get cancelled, and most listings you find are months out of date the moment you see them.",
-          'So I started checking. Every market on Fynda is verified against its actual organiser — not scraped from somewhere and left to rot.',
+          "I'm Delfim, and I built fynda.market because I kept finding out about flea markets after they'd already happened. A friend would mention one, or I'd see photos online — always a day too late. Switzerland has hundreds of these markets, but no single place actually tracks them properly: dates change, markets get cancelled, and most listings you find are months out of date the moment you see them.",
+          'So I started checking. Every market on fynda.market is verified against its actual organiser — not scraped from somewhere and left to rot.',
         ],
       },
       {
@@ -29,27 +29,27 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       },
       {
         h: "It's free",
-        p: ['Fynda is free to use and always will be.'],
+        p: ['fynda.market is free to use and always will be.'],
       },
       {
         h: 'Help make it better',
         p: [
-          "Right now it's just me, building this properly, market by market. If you spot something wrong, reach out — it's the fastest way to make Fynda better for the next person. You can also reach me directly at contact@fynda.market.",
+          "Right now it's just me, building this properly, market by market. If you spot something wrong, reach out — it's the fastest way to make fynda.market better for the next person. You can also reach me directly at contact@fynda.market.",
         ],
       },
     ],
   },
 
   de: {
-    title: 'Über Fynda',
-    description: 'Wer hinter Fynda steht und wie die Marktangaben aktuell bleiben.',
-    heading: 'Über Fynda',
+    title: 'Über fynda.market',
+    description: 'Wer hinter fynda.market steht und wie die Marktangaben aktuell bleiben.',
+    heading: 'Über fynda.market',
     blocks: [
       {
         h: 'Die Geschichte',
         p: [
-          'Ich bin Delfim, und ich habe Fynda gebaut, weil ich von Flohmärkten immer erst erfahren habe, wenn sie schon vorbei waren. Jemand erwähnte einen, oder ich sah Fotos im Netz — immer einen Tag zu spät. In der Schweiz gibt es Hunderte solcher Märkte, aber keinen einzigen Ort, der sie sauber nachführt: Termine ändern sich, Märkte fallen aus, und die meisten Einträge, die man findet, sind schon veraltet, wenn man sie sieht.',
-          'Also habe ich angefangen nachzufragen. Jeder Markt auf Fynda ist beim Veranstalter selbst geprüft — nicht irgendwo abgeschöpft und dann liegen gelassen.',
+          'Ich bin Delfim, und ich habe fynda.market gebaut, weil ich von Flohmärkten immer erst erfahren habe, wenn sie schon vorbei waren. Jemand erwähnte einen, oder ich sah Fotos im Netz — immer einen Tag zu spät. In der Schweiz gibt es Hunderte solcher Märkte, aber keinen einzigen Ort, der sie sauber nachführt: Termine ändern sich, Märkte fallen aus, und die meisten Einträge, die man findet, sind schon veraltet, wenn man sie sieht.',
+          'Also habe ich angefangen nachzufragen. Jeder Markt auf fynda.market ist beim Veranstalter selbst geprüft — nicht irgendwo abgeschöpft und dann liegen gelassen.',
         ],
       },
       {
@@ -60,27 +60,27 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       },
       {
         h: 'Es ist kostenlos',
-        p: ['Fynda ist kostenlos und bleibt es.'],
+        p: ['fynda.market ist kostenlos und bleibt es.'],
       },
       {
         h: 'Helfen Sie mit',
         p: [
-          'Im Moment bin das nur ich, Markt für Markt. Wenn Ihnen etwas Falsches auffällt, schreiben Sie mir — das ist der schnellste Weg, Fynda für die nächste Person besser zu machen. Sie erreichen mich direkt unter contact@fynda.market.',
+          'Im Moment bin das nur ich, Markt für Markt. Wenn Ihnen etwas Falsches auffällt, schreiben Sie mir — das ist der schnellste Weg, fynda.market für die nächste Person besser zu machen. Sie erreichen mich direkt unter contact@fynda.market.',
         ],
       },
     ],
   },
 
   fr: {
-    title: 'À propos de Fynda',
-    description: 'Qui est derrière Fynda, et comment les informations restent exactes.',
-    heading: 'À propos de Fynda',
+    title: 'À propos de fynda.market',
+    description: 'Qui est derrière fynda.market, et comment les informations restent exactes.',
+    heading: 'À propos de fynda.market',
     blocks: [
       {
         h: "L'histoire",
         p: [
-          "Je m'appelle Delfim, et j'ai créé Fynda parce que j'apprenais toujours l'existence des brocantes une fois qu'elles étaient passées. Quelqu'un en mentionnait une, ou je voyais des photos en ligne — toujours un jour trop tard. La Suisse compte des centaines de ces marchés, mais aucun endroit ne les suit vraiment : les dates changent, des marchés sont annulés, et la plupart des annonces que l'on trouve sont périmées au moment même où on les lit.",
-          "Alors j'ai commencé à vérifier. Chaque marché sur Fynda est vérifié auprès de son organisateur — pas aspiré quelque part puis laissé à l'abandon.",
+          "Je m'appelle Delfim, et j'ai créé fynda.market parce que j'apprenais toujours l'existence des brocantes une fois qu'elles étaient passées. Quelqu'un en mentionnait une, ou je voyais des photos en ligne — toujours un jour trop tard. La Suisse compte des centaines de ces marchés, mais aucun endroit ne les suit vraiment : les dates changent, des marchés sont annulés, et la plupart des annonces que l'on trouve sont périmées au moment même où on les lit.",
+          "Alors j'ai commencé à vérifier. Chaque marché sur fynda.market est vérifié auprès de son organisateur — pas aspiré quelque part puis laissé à l'abandon.",
         ],
       },
       {
@@ -91,12 +91,12 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       },
       {
         h: "C'est gratuit",
-        p: ['Fynda est gratuit et le restera.'],
+        p: ['fynda.market est gratuit et le restera.'],
       },
       {
         h: 'Aidez-nous à faire mieux',
         p: [
-          "Pour l'instant, il n'y a que moi, marché après marché. Si vous repérez une erreur, écrivez-moi — c'est le moyen le plus rapide d'améliorer Fynda pour la personne suivante. Vous pouvez me joindre directement à contact@fynda.market.",
+          "Pour l'instant, il n'y a que moi, marché après marché. Si vous repérez une erreur, écrivez-moi — c'est le moyen le plus rapide d'améliorer fynda.market pour la personne suivante. Vous pouvez me joindre directement à contact@fynda.market.",
         ],
       },
     ],
@@ -104,14 +104,14 @@ export const ABOUT: Record<Locale, LegalDoc> = {
 
   it: {
     title: 'Chi siamo',
-    description: 'Chi c’è dietro Fynda e come le informazioni restano esatte.',
+    description: 'Chi c’è dietro fynda.market e come le informazioni restano esatte.',
     heading: 'Chi siamo',
     blocks: [
       {
         h: 'La storia',
         p: [
-          'Sono Delfim e ho creato Fynda perché dei mercatini delle pulci venivo a sapere sempre a cose fatte. Qualcuno ne nominava uno, o vedevo delle foto online — sempre con un giorno di ritardo. In Svizzera ci sono centinaia di questi mercatini, ma nessun posto li segue davvero: le date cambiano, i mercatini vengono annullati e la maggior parte degli annunci che si trovano è già vecchia nel momento in cui la si legge.',
-          'Così ho cominciato a verificare. Ogni mercatino su Fynda è verificato presso il suo organizzatore — non raccolto da qualche parte e poi lasciato lì.',
+          'Sono Delfim e ho creato fynda.market perché dei mercatini delle pulci venivo a sapere sempre a cose fatte. Qualcuno ne nominava uno, o vedevo delle foto online — sempre con un giorno di ritardo. In Svizzera ci sono centinaia di questi mercatini, ma nessun posto li segue davvero: le date cambiano, i mercatini vengono annullati e la maggior parte degli annunci che si trovano è già vecchia nel momento in cui la si legge.',
+          'Così ho cominciato a verificare. Ogni mercatino su fynda.market è verificato presso il suo organizzatore — non raccolto da qualche parte e poi lasciato lì.',
         ],
       },
       {
@@ -122,12 +122,12 @@ export const ABOUT: Record<Locale, LegalDoc> = {
       },
       {
         h: 'È gratuito',
-        p: ['Fynda è gratuito e lo resterà.'],
+        p: ['fynda.market è gratuito e lo resterà.'],
       },
       {
         h: 'Ci aiuti a migliorarlo',
         p: [
-          'Per ora ci sono soltanto io, un mercatino alla volta. Se nota qualcosa di sbagliato, mi scriva — è il modo più veloce per rendere Fynda migliore per la persona successiva. Mi può raggiungere direttamente a contact@fynda.market.',
+          'Per ora ci sono soltanto io, un mercatino alla volta. Se nota qualcosa di sbagliato, mi scriva — è il modo più veloce per rendere fynda.market migliore per la persona successiva. Mi può raggiungere direttamente a contact@fynda.market.',
         ],
       },
     ],
