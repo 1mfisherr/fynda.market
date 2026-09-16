@@ -55,7 +55,7 @@ German incumbent. The German market is genuinely fragmented. `troedelmarkt.de` i
 8. **Organiser onboarding ranges from frictionless to hostile.** Best: flohmarktkompass. Worst: vide-greniers
    (SSO login wall *before* you can see the submit form) and hubis (email only, CHF 3–15 per listing).
 9. **Monetization is uniformly tiny.** brocabrac `Compte sans pub` 6 €/year. vide-greniers from 6 €/year.
-   flohmarktkompass `Trödelgold` 5 €/month or 50 €/year. **Nobody in this category has found real revenue.**
+   flohmarktkompass `Trödelgold` 5 €/month or 50 €/year (2026-09-16: also earned free via a review flyer, or sold as a 30-day highlight). **Nobody in this category has found real revenue.**
    The supply-side thesis isn't contradicted — but nobody has proved it either.
 10. **Facet-URL discipline varies wildly.** brocabrac generates real crawlable date + type URLs per city and
     caps month links at **three forward months** — the only horizon limit found in the wild, and it looks
