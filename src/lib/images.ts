@@ -19,6 +19,25 @@ export const THUMB_ABOVE_WIDTH = 200;
 export const thumbUrl = (url: string) => url.replace(/\.webp$/, '-thumb.webp');
 
 /**
+ * The 720px hero, for phones. The 1440px file is 70% of a market page's bytes
+ * and was the largest-paint element on every phone (2026-09-16); a screen 375px
+ * wide never needed it. Written beside the hero by import-images.mjs.
+ */
+export const MEDIUM_WIDTH = 720;
+export const mediumUrl = (url: string) => url.replace(/\.webp$/, '-720.webp');
+
+/** srcset + sizes for a hero, or undefined for anything that is not our own file. */
+export function heroSources(url: string): { srcset: string; sizes: string } | undefined {
+  if (!url.endsWith('.webp')) return undefined;
+  return {
+    srcset: `${mediumUrl(url)} ${MEDIUM_WIDTH}w, ${url} 1440w`,
+    // The hero column is capped at 720px above the one breakpoint; below it the
+    // photo is as wide as the screen.
+    sizes: '(min-width: 900px) 720px, 100vw',
+  };
+}
+
+/**
  * The file to request for a box this wide. Anything that is not one of our own
  * .webp files is returned untouched — there is nothing to swap it for.
  */

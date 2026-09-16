@@ -76,8 +76,10 @@ const sections = [
      are in the footer, so nothing is unreachable — this is the desk getting
      the room the phone does not have. */
   .sections { display: none; }
-  .langs { display: flex; gap: var(--space-1); color: var(--color-quiet); font-size: var(--text-micro); }
-  .langs a { padding-inline: var(--space-half); }
+  .langs { display: flex; gap: var(--space-half); color: var(--color-quiet); font-size: var(--text-micro); }
+  /* A tap target of at least 44px, without the row growing: the padding is
+     the target, the row keeps its line height. It was a 20px-wide letter pair. */
+  .langs a { padding: var(--space-3) var(--space-1); margin-block: calc(-1 * var(--space-3)); }
 
   /* Nothing is competing for the line any more, so the mark goes back up the
      type ramp. Keep in step with --breakpoint-wide. */

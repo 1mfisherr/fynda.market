@@ -1,11 +1,17 @@
 ---
 import type { Market } from '../lib/types';
-import { photoUrl } from '../lib/images';
+import { THUMB_ABOVE_WIDTH, heroSources, photoUrl } from '../lib/images';
 import PlaceholderArt from './PlaceholderArt.astro';
 interface Props { market: Market; width: number; height: number; loading?: 'eager' | 'lazy'; }
 const { market, width, height, loading = 'lazy' } = Astro.props;
 // A 74px square asks for the 148px file, not the 1440px hero — src/lib/images.ts.
 const src = market.imageUrl ? photoUrl(market.imageUrl, width) : undefined;
+// A hero offers the 720px file to phones. An eager hero is the largest paint
+// on the page, so the browser is told to fetch it first.
+const sources = src && width > THUMB_ABOVE_WIDTH ? heroSources(src) : undefined;
+const priority: 'high' | undefined = loading === 'eager' ? 'high' : undefined;
 ---
-{src ? <img {src} alt="" {width} {height} {loading} decoding="async" /> : <PlaceholderArt kind={market.kind} seed={market.slug} rounded="sm" />}
+{src
+  ? <img {src} srcset={sources?.srcset} sizes={sources?.sizes} alt="" {width} {height} {loading} decoding="async" fetchpriority={priority} />
+  : <PlaceholderArt kind={market.kind} seed={market.slug} rounded="sm" />}
 <style>img { display:block; width:100%; height:100%; object-fit:cover; }</style>

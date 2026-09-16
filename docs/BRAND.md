@@ -31,7 +31,7 @@ The most important fact on the page is the only accented thing on the page. Hier
 | `--color-accent` | **`#FF4A2B`** Zinnober | Dates, "findet statt", the logo dot, the primary action, **a form error**. Nothing else |
 | `--color-ink` | `#111110` | All text, headings, primary buttons |
 | `--color-grey` | `#6E6C68` | Secondary text |
-| `--color-quiet` | `#9A968F` | Timestamps, provenance, disabled |
+| `--color-quiet` | `#75706A` | Timestamps, provenance, disabled. 4.6:1 on white — it was `#9A968F` until 2026-09-16, which failed contrast |
 | `--color-line` | `#E8E6E2` | Hairlines, borders |
 | `--color-paper` | `#F5F4F2` | Panels, chips, image placeholders |
 | `--color-white` | `#FFFFFF` | Page ground |

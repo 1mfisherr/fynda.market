@@ -24,10 +24,9 @@ export function page(
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>${escape(title)} — fynda.market</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+<link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400 800; font-display: swap; src: url("/fonts/schibsted-grotesk-latin.woff2") format("woff2"); }
   /* Mirrors src/styles/tokens.css and src/components/Wordmark.astro by hand:
      a Function may not import from src/. Change those, change this. */
   :root { color-scheme: light; }

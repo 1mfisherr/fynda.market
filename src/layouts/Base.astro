@@ -42,12 +42,9 @@ import Analytics from '../components/Analytics.astro';
     ))}
     {indexable && fallback && <link rel="alternate" hreflang="x-default" href={href(fallback.path)} />}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap"
-    />
+    {/* Self-hosted since 2026-09-16 — src/styles/base.css says why. Preloaded so
+        the first paint does not wait for the stylesheet to discover it. */}
+    <link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

@@ -53,7 +53,7 @@ import sharp from 'sharp';
 
 import { withClient, DB_URL } from './db.mjs';
 import { slugify } from './slugify.mjs';
-import { thumbUrl } from '../src/lib/images.ts';
+import { MEDIUM_WIDTH, mediumUrl, thumbUrl } from '../src/lib/images.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -113,6 +113,10 @@ await withClient(DB_URL, async (client) => {
         .resize({ width: MAX_WIDTH, withoutEnlargement: true })
         .webp({ quality: QUALITY })
         .toFile(join(target, named));
+      await sharp(from)
+        .resize({ width: MEDIUM_WIDTH, withoutEnlargement: true })
+        .webp({ quality: QUALITY })
+        .toFile(join(target, mediumUrl(named)));
       await sharp(from)
         .resize({ width: THUMB, height: THUMB, fit: 'cover' })
         .webp({ quality: QUALITY })

@@ -1,0 +1,6 @@
+# Cloudflare Pages headers. The font files never change under this name;
+# a photo can be replaced under the same name by import-images.mjs, so a day.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=86400

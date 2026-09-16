@@ -17,7 +17,9 @@
 
   --color-ink: #111110;
   --color-grey: #6E6C68;
-  --color-quiet: #9A968F;
+  /* 4.6:1 on white. It was #9A968F (2.9:1), which failed contrast on every
+     timestamp and provenance line — the words that carry the trust claim. */
+  --color-quiet: #75706A;
   --color-line: #E8E6E2;
   --color-paper: #F5F4F2;
   --color-surface: #FFFFFF;
@@ -26,8 +28,8 @@
 
   /* status — never colour alone, always paired with a word */
   --color-status-confirmed: var(--color-accent);
-  --color-status-cancelled: #9A968F;
-  --color-status-unverified: #9A968F;
+  --color-status-cancelled: #75706A;
+  --color-status-unverified: #75706A;
 
   /* line colours — market type, like a transit map */
   --line-floh: #FF4A2B;
