@@ -30,7 +30,7 @@ Not built: tags on any market · country page · text search · distance on card
 
 1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
 2. **Analytics.** Send agents to work out what to measure to improve the site and what a monetisable dataset looks like; then GA4 / Clarity behind the consent already built, if they add anything our tables cannot.
-3. **Visual pass** at 375 and 1440 with the logo Delfim brings; the organiser-page copy in his words.
+3. **Visual pass** at 375 and 1440 with the logo; the organiser-page copy in Delfim's words. Three logo options sit uncommitted in `design/screens/logo-option-*.png` — Delfim picks one, then it goes into `Wordmark.astro`, the Function pages and the mails.
 4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
 5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
 6. Buffer.
