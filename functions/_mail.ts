@@ -617,6 +617,95 @@ export function organiserAsk(locale: Locale, name: string, items: AskItem[]): Om
 }
 
 /* -------------------------------------------------------------------------- */
+/* The cancellation alert                                                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * "Cancelled — the organiser told us at 09:14." Sent to every subscriber whose
+ * subscription covers the market, the moment the organiser presses the button.
+ * The one mail the subscription exists for; it carries the unsubscribe link
+ * and headers like the digest, because it goes to a list.
+ */
+interface Alert {
+  subject: string;   // %m %d
+  body: string[];    // %m %d %t %p
+  link: string;
+  unsubscribe: string;
+}
+
+const ALERT: Record<Locale, Alert> = {
+  de: {
+    subject: 'Abgesagt: %m, %d',
+    body: [
+      '%m in %p am %d findet nicht statt. Der Veranstalter hat es uns um %t Uhr gemeldet.',
+      'Damit Sie nicht umsonst hinfahren — deshalb gibt es diese E-Mail.',
+    ],
+    link: 'Zur Marktseite',
+    unsubscribe: 'Abmelden',
+  },
+  fr: {
+    subject: 'Annulé : %m, %d',
+    body: [
+      "%m à %p le %d n'a pas lieu. L'organisateur nous l'a signalé à %t.",
+      "Pour que vous ne fassiez pas le déplacement pour rien — c'est la raison d'être de cet e-mail.",
+    ],
+    link: 'Voir la page du marché',
+    unsubscribe: 'Se désabonner',
+  },
+  it: {
+    subject: 'Annullato: %m, %d',
+    body: [
+      "%m a %p il %d non si fa. L'organizzatore ce l'ha comunicato alle %t.",
+      'Perché tu non faccia il viaggio per niente — questa e-mail esiste per questo.',
+    ],
+    link: 'Alla pagina del mercatino',
+    unsubscribe: 'Disiscriviti',
+  },
+  en: {
+    subject: 'Cancelled: %m, %d',
+    body: [
+      '%m in %p on %d is not taking place. The organiser told us at %t.',
+      "So you don't travel for nothing — that is what this e-mail is for.",
+    ],
+    link: 'To the market page',
+    unsubscribe: 'Unsubscribe',
+  },
+};
+
+export function cancellationMail(
+  locale: Locale,
+  market: string,
+  town: string,
+  date: string,
+  toldAt: Date,
+  marketUrl: string,
+  unsubscribeToken: string
+): Omit<Mail, 'to'> {
+  const copy = ALERT[locale] ?? ALERT.en;
+  const when = new Intl.DateTimeFormat(TAG[locale], { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Zurich' }).format(toldAt);
+  const fill = (line: string) =>
+    line.replace('%m', market).replace('%p', town).replace('%d', day(locale, date)).replace('%t', when);
+  const body = copy.body.map(fill);
+  const unsub = unsubscribeUrl(unsubscribeToken);
+
+  const footer = `
+  <p style="margin:8px 0 24px;"><a href="${marketUrl}" style="color:#16161a;">${escape(copy.link)}</a></p>
+  <p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;">
+    <a href="${unsub}" style="color:#6b6b70;">${escape(copy.unsubscribe)}</a>
+  </p>`;
+
+  return {
+    subject: fill(copy.subject),
+    html: column(locale, body, footer),
+    text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.link}: ${marketUrl}\n\n${copy.unsubscribe}: ${unsub}\n`,
+    headers: {
+      'List-Unsubscribe': `<${unsub}>`,
+      'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+    },
+  };
+}
+
+/* -------------------------------------------------------------------------- */
 /* The weekly digest                                                          */
 /* -------------------------------------------------------------------------- */
 

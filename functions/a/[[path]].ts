@@ -22,7 +22,7 @@
 
 import { offerDecision, type AdminEnv } from '../_admin';
 import { ipHash } from '../_form';
-import { dayLabel, type Locale, type MailEnv } from '../_mail';
+import { cancellationMail, dayLabel, sendBatch, type Locale, type MailEnv } from '../_mail';
 import { organiserFromToken, type Organiser } from '../_organiser';
 import { copyFor, type OrganiserCopy } from '../_organiser-copy';
 import { escape, page } from '../_page';
@@ -185,7 +185,7 @@ async function handle({ request, env, params, waitUntil }: Parameters<PagesFunct
     });
     await record('cancelled', 'date');
     waitUntil(requestPublish(env, `organiser cancelled ${market.slug} ${occurrence.date}`));
-    // Day 4: the alert to subscribers nearby goes here.
+    waitUntil(alertSubscribers(env, occurrence, market, names, new Date(now)));
 
     return page(locale, c.cancelledTitle, `<h1 class="status">${escape(c.cancelledTitle)}</h1><p>${escape(fill(c.cancelledBody))}</p>${pageLink}`);
   }
@@ -401,4 +401,89 @@ async function saveEdit(env: Env, request: Request, organiser: Organiser, market
   });
 
   return done.length ? done.join(', ') : 'nothing changed';
+}
+
+/* -------------------------------------------------------------------------- */
+/* Telling the people who saved a Saturday for it                             */
+/* -------------------------------------------------------------------------- */
+
+interface Recipient {
+  id: string;
+  email: string;
+  locale: string;
+  unsubscribe_token: string;
+}
+
+/**
+ * Everyone whose subscription covers this market and has not been told about
+ * this date — the SQL function does the matching, the same rule the digest
+ * uses. Rows are written before the send; a batch that fails takes its rows
+ * back so the next attempt can try again.
+ */
+async function alertSubscribers(env: Env, occurrence: Occurrence, market: Market, names: { market: string; town: string }, toldAt: Date): Promise<void> {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return;
+
+  let recipients: Recipient[] = [];
+  try {
+    const res = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/cancellation_recipients`, {
+      method: 'POST',
+      headers: {
+        apikey: env.SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ p_occurrence: occurrence.id }),
+    });
+    if (!res.ok) { console.log('cancellation_recipients rejected', res.status, await res.text()); return; }
+    recipients = (await res.json()) as Recipient[];
+  } catch (error) {
+    console.log('cancellation_recipients failed', String(error));
+    return;
+  }
+  if (recipients.length === 0) return;
+
+  for (let i = 0; i < recipients.length; i += 100) {
+    const chunk = recipients.slice(i, i + 100);
+
+    // Written first, and as one insert: the key refuses a second mail.
+    const rows = chunk.map((r) => ({ subscriber_id: r.id, occurrence_id: occurrence.id }));
+    const written = await fetch(`${env.SUPABASE_URL}/rest/v1/newsletter_alerts`, {
+      method: 'POST',
+      headers: {
+        apikey: env.SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify(rows),
+    });
+    if (!written.ok) { console.log('newsletter_alerts insert rejected', written.status, await written.text()); continue; }
+
+    const mails = chunk.map((r) => {
+      const locale = (r.locale ?? 'en') as Locale;
+      // The names the mail carries are the organiser's-language ones; a mixed
+      // list is rare and a market name is a market name.
+      return {
+        to: r.email,
+        ...cancellationMail(
+          locale, names.market, names.town, occurrence.date, toldAt,
+          `https://fynda.market/${locale}/${MARKET_WORD[locale]}/${market.slug}/`,
+          r.unsubscribe_token
+        ),
+      };
+    });
+
+    const result = await sendBatch(env, mails);
+    if (result.error) {
+      console.log('cancellation alert batch failed', result.error);
+      // Take the rows back so a retry can send.
+      const ids = chunk.map((r) => r.id).join(',');
+      await fetch(`${env.SUPABASE_URL}/rest/v1/newsletter_alerts?occurrence_id=eq.${occurrence.id}&subscriber_id=in.(${ids})`, {
+        method: 'DELETE',
+        headers: { apikey: env.SUPABASE_SERVICE_ROLE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` },
+      });
+    } else {
+      console.log(`cancellation alert: ${result.sent} sent for ${market.slug} ${occurrence.date}`);
+    }
+  }
 }

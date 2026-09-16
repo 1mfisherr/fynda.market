@@ -16,7 +16,7 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 | Runtime code | **Pages Functions** in `functions/`: `_middleware.ts` (page views), `e.ts` (events), `n.ts` / `r.ts` / `o.ts` / `u.ts` (newsletter, report, claim, unsubscribe), `w.ts` (Resend's delivery webhook) | The only things a static site cannot do: count a visit and accept a form. Nothing reads the database at runtime |
 | Database | **Supabase Postgres 17 + PostGIS**, `eu-west-1`, read by the build through `pg` (`src/lib/supabase.ts`) | Radius search is one indexed function. Free tier carries the pilot |
 | "Today", "this weekend" | Baked in at the 03:00 build; whether a market is open *now* is filled in by the browser | A page written at 03:00 cannot know 14:00. Without JavaScript the page still says "Heute" and the hours |
-| Scheduled work | **GitHub Actions cron + plain Node scripts:** `publish.yml` nightly, `digest.yml` Friday 06:00 UTC | Two jobs. No Temporal, Airflow, n8n, LangChain. The AI-driven discovery and freshness loops with a `proposals` table are designed (below) and not built |
+| Scheduled work | **GitHub Actions cron + plain Node scripts:** `publish.yml` nightly (and on demand, `workflow_dispatch` from a Function when an organiser presses a button), `digest.yml` Friday 06:00 UTC, `organisers.yml` daily 06:00 UTC behind `ORGANISER_SENDING` | Three jobs. No Temporal, Airflow, n8n, LangChain. The AI-driven discovery and freshness loops with a `proposals` table are designed (below) and not built |
 | E-mail | **Resend** batch API, one sender `Fynda <contact@fynda.market>`, list and consent in our Postgres. Inbound through Cloudflare Email Routing | Segmentation is a `where` clause, not a per-contact fee. Never Audiences/Broadcasts — they bill on stored contacts |
 | Images | **WebP in `public/images/`**, two sizes per market, committed | 157 markets × 2 files is small enough to live in git. R2 when it is not |
 | Analytics | Own events in our Postgres, read locally with Metabase; Search Console by CSV import | See §Analytics |
@@ -32,6 +32,9 @@ What runs, where, and the constraints behind each choice. Written 2026-08-27 as 
 | `RESEND_API_KEY` | Cloudflare Pages secret and GitHub secret | Welcome mail, digest |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Cloudflare Pages secrets | The form ping (bot: @fyndamarketbot) |
 | `RESEND_WEBHOOK_SECRET` | Cloudflare Pages secret | `functions/w.ts` verifies Resend's delivery events with it. A changed Pages secret needs a redeploy to be seen |
+| `ADMIN_SIGNING_SECRET` | Cloudflare Pages secret, GitHub secret, `.env.local` | Signs the Approve/Reject links in Telegram and derives every organiser link (`functions/_link.ts`). **Must be the same value in all three places** or every button lands on "link no longer valid" |
+| `GITHUB_DISPATCH_TOKEN` | Cloudflare Pages secret | Fine-grained token, Actions: write, this repo only. A button press runs `publish.yml` now instead of at 03:00 (`functions/_publish.ts`) |
+| `ORGANISER_SENDING` | GitHub Actions **variable**, `on` | Anything else turns the daily organiser mail into a dry run |
 | `NEWSLETTER_SENDING` | GitHub Actions **variable**, `on` | Anything else turns the Friday run into a dry run — and put the "being set up" hedge back into `utility-copy.ts` and `_mail.ts` in the same commit |
 
 ## Verified constraints

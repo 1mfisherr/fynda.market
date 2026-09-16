@@ -157,7 +157,9 @@ facts   (entity_type, entity_id, field, value, source_type, source_ref,
          observed_at, recorded_at, confidence, superseded_by)
 
 tags, market_tags, organisers, market_private, reports, organiser_claims
-newsletter_subscribers, newsletter_sends, newsletter_events
+newsletter_subscribers, newsletter_sends, newsletter_events, newsletter_alerts
+organiser_links, organiser_mail_sends, organiser_answers, organiser_edits   -- 2026-09-16
+admin_actions, publish_requests
 ```
 
 ### The three tables a visitor can write to
@@ -167,6 +169,14 @@ newsletter_subscribers, newsletter_sends, newsletter_events
 **`reports.market_id` is nullable, deliberately** (`20260909120000`). A report from a market page carries the market's id and resolves; a report typed into the footer form names a market in words. `market_text` is kept in both cases — it is the evidence, the id is our reading of it — and a null id means a person has to match it, which is the whole of `reports_unmatched_idx`. The alternatives were dropping an unmatchable report or guessing a match, and the second is worse: it would attach a cancellation to a market that is running.
 
 **A claim is not a report.** A report says a fact is wrong; a claim says a person will answer for a market from now on. They are triaged differently and only one of them ends in the organiser relationship `PRODUCT.md` calls the moat, so `organiser_claims` is its own table.
+
+### The organiser's identity is a link
+
+`[DECIDED 2026-09-16, research in reference/organiser-research/]` **No login, ever.** `organiser_links` holds one live row per organiser: the token in the URL is `HMAC(ADMIN_SIGNING_SECRET, link id)`, the table stores only its SHA-256, so a copy of the database yields no working link and the daily mail script (same secret on GitHub) can build the buttons without a token ever being stored. Minting a new link revokes the old.
+
+Every button press is an `organiser_answers` row (`on | cancelled | changed`, scope `date | market`); every mail is an `organiser_mail_sends` row written *before* the send. Those two tables are the answer rate — the one number that decides whether more is built for organisers (`organiser_funnel` view). "On" sets `occurrences.origin = organiser` and `confirmed_at`; "cancelled, just this date" sets `status = cancelled, cancellation_note = organiser`; "the market has stopped" and free-text edits go to Delfim. The three facts an organiser supplies — `markets.stall_count`, `setting`, `rain_policy` — render only when set.
+
+**Delfim's decisions are `admin_actions`:** one row per Approve/Reject pair offered in Telegram, single use, fourteen days, signed with the same secret. `publish_requests` logs every on-demand rebuild a button press asked GitHub for, folded to one per ten minutes.
 
 ### What v1 got right — carried over
 
