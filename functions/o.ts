@@ -16,11 +16,12 @@
 import { localeOf } from './_collect';
 import {
   EMAIL, crossOrigin, insertRow, ipHash, json, looksLikeBot, marketExists,
-  pathFrom, ping, readBody, seeOther, text, tooFast, trapped, type FormEnv,
+  pathFrom, readBody, seeOther, text, tooFast, trapped, type FormEnv,
 } from './_form';
 import { claimAck, sendMail, type Locale, type MailEnv } from './_mail';
+import { offerDecision, type AdminEnv } from './_admin';
 
-interface Env extends FormEnv, MailEnv {}
+interface Env extends FormEnv, MailEnv, AdminEnv {}
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUntil }) => {
   if (crossOrigin(request)) return json(403, { ok: false });
@@ -89,10 +90,14 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * the source of truth for a market and is waiting to hear back.
    */
   const where = market_id ? '' : ' [unmatched]';
-  waitUntil(ping(
-    env,
-    `ORGANISER: ${market_text}${where}\n${organiser_name} <${email}>\n${town ?? '—'} (${locale})`
-  ));
+  const summary = `ORGANISER: ${market_text}${where}\n${organiser_name} <${email}>\n${town ?? '—'} (${locale})`;
+  /*
+   * Approve and Reject travel with the message. Approving creates the
+   * organiser, points the market at them, mints their personal link and sends
+   * the welcome mail — functions/adm. An unmatched claim still gets the links;
+   * approve then says to set the market first.
+   */
+  waitUntil(offerDecision(env, new URL(request.url).origin, 'claim', { claim_id: id }, summary));
   waitUntil(sendMail(env, { to: email, ...claimAck(locale as Locale, market_text) }));
 
   return done();

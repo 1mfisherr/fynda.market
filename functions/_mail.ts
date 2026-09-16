@@ -395,6 +395,96 @@ export const reportAck = (locale: Locale, market: string) => ack(locale, REPORT_
 export const claimAck = (locale: Locale, market: string) => ack(locale, CLAIM_ACK, market);
 
 /* -------------------------------------------------------------------------- */
+/* The organiser's welcome — and their link                                   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Sent once, when Delfim approves a claim. It carries the one thing the
+ * organiser must keep: the personal link. There is no login to explain, so the
+ * mail explains the link instead — what it opens, why not to forward it, and
+ * what will arrive before each date. `%n` is the organiser's name, `%m` the
+ * market's.
+ */
+interface OrganiserWelcome {
+  subject: string;
+  body: string[];
+  button: string;
+  keep: string;
+  photo: string;
+}
+
+const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
+  de: {
+    subject: 'Ihre Marktseite auf Fynda — Ihr persönlicher Link',
+    body: [
+      'Guten Tag %n',
+      '%m gehört auf Fynda jetzt Ihnen. Unten ist Ihr persönlicher Link: er öffnet Ihre Marktseite zum Bearbeiten — Termine, Standzahl, drinnen oder draussen, was bei Regen gilt. Kein Passwort, kein Konto.',
+      'Sieben Tage vor jedem Termin schicken wir Ihnen eine E-Mail mit drei Knöpfen: findet statt · abgesagt · etwas hat sich geändert. Ein Tipp, und Ihre Seite zeigt „Vom Veranstalter bestätigt“.',
+    ],
+    button: 'Meine Marktseite öffnen',
+    keep: 'Bewahren Sie diesen Link auf und geben Sie ihn nicht weiter: wer ihn hat, kann Ihren Markt bearbeiten. Ist er verloren, antworten Sie auf diese E-Mail — wir schicken einen neuen.',
+    photo: 'Ein Foto Ihres Marktes? Einfach als Antwort auf diese E-Mail — wir stellen es auf Ihre Seite.',
+  },
+  fr: {
+    subject: 'Votre page sur Fynda — votre lien personnel',
+    body: [
+      'Bonjour %n',
+      '%m est désormais à vous sur Fynda. Ci-dessous, votre lien personnel : il ouvre votre page pour la modifier — dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie. Pas de mot de passe, pas de compte.',
+      "Sept jours avant chaque date, nous vous envoyons un e-mail avec trois boutons : a lieu · annulé · quelque chose a changé. Un clic, et votre page affiche « Confirmé par l'organisateur ».",
+    ],
+    button: 'Ouvrir ma page',
+    keep: "Conservez ce lien et ne le transmettez pas : qui l'a peut modifier votre marché. Perdu ? Répondez à cet e-mail, nous en envoyons un nouveau.",
+    photo: 'Une photo de votre marché ? Répondez simplement à cet e-mail avec — nous la mettons sur votre page.',
+  },
+  it: {
+    subject: 'La tua pagina su Fynda — il tuo link personale',
+    body: [
+      'Buongiorno %n',
+      '%m su Fynda ora è tuo. Qui sotto trovi il tuo link personale: apre la tua pagina per modificarla — date, numero di bancarelle, al coperto o all\'aperto, cosa succede se piove. Nessuna password, nessun account.',
+      "Sette giorni prima di ogni data ti mandiamo un'e-mail con tre pulsanti: si fa · annullato · qualcosa è cambiato. Un tocco, e la tua pagina mostra «Confermato dall'organizzatore».",
+    ],
+    button: 'Apri la mia pagina',
+    keep: "Conserva questo link e non inoltrarlo: chi lo ha può modificare il tuo mercatino. Perso? Rispondi a questa e-mail, te ne mandiamo uno nuovo.",
+    photo: 'Una foto del tuo mercatino? Rispondi a questa e-mail allegandola — la mettiamo sulla tua pagina.',
+  },
+  en: {
+    subject: 'Your market page on Fynda — your personal link',
+    body: [
+      'Hello %n',
+      '%m is now yours on Fynda. Below is your personal link: it opens your market page for editing — dates, number of stalls, indoor or outdoor, what happens when it rains. No password, no account.',
+      'Seven days before each date we send you an e-mail with three buttons: it\'s on · cancelled · something changed. One tap, and your page shows “Confirmed by the organiser”.',
+    ],
+    button: 'Open my market page',
+    keep: 'Keep this link and don\'t forward it: anyone who has it can edit your market. Lost it? Reply to this e-mail and we\'ll send a new one.',
+    photo: 'A photo of your market? Just reply to this e-mail with it — we\'ll put it on your page.',
+  },
+};
+
+export function organiserWelcome(
+  locale: Locale,
+  name: string,
+  market: string,
+  url: string
+): Omit<Mail, 'to'> {
+  const copy = ORGANISER_WELCOME[locale] ?? ORGANISER_WELCOME.en;
+  const body = copy.body.map((line) => line.replace('%n', name).replace('%m', market));
+
+  const footer = `
+  <p style="margin:8px 0 24px;">
+    <a href="${url}" style="display:inline-block;padding:14px 20px;background:#16161a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:500;">${escape(copy.button)}</a>
+  </p>
+  <p style="margin:0 0 16px;font-size:14px;color:#6b6b70;">${escape(copy.keep)}</p>
+  <p style="margin:0 0 16px;font-size:14px;color:#6b6b70;">${escape(copy.photo)}</p>
+  <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;word-break:break-all;">${escape(url)}</p>`;
+
+  return {
+    subject: copy.subject,
+    html: column(locale, body, footer),
+    text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.button}: ${url}\n\n${copy.keep}\n\n${copy.photo}\n`,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
 /* The weekly digest                                                          */
 /* -------------------------------------------------------------------------- */
 
