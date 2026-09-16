@@ -86,7 +86,7 @@ The product is one dataset plus the loops that keep it alive; every page is a re
 
 - Free for users, forever. No subscriptions, no paywalls, no AdSense.
 - Revenue, when it comes, is organiser and local-business advertising.
-- **Fynda is a visitor tool.** SEO is the acquisition base. The organiser relationship gets earned by a directory that already has traffic, not by building tooling into a cold start. At launch the organiser surface is an "own your market" call to action and a contact form.
+- **Fynda is a visitor tool, and organisers are how it stays true.** SEO is the acquisition base; an engaged organiser is what keeps a page fresh, and freshness is the differentiator. **Decided 2026-09-16:** the organiser surface is a personal link in an e-mail — no login, ever — and a three-button mail before each date. The market page's organiser block is the page's main ask. Research in `reference/organiser-research/`.
 - **No accounts, no reviews.** Saved markets live in `localStorage`; the newsletter is an address, not a login. A mascot is on hold.
 - **A map is a view, not the front door.** Nothing in the data suggests map-first demand.
 - **Launch scope is all of Switzerland**, with verification and photographs concentrated in one region once it is chosen.

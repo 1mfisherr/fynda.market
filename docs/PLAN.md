@@ -27,7 +27,7 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 **Deadline: Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks. Order below is the route there; Swiss polish happens once, in week 5, not twice.
 
 1. **Market watch agent.** Delfim is building one for fleafind and brings it here (2026-09-16); we adapt it for Fynda when it arrives. Weekly, per market: open the source URL, compare with what we hold, queue the findings. Same engine is the German intake tool.
-2. **Organiser page** (week 3). Claim → confirm dates → size and indoor/outdoor → photo. Tags fill from these answers.
+2. **Organisers** (week 3). **Decided 2026-09-16, after `reference/organiser-research/`:** organisers are the focus — engaged organisers keep the data fresh, fresh data earns visitor trust. **No login, ever.** A personal link in an e-mail is the identity. Seven days before each date, one mail with three buttons — *it's on / cancelled / something changed*; the first two go live within the hour with the organiser stamp, the third opens a four-field page (dates, stalls, indoor/outdoor, photo) that waits for Delfim's OK. Once a year the mail asks for the season's dates. The market page's organiser block becomes the page's main ask — an offer to take the market over, with the page's reach as the reason — and a claimed page looks visibly different. Delfim supplies the missing organiser e-mails. Measure the answer rate after four weeks: >25% extend, 10–25% keep as a data feed, <10% stop building for organisers. Spec next.
 3. **Performance** (week 4). Analytics vocabulary done 2026-09-16: `page_type` gained `utility` and `country`, `newsletter_form_view` (placement `card|footer|page`) and the `organiser_contact` funnel are emitted, `analytics_rollup()`/`analytics_daily` dropped. Migration `20260916120000`.
 4. **UI/UX, copy, branding pass** with the logo, all page types, four locales (week 5).
 5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
@@ -36,8 +36,6 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 The earlier list, folded into the above:
 
 1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone, the within-25-km block on 28 sparse towns — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
-2. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
-3. **Ask organisers for size and indoor/outdoor.** The two facts that decide a forty-minute drive, held for none of 161 markets, and unobtainable by scraping. This is what the organiser page is for.
 4. **Country page** `/{locale}/{country}/`. Route allowed, nothing built; breadcrumbs join it when it exists.
 5. **German text search.** Settle the compound-word question (`STACK.md`) before any search box exists. Not urgent: v1 saw 64 searches in 26 days against 281 filter uses.
 
