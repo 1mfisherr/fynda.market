@@ -26,15 +26,10 @@ export const thumbUrl = (url: string) => url.replace(/\.webp$/, '-thumb.webp');
 export const MEDIUM_WIDTH = 720;
 export const mediumUrl = (url: string) => url.replace(/\.webp$/, '-720.webp');
 
-/** srcset + sizes for a hero, or undefined for anything that is not our own file. */
-export function heroSources(url: string): { srcset: string; sizes: string } | undefined {
+/** The phone file for a hero, or undefined for anything that is not our own file. */
+export function heroSources(url: string): { medium: string } | undefined {
   if (!url.endsWith('.webp')) return undefined;
-  return {
-    srcset: `${mediumUrl(url)} ${MEDIUM_WIDTH}w, ${url} 1440w`,
-    // The hero column is capped at 720px above the one breakpoint; below it the
-    // photo is as wide as the screen.
-    sizes: '(min-width: 900px) 720px, 100vw',
-  };
+  return { medium: mediumUrl(url) };
 }
 
 /**
