@@ -213,14 +213,20 @@
    * `placement` names the form, not the page — page_type already says which
    * page: `card` at the foot of a listing, `footer` on every page, `page` on
    * the newsletter page itself, where the same block is the whole point.
+   *
+   * "Seen" is half the block, or half a screen's worth of it — the block with
+   * its canton picker is taller than half a phone, so a bare 50% threshold
+   * would never fire on the device 60% of visitors hold.
    */
   const blocks = document.querySelectorAll<HTMLElement>('[data-subscribe-block]');
   if (blocks.length && 'IntersectionObserver' in window) {
     const onNewsletterPage = /^\/(de|fr|it|en)\/newsletter\/$/.test(location.pathname);
     const seen = new WeakSet<Element>();
+    const enough = (entry: IntersectionObserverEntry) =>
+      entry.intersectionRatio >= 0.5 || entry.intersectionRect.height >= window.innerHeight / 2;
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting || seen.has(entry.target)) continue;
+        if (!entry.isIntersecting || seen.has(entry.target) || !enough(entry)) continue;
         seen.add(entry.target);
         io.unobserve(entry.target);
         const el = entry.target as HTMLElement;
@@ -229,7 +235,7 @@
           : onNewsletterPage ? 'page' : 'card';
         send('newsletter_form_view', { placement }, el);
       }
-    }, { threshold: 0.5 });
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
     blocks.forEach((b) => io.observe(b));
   }
 
