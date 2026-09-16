@@ -149,6 +149,21 @@ async function hmacHex(key: string, message: string): Promise<string> {
   return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/** name=value pairs, first occurrence wins, values not decoded (ours never need it). */
+export function parseCookies(header: string | null): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (!header) return out;
+  for (const part of header.split(';')) {
+    const i = part.indexOf('=');
+    if (i < 0) continue;
+    const name = part.slice(0, i).trim();
+    if (name && !(name in out)) out[name] = part.slice(i + 1).trim();
+  }
+  return out;
+}
+
 export async function collect(env: Env, request: Request, input: EventInput): Promise<void> {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY || !env.ANALYTICS_SALT) return;
 
@@ -176,13 +191,23 @@ export async function collect(env: Env, request: Request, input: EventInput): Pr
   const url = new URL(request.url);
   const cf = (request as Request & { cf?: { country?: string } }).cf;
 
+  /*
+   * The second identity layer, since 2026-09-16: a first-party cookie the
+   * banner sets once the visitor accepts. `fynda_consent=granted` is the
+   * consent, `fynda_id` the identifier that lets a returning browser be
+   * recognised. Without the first, the second is ignored even if present —
+   * and the table's own constraint refuses a visitor_id without consent.
+   */
+  const cookies = parseCookies(request.headers.get('cookie'));
+  const granted = cookies.fynda_consent === 'granted';
+  const visitor_id = granted && cookies.fynda_id && UUID_RE.test(cookies.fynda_id) ? cookies.fynda_id : null;
+
   const row = {
     occurred_at: new Date().toISOString(),
     event_name: input.event_name,
     visitor_day_hash,
-    // Layer 2 stays null: a persistent id is what would need a banner, and we
-    // have not asked. The table's own constraint refuses one without consent.
-    consent_state: 'none',
+    visitor_id,
+    consent_state: visitor_id ? 'granted' : 'none',
     session_id: input.session_id ?? null,
     page_view_id: input.page_view_id ?? null,
     locale: input.locale ?? null,

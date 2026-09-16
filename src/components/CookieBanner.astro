@@ -1,0 +1,95 @@
+---
+/**
+ * The cookie choice — Delfim's call, 2026-09-16: cookies, a banner, and the
+ * analytics that come with them.
+ *
+ * Two first-party cookies, both set here, in the browser:
+ *   fynda_consent  granted | essential   one year   the choice itself
+ *   fynda_id       a uuid                13 months  only when granted
+ *
+ * The analytics collector (functions/_collect.ts) reads both from the request
+ * and records a visitor_id only when consent is granted — the table refuses
+ * anything else. "Only essential" sets the first cookie and clears the second,
+ * so the site keeps counting anonymously by day, as it did before the banner.
+ *
+ * Shown until a choice exists; the footer's "Cookies" link reopens it. No
+ * script from anyone else runs on the page, so there is nothing to block: the
+ * choice governs what our own collector stores, and any analytics tool added
+ * later reads it before it loads.
+ */
+import Button from './Button.astro';
+import { DEFAULT_LOCALE, utilityPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const s = t(locale);
+---
+<div class="cookies wrapper" data-cookies hidden role="region" aria-label={s.cookieTitle}>
+  <div class="box">
+    <p><strong>{s.cookieTitle}</strong> {s.cookieBody} <a href={utilityPath(locale, 'privacy')}>{s.cookieMore}</a></p>
+    <div class="choices">
+      <Button type="button" variant="primary" data-cookies-accept>{s.cookieAccept}</Button>
+      <Button type="button" variant="secondary" data-cookies-essential>{s.cookieEssential}</Button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const YEAR = 365 * 24 * 60 * 60;
+  const read = (name: string) =>
+    document.cookie.split(';').map((c) => c.trim()).find((c) => c.startsWith(`${name}=`))?.slice(name.length + 1) ?? null;
+  const write = (name: string, value: string, maxAge: number) => {
+    document.cookie = `${name}=${value}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`;
+  };
+
+  const banner = document.querySelector<HTMLElement>('[data-cookies]');
+  if (banner) {
+    const show = () => { banner.hidden = false; };
+    const hide = () => { banner.hidden = true; };
+
+    if (!read('fynda_consent')) show();
+
+    banner.querySelector('[data-cookies-accept]')?.addEventListener('click', () => {
+      write('fynda_consent', 'granted', YEAR);
+      if (!read('fynda_id')) write('fynda_id', crypto.randomUUID(), 13 * 30 * 24 * 60 * 60);
+      hide();
+    });
+    banner.querySelector('[data-cookies-essential]')?.addEventListener('click', () => {
+      write('fynda_consent', 'essential', YEAR);
+      write('fynda_id', '', 0);
+      hide();
+    });
+
+    // The footer link: choose again.
+    document.querySelectorAll('[data-cookies-open]').forEach((el) =>
+      el.addEventListener('click', (e) => { e.preventDefault(); show(); banner.scrollIntoView({ block: 'end' }); })
+    );
+  }
+</script>
+
+<style>
+  .cookies {
+    position: sticky;
+    inset-block-end: 0;
+    z-index: 10;
+    padding-block: var(--space-3);
+  }
+  .box {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: var(--border-width) solid var(--color-ink);
+    border-radius: var(--radius-md);
+    background: var(--color-paper);
+    box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 12%);
+  }
+  .box p { margin: 0; font-size: var(--text-small); }
+  .choices { display: grid; gap: var(--space-2); }
+
+  /* Keep in step with --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .box { grid-template-columns: 1fr auto; align-items: center; }
+    .choices { grid-template-columns: auto auto; }
+  }
+</style>

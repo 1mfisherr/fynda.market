@@ -69,6 +69,8 @@ The requirement is **own the data, collect everything, keep it private** — not
 
 **Bots.** `isProbablyBotRequest` (2026-09-15) drops a request whose user-agent names a bot, that comes from a cloud or hosting network (`request.cf.asOrganization`), that sends no `Accept-Language`, or that sends no `Sec-Fetch-Mode` — every browser since 2023 sends the last two on every request, and an HTTP client wearing a browser's name does not. Forms use only the user-agent test, so a person on a VPN can still report a market.
 
+**Identity, two layers** (2026-09-16). Layer 1, always: a daily-rotating hash of IP and user agent. Layer 2, with consent: `fynda_consent=granted` and `fynda_id` (a uuid, 13 months), both first-party cookies set by `CookieBanner.astro`; `_collect.ts` writes `visitor_id` only when the first says granted. "Only essential" keeps layer 1. Any third-party analytics tool loads only behind the same consent and is named in the privacy page the day it is added.
+
 ## Designed, not built
 
 Four AI loops — discovery, freshness, performance, content proposals — as plain scripts on GitHub Actions calling the Claude API with Zod-validated structured output, inserting into a `proposals` table (`kind, payload, evidence, status, …`). **Nothing publishes without a row flipping to `approved`**, enforced by the write path; approval is one admin route behind Cloudflare Access, Telegram as the doorbell. Budget $10–30/month, capped. Graduate to the Agent SDK only when a loop demonstrably needs multi-step tool use.

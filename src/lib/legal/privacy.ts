@@ -2,15 +2,15 @@
  * Privacy policy — `/en/privacy/`, `/de/datenschutz/`, `/fr/confidentialite/`,
  * `/it/privacy/`.
  *
- * Delfim's structure and voice from fleafind.ch. The facts are Fynda's, and
- * they are different in ways that matter: fleafind ran on Vercel with Google
- * Analytics 4, Microsoft Clarity, Resend and a cookie-consent dialog. Fynda has
- * none of those. It is hosted on Cloudflare Pages, its analytics are self-hosted
- * on our own Postgres and read with our own Metabase, it sets no cookies at all,
- * and every form writes a row to our own database with Resend for the mail
- * that follows. This page describes that, not a template.
+ * Rewritten 2026-09-16, Delfim's call: reassurance first, mechanics later,
+ * and nothing that stops being true the day an analytics tool is added. It
+ * says what is done — anonymous usage data, a cookie that recognises a
+ * returning browser once accepted, our own database, providers named — in
+ * calm words, and it does not promise more privacy than the site needs to.
+ * "No account" is never claimed; "no account needed" is.
  *
- * Sections 5 and 6 describe what the forms and the newsletter actually do.
+ * The facts have to match the code. Sections 3, 4, 7 and 10 describe what
+ * the analytics, the cookie, the newsletter and the providers actually do.
  * Change the mechanism, change them in the same commit.
  */
 import type { Locale } from '../i18n';
@@ -18,962 +18,470 @@ import type { LegalDoc } from './doc';
 
 export const PRIVACY: Record<Locale, LegalDoc> = {
   en: {
-    title: 'Privacy Policy — Fynda',
-    description: 'What Fynda collects, what it does not, and where the data lives.',
-    heading: 'Privacy Policy',
-    effective: 'Effective from 6 September 2026',
+    title: 'Privacy — fynda.market',
+    description: 'Your visit is anonymous and your data stays that way. What fynda.market collects, what it is for, and who helps us run the site.',
+    heading: 'Privacy',
+    effective: 'Effective from 17 September 2026',
     lede: [
-      'Fynda helps people discover flea markets, brocantes and secondhand events across Switzerland.',
-      'We believe secondhand culture matters. It keeps good things in circulation, reduces waste and brings people together around real places and communities. Fynda exists to make that world easier to find.',
-      'Your trust matters just as much as the information we publish.',
-      'We do not sell personal data.',
+      'Your visit is anonymous. Your data stays that way.',
+      'fynda.market never asks who you are — you need no account to use it. We do keep track of how the site is used, so we can make it better: which markets get looked at, which pages help, where people give up. None of it is linked to you as a person, and none of it is ever sold.',
+      'This page says what we collect, what it is for, and who helps us run the site.',
     ],
     blocks: [
       {
-        h: '1. Who is responsible for your data?',
+        h: '1. Who is responsible',
+        p: ['fynda.market is run by:', 'Delfim Almeida\nZurich, Switzerland\ncontact@fynda.market'],
+      },
+      {
+        h: '2. When this applies',
+        p: ['This policy applies when you browse fynda.market, subscribe to the newsletter, write to us, report a correction, or deal with us as a market organiser.'],
+      },
+      {
+        h: '3. What we collect when you visit',
         p: [
-          'Fynda is operated by:',
-          'Delfim Almeida\nZurich, Switzerland\ncontact@fynda.market',
+          'To understand how fynda.market is used, we record what happens on it: the pages you open, which markets and dates you look at, the filters you set, the links you follow, how you arrived, and whether something went wrong. Alongside it, the basics every website receives: your IP address, your browser and device type, your approximate country.',
+          'If you accept cookies, a small identifier is stored in your browser so that we recognise it on a return visit — that is how we can tell a new visitor from someone coming back. Without it, each day\'s visit is counted on its own and not connected to the next.',
+          'None of this carries your name or e-mail address. We do not know who you are, and we never combine what you do on fynda.market with your identity.',
         ],
       },
       {
-        h: '2. When this policy applies',
-        p: ['This policy applies when you:'],
+        h: '4. Cookies',
+        p: [
+          'fynda.market uses cookies. On your first visit you choose whether to allow the ones that help us understand how the site is used; the site works the same either way. You can change your choice at any time through the link in the footer.',
+          'A few cookies and browser settings are needed for the site itself — your cookie choice, the markets you save, the town you pick. Those never leave your browser.',
+        ],
+      },
+      {
+        h: '5. What we use it for',
+        p: ['We use this information to:'],
         ul: [
-          'browse fynda.market;',
-          'subscribe to a Fynda newsletter;',
-          'contact us;',
-          'report a correction;',
-          'suggest a market;',
-          'communicate with us as a market organiser.',
-        ],
-      },
-      {
-        h: '3. Visiting Fynda',
-        p: [
-          'You can browse Fynda without creating an account or telling us who you are. There is no login on Fynda, and no accounts at all.',
-          'When you visit, our hosting and analytics receive information such as:',
-        ],
-        ul: [
-          'the pages you view;',
-          'how you reached Fynda;',
-          'the links and features you use;',
-          'which markets you open and which filters you set;',
-          'your browser and device type;',
-          'your approximate country;',
-          'your IP address;',
-          'technical errors and performance information.',
-        ],
-      },
-      {
-        h: 'Our own analytics, on our own database',
-        p: [
-          'Fynda does not use Google Analytics, Microsoft Clarity, or any other third-party analytics or advertising product. Our analytics are self-hosted: events are written to our own Postgres database and read with our own copy of Metabase. The data never leaves our infrastructure, and it is never sold.',
-          'Fynda sets no cookies, and there is no cookie banner, because there is nothing to consent to.',
-          'In place of a cookie, each visit is counted using a value calculated from the IP address and browser identification and then hashed. The secret used for that hash changes every day, so the same visit produces a different value tomorrow — the identifier cannot be traced back to you and cannot be followed across days. We never store the IP address in readable form.',
-        ],
-      },
-      {
-        h: 'Google Search Console',
-        p: [
-          "We read which search queries bring people to Fynda from Google. This reads data out of Google's own search index and puts no tracking script on this website.",
-        ],
-      },
-      {
-        h: '4. Saved markets and your chosen town',
-        p: [
-          "The markets you save, and the town you pick on the home page, are stored only in your own browser's local storage. They are never sent to us and we cannot see them. They disappear if you clear your browser data, or if you use a different browser or device.",
-        ],
-      },
-      {
-        h: '5. Joining the newsletter',
-        p: [
-          'When you sign up, we save your email address, the town you chose and the language of the page in our own database, and we use them to send the newsletter you asked for. The subscription is active immediately — there is no confirmation email to click.',
-          'Alongside it we record when you signed up, which page you signed up from, the consent wording you were shown, and a one-way hashed version of your IP address, so that the consent can be shown rather than asserted. The IP address itself is never stored.',
-          'The legal basis for this processing is your consent. You can withdraw it at any time by writing to contact@fynda.market, or through the unsubscribe link in any newsletter.',
-          'When you unsubscribe, we delete the information that could identify you from the active newsletter list and keep only a minimal suppression record — your email address and the dates you signed up and unsubscribed — so that we do not accidentally contact you again and can show a reliable record of your consent and its withdrawal.',
-          'To deliver our emails we use Resend (Resend Inc., USA) as a processor. Resend receives your email address and the contents of the individual message, for the sole purpose of delivering it. We do not use a marketing platform that manages contacts on our behalf: the list itself lives in our own database.',
-          'Resend also tells us what became of each mail: whether it was delivered, bounced, was reported as spam, was opened, and which link in it was clicked. Opens are detected by a tiny image in the mail, so a mail client that does not load images records no open. We use this for two things only: an address that bounces permanently or reports us as spam is taken off the list at once, and an address that has not opened anything for a long time may be taken off the list so that we stop writing to nobody. We do not build profiles from it.',
-        ],
-      },
-      {
-        h: '6. Contacting Fynda',
-        p: [
-          'When you send us a message, report incorrect information, suggest a market or contact us as an organiser, we use the information you provide. This may include your:',
-        ],
-        ul: [
-          'name;',
-          'email address;',
-          'organisation or market name;',
-          'message;',
-          'links and supporting information.',
+          'make fynda.market better — see which pages help people and which do not;',
+          'understand which markets, towns and dates people are interested in;',
+          'keep the site fast, secure and free of abuse;',
+          'decide where to grow next.',
         ],
       },
       {
         p: [
-          'This information is stored in our own database, together with the language and the page the form was sent from, and a one-way hashed value of your IP address; the IP address itself is not stored. We use it to respond, investigate the request, correct listings and keep Fynda’s market information accurate.',
-          'If you give us an email address, you receive a short acknowledgement, sent through Resend (see section 5). For a report the address is optional — without it we simply cannot write back. The legal basis is our legitimate interest in keeping the published market information accurate and, for an organiser enquiry, in establishing that contact.',
-          'Reports and organiser enquiries are not deleted automatically: they are the record of when a detail was last checked, and that record is the core of what Fynda offers. You can ask for deletion at any time.',
+          'From it we also draw broader patterns — interest by town or region, the popularity of markets and seasons, gaps in coverage. These patterns describe crowds, not people; we may publish them, share them with organisers, or use them commercially. They cannot be traced back to any visitor.',
         ],
       },
       {
-        h: '7. Public market information',
+        h: '6. Saved markets and your town',
         p: [
-          'Fynda researches and publishes information about flea markets and secondhand events. This information may come from:',
+          'The markets you save and the town you pick on the home page stay in your own browser. They are not sent to us. They disappear if you clear your browser data or use another device.',
+        ],
+      },
+      {
+        h: '7. The newsletter',
+        p: [
+          'When you sign up we keep your e-mail address, the town or canton you chose and the language of the page, and we use them to send you the newsletter you asked for. The subscription starts at once — there is no confirmation mail to click. We also note when and where you signed up and the wording you agreed to, so that your consent can be shown rather than asserted.',
+          'Our mails are delivered by Resend (Resend Inc., USA), which receives your address and the content of each mail for delivery only. Resend tells us whether a mail arrived, bounced, was opened or which link was clicked, and we use that to keep the list healthy: an address that bounces for good or reports us as spam comes off the list at once, and an address that has opened nothing for a long time may be removed so we stop writing to nobody.',
+          'Your e-mail address is used for the newsletter and for replying to you — it is not connected to what you do on the site.',
+          'You can unsubscribe with the link in any mail or by writing to contact@fynda.market. Afterwards we keep only your address and the dates you joined and left, so that we never contact you again by mistake.',
+        ],
+      },
+      {
+        h: '8. Writing to us, and organisers',
+        p: [
+          'When you report a correction, suggest a market or contact us as an organiser, we keep what you send — typically your name, e-mail address, the market and your message — together with the language and the page the form was sent from. We use it to reply, to check the report and to keep the market information right. If you give an e-mail address you get a short acknowledgement; for a report it is optional.',
+          'Organisers who take over their market\'s page get a personal link by e-mail and, before each date, a short mail asking whether it is still on. Their answers are shown on the market page as "confirmed by the organiser" with the date. Reports and organiser correspondence are the record of when a detail was last checked, so they are kept; you can ask for deletion at any time.',
+        ],
+      },
+      {
+        h: '9. Public market information',
+        p: [
+          'fynda.market researches and publishes information about flea markets and secondhand events, from organisers, official market websites, municipalities, associations, public event calendars and other public sources. We use it to create, check and update listings.',
+        ],
+      },
+      {
+        h: '10. Who helps us run fynda.market',
+        p: [
+          'A small number of providers work for us under our instructions:',
         ],
         ul: [
-          'organisers;',
-          'official market websites;',
-          'municipalities and venues;',
-          'associations;',
-          'public event calendars;',
-          'publicly available social media pages;',
-          'other public sources.',
+          'Cloudflare (USA) hosts and delivers the site and protects it against abuse; it sees IP addresses, requested pages and technical details, from servers around the world.',
+          'Supabase (EU region) holds our database: market information, usage data, newsletter subscriptions, messages and organiser records.',
+          'Resend (USA) delivers our e-mails — see section 7.',
+          'Google Search Console shows us which searches bring people to fynda.market; it reads Google\'s own index and places nothing on this site.',
         ],
       },
       {
-        p: ['We use this information to create, verify and update listings.'],
-      },
-      {
-        h: '8. We do not sell personal data',
         p: [
-          'We do not sell personal data.',
-          'We do not provide organisers, advertisers or commercial partners with identifiable lists of Fynda visitors.',
-          'We do not sell email addresses, browsing histories, cookie identifiers or personal profiles.',
-          'Fynda may use fully aggregated and anonymised information to understand broader patterns, such as:',
+          'To understand how the site is used we may also work with analytics tools such as Google Analytics or Microsoft Clarity. Any such tool is covered by your cookie choice, receives no name or e-mail address, and is listed here when we add it.',
+          'We may disclose personal data where the law requires it, to protect fynda.market or another person, or to establish or defend a legal claim.',
         ],
+      },
+      {
+        h: '11. Outside Switzerland',
+        p: [
+          'Some providers are based in, or use servers in, the United States and other countries. Where that applies, the transfer rests on recognised safeguards: the Swiss-U.S. and EU-U.S. Data Privacy Frameworks and Standard Contractual Clauses with their Swiss additions. Our database stays in an EU region.',
+        ],
+      },
+      {
+        h: '12. How long we keep it',
         ul: [
-          'search interest by city or region;',
-          'the popularity of markets and dates;',
-          'seasonal demand;',
-          'traffic and referral patterns;',
-          'gaps in local flea-market coverage;',
-          'trends across the Swiss secondhand-event sector.',
+          'newsletter data: while you are subscribed, then only the suppression record described above;',
+          'messages, reports and organiser correspondence: while they remain relevant, as part of the record of when a listing was last checked;',
+          'usage data: kept, so trends can be followed over years — it carries no name, no e-mail address and no readable IP address;',
+          'short-lived security records: deleted when no longer needed.',
         ],
       },
       {
+        h: '13. How we protect it',
         p: [
-          'We may use, publish, share or commercialise these non-identifying insights for our own business, research, reports, organiser tools or partnerships.',
-          'These insights do not identify individual visitors and are kept separate from personal data.',
+          'The published site is a set of static pages with no access to our database. Database access is restricted with permissions and row-level security. Every connection uses HTTPS. IP addresses used for counting and abuse prevention are stored hashed, not in readable form. Access to personal data is limited to the tools needed to run the site.',
         ],
       },
       {
-        h: '9. The services that help Fynda work',
+        h: '14. Your rights',
+        p: ['You can ask us at any time to tell you what personal data we hold about you, to correct or delete it, to give you a copy, to withdraw a consent, or to stop a particular use. Write to contact@fynda.market; we may ask you to confirm your identity first. You can also complain to the Swiss Federal Data Protection and Information Commissioner.'],
+      },
+      {
+        h: '15. Law, changes, contact',
         p: [
-          'Fynda uses a small number of trusted providers.',
-          'Cloudflare hosts and delivers the Fynda website and protects it against abuse. Cloudflare may process IP addresses, access logs, browser information, requested pages, timestamps, errors and security information. Cloudflare is based in the United States and delivers the site from servers around the world.',
-          'Supabase provides Fynda’s database. Market information, analytics events, newsletter subscriptions, messages, corrections and organiser records are stored there. Fynda uses an EU-based Supabase region.',
-          'Google provides Search Console, which reports how Fynda appears in Google Search. It reads Google’s own index and embeds nothing in this website.',
-          'Each provider processes information according to its role, its agreement with Fynda and its own legal obligations.',
-          'We may also disclose personal data where required by law, needed to protect Fynda or another person, or necessary to establish or defend a legal claim.',
-        ],
-      },
-      {
-        h: '10. Processing outside Switzerland',
-        p: [
-          'Some of Fynda’s providers are based in, or use infrastructure located in, the United States and other countries outside Switzerland.',
-          'Where relevant, these transfers rely on recognised safeguards such as:',
-        ],
-        ul: [
-          'the Swiss-U.S. Data Privacy Framework;',
-          'the EU-U.S. Data Privacy Framework;',
-          'Standard Contractual Clauses;',
-          'Swiss data-protection additions to those clauses.',
-        ],
-      },
-      {
-        p: [
-          'Fynda uses an EU database region for Supabase, while hosting and delivery may process information in the United States and elsewhere.',
-        ],
-      },
-      {
-        h: '11. How long we keep information',
-        p: ['We keep personal data only while it remains useful for the reason it was collected. In practice:'],
-        ul: [
-          'newsletter data is kept while you remain subscribed;',
-          'after unsubscribing, only the minimal suppression record described above is kept;',
-          'contact messages and correction reports are kept while they remain relevant;',
-          'organiser correspondence may be kept as part of a listing’s verification history;',
-          'analytics events are kept indefinitely, so that trends can be followed over years — they contain no name, no email address and no readable IP address;',
-          'short-lived security and rate-limiting records are deleted when they are no longer needed.',
-        ],
-      },
-      {
-        p: [
-          'Information that has been fully anonymised may be kept for longer because it no longer identifies anyone.',
-        ],
-      },
-      {
-        h: '12. How we protect your information',
-        p: [
-          'Fynda keeps public website data separate from private contact and organiser information. Public pages cannot read Fynda’s private organiser records.',
-          'Database access is restricted through Supabase permissions and row-level security. The published website is a set of static pages and carries no administrative credentials.',
-          'Connections to Fynda use HTTPS.',
-          'IP addresses used for analytics and abuse prevention are hashed rather than stored in their original form.',
-          'Access to personal data is limited to the services and administrative tools needed to operate Fynda.',
-        ],
-      },
-      {
-        h: '13. Your rights',
-        p: ['You can contact us at any time to:'],
-        ul: [
-          'ask what personal data we hold about you;',
-          'receive a copy of it;',
-          'correct inaccurate information;',
-          'request deletion;',
-          'request a portable copy where applicable;',
-          'withdraw your consent;',
-          'object to or restrict certain processing.',
-        ],
-      },
-      {
-        p: [
-          'Withdrawing consent does not affect processing that took place before it was withdrawn.',
-          'To make a request, email contact@fynda.market. We may ask you to confirm your identity before acting on a request.',
-          'The daily-rotating analytics hashes cannot be linked to a person, so they cannot be looked up or deleted individually.',
-          'You also have the right to complain to the Swiss Federal Data Protection and Information Commissioner.',
-        ],
-      },
-      {
-        h: '14. Which law applies',
-        p: [
-          'For visitors in Switzerland, the Swiss Federal Act on Data Protection (nFADP) applies. Once Fynda is active in the European Union, the GDPR applies in addition.',
-        ],
-      },
-      {
-        h: '15. Changes to this policy',
-        p: [
-          'Fynda may introduce new features, providers or services over time. We will update this policy when our data practices change. The effective date at the top will always show when the latest version began to apply.',
-        ],
-      },
-      {
-        h: '16. Contact',
-        p: [
-          'For any privacy question or request, contact:',
-          'Delfim Almeida\nZurich, Switzerland\ncontact@fynda.market',
+          'For visitors in Switzerland the Swiss Federal Act on Data Protection applies; where fynda.market is active in the European Union, the GDPR applies in addition.',
+          'When our practices change, this page changes with them, and the date at the top shows when the latest version began to apply.',
+          'For any privacy question: contact@fynda.market.',
         ],
       },
     ],
   },
 
   de: {
-    title: 'Datenschutz — Fynda',
-    description: 'Was Fynda erhebt, was nicht, und wo diese Daten liegen.',
-    heading: 'Datenschutzerklärung',
-    effective: 'Gültig ab 6. September 2026',
+    title: 'Datenschutz — fynda.market',
+    description: 'Ihr Besuch ist anonym, und Ihre Daten bleiben es. Was fynda.market erhebt, wofür, und wer uns beim Betrieb hilft.',
+    heading: 'Datenschutz',
+    effective: 'Gültig ab 17. September 2026',
     lede: [
-      'Fynda hilft Menschen, Flohmärkte, Brockenstuben und Secondhand-Anlässe in der ganzen Schweiz zu finden.',
-      'Wir glauben, dass Secondhand zählt. Es hält gute Dinge im Umlauf, vermeidet Abfall und bringt Menschen an echten Orten zusammen. Fynda gibt es, damit diese Welt leichter zu finden ist.',
-      'Ihr Vertrauen zählt für uns genauso wie die Angaben, die wir veröffentlichen.',
-      'Wir verkaufen keine Personendaten.',
+      'Ihr Besuch ist anonym. Ihre Daten bleiben es.',
+      'fynda.market fragt nie, wer Sie sind — Sie brauchen kein Konto. Wir halten aber fest, wie die Seite genutzt wird, damit wir sie besser machen können: welche Märkte angeschaut werden, welche Seiten helfen, wo Leute aufgeben. Nichts davon ist mit Ihnen als Person verknüpft, und nichts davon wird je verkauft.',
+      'Diese Seite sagt, was wir erheben, wofür, und wer uns beim Betrieb hilft.',
     ],
     blocks: [
+      { h: '1. Wer verantwortlich ist', p: ['fynda.market wird betrieben von:', 'Delfim Almeida\nZürich, Schweiz\ncontact@fynda.market'] },
+      { h: '2. Wann das gilt', p: ['Diese Erklärung gilt, wenn Sie fynda.market besuchen, den Newsletter abonnieren, uns schreiben, eine Korrektur melden oder als Veranstalter mit uns zu tun haben.'] },
       {
-        h: '1. Wer ist für Ihre Daten verantwortlich?',
+        h: '3. Was wir bei einem Besuch erheben',
         p: [
-          'Fynda wird betrieben von:',
-          'Delfim Almeida\nZürich, Schweiz\ncontact@fynda.market',
+          'Um zu verstehen, wie fynda.market genutzt wird, zeichnen wir auf, was auf der Seite passiert: welche Seiten Sie öffnen, welche Märkte und Termine Sie anschauen, welche Filter Sie setzen, welchen Links Sie folgen, woher Sie gekommen sind und ob etwas schiefging. Dazu das, was jede Website erhält: Ihre IP-Adresse, Browser- und Gerätetyp, Ihr ungefähres Land.',
+          'Wenn Sie Cookies akzeptieren, wird eine kleine Kennung in Ihrem Browser gespeichert, damit wir ihn beim nächsten Besuch wiedererkennen — so unterscheiden wir neue Besucher von wiederkehrenden. Ohne sie wird jeder Tag für sich gezählt und nicht mit dem nächsten verbunden.',
+          'Nichts davon enthält Ihren Namen oder Ihre E-Mail-Adresse. Wir wissen nicht, wer Sie sind, und wir verbinden das, was Sie auf fynda.market tun, nie mit Ihrer Identität.',
         ],
       },
       {
-        h: '2. Wann diese Erklärung gilt',
-        p: ['Diese Erklärung gilt, wenn Sie:'],
+        h: '4. Cookies',
+        p: [
+          'fynda.market verwendet Cookies. Beim ersten Besuch entscheiden Sie, ob Sie diejenigen zulassen, die uns zeigen, wie die Seite genutzt wird; die Seite funktioniert so oder so gleich. Ihre Wahl können Sie jederzeit über den Link in der Fusszeile ändern.',
+          'Einige Cookies und Browser-Einstellungen braucht die Seite selbst — Ihre Cookie-Wahl, die gemerkten Märkte, den gewählten Ort. Die verlassen Ihren Browser nie.',
+        ],
+      },
+      {
+        h: '5. Wofür wir es verwenden',
+        p: ['Wir verwenden diese Angaben, um:'],
         ul: [
-          'fynda.market besuchen;',
-          'einen Fynda-Newsletter abonnieren;',
-          'uns kontaktieren;',
-          'eine Korrektur melden;',
-          'einen Markt vorschlagen;',
-          'als Veranstalterin oder Veranstalter mit uns in Kontakt treten.',
+          'fynda.market besser zu machen — zu sehen, welche Seiten helfen und welche nicht;',
+          'zu verstehen, welche Märkte, Orte und Termine die Leute interessieren;',
+          'die Seite schnell, sicher und frei von Missbrauch zu halten;',
+          'zu entscheiden, wo wir als Nächstes wachsen.',
         ],
       },
       {
-        h: '3. Ein Besuch auf Fynda',
+        p: ['Daraus leiten wir auch grössere Muster ab — Interesse nach Ort oder Region, die Beliebtheit von Märkten und Saisons, Lücken in der Abdeckung. Diese Muster beschreiben Mengen, keine Personen; wir dürfen sie veröffentlichen, mit Veranstaltern teilen oder kommerziell nutzen. Auf einzelne Besucher lassen sie sich nicht zurückführen.'],
+      },
+      {
+        h: '6. Gemerkte Märkte und Ihr Ort',
+        p: ['Die Märkte, die Sie sich merken, und der Ort, den Sie auf der Startseite wählen, bleiben in Ihrem eigenen Browser. Sie werden nicht an uns gesendet. Sie verschwinden, wenn Sie Ihre Browserdaten löschen oder ein anderes Gerät benutzen.'],
+      },
+      {
+        h: '7. Der Newsletter',
         p: [
-          'Sie können Fynda nutzen, ohne ein Konto anzulegen und ohne uns zu sagen, wer Sie sind. Es gibt auf Fynda keinen Login und überhaupt keine Konten.',
-          'Bei einem Besuch erhalten unser Hosting und unsere Analyse unter anderem folgende Angaben:',
+          'Bei der Anmeldung behalten wir Ihre E-Mail-Adresse, den gewählten Ort oder Kanton und die Sprache der Seite, und wir verwenden sie, um Ihnen den bestellten Newsletter zu schicken. Das Abo beginnt sofort — es gibt keine Bestätigungsmail. Wir halten auch fest, wann und wo Sie sich angemeldet haben und welchem Text Sie zugestimmt haben, damit Ihre Einwilligung belegt und nicht nur behauptet werden kann.',
+          'Unsere Mails werden von Resend (Resend Inc., USA) zugestellt; Resend erhält Ihre Adresse und den Inhalt jeder Mail ausschliesslich zur Zustellung. Resend sagt uns, ob eine Mail angekommen ist, unzustellbar war, geöffnet wurde oder welcher Link angeklickt wurde, und wir nutzen das, um die Liste gesund zu halten: Eine Adresse, die dauerhaft unzustellbar ist oder uns als Spam meldet, kommt sofort von der Liste, und eine Adresse, die lange nichts öffnet, kann entfernt werden, damit wir nicht ins Leere schreiben.',
+          'Ihre E-Mail-Adresse dient dem Newsletter und unseren Antworten — sie wird nicht mit dem verbunden, was Sie auf der Seite tun.',
+          'Abmelden können Sie sich über den Link in jeder Mail oder per Mail an contact@fynda.market. Danach behalten wir nur Ihre Adresse und die Daten von An- und Abmeldung, damit wir Sie nie versehentlich wieder anschreiben.',
         ],
+      },
+      {
+        h: '8. Wenn Sie uns schreiben, und Veranstalter',
+        p: [
+          'Wenn Sie eine Korrektur melden, einen Markt vorschlagen oder uns als Veranstalter kontaktieren, behalten wir, was Sie senden — in der Regel Name, E-Mail-Adresse, Markt und Nachricht — zusammen mit der Sprache und der Seite, von der das Formular kam. Wir verwenden es, um zu antworten, die Meldung zu prüfen und die Marktangaben richtig zu halten. Wer eine E-Mail-Adresse angibt, erhält eine kurze Bestätigung; bei einer Meldung ist sie freiwillig.',
+          'Veranstalter, die ihre Marktseite übernehmen, erhalten per Mail einen persönlichen Link und vor jedem Termin eine kurze Mail mit der Frage, ob er stattfindet. Ihre Antworten erscheinen auf der Marktseite als „vom Veranstalter bestätigt“ mit Datum. Meldungen und Veranstalter-Korrespondenz sind der Nachweis, wann eine Angabe zuletzt geprüft wurde, und werden deshalb aufbewahrt; eine Löschung können Sie jederzeit verlangen.',
+        ],
+      },
+      {
+        h: '9. Öffentliche Marktangaben',
+        p: ['fynda.market recherchiert und veröffentlicht Angaben zu Flohmärkten und Secondhand-Anlässen — von Veranstaltern, offiziellen Marktwebsites, Gemeinden, Vereinen, öffentlichen Veranstaltungskalendern und anderen öffentlichen Quellen. Wir nutzen sie, um Einträge zu erstellen, zu prüfen und zu aktualisieren.'],
+      },
+      {
+        h: '10. Wer uns beim Betrieb hilft',
+        p: ['Eine kleine Zahl von Dienstleistern arbeitet nach unseren Anweisungen für uns:'],
         ul: [
-          'welche Seiten Sie ansehen;',
-          'wie Sie zu Fynda gekommen sind;',
-          'welche Links und Funktionen Sie nutzen;',
-          'welche Märkte Sie öffnen und welche Filter Sie setzen;',
-          'Browser- und Gerätetyp;',
-          'Ihr ungefähres Land;',
-          'Ihre IP-Adresse;',
-          'technische Fehler und Angaben zur Performance.',
+          'Cloudflare (USA) hostet und liefert die Seite aus und schützt sie vor Missbrauch; Cloudflare sieht IP-Adressen, aufgerufene Seiten und technische Details, von Servern weltweit.',
+          'Supabase (EU-Region) hält unsere Datenbank: Marktangaben, Nutzungsdaten, Newsletter-Abos, Nachrichten und Veranstalterdaten.',
+          'Resend (USA) stellt unsere E-Mails zu — siehe Abschnitt 7.',
+          'Google Search Console zeigt uns, welche Suchanfragen Leute zu fynda.market führen; sie liest Googles eigenen Index und bindet nichts in diese Seite ein.',
         ],
       },
       {
-        h: 'Unsere eigene Analyse, auf unserer eigenen Datenbank',
         p: [
-          'Fynda verwendet kein Google Analytics, kein Microsoft Clarity und kein anderes Analyse- oder Werbeprodukt von Dritten. Unsere Analyse ist selbst gehostet: Ereignisse werden in unsere eigene Postgres-Datenbank geschrieben und mit unserem eigenen Metabase ausgewertet. Die Daten verlassen unsere Infrastruktur nie und werden nie verkauft.',
-          'Fynda setzt keine Cookies, und es gibt kein Cookie-Banner, weil es nichts gibt, dem zugestimmt werden müsste.',
-          'Anstelle eines Cookies wird jeder Besuch über einen Wert gezählt, der aus IP-Adresse und Browserkennung berechnet und anschliessend gehasht wird. Das dafür verwendete Geheimnis wechselt jeden Tag, sodass derselbe Besuch am nächsten Tag einen anderen Wert ergibt — die Kennung lässt sich nicht auf Sie zurückführen und nicht über mehrere Tage verfolgen. Die IP-Adresse selbst speichern wir nie im Klartext.',
+          'Um zu verstehen, wie die Seite genutzt wird, arbeiten wir unter Umständen auch mit Analysewerkzeugen wie Google Analytics oder Microsoft Clarity. Ein solches Werkzeug fällt unter Ihre Cookie-Wahl, erhält weder Namen noch E-Mail-Adresse und wird hier aufgeführt, sobald wir es einsetzen.',
+          'Wir dürfen Personendaten offenlegen, wo das Gesetz es verlangt, um fynda.market oder eine andere Person zu schützen, oder um einen Rechtsanspruch geltend zu machen oder abzuwehren.',
         ],
       },
       {
-        h: 'Google Search Console',
-        p: [
-          'Wir lesen aus, mit welchen Suchanfragen Menschen über Google zu Fynda finden. Das liest nur Daten aus Googles eigenem Suchindex und bindet kein Tracking-Skript in diese Website ein.',
-        ],
+        h: '11. Ausserhalb der Schweiz',
+        p: ['Einige Dienstleister sitzen in den USA oder anderen Ländern oder nutzen dortige Server. Wo das zutrifft, stützt sich die Übermittlung auf anerkannte Garantien: das Swiss-U.S. und das EU-U.S. Data Privacy Framework sowie Standardvertragsklauseln mit den Schweizer Ergänzungen. Unsere Datenbank bleibt in einer EU-Region.'],
       },
       {
-        h: '4. Gemerkte Märkte und Ihr gewählter Ort',
-        p: [
-          'Die Märkte, die Sie merken, und der Ort, den Sie auf der Startseite wählen, liegen ausschliesslich im lokalen Speicher Ihres eigenen Browsers. Sie werden nie an uns übertragen und wir können sie nicht sehen. Sie verschwinden, wenn Sie die Browserdaten löschen oder einen anderen Browser oder ein anderes Gerät verwenden.',
-        ],
-      },
-      {
-        h: '5. Newsletter-Anmeldung',
-        p: [
-          'Wenn Sie sich anmelden, speichern wir Ihre E-Mail-Adresse, die gewählte Stadt und die Sprache der Seite in unserer eigenen Datenbank und nutzen sie, um Ihnen den gewünschten Newsletter zu schicken. Die Anmeldung ist sofort aktiv — es gibt keine Bestätigungsmail zum Anklicken.',
-          'Dazu halten wir fest, wann und von welcher Seite aus die Anmeldung kam, welchen Zustimmungstext Sie dabei gesehen haben, und eine gehashte, nicht rückrechenbare Fassung Ihrer IP-Adresse, damit sich die Einwilligung belegen lässt. Die IP-Adresse selbst speichern wir nie.',
-          'Rechtsgrundlage dafür ist Ihre Einwilligung. Sie können sie jederzeit widerrufen, indem Sie an contact@fynda.market schreiben oder den Abmeldelink in einem Newsletter nutzen.',
-          'Bei einer Abmeldung löschen wir die Angaben, die Sie identifizieren könnten, aus der aktiven Newsletter-Liste und behalten nur einen minimalen Sperreintrag — Ihre E-Mail-Adresse sowie das Datum der Anmeldung und der Abmeldung — damit wir Sie nicht versehentlich erneut anschreiben und Einwilligung wie Widerruf belegen können.',
-          'Für den Versand nutzen wir Resend (Resend Inc., USA) als Auftragsverarbeiter. Resend erhält Ihre E-Mail-Adresse und den Inhalt der jeweiligen E-Mail, ausschliesslich um sie zuzustellen. Eine Marketing-Plattform, die Kontakte für uns verwaltet, setzen wir nicht ein: die Liste selbst liegt in unserer eigenen Datenbank.',
-          'Resend meldet uns ausserdem, was aus einer E-Mail geworden ist: ob sie zugestellt wurde, unzustellbar war, als Spam gemeldet, geöffnet wurde und welcher Link darin angeklickt wurde. Ein Öffnen wird über ein winziges Bild in der E-Mail erkannt; ein Mailprogramm, das keine Bilder lädt, meldet keines. Wir nutzen das für genau zwei Dinge: Eine Adresse, die dauerhaft unzustellbar ist oder uns als Spam meldet, wird sofort von der Liste genommen, und eine Adresse, die über längere Zeit nichts öffnet, kann von der Liste genommen werden, damit wir nicht ins Leere schreiben. Profile bilden wir daraus nicht.',
-        ],
-      },
-      {
-        h: '6. Kontakt zu Fynda',
-        p: [
-          'Wenn Sie uns eine Nachricht schicken, eine falsche Angabe melden, einen Markt vorschlagen oder uns als Veranstalter kontaktieren, verwenden wir das, was Sie uns mitteilen. Das können sein:',
-        ],
+        h: '12. Wie lange wir es aufbewahren',
         ul: [
-          'Ihr Name;',
-          'Ihre E-Mail-Adresse;',
-          'Ihre Organisation oder der Name des Markts;',
-          'Ihre Nachricht;',
-          'Links und ergänzende Angaben.',
+          'Newsletter-Daten: solange Sie abonniert sind, danach nur den oben beschriebenen Sperrvermerk;',
+          'Nachrichten, Meldungen und Veranstalter-Korrespondenz: solange sie relevant sind, als Nachweis, wann ein Eintrag zuletzt geprüft wurde;',
+          'Nutzungsdaten: werden behalten, damit sich Trends über Jahre verfolgen lassen — sie enthalten weder Namen noch E-Mail-Adresse noch eine lesbare IP-Adresse;',
+          'kurzlebige Sicherheitsdaten: werden gelöscht, sobald sie nicht mehr gebraucht werden.',
         ],
       },
       {
+        h: '13. Wie wir es schützen',
+        p: ['Die veröffentlichte Seite besteht aus statischen Seiten ohne Zugriff auf unsere Datenbank. Der Datenbankzugriff ist über Berechtigungen und Row-Level-Security beschränkt. Jede Verbindung läuft über HTTPS. IP-Adressen, die zum Zählen und zur Missbrauchsabwehr dienen, werden gehasht gespeichert, nicht lesbar. Der Zugriff auf Personendaten ist auf die Werkzeuge beschränkt, die für den Betrieb nötig sind.'],
+      },
+      {
+        h: '14. Ihre Rechte',
+        p: ['Sie können jederzeit von uns verlangen, dass wir Ihnen sagen, welche Personendaten wir über Sie haben, sie berichtigen oder löschen, Ihnen eine Kopie geben, eine Einwilligung zurücknehmen oder eine bestimmte Verwendung beenden. Schreiben Sie an contact@fynda.market; wir bitten Sie unter Umständen zuerst, Ihre Identität zu bestätigen. Sie können sich auch beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten beschweren.'],
+      },
+      {
+        h: '15. Recht, Änderungen, Kontakt',
         p: [
-          'Diese Angaben werden in unserer eigenen Datenbank gespeichert, zusammen mit der Sprache und der Seite, von der das Formular abgeschickt wurde, und einem einweg-gehashten Wert Ihrer IP-Adresse; die IP-Adresse selbst wird nicht gespeichert. Wir nutzen sie, um zu antworten, dem Hinweis nachzugehen, Einträge zu korrigieren und die Marktangaben auf Fynda richtig zu halten.',
-          'Wenn Sie eine E-Mail-Adresse angeben, erhalten Sie eine kurze Empfangsbestätigung, versendet über Resend (siehe Abschnitt 5). Bei einer Meldung ist die Adresse freiwillig — ohne sie können wir nur nicht zurückschreiben. Rechtsgrundlage ist unser berechtigtes Interesse daran, die veröffentlichten Marktangaben richtig zu halten, und bei einer Anfrage von Veranstaltern die Anbahnung des Kontakts.',
-          'Meldungen und Anfragen von Veranstaltern löschen wir nicht automatisch: sie sind der Nachweis dafür, wann eine Angabe zuletzt geprüft wurde, und dieser Nachweis ist der Kern dessen, was Fynda anbietet. Sie können jederzeit die Löschung verlangen.',
-        ],
-      },
-      {
-        h: '7. Öffentliche Marktangaben',
-        p: [
-          'Fynda recherchiert und veröffentlicht Angaben zu Flohmärkten und Secondhand-Anlässen. Diese Angaben können stammen von:',
-        ],
-        ul: [
-          'Veranstaltern;',
-          'offiziellen Markt-Websites;',
-          'Gemeinden und Veranstaltungsorten;',
-          'Vereinen und Verbänden;',
-          'öffentlichen Veranstaltungskalendern;',
-          'öffentlich zugänglichen Social-Media-Seiten;',
-          'anderen öffentlichen Quellen.',
-        ],
-      },
-      {
-        p: ['Wir nutzen diese Angaben, um Einträge zu erstellen, zu prüfen und zu aktualisieren.'],
-      },
-      {
-        h: '8. Wir verkaufen keine Personendaten',
-        p: [
-          'Wir verkaufen keine Personendaten.',
-          'Wir geben Veranstaltern, Werbetreibenden oder Geschäftspartnern keine Listen mit identifizierbaren Fynda-Besucherinnen und -Besuchern.',
-          'Wir verkaufen keine E-Mail-Adressen, keine Browserverläufe, keine Cookie-Kennungen und keine Personenprofile.',
-          'Fynda kann vollständig aggregierte und anonymisierte Angaben nutzen, um grössere Muster zu verstehen, etwa:',
-        ],
-        ul: [
-          'Suchinteresse nach Stadt oder Region;',
-          'die Beliebtheit von Märkten und Terminen;',
-          'saisonale Nachfrage;',
-          'Zugriffs- und Verweisquellen;',
-          'Lücken in der lokalen Flohmarkt-Abdeckung;',
-          'Entwicklungen im Schweizer Secondhand-Bereich.',
-        ],
-      },
-      {
-        p: [
-          'Diese nicht identifizierenden Erkenntnisse dürfen wir für unser eigenes Geschäft, für Forschung, Berichte, Veranstalter-Werkzeuge oder Partnerschaften nutzen, veröffentlichen, teilen oder wirtschaftlich verwerten.',
-          'Sie identifizieren keine einzelne Besucherin und keinen einzelnen Besucher und werden getrennt von Personendaten gehalten.',
-        ],
-      },
-      {
-        h: '9. Die Dienste, mit denen Fynda läuft',
-        p: [
-          'Fynda arbeitet mit wenigen, ausgewählten Anbietern.',
-          'Cloudflare hostet und liefert die Website von Fynda aus und schützt sie vor Missbrauch. Cloudflare kann IP-Adressen, Zugriffsprotokolle, Browserangaben, abgerufene Seiten, Zeitstempel, Fehler und Sicherheitsinformationen verarbeiten. Cloudflare hat seinen Sitz in den USA und liefert die Seite von Servern weltweit aus.',
-          'Supabase stellt die Datenbank von Fynda bereit. Marktangaben, Analyse-Ereignisse, Newsletter-Anmeldungen, Nachrichten, Korrekturen und Veranstalter-Einträge werden dort gespeichert. Fynda nutzt eine Supabase-Region in der EU.',
-          'Google stellt die Search Console bereit, die zeigt, wie Fynda in der Google-Suche erscheint. Sie liest Googles eigenen Index und bindet nichts in diese Website ein.',
-          'Jeder Anbieter verarbeitet Angaben entsprechend seiner Rolle, seiner Vereinbarung mit Fynda und seinen eigenen rechtlichen Pflichten.',
-          'Wir können Personendaten ausserdem offenlegen, wenn das Gesetz es verlangt, wenn es zum Schutz von Fynda oder einer anderen Person nötig ist oder um einen Rechtsanspruch geltend zu machen oder abzuwehren.',
-        ],
-      },
-      {
-        h: '10. Bearbeitung ausserhalb der Schweiz',
-        p: [
-          'Einige Anbieter von Fynda haben ihren Sitz in den USA oder anderen Ländern ausserhalb der Schweiz oder nutzen dort Infrastruktur.',
-          'Soweit relevant stützen sich diese Übermittlungen auf anerkannte Garantien wie:',
-        ],
-        ul: [
-          'das Swiss-U.S. Data Privacy Framework;',
-          'das EU-U.S. Data Privacy Framework;',
-          'Standardvertragsklauseln;',
-          'die Schweizer Ergänzungen zu diesen Klauseln.',
-        ],
-      },
-      {
-        p: [
-          'Für Supabase nutzt Fynda eine Datenbank-Region in der EU, während Hosting und Auslieferung Angaben in den USA und anderswo verarbeiten können.',
-        ],
-      },
-      {
-        h: '11. Wie lange wir Angaben aufbewahren',
-        p: [
-          'Wir bewahren Personendaten nur so lange auf, wie sie für den Zweck der Erhebung nützlich sind. Konkret:',
-        ],
-        ul: [
-          'Newsletter-Daten bleiben, solange Sie abonniert sind;',
-          'nach einer Abmeldung bleibt nur der oben beschriebene minimale Sperreintrag;',
-          'Nachrichten und Korrekturhinweise bleiben, solange sie relevant sind;',
-          'Veranstalter-Korrespondenz kann als Teil der Prüfhistorie eines Eintrags aufbewahrt werden;',
-          'Analyse-Ereignisse werden unbegrenzt aufbewahrt, damit sich Trends über Jahre verfolgen lassen — sie enthalten keinen Namen, keine E-Mail-Adresse und keine Klartext-IP;',
-          'kurzlebige Sicherheits- und Ratenbegrenzungs-Einträge werden gelöscht, sobald sie nicht mehr gebraucht werden.',
-        ],
-      },
-      {
-        p: [
-          'Vollständig anonymisierte Angaben können länger aufbewahrt werden, weil sie niemanden mehr identifizieren.',
-        ],
-      },
-      {
-        h: '12. Wie wir Ihre Angaben schützen',
-        p: [
-          'Fynda hält öffentliche Website-Daten getrennt von privaten Kontakt- und Veranstalterangaben. Öffentliche Seiten können die privaten Veranstalter-Einträge nicht lesen.',
-          'Der Zugriff auf die Datenbank ist über Supabase-Berechtigungen und Row-Level-Security eingeschränkt. Die veröffentlichte Website besteht aus statischen Seiten und trägt keine administrativen Zugangsdaten.',
-          'Verbindungen zu Fynda laufen über HTTPS.',
-          'IP-Adressen für Analyse und Missbrauchsabwehr werden gehasht statt im Original gespeichert.',
-          'Der Zugang zu Personendaten ist auf die Dienste und Werkzeuge beschränkt, die für den Betrieb von Fynda nötig sind.',
-        ],
-      },
-      {
-        h: '13. Ihre Rechte',
-        p: ['Sie können uns jederzeit kontaktieren, um:'],
-        ul: [
-          'zu erfahren, welche Personendaten wir über Sie halten;',
-          'eine Kopie davon zu erhalten;',
-          'falsche Angaben berichtigen zu lassen;',
-          'die Löschung zu verlangen;',
-          'wo anwendbar eine übertragbare Kopie zu verlangen;',
-          'Ihre Einwilligung zu widerrufen;',
-          'einer bestimmten Bearbeitung zu widersprechen oder sie einschränken zu lassen.',
-        ],
-      },
-      {
-        p: [
-          'Ein Widerruf berührt nicht die Bearbeitung, die vor dem Widerruf stattgefunden hat.',
-          'Für eine Anfrage schreiben Sie an contact@fynda.market. Wir können Sie bitten, Ihre Identität zu bestätigen, bevor wir handeln.',
-          'Die täglich wechselnden Analyse-Hashes lassen sich keiner Person zuordnen und deshalb weder gezielt abfragen noch einzeln löschen.',
-          'Sie haben ausserdem das Recht, sich beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) zu beschweren.',
-        ],
-      },
-      {
-        h: '14. Welches Recht gilt',
-        p: [
-          'Für Besucherinnen und Besucher in der Schweiz gilt das Schweizer Datenschutzgesetz (revDSG). Sobald Fynda in der Europäischen Union aktiv ist, gilt zusätzlich die DSGVO.',
-        ],
-      },
-      {
-        h: '15. Änderungen dieser Erklärung',
-        p: [
-          'Fynda kann mit der Zeit neue Funktionen, Anbieter oder Dienste einführen. Wir aktualisieren diese Erklärung, wenn sich unser Umgang mit Daten ändert. Das Datum oben zeigt immer, ab wann die aktuelle Fassung gilt.',
-        ],
-      },
-      {
-        h: '16. Kontakt',
-        p: [
-          'Für Fragen und Anliegen zum Datenschutz:',
-          'Delfim Almeida\nZürich, Schweiz\ncontact@fynda.market',
+          'Für Besucher in der Schweiz gilt das Schweizer Datenschutzgesetz; wo fynda.market in der Europäischen Union aktiv ist, gilt zusätzlich die DSGVO.',
+          'Ändern sich unsere Praktiken, ändert sich diese Seite mit, und das Datum oben zeigt, seit wann die aktuelle Fassung gilt.',
+          'Für jede Frage zum Datenschutz: contact@fynda.market.',
         ],
       },
     ],
   },
 
   fr: {
-    title: 'Politique de confidentialité — Fynda',
-    description: 'Ce que Fynda collecte, ce qu’il ne collecte pas, et où ces données se trouvent.',
-    heading: 'Politique de confidentialité',
-    effective: 'En vigueur depuis le 6 septembre 2026',
+    title: 'Confidentialité — fynda.market',
+    description: "Votre visite est anonyme et vos données le restent. Ce que fynda.market collecte, pourquoi, et qui nous aide à faire tourner le site.",
+    heading: 'Confidentialité',
+    effective: 'En vigueur dès le 17 septembre 2026',
     lede: [
-      "Fynda aide à découvrir les brocantes, vide-greniers et événements d'occasion dans toute la Suisse.",
-      "Nous pensons que la seconde main compte. Elle garde les bonnes choses en circulation, réduit les déchets et rassemble les gens autour de lieux réels. Fynda existe pour rendre ce monde plus facile à trouver.",
-      'Votre confiance compte autant que les informations que nous publions.',
-      'Nous ne vendons pas de données personnelles.',
+      'Votre visite est anonyme. Vos données le restent.',
+      "fynda.market ne demande jamais qui vous êtes — aucun compte n'est nécessaire. Nous suivons en revanche la façon dont le site est utilisé, pour l'améliorer : quels marchés sont consultés, quelles pages aident, où les gens abandonnent. Rien de tout cela n'est lié à vous en tant que personne, et rien n'est jamais vendu.",
+      "Cette page dit ce que nous collectons, à quoi cela sert, et qui nous aide à faire tourner le site.",
     ],
     blocks: [
+      { h: '1. Qui est responsable', p: ['fynda.market est exploité par :', 'Delfim Almeida\nZurich, Suisse\ncontact@fynda.market'] },
+      { h: "2. Quand cela s'applique", p: ["Cette politique s'applique lorsque vous consultez fynda.market, vous abonnez à la newsletter, nous écrivez, signalez une correction ou traitez avec nous en tant qu'organisateur."] },
       {
-        h: '1. Qui est responsable de vos données ?',
+        h: '3. Ce que nous collectons lors d\'une visite',
         p: [
-          'Fynda est exploité par :',
-          'Delfim Almeida\nZurich, Suisse\ncontact@fynda.market',
+          "Pour comprendre comment fynda.market est utilisé, nous enregistrons ce qui s'y passe : les pages que vous ouvrez, les marchés et dates que vous regardez, les filtres que vous choisissez, les liens que vous suivez, d'où vous venez, et si quelque chose n'a pas fonctionné. S'y ajoute ce que tout site web reçoit : votre adresse IP, votre navigateur et type d'appareil, votre pays approximatif.",
+          "Si vous acceptez les cookies, un petit identifiant est stocké dans votre navigateur pour que nous le reconnaissions lors d'une prochaine visite — c'est ainsi que nous distinguons un nouveau visiteur de quelqu'un qui revient. Sans lui, chaque journée est comptée séparément, sans lien avec la suivante.",
+          "Rien de tout cela ne contient votre nom ni votre adresse e-mail. Nous ne savons pas qui vous êtes, et nous ne relions jamais ce que vous faites sur fynda.market à votre identité.",
         ],
       },
       {
-        h: "2. Quand cette politique s'applique",
-        p: ["Cette politique s'applique lorsque vous :"],
+        h: '4. Cookies',
+        p: [
+          "fynda.market utilise des cookies. Lors de votre première visite, vous choisissez d'autoriser ou non ceux qui nous aident à comprendre l'usage du site ; le site fonctionne de la même façon dans les deux cas. Vous pouvez changer d'avis à tout moment via le lien en bas de page.",
+          "Quelques cookies et réglages du navigateur sont nécessaires au site lui-même — votre choix concernant les cookies, les marchés enregistrés, la commune choisie. Ils ne quittent jamais votre navigateur.",
+        ],
+      },
+      {
+        h: '5. À quoi cela sert',
+        p: ['Nous utilisons ces informations pour :'],
         ul: [
-          'consultez fynda.market ;',
-          'vous abonnez à une newsletter Fynda ;',
-          'nous contactez ;',
-          'signalez une correction ;',
-          'proposez un marché ;',
-          'échangez avec nous en tant qu’organisateur.',
+          'améliorer fynda.market — voir quelles pages aident et lesquelles non ;',
+          'comprendre quels marchés, communes et dates intéressent les gens ;',
+          "garder le site rapide, sûr et à l'abri des abus ;",
+          'décider où nous développer ensuite.',
         ],
       },
       {
-        h: '3. Votre visite sur Fynda',
+        p: ["Nous en tirons aussi des tendances plus larges — l'intérêt par commune ou région, la popularité des marchés et des saisons, les zones mal couvertes. Ces tendances décrivent des foules, pas des personnes ; nous pouvons les publier, les partager avec des organisateurs ou les exploiter commercialement. Elles ne permettent de remonter à aucun visiteur."],
+      },
+      {
+        h: '6. Marchés enregistrés et votre commune',
+        p: ["Les marchés que vous enregistrez et la commune que vous choisissez sur la page d'accueil restent dans votre propre navigateur. Ils ne nous sont pas envoyés. Ils disparaissent si vous effacez les données de votre navigateur ou changez d'appareil."],
+      },
+      {
+        h: '7. La newsletter',
         p: [
-          "Vous pouvez consulter Fynda sans créer de compte et sans nous dire qui vous êtes. Il n'y a aucune connexion sur Fynda, et aucun compte.",
-          'Lors de votre visite, notre hébergement et notre outil de mesure reçoivent des informations telles que :',
+          "À l'inscription, nous conservons votre adresse e-mail, la commune ou le canton choisi et la langue de la page, et nous les utilisons pour vous envoyer la newsletter demandée. L'abonnement démarre immédiatement — il n'y a pas d'e-mail de confirmation. Nous notons aussi quand et d'où vous vous êtes inscrit et le texte que vous avez accepté, afin que votre consentement puisse être démontré plutôt qu'affirmé.",
+          "Nos e-mails sont distribués par Resend (Resend Inc., USA), qui reçoit votre adresse et le contenu de chaque message uniquement pour la distribution. Resend nous dit si un e-mail est arrivé, a été rejeté, ouvert, ou quel lien a été cliqué, et nous nous en servons pour garder la liste saine : une adresse définitivement injoignable ou qui nous signale comme spam est retirée aussitôt, et une adresse qui n'ouvre rien depuis longtemps peut être retirée pour que nous n'écrivions pas dans le vide.",
+          "Votre adresse e-mail sert à la newsletter et à vous répondre — elle n'est pas reliée à ce que vous faites sur le site.",
+          "Vous pouvez vous désabonner via le lien de chaque e-mail ou en écrivant à contact@fynda.market. Nous ne gardons ensuite que votre adresse et les dates d'inscription et de désinscription, pour ne jamais vous recontacter par erreur.",
         ],
+      },
+      {
+        h: '8. Quand vous nous écrivez, et les organisateurs',
+        p: [
+          "Quand vous signalez une correction, proposez un marché ou nous contactez en tant qu'organisateur, nous conservons ce que vous envoyez — en général nom, adresse e-mail, marché et message — avec la langue et la page d'où venait le formulaire. Nous nous en servons pour répondre, vérifier le signalement et garder les informations exactes. Si vous indiquez une adresse e-mail, vous recevez un bref accusé de réception ; pour un signalement, elle est facultative.",
+          "Les organisateurs qui prennent en main la page de leur marché reçoivent un lien personnel par e-mail et, avant chaque date, un court message demandant si elle a bien lieu. Leurs réponses apparaissent sur la page du marché comme « confirmé par l'organisateur » avec la date. Les signalements et la correspondance avec les organisateurs constituent la trace de la dernière vérification d'une information ; ils sont donc conservés, et vous pouvez en demander la suppression à tout moment.",
+        ],
+      },
+      {
+        h: '9. Informations publiques sur les marchés',
+        p: ["fynda.market recherche et publie des informations sur les brocantes, vide-greniers et événements de seconde main — auprès des organisateurs, des sites officiels, des communes, des associations, des agendas publics et d'autres sources publiques. Nous les utilisons pour créer, vérifier et mettre à jour les fiches."],
+      },
+      {
+        h: '10. Qui nous aide à faire tourner fynda.market',
+        p: ['Un petit nombre de prestataires travaillent pour nous, selon nos instructions :'],
         ul: [
-          'les pages que vous consultez ;',
-          'la manière dont vous êtes arrivé sur Fynda ;',
-          'les liens et fonctions que vous utilisez ;',
-          'les marchés que vous ouvrez et les filtres que vous réglez ;',
-          'votre navigateur et votre type d’appareil ;',
-          'votre pays approximatif ;',
-          'votre adresse IP ;',
-          'les erreurs techniques et les informations de performance.',
+          "Cloudflare (USA) héberge et diffuse le site et le protège contre les abus ; il voit les adresses IP, les pages demandées et des détails techniques, depuis des serveurs dans le monde entier.",
+          'Supabase (région UE) héberge notre base de données : informations sur les marchés, données d\'usage, abonnements, messages et données des organisateurs.',
+          'Resend (USA) distribue nos e-mails — voir la section 7.',
+          "Google Search Console nous montre quelles recherches amènent les gens sur fynda.market ; elle lit l'index de Google et ne place rien sur ce site.",
         ],
       },
       {
-        h: 'Notre propre mesure, sur notre propre base de données',
         p: [
-          "Fynda n'utilise ni Google Analytics, ni Microsoft Clarity, ni aucun autre produit tiers de mesure ou de publicité. Notre mesure d'audience est auto-hébergée : les événements sont écrits dans notre propre base Postgres et lus avec notre propre installation de Metabase. Ces données ne quittent jamais notre infrastructure et ne sont jamais vendues.",
-          "Fynda ne dépose aucun cookie, et il n'y a pas de bandeau cookies, parce qu'il n'y a rien à accepter.",
-          "À la place d'un cookie, chaque visite est comptée au moyen d'une valeur calculée à partir de l'adresse IP et de l'identification du navigateur, puis hachée. Le secret utilisé pour ce hachage change chaque jour : la même visite produit donc une autre valeur le lendemain — l'identifiant ne peut pas remonter jusqu'à vous ni être suivi d'un jour à l'autre. L'adresse IP elle-même n'est jamais conservée en clair.",
+          "Pour comprendre l'usage du site, nous pouvons aussi recourir à des outils d'analyse tels que Google Analytics ou Microsoft Clarity. Un tel outil relève de votre choix concernant les cookies, ne reçoit ni nom ni adresse e-mail, et est mentionné ici dès que nous l'utilisons.",
+          "Nous pouvons divulguer des données personnelles lorsque la loi l'exige, pour protéger fynda.market ou une autre personne, ou pour faire valoir ou défendre un droit.",
         ],
       },
       {
-        h: 'Google Search Console',
-        p: [
-          "Nous consultons les requêtes qui amènent les gens sur Fynda depuis Google. Cela lit les données de l'index de Google et n'ajoute aucun script de suivi sur ce site.",
-        ],
+        h: '11. Hors de Suisse',
+        p: ["Certains prestataires sont établis aux États-Unis ou dans d'autres pays, ou y utilisent des serveurs. Le cas échéant, le transfert repose sur des garanties reconnues : les Data Privacy Frameworks Suisse-USA et UE-USA et les clauses contractuelles types avec leurs compléments suisses. Notre base de données reste dans une région de l'UE."],
       },
       {
-        h: '4. Marchés enregistrés et ville choisie',
-        p: [
-          "Les marchés que vous enregistrez et la ville que vous choisissez sur la page d'accueil sont conservés uniquement dans le stockage local de votre propre navigateur. Ils ne nous sont jamais transmis et nous ne pouvons pas les voir. Ils disparaissent si vous effacez les données de votre navigateur, ou si vous changez de navigateur ou d'appareil.",
-        ],
-      },
-      {
-        h: '5. Inscription à la newsletter',
-        p: [
-          "Lorsque vous vous inscrivez, nous enregistrons votre adresse e-mail, la commune que vous avez choisie et la langue de la page dans notre propre base de données, afin de vous envoyer la newsletter demandée. L'inscription est active immédiatement — il n'y a pas d'e-mail de confirmation à cliquer.",
-          "Nous enregistrons également la date de votre inscription, la page depuis laquelle elle a été faite, le texte de consentement qui vous a été montré et une empreinte irréversible de votre adresse IP, afin de pouvoir démontrer ce consentement. L'adresse IP elle-même n'est jamais conservée.",
-          "La base légale de ce traitement est votre consentement. Vous pouvez le retirer à tout moment en écrivant à contact@fynda.market ou via le lien de désinscription présent dans chaque newsletter.",
-          "Lors d'une désinscription, nous supprimons de la liste active les informations qui pourraient vous identifier et ne conservons qu'un enregistrement minimal de suppression — votre adresse e-mail et les dates d'inscription et de désinscription — afin de ne pas vous recontacter par erreur et de pouvoir démontrer votre consentement et son retrait.",
-          "Pour l'envoi, nous faisons appel à Resend (Resend Inc., États-Unis) en tant que sous-traitant. Resend reçoit votre adresse e-mail et le contenu du message concerné, uniquement pour le remettre. Nous n'utilisons aucune plateforme marketing qui gérerait vos coordonnées : la liste elle-même se trouve dans notre propre base de données.",
-          "Resend nous indique aussi ce qu'il est advenu de chaque message : s'il a été remis, s'il est revenu, s'il a été signalé comme spam, s'il a été ouvert et quel lien y a été cliqué. L'ouverture est détectée par une minuscule image dans le message ; un logiciel de messagerie qui ne charge pas les images n'en signale aucune. Nous n'en faisons que deux usages : une adresse qui revient définitivement ou nous signale comme spam est retirée de la liste immédiatement, et une adresse qui n'ouvre rien pendant longtemps peut être retirée de la liste, pour que nous cessions d'écrire dans le vide. Nous n'en tirons aucun profil.",
-        ],
-      },
-      {
-        h: '6. Nous contacter',
-        p: [
-          "Lorsque vous nous envoyez un message, signalez une information erronée, proposez un marché ou nous contactez en tant qu'organisateur, nous utilisons ce que vous nous transmettez. Cela peut inclure :",
-        ],
+        h: '12. Combien de temps nous conservons',
         ul: [
-          'votre nom ;',
-          'votre adresse e-mail ;',
-          'votre organisation ou le nom du marché ;',
-          'votre message ;',
-          'des liens et informations complémentaires.',
+          "données de newsletter : tant que vous êtes abonné, puis seulement la trace de désinscription décrite ci-dessus ;",
+          "messages, signalements et correspondance avec les organisateurs : tant qu'ils restent pertinents, comme trace de la dernière vérification d'une fiche ;",
+          "données d'usage : conservées, pour suivre les tendances sur plusieurs années — elles ne contiennent ni nom, ni adresse e-mail, ni adresse IP lisible ;",
+          "données de sécurité de courte durée : supprimées dès qu'elles ne sont plus nécessaires.",
         ],
       },
       {
+        h: '13. Comment nous les protégeons',
+        p: ["Le site publié est un ensemble de pages statiques sans accès à notre base de données. L'accès à la base est restreint par des permissions et une sécurité au niveau des lignes. Chaque connexion utilise HTTPS. Les adresses IP servant au comptage et à la prévention des abus sont stockées hachées, non lisibles. L'accès aux données personnelles est limité aux outils nécessaires au fonctionnement du site."],
+      },
+      {
+        h: '14. Vos droits',
+        p: ["Vous pouvez à tout moment nous demander quelles données personnelles nous détenons sur vous, les corriger ou les supprimer, en obtenir une copie, retirer un consentement ou faire cesser un usage particulier. Écrivez à contact@fynda.market ; nous pourrons d'abord vous demander de confirmer votre identité. Vous pouvez aussi vous adresser au Préposé fédéral à la protection des données et à la transparence."],
+      },
+      {
+        h: '15. Droit applicable, modifications, contact',
         p: [
-          "Ces informations sont enregistrées dans notre propre base de données, avec la langue et la page depuis laquelle le formulaire a été envoyé, ainsi qu'une empreinte à sens unique de votre adresse IP ; l'adresse IP elle-même n'est pas conservée. Nous les utilisons pour répondre, examiner la demande, corriger les annonces et garder les informations de Fynda exactes.",
-          "Si vous indiquez une adresse e-mail, vous recevez un bref accusé de réception, envoyé via Resend (voir la section 5). Pour un signalement, l'adresse est facultative — sans elle, nous ne pouvons simplement pas vous répondre. La base légale est notre intérêt légitime à garder exactes les informations publiées et, pour une demande d'organisateur, l'établissement de ce contact.",
-          "Les signalements et les demandes d'organisateurs ne sont pas supprimés automatiquement : ils constituent la preuve de la date à laquelle une information a été vérifiée, et cette preuve est le cœur de ce que propose Fynda. Vous pouvez demander leur suppression à tout moment.",
-        ],
-      },
-      {
-        h: '7. Informations publiques sur les marchés',
-        p: [
-          "Fynda recherche et publie des informations sur les brocantes et les événements d'occasion. Ces informations peuvent provenir :",
-        ],
-        ul: [
-          'des organisateurs ;',
-          'des sites officiels des marchés ;',
-          'des communes et des lieux ;',
-          'des associations ;',
-          'des agendas publics ;',
-          'de pages de réseaux sociaux accessibles au public ;',
-          "d'autres sources publiques.",
-        ],
-      },
-      {
-        p: ['Nous utilisons ces informations pour créer, vérifier et mettre à jour les annonces.'],
-      },
-      {
-        h: '8. Nous ne vendons pas de données personnelles',
-        p: [
-          'Nous ne vendons pas de données personnelles.',
-          "Nous ne fournissons à aucun organisateur, annonceur ou partenaire commercial de listes identifiables de visiteurs de Fynda.",
-          "Nous ne vendons ni adresses e-mail, ni historiques de navigation, ni identifiants de cookies, ni profils personnels.",
-          'Fynda peut utiliser des informations entièrement agrégées et anonymisées pour comprendre des tendances générales, par exemple :',
-        ],
-        ul: [
-          "l'intérêt de recherche par ville ou par région ;",
-          'la popularité des marchés et des dates ;',
-          'la demande saisonnière ;',
-          'les sources de trafic et de renvoi ;',
-          "les lacunes de la couverture locale des brocantes ;",
-          "les évolutions du secteur suisse de l'occasion.",
-        ],
-      },
-      {
-        p: [
-          "Nous pouvons utiliser, publier, partager ou valoriser ces enseignements non identifiants pour notre activité, nos recherches, nos rapports, nos outils destinés aux organisateurs ou nos partenariats.",
-          "Ces enseignements n'identifient aucun visiteur et sont conservés séparément des données personnelles.",
-        ],
-      },
-      {
-        h: '9. Les services qui font fonctionner Fynda',
-        p: [
-          "Fynda s'appuie sur un petit nombre de prestataires de confiance.",
-          "Cloudflare héberge et diffuse le site de Fynda et le protège contre les abus. Cloudflare peut traiter des adresses IP, des journaux d'accès, des informations sur le navigateur, les pages demandées, des horodatages, des erreurs et des informations de sécurité. Cloudflare est établi aux États-Unis et diffuse le site depuis des serveurs répartis dans le monde.",
-          "Supabase fournit la base de données de Fynda. Les informations sur les marchés, les événements de mesure, les inscriptions à la newsletter, les messages, les corrections et les données d'organisateurs y sont stockés. Fynda utilise une région Supabase située dans l'UE.",
-          "Google fournit la Search Console, qui indique comment Fynda apparaît dans la recherche Google. Elle lit l'index de Google et n'intègre rien dans ce site.",
-          "Chaque prestataire traite les informations selon son rôle, son contrat avec Fynda et ses propres obligations légales.",
-          "Nous pouvons également divulguer des données personnelles lorsque la loi l'exige, lorsque c'est nécessaire pour protéger Fynda ou une autre personne, ou pour faire valoir ou défendre un droit en justice.",
-        ],
-      },
-      {
-        h: '10. Traitement hors de Suisse',
-        p: [
-          "Certains prestataires de Fynda sont établis aux États-Unis ou dans d'autres pays hors de Suisse, ou y utilisent des infrastructures.",
-          "Le cas échéant, ces transferts reposent sur des garanties reconnues telles que :",
-        ],
-        ul: [
-          'le Swiss-U.S. Data Privacy Framework ;',
-          'le EU-U.S. Data Privacy Framework ;',
-          'les clauses contractuelles types ;',
-          'les compléments suisses à ces clauses.',
-        ],
-      },
-      {
-        p: [
-          "Fynda utilise une région de base de données dans l'UE pour Supabase, tandis que l'hébergement et la diffusion peuvent traiter des informations aux États-Unis et ailleurs.",
-        ],
-      },
-      {
-        h: '11. Combien de temps nous conservons les informations',
-        p: [
-          "Nous ne conservons les données personnelles que tant qu'elles restent utiles à la raison pour laquelle elles ont été collectées. En pratique :",
-        ],
-        ul: [
-          'les données de newsletter sont conservées tant que vous restez abonné ;',
-          "après une désinscription, seul l'enregistrement minimal décrit ci-dessus est conservé ;",
-          'les messages et signalements sont conservés tant qu’ils restent pertinents ;',
-          "la correspondance avec les organisateurs peut être conservée dans l'historique de vérification d'une annonce ;",
-          "les événements de mesure sont conservés sans limite de durée, afin de suivre les tendances sur plusieurs années — ils ne contiennent ni nom, ni adresse e-mail, ni adresse IP en clair ;",
-          "les enregistrements de sécurité et de limitation de débit, de courte durée, sont supprimés dès qu'ils ne sont plus nécessaires.",
-        ],
-      },
-      {
-        p: [
-          "Les informations entièrement anonymisées peuvent être conservées plus longtemps car elles n'identifient plus personne.",
-        ],
-      },
-      {
-        h: '12. Comment nous protégeons vos informations',
-        p: [
-          "Fynda sépare les données publiques du site des informations privées de contact et d'organisateurs. Les pages publiques ne peuvent pas lire les données privées d'organisateurs.",
-          "L'accès à la base de données est restreint par les permissions Supabase et la sécurité au niveau des lignes. Le site publié est un ensemble de pages statiques et ne contient aucun identifiant d'administration.",
-          'Les connexions à Fynda utilisent HTTPS.',
-          "Les adresses IP utilisées pour la mesure et la prévention des abus sont hachées plutôt que conservées telles quelles.",
-          "L'accès aux données personnelles est limité aux services et outils nécessaires au fonctionnement de Fynda.",
-        ],
-      },
-      {
-        h: '13. Vos droits',
-        p: ['Vous pouvez nous contacter à tout moment pour :'],
-        ul: [
-          'demander quelles données personnelles nous détenons sur vous ;',
-          'en recevoir une copie ;',
-          'faire corriger des informations inexactes ;',
-          'demander leur suppression ;',
-          'demander une copie portable le cas échéant ;',
-          'retirer votre consentement ;',
-          "vous opposer à certains traitements ou en demander la limitation.",
-        ],
-      },
-      {
-        p: [
-          "Le retrait du consentement n'affecte pas les traitements effectués avant ce retrait.",
-          "Pour une demande, écrivez à contact@fynda.market. Nous pouvons vous demander de confirmer votre identité avant d'y donner suite.",
-          "Les empreintes de mesure, qui changent chaque jour, ne peuvent être rattachées à personne : elles ne peuvent donc être ni consultées ni supprimées individuellement.",
-          "Vous avez également le droit de déposer une réclamation auprès du Préposé fédéral à la protection des données et à la transparence.",
-        ],
-      },
-      {
-        h: '14. Droit applicable',
-        p: [
-          "Pour les visiteurs en Suisse, la loi fédérale sur la protection des données (nLPD) s'applique. Dès que Fynda sera actif dans l'Union européenne, le RGPD s'appliquera en plus.",
-        ],
-      },
-      {
-        h: '15. Modifications de cette politique',
-        p: [
-          "Fynda peut introduire de nouvelles fonctions, de nouveaux prestataires ou de nouveaux services au fil du temps. Nous mettrons à jour cette politique lorsque nos pratiques changeront. La date en haut de page indique toujours à partir de quand la version actuelle s'applique.",
-        ],
-      },
-      {
-        h: '16. Contact',
-        p: [
-          'Pour toute question ou demande relative à la confidentialité :',
-          'Delfim Almeida\nZurich, Suisse\ncontact@fynda.market',
+          "Pour les visiteurs en Suisse, la loi fédérale suisse sur la protection des données s'applique ; là où fynda.market est actif dans l'Union européenne, le RGPD s'applique en plus.",
+          "Quand nos pratiques changent, cette page change avec elles, et la date en haut indique depuis quand la version actuelle s'applique.",
+          'Pour toute question de confidentialité : contact@fynda.market.',
         ],
       },
     ],
   },
 
   it: {
-    title: 'Informativa sulla privacy — Fynda',
-    description: 'Che cosa raccoglie Fynda, che cosa non raccoglie e dove si trovano questi dati.',
-    heading: 'Informativa sulla privacy',
-    effective: 'In vigore dal 6 settembre 2026',
+    title: 'Privacy — fynda.market',
+    description: 'La tua visita è anonima e i tuoi dati restano tali. Cosa raccoglie fynda.market, a che scopo, e chi ci aiuta a far funzionare il sito.',
+    heading: 'Privacy',
+    effective: 'In vigore dal 17 settembre 2026',
     lede: [
-      "Fynda aiuta a scoprire mercatini delle pulci, mercatini dell'usato ed eventi di seconda mano in tutta la Svizzera.",
-      'Crediamo che la seconda mano conti. Tiene in circolo le cose buone, riduce i rifiuti e riunisce le persone attorno a luoghi reali. Fynda esiste per rendere quel mondo più facile da trovare.',
-      'La Sua fiducia conta quanto le informazioni che pubblichiamo.',
-      'Non vendiamo dati personali.',
+      'La tua visita è anonima. I tuoi dati restano tali.',
+      "fynda.market non chiede mai chi sei — non serve alcun account. Teniamo però traccia di come viene usato il sito, per migliorarlo: quali mercatini vengono guardati, quali pagine aiutano, dove le persone rinunciano. Niente di tutto questo è collegato a te come persona, e niente viene mai venduto.",
+      'Questa pagina dice cosa raccogliamo, a che scopo, e chi ci aiuta a far funzionare il sito.',
     ],
     blocks: [
+      { h: '1. Chi è responsabile', p: ['fynda.market è gestito da:', 'Delfim Almeida\nZurigo, Svizzera\ncontact@fynda.market'] },
+      { h: '2. Quando si applica', p: ["Questa informativa si applica quando visiti fynda.market, ti iscrivi alla newsletter, ci scrivi, segnali una correzione o hai a che fare con noi come organizzatore."] },
       {
-        h: '1. Chi è responsabile dei Suoi dati?',
+        h: '3. Cosa raccogliamo durante una visita',
         p: [
-          'Fynda è gestito da:',
-          'Delfim Almeida\nZurigo, Svizzera\ncontact@fynda.market',
+          "Per capire come viene usato fynda.market, registriamo cosa succede sul sito: le pagine che apri, i mercatini e le date che guardi, i filtri che imposti, i link che segui, da dove arrivi e se qualcosa è andato storto. Insieme, ciò che ogni sito web riceve: il tuo indirizzo IP, il tipo di browser e dispositivo, il tuo paese approssimativo.",
+          "Se accetti i cookie, un piccolo identificativo viene salvato nel tuo browser perché lo riconosciamo alla visita successiva — è così che distinguiamo un nuovo visitatore da chi torna. Senza di esso, ogni giorno viene contato a sé e non collegato al successivo.",
+          "Niente di tutto questo contiene il tuo nome o il tuo indirizzo e-mail. Non sappiamo chi sei, e non colleghiamo mai ciò che fai su fynda.market alla tua identità.",
         ],
       },
       {
-        h: '2. Quando si applica questa informativa',
-        p: ['Questa informativa si applica quando Lei:'],
+        h: '4. Cookie',
+        p: [
+          "fynda.market usa i cookie. Alla prima visita scegli se consentire quelli che ci aiutano a capire come viene usato il sito; il sito funziona allo stesso modo in entrambi i casi. Puoi cambiare la tua scelta in qualsiasi momento dal link a piè di pagina.",
+          "Alcuni cookie e impostazioni del browser servono al sito stesso — la tua scelta sui cookie, i mercatini salvati, la località scelta. Non lasciano mai il tuo browser.",
+        ],
+      },
+      {
+        h: '5. A cosa serve',
+        p: ['Usiamo queste informazioni per:'],
         ul: [
-          'consulta fynda.market;',
-          'si iscrive a una newsletter di Fynda;',
-          'ci contatta;',
-          'segnala una correzione;',
-          'propone un mercatino;',
-          'comunica con noi come organizzatore.',
+          'migliorare fynda.market — vedere quali pagine aiutano e quali no;',
+          'capire quali mercatini, località e date interessano alle persone;',
+          'mantenere il sito veloce, sicuro e libero da abusi;',
+          'decidere dove crescere in seguito.',
         ],
       },
       {
-        h: '3. La Sua visita su Fynda',
+        p: ["Ne ricaviamo anche tendenze più ampie — l'interesse per località o regione, la popolarità di mercatini e stagioni, le zone poco coperte. Queste tendenze descrivono folle, non persone; possiamo pubblicarle, condividerle con gli organizzatori o usarle commercialmente. Non permettono di risalire a nessun visitatore."],
+      },
+      {
+        h: '6. Mercatini salvati e la tua località',
+        p: ["I mercatini che salvi e la località che scegli nella pagina iniziale restano nel tuo browser. Non ci vengono inviati. Scompaiono se cancelli i dati del browser o usi un altro dispositivo."],
+      },
+      {
+        h: '7. La newsletter',
         p: [
-          'Può consultare Fynda senza creare un account e senza dirci chi è. Su Fynda non esiste alcun accesso e non esistono account.',
-          'Durante la visita il nostro hosting e la nostra analisi ricevono informazioni come:',
+          "All'iscrizione conserviamo il tuo indirizzo e-mail, la località o il cantone scelto e la lingua della pagina, e li usiamo per inviarti la newsletter richiesta. L'iscrizione parte subito — non c'è nessuna e-mail di conferma. Annotiamo anche quando e da dove ti sei iscritto e il testo che hai accettato, così che il tuo consenso possa essere dimostrato e non solo affermato.",
+          "Le nostre e-mail sono recapitate da Resend (Resend Inc., USA), che riceve il tuo indirizzo e il contenuto di ogni messaggio solo per la consegna. Resend ci dice se un'e-mail è arrivata, è stata respinta, aperta, o quale link è stato cliccato, e lo usiamo per tenere sana la lista: un indirizzo definitivamente irraggiungibile o che ci segnala come spam viene tolto subito, e un indirizzo che non apre nulla da molto tempo può essere rimosso perché non scriviamo nel vuoto.",
+          "Il tuo indirizzo e-mail serve per la newsletter e per risponderti — non viene collegato a ciò che fai sul sito.",
+          "Puoi disiscriverti dal link in ogni e-mail o scrivendo a contact@fynda.market. Dopo conserviamo solo il tuo indirizzo e le date di iscrizione e disiscrizione, per non ricontattarti mai per errore.",
         ],
+      },
+      {
+        h: '8. Quando ci scrivi, e gli organizzatori',
+        p: [
+          "Quando segnali una correzione, proponi un mercatino o ci contatti come organizzatore, conserviamo ciò che invii — di solito nome, indirizzo e-mail, mercatino e messaggio — insieme alla lingua e alla pagina da cui è partito il modulo. Lo usiamo per rispondere, verificare la segnalazione e tenere corrette le informazioni. Se indichi un indirizzo e-mail ricevi una breve conferma; per una segnalazione è facoltativo.",
+          "Gli organizzatori che prendono in mano la pagina del loro mercatino ricevono un link personale via e-mail e, prima di ogni data, un breve messaggio che chiede se si fa. Le loro risposte compaiono sulla pagina come «confermato dall'organizzatore» con la data. Segnalazioni e corrispondenza con gli organizzatori sono la traccia dell'ultima verifica di un'informazione, quindi vengono conservate; puoi chiederne la cancellazione in qualsiasi momento.",
+        ],
+      },
+      {
+        h: '9. Informazioni pubbliche sui mercatini',
+        p: ["fynda.market ricerca e pubblica informazioni su mercatini delle pulci ed eventi dell'usato — da organizzatori, siti ufficiali, comuni, associazioni, calendari pubblici e altre fonti pubbliche. Le usiamo per creare, verificare e aggiornare le schede."],
+      },
+      {
+        h: '10. Chi ci aiuta a far funzionare fynda.market',
+        p: ['Un piccolo numero di fornitori lavora per noi secondo le nostre istruzioni:'],
         ul: [
-          'le pagine che consulta;',
-          'come è arrivato su Fynda;',
-          'i link e le funzioni che usa;',
-          'quali mercatini apre e quali filtri imposta;',
-          'il tipo di browser e di dispositivo;',
-          'il Suo Paese approssimativo;',
-          'il Suo indirizzo IP;',
-          'errori tecnici e informazioni sulle prestazioni.',
+          "Cloudflare (USA) ospita e distribuisce il sito e lo protegge dagli abusi; vede indirizzi IP, pagine richieste e dettagli tecnici, da server in tutto il mondo.",
+          "Supabase (regione UE) ospita il nostro database: informazioni sui mercatini, dati d'uso, iscrizioni alla newsletter, messaggi e dati degli organizzatori.",
+          'Resend (USA) recapita le nostre e-mail — vedi la sezione 7.',
+          "Google Search Console ci mostra quali ricerche portano le persone su fynda.market; legge l'indice di Google e non inserisce nulla in questo sito.",
         ],
       },
       {
-        h: 'La nostra analisi, sulla nostra banca dati',
         p: [
-          'Fynda non usa Google Analytics, né Microsoft Clarity, né alcun altro prodotto di analisi o pubblicità di terzi. La nostra analisi è ospitata da noi: gli eventi vengono scritti nella nostra banca dati Postgres e letti con la nostra installazione di Metabase. Questi dati non lasciano mai la nostra infrastruttura e non vengono mai venduti.',
-          'Fynda non usa cookie e non c’è alcun banner sui cookie, perché non c’è nulla da accettare.',
-          'Al posto di un cookie, ogni visita viene contata tramite un valore calcolato a partire dall’indirizzo IP e dall’identificazione del browser e poi sottoposto ad hash. Il segreto usato per quell’hash cambia ogni giorno, quindi domani la stessa visita produce un valore diverso — l’identificatore non è riconducibile a Lei e non può essere seguito da un giorno all’altro. L’indirizzo IP non viene mai conservato in chiaro.',
+          "Per capire come viene usato il sito possiamo anche ricorrere a strumenti di analisi come Google Analytics o Microsoft Clarity. Uno strumento del genere rientra nella tua scelta sui cookie, non riceve né nome né indirizzo e-mail, ed è indicato qui non appena lo usiamo.",
+          "Possiamo comunicare dati personali dove la legge lo richiede, per proteggere fynda.market o un'altra persona, o per far valere o difendere un diritto.",
         ],
       },
       {
-        h: 'Google Search Console',
-        p: [
-          'Leggiamo con quali ricerche le persone arrivano su Fynda da Google. Questo legge i dati dall’indice di Google e non inserisce alcuno script di tracciamento in questo sito.',
-        ],
+        h: '11. Fuori dalla Svizzera',
+        p: ["Alcuni fornitori hanno sede negli Stati Uniti o in altri paesi, o vi usano server. Dove ciò avviene, il trasferimento si basa su garanzie riconosciute: i Data Privacy Framework Svizzera-USA e UE-USA e le clausole contrattuali standard con le integrazioni svizzere. Il nostro database resta in una regione UE."],
       },
       {
-        h: '4. Mercatini salvati e città scelta',
-        p: [
-          'I mercatini che salva e la città che sceglie nella pagina iniziale restano soltanto nella memoria locale del Suo browser. Non ci vengono mai trasmessi e non possiamo vederli. Spariscono se cancella i dati del browser o se usa un altro browser o un altro dispositivo.',
-        ],
-      },
-      {
-        h: '5. Iscrizione alla newsletter',
-        p: [
-          'Quando si iscrive, salviamo il Suo indirizzo e-mail, la città che ha scelto e la lingua della pagina nella nostra banca dati, e li usiamo per inviarLe la newsletter richiesta. L’iscrizione è attiva subito — non c’è alcuna e-mail di conferma da cliccare.',
-          'Registriamo inoltre quando si è iscritto, da quale pagina, il testo di consenso che Le è stato mostrato e una versione irreversibile del Suo indirizzo IP, così da poter documentare il consenso. L’indirizzo IP in sé non viene mai conservato.',
-          'La base giuridica di questo trattamento è il Suo consenso. Può revocarlo in qualsiasi momento scrivendo a contact@fynda.market o tramite il link di disiscrizione presente in ogni newsletter.',
-          'In caso di disiscrizione cancelliamo dalla lista attiva le informazioni che potrebbero identificarLa e conserviamo soltanto una registrazione minima di soppressione — il Suo indirizzo e-mail e le date di iscrizione e disiscrizione — per non contattarLa di nuovo per errore e per poter documentare consenso e revoca.',
-          'Per la spedizione ci avvaliamo di Resend (Resend Inc., USA) come responsabile del trattamento. Resend riceve il Suo indirizzo e-mail e il contenuto del singolo messaggio, unicamente per consegnarlo. Non usiamo alcuna piattaforma di marketing che gestisca i contatti per noi: la lista si trova nella nostra banca dati.',
-          "Resend ci comunica inoltre che cosa è successo a ogni messaggio: se è stato consegnato, se è tornato indietro, se è stato segnalato come spam, se è stato aperto e quale link è stato cliccato. L'apertura viene rilevata tramite un'immagine minuscola nel messaggio; un programma di posta che non carica le immagini non ne segnala alcuna. Lo usiamo per due sole cose: un indirizzo che risulta definitivamente irraggiungibile o che ci segnala come spam viene tolto subito dalla lista, e un indirizzo che non apre nulla per molto tempo può essere tolto dalla lista, per non continuare a scrivere a vuoto. Non ne ricaviamo profili.",
-        ],
-      },
-      {
-        h: '6. Contattare Fynda',
-        p: [
-          'Quando ci invia un messaggio, segnala un’informazione errata, propone un mercatino o ci contatta come organizzatore, usiamo ciò che ci comunica. Può comprendere:',
-        ],
+        h: '12. Per quanto tempo li conserviamo',
         ul: [
-          'il Suo nome;',
-          'il Suo indirizzo e-mail;',
-          'la Sua organizzazione o il nome del mercatino;',
-          'il Suo messaggio;',
-          'link e informazioni di supporto.',
+          'dati della newsletter: finché sei iscritto, poi solo la traccia di disiscrizione descritta sopra;',
+          "messaggi, segnalazioni e corrispondenza con gli organizzatori: finché restano rilevanti, come traccia dell'ultima verifica di una scheda;",
+          "dati d'uso: conservati, per seguire le tendenze negli anni — non contengono né nome, né indirizzo e-mail, né indirizzo IP leggibile;",
+          'dati di sicurezza di breve durata: cancellati appena non servono più.',
         ],
       },
       {
+        h: '13. Come li proteggiamo',
+        p: ["Il sito pubblicato è un insieme di pagine statiche senza accesso al nostro database. L'accesso al database è limitato da permessi e sicurezza a livello di riga. Ogni connessione usa HTTPS. Gli indirizzi IP usati per il conteggio e la prevenzione degli abusi sono conservati in forma hash, non leggibile. L'accesso ai dati personali è limitato agli strumenti necessari a far funzionare il sito."],
+      },
+      {
+        h: '14. I tuoi diritti',
+        p: ["Puoi chiederci in qualsiasi momento quali dati personali abbiamo su di te, di correggerli o cancellarli, di dartene una copia, di ritirare un consenso o di interrompere un uso specifico. Scrivi a contact@fynda.market; potremmo prima chiederti di confermare la tua identità. Puoi anche rivolgerti all'Incaricato federale della protezione dei dati e della trasparenza."],
+      },
+      {
+        h: '15. Legge, modifiche, contatto',
         p: [
-          'Questi dati vengono salvati nella nostra banca dati, insieme alla lingua e alla pagina da cui il modulo è stato inviato e a un valore hash unidirezionale del Suo indirizzo IP; l\'indirizzo IP stesso non viene conservato. Li usiamo per risponderLe, verificare la segnalazione, correggere le schede e mantenere esatte le informazioni di Fynda.',
-          'Se indica un indirizzo e-mail riceve una breve conferma di ricezione, inviata tramite Resend (vedi sezione 5). Per una segnalazione l\'indirizzo è facoltativo — senza di esso non possiamo semplicemente risponderLe. La base giuridica è il nostro legittimo interesse a mantenere corrette le informazioni pubblicate e, per una richiesta di organizzatori, l\'avvio di tale contatto.',
-          'Segnalazioni e richieste di organizzatori non vengono cancellate automaticamente: sono la prova di quando un dato è stato verificato, e quella prova è il nucleo di ciò che Fynda offre. Può chiederne la cancellazione in qualsiasi momento.',
-        ],
-      },
-      {
-        h: '7. Informazioni pubbliche sui mercatini',
-        p: [
-          'Fynda raccoglie e pubblica informazioni su mercatini delle pulci ed eventi di seconda mano. Queste informazioni possono provenire da:',
-        ],
-        ul: [
-          'organizzatori;',
-          'siti ufficiali dei mercatini;',
-          'comuni e luoghi di svolgimento;',
-          'associazioni;',
-          'calendari pubblici di eventi;',
-          'pagine di social media accessibili al pubblico;',
-          'altre fonti pubbliche.',
-        ],
-      },
-      {
-        p: ['Usiamo queste informazioni per creare, verificare e aggiornare le schede.'],
-      },
-      {
-        h: '8. Non vendiamo dati personali',
-        p: [
-          'Non vendiamo dati personali.',
-          'Non forniamo a organizzatori, inserzionisti o partner commerciali elenchi identificabili di visitatori di Fynda.',
-          'Non vendiamo indirizzi e-mail, cronologie di navigazione, identificatori di cookie o profili personali.',
-          'Fynda può usare informazioni del tutto aggregate e anonimizzate per capire tendenze più ampie, ad esempio:',
-        ],
-        ul: [
-          'l’interesse di ricerca per città o regione;',
-          'la popolarità di mercatini e date;',
-          'la domanda stagionale;',
-          'le fonti di traffico e di rimando;',
-          'le lacune nella copertura locale dei mercatini;',
-          'le tendenze del settore svizzero della seconda mano.',
-        ],
-      },
-      {
-        p: [
-          'Possiamo usare, pubblicare, condividere o valorizzare economicamente queste analisi non identificative per la nostra attività, per ricerche, rapporti, strumenti per gli organizzatori o partnership.',
-          'Queste analisi non identificano singoli visitatori e sono tenute separate dai dati personali.',
-        ],
-      },
-      {
-        h: '9. I servizi che fanno funzionare Fynda',
-        p: [
-          'Fynda si appoggia a un piccolo numero di fornitori di fiducia.',
-          'Cloudflare ospita e distribuisce il sito di Fynda e lo protegge dagli abusi. Cloudflare può trattare indirizzi IP, registri di accesso, informazioni sul browser, pagine richieste, marche temporali, errori e informazioni di sicurezza. Cloudflare ha sede negli Stati Uniti e distribuisce il sito da server in tutto il mondo.',
-          'Supabase fornisce la banca dati di Fynda. Vi sono conservati informazioni sui mercatini, eventi di analisi, iscrizioni alla newsletter, messaggi, correzioni e dati degli organizzatori. Fynda usa una regione Supabase situata nell’UE.',
-          'Google fornisce Search Console, che mostra come Fynda compare nella ricerca Google. Legge l’indice di Google e non inserisce nulla in questo sito.',
-          'Ogni fornitore tratta le informazioni secondo il proprio ruolo, il proprio accordo con Fynda e i propri obblighi di legge.',
-          'Possiamo inoltre comunicare dati personali quando la legge lo richiede, quando è necessario per proteggere Fynda o un’altra persona, o per far valere o difendere un diritto in giudizio.',
-        ],
-      },
-      {
-        h: '10. Trattamento al di fuori della Svizzera',
-        p: [
-          'Alcuni fornitori di Fynda hanno sede negli Stati Uniti o in altri Paesi fuori dalla Svizzera, o vi utilizzano infrastrutture.',
-          'Ove pertinente, questi trasferimenti si basano su garanzie riconosciute quali:',
-        ],
-        ul: [
-          'lo Swiss-U.S. Data Privacy Framework;',
-          'l’EU-U.S. Data Privacy Framework;',
-          'le clausole contrattuali tipo;',
-          'le integrazioni svizzere a tali clausole.',
-        ],
-      },
-      {
-        p: [
-          'Per Supabase Fynda usa una regione di banca dati nell’UE, mentre l’hosting e la distribuzione possono trattare informazioni negli Stati Uniti e altrove.',
-        ],
-      },
-      {
-        h: '11. Per quanto tempo conserviamo le informazioni',
-        p: [
-          'Conserviamo i dati personali solo finché restano utili allo scopo per cui sono stati raccolti. In pratica:',
-        ],
-        ul: [
-          'i dati della newsletter restano finché rimane iscritto;',
-          'dopo la disiscrizione resta soltanto la registrazione minima descritta sopra;',
-          'messaggi e segnalazioni restano finché sono rilevanti;',
-          'la corrispondenza con gli organizzatori può essere conservata come parte della cronologia di verifica di una scheda;',
-          'gli eventi di analisi sono conservati senza limiti di tempo, così da poter seguire le tendenze negli anni — non contengono nomi, indirizzi e-mail né indirizzi IP in chiaro;',
-          'le registrazioni di sicurezza e di limitazione delle richieste, di breve durata, sono cancellate quando non servono più.',
-        ],
-      },
-      {
-        p: [
-          'Le informazioni completamente anonimizzate possono essere conservate più a lungo perché non identificano più nessuno.',
-        ],
-      },
-      {
-        h: '12. Come proteggiamo le Sue informazioni',
-        p: [
-          'Fynda tiene i dati pubblici del sito separati dalle informazioni private di contatto e degli organizzatori. Le pagine pubbliche non possono leggere i dati privati degli organizzatori.',
-          'L’accesso alla banca dati è limitato dai permessi di Supabase e dalla sicurezza a livello di riga. Il sito pubblicato è un insieme di pagine statiche e non contiene credenziali amministrative.',
-          'Le connessioni a Fynda usano HTTPS.',
-          'Gli indirizzi IP usati per l’analisi e la prevenzione degli abusi sono sottoposti ad hash anziché conservati in forma originale.',
-          'L’accesso ai dati personali è limitato ai servizi e agli strumenti necessari per far funzionare Fynda.',
-        ],
-      },
-      {
-        h: '13. I Suoi diritti',
-        p: ['Può contattarci in qualsiasi momento per:'],
-        ul: [
-          'chiedere quali dati personali conserviamo su di Lei;',
-          'riceverne una copia;',
-          'far correggere informazioni inesatte;',
-          'chiederne la cancellazione;',
-          'chiedere una copia portabile, ove applicabile;',
-          'revocare il Suo consenso;',
-          'opporsi a determinati trattamenti o chiederne la limitazione.',
-        ],
-      },
-      {
-        p: [
-          'La revoca del consenso non pregiudica i trattamenti avvenuti prima della revoca.',
-          'Per una richiesta scriva a contact@fynda.market. Possiamo chiederLe di confermare la Sua identità prima di darvi seguito.',
-          'Gli hash di analisi, che cambiano ogni giorno, non sono riconducibili a una persona e non possono quindi essere consultati o cancellati singolarmente.',
-          'Ha inoltre il diritto di rivolgersi all’Incaricato federale della protezione dei dati e della trasparenza.',
-        ],
-      },
-      {
-        h: '14. Diritto applicabile',
-        p: [
-          'Per i visitatori in Svizzera si applica la legge federale sulla protezione dei dati (nLPD). Non appena Fynda sarà attivo nell’Unione europea si applicherà in aggiunta il GDPR.',
-        ],
-      },
-      {
-        h: '15. Modifiche a questa informativa',
-        p: [
-          'Fynda può introdurre nel tempo nuove funzioni, nuovi fornitori o nuovi servizi. Aggiorneremo questa informativa quando cambieranno le nostre pratiche sui dati. La data in alto indica sempre da quando vale la versione attuale.',
-        ],
-      },
-      {
-        h: '16. Contatto',
-        p: [
-          'Per qualsiasi domanda o richiesta sulla privacy:',
-          'Delfim Almeida\nZurigo, Svizzera\ncontact@fynda.market',
+          "Per i visitatori in Svizzera si applica la legge federale svizzera sulla protezione dei dati; dove fynda.market è attivo nell'Unione europea, si applica in aggiunta il GDPR.",
+          'Quando le nostre pratiche cambiano, questa pagina cambia con loro, e la data in alto indica da quando si applica la versione attuale.',
+          'Per qualsiasi domanda sulla privacy: contact@fynda.market.',
         ],
       },
     ],

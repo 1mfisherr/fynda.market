@@ -184,6 +184,13 @@ export interface Strings {
   footerImprint: string;
   footerPrivacy: string;
   footerTerms: string;
+  /** The cookie banner and the footer link that reopens it. */
+  footerCookies: string;
+  cookieTitle: string;
+  cookieBody: string;
+  cookieMore: string;
+  cookieAccept: string;
+  cookieEssential: string;
   footerAbout: string;
 
   /* canton page */
@@ -398,6 +405,12 @@ const de: Strings = {
   footerImprint: 'Impressum',
   footerPrivacy: 'Datenschutz',
   footerTerms: 'Nutzungsbedingungen',
+  footerCookies: 'Cookies',
+  cookieTitle: 'Cookies?',
+  cookieBody: 'Wir nutzen sie, um zu sehen, wie fynda.market genutzt wird, und die Seite besser zu machen. Nie verknüpft mit Ihnen als Person, nie verkauft.',
+  cookieMore: 'Mehr dazu',
+  cookieAccept: 'Einverstanden',
+  cookieEssential: 'Nur nötige',
   footerAbout: 'Über Fynda',
 
   regionHeading: (n, region, year) =>
@@ -572,6 +585,12 @@ const en: Strings = {
   footerImprint: 'Imprint',
   footerPrivacy: 'Privacy',
   footerTerms: 'Terms',
+  footerCookies: 'Cookies',
+  cookieTitle: 'Cookies?',
+  cookieBody: 'We use them to see how fynda.market is used and make it better. Never linked to you as a person, never sold.',
+  cookieMore: 'More',
+  cookieAccept: 'Accept',
+  cookieEssential: 'Only essential',
   footerAbout: 'About Fynda',
 
   regionHeading: (n, region, year) =>
@@ -749,6 +768,12 @@ const fr: Strings = {
   footerImprint: 'Mentions légales',
   footerPrivacy: 'Confidentialité',
   footerTerms: "Conditions d'utilisation",
+  footerCookies: 'Cookies',
+  cookieTitle: 'Des cookies ?',
+  cookieBody: "Nous les utilisons pour voir comment fynda.market est utilisé et l'améliorer. Jamais liés à vous en tant que personne, jamais vendus.",
+  cookieMore: 'En savoir plus',
+  cookieAccept: "D'accord",
+  cookieEssential: 'Seulement le nécessaire',
   footerAbout: 'À propos',
 
   regionHeading: (n, region, year) =>
@@ -923,6 +948,12 @@ const it: Strings = {
   footerImprint: 'Note legali',
   footerPrivacy: 'Privacy',
   footerTerms: 'Condizioni generali',
+  footerCookies: 'Cookie',
+  cookieTitle: 'Cookie?',
+  cookieBody: 'Li usiamo per vedere come viene usato fynda.market e renderlo migliore. Mai collegati a te come persona, mai venduti.',
+  cookieMore: 'Scopri di più',
+  cookieAccept: 'Va bene',
+  cookieEssential: 'Solo necessari',
   footerAbout: 'Chi siamo',
 
   regionHeading: (n, region, year) =>

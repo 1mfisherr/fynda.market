@@ -47,7 +47,7 @@ Solo founder, non-technical, makes every final call. **You are the technical jud
 | Stack | Astro static + Cloudflare Pages + Supabase/PostGIS. **Cloudflare, not Vercel.** `docs/STACK.md` |
 | URLs | `/{locale}/{country}/{city}/`. Words translated, names not. Built only by `src/lib/i18n.ts`. A published address never dies — 301s, guardrail 9 |
 | Imports | From the live v1 Supabase project only. Local backups and `supabase start` are stale — read for shape, never import |
-| Analytics | Our own events in our Postgres, read with self-hosted Metabase, plus Search Console by hand. No GA4, no cookies, no banner |
+| Analytics | Our own events in our Postgres, read with self-hosted Metabase, plus Search Console by hand. **A first-party cookie behind a banner** (Delfim, 2026-09-16): with consent, a returning browser is recognised; third-party tools (GA4, Clarity) may be added behind the same consent. The privacy page describes what the code does, in calm words — never a promise the next tool would break |
 | Brand | White, near-black, one accent for dates and status only. Schibsted Grotesk. `docs/BRAND.md` |
 | Tags | In the data model; filters, not URLs; small set |
 | Newsletter | Friday 06:00 UTC, list in our Postgres, a subscription is 25 km around a town or a canton |

@@ -13,7 +13,7 @@
  */
 import Wordmark from './Wordmark.astro';
 import SubscribeForm from './SubscribeForm.astro';
-import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, LOCALE, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { regionOptions } from '../lib/regions';
 import { t } from '../lib/strings';
 
@@ -46,7 +46,7 @@ const fynda = [
   { href: nearbyPath(locale), label: s.footerNearby },
   { href: utilityPath(locale, 'saved'), label: s.saved },
 ];
-const legal = [
+const legal: { href: string; label: string; cookies?: boolean }[] = [
   { href: utilityPath(locale, 'imprint'), label: s.footerImprint },
   { href: utilityPath(locale, 'privacy'), label: s.footerPrivacy },
   { href: utilityPath(locale, 'terms'), label: s.footerTerms },
@@ -69,7 +69,7 @@ const legal = [
     </nav>
     <nav aria-labelledby="foot-legal">
       <h2 class="eyebrow" id="foot-legal">{s.footerLegal}</h2>
-      <ul class="list-reset">{legal.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      <ul class="list-reset">{legal.map((l) => <li><a href={l.href} data-cookies-open={l.cookies ? '' : undefined}>{l.label}</a></li>)}</ul>
     </nav>
   </div>
 
