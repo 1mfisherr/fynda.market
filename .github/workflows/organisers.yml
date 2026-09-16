@@ -1,0 +1,72 @@
+name: Organiser mail
+
+# The seven-day question to organisers: "your market on Saturday — still on?"
+# with three buttons. docs/specs/organisers.md.
+#
+# Same shape as the digest: GitHub's runner, the repo's own script, one row per
+# mail written before the send. It sends nothing until the repository variable
+# ORGANISER_SENDING is `on`; until then every run is a dry run that prints who
+# would be asked about what. Run it by hand with "only" to send one real mail.
+#
+# Needs three repository secrets: SUPABASE_DB_URL, RESEND_API_KEY and
+# ADMIN_SIGNING_SECRET — the last one is what turns a link id into the token
+# in the buttons, and it must be the same value the Cloudflare Pages project
+# holds, or every button lands on "this link is no longer valid".
+
+on:
+  schedule:
+    # 06:00 UTC daily. The nightly publish at 03:00 has finished, so the dates
+    # the script reads are the ones the site shows.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Send one real mail to this organiser address only (leave empty for a dry run)'
+        required: false
+        type: string
+      date:
+        description: 'Ask about this date (YYYY-MM-DD) instead of today + 7'
+        required: false
+        type: string
+
+concurrency:
+  group: organiser-mail
+  cancel-in-progress: false
+
+jobs:
+  ask:
+    name: Ask organisers about next week
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Ask
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ADMIN_SIGNING_SECRET: ${{ secrets.ADMIN_SIGNING_SECRET }}
+          ONLY: ${{ inputs.only }}
+          DATE: ${{ inputs.date }}
+          SENDING: ${{ vars.ORGANISER_SENDING }}
+        run: |
+          DATE_ARG=""
+          if [ -n "$DATE" ]; then DATE_ARG="--date=$DATE"; fi
+          if [ -n "$ONLY" ]; then
+            echo "Sending one mail to $ONLY."
+            node scripts/send-organiser-mail.mjs --send --only="$ONLY" $DATE_ARG
+          elif [ "$SENDING" = "on" ]; then
+            node scripts/send-organiser-mail.mjs --send $DATE_ARG
+          else
+            echo "ORGANISER_SENDING is not 'on'. Dry run — nobody will be mailed."
+            node scripts/send-organiser-mail.mjs $DATE_ARG
+          fi

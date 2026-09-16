@@ -1,13 +1,23 @@
 /**
  * The organiser's identity: a link.
  *
- * There is no login. The token in the URL is 32 random bytes; the table holds
- * its SHA-256 and nothing else, so a copy of the database cannot become a set
- * of working links. One live link per organiser — minting a new one revokes
+ * There is no login. The token in the URL is derived — HMAC of the link's id
+ * under ADMIN_SIGNING_SECRET — and the table holds only its SHA-256 for
+ * lookup. Two things follow: a copy of the database yields no working links
+ * without the secret, and the daily mail script (which holds the same secret
+ * on GitHub) can put the organiser's link into the buttons without the token
+ * ever being stored. One live link per organiser — minting a new one revokes
  * the old, which is also how a leaked link is dealt with.
  */
 
-import { insertOne, selectOne, updateRows, type RestEnv } from './_rest';
+import { insertOne, selectOne, updateRows, UUID, type RestEnv } from './_rest';
+import { sha256Hex, tokenFor } from './_link';
+
+export { answerUrl, editUrl, tokenFor } from './_link';
+
+export interface LinkEnv extends RestEnv {
+  ADMIN_SIGNING_SECRET?: string;
+}
 
 export interface Organiser {
   id: string;
@@ -23,25 +33,18 @@ export interface OrganiserLink {
   revoked_at: string | null;
 }
 
-const base64url = (bytes: Uint8Array) =>
-  btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
-export async function sha256Hex(s: string): Promise<string> {
-  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
-}
-
 /** Revoke whatever link the organiser had, mint a fresh one, return the token for the mail. */
-export async function mintLink(env: RestEnv, organiserId: string): Promise<string | null> {
+export async function mintLink(env: LinkEnv, organiserId: string): Promise<string | null> {
+  if (!env.ADMIN_SIGNING_SECRET?.trim()) return null;
+
   await updateRows(env, 'organiser_links', `organiser_id=eq.${organiserId}&revoked_at=is.null`, {
     revoked_at: new Date().toISOString(),
   });
 
-  const bytes = new Uint8Array(32);
-  crypto.getRandomValues(bytes);
-  const token = base64url(bytes);
-
+  const id = crypto.randomUUID();
+  const token = await tokenFor(env.ADMIN_SIGNING_SECRET, id);
   const row = await insertOne<OrganiserLink>(env, 'organiser_links', {
+    id,
     organiser_id: organiserId,
     token_hash: await sha256Hex(token),
   });
@@ -66,4 +69,4 @@ export async function organiserFromToken(env: RestEnv, token: string): Promise<O
   return organiser;
 }
 
-export const editUrl = (origin: string, token: string) => `${origin}/a/${token}/edit`;
+export { UUID };

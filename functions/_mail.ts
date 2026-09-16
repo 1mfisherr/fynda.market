@@ -222,6 +222,8 @@ const asDate = (iso: string) => {
   return new Date(y, m - 1, d);
 };
 
+export const dayLabel = (locale: Locale, iso: string) => day(locale, iso);
+
 const day = (locale: Locale, iso: string) =>
   new Intl.DateTimeFormat(TAG[locale], { weekday: 'long', day: 'numeric', month: 'long' })
     .format(asDate(iso));
@@ -482,6 +484,136 @@ export function organiserWelcome(
     html: column(locale, body, footer),
     text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.button}: ${url}\n\n${copy.keep}\n\n${copy.photo}\n`,
   };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The seven-day mail — three buttons                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * One date the organiser is asked about. URLs already carry their token.
+ */
+export interface AskItem {
+  market: string;
+  town: string;
+  date: string;
+  startTime?: string | null;
+  endTime?: string | null;
+  onUrl: string;
+  cancelledUrl: string;
+  changedUrl: string;
+}
+
+interface Ask {
+  subjectOne: string;   // %m market, %d date
+  subjectMany: string;  // %n count
+  hello: string;        // %n name
+  intro: string;        // one date: "Fynda lists your market on %d, %t at %p. Is that right?"
+  introMany: string;
+  on: string;
+  cancelled: string;
+  changed: string;
+  footer: string;
+}
+
+const ASK: Record<Locale, Ask> = {
+  de: {
+    subjectOne: '%m, %d — findet statt?',
+    subjectMany: '%n Termine nächste Woche — finden statt?',
+    hello: 'Guten Tag %n',
+    intro: 'Fynda zeigt Ihren Markt am %d%t in %p. Stimmt das?',
+    introMany: 'Fynda zeigt diese Termine von Ihnen für nächste Woche. Stimmen sie?',
+    on: 'Ja, findet statt',
+    cancelled: 'Abgesagt',
+    changed: 'Etwas hat sich geändert',
+    footer: 'Ein Tipp genügt, kein Login. Ihre Antwort steht innert einer Stunde auf Ihrer Seite — als „Vom Veranstalter bestätigt“. Ein Foto oder eine Frage? Einfach auf diese E-Mail antworten.',
+  },
+  fr: {
+    subjectOne: '%m, %d — a lieu ?',
+    subjectMany: '%n dates la semaine prochaine — ont lieu ?',
+    hello: 'Bonjour %n',
+    intro: 'Fynda annonce votre marché le %d%t à %p. Est-ce exact ?',
+    introMany: 'Fynda annonce ces dates de votre part pour la semaine prochaine. Sont-elles exactes ?',
+    on: 'Oui, a lieu',
+    cancelled: 'Annulé',
+    changed: 'Quelque chose a changé',
+    footer: "Un clic suffit, sans connexion. Votre réponse apparaît sur votre page dans l'heure — « Confirmé par l'organisateur ». Une photo, une question ? Répondez simplement à cet e-mail.",
+  },
+  it: {
+    subjectOne: '%m, %d — si fa?',
+    subjectMany: '%n date la settimana prossima — si fanno?',
+    hello: 'Buongiorno %n',
+    intro: 'Fynda annuncia il tuo mercatino il %d%t a %p. È corretto?',
+    introMany: 'Fynda annuncia queste tue date per la settimana prossima. Sono corrette?',
+    on: 'Sì, si fa',
+    cancelled: 'Annullato',
+    changed: 'Qualcosa è cambiato',
+    footer: "Basta un tocco, nessun login. La tua risposta compare sulla tua pagina entro un'ora — «Confermato dall'organizzatore». Una foto, una domanda? Rispondi semplicemente a questa e-mail.",
+  },
+  en: {
+    subjectOne: '%m, %d — still on?',
+    subjectMany: '%n dates next week — still on?',
+    hello: 'Hello %n',
+    intro: 'Fynda lists your market on %d%t at %p. Is that right?',
+    introMany: 'Fynda lists these dates of yours for next week. Are they right?',
+    on: "Yes, it's on",
+    cancelled: 'Cancelled',
+    changed: 'Something changed',
+    footer: 'One tap, no login. Your answer shows on your page within the hour — “Confirmed by the organiser”. A photo, a question? Just reply to this e-mail.',
+  },
+};
+
+const shortDay = (locale: Locale, iso: string) =>
+  new Intl.DateTimeFormat(TAG[locale], { weekday: 'short', day: 'numeric', month: 'short' }).format(asDate(iso));
+
+const timeRange = (start?: string | null, end?: string | null) => {
+  const hm = (t?: string | null) => (t ? t.slice(0, 5) : '');
+  if (!start) return '';
+  return end ? `, ${hm(start)}–${hm(end)}` : `, ${hm(start)}`;
+};
+
+const button = (href: string, label: string, filled: boolean) =>
+  `<a href="${href}" style="display:block;box-sizing:border-box;width:100%;padding:14px 16px;margin:0 0 10px;text-align:center;text-decoration:none;border-radius:6px;font-weight:500;border:1px solid #16161a;${filled ? 'background:#16161a;color:#ffffff;' : 'background:#ffffff;color:#16161a;'}">${escape(label)}</a>`;
+
+export function organiserAsk(locale: Locale, name: string, items: AskItem[]): Omit<Mail, 'to'> {
+  const copy = ASK[locale] ?? ASK.en;
+  const one = items.length === 1 ? items[0] : null;
+
+  const subject = one
+    ? copy.subjectOne.replace('%m', one.market).replace('%d', shortDay(locale, one.date))
+    : copy.subjectMany.replace('%n', String(items.length));
+
+  const intro = one
+    ? copy.intro
+        .replace('%d', day(locale, one.date))
+        .replace('%t', timeRange(one.startTime, one.endTime))
+        .replace('%p', one.town)
+    : copy.introMany;
+
+  const blocks = items.map((item) => {
+    const heading = one ? '' : `<p style="margin:24px 0 8px;font-weight:600;">${escape(item.market)} — ${escape(day(locale, item.date))}${escape(timeRange(item.startTime, item.endTime))}, ${escape(item.town)}</p>`;
+    return `${heading}
+  ${button(item.onUrl, copy.on, true)}
+  ${button(item.cancelledUrl, copy.cancelled, false)}
+  <p style="margin:0 0 8px;text-align:center;"><a href="${item.changedUrl}" style="color:#16161a;">${escape(copy.changed)}</a></p>`;
+  }).join('');
+
+  const footer = `${blocks}
+  <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:14px;color:#6b6b70;">${escape(copy.footer)}</p>`;
+
+  const body = [copy.hello.replace('%n', name), intro];
+  const text = [
+    'fynda.market', '', ...body, '',
+    ...items.flatMap((item) => [
+      one ? '' : `${item.market} — ${day(locale, item.date)}${timeRange(item.startTime, item.endTime)}, ${item.town}`,
+      `${copy.on}: ${item.onUrl}`,
+      `${copy.cancelled}: ${item.cancelledUrl}`,
+      `${copy.changed}: ${item.changedUrl}`, '',
+    ]),
+    copy.footer, '',
+  ].join('\n');
+
+  return { subject, html: column(locale, body, footer), text };
 }
 
 /* -------------------------------------------------------------------------- */

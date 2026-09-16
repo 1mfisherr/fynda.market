@@ -17,8 +17,9 @@ import { organiserWelcome, sendMail, type Locale, type MailEnv } from '../_mail'
 import { editUrl, mintLink, type Organiser } from '../_organiser';
 import { escape, page } from '../_page';
 import { insertOne, selectOne, updateRows, UUID } from '../_rest';
+import { requestPublish } from '../_publish';
 
-interface Env extends AdminEnv, MailEnv {}
+interface Env extends AdminEnv, MailEnv { GITHUB_DISPATCH_TOKEN?: string }
 
 interface Claim {
   id: string;
@@ -63,8 +64,9 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
   const origin = new URL(request.url).origin;
 
   if (action.kind === 'claim') return claim(env, origin, action, verb as 'approve' | 'reject');
+  if (action.kind === 'market_stopped') return stopped(env, action, verb as 'approve' | 'reject');
 
-  // market_stopped and edit arrive with their own days of the spec.
+  // edit arrives with day 3 of the spec.
   return done('Not yet', [`Decisions of kind <code>${escape(action.kind)}</code> are not wired up yet.`], 501);
 };
 
@@ -157,5 +159,34 @@ async function claim(env: Env, origin: string, action: AdminAction, verb: 'appro
       ? `The welcome mail with their personal link is on its way, in ${escape(row.locale.toUpperCase())}.`
       : '<span class="status">The welcome mail could not be sent.</span> The link exists; re-send it from the database or mint a new one.',
     `<span class="meta">Market page: <a href="https://fynda.market/${row.locale}/${MARKET_WORD[row.locale] ?? 'market'}/${escape(market.slug)}/">${escape(market.slug)}</a></span>`,
+  ]);
+}
+
+/**
+ * An organiser said their market no longer takes place. Approve closes it for
+ * good: the page stays — a retired address never dies — and says so; no future
+ * date is rendered. Reject leaves everything as it was.
+ */
+async function stopped(env: Env, action: AdminAction, verb: 'approve' | 'reject'): Promise<Response> {
+  const marketId = String(action.payload.market_id ?? '');
+  if (!UUID.test(marketId)) return done('Nothing done', ['The action names no market.'], 500);
+
+  const market = await selectOne<Market>(env, 'markets', `id=eq.${marketId}`, 'id,slug,organiser_id');
+  if (!market) return done('Nothing done', ['That market no longer exists.'], 404);
+
+  if (verb === 'reject') {
+    await markUsed(env, action.id, 'rejected');
+    return done('Left as is', [`<b>${escape(market.slug)}</b> stays active. Nothing changed.`]);
+  }
+
+  const now = new Date().toISOString();
+  const rows = await updateRows(env, 'markets', `id=eq.${market.id}`, { status: 'permanently_closed', updated_at: now });
+  if (rows.length === 0) return done('Nothing done', ['Could not update the market. Check the Cloudflare log.'], 500);
+
+  await markUsed(env, action.id, 'approved');
+  const publish = await requestPublish(env, `market closed ${market.slug}`);
+  return done('Closed', [
+    `<b>${escape(market.slug)}</b> is now permanently closed. Its page stays and says so.`,
+    `<span class="meta">Publish: ${escape(publish)}.</span>`,
   ]);
 }
