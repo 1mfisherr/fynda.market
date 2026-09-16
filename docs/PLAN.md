@@ -2,7 +2,7 @@
 
 Where the project stands and what happens next. **Read this first, every session. Update it before ending one.** Status, order, open decisions — never history; git and `archive/` hold that.
 
-Updated 2026-09-16.
+Updated 2026-09-16, end of day.
 
 ---
 
@@ -28,10 +28,11 @@ What is not: tags on any market · a country page · text search · a distance o
 
 1. **Market watch agent.** Delfim is building one for fleafind and brings it here (2026-09-16); we adapt it for Fynda when it arrives. Weekly, per market: open the source URL, compare with what we hold, queue the findings. Same engine is the German intake tool.
 2. **Organisers — built 2026-09-16, days 1–4 of the spec; live.** No login: a personal link is the identity. A claim arrives in Telegram with Approve/Reject links; Approve mints the link and sends the welcome mail. Seven days before each date `organisers.yml` mails the organiser three buttons — *it's on / cancelled / something changed*. On and cancelled go live within the hour (a Function asks GitHub to publish); cancelled alerts every subscriber whose subscription covers the market; "the market has stopped" goes to Delfim. The edit page (`/a/{token}/edit`) takes dates, stalls, indoor/outdoor and the rain answer; photos arrive by reply. The market page's organiser block is the page's main ask; a claimed page shows the dated stamp and the owned line. **Measure the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers. **Proven end to end 2026-09-16 16:22:** GitHub sent the mail, Delfim pressed *Yes, it's on* on his phone, the stamp landed, the rebuild dispatched. Test data on Bergflohmarkt Chur reverted. **Next:** Delfim picks two or three organisers for round one; `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads the addresses he finds and sends the welcome; `ORGANISER_SENDING=on` (GitHub variable) turns the daily mail live. Not built: photo upload, the once-a-year season mail.
-3. **Performance** (week 4). Analytics vocabulary done 2026-09-16: `page_type` gained `utility` and `country`, `newsletter_form_view` (placement `card|footer|page`) and the `organiser_contact` funnel are emitted, `analytics_rollup()`/`analytics_daily` dropped. Migration `20260916120000`.
-4. **UI/UX, copy, branding pass** with the logo, all page types, four locales (week 5).
-5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
-6. Buffer (week 10).
+3. ~~Performance~~ **Done 2026-09-16:** self-hosted font, 720px hero for phones, readable grey, tappable language links — Lighthouse mobile 89→99, first paint 2.8→1.2 s. Analytics vocabulary done the same day: `page_type` gained `utility` and `country`, `newsletter_form_view` (placement `card|footer|page`) and the `organiser_contact` funnel are emitted, `analytics_rollup()`/`analytics_daily` dropped. Migration `20260916120000`.
+4. **UI/UX, copy, branding pass** with the logo, all page types, four locales (week 5). **Started 2026-09-16:** one `Wordmark` component everywhere including Function pages and mails; the privacy page rewritten in a calm voice (reassurance first, mechanics later, nothing a future analytics tool would break); cookies with a banner and a returning-visitor id, live; "fynda.market" is the name on every page and mail, "no account needed" replaces "no account"; the organiser page describes what organisers actually get. **Left:** a visual pass at 375 and 1440 with the logo Delfim brings, and the copy changes he wants on the organiser page.
+5. **Analytics, next session:** send agents to work out what fynda.market should measure to improve the site and what a monetisable dataset looks like (Delfim, 2026-09-16); then GA4 / Clarity behind the consent already built, if they add anything our tables cannot.
+6. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
+7. Buffer (week 10).
 
 The earlier list, folded into the above:
 
