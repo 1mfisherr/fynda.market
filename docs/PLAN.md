@@ -2,7 +2,7 @@
 
 Where the project stands and what happens next. **Read this first, every session. Update it before ending one.** Status, order, open decisions — never history; git and `archive/` hold that.
 
-Updated 2026-09-15.
+Updated 2026-09-16.
 
 ---
 
@@ -24,6 +24,17 @@ What is not: organiser tooling beyond the claim form · tags on any market · a 
 
 ## Next, in order
 
+**Deadline: Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks. Order below is the route there; Swiss polish happens once, in week 5, not twice.
+
+1. **Market watch agent.** Delfim is building one for fleafind and brings it here (2026-09-16); we adapt it for Fynda when it arrives. Weekly, per market: open the source URL, compare with what we hold, queue the findings. Same engine is the German intake tool.
+2. **Organiser page** (week 3). Claim → confirm dates → size and indoor/outdoor → photo. Tags fill from these answers.
+3. **Performance** (week 4). Analytics vocabulary done 2026-09-16: `page_type` gained `utility` and `country`, `newsletter_form_view` (placement `card|footer|page`) and the `organiser_contact` funnel are emitted, `analytics_rollup()`/`analytics_daily` dropped. Migration `20260916120000`.
+4. **UI/UX, copy, branding pass** with the logo, all page types, four locales (week 5).
+5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
+6. Buffer (week 10).
+
+The earlier list, folded into the above:
+
 1. **Watch the city pages.** Snippet, day headers, one feature row, dead chips gone, the within-25-km block on 28 sparse towns — all live 2026-09-15 (`PAGES.md` §City page). Read Search Console click-through on city pages in three weeks against today's ~1%, and `market_click` per city visitor.
 2. **The one-week-out confirmation mail to organisers.** "Yes, it's on" — two buttons, no login. 23 markets qualify, ~35 dates over 120 days. `organiser_claims` can hold the answer; who is asked, how often, and what silence means are undecided.
 3. **Ask organisers for size and indoor/outdoor.** The two facts that decide a forty-minute drive, held for none of 161 markets, and unobtainable by scraping. This is what the organiser page is for.
@@ -40,7 +51,6 @@ Decisions, not tasks. Each waits on Delfim or on data. Don't assume an answer.
 - **The logo.** Delfim has one to bring in (2026-09-15); nothing to decide here until it arrives. `design/logo-research.md` is the earlier exploration.
 - ~~Where photographs come from~~ **Decided 2026-09-15:** the current photos stay; real ones arrive through organiser claims, not a shoot.
 - **Distance on cards and in the market page's decision strip.** Blocked because `fynda:stadt` stores a name and an href, not coordinates. The fix is in the home page's town picker; the `<li data-distance>` slot is already in the markup. Never print a guessed distance.
-- **Analytics vocabulary — one migration, three decisions.** `page_type` has no `utility` value, so the report pages (third-busiest thing on the site) land in `other`; `newsletter_form_view.placement` should name the form (`card|footer`), not the page; `organiser_contact` has no emitter. And `analytics_rollup()` is called by nothing — schedule it beside the digest or delete it.
 - **Tags.** Wanted, kept in the data model, not yet worth showing: nothing fills them and a tag that filters to nothing is a dead end. Revisit when organisers supply facts (Delfim, 2026-09-15). Small when it comes — 60+ categories killed v1.
 - **The content floor counts characters and should count verified facts.** Fix before any bulk prose generation.
 - ~~Four vanished markets~~ **Decided 2026-09-15: leave them.** Eiszentrum Luzern, Mall of Switzerland Ebikon, GZ Hottingen, GZ Schindlergut stay `active` with no dates; their pages say so.

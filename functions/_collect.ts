@@ -46,6 +46,19 @@ export interface EventInput {
 
 const LOCALES = new Set(['de', 'fr', 'it', 'en']);
 
+// The translated path words, copied from src/lib/i18n.ts (a Function may not
+// import it). A new locale or a renamed utility page is a change here too.
+const COUNTRY = new Set(['schweiz', 'suisse', 'svizzera', 'switzerland']);
+const UTILITY = new Set([
+  'melden', 'signaler', 'segnalare', 'report',
+  'newsletter',
+  'gemerkt', 'favoris', 'salvati', 'saved',
+  'impressum', 'mentions-legales', 'note-legali', 'imprint',
+  'datenschutz', 'confidentialite', 'privacy',
+  'nutzungsbedingungen', 'conditions-generales', 'condizioni-generali', 'terms',
+  'ueber-uns', 'a-propos', 'chi-siamo', 'about',
+]);
+
 /** Our page types, exactly as the check constraint spells them. */
 export function pageTypeOf(pathname: string): string {
   const parts = pathname.split('/').filter(Boolean);
@@ -56,7 +69,12 @@ export function pageTypeOf(pathname: string): string {
   if (['markt', 'marche', 'mercato', 'market'].includes(section)) return 'market';
   if (['umkreis', 'a-proximite', 'nei-dintorni', 'nearby'].includes(section)) return 'filter';
   if (['veranstalter', 'organisateurs', 'organizzatori', 'organisers'].includes(section)) return 'organiser';
-  // /{locale}/{country}/kanton/{region}/ is a region; /{locale}/{country}/{city}/ is a city.
+  // Forms, saved markets, legal text, About: one bucket, so "how many people
+  // opened a form" is a question the table can answer.
+  if (parts.length === 2 && UTILITY.has(section)) return 'utility';
+  // /{locale}/{country}/ is the country; /kanton/{region}/ under it a region;
+  // /{locale}/{country}/{city}/ a city.
+  if (parts.length === 2 && COUNTRY.has(section)) return 'country';
   if (parts.length === 4 && ['kanton', 'canton', 'cantone'].includes(third)) return 'region';
   if (parts.length === 3) return 'city';
   return 'other';

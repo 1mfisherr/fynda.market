@@ -471,6 +471,9 @@ const savedCopy = saved && {
       void send().then((outcome) => {
         if (button) button.disabled = false;
 
+        /* Analytics.astro listens; the form knows the outcome and it does not. */
+        form!.dispatchEvent(new CustomEvent('fynda:form', { detail: { outcome }, bubbles: true }));
+
         if (outcome === 'ok') {
           form.hidden = true;
           const done = document.getElementById('form-done');

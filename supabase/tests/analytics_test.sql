@@ -144,6 +144,47 @@ select pg_temp.expect_failure(format($sql$
   values (now(), 'page_view', %L, 'occurrence', '{}'::jsonb)
 $sql$, :hash), 'a page_type we deliberately do not build is refused');
 
+/* -- 7. retention ---------------------------------------------------------- */
+
+select pg_temp.expect(
+  not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'analytics_events'
+      and column_name in ('ip', 'ip_address', 'user_agent', 'email')
+  ),
+  'no raw IP, user agent or email column exists'
+);
+
+-- The second identity layer: allowed, but only with consent.
+select pg_temp.expect_failure(format($sql$
+  insert into public.analytics_events
+    (occurred_at, event_name, visitor_day_hash, visitor_id, props)
+  values (now(), 'page_view', %L, gen_random_uuid(), '{}'::jsonb)
+$sql$, :hash), 'a persistent visitor id without consent is refused');
+
+insert into public.analytics_events
+  (occurred_at, event_name, visitor_day_hash, visitor_id, consent_state, session_id, page_type, props)
+values
+  (now(), 'page_view', :hash, gen_random_uuid(), 'granted', gen_random_uuid(), 'market', '{}'::jsonb);
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.analytics_events where visitor_id is not null),
+  'a persistent visitor id with consent is accepted'
+);
+
+select pg_temp.expect(
+  (select count(*) = 1 from public.analytics_events where consent_state = 'granted')
+    and (select count(*) > 1 from public.analytics_events),
+  'unconsented visitors are still fully recorded, they just carry no persistent id'
+);
+
+/* -- 6. page_type is constrained to the page types we actually have -------- */
+
+select pg_temp.expect_failure(format($sql$
+  insert into public.analytics_events (occurred_at, event_name, visitor_day_hash, page_type, props)
+  values (now(), 'page_view', %L, 'occurrence', '{}'::jsonb)
+$sql$, :hash), 'a page_type we deliberately do not build is refused');
+
 /* -- 7. rollup and retention ---------------------------------------------- */
 
 select pg_temp.expect(

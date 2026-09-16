@@ -203,4 +203,58 @@
       send('no_results', { term: chosen?.dataset.filter || 'alle' }, empty);
     }).observe(empty, { attributes: true, attributeFilter: ['hidden'] });
   }
+
+  /**
+   * The signup form was seen. Without this, "0 signups" cannot be told apart
+   * from "nobody scrolled that far" — and with 77% of visitors leaving after
+   * one page, that is the question. Once per block per page view, when half
+   * of it has been on screen.
+   *
+   * `placement` names the form, not the page — page_type already says which
+   * page: `card` at the foot of a listing, `footer` on every page, `page` on
+   * the newsletter page itself, where the same block is the whole point.
+   */
+  const blocks = document.querySelectorAll<HTMLElement>('[data-subscribe-block]');
+  if (blocks.length && 'IntersectionObserver' in window) {
+    const onNewsletterPage = /^\/(de|fr|it|en)\/newsletter\/$/.test(location.pathname);
+    const seen = new WeakSet<Element>();
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting || seen.has(entry.target)) continue;
+        seen.add(entry.target);
+        io.unobserve(entry.target);
+        const el = entry.target as HTMLElement;
+        const placement = el.classList.contains('subscribe--footer')
+          ? 'footer'
+          : onNewsletterPage ? 'page' : 'card';
+        send('newsletter_form_view', { placement }, el);
+      }
+    }, { threshold: 0.5 });
+    blocks.forEach((b) => io.observe(b));
+  }
+
+  /**
+   * The organiser funnel: `view` the claim page, `start` typing, `submit` a
+   * claim the endpoint accepted. `report_open` with kind `organiser` is the
+   * click that brings someone here from a market page; together the four rows
+   * say where organisers drop out — the one relationship this site has.
+   */
+  if (/^\/(de|fr|it|en)\/(veranstalter|organisateurs|organizzatori|organisers)\/$/.test(location.pathname)) {
+    const form = document.querySelector<HTMLFormElement>('form[data-mail]');
+    send('organiser_contact', { step: 'view' }, form);
+    if (form) {
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        send('organiser_contact', { step: 'start' }, form);
+      };
+      form.addEventListener('focusin', start, { once: true });
+      form.addEventListener('input', start, { once: true });
+      form.addEventListener('fynda:form', (event) => {
+        const detail = (event as CustomEvent<{ outcome?: string }>).detail;
+        if (detail?.outcome === 'ok') send('organiser_contact', { step: 'submit' }, form);
+      });
+    }
+  }
 </script>

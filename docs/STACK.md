@@ -60,7 +60,7 @@ The requirement is **own the data, collect everything, keep it private** — not
 
 **Identity.** A visitor is counted, never identified: `HMAC(ip + user agent)` under a key that carries the date, so one person is one hash today and another tomorrow. No cookie, nothing on the device, no banner. The schema also holds a consent-gated persistent `visitor_id`; nothing sets it yet. Switzerland is opt-out, so the daily hash runs from day one; Germany's opt-in regime is a German-launch question. *[Judgement, not legal advice — an hour of a Swiss lawyer before monetisation, not before launch.]*
 
-**Retention.** Nothing is deleted; there is deliberately no prune. `analytics_daily` / `analytics_rollup()` exist for query speed and are not yet scheduled (`PLAN.md`).
+**Retention.** Nothing is deleted; there is deliberately no prune, and no aggregate table — at ~100 rows a day Metabase reads the raw table directly. If that ever gets slow, an aggregate arrives as its own migration, on evidence.
 
 **Reading.** Metabase under Docker on this machine, `metabase/README.md`. It reads as `metabase_ro`, which cannot see `reports` or `market_private` but can read the two triage views. Search Console is imported from the free CSV export by `scripts/import-gsc.mjs` — Google keeps 16 months and never backfills, so the habit matters more than the schedule.
 
