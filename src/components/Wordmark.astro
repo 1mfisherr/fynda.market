@@ -1,0 +1,42 @@
+---
+/**
+ * The logo, and the only place it is written.
+ *
+ * The name is "fynda.market", the way Booking.com is not "Booking" — the whole
+ * thing is the logo and it is allowed to be read. The dot is the one
+ * decorative use of the accent on the site (docs/BRAND.md); everything else
+ * the accent touches is a date or a status.
+ *
+ * Header and footer used to each carry their own copy of this markup and
+ * these rules, and the pages a Cloudflare Function renders carried a third
+ * version with no dot at all (2026-09-16). One component, one mark; the
+ * Function pages and the e-mails mirror it by hand in functions/_page.ts and
+ * functions/_mail.ts, because a Function may not import from src/ — change
+ * this and change those.
+ *
+ * `size` picks the step on the type ramp: the header grows above 900px, the
+ * footer does not.
+ */
+import { homePath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  size?: 'title' | 'grows';
+}
+const { locale, size = 'title' } = Astro.props;
+---
+<a class:list={['mark', size]} href={homePath(locale)}>fynda<span>.</span>market</a>
+
+<style>
+  .mark {
+    font-size: var(--text-title);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-display);
+  }
+  .mark span { color: var(--color-accent); }
+
+  /* Keep in step with --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .grows { font-size: var(--text-section); }
+  }
+</style>

@@ -3,6 +3,7 @@
  * The masthead, once. It was re-typed in all three pages before this existed,
  * and had already drifted: two of them styled `header` differently.
  */
+import Wordmark from './Wordmark.astro';
 import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
@@ -37,7 +38,7 @@ const sections = [
   {/* No back chevron. It used to sit here on deep pages, which put the logo in
       a different place on every page but the home one — and the browser
       already has a back button. */}
-  <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
+  <Wordmark locale={locale} size="grows" />
 
   {/* Hidden on a phone, where the line is already full — see the note in the
       stylesheet below. The links exist in the footer at every width. */}
@@ -77,28 +78,17 @@ const sections = [
   .sections { display: none; }
   .langs { display: flex; gap: var(--space-1); color: var(--color-quiet); font-size: var(--text-micro); }
   .langs a { padding-inline: var(--space-half); }
-  .mark {
-    /* The name is "fynda.market", the way Booking.com is not "Booking" — so
-       the whole thing is the logo and it is allowed to be read. It shares a
-       phone line with the language switcher and Gemerkt, which is why it once
-       took a step down the type ramp; measured at 375px it fits at this size
-       with room to spare, and it was too quiet to be the mark. */
-    font-size: var(--text-title);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-display);
-  }
-  /* The only decorative use of the accent on the site, and it is the logo. */
-  .mark span { color: var(--color-accent); }
 
   /* Nothing is competing for the line any more, so the mark goes back up the
      type ramp. Keep in step with --breakpoint-wide. */
   @media (min-width: 900px) {
     .site-header { padding-block: var(--space-4); }
-    .mark { font-size: var(--text-section); }
     .lead { gap: var(--space-4); }
     /* `justify-content: space-between` would push the links to the middle of
-       the bar. They belong beside the mark, so the mark takes the slack. */
-    .mark { margin-inline-end: auto; }
+       the bar. They belong beside the mark, so the mark takes the slack. The
+       mark is a child component, hence the global selector, scoped by the
+       header's own class. */
+    .site-header > :global(.mark) { margin-inline-end: auto; }
     .sections {
       display: flex;
       gap: var(--space-5);

@@ -11,6 +11,7 @@
  * Every link goes through utilityPath, so a locale without its own copy of a
  * page links to the German one rather than to a 404 — see i18n.ts.
  */
+import Wordmark from './Wordmark.astro';
 import SubscribeForm from './SubscribeForm.astro';
 import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { regionOptions } from '../lib/regions';
@@ -53,7 +54,7 @@ const legal = [
 ---
 <footer class="site-footer wrapper">
   <div class="brand gutter">
-    <a class="mark" href={homePath(locale)}>fynda<span>.</span>market</a>
+    <Wordmark locale={locale} />
     <p class="meta">{s.footerTagline}</p>
   </div>
 
@@ -99,13 +100,6 @@ const legal = [
   }
   .site-footer > * + * { margin-block-start: var(--space-5); }
 
-  .mark {
-    font-size: var(--text-title);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-display);
-  }
-  /* The only decorative use of the accent on the site, and it is the logo. */
-  .mark span { color: var(--color-accent); }
   .brand p { margin-block-start: var(--space-1); max-width: var(--measure); }
 
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
