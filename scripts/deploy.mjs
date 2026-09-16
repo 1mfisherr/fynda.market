@@ -121,7 +121,7 @@ if (!process.env.GITHUB_ACTIONS && !buildOnly && !process.argv.includes('--allow
     console.error(`\n  ${count} local commit${count === 1 ? '' : 's'} not on GitHub. Push first, or the nightly publish will undo this deploy.\n`);
     process.exit(1);
   }
-  const dirty = spawnSync('git', ['status', '--porcelain', '--', ':!data/'], { cwd: root, encoding: 'utf8' });
+  const dirty = spawnSync('git', ['status', '--porcelain', '--untracked-files=no', '--', ':!data/'], { cwd: root, encoding: 'utf8' });
   if (dirty.stdout.trim()) {
     console.error('\n  Uncommitted changes outside data/. Commit and push first — a deploy must match what GitHub will rebuild tonight.\n');
     process.exit(1);
