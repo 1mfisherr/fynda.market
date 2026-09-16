@@ -101,6 +101,30 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 */
 rmSync(join(root, 'dist'), { recursive: true, force: true });
 
+/*
+  Refuse to publish commits GitHub does not have.
+
+  GitHub rebuilds the site every night from what is on origin/main. On
+  2026-09-16 a local deploy carried a new Function, a GitHub run from the older
+  commit landed two minutes later, and the Function was gone until someone
+  noticed a 404. Anything published from here must be on GitHub first, or the
+  next nightly publish quietly reverts it. Skipped in CI, where HEAD is origin.
+*/
+if (!process.env.GITHUB_ACTIONS && !process.argv.includes('--allow-unpushed')) {
+  spawnSync('git', ['fetch', '--quiet', 'origin', 'main'], { cwd: root, stdio: 'inherit' });
+  const ahead = spawnSync('git', ['rev-list', '--count', 'origin/main..HEAD'], { cwd: root, encoding: 'utf8' });
+  const count = Number(ahead.stdout.trim());
+  if (ahead.status === 0 && count > 0) {
+    console.error(`\n  ${count} local commit${count === 1 ? '' : 's'} not on GitHub. Push first, or the nightly publish will undo this deploy.\n`);
+    process.exit(1);
+  }
+  const dirty = spawnSync('git', ['status', '--porcelain', '--', ':!data/'], { cwd: root, encoding: 'utf8' });
+  if (dirty.stdout.trim()) {
+    console.error('\n  Uncommitted changes outside data/. Commit and push first — a deploy must match what GitHub will rebuild tonight.\n');
+    process.exit(1);
+  }
+}
+
 // `npm run verify` is build + guardrails, and prebuild is what emits data/.
 // Spelled out here so each step's failure names itself.
 /*
