@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-16.
+Updated 2026-09-17.
 
 ---
 
@@ -15,7 +15,8 @@ Live at `fynda.market` since 2026-09-04: 157 published markets, 56 towns, 14 can
 | **Newsletter** | Friday digest since 2026-09-11, welcome and unsubscribe in four languages, pause and monthly options, Resend delivery events in. 1 subscriber |
 | **Forms** | `/n` `/r` `/o` `/u` write rows and ping Telegram; queues are the views `open_reports`, `open_organiser_claims` |
 | **Organisers** | Live 2026-09-16, proven end to end. Claim → Telegram Approve → personal link → seven-day mail with three buttons → stamp / cancellation / alert → edit page. Daily job runs as a **dry run** until `ORGANISER_SENDING=on` |
-| **Analytics** | Page views at the edge, interactions from the browser, our Postgres, Metabase. Two identity layers: a daily hash always, a cookie id with consent. 10–25 Swiss visitors a day, two thirds from Google, 60% on a phone |
+| **Analytics** | Page views at the edge, interactions from the browser, our Postgres, Metabase. Two identity layers: a daily hash always, a cookie id with consent. ~15–20 real Swiss visitors a day (the rest are scrapers the filter passes), two thirds from Google, 60% on a phone |
+| **Backups** | Nightly 02:30 UTC, encrypted, 90 days in GitHub artifacts (`.github/workflows/backup.yml`). The private key is in `.env.local` and Delfim's password manager only |
 | **Search Console** | First nine days: 96 clicks, 7,700 impressions, position 15. City pages rank 5–8 with no clicks — rewritten 2026-09-15, re-read in October |
 | **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
 | **Photos** | Every market has one; one is real. Real ones arrive through organisers |
@@ -29,7 +30,7 @@ Not built: tags on any market · country page · text search · distance on card
 **Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks.
 
 1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
-2. **Analytics.** Send agents to work out what to measure to improve the site and what a monetisable dataset looks like; then GA4 / Clarity behind the consent already built, if they add anything our tables cannot.
+2. **Analytics v2.** Researched and decided 2026-09-17 (`reference/analytics-research/`, build from `build-plan.md`): collect everything first-party, keep everything, bots and AI crawlers in their own table, six Metabase dashboards. No GA4, no Clarity. Phases 1–3 next; Queues, Supabase Pro and R2 before Germany.
 3. **Visual pass** at 375 and 1440 with the logo; the organiser-page copy in Delfim's words. The logo is in since 2026-09-17 — header, footer, Function pages, mails, favicons and the share image (`docs/BRAND.md` §Wordmark).
 4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
 5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
@@ -51,7 +52,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **A Metabase host, €6/month** — only when looking without Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
-- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17).
+- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17); analytics stay first-party and keep everything, behaviour included (2026-09-17).
 
 ---
 
