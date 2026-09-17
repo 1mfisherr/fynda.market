@@ -254,7 +254,7 @@ export async function recordCrawler(
     locale: input.locale ?? null,
     market_id: input.market_id ?? null,
     status: input.status ?? null,
-    verified_category: cf.verifiedBotCategory ?? null,
+    verified_category: cf.verifiedBotCategory || null,
   };
   const res = await fetch(`${env.SUPABASE_URL}/rest/v1/crawler_hits`, {
     method: 'POST',

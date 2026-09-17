@@ -2,6 +2,8 @@
 
 Decided by Delfim the same day: collect everything we can, keep everything, behavioural data included; everything readable in Metabase — users, pages, bots, AI citations. First-party only. Built in a fresh session from this page, one phase per commit, each verified against the live table before the next.
 
+**Status 2026-09-17:** phases 1–3 built and live (`20260917120000_analytics_v2.sql`, `functions/`, `Analytics.astro`, `metabase/dashboards.py`), except: partitioning (1), the `suspect` edge flag (2, 10), the key-forgetting job (5). Phase 4 open.
+
 ## Phase 1 — the database (one migration, applied with `scripts/migrate.mjs`)
 
 1. **Partition `analytics_events` by month.** New table `partition by range (occurred_at)`, `primary key (occurred_at, id)`, copy rows, swap names in one transaction (seconds at 4k rows). `pg_partman` creates partitions ahead, `pg_cron` runs its maintenance daily. Indexes per partition: BRIN `(occurred_at)`; btree `(market_id, occurred_at)`, `(page_type, occurred_at)`, `(event_name, occurred_at)`. Re-grant the collector and `metabase_ro`.

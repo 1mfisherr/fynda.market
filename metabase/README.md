@@ -14,7 +14,7 @@ database. Then open **http://localhost:3000**.
 
 ## The dashboards
 
-Five, in the **fynda.market** collection: Visitors · Pages & markets · Bots & AI · Google · Organisers & newsletter. Built by `python metabase/dashboards.py`, which is the only place they are edited — it deletes and rebuilds the collection, so a change is a change in that file. Every question is plain SQL with a one-line description under its title.
+Six, in the **fynda.market** collection: Visitors · Pages & markets · Bots & AI · Google · Organisers & newsletter · Engagement & health. Built by `python metabase/dashboards.py`, which is the only place they are edited — it deletes and rebuilds the collection, so a change is a change in that file. Every question is plain SQL with a one-line description under its title.
 
 **Bots.** Dashboards 1 and 2 have a **Bots** filter at the top. It is `false` by default, which means *people only*. Set it to `true` for the bots alone, or clear it for everything. The verdict per visitor per day comes from the view `analytics_visitor_days` (rules in `supabase/migrations/20260917100000_analytics_bot_flag.sql`); 80–90% of raw page views so far were crawlers.
 
