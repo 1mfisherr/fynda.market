@@ -31,7 +31,7 @@ Not built: tags on any market · country page · text search · distance on card
 
 1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
 2. **Analytics v2** — built 2026-09-17 (`reference/analytics-research/build-plan.md` phases 1–3). Left: an edge-time `suspect` flag to feed the bot view, the key-forgetting job, partitioning. Before Germany: Queues, Supabase Pro, R2. No GA4, no Clarity. Read the Engagement dashboard after a week of data.
-3. **Visual pass** at 375 and 1440 with the logo; the organiser-page copy in Delfim's words. The logo is in since 2026-09-17 — header, footer, Function pages, mails, favicons and the share image (`docs/BRAND.md` §Wordmark).
+3. **Visual pass** — done 2026-09-17 at 375 and 1440 across all twelve page types: no overflow anywhere; fixed the German-only 404 (now one per locale) and the sub-24px header targets. Left: the organiser-page copy in Delfim's words; a fresh Search Console export before judging the 15 Sept title rewrite (the dashboard's Google data ends 11 Sept).
 4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
 5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
 6. Buffer.
