@@ -79,21 +79,21 @@ const s = t(locale);
     display: grid;
     gap: var(--space-3);
     padding: var(--space-4);
-    border: 1px solid rgb(255 255 255 / 60%);
+    border: var(--border-width) solid var(--glass-edge);
     border-radius: var(--radius-md);
     /* Frosted glass: the page shows through, blurred, so the banner reads as a
        sheet lying on the site rather than a box cut out of it. The solid
        fallback is for the few browsers without backdrop-filter. */
-    background: rgb(255 255 255 / 55%);
-    box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 14%), inset 0 1px 0 rgb(255 255 255 / 70%);
+    background: var(--glass-fill);
+    box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 14%), inset 0 var(--border-width) 0 var(--glass-highlight);
   }
-  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  @supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
     .box {
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+      backdrop-filter: blur(var(--glass-blur)) saturate(160%);
     }
   }
-  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @supports not ((backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0))) {
     .box { background: var(--color-paper); border-color: var(--color-line); }
   }
   .box p { margin: 0; font-size: var(--text-small); }

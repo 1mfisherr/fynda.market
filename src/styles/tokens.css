@@ -181,6 +181,13 @@
   --button-height: 46px;
   --border-width: 1px;
   --section-divider: 8px;
+
+  /* Frosted glass: the cookie banner. One recipe, so a second glass surface
+     looks like the first. */
+  --glass-blur: 18px;
+  --glass-fill: rgb(255 255 255 / 55%);
+  --glass-edge: rgb(255 255 255 / 60%);
+  --glass-highlight: rgb(255 255 255 / 70%);
 }
 
 
