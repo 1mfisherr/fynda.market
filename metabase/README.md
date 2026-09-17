@@ -12,6 +12,14 @@ docker compose -f metabase/docker-compose.yml up -d
 First start takes a couple of minutes — it is building its own notebook
 database. Then open **http://localhost:3000**.
 
+## The dashboards
+
+Five, in the **fynda.market** collection: Visitors · Pages & markets · Bots & AI · Google · Organisers & newsletter. Built by `python metabase/dashboards.py`, which is the only place they are edited — it deletes and rebuilds the collection, so a change is a change in that file. Every question is plain SQL with a one-line description under its title.
+
+**Bots.** Dashboards 1 and 2 have a **Bots** filter at the top. It is `false` by default, which means *people only*. Set it to `true` for the bots alone, or clear it for everything. The verdict per visitor per day comes from the view `analytics_visitor_days` (rules in `supabase/migrations/20260917100000_analytics_bot_flag.sql`); 80–90% of raw page views so far were crawlers.
+
+**The helper login.** `claude@fynda.local` is an admin user that exists only in this container, created 2026-09-17 so the dashboards could be built without Delfim at the keyboard. Its password and a session token are in `.env.local`. Delete it under Admin → People whenever you like; the script needs a fresh `METABASE_SESSION` after that (log in as anyone, copy the `metabase.SESSION` cookie).
+
 ## What happened to the mail
 
 `newsletter_delivery` is a view: one row per Friday issue with sent, delivered, opened, clicked, bounced and complained counts. It fills in once Resend's webhook is switched on (`docs/PLAN.md`). Opens undercount — a mail client that blocks images never records one.

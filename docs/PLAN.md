@@ -15,7 +15,7 @@ Live at `fynda.market` since 2026-09-04: 157 published markets, 56 towns, 14 can
 | **Newsletter** | Friday digest since 2026-09-11, welcome and unsubscribe in four languages, pause and monthly options, Resend delivery events in. 1 subscriber |
 | **Forms** | `/n` `/r` `/o` `/u` write rows and ping Telegram; queues are the views `open_reports`, `open_organiser_claims` |
 | **Organisers** | Live 2026-09-16, proven end to end. Claim → Telegram Approve → personal link → seven-day mail with three buttons → stamp / cancellation / alert → edit page. Daily job runs as a **dry run** until `ORGANISER_SENDING=on` |
-| **Analytics** | Page views at the edge, interactions from the browser, our Postgres, Metabase. Two identity layers: a daily hash always, a cookie id with consent. ~15–20 real Swiss visitors a day (the rest are scrapers the filter passes), two thirds from Google, 60% on a phone |
+| **Analytics** | Page views at the edge, interactions from the browser, our Postgres, Metabase with five dashboards and a bots-or-people filter (2026-09-17). ~10–30 real people a day, 85% of raw views are crawlers now flagged by `analytics_visitor_days`, two thirds from Google, 60% on a phone, ChatGPT sends a couple of visits a day |
 | **Backups** | Nightly 02:30 UTC, encrypted, 90 days in GitHub artifacts (`.github/workflows/backup.yml`). The private key is in `.env.local` and Delfim's password manager only |
 | **Search Console** | First nine days: 96 clicks, 7,700 impressions, position 15. City pages rank 5–8 with no clicks — rewritten 2026-09-15, re-read in October |
 | **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
@@ -30,7 +30,7 @@ Not built: tags on any market · country page · text search · distance on card
 **Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks.
 
 1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
-2. **Analytics v2.** Researched and decided 2026-09-17 (`reference/analytics-research/`, build from `build-plan.md`): collect everything first-party, keep everything, bots and AI crawlers in their own table, six Metabase dashboards. No GA4, no Clarity. Phases 1–3 next; Queues, Supabase Pro and R2 before Germany.
+2. **Analytics v2.** Decided 2026-09-17 (`reference/analytics-research/build-plan.md`): collect everything first-party, keep everything. Done: bot verdict view, five Metabase dashboards. Next: crawler table (AI bots kept, not dropped), edge fields, `page_leave`, market id on page views, key-forgetting job. Before Germany: Queues, Supabase Pro, R2. No GA4, no Clarity.
 3. **Visual pass** at 375 and 1440 with the logo; the organiser-page copy in Delfim's words. The logo is in since 2026-09-17 — header, footer, Function pages, mails, favicons and the share image (`docs/BRAND.md` §Wordmark).
 4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
 5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
