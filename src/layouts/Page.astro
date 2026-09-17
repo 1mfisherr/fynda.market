@@ -27,14 +27,16 @@ interface Props {
   locale?: Locale;
   /** This page in every other language — see Base.astro. */
   alternates?: { locale: Locale; path: string }[];
+  /** What the page is about, for the edge counter — see Base.astro. */
+  analytics?: { market?: string; city?: string; region?: string; next?: string };
 }
 const {
   title, description, indexable = true, mainId = 'inhalt',
-  locale = DEFAULT_LOCALE, alternates = [],
+  locale = DEFAULT_LOCALE, alternates = [], analytics,
 } = Astro.props;
 const s = t(locale);
 ---
-<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates}>
+<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates} analytics={analytics}>
   <slot name="head" slot="head" />
   <a class="skip button" href={`#${mainId}`}>{s.skipToContent}</a>
   <SiteHeader locale={locale} alternates={alternates} />

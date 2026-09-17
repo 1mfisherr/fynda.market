@@ -237,6 +237,7 @@ const facilityItems = market.facilities ? [
   alternates={alternates}
   title={`${market.name}, ${market.city} — ${s.dates} ${new Date().getFullYear()} | fynda.market`}
   description={`${kind.full[locale]}, ${market.city}. ${next ? s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName) : s.cityNoDate}`}
+  analytics={{ market: market.id, city: market.citySlug, region: market.regionSlug, next: next?.date }}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
@@ -365,19 +366,22 @@ const facilityItems = market.facilities ? [
       </div>
     </div>
 
+    {/* Section ids double as the names Analytics.astro reports in
+        page_leave.sections: which blocks of the page were actually on
+        screen before the visitor left. */}
     <div class="detail">
       {market.description && (
-        <Section level="sub"><p class="blurb meta">{market.description}</p></Section>
+        <Section level="sub" id="about"><p class="blurb meta">{market.description}</p></Section>
       )}
 
       {facts.length > 0 && (
-        <Section level="sub" title={s.whatToExpect}>
+        <Section level="sub" title={s.whatToExpect} id="expect">
           <dl class="gutter">{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl>
         </Section>
       )}
 
       {market.timing && (
-        <Section level="sub" title={s.whenToGo}>
+        <Section level="sub" title={s.whenToGo} id="when">
           <div class="timing gutter">
             {market.timing.map((slot) => (
               <div><strong>{slot.from}</strong><span><b>{slot.label}</b>{slot.note && <em>{slot.note}</em>}</span></div>
@@ -402,7 +406,7 @@ const facilityItems = market.facilities ? [
           that state in September. The heading used to stand over an empty
           list; the rhythm is what we do know — "Einmal jährlich, zwischen
           April und Oktober" — and it is the honest answer to "when". */}
-      <Section level="sub" title={s.dates}>
+      <Section level="sub" title={s.dates} id="dates">
         {dates.length > 0 ? (
           <>
           <ul class="dates list-reset gutter" id="all-dates">
@@ -464,7 +468,7 @@ const facilityItems = market.facilities ? [
           ones: the visitor is the customer either way. */}
       <div class="gutter"><SubscribeForm locale={locale} near={{ slug: market.citySlug, name: market.city }} /></div>
 
-      <Section level="sub" title={s.wasItDifferent}>
+      <Section level="sub" title={s.wasItDifferent} id="report">
         <p class="gutter meta">{s.reportIntro}</p>
         {/* The market travels with the report, as the name a person reads and as
             the id the database needs -- so a report from here arrives already

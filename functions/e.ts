@@ -18,6 +18,8 @@ const ALLOWED = new Set<EventName>([
   'search', 'no_results', 'filter_changed', 'market_click', 'outbound_click',
   'calendar_add', 'market_save', 'newsletter_form_view', 'newsletter_submit',
   'organiser_contact', 'report_open',
+  'page_leave', 'web_vitals', 'js_error', 'newsletter_form_start', 'rage_click',
+  'dead_click', 'language_switch',
 ]);
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -55,10 +57,15 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   if (body.props && typeof body.props === 'object' && !Array.isArray(body.props)) {
     for (const [k, v] of Object.entries(body.props as Record<string, unknown>)) {
       if (Object.keys(props).length >= 12) break;
-      if (typeof v === 'string') props[k] = v.slice(0, 200);
+      if (typeof v === 'string') props[k] = v.slice(0, 300);
       else if (typeof v === 'number' || typeof v === 'boolean') props[k] = v;
+      // page_leave's `sections`: the ids of the page blocks that were seen.
+      else if (Array.isArray(v)) props[k] = v.filter((x) => typeof x === 'string').map((x) => (x as string).slice(0, 40)).slice(0, 20);
     }
   }
+
+  // Only the browser knows how wide it is.
+  const viewport_w = typeof body.viewport_w === 'number' ? body.viewport_w : null;
 
   waitUntil(
     collect(env, request, {
@@ -71,6 +78,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
       region_slug: slugOrNull(body.region_slug),
       session_id: uuidOrNull(body.session_id),
       page_view_id: uuidOrNull(body.page_view_id),
+      viewport_w,
       props,
     })
   );

@@ -19,6 +19,8 @@
  */
 ---
 <script>
+  import { onCLS, onINP, onLCP, onTTFB, onFCP } from 'web-vitals';
+
   const ENDPOINT = '/e';
 
   /** One id per tab, gone when the tab closes. Groups a sitting; not identity. */
@@ -42,6 +44,7 @@
       session_id: sessionId,
       page_view_id: pageViewId,
       market_id: market ?? null,
+      viewport_w: window.innerWidth,
       props,
     });
 
@@ -98,11 +101,14 @@
     if (href && /^https?:/i.test(href) && !href.startsWith(location.origin)) {
       const maps = /google\.[a-z.]+\/maps|maps\.app\.goo\.gl|openstreetmap|apple\.com\/maps/i.test(href);
       send('outbound_click', {
-        click_type: maps ? 'maps' : 'organiser_website',
+        click_type: maps ? 'directions' : /facebook|instagram|tiktok|x\.com|twitter/i.test(href) ? 'social' : 'organiser_website',
         destination_host: hostOf(href),
       }, el);
       return;
     }
+
+    // A phone number is a lead too; there is no host, so the word stands in.
+    if (href?.startsWith('tel:')) { send('outbound_click', { click_type: 'phone', destination_host: 'tel' }, el); return; }
 
     if (href?.endsWith('.ics')) { send('calendar_add', { method: 'ics' }, el); return; }
 
@@ -263,4 +269,141 @@
       });
     }
   }
+
+  /* ------------------------------------------------------------------------
+   * Since 2026-09-17: what the page was like to be on.
+   * ---------------------------------------------------------------------- */
+
+  /** The market this page is about, when it is one — for the beacons below. */
+  const pageMarket = document.querySelector<HTMLElement>('.market[data-market]');
+
+  /**
+   * How long the page was actually in front of someone. The clock runs only
+   * while the tab is visible, so a page left open behind another window
+   * counts nothing. Sent once, when the page is hidden or closed — the only
+   * moment a browser reliably lets a beacon out.
+   */
+  let activeMs = 0;
+  let visibleSince = document.visibilityState === 'visible' ? performance.now() : null;
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') { visibleSince = performance.now(); return; }
+    if (visibleSince !== null) { activeMs += performance.now() - visibleSince; visibleSince = null; }
+  });
+
+  /** The deepest point scrolled to, as a share of the page. */
+  let maxScroll = 0;
+  const measureScroll = () => {
+    const doc = document.documentElement;
+    const total = doc.scrollHeight - window.innerHeight;
+    const pct = total <= 0 ? 100 : Math.min(100, Math.round(((window.scrollY + window.innerHeight) / doc.scrollHeight) * 100));
+    if (pct > maxScroll) maxScroll = pct;
+  };
+  measureScroll();
+  window.addEventListener('scroll', measureScroll, { passive: true });
+
+  /**
+   * Which blocks of the page were on screen, in the order they appeared. A
+   * block is a <section id>; the market page names its blocks (about,
+   * expect, when, hinkommen, dates, report). 30% of a block visible counts.
+   */
+  const sectionsSeen: string[] = [];
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  if (sections.length && 'IntersectionObserver' in window) {
+    const so = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const id = (entry.target as HTMLElement).id;
+        if (entry.isIntersecting && !sectionsSeen.includes(id)) { sectionsSeen.push(id); so.unobserve(entry.target); }
+      }
+    }, { threshold: 0.3 });
+    sections.forEach((el) => so.observe(el));
+  }
+
+  /**
+   * Core Web Vitals as this visitor experienced them. Cloudflare's own RUM
+   * excludes Swiss and EU visitors, so we measure ourselves. The library
+   * reports each metric once it is final; INP and CLS finalise when the page
+   * is hidden, which is why the row goes out with page_leave.
+   */
+  const vitals: Record<string, number> = {};
+  const keep = (name: string) => ({ value }: { value: number }) => { vitals[name] = Math.round(name === 'cls' ? value * 1000 : value) / (name === 'cls' ? 1000 : 1); };
+  onLCP(keep('lcp')); onINP(keep('inp')); onCLS(keep('cls')); onTTFB(keep('ttfb')); onFCP(keep('fcp'));
+
+  let left = false;
+  const leave = () => {
+    if (left) return;
+    left = true;
+    if (visibleSince !== null) { activeMs += performance.now() - visibleSince; visibleSince = null; }
+    measureScroll();
+    send('page_leave', { active_ms: Math.round(activeMs), max_scroll_pct: maxScroll, sections: sectionsSeen }, pageMarket);
+    if (Object.keys(vitals).length) send('web_vitals', vitals, pageMarket);
+  };
+  // pagehide is the reliable one on phones; visibilitychange→hidden covers a
+  // tab switch that never comes back. Both call leave(); it sends once.
+  window.addEventListener('pagehide', leave);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') leave(); });
+
+  /** A script broke on someone's device. Three per page at most. */
+  let errors = 0;
+  const reportError = (message: string, source?: string, line?: number) => {
+    if (errors++ >= 3) return;
+    const props: Record<string, unknown> = { message: String(message).slice(0, 300) };
+    if (source) props.source = String(source).replace(location.origin, '').slice(0, 200);
+    if (typeof line === 'number') props.line = line;
+    send('js_error', props);
+  };
+  window.addEventListener('error', (e) => reportError(e.message, e.filename, e.lineno));
+  window.addEventListener('unhandledrejection', (e) => reportError(`unhandled: ${String((e as PromiseRejectionEvent).reason).slice(0, 200)}`));
+
+  /** A short name for an element: tag, id, first class. Never its text. */
+  const selectorOf = (el: Element): string => {
+    const tag = el.tagName.toLowerCase();
+    const id = el.id ? `#${el.id}` : '';
+    const cls = el.classList[0] ? `.${el.classList[0]}` : '';
+    return `${tag}${id}${cls}`.slice(0, 200);
+  };
+  const INTERACTIVE = 'a[href], button, input, select, textarea, label, summary, [role="button"], [tabindex], details';
+
+  /**
+   * Frustration, measured. A rage click is three clicks within a second on
+   * the same spot. A dead click is a click on something that looks clickable
+   * (the cursor is a hand) but is not a link, a button or a control — the
+   * classic "I tapped the card and nothing happened".
+   */
+  let clicks: { t: number; x: number; y: number }[] = [];
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element | null;
+    if (!target) return;
+    const now = performance.now();
+    clicks = clicks.filter((c) => now - c.t < 1000);
+    clicks.push({ t: now, x: event.clientX, y: event.clientY });
+    if (clicks.length >= 3 && clicks.every((c) => Math.abs(c.x - event.clientX) < 30 && Math.abs(c.y - event.clientY) < 30)) {
+      send('rage_click', { selector: selectorOf(target) }, target);
+      clicks = [];
+      return;
+    }
+    if (!target.closest(INTERACTIVE) && getComputedStyle(target).cursor === 'pointer') {
+      send('dead_click', { selector: selectorOf(target) }, target);
+    }
+  }, { capture: true, passive: true });
+
+  /** First touch of the signup form: seen → started → submitted becomes a funnel. */
+  const started = new WeakSet<Element>();
+  document.addEventListener('focusin', (event) => {
+    const form = (event.target as Element | null)?.closest?.('form[data-subscribe]');
+    if (!form || started.has(form)) return;
+    started.add(form);
+    const block = form.closest<HTMLElement>('[data-subscribe-block]');
+    const placement = block?.classList.contains('subscribe--footer')
+      ? 'footer'
+      : /^\/(de|fr|it|en)\/newsletter\/$/.test(location.pathname) ? 'page' : 'card';
+    send('newsletter_form_start', { placement }, form);
+  });
+
+  /** The language links in the header. `to` is the language chosen. */
+  document.addEventListener('click', (event) => {
+    const link = (event.target as Element | null)?.closest?.('nav.langs a[hreflang]');
+    if (!link) return;
+    const to = (link.getAttribute('hreflang') ?? '').slice(0, 2).toLowerCase();
+    if (['de', 'fr', 'it', 'en'].includes(to)) send('language_switch', { to }, link);
+  }, { capture: true, passive: true });
 </script>

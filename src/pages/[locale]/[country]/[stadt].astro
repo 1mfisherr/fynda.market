@@ -178,7 +178,7 @@ const jsonLd = {
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} title={`${heading} | fynda.market`} description={description}>
+<Page locale={locale} alternates={alternates} title={`${heading} | fynda.market`} description={description} analytics={{ city: stadt, region: regionSlug }}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">

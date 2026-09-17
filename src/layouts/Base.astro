@@ -16,9 +16,16 @@ interface Props {
    * most common way hreflang is got wrong.
    */
   alternates?: { locale: Locale; path: string }[];
+  /**
+   * What the page is about, for the edge counter (functions/_middleware.ts
+   * reads these tags off the response): the market's id, the town's and the
+   * canton's slugs, the next date. A page view then carries them without the
+   * edge knowing the database.
+   */
+  analytics?: { market?: string; city?: string; region?: string; next?: string };
 }
 
-const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
+const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternates = [], analytics = {} } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const href = (path: string) => new URL(path, Astro.site).href;
 const fallback = alternates.find((a) => a.locale === DEFAULT_LOCALE);
@@ -31,6 +38,10 @@ import Analytics from '../components/Analytics.astro';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    {analytics.market && <meta name="fynda:market" content={analytics.market} />}
+    {analytics.city && <meta name="fynda:city" content={analytics.city} />}
+    {analytics.region && <meta name="fynda:region" content={analytics.region} />}
+    {analytics.next && <meta name="fynda:next" content={analytics.next} />}
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex, follow" />}
