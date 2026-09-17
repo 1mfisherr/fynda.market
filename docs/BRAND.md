@@ -65,7 +65,7 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Wordmark
 
-**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". Schibsted Grotesk 800, tight tracking, near-black, **the full stop in the accent** — the dot is the mark, and it is the one decorative use of the accent on the site. Written out in full everywhere the name appears: page titles, the footer, structured data, e-mail subjects. The only exception is the imprint and the privacy policy, where the operator's name is a legal statement rather than branding. App mark: not chosen — the `f.` tile was rejected; the curved-`y` wordmark direction is where it is heading.
+**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". The logo (chosen 2026-09-17) is a soft-serif wordmark: near-black letters, the `y` and the full stop in the accent. The compact mark is the same `y.` alone. It is always the image, never the name typed in Schibsted Grotesk — a logo may have its own typeface, the site may not have two. Files, all in `public/`: `brand/fynda-wordmark.svg` and `brand/fynda-mark.svg` are the masters, traced from the PNGs beside them, with the fills set by hand to `--color-ink` and `--color-accent`; `favicon.svg`/`.ico`, `apple-touch-icon.png`, `icon-192/512.png` (opaque white, iOS and Android want no transparency) and `og-image.png` (1200×630, the share image) are derived from them. `brand/fynda-wordmark-mail.png` is for the e-mails, which cannot show SVG. The name is written out in full in page titles, structured data and e-mail subjects. The only exception is the imprint and privacy policy, where the operator's name is a legal statement rather than branding.
 
 ## Voice
 
@@ -153,8 +153,7 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 
 ## To do
 
-- [ ] The compact mark — wordmark v6 is the direction, nothing approved (`PLAN.md` §Still open)
-- [ ] Wordmark clear-space rules and the app icon at real sizes
+- [ ] Wordmark clear-space rules
 - [ ] Icon set: market types, status, actions
 - [ ] Illustration set: 8–12 objects, one style
 - [ ] Tone-of-voice examples, before and after

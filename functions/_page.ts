@@ -32,8 +32,8 @@ export function page(
   :root { color-scheme: light; }
   body { margin: 0; background: #fff; color: #111110; font: 16px/1.55 "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif; }
   main { max-width: 560px; margin: 0 auto; padding: 24px 20px 64px; }
-  .mark { display: inline-block; font-size: 22px; font-weight: 800; letter-spacing: -0.045em; color: inherit; text-decoration: none; margin: 0 0 32px; }
-  .mark span { color: #FF4A2B; }
+  .mark { display: inline-block; line-height: 0; margin: 0 0 32px; }
+  .mark img { display: block; height: 26px; width: auto; }
   h1 { font-size: 26px; line-height: 1.2; letter-spacing: -0.03em; font-weight: 800; margin: 0 0 12px; }
   p { margin: 0 0 16px; }
   .meta { color: #6b6b70; font-size: 14px; }
@@ -54,7 +54,7 @@ export function page(
 </head>
 <body>
 <main>
-  <a class="mark" href="https://fynda.market/">fynda<span>.</span>market</a>
+  <a class="mark" href="https://fynda.market/"><img src="/brand/fynda-wordmark.svg" alt="fynda.market" width="1995" height="350"></a>
   ${body}
 </main>
 </body>

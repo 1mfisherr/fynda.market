@@ -46,11 +46,23 @@ import Analytics from '../components/Analytics.astro';
         the first paint does not wait for the stylesheet to discover it. */}
     <link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 
+    {/* The y. mark. Browsers that read SVG take it; the .ico is for the rest and
+        for the address-bar drop-downs that only fetch /favicon.ico. iOS and
+        Android want opaque PNGs, so those carry the site's white. */}
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={LOCALE[locale].tag.replace('-', '_')} />
+    <meta property="og:image" content={href('/og-image.png')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Structured data and anything else page-specific. Guardrail check 6
          polices what may appear here. -->

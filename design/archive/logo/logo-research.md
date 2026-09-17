@@ -1,3 +1,5 @@
+> **Closed 2026-09-17.** Delfim chose the soft-serif wordmark with the `y` and the dot in the accent, and the `y.` as the compact mark. The route-to-market tail was not taken. The shipped files are in `public/brand/`; `docs/BRAND.md` §Wordmark is the only current description. Everything below is history.
+
 # fynda.market — logo exploration
 
 2026-09-06. Concepts for review; no replacement identity selected or installed.
@@ -5,6 +7,10 @@
 Read against `docs/BRAND.md`, `docs/PRODUCT.md`, `docs/PLAN.md`, the existing brand canvas, and the site's shared layout. Preserve the full written name `fynda.market`, Schibsted Grotesk 800, near-black, and the vermilion dot. The brand notes already propose an `f.` app mark, but the shared layout has no favicon link.
 
 ## Recommendation
+
+**Selected base direction:** the founder selected `01 / Soft serif` from `screens/logo-same-y-font-comparison-v8.png` for development. `screens/logo-route-to-market-v9.png` explores extending the custom `y` beneath `nda` so its tail arrives at the vermilion full stop: finding a route to the market. This route treatment is still a concept for review, not an approved final mark.
+
+`logo-route-geometry-v10.svg` redraws the route concept as deterministic vector geometry rather than generated artwork. It uses shared stroke weights, continuous Bézier tangents and a fixed optical gap before the dot, with explicit 48/32/16 px silhouette checks. The surrounding soft-serif letters remain a scaffold; final lettering still needs custom outlines.
 
 **Current direction:** founder responded positively to v5 and requested more polish and life. `screens/logo-wordmark-v6.png` explores fuller curved lettering and a more expressive standalone `y`, plus a vermilion reverse application. The slogan in the mockup is exploratory copy. This is still generated concept artwork; letterforms vary between applications and must be unified in final vector artwork before use.
 

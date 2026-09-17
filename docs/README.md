@@ -17,7 +17,7 @@ Read only what the task needs. Every line loaded is context spent.
 
 **Reference, only for a specific fact:** `reference/competitors.md` · `reference/database-options.md` · `reference/organiser-research/` (three reports and a synthesis, 2026-09-16) · `../metabase/README.md`.
 
-**Outside `docs/`:** `../guardrails.config.json` (architecture as config) · `../scripts/guardrails.mjs` (the ten checks) · `../src/lib/i18n.ts` (every URL) · `../src/lib/strings.ts` (interface copy) · `../src/lib/utility-copy.ts` (the form pages) · `../src/lib/legal/` (about, imprint, privacy, terms) · `../src/lib/vocabulary.ts` (domain words) · `../design/` (mockups, logo options).
+**Outside `docs/`:** `../guardrails.config.json` (architecture as config) · `../scripts/guardrails.mjs` (the ten checks) · `../src/lib/i18n.ts` (every URL) · `../src/lib/strings.ts` (interface copy) · `../src/lib/utility-copy.ts` (the form pages) · `../src/lib/legal/` (about, imprint, privacy, terms) · `../src/lib/vocabulary.ts` (domain words) · `../design/` (mockups; `design/archive/logo/` is the closed logo search).
 
 `archive/` is prior research, the September plan log, and the guidance these rules come from. **Don't read it unless asked for something specific.**
 

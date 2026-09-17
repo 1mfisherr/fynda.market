@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#fff"/>
+  <style>
+    .serif{font-family:Georgia,"Times New Roman",serif;font-weight:700;fill:#111110}
+    .sans{font-family:Arial,sans-serif;fill:#6e6c68;letter-spacing:.08em}
+  </style>
+
+  <text x="72" y="68" class="sans" font-size="18">FYNDA.MARKET / ROUTE GEOMETRY V10</text>
+
+  <!-- Primary wordmark. The custom y and route use one 34px stroke system. -->
+  <g aria-label="fynda.market" transform="translate(18 58) scale(.82)">
+    <text x="76" y="350" class="serif" font-size="252">f</text>
+    <path d="M245 190 C258 190 269 202 274 216 L315 326
+             M386 190 C372 190 361 202 356 216 L319 329
+             C306 365 293 390 274 407"
+          fill="none" stroke="#111110" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M274 407 C410 449 631 449 790 421 C847 411 885 371 910 334"
+          fill="none" stroke="#111110" stroke-width="18" stroke-linecap="round"/>
+    <text x="402" y="350" class="serif" font-size="252">nda</text>
+    <circle cx="940" cy="309" r="24" fill="#ff4a2b"/>
+    <text x="980" y="350" class="serif" font-size="252">market</text>
+  </g>
+
+  <line x1="72" y1="500" x2="1528" y2="500" stroke="#e8e6e2"/>
+
+  <!-- Clean compact mark -->
+  <g transform="translate(105 590)">
+    <path d="M20 10 C34 10 44 22 49 36 L86 139
+             M147 10 C133 10 123 22 118 36 L84 141
+             C72 173 60 195 44 210"
+          fill="none" stroke="#111110" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44 210 C102 229 174 229 224 217 C245 212 262 201 274 185"
+          fill="none" stroke="#111110" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="302" cy="168" r="23" fill="#ff4a2b"/>
+    <text x="0" y="305" class="sans" font-size="16">CLEAN MARK</text>
+  </g>
+
+  <!-- Construction view -->
+  <g transform="translate(520 555)">
+    <rect x="0" y="0" width="430" height="330" rx="10" fill="#f5f4f2"/>
+    <g stroke="#d3d0ca" stroke-width="1">
+      <path d="M0 55H430M0 110H430M0 165H430M0 220H430M0 275H430"/>
+      <path d="M55 0V330M110 0V330M165 0V330M220 0V330M275 0V330M330 0V330M385 0V330"/>
+    </g>
+    <path d="M70 50 C84 50 94 62 99 76 L136 179
+             M197 50 C183 50 173 62 168 76 L134 181
+             C122 213 110 235 94 250"
+          fill="none" stroke="#111110" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M94 250 C152 269 224 269 274 257 C295 252 312 241 324 225"
+          fill="none" stroke="#111110" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="352" cy="208" r="23" fill="#ff4a2b"/>
+    <circle cx="94" cy="250" r="5" fill="#3d5afe"/>
+    <circle cx="324" cy="225" r="5" fill="#3d5afe"/>
+    <text x="0" y="365" class="sans" font-size="16">8-UNIT GRID / SHARED TANGENTS / 28-UNIT OPTICAL GAP</text>
+  </g>
+
+  <!-- Small-size checks -->
+  <g transform="translate(1040 585)">
+    <text x="0" y="0" class="sans" font-size="16">SMALL-SIZE SILHOUETTE</text>
+    <g transform="translate(0 50) scale(.55)">
+      <path d="M20 10 C34 10 44 22 49 36 L86 139 M147 10 C133 10 123 22 118 36 L84 141 C72 173 60 195 44 210" fill="none" stroke="#111110" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44 210 C102 229 174 229 224 217 C245 212 262 201 274 185" fill="none" stroke="#111110" stroke-width="16" stroke-linecap="round"/>
+      <circle cx="302" cy="168" r="23" fill="#ff4a2b"/>
+    </g>
+    <g transform="translate(220 80) scale(.28)">
+      <path d="M20 10 C34 10 44 22 49 36 L86 139 M147 10 C133 10 123 22 118 36 L84 141 C72 173 60 195 44 210" fill="none" stroke="#111110" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44 210 C102 229 174 229 224 217 C245 212 262 201 274 185" fill="none" stroke="#111110" stroke-width="20" stroke-linecap="round"/>
+      <circle cx="302" cy="168" r="27" fill="#ff4a2b"/>
+    </g>
+    <g transform="translate(355 92) scale(.16)">
+      <path d="M20 10 C34 10 44 22 49 36 L86 139 M147 10 C133 10 123 22 118 36 L84 141 C72 173 60 195 44 210" fill="none" stroke="#111110" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44 210 C102 229 174 229 224 217 C245 212 262 201 274 185" fill="none" stroke="#111110" stroke-width="25" stroke-linecap="round"/>
+      <circle cx="302" cy="168" r="33" fill="#ff4a2b"/>
+    </g>
+    <text x="32" y="235" class="sans" font-size="15">48 PX</text>
+    <text x="224" y="235" class="sans" font-size="15">32 PX</text>
+    <text x="350" y="235" class="sans" font-size="15">16 PX</text>
+  </g>
+</svg>

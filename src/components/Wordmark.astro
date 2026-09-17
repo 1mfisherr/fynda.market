@@ -1,11 +1,15 @@
 ---
 /**
- * The logo, and the only place it is written.
+ * The logo, and the only place it is drawn.
  *
  * The name is "fynda.market", the way Booking.com is not "Booking" — the whole
- * thing is the logo and it is allowed to be read. The dot is the one
- * decorative use of the accent on the site (docs/BRAND.md); everything else
- * the accent touches is a date or a status.
+ * thing is the logo and it is allowed to be read. Since 2026-09-17 it is an
+ * image, `public/brand/fynda-wordmark.svg`: a soft serif with the `y` and the
+ * dot in the accent. It is never typed in the site font again; the SVG's
+ * fills are the token values from tokens.css by hand, so a changed accent is
+ * changed in both files. The dot is the one decorative use of the accent on
+ * the site (docs/BRAND.md); everything else the accent touches is a date or
+ * a status.
  *
  * Header and footer used to each carry their own copy of this markup and
  * these rules, and the pages a Cloudflare Function renders carried a third
@@ -25,18 +29,26 @@ interface Props {
 }
 const { locale, size = 'title' } = Astro.props;
 ---
-<a class:list={['mark', size]} href={homePath(locale)}>fynda<span>.</span>market</a>
+<a class:list={['mark', size]} href={homePath(locale)}>
+  <img src="/brand/fynda-wordmark.svg" alt="fynda.market" width="1995" height="350" />
+</a>
 
 <style>
+  /* The image runs ascender to descender, so 1.15 × the type size puts its
+     letters at the height the typed name had. Width follows the SVG's ratio. */
   .mark {
+    display: inline-block;
+    line-height: 0;
     font-size: var(--text-title);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-display);
   }
-  .mark span { color: var(--color-accent); }
+  .mark img {
+    display: block;
+    height: calc(1.15 * var(--text-title));
+    width: auto;
+  }
 
   /* Keep in step with --breakpoint-wide. */
   @media (min-width: 900px) {
-    .grows { font-size: var(--text-section); }
+    .grows img { height: calc(1.15 * var(--text-section)); }
   }
 </style>

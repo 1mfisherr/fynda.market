@@ -256,7 +256,7 @@ function column(locale: Locale, body: string[], footer?: string): string {
   return `<!doctype html>
 <html lang="${locale}"><body style="margin:0;padding:24px;background:#ffffff;">
 <div style="max-width:520px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55;color:#16161a;">
-  <p style="margin:0 0 24px;font-size:20px;font-weight:800;letter-spacing:-0.03em;">fynda<span style="color:#FF4A2B;">.</span>market</p>
+  <p style="margin:0 0 24px;line-height:0;"><img src="${SITE}/brand/fynda-wordmark-mail.png" alt="fynda.market" width="160" height="28" style="display:block;border:0;"></p>
   ${paragraphs}${footer ?? ''}
 </div>
 </body></html>`;
