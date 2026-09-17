@@ -1,0 +1,36 @@
+---
+/**
+ * Not found, in the visitor's own language.
+ *
+ * The root `404.astro` is one German page for every wrong address, because a
+ * static host picks the 404 before it knows anything about the visitor. But
+ * Cloudflare Pages serves the *nearest* `404.html` up the folder tree: a dead
+ * link under /en/ gets `/en/404.html` if one exists. So each locale gets its
+ * own, with its own header and its own words, and the root page is left for
+ * addresses with no locale at all.
+ *
+ * Astro writes this as `dist/{locale}/404/index.html`; `scripts/postbuild.mjs`
+ * moves it to `dist/{locale}/404.html`, which is the name Cloudflare looks
+ * for, and removes the folder so no `/de/404/` address exists.
+ */
+import Page from '../../layouts/Page.astro';
+import { LOCALES, homePath, type Locale } from '../../lib/i18n';
+import { t } from '../../lib/strings';
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const s = t(locale);
+---
+
+<Page title={s.notFoundTitle} description={s.notFoundBody} indexable={false} locale={locale}>
+  <section class="stack gutter">
+    <div class="page-head">
+      <h1>{s.notFoundHeading}</h1>
+      <p class="meta">{s.notFoundBody}</p>
+    </div>
+    <p><a class="button" href={homePath(locale)}>fynda.market</a></p>
+  </section>
+</Page>

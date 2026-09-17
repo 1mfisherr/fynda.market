@@ -140,6 +140,7 @@ if (!process.env.GITHUB_ACTIONS && !buildOnly && !process.argv.includes('--allow
 run('Running the tests', null, ['--test', join(root, 'src/lib/digest.test.ts')]);
 run('Emitting data files', join(root, 'scripts/emit-data.mjs'), []);
 run('Building the site', binOf('astro'), ['build']);
+run('Placing the locale 404 pages', process.execPath, ['scripts/postbuild.mjs']);
 run('Checking guardrails', join(root, 'scripts/guardrails.mjs'), []);
 
 /*

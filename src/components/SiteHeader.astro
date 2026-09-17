@@ -80,6 +80,9 @@ const sections = [
   /* A tap target of at least 44px, without the row growing: the padding is
      the target, the row keeps its line height. It was a 20px-wide letter pair. */
   .langs a { padding: var(--space-3) var(--space-1); margin-block: calc(-1 * var(--space-3)); }
+  /* The mark and Gemerkt are 20px tall as text; the same trick gives them a
+     target of at least 24px without moving the row. */
+  .site-header > :global(.mark), .saved { padding-block: var(--space-2); margin-block: calc(-1 * var(--space-2)); }
 
   /* Nothing is competing for the line any more, so the mark goes back up the
      type ramp. Keep in step with --breakpoint-wide. */
