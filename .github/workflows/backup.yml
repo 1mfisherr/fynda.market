@@ -1,9 +1,9 @@
 # Nightly copy of the whole database.
 #
 # Supabase's free plan keeps no backups at all (docs/STACK.md). This job takes
-# one every fifth day at 02:30 UTC (Delfim, 2026-09-17), half an hour before
-# the publish, encrypts it and keeps it in this repository's artifact store
-# for 90 days.
+# one every night at 02:30 UTC, half an hour before the publish, encrypts it
+# and keeps it in this repository's artifact store for 90 days. It costs
+# nothing: GitHub's free minutes and a 1 MB file.
 #
 # The repository is public, so the file is encrypted before it leaves the
 # runner: age, to the public key below. The private half exists only in
@@ -27,7 +27,7 @@ name: backup
 
 on:
   schedule:
-    - cron: '30 2 */5 * *'
+    - cron: '30 2 * * *'
   workflow_dispatch:
   push:
     paths:

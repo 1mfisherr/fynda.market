@@ -16,7 +16,7 @@ Live at `fynda.market` since 2026-09-04: 157 published markets, 56 towns, 14 can
 | **Forms** | `/n` `/r` `/o` `/u` write rows and ping Telegram; queues are the views `open_reports`, `open_organiser_claims` |
 | **Organisers** | Live 2026-09-16, proven end to end. Claim → Telegram Approve → personal link → seven-day mail with three buttons → stamp / cancellation / alert → edit page. Daily job runs as a **dry run** until `ORGANISER_SENDING=on` |
 | **Analytics** | Page views at the edge, interactions from the browser, our Postgres, Metabase. Two identity layers: a daily hash always, a cookie id with consent. ~15–20 real Swiss visitors a day (the rest are scrapers the filter passes), two thirds from Google, 60% on a phone |
-| **Backups** | Every fifth day 02:30 UTC, encrypted, 90 days in GitHub artifacts (`.github/workflows/backup.yml`). The private key is in `.env.local` and Delfim's password manager only |
+| **Backups** | Nightly 02:30 UTC, encrypted, 90 days in GitHub artifacts (`.github/workflows/backup.yml`). The private key is in `.env.local` and Delfim's password manager only |
 | **Search Console** | First nine days: 96 clicks, 7,700 impressions, position 15. City pages rank 5–8 with no clicks — rewritten 2026-09-15, re-read in October |
 | **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
 | **Photos** | Every market has one; one is real. Real ones arrive through organisers |
