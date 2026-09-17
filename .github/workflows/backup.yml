@@ -1,0 +1,84 @@
+# Nightly copy of the whole database.
+#
+# Supabase's free plan keeps no backups at all (docs/STACK.md). This job takes
+# one every night at 02:30 UTC, half an hour before the publish, encrypts it
+# and keeps it in this repository's artifact store for 90 days.
+#
+# The repository is public, so the file is encrypted before it leaves the
+# runner: age, to the public key below. The private half exists only in
+# Delfim's .env.local (BACKUP_AGE_KEY) and his password manager. Nobody else,
+# GitHub included, can read a backup. Lose that key and every backup is a
+# brick — copy it somewhere safe before trusting this.
+#
+# Restore, on a laptop with age and postgresql-client-17 installed:
+#   age -d -i <file holding BACKUP_AGE_KEY> fynda-2026-09-17.dump.age > fynda.dump
+#   pg_restore --clean --if-exists --no-owner -d "$SUPABASE_DB_URL" fynda.dump
+#
+# The public schema only: Supabase owns auth/storage/extensions and rebuilds
+# them itself. Roles (metabase_ro, the collector) are cluster-level and not in
+# a dump; the migrations recreate them.
+#
+# 90 days is the artifact ceiling on a public repository. Longer retention is
+# Cloudflare R2 (cents a month) once it is enabled on the account — then a
+# second upload step goes here and nothing else changes.
+
+name: backup
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/backup.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    name: Dump, encrypt, keep
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # ubuntu-latest ships pg_dump 16; the server is Postgres 17 and pg_dump
+      # refuses a newer server. The PGDG repository has 17.
+      - name: Install pg_dump 17 and age
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common age >/dev/null
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y >/dev/null
+          sudo apt-get install -y -qq postgresql-client-17 >/dev/null
+          /usr/lib/postgresql/17/bin/pg_dump --version
+          age --version
+
+      - name: Dump and encrypt
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          BACKUP_PUBLIC_KEY: age1hlgs0fak9yj27e2xzk8pz63gh7u3m4zdchfa9lmslu2er55ym3kszx6eyk
+        run: |
+          set -euo pipefail
+          day=$(date -u +%F)
+          /usr/lib/postgresql/17/bin/pg_dump "$SUPABASE_DB_URL" \
+            --format=custom --schema=public --no-owner \
+            --file="fynda-$day.dump"
+          # A dump that is suddenly tiny is a failure that returned 0.
+          size=$(stat -c %s "fynda-$day.dump")
+          echo "dump: $size bytes"
+          test "$size" -gt 200000
+          age -r "$BACKUP_PUBLIC_KEY" -o "fynda-$day.dump.age" "fynda-$day.dump"
+          rm "fynda-$day.dump"
+          echo "DAY=$day" >> "$GITHUB_ENV"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fynda-db-${{ env.DAY }}
+          path: fynda-${{ env.DAY }}.dump.age
+          retention-days: 90
+          if-no-files-found: error
