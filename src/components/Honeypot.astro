@@ -1,0 +1,24 @@
+---
+/**
+ * The field a person never sees and a bot fills in.
+ *
+ * Hidden from people and from screen readers, so anything in it came from a
+ * machine and the endpoint drops the post (functions/_form.ts). Off-screen
+ * rather than `display:none` alone — some bots skip those — and untabbable.
+ * One component since 2026-09-17; it was written twice, in the newsletter
+ * form and in the utility forms, and had already started to drift.
+ */
+interface Props {
+  /** Prefix for the input's id, so two forms on one page stay distinct. */
+  id: string;
+}
+const { id } = Astro.props;
+---
+<div class="trap" aria-hidden="true">
+  <label for={`${id}-website`}>Website</label>
+  <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+</div>
+
+<style>
+  .trap { position: absolute; inset-inline-start: -9999px; }
+</style>

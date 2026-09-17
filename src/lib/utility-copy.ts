@@ -500,6 +500,9 @@ export interface SavedPage {
    * words as data instead of shipping all four locales' strings as code.
    */
   summary: string;
+  /** The word after the date count: one, many. "1 dates" was live until 2026-09-17. */
+  dateOne: string;
+  dateOther: string;
 }
 
 export const SAVED: Record<Locale, SavedPage> = {
@@ -511,7 +514,9 @@ export const SAVED: Record<Locale, SavedPage> = {
     note: 'Gemerkte Märkte bleiben in diesem Browser gespeichert — kein Konto, keine Anmeldung nötig. Wer den Browser wechselt oder die Daten löscht, beginnt neu.',
     empty: 'Auf jeder Marktseite gibt es «Merken». Gemerkte Märkte erscheinen hier mit ihren nächsten Terminen.',
     browse: 'Märkte durchsuchen',
-    summary: '{markets} gemerkt, {dates} kommende Termine.',
+    summary: '{markets} gemerkt, {dates}.',
+    dateOne: 'kommender Termin',
+    dateOther: 'kommende Termine',
   },
   fr: {
     title: 'Brocantes enregistrées | fynda.market',
@@ -521,7 +526,9 @@ export const SAVED: Record<Locale, SavedPage> = {
     note: "Les brocantes enregistrées restent dans ce navigateur — sans compte ni inscription à créer. Si vous changez de navigateur ou effacez ses données, la liste repart de zéro.",
     empty: "Sur chaque page de brocante il y a « Enregistrer ». Les brocantes enregistrées apparaissent ici avec leurs prochaines dates.",
     browse: 'Parcourir les brocantes',
-    summary: '{markets} enregistrées, {dates} dates à venir.',
+    summary: '{markets} enregistrées, {dates}.',
+    dateOne: 'date à venir',
+    dateOther: 'dates à venir',
   },
   it: {
     title: 'Mercatini salvati | fynda.market',
@@ -531,7 +538,9 @@ export const SAVED: Record<Locale, SavedPage> = {
     note: 'I mercatini salvati restano in questo browser — nessun account, nessuna registrazione richiesta. Se cambia browser o ne cancella i dati, si riparte da zero.',
     empty: 'Su ogni pagina di mercatino c’è «Salva». I mercatini salvati compaiono qui con le loro prossime date.',
     browse: 'Sfogliare i mercatini',
-    summary: '{markets} salvati, {dates} date in arrivo.',
+    summary: '{markets} salvati, {dates}.',
+    dateOne: 'data in arrivo',
+    dateOther: 'date in arrivo',
   },
   en: {
     title: 'Saved markets | fynda.market',
@@ -541,6 +550,8 @@ export const SAVED: Record<Locale, SavedPage> = {
     note: 'Saved markets stay in this browser — no account or sign-in needed. Change browser or clear its data and the list starts again.',
     empty: 'Every market page has a "Save" button. Saved markets appear here with their next dates.',
     browse: 'Browse markets',
-    summary: '{markets} saved, {dates} dates coming up.',
+    summary: '{markets} saved, {dates}.',
+    dateOne: 'date coming up',
+    dateOther: 'dates coming up',
   },
 };

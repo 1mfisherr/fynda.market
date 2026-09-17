@@ -16,6 +16,7 @@
  * rendered from lib/legal/ rather than from sixteen .astro files.
  */
 import Page from '../../layouts/Page.astro';
+import Honeypot from '../../components/Honeypot.astro';
 import Button from '../../components/Button.astro';
 import Field from '../../components/Field.astro';
 import MarketRow from '../../components/MarketRow.astro';
@@ -99,6 +100,8 @@ const savedCopy = saved && {
   summary: saved.summary,
   one: s.marketCount(1).replace(/^1\s*/, ''),
   other: s.marketCount(2).replace(/^2\s*/, ''),
+  dateOne: saved.dateOne,
+  dateOther: saved.dateOther,
 };
 ---
 <Page
@@ -176,14 +179,8 @@ const savedCopy = saved && {
           />
         ))}
 
-        {/* The honeypot, on every form now that every form writes a row.
-            Hidden from people and from screen readers, so anything in it came
-            from a bot. Not `display:none` alone — some bots skip those — but
-            off-screen and untabbable as well. */}
-        <div class="trap" aria-hidden="true">
-          <label for="f-website">Website</label>
-          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
-        </div>
+        {/* The honeypot, on every form now that every form writes a row. */}
+        <Honeypot id="f" />
 
         <Button type="submit" variant="primary" block>{form.submit}</Button>
         <p class="meta">{form.note}</p>
@@ -243,13 +240,6 @@ const savedCopy = saved && {
   .result.shown,
   .result:target { display: block; }
 
-  /* Off-screen rather than display:none — a bot that skips hidden fields still
-     fills this one in, and a person never sees it or tabs to it. Taken out of
-     flow, so it needs no size of its own. */
-  .trap {
-    position: absolute;
-    inset-inline-start: -9999px;
-  }
 
   /* The operator's name, town and address are one paragraph with line breaks in
      it — a block of three <p> would be read as three separate statements. */
@@ -529,6 +519,7 @@ const savedCopy = saved && {
 </script>
 
 <script>
+  import { SAVED_KEY, adopt } from '../../lib/local-keys';
   /**
    * Saved markets. No accounts, ever (PRODUCT.md §Settled): the list lives in this
    * browser under one localStorage key, which the market page's save button
@@ -543,7 +534,8 @@ const savedCopy = saved && {
   const summary = document.getElementById('summary');
 
   if (list && summary) {
-    const KEY = 'fynda:gemerkt';
+    const KEY = SAVED_KEY;
+    adopt(KEY);
     const stored = (() => {
       try { return new Set<string>(JSON.parse(localStorage.getItem(KEY) ?? '[]')); }
       catch { return new Set<string>(); }
@@ -569,11 +561,11 @@ const savedCopy = saved && {
     const shown = slugs.size;
     if (empty) empty.hidden = shown > 0;
     const copy = JSON.parse(summary.dataset.copy ?? '{}') as
-      { summary?: string; one?: string; other?: string };
+      { summary?: string; one?: string; other?: string; dateOne?: string; dateOther?: string };
     summary.textContent = shown === 0
       ? (summary.dataset.none ?? '')
       : (copy.summary ?? '')
           .replace('{markets}', `${slugs.size} ${slugs.size === 1 ? copy.one : copy.other}`)
-          .replace('{dates}', String(dates));
+          .replace('{dates}', `${dates} ${dates === 1 ? copy.dateOne : copy.dateOther}`);
   }
 </script>

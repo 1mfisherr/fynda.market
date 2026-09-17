@@ -49,12 +49,14 @@ const s = t(locale);
 </style>
 
 <script>
+  import { TOWN_KEY, adopt } from '../lib/local-keys';
   /**
    * Written by TownPicker on this device. Anything unexpected in there means
    * an older or hand-edited value, and the right answer is to stay hidden:
    * the page is complete without this.
    */
-  const KEY = 'fynda:stadt';
+  const KEY = TOWN_KEY;
+  adopt(KEY);
   const el = document.querySelector<HTMLAnchorElement>('[data-shortcut]');
   const name = el?.querySelector<HTMLElement>('[data-shortcut-name]');
 

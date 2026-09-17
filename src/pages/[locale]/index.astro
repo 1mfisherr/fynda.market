@@ -229,6 +229,7 @@ const jsonLd = {
 </Page>
 
 <script>
+  import { TOWN_KEY, adopt } from '../../lib/local-keys';
   /**
    * The search card routes itself, and remembers.
    *
@@ -242,7 +243,8 @@ const jsonLd = {
    * the next visit — one place-chooser, one memory, no account. Same
    * localStorage as Gemerkt.
    */
-  const KEY = 'fynda:stadt';
+  const KEY = TOWN_KEY;
+  adopt(KEY);
   const search = document.querySelector<HTMLFormElement>('.search');
 
   /**
@@ -260,6 +262,26 @@ const jsonLd = {
       if (zeit) zeit.value = button.dataset.filter ?? 'all';
     });
   }
+
+  /*
+   * "Within" belongs to "Anywhere": that is the radius the nearby page
+   * applies around the visitor. A town page has its own radius, 25 km around
+   * the town, built in — so with a town chosen the control is shown at 25
+   * and switched off, instead of promising 50 and delivering 25 (audit,
+   * 2026-09-17). Browsers restore form values on back, hence the run on load.
+   */
+  const townSelect = search?.querySelector<HTMLSelectElement>('select[name="ort"]');
+  const kmSelect = search?.querySelector<HTMLSelectElement>('select[name="km"]');
+  let chosenKm = kmSelect?.value ?? '50';
+  const syncRadius = () => {
+    if (!townSelect || !kmSelect) return;
+    const town = townSelect.value !== '';
+    if (town && !kmSelect.disabled) chosenKm = kmSelect.value;
+    kmSelect.disabled = town;
+    kmSelect.value = town ? '25' : chosenKm;
+  };
+  townSelect?.addEventListener('change', syncRadius);
+  syncRadius();
 
   search?.addEventListener('submit', (event) => {
     const data = new FormData(search);

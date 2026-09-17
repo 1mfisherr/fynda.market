@@ -46,7 +46,6 @@ const rows = datedRows(markets);
 const list = byMarket(rows);
 
 const RADII = [10, 25, 50, 100];
-const DEFAULT_KM = 50;
 ---
 <Page
   indexable={false}
@@ -80,8 +79,9 @@ const DEFAULT_KM = 50;
   </div>
 
   <div class="radius gutter" role="group" aria-label={s.radiusGroup}>
+    {/* Pressed only once a location exists — see syncKm() in the script. */}
     {RADII.map((km) => (
-      <button class="button" type="button" data-km={km} aria-pressed={km === DEFAULT_KM}>{km} km</button>
+      <button class="button" type="button" data-km={km} aria-pressed="false">{km} km</button>
     ))}
   </div>
 
@@ -183,6 +183,18 @@ const DEFAULT_KM = 50;
     const none = statusEl.dataset.none ?? '';
     const within = statusEl.dataset.within ?? '';
     statusEl.textContent = origin ? within.replace('{km}', String(currentKm)) : none;
+    syncKm();
+  }
+
+  /**
+   * A radius is a fact only once there is a point to measure from. Until
+   * then no button is pressed: "50 km" beside "no location known" was the
+   * page contradicting itself (audit, 2026-09-17).
+   */
+  function syncKm() {
+    for (const button of kmButtons) {
+      button.setAttribute('aria-pressed', String(!!origin && Number(button.dataset.km) === currentKm));
+    }
   }
 
   function apply() {
@@ -238,7 +250,6 @@ const DEFAULT_KM = 50;
 
   for (const button of kmButtons) {
     button.addEventListener('click', () => {
-      for (const other of kmButtons) other.setAttribute('aria-pressed', String(other === button));
       currentKm = Number(button.dataset.km ?? currentKm);
       setStatus();
       apply();
@@ -256,6 +267,7 @@ const DEFAULT_KM = 50;
       () => {
         origin = null;
         if (statusEl) statusEl.textContent = statusEl.dataset.denied ?? '';
+        syncKm();
       },
       { enableHighAccuracy: false, timeout: 8000 }
     );
@@ -277,10 +289,7 @@ const DEFAULT_KM = 50;
   const kmParam = params.get('km');
   if (kmParam !== null) {
     const km = Number(kmParam);
-    if (Number.isFinite(km) && km > 0) {
-      currentKm = km;
-      for (const button of kmButtons) button.setAttribute('aria-pressed', String(Number(button.dataset.km) === km));
-    }
+    if (Number.isFinite(km) && km > 0) currentKm = km;
   }
 
   // The home page's search card sends the chosen date here as `zeit`, exactly

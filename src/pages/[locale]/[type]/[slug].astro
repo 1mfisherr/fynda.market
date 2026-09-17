@@ -121,7 +121,10 @@ const jsonLd = {
   ],
 };
 
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}`;
+// Directions, not a pin: `dir` opens the route from wherever the person is,
+// which is what the button says. `search` showed the spot and left them to
+// ask for the route themselves (audit, 2026-09-17).
+const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${market.lat},${market.lng}`;
 
 /**
  * The word the page leads with.
@@ -812,6 +815,7 @@ const facilityItems = market.facilities ? [
 </style>
 
 <script>
+  import { SAVED_KEY, adopt } from '../../../lib/local-keys';
   /**
    * "Alle 17 Termine" opens the rest of the list in place.
    *
@@ -836,7 +840,8 @@ const facilityItems = market.facilities ? [
    * nothing to leak — no accounts is settled, PRODUCT.md §Settled. The
    * /de/gemerkt/ page reads the same key.
    */
-  const KEY = 'fynda:gemerkt';
+  const KEY = SAVED_KEY;
+  adopt(KEY);
   const read = (): string[] => {
     try { return JSON.parse(localStorage.getItem(KEY) ?? '[]'); } catch { return []; }
   };

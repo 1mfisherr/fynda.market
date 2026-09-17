@@ -19,6 +19,7 @@
  * and Zürich rather than only Uster.
  */
 import Button from './Button.astro';
+import Honeypot from './Honeypot.astro';
 import Field from './Field.astro';
 import { FORMS } from '../lib/utility-copy';
 import { t } from '../lib/strings';
@@ -145,13 +146,7 @@ const id = `sub-${variant}`;
       idPrefix={id}
     />
 
-    {/* Hidden from people and from screen readers, so anything in it came from
-        a bot. Off-screen rather than `display:none` alone — some bots skip
-        those — and untabbable. */}
-    <div class="trap" aria-hidden="true">
-      <label for={`${id}-website`}>Website</label>
-      <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
-    </div>
+    <Honeypot id={id} />
 
     <Button type="submit" variant={variant === 'card' ? 'primary' : 'secondary'} block>
       {copy.submit}
@@ -198,7 +193,6 @@ const id = `sub-${variant}`;
   .subscribe-done { font-weight: var(--weight-bold); }
   .subscribe-done:target { display: block !important; }
 
-  .trap { position: absolute; inset-inline-start: -9999px; }
 </style>
 
 <script>
