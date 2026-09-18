@@ -11,5 +11,10 @@ export function formatRedirects(redirects) {
     '# Never edit by hand: rename a place in the database and rebuild.',
     '',
   ];
-  return [...header, ...redirects.map((r) => `${r.from} ${r.to} 301`), ''].join('\n');
+  // The bare root. Astro's own `redirects` config writes a meta-refresh page
+  // with a robots noindex for `/`, which is the one address Google reads the
+  // site name from (docs/reference/seo-research/01-what-google-says.md §3).
+  // A real 301 hands Google the German home page as the home page instead.
+  const root = ['# The bare root goes to the default locale as a real redirect, not a meta-refresh.', '/ /de/ 301', ''];
+  return [...header, ...root, ...redirects.map((r) => `${r.from} ${r.to} 301`), ''].join('\n');
 }

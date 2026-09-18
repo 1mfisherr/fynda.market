@@ -17,7 +17,7 @@ Live at `fynda.market` since 2026-09-04: 157 published markets, 56 towns, 14 can
 | **Organisers** | Live 2026-09-16, proven end to end. Claim → Telegram Approve → personal link → seven-day mail with three buttons → stamp / cancellation / alert → edit page. Daily job runs as a **dry run** until `ORGANISER_SENDING=on` |
 | **Analytics** | Everything first-party (2026-09-17): page views with market/town/canton and lead time, time on page and scroll, sessions, Web Vitals, errors, 404s, towns, browser language, robots in `crawler_hits` with AI roles. Metabase: six dashboards, bots-or-people filter. ~10–30 real people a day, 85% of raw views are crawlers, two thirds from Google, 60% on a phone, ChatGPT sends a couple of visits a day |
 | **Backups** | Nightly 02:30 UTC, encrypted, 90 days in GitHub artifacts (`.github/workflows/backup.yml`). The private key is in `.env.local` and Delfim's password manager only |
-| **Search Console** | First nine days: 96 clicks, 7,700 impressions, position 15. City pages rank 5–8 with no clicks — rewritten 2026-09-15, re-read in October |
+| **Search Console** | 7 days to 2026-09-18: 83 clicks, 7,555 impressions, position 9.8. Page 1 without clicks: CTR 0.6% at positions 4–6. SEO session 2026-09-18 (`reference/seo-research/plan.md`): titles without the brand suffix and with the next date, data-built descriptions, 404s out of the sitemap, root a real 301, `llms.txt` gone, IndexNow after every publish. **Re-read 2026-10-16** |
 | **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
 | **Photos** | Every market has one; one is real. Real ones arrive through organisers |
 
@@ -37,6 +37,8 @@ Not built: tags on any market · country page · text search · distance on card
 6. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
 7. Buffer.
 
+SEO follow-ups (`reference/seo-research/plan.md`): Delfim registers Bing Webmaster Tools (import from Search Console) and opens the Search Console *Generative AI* report; canton pages stop repeating their towns' lists (next visual session); image sitemap once real photos exist.
+
 Parked, not urgent: country page (arrives with Germany); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
 
 ---
@@ -45,6 +47,7 @@ Parked, not urgent: country page (arrives with Germany); German text search (set
 
 Each waits on Delfim or on data. Don't assume an answer.
 
+- **`x-default` hreflang** — German today (`ARCHITECTURE.md`), English by the house rule. Google uses it only for visitors matching none of de/fr/it/en. Recommendation: English. One line in `Page.astro`.
 - **Beachhead region** — Zürich or Luzern. Photos and outreach concentrate wherever this lands.
 - **Distance on cards.** Blocked: the town picker stores a name, not coordinates. Never print a guessed distance.
 - **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.

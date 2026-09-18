@@ -103,7 +103,7 @@ This is the guarantee GetYourGuide and Tripadvisor buy with an id in the path, w
 
 **Utility pages** — the forms, legal text and saved markets — plus the radius view (`/de/umkreis/`, `/fr/a-proximite/`, `/it/nei-dintorni/`, `/en/nearby/`) are **noindex, out of the sitemap, and out of the URL-to-entity ratio**: they carry no entity and compete for no query. They have their own content floor (150), because a contact form is not a thin country page.
 
-`/llms.txt` and `/ics/[slug].ics` are files, not pages; they never enter the page count.
+`/ics/[slug].ics` files, `/_hashes.json` and the IndexNow key are files, not pages; they never enter the page count. (`/llms.txt` was removed 2026-09-18: no AI system reads it — `docs/reference/seo-research/03-ai-citations.md`.)
 
 `/` redirects to `/de/`. Astro emits a redirect stub, which the guardrails treat as **not a page**: exempt from the content floor and the ratio, still checked against the route allowlist.
 
@@ -123,7 +123,7 @@ A market page's value is language-neutral data — date, time, address, coordina
 
 Place **names** live in the database (`texts`) per locale, written by `scripts/localise-places.mjs`. Only genuine exonyms are translated — Bâle, Zurigo, Coire; Lausanne stays Lausanne in all four. Place **slugs** are in `slugs` and are not per locale — see "One slug per place" above.
 
-**hreflang** is emitted on every indexable page: every cluster member lists every other including itself, plus `x-default` → German. Guardrail 8 checks it, because one error voids a whole cluster and roughly three quarters of implementations in the wild carry one.
+**hreflang** is emitted on every indexable page: every cluster member lists every other including itself, plus `x-default` → German (open: the house rule says English stands in where one language must stand for all — `PLAN.md`). Guardrail 8 checks it, because one error voids a whole cluster and roughly three quarters of implementations in the wild carry one.
 
 ## How a page type graduates
 

@@ -167,6 +167,10 @@ if (process.argv.includes('--build-only')) {
   process.exit(0);
 }
 
+// The diff for IndexNow is taken against the manifest that is live now, before
+// the upload replaces it; the submission waits until the pages are live.
+run('Planning the IndexNow submission', join(root, 'scripts/indexnow.mjs'), ['--plan']);
+
 run('Uploading to Cloudflare Pages', binOf('wrangler'), [
   'pages',
   'deploy',
@@ -179,3 +183,5 @@ run('Uploading to Cloudflare Pages', binOf('wrangler'), [
 ]);
 
 console.log('\n  Published.\n');
+
+run('Telling IndexNow what changed', join(root, 'scripts/indexnow.mjs'), ['--submit']);

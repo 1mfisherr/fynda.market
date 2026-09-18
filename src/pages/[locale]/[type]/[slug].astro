@@ -19,6 +19,7 @@ import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffse
 import { EVENT_STATUS, LINES } from '../../../lib/vocabulary';
 import { LOCALE, LOCALES, cityPath, homePath, marketPath, regionPath, utilityPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
+import { TITLE_MAX } from '../../../lib/titles';
 
 /**
  * One market page per locale. The slug is the same in every language — a market
@@ -234,12 +235,30 @@ const facilityItems = market.facilities ? [
   market.facilities.food ? ['Essen', market.facilities.food] : undefined,
   market.facilities.cash ? ['Bargeld', market.facilities.cash] : undefined,
 ].filter(Boolean) as [string, string][] : [];
+
+/* The venue goes in the title only when it says something the name and the
+   town do not — "vidmarhallen flohmarkt" is how people search for the market
+   at the VIDMARhalle, and the title never said so (Search Console, 2026-09-18). */
+const says = (text: string, word: string) => text.toLowerCase().includes(word.toLowerCase());
+const venueForTitle = market.venueName && !says(market.name, market.venueName) && market.venueName !== market.city
+  ? market.venueName
+  : undefined;
+/* "Flohmi Muttenz – Muttenz" says Muttenz twice; the town goes in only when
+   the name does not already carry it. */
+const cityForTitle = says(market.name, market.city) ? undefined : market.city;
+const year = new Date().getFullYear();
+/* With the venue when it fits, without it when it does not: a street address
+   as a venue name made some titles eighty characters long. */
+const fullTitle = s.marketTitle(market.name, venueForTitle, cityForTitle, year);
+const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.name, undefined, cityForTitle, year);
 ---
 <Page
   locale={locale}
   alternates={alternates}
-  title={`${market.name}, ${market.city} — ${s.dates} ${new Date().getFullYear()} | fynda.market`}
-  description={`${kind.full[locale]}, ${market.city}. ${next ? s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName) : s.cityNoDate}`}
+  title={title}
+  description={next
+    ? `${kind.full[locale]}, ${market.city}. ${s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName)}`
+    : s.marketNoDateDescription(kind.full[locale], market.city, market.venueName, market.recurrenceText)}
   analytics={{ market: market.id, city: market.citySlug, region: market.regionSlug, next: next?.date }}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />

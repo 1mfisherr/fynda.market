@@ -55,7 +55,7 @@ Site-by-site detail lives in `reference/competitors.md`.
 
 Google asks aggregators directly whether they are *"mainly summarizing what others have to say without adding much value"*, and says **trust is the most important** of the four E-E-A-T aspects. Republishing organiser dates *is* summarising others. The added value has to be **verification, freshness, and the record of what actually happened** — for a listings site, trust means the date is right and we say when we checked it.
 
-This is the same problem as AI citation. `[REPORTED]` Roughly two-thirds of sources cited by AI answers do not rank in Google's top 10, and original data is the highest-leverage content type for citation. So **"Bestätigt am 12.08. durch den Veranstalter" does two jobs at once**: the human trust signal, and the attributable dated claim an AI answer can quote. Add `llms.txt` — cheap, emerging standard.
+This is the same problem as AI citation. `[REPORTED]` Roughly two-thirds of sources cited by AI answers do not rank in Google's top 10, and original data is the highest-leverage content type for citation. So **"Bestätigt am 12.08. durch den Veranstalter" does two jobs at once**: the human trust signal, and the attributable dated claim an AI answer can quote. (`llms.txt` was tried and removed 2026-09-18: no AI system reads it. What is read is the page itself — answer first, dates and numbers, `docs/reference/seo-research/03-ai-citations.md`.)
 
 ## Where the moat comes from
 

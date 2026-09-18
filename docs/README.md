@@ -15,7 +15,7 @@ Read only what the task needs. Every line loaded is context spent.
 
 **Loaded on demand:** `../.claude/rules/` — `functions.md`, `migrations.md`, `styles.md` — appear by themselves when a file in that directory is touched.
 
-**Reference, only for a specific fact:** `reference/competitors.md` · `reference/database-options.md` · `reference/organiser-research/` (three reports and a synthesis, 2026-09-16) · `reference/analytics-research/` (three reports and the build plan, 2026-09-17) · `../metabase/README.md`.
+**Reference, only for a specific fact:** `reference/competitors.md` · `reference/database-options.md` · `reference/organiser-research/` (three reports and a synthesis, 2026-09-16) · `reference/analytics-research/` (three reports and the build plan, 2026-09-17) · `reference/seo-research/` (what Google says, directory SEO, AI citations, the plan, 2026-09-18) · `../metabase/README.md`.
 
 **Outside `docs/`:** `../guardrails.config.json` (architecture as config) · `../scripts/guardrails.mjs` (the ten checks) · `../src/lib/i18n.ts` (every URL) · `../src/lib/strings.ts` (interface copy) · `../src/lib/utility-copy.ts` (the form pages) · `../src/lib/legal/` (about, imprint, privacy, terms) · `../src/lib/vocabulary.ts` (domain words) · `../design/` (mockups; `design/archive/logo/` is the closed logo search).
 

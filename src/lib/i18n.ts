@@ -170,7 +170,13 @@ export const INDEXED_UTILITY: UtilityKey[] = ['about'];
  * itself. In TypeScript the narrowing is one cast; in a `// @ts-check`ed .mjs
  * it was three type errors.
  */
-export const noindexPaths = () =>
-  (Object.keys(UTILITY) as UtilityKey[])
+export const noindexPaths = () => [
+  ...(Object.keys(UTILITY) as UtilityKey[])
     .filter((key) => !INDEXED_UTILITY.includes(key))
-    .flatMap((key) => UTILITY_LOCALES[key].map((locale) => utilityPath(locale, key)));
+    .flatMap((key) => UTILITY_LOCALES[key].map((locale) => utilityPath(locale, key))),
+  // The per-locale 404 pages. Astro builds them at /{locale}/404/ before
+  // postbuild moves them to where Cloudflare looks; the sitemap is written in
+  // between, and shipped four noindex pages to Google for two weeks
+  // (2026-09-18) because the guardrail never saw the moved files.
+  ...LOCALES.map((locale) => `/${locale}/404/`),
+];

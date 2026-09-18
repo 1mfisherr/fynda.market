@@ -15,11 +15,12 @@ import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
 import { byMarket, datedRows, nearbyMarkets, type Dated } from '../../../lib/lists';
-import { formatDate, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
+import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
 import { DEFAULT_RADIUS } from '../../../lib/geo';
 import { LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
+import { fitTitle } from '../../../lib/titles';
 import type { Market } from '../../../lib/types';
 
 /**
@@ -178,7 +179,7 @@ const jsonLd = {
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} title={`${heading} | fynda.market`} description={description} analytics={{ city: stadt, region: regionSlug }}>
+<Page locale={locale} alternates={alternates} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={description} analytics={{ city: stadt, region: regionSlug }}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
