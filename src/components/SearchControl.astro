@@ -4,10 +4,13 @@
  *
  * One component on the home page and at the top of the radius view, so the
  * two cannot drift. It is not a search — there is no free text and nothing to
- * look up. It is a signpost: a town goes to that town's page, "near me" asks
- * the phone once and goes to the radius view, and the date travels along as
- * `?zeit=` where it is not "all". Choosing is the action; there is no Show
- * button to press afterwards.
+ * look up. It is a signpost: Show goes to the chosen town's page, or to every
+ * market by date when no town is chosen, with the date along as `?zeit=`
+ * where it is not "all"; "near me" asks the phone once and goes straight to
+ * the radius view. The Show button's own label is the count — "Show 27
+ * markets" — so what you set changes the number before you press anything.
+ * (A first cut had no Show button: a date changed the count and nothing
+ * else, which is a dead end. Delfim, 2026-09-18.)
  *
  * Set in the text, not in boxes (BRAND.md §Controls are editorial): a hairline
  * under the Where field, a small uppercase label above each group, the chosen
@@ -35,11 +38,12 @@ interface Props {
   /** Every date on the page, for the calendar: a day is a button only when a market has it. */
   dates: string[];
   /**
-   * The same dates grouped per market, for the count line: "27 markets this
-   * weekend" counts markets, not dates, so a Saturday-and-Sunday market is
-   * one. Only the home page counts; the radius view has its own sentence.
+   * The same dates grouped per market with its town, for the Show button's
+   * count: "Show 27 markets" counts markets, not dates, so a Saturday-and-
+   * Sunday market is one, and a chosen town narrows it. Only the home page
+   * counts; the radius view has its own sentence.
    */
-  perMarket?: string[][];
+  perMarket?: { town: string; dates: string[] }[];
   towns: Town[];
   /** `countryPath(locale, country)`; a town's link is that plus its slug. */
   cityBase: string;
@@ -60,8 +64,7 @@ const groups = [...new Map(towns.map((town) => [town.region, [] as Town[]]))].ma
 /* The count line's first words, on the build's own clock. The script recounts
    on the visitor's clock on every tap, from the same list. */
 const now = new Date();
-const marketsIn = (window: string) => perMarket.filter((ds) => ds.some((d) => inWindow(d, window, now))).length;
-const counts = { all: perMarket.length, today: marketsIn('today'), weekend: marketsIn('weekend') };
+const marketsIn = (window: string) => perMarket.filter((m) => m.dates.some((d) => inWindow(d, window, now))).length;
 ---
 <div
   class="control"
@@ -122,20 +125,15 @@ const counts = { all: perMarket.length, today: marketsIn('today'), weekend: mark
 
   <div class="group">
     <p class="label">{s.whenLabel}</p>
-    <DateFilters locale={locale} dates={dates} variant="segmented" />
+    <DateFilters locale={locale} dates={dates} standalone={false} />
   </div>
 
   {mode === 'home' && (
-    <p
-      class="count answer"
-      data-count
-      aria-live="polite"
-      data-all={s.countFor(counts.all, 'all')}
-      data-today={s.countFor(counts.today, 'today')}
-      data-weekend={s.countFor(counts.weekend, 'weekend')}
-      data-date-one={s.countFor(1, 'date', '{label}')}
-      data-date-many={s.countFor(2, 'date', '{label}')}
-    >{s.countFor(counts.all, 'all')}</p>
+    /* Without JavaScript the button is a link to every market by date; with
+       it, the script points it at the chosen town and carries the date. */
+    <a class="button show" href={nearbyHref} data-variant="primary" data-block data-show data-one={s.showCount(1)} data-many={s.showCount(2)}>
+      {s.showCount(marketsIn('all'))}
+    </a>
   )}
 </div>
 
@@ -301,8 +299,14 @@ const counts = { all: perMarket.length, today: marketsIn('today'), weekend: mark
       });
     }
 
-    // ---- a town: remember it, carry the date, go ----------------------------
+    // ---- a town ----------------------------------------------------------
+    // On home it fills the field and the button counts again; Show goes. On
+    // the radius view there is no Show, so the row is the link it already is,
+    // with the date carried along. Either way the town is remembered for the
+    // return-visit shortcut.
     adopt(TOWN_KEY);
+    let chosenTown: { slug: string; name: string; href: string } | null = null;
+    const show = root.querySelector<HTMLAnchorElement>('[data-show]');
     for (const link of Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-town-slug]'))) {
       link.addEventListener('click', (event) => {
         const slug = link.dataset.townSlug ?? '';
@@ -310,7 +314,15 @@ const counts = { all: perMarket.length, today: marketsIn('today'), weekend: mark
         const href = link.getAttribute('href') ?? '/';
         try { localStorage.setItem(TOWN_KEY, JSON.stringify({ slug, name, href })); } catch { /* private mode */ }
         const zeit = chosenWindow();
-        if (zeit !== 'all') { event.preventDefault(); location.href = `${href}?zeit=${zeit}`; }
+        if (mode !== 'home') {
+          if (zeit !== 'all') { event.preventDefault(); location.href = `${href}?zeit=${zeit}`; }
+          return;
+        }
+        event.preventDefault();
+        chosenTown = { slug, name, href };
+        if (whereLabel) whereLabel.textContent = name;
+        if (town) town.open = false;
+        recount();
       });
     }
 
@@ -347,27 +359,27 @@ const counts = { all: perMarket.length, today: marketsIn('today'), weekend: mark
         });
       }
 
-      // ---- the count line, recounted on the visitor's clock ----------------
-      const count = root.querySelector<HTMLElement>('[data-count]');
-      let perMarket: string[][] = [];
-      try { perMarket = JSON.parse(root.dataset.perMarket ?? '[]'); } catch { perMarket = []; }
-      if (count) {
-        const say = (window: string, label?: string) => {
-          if (window === 'all' || window === 'today' || window === 'weekend') {
-            count.textContent = count.dataset[window] ?? '';
-            return;
-          }
-          // A day from the calendar: counted here, said with the sentence the
-          // build wrote for one and for many, the day being the chip's label.
-          const now = new Date();
-          const n = perMarket.filter((ds) => ds.some((d) => inWindow(d, window, now))).length;
-          const template = (n === 1 ? count.dataset.dateOne : count.dataset.dateMany) ?? '';
-          count.textContent = template.replace(/^\d+/, String(n)).replace('{label}', label ?? window);
-        };
-        for (const button of dateButtons) {
-          button.addEventListener('click', () => say(button.dataset.filter ?? 'all', button.dataset.label));
-        }
+      // ---- Show: the count on the button, and where it goes ----------------
+      if (show) {
+        show.addEventListener('click', (event) => {
+          event.preventDefault();
+          const zeit = chosenWindow();
+          const href = chosenTown?.href ?? nearby;
+          location.href = zeit !== 'all' ? `${href}?zeit=${zeit}` : href;
+        });
+        for (const button of dateButtons) button.addEventListener('click', recount);
       }
+    }
+
+    /** "Show 27 markets", recounted on the visitor's clock for town and date. */
+    function recount() {
+      if (!show) return;
+      let perMarket: { town: string; dates: string[] }[] = [];
+      try { perMarket = JSON.parse(root?.dataset.perMarket ?? '[]'); } catch { perMarket = []; }
+      const window = chosenWindow();
+      const now = new Date();
+      const n = perMarket.filter((m) => (!chosenTown || m.town === chosenTown.slug) && m.dates.some((d) => inWindow(d, window, now))).length;
+      show.textContent = ((n === 1 ? show.dataset.one : show.dataset.many) ?? '').replace(/\d+/, String(n));
     }
   }
 </script>

@@ -53,8 +53,8 @@ export interface Strings {
   tryAgain: string;
   /** Under the round button on home: what a tap does and does not do. */
   geoHint: string;
-  /** The home count line. `label` is a formatted day when kind is 'date'. */
-  countFor: (n: number, kind: 'all' | 'today' | 'weekend' | 'date', label?: string) => string;
+  /** The Show button on home, carrying the live count. */
+  showCount: (n: number) => string;
   /** Before a location: after the counts, what the list is and is not. */
   noDistancesYet: string;
   askingPhone: string;
@@ -317,13 +317,7 @@ const de: Strings = {
   yourLocation: 'Dein Standort',
   tryAgain: 'Standort erneut versuchen',
   geoHint: 'Fragt dein Telefon einmal nach dem Standort. Nichts wird gespeichert.',
-  countFor: (n, kind, label) => {
-    const m = `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'}`;
-    if (kind === 'today') return `${m} heute.`;
-    if (kind === 'weekend') return `${m} am Wochenende.`;
-    if (kind === 'date') return `${m} am ${label}.`;
-    return `${m}, alle Termine.`;
-  },
+  showCount: (n) => `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} anzeigen`,
   noDistancesYet: 'nach Datum, noch ohne Entfernung',
   askingPhone: 'Dein Telefon wird nach dem Standort gefragt…',
   upcoming: 'Kommende Termine',
@@ -510,13 +504,7 @@ const en: Strings = {
   yourLocation: 'Your location',
   tryAgain: 'Try my location again',
   geoHint: 'Asks your phone for your location once. Nothing is stored.',
-  countFor: (n, kind, label) => {
-    const m = `${n} ${n === 1 ? 'market' : 'markets'}`;
-    if (kind === 'today') return `${m} today.`;
-    if (kind === 'weekend') return `${m} this weekend.`;
-    if (kind === 'date') return `${m} on ${label}.`;
-    return `${m}, all dates.`;
-  },
+  showCount: (n) => `Show ${n} ${n === 1 ? 'market' : 'markets'}`,
   noDistancesYet: 'by date, no distances yet',
   askingPhone: 'Asking your phone where you are…',
   upcoming: 'Upcoming dates',
@@ -706,13 +694,7 @@ const fr: Strings = {
   yourLocation: 'Votre position',
   tryAgain: 'Réessayer ma position',
   geoHint: 'Demande votre position à votre téléphone, une fois. Rien n\'est enregistré.',
-  countFor: (n, kind, label) => {
-    const m = `${n} ${n === 1 ? 'brocante' : 'brocantes'}`;
-    if (kind === 'today') return `${m} aujourd'hui.`;
-    if (kind === 'weekend') return `${m} ce week-end.`;
-    if (kind === 'date') return `${m} le ${label}.`;
-    return `${m}, toutes dates confondues.`;
-  },
+  showCount: (n) => `Afficher ${n} ${n === 1 ? 'brocante' : 'brocantes'}`,
   noDistancesYet: 'par date, sans distance pour l\'instant',
   askingPhone: 'Demande de votre position en cours…',
   upcoming: 'Prochaines dates',
@@ -899,13 +881,7 @@ const it: Strings = {
   yourLocation: 'La sua posizione',
   tryAgain: 'Riprova con la posizione',
   geoHint: 'Chiede la posizione al telefono, una volta sola. Nulla viene salvato.',
-  countFor: (n, kind, label) => {
-    const m = `${n} ${n === 1 ? 'mercatino' : 'mercatini'}`;
-    if (kind === 'today') return `${m} oggi.`;
-    if (kind === 'weekend') return `${m} nel fine settimana.`;
-    if (kind === 'date') return `${m} il ${label}.`;
-    return `${m}, tutte le date.`;
-  },
+  showCount: (n) => `Mostra ${n} ${n === 1 ? 'mercatino' : 'mercatini'}`,
   noDistancesYet: 'per data, ancora senza distanze',
   askingPhone: 'Chiedo la posizione al telefono…',
   upcoming: 'Prossime date',
@@ -938,7 +914,7 @@ const it: Strings = {
 
   filterAll: 'Tutti',
   filterToday: 'Oggi',
-  filterWeekend: 'Fine settimana',
+  filterWeekend: 'Weekend',
   filterDate: 'Data',
   calendarPrev: 'Mese precedente',
   calendarNext: 'Mese successivo',

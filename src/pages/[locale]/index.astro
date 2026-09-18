@@ -123,7 +123,7 @@ const jsonLd = {
       locale={locale}
       mode="home"
       dates={rows.map((row) => row.next!.date)}
-      perMarket={[...Map.groupBy(rows, (row) => row.slug).values()].map((group) => group.map((row) => row.next!.date))}
+      perMarket={[...Map.groupBy(rows, (row) => row.slug).values()].map((group) => ({ town: group[0].citySlug, dates: group.map((row) => row.next!.date) }))}
       towns={towns}
       cityBase={countryPath(locale, countrySlug)}
       nearbyHref={nearbyPath(locale)}

@@ -1,6 +1,6 @@
 ---
 /**
- * The date control: three chips and a calendar.
+ * The date control: All · Today · Weekend · Date, and a calendar.
  *
  * Every page that lists markets filters that list the same way, so the control
  * is one component rather than a `.filters` rule in each page. What filtering
@@ -32,16 +32,16 @@ interface Props {
   /** The dates this page has markets on, as YYYY-MM-DD. */
   dates?: string[];
   /**
-   * 'chips' is the row of pills the list pages use. 'segmented' is the same
-   * control set in the text — hairline above and below, equal parts, the
-   * chosen one underlined in the accent — for the search control (BRAND.md
-   * §Controls are editorial). Same buttons, same `[data-filter]` contract;
-   * only the clothes change. The chips variant carries its own gutter; the
-   * segmented one sits inside a parent that already has it.
+   * On a list page the control stands alone and carries the page gutter and
+   * its own small label ("When"); inside the search control the parent has
+   * both. One look everywhere — hairline above and below, equal parts, the
+   * chosen one underlined in the accent (BRAND.md §Controls are editorial).
+   * The row of pills it replaced on 2026-09-18 was the same buttons in
+   * different clothes, and two looks for one control read as two sites.
    */
-  variant?: 'chips' | 'segmented';
+  standalone?: boolean;
 }
-const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [], variant = 'chips' } = Astro.props;
+const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [], standalone = true } = Astro.props;
 const s = t(locale);
 const LABELS: Record<string, string> = {
   all: s.filterAll,
@@ -101,7 +101,9 @@ while (cursor <= last) {
   cursor.setMonth(cursor.getMonth() + 1);
 }
 ---
-<div class:list={['filters', variant, { gutter: variant === 'chips' }]} role="group" aria-label={s.filterPeriodLabel}>
+<div class:list={['when', { gutter: standalone }]}>
+  {standalone && <p class="label">{s.whenLabel}</p>}
+<div class="filters" role="group" aria-label={s.filterPeriodLabel}>
   {chips.map((window, i) => (
     <button class="button" type="button" aria-pressed={i === 0} data-filter={window}>{LABELS[window]}</button>
   ))}
@@ -134,34 +136,52 @@ while (cursor <= last) {
     <p class="hint meta-quiet">{s.calendarHint}</p>
   </div>
 </div>
+</div>
 
 <style>
-  /* Wrap, never scroll. The chips do not fit one phone line in every one of our
-     languages — "Ce week-end" is three times the width of "Alle" — and a
-     sideways scrollbar under the hero read as a broken page. */
-  .filters { position: relative; display: flex; flex-wrap: wrap; gap: var(--space-2); }
-
-  /* Four chips on one phone line, in French too. "Aujourd'hui" and "Ce
-     week-end" at the default chip padding are 366px of buttons in a 335px
-     column, and the fourth chip dropping to a second line was the thing that
-     pushed the first market off the first screen. Keep in step with
-     --breakpoint-wide's opposite: this is a phone rule. */
-  @media (max-width: 480px) {
-    .filters { gap: var(--space-1); }
-    .filters > .button { padding-inline: var(--space-2); }
+  .when { display: grid; gap: var(--space-2); }
+  .label {
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
   }
 
-  /* Anchored to the whole row rather than to the chip, so the panel can never
-     be the thing that puts the page back into horizontal scroll. */
+  /* Equal parts on one line, whatever the language: "Aujourd'hui" and "Ce
+     week-end" share the width with "Tous" and "Date" rather than wrapping.
+     The panel is anchored to the group, which owns no gutter of its own. */
+  .filters {
+    position: relative;
+    display: flex;
+    border-block: var(--border-width) solid var(--color-line);
+  }
+  .filters > .button {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: var(--tap-min);
+    padding-inline: var(--space-1);
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--color-quiet);
+    box-shadow: none;
+  }
+  .filters > .button[aria-pressed='true'],
+  .filters > .button[data-chosen] {
+    background: none;
+    color: var(--color-ink);
+    box-shadow: inset 0 calc(var(--border-width) * -3) 0 var(--color-accent);
+  }
+
   /* A calendar is seven columns of square days, so left to fill its container
-     it grows in both directions at once: in the home page's search card at
-     1440px the panel was the full card width and every day cell was a 150px
-     square. Its natural size is seven tap targets across — the WCAG 44px the
-     cells already have to clear — plus the gaps and its own padding. Below
-     that it still shrinks to the phone width, so the row never scrolls. */
+     it grows in both directions at once. Its natural size is seven tap
+     targets across — the WCAG 44px the cells already have to clear — plus the
+     gaps and its own padding. Below that it still shrinks to the phone width,
+     so the row never scrolls. */
   .panel {
     position: absolute;
-    inset-inline: var(--space-page);
+    inset-inline: 0;
     max-inline-size: calc(
       var(--tap-min) * 7 + var(--space-half) * 6 + var(--space-3) * 2
     );
@@ -181,14 +201,6 @@ while (cursor <= last) {
       visibility var(--duration-base) var(--ease-base);
   }
   .filters[data-open] .panel { opacity: 1; visibility: visible; transform: none; }
-
-  /* The calendar chip is not in the `[data-filter]` group, so it cannot borrow
-     base.css's pressed state — it says the same thing in its own words. */
-  .button[data-chosen] {
-    border-color: var(--color-ink);
-    background: var(--color-ink);
-    color: var(--color-surface);
-  }
 
   .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
   .nav strong { font-size: var(--text-small); font-weight: var(--weight-bold); }
@@ -236,30 +248,6 @@ while (cursor <= last) {
   .cell.has[aria-pressed='true'] { background: var(--color-ink); color: var(--color-surface); }
 
   .hint { margin-block-start: var(--space-3); }
-
-  /* ---- the segmented variant ---- */
-  /* Equal parts on one line, whatever the language. The labels are short in
-     all four ("Ce week-end" is the longest); the panel anchors to the group's
-     own edges because the parent owns the gutter here. */
-  .segmented { flex-wrap: nowrap; gap: 0; border-block: var(--border-width) solid var(--color-line); }
-  .segmented > .button {
-    flex: 1 1 0;
-    min-width: 0;
-    min-height: var(--tap-min);
-    padding-inline: var(--space-1);
-    border: 0;
-    border-radius: 0;
-    background: none;
-    color: var(--color-quiet);
-    box-shadow: none;
-  }
-  .segmented > .button[aria-pressed='true'],
-  .segmented > .button[data-chosen] {
-    background: none;
-    color: var(--color-ink);
-    box-shadow: inset 0 calc(var(--border-width) * -3) 0 var(--color-accent);
-  }
-  .segmented > .panel { inset-inline: 0; }
 
   @media (prefers-reduced-motion: reduce) {
     .panel { transition-duration: 1ms; }
