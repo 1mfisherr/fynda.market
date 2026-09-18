@@ -28,9 +28,9 @@ export type Locale = 'de' | 'fr' | 'it' | 'en';
 export const LOCALES: Locale[] = ['de', 'fr', 'it', 'en'];
 
 /**
- * The locale a bare `/` goes to, and the hreflang x-default. German is the
- * largest Swiss language and where the traffic is today; it moves when the
- * footprint does, not before.
+ * The locale a bare `/` goes to. German is the largest Swiss language and
+ * where the traffic is today; it moves when the footprint does, not before.
+ * (The hreflang x-default is English — layouts/Base.astro.)
  */
 export const DEFAULT_LOCALE: Locale = 'de';
 

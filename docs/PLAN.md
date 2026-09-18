@@ -37,7 +37,7 @@ Not built: tags on any market · country page · text search · distance on card
 6. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
 7. Buffer.
 
-SEO follow-ups (`reference/seo-research/plan.md`): Delfim registers Bing Webmaster Tools (import from Search Console) and opens the Search Console *Generative AI* report; canton pages stop repeating their towns' lists (next visual session); image sitemap once real photos exist.
+SEO follow-ups (`reference/seo-research/plan.md`): Bing Webmaster Tools registered 2026-09-18 — read its AI Performance report monthly; Delfim opens the Search Console *Generative AI* report; canton pages stop repeating their towns' lists (next visual session); image sitemap once real photos exist.
 
 Parked, not urgent: country page (arrives with Germany); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
 
@@ -47,7 +47,6 @@ Parked, not urgent: country page (arrives with Germany); German text search (set
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **`x-default` hreflang** — German today (`ARCHITECTURE.md`), English by the house rule. Google uses it only for visitors matching none of de/fr/it/en. Recommendation: English. One line in `Page.astro`.
 - **Beachhead region** — Zürich or Luzern. Photos and outreach concentrate wherever this lands.
 - **Distance on cards.** Blocked: the town picker stores a name, not coordinates. Never print a guessed distance.
 - **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
@@ -56,7 +55,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **A Metabase host, €6/month** — only when looking without Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
-- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17); analytics stay first-party and keep everything, behaviour included (2026-09-17).
+- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17); analytics stay first-party and keep everything, behaviour included (2026-09-17); `x-default` is English (2026-09-18).
 
 ---
 

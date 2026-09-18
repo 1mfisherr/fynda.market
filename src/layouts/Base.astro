@@ -28,7 +28,11 @@ interface Props {
 const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternates = [], analytics = {} } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const href = (path: string) => new URL(path, Astro.site).href;
-const fallback = alternates.find((a) => a.locale === DEFAULT_LOCALE);
+/* x-default is the page for a visitor whose browser matches none of our
+   languages — a Spaniard, a Pole. Where one language has to stand for all it
+   is English (CLAUDE.md), so English where the page has it, else the site's
+   default. Delfim, 2026-09-18; it was German before. */
+const fallback = alternates.find((a) => a.locale === 'en') ?? alternates.find((a) => a.locale === DEFAULT_LOCALE);
 import Analytics from '../components/Analytics.astro';
 ---
 
@@ -46,8 +50,7 @@ import Analytics from '../components/Analytics.astro';
     <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex, follow" />}
 
-    {/* Self-referencing included, per the return-link rule. x-default points at
-        German: it is the largest Swiss language and where the traffic is. */}
+    {/* Self-referencing included, per the return-link rule. */}
     {indexable && alternates.map((alt) => (
       <link rel="alternate" hreflang={LOCALE[alt.locale].tag} href={href(alt.path)} />
     ))}

@@ -25,7 +25,7 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 - Event markup stays one per market page (guardrail 6). The rich result does not exist in Switzerland; revisit with a German page.
 - No `llms.txt`, no snippet-limiting tags, no FAQPage or ItemList markup.
 - `lastmod` is not emitted (the nightly build would lie); IndexNow carries change instead.
-- `x-default` → English is the house rule's answer ("where one language must stand for all, it is English"); `ARCHITECTURE.md` currently says German. **Delfim's call** — see PLAN.md open decisions.
+- `x-default` → English: where one language must stand for all, it is English (Delfim, 2026-09-18).
 
 ## Actions
 
@@ -37,11 +37,11 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 | 4 | Root `/` becomes a real 301 to `/de/`, not a `noindex` page | built 2026-09-18 |
 | 5 | `llms.txt` removed | built 2026-09-18 |
 | 6 | IndexNow: key file, changed-URL submission after every publish (diff against the previous build's manifest served at `/_hashes.json`) | built 2026-09-18. IndexNow answered the first submissions with `UserForbiddedToAccessSite` while it verifies the key; once a `--dry` shows the key accepted, run `node scripts/indexnow.mjs --all` once |
-| 7 | Bing Webmaster Tools: Delfim creates the account (import from Search Console), reads the AI Performance report monthly | **Delfim** |
+| 7 | Bing Webmaster Tools: registered 2026-09-18; read the AI Performance report monthly | done |
 | 8 | Search Console → Performance → Generative AI report: open it; read after a month | **Delfim** |
 | 9 | Canton pages redesigned to be different from their towns | next visual session |
 | 10 | Image sitemap entries per market photo — worth it once real photos exist | with photos |
-| 11 | `x-default` → English | decision pending |
+| 11 | `x-default` → English | decided and built 2026-09-18 |
 | 12 | Question heading on town pages ("Wann ist der nächste Flohmarkt in Zürich?") — plausible, cheap; try on the H2 above the list | later |
 
 **Read after four weeks** (2026-10-16): CTR at positions 4–10 (target: above 3%), clicks per page type, the Generative AI impressions line, Bing's AI Performance report.

@@ -123,7 +123,7 @@ A market page's value is language-neutral data — date, time, address, coordina
 
 Place **names** live in the database (`texts`) per locale, written by `scripts/localise-places.mjs`. Only genuine exonyms are translated — Bâle, Zurigo, Coire; Lausanne stays Lausanne in all four. Place **slugs** are in `slugs` and are not per locale — see "One slug per place" above.
 
-**hreflang** is emitted on every indexable page: every cluster member lists every other including itself, plus `x-default` → German (open: the house rule says English stands in where one language must stand for all — `PLAN.md`). Guardrail 8 checks it, because one error voids a whole cluster and roughly three quarters of implementations in the wild carry one.
+**hreflang** is emitted on every indexable page: every cluster member lists every other including itself, plus `x-default` → English (Delfim, 2026-09-18: where one language must stand for all, it is English; German until then). Guardrail 8 checks it, because one error voids a whole cluster and roughly three quarters of implementations in the wild carry one.
 
 ## How a page type graduates
 
