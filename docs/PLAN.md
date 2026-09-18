@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-18.
+Updated 2026-09-18 (evening).
 
 ---
 
@@ -32,9 +32,10 @@ Not built: tags on any market · country page · text search · distance on card
 1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
 2. **Analytics v2** — built 2026-09-17 (`reference/analytics-research/build-plan.md` phases 1–3). Left: an edge-time `suspect` flag to feed the bot view, the key-forgetting job, partitioning. Before Germany: Queues, Supabase Pro, R2. No GA4, no Clarity. Read the Engagement dashboard after a week of data.
 3. **Visual pass and UI audit** — done 2026-09-17: all twelve page types at 375 and 1440, every form and interaction driven live. Fixed: locale 404s, header tap targets, the saved-page plural, the radius shown before a location, the home card's radius promise, Route now opens directions, English storage keys, one honeypot component. Cloudflare's email obfuscation switched off (Delfim, 2026-09-18). Left: the organiser-page copy in Delfim's words; a fresh Search Console export every Sunday (`docs/GSCdata/`) before judging the 15 Sept title rewrite; two day-grouping functions (`groupByDay` on the city page, `byDay` in `lists.ts`) to fold into one.
-4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
-5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
-6. Buffer.
+4. **Near me and the search control** — spec approved 2026-09-18, `docs/specs/near-me.md`, mockup on the canvas linked there. One editorial control (town, near-me button, four-part When) on home and Near me; Near me gets four honest states; gutters on Near me and canton lists; three geo events. Build in a fresh session, in the spec's order. Read the geo allow rate after four weeks.
+5. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
+6. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
+7. Buffer.
 
 Parked, not urgent: country page (arrives with Germany); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
 

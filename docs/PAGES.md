@@ -47,7 +47,7 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | **The claim, and it is a number** | *"157 Flohmärkte in der Schweiz — jeder Termin mit Quelle und Prüfdatum."* The trust signal, the content that has to rank for the head term, and the sentence an AI answer can quote. One line, three jobs, before anything is asked of anyone. **Above 900px it sits beside the headline**, which otherwise wraps at 11 characters and leaves the page opening with its right half empty |
 | **"Ihre Stadt" shortcut** | Empty for a stranger; on a return visit it is the town they picked, one tap from their city page. Browser storage, no account |
 | **Six markets this weekend** | Two at full size, four compact, one per town, biggest towns first. Then a button to all of them |
-| **Place + period + radius** | Three selects and a button. Not free text — v1 logged 64 on-site searches in 26 days, most of them a single letter, against 281 filter uses. Choosing a town is also what the shortcut above remembers |
+| **The search control** | Where (a town, or near me) and When, editorial style — `docs/specs/near-me.md`, approved 2026-09-18, replaces the three selects. Not free text — v1 logged 64 on-site searches in 26 days, most of them a single letter, against 281 filter uses. No radius here: a radius around a point the site does not have is a promise it cannot keep. Choosing a town is also what the shortcut above remembers |
 | Newsletter, organiser CTA | Intent is highest right after someone has scanned a list |
 | Cities, cantons, types, provenance, FAQ | Navigation and proof, in that order |
 | Footer | |
@@ -81,13 +81,10 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 
 ### Where the radius centre comes from
 
-`cities.point` already holds a centroid per city, so:
+- **City page** — the centre is that city, 25 km, built in. Always right, no permission prompt.
+- **Near me** (`/{locale}/{nearby}/`, `noindex`) — the visitor's own position, asked for **on a tap, never on load**, and only there does a radius exist. Four visible states — before, locating, located, refused — and no control is shown before it can do something. `docs/specs/near-me.md` until it ships.
 
-- **City page** — the centre is that city. Always right, no permission prompt.
-- **Home** — defaults to the largest city, remembers the last one chosen.
-- **"Meinen Standort verwenden"** — switches to browser geolocation for those who want it.
-
-**Distance renders only when the centre is known.** No geolocation and no city context means the card shows the city and no kilometres. We never print a distance we guessed.
+**Distance renders only when the centre is known.** No geolocation and no city context means no kilometres. We never print a distance we guessed.
 
 **A long home page ending in place lists is navigation, not a doorway.** Eventbrite, Tutti, Vinted and meine-flohmarkt-termine all do it. A curated list of towns that have markets points at our best-earning page type. The doorway problem was *generated combinations* — city × weekday × category — never links to pages that exist. What we will not copy is MFT's 60 categories; ours is five.
 
