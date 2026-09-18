@@ -1,6 +1,6 @@
 # SEO — the plan, 2026-09-18
 
-Three research reports beside this file (`01`–`04`) and our own numbers. Status and decisions only; the reports hold the evidence.
+Four research reports beside this file (`01`–`04`; `04` is partial — Google blocked the agent) and our own numbers. Status and decisions only; the reports hold the evidence.
 
 ## Where we stand (Search Console, 7 days to 2026-09-18)
 
@@ -42,6 +42,7 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 | 9 | Canton pages redesigned to be different from their towns | next visual session |
 | 10 | Image sitemap entries per market photo — worth it once real photos exist | with photos |
 | 11 | `x-default` → English | decided and built 2026-09-18 |
+| 0 | **fleafind.ch is still live**, indexable, publishing the same towns and markets — the same content twice from the same owner, and the older domain is the one Google has trusted longer (`04-swiss-serps.md`). Decide: page-for-page 301 to fynda.market plus a Search Console change of address (carries the old domain's links; the spam-hit URLs themselves go 410, not 301), or take it down. **Delfim's call — before anything else on this list is judged** | decision pending |
 | 12 | Question heading on town pages ("Wann ist der nächste Flohmarkt in Zürich?") — plausible, cheap; try on the H2 above the list | later |
 
 **Read after four weeks** (2026-10-16): CTR at positions 4–10 (target: above 3%), clicks per page type, the Generative AI impressions line, Bing's AI Performance report.
