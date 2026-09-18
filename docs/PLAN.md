@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-17.
+Updated 2026-09-18.
 
 ---
 
@@ -31,7 +31,7 @@ Not built: tags on any market · country page · text search · distance on card
 
 1. **Organisers, round one.** Delfim picks two or three organisers he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
 2. **Analytics v2** — built 2026-09-17 (`reference/analytics-research/build-plan.md` phases 1–3). Left: an edge-time `suspect` flag to feed the bot view, the key-forgetting job, partitioning. Before Germany: Queues, Supabase Pro, R2. No GA4, no Clarity. Read the Engagement dashboard after a week of data.
-3. **Visual pass** — done 2026-09-17 at 375 and 1440 across all twelve page types: no overflow anywhere; fixed the German-only 404 (now one per locale) and the sub-24px header targets. Left: the organiser-page copy in Delfim's words; a fresh Search Console export before judging the 15 Sept title rewrite (the dashboard's Google data ends 11 Sept).
+3. **Visual pass and UI audit** — done 2026-09-17: all twelve page types at 375 and 1440, every form and interaction driven live. Fixed: locale 404s, header tap targets, the saved-page plural, the radius shown before a location, the home card's radius promise, Route now opens directions, English storage keys, one honeypot component. Cloudflare's email obfuscation switched off (Delfim, 2026-09-18). Left: the organiser-page copy in Delfim's words; a fresh Search Console export every Sunday (`docs/GSCdata/`) before judging the 15 Sept title rewrite; two day-grouping functions (`groupByDay` on the city page, `byDay` in `lists.ts`) to fold into one.
 4. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
 5. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser.
 6. Buffer.
