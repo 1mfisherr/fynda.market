@@ -31,8 +31,17 @@ interface Props {
   locale?: Locale;
   /** The dates this page has markets on, as YYYY-MM-DD. */
   dates?: string[];
+  /**
+   * 'chips' is the row of pills the list pages use. 'segmented' is the same
+   * control set in the text — hairline above and below, equal parts, the
+   * chosen one underlined in the accent — for the search control (BRAND.md
+   * §Controls are editorial). Same buttons, same `[data-filter]` contract;
+   * only the clothes change. The chips variant carries its own gutter; the
+   * segmented one sits inside a parent that already has it.
+   */
+  variant?: 'chips' | 'segmented';
 }
-const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [] } = Astro.props;
+const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [], variant = 'chips' } = Astro.props;
 const s = t(locale);
 const LABELS: Record<string, string> = {
   all: s.filterAll,
@@ -92,7 +101,7 @@ while (cursor <= last) {
   cursor.setMonth(cursor.getMonth() + 1);
 }
 ---
-<div class="filters gutter" role="group" aria-label={s.filterPeriodLabel}>
+<div class:list={['filters', variant, { gutter: variant === 'chips' }]} role="group" aria-label={s.filterPeriodLabel}>
   {chips.map((window, i) => (
     <button class="button" type="button" aria-pressed={i === 0} data-filter={window}>{LABELS[window]}</button>
   ))}
@@ -227,6 +236,30 @@ while (cursor <= last) {
   .cell.has[aria-pressed='true'] { background: var(--color-ink); color: var(--color-surface); }
 
   .hint { margin-block-start: var(--space-3); }
+
+  /* ---- the segmented variant ---- */
+  /* Equal parts on one line, whatever the language. The labels are short in
+     all four ("Ce week-end" is the longest); the panel anchors to the group's
+     own edges because the parent owns the gutter here. */
+  .segmented { flex-wrap: nowrap; gap: 0; border-block: var(--border-width) solid var(--color-line); }
+  .segmented > .button {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: var(--tap-min);
+    padding-inline: var(--space-1);
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--color-quiet);
+    box-shadow: none;
+  }
+  .segmented > .button[aria-pressed='true'],
+  .segmented > .button[data-chosen] {
+    background: none;
+    color: var(--color-ink);
+    box-shadow: inset 0 calc(var(--border-width) * -3) 0 var(--color-accent);
+  }
+  .segmented > .panel { inset-inline: 0; }
 
   @media (prefers-reduced-motion: reduce) {
     .panel { transition-duration: 1ms; }

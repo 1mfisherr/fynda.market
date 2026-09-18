@@ -45,7 +45,7 @@ interface Props {
   omitCity?: boolean;
   /** "Jeden Samstag, ganzjährig" — the line that replaces eighteen repeats. */
   showRhythm?: boolean;
-  /** Rendered verbatim; the caller computed it and must never guess it. */
+  /** Rendered verbatim as a pill on the first line; the caller computed it and must never guess it. */
   distance?: string;
   /** Off where the page groups rows under a day header that already says it. */
   showDay?: boolean;
@@ -69,7 +69,7 @@ const times = occurrence?.startTime
   : undefined;
 
 const entry = market.entryFee ? `${market.entryFee} CHF` : undefined;
-const where = [market.venueName, omitCity ? undefined : market.city, entry, distance]
+const where = [market.venueName, omitCity ? undefined : market.city, entry]
   .filter(Boolean).join(' · ');
 
 const size = variant === 'feature' ? 720 : 148;
@@ -82,6 +82,11 @@ const size = variant === 'feature' ? 720 : 148;
       {dayLabel && <span class="day">{dayLabel}</span>}
       {times && <span class="hours">{times}</span>}
       {flag?.tone === 'bad' && <span class="flag bad">{flag.text}</span>}
+      {/* The distance, as a pill at the end of the line. The slot is always in
+          the markup and empty until someone has a real origin to measure from:
+          the radius view's script fills it, and the city page's "within 25 km"
+          block fills it at build time. Never a distance we guessed. */}
+      <span class="km" data-distance hidden={!distance}>{distance}</span>
     </p>
     <h3 class="name">
       <a href={marketPath(locale, market.slug)}>{market.name}</a>
@@ -105,6 +110,7 @@ const size = variant === 'feature' ? 720 : 148;
   .hours { color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); white-space:nowrap; }
   .flag { font-size:var(--text-small); font-weight:var(--weight-bold); }
   .flag.bad { color:var(--color-accent); }
+  .km { margin-inline-start:auto; padding:var(--space-half) var(--space-2); border-radius:var(--radius-pill); background:var(--color-ink); color:var(--color-white); font-size:var(--text-micro); font-weight:var(--weight-bold); font-variant-numeric:var(--figures-tabular); white-space:nowrap; }
 
   /* One loud thing. Everything below it steps down a weight. */
   .name { margin-block-start:var(--space-half); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.2; }

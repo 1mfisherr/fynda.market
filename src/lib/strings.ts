@@ -38,10 +38,26 @@ export interface Strings {
   heroLine1: string;
   heroLine2: string;
   heroPromise: string;
-  controlPlace: string;
-  controlPeriod: string;
-  controlRadius: string;
-  controlSubmit: string;
+  /* the search control — home and the radius view (docs/specs/near-me.md) */
+  whereLabel: string;
+  /** The town sheet's close button. */
+  closeSheet: string;
+  whenLabel: string;
+  howFarLabel: string;
+  /** The Where field before a town is chosen; also the sheet's title. */
+  pickTown: string;
+  /** The first row of the town sheet, and the round button's name. */
+  nearMe: string;
+  locating: string;
+  yourLocation: string;
+  tryAgain: string;
+  /** Under the round button on home: what a tap does and does not do. */
+  geoHint: string;
+  /** The home count line. `label` is a formatted day when kind is 'date'. */
+  countFor: (n: number, kind: 'all' | 'today' | 'weekend' | 'date', label?: string) => string;
+  /** Before a location: after the counts, what the list is and is not. */
+  noDistancesYet: string;
+  askingPhone: string;
   upcoming: string;
   /* The home page answers "this weekend", not "the next four months". */
   /* The claim, first thing on the home page: trust signal, head-term content
@@ -73,9 +89,9 @@ export interface Strings {
   radiusTitle: string;
   radiusDescription: string;
   radiusHeading: string;
-  /** No origin yet: every market, and not one distance claimed. */
-  radiusNoLocation: string;
-  radiusWithin: (km: number) => string;
+  /** A location exists: the true count inside the radius. */
+  radiusWithin: (n: number, km: number) => string;
+  /** The phone said no, or never answered. */
   radiusDenied: string;
   radiusUseLocation: string;
   /** aria-label on the km chips. */
@@ -164,7 +180,6 @@ export interface Strings {
   inNextMonths: (n: number) => string;
 
   /* the search card on the home page */
-  controlAnywhere: string;
   /** Section ledes — one line saying what a block is. */
   citiesLede: string;
   regionsLede: string;
@@ -292,10 +307,25 @@ const de: Strings = {
   heroLine1: 'Irgendwo ist',
   heroLine2: 'immer Markt.',
   heroPromise: 'Flohmärkte in der Schweiz — mit Daten, die stimmen.',
-  controlPlace: 'Ort',
-  controlPeriod: 'Zeitraum',
-  controlRadius: 'Umkreis',
-  controlSubmit: 'Anzeigen',
+  whereLabel: 'Wo',
+  closeSheet: 'Schliessen',
+  whenLabel: 'Wann',
+  howFarLabel: 'Wie weit',
+  pickTown: 'Ort wählen',
+  nearMe: 'In meiner Nähe',
+  locating: 'Standort wird ermittelt…',
+  yourLocation: 'Dein Standort',
+  tryAgain: 'Standort erneut versuchen',
+  geoHint: 'Fragt dein Telefon einmal nach dem Standort. Nichts wird gespeichert.',
+  countFor: (n, kind, label) => {
+    const m = `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'}`;
+    if (kind === 'today') return `${m} heute.`;
+    if (kind === 'weekend') return `${m} am Wochenende.`;
+    if (kind === 'date') return `${m} am ${label}.`;
+    return `${m}, alle Termine.`;
+  },
+  noDistancesYet: 'nach Datum, noch ohne Entfernung',
+  askingPhone: 'Dein Telefon wird nach dem Standort gefragt…',
   upcoming: 'Kommende Termine',
   homePromise: (n) => `<b>${n} Flohmärkte</b> in der Schweiz — jeder Termin mit Quelle und Prüfdatum.`,
   homeProof: 'Wir schreiben zu jedem Termin, wann wir ihn zuletzt geprüft haben. Steht der Veranstalter dahinter, sagen wir das auch. Absagen bleiben stehen, mit Grund.',
@@ -318,9 +348,8 @@ const de: Strings = {
   radiusTitle: 'Flohmärkte in der Nähe | fynda.market',
   radiusDescription: 'Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.',
   radiusHeading: 'Flohmärkte in der Nähe',
-  radiusNoLocation: 'Kein Standort bekannt — alle bekannten Flohmärkte, ohne Entfernungsangabe.',
-  radiusWithin: (km) => `Flohmärkte im Umkreis von ${km} km, nach Entfernung sortiert.`,
-  radiusDenied: 'Standort nicht verfügbar — bitte Umkreis manuell wählen. Ohne Standort keine Entfernungsangabe.',
+  radiusWithin: (n, km) => `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} im Umkreis von ${km} km, die nächsten zuerst.`,
+  radiusDenied: 'Dein Telefon hat keinen Standort geteilt, deshalb gibt es keine Entfernungen. Wähle stattdessen einen Ort oder versuche es nochmals.',
   radiusUseLocation: 'Meinen Standort verwenden',
   radiusGroup: 'Umkreis',
   nothingForSelection: 'Für diese Auswahl ist nichts eingetragen.',
@@ -379,7 +408,6 @@ const de: Strings = {
   lastChecked: 'zuletzt geprüft heute',
   inNextMonths: (n) => `in den nächsten ${n} Monaten`,
 
-  controlAnywhere: 'Überall',
   citiesLede: 'Orte mit mindestens einem bekannten Markt.',
   regionsLede: 'Der ganze Kanton — nützlich, wenn in Ihrer Stadt gerade nichts läuft.',
   typesLede: 'Die Farbe am Rand jedes Termins sagt, welche Art Markt es ist.',
@@ -472,10 +500,25 @@ const en: Strings = {
   heroLine1: "There's a market",
   heroLine2: 'on somewhere.',
   heroPromise: 'Flea markets in Switzerland — with dates you can trust.',
-  controlPlace: 'Place',
-  controlPeriod: 'When',
-  controlRadius: 'Within',
-  controlSubmit: 'Show',
+  whereLabel: 'Where',
+  closeSheet: 'Close',
+  whenLabel: 'When',
+  howFarLabel: 'How far',
+  pickTown: 'Pick a town',
+  nearMe: 'Near me',
+  locating: 'Locating…',
+  yourLocation: 'Your location',
+  tryAgain: 'Try my location again',
+  geoHint: 'Asks your phone for your location once. Nothing is stored.',
+  countFor: (n, kind, label) => {
+    const m = `${n} ${n === 1 ? 'market' : 'markets'}`;
+    if (kind === 'today') return `${m} today.`;
+    if (kind === 'weekend') return `${m} this weekend.`;
+    if (kind === 'date') return `${m} on ${label}.`;
+    return `${m}, all dates.`;
+  },
+  noDistancesYet: 'by date, no distances yet',
+  askingPhone: 'Asking your phone where you are…',
   upcoming: 'Upcoming dates',
   homePromise: (n) => `<b>${n} flea markets</b> in Switzerland — every date with a source and a check date.`,
   homeProof: 'For every date we write down when we last checked it. Where the organiser stands behind a market, we say so. Cancellations stay on the page, with the reason.',
@@ -498,9 +541,8 @@ const en: Strings = {
   radiusTitle: 'Flea markets near me | fynda.market',
   radiusDescription: 'Flea markets near you: choose a radius and a period, sorted by distance.',
   radiusHeading: 'Flea markets near me',
-  radiusNoLocation: 'No location known — every market we know of, with no distance given.',
-  radiusWithin: (km) => `Flea markets within ${km} km, sorted by distance.`,
-  radiusDenied: 'Location unavailable — pick a radius by hand. Without a location there is no distance to give.',
+  radiusWithin: (n, km) => `${n} ${n === 1 ? 'market' : 'markets'} within ${km} km of you, nearest first.`,
+  radiusDenied: "Your phone didn't share a location, so there are no distances to give. Pick a town instead, or try again.",
   radiusUseLocation: 'Use my location',
   radiusGroup: 'Radius',
   nothingForSelection: 'Nothing is listed for this selection.',
@@ -559,7 +601,6 @@ const en: Strings = {
   lastChecked: 'last checked today',
   inNextMonths: (n) => `in the next ${n} months`,
 
-  controlAnywhere: 'Anywhere',
   citiesLede: 'Towns with at least one market we know of.',
   regionsLede: 'The whole canton — useful when nothing is on in your town.',
   typesLede: 'The colour on the edge of each date says what kind of market it is.',
@@ -655,10 +696,25 @@ const fr: Strings = {
   heroLine1: 'Il y a toujours',
   heroLine2: 'une brocante quelque part.',
   heroPromise: 'Brocantes en Suisse — des dates fiables.',
-  controlPlace: 'Lieu',
-  controlPeriod: 'Période',
-  controlRadius: 'Rayon',
-  controlSubmit: 'Afficher',
+  whereLabel: 'Où',
+  closeSheet: 'Fermer',
+  whenLabel: 'Quand',
+  howFarLabel: 'Distance',
+  pickTown: 'Choisir une ville',
+  nearMe: 'Près de moi',
+  locating: 'Localisation…',
+  yourLocation: 'Votre position',
+  tryAgain: 'Réessayer ma position',
+  geoHint: 'Demande votre position à votre téléphone, une fois. Rien n\'est enregistré.',
+  countFor: (n, kind, label) => {
+    const m = `${n} ${n === 1 ? 'brocante' : 'brocantes'}`;
+    if (kind === 'today') return `${m} aujourd'hui.`;
+    if (kind === 'weekend') return `${m} ce week-end.`;
+    if (kind === 'date') return `${m} le ${label}.`;
+    return `${m}, toutes dates confondues.`;
+  },
+  noDistancesYet: 'par date, sans distance pour l\'instant',
+  askingPhone: 'Demande de votre position en cours…',
   upcoming: 'Prochaines dates',
   homePromise: (n) => `<b>${n} brocantes</b> en Suisse — chaque date avec sa source et sa date de vérification.`,
   homeProof: "Pour chaque date, nous indiquons quand nous l'avons vérifiée. Quand l'organisateur confirme un marché, nous le signalons. Les annulations restent affichées, avec le motif.",
@@ -681,9 +737,8 @@ const fr: Strings = {
   radiusTitle: 'Brocantes à proximité | fynda.market',
   radiusDescription: 'Brocantes à proximité : choisissez un rayon et une période, triées par distance.',
   radiusHeading: 'Brocantes à proximité',
-  radiusNoLocation: 'Aucune position connue — toutes les brocantes connues, sans distance.',
-  radiusWithin: (km) => `Brocantes dans un rayon de ${km} km, triées par distance.`,
-  radiusDenied: 'Position indisponible — choisissez un rayon manuellement. Sans position, aucune distance.',
+  radiusWithin: (n, km) => `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans un rayon de ${km} km, les plus proches d'abord.`,
+  radiusDenied: 'Votre téléphone n\'a pas partagé votre position, donc aucune distance. Choisissez une ville, ou réessayez.',
   radiusUseLocation: 'Utiliser ma position',
   radiusGroup: 'Rayon',
   nothingForSelection: "Rien n'est enregistré pour cette sélection.",
@@ -742,7 +797,6 @@ const fr: Strings = {
   lastChecked: "dernière vérification aujourd'hui",
   inNextMonths: (n) => `dans les ${n} prochains mois`,
 
-  controlAnywhere: 'Partout',
   citiesLede: 'Les communes où nous connaissons au moins une brocante.',
   regionsLede: "Le canton entier — utile quand rien n'a lieu dans votre commune.",
   typesLede: 'La couleur au bord de chaque date indique le type de brocante.',
@@ -835,10 +889,25 @@ const it: Strings = {
   heroLine1: 'Da qualche parte',
   heroLine2: "c'è sempre un mercatino.",
   heroPromise: 'Mercatini delle pulci in Svizzera — con date verificate.',
-  controlPlace: 'Luogo',
-  controlPeriod: 'Periodo',
-  controlRadius: 'Raggio',
-  controlSubmit: 'Mostra',
+  whereLabel: 'Dove',
+  closeSheet: 'Chiudi',
+  whenLabel: 'Quando',
+  howFarLabel: 'Distanza',
+  pickTown: 'Scegli una località',
+  nearMe: 'Vicino a me',
+  locating: 'Localizzazione…',
+  yourLocation: 'La sua posizione',
+  tryAgain: 'Riprova con la posizione',
+  geoHint: 'Chiede la posizione al telefono, una volta sola. Nulla viene salvato.',
+  countFor: (n, kind, label) => {
+    const m = `${n} ${n === 1 ? 'mercatino' : 'mercatini'}`;
+    if (kind === 'today') return `${m} oggi.`;
+    if (kind === 'weekend') return `${m} nel fine settimana.`;
+    if (kind === 'date') return `${m} il ${label}.`;
+    return `${m}, tutte le date.`;
+  },
+  noDistancesYet: 'per data, ancora senza distanze',
+  askingPhone: 'Chiedo la posizione al telefono…',
   upcoming: 'Prossime date',
   homePromise: (n) => `<b>${n} mercatini</b> in Svizzera — ogni data con fonte e data di verifica.`,
   homeProof: "Per ogni data indichiamo quando l'abbiamo verificata. Quando l'organizzatore conferma un mercatino, lo segnaliamo. Le cancellazioni restano visibili, con il motivo.",
@@ -861,9 +930,8 @@ const it: Strings = {
   radiusTitle: 'Mercatini delle pulci nei dintorni | fynda.market',
   radiusDescription: 'Mercatini delle pulci nei dintorni: scelga raggio e periodo, ordinati per distanza.',
   radiusHeading: 'Mercatini delle pulci nei dintorni',
-  radiusNoLocation: 'Nessuna posizione nota — tutti i mercatini conosciuti, senza distanza.',
-  radiusWithin: (km) => `Mercatini nel raggio di ${km} km, ordinati per distanza.`,
-  radiusDenied: 'Posizione non disponibile — scelga il raggio manualmente. Senza posizione non indichiamo distanze.',
+  radiusWithin: (n, km) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'} entro ${km} km da lei, i più vicini prima.`,
+  radiusDenied: 'Il telefono non ha condiviso la posizione, quindi niente distanze. Scelga una località, oppure riprovi.',
   radiusUseLocation: 'Usare la mia posizione',
   radiusGroup: 'Raggio',
   nothingForSelection: 'Per questa selezione non risulta nulla.',
@@ -922,7 +990,6 @@ const it: Strings = {
   lastChecked: 'ultima verifica oggi',
   inNextMonths: (n) => `nei prossimi ${n} mesi`,
 
-  controlAnywhere: 'Ovunque',
   citiesLede: 'Località con almeno un mercatino che conosciamo.',
   regionsLede: "L'intero Cantone — utile quando nella Sua città non c'è nulla.",
   typesLede: 'Il colore sul bordo di ogni data indica il tipo di mercatino.',

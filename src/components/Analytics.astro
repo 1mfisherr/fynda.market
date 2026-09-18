@@ -126,6 +126,11 @@
     const km = (el as HTMLElement).dataset.km;
     if (km) { send('filter_changed', { filter: 'umkreis', value: km }, el); return; }
 
+    // A town from the search control's sheet. The form this replaced reported
+    // `ort` on submit; the sheet's rows are links, so it is a click now.
+    const ort = (el as HTMLElement).dataset.townSlug;
+    if (ort) { send('filter_changed', { filter: 'ort', value: ort }, el); return; }
+
     if ((el as HTMLElement).dataset.save !== undefined) {
       // The button reports what it became, so add and remove stay separable.
       const added = el.getAttribute('aria-pressed') !== 'true';
@@ -183,6 +188,18 @@
    * posts the form itself and is counted by nothing here; that is the same
    * trade as every other event in this file.
    */
+  /**
+   * The near-me ask, step by step: `requested` on the tap, then `granted` or
+   * `denied` with the reason. The search control and the radius view both
+   * raise it; neither knows or cares that it is counted. granted ÷ requested
+   * is the number the near-me page is judged on (docs/specs/near-me.md).
+   */
+  document.addEventListener('fynda:geo', (event) => {
+    const detail = (event as CustomEvent<{ outcome?: string; reason?: string }>).detail;
+    if (!detail?.outcome) return;
+    send('geo_prompt', detail.reason ? { outcome: detail.outcome, reason: detail.reason } : { outcome: detail.outcome });
+  });
+
   document.addEventListener('fynda:newsletter', (event) => {
     const detail = (event as CustomEvent<{ outcome?: string }>).detail;
     if (!detail?.outcome) return;

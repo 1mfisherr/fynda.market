@@ -20,6 +20,7 @@ const ALLOWED = new Set<EventName>([
   'organiser_contact', 'report_open',
   'page_leave', 'web_vitals', 'js_error', 'newsletter_form_start', 'rage_click',
   'dead_click', 'language_switch',
+  'geo_prompt',
 ]);
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

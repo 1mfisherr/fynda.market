@@ -59,7 +59,7 @@ Arriving with `?lat&lng` (from home) starts in state 3. `km` and `zeit` in the U
 
 ### 5. Events
 
-Three new `analytics_events` names so the allow rate can be read: `geo_requested`, `geo_granted`, `geo_denied` (with `props.reason`: `denied` | `timeout` | `unavailable`). If the ingest Function allowlists names, add them there. Read after four weeks: the research figure for "ask on tap" is ~30% granted; below that, the button is in the wrong place.
+One new `analytics_events` name, `geo_prompt`, with `props.outcome`: `requested` | `granted` | `denied` and, on denied, `props.reason`: `denied` | `timeout` | `unavailable`. Migration `20260918120000_geo_prompt_event.sql` (both constraints), `functions/_collect.ts` and `functions/e.ts` (the allowlist), `Analytics.astro` (listens for `fynda:geo`). Read after four weeks: the research figure for "ask on tap" is ~30% granted; below that, the button is in the wrong place.
 
 ### 6. Copy
 

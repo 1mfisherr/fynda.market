@@ -32,7 +32,9 @@ export type EventName =
   | 'newsletter_submit' | 'organiser_contact' | 'report_open'
   // since 2026-09-17
   | 'page_leave' | 'web_vitals' | 'js_error' | 'not_found' | 'newsletter_form_start'
-  | 'rage_click' | 'dead_click' | 'language_switch';
+  | 'rage_click' | 'dead_click' | 'language_switch'
+  // since 2026-09-18
+  | 'geo_prompt';
 
 export interface EventInput {
   event_name: EventName;

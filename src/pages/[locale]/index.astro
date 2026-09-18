@@ -15,12 +15,11 @@ import { regionOptions } from '../../lib/regions';
 import PlaceCloud from '../../components/PlaceCloud.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
-import Icon from '../../components/Icon.astro';
 import Section from '../../components/Section.astro';
 import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
-import DateFilters from '../../components/DateFilters.astro';
+import SearchControl from '../../components/SearchControl.astro';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
 import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
@@ -54,11 +53,11 @@ const rows = datedRows(markets);
  */
 const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
 
-/** The radius view offers these four; the home form has to offer the same. */
-const RADII = [10, 25, 50, 100];
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
+/** The town sheet: every town, with its canton for the headings. */
+const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region }])).values()];
 
 /**
  * Cancellations in the coming week. Nobody else in the category surfaces these
@@ -109,40 +108,27 @@ const jsonLd = {
       search card below, so the two read as one stack rather than two widths. */}
   <div class="shortcut-slot"><TownShortcut locale={locale} /></div>
 
-  {/* Place, period, radius. Free text is deliberately absent — a search box
-      needs the German text-search decision STACK.md still has open, and a box
-      that finds nothing is worse than no box.
+  {/* Where and when. Free text is deliberately absent — a search box needs
+      the German text-search decision STACK.md still has open, and a box that
+      finds nothing is worse than no box. No radius either: a radius around a
+      point the site does not have is a promise it cannot keep; it lives on
+      the radius view, once there is a point (docs/specs/near-me.md).
 
       This is also the site's only place-chooser. A separate row of town
       buttons lived below the markets for a day; two ways to pick a town on
-      one page is the incoherence this page is supposed to be free of, and
-      the select already holds all 55. Choosing here is what the return-visit
-      shortcut above remembers. */}
-  <form class="search" action={nearbyPath(locale)} method="get" data-city-base={countryPath(locale, countrySlug)}>
-    <label class="field">
-      <span>{s.controlPlace}</span>
-      <select name="ort">
-        <option value="">{s.controlAnywhere}</option>
-        {cities.map(([slug, city]) => <option value={slug}>{city}</option>)}
-      </select>
-    </label>
-    {/* The same control every list page uses — chips plus a calendar of the
-        days that actually have markets. It used to be a three-option select
-        here, so the home page offered less than the page it sent you to, and
-        "a specific day" was answerable everywhere except where people start.
-        It is a row of chips, so it takes the full width rather than half of a
-        pair. The hidden input is what the form submits; the buttons set it. */}
-    <div class="field when">
-      <span>{s.controlPeriod}</span>
-      <DateFilters locale={locale} dates={rows.map((row) => row.next!.date)} />
-    </div>
-    <input type="hidden" name="zeit" value="all" />
-    <label class="field">
-      <span>{s.controlRadius}</span>
-      <select name="km">{RADII.map((km) => <option value={km} selected={km === 50}>{km} km</option>)}</select>
-    </label>
-    <Button type="submit" variant="primary" block><Icon name="search" size={18} />{s.controlSubmit}</Button>
-  </form>
+      one page is the incoherence this page is supposed to be free of.
+      Choosing here is what the return-visit shortcut above remembers. */}
+  <div class="search">
+    <SearchControl
+      locale={locale}
+      mode="home"
+      dates={rows.map((row) => row.next!.date)}
+      perMarket={[...Map.groupBy(rows, (row) => row.slug).values()].map((group) => group.map((row) => row.next!.date))}
+      towns={towns}
+      cityBase={countryPath(locale, countrySlug)}
+      nearbyHref={nearbyPath(locale)}
+    />
+  </div>
 
   {/* Two at full size, then four compact. A block with one size in it has no
       rhythm, and rhythm is most of what stops a list reading as a database
@@ -229,80 +215,6 @@ const jsonLd = {
 </Page>
 
 <script>
-  import { TOWN_KEY, adopt } from '../../lib/local-keys';
-  /**
-   * The search card routes itself, and remembers.
-   *
-   * A town goes to that town's page carrying the period as a query parameter
-   * the city page reads; "Überall" falls through to the form's own action, the
-   * radius view, which is the only place a radius means anything. Without JS
-   * the form still submits there, which is a worse answer but never a broken
-   * one.
-   *
-   * Choosing a town is also what the shortcut at the top of the page reads on
-   * the next visit — one place-chooser, one memory, no account. Same
-   * localStorage as Gemerkt.
-   */
-  const KEY = TOWN_KEY;
-  adopt(KEY);
-  const search = document.querySelector<HTMLFormElement>('.search');
-
-  /**
-   * The date control is DateFilters, the same component the city and radius
-   * pages use. There is no list on this page to filter, so a click here only
-   * records the answer in the hidden `zeit` input, which the destination page
-   * reads and applies. A calendar day writes a YYYY-MM-DD; a chip writes its
-   * own word. Both are windows lib/date-window.ts already understands.
-   */
-  const zeit = search?.querySelector<HTMLInputElement>('input[name="zeit"]');
-  const dateButtons = Array.from(search?.querySelectorAll<HTMLButtonElement>('[data-filter]') ?? []);
-  for (const button of dateButtons) {
-    button.addEventListener('click', () => {
-      for (const other of dateButtons) other.setAttribute('aria-pressed', String(other === button));
-      if (zeit) zeit.value = button.dataset.filter ?? 'all';
-    });
-  }
-
-  /*
-   * "Within" belongs to "Anywhere": that is the radius the nearby page
-   * applies around the visitor. A town page has its own radius, 25 km around
-   * the town, built in — so with a town chosen the control is shown at 25
-   * and switched off, instead of promising 50 and delivering 25 (audit,
-   * 2026-09-17). Browsers restore form values on back, hence the run on load.
-   */
-  const townSelect = search?.querySelector<HTMLSelectElement>('select[name="ort"]');
-  const kmSelect = search?.querySelector<HTMLSelectElement>('select[name="km"]');
-  let chosenKm = kmSelect?.value ?? '50';
-  const syncRadius = () => {
-    if (!townSelect || !kmSelect) return;
-    const town = townSelect.value !== '';
-    if (town && !kmSelect.disabled) chosenKm = kmSelect.value;
-    kmSelect.disabled = town;
-    kmSelect.value = town ? '25' : chosenKm;
-  };
-  townSelect?.addEventListener('change', syncRadius);
-  syncRadius();
-
-  search?.addEventListener('submit', (event) => {
-    const data = new FormData(search);
-    const town = String(data.get('ort') ?? '');
-    if (!town) return;
-    event.preventDefault();
-
-    const period = String(data.get('zeit') ?? 'all');
-    const base = search.dataset.cityBase ?? '/';
-    const href = `${base}${town}/`;
-    const name = search.querySelector<HTMLOptionElement>(`option[value="${town}"]`)?.textContent?.trim();
-
-    try {
-      if (name) localStorage.setItem(KEY, JSON.stringify({ slug: town, name, href }));
-    } catch { /* private mode. The navigation below still happens. */ }
-
-    location.href = period === 'all' ? href : `${href}?zeit=${period}`;
-  });
-</script>
-
-<script>
   /**
    * "Alle 38 Märkte am Wochenende" opens the rest in place. No new URL, no
    * navigation, and every row is in the HTML either way — hiding rows from a
@@ -326,36 +238,11 @@ const jsonLd = {
 
   /* The promise under the headline. One size up from body, because it is the
      sentence the page exists to make. */
-  /* A card, not a grey tray. The place is the decision, so it gets the full
-     width; period and radius are adjustments to it and share a row. */
   .shortcut-slot { margin-inline: var(--space-page); }
 
-  .search {
-    display: grid;
-    gap: var(--space-3);
-    margin-inline: var(--space-page);
-    padding: var(--space-4);
-    border: var(--border-width) solid var(--color-line);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-  }
-  /* The date control brings its own gutter; the card already has one. */
-  .when :global(.filters) { margin-inline: 0; }
-
-  /* At 1100px the card was four full-width controls stacked down the page —
-     a phone layout given a desk. The four are one question, so on a wide
-     screen they are one row: place takes the slack, the rest are as wide as
-     their contents, and the button stops spanning the card.
-     Keep in step with --breakpoint-wide. */
-  @media (min-width: 900px) {
-    .search {
-      grid-template-columns: minmax(0, 1fr) auto auto auto;
-      align-items: end;
-      gap: var(--space-4);
-      padding: var(--space-3) var(--space-4);
-    }
-    .search :global([data-block]) { width: auto; padding-inline: var(--space-6); }
-  }
+  /* The control sits in the page's own gutter; it draws no box of its own
+     (BRAND.md §Controls are editorial). */
+  .search { margin-inline: var(--space-page); }
 
   .promise {
     margin-block-start: var(--space-3);

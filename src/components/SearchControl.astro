@@ -1,0 +1,373 @@
+---
+/**
+ * The search control: where, and when. docs/specs/near-me.md.
+ *
+ * One component on the home page and at the top of the radius view, so the
+ * two cannot drift. It is not a search — there is no free text and nothing to
+ * look up. It is a signpost: a town goes to that town's page, "near me" asks
+ * the phone once and goes to the radius view, and the date travels along as
+ * `?zeit=` where it is not "all". Choosing is the action; there is no Show
+ * button to press afterwards.
+ *
+ * Set in the text, not in boxes (BRAND.md §Controls are editorial): a hairline
+ * under the Where field, a small uppercase label above each group, the chosen
+ * date underlined in the accent. The 55 towns are a sheet of plain links under
+ * a `<details>` — a dropdown for fifty-five items is the UI of last resort, and
+ * a `<details>` still opens, and every row still navigates, with JavaScript
+ * off. The round button asks for a location on that tap and never on load: a
+ * prompt nobody asked for is refused nine times in ten.
+ *
+ * `mode="nearby"` leaves the round button and the count line to the radius
+ * view, which owns the four states of that page and their sentences. The Where
+ * field and the sheet are the same in both.
+ */
+import DateFilters from './DateFilters.astro';
+import Icon from './Icon.astro';
+import { inWindow } from '../lib/date-window';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+interface Town { slug: string; name: string; region: string }
+
+interface Props {
+  locale?: Locale;
+  mode: 'home' | 'nearby';
+  /** Every date on the page, for the calendar: a day is a button only when a market has it. */
+  dates: string[];
+  /**
+   * The same dates grouped per market, for the count line: "27 markets this
+   * weekend" counts markets, not dates, so a Saturday-and-Sunday market is
+   * one. Only the home page counts; the radius view has its own sentence.
+   */
+  perMarket?: string[][];
+  towns: Town[];
+  /** `countryPath(locale, country)`; a town's link is that plus its slug. */
+  cityBase: string;
+  /** The radius view, where "near me" goes. */
+  nearbyHref: string;
+}
+const { locale = DEFAULT_LOCALE, mode, dates, perMarket = [], towns, cityBase, nearbyHref } = Astro.props;
+const s = t(locale);
+
+/* A–Z inside each canton, cantons A–Z. Fifty-five names in one alphabet made
+   Adliswil the first thing in Switzerland; under canton headings a visitor
+   reads past the cantons that are not theirs. */
+const groups = [...new Map(towns.map((town) => [town.region, [] as Town[]]))].map(([region]) => ({
+  region,
+  towns: towns.filter((town) => town.region === region).sort((a, b) => a.name.localeCompare(b.name, locale)),
+})).sort((a, b) => a.region.localeCompare(b.region, locale));
+
+/* The count line's first words, on the build's own clock. The script recounts
+   on the visitor's clock on every tap, from the same list. */
+const now = new Date();
+const marketsIn = (window: string) => perMarket.filter((ds) => ds.some((d) => inWindow(d, window, now))).length;
+const counts = { all: perMarket.length, today: marketsIn('today'), weekend: marketsIn('weekend') };
+---
+<div
+  class="control"
+  data-control
+  data-mode={mode}
+  data-city-base={cityBase}
+  data-nearby={nearbyHref}
+  data-per-market={mode === 'home' ? JSON.stringify(perMarket) : undefined}
+>
+  <div class="group">
+    <p class="label">{s.whereLabel}</p>
+    <div class="row">
+      <details class="town" data-town>
+        <summary class="field" data-where>
+          <Icon name="place" size={20} />
+          <span
+            class="value"
+            data-where-label
+            data-default={s.pickTown}
+            data-locating={s.locating}
+            data-located={s.yourLocation}
+          >{s.pickTown}</span>
+          <Icon name="chevron-down" size={18} />
+        </summary>
+        <div class="sheet" role="dialog" aria-label={s.pickTown}>
+          <div class="sheet-head">
+            <strong>{s.pickTown}</strong>
+            <button type="button" class="close" data-town-close aria-label={s.closeSheet}>
+              <Icon name="chevron-down" size={22} />
+            </button>
+          </div>
+          <div class="options">
+            <a class="opt near" href={nearbyHref} data-geo>
+              <Icon name="locate" size={18} />{s.nearMe}
+            </a>
+            {groups.map((group) => (
+              <>
+                <p class="canton">{group.region}</p>
+                {group.towns.map((town) => (
+                  <a class="opt" href={`${cityBase}${town.slug}/`} data-town-slug={town.slug} data-town-name={town.name}>{town.name}</a>
+                ))}
+              </>
+            ))}
+          </div>
+        </div>
+      </details>
+      {mode === 'home' && (
+        <button type="button" class="geo" data-geo aria-label={s.nearMe}>
+          <Icon name="locate" size={22} />
+        </button>
+      )}
+    </div>
+    {mode === 'home' && <p class="hint meta-quiet">{s.geoHint}</p>}
+  </div>
+
+  {/* The radius view puts its "how far" group here, once it has a point. */}
+  <slot name="after-where" />
+
+  <div class="group">
+    <p class="label">{s.whenLabel}</p>
+    <DateFilters locale={locale} dates={dates} variant="segmented" />
+  </div>
+
+  {mode === 'home' && (
+    <p
+      class="count answer"
+      data-count
+      aria-live="polite"
+      data-all={s.countFor(counts.all, 'all')}
+      data-today={s.countFor(counts.today, 'today')}
+      data-weekend={s.countFor(counts.weekend, 'weekend')}
+      data-date-one={s.countFor(1, 'date', '{label}')}
+      data-date-many={s.countFor(2, 'date', '{label}')}
+    >{s.countFor(counts.all, 'all')}</p>
+  )}
+</div>
+
+<style>
+  .control { display: grid; gap: var(--space-5); }
+
+  .group { display: grid; gap: var(--space-2); }
+  .label {
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .row { display: flex; align-items: stretch; gap: var(--space-2); }
+
+  /* The field: bold text on a hairline. `summary` is the tap target, so it
+     carries the height; the marker is ours to draw (the chevron). */
+  .town { position: relative; flex: 1 1 auto; min-width: 0; }
+  .town > summary { list-style: none; }
+  .town > summary::-webkit-details-marker { display: none; }
+  .field {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: calc(var(--tap-min) + var(--space-3));
+    padding-block: var(--space-1);
+    border-block-end: calc(var(--border-width) * 1.5) solid var(--color-ink);
+    font-size: var(--text-title);
+    font-weight: var(--weight-bold);
+    cursor: pointer;
+  }
+  .field .value { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* The round button. Filled: it is the primary action of the pair. */
+  .geo {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: calc(var(--tap-min) + var(--space-3));
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: opacity var(--duration-fast) var(--ease-base);
+  }
+  .geo[disabled] { opacity: 0.45; cursor: progress; }
+
+  .hint { font-size: var(--text-micro); }
+
+  /* ---- the sheet ---- */
+  /* Below 900px it rises from the bottom of the screen over a dimmed page —
+     the thumb-zone pattern every phone already knows. Above, it is a panel
+     under the field, like the calendar. Keep in step with --breakpoint-wide. */
+  .sheet {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: calc(100% + var(--space-2));
+    z-index: 5;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    max-height: 60vh;
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 12%);
+  }
+  .sheet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4) var(--space-2);
+    font-size: var(--text-title);
+    font-weight: var(--weight-bold);
+  }
+  .close {
+    display: grid;
+    place-items: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    border: 0;
+    background: none;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+  .options { overflow-y: auto; padding: 0 var(--space-4) var(--space-4); }
+  .canton {
+    padding-block: var(--space-4) var(--space-1);
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-min);
+    border-block-end: var(--border-width) solid var(--color-line);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+  }
+  .opt.near { font-weight: var(--weight-black); }
+
+  @media (max-width: 899px) {
+    .town[open]::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 4;
+      background: rgb(17 17 16 / 45%);
+    }
+    .sheet {
+      position: fixed;
+      inset: auto 0 0 0;
+      max-height: 82vh;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      box-shadow: 0 calc(var(--space-3) * -1) var(--space-6) rgb(17 17 16 / 18%);
+    }
+  }
+
+  /* One row on a desk: where on the left, when on the right, the count under
+     both. Keep in step with --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .control { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-6); align-items: start; }
+    .count { grid-column: 1 / -1; }
+  }
+</style>
+
+<script>
+  import { inWindow } from '../lib/date-window';
+  import { TOWN_KEY, adopt } from '../lib/local-keys';
+
+  const root = document.querySelector<HTMLElement>('[data-control]');
+  if (root) {
+    const mode = root.dataset.mode;
+    const town = root.querySelector<HTMLDetailsElement>('[data-town]');
+    const whereLabel = root.querySelector<HTMLElement>('[data-where-label]');
+    const dateButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+
+    /** The window the visitor has chosen — a word, or one YYYY-MM-DD. */
+    const chosenWindow = () => dateButtons.find((b) => b.getAttribute('aria-pressed') === 'true')?.dataset.filter ?? 'all';
+
+    // Which button is pressed is the control's own state; what the choice does
+    // to a list is the page's (the radius view filters on the same click).
+    for (const button of dateButtons) {
+      button.addEventListener('click', () => {
+        for (const other of dateButtons) other.setAttribute('aria-pressed', String(other === button));
+      });
+    }
+
+    // ---- the sheet: close on the backdrop, the close button, Escape -------
+    if (town) {
+      town.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+        if (target === town || target.closest('[data-town-close]')) { event.preventDefault(); town.open = false; }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && town.open) { town.open = false; town.querySelector<HTMLElement>('summary')?.focus(); }
+      });
+    }
+
+    // ---- a town: remember it, carry the date, go ----------------------------
+    adopt(TOWN_KEY);
+    for (const link of Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-town-slug]'))) {
+      link.addEventListener('click', (event) => {
+        const slug = link.dataset.townSlug ?? '';
+        const name = link.dataset.townName ?? '';
+        const href = link.getAttribute('href') ?? '/';
+        try { localStorage.setItem(TOWN_KEY, JSON.stringify({ slug, name, href })); } catch { /* private mode */ }
+        const zeit = chosenWindow();
+        if (zeit !== 'all') { event.preventDefault(); location.href = `${href}?zeit=${zeit}`; }
+      });
+    }
+
+    // ---- near me, from the home page --------------------------------------
+    // The radius view binds its own handler to the same `[data-geo]` buttons:
+    // it has four states to move between and the sentences for each.
+    if (mode === 'home') {
+      const nearby = root.dataset.nearby ?? '/';
+      const geoButtons = Array.from(root.querySelectorAll<HTMLElement>('[data-geo]'));
+      const go = (query: string) => {
+        const zeit = chosenWindow();
+        location.href = `${nearby}?${query}${zeit !== 'all' ? `&zeit=${zeit}` : ''}`;
+      };
+      for (const button of geoButtons) {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          if (town) town.open = false;
+          if (!('geolocation' in navigator)) { go('denied=unavailable'); return; }
+          for (const b of geoButtons) b.setAttribute('disabled', '');
+          if (whereLabel) whereLabel.textContent = whereLabel.dataset.locating ?? '';
+          document.dispatchEvent(new CustomEvent('fynda:geo', { detail: { outcome: 'requested' } }));
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              document.dispatchEvent(new CustomEvent('fynda:geo', { detail: { outcome: 'granted' } }));
+              go(`lat=${pos.coords.latitude.toFixed(4)}&lng=${pos.coords.longitude.toFixed(4)}&km=25`);
+            },
+            (err) => {
+              const reason = err.code === err.PERMISSION_DENIED ? 'denied' : err.code === err.TIMEOUT ? 'timeout' : 'unavailable';
+              document.dispatchEvent(new CustomEvent('fynda:geo', { detail: { outcome: 'denied', reason } }));
+              go(`denied=${reason}`);
+            },
+            { enableHighAccuracy: false, timeout: 8000 }
+          );
+        });
+      }
+
+      // ---- the count line, recounted on the visitor's clock ----------------
+      const count = root.querySelector<HTMLElement>('[data-count]');
+      let perMarket: string[][] = [];
+      try { perMarket = JSON.parse(root.dataset.perMarket ?? '[]'); } catch { perMarket = []; }
+      if (count) {
+        const say = (window: string, label?: string) => {
+          if (window === 'all' || window === 'today' || window === 'weekend') {
+            count.textContent = count.dataset[window] ?? '';
+            return;
+          }
+          // A day from the calendar: counted here, said with the sentence the
+          // build wrote for one and for many, the day being the chip's label.
+          const now = new Date();
+          const n = perMarket.filter((ds) => ds.some((d) => inWindow(d, window, now))).length;
+          const template = (n === 1 ? count.dataset.dateOne : count.dataset.dateMany) ?? '';
+          count.textContent = template.replace(/^\d+/, String(n)).replace('{label}', label ?? window);
+        };
+        for (const button of dateButtons) {
+          button.addEventListener('click', () => say(button.dataset.filter ?? 'all', button.dataset.label));
+        }
+      }
+    }
+  }
+</script>
