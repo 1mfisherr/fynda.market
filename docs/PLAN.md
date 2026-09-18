@@ -47,7 +47,6 @@ Parked, not urgent: country page (arrives with Germany); German text search (set
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **fleafind.ch** — still live and indexable, publishing the same markets and towns as fynda.market (found 2026-09-18, `reference/seo-research/04-swiss-serps.md`). Two sites with one content compete with each other for every query; the older domain is the likelier winner. Recommendation: page-for-page 301s to fynda.market for towns, markets and home, 410 for the old per-date URLs, then Search Console's change of address. Or take it down. Delfim decides; nothing in the SEO plan can be read until this is settled.
 - **Beachhead region** — Zürich or Luzern. Photos and outreach concentrate wherever this lands.
 - **Distance on cards.** Blocked: the town picker stores a name, not coordinates. Never print a guessed distance.
 - **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
