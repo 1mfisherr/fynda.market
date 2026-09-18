@@ -47,16 +47,16 @@ Two surprises worth acting on. **Explicit-date queries convert at seven times th
 | **The claim, and it is a number** | *"157 Flohmärkte in der Schweiz — jeder Termin mit Quelle und Prüfdatum."* The trust signal, the content that has to rank for the head term, and the sentence an AI answer can quote. One line, three jobs, before anything is asked of anyone. **Above 900px it sits beside the headline**, which otherwise wraps at 11 characters and leaves the page opening with its right half empty |
 | **"Ihre Stadt" shortcut** | Empty for a stranger; on a return visit it is the town they picked, one tap from their city page. Browser storage, no account |
 | **Six markets this weekend** | Two at full size, four compact, one per town, biggest towns first. Then a button to all of them |
-| **The search control** | Where (a town, or near me) and When, editorial style — `docs/specs/near-me.md`, approved 2026-09-18, replaces the three selects. Not free text — v1 logged 64 on-site searches in 26 days, most of them a single letter, against 281 filter uses. No radius here: a radius around a point the site does not have is a promise it cannot keep. Choosing a town is also what the shortcut above remembers |
+| **The search control** | Where and When, set in the text (`SearchControl.astro`, 2026-09-18). Where is a sheet of the 55 towns under canton headings with *Near me* first; beside it a round button that asks the phone for a location **on that tap, never on load**. When is a four-part switch — All · Today · Weekend · Date — and the count line under it is always true ("27 markets this weekend"). Choosing is the action: a town goes to its page carrying the date, no Show button. Not free text — v1 logged 64 on-site searches in 26 days, most of them a single letter, against 281 filter uses. No radius here: a radius around a point the site does not have is a promise it cannot keep. Choosing a town is also what the shortcut above remembers |
 | Newsletter, organiser CTA | Intent is highest right after someone has scanned a list |
 | Cities, cantons, types, provenance, FAQ | Navigation and proof, in that order |
 | Footer | |
 
-### The search card stays
+### The search control stays
 
-The research ([NN/g](https://www.nngroup.com/articles/trustworthy-design/)) says show the goods before asking anything — and it is about *ordering*, not about deleting a control. The card stays, by the owner's call, because it is the only honest home of the period filter and the radius: without it, buttons pointed at a page that does not hold them. A control that exists and is honest beats a clean page that dead-ends.
+The research ([NN/g](https://www.nngroup.com/articles/trustworthy-design/)) says show the goods before asking anything — and it is about *ordering*, not about deleting a control. The control stays, by the owner's call, because it is the only honest home of the period filter and of "near me". A control that exists and is honest beats a clean page that dead-ends.
 
-It is the site's **only** place-chooser. Two ways to pick a town on one page is exactly the incoherence this page is meant to be free of.
+It is the site's **only** place-chooser. Two ways to pick a town on one page is exactly the incoherence this page is meant to be free of. The three-select card it replaced (2026-09-18) offered a radius around a point the site did not have and sent 5 of 76 visitors anywhere.
 
 ### Six markets, not all of them
 
@@ -82,7 +82,7 @@ The order, and the rule that keeps it from becoming filler: **a block renders on
 ### Where the radius centre comes from
 
 - **City page** — the centre is that city, 25 km, built in. Always right, no permission prompt.
-- **Near me** (`/{locale}/{nearby}/`, `noindex`) — the visitor's own position, asked for **on a tap, never on load**, and only there does a radius exist. Four visible states — before, locating, located, refused — and no control is shown before it can do something. `docs/specs/near-me.md` until it ships.
+- **Near me** (`/{locale}/{nearby}/`, `noindex`) — the visitor's own position, asked for **on a tap, never on load**, and only there does a radius exist. Its own section below.
 
 **Distance renders only when the centre is known.** No geolocation and no city context means no kilometres. We never print a distance we guessed.
 
@@ -179,6 +179,19 @@ German demand for `flohmarkt nrw` and `flohmarkt bayern` is large and measured. 
 **Check after four weeks.** If Swiss canton pages earn nothing, they stay published for Germany and stop being a Swiss concern.
 
 ---
+
+## Near me — `/{locale}/{nearby}/`
+
+`RadiusView.astro`, `noindex` — a filter, not a place. The one thing a static town page cannot do: a circle around the visitor. Every market ships in the HTML; a script narrows and re-sorts once it has a real point. **Four states, all decided above the fold, and no control is shown before it can do something** — km buttons that did nothing were what visitors tapped four times and left on (audit 2026-09-18).
+
+| State | The page says | Shows |
+|---|---|---|
+| **Before** | "105 markets · 408 dates — by date, no distances yet" | Where, the one filled button *Use my location*, When, the full list in date order |
+| **Locating** | "Asking your phone where you are…" | Where reads *Locating…*, the list dims |
+| **Located** | "32 markets within 25 km of you, nearest first." | Where reads *Your location*; **How far** 10 · 25 · 50 · 100 (default 25, like the town pages); the list re-sorted nearest first with the distance as a pill on each row |
+| **Refused** | "Your phone didn't share a location, so there are no distances to give…" | *Try my location again* and the six biggest towns as buttons |
+
+The count is always what is shown. Arriving from home with `?lat&lng` starts located; `?denied=` starts refused; `zeit` and `km` keep their meaning. The distance slot is on `MarketRow` itself and stays empty until there is an origin — we never print a distance we guessed. `geo_prompt` events (requested · granted · denied) give the allow rate; the research figure for asking on a tap is ~30%, and below that the button is in the wrong place.
 
 ## Not built, and why
 

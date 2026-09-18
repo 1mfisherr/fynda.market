@@ -117,7 +117,7 @@ No off-the-shelf theme, no UI-kit look. Use a headless library for the fiddly ac
 
 ## Controls are editorial
 
-Decided 2026-09-18, after six looks were mocked (glass, gradient, brutalist, bento, dark, editorial): **controls are set in the text, not in boxes.** A field is a hairline under bold text with a small uppercase label above it. A choice with up to four options is a segmented group — hairline above and below, the chosen option underlined 2.5px in the accent, the others quiet grey. A long list (the 55 towns) is a bottom sheet of plain links, never a dropdown. The one filled button on a page is its primary action. Glass over a photo was the better-looking option and was declined because it does not connect with the rest of the site; the accent rule holds — the underline is status, "this is what you chose". `docs/specs/near-me.md` has the first build.
+Decided 2026-09-18, after six looks were mocked (glass, gradient, brutalist, bento, dark, editorial): **controls are set in the text, not in boxes.** A field is a hairline under bold text with a small uppercase label above it. A choice with up to four options is a segmented group — hairline above and below, the chosen option underlined 2.5px in the accent, the others quiet grey. A long list (the 55 towns) is a bottom sheet of plain links, never a dropdown. The one filled button on a page is its primary action. Glass over a photo was the better-looking option and was declined because it does not connect with the rest of the site; the accent rule holds — the underline is status, "this is what you chose".
 
 ## The picture is the argument
 
