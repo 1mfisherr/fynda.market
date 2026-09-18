@@ -27,7 +27,7 @@
  * The key is not a secret. It proves the host by being served from it
  * (`public/<key>.txt`); anyone can read it there.
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -72,10 +72,22 @@ async function submit(urls) {
       headers: { 'content-type': 'application/json; charset=utf-8' },
       body: JSON.stringify(body),
     });
-    // 200 OK, 202 accepted (key validation pending). Anything else is worth a
-    // line, but never a failed deploy — the pages are live either way.
-    console.log(`  IndexNow: ${res.status} ${res.statusText} for ${body.urlList.length} URLs`);
+    // 200 OK, 202 accepted. A 403 "SiteVerificationNotCompleted" is IndexNow
+    // still checking the key file after the first ever submission (it took a
+    // 916-URL first run as the trigger, 2026-09-18); the plan file is kept so
+    // `--submit` can be run again once it has. Never a failed deploy — the
+    // pages are live either way.
+    const detail = res.ok ? '' : ` — ${(await res.text()).slice(0, 160)}`;
+    console.log(`  IndexNow: ${res.status} ${res.statusText} for ${body.urlList.length} URLs${detail}`);
+    if (!res.ok) return false;
   }
+  return true;
+}
+
+async function submitPlan(urls) {
+  const ok = await submit(urls);
+  if (ok) rmSync(planFile, { force: true });
+  else console.log('  IndexNow: the plan is kept — run `node scripts/indexnow.mjs --submit` again later.');
 }
 
 if (mode === 'submit') {
@@ -86,8 +98,9 @@ if (mode === 'submit') {
   const { urls } = JSON.parse(readFileSync(planFile, 'utf8'));
   if (urls.length === 0) {
     console.log('  IndexNow: nothing changed since the last publish — nothing submitted.');
+    rmSync(planFile, { force: true });
   } else {
-    await submit(urls);
+    await submitPlan(urls);
   }
 } else {
   const result = await plan();
