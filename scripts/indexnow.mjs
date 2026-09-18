@@ -18,6 +18,9 @@
  *   node scripts/indexnow.mjs --plan     before the upload: diff, write the plan
  *   node scripts/indexnow.mjs --submit   after the upload: send the plan
  *   node scripts/indexnow.mjs --dry      plan and print, send nothing
+ *   node scripts/indexnow.mjs --all      every page in dist/_hashes.json, once
+ *                                        (the first submission, or after the
+ *                                        key changed; never routine)
  *
  * Two steps because the diff must be taken against the manifest that is live
  * *before* the upload replaces it, and the URLs must be submitted only once
@@ -38,7 +41,7 @@ const KEY = '3b337db300fcd2fec7961e45732fe695';
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const planFile = join(root, 'node_modules/.cache/indexnow-plan.json');
 
-const mode = process.argv.includes('--submit') ? 'submit' : process.argv.includes('--dry') ? 'dry' : 'plan';
+const mode = process.argv.includes('--submit') ? 'submit' : process.argv.includes('--dry') ? 'dry' : process.argv.includes('--all') ? 'all' : 'plan';
 
 async function plan() {
   const builtFile = join(root, 'dist/_hashes.json');
@@ -90,7 +93,10 @@ async function submitPlan(urls) {
   else console.log('  IndexNow: the plan is kept — run `node scripts/indexnow.mjs --submit` again later.');
 }
 
-if (mode === 'submit') {
+if (mode === 'all') {
+  const built = JSON.parse(readFileSync(join(root, 'dist/_hashes.json'), 'utf8'));
+  await submit(Object.keys(built).map((path) => `${SITE}${path}`));
+} else if (mode === 'submit') {
   if (!existsSync(planFile)) {
     console.log('  IndexNow: no plan file — nothing submitted.');
     process.exit(0);
