@@ -37,7 +37,7 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const HOST = 'fynda.market';
 const SITE = `https://${HOST}`;
-const KEY = '3b337db300fcd2fec7961e45732fe695';
+const KEY = '0da62ab4321770e0e19dced49d705d98';
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const planFile = join(root, 'node_modules/.cache/indexnow-plan.json');
 
