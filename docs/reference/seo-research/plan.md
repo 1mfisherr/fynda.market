@@ -36,7 +36,7 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 | 3 | 404 pages out of the sitemap | built 2026-09-18 |
 | 4 | Root `/` becomes a real 301 to `/de/`, not a `noindex` page | built 2026-09-18 |
 | 5 | `llms.txt` removed | built 2026-09-18 |
-| 6 | IndexNow: key file, changed-URL submission after every publish (diff against the previous build's manifest served at `/_hashes.json`) | built 2026-09-18. IndexNow answered the first submissions with `UserForbiddedToAccessSite` while it verifies the key; once a `--dry` shows the key accepted, run `node scripts/indexnow.mjs --all` once |
+| 6 | IndexNow: key file, changed-URL submission after every publish (diff against the previous build's manifest served at `/_hashes.json`) | built 2026-09-18; the first key's verification stuck, a fresh key verified within the hour and the one-time `--all` submission returned 200 for all 916 pages |
 | 7 | Bing Webmaster Tools: registered 2026-09-18; read the AI Performance report monthly | done |
 | 8 | Search Console → Performance → Generative AI report: open it; read after a month | **Delfim** |
 | 9 | Canton pages redesigned to be different from their towns | next visual session |
