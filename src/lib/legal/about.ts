@@ -1,9 +1,10 @@
 /**
  * About — `/en/about/`, `/de/ueber-uns/`, `/fr/a-propos/`, `/it/chi-siamo/`.
  *
- * Delfim's own text, carried over from fleafind.ch. It is the only page on the
- * site that says who is behind it, which is the thing a directory has to answer
- * before anyone believes its dates.
+ * Delfim's own page, first person (rewritten 2026-09-19). It is the only page
+ * on the site that says who is behind it, which is the thing a directory has
+ * to answer before anyone believes its dates — so nothing here may claim more
+ * than the market pages show.
  */
 import type { Locale } from '../i18n';
 import type { LegalDoc } from './doc';
@@ -11,30 +12,30 @@ import type { LegalDoc } from './doc';
 export const ABOUT: Record<Locale, LegalDoc> = {
   en: {
     title: 'About fynda.market',
-    description: 'Who is behind fynda.market, and how the market information stays accurate.',
+    description: 'Who is behind fynda.market, and how the dates stay right.',
     heading: 'About fynda.market',
     blocks: [
       {
         h: 'The story',
         p: [
-          "I'm Delfim, and I built fynda.market because I kept finding out about flea markets after they'd already happened. A friend would mention one, or I'd see photos online — always a day too late. Switzerland has hundreds of these markets, but no single place actually tracks them properly: dates change, markets get cancelled, and most listings you find are months out of date the moment you see them.",
-          'So I started checking. Every market on fynda.market is verified against its actual organiser — not scraped from somewhere and left to rot.',
+          "I'm Delfim. I built fynda.market because I kept finding out about flea markets after they'd happened — a friend would mention one, or photos would turn up online, always a day late. There are hundreds of these markets in every country, and nobody keeps track of them properly: dates move, markets get cancelled, and most lists are out of date the moment you read them.",
+          'So I started keeping track. fynda.market began in Switzerland, in four languages. Germany is next, and the rest of Europe after that.',
         ],
       },
       {
-        h: 'How we stay accurate',
+        h: 'How the dates stay right',
         p: [
-          "Every listing shows who checked it — the organiser directly, our team, or the community. If a market's cancelled, it stays visible and marked as cancelled, not silently deleted. If something's wrong, you can report it in one click, and it gets fixed by a person, not an algorithm.",
+          "Every date comes from the organiser's own website or calendar, and every date says when it was last checked. Organisers can go one better: one tap from their e-mail and the date says “confirmed by the organiser”. A cancelled date stays on the page, marked as cancelled, instead of quietly disappearing. And when something's wrong, you can tell us in one click — a person reads it and fixes it.",
         ],
       },
       {
-        h: "It's free",
-        p: ['fynda.market is free to use and always will be.'],
+        h: 'Free, no ads',
+        p: ["fynda.market costs nothing and shows no ads. That won't change."],
       },
       {
         h: 'Help make it better',
         p: [
-          "Right now it's just me, building this properly, market by market. If you spot something wrong, reach out — it's the fastest way to make fynda.market better for the next person. You can also reach me directly at contact@fynda.market.",
+          "It's just me, doing this market by market. If you spot something wrong, say so — it's the fastest way to make it better for the next person. contact@fynda.market.",
         ],
       },
     ],
@@ -42,30 +43,30 @@ export const ABOUT: Record<Locale, LegalDoc> = {
 
   de: {
     title: 'Über fynda.market',
-    description: 'Wer hinter fynda.market steht und wie die Marktangaben aktuell bleiben.',
+    description: 'Wer hinter fynda.market steht und wie die Termine stimmen.',
     heading: 'Über fynda.market',
     blocks: [
       {
         h: 'Die Geschichte',
         p: [
-          'Ich bin Delfim, und ich habe fynda.market gebaut, weil ich von Flohmärkten immer erst erfahren habe, wenn sie schon vorbei waren. Jemand erwähnte einen, oder ich sah Fotos im Netz — immer einen Tag zu spät. In der Schweiz gibt es Hunderte solcher Märkte, aber keinen einzigen Ort, der sie sauber nachführt: Termine ändern sich, Märkte fallen aus, und die meisten Einträge, die man findet, sind schon veraltet, wenn man sie sieht.',
-          'Also habe ich angefangen nachzufragen. Jeder Markt auf fynda.market ist beim Veranstalter selbst geprüft — nicht irgendwo abgeschöpft und dann liegen gelassen.',
+          'Ich bin Delfim. Ich habe fynda.market gebaut, weil ich von Flohmärkten immer erst erfahren habe, wenn sie schon vorbei waren — jemand erwähnte einen, oder es tauchten Fotos auf, immer einen Tag zu spät. In jedem Land gibt es Hunderte solcher Märkte, und niemand führt sie sauber nach: Termine verschieben sich, Märkte fallen aus, und die meisten Listen sind schon veraltet, wenn man sie liest.',
+          'Also habe ich angefangen, sie nachzuführen. fynda.market hat in der Schweiz begonnen, in vier Sprachen. Deutschland kommt als Nächstes, danach der Rest von Europa.',
         ],
       },
       {
-        h: 'Wie wir aktuell bleiben',
+        h: 'Wie die Termine stimmen',
         p: [
-          'Jeder Eintrag zeigt, wer ihn geprüft hat — der Veranstalter direkt, wir, oder die Community. Fällt ein Markt aus, bleibt er sichtbar und wird als abgesagt gekennzeichnet, statt stillschweigend gelöscht zu werden. Stimmt etwas nicht, können Sie es mit einem Klick melden, und es wird von einem Menschen korrigiert, nicht von einem Algorithmus.',
+          'Jeder Termin stammt von der Website oder dem Kalender des Veranstalters, und bei jedem Termin steht, wann er zuletzt geprüft wurde. Veranstalter können noch einen Schritt weitergehen: ein Tipp in ihrer E-Mail, und beim Termin steht „Vom Veranstalter bestätigt“. Ein abgesagter Termin bleibt auf der Seite, als abgesagt markiert, statt still zu verschwinden. Und wenn etwas nicht stimmt, sagst du es uns mit einem Klick — ein Mensch liest es und korrigiert es.',
         ],
       },
       {
-        h: 'Es ist kostenlos',
-        p: ['fynda.market ist kostenlos und bleibt es.'],
+        h: 'Kostenlos, ohne Werbung',
+        p: ['fynda.market kostet nichts und zeigt keine Werbung. Das bleibt so.'],
       },
       {
-        h: 'Helfen Sie mit',
+        h: 'Hilf mit',
         p: [
-          'Im Moment bin das nur ich, Markt für Markt. Wenn Ihnen etwas Falsches auffällt, schreiben Sie mir — das ist der schnellste Weg, fynda.market für die nächste Person besser zu machen. Sie erreichen mich direkt unter contact@fynda.market.',
+          'Das bin nur ich, Markt für Markt. Wenn dir etwas Falsches auffällt, sag es — es ist der schnellste Weg, fynda.market für die nächste Person besser zu machen. contact@fynda.market.',
         ],
       },
     ],
@@ -73,61 +74,61 @@ export const ABOUT: Record<Locale, LegalDoc> = {
 
   fr: {
     title: 'À propos de fynda.market',
-    description: 'Qui est derrière fynda.market, et comment les informations restent exactes.',
+    description: 'Qui est derrière fynda.market, et comment les dates restent justes.',
     heading: 'À propos de fynda.market',
     blocks: [
       {
         h: "L'histoire",
         p: [
-          "Je m'appelle Delfim, et j'ai créé fynda.market parce que j'apprenais toujours l'existence des brocantes une fois qu'elles étaient passées. Quelqu'un en mentionnait une, ou je voyais des photos en ligne — toujours un jour trop tard. La Suisse compte des centaines de ces marchés, mais aucun endroit ne les suit vraiment : les dates changent, des marchés sont annulés, et la plupart des annonces que l'on trouve sont périmées au moment même où on les lit.",
-          "Alors j'ai commencé à vérifier. Chaque marché sur fynda.market est vérifié auprès de son organisateur — pas aspiré quelque part puis laissé à l'abandon.",
+          "Je m'appelle Delfim. J'ai construit fynda.market parce que j'apprenais toujours l'existence des brocantes une fois qu'elles étaient passées — un ami en parlait, ou des photos apparaissaient en ligne, toujours un jour trop tard. Il y a des centaines de brocantes dans chaque pays, et personne ne les suit correctement : les dates bougent, des marchés sont annulés, et la plupart des listes sont périmées au moment où on les lit.",
+          "Alors j'ai commencé à les suivre. fynda.market a démarré en Suisse, en quatre langues. L'Allemagne vient ensuite, puis le reste de l'Europe.",
         ],
       },
       {
-        h: 'Comment nous restons exacts',
+        h: 'Comment les dates restent justes',
         p: [
-          "Chaque annonce indique qui l'a vérifiée — l'organisateur directement, nous, ou la communauté. Si un marché est annulé, il reste visible et signalé comme annulé, il n'est pas supprimé en silence. Si quelque chose est faux, vous pouvez le signaler en un clic, et c'est une personne qui le corrige, pas un algorithme.",
+          "Chaque date vient du site ou du calendrier de l'organisateur, et chaque date indique quand elle a été vérifiée pour la dernière fois. Les organisateurs peuvent faire mieux encore : un clic depuis leur e-mail, et la date affiche « confirmé par l'organisateur ». Une date annulée reste sur la page, marquée comme annulée, au lieu de disparaître en silence. Et quand quelque chose ne va pas, vous nous le dites en un clic — une personne le lit et le corrige.",
         ],
       },
       {
-        h: "C'est gratuit",
-        p: ['fynda.market est gratuit et le restera.'],
+        h: 'Gratuit, sans publicité',
+        p: ['fynda.market ne coûte rien et ne montre aucune publicité. Cela ne changera pas.'],
       },
       {
-        h: 'Aidez-nous à faire mieux',
+        h: 'Aidez à faire mieux',
         p: [
-          "Pour l'instant, il n'y a que moi, marché après marché. Si vous repérez une erreur, écrivez-moi — c'est le moyen le plus rapide d'améliorer fynda.market pour la personne suivante. Vous pouvez me joindre directement à contact@fynda.market.",
+          "Il n'y a que moi, marché après marché. Si vous voyez une erreur, dites-le — c'est le moyen le plus rapide de rendre fynda.market meilleur pour la personne suivante. contact@fynda.market.",
         ],
       },
     ],
   },
 
   it: {
-    title: 'Chi siamo',
-    description: 'Chi c’è dietro fynda.market e come le informazioni restano esatte.',
-    heading: 'Chi siamo',
+    title: 'Chi c’è dietro fynda.market',
+    description: 'Chi c’è dietro fynda.market e come le date restano giuste.',
+    heading: 'Chi c’è dietro fynda.market',
     blocks: [
       {
         h: 'La storia',
         p: [
-          'Sono Delfim e ho creato fynda.market perché dei mercatini delle pulci venivo a sapere sempre a cose fatte. Qualcuno ne nominava uno, o vedevo delle foto online — sempre con un giorno di ritardo. In Svizzera ci sono centinaia di questi mercatini, ma nessun posto li segue davvero: le date cambiano, i mercatini vengono annullati e la maggior parte degli annunci che si trovano è già vecchia nel momento in cui la si legge.',
-          'Così ho cominciato a verificare. Ogni mercatino su fynda.market è verificato presso il suo organizzatore — non raccolto da qualche parte e poi lasciato lì.',
+          'Sono Delfim. Ho costruito fynda.market perché dei mercatini venivo sempre a sapere quando erano già passati — un amico ne parlava, o spuntavano foto online, sempre un giorno troppo tardi. In ogni paese ci sono centinaia di mercatini, e nessuno li tiene d’occhio come si deve: le date si spostano, i mercatini vengono annullati, e la maggior parte degli elenchi è già vecchia nel momento in cui la leggi.',
+          'Così ho iniziato a tenerli d’occhio io. fynda.market è partito in Svizzera, in quattro lingue. Poi viene la Germania, e dopo il resto d’Europa.',
         ],
       },
       {
-        h: 'Come restiamo esatti',
+        h: 'Come le date restano giuste',
         p: [
-          'Ogni scheda indica chi l’ha verificata — l’organizzatore stesso, noi, o la comunità. Se un mercatino viene annullato resta visibile e segnalato come annullato, non sparisce in silenzio. Se qualcosa non torna, può segnalarlo con un clic, e a correggerlo è una persona, non un algoritmo.',
+          'Ogni data viene dal sito o dal calendario dell’organizzatore, e ogni data dice quando è stata verificata l’ultima volta. Gli organizzatori possono fare di più: un tocco dalla loro e-mail, e la data mostra «confermato dall’organizzatore». Una data annullata resta sulla pagina, segnata come annullata, invece di sparire in silenzio. E quando qualcosa non torna, ce lo dici con un clic — una persona lo legge e lo corregge.',
         ],
       },
       {
-        h: 'È gratuito',
-        p: ['fynda.market è gratuito e lo resterà.'],
+        h: 'Gratis, senza pubblicità',
+        p: ['fynda.market non costa nulla e non mostra pubblicità. E resterà così.'],
       },
       {
-        h: 'Ci aiuti a migliorarlo',
+        h: 'Aiuta a migliorarlo',
         p: [
-          'Per ora ci sono soltanto io, un mercatino alla volta. Se nota qualcosa di sbagliato, mi scriva — è il modo più veloce per rendere fynda.market migliore per la persona successiva. Mi può raggiungere direttamente a contact@fynda.market.',
+          'Ci sono solo io, un mercatino alla volta. Se noti un errore, dillo — è il modo più veloce per rendere fynda.market migliore per la prossima persona. contact@fynda.market.',
         ],
       },
     ],
