@@ -22,7 +22,7 @@ import { getMarkets } from '../../lib/markets';
 import SearchControl from '../../components/SearchControl.astro';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath } from '../../lib/i18n';
+import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
 export async function getStaticPaths() {
@@ -98,7 +98,7 @@ const jsonLd = {
         and for nothing else. */}
     <div class="says">
       <p class="promise" set:html={s.homePromise(markets.length)}></p>
-      <p class="meta">{s.homeProof}</p>
+      <p class="ask meta">{s.homeOrganiserAsk} <Button href={utilityPath(locale, 'organiser')}>{s.homeOrganiserAction}</Button></p>
     </div>
   </section>
 
@@ -198,14 +198,6 @@ const jsonLd = {
 
   <Section title={s.marketTypes} lede={s.typesLede}><TypeGrid locale={locale} /></Section>
 
-  {/* "Termine prüfen · Quelle festhalten · Absagen sichtbar machen" was three
-      verbs and no content, in the one block that says why this site is not the
-      rest of the category. It is a sentence with the figure in it now. */}
-  <Section title={s.whereDataComes}>
-    <p class="proof gutter">{s.dataProvenance(rows.length)}</p>
-    <p class="gutter meta counts">{s.marketCount(markets.length)} · {s.dateCount(rows.length)} · {cities.length} {s.cities} · {regions.length} {s.regions}</p>
-  </Section>
-
   {/* Four answers, written per language like the rest of strings.ts — short,
       factual, and about the one thing that makes this site different: whether
       the date is true. Also the block AI answers quote from. */}
@@ -253,6 +245,9 @@ const jsonLd = {
     line-height: 1.28;
   }
   .promise :global(b) { color: var(--color-accent); font-weight: var(--weight-black); }
+  /* The organiser line: a question in grey and the site's small pill beside it,
+     so it reads as one quiet action, not as a link buried in a sentence. */
+  .ask { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
 
   .calloffs li {
     display: grid;

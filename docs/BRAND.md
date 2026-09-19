@@ -69,15 +69,27 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Voice
 
-German first, Swiss market. `Sie` for organisers, `du` for visitors.
+Written in English first, then per language (`strings.ts`); a European site that starts in Switzerland, so the country is a fact on the page, never the headline. Visitors `du` / `vous` / `tu`; organisers `Sie` / `vous` / `tu`.
 
-- **Say what is true, plainly.** "Noch nicht bestätigt" beats silence and beats pretending.
+**The brand line** (Delfim, 2026-09-19), built on the one thing every flea-market goer says and the one thing they fear:
+
+> **You never know what you'll find.**
+> We find the flea markets. You do the hunting.
+
+> Man weiss nie, was man findet. / Wir finden die Flohmärkte. Das Stöbern ist deine Sache.
+> On ne sait jamais ce qu'on va trouver. / Nous trouvons les brocantes. À vous de chiner.
+> Non si sa mai cosa si trova. / Noi troviamo i mercatini. A te la caccia.
+
+Your uncertainty is the fun; ours is the job. The site does not talk about itself beyond that: no "we check every date" paragraphs, no trust badges — each date carries its own stamp, and that is the whole argument.
+
+- **The voice lives in two places** — the headline and the empty states. Every functional line (labels, hints, ledes, buttons) is as plain as a road sign. A wink on every line is a tic, not a voice (the 2026-09-19 draft died of this).
+- **Say what is true, plainly.** "Not yet confirmed" beats silence and beats pretending.
 - **Short sentences.** A person is standing outside on a phone.
-- **Never manufacture urgency.** Real deadlines exist; invented ones are a different business.
-- **No marketing voice.** "Irgendwo ist immer Markt" is the tone. "Entdecke die besten Flohmärkte deiner Region!" is not.
+- **Never manufacture urgency.** No "don't miss out", no countdowns.
+- **No superlatives, no "verified".** The weak sites lean on both; a date and a source next to the fact do the work.
 - **Errors and empty states get the same care as headlines** — they are where trust is won.
 
-All German copy needs a native speaker's pass before it ships.
+All German, French and Italian copy needs a native speaker's pass before it ships.
 
 ## E-mail
 
