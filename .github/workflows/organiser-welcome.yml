@@ -1,0 +1,72 @@
+name: Organiser welcome
+
+# The one-off welcome to organisers whose address we imported: what
+# fynda.market is, their personal link, a way out. scripts/send-organiser-welcome.mjs.
+#
+# Never scheduled — only by hand, from the Actions tab. Without "send" ticked
+# it is a dry run that prints who would get one. "test" mails the first
+# organiser's text to that address instead, so Delfim can read it in his own
+# inbox first; nothing is logged for a test. Each real send is one row in
+# organiser_mail_sends, so running it twice cannot mail anyone twice.
+#
+# Same three secrets as the seven-day mail: SUPABASE_DB_URL, RESEND_API_KEY,
+# ADMIN_SIGNING_SECRET.
+
+on:
+  workflow_dispatch:
+    inputs:
+      send:
+        description: 'Really send to everyone who has not had one (leave unticked for a dry run)'
+        required: false
+        type: boolean
+        default: false
+      only:
+        description: 'Only this organiser address'
+        required: false
+        type: string
+      test:
+        description: 'Send a preview of the first mail to this address instead (nothing logged)'
+        required: false
+        type: string
+
+concurrency:
+  group: organiser-mail
+  cancel-in-progress: false
+
+jobs:
+  welcome:
+    name: Welcome organisers
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Welcome
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ADMIN_SIGNING_SECRET: ${{ secrets.ADMIN_SIGNING_SECRET }}
+          SEND: ${{ inputs.send }}
+          ONLY: ${{ inputs.only }}
+          TEST: ${{ inputs.test }}
+        run: |
+          ONLY_ARG=""
+          if [ -n "$ONLY" ]; then ONLY_ARG="--only=$ONLY"; fi
+          if [ -n "$TEST" ]; then
+            echo "Preview to $TEST."
+            node scripts/send-organiser-welcome.mjs --test="$TEST" $ONLY_ARG
+          elif [ "$SEND" = "true" ]; then
+            node scripts/send-organiser-welcome.mjs --send $ONLY_ARG
+          else
+            echo "Dry run — nobody will be mailed."
+            node scripts/send-organiser-welcome.mjs $ONLY_ARG
+          fi

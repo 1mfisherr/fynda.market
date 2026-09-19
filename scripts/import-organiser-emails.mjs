@@ -13,28 +13,24 @@
  *
  * For each row: find the market, find its organiser row, set the address and
  * the language, and mint a personal link if there is none. An address already
- * set is not overwritten (say so and move on). Nothing is mailed from here —
- * the seven-day mail finds them on its own, and the welcome mail is
- * `--welcome`, which sends it to every organiser this run gave a link to.
+ * set is not overwritten (say so and move on). Nothing is mailed from here:
+ * `scripts/send-organiser-welcome.mjs` welcomes everyone who has a link and
+ * no welcome yet, and the seven-day mail finds them on its own.
  */
 
 import { readFileSync } from 'node:fs';
 import { query, secret } from './db.mjs';
-import { organiserWelcome, sendMail } from '../functions/_mail.ts';
-import { editUrl, sha256Hex, tokenFor } from '../functions/_link.ts';
+import { sha256Hex, tokenFor } from '../functions/_link.ts';
 
 const [file, ...flags] = process.argv.slice(2);
 if (!file) {
-  console.error('\n  Usage: node scripts/import-organiser-emails.mjs <file.csv> [--apply] [--welcome]\n');
+  console.error('\n  Usage: node scripts/import-organiser-emails.mjs <file.csv> [--apply]\n');
   process.exit(1);
 }
 const apply = flags.includes('--apply');
-const welcome = flags.includes('--welcome');
 
 const SIGNING = secret('ADMIN_SIGNING_SECRET');
 if (!SIGNING) { console.error('\n  ADMIN_SIGNING_SECRET is not set.\n'); process.exit(1); }
-const RESEND_API_KEY = secret('RESEND_API_KEY');
-if (welcome && !RESEND_API_KEY) { console.error('\n  --welcome needs RESEND_API_KEY.\n'); process.exit(1); }
 
 /* A small CSV reader: quoted fields, commas or semicolons, a header row. */
 function parseCsv(text) {
@@ -68,7 +64,6 @@ const rows = parseCsv(readFileSync(file, 'utf8'));
 console.log(`\n  ${rows.length} row${rows.length === 1 ? '' : 's'} in ${file}. ${apply ? 'Applying.' : 'Dry run — pass --apply to write.'}\n`);
 
 let set = 0, linked = 0, skipped = 0;
-const welcomes = [];
 
 for (const row of rows) {
   const key = (row.market ?? row.slug ?? row.name ?? '').trim();
@@ -114,26 +109,13 @@ for (const row of rows) {
   set++;
 
   const [live] = await query(`select id from organiser_links where organiser_id = $1 and revoked_at is null`, [org.id]);
-  let linkId = live?.id;
-  if (!linkId) {
+  if (!live) {
     // The token is derived from the link's id, so the id comes first.
     const [fresh] = await query(`select gen_random_uuid() as id`);
     const token = await tokenFor(SIGNING, fresh.id);
     await query(`insert into organiser_links (id, organiser_id, token_hash) values ($1, $2, $3)`, [fresh.id, org.id, await sha256Hex(token)]);
-    linkId = fresh.id;
     linked++;
-    welcomes.push({ org, email, locale, market, linkId });
   }
-}
-
-if (welcome && apply) {
-  let sent = 0;
-  for (const w of welcomes) {
-    const url = editUrl('https://fynda.market', await tokenFor(SIGNING, w.linkId));
-    const ok = await sendMail({ RESEND_API_KEY }, { to: w.email, ...organiserWelcome(w.locale, w.org.name, w.market.name ?? w.market.slug, url) });
-    if (ok) sent++; else console.error(`  welcome failed: ${w.email}`);
-  }
-  console.log(`\n  Welcome mails sent: ${sent} of ${welcomes.length}.`);
 }
 
 console.log(`\n  ${set} address${set === 1 ? '' : 'es'} set, ${linked} link${linked === 1 ? '' : 's'} minted, ${skipped} skipped.\n`);

@@ -401,11 +401,15 @@ export const claimAck = (locale: Locale, market: string) => ack(locale, CLAIM_AC
 /* -------------------------------------------------------------------------- */
 
 /**
- * Sent once, when Delfim approves a claim. It carries the one thing the
- * organiser must keep: the personal link. There is no login to explain, so the
- * mail explains the link instead — what it opens, why not to forward it, and
- * what will arrive before each date. `%n` is the organiser's name, `%m` the
- * market's.
+ * Sent once. It carries the one thing the organiser must keep: the personal
+ * link. There is no login to explain, so the mail explains the link instead —
+ * what it opens, why not to forward it, and what will arrive before each date.
+ * `%n` is the organiser's name, `%m` the market's.
+ *
+ * Two openings for one mail. `claimed`: Delfim approved their claim, so "%m is
+ * now yours". `listed`: we imported their address and they never asked, so the
+ * mail first says what fynda.market is, and ends with a way out (Delfim,
+ * 2026-09-20). Everything after the opening is the same.
  */
 interface OrganiserWelcome {
   subject: string;
@@ -413,52 +417,88 @@ interface OrganiserWelcome {
   button: string;
   keep: string;
   photo: string;
+  listed: { subject: string; intro: string[]; optOut: string };
 }
+
+export type WelcomeKind = 'claimed' | 'listed';
+const SIGNOFF = ['Delfim', 'fynda.market'];
 
 const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
   de: {
     subject: 'Ihre Marktseite auf fynda.market — Ihr persönlicher Link',
     body: [
       'Guten Tag %n',
-      '%m gehört auf fynda.market jetzt Ihnen. Unten ist Ihr persönlicher Link: er öffnet Ihre Marktseite zum Bearbeiten — Termine, Standzahl, drinnen oder draussen, was bei Regen gilt. Kein Passwort, kein Konto.',
+      '%m gehört auf fynda.market jetzt Ihnen. Unten ist Ihr persönlicher Link: er öffnet Ihre Marktseite zum Bearbeiten — Termine, Standzahl, drinnen oder draussen, was bei Regen gilt. Kein Passwort, kein Konto nötig.',
       'Sieben Tage vor jedem Termin schicken wir Ihnen eine E-Mail mit drei Knöpfen: findet statt · abgesagt · etwas hat sich geändert. Ein Tipp, und Ihre Seite zeigt „Vom Veranstalter bestätigt“.',
     ],
     button: 'Meine Marktseite öffnen',
     keep: 'Bewahren Sie diesen Link auf und geben Sie ihn nicht weiter: wer ihn hat, kann Ihren Markt bearbeiten. Ist er verloren, antworten Sie auf diese E-Mail — wir schicken einen neuen.',
     photo: 'Ein Foto Ihres Marktes? Einfach als Antwort auf diese E-Mail — wir stellen es auf Ihre Seite.',
+    listed: {
+      subject: '%m auf fynda.market — Ihr persönlicher Link',
+      intro: [
+        'fynda.market ist ein Flohmarkt-Verzeichnis: welcher Markt stattfindet, wo, und ob er wirklich stattfindet. Dort finden Sie %m, mit Terminen, Adresse und Öffnungszeiten — von Ihrer Website übernommen.',
+        'Unten ist Ihr persönlicher Link. Er öffnet Ihre Marktseite zum Bearbeiten — Termine, Standzahl, drinnen oder draussen, was bei Regen gilt. Kein Passwort, kein Konto nötig.',
+      ],
+      optOut: 'Möchten Sie keine E-Mails von uns? Ein kurzes Wort als Antwort genügt, und wir schreiben nicht mehr.',
+    },
   },
   fr: {
     subject: 'Votre page sur fynda.market — votre lien personnel',
     body: [
       'Bonjour %n',
-      '%m est désormais à vous sur fynda.market. Ci-dessous, votre lien personnel : il ouvre votre page pour la modifier — dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie. Pas de mot de passe, pas de compte.',
+      '%m est désormais à vous sur fynda.market. Ci-dessous, votre lien personnel : il ouvre votre page pour la modifier — dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie. Pas de mot de passe, pas de compte à créer.',
       "Sept jours avant chaque date, nous vous envoyons un e-mail avec trois boutons : a lieu · annulé · quelque chose a changé. Un clic, et votre page affiche « Confirmé par l'organisateur ».",
     ],
     button: 'Ouvrir ma page',
     keep: "Conservez ce lien et ne le transmettez pas : qui l'a peut modifier votre marché. Perdu ? Répondez à cet e-mail, nous en envoyons un nouveau.",
     photo: 'Une photo de votre marché ? Répondez simplement à cet e-mail avec — nous la mettons sur votre page.',
+    listed: {
+      subject: '%m sur fynda.market — votre lien personnel',
+      intro: [
+        "fynda.market est un annuaire des brocantes : quel marché a lieu, où, et s'il a vraiment lieu. Vous y trouverez %m, avec dates, adresse et horaires, repris de votre site.",
+        'Ci-dessous, votre lien personnel. Il ouvre votre page pour la modifier — dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie. Pas de mot de passe, pas de compte à créer.',
+      ],
+      optOut: 'Vous préférez ne pas recevoir nos e-mails ? Un mot en réponse suffit, et nous ne vous écrirons plus.',
+    },
   },
   it: {
     subject: 'La tua pagina su fynda.market — il tuo link personale',
     body: [
       'Buongiorno %n',
-      '%m su fynda.market ora è tuo. Qui sotto trovi il tuo link personale: apre la tua pagina per modificarla — date, numero di bancarelle, al coperto o all\'aperto, cosa succede se piove. Nessuna password, nessun account.',
+      '%m su fynda.market ora è tuo. Qui sotto trovi il tuo link personale: apre la tua pagina per modificarla — date, numero di bancarelle, al coperto o all\'aperto, cosa succede se piove. Nessuna password, nessun account da creare.',
       "Sette giorni prima di ogni data ti mandiamo un'e-mail con tre pulsanti: si fa · annullato · qualcosa è cambiato. Un tocco, e la tua pagina mostra «Confermato dall'organizzatore».",
     ],
     button: 'Apri la mia pagina',
     keep: "Conserva questo link e non inoltrarlo: chi lo ha può modificare il tuo mercatino. Perso? Rispondi a questa e-mail, te ne mandiamo uno nuovo.",
     photo: 'Una foto del tuo mercatino? Rispondi a questa e-mail allegandola — la mettiamo sulla tua pagina.',
+    listed: {
+      subject: '%m su fynda.market — il tuo link personale',
+      intro: [
+        'fynda.market è una guida ai mercatini delle pulci: quale mercatino si fa, dove, e se si fa davvero. Lì trovi %m, con date, indirizzo e orari, presi dal tuo sito.',
+        "Qui sotto trovi il tuo link personale. Apre la tua pagina per modificarla — date, numero di bancarelle, al coperto o all'aperto, cosa succede se piove. Nessuna password, nessun account da creare.",
+      ],
+      optOut: 'Preferisci non ricevere nostre e-mail? Basta una parola in risposta e non ti scriveremo più.',
+    },
   },
   en: {
     subject: 'Your market page on fynda.market — your personal link',
     body: [
       'Hello %n',
-      '%m is now yours on fynda.market. Below is your personal link: it opens your market page for editing — dates, number of stalls, indoor or outdoor, what happens when it rains. No password, no account.',
+      '%m is now yours on fynda.market. Below is your personal link: it opens your market page for editing — dates, number of stalls, indoor or outdoor, what happens when it rains. No password, no account needed.',
       'Seven days before each date we send you an e-mail with three buttons: it\'s on · cancelled · something changed. One tap, and your page shows “Confirmed by the organiser”.',
     ],
     button: 'Open my market page',
     keep: 'Keep this link and don\'t forward it: anyone who has it can edit your market. Lost it? Reply to this e-mail and we\'ll send a new one.',
     photo: 'A photo of your market? Just reply to this e-mail with it — we\'ll put it on your page.',
+    listed: {
+      subject: '%m on fynda.market — your personal link',
+      intro: [
+        "fynda.market is a flea-market directory: which market is on, where, and whether it's actually happening. There you'll find %m, with dates, address and opening hours, taken from your website.",
+        'Below is your personal link. It opens your market page for editing — dates, number of stalls, indoor or outdoor, what happens when it rains. No password, no account needed.',
+      ],
+      optOut: "Rather not hear from us? Reply with a word and we won't write again.",
+    },
   },
 };
 
@@ -466,23 +506,30 @@ export function organiserWelcome(
   locale: Locale,
   name: string,
   market: string,
-  url: string
+  url: string,
+  kind: WelcomeKind = 'claimed'
 ): Omit<Mail, 'to'> {
   const copy = ORGANISER_WELCOME[locale] ?? ORGANISER_WELCOME.en;
-  const body = copy.body.map((line) => line.replace('%n', name).replace('%m', market));
+  const fill = (line: string) => line.replace('%n', name).replace('%m', market);
+  // The greeting and the seven-day paragraph are shared; only the opening differs.
+  const [hello, claimedIntro, sevenDays] = copy.body;
+  const body = (kind === 'listed' ? [hello, ...copy.listed.intro, sevenDays] : [hello, claimedIntro, sevenDays]).map(fill);
+  const subject = fill(kind === 'listed' ? copy.listed.subject : copy.subject);
+  const tail = kind === 'listed' ? [copy.photo, copy.listed.optOut] : [copy.photo];
 
   const footer = `
   <p style="margin:8px 0 24px;">
     <a href="${url}" style="display:inline-block;padding:14px 20px;background:#16161a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:500;">${escape(copy.button)}</a>
   </p>
   <p style="margin:0 0 16px;font-size:14px;color:#6b6b70;">${escape(copy.keep)}</p>
-  <p style="margin:0 0 16px;font-size:14px;color:#6b6b70;">${escape(copy.photo)}</p>
+  ${tail.map((line) => `<p style="margin:0 0 16px;font-size:14px;color:#6b6b70;">${escape(line)}</p>`).join('')}
+  ${kind === 'listed' ? `<p style="margin:24px 0 0;">${SIGNOFF.map(escape).join('<br>')}</p>` : ''}
   <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;word-break:break-all;">${escape(url)}</p>`;
 
   return {
-    subject: copy.subject,
+    subject,
     html: column(locale, body, footer),
-    text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.button}: ${url}\n\n${copy.keep}\n\n${copy.photo}\n`,
+    text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.button}: ${url}\n\n${copy.keep}\n\n${tail.join('\n\n')}${kind === 'listed' ? `\n\n${SIGNOFF.join('\n')}` : ''}\n`,
   };
 }
 

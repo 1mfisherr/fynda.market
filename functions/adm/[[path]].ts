@@ -147,6 +147,8 @@ async function claim(env: Env, origin: string, action: AdminAction, verb: 'appro
     to: email,
     ...organiserWelcome(row.locale, row.organiser_name, row.market_text, url),
   });
+  // The send is logged like every organiser mail; scripts/send-organiser-welcome.mjs reads this to skip them.
+  if (mailed) await insertOne(env, 'organiser_mail_sends', { organiser_id: organiser.id, occurrence_ids: [], kind: 'welcome' });
 
   await updateRows(env, 'organiser_claims', `id=eq.${claimId}`, {
     handled: true, handled_at: now, handler_note: mailed ? 'approved, link sent' : 'approved, mail failed',
