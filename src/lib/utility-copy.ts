@@ -507,7 +507,7 @@ export interface SavedPage {
 
 export const SAVED: Record<Locale, SavedPage> = {
   de: {
-    title: 'Gemerkte Märkte | fynda.market',
+    title: 'Gemerkte Märkte — fynda.market',
     description: 'Ihre gemerkten Flohmärkte, mit den nächsten Terminen.',
     heading: 'Gemerkt',
     none: 'Noch nichts gemerkt.',
@@ -519,7 +519,7 @@ export const SAVED: Record<Locale, SavedPage> = {
     dateOther: 'kommende Termine',
   },
   fr: {
-    title: 'Brocantes enregistrées | fynda.market',
+    title: 'Brocantes enregistrées — fynda.market',
     description: 'Vos brocantes enregistrées, avec leurs prochaines dates.',
     heading: 'Enregistré',
     none: "Rien d'enregistré pour l'instant.",
@@ -531,7 +531,7 @@ export const SAVED: Record<Locale, SavedPage> = {
     dateOther: 'dates à venir',
   },
   it: {
-    title: 'Mercatini salvati | fynda.market',
+    title: 'Mercatini salvati — fynda.market',
     description: 'I Suoi mercatini salvati, con le prossime date.',
     heading: 'Salvati',
     none: 'Non ha ancora salvato nulla.',
@@ -543,7 +543,7 @@ export const SAVED: Record<Locale, SavedPage> = {
     dateOther: 'date in arrivo',
   },
   en: {
-    title: 'Saved markets | fynda.market',
+    title: 'Saved markets — fynda.market',
     description: 'Your saved flea markets, with their next dates.',
     heading: 'Saved',
     none: 'Nothing saved yet.',

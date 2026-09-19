@@ -80,12 +80,12 @@ const DEFAULT_KM = 25;
         class="answer"
         id="status"
         aria-live="polite"
-        data-none={`${s.marketCount(list.length)} · ${s.dateCount(rows.length)} — ${s.noDistancesYet}`}
+        data-none={`${s.marketCount(list.length)}, ${s.noDistancesYet}`}
         data-asking={s.askingPhone}
         data-within-one={s.radiusWithin(1, 0).replace('0', '{km}')}
         data-within-many={s.radiusWithin(2, 0).replace('0', '{km}').replace(/^2/, '{n}')}
         data-denied={s.radiusDenied}
-      >{s.marketCount(list.length)} · {s.dateCount(rows.length)} — {s.noDistancesYet}</p>
+      >{s.marketCount(list.length)}, {s.noDistancesYet}</p>
     </section>
 
     <div class="controls gutter">
