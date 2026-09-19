@@ -63,7 +63,8 @@ const line = LINES[market.kind];
 const badge = BADGED_KINDS.has(market.kind) ? line.short[locale] : undefined;
 
 const day = occurrence ? new Date(`${occurrence.date}T00:00:00`) : undefined;
-const dayLabel = showDay && day ? `${s.weekdaysLong[day.getDay()].slice(0, 2)} ${day.getDate()}.` : '';
+// "Sa. 19." is German; the ordinal dot has no business on the other three locales.
+const dayLabel = showDay && day ? `${s.weekdaysShort[day.getDay()]} ${day.getDate()}${locale === 'de' ? '.' : ''}` : '';
 const times = occurrence?.startTime
   ? `${formatTime(occurrence.startTime)}${occurrence.endTime ? `–${formatTime(occurrence.endTime)}` : ''}`
   : undefined;

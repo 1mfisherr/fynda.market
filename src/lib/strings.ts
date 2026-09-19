@@ -340,7 +340,7 @@ const de: Strings = {
   allDates: (n) => `Alle ${n} Termine`,
   yourTown: 'Ihre Stadt',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}, ${from}${to === from ? '' : ` und ${to}`}`,
-  cities: 'Städte',
+  cities: 'Orte',
   regions: 'Kantone',
   marketTypes: 'Markttypen',
   questions: 'Fragen',
@@ -403,7 +403,7 @@ const de: Strings = {
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}Der nächste Termin ist noch nicht bestätigt — wir prüfen ihn und tragen ihn ein, sobald er feststeht.`,
   regionDescription: (n, towns, region, next) =>
-    `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} im Kanton ${region}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten, Prüfdatum und Absagen.`,
+    `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} im Kanton ${region}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
   cityNext: (name, date, time, venue) =>
     `Der nächste ist ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}.`,
   cityNoDate: 'Noch kein nächster Termin.',
@@ -526,7 +526,7 @@ const en: Strings = {
   allDates: (n) => `All ${n} dates`,
   yourTown: 'Your town',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'}, ${from}${to === from ? '' : ` and ${to}`}`,
-  cities: 'Cities',
+  cities: 'Towns',
   regions: 'Cantons',
   marketTypes: 'Market types',
   questions: 'Questions',
@@ -589,7 +589,7 @@ const en: Strings = {
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}The next date is not confirmed yet — we check and list it as soon as it is set.`,
   regionDescription: (n, towns, region, next) =>
-    `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} in the canton of ${region}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours, check dates and cancellations.`,
+    `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} in the canton of ${region}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
   cityNext: (name, date, time, venue) =>
     `The next one is ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'No next date yet.',
@@ -715,7 +715,7 @@ const fr: Strings = {
   allDates: (n) => `Les ${n} dates`,
   yourTown: 'Votre ville',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}, ${from}${to === from ? '' : ` et ${to}`}`,
-  cities: 'Villes',
+  cities: 'Localités',
   regions: 'Cantons',
   marketTypes: 'Types de marché',
   questions: 'Questions',
@@ -778,7 +778,7 @@ const fr: Strings = {
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} à ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prochaine date n'est pas encore confirmée — nous la vérifions et l'ajoutons dès qu'elle est fixée.`,
   regionDescription: (n, towns, region, next) =>
-    `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton de ${region}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires, date de vérification et annulations.`,
+    `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton de ${region}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
   cityNext: (name, date, time, venue) =>
     `La prochaine est ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'Pas encore de prochaine date.',
@@ -901,7 +901,7 @@ const it: Strings = {
   allDates: (n) => `Tutte le ${n} date`,
   yourTown: 'La vostra città',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'}, ${from}${to === from ? '' : ` e ${to}`}`,
-  cities: 'Città',
+  cities: 'Località',
   regions: 'Cantoni',
   marketTypes: 'Tipi di mercatino',
   questions: 'Domande',
@@ -964,7 +964,7 @@ const it: Strings = {
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} a ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prossima data non è ancora confermata — la verifichiamo e la inseriamo appena fissata.`,
   regionDescription: (n, towns, region, next) =>
-    `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari, data di verifica e annullamenti.`,
+    `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari e cancellazioni.`,
   cityNext: (name, date, time, venue) =>
     `Il prossimo è ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'Ancora nessuna prossima data.',
