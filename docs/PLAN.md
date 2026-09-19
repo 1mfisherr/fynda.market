@@ -29,11 +29,11 @@ Not built: tags on any market · country page · text search · distance on card
 
 **Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks.
 
-1. **Organisers, round one.** 22 organisers have an address and a personal link (loaded 2026-09-19 from the fleafind export; no mail sent). Delfim picks two or three he can reach and finds e-mails for the ~90 who have only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
+1. **Organisers, round one.** 22 organisers have an address and a personal link (loaded 2026-09-19 from the fleafind export; nothing sent). All 22 run occasional or annual markets, which is the case the seven-day mail is for (Delfim, 2026-09-19). Before sending: rewrite the welcome mail's first paragraph for people who did not ask — "you may know us as fleafind.ch…" — in four languages; then `--welcome` to the 22; then `ORGANISER_SENDING=on`. Delfim wants a few things polished first. Afterwards, e-mails for the ~90 with only a website. `scripts/import-organiser-emails.mjs <csv> --apply --welcome` loads them; `ORGANISER_SENDING=on` turns the daily mail live. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
 2. **Analytics v2** — built 2026-09-17 (`reference/analytics-research/build-plan.md` phases 1–3). Left: partitioning, in October. Dropped 2026-09-19: the key-forgetting job (all data stays as is — Delfim) and the edge `suspect` flag (checked a week of rows: the `bot_likely` view already catches 1,268 of 1,478 visitor-days and the 210 it passes are on Swiss ISPs or arrive from Google — nothing for an edge flag to add). Before Germany: Queues, Supabase Pro, R2. No GA4, no Clarity. Read the Engagement dashboard after a week of data.
 3. **Visual pass and UI audit** — done 2026-09-17: all twelve page types at 375 and 1440, every form and interaction driven live. Fixed: locale 404s, header tap targets, the saved-page plural, the radius shown before a location, the home card's radius promise, Route now opens directions, English storage keys, one honeypot component. Cloudflare's email obfuscation switched off (Delfim, 2026-09-18). Left: the organiser-page copy in Delfim's words; a fresh Search Console export every Sunday (`docs/GSCdata/`) before judging the 15 Sept title rewrite. Day grouping is one function (`groupByDay` in `lists.ts`) since 2026-09-19.
 4. **Near me and the search control** — built and live 2026-09-18: one editorial control on home and Near me, Near me's four states, the distance pill, gutters on Near me and canton lists, `geo_prompt` events (migration applied the same day). `PAGES.md` §Home and §Near me, `BRAND.md` §Controls. **Read the allow rate after four weeks:** `geo_prompt` granted ÷ requested; below ~30% the button is in the wrong place. One `DateFilters` look on every page (checked live 2026-09-19).
-5. **Market watch agent.** Delfim builds one for fleafind and brings it here; it becomes the German intake tool.
+5. **Market watch agent.** Runs on fleafind and stays there (Delfim, 2026-09-19); its source pages are in our `facts` as `source_page`. A new one is built for other countries when they come.
 6. **Germany** (weeks 6–9): data intake, de+en locale, Bundesland pages, country pages, home becomes the country chooser. **Region template:** one design for canton, Bundesland and any later district, decided on real German counts — a list of every market works at 29 (Zurich) and not at 300 (Bavaria). Not a Swiss redesign: canton pages are the best-earning type per page (7 days to 2026-09-18: 0.5 clicks/page vs 0.3 town, 0.2 market).
 7. Buffer.
 
@@ -47,7 +47,6 @@ Parked, not urgent: country page (arrives with Germany); German text search (set
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **Beachhead region** — Zürich or Luzern. Photos and outreach concentrate wherever this lands.
 - **Distance on cards.** Blocked: the town picker stores a name, not coordinates. Never print a guessed distance.
 - **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
@@ -55,7 +54,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **A Metabase host, €6/month** — only when looking without Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.
-- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17); analytics stay first-party and keep everything, behaviour included (2026-09-17); `x-default` is English (2026-09-18).
+- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17); analytics stay first-party and keep everything, behaviour included (2026-09-17); `x-default` is English (2026-09-18); no Swiss beachhead region — the focus is Europe (2026-09-19).
 
 ---
 
