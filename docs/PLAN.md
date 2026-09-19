@@ -61,6 +61,6 @@ Each waits on Delfim or on data. Don't assume an answer.
 
 ## Data
 
-161 markets, 2,357 occurrences, 57 towns, 14 cantons, 114 organisers (23 with an e-mail), 1,782 facts. Complete on all 161: descriptions, names and slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, every tag, and for every market size and indoor/outdoor — the organiser page collects those. Prose quality is a spot-check, not a known defect.
+161 markets, 2,377 occurrences, 57 towns, 14 cantons, 114 organisers (23 with an e-mail), 1,782 facts. Complete on all 161: descriptions, names and slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, every tag, and for every market size and indoor/outdoor — the organiser page collects those. Prose quality is a spot-check, not a known defect.
 
 How the import works: `ARCHITECTURE.md` §Import.
