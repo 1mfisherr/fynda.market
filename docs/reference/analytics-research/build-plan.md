@@ -2,7 +2,7 @@
 
 Decided by Delfim the same day: collect everything we can, keep everything, behavioural data included; everything readable in Metabase — users, pages, bots, AI citations. First-party only. Built in a fresh session from this page, one phase per commit, each verified against the live table before the next.
 
-**Status 2026-09-17:** phases 1–3 built and live (`20260917120000_analytics_v2.sql`, `functions/`, `Analytics.astro`, `metabase/dashboards.py`), except: partitioning (1), the `suspect` edge flag (2, 10). Item 5 dropped. Phase 4 open.
+**Status 2026-09-17:** phases 1–3 built and live (`20260917120000_analytics_v2.sql`, `functions/`, `Analytics.astro`, `metabase/dashboards.py`), except: partitioning (1), Items 5 and 10 (the `suspect` edge flag) dropped 2026-09-19 — the `bot_likely` view is enough; `PLAN.md` has the numbers. Phase 4 open.
 
 ## Phase 1 — the database (one migration, applied with `scripts/migrate.mjs`)
 
