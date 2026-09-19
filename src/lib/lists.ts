@@ -37,6 +37,19 @@ export function datedRows(markets: Market[]): Dated[] {
 }
 
 /**
+ * The most recent check among the listed dates, as an ISO day — what "last
+ * checked" honestly means for a list. Undefined when nothing was ever checked,
+ * and the caller says nothing rather than something.
+ */
+export function lastChecked(rows: Dated[]): string | undefined {
+  return rows
+    .map((row) => row.next.confirmedAt?.slice(0, 10))
+    .filter((d): d is string => Boolean(d))
+    .sort()
+    .at(-1);
+}
+
+/**
  * Items grouped under their day, earliest day first, input order kept inside
  * a day. The one day-grouping on the site: the city page's day headers and
  * the home page's weekend both go through here, so a day can never be split

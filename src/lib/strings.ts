@@ -189,7 +189,7 @@ export interface Strings {
   cityIntro: (city: string, region: string) => string;
   /** The search snippet: the city is named because Google bolds the match. */
   cityDescription: (city: string, name: string, date: string, time: string | undefined, venue: string, n: number, months: number) => string;
-  lastChecked: string;
+  lastChecked: (date: string) => string;
   inNextMonths: (n: number) => string;
 
   /* the search card on the home page */
@@ -345,7 +345,7 @@ const de: Strings = {
   marketTypes: 'Markttypen',
   questions: 'Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
-  nothingInPeriod: 'Für diesen Zeitraum ist nichts eingetragen.',
+  nothingInPeriod: 'Keine Märkte in diesem Zeitraum.',
   radiusTitle: 'Flohmärkte in der Nähe | fynda.market',
   radiusDescription: 'Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.',
   radiusHeading: 'Flohmärkte in der Nähe',
@@ -408,10 +408,10 @@ const de: Strings = {
     `Der nächste ist ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}.`,
   cityNoDate: 'Noch kein nächster Termin.',
   cityDescription: (city, name, date, time, venue, n, months) =>
-    `Nächster Flohmarkt in ${city}: ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}. ${n} ${n === 1 ? 'Termin' : 'Termine'} in den nächsten ${months} Monaten, mit Prüfdatum und Absagen.`,
+    `Nächster Flohmarkt in ${city}: ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}. ${n} ${n === 1 ? 'Termin' : 'Termine'} in den nächsten ${months} Monaten, mit Öffnungszeiten und Absagen.`,
   cityIntro: (city, region) =>
     `Alle bekannten Flohmärkte in ${city}, Kanton ${region} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
-  lastChecked: 'zuletzt geprüft heute',
+  lastChecked: (date) => `geprüft am ${date}`,
   inNextMonths: (n) => `in den nächsten ${n} Monaten`,
 
   citiesLede: '',
@@ -531,7 +531,7 @@ const en: Strings = {
   marketTypes: 'Market types',
   questions: 'Questions',
   cancelledThisWeek: 'Cancelled this week',
-  nothingInPeriod: 'Nothing is listed for this period.',
+  nothingInPeriod: 'No markets in this period.',
   radiusTitle: 'Flea markets near me | fynda.market',
   radiusDescription: 'Flea markets near you: choose a radius and a period, sorted by distance.',
   radiusHeading: 'Flea markets near me',
@@ -594,10 +594,10 @@ const en: Strings = {
     `The next one is ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'No next date yet.',
   cityDescription: (city, name, date, time, venue, n, months) =>
-    `Next flea market in ${city}: ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} in the next ${months} months, each with a check date, cancellations shown.`,
+    `Next flea market in ${city}: ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} in the next ${months} months, with opening hours and cancellations.`,
   cityIntro: (city, region) =>
     `Every known flea market in ${city}, canton of ${region} — with dates, opening hours and cancellations. Cancelled dates stay visible.`,
-  lastChecked: 'last checked today',
+  lastChecked: (date) => `checked ${date}`,
   inNextMonths: (n) => `in the next ${n} months`,
 
   citiesLede: '',
@@ -720,7 +720,7 @@ const fr: Strings = {
   marketTypes: 'Types de marché',
   questions: 'Questions',
   cancelledThisWeek: 'Annulé cette semaine',
-  nothingInPeriod: "Rien n'est enregistré pour cette période.",
+  nothingInPeriod: 'Pas de brocante sur cette période.',
   radiusTitle: 'Brocantes à proximité | fynda.market',
   radiusDescription: 'Brocantes à proximité : choisissez un rayon et une période, triées par distance.',
   radiusHeading: 'Brocantes à proximité',
@@ -783,10 +783,10 @@ const fr: Strings = {
     `La prochaine est ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'Pas encore de prochaine date.',
   cityDescription: (city, name, date, time, venue, n, months) =>
-    `Prochaine brocante à ${city} : ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} dans les ${months} prochains mois, avec date de vérification et annulations.`,
+    `Prochaine brocante à ${city} : ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} dans les ${months} prochains mois, avec horaires et annulations.`,
   cityIntro: (city, region) =>
     `Toutes les brocantes connues à ${city}, canton de ${region} — dates, horaires et annulations. Les dates annulées restent visibles.`,
-  lastChecked: "dernière vérification aujourd'hui",
+  lastChecked: (date) => `vérifié le ${date}`,
   inNextMonths: (n) => `dans les ${n} prochains mois`,
 
   citiesLede: '',
@@ -906,7 +906,7 @@ const it: Strings = {
   marketTypes: 'Tipi di mercatino',
   questions: 'Domande',
   cancelledThisWeek: 'Cancellato questa settimana',
-  nothingInPeriod: 'Per questo periodo non risulta nulla.',
+  nothingInPeriod: 'Nessun mercatino in questo periodo.',
   radiusTitle: 'Mercatini delle pulci nei dintorni | fynda.market',
   radiusDescription: 'Mercatini delle pulci nei dintorni: scelga raggio e periodo, ordinati per distanza.',
   radiusHeading: 'Mercatini delle pulci nei dintorni',
@@ -969,10 +969,10 @@ const it: Strings = {
     `Il prossimo è ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'Ancora nessuna prossima data.',
   cityDescription: (city, name, date, time, venue, n, months) =>
-    `Prossimo mercatino delle pulci a ${city}: ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'data' : 'date'} nei prossimi ${months} mesi, con data di verifica e cancellazioni.`,
+    `Prossimo mercatino delle pulci a ${city}: ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'data' : 'date'} nei prossimi ${months} mesi, con orari e cancellazioni.`,
   cityIntro: (city, region) =>
     `Tutti i mercatini delle pulci conosciuti a ${city}, Cantone ${region} — con date, orari di apertura e cancellazioni. Le date cancellate restano visibili.`,
-  lastChecked: 'ultima verifica oggi',
+  lastChecked: (date) => `verificato il ${date}`,
   inNextMonths: (n) => `nei prossimi ${n} mesi`,
 
   citiesLede: '',

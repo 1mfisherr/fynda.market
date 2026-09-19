@@ -24,7 +24,7 @@ import MarketRow from '../../../../components/MarketRow.astro';
 import Section from '../../../../components/Section.astro';
 import TypeLegend from '../../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../../lib/markets';
-import { byMarket, datedRows } from '../../../../lib/lists';
+import { byMarket, datedRows, lastChecked } from '../../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange } from '../../../../lib/format';
 import { LOCALE, LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../../lib/i18n';
 import { t } from '../../../../lib/strings';
@@ -73,6 +73,7 @@ const s = t(locale);
 /* Every date, for the counts and the answer sentence; then one row per market,
    which is what the page actually renders — src/lib/lists.ts. */
 const rows = datedRows(markets);
+const checked = lastChecked(rows);
 const list = byMarket(rows);
 
 /** Towns in this canton, most markets first: the ranking is the useful part. */
@@ -120,7 +121,9 @@ const jsonLd = {
   <section class="page-head gutter">
     <h1>{heading}</h1>
     <p class="answer">{answer}</p>
-    <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))} · {s.lastChecked}</p>
+    {rows.length > 0 && (
+      <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</p>
+    )}
   </section>
 
   <Section title={s.cities}>
