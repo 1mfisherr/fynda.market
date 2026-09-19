@@ -29,5 +29,6 @@ These rules are Anthropic's and OpenAI's own for in-repo agent docs (`archive/do
 - **One home per fact.** A decision lives in `CLAUDE.md` (settled) or the doc that owns the topic — not both. Duplicates drift, and a contradiction makes the model pick one at random.
 - **Every line: would removing it cause a mistake?** If not, cut it. Nothing the code, `package.json` or `ls` already says. Under ~200 lines per always-loaded file.
 - **A repeated mistake is a doc edit, not a chat correction.** Same mistake twice → one line in `CLAUDE.md` §Gotchas or the matching `.claude/rules/` file, as a rule, not as the story of the bug. A check that can be run beats a sentence that asks for care.
+- **Only `PLAN.md` holds to-dos, and each says what evidence put it there.** A research report records what was found; a guess it produces goes to `IDEAS.md`, not to the plan. A theory written as a task reads as a decision the next day (the canton-page note, 2026-09-19).
 - **Big work gets a spec, then a fresh session.** The spec is deleted when the durable parts have moved into the doc that owns them.
 - **The name is `fynda.market`** in every doc, page and mail — never "Fynda".

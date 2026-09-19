@@ -40,8 +40,8 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 | 7 | Bing Webmaster Tools: registered 2026-09-18; read the AI Performance report monthly | done |
 | 8 | Search Console → Performance → Generative AI report: open it; read after a month | **Delfim** |
 | 9 | Canton pages redesigned to be different from their towns | dropped 2026-09-19 — they are the best-earning type per page; the region template is decided with Germany |
-| 10 | Image sitemap entries per market photo — worth it once real photos exist | with photos |
+| 10 | Image sitemap entries per market photo | idea, `IDEAS.md` |
 | 11 | `x-default` → English | decided and built 2026-09-18 |
-| 12 | Question heading on town pages ("Wann ist der nächste Flohmarkt in Zürich?") — plausible, cheap; try on the H2 above the list | later |
+| 12 | Question heading on town pages | idea, `IDEAS.md` |
 
 **Read after four weeks** (2026-10-16): CTR at positions 4–10 (target: above 3%), clicks per page type, the Generative AI impressions line, Bing's AI Performance report.

@@ -59,6 +59,13 @@ ICS calendar export (a bookmark in the user's own calendar that no algorithm can
 
 Real shared pain, but meine-flohmarkt-termine already ships a cancellation tracker and a postcode newsletter. Not open ground — probably a feature of the freshness system rather than a position of its own.
 
+## SEO, untested
+
+From the 2026-09-18 SEO research. Neither has evidence behind it yet; the four-week Search Console read on 2026-10-16 comes first.
+
+- **Question heading on town pages** — "Wann ist der nächste Flohmarkt in Zürich?" as the H2 above the list. Cheap; try when a town page is next touched.
+- **Image sitemap** — one entry per real market photo. Only once real photos exist.
+
 ## Longer shots
 
 - **Agent-readable tools.** WebMCP (Chrome origin trial, Google I/O 2026) lets a site expose structured tools to AI agents. "Is Mauerpark on this Sunday?" is a function call pretending to be a web page, and bots are now the majority of web traffic. Building the data layer API-shaped costs nothing now.
