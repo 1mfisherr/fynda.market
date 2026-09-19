@@ -108,12 +108,12 @@ export type FormKey = 'report' | 'newsletter' | 'organiser';
 
 const report: Record<Locale, FormPage> = {
   de: {
-    title: 'Etwas melden — fynda.market',
+    title: 'Ein Problem melden — fynda.market',
     description: 'Markt nicht gefunden, schon vorbei oder falsche Angaben? Meldung senden, wir prüfen von Hand.',
     heading: 'Etwas stimmt nicht?',
     answer: 'Sagen Sie uns, was Sie vor Ort erlebt haben — wir prüfen jede Meldung von Hand.',
     prose: [
-      'Melden Sie eine Absage oder eine falsche Angabe, ändert sich nichts automatisch. Wir prüfen jede Meldung, bevor wir etwas an der Marktseite ändern, und zeigen dort dann, wann wir das zuletzt geprüft haben — das Datum ist der Beweis, nicht nur ein Versprechen.',
+      'Nichts ändert sich automatisch. Ein Mensch liest jede Meldung, prüft sie beim Veranstalter, und dann ändert sich die Seite — mit dem Tag der Prüfung.',
     ],
     fields: [
       { name: 'grund', label: 'Was ist passiert?', type: 'select', required: true, options: [
@@ -127,7 +127,7 @@ const report: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Nachricht (optional)', type: 'textarea', placeholder: 'Was genau haben Sie festgestellt?' },
     ],
     submit: 'Meldung senden',
-    note: 'Ihre Meldung kommt direkt bei uns an — kein E-Mail-Programm, keine Anmeldung. Wir prüfen jede Meldung von Hand, bevor sich auf der Marktseite etwas ändert.',
+    note: 'Ein Mensch liest jede Meldung, bevor sich auf der Seite etwas ändert.',
     subject: 'Meldung',
     success: 'Danke — Ihre Meldung ist angekommen. Wir prüfen sie von Hand, in der Regel innert ein bis zwei Tagen.',
     failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Meldung einfach so.',
@@ -138,12 +138,12 @@ const report: Record<Locale, FormPage> = {
     },
   },
   fr: {
-    title: 'Signaler quelque chose — fynda.market',
+    title: 'Signaler un problème — fynda.market',
     description: "Brocante introuvable, déjà terminée ou informations fausses ? Envoyez-nous un signalement, nous vérifions à la main.",
     heading: "Quelque chose ne joue pas ?",
     answer: 'Dites-nous ce que vous avez constaté sur place — nous vérifions chaque signalement à la main.',
     prose: [
-      "Si vous signalez une annulation ou une information fausse, rien ne change automatiquement. Nous vérifions chaque signalement avant de modifier une page, et nous indiquons ensuite quand nous l'avons vérifiée pour la dernière fois — la date est la preuve, pas seulement une promesse.",
+      "Rien ne change automatiquement. Une personne lit chaque signalement, le vérifie auprès de l'organisateur, et la page change ensuite — avec le jour de la vérification.",
     ],
     fields: [
       { name: 'grund', label: "Que s'est-il passé ?", type: 'select', required: true, options: [
@@ -157,7 +157,7 @@ const report: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Message (facultatif)', type: 'textarea', placeholder: "Qu'avez-vous constaté exactement ?" },
     ],
     submit: 'Envoyer le signalement',
-    note: "Votre signalement nous parvient directement — pas de logiciel de messagerie, pas d'inscription. Nous vérifions chaque signalement à la main avant de modifier la page.",
+    note: 'Une personne lit chaque signalement avant que quoi que ce soit change sur la page.',
     subject: 'Signalement',
     success: 'Merci — votre signalement nous est parvenu. Nous le vérifions à la main, en général en un à deux jours.',
     failure: "Cela n'a pas fonctionné. Nous ouvrons votre logiciel de messagerie — envoyez-nous simplement le signalement.",
@@ -168,12 +168,12 @@ const report: Record<Locale, FormPage> = {
     },
   },
   it: {
-    title: 'Segnalare qualcosa — fynda.market',
+    title: 'Segnalare un problema — fynda.market',
     description: 'Mercatino non trovato, già finito o dati sbagliati? Ci invii una segnalazione, verifichiamo a mano.',
     heading: 'Qualcosa non torna?',
     answer: 'Ci dica cosa ha trovato sul posto — verifichiamo ogni segnalazione a mano.',
     prose: [
-      "Se segnala una cancellazione o un dato sbagliato, non cambia nulla in automatico. Verifichiamo ogni segnalazione prima di modificare la pagina del mercatino, e lì indichiamo quando l'abbiamo verificata l'ultima volta — la data è la prova, non solo una promessa.",
+      "Nulla cambia in automatico. Una persona legge ogni segnalazione, la verifica con l'organizzatore, e poi la pagina cambia — con il giorno della verifica.",
     ],
     fields: [
       { name: 'grund', label: 'Che cosa è successo?', type: 'select', required: true, options: [
@@ -187,7 +187,7 @@ const report: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Messaggio (facoltativo)', type: 'textarea', placeholder: 'Che cosa ha constatato esattamente?' },
     ],
     submit: 'Inviare la segnalazione',
-    note: 'La Sua segnalazione arriva direttamente a noi — nessun programma di posta, nessuna registrazione. Controlliamo ogni segnalazione a mano prima di cambiare la pagina.',
+    note: 'Una persona legge ogni segnalazione prima che qualcosa cambi sulla pagina.',
     subject: 'Segnalazione',
     success: 'Grazie — la Sua segnalazione è arrivata. La controlliamo a mano, di solito in uno o due giorni.',
     failure: 'Non ha funzionato. Apriamo il Suo programma di posta — ci mandi semplicemente la segnalazione.',
@@ -198,12 +198,12 @@ const report: Record<Locale, FormPage> = {
     },
   },
   en: {
-    title: 'Report something — fynda.market',
+    title: 'Report a problem — fynda.market',
     description: "Market missing, already over, or the details wrong? Send us a report, we check every one by hand.",
     heading: 'Something not right?',
     answer: 'Tell us what you found on the day — we check every report by hand.',
     prose: [
-      'Reporting a cancellation or a wrong detail changes nothing automatically. We check every report before we change a market page, and then we publish when we last checked it — the date is the proof, not just the promise.',
+      'Nothing changes automatically. A person reads every report, checks it with the organiser, and then the page changes — with the day it was checked.',
     ],
     fields: [
       { name: 'grund', label: 'What happened?', type: 'select', required: true, options: [
@@ -217,7 +217,7 @@ const report: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Message (optional)', type: 'textarea', placeholder: 'What exactly did you find?' },
     ],
     submit: 'Send report',
-    note: 'Your report reaches us directly — no mail program, no sign-up. We check every report by hand before anything changes on the market page.',
+    note: 'A person reads every report before anything changes on the page.',
     subject: 'Report',
     success: 'Thanks — your report has arrived. We check it by hand, usually within a day or two.',
     failure: 'That did not work. We are opening your mail program instead — just send us the report.',

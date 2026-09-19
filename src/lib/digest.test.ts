@@ -23,8 +23,14 @@ import type { Market, Occurrence } from './types.ts';
 
 /* The window is derived from the real clock, because datedRows clamps to a
    120-day horizon measured from today — dates invented far from now would be
-   filtered before the digest ever saw them. */
-const now = new Date();
+   filtered before the digest ever saw them. On a Sunday the weekend is
+   yesterday-and-today and the digest rightly drops Saturday, so the test clock
+   moves to Monday — the send itself runs on a Friday and never sees this. */
+const now = (() => {
+  const d = new Date();
+  if (d.getDay() === 0) d.setDate(d.getDate() + 1);
+  return d;
+})();
 const { start: saturday, end: sunday } = weekendBounds(now);
 const monday = (() => {
   const d = new Date(`${sunday}T12:00:00`);
