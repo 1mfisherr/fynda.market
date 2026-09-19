@@ -21,7 +21,7 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 
 - Titles carry no brand suffix; the site name comes from `WebSite` markup. Town and canton titles are the H1 (they carry the count and the year the page shows dates for) plus the next date. Market titles: name, venue, town, then "Termine 2026". Under ~60 characters where the data allows; the fact comes before the boilerplate so truncation costs nothing that matters.
 - Descriptions are built from data on every page type, and a market with no confirmed date says what we know (its rhythm, its venue) rather than what we lack.
-- Canton pages must stop repeating the union of their town lists — they earn their URL with what a town page cannot show. Design task, not a one-liner; next visual session.
+- Canton pages repeat their towns' lists and earn clicks anyway — 0.5 clicks/page, the best type (7 days to 2026-09-18). No redesign for Switzerland; the region template is a Germany question, `PLAN.md` step 6.
 - Event markup stays one per market page (guardrail 6). The rich result does not exist in Switzerland; revisit with a German page.
 - No `llms.txt`, no snippet-limiting tags, no FAQPage or ItemList markup.
 - `lastmod` is not emitted (the nightly build would lie); IndexNow carries change instead.
@@ -39,7 +39,7 @@ AI side: OAI-SearchBot fetched 51 pages in two weeks, ChatGPT-User 2, Applebot 8
 | 6 | IndexNow: key file, changed-URL submission after every publish (diff against the previous build's manifest served at `/_hashes.json`) | built 2026-09-18; the first key's verification stuck, a fresh key verified within the hour and the one-time `--all` submission returned 200 for all 916 pages |
 | 7 | Bing Webmaster Tools: registered 2026-09-18; read the AI Performance report monthly | done |
 | 8 | Search Console → Performance → Generative AI report: open it; read after a month | **Delfim** |
-| 9 | Canton pages redesigned to be different from their towns | next visual session |
+| 9 | Canton pages redesigned to be different from their towns | dropped 2026-09-19 — they are the best-earning type per page; the region template is decided with Germany |
 | 10 | Image sitemap entries per market photo — worth it once real photos exist | with photos |
 | 11 | `x-default` → English | decided and built 2026-09-18 |
 | 12 | Question heading on town pages ("Wann ist der nächste Flohmarkt in Zürich?") — plausible, cheap; try on the H2 above the list | later |
