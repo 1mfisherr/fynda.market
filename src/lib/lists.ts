@@ -36,15 +36,21 @@ export function datedRows(markets: Market[]): Dated[] {
   );
 }
 
-/** Rows grouped by day, earliest first. Internal: only weekendDays needs it. */
-function byDay(rows: Dated[]): Dated[][] {
-  const days = new Map<string, Dated[]>();
-  for (const row of rows) {
-    const list = days.get(row.next.date) ?? [];
-    list.push(row);
-    days.set(row.next.date, list);
+/**
+ * Items grouped under their day, earliest day first, input order kept inside
+ * a day. The one day-grouping on the site: the city page's day headers and
+ * the home page's weekend both go through here, so a day can never be split
+ * in two on one page and whole on another.
+ */
+export function groupByDay<T>(items: T[], dateOf: (item: T) => string): { date: string; rows: T[] }[] {
+  const days = new Map<string, T[]>();
+  for (const item of items) {
+    const date = dateOf(item);
+    const rows = days.get(date);
+    if (rows) rows.push(item);
+    else days.set(date, [item]);
   }
-  return [...days.values()].sort((a, b) => a[0].next.date.localeCompare(b[0].next.date));
+  return [...days].sort(([a], [b]) => a.localeCompare(b)).map(([date, rows]) => ({ date, rows }));
 }
 
 /**
@@ -88,7 +94,10 @@ export function countDates(market: Market): number {
 function weekendDays(rows: Dated[], now = new Date()): Dated[][] {
   const { start, end } = weekendBounds(now);
   const today = iso(now);
-  return byDay(rows.filter((row) => row.next.date >= start && row.next.date <= end && row.next.date >= today));
+  return groupByDay(
+    rows.filter((row) => row.next.date >= start && row.next.date <= end && row.next.date >= today),
+    (row) => row.next.date
+  ).map((day) => day.rows);
 }
 
 /**
