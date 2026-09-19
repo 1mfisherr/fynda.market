@@ -163,11 +163,11 @@ interface Welcome {
  */
 const WELCOME: Record<Locale, Welcome> = {
   de: {
-    subject: 'Sie sind dabei — fynda.market',
+    subject: 'Du bist dabei — fynda.market',
     body: [
-      'Ihre E-Mail-Adresse steht auf der Liste. Die erste Ausgabe kommt am Freitagmorgen.',
-      'Neue Termine, die dazugekommen sind, und Absagen, damit Sie nicht umsonst hinfahren. Einmal pro Woche, nie öfter.',
-      'Wenn Sie sich nicht angemeldet haben, ignorieren Sie diese E-Mail einfach — oder melden Sie sich unten mit einem Klick wieder ab.',
+      'Deine E-Mail-Adresse steht auf der Liste. Die erste Ausgabe kommt am Freitagmorgen.',
+      'Jeden Freitag: die Märkte am Wochenende, neue Termine, Absagen. Und eine kurze Nachricht am selben Tag, wenn ein Markt in deiner Nähe abgesagt wird — damit du nicht umsonst hinfährst.',
+      'Wenn du dich nicht angemeldet hast, ignoriere diese E-Mail einfach — oder melde dich unten mit einem Klick wieder ab.',
     ],
     unsubscribe: 'Abmelden',
   },
@@ -175,7 +175,7 @@ const WELCOME: Record<Locale, Welcome> = {
     subject: 'Vous êtes inscrit — fynda.market',
     body: [
       "Votre adresse est sur la liste. Le premier numéro arrive vendredi matin.",
-      'Les nouvelles dates ajoutées, et les annulations, pour ne pas vous déplacer pour rien. Une fois par semaine, jamais plus.',
+      "Chaque vendredi : les brocantes du week-end, les nouvelles dates, les annulations. Et un mot le jour même si une brocante près de chez vous est annulée — pour ne pas vous déplacer pour rien.",
       "Si vous ne vous êtes pas inscrit, ignorez simplement cet e-mail — ou désinscrivez-vous ci-dessous en un clic.",
     ],
     unsubscribe: 'Se désinscrire',
@@ -184,7 +184,7 @@ const WELCOME: Record<Locale, Welcome> = {
     subject: 'Sei iscritto — fynda.market',
     body: [
       'Il tuo indirizzo è nella lista. Il primo numero arriva venerdì mattina.',
-      'Le nuove date aggiunte e le cancellazioni, per non fare il viaggio a vuoto. Una volta a settimana, mai di più.',
+      'Ogni venerdì: i mercatini del fine settimana, le nuove date, le cancellazioni. E un breve avviso lo stesso giorno se un mercatino vicino a te viene annullato — così non fai il viaggio a vuoto.',
       'Se non ti sei iscritto tu, ignora questa e-mail — oppure cancellati qui sotto con un clic.',
     ],
     unsubscribe: 'Cancellati',
@@ -193,7 +193,7 @@ const WELCOME: Record<Locale, Welcome> = {
     subject: 'You’re in — fynda.market',
     body: [
       'Your address is on the list. The first one arrives on Friday morning.',
-      'New dates that have been added, and cancellations, so you don’t make the trip for nothing. Once a week, never more.',
+      'Every Friday: the markets on this weekend, new dates, cancellations. And a short note the same day if a market near you is cancelled — so you don’t make the trip for nothing.',
       'If you didn’t sign up, just ignore this e-mail — or unsubscribe below in one click.',
     ],
     unsubscribe: 'Unsubscribe',
@@ -316,7 +316,7 @@ const REPORT_ACK: Record<Locale, Ack> = {
   de: {
     subject: 'Danke — wir prüfen das',
     body: [
-      'Ihre Meldung ist angekommen: %s.',
+      'Deine Meldung ist angekommen: %s.',
       'Wir prüfen jede Meldung von Hand, bevor sich auf der Marktseite etwas ändert — und schreiben dort dann hin, wann wir das zuletzt geprüft haben. Das dauert in der Regel ein bis zwei Tage.',
       'Automatisch ändert sich nichts. Das ist Absicht: ein falsch übernommener Hinweis wäre schlimmer als gar keiner.',
     ],
@@ -638,7 +638,7 @@ const ALERT: Record<Locale, Alert> = {
     subject: 'Abgesagt: %m, %d',
     body: [
       '%m in %p am %d findet nicht statt. Der Veranstalter hat es uns um %t Uhr gemeldet.',
-      'Damit Sie nicht umsonst hinfahren — deshalb gibt es diese E-Mail.',
+      'Damit du nicht umsonst hinfährst — deshalb gibt es diese E-Mail.',
     ],
     link: 'Zur Marktseite',
     unsubscribe: 'Abmelden',
@@ -813,7 +813,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     more: 'Alle {count} Märkte ansehen',
     moreScope: 'Alle {count} Märkte {scope}',
     unsubscribe: 'Abmelden',
-    why: 'Sie bekommen diese E-Mail, weil Sie sich auf fynda.market dafür eingetragen haben.',
+    why: 'Du bekommst diese E-Mail, weil du dich auf fynda.market dafür eingetragen hast.',
   },
   fr: {
     subject: 'Brocantes ce week-end — {dates}',
@@ -851,7 +851,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     more: 'Vedere tutti i {count} mercatini',
     moreScope: 'Vedere tutti i {count} mercatini {scope}',
     unsubscribe: 'Cancellati',
-    why: 'Riceve questa e-mail perché si è iscritto su fynda.market.',
+    why: 'Ricevi questa e-mail perché ti sei iscritto su fynda.market.',
   },
   en: {
     subject: 'Flea markets this weekend — {dates}',

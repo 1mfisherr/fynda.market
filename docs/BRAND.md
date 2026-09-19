@@ -69,7 +69,7 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Voice
 
-Written in English first, then per language (`strings.ts`); a European site that starts in Switzerland, so the country is a fact on the page, never the headline. Visitors `du` / `vous` / `tu`; organisers `Sie` / `vous` / `tu`.
+Written in English first, then per language (`strings.ts`); a European site that starts in Switzerland, so the country is a fact on the page, never the headline. Visitors `du` / `vous` / `tu`; organisers `Sie` / `vous` / `tu` (Italian is `tu` for everyone). Legal pages stay formal. German imperatives keep their -e: "Prüfe", "Versuche".
 
 **The brand line** (Delfim, 2026-09-19), built on the one thing every flea-market goer says and the one thing they fear:
 
