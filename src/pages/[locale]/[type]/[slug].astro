@@ -171,6 +171,7 @@ const stampMain = next?.origin === 'organiser'
 const stampAlso = market.verifiedBy === 'organiser' && next?.origin !== 'organiser'
   ? s.organiserConfirmed : undefined;
 const timeRange = next ? formatTimeRange(next.startTime, next.endTime, locale) : undefined;
+const liveDates = dates.filter((o) => o.status !== 'cancelled').length;
 
 /**
  * The claim card, on every market no organiser stands behind — 128 of 161.
@@ -206,15 +207,24 @@ const claimHref = `${utilityPath(locale, 'organiser')}`
  */
 const locality = [market.postalCode, market.city].filter(Boolean).join(' ');
 const showLocality = locality.length > 0 && !market.addressLine.includes(locality)
-  && !market.addressLine.includes(market.city);
+  && !market.addressLine.includes(market.city)
+  && !(market.postalCode && market.addressLine.includes(market.postalCode));
+const addressLine = market.addressLine.startsWith(`${market.venueName},`)
+  ? market.addressLine.slice(market.venueName.length + 1).trim()
+  : market.addressLine;
 
 /** Date status, in words. Never colour alone — docs/BRAND.md. */
 const STATUS: Record<Locale, Record<string, string>> = {
-  de: { confirmed: 'Bestätigt', tentative: 'Vorläufig', cancelled: 'Abgesagt', unverified: 'Nicht bestätigt' },
-  fr: { confirmed: 'Confirmé', tentative: 'Provisoire', cancelled: 'Annulé', unverified: 'Non confirmé' },
-  it: { confirmed: 'Confermato', tentative: 'Provvisorio', cancelled: 'Annullato', unverified: 'Non confermato' },
-  en: { confirmed: 'Confirmed', tentative: 'Provisional', cancelled: 'Cancelled', unverified: 'Not confirmed' },
+  de: { tentative: 'Vorläufig', cancelled: 'Abgesagt', unverified: 'Noch nicht bestätigt' },
+  fr: { tentative: 'Provisoire', cancelled: 'Annulé', unverified: 'Pas encore confirmé' },
+  it: { tentative: 'Provvisorio', cancelled: 'Annullato', unverified: 'Non ancora confermato' },
+  en: { tentative: 'Provisional', cancelled: 'Cancelled', unverified: 'Not confirmed yet' },
 };
+/** The word beside a date row, if any. A checked, ordinary date says nothing — the stamp above already did. */
+const rowWord = (o: { status: string; origin?: string; date: string }) =>
+  o.date === today && o.status !== 'cancelled' ? undefined
+  : o.status === 'confirmed' && o.origin === 'organiser' ? s.organiserConfirmed
+  : STATUS[locale][o.status];
 
 const facts = [
   market.stallCount ? ['Stände', `~${market.stallCount}${market.stallCountBadWeather ? `, bei schlechtem Wetter ~${market.stallCountBadWeather}` : ''}`] : undefined,
@@ -356,7 +366,7 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
         <ul class="list-reset">
           <li data-distance hidden><b data-distance-value></b><span data-distance-label></span></li>
           {market.recurrenceText && <li><b>{market.recurrenceText}</b><span>{s.howOften}</span></li>}
-          {dates.length > 0 && <li><b>{dates.length}</b><span>{s.upcoming}</span></li>}
+          {liveDates > 0 && <li><b>{liveDates}</b><span>{s.upcoming(liveDates)}</span></li>}
         </ul>
         <p class:list={['stamp', { organiser: next?.origin === 'organiser' }]}>
           {stampMain}{stampAlso ? ` · ${stampAlso}` : ''}
@@ -415,7 +425,7 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
       <Section level="sub" title={s.gettingThere} id="hinkommen">
         <p class="address gutter">
           <b>{market.venueName}</b>
-          <span>{market.addressLine}</span>
+          {addressLine !== market.venueName && <span>{addressLine}</span>}
           {showLocality && <span>{locality}</span>}
         </p>
         {market.gettingThere && <p class="getting gutter">{market.gettingThere}</p>}
@@ -442,7 +452,7 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
                     therefore furniture — docs/BRAND.md. */}
                 {occurrence.date === today && occurrence.status !== 'cancelled'
                   ? <em class="is-today">{s.statusToday}</em>
-                  : <em>{STATUS[locale][occurrence.status]}</em>}
+                  : rowWord(occurrence) && <em class:list={{ organiser: occurrence.origin === 'organiser' }}>{rowWord(occurrence)}</em>}
               </li>
             ))}
           </ul>
@@ -458,7 +468,8 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
           </>
         ) : (
           <p class="gutter no-dates">
-            <strong>{s.cityNoDate}</strong>
+            {/* A date beyond the 120-day horizon is in the hero already; saying "no next date" under it contradicted the page. */}
+            {!next && <strong>{s.cityNoDate}</strong>}
             {market.recurrenceText && <span>{market.recurrenceText}</span>}
           </p>
         )}
@@ -479,7 +490,7 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
           it is the page's main ask: engaged organisers are what keep the page
           true (PRODUCT.md, 2026-09-16), so the button is the filled one. */}
       {!claimed && (
-        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="primary" note={s.claimFree} /></div>
+        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="primary" /></div>
       )}
 
       {/* The market page had no newsletter ask at all — only the claim card,
@@ -774,7 +785,8 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
   .dates li > em { color: var(--color-quiet); font-size: var(--text-micro); font-style: normal; font-weight: var(--weight-bold); }
   /* The accent marks the date and whether it is happening — this is the second
      of those, and the only row in the list that earns it. */
-  .dates li > em.is-today { color: var(--color-accent); }
+  .dates li > em.is-today,
+  .dates li > em.organiser { color: var(--color-accent); }
   .no-dates { display: flex; flex-direction: column; gap: var(--space-half); max-width: var(--measure); }
   .no-dates > strong { font-weight: var(--weight-bold); }
   .no-dates > span { color: var(--color-grey); }

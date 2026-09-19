@@ -57,7 +57,7 @@ export interface Strings {
   /** Before a location: after the counts, what the list is and is not. */
   noDistancesYet: string;
   askingPhone: string;
-  upcoming: string;
+  upcoming: (n: number) => string;
   /* The home page answers "this weekend", not "the next four months". */
   /* The claim, first thing on the home page: trust signal, head-term content
      and the sentence an AI answer can quote, in one line. */
@@ -285,7 +285,6 @@ export interface Strings {
   claimBody: string;
   claimAction: string;
   /** Under the button: the promise, three words. */
-  claimFree: string;
   /** The organiser stamp with the date the organiser said so. */
   organiserConfirmedOn: (date: string) => string;
   /** The owned line: "about 120 stalls", the setting, the rain answer. */
@@ -332,7 +331,7 @@ const de: Strings = {
   showCount: (n) => `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} anzeigen`,
   noDistancesYet: 'nach Datum, noch ohne Entfernung',
   askingPhone: 'Dein Telefon wird nach dem Standort gefragt…',
-  upcoming: 'Kommende Termine',
+  upcoming: (n) => n === 1 ? 'Kommender Termin' : 'Kommende Termine',
   homePromise: () => 'Wir finden die Flohmärkte. Das Stöbern ist deine Sache.',
   homeOrganiserAsk: 'Sie organisieren einen Markt?',
   homeOrganiserAction: 'Ihre Seite übernehmen',
@@ -375,13 +374,12 @@ const de: Strings = {
   whenToGo: 'Wann hingehen',
   gettingThere: 'Hinkommen',
   dates: 'Termine',
-  wasItDifferent: 'War es anders?',
-  reportIntro:
-    'Termin verschoben, abgesagt oder die Adresse falsch? Sagen Sie uns Bescheid — wir prüfen es und schreiben dazu, wann wir es zuletzt bestätigt haben.',
+  wasItDifferent: 'Etwas stimmt nicht?',
+  reportIntro: 'Termin verschoben, abgesagt, Adresse falsch: Sag es uns, ein Mensch prüft es.',
   reportDidNotHappen: 'Fand nicht statt',
   reportEndedEarly: 'War schon vorbei',
   reportSomethingElse: 'Etwas anderes',
-  confirmedOn: (date) => `Von uns bestätigt am ${date}`,
+  confirmedOn: (date) => `Geprüft am ${date}`,
   organiserConfirmed: 'Vom Veranstalter bestätigt',
   statusToday: 'Heute',
   statusTomorrow: 'Morgen',
@@ -390,9 +388,9 @@ const de: Strings = {
   endsSoon: 'endet in weniger als einer Stunde',
   howOften: 'Rhythmus',
   flagCancelled: 'Fällt aus',
-  flagUnconfirmed: 'Nicht bestätigt',
+  flagUnconfirmed: 'Noch nicht bestätigt',
   flagStale: (date) => `Zuletzt geprüft ${date}`,
-  notConfirmed: 'Aus öffentlicher Quelle',
+  notConfirmed: 'Noch nicht bestätigt',
   entryLabel: 'Eintritt',
   entryFree: 'frei',
   packUpFrom: (time) => `Ab ${time} wird abgebaut.`,
@@ -408,7 +406,7 @@ const de: Strings = {
     `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} im Kanton ${region}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten, Prüfdatum und Absagen.`,
   cityNext: (name, date, time, venue) =>
     `Der nächste ist ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}.`,
-  cityNoDate: 'Zurzeit ist kein Termin bestätigt.',
+  cityNoDate: 'Noch kein nächster Termin.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Nächster Flohmarkt in ${city}: ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}. ${n} ${n === 1 ? 'Termin' : 'Termine'} in den nächsten ${months} Monaten, mit Prüfdatum und Absagen.`,
   cityIntro: (city, region) =>
@@ -472,10 +470,9 @@ const de: Strings = {
   newsletterAction: 'Newsletter abonnieren',
   organiserTitle: 'Für Veranstalter',
   claimTitle: 'Ist das Ihr Markt?',
-  claimBody: 'Übernehmen Sie ihn. Termine bestätigen, ein Foto ergänzen, an einem Regenmorgen absagen — ein Klick, kein Konto nötig.',
+  claimBody: 'Übernehmen Sie ihn: Termine bestätigen, ein Foto ergänzen, einen Tag absagen. Kostenlos, kein Konto nötig.',
   claimAction: 'Das ist mein Markt',
-  claimFree: 'Kostenlos. Für immer.',
-  organiserConfirmedOn: (date) => `Vom Veranstalter bestätigt am ${date}`,
+  organiserConfirmedOn: (date) => `Vom Veranstalter bestätigt, ${date}`,
   stallsAbout: (n) => `rund ${n} Stände`,
   setting: { indoor: 'drinnen', outdoor: 'draussen', both: 'drinnen und draussen' },
   rain: { runs: 'findet auch bei Regen statt', cancelled: 'bei Regen abgesagt', decided_on_the_day: 'bei Regen wird am Morgen entschieden' },
@@ -520,7 +517,7 @@ const en: Strings = {
   showCount: (n) => `Show ${n} ${n === 1 ? 'market' : 'markets'}`,
   noDistancesYet: 'by date, no distances yet',
   askingPhone: 'Asking your phone where you are…',
-  upcoming: 'Upcoming dates',
+  upcoming: (n) => n === 1 ? 'Upcoming date' : 'Upcoming dates',
   homePromise: () => 'We find the flea markets. You do the hunting.',
   homeOrganiserAsk: 'Run a market?',
   homeOrganiserAction: 'Claim your page',
@@ -563,13 +560,12 @@ const en: Strings = {
   whenToGo: 'When to go',
   gettingThere: 'Getting there',
   dates: 'Dates',
-  wasItDifferent: 'Was it different?',
-  reportIntro:
-    'Date moved, cancelled, or the address wrong? Tell us — we check it, and we publish when we last confirmed it.',
+  wasItDifferent: 'Something not right?',
+  reportIntro: 'A date moved, a cancellation, a wrong address: tell us and a person checks it.',
   reportDidNotHappen: "Didn't happen",
   reportEndedEarly: 'Was already over',
   reportSomethingElse: 'Something else',
-  confirmedOn: (date) => `Confirmed by us on ${date}`,
+  confirmedOn: (date) => `Checked ${date}`,
   organiserConfirmed: 'Confirmed by the organiser',
   statusToday: 'Today',
   statusTomorrow: 'Tomorrow',
@@ -578,9 +574,9 @@ const en: Strings = {
   endsSoon: 'ends within the hour',
   howOften: 'How often',
   flagCancelled: 'Cancelled',
-  flagUnconfirmed: 'Not confirmed',
+  flagUnconfirmed: 'Not confirmed yet',
   flagStale: (date) => `Last checked ${date}`,
-  notConfirmed: 'From a public source',
+  notConfirmed: 'Not confirmed yet',
   entryLabel: 'Entry',
   entryFree: 'free',
   packUpFrom: (time) => `Packing up starts at ${time}.`,
@@ -596,7 +592,7 @@ const en: Strings = {
     `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} in the canton of ${region}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours, check dates and cancellations.`,
   cityNext: (name, date, time, venue) =>
     `The next one is ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}.`,
-  cityNoDate: 'No date is confirmed at the moment.',
+  cityNoDate: 'No next date yet.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Next flea market in ${city}: ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} in the next ${months} months, each with a check date, cancellations shown.`,
   cityIntro: (city, region) =>
@@ -660,10 +656,9 @@ const en: Strings = {
   newsletterAction: 'Subscribe',
   organiserTitle: 'For organisers',
   claimTitle: 'Is this your market?',
-  claimBody: 'Take it over. Confirm dates, add a photo, cancel on a rainy morning — one click, no account needed.',
+  claimBody: 'Claim it to confirm dates, add a photo or cancel a day. Free, no account needed.',
   claimAction: 'This is my market',
-  claimFree: 'Free. Always.',
-  organiserConfirmedOn: (date) => `Confirmed by the organiser on ${date}`,
+  organiserConfirmedOn: (date) => `Confirmed by the organiser, ${date}`,
   stallsAbout: (n) => `about ${n} stalls`,
   setting: { indoor: 'indoor', outdoor: 'outdoor', both: 'indoor and outdoor' },
   rain: { runs: 'runs in the rain', cancelled: 'cancelled in rain', decided_on_the_day: 'rain: decided on the morning' },
@@ -711,7 +706,7 @@ const fr: Strings = {
   showCount: (n) => `Afficher ${n} ${n === 1 ? 'brocante' : 'brocantes'}`,
   noDistancesYet: 'par date, sans distance pour l\'instant',
   askingPhone: 'Demande de votre position en cours…',
-  upcoming: 'Prochaines dates',
+  upcoming: (n) => n === 1 ? 'Prochaine date' : 'Prochaines dates',
   homePromise: () => 'Nous trouvons les brocantes. À vous de chiner.',
   homeOrganiserAsk: 'Vous organisez un marché ?',
   homeOrganiserAction: 'Reprendre votre page',
@@ -754,13 +749,12 @@ const fr: Strings = {
   whenToGo: 'Quand y aller',
   gettingThere: "Comment s'y rendre",
   dates: 'Dates',
-  wasItDifferent: "C'était différent ?",
-  reportIntro:
-    "La date a changé, la brocante est annulée, ou l'adresse est fausse ? Dites-le-nous — nous vérifions, et indiquons quand nous avons confirmé pour la dernière fois.",
+  wasItDifferent: 'Quelque chose ne va pas ?',
+  reportIntro: "Une date déplacée, une annulation, une adresse fausse : dites-le-nous, quelqu'un vérifie.",
   reportDidNotHappen: "N'a pas eu lieu",
   reportEndedEarly: 'Était déjà terminé',
   reportSomethingElse: 'Autre chose',
-  confirmedOn: (date) => `Vérifié par nous le ${date}`,
+  confirmedOn: (date) => `Vérifié le ${date}`,
   organiserConfirmed: "Confirmé par l'organisateur",
   statusToday: "Aujourd'hui",
   statusTomorrow: 'Demain',
@@ -769,9 +763,9 @@ const fr: Strings = {
   endsSoon: "se termine dans moins d'une heure",
   howOften: 'Fréquence',
   flagCancelled: 'Annulé',
-  flagUnconfirmed: 'Non confirmé',
+  flagUnconfirmed: 'Pas encore confirmé',
   flagStale: (date) => `Vérifié le ${date}`,
-  notConfirmed: 'Source publique',
+  notConfirmed: 'Pas encore confirmé',
   entryLabel: 'Entrée',
   entryFree: 'gratuite',
   packUpFrom: (time) => `Démontage à partir de ${time}.`,
@@ -787,7 +781,7 @@ const fr: Strings = {
     `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton de ${region}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires, date de vérification et annulations.`,
   cityNext: (name, date, time, venue) =>
     `La prochaine est ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}.`,
-  cityNoDate: "Aucune date n'est confirmée pour le moment.",
+  cityNoDate: 'Pas encore de prochaine date.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Prochaine brocante à ${city} : ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} dans les ${months} prochains mois, avec date de vérification et annulations.`,
   cityIntro: (city, region) =>
@@ -851,10 +845,9 @@ const fr: Strings = {
   newsletterAction: "S'abonner à la newsletter",
   organiserTitle: 'Pour les organisateurs',
   claimTitle: "C'est votre brocante ?",
-  claimBody: "Prenez-la en main. Confirmer les dates, ajouter une photo, annuler un matin de pluie — un clic, sans compte à créer.",
+  claimBody: 'Reprenez-la pour confirmer vos dates, ajouter une photo ou annuler une journée. Gratuit, sans compte à créer.',
   claimAction: "C'est ma brocante",
-  claimFree: 'Gratuit. Pour toujours.',
-  organiserConfirmedOn: (date) => `Confirmé par l'organisateur le ${date}`,
+  organiserConfirmedOn: (date) => `Confirmé par l'organisateur, ${date}`,
   stallsAbout: (n) => `environ ${n} stands`,
   setting: { indoor: 'en intérieur', outdoor: 'en extérieur', both: 'intérieur et extérieur' },
   rain: { runs: 'a lieu même sous la pluie', cancelled: 'annulé en cas de pluie', decided_on_the_day: 'pluie : décidé le matin même' },
@@ -899,7 +892,7 @@ const it: Strings = {
   showCount: (n) => `Mostra ${n} ${n === 1 ? 'mercatino' : 'mercatini'}`,
   noDistancesYet: 'per data, ancora senza distanze',
   askingPhone: 'Chiedo la posizione al telefono…',
-  upcoming: 'Prossime date',
+  upcoming: (n) => n === 1 ? 'Prossima data' : 'Prossime date',
   homePromise: () => 'Noi troviamo i mercatini. A te la caccia.',
   homeOrganiserAsk: 'Organizzi un mercatino?',
   homeOrganiserAction: 'Prendi in mano la tua pagina',
@@ -942,13 +935,12 @@ const it: Strings = {
   whenToGo: 'Quando andare',
   gettingThere: 'Come arrivare',
   dates: 'Date',
-  wasItDifferent: 'È stato diverso?',
-  reportIntro:
-    "Data spostata, mercatino annullato o indirizzo sbagliato? Ce lo segnali — verifichiamo e indichiamo quando l'abbiamo confermato l'ultima volta.",
+  wasItDifferent: 'Qualcosa non torna?',
+  reportIntro: 'Una data spostata, una cancellazione, un indirizzo sbagliato: dicci, una persona controlla.',
   reportDidNotHappen: 'Non si è svolto',
   reportEndedEarly: 'Era già finito',
   reportSomethingElse: 'Altro',
-  confirmedOn: (date) => `Verificato da noi il ${date}`,
+  confirmedOn: (date) => `Verificato il ${date}`,
   organiserConfirmed: "Confermato dall'organizzatore",
   statusToday: 'Oggi',
   statusTomorrow: 'Domani',
@@ -957,9 +949,9 @@ const it: Strings = {
   endsSoon: "termina entro un'ora",
   howOften: 'Cadenza',
   flagCancelled: 'Annullato',
-  flagUnconfirmed: 'Non confermato',
+  flagUnconfirmed: 'Non ancora confermato',
   flagStale: (date) => `Verificato il ${date}`,
-  notConfirmed: 'Fonte pubblica',
+  notConfirmed: 'Non ancora confermato',
   entryLabel: 'Ingresso',
   entryFree: 'gratuito',
   packUpFrom: (time) => `Lo smontaggio inizia alle ${time}.`,
@@ -975,7 +967,7 @@ const it: Strings = {
     `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari, data di verifica e annullamenti.`,
   cityNext: (name, date, time, venue) =>
     `Il prossimo è ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}.`,
-  cityNoDate: 'Al momento non è confermata nessuna data.',
+  cityNoDate: 'Ancora nessuna prossima data.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Prossimo mercatino delle pulci a ${city}: ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'data' : 'date'} nei prossimi ${months} mesi, con data di verifica e cancellazioni.`,
   cityIntro: (city, region) =>
@@ -1039,10 +1031,9 @@ const it: Strings = {
   newsletterAction: 'Iscriversi alla newsletter',
   organiserTitle: 'Per gli organizzatori',
   claimTitle: 'È il tuo mercatino?',
-  claimBody: 'Prendilo in mano. Confermare le date, aggiungere una foto, annullare in una mattina di pioggia — un clic, nessun account richiesto.',
+  claimBody: 'Prendilo in mano per confermare le date, aggiungere una foto o annullare una giornata. Gratis, senza account.',
   claimAction: 'È il mio mercatino',
-  claimFree: 'Gratis. Per sempre.',
-  organiserConfirmedOn: (date) => `Confermato dall'organizzatore il ${date}`,
+  organiserConfirmedOn: (date) => `Confermato dall'organizzatore, ${date}`,
   stallsAbout: (n) => `circa ${n} bancarelle`,
   setting: { indoor: 'al coperto', outdoor: "all'aperto", both: "al coperto e all'aperto" },
   rain: { runs: 'si fa anche con la pioggia', cancelled: 'annullato in caso di pioggia', decided_on_the_day: 'pioggia: si decide la mattina' },

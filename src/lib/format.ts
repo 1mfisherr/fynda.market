@@ -32,7 +32,8 @@ export function formatDate(iso: string, locale: Locale = 'de'): string {
   const s = names(locale);
   const d = parseDate(iso);
   const dot = locale === 'de' ? '.' : '';
-  return `${s.weekdaysShort[d.getDay()]} ${d.getDate()}${dot} ${s.monthsShort[d.getMonth()]}`;
+  const year = d.getFullYear() === new Date().getFullYear() ? '' : ` ${d.getFullYear()}`;
+  return `${s.weekdaysShort[d.getDay()]} ${d.getDate()}${dot} ${s.monthsShort[d.getMonth()]}${year}`;
 }
 
 /** "29. Sept" — for secondary mentions where the weekday is noise. */
