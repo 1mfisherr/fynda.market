@@ -8,7 +8,7 @@ Updated 2026-09-19.
 
 ## Now
 
-Live at `fynda.market` since 2026-09-04: 157 published markets, 57 towns, 14 cantons, four locales, ~950 pages. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
+Live at `fynda.market` since 2026-09-04: 158 published markets, 58 towns, 14 cantons, four locales, ~950 pages. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
 
 | Running | State |
 |---|---|
@@ -61,6 +61,6 @@ Each waits on Delfim or on data. Don't assume an answer.
 
 ## Data
 
-161 markets, 2,377 occurrences, 57 towns, 14 cantons, 114 organisers (23 with an e-mail), 1,782 facts. Complete on all 161: descriptions, names and slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, every tag, and for every market size and indoor/outdoor — the organiser page collects those. Prose quality is a spot-check, not a known defect. Data-quality pass 2026-09-19: 13 dead organiser links replaced, 16 missing opening times filled from organiser sites (10 still unpublished by the organisers), one wrong-town description fixed; dates spot-checked against nine organiser calendars, all matching; every upcoming date stamped as verified 2026-09-19 from Delfim's fleafind export (`scripts/confirm.mjs` is the tool for any later check). 46 markets carry no upcoming date — annual ones awaiting 2027 — which the organiser mail is for. Not listed: Alpin-Flohmi Interlaken (15 Oct 2026), waiting on Delfim.
+162 markets, 2,378 occurrences, 58 towns, 14 cantons, 114 organisers (23 with an e-mail), 1,782 facts. Complete on all 161: descriptions, names and slugs in four locales, coordinates, source URLs. Missing: 1 postal code, 2 websites, 2 fees, every tag, and for every market size and indoor/outdoor — the organiser page collects those. Prose quality is a spot-check, not a known defect. Data-quality pass 2026-09-19: 13 dead organiser links replaced, 16 missing opening times filled from organiser sites (10 still unpublished by the organisers), one wrong-town description fixed; dates spot-checked against nine organiser calendars, all matching; every upcoming date stamped as verified 2026-09-19 from Delfim's fleafind export (`scripts/confirm.mjs` is the tool for any later check). 46 markets carry no upcoming date — annual ones awaiting 2027 — which the organiser mail is for. Alpin-Flohmi Interlaken added 2026-09-19 with a photo from Delfim (town Interlaken; the hall is in Wilderswil).
 
 How the import works: `ARCHITECTURE.md` §Import.
