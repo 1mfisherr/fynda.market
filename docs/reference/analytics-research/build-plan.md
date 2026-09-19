@@ -2,7 +2,7 @@
 
 Decided by Delfim the same day: collect everything we can, keep everything, behavioural data included; everything readable in Metabase — users, pages, bots, AI citations. First-party only. Built in a fresh session from this page, one phase per commit, each verified against the live table before the next.
 
-**Status 2026-09-17:** phases 1–3 built and live (`20260917120000_analytics_v2.sql`, `functions/`, `Analytics.astro`, `metabase/dashboards.py`), except: partitioning (1), the `suspect` edge flag (2, 10), the key-forgetting job (5). Phase 4 open.
+**Status 2026-09-17:** phases 1–3 built and live (`20260917120000_analytics_v2.sql`, `functions/`, `Analytics.astro`, `metabase/dashboards.py`), except: partitioning (1), the `suspect` edge flag (2, 10). Item 5 dropped. Phase 4 open.
 
 ## Phase 1 — the database (one migration, applied with `scripts/migrate.mjs`)
 
@@ -10,7 +10,7 @@ Decided by Delfim the same day: collect everything we can, keep everything, beha
 2. **New columns**, all nullable, all checked: `browser_lang char(2)` (first Accept-Language tag), `city text`, `region_code text`, `timezone text`, `asn int`, `rtt_bucket text` (`fast|ok|slow`), `viewport_bucket text` (`xs|s|m|l|xl`), `is_eu bool`, `days_until_date smallint` (market/date views), `suspect bool` (passed the bot filter but looks like a scraper — one-hit, no referrer, cloud-adjacent ASN). Never postcode, never coordinates.
 3. **New events** in the registry, props shapes fixed by the check constraint: `page_leave{active_ms, max_scroll_pct, sections[]}`, `web_vitals{lcp, inp, cls, ttfb}`, `js_error{message, file, line}`, `not_found{referrer_host}`, `newsletter_form_start`, `rage_click{selector}`, `dead_click{selector}`. `outbound_click.click_type` gains `directions`, `phone`, `social` (`maps` stays for old rows). Widen `locale` to the four.
 4. **`crawler_hits`** table: `occurred_at, bot_name, bot_role (training|search|user|other), user_agent, asn, as_org, country, path, page_type, market_id, status`. The edge writes a row here for every request the bot filter catches, instead of dropping it. `bot_role = user` (`ChatGPT-User`, `Claude-User`, `Perplexity-User`) is a human asking an AI about that page right now — the AI-citation signal. Keep forever; it contains no personal data.
-5. **Forget the key.** A weekly `pg_cron` job re-hashes `visitor_day_hash` on rows older than 7 days with a random per-day salt generated inside the statement and thrown away. Same-day distinct counts survive; the link to an IP does not. Fix the `STACK.md` sentence that claims this already happens.
+5. ~~Forget the key.~~ Dropped (Delfim, 2026-09-19): all data is kept as is, no re-hashing. `STACK.md` §Retention says so.
 6. **Views for Metabase**, so every dashboard is a `select *`: `v_sessions` (cookieless: same hash, gap < 30 min), `v_daily_traffic` (views, visitors, sessions, engaged, suspect, by locale/page_type), `v_market_leads` (saves + calendar + directions + contact per market per week), `v_search_gaps` (`no_results` terms by locale), `v_traffic_class` (search / ai_assistant / social / direct / other from referrer + utm; the AI host list is a table), `v_ai_citations` (crawler_hits by bot, role, market, day), `v_health` (404s, JS errors, vitals p75, rage clicks).
 
 ## Phase 2 — the collector and the page
