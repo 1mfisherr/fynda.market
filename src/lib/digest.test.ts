@@ -19,15 +19,18 @@ import assert from 'node:assert/strict';
 
 import { buildDigest, isEmpty, owedIssue, type Digest, type DigestRow } from './digest.ts';
 import { weekendBounds, iso } from './date-window.ts';
+import { todayIso } from './format.ts';
 import type { Market, Occurrence } from './types.ts';
 
 /* The window is derived from the real clock, because datedRows clamps to a
    120-day horizon measured from today — dates invented far from now would be
-   filtered before the digest ever saw them. On a Sunday the weekend is
-   yesterday-and-today and the digest rightly drops Saturday, so the test clock
-   moves to Monday — the send itself runs on a Friday and never sees this. */
+   filtered before the digest ever saw them. That horizon runs on the Zurich
+   calendar (todayIso), so the test clock must too — on GitHub's UTC runner a
+   Saturday night is already Sunday in Zurich. And on a Sunday the weekend is
+   yesterday-and-today and the digest rightly drops Saturday, so the clock moves
+   to Monday; the send itself runs on a Friday and never sees either case. */
 const now = (() => {
-  const d = new Date();
+  const d = new Date(`${todayIso()}T12:00:00`);
   if (d.getDay() === 0) d.setDate(d.getDate() + 1);
   return d;
 })();
