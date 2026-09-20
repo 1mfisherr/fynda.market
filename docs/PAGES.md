@@ -65,6 +65,7 @@ The biggest, best-converting segment: `flohmarkt luzern 2026` was v1's best quer
 3. The When control, only the parts with a date behind them — a chip that empties the list is a dead end.
 4. **One row per market, soonest first, grouped under sticky day headers** — weekday, date in the accent, count; a month label where the month turns. One feature row (the next market), then compact rows. Two features put the first name 1,300px down a phone.
 5. **A cancelled market stays in the list**, struck through, with the reason.
+5b. **A market with no date yet stays too** — after the day groups, under *No date yet* with its rhythm line, shown under All and hidden by any other When. The heading counts every market the town has. Hiding them put "Die 0 Flohmärkte" over towns and whole cantons that have markets (2026-09-20).
 6. **Within 25 km** (Delfim): on a town with fewer than three upcoming dates, up to five rows from towns within 25 km with their distance, under the same day headers, as `<aside data-outside-floor>` so they never clear this page's floor. 28 of 57 towns carry it.
 7. Short town paragraph, real facts only · type legend only when a badged kind is on the page · newsletter after the list.
 
@@ -72,7 +73,7 @@ Not here: any `Event` markup, a nearby-town link list, category sub-pages. Measu
 
 ## Region — `/{locale}/{country}/{canton}/[region]/`
 
-Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland the best-earning type per page (0.5 clicks/page, 7 days to 2026-09-18). **Towns first, with counts**, then the When control and every market in the canton, one row each. No density gate — the content floor measures the rendered page; Schaffhausen with one market clears it. The region template for every country is decided with Germany on real counts (`PLAN.md` step 6).
+Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland the best-earning type per page (0.5 clicks/page, 7 days to 2026-09-18). **Towns first, with counts**, then the When control and every market in the canton, one row each — dated ones first, the rest under *No date yet* (as on the city page). No density gate — the content floor measures the rendered page; Schaffhausen with one market clears it. The region template for every country is decided with Germany on real counts (`PLAN.md` step 6).
 
 ## Near me — `/{locale}/{nearby}/`
 

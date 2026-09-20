@@ -25,7 +25,7 @@
  * write themselves buelach.ch and duebendorf.ch. Genève and Fribourg are French
  * towns and take the French form, not the German exonyms Genf and Freiburg that
  * the import wrote. Zürich is the single exception in both directions — see
- * SLUG_FROM below.
+ * SLUG_FROM in lib/places.mjs, where the tables live.
  *
  * Nothing here is translated by a machine. A place name is a fact with one
  * correct answer per language, so they are written out.
@@ -33,84 +33,9 @@
 
 import { withClient, DB_URL } from './db.mjs';
 import { slugify } from './slugify.mjs';
+import { LOCALES, COUNTRY, regionSlug, regionName, citySlug, cityName } from './lib/places.mjs';
 
 const DRY_RUN = process.argv.includes('--dry-run');
-
-/** The locales Switzerland is published in. */
-const LOCALES = ['de', 'fr', 'it', 'en'];
-
-/**
- * The country segment, per locale — the one part of the path that is still
- * translated. A fixed hand-written set of about fifty entries that never grows
- * with the data, which is why it does not carry the cost that per-locale city
- * slugs did.
- */
-const COUNTRY = {
-  de: 'Schweiz',
-  fr: 'Suisse',
-  it: 'Svizzera',
-  en: 'Switzerland',
-};
-
-/** Canton names, per locale. Keyed by the German name in the database. */
-const CANTONS = {
-  'Aargau': { fr: 'Argovie', it: 'Argovia', en: 'Aargau' },
-  'Basel-Landschaft': { fr: 'Bâle-Campagne', it: 'Basilea Campagna', en: 'Basel-Landschaft' },
-  'Basel-Stadt': { fr: 'Bâle-Ville', it: 'Basilea Città', en: 'Basel-Stadt' },
-  'Bern': { fr: 'Berne', it: 'Berna', en: 'Bern' },
-  'Freiburg': { fr: 'Fribourg', it: 'Friburgo', en: 'Fribourg' },
-  'Genf': { fr: 'Genève', it: 'Ginevra', en: 'Geneva' },
-  'Graubünden': { fr: 'Grisons', it: 'Grigioni', en: 'Grisons' },
-  'Luzern': { fr: 'Lucerne', it: 'Lucerna', en: 'Lucerne' },
-  'Schaffhausen': { fr: 'Schaffhouse', it: 'Sciaffusa', en: 'Schaffhausen' },
-  'Solothurn': { fr: 'Soleure', it: 'Soletta', en: 'Solothurn' },
-  'St. Gallen': { fr: 'Saint-Gall', it: 'San Gallo', en: 'St. Gallen' },
-  'Tessin': { fr: 'Tessin', it: 'Ticino', en: 'Ticino' },
-  'Waadt': { fr: 'Vaud', it: 'Vaud', en: 'Vaud' },
-  'Zürich': { fr: 'Zurich', it: 'Zurigo', en: 'Zurich' },
-};
-
-/** City names, per locale. Everything not listed keeps one name in all four. */
-const CITIES = {
-  'Basel': { fr: 'Bâle', it: 'Basilea', en: 'Basel' },
-  'Bern': { fr: 'Berne', it: 'Berna', en: 'Bern' },
-  'Chur': { fr: 'Coire', it: 'Coira', en: 'Chur' },
-  'Freiburg': { fr: 'Fribourg', it: 'Friburgo', en: 'Fribourg' },
-  'Genf': { fr: 'Genève', it: 'Ginevra', en: 'Geneva' },
-  'Luzern': { fr: 'Lucerne', it: 'Lucerna', en: 'Lucerne' },
-  'Schaffhausen': { fr: 'Schaffhouse', it: 'Sciaffusa', en: 'Schaffhausen' },
-  'St. Gallen': { fr: 'Saint-Gall', it: 'San Gallo', en: 'St. Gallen' },
-  'Thun': { fr: 'Thoune', it: 'Thun', en: 'Thun' },
-  'Zürich': { fr: 'Zurich', it: 'Zurigo', en: 'Zurich' },
-};
-
-/**
- * The name the single slug is built from, where the German name in the database
- * is the wrong one to build it from. Two kinds of entry, for two reasons.
- *
- * ENDONYMS. Genève, Fribourg, Ticino and Vaud are French- and Italian-speaking
- * places that German sources name differently, and the import wrote the German
- * exonym. The place's own name wins. Bern, Graubünden and Basel-Landschaft are
- * officially multilingual too, but their majority language is German, so the
- * German name is already the endonym. The tiebreaker, written down so it does
- * not get re-decided per town: the name the commune itself registers, and where
- * that is itself dual (Biel/Bienne), the majority language.
- *
- * INTERNATIONAL FORMS. Zürich is `zurich`, not `zuerich`. It is the one Swiss
- * place with a settled accent-free form that the whole world already uses —
- * Booking, Airbnb, Tripadvisor and Google Maps all spell it that way — and this
- * slug is now shared by the French, Italian and English pages as well. That is
- * not true of Bülach or Dübendorf, whose own town councils write buelach.ch and
- * duebendorf.ch; they keep the German transliteration. An exception list of one
- * is the right size for "famous enough to have an international spelling".
- */
-const SLUG_FROM = {
-  region: {
-    'Genf': 'Genève', 'Freiburg': 'Fribourg', 'Tessin': 'Ticino', 'Waadt': 'Vaud',
-    'Zürich': 'Zurich',
-  },
-  city: { 'Genf': 'Genève', 'Freiburg': 'Fribourg', 'Zürich': 'Zurich' },
-};
 
 async function main() {
   await withClient(DB_URL, async (client) => {
@@ -143,13 +68,11 @@ async function main() {
       // locale. The row-per-locale shape is kept so that the query layer and
       // the country case stay a single code path.
       for (const region of regions) {
-        const slug = slugify(SLUG_FROM.region[region.name] ?? region.name);
-        add('region', region.id, locale, CANTONS[region.name]?.[locale] ?? region.name, slug);
+        add('region', region.id, locale, regionName(region.name, locale), regionSlug(region.name));
       }
 
       for (const city of cities) {
-        const slug = slugify(SLUG_FROM.city[city.name] ?? city.name);
-        add('city', city.id, locale, CITIES[city.name]?.[locale] ?? city.name, slug);
+        add('city', city.id, locale, cityName(city.name, locale), citySlug(city.name));
       }
 
       // A market's slug came from v1 and was already one across all four. Its

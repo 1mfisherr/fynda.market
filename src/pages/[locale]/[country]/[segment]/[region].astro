@@ -24,7 +24,7 @@ import MarketRow from '../../../../components/MarketRow.astro';
 import Section from '../../../../components/Section.astro';
 import TypeLegend from '../../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../../lib/markets';
-import { byMarket, datedRows, lastChecked } from '../../../../lib/lists';
+import { byMarket, datedRows, lastChecked, undatedMarkets } from '../../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange } from '../../../../lib/format';
 import { LOCALE, LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../../lib/i18n';
 import { t } from '../../../../lib/strings';
@@ -75,6 +75,7 @@ const s = t(locale);
 const rows = datedRows(markets);
 const checked = lastChecked(rows);
 const list = byMarket(rows);
+const undated = undatedMarkets(markets);
 
 /** Towns in this canton, most markets first: the ranking is the useful part. */
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))]
@@ -82,11 +83,10 @@ const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))]
   .sort((a, b) => b.count - a.count || a.city.localeCompare(b.city, locale));
 
 const year = new Date().getFullYear();
-/* The count is what the list holds, not what the city holds. `markets`
-   includes markets with no upcoming date, so the old heading said 17 over
-   fourteen rows — invisible while the list was 61 rows of repeats, and
-   the first thing anyone would count now that it is one row each. */
-const heading = s.regionHeading(list.length, regionName, year);
+/* The count is what the page lists: every market in the canton, one row each —
+   the dated ones first, the rest under "No date yet". Counting only the dated
+   ones put "Die 0 Flohmärkte im Kanton Uri" over a canton with a market. */
+const heading = s.regionHeading(markets.length, regionName, year);
 
 // The earliest non-cancelled date in the canton, sorted rather than found:
 // `rows` is in market order, not date order.
@@ -115,7 +115,7 @@ const jsonLd = {
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={s.regionDescription(list.length, cities.length, regionName, soonest ? { name: soonest.name, city: soonest.city, date: formatDateShort(soonest.next!.date, locale) } : undefined)} analytics={{ region }}>
+<Page locale={locale} alternates={alternates} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={s.regionDescription(markets.length, cities.length, regionName, soonest ? { name: soonest.name, city: soonest.city, date: formatDateShort(soonest.next!.date, locale) } : undefined)} analytics={{ region }}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
@@ -149,6 +149,14 @@ const jsonLd = {
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
 
+  {undated.length > 0 && (
+    <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
+      <div class="gutter">
+        {undated.map((market) => <MarketRow market={market} locale={locale} showRhythm />)}
+      </div>
+    </Section>
+  )}
+
   <TypeLegend locale={locale} />
 
   <div class="gutter"><SubscribeForm locale={locale} region={{ slug: region, name: regionName }} /></div>
@@ -160,11 +168,13 @@ const jsonLd = {
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
   const empty = document.getElementById('empty');
+  const undated = document.getElementById('undated');
 
   /**
    * A row is a market, and it filters on the date it displays — so the day a
    * visitor is shown and the day the chip matched can never disagree. There
-   * are no day bands to hide or recount any more.
+   * are no day bands to hide or recount any more. The "No date yet" block has
+   * nothing to say about a chosen day, so it goes with any window but All.
    */
   const apply = (window: DateWindow) => {
     const now = new Date();
@@ -174,6 +184,7 @@ const jsonLd = {
       row.hidden = !visible;
       if (visible) shown++;
     }
+    if (undated) undated.hidden = window !== 'all';
     if (empty) empty.hidden = shown > 0;
   };
 

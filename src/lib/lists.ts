@@ -87,6 +87,19 @@ export function byMarket(rows: Dated[]): Dated[] {
 }
 
 /**
+ * The markets with no date inside the horizon, by name. The annual market
+ * whose organiser has not published next year yet — 46 of 162 on 2026-09-19,
+ * whole cantons of them after the September additions (Uri, Glarus). A town
+ * page that hid them said "0 flea markets" over a town that has two; listing
+ * them with their rhythm line is the honest answer and the useful one.
+ */
+export function undatedMarkets(markets: Market[]): Market[] {
+  return markets
+    .filter((market) => withinHorizon([market.next, ...market.upcoming].filter(Boolean) as Occurrence[]).length === 0)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
  * How many dates a market has inside the horizon.
  *
  * A market row stands for all of them, so anything that used to count rows —

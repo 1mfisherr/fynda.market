@@ -14,7 +14,7 @@ import PillList from '../../../components/PillList.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
-import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets } from '../../../lib/lists';
+import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets, undatedMarkets } from '../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
 import { DEFAULT_RADIUS } from '../../../lib/geo';
@@ -68,6 +68,9 @@ const s = t(locale);
 const rows = datedRows(markets);
 const checked = lastChecked(rows);
 const list = byMarket(rows);
+/* The rest of the town's markets: no date inside the horizon, listed under
+   their own header with the rhythm line, hidden by any When but All. */
+const undated = undatedMarkets(markets);
 
 const year = new Date().getFullYear();
 
@@ -86,11 +89,11 @@ const year = new Date().getFullYear();
    includes markets with no upcoming date, so the old heading said 17 over
    fourteen rows — invisible while the list was 61 rows of repeats, and
    the first thing anyone would count now that it is one row each. */
-/* …except when the list is empty. Seven towns are between seasons, and "Die 0
-   Flohmärkte in Muttenz 2026" was their title in Google for a fortnight. With
-   nothing upcoming, the count is the markets the town has; the sentence under
-   it says there is no date. */
-const heading = s.cityHeading(list.length || markets.length, city, year);
+/* …and the list now holds every market the town has — dated ones under their
+   day, the rest under "No date yet" — so the count is simply all of them.
+   (Before the undated were listed, "Die 0 Flohmärkte in Muttenz 2026" was a
+   title in Google for a fortnight.) */
+const heading = s.cityHeading(markets.length, city, year);
 
 // The earliest upcoming date, not the first row of an unsorted list: `rows` is
 // in market order, so `.find()` here answered with whichever market happened to
@@ -213,6 +216,14 @@ const jsonLd = {
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
 
+  {undated.length > 0 && (
+    <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
+      <div class="gutter">
+        {undated.map((market) => <MarketRow market={market} locale={locale} showRhythm omitCity showDay={false} />)}
+      </div>
+    </Section>
+  )}
+
   {nearby.length > 0 && (
     <aside data-outside-floor>
       <Section title={s.nearbyHeading(DEFAULT_RADIUS)} lede={s.nearbyLede(city)}>
@@ -293,11 +304,13 @@ const jsonLd = {
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
   const empty = document.getElementById('empty');
+  const undated = document.getElementById('undated');
 
   /**
    * A row is a market, and it filters on the date it displays — so the day a
    * visitor is shown and the day the chip matched can never disagree. There
-   * are no day bands to hide or recount any more.
+   * are no day bands to hide or recount any more. The "No date yet" block has
+   * nothing to say about a chosen day, so it goes with any window but All.
    */
   const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
   const apply = (window: DateWindow) => {
@@ -308,6 +321,7 @@ const jsonLd = {
       row.hidden = !visible;
       if (visible) shown++;
     }
+    if (undated) undated.hidden = window !== 'all';
     // A day whose rows are all hidden hides with them; every row in a group
     // shares its date, so the group is shown or hidden whole.
     for (const group of groups) {

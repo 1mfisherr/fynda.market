@@ -85,9 +85,12 @@ Delfim's Telegram decisions are `admin_actions`: single use, fourteen days, sign
 
 ## Import
 
-**The live v1 Supabase project is the only source** (`V1_DATABASE_URL`). Local backups are stale — read for shape, never import. Order: `import-v1.mjs` (destructive on re-run: deletes what it owns and reloads) → `localise-places.mjs` (idempotent) → `import-images.mjs` (reads only facts with `superseded_by is null`). The importer stops being the right tool the day anything is hand-entered.
+**The live v1 Supabase project is the only source** (`V1_DATABASE_URL`). Local backups are stale — read for shape, never import. Delfim keeps adding markets there; they come across in batches.
 
-Decided at import: cities come from the venue, never a free-text column (39 of 161 disagreed); cantons normalised; market kind inferred from the name for 28 markets, recorded as `inferred`; stock photos dropped — every market has a real file or an illustration.
+- `import-v1.mjs` ran once (2026-08-29). It deletes what it owns and reloads, which the live database no longer survives (organiser links, hand edits, the mail log). Never again.
+- `import-v1-additions.mjs` is the batch tool: a market is new when its slug is not here; cantons, towns, venues and organisers are matched and reused, nothing existing is updated. An organiser arriving with an e-mail gets a link at once. It prints the German-only rhythm lines it added — their en/fr/it go into `texts` by hand before the deploy (the site falls back to German otherwise). Then `import-images.mjs` (photos from the fleafind folder; a photo already in `public/images` satisfies its fact and is left alone) and `FYNDA_DATA_SOURCE=supabase npm run verify`. Both importers read fleafind through `scripts/lib/v1.mjs`; place names and slugs come from `scripts/lib/places.mjs`, which `localise-places.mjs` also uses, so a new canton needs its fr/it/en names there first.
+
+Decided at import: **a town is the postal town on the venue** (Emmenbrücke, not Emmen; Seewen SZ, not Schwyz — what the address says and what people search; one hand exception, Interlaken for a hall in Wilderswil), never a free-text column (39 of 161 disagreed); cantons normalised; market kind inferred from the name, recorded as `inferred`; stock photos dropped — every market has a real file or an illustration.
 
 ## Structured data
 

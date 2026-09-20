@@ -83,6 +83,9 @@ export interface Strings {
   questions: string;
   cancelledThisWeek: string;
   nothingInPeriod: string;
+  /** Over the markets of a town or canton that have no date yet — listed, not hidden. */
+  noDateYet: string;
+  noDateYetLede: string;
 
   /* the radius view — /de/umkreis/, /fr/a-proximite/ and the other two */
   radiusTitle: string;
@@ -346,6 +349,8 @@ const de: Strings = {
   questions: 'Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
   nothingInPeriod: 'Keine Märkte in diesem Zeitraum.',
+  noDateYet: 'Noch ohne Termin',
+  noDateYetLede: 'Der nächste Termin steht noch nicht fest. Sobald er da ist, steht er hier.',
   radiusTitle: 'Flohmärkte in der Nähe — fynda.market',
   radiusDescription: 'Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.',
   radiusHeading: 'Flohmärkte in der Nähe',
@@ -532,6 +537,8 @@ const en: Strings = {
   questions: 'Questions',
   cancelledThisWeek: 'Cancelled this week',
   nothingInPeriod: 'No markets in this period.',
+  noDateYet: 'No date yet',
+  noDateYetLede: 'The next date isn\'t out yet. As soon as it is, it\'s here.',
   radiusTitle: 'Flea markets near me — fynda.market',
   radiusDescription: 'Flea markets near you: choose a radius and a period, sorted by distance.',
   radiusHeading: 'Flea markets near me',
@@ -678,6 +685,9 @@ const en: Strings = {
 // Interface strings are written per language (CLAUDE.md §Settled). A missing
 // key falls back to German rather than to a machine translation, which is both
 // a quality decision and the thing Google's scaled-content policy is about.
+/** "canton de Vaud" but "canton d'Argovie", "d'Obwald", "d'Uri": the elision French does before a vowel. */
+const deFr = (name: string) => (/^[aeiouyàâéèêëîïôöûü]/i.test(name) ? `d'${name}` : `de ${name}`);
+
 const fr: Strings = {
   saved: 'Enregistré',
   skipToContent: 'Passer au contenu',
@@ -721,6 +731,8 @@ const fr: Strings = {
   questions: 'Questions',
   cancelledThisWeek: 'Annulé cette semaine',
   nothingInPeriod: 'Pas de brocante sur cette période.',
+  noDateYet: 'Pas encore de date',
+  noDateYetLede: 'La prochaine date n\'est pas encore connue. Dès qu\'elle l\'est, elle est ici.',
   radiusTitle: 'Brocantes à proximité — fynda.market',
   radiusDescription: 'Brocantes à proximité : choisissez un rayon et une période, triées par distance.',
   radiusHeading: 'Brocantes à proximité',
@@ -778,14 +790,14 @@ const fr: Strings = {
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} à ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prochaine date n'est pas encore confirmée — nous la vérifions et l'ajoutons dès qu'elle est fixée.`,
   regionDescription: (n, towns, region, next) =>
-    `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton de ${region}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
+    `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton ${deFr(region)}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
   cityNext: (name, date, time, venue) =>
     `La prochaine est ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'Pas encore de prochaine date.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Prochaine brocante à ${city} : ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} dans les ${months} prochains mois, avec horaires et annulations.`,
   cityIntro: (city, region) =>
-    `Toutes les brocantes connues à ${city}, canton de ${region} — dates, horaires et annulations. Les dates annulées restent visibles.`,
+    `Toutes les brocantes connues à ${city}, canton ${deFr(region)} — dates, horaires et annulations. Les dates annulées restent visibles.`,
   lastChecked: (date) => `vérifié le ${date}`,
   inNextMonths: (n) => `dans les ${n} prochains mois`,
 
@@ -823,11 +835,11 @@ const fr: Strings = {
   footerAbout: 'À propos',
 
   regionHeading: (n, region, year) =>
-    n === 1 ? `La brocante dans le canton de ${region} ${year}` : `Les ${n} brocantes dans le canton de ${region} ${year}`,
+    n === 1 ? `La brocante dans le canton ${deFr(region)} ${year}` : `Les ${n} brocantes dans le canton ${deFr(region)} ${year}`,
   regionIntro: (region) =>
-    `Toutes les brocantes connues dans le canton de ${region} — par commune et par date, avec les horaires et les annulations. Les dates annulées restent visibles.`,
+    `Toutes les brocantes connues dans le canton ${deFr(region)} — par commune et par date, avec les horaires et les annulations. Les dates annulées restent visibles.`,
 
-  regionLabel: (region) => `Canton de ${region}`,
+  regionLabel: (region) => `Canton ${deFr(region)}`,
 
   marketCount: (n) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
@@ -907,6 +919,8 @@ const it: Strings = {
   questions: 'Domande',
   cancelledThisWeek: 'Cancellato questa settimana',
   nothingInPeriod: 'Nessun mercatino in questo periodo.',
+  noDateYet: 'Ancora senza data',
+  noDateYetLede: 'La prossima data non è ancora nota. Appena c\'è, la trovi qui.',
   radiusTitle: 'Mercatini delle pulci nei dintorni — fynda.market',
   radiusDescription: 'Mercatini delle pulci nei dintorni: scelga raggio e periodo, ordinati per distanza.',
   radiusHeading: 'Mercatini delle pulci nei dintorni',

@@ -94,6 +94,7 @@ await withClient(DB_URL, async (client) => {
   const stock = [];
   const absent = [];
   const copied = new Set();
+  const here = new Set();     // already in public/images, not re-encoded
   const updates = [];
   let before = 0;
   let after = 0;
@@ -102,9 +103,20 @@ await withClient(DB_URL, async (client) => {
     if (!fact.value.startsWith('/images/')) { stock.push(fact.value); continue; }
 
     const file = basename(fact.value);
-    if (!onDisk.has(file)) { absent.push(file); continue; }
-
     const named = rename(file);
+    if (!onDisk.has(file)) {
+      // Not fleafind's to give: a photo the operator supplied straight into
+      // public/images (fourteen of them, 2026-09-05) is already here in every
+      // size. The fact is satisfied; point the market at it and move on.
+      if (existsSync(join(target, named)) && existsSync(join(target, thumbUrl(named)))) {
+        here.add(named);
+        updates.push([fact.entity_id, `/images/${named}`]);
+        continue;
+      }
+      absent.push(file);
+      continue;
+    }
+
     if (!dry && !copied.has(named)) {
       mkdirSync(target, { recursive: true });
       const from = join(source, file);
@@ -128,9 +140,15 @@ await withClient(DB_URL, async (client) => {
   }
 
   if (!dry) {
-    // Every market's photo comes from the facts, so a fact that was deleted or
-    // corrected takes the column with it rather than leaving a stale path.
-    await client.query(`update public.markets set image_url = null where image_url is not null`);
+    // A photo that came through the facts follows them: a fact deleted or
+    // corrected takes the column with it rather than leaving a stale path. A
+    // market with a photo and no fact at all was given it by hand (Alpin-Flohmi
+    // Interlaken, 2026-09-19) and is not this script's to clear.
+    await client.query(
+      `update public.markets set image_url = null
+        where image_url is not null
+          and id in (select entity_id from public.facts where entity_type = 'market' and field = 'image_url')`
+    );
     for (const [id, url] of updates) {
       await client.query(`update public.markets set image_url = $2 where id = $1`, [id, url]);
     }
@@ -139,7 +157,7 @@ await withClient(DB_URL, async (client) => {
   const mb = (bytes) => `${(bytes / 1024 / 1024).toFixed(1)} MB`;
   console.log(
     `  [images] ${copied.size} file(s) ${dry ? 'would be' : ''} written to public/images/, ` +
-      `${updates.length} market(s) pointed at one`
+      `${updates.length} market(s) pointed at one${here.size ? `, ${here.size} of them at a photo already here` : ''}`
   );
   if (after) console.log(`  [images] ${mb(before)} -> ${mb(after)} at width <= ${MAX_WIDTH}, q${QUALITY}`);
   if (stock.length) console.log(`  [images] ${stock.length} stock URL(s) skipped — docs/BRAND.md`);

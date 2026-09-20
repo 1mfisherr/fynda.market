@@ -76,7 +76,9 @@ const where = [market.venueName, omitCity ? undefined : market.city, entry]
 const size = variant === 'feature' ? 720 : 148;
 ---
 
-<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date} data-market={market.id}>
+{/* data-date is always present: the When control reads it, and a row with no
+    date yet ("") is shown under All and hidden under any real window. */}
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id}>
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
   <div class="body">
     <p class="meta">
