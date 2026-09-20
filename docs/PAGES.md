@@ -27,14 +27,14 @@ Which pages exist, what is on each and in what order, and what was deliberately 
 Brand and direct traffic plus `flohmarkt schweiz`. Job: what is on soon, near the big towns, and be credible.
 
 1. Wordmark, saved markets; above 900px also Cities · Cantons · Near me (anchors until a country page exists).
-2. **The claim, a number:** "157 Flohmärkte in der Schweiz — jeder Termin mit Quelle und Prüfdatum." Beside the headline above 900px.
+2. **The brand line**, beside the headline above 900px: "You never know what you'll find. / We find the flea markets. You do the hunting." Under it one quiet line for organisers with the site's pill ("Run a market? Claim your page"). No count, no proof paragraph — the page shows, it does not claim (2026-09-19).
 3. "Your town" shortcut — the town last picked, from browser storage.
 4. **Six markets this weekend** — two feature rows, four compact, one per town, biggest towns first, then a button to all of them. A nationwide list by clock time interleaved 22 towns at random.
 5. **The search control** (`SearchControl.astro`, 2026-09-18) — Where: a sheet of the towns under canton headings, *Near me* first, and a round button that asks for location **on tap, never on load**. When: All · Today · Weekend · Date, the count under it always true. The Show button's label is the live count and it goes to the town page carrying the date. No free text (fact 2), no radius without a point. It is the site's only place-chooser.
 6. Newsletter, then organiser CTA, sharing a row above 900px; only the newsletter button is filled — two loud asks are none.
 7. Cancelled this week — only when something was.
 8. **Towns, weighted by count** (`PlaceCloud`, shared with the canton page): all towns alphabetical, four weight steps, the count only above one. 32 of 55 towns have one market.
-9. Cantons as pills · five market types (what teaches the row colours) · where the data comes from, with live counts · FAQ in `<details>`, answers in the HTML, folded at every width.
+9. Cantons as pills · five market types (what teaches the row colours) · four questions in `<details>`, answers in the HTML, folded at every width. The "where our data comes from" block is gone (2026-09-19): every date carries its own stamp, which is the whole argument.
 10. Footer: forms, legal, saved, languages. No town list — that is block 8 again, and a bare link list is the doorway shape.
 
 Not here: a map, a big search field, a newsletter above the fold (1.1% conversion), date chips (six rows need none), "all N dates this month" (a month page does not exist). Measured by click-through into market pages.
@@ -47,12 +47,12 @@ Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm 
 2. Kind and town, then the name.
 3. **The status line in words** — *Heute · läuft gerade · endet in 6 Std.* Today and tomorrow resolve in the build; "running now" and hours left in the browser. Without JavaScript it still says Heute and the times.
 4. Cancellation notice with the reason, when it applies.
-5. **The decision strip:** rhythm, upcoming-date count, distance once the town picker stores coordinates; each segment only when it exists. Under it **the check stamp, the one line that never disappears** — "Aus öffentlicher Quelle" when nothing better.
+5. **The decision strip:** rhythm, upcoming-date count (cancelled dates not counted), distance once the town picker stores coordinates; each segment only when it exists. Under it **the check stamp, the one line that never disappears**, in one grammar: "Checked 19 Sep" · "Confirmed by the organiser, 19 Sep" (accent) · "Not confirmed yet".
 6. **Directions, primary** (55% of outbound clicks) · **Organiser website, secondary** (45%).
-7. All upcoming dates with status — visible content, one `Event` in markup.
+7. All upcoming dates — visible content, one `Event` in markup. A row carries a word only when it is an exception: Today, Cancelled, Provisional, Not confirmed yet, Confirmed by the organiser; an ordinary checked date says nothing, the stamp above said it (2026-09-19). A date in another year shows the year.
 8. Address, times.
-9. **"Is this your market?"** — on every unclaimed market, after the dates: take it over, confirm dates, add a photo, cancel on a rainy morning; no account needed; free (Delfim, 2026-09-16). A claimed market shows "Vom Veranstalter bestätigt am <date>" and one owned line — organiser · ~80 stalls · outdoors · runs in rain — each part only when the fact exists.
-10. Report a correction.
+9. **"Is this your market?"** — on every unclaimed market, after the dates: claim it to confirm dates, add a photo or cancel a day; free, no account needed (Delfim, 2026-09-16). A claimed market shows the organiser stamp and one owned line — organiser · ~80 stalls · outdoors · runs in rain — each part only when the fact exists.
+10. **"Something not right?"** — the report card, same name as the report page and the footer link ("Report a problem").
 
 Not here: related markets (doorway), reviews, ratings, an embedded map, a fee line when it is free, the type legend. Measured by outbound clicks per view; v1 did 87–145%.
 

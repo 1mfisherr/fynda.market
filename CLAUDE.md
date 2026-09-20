@@ -68,6 +68,7 @@ v1 minted a URL per date per locale: one weekly market made 208 pages, 91% of th
 - **`data/*.json` is build output and it is committed.** A fixtures `verify` overwrites it with six markets; `git checkout -- data/` before committing.
 - **Anything in `waitUntil()` fails silently.** Read the Cloudflare log before believing a table is empty or a mail never went.
 - **A changed Cloudflare secret needs a redeploy** to be seen. `ADMIN_SIGNING_SECRET` must be identical on Cloudflare, on GitHub and in `.env.local`, or every organiser link dies.
+- **GitHub's clock is UTC; the site's is Europe/Zurich.** Anything that says "today" — tests, scripts — must read `todayIso()`, or it fails on a Saturday night when Zurich is already Sunday (three red CI runs, 2026-09-19).
 - **Use Supabase's session pooler**, `aws-1-eu-west-1.pooler.supabase.com`. The direct host is IPv6-only.
 - `.claude/rules/` holds the rules for `functions/`, `supabase/migrations/` and `src/styles/`; they load when you touch those files and do not survive compaction.
 
