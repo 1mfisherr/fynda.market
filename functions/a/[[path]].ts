@@ -349,10 +349,10 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
       <li>
         <div class="top">
           <span class="day${off ? ' off' : ''}">${escape(fmt(d.date))}</span>
-          <span class="times open"><input type="time" name="start_${d.id}" value="${hm(d.start_time)}" aria-label="${escape(c.fromLabel)}"> – <input type="time" name="end_${d.id}" value="${hm(d.end_time)}" aria-label="${escape(c.toLabel)}"></span>
+          <span class="quiet">${escape(stamp)}</span>
         </div>
         <div class="under">
-          <span class="quiet">${escape(stamp)}</span>
+          <span class="times"><input type="time" name="start_${d.id}" value="${hm(d.start_time)}" aria-label="${escape(c.fromLabel)}"> – <input type="time" name="end_${d.id}" value="${hm(d.end_time)}" aria-label="${escape(c.toLabel)}"></span>
           <span class="acts"><a class="grey" href="/a/${token}/${d.id}/cancelled">${escape(c.cancel)}</a></span>
         </div>
       </li>`;
@@ -360,9 +360,10 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
 
   const blank = (n: number) => `
       <li>
-        <div class="top">
-          <span class="times open"><input type="date" name="new_date_${n}" min="${today()}" aria-label="${escape(c.addDate)}"></span>
-          <span class="times open"><input type="time" name="new_start_${n}" aria-label="${escape(c.fromLabel)}"> – <input type="time" name="new_end_${n}" aria-label="${escape(c.toLabel)}"></span>
+        <div class="top"><span class="quiet">${escape(c.addDate)}</span></div>
+        <div class="under">
+          <span class="times"><input type="date" name="new_date_${n}" min="${today()}" aria-label="${escape(c.addDate)}"></span>
+          <span class="times"><input type="time" name="new_start_${n}" aria-label="${escape(c.fromLabel)}"> – <input type="time" name="new_end_${n}" aria-label="${escape(c.toLabel)}"></span>
         </div>
       </li>`;
 

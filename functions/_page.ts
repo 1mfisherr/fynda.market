@@ -64,9 +64,10 @@ export function page(
   .list { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid #E8E6E2; }
   .list li { padding: 14px 0; border-bottom: 1px solid #E8E6E2; }
   .list .top, .list .under { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .list .top .quiet { text-align: right; flex-shrink: 0; }
   .list .day { font-size: 17px; font-weight: 700; color: #FF4A2B; }
   .list .day.off { color: #75706A; }
-  .list .under { margin-top: 4px; }
+  .list .under { margin-top: 8px; flex-wrap: wrap; }
   .list .acts { display: flex; gap: 16px; font-size: 14px; font-weight: 500; }
   .list .acts a.grey { color: #6E6C68; }
   .times { display: flex; gap: 6px; align-items: center; }
@@ -79,7 +80,7 @@ export function page(
   .actions .btn { margin: 0; }
   .field { margin: 26px 0 0; }
   .field label, .field .lab { display: block; font-size: 12px; font-weight: 500; color: #75706A; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; }
-  .field input[type=text], .field input[type=url], .field input[type=number], .field input[type=date], .field input[type=time] { box-sizing: border-box; width: 100%; padding: 8px 0; border: 0; border-bottom: 1px solid #111110; border-radius: 0; background: transparent; font: inherit; font-size: 20px; font-weight: 700; outline-offset: 4px; }
+  .field input[type=text], .field input[type=url], .field input[type=number], .field input[type=date], .field input[type=time] { box-sizing: border-box; width: 100%; padding: 8px 0; border: 0; border-bottom: 1px solid #111110; border-radius: 0; background: transparent; font: inherit; font-size: 18px; font-weight: 700; outline-offset: 4px; text-overflow: ellipsis; }
   .field input::placeholder, .field textarea::placeholder { color: #B5B2AD; font-weight: 500; }
   .field textarea { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #111110; border-radius: 6px; font: inherit; font-size: 16px; line-height: 1.45; resize: vertical; min-height: 110px; }
   .seg { display: flex; border-top: 1px solid #E8E6E2; border-bottom: 1px solid #E8E6E2; }
