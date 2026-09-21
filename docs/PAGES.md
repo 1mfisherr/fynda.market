@@ -92,6 +92,27 @@ Arriving with `?lat&lng` starts located, `?denied=` refused. `geo_prompt` events
 
 Copy in `src/lib/utility-copy.ts`, legal in `src/lib/legal/`. `noindex`, own content floor of 150.
 
+## Organiser page — `/a/{token}/edit`
+
+A Cloudflare Function, not a static page (`functions/a/[[path]].ts`); in the organiser's own language; `noindex`. Content and copy settled 2026-09-21 from a mockup, Delfim's words: **"the more organisers use it the better the product — this should be our north star."** The look is next; build it from `BRAND.md` like every visitor page.
+
+**The voice is a person writing to a person.** Warm because it is useful, the way Airbnb writes to hosts: "you" and "your", visitors as the third party, a number first, one plain sentence per idea. No walkthroughs of what the system does, no "we're building", no metaphors, and never a weekday unless it is a real date.
+
+Top to bottom, English master (the other three follow it):
+
+| Block | Copy |
+|---|---|
+| Head | eyebrow *Your market's page* · name · town and rhythm · the photo as visitors see it |
+| Opening | *Hello, and thanks for what you do.* / *A market like yours is why people get out of the house. **412 of them** looked at this page last month. Keep it up to date and they'll keep coming.* — the count is real, 30 days, people not crawlers |
+| Next date | *Your next date. Is it still on?* · the date in accent, times, venue · *We last checked this on 19 September.* · **[Yes, it's on]** the one accent button · *Something's changed* as a link · *One tap and the page says you confirmed it today. That's the line people trust.* |
+| Your dates | *Here's everything we have for you. Change what's wrong, add what's missing. If you cancel a date, everyone nearby who signed up for news hears the same day.* · a list: date, times, stamp (*Confirmed 19 Sep* / *Not yet confirmed*), *Change*, *Cancel* (cancel asks once — it mails subscribers) · buttons *Add a date* (one row at a time) and *These are all right* |
+| About the market | *A few things people ask before they come. Fill in what you know and skip the rest.* · **Roughly how many stalls** · **Indoors or out** (Indoors / Outdoors / Both) · **If it rains** (Goes ahead / Cancelled / We decide that morning — hint *"We decide that morning" is fine. People just want to know to check first.*) · **Entry for visitors** · **Your website** · **Where people book a stall** (hint *The question we get asked most. Better they ask you.*) · **Getting there** (placeholder *Bus stop, parking, whatever you tell your own friends*) · **What people find here** — tag chips, hint *Pick a few. It's how someone looking for old records finds you.* · **In your words** — free text in their language, hint *We show them as yours, and we don't touch them.* · **A photo** — *Got one? Reply to our mail with it. It goes up the same week. A phone photo on a busy morning is perfect.* · **[Save]** filled ink, under it *Live on your page within a minute.* |
+| Foot | *This link is yours. Anyone who has it can change the page, so only share it with someone who should.* / *Anything else — the name, the address, the day it runs — just reply to the mail. I read every one.* / *Don't want mail from us? There's a link at the bottom of every one.* / *Delfim* |
+
+Out, on purpose: the name, address and description (four languages; an organiser editing one makes a mess — "in your words" is the safe version), photo upload (mail reply for now), anything about accounts. Two filled buttons on one page, against `BRAND.md`: confirming and saving are different moments and the confirm must not be buried.
+
+New fields this needs that the schema lacks: stall booking (URL or text), getting there, the organiser's own text, tags on this market. The opening's view count reads `analytics_events` for the market, last 30 days, people only.
+
 ---
 
 ## Not built, and why
