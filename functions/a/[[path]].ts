@@ -22,7 +22,7 @@
 
 import { offerDecision, type AdminEnv } from '../_admin';
 import { ipHash } from '../_form';
-import { cancellationMail, dayLabel, sendBatch, type Locale, type MailEnv } from '../_mail';
+import { cancellationMail, dayLabel, sendBatch, TAG, type Locale, type MailEnv } from '../_mail';
 import { organiserFromToken, type Organiser } from '../_organiser';
 import { copyFor, type OrganiserCopy } from '../_organiser-copy';
 import { escape, page } from '../_page';
@@ -308,7 +308,12 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
   const line = await rhythm(env, market, locale, facts?.recurrence_text ?? null);
   const mine = new Set(tagRows.map((r) => r.tags?.key).filter(Boolean));
   const self = `/a/${token}/edit/${market.id}`;
-  const fmt = (iso: string) => dayLabel(locale, iso.slice(0, 10));
+  const fmt = (iso: string) => {
+    const d = iso.slice(0, 10);
+    return d.slice(0, 4) === today().slice(0, 4) ? dayLabel(locale, d) : `${dayLabel(locale, d)} ${d.slice(0, 4)}`;
+  };
+  /* A stamp carries the day and month, not the weekday: "Confirmed 19 September". */
+  const short = (iso: string) => new Intl.DateTimeFormat(TAG[locale], { day: 'numeric', month: 'long' }).format(new Date(iso.slice(0, 10) + 'T12:00:00Z'));
 
   /* The opening: a real number when it is one worth saying. */
   const count = Number(people?.people ?? 0);
@@ -321,8 +326,8 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
     nextBlock = `<div class="card"><h2>${escape(c.nextTitle)}</h2><p class="quiet">${escape(c.nextNone)}</p></div>`;
   } else {
     const stamp = next.origin === 'organiser' && next.confirmed_at
-      ? c.nextConfirmed.replace('%d', fmt(next.confirmed_at))
-      : next.confirmed_at ? c.nextChecked.replace('%d', fmt(next.confirmed_at)) : c.stampNot;
+      ? c.nextConfirmed.replace('%d', short(next.confirmed_at))
+      : next.confirmed_at ? c.nextChecked.replace('%d', short(next.confirmed_at)) : c.stampNot;
     const time = next.start_time ? `${hm(next.start_time)}${next.end_time ? ` – ${hm(next.end_time)}` : ''}` : '';
     nextBlock = `
       <div class="card">
@@ -338,7 +343,7 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
 
   /* Every date: times are inputs on the row, cancel is a link that asks first. */
   const rows = dates.map((d) => {
-    const stamp = d.status === 'confirmed' && d.confirmed_at ? c.stampConfirmed.replace('%d', fmt(d.confirmed_at)) : c.stampNot;
+    const stamp = d.status === 'confirmed' && d.confirmed_at ? c.stampConfirmed.replace('%d', short(d.confirmed_at)) : c.stampNot;
     const off = d.status !== 'confirmed';
     return `
       <li>

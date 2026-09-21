@@ -48,7 +48,7 @@ export function page(
   .eyebrow { font-size: 12px; font-weight: 500; color: #75706A; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; }
   .wide h1 { font-size: clamp(34px, calc(30px + 1.1vw), 49px); letter-spacing: -0.045em; line-height: 1.02; }
   .lede { font-size: clamp(15px, calc(13.4px + 0.42vw), 19.5px); color: #6E6C68; margin: 0 0 20px; }
-  .photo { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; background: #F5F4F2; margin: 0 0 24px; }
+  .photo { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; background: #F5F4F2; margin: 0 0 24px; }
   .why { font-size: clamp(16px, calc(14.3px + 0.45vw), 20.8px); line-height: 1.5; }
   .why p { margin: 0 0 12px; }
   .card { background: #F5F4F2; border-radius: 6px; padding: 22px 20px 20px; margin: 28px 0 0; }

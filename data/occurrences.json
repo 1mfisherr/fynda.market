@@ -95,11 +95,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "brocante-de-misery",
-    "date": "2026-09-20",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "brocante-quai-de-nogent-yverdon",
     "date": "2026-10-02",
     "status": "confirmed"
@@ -247,11 +242,6 @@
   {
     "marketSlug": "floh-und-antikmarkt-wynecenter-buchs",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
-    "date": "2026-09-20",
     "status": "confirmed"
   },
   {
@@ -477,11 +467,6 @@
   {
     "marketSlug": "flohmarkt-emmen",
     "date": "2026-10-31",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-flugplatz-buttwil",
-    "date": "2026-09-20",
     "status": "confirmed"
   },
   {
@@ -776,11 +761,6 @@
   },
   {
     "marketSlug": "flohmarkt-stuecki-basel",
-    "date": "2026-09-20",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-stuecki-basel",
     "date": "2026-10-18",
     "status": "confirmed"
   },
@@ -946,11 +926,6 @@
   },
   {
     "marketSlug": "flohmi-am-see-bern",
-    "date": "2026-09-20",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmi-am-see-bern",
     "date": "2026-10-18",
     "status": "confirmed"
   },
@@ -967,11 +942,6 @@
   {
     "marketSlug": "flohmi-schmittiplatz-pratteln",
     "date": "2026-11-14",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flommbo-flohmarkt-altstaetten",
-    "date": "2026-09-20",
     "status": "confirmed"
   },
   {
@@ -1097,11 +1067,6 @@
   {
     "marketSlug": "kinder-flohmi-schloss-arbon",
     "date": "2026-10-24",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "kinderflohmarkt-gz-bachwiesen",
-    "date": "2026-09-20",
     "status": "confirmed"
   },
   {
@@ -1650,6 +1615,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-rumine-lausanne-mardi",
+    "date": "2027-01-19",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-09-23",
     "status": "confirmed"
@@ -2005,11 +1975,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "mercato-delle-pulci-massagno",
-    "date": "2026-09-20",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "musiker-flohmarkt-zuerich-kronensaal",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -2066,22 +2031,12 @@
   },
   {
     "marketSlug": "quartier-flohmarkt-areal-bach",
-    "date": "2026-09-20",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "quartier-flohmarkt-areal-bach",
     "date": "2026-10-04",
     "status": "confirmed"
   },
   {
     "marketSlug": "quartierflohmarkt-hirzbrunnen",
     "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "quartierflohmi-neu-allschwil",
-    "date": "2026-09-20",
     "status": "confirmed"
   },
   {
@@ -2182,11 +2137,6 @@
   {
     "marketSlug": "strandgut-flohmarkt-neubad-luzern",
     "date": "2026-12-20",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "svuotacantine-ascona",
-    "date": "2026-09-20",
     "status": "confirmed"
   },
   {

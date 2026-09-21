@@ -212,7 +212,7 @@ const escape = (s: string) =>
  * four month names. The BCP-47 tags are the one thing duplicated, and they are
  * the same four `LOCALE` carries.
  */
-const TAG: Record<Locale, string> = {
+export const TAG: Record<Locale, string> = {
   de: 'de-CH', fr: 'fr-CH', it: 'it-CH', en: 'en-GB',
 };
 
