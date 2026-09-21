@@ -400,143 +400,149 @@ export const claimAck = (locale: Locale, market: string) => ack(locale, CLAIM_AC
 /* -------------------------------------------------------------------------- */
 
 /**
- * Sent once. It carries the one thing the organiser must keep: the personal
- * link. There is no login to explain, so the mail explains the link instead —
- * what it opens, why not to forward it, and what will arrive before each date.
- * `%n` is the organiser's name, `%m` the market's.
+ * Sent once. A letter from Delfim, in full sentences: who he is, why he is
+ * writing, what the organiser gains, and the link. Approved line by line on
+ * 2026-09-21 after every shorter draft was rejected — "one tap, no account"
+ * reads as a machine trying to get a sentence in. `%m` is the market's name.
  *
- * Two openings for one mail. `claimed`: Delfim approved their claim, so "%m is
- * yours". `listed`: we imported their address and they never asked, so the
- * mail opens with thanks and says what fynda.market is, and ends with a way
- * out (Delfim, 2026-09-20). Everything after the opening is the same. The
- * voice is the organiser page's (docs/PAGES.md §Organiser page, 2026-09-21):
- * a person writing to a person, signed Delfim.
+ * Two openings for one letter. `claimed`: Delfim approved their claim, so the
+ * page is theirs because they asked. `listed`: we imported their address and
+ * they never asked, so the letter first says who is writing and why, and ends
+ * with a way out (Delfim, 2026-09-20). Everything after the button is shared.
+ * The greeting carries no name: only four of the 63 names on file are a
+ * person's, and "Bonjour Association des Commerçants…" is a machine talking.
  */
 interface OrganiserWelcome {
   subject: string;
-  body: string[];
+  hello: string;
+  /** Before the button; the last line introduces it. */
+  intro: string[];
   button: string;
-  keep: string;
-  photo: string;
+  /** After the button, shared by both kinds. */
+  after: string[];
   listed: { subject: string; intro: string[]; optOut: string };
+  thanks: string;
 }
 
 export type WelcomeKind = 'claimed' | 'listed';
-
 const SIGNOFF = ['Delfim', 'fynda.market'];
 
 const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
   de: {
     subject: '%m auf fynda.market — Ihre Seite',
-    body: [
-      'Guten Tag %n',
-      '%m gehört auf fynda.market jetzt Ihnen. Hier ist die Seite, und dieser Link ist der Weg, sie richtig zu halten:',
-      'Eine Woche vor jedem Termin bekommen Sie eine E-Mail mit drei Knöpfen: findet statt, abgesagt, etwas hat sich geändert. Ein Tipp, und Ihre Seite sagt, dass Sie es bestätigt haben. Das ist die Zeile, der die Leute vertrauen.',
+    hello: 'Guten Tag',
+    intro: [
+      'Sie haben Ihre Seite auf fynda.market angefragt — hier ist sie:',
     ],
     button: 'Meine Seite öffnen',
-    keep: 'Der Link gehört Ihnen. Wer ihn hat, kann die Seite ändern — geben Sie ihn nur weiter, wenn es jemand soll. Verloren? Antworten Sie, und ich schicke einen neuen.',
-    photo: 'Haben Sie ein Foto? Antworten Sie damit. Es ist noch in derselben Woche auf der Seite.',
+    after: [
+      'Darum schreibe ich Ihnen. Besucher vertrauen einem Termin viel mehr, wenn der Veranstalter ihn bestätigt hat, als wenn jemand wie ich ihn von einer Website abgeschrieben hat. Wenn Ihre Seite zeigt, dass Sie ihn geprüft haben, entscheiden sich mehr Leute zu kommen. Und falls Sie einmal absagen müssen, erfahren es durch ein Wort an uns alle in der Nähe, die informiert werden wollten, noch am selben Tag — und nicht erst an Ihrem Tor.',
+      'Die Seite gehört Ihnen. Sie können Termine und Öffnungszeiten korrigieren, angeben, wie viele Stände es gibt, was bei Regen gilt und wo man einen Stand buchen kann. Vor jedem Termin schicke ich Ihnen eine kurze E-Mail mit der Frage, ob er stattfindet, und ein Klick genügt als Antwort.',
+      'Wenn Sie ein Foto Ihres Marktes haben, stelle ich es gern auf die Seite — antworten Sie einfach damit.',
+    ],
     listed: {
-      subject: '%m ist auf fynda.market — hier ist Ihre Seite',
+      subject: '%m auf fynda.market — Ihre Seite',
       intro: [
-        'Danke für das, was Sie tun. Ein Markt wie Ihrer ist der Grund, warum Leute aus dem Haus gehen.',
-        'fynda.market ist, wo sie den nächsten suchen. %m ist dort — Termine, Adresse, Öffnungszeiten, von Ihrer Website übernommen. Hier ist die Seite, und dieser Link ist der Weg, sie richtig zu halten:',
+        'Mein Name ist Delfim. Ich betreibe fynda.market, eine Website, mit der Leute in der Schweiz einen Flohmarkt in ihrer Nähe finden. Ich habe sie gebaut, weil ich selbst auf Märkte gehe und die Enttäuschung kenne, irgendwohin zu fahren und dann zu erfahren, dass abgesagt wurde.',
+        '%m ist auf der Website aufgeführt, mit den Terminen und Öffnungszeiten, die ich auf Ihrer Website gefunden habe. Ich wollte, dass Sie das wissen, und Ihnen die Seite geben:',
       ],
-      optOut: 'Keine E-Mails von uns? Ein Wort als Antwort genügt, und ich schreibe nicht mehr.',
+      optOut: 'Und wenn Sie lieber nichts mehr von mir hören möchten, antworten Sie und sagen es mir, dann schreibe ich nicht mehr.',
     },
+    thanks: 'Danke, dass Sie einen Markt organisieren. Es ist mehr Arbeit, als die meisten ahnen.',
   },
   fr: {
     subject: '%m sur fynda.market — votre page',
-    body: [
-      'Bonjour %n',
-      "%m est désormais à vous sur fynda.market. Voici la page, et ce lien est votre moyen de la garder juste :",
-      "Une semaine avant chaque date, vous recevez un e-mail avec trois boutons : a lieu, annulé, quelque chose a changé. Un clic, et votre page dit que vous l'avez confirmé. C'est la ligne à laquelle les gens font confiance.",
+    hello: 'Bonjour',
+    intro: [
+      'Vous avez demandé votre page sur fynda.market — la voici :',
     ],
     button: 'Ouvrir ma page',
-    keep: "Ce lien est le vôtre. Quiconque l'a peut modifier la page — ne le partagez qu'avec quelqu'un qui doit l'avoir. Perdu ? Répondez, et je vous en envoie un nouveau.",
-    photo: 'Vous avez une photo ? Répondez avec. Elle est en ligne la semaine même.',
+    after: [
+      "Voici pourquoi je vous écris. Les visiteurs font bien plus confiance à une date lorsque l'organisateur l'a confirmée que lorsque quelqu'un comme moi l'a recopiée d'un site. Quand votre page montre que vous l'avez vérifiée, plus de gens décident de venir. Et si un jour vous devez annuler, un mot à nous suffit pour que tous ceux des environs qui ont demandé à être tenus au courant l'apprennent le jour même, plutôt qu'à votre porte.",
+      "La page est à vous. Vous pouvez corriger les dates et les horaires, indiquer combien il y a de stands, ce qui se passe en cas de pluie et où l'on peut réserver un stand. Avant chaque date, je vous enverrai un court e-mail pour demander si elle a toujours lieu, et un clic suffit pour répondre.",
+      "Si vous avez une photo du marché, je la mettrai volontiers sur la page — répondez simplement avec.",
+    ],
     listed: {
-      subject: '%m est sur fynda.market — voici votre page',
+      subject: '%m sur fynda.market — votre page',
       intro: [
-        "Merci pour ce que vous faites. Un marché comme le vôtre, c'est ce qui fait sortir les gens de chez eux.",
-        "fynda.market, c'est là qu'ils cherchent le prochain. %m y est — dates, adresse, horaires, repris de votre site. Voici la page, et ce lien est votre moyen de la garder juste :",
+        "Je m'appelle Delfim. Je m'occupe de fynda.market, un site qui aide les gens en Suisse à trouver une brocante près de chez eux. Je l'ai créé parce que je vais moi-même aux marchés, et que je connais la déception de faire la route pour apprendre sur place que c'était annulé.",
+        "%m figure sur le site, avec les dates et les horaires que j'ai trouvés sur votre site. Je tenais à vous le dire, et à vous donner la page :",
       ],
-      optOut: "Pas d'e-mails de notre part ? Un mot en réponse suffit, et je ne vous écrirai plus.",
+      optOut: "Et si vous préférez ne plus avoir de mes nouvelles, répondez-moi pour me le dire, et je ne vous écrirai plus.",
     },
+    thanks: "Merci d'organiser un marché. C'est plus de travail que la plupart des gens ne l'imaginent.",
   },
   it: {
     subject: '%m su fynda.market — la tua pagina',
-    body: [
-      'Ciao %n',
-      '%m su fynda.market ora è tuo. Ecco la pagina, e questo link è il modo per tenerla giusta:',
-      "Una settimana prima di ogni data ricevi un'e-mail con tre pulsanti: si fa, annullato, è cambiato qualcosa. Un tocco, e la tua pagina dice che l'hai confermato. È la riga di cui la gente si fida.",
+    hello: 'Ciao',
+    intro: [
+      'Hai chiesto la tua pagina su fynda.market — eccola:',
     ],
     button: 'Apri la mia pagina',
-    keep: 'Il link è tuo. Chiunque lo abbia può modificare la pagina — passalo solo a chi deve averlo. Perso? Rispondi, e te ne mando uno nuovo.',
-    photo: 'Hai una foto? Rispondi allegandola. È online la settimana stessa.',
+    after: [
+      "Ecco perché ti scrivo. I visitatori si fidano molto di più di una data quando l'ha confermata l'organizzatore che quando uno come me l'ha copiata da un sito. Quando la tua pagina mostra che l'hai verificata, più persone decidono di venire. E se un giorno dovessi annullare, basta dircelo perché tutti nei dintorni che hanno chiesto di essere avvisati lo sappiano il giorno stesso, invece che davanti al tuo cancello.",
+      'La pagina è tua. Puoi correggere date e orari, dire quante bancarelle ci sono, cosa succede se piove e dove si può prenotare una bancarella. Prima di ogni data ti manderò una breve e-mail per chiederti se si fa ancora, e basta un clic per rispondere.',
+      'Se hai una foto del mercatino, la metto volentieri sulla pagina — rispondi semplicemente allegandola.',
+    ],
     listed: {
-      subject: '%m è su fynda.market — ecco la tua pagina',
+      subject: '%m su fynda.market — la tua pagina',
       intro: [
-        'Grazie per quello che fai. Un mercatino come il tuo è il motivo per cui la gente esce di casa.',
-        'fynda.market è dove cercano il prossimo. %m è lì — date, indirizzo, orari, presi dal tuo sito. Ecco la pagina, e questo link è il modo per tenerla giusta:',
+        "Mi chiamo Delfim. Gestisco fynda.market, un sito che aiuta le persone in Svizzera a trovare un mercatino delle pulci vicino a loro. L'ho creato perché ai mercatini ci vado anch'io, e conosco la delusione di arrivare sul posto e scoprire che era stato annullato.",
+        '%m è sul sito, con le date e gli orari che ho trovato sul tuo sito. Volevo che lo sapessi, e darti la pagina:',
       ],
-      optOut: 'Niente e-mail da noi? Basta una parola in risposta, e non ti scrivo più.',
+      optOut: 'E se preferisci non sentirmi più, rispondimi e dimmelo: non ti scriverò più.',
     },
+    thanks: 'Grazie per organizzare un mercatino. È più lavoro di quanto la maggior parte della gente immagini.',
   },
   en: {
     subject: '%m on fynda.market — your page',
-    body: [
-      'Hello %n',
-      "%m is yours on fynda.market. Here's the page, and this link is how you keep it right:",
-      "A week before each date you get a mail with three buttons: it's on, cancelled, something's changed. One tap and your page says you confirmed it. That's the line people trust.",
+    hello: 'Hello',
+    intro: [
+      'You asked for your page on fynda.market — here it is:',
     ],
     button: 'Open my page',
-    keep: "The link is yours. Anyone who has it can change the page, so only share it with someone who should. Lost it? Reply, and I'll send a new one.",
-    photo: 'Got a photo? Reply with it. It goes up the same week.',
+    after: [
+      "This is why I'm writing. Visitors trust a date far more when the organiser has confirmed it than when someone like me has copied it from a website. When your page shows that you have checked it, more people decide to come. And if you ever have to cancel, telling us means that everyone nearby who asked to be kept informed finds out the same day, rather than at your gate.",
+      "The page is yours. You can correct the dates and hours, say how many stalls there are, what happens when it rains, and where people can book a stall. Before each date I'll send you a short e-mail asking whether it's still on, and one click is enough to answer.",
+      'If you have a photo of the market, I would be glad to put it on the page — just reply with it.',
+    ],
     listed: {
-      subject: "%m is on fynda.market — here's your page",
+      subject: '%m on fynda.market — your page',
       intro: [
-        'Thanks for what you do. A market like yours is why people get out of the house.',
-        "fynda.market is where they look for the next one. %m is on it — dates, address, opening times, taken from your website. Here's the page, and this link is how you keep it right:",
+        "My name is Delfim. I run fynda.market, a site that helps people in Switzerland find a flea market near them. I built it because I go to markets myself, and I know the disappointment of driving somewhere and finding out it was cancelled.",
+        '%m is listed on the site, with the dates and opening hours I found on your website. I wanted you to know, and to give you the page:',
       ],
-      optOut: "Don't want mail from us? Reply with a word and I won't write again.",
+      optOut: "And if you would rather not hear from me, reply and say so, and I won't write again.",
     },
+    thanks: "Thank you for running a market. It's more work than most people realise.",
   },
 };
 
 export function organiserWelcome(
   locale: Locale,
-  name: string,
+  _name: string,
   market: string,
   url: string,
   kind: WelcomeKind = 'claimed'
 ): Omit<Mail, 'to'> {
   const copy = ORGANISER_WELCOME[locale] ?? ORGANISER_WELCOME.en;
-  const fill = (line: string) => line.replace('%n', name).replace('%m', market);
-  // The greeting and the seven-day paragraph are shared; only the opening
-  // differs. The button sits right after the line that introduces it.
-  const [hello, claimedIntro, sevenDays] = copy.body;
-  // "Bonjour Association des Commerçants et Artisans de Carouge" is a machine
-  // talking, and only four of the 63 names on file are a person's. So the
-  // greeting stands alone; the name goes nowhere.
-  const greeting = hello.replace(' %n', '').replace('%n', '').trim();
-  const body = [greeting, ...(kind === 'listed' ? copy.listed.intro : [claimedIntro]).map(fill)];
+  const fill = (line: string) => line.replace('%m', market);
+  const before = [copy.hello, ...(kind === 'listed' ? copy.listed.intro : copy.intro).map(fill)];
+  const after = [...copy.after, ...(kind === 'listed' ? [copy.listed.optOut] : []), copy.thanks];
   const subject = fill(kind === 'listed' ? copy.listed.subject : copy.subject);
-  const tail = kind === 'listed' ? [copy.keep, copy.photo, copy.listed.optOut] : [copy.keep, copy.photo];
 
   const footer = `
   <p style="margin:8px 0 24px;">
     <a href="${url}" style="display:inline-block;padding:14px 20px;background:#16161a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:500;">${escape(copy.button)}</a>
   </p>
-  <p style="margin:0 0 16px;">${escape(fill(sevenDays))}</p>
-  ${tail.map((line) => `<p style="margin:0 0 16px;font-size:14px;color:#6b6b70;">${escape(line)}</p>`).join('')}
+  ${after.map((line) => `<p style="margin:0 0 16px;">${escape(line)}</p>`).join('')}
   <p style="margin:24px 0 0;">${SIGNOFF.map(escape).join('<br>')}</p>
   <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;word-break:break-all;">${escape(url)}</p>`;
 
   return {
     subject,
-    html: column(locale, body, footer),
-    text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.button}: ${url}\n\n${fill(sevenDays)}\n\n${tail.join('\n\n')}\n\n${SIGNOFF.join('\n')}\n`,
+    html: column(locale, before, footer),
+    text: `fynda.market\n\n${before.join('\n\n')}\n\n${copy.button}: ${url}\n\n${after.join('\n\n')}\n\n${SIGNOFF.join('\n')}\n`,
   };
 }
 
