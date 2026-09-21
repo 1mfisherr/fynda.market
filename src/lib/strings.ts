@@ -170,6 +170,9 @@ export interface Strings {
   /** Who runs it. Held for 94% of markets and, until 2026-09-06, only in the
       structured data — a fact we had that nobody could read. */
   hostedBy: (name: string) => string;
+  /** The organiser's own line and where to book a stall — from their page, shown only when set. */
+  fromTheOrganiser: string;
+  bookAStall: string;
 
   /* city page */
   cityHeading: (n: number, city: string, year: number) => string;
@@ -400,6 +403,8 @@ const de: Strings = {
   entryFree: 'frei',
   packUpFrom: (time) => `Ab ${time} wird abgebaut.`,
   hostedBy: (name) => `Veranstaltet von ${name}`,
+  fromTheOrganiser: 'Vom Veranstalter',
+  bookAStall: 'Stand buchen',
 
   cityHeading: (n, city, year) =>
     n === 1 ? `Der Flohmarkt in ${city} ${year}` : `Die ${n} Flohmärkte in ${city} ${year}`,
@@ -588,6 +593,8 @@ const en: Strings = {
   entryFree: 'free',
   packUpFrom: (time) => `Packing up starts at ${time}.`,
   hostedBy: (name) => `Organised by ${name}`,
+  fromTheOrganiser: 'From the organiser',
+  bookAStall: 'Book a stall',
 
   cityHeading: (n, city, year) =>
     n === 1 ? `The flea market in ${city} ${year}` : `The ${n} flea markets in ${city} ${year}`,
@@ -782,6 +789,8 @@ const fr: Strings = {
   entryFree: 'gratuite',
   packUpFrom: (time) => `Démontage à partir de ${time}.`,
   hostedBy: (name) => `Organisé par ${name}`,
+  fromTheOrganiser: "De l'organisateur",
+  bookAStall: 'Réserver un stand',
 
   cityHeading: (n, city, year) =>
     n === 1 ? `La brocante à ${city} ${year}` : `Les ${n} brocantes à ${city} ${year}`,
@@ -970,6 +979,8 @@ const it: Strings = {
   entryFree: 'gratuito',
   packUpFrom: (time) => `Lo smontaggio inizia alle ${time}.`,
   hostedBy: (name) => `Organizzato da ${name}`,
+  fromTheOrganiser: "Dall'organizzatore",
+  bookAStall: 'Prenota una bancarella',
 
   cityHeading: (n, city, year) =>
     n === 1 ? `Il mercatino delle pulci a ${city} ${year}` : `I ${n} mercatini delle pulci a ${city} ${year}`,

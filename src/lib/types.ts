@@ -97,6 +97,11 @@ export interface Market {
   stallCount?: number;
   setting?: 'indoor' | 'outdoor' | 'both';
   rainPolicy?: 'runs' | 'cancelled' | 'decided_on_the_day';
+  /** Where a vendor books a stall: a URL, an address, or a sentence. */
+  stallBooking?: string;
+  /** The organiser's own words, shown as theirs in the language they wrote. */
+  organiserNote?: string;
+  organiserNoteLocale?: string;
   stallCountBadWeather?: number;
   sellerMix?: 'private' | 'mixed' | 'trader' | 'new_goods';
   priceLevel?: 'cheap' | 'flohmarkt' | 'trader';

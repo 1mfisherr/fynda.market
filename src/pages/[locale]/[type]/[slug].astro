@@ -406,6 +406,14 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
         <Section level="sub" id="about"><p class="blurb meta">{market.description}</p></Section>
       )}
 
+      {/* The organiser's own words, in the language they wrote them, on every
+          locale — shown as theirs and never rewritten (PAGES.md §Organiser page). */}
+      {market.organiserNote && (
+        <Section level="sub" title={s.fromTheOrganiser} id="organiser-note">
+          <p class="blurb note gutter" lang={market.organiserNoteLocale}>{market.organiserNote}</p>
+        </Section>
+      )}
+
       {facts.length > 0 && (
         <Section level="sub" title={s.whatToExpect} id="expect">
           <dl class="gutter">{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl>
@@ -482,6 +490,11 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
           own case. */}
       {owned.length > 0 && (
         <p class="host gutter">{owned.join(' · ')}</p>
+      )}
+      {market.stallBooking && (
+        <p class="host gutter">{s.bookAStall}: {/^https?:\/\//i.test(market.stallBooking)
+          ? <a href={market.stallBooking} rel="noopener nofollow" target="_blank">{market.stallBooking.replace(/^https?:\/\/(www\.)?/i, '').replace(/\/$/, '')}</a>
+          : market.stallBooking}</p>
       )}
 
       {/* After the dates, not above them. An organiser looking their own market
@@ -572,6 +585,7 @@ const title = fullTitle.length <= TITLE_MAX ? fullTitle : s.marketTitle(market.n
   h1 { font-size: var(--text-market-name); letter-spacing: var(--tracking-tight); }
 
   .host { font-size: var(--text-small); color: var(--color-grey); }
+  .note { white-space: pre-line; }
 
   /*
     The status line. The one loud thing above the fold, and the only accented

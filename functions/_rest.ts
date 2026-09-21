@@ -2,8 +2,8 @@
  * Reading and changing rows from a Function, as the service role.
  *
  * `_form.ts` has `insertRow` for the one thing a form does. The organiser
- * flow reads, updates and inserts across half a dozen tables, so the three
- * verbs live here once. Every call logs a rejected response: the service role
+ * flow reads, updates, inserts and deletes across half a dozen tables, so
+ * the four verbs live here once. Every call logs a rejected response: the service role
  * bypasses RLS but still needs a GRANT per table and per column, and a missing
  * one answers with an empty result, not an error anywhere a person looks.
  *
@@ -108,6 +108,25 @@ export async function insertOne<T = Record<string, unknown>>(
   } catch (error) {
     console.log(`${table} insert failed`, String(error));
     return null;
+  }
+}
+
+/** Deletes the rows the filter names. Returns whether the call was accepted. */
+export async function deleteRows(env: RestEnv, table: string, filter: string): Promise<boolean> {
+  if (!ready(env)) return false;
+  try {
+    const res = await fetch(`${env.SUPABASE_URL}/rest/v1/${table}?${filter}`, {
+      method: 'DELETE',
+      headers: headers(env, { Prefer: 'return=minimal' }),
+    });
+    if (!res.ok) {
+      console.log(`${table} delete rejected`, res.status, await res.text());
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.log(`${table} delete failed`, String(error));
+    return false;
   }
 }
 

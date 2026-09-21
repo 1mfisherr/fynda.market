@@ -41,6 +41,10 @@ interface Row {
   stall_count: number | null;
   setting: Market['setting'] | null;
   rain_policy: Market['rainPolicy'] | null;
+  stall_booking: string | null;
+  getting_there: string | null;
+  organiser_note: string | null;
+  organiser_note_locale: string | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -83,6 +87,10 @@ const SQL = `
     m.stall_count,
     m.setting,
     m.rain_policy,
+    m.stall_booking,
+    m.getting_there,
+    m.organiser_note,
+    m.organiser_note_locale,
     org.name                                        as organiser_name,
     coalesce(rt.value, m.recurrence_text)           as recurrence_text,
     (
@@ -184,6 +192,10 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         stallCount: row.stall_count ?? undefined,
         setting: row.setting ?? undefined,
         rainPolicy: row.rain_policy ?? undefined,
+        stallBooking: row.stall_booking ?? undefined,
+        gettingThere: row.getting_there ?? undefined,
+        organiserNote: row.organiser_note ?? undefined,
+        organiserNoteLocale: row.organiser_note_locale ?? undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
       };
     });
