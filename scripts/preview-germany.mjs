@@ -32,6 +32,15 @@ if (!ids.length) {
   process.exit(0);
 }
 
+/* A hard kill would skip the `finally` and leave them active for the 03:00
+   build. Catch the interrupt and put them back before going. */
+const off = async () => {
+  await query(`update public.markets set status = 'unverified' where id = any($1::uuid[])`, [ids.map((r) => r.id)]);
+};
+for (const signal of ['SIGINT', 'SIGTERM']) {
+  process.on(signal, async () => { await off(); console.log('Interrupted — switched back.'); process.exit(1); });
+}
+
 console.log(`Switching ${ids.length} German market(s) on…`);
 await query(`update public.markets set status = 'active' where id = any($1::uuid[])`, [ids.map((r) => r.id)]);
 
@@ -40,7 +49,7 @@ try {
   if (run.status !== 0) console.log('\nThe build failed — see above. The markets are being switched back anyway.');
   else spawnSync('node', ['scripts/guardrails.mjs'], { stdio: 'inherit', shell: true });
 } finally {
-  await query(`update public.markets set status = 'unverified' where id = any($1::uuid[])`, [ids.map((r) => r.id)]);
+  await off();
   const left = await query(`select count(*) n from public.markets where id = any($1::uuid[]) and status <> 'unverified'`, [ids.map((r) => r.id)]);
   console.log(`\nSwitched back: ${Number(left[0].n) === 0 ? 'all unverified again' : `${left[0].n} STILL ACTIVE — fix this before the nightly build`}.`);
 }

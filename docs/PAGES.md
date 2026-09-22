@@ -28,7 +28,7 @@ Brand and direct traffic. Job: what is on soon, near the big towns, and be credi
 
 1. Wordmark, saved markets; above 900px also Towns · Near me. The Cantons anchor went 2026-09-22: with a second country the front door has one places block per country, and `#kantone` only exists while there is one.
 2. **The brand line**, beside the headline above 900px: "You never know what you'll find. / We find the flea markets. You do the hunting." Under it one quiet line for organisers with the site's pill ("Run a market? Claim your page"). No count, no proof paragraph — the page shows, it does not claim (2026-09-19).
-3. "Your town" shortcut — the town last picked, from browser storage.
+3. "Your town" shortcut — the town last picked, from browser storage. The same town rides in the **header of every other page** as a pill (`PlacePill.astro`, 2026-09-22): a shortcut, never a second place-chooser, and hidden on the home page because this card already says it.
 4. **Six markets this weekend** — two feature rows, four compact, one per town, biggest towns first, then a button to all of them. A nationwide list by clock time interleaved 22 towns at random.
 5. **The search control** (`SearchControl.astro`, 2026-09-18) — Where: a sheet of the towns under canton headings, *Near me* first, and a round button that asks for location **on tap, never on load**. When: All · Today · Weekend · Date, the count under it always true. The Show button's label is the live count and it goes to the town page carrying the date. No free text (fact 2), no radius without a point. It is the site's only place-chooser.
 6. Newsletter, then organiser CTA, sharing a row above 900px; only the newsletter button is filled — two loud asks are none.

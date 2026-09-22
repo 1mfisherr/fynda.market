@@ -68,6 +68,7 @@ v1 minted a URL per date per locale: one weekly market made 208 pages, 91% of th
 
 - **Every table has RLS on and no policies.** The build connects as the owner; a Function as the service role, which still needs a `GRANT` per table and column. A missing grant is an empty result, not an error.
 - **Verify cannot tell you a migration ran.** CI has no database. After applying one, hit the live endpoint and read the row back.
+- **Never `git add -A`.** Twice now it has swept a scratch file into a commit — `audit.tmp.json` on 2026-09-05, and 560 KB of an agent's scraped HTML (`b.tmp`, `body.tmp`, `sm.xml`, `urls.txt`, `z.tmp`) on 2026-09-22. Name the paths, or `git add -u` plus the new files you meant.
 - **`data/*.json` is build output and it is committed.** A fixtures `verify` overwrites it with six markets; `git checkout -- data/` before committing.
 - **Anything in `waitUntil()` fails silently.** Read the Cloudflare log before believing a table is empty or a mail never went.
 - **A changed Cloudflare secret needs a redeploy** to be seen. `ADMIN_SIGNING_SECRET` must be identical on Cloudflare, on GitHub and in `.env.local`, or every organiser link dies.

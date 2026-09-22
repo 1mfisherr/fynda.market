@@ -1,0 +1,73 @@
+---
+/**
+ * Your town, in the header, on every page.
+ *
+ * The same remembered town `TownShortcut` shows on the home page, carried to
+ * the rest of the site — so a person who has been here before is one tap from
+ * their own town wherever they land, which is usually a market page they
+ * arrived at from Google.
+ *
+ * **It is a shortcut, not a second place-chooser.** The site has exactly one
+ * of those — the SearchControl on the home page and Near me — and a picker in
+ * the header would be the second (the incoherence index.astro already refuses).
+ * A pill that opened a town search on every page was the shape sketched on
+ * 2026-09-22; this is the half of it that does not duplicate anything. To
+ * change town, a person goes home, which the wordmark beside this does.
+ *
+ * Hidden in the HTML and revealed by the browser only where a town is known,
+ * so the page a crawler sees is the page in the template. Nothing is
+ * personalised on the server; there is no server.
+ */
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const s = t(locale);
+---
+<a class="pill" href="/" data-place-pill hidden aria-label={s.yourTown}>
+  <span data-place-name></span>
+</a>
+
+<style>
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    color: var(--color-ink);
+    white-space: nowrap;
+    max-width: 12ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pill:hover { border-color: var(--color-ink); }
+</style>
+
+<script>
+  import { TOWN_KEY, adopt } from '../lib/local-keys';
+
+  const el = document.querySelector<HTMLAnchorElement>('[data-place-pill]');
+  const name = el?.querySelector<HTMLElement>('[data-place-name]');
+  /* The home page already shows the same town as a full-width card. Two links
+     to one place on one page is clutter, so the card wins where it exists. */
+  const cardOnPage = document.querySelector('[data-shortcut]') !== null;
+
+  if (el && name && !cardOnPage) {
+    adopt(TOWN_KEY);
+    try {
+      const saved = JSON.parse(localStorage.getItem(TOWN_KEY) ?? 'null') as
+        { name?: string; href?: string } | null;
+      // Same-origin, root-relative only — never navigate somewhere storage says.
+      if (saved?.name && saved.href?.startsWith('/') && !saved.href.startsWith('//')) {
+        name.textContent = saved.name;
+        el.href = saved.href;
+        el.hidden = false;
+      }
+    } catch { /* nothing remembered, or it is not ours. Stay hidden. */ }
+  }
+</script>

@@ -4,6 +4,7 @@
  * and had already drifted: two of them styled `header` differently.
  */
 import Wordmark from './Wordmark.astro';
+import PlacePill from './PlacePill.astro';
 import { DEFAULT_LOCALE, homePath, localeTag, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
@@ -49,6 +50,8 @@ const sections = [
   </nav>
 
   <div class="lead">
+    {/* Your town, where the browser knows it — src/components/PlacePill.astro. */}
+    <PlacePill locale={locale} />
     {/* Real links, not a script-driven picker: a language switcher that search
         engines cannot follow is how one locale never gets discovered. */}
     {others.length > 0 && (
