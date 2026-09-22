@@ -38,6 +38,9 @@ export function page(
   p { margin: 0 0 16px; }
   .meta { color: #6b6b70; font-size: 14px; }
   .status { color: #FF4A2B; font-weight: 500; }
+  .saved { border-left: 4px solid #FF4A2B; padding: 14px 18px; margin: 0 0 24px; background: #F5F4F2; border-radius: 0 6px 6px 0; }
+  .saved h2 { margin: 0 0 4px; color: #FF4A2B; }
+  .saved p { margin: 0; color: #6E6C68; }
   .btn { display: block; box-sizing: border-box; width: 100%; padding: 14px 16px; margin: 12px 0 0; border: 1px solid #111110; border-radius: 6px; background: #111110; color: #fff; font: inherit; font-weight: 500; text-align: center; text-decoration: none; cursor: pointer; }
   .btn.secondary { background: #fff; color: #111110; }
   /* The organiser page (docs/PAGES.md §Organiser page). Controls are
@@ -83,11 +86,13 @@ export function page(
   .field input[type=text], .field input[type=url], .field input[type=number], .field input[type=date], .field input[type=time] { box-sizing: border-box; width: 100%; padding: 8px 0; border: 0; border-bottom: 1px solid #111110; border-radius: 0; background: transparent; font: inherit; font-size: 18px; font-weight: 700; outline-offset: 4px; text-overflow: ellipsis; }
   .field input::placeholder, .field textarea::placeholder { color: #B5B2AD; font-weight: 500; }
   .field textarea { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #111110; border-radius: 6px; font: inherit; font-size: 16px; line-height: 1.45; resize: vertical; min-height: 110px; }
-  .seg { display: flex; border-top: 1px solid #E8E6E2; border-bottom: 1px solid #E8E6E2; }
-  .seg label { flex: 1; position: relative; display: block; padding: 13px 4px; text-align: center; font-size: 15px; font-weight: 500; color: #6E6C68; cursor: pointer; text-transform: none; letter-spacing: 0; margin: 0; }
+  .seg { display: flex; gap: 8px; }
+  .seg label { flex: 1; position: relative; display: block; padding: 12px 6px; border: 1px solid #C9C6C0; border-radius: 6px; background: #fff; text-align: center; font-size: 15px; font-weight: 500; color: #111110; cursor: pointer; text-transform: none; letter-spacing: 0; margin: 0; }
+  .seg label:hover { border-color: #111110; }
+  .seg label:has(input:checked) { background: #111110; border-color: #111110; color: #fff; font-weight: 700; }
+  .seg label:has(input:focus-visible) { outline: 2px solid #111110; outline-offset: 2px; }
   .seg input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .seg input:checked + span { display: block; margin: -13px -4px; padding: 13px 4px; border-bottom: 2.5px solid #FF4A2B; color: #111110; font-weight: 700; }
-  .seg input:focus-visible + span { outline: 2px solid #111110; outline-offset: -2px; }
+  @media (max-width: 420px) { .seg { flex-direction: column; } }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chips label { position: relative; display: block; height: 38px; line-height: 36px; padding: 0 14px; border: 1px solid #E8E6E2; border-radius: 999px; font-size: 14px; font-weight: 500; color: #111110; cursor: pointer; text-transform: none; letter-spacing: 0; margin: 0; }
   .chips input { position: absolute; opacity: 0; width: 0; height: 0; }

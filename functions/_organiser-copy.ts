@@ -180,7 +180,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: 'Alles andere — der Name, die Adresse, der Tag, an dem er stattfindet — einfach auf die E-Mail antworten. Ich lese jede.',
     footOut: 'Keine E-Mails mehr von uns? Ganz unten in jeder ist ein Link dafür.',
     savedTitle: 'Bestätigt.',
-    savedBody: 'Innert einer Stunde auf Ihrer Seite.',
+    savedBody: 'Danke. Innert einer Stunde steht es auf Ihrer Seite.',
     backToPage: 'Zurück zu Ihrer Seite',
   },
   fr: {
@@ -262,7 +262,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: "Pour tout le reste — le nom, l'adresse, le jour où il a lieu — répondez simplement à l'e-mail. Je lis chacun d'eux.",
     footOut: "Vous ne voulez plus d'e-mails de notre part ? Il y a un lien pour ça en bas de chacun.",
     savedTitle: 'Confirmé.',
-    savedBody: "Sur votre page dans l'heure.",
+    savedBody: "Merci. C'est sur votre page dans l'heure.",
     backToPage: 'Retour à votre page',
   },
   it: {
@@ -344,7 +344,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: "Tutto il resto — il nome, l'indirizzo, il giorno in cui si fa — rispondi semplicemente alla e-mail. Le leggo tutte.",
     footOut: "Non vuoi più e-mail da noi? In fondo a ognuna c'è un link per questo.",
     savedTitle: 'Confermato.',
-    savedBody: "Sulla tua pagina entro un'ora.",
+    savedBody: "Grazie. È sulla tua pagina entro un'ora.",
     backToPage: 'Torna alla tua pagina',
   },
   en: {
@@ -426,7 +426,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: 'Anything else — the name, the address, the day it runs — just reply to the mail. I read every one.',
     footOut: "Don't want mail from us? There's a link at the bottom of every one.",
     savedTitle: 'Confirmed.',
-    savedBody: 'On your page within the hour.',
+    savedBody: 'Thank you. It’s on your page within the hour.',
     backToPage: 'Back to your page',
   },
 };

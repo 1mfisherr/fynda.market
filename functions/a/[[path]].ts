@@ -383,9 +383,9 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
   const photo = facts?.image_url ? `<img class="photo" src="https://fynda.market${escape(facts.image_url)}" alt="" width="1440" height="900">` : '';
 
   const body = `
+    ${justSaved ? `<div class="saved" role="status"><h2>${escape(c.savedTitle)}</h2><p>${escape(c.savedBody)}</p></div>` : ''}
     <p class="eyebrow">${escape(c.eyebrow)}</p>
     <h1>${escape(names.market)}</h1>
-    ${justSaved ? `<p class="status">${escape(c.savedTitle)} ${escape(c.savedBody)}</p>` : ''}
     <p class="lede">${escape([names.town, line].filter(Boolean).join(' · '))}</p>
     <p class="lede" style="margin-top:-12px"><a href="https://fynda.market/${locale}/${MARKET_WORD[locale]}/${market.slug}/" target="_blank" rel="noopener" style="color:#111110;font-weight:500">${escape(c.viewPublic)} ↗</a></p>
     ${photo}
