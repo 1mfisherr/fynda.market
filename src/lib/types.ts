@@ -6,6 +6,8 @@
  * view layer. The database is normalised; a card is not.
  */
 
+import type { CountryCode } from './i18n';
+
 /** Mirrors occurrences.status. Maps 1:1 onto schema.org eventStatus. */
 export type OccurrenceStatus = 'confirmed' | 'tentative' | 'cancelled' | 'unverified';
 
@@ -57,6 +59,8 @@ export interface Market {
   regionSlug: string;
   /** "schweiz", "suisse", "svizzera", "switzerland" — the country in this locale. */
   countrySlug: string;
+  /** 'CH', 'DE'. Which region word the path takes, and which hreflang tag. */
+  countryCode: CountryCode;
   /** IANA zone from the venue. Required for a correct startDate offset. */
   timezone: string;
   venueName: string;

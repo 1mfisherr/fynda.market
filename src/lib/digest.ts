@@ -262,7 +262,7 @@ export function buildDigest(
   const scope = near
     ? s.scopeRadius(near.km, near.city)
     : first
-      ? s.scopeRegion(s.regionLabel(first.region))
+      ? s.scopeRegion(s.regionLabel(first.region, first.countryCode))
       : undefined;
 
   const cut = theirs.length > ownRows.length;
@@ -272,7 +272,7 @@ export function buildDigest(
            where they are, which is the page holding what got cut. */
         href: near
           ? `${nearbyPath(locale)}?lat=${near.lat.toFixed(4)}&lng=${near.lng.toFixed(4)}&km=${near.km}`
-          : regionPath(locale, first.countrySlug, first.regionSlug),
+          : regionPath(locale, first.countryCode, first.countrySlug, first.regionSlug),
         count: theirs.length,
         scope,
       }

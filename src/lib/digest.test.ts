@@ -71,7 +71,7 @@ function market(name: string, city: string, date: string, options: Options = {})
     citySlug: city.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''),
     region: region.charAt(0).toUpperCase() + region.slice(1),
     regionSlug: region,
-    countrySlug: 'schweiz',
+    countrySlug: 'schweiz', countryCode: 'CH',
     timezone: 'Europe/Zurich',
     venueName: 'Platz',
     addressLine: 'Platz 1',

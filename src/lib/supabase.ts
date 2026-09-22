@@ -11,6 +11,7 @@
  */
 
 import pg from 'pg';
+import type { CountryCode } from './i18n';
 import type { Market, MarketKind, Occurrence, OccurrenceStatus } from './types';
 import { requireConnectionString } from './connection-string.ts';
 
@@ -25,6 +26,7 @@ interface Row {
   id: string;
   region_slug: string;
   country_slug: string;
+  country_code: string;
   timezone: string;
   venue_name: string;
   address_line: string;
@@ -73,6 +75,7 @@ const SQL = `
     tr.value                                        as region,
     sr.slug                                         as region_slug,
     sk.slug                                         as country_slug,
+    co.iso2                                         as country_code,
     v.timezone,
     v.name                                          as venue_name,
     v.address_line,
@@ -106,6 +109,7 @@ const SQL = `
   from public.publishable_markets p
   join public.markets m on m.id = p.id
   join public.venues v on v.id = p.venue_id
+  join public.countries co on co.id = p.country_id
   left join public.organisers org on org.id = m.organiser_id
   join public.slugs sc on sc.entity_type = 'city' and sc.entity_id = p.city_id
                       and sc.locale = $1 and sc.is_current
@@ -175,6 +179,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         region: row.region,
         regionSlug: row.region_slug,
         countrySlug: row.country_slug,
+        countryCode: row.country_code as CountryCode,
         timezone: row.timezone,
         venueName: row.venue_name,
         addressLine: row.address_line,

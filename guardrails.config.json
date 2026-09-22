@@ -18,15 +18,15 @@
         "name": "utility", "pattern": "^/(de|fr|it|en)/(melden|newsletter|veranstalter|gemerkt|impressum|datenschutz|nutzungsbedingungen|ueber-uns|signaler|organisateurs|favoris|mentions-legales|confidentialite|conditions-generales|a-propos|segnalare|organizzatori|salvati|note-legali|privacy|condizioni-generali|chi-siamo|report|organisers|saved|imprint|terms|about)/$" },
       { "name": "radius", "pattern": "^/(de|fr|it|en)/(umkreis|a-proximite|nei-dintorni|nearby)/$" },
       { "name": "country", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/$" },
-      { "_comment": "The canton level. A type segment partitions — one URL per canton — where a facet multiplies, which is the distinction the forbid rule below is really about.",
-        "name": "region", "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(kanton|canton|cantone)/[a-z0-9-]+/$" },
+      { "_comment": "The region level: canton in Switzerland, Bundesland in Germany, named as each country names it (src/lib/i18n.ts COUNTRY). A type segment partitions — one URL per region — where a facet multiplies, which is the distinction the forbid rule below is really about.",
+        "name": "region", "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(kanton|canton|cantone|bundesland|state)/[a-z0-9-]+/$" },
       { "name": "region or city", "pattern": "^/(de|fr|it|en)/(?!markt/|marche/|mercato/|market/)[a-z0-9-]+/[a-z0-9-]+/$" }
     ],
     "forbid": [
       {
         "name": "geo x time (killed v1)",
-        "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(?!kanton/|canton/|cantone/)[a-z0-9-]+/[a-z0-9-]+/",
-        "why": "A fourth geography segment is what produced /de/schweiz/winterthur/samstag. Date, weekday and category are filters, not URLs. The canton segment is exempt because it names a level of the tree rather than slicing one."
+        "pattern": "^/(de|fr|it|en)/[a-z0-9-]+/(?!kanton/|canton/|cantone/|bundesland/|state/)[a-z0-9-]+/[a-z0-9-]+/",
+        "why": "A fourth geography segment is what produced /de/schweiz/winterthur/samstag. Date, weekday and category are filters, not URLs. The region segment is exempt because it names a level of the tree rather than slicing one."
       },
       {
         "name": "market x date (killed v1)",

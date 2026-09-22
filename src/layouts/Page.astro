@@ -15,7 +15,7 @@ import Base from './Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, type CountryCode, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props {
@@ -27,16 +27,18 @@ interface Props {
   locale?: Locale;
   /** This page in every other language — see Base.astro. */
   alternates?: { locale: Locale; path: string }[];
+  /** The country this page is about, where it is about one — see Base.astro. */
+  country?: CountryCode;
   /** What the page is about, for the edge counter — see Base.astro. */
   analytics?: { market?: string; city?: string; region?: string; next?: string };
 }
 const {
   title, description, indexable = true, mainId = 'inhalt',
-  locale = DEFAULT_LOCALE, alternates = [], analytics,
+  locale = DEFAULT_LOCALE, alternates = [], country, analytics,
 } = Astro.props;
 const s = t(locale);
 ---
-<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates} analytics={analytics}>
+<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates} country={country} analytics={analytics}>
   <slot name="head" slot="head" />
   <a class="skip button" href={`#${mainId}`}>{s.skipToContent}</a>
   <SiteHeader locale={locale} alternates={alternates} />

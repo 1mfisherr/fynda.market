@@ -13,7 +13,7 @@
  */
 import Wordmark from './Wordmark.astro';
 import SubscribeForm from './SubscribeForm.astro';
-import { DEFAULT_LOCALE, LOCALE, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, LOCALE, localeTag, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { regionOptions } from '../lib/regions';
 import { t } from '../lib/strings';
 
@@ -76,7 +76,7 @@ const legal: { href: string; label: string; cookies?: boolean }[] = [
   {alternates.length > 1 && (
     <nav class="langs gutter" aria-label={s.languageLabel}>
       {alternates.map((alt) => (
-        <a href={alt.path} lang={LOCALE[alt.locale].tag} hreflang={LOCALE[alt.locale].tag}
+        <a href={alt.path} lang={localeTag(alt.locale)} hreflang={localeTag(alt.locale)}
            aria-current={alt.locale === locale ? 'true' : undefined}>{LOCALE[alt.locale].label}</a>
       ))}
     </nav>

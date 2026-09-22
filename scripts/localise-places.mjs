@@ -42,19 +42,31 @@ async function main() {
     const rows = async (sql, params = []) => (await client.query(sql, params)).rows;
 
     const country = (await rows(`select id from public.countries where iso2 = 'CH'`))[0];
+    // Switzerland only. Germany publishes in de and en (src/lib/i18n.ts
+    // COUNTRY), and this script would mint French and Italian slugs for towns
+    // that have no French or Italian page — inventing addresses for pages that
+    // do not exist.
     const regions = await rows(`
       select r.id, t.value as name
         from public.regions r
         join public.texts t on t.entity_type = 'region' and t.entity_id = r.id
-                           and t.locale = 'de' and t.field = 'name'`);
+                           and t.locale = 'de' and t.field = 'name'
+       where r.country_id = $1`, [country.id]);
     const cities = await rows(`
       select c.id, t.value as name
         from public.cities c
+        join public.regions r on r.id = c.region_id
         join public.texts t on t.entity_type = 'city' and t.entity_id = c.id
-                           and t.locale = 'de' and t.field = 'name'`);
+                           and t.locale = 'de' and t.field = 'name'
+       where r.country_id = $1`, [country.id]);
     const markets = await rows(`
-      select entity_id as id, slug from public.slugs
-       where entity_type = 'market' and locale = 'de' and is_current`);
+      select s.entity_id as id, s.slug from public.slugs s
+        join public.markets m on m.id = s.entity_id
+        join public.venues v on v.id = m.venue_id
+        join public.cities c on c.id = v.city_id
+        join public.regions r on r.id = c.region_id
+       where s.entity_type = 'market' and s.locale = 'de' and s.is_current
+         and r.country_id = $1`, [country.id]);
 
     /** What every row should hold: its slug, and its name where it has one. */
     const planned = [];

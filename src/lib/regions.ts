@@ -48,7 +48,7 @@ export async function regionOptions(locale: Locale): Promise<RegionOption[]> {
     counted.set(market.regionSlug, {
       slug: market.regionSlug,
       name: market.region,
-      label: s.regionLabel(market.region),
+      label: s.regionLabel(market.region, market.countryCode),
       markets: 1,
     });
   }

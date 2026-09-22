@@ -16,6 +16,8 @@
  * changes the article too.
  */
 
+import type { CountryCode } from './i18n';
+
 import type { Locale } from './i18n';
 
 export interface Strings {
@@ -189,10 +191,10 @@ export interface Strings {
   /** A market page with no confirmed date still says what it knows. */
   marketNoDateDescription: (kind: string, city: string, venue: string | undefined, rhythm: string | undefined) => string;
   /** The canton description, built from the data like the town one. */
-  regionDescription: (n: number, towns: number, region: string, next?: { name: string; city: string; date: string }) => string;
+  regionDescription: (n: number, towns: number, region: string, code: CountryCode, next?: { name: string; city: string; date: string }) => string;
   cityNext: (name: string, date: string, time: string | undefined, venue: string) => string;
   cityNoDate: string;
-  cityIntro: (city: string, region: string) => string;
+  cityIntro: (city: string, region: string, code: CountryCode) => string;
   /** The search snippet: the city is named because Google bolds the match. */
   cityDescription: (city: string, name: string, date: string, time: string | undefined, venue: string, n: number, months: number) => string;
   lastChecked: (date: string) => string;
@@ -228,11 +230,11 @@ export interface Strings {
   footerAbout: string;
 
   /* canton page */
-  regionHeading: (n: number, region: string, year: number) => string;
-  regionIntro: (region: string) => string;
+  regionHeading: (n: number, region: string, year: number, code: CountryCode) => string;
+  regionIntro: (region: string, code: CountryCode) => string;
   /** "Kanton Luzern". The city of Luzern and the canton share a name — the
    *  label is what tells a link on the city page which one it means. */
-  regionLabel: (region: string) => string;
+  regionLabel: (region: string, code: CountryCode) => string;
 
   /* counts */
   marketCount: (n: number) => string;
@@ -308,6 +310,24 @@ export interface Strings {
   /** "08:00–17:00 Uhr" in German; English has no trailing word. */
   timeSuffix: string;
 }
+
+/* --------------------------------------------------------------------------
+ * How a region is named in a sentence, per country.
+ *
+ * "im Kanton Zürich" is how a Swiss person says it; "im Bundesland Bayern" is
+ * not how anyone says it — in Germany the Land carries no noun ("Flohmärkte in
+ * Bayern"), which is also the query people type. So the country decides the
+ * whole phrase, not a swapped-in noun.
+ * ------------------------------------------------------------------------ */
+
+const inRegionDe = (region: string, code: CountryCode) =>
+  (code === 'CH' ? `im Kanton ${region}` : `in ${region}`);
+const regionLabelDe = (region: string, code: CountryCode) =>
+  (code === 'CH' ? `Kanton ${region}` : region);
+const inRegionEn = (region: string, code: CountryCode) =>
+  (code === 'CH' ? `in the canton of ${region}` : `in ${region}`);
+const regionLabelEn = (region: string, code: CountryCode) =>
+  (code === 'CH' ? `Canton of ${region}` : region);
 
 const de: Strings = {
   saved: 'Gemerkt',
@@ -412,15 +432,15 @@ const de: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Termine ${year}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}Der nächste Termin ist noch nicht bestätigt — wir prüfen ihn und tragen ihn ein, sobald er feststeht.`,
-  regionDescription: (n, towns, region, next) =>
-    `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} im Kanton ${region}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
+  regionDescription: (n, towns, region, code, next) =>
+    `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} ${inRegionDe(region, code)}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
   cityNext: (name, date, time, venue) =>
     `Der nächste ist ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}.`,
   cityNoDate: 'Noch kein nächster Termin.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Nächster Flohmarkt in ${city}: ${name} am ${date}${time ? `, ${time} Uhr` : ''}, ${venue}. ${n} ${n === 1 ? 'Termin' : 'Termine'} in den nächsten ${months} Monaten, mit Öffnungszeiten und Absagen.`,
-  cityIntro: (city, region) =>
-    `Alle bekannten Flohmärkte in ${city}, Kanton ${region} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
+  cityIntro: (city, region, code) =>
+    `Alle bekannten Flohmärkte in ${city}, ${regionLabelDe(region, code)} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
   lastChecked: (date) => `geprüft am ${date}`,
   inNextMonths: (n) => `in den nächsten ${n} Monaten`,
 
@@ -457,12 +477,12 @@ const de: Strings = {
   cookieEssential: 'Nur nötige',
   footerAbout: 'Über fynda.market',
 
-  regionHeading: (n, region, year) =>
-    n === 1 ? `Der Flohmarkt im Kanton ${region} ${year}` : `Die ${n} Flohmärkte im Kanton ${region} ${year}`,
-  regionIntro: (region) =>
-    `Alle bekannten Flohmärkte im Kanton ${region} — nach Ort und Datum, mit Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
+  regionHeading: (n, region, year, code) =>
+    n === 1 ? `Der Flohmarkt ${inRegionDe(region, code)} ${year}` : `Die ${n} Flohmärkte ${inRegionDe(region, code)} ${year}`,
+  regionIntro: (region, code) =>
+    `Alle bekannten Flohmärkte ${inRegionDe(region, code)} — nach Ort und Datum, mit Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
 
-  regionLabel: (region) => `Kanton ${region}`,
+  regionLabel: regionLabelDe,
 
   marketCount: (n) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`,
@@ -602,15 +622,15 @@ const en: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}The next date is not confirmed yet — we check and list it as soon as it is set.`,
-  regionDescription: (n, towns, region, next) =>
-    `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} in the canton of ${region}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
+  regionDescription: (n, towns, region, code, next) =>
+    `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} ${inRegionEn(region, code)}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
   cityNext: (name, date, time, venue) =>
     `The next one is ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}.`,
   cityNoDate: 'No next date yet.',
   cityDescription: (city, name, date, time, venue, n, months) =>
     `Next flea market in ${city}: ${name} on ${date}${time ? `, ${time}` : ''}, ${venue}. ${n} ${n === 1 ? 'date' : 'dates'} in the next ${months} months, with opening hours and cancellations.`,
-  cityIntro: (city, region) =>
-    `Every known flea market in ${city}, canton of ${region} — with dates, opening hours and cancellations. Cancelled dates stay visible.`,
+  cityIntro: (city, region, code) =>
+    `Every known flea market in ${city}, ${code === 'CH' ? `canton of ${region}` : region} — with dates, opening hours and cancellations. Cancelled dates stay visible.`,
   lastChecked: (date) => `checked ${date}`,
   inNextMonths: (n) => `in the next ${n} months`,
 
@@ -647,12 +667,12 @@ const en: Strings = {
   cookieEssential: 'Only essential',
   footerAbout: 'About fynda.market',
 
-  regionHeading: (n, region, year) =>
-    n === 1 ? `The flea market in the canton of ${region} ${year}` : `The ${n} flea markets in the canton of ${region} ${year}`,
-  regionIntro: (region) =>
-    `Every known flea market in the canton of ${region} — by town and by date, with opening hours and cancellations. Cancelled dates stay visible.`,
+  regionHeading: (n, region, year, code) =>
+    n === 1 ? `The flea market ${inRegionEn(region, code)} ${year}` : `The ${n} flea markets ${inRegionEn(region, code)} ${year}`,
+  regionIntro: (region, code) =>
+    `Every known flea market ${inRegionEn(region, code)} — by town and by date, with opening hours and cancellations. Cancelled dates stay visible.`,
 
-  regionLabel: (region) => `Canton of ${region}`,
+  regionLabel: regionLabelEn,
 
   marketCount: (n) => `${n} ${n === 1 ? 'market' : 'markets'}`,
   dateCount: (n) => `${n} ${n === 1 ? 'date' : 'dates'}`,
@@ -798,7 +818,7 @@ const fr: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} à ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prochaine date n'est pas encore confirmée — nous la vérifions et l'ajoutons dès qu'elle est fixée.`,
-  regionDescription: (n, towns, region, next) =>
+  regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton ${deFr(region)}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
   cityNext: (name, date, time, venue) =>
     `La prochaine est ${name}, le ${date}${time ? `, ${time}` : ''}, ${venue}.`,
@@ -988,7 +1008,7 @@ const it: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Date ${year}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} a ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prossima data non è ancora confermata — la verifichiamo e la inseriamo appena fissata.`,
-  regionDescription: (n, towns, region, next) =>
+  regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari e cancellazioni.`,
   cityNext: (name, date, time, venue) =>
     `Il prossimo è ${name} il ${date}${time ? `, ${time}` : ''}, ${venue}.`,
@@ -1074,6 +1094,7 @@ const it: Strings = {
   ],
   timeSuffix: '',
 };
+
 
 export const STRINGS: Record<Locale, Strings> = { de, fr, it, en };
 

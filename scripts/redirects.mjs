@@ -15,7 +15,7 @@
  */
 
 import { withClient, DB_URL } from './db.mjs';
-import { LOCALE } from '../src/lib/i18n.ts';
+import { LOCALE, regionSegment } from '../src/lib/i18n.ts';
 
 /**
  * Retired slugs, with the slug that replaced them, for entities that still have
@@ -23,7 +23,17 @@ import { LOCALE } from '../src/lib/i18n.ts';
  * two cannot disagree about which places exist.
  */
 const RETIRED = `
-  select s.entity_type, s.entity_id, s.locale, s.slug as was, cur.slug as now
+  select s.entity_type, s.entity_id, s.locale, s.slug as was, cur.slug as now,
+         case s.entity_type
+           when 'country' then s.entity_id
+           when 'region'  then (select r.country_id from public.regions r where r.id = s.entity_id)
+           when 'city'    then (select r.country_id from public.regions r
+                                  join public.cities c on c.region_id = r.id where c.id = s.entity_id)
+           when 'market'  then (select r.country_id from public.regions r
+                                  join public.cities c on c.region_id = r.id
+                                  join public.venues v on v.city_id = c.id
+                                  join public.markets m on m.venue_id = v.id where m.id = s.entity_id)
+         end                                          as country_id
     from public.slugs s
     join public.slugs cur
       on cur.entity_type = s.entity_type and cur.entity_id = s.entity_id
@@ -39,10 +49,15 @@ const RETIRED = `
    order by s.entity_type, s.locale, s.slug
 `;
 
+/* Keyed by country as well as locale: `/de/` now carries both `schweiz` and
+   `deutschland`, and a Swiss redirect that picked up Germany's slug would send
+   a live Swiss address into a 404. */
 const COUNTRY_NOW = `
-  select locale, slug from public.slugs
+  select entity_id as country_id, locale, slug from public.slugs
    where entity_type = 'country' and is_current
 `;
+
+const ISO2 = `select id, iso2 from public.countries`;
 
 /**
  * Pages we have moved by hand, as opposed to places renamed in the database.
@@ -62,7 +77,8 @@ export async function buildRedirects() {
   return withClient(DB_URL, async (client) => {
     const rows = async (sql) => (await client.query(sql)).rows;
 
-    const countryNow = new Map((await rows(COUNTRY_NOW)).map((r) => [r.locale, r.slug]));
+    const countryNow = new Map((await rows(COUNTRY_NOW)).map((r) => [`${r.country_id}|${r.locale}`, r.slug]));
+    const iso2 = new Map((await rows(ISO2)).map((r) => [r.id, r.iso2]));
     const retired = await rows(RETIRED);
 
     const exact = [...MOVED];
@@ -70,14 +86,15 @@ export async function buildRedirects() {
 
     for (const r of retired) {
       const { locale, was, now } = r;
-      const country = countryNow.get(locale);
+      const country = countryNow.get(`${r.country_id}|${locale}`);
+      const code = iso2.get(r.country_id);
       const segments = LOCALE[locale]?.segments;
-      if (!segments || !country) continue;
+      if (!segments || !country || !code) continue;
 
       if (r.entity_type === 'city') {
         exact.push({ from: `/${locale}/${country}/${was}/`, to: `/${locale}/${country}/${now}/` });
       } else if (r.entity_type === 'region') {
-        const seg = segments.region;
+        const seg = regionSegment(locale, code);
         exact.push({
           from: `/${locale}/${country}/${seg}/${was}/`,
           to: `/${locale}/${country}/${seg}/${now}/`,

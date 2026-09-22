@@ -35,25 +35,83 @@ export const LOCALES: Locale[] = ['de', 'fr', 'it', 'en'];
 export const DEFAULT_LOCALE: Locale = 'de';
 
 export interface LocaleInfo {
-  /** The BCP 47 tag for `<html lang>` and hreflang. */
-  tag: string;
   /** How this language names itself, for the switcher. */
   label: string;
-  /** The fixed URL segments, in this language. */
+  /** The market segment, in this language. The same word in every country. */
   segments: {
     market: string;
-    region: string;
   };
 }
 
 export const LOCALE: Record<Locale, LocaleInfo> = {
-  // de-CH, not de: the content is Swiss German usage (ss for ß, "Velo"), and
-  // the German-for-Germany pages will be a different cluster member.
-  de: { tag: 'de-CH', label: 'Deutsch', segments: { market: 'markt', region: 'kanton' } },
-  fr: { tag: 'fr-CH', label: 'Français', segments: { market: 'marche', region: 'canton' } },
-  it: { tag: 'it-CH', label: 'Italiano', segments: { market: 'mercato', region: 'cantone' } },
-  en: { tag: 'en', label: 'English', segments: { market: 'market', region: 'canton' } },
+  de: { label: 'Deutsch', segments: { market: 'markt' } },
+  fr: { label: 'Français', segments: { market: 'marche' } },
+  it: { label: 'Italiano', segments: { market: 'mercato' } },
+  en: { label: 'English', segments: { market: 'market' } },
 };
+
+/* --------------------------------------------------------------------------
+ * Countries
+ *
+ * A locale alone stopped being enough the day Germany arrived: `/de/` serves
+ * Zürich and München, and the two are not the same German. Three things
+ * therefore hang off the country rather than the locale.
+ *
+ * WHICH LOCALES IT IS PUBLISHED IN. Switzerland has four; every other country
+ * has its own plus English (CLAUDE.md). Nothing here enforces it — the build
+ * joins slugs and names in the page's locale, so a country simply has no pages
+ * in a locale nobody wrote. This list is what the rest of the code reads when
+ * it needs to know without asking the database.
+ *
+ * THE REGION WORD IN THE PATH. `kanton` in Switzerland, `bundesland` in
+ * Germany — a level of the tree, named as that country names it, in the page's
+ * own language. `/de/deutschland/kanton/bayern/` would be nonsense.
+ *
+ * THE HREFLANG TAG. The Zürich page and the München page are both German and
+ * both ours, and Google has no other way to tell a Swiss reader's page from a
+ * German reader's. de-CH and de-DE say it. English stays plain `en`: the two
+ * English pages are about different places, never alternates of each other, so
+ * there is nothing for a region to disambiguate.
+ * ------------------------------------------------------------------------ */
+
+export type CountryCode = 'CH' | 'DE';
+
+export interface CountryInfo {
+  locales: Locale[];
+  /** The region segment of the path, per locale. */
+  region: Partial<Record<Locale, string>>;
+  /** The BCP 47 tag for `<html lang>` and hreflang, per locale. */
+  tag: Partial<Record<Locale, string>>;
+}
+
+export const COUNTRY: Record<CountryCode, CountryInfo> = {
+  CH: {
+    locales: ['de', 'fr', 'it', 'en'],
+    region: { de: 'kanton', fr: 'canton', it: 'cantone', en: 'canton' },
+    tag: { de: 'de-CH', fr: 'fr-CH', it: 'it-CH', en: 'en' },
+  },
+  DE: {
+    locales: ['de', 'en'],
+    region: { de: 'bundesland', en: 'state' },
+    tag: { de: 'de-DE', en: 'en' },
+  },
+};
+
+/** Every region word any country uses, for the guardrails and the route shape. */
+export const REGION_SEGMENTS = [
+  ...new Set(Object.values(COUNTRY).flatMap((c) => Object.values(c.region))),
+];
+
+/** The region word for this page. Falls back to English, never to a guess. */
+export const regionSegment = (locale: Locale, country: CountryCode) =>
+  COUNTRY[country].region[locale] ?? COUNTRY[country].region.en ?? 'region';
+
+/** The tag `<html lang>` and hreflang carry. Country-neutral pages pass none. */
+export const localeTag = (locale: Locale, country?: CountryCode) =>
+  (country && COUNTRY[country].tag[locale]) ?? DEFAULT_TAG[locale];
+
+/** What a page with no country says — the home page, the forms, the legal text. */
+const DEFAULT_TAG: Record<Locale, string> = { de: 'de', fr: 'fr', it: 'it', en: 'en' };
 
 export const isLocale = (value: string): value is Locale => (LOCALES as string[]).includes(value);
 
@@ -72,8 +130,8 @@ export const countryPath = (locale: Locale, country: string) => `/${locale}/${co
 export const cityPath = (locale: Locale, country: string, city: string) =>
   `/${locale}/${country}/${city}/`;
 
-export const regionPath = (locale: Locale, country: string, region: string) =>
-  `/${locale}/${country}/${LOCALE[locale].segments.region}/${region}/`;
+export const regionPath = (locale: Locale, code: CountryCode, country: string, region: string) =>
+  `/${locale}/${country}/${regionSegment(locale, code)}/${region}/`;
 
 /** Everything before the slug. The saved page matches links against it. */
 export const marketPrefix = (locale: Locale) => `/${locale}/${LOCALE[locale].segments.market}/`;

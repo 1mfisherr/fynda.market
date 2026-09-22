@@ -21,7 +21,7 @@
  * page can offer.
  */
 import Page from '../layouts/Page.astro';
-import { DEFAULT_LOCALE, LOCALE, LOCALES, homePath } from '../lib/i18n';
+import { DEFAULT_LOCALE, LOCALE, LOCALES, homePath, localeTag } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 const s = t(DEFAULT_LOCALE);
@@ -42,7 +42,7 @@ const s = t(DEFAULT_LOCALE);
     <ul class="languages">
       {LOCALES.map((locale) => (
         <li>
-          <a class="button" href={homePath(locale)} hreflang={LOCALE[locale].tag}>
+          <a class="button" href={homePath(locale)} hreflang={localeTag(locale)}>
             {LOCALE[locale].label}
           </a>
         </li>

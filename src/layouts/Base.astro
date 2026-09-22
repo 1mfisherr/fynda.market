@@ -2,7 +2,7 @@
 import '../styles/tokens.css';
 import '../styles/base.css';
 
-import { DEFAULT_LOCALE, LOCALE, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, localeTag, type CountryCode, type Locale } from '../lib/i18n';
 
 interface Props {
   title: string;
@@ -17,6 +17,13 @@ interface Props {
    */
   alternates?: { locale: Locale; path: string }[];
   /**
+   * Which country this page is about, where it is about one. `/de/` serves
+   * Zürich and München, so the tag a page carries — de-CH or de-DE — is the
+   * only thing that tells Google which German reader it is for. Every member
+   * of a cluster is the same place, so one country covers the whole set.
+   */
+  country?: CountryCode;
+  /**
    * What the page is about, for the edge counter (functions/_middleware.ts
    * reads these tags off the response): the market's id, the town's and the
    * canton's slugs, the next date. A page view then carries them without the
@@ -25,7 +32,7 @@ interface Props {
   analytics?: { market?: string; city?: string; region?: string; next?: string };
 }
 
-const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternates = [], analytics = {} } = Astro.props;
+const { title, description, indexable = true, locale = DEFAULT_LOCALE, alternates = [], country, analytics = {} } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const href = (path: string) => new URL(path, Astro.site).href;
 /* x-default is the page for a visitor whose browser matches none of our
@@ -37,7 +44,7 @@ import Analytics from '../components/Analytics.astro';
 ---
 
 <!doctype html>
-<html lang={LOCALE[locale].tag}>
+<html lang={localeTag(locale, country)}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,7 +59,7 @@ import Analytics from '../components/Analytics.astro';
 
     {/* Self-referencing included, per the return-link rule. */}
     {indexable && alternates.map((alt) => (
-      <link rel="alternate" hreflang={LOCALE[alt.locale].tag} href={href(alt.path)} />
+      <link rel="alternate" hreflang={localeTag(alt.locale, country)} href={href(alt.path)} />
     ))}
     {indexable && fallback && <link rel="alternate" hreflang="x-default" href={href(fallback.path)} />}
 
@@ -72,7 +79,7 @@ import Analytics from '../components/Analytics.astro';
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content={LOCALE[locale].tag.replace('-', '_')} />
+    <meta property="og:locale" content={localeTag(locale, country).replace('-', '_')} />
     <meta property="og:image" content={href('/og-image.png')} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

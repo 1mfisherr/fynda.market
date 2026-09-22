@@ -129,7 +129,7 @@ const description = soonest
       rows.length,
       Math.round(HORIZON_DAYS / 30)
     )
-  : `${s.cityNoDate} ${s.cityIntro(city, region)}`;
+  : `${s.cityNoDate} ${s.cityIntro(city, region, markets[0].countryCode)}`;
 /**
  * The list, grouped under the day it happens. It was fifteen rows each carrying
  * its own "SA 19." — the same day four times over, and the month changing
@@ -174,12 +174,12 @@ const jsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'fynda.market', item: `${site}${homePath(locale)}` },
-    { '@type': 'ListItem', position: 2, name: region, item: `${site}${regionPath(locale, markets[0].countrySlug, regionSlug)}` },
+    { '@type': 'ListItem', position: 2, name: region, item: `${site}${regionPath(locale, markets[0].countryCode, markets[0].countrySlug, regionSlug)}` },
     { '@type': 'ListItem', position: 3, name: city, item: `${site}${cityPath(locale, markets[0].countrySlug, stadt)}` },
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={description} analytics={{ city: stadt, region: regionSlug }}>
+<Page locale={locale} alternates={alternates} country={markets[0].countryCode} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={description} analytics={{ city: stadt, region: regionSlug }}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
@@ -246,7 +246,7 @@ const jsonLd = {
 
   {/* Navigation, so it sits after the thing people came for rather than
       between the headline and the first market. */}
-  <PillList items={[{ href: regionPath(locale, markets[0].countrySlug, regionSlug), label: s.regionLabel(region) }]} />
+  <PillList items={[{ href: regionPath(locale, markets[0].countryCode, markets[0].countrySlug, regionSlug), label: s.regionLabel(region, markets[0].countryCode) }]} />
 
   {hasBadge && <TypeLegend locale={locale} />}
 

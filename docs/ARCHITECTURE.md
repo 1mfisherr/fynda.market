@@ -33,7 +33,13 @@ One indexable URL per entity per locale (v1: ~60 per market). Everything else �
 
 ## Locales
 
-Switzerland: de, fr, it, en. Any other country: its own language plus English. `x-default` → English (Delfim, 2026-09-18).
+Switzerland: de, fr, it, en. Germany: de, en. Any other country: its own language plus English. `x-default` → English (Delfim, 2026-09-18).
+
+**A country, not a locale, decides three things** (`src/lib/i18n.ts` §COUNTRY, built 2026-09-22): which locales it is published in, the region word in the path (`kanton` / `bundesland`, `canton` / `state`), and the hreflang tag — `de-CH` for Zürich, `de-DE` for München, because `/de/` serves both and nothing else tells Google which German reader a page is for. English stays plain `en` in every country: the English Zürich page and the English München page are about different places, never alternates of each other, and a page tagged `en-DE` matches no English speaker outside Germany. A page about no country at all — a form, the legal text, About — carries the plain language tag, not `de-CH`.
+
+Nothing enforces the locale list: the build joins each place's name and slug in the page's own locale, so a country simply has no pages in a locale nobody wrote. `getMarkets('fr')` returns no German market. Alternates are read back off what was built rather than assumed, because an hreflang pointing at a page that does not exist voids the whole cluster.
+
+**The region word is in the copy too, not only the path.** "im Kanton Zürich" is how a Swiss person says it; "im Bundesland Bayern" is how nobody says it — in Germany the Land carries no noun ("Flohmärkte in Bayern"), which is also the query people type. `src/lib/strings.ts` holds one phrase builder per language, and the country picks the phrase.
 
 **Localise the facts and the interface; never mass-translate prose.** Interface strings in `src/lib/strings.ts`, written by a person per language. Names, descriptions and recurrence sentences are rows in `texts` per locale; a locale renders only what has a row. Only genuine exonyms are translated (Bâle, Zurigo, Coire); Lausanne is Lausanne everywhere. The URL-to-entity ratio counts **per locale** — a translation is a full page, not a facet.
 

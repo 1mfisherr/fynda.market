@@ -5,7 +5,7 @@
  * The type segment is what makes this level possible at all: five Swiss canton
  * names are also city names, and Berlin and Hamburg are city-states, so the
  * path has to say which kind of place it means. `kanton` / `canton` / `cantone`
- * comes from LOCALE[locale].segments.region — never written into a template.
+ * comes from regionSegment(locale, country) — never written into a template.
  *
  * It is not a bigger city page. The query behind "flohmarkt kanton zürich" is
  * "which towns near me have one", so the towns come first, with their counts,
@@ -26,7 +26,7 @@ import TypeLegend from '../../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../../lib/markets';
 import { byMarket, datedRows, lastChecked, undatedMarkets } from '../../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange } from '../../../../lib/format';
-import { LOCALE, LOCALES, cityPath, homePath, regionPath, type Locale } from '../../../../lib/i18n';
+import { LOCALES, cityPath, homePath, regionPath, regionSegment, type Locale } from '../../../../lib/i18n';
 import { t } from '../../../../lib/strings';
 import { fitTitle } from '../../../../lib/titles';
 import type { Market } from '../../../../lib/types';
@@ -55,11 +55,11 @@ export async function getStaticPaths() {
       const here = markets.filter((m) => m.regionSlug === region);
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(region);
-        return country ? { locale: other, path: regionPath(other, country, region) } : null;
+        return country ? { locale: other, path: regionPath(other, sample.countryCode, country, region) } : null;
       }).filter(Boolean) as { locale: Locale; path: string }[];
 
       paths.push({
-        params: { locale, country: sample.countrySlug, segment: LOCALE[locale].segments.region, region },
+        params: { locale, country: sample.countrySlug, segment: regionSegment(locale, sample.countryCode), region },
         props: { locale, region, regionName: sample.region, country: sample.countrySlug, markets: here, alternates },
       });
     }
@@ -68,6 +68,7 @@ export async function getStaticPaths() {
 }
 
 const { locale, region, regionName, country, markets, alternates } = Astro.props;
+const code = markets[0].countryCode;
 const s = t(locale);
 
 /* Every date, for the counts and the answer sentence; then one row per market,
@@ -86,7 +87,7 @@ const year = new Date().getFullYear();
 /* The count is what the page lists: every market in the canton, one row each —
    the dated ones first, the rest under "No date yet". Counting only the dated
    ones put "Die 0 Flohmärkte im Kanton Uri" over a canton with a market. */
-const heading = s.regionHeading(markets.length, regionName, year);
+const heading = s.regionHeading(markets.length, regionName, year, code);
 
 // The earliest non-cancelled date in the canton, sorted rather than found:
 // `rows` is in market order, not date order.
@@ -111,11 +112,11 @@ const jsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'fynda.market', item: `${site}${homePath(locale)}` },
-    { '@type': 'ListItem', position: 2, name: regionName, item: `${site}${regionPath(locale, country, region)}` },
+    { '@type': 'ListItem', position: 2, name: regionName, item: `${site}${regionPath(locale, code, country, region)}` },
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={s.regionDescription(markets.length, cities.length, regionName, soonest ? { name: soonest.name, city: soonest.city, date: formatDateShort(soonest.next!.date, locale) } : undefined)} analytics={{ region }}>
+<Page locale={locale} alternates={alternates} country={code} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={s.regionDescription(markets.length, cities.length, regionName, code, soonest ? { name: soonest.name, city: soonest.city, date: formatDateShort(soonest.next!.date, locale) } : undefined)} analytics={{ region }}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">

@@ -56,6 +56,9 @@ const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
 const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
 const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
+/* The home page is still Switzerland's — docs/GERMANY-SPEC.md step 4 turns it
+   into the front door. Until then every place it links to is Swiss. */
+const countryCode = markets[0]?.countryCode ?? 'CH';
 /** The town sheet: every town, with its canton for the headings. */
 const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region }])).values()];
 
@@ -79,7 +82,7 @@ const jsonLd = {
 };
 
 ---
-<Page locale={locale} alternates={alternates} title={s.homeTitle} description={s.homeDescription}>
+<Page locale={locale} alternates={alternates} country={countryCode} title={s.homeTitle} description={s.homeDescription}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   {/* The claim, and it is a number: the trust signal, the content that has to
@@ -190,7 +193,7 @@ const jsonLd = {
 
   <Section id="kantone" title={s.regions} lede={s.regionsLede}>
     <PillList items={regions.map(([slug, region]) => ({
-      href: regionPath(locale, countrySlug, slug),
+      href: regionPath(locale, countryCode, countrySlug, slug),
       label: region,
       meta: String(markets.filter((m) => m.regionSlug === slug).length),
     }))} />

@@ -4,7 +4,7 @@
  * and had already drifted: two of them styled `header` differently.
  */
 import Wordmark from './Wordmark.astro';
-import { DEFAULT_LOCALE, LOCALE, homePath, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, homePath, localeTag, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props {
@@ -52,7 +52,7 @@ const sections = [
     {others.length > 0 && (
       <nav class="langs" aria-label={s.languageLabel}>
         {others.map((alt) => (
-          <a href={alt.path} lang={LOCALE[alt.locale].tag} hreflang={LOCALE[alt.locale].tag}>{alt.locale.toUpperCase()}</a>
+          <a href={alt.path} lang={localeTag(alt.locale)} hreflang={localeTag(alt.locale)}>{alt.locale.toUpperCase()}</a>
         ))}
       </nav>
     )}
