@@ -319,7 +319,10 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
   const count = Number(people?.people ?? 0);
   const why = count >= COUNT_FLOOR ? c.whyCount.replace('%n', String(count)) : c.why;
 
-  /* The next date, as one question. */
+  /* The next date, as one question with two choices. Nothing is written until
+     the organiser presses Confirm at the foot — the same press that saves the
+     rest, so nobody answers the question before they have seen the page
+     (Delfim, 2026-09-22: the top button was pressed before reading). */
   const next = dates[0];
   let nextBlock: string;
   if (!next) {
@@ -335,8 +338,10 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
         <div class="date">${escape(fmt(next.date))}</div>
         ${time ? `<div>${escape(time)}${names.town ? ` · ${escape(names.town)}` : ''}</div>` : ''}
         <p class="quiet" style="margin:4px 0 0">${escape(stamp)}</p>
-        <form method="post" action="/a/${token}/${next.id}/on"><input type="hidden" name="back" value="${self}"><button class="btn accent" type="submit">${escape(c.nextYes)}</button></form>
-        <a class="textlink" href="#dates">${escape(c.nextChanged)}</a>
+        <div class="seg" style="margin-top:16px">
+          <label><input type="radio" name="next" value="on"><span>${escape(c.nextYes)}</span></label>
+          <label><input type="radio" name="next" value="changed"><span>${escape(c.nextChanged)}</span></label>
+        </div>
         <p class="hint">${escape(c.nextHint)}</p>
       </div>`;
   }
@@ -382,12 +387,13 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
     <h1>${escape(names.market)}</h1>
     ${justSaved ? `<p class="status">${escape(c.savedTitle)} ${escape(c.savedBody)}</p>` : ''}
     <p class="lede">${escape([names.town, line].filter(Boolean).join(' · '))}</p>
+    <p class="lede" style="margin-top:-12px"><a href="https://fynda.market/${locale}/${MARKET_WORD[locale]}/${market.slug}/" target="_blank" rel="noopener" style="color:#111110;font-weight:500">${escape(c.viewPublic)} ↗</a></p>
     ${photo}
     <div class="why"><p>${escape(c.hello)}</p><p>${escape(why)}</p></div>
 
-    ${nextBlock}
-
     <form method="post" action="${self}">
+      ${nextBlock}
+
       <h2 id="dates">${escape(c.datesTitle)}</h2>
       <p class="hint" style="font-size:15px">${escape(c.datesIntro)}</p>
       <ul class="list">
@@ -395,7 +401,6 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
         ${blank(1)}
       </ul>
       <details><summary class="textlink" style="text-align:left;cursor:pointer">${escape(c.addAnother)}</summary><ul class="list" style="margin-top:0;border-top:0">${blank(2)}${blank(3)}</ul></details>
-      ${dates.length ? `<div class="actions"><button class="btn quiet" type="submit" name="action" value="all_right">${escape(c.allRight)}</button></div>` : ''}
 
       <h2>${escape(c.aboutTitle)}</h2>
       <p class="hint" style="font-size:15px">${escape(c.aboutIntro)}</p>
@@ -453,7 +458,7 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
         <p style="margin:0">${escape(c.photoHint)}</p>
       </div>
 
-      <button class="btn" type="submit" name="action" value="save" style="margin-top:32px">${escape(c.save)}</button>
+      <button class="btn accent" type="submit" name="action" value="save" style="margin-top:32px">${escape(c.save)}</button>
       <p class="hint" style="text-align:center">${escape(c.saveHint)}</p>
     </form>
 
@@ -480,24 +485,22 @@ async function saveEdit(env: Env, request: Request, organiser: Organiser, market
   const done: string[] = [];
   const dates = await upcoming(env, market.id);
 
-  /* "These are all right": every upcoming date confirmed by the organiser, nothing else read. */
-  if (get('action') === 'all_right') {
-    let n = 0;
-    for (const d of dates) {
-      const rows = await updateRows(env, 'occurrences', `id=eq.${d.id}`, {
+  /* The question at the top. "Yes, it's on" stamps the next date as confirmed
+     by the organiser today — the line visitors trust. "Something's changed" is
+     answered by the edits below and only counted. No choice: no answer. */
+  const next = dates[0];
+  const answer = get('next');
+  if (next && (answer === 'on' || answer === 'changed')) {
+    if (answer === 'on') {
+      await updateRows(env, 'occurrences', `id=eq.${next.id}`, {
         status: 'confirmed', origin: 'organiser', confirmed_at: now, updated_at: now,
       });
-      if (rows.length) n += 1;
+      done.push('next date confirmed');
     }
-    if (n) {
-      await updateRows(env, 'markets', `id=eq.${market.id}`, { verified_by: 'organiser', verified_at: now, updated_at: now });
-      await insertOne(env, 'organiser_answers', {
-        organiser_id: organiser.id, market_id: market.id, occurrence_id: dates[0].id,
-        answer: 'on', scope: 'market', ip_hash: await ipHash(env, request, 'answer'),
-      });
-    }
-    console.log(`organiser ${organiser.id} confirmed all ${n} dates of ${market.slug}`);
-    return `${n} date(s) confirmed`;
+    await insertOne(env, 'organiser_answers', {
+      organiser_id: organiser.id, market_id: market.id, occurrence_id: next.id,
+      answer, scope: 'date', ip_hash: await ipHash(env, request, 'answer'),
+    });
   }
 
   /* The facts. Empty means "unchanged", never "cleared" — except the three
@@ -569,9 +572,9 @@ async function saveEdit(env: Env, request: Request, organiser: Organiser, market
   if (added) done.push(`${added} date(s) added`);
 
   await updateRows(env, 'markets', `id=eq.${market.id}`, { verified_by: 'organiser', verified_at: now, updated_at: now });
-  // No answer row here: the press of "something changed" was recorded when the
-  // link was opened, with its date. A save from the welcome link is an edit,
-  // not an answer to a mail.
+  // The mail's "something changed" was recorded when the link was opened;
+  // the page's own question is recorded above. A save with no choice is an
+  // edit, not an answer.
   console.log(`organiser ${organiser.id} edited ${market.slug}: ${done.join(', ') || 'nothing'}`);
 
   return done.join(', ') || 'nothing changed';
