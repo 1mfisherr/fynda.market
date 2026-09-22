@@ -2,15 +2,15 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-22.
+Updated 2026-09-22 (end of day).
 
 ---
 
 ## Now
 
-Live at `fynda.market` since 2026-09-04: 222 published Swiss markets, 105 towns, 23 cantons, four locales, 1,440 pages. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
+**Two countries since 2026-09-22.** Live at `fynda.market`: 277 markets — 222 Swiss in four locales, 55 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,636 are in the sitemap. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
 
-**Germany is built and switched off.** 55 markets, 43 towns, all 16 Bundesländer, every one with a photograph and its dates read from the organiser's own page — sitting at `status = 'unverified'`, which the build does not carry, so no German page exists on the live site. Everything around them is done and deployed: the URLs, the hreflang, the country-aware copy, the front door. **The only thing left is Delfim saying publish**, after which it is one status update and a deploy. `node scripts/preview-germany.mjs` builds the whole site with them on, runs the guardrails and switches them back, without uploading.
+Germany was researched, imported, photographed and built in one day, and published the same evening. Every German market's dates were read from the organiser's own page, which is stored as its source. Nothing about Switzerland changed.
 
 | Running | State |
 |---|---|
@@ -23,7 +23,7 @@ Live at `fynda.market` since 2026-09-04: 222 published Swiss markets, 105 towns,
 | **Copy** | Brand line and voice settled 2026-09-19 (`BRAND.md` §Voice): every page type and every mail rewritten in four languages, the site no longer talks about itself, one stamp grammar, visitors du / vous / tu and organisers Sie / vous / tu everywhere. Left: a native speaker's pass over DE/FR/IT |
 | **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
 | **Photos** | Every market has one — 226 Swiss, 55 German (Delfim, 2026-09-22). Real ones arrive through organisers |
-| **Front door** | The home page carries one block per country — flag, name, counts, towns, regions — and the block heading only appears with a second country, so today it reads as before (2026-09-22). No country picker anywhere: six comparable sites were read live and not one has one. The root keeps a plain redirect; the visitor's country is never guessed |
+| **Front door** | The home page carries one block per country — flag, name, counts, towns, regions. No country picker anywhere: six comparable sites were read live on 2026-09-22 and not one has one; they all ask for a town. The root keeps a plain redirect, and the visitor's country is never guessed — two of those six guessed wrong from a Zurich IP |
 | **Your town** | Picked in the search control, kept in browser storage, shown as a card on the home page and as a pill in the header of every other page (`PlacePill.astro`, 2026-09-22). A shortcut, not a second place-chooser |
 
 Not built: tags shown to visitors (organisers can set them since 2026-09-21; nothing renders until some are set) · country page (parked, Delfim 2026-09-22) · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
@@ -40,12 +40,12 @@ Not built: tags shown to visitors (organisers can set them since 2026-09-21; not
 3. **Visual pass, UI audit, copy** — done 2026-09-17 and 2026-09-19/20. Every page type and interaction driven live at 375 and 1440; every line of interface copy rewritten in the settled voice. Left: market descriptions (158, travel-guide voice, DE and EN sometimes disagree on facts) — after the content floor counts facts and organiser data arrives, not before.
 4. **Near me and the search control** — built and live 2026-09-18: one editorial control on home and Near me, Near me's four states, the distance pill, gutters on Near me and canton lists, `geo_prompt` events (migration applied the same day). `PAGES.md` §Home and §Near me, `BRAND.md` §Controls. **Read the allow rate after four weeks:** `geo_prompt` granted ÷ requested; below ~30% the button is in the wrong place. One `DateFilters` look on every page (checked live 2026-09-19).
 5. **Market watch agent.** Runs on fleafind and stays there (Delfim, 2026-09-19); its source pages are in our `facts` as `source_page`. A new one is built for other countries when they come.
-6. **Germany — spec written 2026-09-22, build from `GERMANY-SPEC.md`, one step per fresh session.** Product shape approved by Delfim the same day: the visitor's *place* is the country switch (a remembered pill in the header, phones 2–3 of `design/front-door.html`); the front door is town lists under a country heading with a small flag (phone 1A); country pages are today's home per country; Near me ignores borders; the map was rejected as gimmicky. Data: agents use the main German directories as a lead list and read 50–60 major markets from the organisers' own sites (Delfim: start slowly but surely). Order: intake → tree → region template → country page, front door, pill, root redirect → flip live → Queues/Pro/R2 → German organisers. **Step 1 done 2026-09-22:** ten research agents in three rounds, 55 markets in 38 towns across all 16 Bundesländer, every fact from the organiser's own page (`intake/de/`, `intake/README.md`), descriptions in de and en, loaded by `scripts/import-intake.mjs` as `unverified` — 0 publishable, a live build read back unchanged at 1,440 pages after each round. 467 dates, 42 organiser links minted, nothing mailed. Delfim: start with 20, no publishing before he brings the photos. The Auer Dult stays in (Delfim, 2026-09-22); Mauerpark's organiser site is stale since 2022, the market runs. **Step 2 done 2026-09-22:** Germany is in the tree — `/de/deutschland/muenchen/`, `/en/germany/bundesland`→`state/bayern/`, `de-DE` and plain `en` on German pages, `de-CH` untouched on Swiss ones, the region word country-aware in the path and in the copy ("in Bayern", never "im Bundesland Bayern"). Built and checked with `scripts/preview-germany.mjs` — all ten guardrails green with the 55 switched on, and switched back after. **Step 3 settled the same day:** the region template needs no change — the largest German region holds 8 markets against Zürich's 29 — and every Bundesland gets a page however thin (Delfim: Bremen has 1, Saarland 2; Switzerland already ships one-market cantons). **Step 4, 2026-09-22:** the front door is built — one block per country, flag, counts, towns and regions, and no country picker anywhere (six comparable sites read live; not one has one). The root keeps its plain redirect: no geo guess, decided on evidence. The country page is parked (Delfim). The place pill is built too — the remembered town in the header of every page but home, a shortcut and not a second picker. **Left before Germany can go live: nothing but the word.** Flip the 55 to `active` (`scripts/preview-germany.mjs` shows what that looks like first), deploy, add the new paths to Search Console and Bing.
+6. **Germany — live 2026-09-22.** Built and published in a day: 55 markets from the organisers' own pages (`intake/`, `scripts/import-intake.mjs`), Delfim's 55 photographs, the country in the URL tree with `de-DE` beside `de-CH`, the region word country-aware in path and copy, the front door, the place pill. `GERMANY-SPEC.md` holds what is left — Queues, Supabase Pro, R2 before the traffic grows, and the German organisers. **Watch for four weeks:** the Sunday Search Console exports, and whether Bremen and Saarland (1 and 2 markets) earn anything or get excluded as thin.
 7. Buffer.
 
 SEO follow-ups (`reference/seo-research/plan.md`): Bing Webmaster Tools registered 2026-09-18 — read its AI Performance report monthly; Delfim opens the Search Console *Generative AI* report; image sitemap once real photos exist.
 
-Parked, not urgent: country page (arrives with Germany); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
+Parked, not urgent: country page (Delfim, 2026-09-22 — the front door carries the towns, so nothing needs it); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
 
 ---
 
