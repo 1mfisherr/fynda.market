@@ -320,8 +320,11 @@ export interface Strings {
  * whole phrase, not a swapped-in noun.
  * ------------------------------------------------------------------------ */
 
+/* One German Land takes an article: "im Saarland", never "in Saarland". The
+   other fifteen do not, and no canton does. */
+const DE_ARTICLE = new Set(['Saarland']);
 const inRegionDe = (region: string, code: CountryCode) =>
-  (code === 'CH' ? `im Kanton ${region}` : `in ${region}`);
+  (code === 'CH' ? `im Kanton ${region}` : DE_ARTICLE.has(region) ? `im ${region}` : `in ${region}`);
 const regionLabelDe = (region: string, code: CountryCode) =>
   (code === 'CH' ? `Kanton ${region}` : region);
 const inRegionEn = (region: string, code: CountryCode) =>
