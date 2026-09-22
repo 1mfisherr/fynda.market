@@ -12,6 +12,7 @@ Read only what the task needs. Every line loaded is context spent.
 | `PRODUCT.md` | Demand, competitors, the three loops, organisers, the moat |
 | `BRAND.md` | Identity, the design system, e-mail |
 | `IDEAS.md` | Parked, not committed |
+| `GERMANY-SPEC.md` | Building Germany — the product shape and the intake; deleted when its parts have moved into the docs above |
 
 **Loaded on demand:** `../.claude/rules/` — `functions.md`, `migrations.md`, `styles.md` — appear by themselves when a file in that directory is touched.
 
