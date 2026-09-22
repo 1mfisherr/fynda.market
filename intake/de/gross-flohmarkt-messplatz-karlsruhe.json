@@ -1,0 +1,49 @@
+{
+  "slug": "gross-flohmarkt-messplatz-karlsruhe",
+  "name": "Gross-Flohmarkt Messplatz",
+  "kind": "flohmarkt",
+  "town": "Karlsruhe",
+  "region": "Baden-Württemberg",
+  "venue": {
+    "name": "Messplatz",
+    "address": "Messplatz, Durlacher Allee",
+    "postal_code": "76137"
+  },
+  "lat": 49.0047,
+  "lng": 8.4346,
+  "rhythm": {
+    "de": "Mehrmals im Jahr auf dem Messplatz",
+    "en": "Several times a year on the Messplatz"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-11-14"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://flohmarkt-timke.de/",
+  "organiser": {
+    "name": "Veranstaltungsagentur Timke Marktveranstaltungen",
+    "website": "https://flohmarkt-timke.de/",
+    "email": "info@timke.com"
+  },
+  "source_page": "https://flohmarkt-timke.de/event/8846/",
+  "facts": [
+    "outdoor, on the Messplatz at Durlacher Allee",
+    "08:00–15:00, packing up finished by 17:00",
+    "mostly second-hand; new goods only in limited numbers",
+    "the organiser asks visitors to come by tram",
+    "no parking for sellers on or around the Messplatz",
+    "sellers pay 10 € a metre for second-hand goods, 25 € for new goods"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser publishes only this one Messplatz date (Sat 14.11.2026) — the earlier 2026 editions are past and nothing beyond is listed, so 'rhythm' is my summary, not a sentence from the site; the site states no frequency. Visitor entry fee is not stated anywhere on the organiser's site. Postal code 76137 is the organiser's own; the geocoder returns 76131 for the same square. E-mail from the Impressum; the events page also gives info-flohmarkt@gmx.com for bookings.",
+  "description": {
+    "de": "Mehrmals im Jahr auf dem Messplatz an der Durlacher Allee, 8 bis 15 Uhr. Überwiegend Gebrauchtes, Neuware nur in kleiner Zahl. Der Veranstalter bittet, mit der Tram zu kommen — rund um den Messplatz gibt es keine Parkplätze für Verkäufer.",
+    "en": "Several times a year on the Messplatz at Durlacher Allee, 8 to 3. Mostly second-hand, with new goods in small numbers only. The organiser asks visitors to come by tram — there is no seller parking anywhere around the square."
+  }
+}

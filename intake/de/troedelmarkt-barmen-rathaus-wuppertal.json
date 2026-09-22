@@ -1,0 +1,52 @@
+{
+  "slug": "troedelmarkt-barmen-rathaus-wuppertal",
+  "name": "Trödelmarkt Barmen Rathaus",
+  "kind": "troedelmarkt",
+  "town": "Wuppertal",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Johannes-Rau-Platz am Barmer Rathaus",
+    "address": "Johannes-Rau-Platz 1",
+    "postal_code": "42275"
+  },
+  "lat": 51.2722,
+  "lng": 7.2001,
+  "rhythm": {
+    "de": "Ein Sonntag im Monat",
+    "en": "One Sunday a month"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-11",
+    "2026-11-08",
+    "2026-12-13"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://hoefges-troedelmarkt.com/termine/",
+  "organiser": {
+    "name": "Höfges Event Group GmbH",
+    "website": "https://hoefges-troedelmarkt.com/",
+    "email": "info@hoefges.com"
+  },
+  "source_page": "https://hoefges-troedelmarkt.com/termine/",
+  "facts": [
+    "11:00–18:00, right beside Barmen town hall in the city centre",
+    "entry is free",
+    "second-hand and new goods side by side",
+    "food and drink stalls on the market",
+    "enough visitor parking in the multi-storey car parks nearby",
+    "bus 332, 608, 610, 624, 632 and 640",
+    "no vehicles on the grounds between 09:00 and 17:00"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser's Termine page renders from its own data feed on the same site (wp-json/ts-events/v1/events); dates were read from that feed. Three dates fall in the window, all second Sundays, but the organiser does not state a rhythm in words — 'one Sunday a month' is read off its own list. Nothing published for January 2027. The feed's address field says 'Große Flurstraße' while the Anfahrt text in the same record says 'Johannes-Rau-Platz 1'; used the latter, which is the town hall square, and the two are 100 m apart. 'Entry is always free' is stated on the organiser's homepage, not on the Termine page.",
+  "description": {
+    "de": "Ein Sonntag im Monat von 11 bis 18 Uhr direkt am Barmer Rathaus, mitten in der Stadt. Gebrauchtes und Neuware nebeneinander, dazu Essens- und Getränkestände. Eintritt frei; Parkhäuser gibt es in der Nähe, zahlreiche Buslinien halten am Rathaus.",
+    "en": "One Sunday a month from 11 to 6 right beside Barmen town hall, in the middle of the city. Second-hand and new goods side by side, with food and drink stalls. Free entry; there are multi-storey car parks nearby and a dozen bus lines stop at the town hall."
+  }
+}

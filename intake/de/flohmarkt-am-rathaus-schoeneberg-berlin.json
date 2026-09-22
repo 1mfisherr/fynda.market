@@ -1,0 +1,81 @@
+{
+  "slug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+  "name": "Flohmarkt am Rathaus Schöneberg",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "John-F.-Kennedy-Platz, vor dem Rathaus Schöneberg",
+    "address": "John-F.-Kennedy-Platz 1",
+    "postal_code": "10825"
+  },
+  "lat": 52.4848,
+  "lng": 13.3441,
+  "rhythm": {
+    "de": "Jeden Samstag und Sonntag, ganzjährig",
+    "en": "Every Saturday and Sunday, all year"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-09-27",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-26",
+    "2026-12-27",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-09",
+    "2027-01-10",
+    "2027-01-16",
+    "2027-01-17"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://berlin-flohmaerkte.de/",
+  "organiser": {
+    "name": "JTH Vermietungs GmbH und Co. KG",
+    "website": "https://berlin-flohmaerkte.de/",
+    "email": "info@berlin-flohmaerkte.de"
+  },
+  "source_page": "https://berlin-flohmaerkte.de/",
+  "facts": [
+    "every Saturday and Sunday all year, 08:00 to 16:00",
+    "outdoor, on the square in front of Rathaus Schöneberg",
+    "started 45 years ago by Jörg Thurmann, run by a mother and daughter since 2024",
+    "second-hand and curiosities; new goods are allowed on Saturdays only",
+    "no market on 15 and 22 November 2026",
+    "stalls are at most 3.00 m high and 1.20 m deep",
+    "sellers can book on the spot with the market managers at the snack bar from 12:00"
+  ],
+  "notes": "Organiser publishes the weekly rhythm and a closed-days list, not a date list, so dates are derived. Dropped 15.11.2026 (Volkstrauertag) and 22.11.2026 (Totensonntag), the two closures the organiser lists inside the window; the other 2026 closures they list are already past. They say nothing about Christmas or New Year, so 26/27.12 and 02/03.01 are kept as-is — worth a check before publishing. Visitor entry fee is nowhere on the site. No Impressum page; the company name comes from the bank details on the start page, the postal address (Fliegerhorststraße 5, 14621 Schönwalde) appears only in directory listings, so it is not recorded here. Coordinates from Nominatim.",
+  "checked": "2026-09-22",
+  "description": {
+    "de": "Samstags und sonntags das ganze Jahr über, 8 bis 16 Uhr, auf dem Platz vor dem Rathaus Schöneberg. Vor 45 Jahren gegründet, seit 2024 von Mutter und Tochter geführt. Gebrauchtes und Kurioses; Neuware ist nur samstags erlaubt. Standplätze gibt es ab 12 Uhr direkt beim Imbiss.",
+    "en": "Saturdays and Sundays all year, 8 to 4, on the square in front of Rathaus Schöneberg. Started 45 years ago and run by a mother and daughter since 2024. Second-hand and curiosities; new goods on Saturdays only. Pitches are handed out at the snack bar from noon."
+  }
+}

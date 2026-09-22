@@ -1,0 +1,63 @@
+{
+  "slug": "troedelmarkt-universitaet-dortmund",
+  "name": "Trödelmarkt Universität Dortmund",
+  "kind": "troedelmarkt",
+  "town": "Dortmund",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Parkflächen der TU Dortmund",
+    "address": "Emil-Figge-Straße",
+    "postal_code": "44227"
+  },
+  "lat": 51.4943,
+  "lng": 7.4171,
+  "rhythm": {
+    "de": "Jeden Samstag, außer an Feiertagen",
+    "en": "Every Saturday, except on public holidays"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://marktcom-maerkte.de/standort/view/5115727207989248/",
+  "organiser": {
+    "name": "MARKTCOM Eventwerkstatt GmbH",
+    "website": "https://marktcom-maerkte.de/",
+    "email": "hallo@marktcom-maerkte.de"
+  },
+  "source_page": "https://marktcom-maerkte.de/standort/view/5115727207989248/",
+  "facts": [
+    "every Saturday, 07:00–14:00, except on public holidays",
+    "on the car parks of TU Dortmund, outdoor grounds",
+    "organiser calls it one of the best-known and longest-running markets in Dortmund, with tens of thousands of visitors each week",
+    "private sellers with second-hand goods alongside commercial traders with new stock",
+    "food stalls: crêpes, waffles, coffee and cake, pretzels, bratwurst, döner",
+    "counterfeit branded goods are strictly prohibited",
+    "A40 exit Barop, a few minutes away; plenty of visitor parking around the grounds",
+    "S-Bahn station Dortmund Universität, bus 447 and 462",
+    "a separate Sunday market runs on the 3rd Sunday of the month, 11:00–17:00"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates are the Saturday market only; the organiser also runs a 3rd-Sunday market at the same venue with different hours (11:00–17:00), listed for 2026-10-18 and 2026-12-20 — kept out of this record because the shape holds one set of opening hours. The organiser's date list ends 2026-12-20, so January 2027 Saturdays are not published yet and are not included. No visitor entry fee is stated anywhere on the site, so fee is null. The organiser gives only the street name, no number; coordinates are from Emil-Figge-Straße 50 on the campus, so they are approximate for a market spread across several car parks. 2026-10-03 (Tag der Deutschen Einheit) is absent from the list, consistent with the 'except on public holidays' rule.",
+  "description": {
+    "de": "Jeden Samstag von 7 bis 14 Uhr auf den Parkplätzen der TU Dortmund, außer an Feiertagen. Private Verkäufer mit Gebrauchtem neben Händlern mit Neuware; Markenfälschungen sind streng verboten. Der Veranstalter nennt ihn einen der bekanntesten und ältesten Märkte der Stadt. S-Bahn Dortmund Universität, Bus 447 und 462.",
+    "en": "Every Saturday from 7 to 2 on the car parks of TU Dortmund, public holidays excepted. Private sellers with second-hand goods alongside traders with new stock; counterfeits are strictly banned. The organiser calls it one of the best known and longest running markets in the city. S-Bahn Dortmund Universität, buses 447 and 462."
+  }
+}

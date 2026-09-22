@@ -1,0 +1,52 @@
+{
+  "slug": "troedelmarkt-ruhr-park-bochum",
+  "name": "Trödelmarkt Ruhr Park Bochum",
+  "kind": "troedelmarkt",
+  "town": "Bochum",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Westfield RuhrPark, Parkplatz P1",
+    "address": "Am Einkaufszentrum 1",
+    "postal_code": "44791"
+  },
+  "lat": 51.4943,
+  "lng": 7.2813,
+  "rhythm": {
+    "de": "Ein Sonntag im Monat",
+    "en": "One Sunday a month"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-11-08",
+    "2026-12-06"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://marktcom-maerkte.de/standort/view/5071651448291328/",
+  "organiser": {
+    "name": "MARKTCOM Eventwerkstatt GmbH",
+    "website": "https://marktcom-maerkte.de/",
+    "email": "hallo@marktcom-maerkte.de"
+  },
+  "source_page": "https://marktcom-maerkte.de/standort/view/5071651448291328/",
+  "facts": [
+    "11:00–17:00, on car park P1 at the Westfield RuhrPark shopping centre",
+    "organiser says more than ten thousand visitors come each month",
+    "second-hand electricals, collectables, used and new clothing, new stock, from private and commercial sellers",
+    "a food row with crêpes, coffee, waffles, cake, hot dogs, döner, bratwurst, currywurst and steak",
+    "less than five minutes from the A40, signposted visitor parking next to the market",
+    "bus 336 stop Ruhr Park Brücke, bus 364 stop Ruhr Park, bus 368 stop Bochum Ruhr Park"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser's text says first Sunday of the month, but its own date list does not follow that: 2026-10-03 is a Saturday (Tag der Deutschen Einheit) paired with Sunday 2026-10-04, and November falls on the second Sunday (08.11.). Used the listed dates, not the stated rhythm. The list ends 2026-12-06, so January 2027 is not published yet. No visitor entry fee stated on the site, so fee is null. Coordinates are the shopping centre address; car park P1 is a few hundred metres from that point.",
+  "description": {
+    "de": "Ein Sonntag im Monat von 11 bis 17 Uhr auf dem Parkplatz P1 am Westfield RuhrPark. Gebrauchte Elektronik, Sammlerstücke, Kleidung und Neuware, von privaten und gewerblichen Verkäufern; der Veranstalter zählt über zehntausend Besucher im Monat. Eine Essensreihe gehört dazu. Fünf Minuten von der A40.",
+    "en": "One Sunday a month from 11 to 5 on car park P1 at the Westfield RuhrPark. Second-hand electricals, collectables, clothing and new stock from private and commercial sellers; the organiser counts more than ten thousand visitors a month. There is a row of food stalls. Five minutes from the A40."
+  }
+}

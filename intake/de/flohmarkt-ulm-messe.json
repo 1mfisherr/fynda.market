@@ -1,0 +1,50 @@
+{
+  "slug": "flohmarkt-ulm-messe",
+  "name": "Flohmarkt Ulm Messe",
+  "kind": "hallenflohmarkt",
+  "town": "Ulm",
+  "region": "Baden-Württemberg",
+  "venue": {
+    "name": "Messe Ulm",
+    "address": "Böfinger Straße 50",
+    "postal_code": "89073"
+  },
+  "lat": 48.4137,
+  "lng": 10.0133,
+  "rhythm": {
+    "de": "Ein Wochenende im Jahr, Samstag und Sonntag",
+    "en": "One weekend a year, Saturday and Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-11-07",
+    "2026-11-08"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.fetzer-veranstaltungen.de/flohmarkt-ulm.php",
+  "organiser": {
+    "name": "Fetzer GmbH Veranstaltungen",
+    "website": "https://www.fetzer-veranstaltungen.de/",
+    "email": "info@fetzer-veranstaltungen.de"
+  },
+  "source_page": "https://www.fetzer-veranstaltungen.de/flohmarkt-ulm.php",
+  "facts": [
+    "indoor, in the hall at Messe Ulm",
+    "Saturday and Sunday, 10:00–16:00 both days",
+    "second-hand only — new goods are not wanted",
+    "sellers must book in advance; smallest stall 2 metres",
+    "stall 11 € a metre in the middle of the hall, 15 € along the wall; tables to rent at 10 €",
+    "one of a chain of markets the organiser runs across southern Germany"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser's Ulm page lists only this one weekend (07. and 08.11.2026), so 'rhythm' says what the page shows, not a stated frequency. Visitor entry fee is not stated. The page names the venue only as 'Ulm-Messe' and shows a map; the street address and coordinates come from the geocoder for Messe Ulm, Böfinger Straße 50.",
+  "description": {
+    "de": "Ein Wochenende im Jahr füllt sich die Halle der Messe Ulm mit Gebrauchtem — Neuware ist nicht erwünscht. Samstag und Sonntag jeweils 10 bis 16 Uhr. Die Stände müssen vorab gebucht werden, der kleinste misst zwei Meter.",
+    "en": "One weekend a year the hall at Messe Ulm fills with second-hand goods — new stock is not wanted. Saturday and Sunday, 10 to 4 both days. Stalls must be booked in advance; the smallest is two metres."
+  }
+}

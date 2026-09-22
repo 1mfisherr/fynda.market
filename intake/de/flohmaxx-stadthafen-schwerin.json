@@ -1,0 +1,53 @@
+{
+  "slug": "flohmaxx-stadthafen-schwerin",
+  "name": "Flohmaxx Stadthafen",
+  "kind": "flohmarkt",
+  "town": "Schwerin",
+  "region": "Mecklenburg-Vorpommern",
+  "venue": {
+    "name": "Stadthafen",
+    "address": "Werderstraße 74",
+    "postal_code": "19055"
+  },
+  "lat": 53.6308,
+  "lng": 11.4218,
+  "rhythm": {
+    "de": "Regelmäßig sonntags",
+    "en": "Regularly on Sundays"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-25"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://flohmaxx.de/flohmarkt/schwerin-stadthafen",
+  "organiser": {
+    "name": "Marktveranstaltung Janssen GmbH",
+    "website": "https://flohmaxx.de/",
+    "email": "info@flohmaxx.de"
+  },
+  "source_page": "https://flohmaxx.de/flohmarkt/schwerin-stadthafen/2026-09-27",
+  "facts": [
+    "entry is free for visitors",
+    "open 10:00 to 16:00",
+    "free parking on and beside the site",
+    "pitches are handed out from 06:00 without registration, first come first served",
+    "private and commercial second-hand goods, antiques and new goods are all allowed",
+    "runs in any weather",
+    "food and drink stand on site",
+    "portable toilets on site",
+    "central location at Schwerin's Stadthafen"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser says only \"regelmäßig\" and publishes two dates in this window, 27 September and 25 October; nothing after that, so November to January are empty. Flohmaxx runs three other sites in Schwerin — Bertha-Klingberg-Platz, Sieben-Seen-Center and Pampow XXXLutz — which are separate markets, not this one. Facts and hours are from the organiser's own date page for 27 September; the location page carries the address.",
+  "description": {
+    "de": "Sonntags von 10 bis 16 Uhr am Stadthafen, mitten in Schwerin. Eintritt und Parken sind frei, und der Markt findet bei jedem Wetter statt. Verkaufen kann jeder: Plätze werden ab 6 Uhr ohne Anmeldung vergeben, wer zuerst da ist, steht vorn.",
+    "en": "Sundays from 10 to 4 at the Stadthafen, in the middle of Schwerin. Entry and parking are free, and the market runs whatever the weather. Anyone can sell: pitches are handed out from 6 with no registration, first come first served."
+  }
+}

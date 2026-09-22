@@ -1,0 +1,63 @@
+{
+  "slug": "floh-und-bauernmarkt-weberplatz-potsdam",
+  "name": "Floh- & Bauernmarkt Weberplatz",
+  "kind": "flohmarkt",
+  "town": "Potsdam",
+  "region": "Brandenburg",
+  "venue": {
+    "name": "Weberplatz, Babelsberg",
+    "address": "Weberplatz",
+    "postal_code": "14482"
+  },
+  "lat": 52.3942,
+  "lng": 13.0956,
+  "rhythm": {
+    "de": "Jeden Samstag, ausser an gesetzlichen Feiertagen",
+    "en": "Every Saturday, except public holidays"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19",
+    "2027-01-02",
+    "2027-01-09",
+    "2027-01-16"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "http://www.koscholke.de/",
+  "organiser": {
+    "name": "Bernd Koscholke",
+    "website": "http://www.koscholke.de/",
+    "email": "koscholke@arcor.de"
+  },
+  "source_page": "http://www.koscholke.de/",
+  "facts": [
+    "every Saturday except public holidays",
+    "07:00 to 14:00",
+    "outdoor, on the Weberplatz in Babelsberg",
+    "flea market and farmers' market together",
+    "sellers bring their own stand at 10 EUR per running metre, or rent one of the organiser's stalls for 30 EUR",
+    "rental stall has a 3 x 1 m table top",
+    "electricity 5 EUR flat"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser site is a four-page hand-built site reachable only over plain http (https does not answer); it states the rhythm and hours but publishes no date list, so dates are derived. Dropped the Saturdays that are Brandenburg public holidays: 03.10.2026 (Tag der Deutschen Einheit), 31.10.2026 (Reformationstag), 26.12.2026 (2. Weihnachtsfeiertag). Visitor entry fee is not stated anywhere on the site. Postal code 14482 and coordinates from Nominatim for Weberplatz, Potsdam-Babelsberg; the organiser gives no street address, only 'Weberplatz, Potsdam / Babelsberg'. Directory listings say 07:00-13:00; the organiser's own page says 7.00 bis 14.00 Uhr and that is what is recorded.",
+  "description": {
+    "de": "Jeden Samstag von 7 bis 14 Uhr auf dem Weberplatz in Babelsberg, Flohmarkt und Bauernmarkt nebeneinander. An Feiertagen bleibt der Platz leer. Wer verkaufen will, bringt den eigenen Stand mit (10 Euro der laufende Meter) oder mietet einen beim Veranstalter.",
+    "en": "Every Saturday from 7 to 2 on Weberplatz in Babelsberg, a flea market and a farmers' market side by side. The square stays empty on public holidays. Sellers bring their own stand at 10 euros a metre or rent one from the organiser."
+  }
+}

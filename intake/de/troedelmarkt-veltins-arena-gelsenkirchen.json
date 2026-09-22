@@ -1,0 +1,84 @@
+{
+  "slug": "troedelmarkt-veltins-arena-gelsenkirchen",
+  "name": "Trödelmarkt an der Veltins Arena",
+  "kind": "troedelmarkt",
+  "town": "Gelsenkirchen",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Veltins-Arena, Parkplatz D3",
+    "address": "Willy-Brandt-Allee 49",
+    "postal_code": "45891"
+  },
+  "lat": 51.5491,
+  "lng": 7.0722,
+  "rhythm": {
+    "de": "Jeden Samstag und Dienstag",
+    "en": "Every Saturday and Tuesday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-09-22",
+    "2026-09-26",
+    "2026-09-29",
+    "2026-10-03",
+    "2026-10-06",
+    "2026-10-10",
+    "2026-10-13",
+    "2026-10-18",
+    "2026-10-20",
+    "2026-10-24",
+    "2026-10-27",
+    "2026-11-03",
+    "2026-11-07",
+    "2026-11-10",
+    "2026-11-14",
+    "2026-11-17",
+    "2026-11-21",
+    "2026-11-24",
+    "2026-11-28",
+    "2026-12-01",
+    "2026-12-05",
+    "2026-12-08",
+    "2026-12-12",
+    "2026-12-15",
+    "2026-12-19",
+    "2026-12-22",
+    "2026-12-26",
+    "2026-12-29",
+    "2027-01-02",
+    "2027-01-05",
+    "2027-01-09",
+    "2027-01-12",
+    "2027-01-16",
+    "2027-01-19"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.gigantmarkt.de/veltins-arena",
+  "organiser": {
+    "name": "Kupfer & Seidl Veranstaltungen GbR",
+    "website": "https://www.gigantmarkt.de/",
+    "email": "info@gigantmarkt.de"
+  },
+  "source_page": "https://www.gigantmarkt.de/veltins-arena",
+  "facts": [
+    "every Saturday and Tuesday, selling from 08:00 to 14:00 on weekdays",
+    "on car park D3 at the Veltins-Arena",
+    "second-hand goods of all kinds and collectables, packed and unpacked goods, textiles and food",
+    "multicultural stalls: Turkish baked goods, fruit and vegetables, oriental clothing",
+    "new goods may only be sold by traders with a valid Reisegewerbekarte; counterfeits are strictly prohibited",
+    "runs on 2026-10-03 despite the public holiday",
+    "cancelled on 2026-10-31 for a Schalke home game, with no replacement on 2026-11-01 because it is a quiet holiday in NRW",
+    "on 2026-11-21 selling ends at 11:00 because of an evening Schalke home game"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates are derived from the stated 'every Saturday and Tuesday' rhythm, with the organiser's own exception list applied: 2026-10-17 cancelled (Schalke home game) and moved to Sunday 2026-10-18; 2026-10-31 cancelled and no market on 2026-11-01. The organiser says further Schalke fixtures are not yet scheduled and that a Saturday 15:30 home game means they try to move the market to the Sunday — so dates from December onwards may still shift. 2026-11-21 runs but closes at 11:00, not 14:00. The 08:00 start comes from the Marktordnung ('Werktage: Verkauf von 08:00 bis 14:00 Uhr'); the market page itself only gives the 14:00 close. No visitor entry fee is stated, so fee is null. The organiser writes the postcode as 45891; some directories say 45881.",
+  "description": {
+    "de": "Zweimal die Woche, dienstags und samstags von 8 bis 14 Uhr, auf dem Parkplatz D3 an der Veltins-Arena. Gebrauchtes aller Art und Sammlerstücke, dazu türkisches Gebäck, Obst und Gemüse und orientalische Kleidung. An Schalker Heimspieltagen fällt der Markt aus oder endet früher.",
+    "en": "Twice a week, Tuesdays and Saturdays from 8 to 2, on car park D3 at the Veltins-Arena. Second-hand goods of every kind and collectables, with Turkish baked goods, fruit and vegetables and oriental clothing alongside. On Schalke home-match days the market is cancelled or closes early."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "nuernberg-nightmarket",
+  "name": "Nürnberg Nightmarket",
+  "kind": "nachtflohmarkt",
+  "town": "Nürnberg",
+  "region": "Bayern",
+  "venue": {
+    "name": "PARKS",
+    "address": "Berliner Platz 9",
+    "postal_code": "90409"
+  },
+  "lat": 49.4642,
+  "lng": 11.0934,
+  "rhythm": {
+    "de": "Einzelne Abende über das Jahr verteilt",
+    "en": "Single evenings spread through the year"
+  },
+  "opening": {
+    "start": "18:00",
+    "end": "23:00"
+  },
+  "dates": [
+    "2026-10-16",
+    "2026-11-13"
+  ],
+  "dates_from": "listed",
+  "fee": 2,
+  "currency": "EUR",
+  "website": "https://agenturzeitvertreib.com/veranstaltungen/nuernberg-nightmarket/",
+  "organiser": {
+    "name": "Agentur Zeitvertreib (Insea Bogner)",
+    "website": "https://agenturzeitvertreib.com/",
+    "email": "info@agenturzeitvertreib.com"
+  },
+  "source_page": "https://agenturzeitvertreib.com/veranstaltungen/nuernberg-nightmarket/",
+  "facts": [
+    "an evening flea market, from 18:00",
+    "entry 2 €, paid at the door; no ticket needed in advance",
+    "indoor, 1,000 m² across the whole venue",
+    "old favourites and one-offs from many sellers: clothes, shoes, bags, jewellery, cameras, furniture and home pieces",
+    "Thai street food in the garden hall, two bars, DJ"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser lists only the next two dates under 'Termine 2026' (16.10. and 13.11.) and states no frequency, so 'rhythm' is my wording; the venue's own calendar numbers them #105 and #106 after #104 on 04.09., which reads as roughly monthly. The organiser gives only a start time (ab 18 Uhr); the 23:00 end is from the venue's event listing, parks-nuernberg.de. Nothing published for December 2026 or 2027 yet.",
+  "description": {
+    "de": "Ein Abendflohmarkt ab 18 Uhr, an einzelnen Terminen über das Jahr verteilt, drinnen auf 1.000 Quadratmetern. Kleidung, Schuhe, Taschen, Schmuck, Kameras, Möbel und Wohnkram, dazu Thai-Streetfood in der Gartenhalle, zwei Bars und ein DJ. Eintritt 2 Euro an der Tür.",
+    "en": "An evening flea market from 6, on single dates through the year, indoors across 1,000 square metres. Clothes, shoes, bags, jewellery, cameras, furniture and home pieces, with Thai street food in the garden hall, two bars and a DJ. Entry 2 euros at the door."
+  }
+}

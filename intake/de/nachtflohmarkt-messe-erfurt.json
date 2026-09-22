@@ -1,0 +1,53 @@
+{
+  "slug": "nachtflohmarkt-messe-erfurt",
+  "name": "Nachtflohmarkt Messe Erfurt",
+  "kind": "nachtflohmarkt",
+  "town": "Erfurt",
+  "region": "Thüringen",
+  "venue": {
+    "name": "Messe Erfurt, Halle 3",
+    "address": "Gothaer Straße 34",
+    "postal_code": "99094"
+  },
+  "lat": 50.9593,
+  "lng": 10.9897,
+  "rhythm": {
+    "de": "Etwa einmal im Monat, samstags",
+    "en": "About once a month, on a Saturday"
+  },
+  "opening": {
+    "start": "16:00",
+    "end": "23:45"
+  },
+  "dates": [
+    "2026-10-10",
+    "2026-11-14",
+    "2026-12-12"
+  ],
+  "dates_from": "listed",
+  "fee": 3,
+  "currency": "EUR",
+  "website": "https://www.messe-erfurt.de/flohmarkt-erfurt",
+  "organiser": {
+    "name": "Wagner Konzerte Veranstaltungsagentur",
+    "website": "http://www.flohmarkt-wagner.de",
+    "email": "gwagner@web.de"
+  },
+  "source_page": "https://www.messe-erfurt.de/besucher/veranstaltungskalender/veranstaltung/nachtflohmarkt-20261010-9",
+  "facts": [
+    "indoors on the Erfurt exhibition grounds, described by the venue as the largest antiques and second-hand market in Thuringia",
+    "runs from 16:00 into the night",
+    "entry 3.00 EUR, 2.00 EUR reduced for children and visitors with a disability card",
+    "collectors' pieces and antiques",
+    "tram line 2 runs from the Anger in the city centre to the exhibition grounds every 10 minutes",
+    "about 3,500 parking spaces at the venue, parking 5.00 EUR",
+    "19 accessible parking spaces near the main entrance; step-free access through the foyer",
+    "arrival for this market is via the west car park"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Facts read from the venue's own pages (Messe Erfurt GmbH), which host the market and name the organiser; the organiser's own domain flohmarkt-wagner.de redirects to a marktcom listing page, so it was not used as the source. The event page says 'Tickets ab 3,50 €' while the venue FAQ says 3,00 € normal / 2,00 € reduced — recorded 3 EUR, the door price. End time 23:45 is the calendar entry's; the same page also promotes a free-entry 'Antik- & Trödelmarkt' on the grounds with no dates published. No 2027 dates yet.",
+  "description": {
+    "de": "Etwa einmal im Monat samstags ab 16 Uhr bis in die Nacht, in den Hallen der Messe Erfurt — nach Angaben des Hauses Thüringens größter Antik- und Trödelmarkt. Sammlerstücke und Antiquitäten. Eintritt 3 Euro, ermäßigt 2. Die Tram 2 fährt alle zehn Minuten vom Anger zum Gelände.",
+    "en": "About once a month on a Saturday from 4 in the afternoon into the night, in the halls of Messe Erfurt — the venue calls it Thuringia's largest antiques and second-hand market. Collectors' pieces and antiques. Entry 3 euros, 2 reduced. Tram 2 runs from the Anger every ten minutes."
+  }
+}

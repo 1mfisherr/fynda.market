@@ -1,0 +1,64 @@
+{
+  "slug": "nachtflohmarkt-rindermarkthalle-hamburg",
+  "name": "Nachtflohmarkt vor der Rindermarkthalle",
+  "kind": "nachtflohmarkt",
+  "town": "Hamburg",
+  "region": "Hamburg",
+  "venue": {
+    "name": "Vorplatz der Rindermarkthalle St. Pauli",
+    "address": "Neuer Kamp 31",
+    "postal_code": "20359"
+  },
+  "lat": 53.5564,
+  "lng": 9.9662,
+  "rhythm": {
+    "de": "Jeden Mittwoch und Donnerstag, April bis Ende Oktober",
+    "en": "Every Wednesday and Thursday, April to the end of October"
+  },
+  "opening": {
+    "start": "18:00",
+    "end": "22:00"
+  },
+  "dates": [
+    "2026-09-23",
+    "2026-09-24",
+    "2026-09-30",
+    "2026-10-01",
+    "2026-10-07",
+    "2026-10-08",
+    "2026-10-14",
+    "2026-10-15",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-28",
+    "2026-10-29"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://nachtflohmarkt-rindermarkthalle.de/",
+  "organiser": {
+    "name": "Nachtflohmarkt vor der Rindermarkthalle (Julien von der Hoeden)",
+    "website": "https://nachtflohmarkt-rindermarkthalle.de/",
+    "email": "info@schanzenmarkt.de"
+  },
+  "source_page": "https://nachtflohmarkt-rindermarkthalle.de/pages/nacht-flohmarkt-in-hamburg",
+  "facts": [
+    "every Wednesday and Thursday from 18:00 to 22:00, April to the end of October",
+    "on the large forecourt of the Rindermarkthalle St. Pauli",
+    "private sellers, local craftspeople and designers",
+    "second-hand clothes, furniture, records, art, books and curiosities",
+    "street food, drinks and live music",
+    "runs every week, rain included",
+    "everyone is welcome",
+    "U3 Feldstraße and bus lines 115, 7, 3 and X3 stop in front of the door",
+    "the Rindermarkthalle car park charges 3 EUR per started hour, two hours free with a purchase in the hall",
+    "sellers build up from 16:00; a running metre costs 12 EUR"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser publishes the rhythm, not a date list: \"Von April bis Ende Oktober jeden Mittwoch & Donnerstag von 18:00 bis 22:00\". Dates here are derived from that and run to the last Wednesday and Thursday of October (28 and 29 October); the organiser does not name the final date of the season, and nothing runs from November to March. No visitor entry fee is stated anywhere on the organiser's pages, so fee is null. The venue address is from the Rindermarkthalle's own contact page; the Impressum address, Schulterblatt 84, is the organiser's office, not the market.",
+  "description": {
+    "de": "Mittwochs und donnerstags von 18 bis 22 Uhr auf dem Vorplatz der Rindermarkthalle St. Pauli, von April bis Ende Oktober. Private Verkäufer, Handwerk und Design: Kleidung, Möbel, Platten, Kunst, Bücher, Kurioses. Dazu Streetfood, Getränke und Livemusik. U3 Feldstraße hält vor der Tür.",
+    "en": "Wednesdays and Thursdays from 6 to 10 in the evening on the forecourt of the Rindermarkthalle in St. Pauli, April to the end of October. Private sellers, local makers and designers: clothes, furniture, records, art, books and curiosities, with street food, drinks and live music. U3 Feldstraße stops at the door."
+  }
+}

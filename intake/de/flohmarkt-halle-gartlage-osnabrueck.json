@@ -1,0 +1,62 @@
+{
+  "slug": "flohmarkt-halle-gartlage-osnabrueck",
+  "name": "Flohmarkt Halle Gartlage",
+  "kind": "flohmarkt",
+  "town": "Osnabrück",
+  "region": "Niedersachsen",
+  "venue": {
+    "name": "Halle Gartlage",
+    "address": "Schlachthofstraße 48",
+    "postal_code": "49074"
+  },
+  "lat": 52.2834,
+  "lng": 8.0672,
+  "rhythm": {
+    "de": "Jeden Samstag",
+    "en": "Every Saturday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-03",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19"
+  ],
+  "dates_from": "listed",
+  "fee": 1,
+  "currency": "EUR",
+  "website": "https://www.dhd-maerkte.de/?p=54",
+  "organiser": {
+    "name": "DHD Märkte GmbH",
+    "website": "https://www.dhd-maerkte.de/",
+    "email": "info@dhd-maerkte.de"
+  },
+  "source_page": "https://www.dhd-maerkte.de/",
+  "facts": [
+    "entry 1 EUR per person",
+    "every Saturday, plus selected Sundays",
+    "selling hours Saturday 08:00–16:00, Sunday 11:00–17:00",
+    "pitches both in the hall and on the open ground; the hall is heated in winter",
+    "antiques, clothing and household goods",
+    "no market on 31 October and 7 November — the Herbstjahrmarkt is on the site",
+    "28 November is open ground only, no hall",
+    "pitches from 2 metres, no reservation needed up to 8 metres",
+    "gates open by 06:00; traders cannot drive onto the site after 08:00"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates are the Termine table on the organiser's home page, dhd-maerkte.de; the market's own page (?p=54) carries the entry fee and pitch prices but no dates. Selling hours come from the organiser's Marktordnung (?page_id=14). The street address is on the venue's own site, hallegartlage.de, whose calendar lists the same eleven Saturdays and names DHD Märkte GmbH as organiser. Nothing is published beyond 19 December, so January is empty.",
+  "description": {
+    "de": "Jeden Samstag von 8 bis 16 Uhr in und vor der Halle Gartlage — im Winter geheizt, draußen das Freigelände. Antiquitäten, Kleidung und Haushaltswaren. Eintritt 1 Euro. Bis 8 Meter braucht kein Händler eine Reservierung; die Tore öffnen um 6.",
+    "en": "Every Saturday from 8 to 4, inside and in front of the Halle Gartlage — heated in winter, with open ground outside. Antiques, clothing and household goods. Entry 1 euro. Up to eight metres no trader needs a reservation; the gates open at 6."
+  }
+}

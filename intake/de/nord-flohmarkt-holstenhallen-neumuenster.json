@@ -1,0 +1,48 @@
+{
+  "slug": "nord-flohmarkt-holstenhallen-neumuenster",
+  "name": "Nord-Flohmarkt Holstenhallen",
+  "kind": "hallenflohmarkt",
+  "town": "Neumünster",
+  "region": "Schleswig-Holstein",
+  "venue": {
+    "name": "Holstenhallen",
+    "address": "Justus-von-Liebig-Straße 2",
+    "postal_code": "24537"
+  },
+  "lat": 54.0926,
+  "lng": 9.9767,
+  "rhythm": {
+    "de": "An einzelnen Sonntagen",
+    "en": "On single Sundays"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-11-01",
+    "2026-12-13",
+    "2027-01-10"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.nord-flohmarkt.de/",
+  "organiser": {
+    "name": "Dieter Groneberg-Veranstaltungen",
+    "website": "https://www.nord-flohmarkt.de/",
+    "email": "kontakt@nord-flohmarkt.de"
+  },
+  "source_page": "https://www.nord-flohmarkt.de/termine",
+  "facts": [
+    "the organiser calls it the Riesen-Hallen-Flohmarkt, in Halle 5 of the Holstenhallen",
+    "the September date is on the Holstenhallen open-air ground, not in the hall",
+    "hall pitches are taken without a vehicle, minimum 3 metres, power only at back-wall places",
+    "pitches can be booked online in advance or taken on the day from 05:30",
+    "sellers build up between 05:30 and 07:30",
+    "the exact pitch is assigned on the morning by the market staff"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser publishes dates, not visitor hours or an entry fee — both are null here; phone (04121) 475 28 08. Dates cross-checked against the venue's own calendar at holstenhallen.com/de/termine, which lists the same Nord-Flohmarkt Sundays (27.09. Freigelände, 01.11. and 13.12. Halle 5); 10.01.2027 is on the organiser's date list and on its printed Terminzettel. Kind is hallenflohmarkt because three of the four dates are indoors; 27 September is outdoors. nord-flohmarkt.de is the joint site of two organisers, K-Veranstaltungen Uwe Kraus and Dieter Groneberg-Veranstaltungen; the Neumünster dates name Groneberg.",
+  "description": {
+    "de": "An einzelnen Sonntagen in Halle 5 der Holstenhallen, im September noch auf dem Freigelände. Plätze lassen sich vorab online buchen oder morgens ab 5.30 Uhr vor Ort nehmen; der genaue Standplatz wird am Morgen zugeteilt. Mindestens drei Meter, Strom nur an der Rückwand.",
+    "en": "On single Sundays in Hall 5 of the Holstenhallen, with the September date still on the open ground outside. Pitches can be booked online or taken on the morning from 5.30; the exact spot is assigned by the staff. Three metres minimum, power only along the back wall."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "xxl-flohmarkt-messe-kassel",
+  "name": "XXL Flohmarkt Messe Kassel",
+  "kind": "flohmarkt",
+  "town": "Kassel",
+  "region": "Hessen",
+  "venue": {
+    "name": "Messe Kassel",
+    "address": "Damaschkestraße 55",
+    "postal_code": "34121"
+  },
+  "lat": 51.288,
+  "lng": 9.4955,
+  "rhythm": {
+    "de": "Mehrere Wochenenden im Jahr, samstags und sonntags",
+    "en": "Several weekends a year, Saturday and Sunday"
+  },
+  "dates": [
+    "2026-10-24",
+    "2026-10-25",
+    "2026-12-12",
+    "2026-12-13"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://hansenmaerkte.de/",
+  "organiser": {
+    "name": "Hansen-Märkte (André Hansen)",
+    "website": "https://hansenmaerkte.de/",
+    "email": null
+  },
+  "source_page": "https://hansenmaerkte.de/troedelmaerkte/flohmaerkte-hessen",
+  "facts": [
+    "in the halls of Messe Kassel and on the open ground outside",
+    "runs Saturday and Sunday",
+    "second-hand and antiques, with some new goods",
+    "smallest stall is 2 metres",
+    "sellers pay from 10 € a metre a day in the hall, from 9 € outdoors with the car at the stall"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Opening hours for visitors are nowhere on the organiser's site — it gives only build-up times (Saturday from 07:00, Sunday from 07:00), so 'opening' is left out. Visitor entry fee not stated either. The organiser publishes no e-mail in plain text (the Impressum hides it behind JavaScript); postal address Am Lomberg 1a, 35085 Ebsdorfergrund. Dates from the four per-date pages under Flohmärkte Hessen (article ids 169, 170, 171, 172). No 2027 dates published.",
+  "description": {
+    "de": "Mehrere Wochenenden im Jahr in den Hallen der Messe Kassel und auf dem Freigelände davor, samstags und sonntags. Gebrauchtes und Antiquitäten, ein Teil Neuware. Der kleinste Stand misst zwei Meter; draußen kann das Auto am Stand stehen bleiben.",
+    "en": "Several weekends a year in the halls of Messe Kassel and on the open ground outside, Saturday and Sunday. Second-hand and antiques, with some new goods. The smallest stall is two metres; outdoors the car can stay at the pitch."
+  }
+}

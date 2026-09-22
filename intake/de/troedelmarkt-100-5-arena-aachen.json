@@ -1,0 +1,59 @@
+{
+  "slug": "troedelmarkt-100-5-arena-aachen",
+  "name": "Trödelmarkt 100,5 Arena Aachen",
+  "kind": "troedelmarkt",
+  "town": "Aachen",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "100,5 Arena (Tivoli Eissporthalle)",
+    "address": "Hubert-Wienen-Straße 8",
+    "postal_code": "52070"
+  },
+  "lat": 50.7955,
+  "lng": 6.1009,
+  "rhythm": {
+    "de": "In aller Regel jeden Samstag",
+    "en": "As a rule every Saturday"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://hoefges-troedelmarkt.com/termine/",
+  "organiser": {
+    "name": "Höfges Event Group GmbH",
+    "website": "https://hoefges-troedelmarkt.com/",
+    "email": "info@hoefges.com"
+  },
+  "source_page": "https://hoefges-troedelmarkt.com/termine/",
+  "facts": [
+    "Saturdays, 07:00–14:00, in front of the 100,5 Arena",
+    "entry is free",
+    "organiser describes it as a long-running, popular Saturday market for collectors and bargain hunters",
+    "close to the Tivoli stadium and the CHIO showground",
+    "parking on the 100,5 Arena grounds",
+    "bus 30, 51 and 151",
+    "no vehicles may be driven on the grounds between 08:00 and 14:00"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser's Termine page renders from its own data feed on the same site (wp-json/ts-events/v1/events); dates were read from that feed. The feed's first Aachen date is 2026-10-10 and the last is 2026-12-12 — that is a booking horizon, not a season, so Saturdays before and after are likely to run but are not published. 'Entry is always free' is stated on the organiser's homepage, not on the Termine page. The organiser writes the street as 'Hubert-Wien Straße 8'; the actual street is Hubert-Wienen-Straße, confirmed by the arena's own address — used the correct spelling. No entry in the feed for 2026-09-26 or 2026-10-03.",
+  "description": {
+    "de": "In aller Regel jeden Samstag von 7 bis 14 Uhr vor der 100,5 Arena, nahe dem Tivoli und dem CHIO-Gelände. Eintritt frei, Parkplätze auf dem Gelände, die Busse 30, 51 und 151 halten in der Nähe. Zwischen 8 und 14 Uhr fahren keine Fahrzeuge über den Platz.",
+    "en": "As a rule every Saturday from 7 to 2 in front of the 100,5 Arena, close to the Tivoli stadium and the CHIO showground. Free entry, parking on site, and buses 30, 51 and 151 stop nearby. No vehicles cross the grounds between 8 and 2."
+  }
+}

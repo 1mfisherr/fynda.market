@@ -1,0 +1,66 @@
+{
+  "slug": "flohmarkt-schuetzenplatz-braunschweig",
+  "name": "Flohmarkt Schützenplatz",
+  "kind": "flohmarkt",
+  "town": "Braunschweig",
+  "region": "Niedersachsen",
+  "venue": {
+    "name": "Schützenplatz",
+    "address": "Hamburger Straße 63",
+    "postal_code": "38114"
+  },
+  "lat": 52.2841,
+  "lng": 10.5186,
+  "rhythm": {
+    "de": "Jeden Freitag und Samstag",
+    "en": "Every Friday and Saturday"
+  },
+  "opening": {
+    "start": "06:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-09-25",
+    "2026-09-26",
+    "2026-10-16",
+    "2026-10-17",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-30",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-06",
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-27",
+    "2026-11-28"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.pinguin-maerkte.de/",
+  "organiser": {
+    "name": "AHP Veranstaltungsservice GbR",
+    "website": "https://www.pinguin-maerkte.de/",
+    "email": "pinguin.maerkte@web.de"
+  },
+  "source_page": "https://www.pinguin-maerkte.de/%C3%BCbersicht-veranstaltungen-sch%C3%BCtzenplatz-bs-harz-u-heide-2026/",
+  "facts": [
+    "free entry for visitors, parking is paid",
+    "Fridays and Saturdays from 06:00, ending 12:00 or 14:00, shorter in bad weather and in the cold season",
+    "closed 27 September to 14 October for the Herbstmesse on the Schützenplatz",
+    "one extra Sunday, 1 November",
+    "no market on Saturday 7 November — the organiser runs the Harz u. Heide market that day instead",
+    "closed from 30 November",
+    "pitches from 5 EUR per metre on Fridays, 7 EUR on Saturdays; 50% surcharge on new goods",
+    "office on market days, Friday and Saturday 09:00–13:00, phone 0531 322444"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser gives the close as \"ab 06.00 Uhr - 12.00 / 14.00 Uhr\" — 14:00 is the later of the two, so the end time can run short. Dates page ends the season on 28 November (\"ab 30. November geschlossen\") and publishes nothing for 2027, so December and January are empty. Sunday dates are decided market by market: only 1 November is listed. Sat 5 Sep and Sat 7 Nov are marked \"nur FM Harz u. Heide\" — that is a separate market of the same organiser on the Messegelände, Eisenbütteler Straße, and is not included here.",
+  "description": {
+    "de": "Braunschweigs größter Flohmarkt, freitags und samstags ab 6 Uhr früh auf dem Schützenplatz, seit rund fünfzig Jahren. Schluss ist um 12 oder 14 Uhr, bei Kälte und schlechtem Wetter früher. Eintritt frei, Parken kostet. Ende September bis Mitte Oktober steht die Herbstmesse auf dem Platz.",
+    "en": "Braunschweig's biggest flea market, Fridays and Saturdays from 6 in the morning on the Schützenplatz, and about fifty years old. It ends at 12 or 2, earlier in cold or bad weather. Entry is free, parking is paid. From late September to mid-October the autumn fair takes over the square."
+  }
+}

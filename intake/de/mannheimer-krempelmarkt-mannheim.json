@@ -1,0 +1,53 @@
+{
+  "slug": "mannheimer-krempelmarkt-mannheim",
+  "name": "Mannheimer Krempelmarkt",
+  "kind": "flohmarkt",
+  "town": "Mannheim",
+  "region": "Baden-Württemberg",
+  "venue": {
+    "name": "Neuer Messplatz",
+    "address": "Neuer Messplatz",
+    "postal_code": "68169"
+  },
+  "lat": 49.5045,
+  "lng": 8.4709,
+  "rhythm": {
+    "de": "Sieben Markttage im Jahr",
+    "en": "Seven market days a year"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-10-24",
+    "2026-11-21"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.mannheimer-krempelmarkt.de/",
+  "organiser": {
+    "name": "Projekt Freiraum e.V.",
+    "website": "https://www.mannheimer-krempelmarkt.de/",
+    "email": "contact@mannheimer-krempelmarkt.de"
+  },
+  "source_page": "https://www.mannheimer-krempelmarkt.de/",
+  "facts": [
+    "seven market days a year, on the Neuer Messplatz",
+    "visitors 08:00–14:00; the whole market day runs 05:00–16:00",
+    "entry free",
+    "runs in any weather",
+    "second-hand only, no new goods",
+    "no reservation needed; stall from 5 € a metre, table 15 €",
+    "from 08:00 to 14:00 the whole Messplatz is a pedestrian zone",
+    "run by the non-profit Projekt Freiraum e.V., registered in 1994",
+    "tram lines 1 and 3 and bus 61, stop Neuer Messplatz"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates read from the organiser's own structured data on the home page (2026: 28.02., 11.04., 23.05., 20.06., 12.09., 24.10., 21.11.); only 24.10. and 21.11. fall in the window, and no 2027 dates are published yet. 'opening' holds the visitor hours the page gives (8–14); the market day as a whole is 5–16. Postal code and coordinates from the geocoder — the page gives only 'Neuer Messplatz, 68169 Mannheim'.",
+  "description": {
+    "de": "Sieben Markttage im Jahr auf dem Neuen Messplatz, für Besucher von 8 bis 14 Uhr. Nur Gebrauchtes, keine Neuware; der ganze Platz ist währenddessen Fußgängerzone. Eintritt frei, bei jedem Wetter. Getragen wird der Markt vom gemeinnützigen Verein Projekt Freiraum.",
+    "en": "Seven market days a year on the Neuer Messplatz, open to visitors from 8 to 2. Second-hand only, no new goods, and the whole square becomes a pedestrian zone while it runs. Free entry, any weather. Run by the non-profit Projekt Freiraum."
+  }
+}

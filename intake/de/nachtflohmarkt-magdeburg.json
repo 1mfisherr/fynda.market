@@ -1,0 +1,53 @@
+{
+  "slug": "nachtflohmarkt-magdeburg",
+  "name": "Nachtflohmarkt Magdeburg",
+  "kind": "nachtflohmarkt",
+  "town": "Magdeburg",
+  "region": "Sachsen-Anhalt",
+  "venue": {
+    "name": "Messe Magdeburg",
+    "address": "Tessenowstraße 9",
+    "postal_code": "39114"
+  },
+  "lat": 52.1351,
+  "lng": 11.6708,
+  "rhythm": {
+    "de": "Etwa einmal im Monat, samstags",
+    "en": "About once a month, on a Saturday"
+  },
+  "opening": {
+    "start": "15:00",
+    "end": "23:00"
+  },
+  "dates": [
+    "2026-10-17",
+    "2026-11-21",
+    "2026-12-12"
+  ],
+  "dates_from": "listed",
+  "fee": 5,
+  "currency": "EUR",
+  "website": "https://www.nachtflohmaerkte.de/magdeburg/",
+  "organiser": {
+    "name": "Mühle & Szymkowiak GbR (Nachtflohmärkte)",
+    "website": "https://www.nachtflohmaerkte.de/",
+    "email": "post@nachtflohmaerkte.de"
+  },
+  "source_page": "https://www.nachtflohmaerkte.de/magdeburg/",
+  "facts": [
+    "indoors, usually across three exhibition halls",
+    "heated and lit halls with nearly 9,000 m² in total",
+    "around 250 dealers each time, thousands of visitors per market day",
+    "running for over 25 years",
+    "entry 5 EUR, children under 14 free",
+    "new goods and clearance stock not allowed; textiles not wanted",
+    "food and drink on site",
+    "2,000 free parking spaces in front of the exhibition centre"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser lists four 2026 dates (12.09 already past); no 2027 dates published yet. Same organiser runs the Cottbus, Chemnitz, Leipzig, Riesa, Rostock and Hof night markets. Impressum names Mühle & Szymkowiak GbR, Loschwitzerstr. 31a, 01309 Dresden, project lead Robert Mühle; the market pages sign only 'Nachtflohmärkte'. Coordinates from Nominatim for Messe Magdeburg.",
+  "description": {
+    "de": "Etwa einmal im Monat samstags von 15 bis 23 Uhr, in drei beheizten Messehallen mit fast 9.000 Quadratmetern. Rund 250 Händler, seit über 25 Jahren. Neuware und Restposten sind nicht zugelassen. Eintritt 5 Euro, Kinder unter 14 frei; 2.000 kostenlose Parkplätze vor dem Gelände.",
+    "en": "About once a month on a Saturday from 3 to 11 at night, across three heated exhibition halls and nearly 9,000 square metres. Around 250 dealers, running for over 25 years. New goods and clearance stock are not allowed. Entry 5 euros, under-14s free; 2,000 free parking spaces outside."
+  }
+}

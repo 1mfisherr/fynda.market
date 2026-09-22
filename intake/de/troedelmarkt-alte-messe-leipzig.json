@@ -1,0 +1,54 @@
+{
+  "slug": "troedelmarkt-alte-messe-leipzig",
+  "name": "Trödelmarkt Alte Messe",
+  "kind": "troedelmarkt",
+  "town": "Leipzig",
+  "region": "Sachsen",
+  "venue": {
+    "name": "Alte Messe Leipzig, am Doppel-M",
+    "address": "Prager Straße 200",
+    "postal_code": "04103"
+  },
+  "lat": 51.3208,
+  "lng": 12.4037,
+  "rhythm": {
+    "de": "Jeden ersten Sonntag im Monat, März bis November",
+    "en": "The first Sunday of the month, March to November"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-10-04",
+    "2026-11-01"
+  ],
+  "dates_from": "rhythm",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://agra-antikmarkt.de/alte-messe/",
+  "organiser": {
+    "name": "ABUHA Seifert GmbH",
+    "website": "https://agra-antikmarkt.de/",
+    "email": "info@abuha.de"
+  },
+  "source_page": "https://agra-antikmarkt.de/alte-messe/",
+  "facts": [
+    "first Sunday of the month, March to November",
+    "outdoor on the old Leipzig trade fair grounds, all surfaces paved",
+    "the organiser calls it the little brother of the agra Antikmarkt",
+    "100 to 200 dealers each month",
+    "entry free",
+    "stalls stand near the Doppel-M, the landmark of the old fairground",
+    "tram lines 2 and 15 stop directly at the Doppel-M on Prager Straße",
+    "free parking at the Hit-Markt car park and in the side streets",
+    "portable toilets on site, dogs allowed on a lead",
+    "not far from the Völkerschlachtdenkmal"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser states the rhythm but publishes no date list for this market — their Termine graphic covers only the agra Antikmarkt — so the two dates in the window are derived; the market pauses from December to February, which is why there are only two. Same organiser as the agra Antikmarkt already in intake, different venue and market. Coordinates from Nominatim for Prager Straße 200. No 2027 dates published.",
+  "description": {
+    "de": "Jeden ersten Sonntag von März bis November auf dem alten Messegelände, rund um das Doppel-M. Der Veranstalter nennt ihn den kleinen Bruder des agra Antikmarkts: 100 bis 200 Händler, Eintritt frei, alles gepflastert. Tram 2 und 15 halten direkt davor, Parken ist kostenlos.",
+    "en": "The first Sunday of every month from March to November on the old trade fair grounds, around the Doppel-M landmark. The organiser calls it the little brother of the agra antiques market: 100 to 200 dealers, free entry, everything on paved ground. Trams 2 and 15 stop outside and parking is free."
+  }
+}
