@@ -119,7 +119,7 @@ const html = `<!doctype html>
 <div class="col">
   <p class="cap"><b>1A · The front door — towns, under a country heading.</b> People think in towns, so the browse path is towns. The country is a heading with a count, never a control. Grows to a third country by adding a heading.</p>
   <div class="phone">
-    ${header('Where are you?')}
+    ${header('Your town')}
     <div class="pad">
       <h1>The next flea market near you.</h1>
       <p class="lede">Dates checked, cancellations shown. Say where you are and we'll keep it.</p>
@@ -141,7 +141,7 @@ const html = `<!doctype html>
 <div class="col">
   <p class="cap"><b>1B · The front door — one question, two answers.</b> The plainest version. The country tiles are the choice you asked for; each is the country page. Honest at two or three countries, a menu at eight.</p>
   <div class="phone">
-    ${header('Where are you?')}
+    ${header('Your town')}
     <div class="pad">
       <h1>The next flea market near you.</h1>
       <p class="lede">Dates checked, cancellations shown. Say where you are and we'll keep it.</p>

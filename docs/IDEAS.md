@@ -83,3 +83,7 @@ Settled: free for users, no paywalls, revenue is supply-side. Candidates: organi
 
 owner: Delfim
 last_reviewed: 2026-09-16
+
+## Worth the drive
+
+A second block on the home page under *This weekend near Zürich*: the big markets 75–250 km away in the coming weeks, the ones people plan a Saturday around (Carouge, the Basel night market). Sketched 2026-09-22 (`design/front-door.html`, phone 2), cut from the Germany spec because nothing in the data yet says which markets are worth the drive. Revisit when organisers have filled stall counts and the confirmed stamp covers most big markets.
