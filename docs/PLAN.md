@@ -8,7 +8,9 @@ Updated 2026-09-22.
 
 ## Now
 
-Live at `fynda.market` since 2026-09-04: 222 published markets, 105 towns, 23 cantons, four locales, ~1,440 pages (64 markets added from fleafind 2026-09-20). Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
+Live at `fynda.market` since 2026-09-04: 222 published Swiss markets, 105 towns, 23 cantons, four locales, 1,440 pages. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
+
+**Germany is built and switched off.** 55 markets, 43 towns, all 16 Bundesländer, every one with a photograph and its dates read from the organiser's own page — sitting at `status = 'unverified'`, which the build does not carry, so no German page exists on the live site. Everything around them is done and deployed: the URLs, the hreflang, the country-aware copy, the front door. **The only thing left is Delfim saying publish**, after which it is one status update and a deploy. `node scripts/preview-germany.mjs` builds the whole site with them on, runs the guardrails and switches them back, without uploading.
 
 | Running | State |
 |---|---|
@@ -20,9 +22,11 @@ Live at `fynda.market` since 2026-09-04: 222 published markets, 105 towns, 23 ca
 | **Search Console** | 7 days to 2026-09-17: 94 clicks, 7,836 impressions, position ~10; 78% of impressions on a phone. Canton pages earn most per page (Bern 7, Aargau 6 clicks); market pages with 500 impressions get 2–3. Germany: 151 impressions, 0 clicks. Titles rewritten 2026-09-15 — only two days of data since (16 Sep: 19 clicks, CTR 3.0%); **the 2026-09-27 export is the first that can judge it.** A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, **re-read 2026-10-16** |
 | **Copy** | Brand line and voice settled 2026-09-19 (`BRAND.md` §Voice): every page type and every mail rewritten in four languages, the site no longer talks about itself, one stamp grammar, visitors du / vous / tu and organisers Sie / vous / tu everywhere. Left: a native speaker's pass over DE/FR/IT |
 | **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
-| **Photos** | Every market has one (226 of 226). Real ones arrive through organisers |
+| **Photos** | Every market has one — 226 Swiss, 55 German (Delfim, 2026-09-22). Real ones arrive through organisers |
+| **Front door** | The home page carries one block per country — flag, name, counts, towns, regions — and the block heading only appears with a second country, so today it reads as before (2026-09-22). No country picker anywhere: six comparable sites were read live and not one has one. The root keeps a plain redirect; the visitor's country is never guessed |
+| **Your town** | Picked in the search control, kept in browser storage, shown as a card on the home page and as a pill in the header of every other page (`PlacePill.astro`, 2026-09-22). A shortcut, not a second place-chooser |
 
-Not built: tags shown to visitors (organisers can set them since 2026-09-21; nothing renders until some are set) · country page · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
+Not built: tags shown to visitors (organisers can set them since 2026-09-21; nothing renders until some are set) · country page (parked, Delfim 2026-09-22) · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
 
 ---
 
