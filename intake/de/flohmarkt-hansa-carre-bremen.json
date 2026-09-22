@@ -1,0 +1,60 @@
+{
+  "slug": "flohmarkt-hansa-carre-bremen",
+  "name": "Flohmarkt am Hansa Carré",
+  "kind": "flohmarkt",
+  "town": "Bremen",
+  "region": "Bremen",
+  "venue": {
+    "name": "Hansa Carré",
+    "address": "Pfalzburger Straße 41",
+    "postal_code": "28207"
+  },
+  "lat": 53.063,
+  "lng": 8.8696,
+  "rhythm": {
+    "de": "Jeden Sonntag, September bis Mitte April",
+    "en": "Every Sunday, September to mid-April"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-04",
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27"
+  ],
+  "dates_from": "listed",
+  "fee": 1,
+  "currency": "EUR",
+  "website": "https://www.breminale.de/Flohmarkt/_15",
+  "organiser": {
+    "name": "BREMINALE Veranstaltungs- und Vermarktungs GmbH",
+    "website": "https://www.breminale.de/",
+    "email": null
+  },
+  "source_page": "https://www.breminale.de/flohmarkt/Flohmarkt-Termine/_16",
+  "facts": [
+    "covered, weatherproof pitches at Hansa Carré",
+    "entry 1 EUR",
+    "private sellers, no registration needed",
+    "commercial resale not allowed",
+    "no market on 15 and 22 November (Volkstrauertag, Totensonntag)",
+    "summer venue is the Bürgerweide by the fairground, where entry is free"
+  ],
+  "checked": "2026-09-22",
+  "notes": "One weekly market, two venues: Bürgerweide (spring/summer, free entry) and Hansa Carré (September to mid-April, 1 EUR). Every date in this window is at Hansa Carré, so the file is written for that venue; a second file for the Bürgerweide season may be wanted in spring. Organiser page lists dates to 27 Dec 2026, January 2027 not yet published. Hours: site says gates open 04:00 for sellers, market runs 7–14. Street number 41 and postal code from OSM, organiser gives only 'Ecke Pfalzburger Straße, Ende Osterdeich'. No e-mail in Impressum, phone (0421) 500503.",
+  "description": {
+    "de": "Bremens Sonntagsflohmarkt zieht von September bis Mitte April unter das Dach des Hansa Carré am Osterdeich, im Sommer steht er auf der Bürgerweide. Private Verkäufer ohne Anmeldung, gewerblicher Handel ist nicht erlaubt. Eintritt 1 Euro; an Volkstrauertag und Totensonntag fällt der Markt aus.",
+    "en": "Bremen's Sunday flea market moves under the roof of the Hansa Carré on Osterdeich from September to mid-April; in summer it stands on the Bürgerweide. Private sellers, no registration, no commercial resale. Entry 1 euro; no market on the two November remembrance Sundays."
+  }
+}

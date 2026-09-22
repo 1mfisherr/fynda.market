@@ -1,0 +1,64 @@
+{
+  "slug": "flohmarkt-am-mauerpark-berlin",
+  "name": "Flohmarkt am Mauerpark",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Mauerpark",
+    "address": "Bernauer Straße 63–64",
+    "postal_code": "13355"
+  },
+  "lat": 52.5415,
+  "lng": 13.4023,
+  "rhythm": {
+    "de": "Jeden Sonntag",
+    "en": "Every Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-04",
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-03",
+    "2027-01-10",
+    "2027-01-17"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "http://www.flohmarktimmauerpark.de/",
+  "organiser": {
+    "name": "Marktverwaltung Rainer Perske",
+    "website": "http://www.flohmarktimmauerpark.de/",
+    "email": "info@flohmarktimmauerpark.de"
+  },
+  "source_page": "http://www.flohmarktimmauerpark.de/marktordnung.php",
+  "facts": [
+    "every Sunday",
+    "outdoor, covered rental stalls available",
+    "about 100 reservable private stalls plus open-air pitches and commercial traders",
+    "private sellers get priority over commercial ones",
+    "second-hand goods before new goods",
+    "info stand 10:00–14:00",
+    "next to Mauerpark, Bernauer Straße"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser site is stale (last blog post Dec 2022, prices \"until 30.09.2024\"). Marktordnung table says Sunday 09:00–18:00, blog posts say 10–18; recorded 10:00. Nov 15 and Nov 22 (Volkstrauertag, Totensonntag) dropped because the organiser cancelled those Sundays in 2022 for the same holidays; not confirmed for 2026. Entry fee not stated on organiser pages. Address postcode 13355 from the organiser Kontakt page (README example says 10435). Site only reachable over plain http.",
+  "description": {
+    "de": "Jeden Sonntag an der Bernauer Straße, direkt am Mauerpark. Rund 100 reservierbare Privatstände, dazu freie Plätze und gewerbliche Händler; private Verkäufer haben Vorrang, Gebrauchtes geht vor Neuware. Überdachte Mietstände gibt es vor Ort.",
+    "en": "Every Sunday on Bernauer Straße, right beside Mauerpark. About 100 reservable private stalls plus open pitches and commercial traders; private sellers get priority and second-hand comes before new goods. Covered rental stalls are available on site."
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "troedelmarkt-aachener-platz-duesseldorf",
+  "name": "Trödel- und Antikmarkt am Aachener Platz",
+  "kind": "troedelmarkt",
+  "town": "Düsseldorf",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Aachener Platz",
+    "address": "Ulenbergstraße 10",
+    "postal_code": "40223"
+  },
+  "lat": 51.1976,
+  "lng": 6.7736,
+  "rhythm": {
+    "de": "Jeden Samstag",
+    "en": "Every Saturday"
+  },
+  "opening": {
+    "start": "08:30",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-03",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19",
+    "2026-12-26",
+    "2027-01-02",
+    "2027-01-09",
+    "2027-01-16"
+  ],
+  "dates_from": "rhythm",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.troedelmarkt-aachenerplatz.de/",
+  "organiser": {
+    "name": "A. Gerke Antique Marketing",
+    "website": "https://www.troedelmarkt-aachenerplatz.de/",
+    "email": "info@troedelmarkt-aachenerplatz.de"
+  },
+  "source_page": "https://www.troedelmarkt-aachenerplatz.de/anreise",
+  "facts": [
+    "every Saturday, 08:30–17:00",
+    "entry free",
+    "since 1976, moved to Aachener Platz in 1980; organiser calls it Germany's first weekly flea market",
+    "heated tent hall plus open-air grounds, café and beer garden",
+    "antiques, second-hand, some new goods (B-stock) in a separate area",
+    "live jazz in the café on Saturdays, 11:30–14:30",
+    "free shuttle bus 893 from the Südpark/Südfriedhof car parks; U71/U72/U73/U79, S1/S8/S11 via Bilk",
+    "organiser reports up to 20,000 visitors on a good day (2011 figure)"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Homepage says 'ab 8:00', Anreise/Marktordnung say 08:30–17:00 — used the latter. No holiday or winter-break info anywhere on the site, so 26 Dec 2026 and 2 Jan 2027 are included but unconfirmed. Venue address is the same as the organiser's office (Ulenbergstraße 10).",
+  "description": {
+    "de": "Seit 1976 jeden Samstag, seit 1980 am Aachener Platz: ein beheiztes Zelt, ein Freigelände, ein Café mit Biergarten und samstags Live-Jazz zwischen 11.30 und 14.30 Uhr. Antiquitäten und Gebrauchtes, Neuware nur in einem eigenen Bereich. Eintritt frei; Gratis-Shuttle 893 von den Parkplätzen am Südpark, Bahnen über Bilk.",
+    "en": "Every Saturday since 1976, on Aachener Platz since 1980: a heated tent hall, open-air grounds, a café with a beer garden and live jazz on Saturdays from 11.30 to 2.30. Antiques and second-hand, with new stock kept to a separate area. Entry is free; a free shuttle bus 893 runs from the Südpark car parks, trains via Bilk."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+  "name": "Frankfurter Flohmarkt am Schaumainkai",
+  "kind": "flohmarkt",
+  "town": "Frankfurt am Main",
+  "region": "Hessen",
+  "venue": {
+    "name": "Schaumainkai (Museumsufer), between Untermainbrücke and Holbeinsteg",
+    "address": "Schaumainkai",
+    "postal_code": "60594"
+  },
+  "lat": 50.1063,
+  "lng": 8.6809,
+  "rhythm": {
+    "de": "Etwa jeden zweiten Samstag, im Wechsel mit dem Osthafen",
+    "en": "Roughly every other Saturday, alternating with the Osthafen site"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-10-17",
+    "2026-10-31",
+    "2026-11-14",
+    "2026-11-28",
+    "2026-12-12"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.hfm-frankfurt.de/flohmaerkte",
+  "organiser": {
+    "name": "HFM Managementgesellschaft für Hafen und Markt mbH",
+    "website": "https://www.hfm-frankfurt.de/",
+    "email": "flohmarkt@hfm-frankfurt.de"
+  },
+  "source_page": "https://www.hfm-frankfurt.de/flohmaerkte",
+  "facts": [
+    "Saturdays, 09:00–14:00, public holidays excepted",
+    "on the Main riverbank at the museum embankment, between Untermainbrücke and Holbeinsteg",
+    "second-hand goods, bric-a-brac of all kinds and handicrafts; no new goods",
+    "run by the city's market company HFM",
+    "alternates with the Osthafen (Lindleystraße) site, roughly every other Saturday"
+  ],
+  "checked": "2026-09-22",
+  "notes": "HFM lists dates only through 12 Dec 2026; no January 2027 dates and no winter-break note were published at check time. Entry fee: the page names no visitor charge, taken as free — confirm. Coordinates are Schaumainkai 17 (Museum Angewandte Kunst), inside the stated stretch, not a surveyed centre point.",
+  "description": {
+    "de": "Samstags von 9 bis 14 Uhr am Museumsufer zwischen Untermainbrücke und Holbeinsteg, etwa jeden zweiten Samstag im Wechsel mit dem Osthafen. Gebrauchtes, Trödel aller Art und Kunsthandwerk, keine Neuware. Veranstalter ist die städtische HFM.",
+    "en": "Saturdays from 9 to 2 on the museum embankment between Untermainbrücke and Holbeinsteg, roughly every other Saturday in alternation with the Osthafen. Second-hand goods, bric-a-brac of every kind and handicrafts, no new goods. Run by the city's market company HFM."
+  }
+}

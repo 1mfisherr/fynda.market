@@ -1,0 +1,53 @@
+{
+  "slug": "nowkoelln-flowmarkt-berlin",
+  "name": "Nowkoelln Flowmarkt",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Maybachufer",
+    "address": "Maybachufer 32–33",
+    "postal_code": "12047"
+  },
+  "lat": 52.4922,
+  "lng": 13.4311,
+  "rhythm": {
+    "de": "Alle zwei Wochen sonntags, März bis November",
+    "en": "Every other Sunday, March to November"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-10-04",
+    "2026-10-18",
+    "2026-11-01",
+    "2026-11-29"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://nowkoelln.de/",
+  "organiser": {
+    "name": "Michael M. R. Groß",
+    "website": "https://nowkoelln.de/",
+    "email": "info@nowkoelln.de"
+  },
+  "source_page": "https://nowkoelln.de/",
+  "facts": [
+    "every other Sunday, 10:00–17:00",
+    "season 22 March to early November 2026",
+    "private second-hand, art, music and handmade goods",
+    "no industrially made new goods",
+    "up to 130 reservable stalls",
+    "on the Landwehrkanal bank at Maybachufer",
+    "stall bookings open online 12 days before each market and sell out within seconds"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates as listed on the homepage; the season is stated as ending 2 November yet 29 November 2026 is also listed, so it is probably a special end-of-year edition — kept as listed. Hours read from /anmeldung-info/. Organiser is a private individual named in the imprint. Entry fee not stated. No 2027 dates published.",
+  "description": {
+    "de": "Alle zwei Wochen sonntags von 10 bis 17 Uhr am Maybachufer am Landwehrkanal, von März bis November. Bis zu 130 Stände mit privatem Second-Hand, Kunst, Musik und Handgemachtem; industrielle Neuware ist ausgeschlossen. Die Standplätze werden zwölf Tage vorher online vergeben und sind in Sekunden weg.",
+    "en": "Every other Sunday from 10 to 5 on Maybachufer beside the Landwehrkanal, March to November. Up to 130 stalls of private second-hand, art, music and handmade things; industrially made new goods are excluded. Stall bookings open online twelve days ahead and sell out within seconds."
+  }
+}

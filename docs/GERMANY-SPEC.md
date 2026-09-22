@@ -22,14 +22,14 @@ Delfim, 2026-09-22: start slowly but surely; agents research the main German dir
 
 - **Which markets:** the large recurring ones people travel for, spread across ≥8 Bundesländer, weighted to demand (`PRODUCT.md`: NRW, Bayern, Berlin, Hamburg). Berlin (Mauerpark, Boxhagener Platz, Arkonaplatz, Straße des 17. Juni), München (Riem, Olympiapark, Theresienwiese Frühjahr), Hamburg (Flohschanze), Köln, Düsseldorf, Frankfurt, Stuttgart, Leipzig, Dresden, Hannover, Nürnberg, Freiburg, Konstanz — the agents confirm, not assume.
 - **Per market, required:** name · venue with address and postcode · coordinates · Bundesland · rhythm line (de, en) · the next dates within 120 days · opening hours · fee · organiser name, website, e-mail if published · `source_page` · the illustration from the permanent set for now — **Delfim brings the photos later** (2026-09-22); the intake does not wait for them. Description: two or three plain sentences in the settled voice, de and en, written from facts on the source page, never lifted.
-- **How:** a research agent per city works from a directory list to the organiser sites, writes one JSON row per market into `data/intake/de/`, with the source URL for every fact. Delfim spot-checks ten. An import script (`scripts/import-intake.mjs`, new; same matching rules as `import-v1-additions.mjs`) loads them, creates Germany → Bundesländer → towns → venues → organisers as needed, and never touches what exists. Organisers with an e-mail get a link and the *listed* welcome — after Delfim has seen the German letter's "in der Schweiz" line become the country's.
+- **How:** a research agent per city works from a directory list to the organiser sites, writes one JSON file per market into `intake/de/` (shape: `intake/README.md`), with the source URL for every fact. Delfim spot-checks ten. An import script (`scripts/import-intake.mjs`, new; same matching rules as `import-v1-additions.mjs`) loads them, creates Germany → Bundesländer → towns → venues → organisers as needed, and never touches what exists. Organisers with an e-mail get a link and the *listed* welcome — after Delfim has seen the German letter's "in der Schweiz" line become the country's.
 - **Floor:** no Bundesland page ships with fewer than three markets; a Bundesland with one or two stays in the tree without a page until it has more (content floor, guardrail 3).
 
 ## Build order
 
 Each step live and proven before the next; `PLAN.md` step 6 mirrors this list.
 
-1. Intake agents + `import-intake.mjs`, 50–60 markets in a staging state (`status = draft`, not built). Read back, spot-check.
+1. ~~Intake agents + `import-intake.mjs`~~ — done 2026-09-22 with 21 markets as `unverified` (the status the build does not publish; there is no `draft`). Delfim spot-checks; more markets arrive the same way, `intake/README.md`. Open for step 2: German descriptions use ß (Munich readers), Swiss ones ss — one `/de/` locale, two spellings; decide before the shared strings are touched.
 2. Germany in the tree: country row, 16 Bundesländer with de/en slugs, `/de/deutschland/…`, `/en/germany/…`. Shared strings lose the country word.
 3. Region template on the real counts (a list works at 29, not at 300 — towns first, then dated markets, a cap).
 4. Country page; front door 1A; the place pill; the root redirect.

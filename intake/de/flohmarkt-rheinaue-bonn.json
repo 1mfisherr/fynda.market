@@ -1,0 +1,49 @@
+{
+  "slug": "flohmarkt-rheinaue-bonn",
+  "name": "Flohmarkt Rheinaue",
+  "kind": "flohmarkt",
+  "town": "Bonn",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Freizeitpark Rheinaue",
+    "address": "Ludwig-Erhard-Allee 20",
+    "postal_code": "53175"
+  },
+  "lat": 50.7108,
+  "lng": 7.1408,
+  "rhythm": {
+    "de": "Ein Samstag im Monat, April bis Oktober",
+    "en": "One Saturday a month, April to October"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-17"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Bonn-RHEINAUE-3l/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": null
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Bonn-RHEINAUE-3l/",
+  "facts": [
+    "Saturday, 08:00–18:00",
+    "entry free",
+    "second-hand goods and handicrafts only, no new goods",
+    "in the Rheinaue park, no vehicles on the grounds; hand trucks allowed",
+    "buses 610, 611, 631 and tram 66/68; parking at Posttower and Ludwig-Erhard-Allee",
+    "organiser describes it as one of the largest flea markets in Germany"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Only one date left in the window (2026-10-17) because the season ends in October; the April–October rhythm is stated on bonn.de (city calendar), not on the organiser page. Organiser e-mail appears on bonn.de as info@melan.de but not on melan.de itself, so left null. flohmarkt-rheinaue.de (named on bonn.de) has a broken TLS certificate and could not be read. bonn.de gives the address as Ludwig-Erhard-Allee 10; the organiser says 20 — used 20.",
+  "description": {
+    "de": "Ein Samstag im Monat von April bis Oktober, 8 bis 18 Uhr, im Rheinauenpark. Nur Gebrauchtes und Kunsthandwerk, keine Neuware; Autos bleiben draußen, Sackkarren sind erlaubt. Eintritt frei; Bus 610, 611, 631 und Tram 66/68, Parkplätze am Posttower und an der Ludwig-Erhard-Allee.",
+    "en": "One Saturday a month from April to October, 8 to 6, in the Rheinaue park. Second-hand and handicrafts only, no new goods; cars stay outside, hand trucks are fine. Entry is free; buses 610, 611 and 631, trams 66 and 68, parking at the Posttower and on Ludwig-Erhard-Allee."
+  }
+}

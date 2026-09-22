@@ -1,0 +1,57 @@
+{
+  "slug": "riesenflohmarkt-freiburg",
+  "name": "Riesenflohmarkt Freiburg",
+  "kind": "hallenflohmarkt",
+  "town": "Freiburg im Breisgau",
+  "region": "Baden-Württemberg",
+  "venue": {
+    "name": "Messe Freiburg",
+    "address": "Hermann-Mitsch-Straße 3",
+    "postal_code": "79108"
+  },
+  "lat": 48.0154,
+  "lng": 7.8399,
+  "rhythm": {
+    "de": "Mehrere Wochenenden im Jahr",
+    "en": "Several weekends a year"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-09-25",
+    "2026-09-26",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-12-04",
+    "2026-12-05"
+  ],
+  "dates_from": "listed",
+  "fee": 4,
+  "currency": "EUR",
+  "website": "https://www.suema-maier.de/Flohmarkt/",
+  "organiser": {
+    "name": "SüMa Maier Veranstaltungs GmbH",
+    "website": "https://www.suema-maier.de/",
+    "email": "info@suema-maier.de"
+  },
+  "source_page": "https://www.suema-maier.de/Flohmarkt/termine.php",
+  "facts": [
+    "indoor, in the Messe Freiburg halls",
+    "300 to 400 exhibitors, 3,000 to 4,000 visitors per market",
+    "entry 4 €",
+    "Friday 14:00–19:00, Saturday 09:00–17:00",
+    "October edition on Saturday/Sunday: Sat 10:00–18:00, Sun 11:00–18:00",
+    "organiser running markets for over 40 years",
+    "runs into winter — November and December dates"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Opening hours differ per day: Friday 14–19, Saturday 9–17; the 17./18.10.2026 edition is Sat 10–18 / Sun 11–18. 'opening' holds the Saturday hours. Exhibitor/visitor numbers and the 4 € fee come from suema-maier.de/Flohmarkt/index.php, dates and hours from termine.php and the 2026 programme PDF; address from the PDF. 2027 dates not yet published.",
+  "description": {
+    "de": "Mehrmals im Jahr, auch im November und Dezember, in den Hallen der Messe Freiburg. 300 bis 400 Aussteller, an einem Wochenende 3.000 bis 4.000 Besucher. Freitag 14 bis 19 Uhr, Samstag 9 bis 17 Uhr; die Oktober-Ausgabe läuft Samstag und Sonntag. Eintritt 4 Euro.",
+    "en": "Several weekends a year, November and December included, in the halls of Messe Freiburg. 300 to 400 exhibitors, 3,000 to 4,000 visitors over a weekend. Friday 2 to 7, Saturday 9 to 5; the October edition runs Saturday and Sunday. Entry 4 euros."
+  }
+}

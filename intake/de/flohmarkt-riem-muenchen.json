@@ -1,0 +1,55 @@
+{
+  "slug": "flohmarkt-riem-muenchen",
+  "name": "Flohmarkt München-Riem",
+  "kind": "flohmarkt",
+  "town": "München",
+  "region": "Bayern",
+  "venue": {
+    "name": "Messe München, Freigelände (Tor 11)",
+    "address": "Paul-Henri-Spaak-Straße",
+    "postal_code": "81829"
+  },
+  "lat": 48.1381,
+  "lng": 11.7104,
+  "rhythm": {
+    "de": "An ausgewählten Samstagen, April bis November",
+    "en": "Selected Saturdays, April to November"
+  },
+  "opening": {
+    "start": "06:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-10-10",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.flohmarkt-riem.com/",
+  "organiser": {
+    "name": "MARKTmeister GmbH",
+    "website": "https://www.flohmarkt-riem.com/",
+    "email": "info@marktmeister.gmbh"
+  },
+  "source_page": "https://www.flohmarkt-riem.com/besucher/",
+  "facts": [
+    "outdoor, on the Messe München open-air grounds, 75,000 m² selling area",
+    "entry free",
+    "visitor car park 3 €, paid on site",
+    "April to October 06:00–15:00; November dates 07:00–14:00",
+    "no market on 19.09, 26.09, 03.10, 17.10, 24.10 and 28.11.2026",
+    "since 1993",
+    "U2 Messestadt Ost, entrance opposite the Messeturm",
+    "run with Der Paritätische Bayern"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser lists dates only to 28.11.2026 and marks them 'vorbehaltlich (ohne Gewähr)'; nothing published for December or January. Coordinates are the street, not Tor 11 itself. 75,000 m² and 'since 1993' come from the site's home page, the rest from the Besucher page.",
+  "description": {
+    "de": "An ausgewählten Samstagen von April bis November auf dem Freigelände der Messe München, 75.000 Quadratmeter Verkaufsfläche. Von April bis Oktober 6 bis 15 Uhr, im November 7 bis 14 Uhr. Eintritt frei, Parken 3 Euro; U2 Messestadt Ost, Eingang gegenüber dem Messeturm. Seit 1993.",
+    "en": "Selected Saturdays from April to November on the open-air grounds of Messe München, 75,000 square metres of selling space. April to October 6 to 3, November 7 to 2. Entry is free, parking 3 euros; U2 Messestadt Ost, entrance opposite the Messeturm. Since 1993."
+  }
+}

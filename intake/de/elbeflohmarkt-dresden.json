@@ -1,0 +1,59 @@
+{
+  "slug": "elbeflohmarkt-dresden",
+  "name": "Elbeflohmarkt",
+  "kind": "flohmarkt",
+  "town": "Dresden",
+  "region": "Sachsen",
+  "venue": {
+    "name": "Elbufer unterhalb der Albertbrücke",
+    "address": "Käthe-Kollwitz-Ufer (Zufahrt Terrassenufer)",
+    "postal_code": "01307"
+  },
+  "lat": 51.0567,
+  "lng": 13.7569,
+  "rhythm": {
+    "de": "Jeden Samstag, Ende Januar bis Ende November",
+    "en": "Every Saturday, late January to late November"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-03",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://flohmarkt-sachsen.de/elbeflohmarkt/",
+  "organiser": {
+    "name": "DDV Sachsen GmbH",
+    "website": "https://flohmarkt-sachsen.de/",
+    "email": "info@flohmarkt-sachsen.de"
+  },
+  "source_page": "https://flohmarkt-sachsen.de/elbeflohmarkt/",
+  "facts": [
+    "on the Elbe bank below the Albertbrücke",
+    "entry free",
+    "professional dealers and private sellers",
+    "antiques, rarities, household goods, second-hand clothes, collectibles, GDR-era items",
+    "tram 6 and 13, stop Güntzplatz, 100 m",
+    "free parking across the river at Wigardstraße",
+    "food stands and toilets on site"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser lists every Saturday to 2026-11-28, then a winter pause; 2026 season began 31 January, 2027 start not yet published. Coordinates are the ones the organiser prints on the page. Old domain elbeflohmarkt-dresden.de redirects here. Stand fee 20 EUR for 1–2 m (sellers, not visitors).",
+  "description": {
+    "de": "Jeden Samstag von Ende Januar bis Ende November am Elbufer unterhalb der Albertbrücke. Händler und private Verkäufer bieten Antiquitäten, Raritäten, Haushaltswaren, Second-Hand-Kleidung und Dinge aus DDR-Zeiten. Eintritt frei; Tram 6 und 13 halten am Güntzplatz, kostenlose Parkplätze gegenüber an der Wigardstraße.",
+    "en": "Every Saturday from late January to late November on the Elbe bank below the Albertbrücke. Dealers and private sellers bring antiques, rarities, household goods, second-hand clothes and GDR-era pieces. Entry is free; trams 6 and 13 stop at Güntzplatz, and there is free parking across the river on Wigardstraße."
+  }
+}

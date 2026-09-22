@@ -1,0 +1,54 @@
+{
+  "slug": "altstadtflohmarkt-hannover",
+  "name": "Altstadtflohmarkt Hannover",
+  "kind": "flohmarkt",
+  "town": "Hannover",
+  "region": "Niedersachsen",
+  "venue": {
+    "name": "Am Hohen Ufer",
+    "address": "Am Hohen Ufer 3A",
+    "postal_code": "30159"
+  },
+  "lat": 52.3731,
+  "lng": 9.7306,
+  "rhythm": {
+    "de": "Jeden Samstag von März bis Oktober",
+    "en": "Every Saturday, March to October"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.visit-hannover.com/Event-Highlights,-Kultur-Freizeit/Altstadtflohmarkt-Hannover",
+  "organiser": {
+    "name": "Hannover Marketing und Tourismus GmbH",
+    "website": "https://www.visit-hannover.com/",
+    "email": "marketing@visit-hannover.com"
+  },
+  "source_page": "https://www.visit-hannover.com/Event-Highlights,-Kultur-Freizeit/Altstadtflohmarkt-Hannover",
+  "facts": [
+    "Germany's oldest flea market, first held 8 April 1967",
+    "on the Leine bank in the old town, next to the Nanas sculptures",
+    "antiques, jewellery, records, vintage",
+    "sellers need no registration",
+    "children's flea market alongside",
+    "crêpes and snacks on site",
+    "no market on 3 October"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser states the rhythm (every Saturday March–October, 3 Oct cancelled) rather than a date list; hannover.de's calendar shows the same Saturdays through 31 Oct 2026. Season then pauses until March 2027. Entry fee not stated anywhere on the organiser's pages (open street market). Market's own phone on the page: 01511 4774204; e-mail given is HMTG's general Impressum address.",
+  "description": {
+    "de": "Deutschlands ältester Flohmarkt, seit April 1967 jeden Samstag von März bis Oktober am Leineufer in der Altstadt, gleich neben den Nanas. Antiquitäten, Schmuck, Platten und Vintage, dazu ein Kinderflohmarkt und Crêpes-Stände. Private Verkäufer stellen ohne Anmeldung auf.",
+    "en": "Germany's oldest flea market, every Saturday from March to October since April 1967, along the Leine in the old town beside the Nanas sculptures. Antiques, jewellery, records and vintage, with a children's flea market and crêpe stands alongside. Private sellers set up without registering."
+  }
+}

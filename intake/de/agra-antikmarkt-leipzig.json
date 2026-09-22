@@ -1,0 +1,58 @@
+{
+  "slug": "agra-antikmarkt-leipzig",
+  "name": "agra Antikmarkt",
+  "kind": "antikmarkt",
+  "town": "Leipzig",
+  "region": "Sachsen",
+  "venue": {
+    "name": "agra Messepark",
+    "address": "Bornaische Straße 210",
+    "postal_code": "04279"
+  },
+  "lat": 51.2851,
+  "lng": 12.3937,
+  "rhythm": {
+    "de": "Ein Wochenende im Monat, Samstag und Sonntag",
+    "en": "One weekend a month, Saturday and Sunday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-09-27",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-12-29",
+    "2026-12-30"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://agra-antikmarkt.de/",
+  "organiser": {
+    "name": "ABUHA Seifert GmbH",
+    "website": "https://agra-antikmarkt.de/",
+    "email": "info@abuha.de"
+  },
+  "source_page": "https://agra-antikmarkt.de/",
+  "facts": [
+    "500–1,000 dealers from Germany and abroad",
+    "two 5,000 m² halls plus about 2 ha outdoors",
+    "antique furniture, art, vintage design, collectibles, second-hand",
+    "entry free",
+    "about 2,000 parking spaces on site",
+    "tram line 11",
+    "food stands, accessible toilets, dogs on a lead allowed",
+    "running for over 30 years"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates come from the organiser's 2026 schedule image (wp-content/uploads/abuha_Termine_webseite-5.jpg), read by eye; the December date is a Tue–Wed between the years (29–30 Dec). No 2027 dates published yet. Organiser Impressum address: Bautzner Strasse 67 A, 04347 Leipzig. Venue sits on the Leipzig/Markkleeberg border; postal town is Leipzig.",
+  "description": {
+    "de": "Ein Wochenende im Monat füllen sich zwei Hallen und das Freigelände der agra am südlichen Stadtrand mit Antiquitäten, Kunst, Vintage-Design und Trödel. Zwischen 500 und 1.000 Händler aus Deutschland und den Nachbarländern stellen aus; der Markt läuft seit über dreißig Jahren. Eintritt frei, Parkplätze gibt es auf dem Gelände, die Tram 11 hält davor.",
+    "en": "One weekend a month, two halls and the outdoor grounds of the agra on Leipzig's southern edge fill with antiques, art, vintage design and bric-a-brac. Between 500 and 1,000 dealers from Germany and neighbouring countries set up; the market has run for over thirty years. Entry is free, there is parking on site and tram 11 stops outside."
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+  "name": "Berliner Trödelmarkt Straße des 17. Juni",
+  "kind": "troedelmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Straße des 17. Juni, at S-Bahnhof Tiergarten",
+    "address": "Straße des 17. Juni 110–114",
+    "postal_code": "10623"
+  },
+  "lat": 52.5133,
+  "lng": 13.333,
+  "rhythm": {
+    "de": "Jeden Samstag und Sonntag",
+    "en": "Every Saturday and Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-26",
+    "2026-12-27",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-09",
+    "2027-01-10",
+    "2027-01-16",
+    "2027-01-17"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://berlinertroedelmarkt.com/",
+  "organiser": {
+    "name": "Wewerka Märkte GmbH",
+    "website": "https://berlinertroedelmarkt.com/",
+    "email": "info@berlinertroedelmarkt.com"
+  },
+  "source_page": "https://berlinertroedelmarkt.com/",
+  "facts": [
+    "every Saturday and Sunday, all year",
+    "since 1978",
+    "antiques, art and crafts; no household goods, textiles or new packaged goods",
+    "four food trucks",
+    "barrier-free",
+    "closed 26–27 September 2026 (Berlin Marathon)",
+    "directly at S-Bahnhof Tiergarten"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Hours conflict on the organiser page: banner says \"jeden Samstag und Sonntag 10:00–16:00\", a lower section says summer 09–17 / winter 09–16 with no switch date; recorded the banner. Coordinates are an approximate midpoint between Charlottenburger Tor and S Tiergarten (the address 110–114 does not geocode). Organiser says nothing about Volkstrauertag/Totensonntag (Nov 15/22) or the Christmas weekends — kept them in. Entry fee not stated.",
+  "description": {
+    "de": "Seit 1978 jedes Wochenende auf der Straße des 17. Juni, direkt am S-Bahnhof Tiergarten. Antiquitäten, Kunst und Kunsthandwerk; Haushaltswaren, Textilien und Neuware sind nicht zugelassen. Vier Foodtrucks, barrierefrei. Am Marathon-Wochenende Ende September fällt der Markt aus.",
+    "en": "Every Saturday and Sunday since 1978 along Straße des 17. Juni, right at S-Bahn Tiergarten. Antiques, art and crafts; household goods, textiles and new packaged goods are not allowed. Four food trucks, step-free access. The market skips the marathon weekend at the end of September."
+  }
+}

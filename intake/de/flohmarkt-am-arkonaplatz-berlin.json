@@ -1,0 +1,64 @@
+{
+  "slug": "flohmarkt-am-arkonaplatz-berlin",
+  "name": "Flohmarkt am Arkonaplatz",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Arkonaplatz",
+    "address": "Arkonaplatz 1",
+    "postal_code": "10435"
+  },
+  "lat": 52.5379,
+  "lng": 13.4024,
+  "rhythm": {
+    "de": "Jeden Sonntag",
+    "en": "Every Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-04",
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-15",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-03",
+    "2027-01-10",
+    "2027-01-17"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.flohmarkt-arkonaplatz.de/",
+  "organiser": {
+    "name": "Müller und Pfeiffer GbR",
+    "website": "https://www.flohmarkt-arkonaplatz.de/",
+    "email": null
+  },
+  "source_page": "https://www.flohmarkt-arkonaplatz.de/oeffnungszeiten",
+  "facts": [
+    "every Sunday 10:00–17:00, year-round",
+    "closed on Totensonntag",
+    "up to 100 traders",
+    "antiques, vintage clothing, crafts, curiosities",
+    "on a residential square between Rosenthaler Platz and Mauerpark",
+    "stall by prior reservation only"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser states 10–17 all year; tourist sites say 10–16 in winter — went with the organiser. Totensonntag 2026-11-22 dropped per organiser. No e-mail published, phone only. Entry fee not stated. Organiser imprint address is in Glienicke (Brandenburg), market is in Berlin.",
+  "description": {
+    "de": "Jeden Sonntag von 10 bis 17 Uhr auf einem Wohnplatz zwischen Rosenthaler Platz und Mauerpark. Bis zu 100 Händler mit Antiquitäten, Vintage-Kleidung, Kunsthandwerk und Kuriositäten. Kleiner und ruhiger als der Mauerpark nebenan; am Totensonntag geschlossen.",
+    "en": "Every Sunday from 10 to 5 on a residential square between Rosenthaler Platz and Mauerpark. Up to 100 traders with antiques, vintage clothing, crafts and curiosities. Smaller and quieter than Mauerpark next door; closed on Totensonntag in late November."
+  }
+}

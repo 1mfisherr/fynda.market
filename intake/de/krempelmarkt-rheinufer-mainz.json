@@ -1,0 +1,51 @@
+{
+  "slug": "krempelmarkt-rheinufer-mainz",
+  "name": "Mainzer Krempelmarkt am Rheinufer",
+  "kind": "flohmarkt",
+  "town": "Mainz",
+  "region": "Rheinland-Pfalz",
+  "venue": {
+    "name": "Rheinufer zwischen Kaisertor und Theodor-Heuss-Brücke",
+    "address": "Adenauer-Ufer",
+    "postal_code": "55116"
+  },
+  "lat": 50.0075,
+  "lng": 8.2718,
+  "rhythm": {
+    "de": "Etwa alle zwei Wochen samstags, März bis November",
+    "en": "Roughly every other Saturday, March to November"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-10-10",
+    "2026-10-24",
+    "2026-11-07"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.mainz.de/angebote-entdecken/einkaufen/krempelmarkt.php",
+  "organiser": {
+    "name": "Landeshauptstadt Mainz, Sachgebiet Messen und Märkte",
+    "website": "https://www.mainz.de/vv/produkte/wirtschaft/krempelmarkt-standplatz-buchen.php",
+    "email": "krempelmarkt@stadt.mainz.de"
+  },
+  "source_page": "https://www.mainz.de/vv/produkte/wirtschaft/krempelmarkt-standplatz-buchen.php",
+  "facts": [
+    "private sellers only, no commercial traders",
+    "along the Rhine between Kaisertor and Theodor-Heuss-Brücke",
+    "children's section for 7–14 year olds, no stall fee",
+    "antiques, odds and ends, collectibles",
+    "run by the city of Mainz",
+    "stalls booked online via ztix, most 2026 dates sold out"
+  ],
+  "checked": "2026-09-22",
+  "notes": "2026 season: 14 Mar to 7 Nov, then pause until spring 2027 (2027 dates not yet published). Visitor entry not stated on the city's pages (open riverbank). Coordinates are the midpoint of the stated stretch; the city gives no street address. Stall ticket 25 EUR / 30 EUR with parking (sellers, not visitors).",
+  "description": {
+    "de": "Etwa alle zwei Wochen samstags von März bis November, 7 bis 15 Uhr, am Rheinufer zwischen Kaisertor und Theodor-Heuss-Brücke. Nur private Verkäufer, keine Händler; Antiquitäten, Krimskrams und Sammlerstücke, dazu ein Kinderbereich für 7- bis 14-Jährige ohne Standgebühr. Veranstalter ist die Stadt Mainz.",
+    "en": "Roughly every other Saturday from March to November, 7 to 3, on the Rhine bank between the Kaisertor and the Theodor-Heuss-Brücke. Private sellers only, no traders; antiques, odds and ends and collectibles, with a free children's section for 7 to 14 year olds. Run by the city of Mainz."
+  }
+}

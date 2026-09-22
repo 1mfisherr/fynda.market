@@ -1,0 +1,48 @@
+{
+  "slug": "flohmarkt-koelner-altstadt-koeln",
+  "name": "Flohmarkt Kölner Altstadt",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Rheinpromenade, between Hohenzollernbrücke and Bastei",
+    "address": "Konrad-Adenauer-Ufer",
+    "postal_code": "50668"
+  },
+  "lat": 50.9443,
+  "lng": 6.963,
+  "rhythm": {
+    "de": "An einzelnen Wochenenden, Frühjahr bis Herbst",
+    "en": "Selected weekends, spring to autumn"
+  },
+  "opening": null,
+  "dates": [
+    "2026-09-26",
+    "2026-09-27",
+    "2026-10-24",
+    "2026-10-25"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.coelln-konzept.de/markt/altstadt.html",
+  "organiser": {
+    "name": "Cölln Konzept – Agentur für Veranstaltungen (Bruno Deutzmann)",
+    "website": "https://www.coelln-konzept.de/",
+    "email": "info@coelln-konzept.de"
+  },
+  "source_page": "https://www.coelln-konzept.de/markt/altstadt.html",
+  "facts": [
+    "Saturday and Sunday weekends on the Rhine promenade in the old town",
+    "over 150 dealers and private sellers",
+    "antiques and second-hand only, new goods prohibited",
+    "running for over 50 years; organiser calls it one of the oldest flea markets in NRW",
+    "dealers from across Germany and neighbouring countries"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser site gives no opening hours and no visitor entry fee for this market (only stall-holder set-up 05:30–08:30), so opening and fee are null; directories say 11–18 but that was not read on the organiser page. The stated rhythm is inferred from the dates page (2026 dates are Sep and Oct weekends); the organiser publishes no rhythm sentence. Coordinates are the Konrad-Adenauer-Ufer street centroid.",
+  "description": {
+    "de": "An einzelnen Wochenenden vom Frühjahr bis in den Herbst auf der Rheinpromenade in der Altstadt. Über 150 Händler und private Verkäufer aus Deutschland und den Nachbarländern; nur Antiquitäten und Gebrauchtes, Neuware ist verboten. Der Markt läuft seit über 50 Jahren.",
+    "en": "On selected weekends from spring to autumn along the Rhine promenade in the old town. Over 150 dealers and private sellers from Germany and neighbouring countries; antiques and second-hand only, new goods are banned. The market has run for over 50 years."
+  }
+}

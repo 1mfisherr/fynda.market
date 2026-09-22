@@ -1,0 +1,64 @@
+{
+  "slug": "flohmarkt-karlsplatz-stuttgart",
+  "name": "Flohmarkt Karlsplatz",
+  "kind": "flohmarkt",
+  "town": "Stuttgart",
+  "region": "Baden-Württemberg",
+  "venue": {
+    "name": "Karlsplatz",
+    "address": "Karlsplatz",
+    "postal_code": "70173"
+  },
+  "lat": 48.7766,
+  "lng": 9.1807,
+  "rhythm": {
+    "de": "Jeden Samstag, außer an Feiertagen",
+    "en": "Every Saturday, except public holidays"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19",
+    "2027-01-02",
+    "2027-01-09",
+    "2027-01-16"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.flohmarkt-karlsplatz.de/",
+  "organiser": {
+    "name": "Märkte Stuttgart GmbH",
+    "website": null,
+    "email": "info@maerkte-stuttgart.de"
+  },
+  "source_page": "https://www.flohmarkt-karlsplatz.de/",
+  "facts": [
+    "every Saturday 08:00–16:00, not on public holidays",
+    "around 100 traders",
+    "antiques, vintage, rarities; dealers and collectors",
+    "since 1983, over 40 years",
+    "outdoor, on the square by the Altes Schloss",
+    "year-round; big spring and autumn editions spread across the old town",
+    "run by the city's market company"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates derived from 'Samstag (außer an Feiertagen)'; dropped 03.10 and 26.12.2026 (BW holidays). Entry fee not stated on the site. Special events on 10.10.2026 (Handarbeitsmarkt) and 07.11.2026 (Studentenflohmarkt) — site does not say whether they replace the regular Saturday market. Organiser's own site (maerkte-stuttgart.de) not fetched; e-mail from the market site. Postal code from the geocoder.",
+  "description": {
+    "de": "Seit 1983 jeden Samstag von 8 bis 16 Uhr auf dem Karlsplatz am Alten Schloss, außer an Feiertagen. Rund 100 Händler und Sammler mit Antiquitäten, Vintage und Raritäten. Im Frühjahr und Herbst gibt es große Ausgaben, die sich über die ganze Altstadt ziehen. Veranstalter ist die städtische Märkte Stuttgart GmbH.",
+    "en": "Every Saturday from 8 to 4 since 1983 on Karlsplatz beside the Altes Schloss, public holidays excepted. Around 100 dealers and collectors with antiques, vintage and rarities. In spring and autumn a bigger edition spreads across the old town. Run by the city's market company."
+  }
+}

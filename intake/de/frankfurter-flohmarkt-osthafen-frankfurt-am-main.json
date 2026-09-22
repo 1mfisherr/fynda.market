@@ -1,0 +1,53 @@
+{
+  "slug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+  "name": "Frankfurter Flohmarkt am Osthafen",
+  "kind": "flohmarkt",
+  "town": "Frankfurt am Main",
+  "region": "Hessen",
+  "venue": {
+    "name": "Osthafen I",
+    "address": "Lindleystraße",
+    "postal_code": "60314"
+  },
+  "lat": 50.1143,
+  "lng": 8.7243,
+  "rhythm": {
+    "de": "Etwa jeden zweiten Samstag, im Wechsel mit dem Schaumainkai",
+    "en": "Roughly every other Saturday, alternating with the Schaumainkai site"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-10",
+    "2026-10-24",
+    "2026-11-07",
+    "2026-11-21"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.hfm-frankfurt.de/flohmaerkte",
+  "organiser": {
+    "name": "HFM Managementgesellschaft für Hafen und Markt mbH",
+    "website": "https://www.hfm-frankfurt.de/",
+    "email": "flohmarkt@hfm-frankfurt.de"
+  },
+  "source_page": "https://www.hfm-frankfurt.de/flohmaerkte",
+  "facts": [
+    "Saturdays, 09:00–14:00, public holidays excepted",
+    "in the Osthafen harbour area on Lindleystraße",
+    "second-hand goods, bric-a-brac of all kinds and handicrafts; no new goods",
+    "free parking at Lindleystraße 13 on market days",
+    "run by the city's market company HFM",
+    "alternates with the Schaumainkai riverbank site, roughly every other Saturday"
+  ],
+  "checked": "2026-09-22",
+  "notes": "HFM lists Osthafen dates only through 21 Nov 2026; December and January dates were not published at check time, so the list may be incomplete rather than a winter pause. Entry fee: the page names no visitor charge, taken as free — confirm. Coordinates are the Lindleystraße street centroid in the Osthafen.",
+  "description": {
+    "de": "Samstags von 9 bis 14 Uhr an der Lindleystraße im Osthafen, etwa jeden zweiten Samstag im Wechsel mit dem Schaumainkai. Gebrauchtes, Trödel aller Art und Kunsthandwerk, keine Neuware. Kostenlose Parkplätze an der Lindleystraße 13 an Markttagen. Veranstalter ist die städtische HFM.",
+    "en": "Saturdays from 9 to 2 on Lindleystraße in the Osthafen, roughly every other Saturday in alternation with the Schaumainkai. Second-hand goods, bric-a-brac of every kind and handicrafts, no new goods. Free parking at Lindleystraße 13 on market days. Run by the city's market company HFM."
+  }
+}

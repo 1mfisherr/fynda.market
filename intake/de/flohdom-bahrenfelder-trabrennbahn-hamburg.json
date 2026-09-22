@@ -1,0 +1,80 @@
+{
+  "slug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+  "name": "Flohdom Bahrenfelder Trabrennbahn",
+  "kind": "flohmarkt",
+  "town": "Hamburg",
+  "region": "Hamburg",
+  "venue": {
+    "name": "Trabrennbahn Bahrenfeld",
+    "address": "Luruper Chaussee 30",
+    "postal_code": "22761"
+  },
+  "lat": 53.5774,
+  "lng": 9.8895,
+  "rhythm": {
+    "de": "Jeden Mittwoch und Samstag",
+    "en": "Every Wednesday and Saturday"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-09-23",
+    "2026-09-26",
+    "2026-09-30",
+    "2026-10-07",
+    "2026-10-10",
+    "2026-10-14",
+    "2026-10-17",
+    "2026-10-21",
+    "2026-10-24",
+    "2026-10-28",
+    "2026-10-31",
+    "2026-11-04",
+    "2026-11-07",
+    "2026-11-11",
+    "2026-11-14",
+    "2026-11-18",
+    "2026-11-21",
+    "2026-11-25",
+    "2026-11-28",
+    "2026-12-02",
+    "2026-12-05",
+    "2026-12-09",
+    "2026-12-12",
+    "2026-12-16",
+    "2026-12-19",
+    "2026-12-23",
+    "2026-12-30",
+    "2027-01-02",
+    "2027-01-06",
+    "2027-01-09",
+    "2027-01-13",
+    "2027-01-16",
+    "2027-01-20"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://kreaktiva.de/",
+  "organiser": {
+    "name": "KREAKTIVA Werbe- und Veranstaltungs GmbH",
+    "website": "https://kreaktiva.de/",
+    "email": "anmeldung@kreaktiva.de"
+  },
+  "source_page": "https://kreaktiva.de/",
+  "facts": [
+    "every Wednesday and Saturday, 07:00–15:00",
+    "Hamburg's first weekly flea market, per the organiser",
+    "used goods and a smaller share of new goods",
+    "covered 3 m stalls and open pitches, traders may sell from vehicles",
+    "on the open ground at the Bahrenfeld trotting track, Luruper Chaussee"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Organiser lists only ~4 bookable weeks ahead (Sat 26 Sep, 10/17/24 Oct; Wed 23/30 Sep, 7–28 Oct), rest derived from the stated rhythm. Sat 3 Oct (Tag der Deutschen Einheit) is absent from their list and dropped; Sat 26 Dec dropped by the same logic, unconfirmed. Homepage says 07:00–15:00, booking pages say 7 am–4 pm; recorded the homepage. Entry fee not stated. Imprint e-mail is anmeldung@, bookings go to reservierung@kreaktiva.de.",
+  "description": {
+    "de": "Zweimal die Woche, mittwochs und samstags von 7 bis 15 Uhr, auf dem Freigelände der Trabrennbahn Bahrenfeld. Überwiegend Gebrauchtes, ein kleinerer Teil Neuware; verkauft wird an überdachten Ständen, auf offenen Plätzen und aus dem Auto. Der Veranstalter nennt ihn Hamburgs ersten Wochenflohmarkt.",
+    "en": "Twice a week, Wednesdays and Saturdays from 7 to 3, on the open ground of the Bahrenfeld trotting track. Mostly used goods with a smaller share of new stock, sold from covered stalls, open pitches and car boots. The organiser calls it Hamburg's first weekly flea market."
+  }
+}

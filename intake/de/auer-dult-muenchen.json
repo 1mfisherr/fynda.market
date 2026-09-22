@@ -1,0 +1,58 @@
+{
+  "slug": "auer-dult-muenchen",
+  "name": "Auer Dult (Kirchweihdult)",
+  "kind": "troedelmarkt",
+  "town": "München",
+  "region": "Bayern",
+  "venue": {
+    "name": "Mariahilfplatz",
+    "address": "Mariahilfplatz",
+    "postal_code": "81541"
+  },
+  "lat": 48.1265,
+  "lng": 11.5837,
+  "rhythm": {
+    "de": "Dreimal im Jahr, jeweils neun Tage (Maidult, Jakobidult, Kirchweihdult)",
+    "en": "Three times a year, nine days each (May, late July, October)"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "19:00"
+  },
+  "dates": [
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-19",
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-25"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.auerdult.de/",
+  "organiser": {
+    "name": "Landeshauptstadt München, Referat für Arbeit und Wirtschaft",
+    "website": "https://www.auerdult.de/",
+    "email": "veranstaltungen.raw@muenchen.de"
+  },
+  "source_page": "https://www.auerdult.de/dultinfo",
+  "facts": [
+    "around 250 stalls and showmen",
+    "tableware and household goods, antiques, basketware, toys, kitchen equipment",
+    "stalls open 10:00, rides from 10:30, Kirchweihdult closes 19:00",
+    "entry free",
+    "outdoor, on Mariahilfplatz in the Au",
+    "fairground rides alongside the market",
+    "run by the City of Munich"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Borderline for a flea-market directory: a traditional nine-day fair whose market half is tableware, household goods and antique/second-hand dealers — 'troedelmarkt' is the nearest kind. 'Entry free' is stated on muenchen.de (the city portal, not auerdult.de). Next editions 2027 (Maidult late April, Jakobidult late July) not yet dated on the site. Postal code from the geocoder. Construction around Mariahilfplatz in 2026 per city portal.",
+  "description": {
+    "de": "Dreimal im Jahr, jeweils neun Tage, wird der Mariahilfplatz in der Au zur Dult: rund 250 Stände mit Geschirr, Haushaltswaren, Antiquitäten, Korbwaren und Spielzeug, dazu Fahrgeschäfte. Die Stände öffnen um 10 Uhr, Eintritt frei. Veranstalter ist die Stadt München.",
+    "en": "Three times a year, nine days at a stretch, Mariahilfplatz in the Au becomes the Dult: around 250 stalls of tableware, household goods, antiques, basketware and toys, with fairground rides alongside. Stalls open at 10, entry is free. Run by the City of Munich."
+  }
+}

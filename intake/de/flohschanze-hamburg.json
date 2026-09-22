@@ -1,0 +1,61 @@
+{
+  "slug": "flohschanze-hamburg",
+  "name": "Flohschanze",
+  "kind": "flohmarkt",
+  "town": "Hamburg",
+  "region": "Hamburg",
+  "venue": {
+    "name": "Alte Rinderschlachthalle",
+    "address": "Neuer Kamp 30",
+    "postal_code": "20357"
+  },
+  "lat": 53.5581,
+  "lng": 9.9679,
+  "rhythm": {
+    "de": "Jeden Samstag",
+    "en": "Every Saturday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-03",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.marktkultur-hamburg.de/index.php?p=59&var=0",
+  "organiser": {
+    "name": "marktkultur hamburg (Inh. Roland Resag)",
+    "website": "https://www.marktkultur-hamburg.de/",
+    "email": "office@marktkultur-hamburg.de"
+  },
+  "source_page": "https://www.marktkultur-hamburg.de/index.php?var=0&gtp=termine",
+  "facts": [
+    "every Saturday 08:00–16:00",
+    "flea and antiques market, no new goods",
+    "open-air pitches plus covered pavilions and hall space, runs in any weather",
+    "opposite U-Bahnhof Feldstraße in the Karolinenviertel",
+    "leftover pitches given out on site 07:00–08:30",
+    "free parking at Glacischaussee, 5 minutes on foot"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates page lists every Saturday to 19 Dec 2026; 26 Dec is not listed (public holiday) and no 2027 dates are published yet, so January is empty. Organiser dates page is a calendar-year list (its \"Januar 03.01.2026\" entries are last January, not 2027). Entry fee not stated. Market info page is /index.php?p=59&var=0.",
+  "description": {
+    "de": "Jeden Samstag von 8 bis 16 Uhr gegenüber dem U-Bahnhof Feldstraße im Karolinenviertel. Floh- und Antikmarkt ohne Neuware, auf freien Plätzen, unter Pavillons und in der Halle, bei jedem Wetter. Restplätze werden ab 7 Uhr vor Ort vergeben; kostenlose Parkplätze an der Glacischaussee, fünf Minuten zu Fuß.",
+    "en": "Every Saturday from 8 to 4 opposite U-Bahn Feldstraße in the Karolinenviertel. A flea and antiques market with no new goods, on open pitches, under pavilions and in the hall, whatever the weather. Leftover pitches are handed out on site from 7; free parking on Glacischaussee, five minutes on foot."
+  }
+}
