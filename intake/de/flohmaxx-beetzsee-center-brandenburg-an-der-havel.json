@@ -1,0 +1,59 @@
+{
+  "slug": "flohmaxx-beetzsee-center-brandenburg-an-der-havel",
+  "name": "Flohmaxx Beetzsee-Center",
+  "kind": "flohmarkt",
+  "town": "Brandenburg an der Havel",
+  "region": "Brandenburg",
+  "venue": {
+    "name": "Beetzsee-Center",
+    "address": "Brielower Landstraße 19",
+    "postal_code": "14772"
+  },
+  "lat": 52.4329,
+  "lng": 12.549,
+  "rhythm": {
+    "de": "Monat für Monat, an einzelnen Wochenenden",
+    "en": "Month after month, on single weekends"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-31",
+    "2026-11-01"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://flohmaxx.de/flohmarkt/brandenburg-beetzsee-center",
+  "organiser": {
+    "name": "Marktveranstaltung Janssen GmbH",
+    "website": "https://flohmaxx.de/",
+    "email": "info@flohmaxx.de"
+  },
+  "source_page": "https://flohmaxx.de/flohmarkt/brandenburg-beetzsee-center/2026-10-03",
+  "facts": [
+    "open ground beside the Beetzsee-Center, outdoors",
+    "has run in Brandenburg an der Havel since 2007",
+    "around 200 private and commercial traders each time",
+    "open 09:00 to 16:00",
+    "entry is free for visitors",
+    "free parking on and beside the site",
+    "a food island on site",
+    "portable toilets, cleaned by the organiser",
+    "a few covered pitches, which cannot be reserved",
+    "pitches are handed out from 06:00 without registration, first come first served",
+    "private and commercial second-hand goods, antiques and new goods are all allowed",
+    "runs in any weather",
+    "easy to reach from the Brandenburg motorway exit or by public transport"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates are the organiser's own \"Kommende Termine\" list on the location page — 3 and 4 October, 31 October and 1 November 2026, all 09:00 to 16:00; nothing after 1 November is published yet, so December and January are empty. Hours, the free-entry line and the site facts come from the organiser's dated page for 3 October. Coordinates are the ones in the organiser's own map link on the location page (52.432919, 12.548954). Flohmaxx also runs Bernau (Obi), Prenzlau and Strausberg in Brandenburg — separate markets, not this one.",
+  "description": {
+    "de": "An einzelnen Wochenenden von 9 bis 16 Uhr auf dem Freigelände am Beetzsee-Center, seit 2007. Rund 200 private und gewerbliche Verkäufer, Eintritt und Parken frei, bei jedem Wetter. Plätze werden ab 6 Uhr ohne Anmeldung vergeben; ein paar überdachte gibt es, reservieren lassen sie sich nicht.",
+    "en": "On single weekends from 9 to 4 on the open ground beside the Beetzsee-Center, and running since 2007. Around 200 private and commercial sellers, free entry and parking, any weather. Pitches go from 6 with no registration; a few are covered and cannot be reserved."
+  }
+}

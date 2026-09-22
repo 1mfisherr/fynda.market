@@ -1,0 +1,53 @@
+{
+  "slug": "nachtflohmarkt-rostock",
+  "name": "Nachtflohmarkt Rostock",
+  "kind": "nachtflohmarkt",
+  "town": "Rostock",
+  "region": "Mecklenburg-Vorpommern",
+  "venue": {
+    "name": "HanseMesse",
+    "address": "Zur HanseMesse 1-2",
+    "postal_code": "18106"
+  },
+  "lat": 54.1392,
+  "lng": 12.0731,
+  "rhythm": {
+    "de": "Zweimal im Jahr, samstags",
+    "en": "Twice a year, on a Saturday"
+  },
+  "opening": {
+    "start": "15:00",
+    "end": "22:00"
+  },
+  "dates": [
+    "2026-10-24"
+  ],
+  "dates_from": "listed",
+  "fee": 3,
+  "currency": "EUR",
+  "website": "https://www.nachtflohmaerkte.de/rostock/",
+  "organiser": {
+    "name": "Mühle & Szymkowiak GbR (Nachtflohmärkte)",
+    "website": "https://www.nachtflohmaerkte.de/",
+    "email": "post@nachtflohmaerkte.de"
+  },
+  "source_page": "https://www.nachtflohmaerkte.de/rostock/",
+  "facts": [
+    "indoors in the HanseMesse, twice a year",
+    "the hall is heated, lit and can be driven into",
+    "runs from 15:00 to 22:00",
+    "the organiser counts over 1,000 dealers and 25,000 visitors so far",
+    "the organiser calls it the only indoor flea market in Mecklenburg-Vorpommern at this hour",
+    "old toys, instruments, books, paintings, jewellery, coins, porcelain, furniture and GDR-era pieces",
+    "entry 3 EUR, children up to 14 free",
+    "new goods and clearance stock are not allowed",
+    "food and drink on site",
+    "about 2,000 parking spaces in front of the hall; the venue charges its own parking fee"
+  ],
+  "checked": "2026-09-22",
+  "notes": "One date falls in this window, 24 October 2026; the organiser says the market runs twice a year and has published nothing for 2027 yet. The same organiser runs a separate \"IGA Flohmarkt Rostock\" at another Rostock site, and the Cottbus and Magdeburg night markets. Coordinates from Nominatim for the HanseMesse.",
+  "description": {
+    "de": "Zweimal im Jahr samstags von 15 bis 22 Uhr in der HanseMesse, geheizt und beleuchtet. Altes Spielzeug, Instrumente, Bücher, Bilder, Schmuck, Münzen, Porzellan, Möbel und Dinge aus DDR-Zeiten. Neuware und Restposten sind nicht zugelassen. Eintritt 3 Euro, Kinder bis 14 frei; rund 2.000 Parkplätze vor der Halle.",
+    "en": "Twice a year on a Saturday from 3 to 10 at night in the HanseMesse, heated and lit. Old toys, instruments, books, paintings, jewellery, coins, porcelain, furniture and GDR-era pieces. New goods and clearance stock are not allowed. Entry 3 euros, under-14s free; around 2,000 parking spaces outside."
+  }
+}

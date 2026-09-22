@@ -1,0 +1,54 @@
+{
+  "slug": "flohmarkt-citti-park-luebeck",
+  "name": "Flohmarkt CITTI-PARK",
+  "kind": "flohmarkt",
+  "town": "Lübeck",
+  "region": "Schleswig-Holstein",
+  "venue": {
+    "name": "CITTI-PARK",
+    "address": "Herrenholz 14",
+    "postal_code": "23556"
+  },
+  "lat": 53.8582,
+  "lng": 10.6269,
+  "rhythm": {
+    "de": "Etwa einmal im Monat, sonntags",
+    "en": "About once a month, on a Sunday"
+  },
+  "opening": {
+    "start": "08:30",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-11",
+    "2026-11-01",
+    "2026-12-06"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.hochberg-flohmarkt.de/marktdetails.php?markt_id=29",
+  "organiser": {
+    "name": "C. Hochberg Veranstaltung & Organisation GmbH & Co. KG",
+    "website": "https://www.hochberg-flohmarkt.de/",
+    "email": "info@hochberg-flohmarkt.de"
+  },
+  "source_page": "https://www.hochberg-flohmarkt.de/marktdetails.php?markt_id=29",
+  "facts": [
+    "on the redone grounds of the CITTI-PARK in Lübeck-Buntekuh",
+    "open 08:30 to 16:00, sellers build up from 07:00",
+    "covered pitches are possible here",
+    "hot dogs, Currywurst, coffee and cake on site",
+    "plenty of parking at the shopping centre",
+    "bus 11 from Lübeck Hbf / ZOB to the Buntekuh stop",
+    "a pitch costs 13 EUR per running metre, 2 EUR more with a car, 10 EUR more for new goods and 3 EUR for a roof",
+    "pitches can be booked online until 15:00 on the Friday before",
+    "the organiser runs over 180 markets a year across northern Germany"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser publishes dates and seller prices but no visitor entry fee anywhere on the site, so `fee` is null. Dates in this window are 11 October, 1 November and 6 December 2026, from the market's own detail page; the next date after that is in 2027 and is not yet listed. Opening and build-up times are from the organiser's page for the 11 October market, hochberg-flohmarkt.de/termin.php?id_termin=2792. The same organiser runs several other Lübeck markets — Campus Center, IKEA/LUV Shopping, hagebau, REWE Center, famila — which are separate markets. Coordinates from Nominatim for Herrenholz 14.",
+  "description": {
+    "de": "Etwa einmal im Monat sonntags von 8.30 bis 16 Uhr auf dem Gelände des CITTI-PARK in Buntekuh. Überdachte Plätze sind möglich; Currywurst, Kaffee und Kuchen gibt es vor Ort. Parkplätze am Einkaufszentrum, Bus 11 vom Hauptbahnhof hält an der Buntekuh.",
+    "en": "About once a month on a Sunday from 8.30 to 4 on the grounds of the CITTI-PARK in Buntekuh. Covered pitches are possible, and there are hot dogs, Currywurst, coffee and cake on site. Parking at the shopping centre, and bus 11 from the main station stops at Buntekuh."
+  }
+}

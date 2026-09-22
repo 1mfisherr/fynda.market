@@ -1,0 +1,52 @@
+{
+  "slug": "flohmarkt-ekz-schoene-aussicht-weissenfels",
+  "name": "Flohmarkt am Einkaufszentrum Schöne Aussicht",
+  "kind": "flohmarkt",
+  "town": "Weißenfels",
+  "region": "Sachsen-Anhalt",
+  "venue": {
+    "name": "Einkaufszentrum Schöne Aussicht",
+    "address": "Am Marktwege 2",
+    "postal_code": "06667"
+  },
+  "lat": 51.1845,
+  "lng": 11.9265,
+  "rhythm": {
+    "de": "Etwa einmal im Monat, samstags",
+    "en": "About once a month, on a Saturday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-17",
+    "2026-11-14",
+    "2026-12-05"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://lampert-maerkte.de/",
+  "organiser": {
+    "name": "Lampert Märkte",
+    "website": "https://lampert-maerkte.de/",
+    "email": "naumburg@lampert-maerkte.de"
+  },
+  "source_page": "https://lampert-maerkte.de/06667-leisslingweissenfels-einkaufszentrum-schoene-aussicht/",
+  "facts": [
+    "open site, partly covered, with the shopping-centre car park",
+    "in Leißling, directly on the B87 between Weißenfels and Naumburg",
+    "mostly second-hand goods; low-value new goods are allowed too",
+    "no registration and no reservation — sellers just turn up",
+    "sellers may park the car at their stall",
+    "pitches handed out from 06:30, selling 08:00 to 16:00",
+    "stall 9 EUR a metre for second-hand goods, 10 EUR for new"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Thirteen dates listed for 2026; the last is 5 December and 2027 is not published yet. Visitor entry is not stated anywhere on the site — it is an open shopping-centre site, so it is very likely free, but left null. Leißling is a district of Weißenfels; the postal town on the address is Weißenfels. Organiser's Impressum splits east and west: the eastern markets (Sachsen-Anhalt, Sachsen, Thüringen) are Hans Thomas Lampert, Spechsart 23, 06618 Naumburg, naumburg@lampert-maerkte.de. Coordinates from Nominatim for Am Marktwege 2.",
+  "description": {
+    "de": "Etwa einmal im Monat samstags in Leißling, direkt an der B87 zwischen Weißenfels und Naumburg. Teils überdacht, mit dem Parkplatz des Einkaufszentrums. Überwiegend Gebrauchtes. Plätze gibt es ab 6.30 Uhr ohne Anmeldung, das Auto darf am Stand stehen bleiben.",
+    "en": "About once a month on a Saturday in Leißling, right on the B87 between Weißenfels and Naumburg. Partly covered, using the shopping centre car park. Mostly second-hand. Pitches are handed out from 6.30 with no registration, and the car can stay at the stall."
+  }
+}

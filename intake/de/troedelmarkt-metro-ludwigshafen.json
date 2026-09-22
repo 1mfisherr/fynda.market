@@ -1,0 +1,51 @@
+{
+  "slug": "troedelmarkt-metro-ludwigshafen",
+  "name": "Trödelmarkt an der Metro Ludwigshafen",
+  "kind": "troedelmarkt",
+  "town": "Ludwigshafen am Rhein",
+  "region": "Rheinland-Pfalz",
+  "venue": {
+    "name": "Metro Ludwigshafen-Oggersheim",
+    "address": "Oderstraße 2",
+    "postal_code": "67071"
+  },
+  "lat": 49.4885,
+  "lng": 8.3484,
+  "rhythm": {
+    "de": "Einzelne Sonntage über das Jahr verteilt",
+    "en": "Single Sundays through the year"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-04",
+    "2026-11-29"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/",
+  "organiser": {
+    "name": "\"Melan macht Märkte\" Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Ludwigshafen-METRO-304I/",
+  "facts": [
+    "on the Metro site in Oggersheim, in the Rhein-Neckar area",
+    "no new goods — second-hand only",
+    "parking on the Globus ground next door",
+    "food and drink on site",
+    "bus line 72 stops there",
+    "open 11:00 to 18:00",
+    "the organiser has been running markets since 1979"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Two dates inside the window — 4 October and 29 November 2026; nothing for December or January is published yet. 'Eintritt frei' is stated site-wide in the Melan header rather than on this market's page, which is why fee is 0. The same organiser's second Ludwigshafen market, at the Globus in Oggersheim, currently has no dates online at all. Coordinates from Nominatim for Oderstraße 2.",
+  "description": {
+    "de": "An einzelnen Sonntagen von 11 bis 18 Uhr auf dem Metro-Gelände in Oggersheim, mitten in der Rhein-Neckar-Region. Nur Gebrauchtes, keine Neuware. Geparkt wird nebenan beim Globus, Essen und Trinken gibt es vor Ort, Bus 72 hält davor.",
+    "en": "On single Sundays from 11 to 6 on the Metro site in Oggersheim, in the middle of the Rhine-Neckar area. Second-hand only, no new goods. Parking is next door at the Globus, there is food and drink on site, and bus 72 stops outside."
+  }
+}

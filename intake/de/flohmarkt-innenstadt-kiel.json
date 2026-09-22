@@ -1,0 +1,54 @@
+{
+  "slug": "flohmarkt-innenstadt-kiel",
+  "name": "Flohmarkt Innenstadt",
+  "kind": "flohmarkt",
+  "town": "Kiel",
+  "region": "Schleswig-Holstein",
+  "venue": {
+    "name": "Kieler Innenstadt",
+    "address": "Rathausplatz",
+    "postal_code": "24103"
+  },
+  "lat": 54.3226,
+  "lng": 10.1341,
+  "rhythm": {
+    "de": "An mehreren Sonntagen zwischen April und Oktober",
+    "en": "On several Sundays between April and October"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-27"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.kiel.de/de/wirtschaft_arbeit/maerkte/flohmarkt.php",
+  "organiser": {
+    "name": "Landeshauptstadt Kiel, Ordnungsamt",
+    "website": "https://www.kiel.de/de/wirtschaft_arbeit/maerkte/flohmarkt.php",
+    "email": "marktwesen@kiel.de"
+  },
+  "source_page": "https://www.kiel.de/de/wirtschaft_arbeit/maerkte/flohmarkt.php",
+  "facts": [
+    "the city itself runs the market, between April and October",
+    "open 08:00 to 16:00",
+    "stalls stand on Rathausplatz, Fleethörn, Willestraße, Asmus-Bremer-Platz, Holstenstraße, Europaplatz and Holstenplatz",
+    "no commercial traders, and no new goods except handicraft and hobby work",
+    "food, live animals, plants, weapons and imitation weapons may not be sold",
+    "no booking and no reservation is possible",
+    "the pitch fee is 5 EUR per running metre, paid in cash on the day",
+    "sellers may build up from 04:00",
+    "chalk marks for a pitch are tolerated from 22:00 the night before and lapse at 05:00",
+    "sellers take their rubbish and unsold things home",
+    "two of the city's markets each year are special markets for children's things and toys"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The city's 2026 list ends with 27 September in the city centre and 4 October at the Hörn, so only 27 September falls in this window and the season starts again in April. The 4 October market at Querkai / Kaistraße 101 is a separate market on the same list, not this one. No entry fee is mentioned because it is a public street market with nothing to pay to walk in — recorded as 0. The page still carries a stale line, \"Die Termine für 2025 folgen\", beside the 2026 dates; the full 2026 list is the linked flohmarkttermine.pdf on the same page. Coordinates from Nominatim for Rathausplatz, one end of the market.",
+  "description": {
+    "de": "An mehreren Sonntagen zwischen April und Oktober zieht sich der Markt durch die Innenstadt — vom Rathausplatz über die Holstenstraße bis zum Holstenplatz. Die Stadt Kiel richtet ihn aus: keine gewerblichen Händler, keine Neuware außer Selbstgemachtem. Reservieren kann man nicht, aufgebaut wird ab 4 Uhr früh.",
+    "en": "On several Sundays between April and October the market runs right through the city centre, from Rathausplatz along Holstenstraße to Holstenplatz. The city of Kiel runs it: no commercial traders and no new goods beyond handicraft. There is no booking, and sellers build up from 4 in the morning."
+  }
+}

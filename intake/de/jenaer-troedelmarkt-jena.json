@@ -1,0 +1,52 @@
+{
+  "slug": "jenaer-troedelmarkt-jena",
+  "name": "Jenaer Trödelmarkt",
+  "kind": "troedelmarkt",
+  "town": "Jena",
+  "region": "Thüringen",
+  "venue": {
+    "name": "Jenaer Innenstadt",
+    "address": "Löbderstraße",
+    "postal_code": "07743"
+  },
+  "lat": 50.9276,
+  "lng": 11.5864,
+  "rhythm": {
+    "de": "Etwa monatlich an einem Samstag, Februar bis Oktober",
+    "en": "Roughly monthly on a Saturday, February to October"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-17"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.jenakultur.de/de/maerkte_und_stadtfeste/troedel-_und_bunte_maerkte/605605",
+  "organiser": {
+    "name": "JenaKultur, Eigenbetrieb der Stadt Jena",
+    "website": "https://www.jenakultur.de/",
+    "email": "maerkte@jena.de"
+  },
+  "source_page": "https://www.jenakultur.de/de/maerkte_und_stadtfeste/troedel-_und_bunte_maerkte/605605",
+  "facts": [
+    "in Jena's city centre, run by the city's own cultural service",
+    "antiques, collectors' pieces, books",
+    "no new goods",
+    "no trade licence needed to take a stall",
+    "pitches handed out on the morning, 06:00 to 07:45, at the corner of Löbderstraße and Kollegiengasse",
+    "stall fee 5 EUR per square metre per day",
+    "open 08:00 to 17:00",
+    "draws several thousand visitors into the old town"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Season is February to October: 17 October 2026 is the last date of the year and 2027 is not published yet, so only two dates fall inside the window. The organiser page gives no entry price; the city's own event listing for this market (https://www.jena-veranstaltungen.de/event/jenaer-troedelmarkt) says 'Eintritt frei', so fee is 0. The market fills the pedestrian streets around the Löbderstraße and the city gives no single street number — coordinates are Löbderstraße from Nominatim. Contact on the page is the Marktmeister, Oliver Klinke, Löbdergraben 14a.",
+  "description": {
+    "de": "Etwa monatlich an einem Samstag von Februar bis Oktober mitten in der Jenaer Altstadt, ausgerichtet vom städtischen Kulturbetrieb. Antiquitäten, Sammlerstücke und Bücher; Neuware ist nicht erlaubt, ein Gewerbeschein nicht nötig. Plätze werden morgens zwischen 6 und 7.45 Uhr vergeben.",
+    "en": "Roughly monthly on a Saturday from February to October in the middle of Jena's old town, run by the city's own cultural service. Antiques, collectors' pieces and books; new goods are not allowed and no trade licence is needed. Pitches are handed out between 6 and quarter to 8 in the morning."
+  }
+}

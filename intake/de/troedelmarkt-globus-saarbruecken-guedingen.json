@@ -1,0 +1,54 @@
+{
+  "slug": "troedelmarkt-globus-saarbruecken-guedingen",
+  "name": "Trödelmarkt am GLOBUS Saarbrücken-Güdingen",
+  "kind": "troedelmarkt",
+  "town": "Saarbrücken",
+  "region": "Saarland",
+  "venue": {
+    "name": "GLOBUS Saarbrücken-Güdingen",
+    "address": "Wolfsau 4",
+    "postal_code": "66130"
+  },
+  "lat": 49.2096,
+  "lng": 7.0261,
+  "rhythm": {
+    "de": "Etwa einmal im Monat, meist sonntags",
+    "en": "About once a month, usually on a Sunday"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-11-08",
+    "2026-12-06"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/",
+  "organiser": {
+    "name": "\"Melan macht Märkte\" Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Saarbruecken-Guedingen-GLOBUS-317u/",
+  "facts": [
+    "covered pitches",
+    "clothes, décor, books and rarities, vintage finds",
+    "parking on the first and second floors of the multi-storey car park",
+    "food and drink on site",
+    "bus line 126 stops there",
+    "easy to reach from the A6 and A620",
+    "open 11:00 to 18:00",
+    "the organiser has been running markets since 1979"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Four dates inside the window: 3 and 4 October are a Saturday and a Sunday back to back, the others are Sundays. Nothing for January 2027 yet. 'Eintritt frei' is stated site-wide in the Melan header rather than on this market's page, which is why fee is 0. Stall fees 12 EUR a metre for second-hand, 15 EUR for new goods. Coordinates from Nominatim for Wolfsau 4.",
+  "description": {
+    "de": "Etwa einmal im Monat, meist sonntags von 11 bis 18 Uhr, mit überdachten Ständen. Kleidung, Deko, Bücher, Raritäten und Vintage-Funde. Geparkt wird im Parkhaus, Essen und Trinken gibt es vor Ort; Bus 126 hält davor, von der A6 und A620 ist es kurz.",
+    "en": "About once a month, usually on a Sunday from 11 to 6, with covered pitches. Clothes, décor, books, rarities and vintage finds. Parking is in the multi-storey car park and there is food and drink on site; bus 126 stops outside and it is a short run from the A6 and A620."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "slug": "antik-und-troedelmarkt-messe-halle-saale",
+  "name": "Antik- und Trödelmarkt in der Messe Halle",
+  "kind": "hallenflohmarkt",
+  "town": "Halle (Saale)",
+  "region": "Sachsen-Anhalt",
+  "venue": {
+    "name": "Messe Halle",
+    "address": "Messestraße 10",
+    "postal_code": "06116"
+  },
+  "lat": 51.4526,
+  "lng": 12.0253,
+  "rhythm": {
+    "de": "Monatlich an einem Samstag, im Dezember samstags und sonntags; Juni bis August Sommerpause",
+    "en": "Monthly on a Saturday, in December Saturday and Sunday; closed June to August"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-11-14",
+    "2026-12-12",
+    "2026-12-13"
+  ],
+  "dates_from": "listed",
+  "fee": 3,
+  "currency": "EUR",
+  "website": "https://herzog-maerkte.de/",
+  "organiser": {
+    "name": "Herzog-Märkte",
+    "website": "https://herzog-maerkte.de/",
+    "email": "info@herzog-maerkte.de"
+  },
+  "source_page": "https://herzog-maerkte.de/termine/",
+  "facts": [
+    "indoors in the Halle exhibition halls",
+    "entry 3 EUR, children up to 12 free",
+    "open 09:00 to 15:00",
+    "a children's goods exchange runs in the same halls at the same hours",
+    "antique and flea-market dealers from across Germany",
+    "old furniture, jewellery, dolls, porcelain, glass, silver, clocks and linen",
+    "coins, old books and stamps for collectors",
+    "some dealers value pieces free of charge and buy from private owners",
+    "family business running antique and flea markets since 1998",
+    "no market June to August"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates, hours, fee and address are on the Termine page. The descriptive facts (covered halls, what dealers bring, free valuations, since 1998) come from the same organiser's Antik- & Trödelmärkte page, https://herzog-maerkte.de/antik-und-troedelmaerkte/. Only 2026 is published: 12/13 December is the last date of the season and is the only two-day weekend left; October and November are Saturday only. Organiser's Impressum: Herzog-Märkte, Inh. Hans Christian Büttner, Keßlerstr. 1, 06406 Bernburg. The same firm also runs open-air markets at GLOBUS Halle (Dieselstraße 47) and in Bernburg. Coordinates from Nominatim for Messestraße 10.",
+  "description": {
+    "de": "Einmal im Monat samstags in den Messehallen, im Dezember auch sonntags; von Juni bis August Pause. Alte Möbel, Schmuck, Puppen, Porzellan, Glas, Silber, Uhren und Leinen, dazu Münzen, alte Bücher und Briefmarken. Manche Händler schätzen Stücke kostenlos und kaufen an. Eintritt 3 Euro, Kinder bis 12 frei.",
+    "en": "One Saturday a month in the exhibition halls, with Sundays added in December and a break from June to August. Old furniture, jewellery, dolls, porcelain, glass, silver, clocks and linen, with coins, old books and stamps for collectors. Some dealers value pieces free and buy from private owners. Entry 3 euros, under-12s free."
+  }
+}

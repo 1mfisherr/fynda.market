@@ -1,0 +1,52 @@
+{
+  "slug": "floh-und-troedelmarkt-buergerpark-saarbruecken",
+  "name": "Floh- und Trödelmarkt im Bürgerpark",
+  "kind": "flohmarkt",
+  "town": "Saarbrücken",
+  "region": "Saarland",
+  "venue": {
+    "name": "Bürgerpark Hafeninsel",
+    "address": "Westspange",
+    "postal_code": "66111"
+  },
+  "lat": 49.2382,
+  "lng": 6.984,
+  "rhythm": {
+    "de": "Einmal im Monat am zweiten Samstag, März bis November",
+    "en": "Once a month on the second Saturday, March to November"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-10",
+    "2026-11-14"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.saarbruecken.de/leben_in_saarbruecken/einkaufen/maerkte/flohmarkt_buchen",
+  "organiser": {
+    "name": "Landeshauptstadt Saarbrücken",
+    "website": "https://www.saarbruecken.de/",
+    "email": "flohmarkt@saarbruecken.de"
+  },
+  "source_page": "https://www.saarbruecken.de/leben_in_saarbruecken/veranstaltungskalender/veranstaltungs_detailseite/event-5f620e4f826f9",
+  "facts": [
+    "run by the city of Saarbrücken",
+    "on the Hafeninsel by the Saar, near the main station",
+    "second-hand only — new goods may not be sold",
+    "commercial dealers are not admitted",
+    "about 195 pitches of one to ten metres",
+    "stall 7 EUR per running metre, booked four weeks ahead",
+    "open 08:00 to 16:00",
+    "sellers with a pitch of six metres or more may park behind it"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The city lists nine dates for 2026, 14 March to 14 November, always the second Saturday; 10 October and 14 November are the two inside the window and 2027 is not published yet. Visitor entry is not stated — it is an open park, so probably free, but left null. The city's booking page (saarbruecken.de/.../flohmarkt_buchen) carries the date list and the rules; the event page used as source_page carries the hours, address and stall price. Not to be confused with the Ludwigsflohmarkt on Ludwigsplatz, a different market that runs March to September. Coordinates from Nominatim for the Bürgerpark Hafeninsel.",
+  "description": {
+    "de": "Am zweiten Samstag im Monat von März bis November auf der Hafeninsel an der Saar, nahe dem Hauptbahnhof. Rund 195 Standplätze, nur Gebrauchtes — gewerbliche Händler sind nicht zugelassen. Der Markt gehört der Stadt Saarbrücken; Stände werden vier Wochen im Voraus gebucht.",
+    "en": "The second Saturday of the month from March to November on the Hafeninsel by the Saar, near the main station. Around 195 pitches, second-hand only — commercial dealers are not admitted. The market belongs to the city of Saarbrücken; stalls are booked four weeks ahead."
+  }
+}

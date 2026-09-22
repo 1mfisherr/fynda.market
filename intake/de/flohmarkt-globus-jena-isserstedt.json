@@ -1,0 +1,52 @@
+{
+  "slug": "flohmarkt-globus-jena-isserstedt",
+  "name": "Flohmarkt am GLOBUS Jena-Isserstedt",
+  "kind": "flohmarkt",
+  "town": "Jena",
+  "region": "Thüringen",
+  "venue": {
+    "name": "GLOBUS SB-Warenhaus Jena-Isserstedt",
+    "address": "Weimarische Straße 3",
+    "postal_code": "07751"
+  },
+  "lat": 50.9581,
+  "lng": 11.509,
+  "rhythm": {
+    "de": "Etwa einmal im Monat, samstags",
+    "en": "About once a month, on a Saturday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-10",
+    "2026-11-07",
+    "2026-11-28",
+    "2026-12-12"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://lampert-maerkte.de/",
+  "organiser": {
+    "name": "Lampert Märkte",
+    "website": "https://lampert-maerkte.de/",
+    "email": "naumburg@lampert-maerkte.de"
+  },
+  "source_page": "https://lampert-maerkte.de/07751-jena-isserstedt-globus-sb-warenhaus/",
+  "facts": [
+    "on the GLOBUS car park at the B7 towards Weimar, signposted nearby",
+    "mostly second-hand goods, with a few pitches for new goods by arrangement",
+    "no registration and no reservation — sellers just turn up",
+    "sellers may park the car at their stall",
+    "pitches handed out from 06:00, selling 08:00 to 16:00",
+    "stall 9 EUR a metre for second-hand goods, 10 EUR for new"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Fourteen dates listed for 2026; the last is 12 December and 2027 is not published yet. Visitor entry is not stated (open car park), so left null. Isserstedt is a district of Jena and carries its own postal code, 07751. Organiser's Impressum splits east and west: the eastern markets are Hans Thomas Lampert, Spechsart 23, 06618 Naumburg, naumburg@lampert-maerkte.de. Coordinates from Nominatim for Weimarische Straße 3.",
+  "description": {
+    "de": "Etwa einmal im Monat samstags auf dem GLOBUS-Parkplatz an der B7 Richtung Weimar. Überwiegend Gebrauchtes, ein paar Plätze für Neuware nach Absprache. Keine Anmeldung: Plätze werden ab 6 Uhr vergeben, verkauft wird von 8 bis 16 Uhr, das Auto bleibt am Stand.",
+    "en": "About once a month on a Saturday on the GLOBUS car park by the B7 towards Weimar. Mostly second-hand, with a few pitches for new goods by arrangement. No registration: pitches go from 6, selling runs 8 to 4, and the car stays at the stall."
+  }
+}

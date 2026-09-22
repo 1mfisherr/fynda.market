@@ -1,0 +1,59 @@
+{
+  "slug": "flohmarkt-am-cc-landau",
+  "name": "Flohmarkt am C&C Landau",
+  "kind": "flohmarkt",
+  "town": "Landau in der Pfalz",
+  "region": "Rheinland-Pfalz",
+  "venue": {
+    "name": "C&C Großeinkauf Landau",
+    "address": "Johannes-Kopp-Straße 10–12",
+    "postal_code": "76829"
+  },
+  "lat": 49.1921,
+  "lng": 8.1283,
+  "rhythm": {
+    "de": "Jeden Samstag, nicht an Feiertagen und nicht im Dezember",
+    "en": "Every Saturday, not on public holidays and not in December"
+  },
+  "opening": {
+    "start": "15:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-09-26",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.kultflohmarkt.de/",
+  "organiser": {
+    "name": "Messe und Marktorganisation Reis (Kultflohmarkt)",
+    "website": "https://www.kultflohmarkt.de/",
+    "email": "info@kultflohmarkt.de"
+  },
+  "source_page": "https://www.kultflohmarkt.de/wochenflohmaerkte/landau-am-samstag",
+  "facts": [
+    "under a roof, so it runs in rain and in heat",
+    "every Saturday, 15:00 to 18:00",
+    "second-hand, junk, vintage and some new goods",
+    "no registration — sellers turn up and take a pitch",
+    "the organiser says the choice is widest between 15:00 and 16:30",
+    "the organiser calls it one of the steadiest weekly markets in the Pfalz",
+    "clothes, décor, fashion, collectors' pieces",
+    "stall up to 4 m from 20 EUR, pitches handed out from 13:00"
+  ],
+  "checked": "2026-09-22",
+  "notes": "Dates derived from the stated weekly rhythm. The organiser states no market on public holidays and none in December, with the last of the season on 28 November 2026 — so 3 October (Tag der Deutschen Einheit, a Saturday) is left out and nothing follows 28 November inside the window. Visitor entry is not stated. Impressum: Rudolf Reis, Messe und Marktorganisation Reis, Spelzenackerstraße 49, 67473 Lindenberg (Pfalz). Same organiser also runs a Sunday market on Landau's new Messegelände (18 October and 8 November 2026) and weekly markets in Bobenheim-Roxheim and Wörth. Coordinates from Nominatim for Johannes-Kopp-Straße 10.",
+  "description": {
+    "de": "Jeden Samstag von 15 bis 18 Uhr unter einem Dach, also bei Regen wie bei Hitze. Gebrauchtes, Trödel, Vintage und etwas Neuware; wer verkaufen will, kommt ab 13 Uhr und nimmt einen Platz, ohne Anmeldung. Der Veranstalter sagt, die Auswahl sei zwischen 15 und 16.30 Uhr am größten.",
+    "en": "Every Saturday from 3 to 6 under a roof, so rain or heat makes no difference. Second-hand, junk, vintage and a little new stock; sellers turn up from 1 and take a pitch, no registration. The organiser says the choice is widest between 3 and half past 4."
+  }
+}

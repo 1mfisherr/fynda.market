@@ -1,0 +1,53 @@
+{
+  "slug": "nachtflohmarkt-cottbus",
+  "name": "Nachtflohmarkt Cottbus",
+  "kind": "nachtflohmarkt",
+  "town": "Cottbus",
+  "region": "Brandenburg",
+  "venue": {
+    "name": "Messe Cottbus",
+    "address": "Vorparkstraße 3",
+    "postal_code": "03042"
+  },
+  "lat": 51.7502,
+  "lng": 14.3484,
+  "rhythm": {
+    "de": "An einzelnen Samstagabenden im Jahr",
+    "en": "On a few Saturday evenings a year"
+  },
+  "opening": {
+    "start": "15:00",
+    "end": "22:00"
+  },
+  "dates": [
+    "2026-11-07"
+  ],
+  "dates_from": "listed",
+  "fee": 4,
+  "currency": "EUR",
+  "website": "https://www.nachtflohmaerkte.de/cottbus/",
+  "organiser": {
+    "name": "Mühle & Szymkowiak GbR (Nachtflohmärkte)",
+    "website": "https://www.nachtflohmaerkte.de/",
+    "email": "post@nachtflohmaerkte.de"
+  },
+  "source_page": "https://www.nachtflohmaerkte.de/cottbus/",
+  "facts": [
+    "indoors across two exhibition halls, 6,000 m² of selling space",
+    "well over 100 dealers, thousands of visitors per market day",
+    "the organiser calls it the largest evening flea market in Brandenburg",
+    "the halls are kept, heated and well lit",
+    "runs from 15:00 to 22:00",
+    "entry 4 EUR, children up to 14 free",
+    "new goods and clearance stock are not allowed",
+    "food and drink on site",
+    "large free car park directly behind the hall",
+    "run together with CMT Cottbus, the exhibition company"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser publishes one date only, 7 November 2026; nothing else falls in this window and no 2027 dates are up. The market came back in November 2025 and the organiser calls 7 November its third edition, so the rhythm is a couple of Saturdays a year rather than monthly. Same organiser as the Magdeburg and Rostock night markets already in intake. Coordinates from Nominatim for the Messe Cottbus hall.",
+  "description": {
+    "de": "An einzelnen Samstagabenden von 15 bis 22 Uhr in zwei Messehallen, 6.000 Quadratmeter, geheizt und hell. Weit über 100 Händler; der Veranstalter nennt ihn den größten Abendflohmarkt Brandenburgs. Neuware und Restposten sind nicht zugelassen. Eintritt 4 Euro, Kinder bis 14 frei, großer kostenloser Parkplatz hinter der Halle.",
+    "en": "On single Saturday evenings from 3 to 10 at night across two exhibition halls, 6,000 square metres, heated and well lit. Well over 100 dealers; the organiser calls it the largest evening flea market in Brandenburg. New goods and clearance stock are not allowed. Entry 4 euros, under-14s free, with a large free car park behind the hall."
+  }
+}

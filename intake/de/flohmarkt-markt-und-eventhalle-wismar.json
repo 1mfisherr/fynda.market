@@ -1,0 +1,51 @@
+{
+  "slug": "flohmarkt-markt-und-eventhalle-wismar",
+  "name": "Flohmarkt in der Markt- und Eventhalle",
+  "kind": "hallenflohmarkt",
+  "town": "Wismar",
+  "region": "Mecklenburg-Vorpommern",
+  "venue": {
+    "name": "Markt- und Eventhalle",
+    "address": "Stockholmer Straße 1-4",
+    "postal_code": "23966"
+  },
+  "lat": 53.8975,
+  "lng": 11.4614,
+  "rhythm": {
+    "de": "An einzelnen Wochenenden, etwa monatlich",
+    "en": "On single weekends, roughly once a month"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-31",
+    "2026-11-01"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.hansekontor-wismar.de/markt-und-eventhalle/maerkte/flohmarkt-in-wismar",
+  "organiser": {
+    "name": "Hansekontor Wismar GmbH",
+    "website": "https://www.hansekontor-wismar.de/",
+    "email": "flohmarkt@hansekontor-wismar.de"
+  },
+  "source_page": "https://www.hansekontor-wismar.de/markt-und-eventhalle/maerkte/flohmarkt-in-wismar",
+  "facts": [
+    "indoors in the Markt- und Eventhalle at Wismar's Alter Hafen",
+    "about 1,200 m² of hall floor",
+    "an outdoor area of the same size next door is used over the summer months",
+    "runs whatever the weather, all year round",
+    "most dates run over two days",
+    "the hall is step-free and about five minutes' walk from the station and bus station",
+    "at least 500 paid parking spaces at the hall",
+    "the organiser has run the market itself since July 2019",
+    "dealers register online or on paper; pitch prices are set per event"
+  ],
+  "checked": "2026-09-22",
+  "notes": "The organiser publishes a 2026 date list — 3 and 4 October and 31 October to 1 November fall in this window — but no visitor opening hours and no entry fee anywhere on its site, its trader page, its market rules or its dates PDF, so `opening` is omitted and `fee` is null. Nothing after 1 November 2026 is listed and no 2027 dates are up. The hall's address, floor area, parking and walking distance come from the same organiser's Markt- und Eventhalle page; flohmarkt-wismar.de is the organiser's own domain and serves this same page. Coordinates from Nominatim for the Markthalle at Stockholmer Straße 4.",
+  "description": {
+    "de": "An einzelnen Wochenenden, meist zwei Tage lang, in der Markt- und Eventhalle am Alten Hafen — 1.200 Quadratmeter Hallenfläche, im Sommer dazu das Freigelände nebenan. Findet bei jedem Wetter statt, das ganze Jahr. Barrierefrei, fünf Minuten vom Bahnhof, mindestens 500 Parkplätze.",
+    "en": "On single weekends, usually across two days, in the Markt- und Eventhalle at the old harbour — 1,200 square metres of hall floor, with the outdoor area next door used in summer. It runs whatever the weather, all year. Step-free, five minutes from the station, at least 500 parking spaces."
+  }
+}
