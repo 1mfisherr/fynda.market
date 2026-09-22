@@ -30,7 +30,9 @@ import { inWindow } from '../lib/date-window';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
-interface Town { slug: string; name: string; region: string }
+/* A town carries its own address: with two countries in the sheet, a shared
+   prefix would send München to /de/schweiz/muenchen/. */
+interface Town { slug: string; name: string; region: string; href: string }
 
 interface Props {
   locale?: Locale;
@@ -45,12 +47,10 @@ interface Props {
    */
   perMarket?: { town: string; dates: string[] }[];
   towns: Town[];
-  /** `countryPath(locale, country)`; a town's link is that plus its slug. */
-  cityBase: string;
   /** The radius view, where "near me" goes. */
   nearbyHref: string;
 }
-const { locale = DEFAULT_LOCALE, mode, dates, perMarket = [], towns, cityBase, nearbyHref } = Astro.props;
+const { locale = DEFAULT_LOCALE, mode, dates, perMarket = [], towns, nearbyHref } = Astro.props;
 const s = t(locale);
 
 /* A–Z inside each canton, cantons A–Z. Fifty-five names in one alphabet made
@@ -70,7 +70,6 @@ const marketsIn = (window: string) => perMarket.filter((m) => m.dates.some((d) =
   class="control"
   data-control
   data-mode={mode}
-  data-city-base={cityBase}
   data-nearby={nearbyHref}
   data-per-market={mode === 'home' ? JSON.stringify(perMarket) : undefined}
 >
@@ -104,7 +103,7 @@ const marketsIn = (window: string) => perMarket.filter((m) => m.dates.some((d) =
               <>
                 <p class="canton">{group.region}</p>
                 {group.towns.map((town) => (
-                  <a class="opt" href={`${cityBase}${town.slug}/`} data-town-slug={town.slug} data-town-name={town.name}>{town.name}</a>
+                  <a class="opt" href={town.href} data-town-slug={town.slug} data-town-name={town.name}>{town.name}</a>
                 ))}
               </>
             ))}

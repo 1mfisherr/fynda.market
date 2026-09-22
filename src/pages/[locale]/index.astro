@@ -13,6 +13,7 @@ import CtaCard from '../../components/CtaCard.astro';
 import SubscribeForm from '../../components/SubscribeForm.astro';
 import { regionOptions } from '../../lib/regions';
 import PlaceCloud from '../../components/PlaceCloud.astro';
+import Flag from '../../components/Flag.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import PillList from '../../components/PillList.astro';
 import Section from '../../components/Section.astro';
@@ -22,7 +23,7 @@ import { getMarkets } from '../../lib/markets';
 import SearchControl from '../../components/SearchControl.astro';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, countryPath, homePath, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
+import { LOCALES, cityPath, countryName, homePath, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
 export async function getStaticPaths() {
@@ -53,14 +54,32 @@ const rows = datedRows(markets);
  */
 const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
 
-const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale));
-const regions = [...new Map(markets.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale));
-const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
-/* The home page is still Switzerland's — docs/GERMANY-SPEC.md step 4 turns it
-   into the front door. Until then every place it links to is Swiss. */
-const countryCode = markets[0]?.countryCode ?? 'CH';
+/**
+ * The front door, grouped by country.
+ *
+ * Six comparable sites were read on 2026-09-22 — Booking, Airbnb, GetYourGuide,
+ * Eventbrite, Meetup, TheFork — and not one of them has a country picker.
+ * Every one asks for a TOWN; the country is a heading, never a control. So the
+ * page keeps its one question, and the towns underneath sit in blocks with the
+ * country named above them. The heading appears only when there is more than
+ * one country: with a single country it says nothing a visitor did not know.
+ */
+const byCountry = [...new Map(markets.map((m) => [m.countryCode, m.countrySlug])).entries()]
+  .map(([code, slug]) => {
+    const mine = markets.filter((m) => m.countryCode === code);
+    return {
+      code,
+      slug,
+      name: countryName(locale, code),
+      markets: mine.length,
+      cities: [...new Map(mine.map((m) => [m.citySlug, m.city]))].sort((a, b) => a[1].localeCompare(b[1], locale)),
+      regions: [...new Map(mine.map((m) => [m.regionSlug, m.region]))].sort((a, b) => a[1].localeCompare(b[1], locale)),
+    };
+  })
+  .sort((a, b) => b.markets - a.markets);
+const several = byCountry.length > 1;
 /** The town sheet: every town, with its canton for the headings. */
-const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region }])).values()];
+const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region, href: cityPath(locale, m.countrySlug, m.citySlug) }])).values()];
 
 /**
  * Cancellations in the coming week. Nobody else in the category surfaces these
@@ -82,7 +101,7 @@ const jsonLd = {
 };
 
 ---
-<Page locale={locale} alternates={alternates} country={countryCode} title={s.homeTitle} description={s.homeDescription}>
+<Page locale={locale} alternates={alternates} country={several ? undefined : byCountry[0]?.code} title={s.homeTitle(byCountry.map((c) => c.code))} description={s.homeDescription(byCountry.map((c) => c.code))}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   {/* The claim, and it is a number: the trust signal, the content that has to
@@ -128,7 +147,6 @@ const jsonLd = {
       dates={rows.map((row) => row.next!.date)}
       perMarket={[...Map.groupBy(rows, (row) => row.slug).values()].map((group) => ({ town: group[0].citySlug, dates: group.map((row) => row.next!.date) }))}
       towns={towns}
-      cityBase={countryPath(locale, countrySlug)}
       nearbyHref={nearbyPath(locale)}
     />
   </div>
@@ -183,21 +201,30 @@ const jsonLd = {
     </Section>
   )}
 
-  <Section id="staedte" title={s.cities} lede={s.citiesLede}>
-    <PlaceCloud items={cities.map(([slug, city]) => ({
-      href: cityPath(locale, countrySlug, slug),
-      label: city,
-      count: markets.filter((m) => m.citySlug === slug).length,
-    }))} />
-  </Section>
+  {byCountry.map((country) => (
+    <>
+      {several && (
+        <h2 class="country gutter"><Flag code={country.code} /> {country.name}
+          <span class="meta">{s.countryCount(country.markets, country.cities.length)}</span>
+        </h2>
+      )}
+      <Section id={several ? `orte-${country.code.toLowerCase()}` : 'staedte'} title={s.cities} lede={s.citiesLede} level={several ? 'sub' : undefined}>
+        <PlaceCloud items={country.cities.map(([slug, city]) => ({
+          href: cityPath(locale, country.slug, slug),
+          label: city,
+          count: markets.filter((m) => m.citySlug === slug).length,
+        }))} />
+      </Section>
 
-  <Section id="kantone" title={s.regions} lede={s.regionsLede}>
-    <PillList items={regions.map(([slug, region]) => ({
-      href: regionPath(locale, countryCode, countrySlug, slug),
-      label: region,
-      meta: String(markets.filter((m) => m.regionSlug === slug).length),
-    }))} />
-  </Section>
+      <Section id={several ? `regionen-${country.code.toLowerCase()}` : 'kantone'} title={s.regionsOf(country.code)} lede={s.regionsLede} level={several ? 'sub' : undefined}>
+        <PillList items={country.regions.map(([slug, region]) => ({
+          href: regionPath(locale, country.code, country.slug, slug),
+          label: region,
+          meta: String(markets.filter((m) => m.regionSlug === slug).length),
+        }))} />
+      </Section>
+    </>
+  ))}
 
   <Section title={s.marketTypes} lede={s.typesLede}><TypeGrid locale={locale} /></Section>
 
@@ -230,6 +257,19 @@ const jsonLd = {
 
 <style>
   /* Only what is genuinely this page's. Everything else is a component. */
+
+  /* The country heading on the front door: a flag, a name, and the two counts
+     that make the block worth opening. It only renders with a second country
+     on the page — src/pages/[locale]/index.astro, the byCountry block. */
+  .country {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: var(--space-7) 0 0;
+    font-size: var(--text-section);
+    letter-spacing: var(--tracking-tight);
+  }
+  .country .meta { margin-inline-start: auto; font-size: var(--text-small); }
 
   /* The promise under the headline. One size up from body, because it is the
      sentence the page exists to make. */

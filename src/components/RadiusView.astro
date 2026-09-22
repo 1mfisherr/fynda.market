@@ -35,7 +35,7 @@ import SearchControl from './SearchControl.astro';
 import Section from './Section.astro';
 import { getMarkets } from '../lib/markets';
 import { byMarket, datedRows } from '../lib/lists';
-import { countryPath, nearbyPath, utilityAlternates, type Locale } from '../lib/i18n';
+import { cityPath, nearbyPath, utilityAlternates, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props {
@@ -51,7 +51,7 @@ const markets = await getMarkets(locale);
 const rows = datedRows(markets);
 const list = byMarket(rows);
 
-const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region }])).values()];
+const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region, href: cityPath(locale, m.countrySlug, m.citySlug) }])).values()];
 const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
 /* The six towns with the most markets — the way out when the phone says no. */
 const biggest = [...towns]
@@ -94,7 +94,6 @@ const DEFAULT_KM = 25;
         mode="nearby"
         dates={list.map((m) => m.next.date)}
         towns={towns}
-        cityBase={countryPath(locale, countrySlug)}
         nearbyHref={nearbyPath(locale)}
       >
         {/* Everything the state adds sits between where and when, where the
@@ -109,7 +108,7 @@ const DEFAULT_KM = 25;
         {/* State 4: six ways out. */}
         <div class="towns" slot="after-where" data-only="refused">
           {biggest.map((town) => (
-            <a class="button" href={`${countryPath(locale, countrySlug)}${town.slug}/`}>{town.name}</a>
+            <a class="button" href={town.href}>{town.name}</a>
           ))}
         </div>
 

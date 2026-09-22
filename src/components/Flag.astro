@@ -1,0 +1,38 @@
+---
+/**
+ * A country's flag, at the size of a word.
+ *
+ * The one place on the site where colour is neither the accent nor the ink
+ * (BRAND.md allows the same exception for the category colours): a flag is a
+ * fact about a country, not a decoration we chose, and it is the fastest way
+ * to say "this block is a different country" without a sentence. It appears
+ * beside a country heading and nowhere else — Delfim, 2026-09-22.
+ *
+ * Drawn inline rather than loaded: two flags at 20px are smaller than the
+ * requests that would fetch them, and an <img> that has not arrived leaves a
+ * hole in a heading.
+ */
+import type { CountryCode } from '../lib/i18n';
+
+interface Props { code: CountryCode; size?: number; }
+const { code, size = 20 } = Astro.props;
+---
+{code === 'CH' ? (
+  <svg class="flag" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <rect width="32" height="32" rx="3" fill="#D8232A" />
+    <path d="M13.5 7h5v6.5H25v5h-6.5V25h-5v-6.5H7v-5h6.5V7Z" fill="#fff" />
+  </svg>
+) : (
+  <svg class="flag" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <clipPath id={`f-${code}`}><rect width="32" height="32" rx="3" /></clipPath>
+    <g clip-path={`url(#f-${code})`}>
+      <rect width="32" height="32" fill="#FFCE00" />
+      <rect width="32" height="21.34" fill="#DD0000" />
+      <rect width="32" height="10.67" fill="#000" />
+    </g>
+  </svg>
+)}
+
+<style>
+  .flag { display: inline-block; vertical-align: -0.15em; flex: none; }
+</style>

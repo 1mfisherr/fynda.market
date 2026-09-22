@@ -35,8 +35,9 @@ export interface Strings {
   notFoundBody: string;
 
   /* home */
-  homeTitle: string;
-  homeDescription: string;
+  /** The home page names the countries it covers: one, or several joined. */
+  homeTitle: (countries: CountryCode[]) => string;
+  homeDescription: (countries: CountryCode[]) => string;
   heroLine1: string;
   heroLine2: string;
   /* the search control — home and the radius view (docs/specs/near-me.md) */
@@ -75,7 +76,10 @@ export interface Strings {
   /* The home page's one question, asked below the markets — TownPicker. */
   yourTown: string;
   cities: string;
-  regions: string;
+  /** "Kantone" in Switzerland, "Bundesländer" in Germany. */
+  regionsOf: (code: CountryCode) => string;
+  /** Under a country heading on the front door: "222 Märkte · 105 Orte". */
+  countryCount: (markets: number, towns: number) => string;
   marketTypes: string;
   /**
    * What the block used to say in three verbs. It is the sentence that
@@ -323,6 +327,21 @@ export interface Strings {
 /* One German Land takes an article: "im Saarland", never "in Saarland". The
    other fifteen do not, and no canton does. */
 const DE_ARTICLE = new Set(['Saarland']);
+
+/* "in der Schweiz", "in Deutschland" — the article belongs to the country, so
+   the phrase is a table rather than a noun slotted into a sentence. Every
+   locale holds every country: French never renders a German page, but the
+   home page of a French visitor still names the countries the site covers. */
+const IN_COUNTRY: Record<Locale, Record<CountryCode, string>> = {
+  de: { CH: 'in der Schweiz', DE: 'in Deutschland' },
+  fr: { CH: 'en Suisse', DE: 'en Allemagne' },
+  it: { CH: 'in Svizzera', DE: 'in Germania' },
+  en: { CH: 'in Switzerland', DE: 'in Germany' },
+};
+const AND: Record<Locale, string> = { de: ' und ', fr: ' et ', it: ' e ', en: ' and ' };
+const inCountries = (locale: Locale, codes: CountryCode[]) =>
+  codes.map((c) => IN_COUNTRY[locale][c]).join(AND[locale]);
+
 const inRegionDe = (region: string, code: CountryCode) =>
   (code === 'CH' ? `im Kanton ${region}` : DE_ARTICLE.has(region) ? `im ${region}` : `in ${region}`);
 const regionLabelDe = (region: string, code: CountryCode) =>
@@ -343,8 +362,8 @@ const de: Strings = {
   notFoundHeading: 'Diese Seite gibt es nicht.',
   notFoundBody: 'Vielleicht ist der Markt umgezogen, vielleicht stimmt die Adresse nicht. Von der Startseite aus findest du jeden Markt.',
 
-  homeTitle: 'Flohmärkte in der Schweiz — fynda.market',
-  homeDescription: 'Flohmärkte in der Schweiz mit Terminen, Öffnungszeiten und dem Tag der letzten Prüfung. Absagen bleiben sichtbar. Kostenlos, ohne Werbung.',
+  homeTitle: (countries) => `Flohmärkte ${inCountries('de', countries)} — fynda.market`,
+  homeDescription: (countries) => `Flohmärkte ${inCountries('de', countries)} mit Terminen, Öffnungszeiten und dem Tag der letzten Prüfung. Absagen bleiben sichtbar. Kostenlos, ohne Werbung.`,
   heroLine1: 'Man weiss nie,',
   heroLine2: 'was man findet.',
   whereLabel: 'Wo',
@@ -370,7 +389,8 @@ const de: Strings = {
   yourTown: 'Deine Stadt',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}, ${from}${to === from ? '' : ` und ${to}`}`,
   cities: 'Orte',
-  regions: 'Kantone',
+  regionsOf: (code) => (code === 'CH' ? 'Kantone' : 'Bundesländer'),
+  countryCount: (markets, towns) => `${markets} Märkte · ${towns} ${towns === 1 ? 'Ort' : 'Orte'}`,
   marketTypes: 'Markttypen',
   questions: 'Fragen',
   cancelledThisWeek: 'Diese Woche abgesagt',
@@ -533,8 +553,8 @@ const en: Strings = {
   notFoundHeading: 'This page does not exist.',
   notFoundBody: 'The market may have moved, or the address may be wrong. Every market is reachable from the home page.',
 
-  homeTitle: 'Flea markets in Switzerland — fynda.market',
-  homeDescription: 'Flea markets in Switzerland with dates, opening hours and the day each date was last checked. Cancellations stay visible. Free, no ads.',
+  homeTitle: (countries) => `Flea markets ${inCountries('en', countries)} — fynda.market`,
+  homeDescription: (countries) => `Flea markets ${inCountries('en', countries)} with dates, opening hours and the day each date was last checked. Cancellations stay visible. Free, no ads.`,
   heroLine1: 'You never know',
   heroLine2: "what you'll find.",
   whereLabel: 'Where',
@@ -560,7 +580,8 @@ const en: Strings = {
   yourTown: 'Your town',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'}, ${from}${to === from ? '' : ` and ${to}`}`,
   cities: 'Towns',
-  regions: 'Cantons',
+  regionsOf: (code) => (code === 'CH' ? 'Cantons' : 'States'),
+  countryCount: (markets, towns) => `${markets} markets · ${towns} ${towns === 1 ? 'town' : 'towns'}`,
   marketTypes: 'Market types',
   questions: 'Questions',
   cancelledThisWeek: 'Cancelled this week',
@@ -729,8 +750,8 @@ const fr: Strings = {
   notFoundHeading: "Cette page n'existe pas.",
   notFoundBody: "Le marché a peut-être changé d'adresse, ou l'adresse est incorrecte. Tous les marchés sont accessibles depuis la page d'accueil.",
 
-  homeTitle: 'Brocantes en Suisse — fynda.market',
-  homeDescription: 'Brocantes en Suisse avec dates, horaires et jour de la dernière vérification. Les annulations restent visibles. Gratuit, sans publicité.',
+  homeTitle: (countries) => `Brocantes ${inCountries('fr', countries)} — fynda.market`,
+  homeDescription: (countries) => `Brocantes ${inCountries('fr', countries)} avec dates, horaires et jour de la dernière vérification. Les annulations restent visibles. Gratuit, sans publicité.`,
   heroLine1: 'On ne sait jamais',
   heroLine2: "ce qu'on va trouver.",
   whereLabel: 'Où',
@@ -756,7 +777,8 @@ const fr: Strings = {
   yourTown: 'Votre ville',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}, ${from}${to === from ? '' : ` et ${to}`}`,
   cities: 'Localités',
-  regions: 'Cantons',
+  regionsOf: () => 'Cantons',
+  countryCount: (markets, towns) => `${markets} brocantes · ${towns} ${towns === 1 ? 'localité' : 'localités'}`,
   marketTypes: 'Types de marché',
   questions: 'Questions',
   cancelledThisWeek: 'Annulé cette semaine',
@@ -919,8 +941,8 @@ const it: Strings = {
   notFoundHeading: 'Questa pagina non esiste.',
   notFoundBody: "Il mercatino potrebbe aver cambiato indirizzo, oppure l'indirizzo non è corretto. Dalla pagina iniziale si raggiunge ogni mercatino.",
 
-  homeTitle: 'Mercatini delle pulci in Svizzera — fynda.market',
-  homeDescription: "Mercatini delle pulci in Svizzera con date, orari e giorno dell'ultima verifica. Le cancellazioni restano visibili. Gratis, senza pubblicità.",
+  homeTitle: (countries) => `Mercatini delle pulci ${inCountries('it', countries)} — fynda.market`,
+  homeDescription: (countries) => `Mercatini delle pulci ${inCountries('it', countries)} con date, orari e giorno dell'ultima verifica. Le cancellazioni restano visibili. Gratis, senza pubblicità.`,
   heroLine1: 'Non si sa mai',
   heroLine2: 'cosa si trova.',
   whereLabel: 'Dove',
@@ -946,7 +968,8 @@ const it: Strings = {
   yourTown: 'La vostra città',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'}, ${from}${to === from ? '' : ` e ${to}`}`,
   cities: 'Località',
-  regions: 'Cantoni',
+  regionsOf: () => 'Cantoni',
+  countryCount: (markets, towns) => `${markets} mercatini · ${towns} ${towns === 1 ? 'località' : 'località'}`,
   marketTypes: 'Tipi di mercatino',
   questions: 'Domande',
   cancelledThisWeek: 'Cancellato questa settimana',

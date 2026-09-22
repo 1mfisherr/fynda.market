@@ -78,6 +78,8 @@ export type CountryCode = 'CH' | 'DE';
 
 export interface CountryInfo {
   locales: Locale[];
+  /** The country's name, per locale. The same fixed set as scripts/lib/places*.mjs. */
+  name: Partial<Record<Locale, string>>;
   /** The region segment of the path, per locale. */
   region: Partial<Record<Locale, string>>;
   /** The BCP 47 tag for `<html lang>` and hreflang, per locale. */
@@ -87,11 +89,13 @@ export interface CountryInfo {
 export const COUNTRY: Record<CountryCode, CountryInfo> = {
   CH: {
     locales: ['de', 'fr', 'it', 'en'],
+    name: { de: 'Schweiz', fr: 'Suisse', it: 'Svizzera', en: 'Switzerland' },
     region: { de: 'kanton', fr: 'canton', it: 'cantone', en: 'canton' },
     tag: { de: 'de-CH', fr: 'fr-CH', it: 'it-CH', en: 'en' },
   },
   DE: {
     locales: ['de', 'en'],
+    name: { de: 'Deutschland', en: 'Germany' },
     region: { de: 'bundesland', en: 'state' },
     tag: { de: 'de-DE', en: 'en' },
   },
@@ -101,6 +105,10 @@ export const COUNTRY: Record<CountryCode, CountryInfo> = {
 export const REGION_SEGMENTS = [
   ...new Set(Object.values(COUNTRY).flatMap((c) => Object.values(c.region))),
 ];
+
+/** The country's name in this locale. */
+export const countryName = (locale: Locale, country: CountryCode) =>
+  COUNTRY[country].name[locale] ?? COUNTRY[country].name.en ?? country;
 
 /** The region word for this page. Falls back to English, never to a guess. */
 export const regionSegment = (locale: Locale, country: CountryCode) =>

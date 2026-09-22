@@ -28,9 +28,11 @@ const others = alternates.filter((a) => a.locale !== locale);
  *
  * Labels are the footer's, not new ones: one word per idea across the site.
  */
+/* The regions entry used to point at #kantone. With a second country the front
+   door has one places block per country, so that id only exists while there is
+   one — the towns anchor is the one that survives both. */
 const sections = [
   { href: `${homePath(locale)}#staedte`, label: s.cities },
-  { href: `${homePath(locale)}#kantone`, label: s.regions },
   { href: nearbyPath(locale), label: s.footerNearby },
 ];
 ---

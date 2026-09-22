@@ -24,20 +24,20 @@ Which pages exist, what is on each and in what order, and what was deliberately 
 
 ## Home — `/{locale}/`
 
-Brand and direct traffic plus `flohmarkt schweiz`. Job: what is on soon, near the big towns, and be credible.
+Brand and direct traffic. Job: what is on soon, near the big towns, and be credible. **It earns almost nothing from search** — 1 click and 57 impressions across all four locales in the 7 days to 2026-09-20, against 95 and 8,391 for the site — which is what frees it to be the front door rather than a Swiss landing page.
 
-1. Wordmark, saved markets; above 900px also Cities · Cantons · Near me (anchors until a country page exists).
+1. Wordmark, saved markets; above 900px also Towns · Near me. The Cantons anchor went 2026-09-22: with a second country the front door has one places block per country, and `#kantone` only exists while there is one.
 2. **The brand line**, beside the headline above 900px: "You never know what you'll find. / We find the flea markets. You do the hunting." Under it one quiet line for organisers with the site's pill ("Run a market? Claim your page"). No count, no proof paragraph — the page shows, it does not claim (2026-09-19).
 3. "Your town" shortcut — the town last picked, from browser storage.
 4. **Six markets this weekend** — two feature rows, four compact, one per town, biggest towns first, then a button to all of them. A nationwide list by clock time interleaved 22 towns at random.
 5. **The search control** (`SearchControl.astro`, 2026-09-18) — Where: a sheet of the towns under canton headings, *Near me* first, and a round button that asks for location **on tap, never on load**. When: All · Today · Weekend · Date, the count under it always true. The Show button's label is the live count and it goes to the town page carrying the date. No free text (fact 2), no radius without a point. It is the site's only place-chooser.
 6. Newsletter, then organiser CTA, sharing a row above 900px; only the newsletter button is filled — two loud asks are none.
 7. Cancelled this week — only when something was.
-8. **Towns, weighted by count** (`PlaceCloud`, shared with the canton page): all towns alphabetical, four weight steps, the count only above one. 32 of 55 towns have one market.
-9. Cantons as pills · five market types (what teaches the row colours) · four questions in `<details>`, answers in the HTML, folded at every width. The "where our data comes from" block is gone (2026-09-19): every date carries its own stamp, which is the whole argument.
+8. **One block per country** (2026-09-22): a flag, the country's name and its counts — *Schweiz · 222 Märkte · 105 Orte* — then that country's **towns, weighted by count** (`PlaceCloud`, shared with the region page: all towns alphabetical, four weight steps, the count only above one) and its **regions as pills**, headed *Kantone* or *Bundesländer*. **The country heading renders only when there is more than one country**, so a one-country site reads exactly as before. There is no country picker anywhere: six comparable sites were read on 2026-09-22 — Booking, Airbnb, GetYourGuide, Eventbrite, Meetup, TheFork — and not one has one. They all ask for a town; the country is a heading.
+9. Five market types (what teaches the row colours) · four questions in `<details>`, answers in the HTML, folded at every width. The "where our data comes from" block is gone (2026-09-19): every date carries its own stamp, which is the whole argument.
 10. Footer: forms, legal, saved, languages. No town list — that is block 8 again, and a bare link list is the doorway shape.
 
-Not here: a map, a big search field, a newsletter above the fold (1.1% conversion), date chips (six rows need none), "all N dates this month" (a month page does not exist). Measured by click-through into market pages.
+Not here: a country picker, a map (Delfim, 2026-09-22: "gimmicky"), a big search field, a newsletter above the fold (1.1% conversion), date chips (six rows need none), "all N dates this month" (a month page does not exist). Measured by click-through into market pages.
 
 ## Market — `/{locale}/{market}/[slug]/`
 
