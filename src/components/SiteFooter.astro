@@ -57,6 +57,10 @@ const legal: { href: string; label: string; cookies?: boolean }[] = [
   { href: utilityPath(locale, 'imprint'), label: s.footerImprint },
   { href: utilityPath(locale, 'privacy'), label: s.footerPrivacy },
   { href: utilityPath(locale, 'terms'), label: s.footerTerms },
+  /* Opens the banner again. The privacy page promises this link; it had
+     dropped out of the list and a choice, once made, could not be changed
+     (found 2026-09-23). Without JavaScript it lands on the privacy page. */
+  { href: utilityPath(locale, 'privacy'), label: s.footerCookies, cookies: true },
 ];
 ---
 <footer class="site-footer wrapper">
