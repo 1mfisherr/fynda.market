@@ -28,6 +28,24 @@ function headers(env: RestEnv, extra: Record<string, string> = {}) {
 
 const ready = (env: RestEnv) => Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY);
 
+/**
+ * How many rows this connection wrote to a form table in the last hour.
+ *
+ * The forms had a hidden trap field and a too-fast check and nothing else, so
+ * a script that passed both could post as often as it liked — and every post
+ * is a Telegram ping. The hash is the one already stored on each row (a
+ * per-form HMAC of the IP), so this adds no new data. A failed read counts as
+ * zero: a broken limit must not stop a real person.
+ */
+export async function recentFrom(
+  env: RestEnv, table: string, hashColumn: string, timeColumn: string, hash: string | null, minutes = 60
+): Promise<number> {
+  if (!hash) return 0;
+  const since = new Date(Date.now() - minutes * 60_000).toISOString();
+  const rows = await selectRows(env, table, `${hashColumn}=eq.${encodeURIComponent(hash)}&${timeColumn}=gte.${since}&limit=20`, 'id');
+  return rows.length;
+}
+
 export async function selectRows<T = Record<string, unknown>>(
   env: RestEnv,
   table: string,

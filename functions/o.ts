@@ -14,9 +14,10 @@
  */
 
 import { localeOf } from './_collect';
+import { recentFrom } from './_rest';
 import {
   EMAIL, crossOrigin, insertRow, ipHash, json, looksLikeBot, marketExists,
-  pathFrom, readBody, seeOther, text, tooFast, trapped, type FormEnv,
+  domainOf, pathFrom, readBody, seeOther, text, tooFast, trapped, type FormEnv,
 } from './_form';
 import { claimAck, sendMail, type Locale, type MailEnv } from './_mail';
 import { offerDecision, type AdminEnv } from './_admin';
@@ -70,6 +71,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
 
   const town = text(body.ort, 120);
 
+  /* Three claims an hour from one connection; an organiser with more markets writes once. */
+  const claim_ip_hash = await ipHash(env, request, 'claim');
+  if ((await recentFrom(env, 'organiser_claims', 'claim_ip_hash', 'created_at', claim_ip_hash)) >= 3) return quiet();
+
   const id = await insertRow(env, 'organiser_claims', {
     market_id,
     market_text,
@@ -79,7 +84,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
     message: text(body.nachricht, 4000),
     locale,
     source_path: path,
-    claim_ip_hash: await ipHash(env, request, 'claim'),
+    claim_ip_hash,
   });
 
   if (!id) return failed(500, 'save_failed', 'form-failed');
@@ -90,7 +95,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * the source of truth for a market and is waiting to hear back.
    */
   const where = market_id ? '' : ' [unmatched]';
-  const summary = `ORGANISER: ${market_text}${where}\n${organiser_name} <${email}>\n${town ?? '—'} (${locale})`;
+  const summary = `ORGANISER: ${market_text}${where}\n${organiser_name} <${domainOf(email)}>\n${town ?? '—'} (${locale})`;
   /*
    * Approve and Reject travel with the message. Approving creates the
    * organiser, points the market at them, mints their personal link and sends

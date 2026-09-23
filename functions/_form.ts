@@ -57,6 +57,14 @@ export async function hmacHex(key: string, message: string): Promise<string> {
  * Best effort and never awaited into the response: a submission that saved must
  * report success even if Telegram is down or was never configured.
  */
+/**
+ * "…@lugano.ch": enough to tell a town hall from a private address when
+ * deciding on a claim, without putting anyone's full address in a chat app.
+ * The address itself stays in the database.
+ */
+export const domainOf = (email: string | null | undefined): string =>
+  email && email.includes('@') ? `…@${email.split('@').pop()}` : 'no address';
+
 export async function ping(env: FormEnv, text: string): Promise<void> {
   // Trimmed, and not optional. A secret set by piping a value into the CLI
   // arrives with the shell's trailing newline attached, which puts a line break

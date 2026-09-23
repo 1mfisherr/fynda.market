@@ -115,6 +115,16 @@ export function page(
 
   return new Response(html, {
     status: options.status ?? 200,
-    headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' },
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'no-store',
+      // An organiser's page carries buttons that change what the site says;
+      // no other site may put it in a frame and trick a click (public/_headers
+      // does the same for the static pages, which these responses never pass).
+      'x-frame-options': 'DENY',
+      'content-security-policy': "frame-ancestors 'none'",
+      'strict-transport-security': 'max-age=31536000',
+      'x-content-type-options': 'nosniff',
+    },
   });
 }

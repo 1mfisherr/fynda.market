@@ -20,9 +20,10 @@
  */
 
 import { localeOf } from './_collect';
+import { recentFrom } from './_rest';
 import {
   EMAIL, crossOrigin, insertRow, ipHash, json, looksLikeBot, marketExists,
-  pathFrom, ping, readBody, seeOther, text, tooFast, trapped, type FormEnv,
+  domainOf, pathFrom, ping, readBody, seeOther, text, tooFast, trapped, type FormEnv,
 } from './_form';
 import { reportAck, sendMail, type Locale, type MailEnv } from './_mail';
 
@@ -97,6 +98,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   const mid = text(body.mid, 64);
   const market_id = mid && (await marketExists(env, mid)) ? mid : null;
 
+  /* Five an hour from one connection is more than any person sends. */
+  const reporter_ip_hash = await ipHash(env, request, 'report');
+  if ((await recentFrom(env, 'reports', 'reporter_ip_hash', 'submitted_at', reporter_ip_hash)) >= 5) return quiet();
+
   const id = await insertRow(env, 'reports', {
     market_id,
     market_text,
@@ -105,7 +110,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
     email: emailRaw,
     locale,
     source_path: path,
-    reporter_ip_hash: await ipHash(env, request, 'report'),
+    reporter_ip_hash,
   });
 
   if (!id) return failed(500, 'save_failed', 'form-failed');
@@ -120,7 +125,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * freshness argument rests on.
    */
   const where = market_id ? '' : ' [unmatched]';
-  waitUntil(ping(env, `Report (${report_type}): ${market_text}${where} — ${emailRaw ?? 'no address'} (${locale})`));
+  waitUntil(ping(env, `Report (${report_type}): ${market_text}${where} — ${domainOf(emailRaw)} (${locale})`));
   if (emailRaw) {
     waitUntil(sendMail(env, { to: emailRaw, ...reportAck(locale as Locale, market_text) }));
   }

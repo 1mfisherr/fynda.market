@@ -19,9 +19,10 @@
  */
 
 import { localeOf } from './_collect';
+import { recentFrom } from './_rest';
 import {
   EMAIL, crossOrigin, ipHash, json, looksLikeBot, pathFrom, ping,
-  readBody, referrerHost, seeOther, text, tooFast, trapped, type FormEnv,
+  domainOf, readBody, referrerHost, seeOther, text, tooFast, trapped, type FormEnv,
 } from './_form';
 import { sendMail, welcomeMail, type Locale, type MailEnv } from './_mail';
 
@@ -124,6 +125,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
     ? Math.min(200, Math.max(1, Number.isFinite(radius) ? Math.round(radius) : 25))
     : null;
 
+  /* Five signups an hour from one connection. Each one mails a welcome to the
+     address typed, so without a cap the form could be used to mail strangers. */
+  const signup_ip_hash = await ipHash(env, request, 'newsletter');
+  if ((await recentFrom(env, 'newsletter_subscribers', 'signup_ip_hash', 'created_at', signup_ip_hash)) >= 5) return quiet();
+
   const row: Record<string, unknown> = {
     email,
     region_id,
@@ -132,7 +138,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
     locale,
     source_path: path,
     referrer_host: referrerHost(request),
-    signup_ip_hash: await ipHash(env, request, 'newsletter'),
+    signup_ip_hash,
     // A second signup un-does an earlier unsubscribe.
     unsubscribed_at: null,
   };
@@ -192,7 +198,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
    * switched off, still succeeds: the address is on the list either way.
    */
   const where = city_id ? `${radius_km} km um ${citySlug}` : region_id ? String(regionSlug) : '';
-  waitUntil(ping(env, `Newsletter: ${email}${where ? ` — ${where}` : ''} (${locale})`));
+  waitUntil(ping(env, `Newsletter: ${domainOf(email)}${where ? ` — ${where}` : ''} (${locale})`));
   if (token) {
     waitUntil(sendMail(env, { to: email, ...welcomeMail(locale as Locale, token) }));
   }
