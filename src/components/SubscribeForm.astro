@@ -284,26 +284,23 @@ const id = `sub-${variant}`;
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       if (button) button.disabled = true;
 
-      const region = form.elements.namedItem('region') as
-        | HTMLInputElement
-        | HTMLSelectElement
-        | null;
+      /* Every field the form holds, so a hidden field added to the markup
+         is posted without anyone remembering to add it here. This list was
+         written out by hand until 2026-09-23, and it had left out the town
+         and the distance: every signup from a town or market page was saved
+         as "the whole country". Only what the browser alone knows is added. */
+      const fields = Object.fromEntries(
+        [...new FormData(form).entries()].filter((entry): entry is [string, string] => typeof entry[1] === 'string')
+      );
 
       void fetch('/n', {
         method: 'POST',
         headers: { 'content-type': 'application/json', accept: 'application/json' },
         body: JSON.stringify({
+          ...fields,
           email: value,
-          region: region?.value || null,
-          /* A town page and a market page subscribe to a town and a distance.
-             Left out until 2026-09-23, so every signup from those pages was
-             saved as "the whole country". */
-          city: (form.elements.namedItem('city') as HTMLInputElement | null)?.value || null,
-          radius: Number((form.elements.namedItem('radius') as HTMLInputElement | null)?.value) || null,
-          website: (form.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '',
           elapsed_ms: firstTouch ? Date.now() - firstTouch : null,
           path: location.pathname,
-          consent_text: (form.elements.namedItem('consent_text') as HTMLInputElement | null)?.value ?? null,
         }),
       })
         .then((res) => (res.ok ? 'ok' : res.status === 422 ? 'invalid' : 'failed'))

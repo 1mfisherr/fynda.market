@@ -245,7 +245,6 @@ const newsletter: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'email', label: 'E-Mail-Adresse', type: 'email', required: true, placeholder: 'name@example.com' },
-      { name: 'stadt', label: 'Stadt (optional)', hint: 'Leer lassen für die ganze Schweiz.', placeholder: 'z. B. Zürich' },
     ],
     submit: 'Anmelden',
     note: 'Nur diese E-Mail, und deine Adresse wird nie weitergegeben. Ein Klick, und sie hört auf.',
@@ -270,7 +269,6 @@ const newsletter: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'email', label: 'Adresse e-mail', type: 'email', required: true, placeholder: 'name@example.com' },
-      { name: 'stadt', label: 'Commune (facultatif)', hint: 'Laissez vide pour toute la Suisse.', placeholder: 'p. ex. Lausanne' },
     ],
     submit: "S'inscrire",
     note: "Seulement cet e-mail, et votre adresse n'est jamais transmise. Un clic suffit pour l'arrêter.",
@@ -295,7 +293,6 @@ const newsletter: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'email', label: 'Indirizzo e-mail', type: 'email', required: true, placeholder: 'name@example.com' },
-      { name: 'stadt', label: 'Città (facoltativo)', hint: 'Lascia vuoto per tutta la Svizzera.', placeholder: 'per es. Lugano' },
     ],
     submit: 'Iscriversi',
     note: 'Solo questa e-mail, e il tuo indirizzo non viene mai passato a nessuno. Basta un clic per fermarla.',
@@ -320,7 +317,6 @@ const newsletter: Record<Locale, FormPage> = {
     ],
     fields: [
       { name: 'email', label: 'Email address', type: 'email', required: true, placeholder: 'name@example.com' },
-      { name: 'stadt', label: 'Town (optional)', hint: 'Leave empty for the whole of Switzerland.', placeholder: 'e.g. Zürich' },
     ],
     submit: 'Sign up',
     note: 'Just this email, and your address is never passed on. One click stops it.',

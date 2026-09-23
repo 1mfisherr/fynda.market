@@ -443,7 +443,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     listed: {
       subject: '%m auf fynda.market — Ihre Seite',
       intro: [
-        'Mein Name ist Delfim. Ich betreibe fynda.market, eine Website, mit der Leute in der Schweiz einen Flohmarkt in ihrer Nähe finden. Ich habe sie gebaut, weil ich selbst auf Märkte gehe und die Enttäuschung kenne, irgendwohin zu fahren und dann zu erfahren, dass abgesagt wurde.',
+        'Mein Name ist Delfim. Ich betreibe fynda.market, eine Website, mit der Leute einen Flohmarkt in ihrer Nähe finden. Ich habe sie gebaut, weil ich selbst auf Märkte gehe und die Enttäuschung kenne, irgendwohin zu fahren und dann zu erfahren, dass abgesagt wurde.',
         '%m ist auf der Website aufgeführt, mit den Terminen und Öffnungszeiten, die ich auf Ihrer Website gefunden habe. Ich wollte, dass Sie das wissen, und Ihnen die Seite geben:',
       ],
       optOut: 'Und wenn Sie lieber nichts mehr von mir hören möchten, antworten Sie und sagen es mir, dann schreibe ich nicht mehr.',
@@ -465,7 +465,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     listed: {
       subject: '%m sur fynda.market — votre page',
       intro: [
-        "Je m'appelle Delfim. Je m'occupe de fynda.market, un site qui aide les gens en Suisse à trouver une brocante près de chez eux. Je l'ai créé parce que je vais moi-même aux marchés, et que je connais la déception de faire la route pour apprendre sur place que c'était annulé.",
+        "Je m'appelle Delfim. Je m'occupe de fynda.market, un site qui aide les gens à trouver une brocante près de chez eux. Je l'ai créé parce que je vais moi-même aux marchés, et que je connais la déception de faire la route pour apprendre sur place que c'était annulé.",
         "%m figure sur le site, avec les dates et les horaires que j'ai trouvés sur votre site. Je tenais à vous le dire, et à vous donner la page :",
       ],
       optOut: "Et si vous préférez ne plus avoir de mes nouvelles, répondez-moi pour me le dire, et je ne vous écrirai plus.",
@@ -487,7 +487,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     listed: {
       subject: '%m su fynda.market — la tua pagina',
       intro: [
-        "Mi chiamo Delfim. Gestisco fynda.market, un sito che aiuta le persone in Svizzera a trovare un mercatino delle pulci vicino a loro. L'ho creato perché ai mercatini ci vado anch'io, e conosco la delusione di arrivare sul posto e scoprire che era stato annullato.",
+        "Mi chiamo Delfim. Gestisco fynda.market, un sito che aiuta le persone a trovare un mercatino delle pulci vicino a loro. L'ho creato perché ai mercatini ci vado anch'io, e conosco la delusione di arrivare sul posto e scoprire che era stato annullato.",
         '%m è sul sito, con le date e gli orari che ho trovato sul tuo sito. Volevo che lo sapessi, e darti la pagina:',
       ],
       optOut: 'E se preferisci non sentirmi più, rispondimi e dimmelo: non ti scriverò più.',
@@ -509,7 +509,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     listed: {
       subject: '%m on fynda.market — your page',
       intro: [
-        "My name is Delfim. I run fynda.market, a site that helps people in Switzerland find a flea market near them. I built it because I go to markets myself, and I know the disappointment of driving somewhere and finding out it was cancelled.",
+        "My name is Delfim. I run fynda.market, a site that helps people find a flea market near them. I built it because I go to markets myself, and I know the disappointment of driving somewhere and finding out it was cancelled.",
         '%m is listed on the site, with the dates and opening hours I found on your website. I wanted you to know, and to give you the page:',
       ],
       optOut: "And if you would rather not hear from me, reply and say so, and I won't write again.",
