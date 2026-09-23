@@ -30,7 +30,7 @@ Brand and direct traffic. Job: what is on soon, near the big towns, and be credi
 2. **The brand line**, beside the headline above 900px: "You never know what you'll find. / We find the flea markets. You do the hunting." Under it one quiet line for organisers with the site's pill ("Run a market? Claim your page"). No count, no proof paragraph — the page shows, it does not claim (2026-09-19).
 3. "Your town" shortcut — the town last picked, from browser storage. The same town rides in the **header of every other page** as a pill (`PlacePill.astro`, 2026-09-22): a shortcut, never a second place-chooser, and hidden on the home page because this card already says it.
 4. **Six markets this weekend** — two feature rows, four compact, one per town, biggest towns first, then a button to all of them. A nationwide list by clock time interleaved 22 towns at random.
-5. **The search control** (`SearchControl.astro`, 2026-09-18) — Where: a sheet of the towns under canton headings, *Near me* first, and a round button that asks for location **on tap, never on load**. When: All · Today · Weekend · Date, the count under it always true. The Show button's label is the live count and it goes to the town page carrying the date. No free text (fact 2), no radius without a point. It is the site's only place-chooser.
+5. **The town search** (`TownSearch.astro`, 2026-09-23) — one box, *Ort eingeben*. Three letters find a town by the start of any word, with or without its umlaut, and by its own-language name ("Genève" finds Genf on /de/); each suggestion shows region · country · number of markets. **Near me is always the first suggestion** and asks for location on that tap, never on load. A town opens its page; the date is chosen there. Under the box, the five biggest towns as links. Towns only — no postcodes (Delfim). It replaced a dropdown of every town under its canton, a round location button, a date control and a "Show 195" button — four controls before a market (UI audit, 2026-09-23; `design/place-picker.html`). The site's only place-chooser.
 6. Newsletter, then organiser CTA, sharing a row above 900px; only the newsletter button is filled — two loud asks are none.
 7. Cancelled this week — only when something was.
 8. **One block per country** (2026-09-22): a flag, the country's name and its counts — *Schweiz · 222 Märkte · 105 Orte* — then that country's **towns, weighted by count** (`PlaceCloud`, shared with the region page: all towns alphabetical, four weight steps, the count only above one) and its **regions as pills**, headed *Kantone* or *Bundesländer*. **The country heading renders only when there is more than one country**, so a one-country site reads exactly as before. There is no country picker anywhere: six comparable sites were read on 2026-09-22 — Booking, Airbnb, GetYourGuide, Eventbrite, Meetup, TheFork — and not one has one. They all ask for a town; the country is a heading.
@@ -79,16 +79,16 @@ Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland 
 
 ## Near me — `/{locale}/{nearby}/`
 
-`RadiusView.astro`, `noindex` — a filter, not a place. Every market ships in the HTML; a script narrows and re-sorts once it has a real point. Four states, decided above the fold, and no control shows before it can do something:
+`RadiusView.astro`, `noindex` — a filter, not a place. Rebuilt 2026-09-23 (`design/place-picker.html`, options 3 and 3b): **the place in one pill at the top** — *In der Nähe von Zürich · 25 km* — **and the markets under it in distance bands** (*Bis 10 km · 10–25 km · 25–50 km · 50–100 km*), the soonest first in each. Tapping the pill opens a sheet: *Use my location*, the same town search, the five biggest towns, How far. Before any place is known the sheet opens by itself — the page used to answer with all 195 markets of both countries by date, 35 screens on a phone. The URL carries the answer (`?town=zurich&km=25&zeit=weekend`, or `?lat&lng`), so a list can be shared and Back works. Every market still ships in the HTML; a script measures and groups. Four states, decided above the fold, and no control shows before it can do something:
 
 | State | Says | Shows |
 |---|---|---|
-| Before | "105 markets · 408 dates — by date, no distances yet" | Where, one filled *Use my location*, When, the full list by date |
-| Locating | "Asking your phone where you are…" | Where reads *Locating…*, list dims |
-| Located | "32 markets within 25 km of you, nearest first." | *Your location*; How far 10 · 25 · 50 · 100 (default 25); list nearest first, distance pill per row |
-| Refused | "Your phone didn't share a location…" | *Try again* and the six biggest towns |
+| Before | — | The place sheet, open; no list |
+| Locating | "Asking your phone where you are…" | list dims |
+| Located | "32 markets within 25 km, nearest first." | the pill, When, the bands, a distance on every row |
+| Refused | "Your phone didn't share a location…" | the sheet again, with *Try again* |
 
-Arriving with `?lat&lng` starts located, `?denied=` refused. `geo_prompt` events give the allow rate; below ~30% the button is in the wrong place.
+It starts from the URL (`?lat&lng`, `?town=`, `?denied=`), then from the town this browser remembers, then the sheet. `geo_prompt` events give the allow rate; below ~30% the button is in the wrong place.
 
 ## Utility — `/{locale}/{report|suggest|organiser|newsletter|…}/`
 

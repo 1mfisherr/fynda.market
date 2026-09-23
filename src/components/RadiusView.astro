@@ -4,39 +4,32 @@
  * `/en/nearby/`.
  *
  * docs/ARCHITECTURE.md: "in der Nähe" is a query parameter, never a page type
- * of its own — `/{locale}/{nearby}?lat=…&lng=…&km=…`. This is that filter
- * view. It is the one thing a fully static build cannot do at build time:
- * `lat`, `lng` and `km` live in the URL, and there is no server left at
- * request time to read them (docs/STACK.md). So the whole answer has to ship
- * twice — every market rendered into the HTML for the crawler and the no-JS
- * visitor, and a client-side script that reads the query string (or
- * geolocation) and narrows what is shown. Same shape as the city page's date
- * filter, one dimension wider.
+ * of its own — `/{locale}/{nearby}?lat=…&lng=…&km=…`, or `?town=<slug>` when
+ * the point is a town. There is no server at request time (docs/STACK.md), so
+ * every market ships in the HTML and a script measures, filters and groups.
  *
- * Four states, and every one of them is decided above the fold
- * (docs/specs/near-me.md): before a location, locating, located, refused. No
- * control is shown before it can do something — the radius buttons exist only
- * once there is a point to measure from, because a km button that does
- * nothing was the thing visitors tapped four times and left on.
+ * The shape since 2026-09-23 (UI audit; design/place-picker.html, options 3
+ * and 3b): the place sits in one pill at the top — "In der Nähe von Zürich ·
+ * 25 km" — and the markets under it in distance bands, the soonest first in
+ * each. Before anyone has said where they are, the place sheet is what opens;
+ * the page used to answer that with all 195 markets of two countries by date,
+ * thirty-five screens on a phone, Geneva first for someone in Munich.
  *
- * It is a component with four one-line pages under `src/pages/{locale}/`
- * rather than a dynamic route, because `[locale]/[utility].astro` already owns
- * that segment and two dynamic routes at the same depth is a collision waiting
- * to be debugged. The slugs are four constants; four files say so plainly.
- *
- * `indexable={false}`: this is a filter, not a place or a market — there is
- * nothing here a search result should point at instead of the city or market
- * page underneath it.
+ * Four states, decided above the fold: before a place, locating, located,
+ * refused. `indexable={false}`: a filter, not a place.
  */
 import Page from '../layouts/Page.astro';
 import Button from './Button.astro';
+import DateFilters from './DateFilters.astro';
+import Icon from './Icon.astro';
 import MarketRow from './MarketRow.astro';
-import SearchControl from './SearchControl.astro';
-import Section from './Section.astro';
+import TownSearch from './TownSearch.astro';
 import { getMarkets } from '../lib/markets';
 import { byMarket, datedRows } from '../lib/lists';
-import { cityPath, nearbyPath, utilityAlternates, type Locale } from '../lib/i18n';
+import { nearbyPath, utilityAlternates, type Locale } from '../lib/i18n';
+import { RADII } from '../lib/geo';
 import { t } from '../lib/strings';
+import { townIndex } from '../lib/towns';
 
 interface Props {
   locale: Locale;
@@ -45,21 +38,9 @@ const { locale } = Astro.props;
 const s = t(locale);
 
 const markets = await getMarkets(locale);
-/* One row per market, like every other list on the site. Sorting by distance
-   only works on a flat list anyway: day bands would have re-sorted inside each
-   day and left the nearest market buried under a nearer day. */
-const rows = datedRows(markets);
-const list = byMarket(rows);
-
-const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region, href: cityPath(locale, m.countrySlug, m.citySlug) }])).values()];
-const countrySlug = markets[0]?.countrySlug ?? 'schweiz';
-/* The six towns with the most markets — the way out when the phone says no. */
-const biggest = [...towns]
-  .map((town) => ({ ...town, n: markets.filter((m) => m.citySlug === town.slug).length }))
-  .sort((a, b) => b.n - a.n)
-  .slice(0, 6);
-
-const RADII = [10, 25, 50, 100];
+/* One row per market, like every other list on the site. */
+const list = byMarket(datedRows(markets));
+const towns = townIndex(locale, markets);
 const DEFAULT_KM = 25;
 ---
 <Page
@@ -69,94 +50,119 @@ const DEFAULT_KM = 25;
   title={s.radiusTitle}
   description={s.radiusDescription}
 >
-  {/* `data-state` is the whole page's switch: before · locating · located ·
-      refused. The CSS below shows and hides by it; the script only ever sets
-      it and the sentences. Sentences travel on the element (a component
-      <script> is bundled once and never sees `locale`). */}
-  <div class="near" data-near data-state="before" data-default-km={DEFAULT_KM}>
+  {/* `data-state` is the page's switch: before · locating · located ·
+      refused. Sentences travel on elements (a component script is bundled
+      once and never sees `locale`). */}
+  <div
+    class="near"
+    data-near
+    data-state="before"
+    data-default-km={DEFAULT_KM}
+    data-near-town={s.nearTown('{town}')}
+    data-near-you={s.nearYou}
+    data-pick={s.pickTown}
+    data-band-first={s.distanceBand(0, 999).replace('999', '{to}')}
+    data-band={s.distanceBand(111, 999).replace('111', '{from}').replace('999', '{to}')}
+    data-count-one={s.marketCount(1)}
+    data-count-many={s.marketCount(2)}
+  >
     <section class="page-head gutter">
       <h1>{s.radiusHeading}</h1>
+      <button type="button" class="place" data-place aria-haspopup="dialog">
+        <Icon name="place" size={18} />
+        <span data-place-label>{s.pickTown}</span>
+        <Icon name="chevron-down" size={16} />
+      </button>
       <p
         class="answer"
         id="status"
         aria-live="polite"
-        data-none={`${s.marketCount(list.length)}, ${s.noDistancesYet}`}
         data-asking={s.askingPhone}
         data-within-one={s.radiusWithin(1, 0).replace('0', '{km}')}
         data-within-many={s.radiusWithin(2, 0).replace('0', '{km}').replace(/^2/, '{n}')}
         data-denied={s.radiusDenied}
-      >{s.marketCount(list.length)}, {s.noDistancesYet}</p>
+      ></p>
     </section>
 
-    <div class="controls gutter">
-      <SearchControl
-        locale={locale}
-        mode="nearby"
-        dates={list.map((m) => m.next.date)}
-        towns={towns}
-        nearbyHref={nearbyPath(locale)}
-      >
-        {/* Everything the state adds sits between where and when, where the
-            eye already is. States 1 and 4: the one filled button on the page,
-            with the same handler as the "near me" row in the town sheet. */}
-        <div class="locate" slot="after-where" data-only="before refused">
-          <Button type="button" variant="primary" block data-geo>
-            <span data-geo-label data-ask={s.radiusUseLocation} data-again={s.tryAgain}>{s.radiusUseLocation}</span>
-          </Button>
-        </div>
+    <div class="when" data-only="located"><DateFilters locale={locale} dates={list.map((m) => m.next.date)} /></div>
 
-        {/* State 4: six ways out. */}
-        <div class="towns" slot="after-where" data-only="refused">
-          {biggest.map((town) => (
-            <a class="button" href={town.href}>{town.name}</a>
-          ))}
+    {/* The place sheet. On a phone it rises from the bottom over a dimmed page;
+        on a desk it is a panel under the pill. It opens by itself only while
+        no place is known — never with the keyboard up, which nobody asked for. */}
+    <div class="sheet-wrap" data-sheet hidden>
+      <div class="dim" data-sheet-close></div>
+      <div class="sheet" role="dialog" aria-modal="true" aria-label={s.pickTown}>
+        <div class="sheet-head">
+          <strong>{s.pickTown}</strong>
+          <button type="button" class="close" data-sheet-close aria-label={s.closeSheet}><Icon name="chevron-down" size={22} /></button>
         </div>
-
-        {/* State 3: a radius is a fact once there is a point to measure from. */}
-        <div class="group" slot="after-where" data-only="located">
+        <p class="meta denied" data-only="refused">{s.radiusDenied}</p>
+        <Button type="button" variant="primary" block data-geo>
+          <Icon name="locate" size={18} /><span data-geo-label data-ask={s.radiusUseLocation} data-again={s.tryAgain}>{s.radiusUseLocation}</span>
+        </Button>
+        <TownSearch locale={locale} towns={towns} mode="pick" nearbyHref={nearbyPath(locale)} showBig id="near-town" />
+        <div class="how-far">
           <p class="label">{s.howFarLabel}</p>
           <div class="radius" role="group" aria-label={s.radiusGroup}>
             {RADII.map((km) => (
-              <button class="button" type="button" data-km={km} aria-pressed={km === DEFAULT_KM}>{km} km</button>
+              <button class="button" type="button" data-km={km} aria-pressed={km === DEFAULT_KM ? "true" : "false"}>{`${km} km`}</button>
             ))}
           </div>
         </div>
-      </SearchControl>
-
+      </div>
     </div>
 
-    <Section>
-      <div id="list" class="gutter">
-        {list.map((market) => (
-          /*
-            Coordinates travel on the wrapper around each row, not in a separate
-            slug -> {lat, lng} blob. MarketRow never sets its own margin, so a
-            plain wrapper costs nothing visually, and the script never has to
-            reconcile a row with its market by slug. The distance slot is on
-            the row itself (MarketRow `[data-distance]`), empty and hidden until
-            a real origin exists — "never show a distance we do not know"
-            (docs/PAGES.md) made physical.
-          */
-          <div class="pin" data-lat={market.lat} data-lng={market.lng}>
-            <MarketRow market={market} locale={locale} showRhythm />
-          </div>
-        ))}
-      </div>
-      <p id="empty" class="gutter meta" hidden>{s.nothingForSelection}</p>
-    </Section>
+    <div id="list" class="gutter list">
+      {list.map((market) => (
+        <div class="pin" data-lat={market.lat} data-lng={market.lng}>
+          <MarketRow market={market} locale={locale} showRhythm />
+        </div>
+      ))}
+    </div>
+    <p id="empty" class="gutter meta" hidden>{s.nothingForSelection}</p>
   </div>
 </Page>
 
 <style>
-  /*
-    Everything shared — .button, .meta, .answer, .gutter — comes from
-    styles/base.css. What follows is only what this page owns. `.label` and
-    `.group` are the search control's; the "how far" group repeats them here
-    because it is this page's alone and a shared class name would trip
-    guardrail 7 the day a page reused it.
-  */
-  .controls { display: grid; gap: var(--space-5); padding-block: var(--space-5) var(--space-3); }
-  .group { display: grid; gap: var(--space-2); }
+  .page-head { display: grid; gap: var(--space-3); }
+  .when { margin-block-start: var(--space-4); }
+
+  /* The place pill: the one thing at the top you can change. */
+  .place {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    gap: var(--space-2);
+    min-height: var(--tap-min);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-ink);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font: inherit;
+    font-weight: var(--weight-bold);
+    cursor: pointer;
+  }
+  .place span { max-width: 26ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ---- the sheet ---- */
+  .sheet-wrap { position: fixed; inset: 0; z-index: 20; }
+  .sheet-wrap[hidden] { display: none; }
+  .dim { position: absolute; inset: 0; background: rgb(17 17 16 / 45%); }
+  .sheet {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: grid;
+    gap: var(--space-4);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: var(--space-3) var(--space-page) var(--space-6);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    background: var(--color-surface);
+    box-shadow: 0 calc(var(--space-3) * -1) var(--space-6) rgb(17 17 16 / 18%);
+  }
+  .sheet-head { display: flex; align-items: center; justify-content: space-between; font-size: var(--text-title); }
+  .close { display: grid; place-items: center; width: var(--tap-min); height: var(--tap-min); border: 0; background: none; color: var(--color-ink); cursor: pointer; }
   .label {
     color: var(--color-quiet);
     font-size: var(--text-tiny);
@@ -164,8 +170,7 @@ const DEFAULT_KM = 25;
     letter-spacing: var(--tracking-caps);
     text-transform: uppercase;
   }
-
-  /* Four equal parts, set in the text like the date control. */
+  .how-far { display: grid; gap: var(--space-2); }
   .radius { display: flex; border-block: var(--border-width) solid var(--color-line); }
   .radius > .button {
     flex: 1 1 0;
@@ -184,216 +189,198 @@ const DEFAULT_KM = 25;
     box-shadow: inset 0 calc(var(--border-width) * -3) 0 var(--color-accent);
   }
 
-  .towns { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  /* A desk has room for the sheet as a centred panel. Keep in step with
+     --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .sheet { inset: 12vh auto auto 50%; width: min(var(--measure), 92vw); transform: translateX(-50%); border-radius: var(--radius-md); }
+  }
+
+  /* ---- the bands ---- */
+  .list :global(.band) {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-block-start: var(--space-5);
+    padding-block-end: var(--space-2);
+    border-block-end: calc(var(--border-width) * 2) solid var(--color-ink);
+  }
+  .list :global(.band h2) { margin: 0; font-size: var(--text-title); }
+  .list :global(.band span) { color: var(--color-quiet); font-size: var(--text-small); }
 
   /* The switch. A block is shown only in the states its `data-only` names. */
   [data-only] { display: none; }
-  [data-state='before'] [data-only~='before'],
-  [data-state='locating'] [data-only~='locating'],
   [data-state='located'] [data-only~='located'],
-  [data-state='refused'] [data-only~='refused'] { display: grid; }
-  [data-state='refused'] .towns { display: flex; }
+  [data-state='refused'] [data-only~='refused'] { display: block; }
 
-  /* While the phone is asked, the list is still there, just not the answer. */
+  /* Until there is a point, the list waits — with JavaScript. Without it the
+     page is still every market by date. */
+  [data-js][data-state='before'] #list,
+  [data-js][data-state='refused'] #list { display: none; }
   [data-state='locating'] #list { opacity: 0.45; transition: opacity var(--duration-base) var(--ease-base); }
-  [data-state='locating'] [data-geo] { opacity: 0.45; pointer-events: none; }
 </style>
 
 <script>
-  /**
-   * One combined pass, for the same reason home's date/expander pass is one
-   * function: date and distance interact. A row has to clear both to show,
-   * and when an origin is known the visible rows are re-sorted nearest-first —
-   * so the two cannot be handled by independent handlers without one undoing
-   * the other's DOM order.
-   *
-   * Without an origin (no query string, geolocation not granted or denied)
-   * the chronological order from the server is exactly what stays on screen,
-   * and no `[data-distance]` slot is ever unhidden. That is the static-build
-   * constraint and the "never fake a distance" rule meeting in one piece of
-   * code: this script is the only place a distance is ever computed, and it
-   * only runs once a real point exists.
-   *
-   * Every word it can say is read off the page's data attributes, and the
-   * distance is formatted with the page's own `lang` — "1,2 km" in German and
-   * French, "1.2 km" in English. One script, four languages.
-   */
   import { inWindow, type DateWindow } from '../lib/date-window';
-  /* The same formula the weekly digest filters on. Two copies of a distance
-     stay correct until one of them is fixed. */
   import { distanceKm } from '../lib/geo';
+  import { TOWN_KEY } from '../lib/local-keys';
 
   type State = 'before' | 'locating' | 'located' | 'refused';
+  type Origin = { lat: number; lng: number; town?: { slug: string; name: string } };
 
   const page = document.querySelector<HTMLElement>('[data-near]');
-  const dateButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
-  const kmButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-km]'));
-  const geoButtons = Array.from(document.querySelectorAll<HTMLElement>('[data-geo]'));
-  const geoLabel = document.querySelector<HTMLElement>('[data-geo-label]');
-  const whereLabel = document.querySelector<HTMLElement>('[data-where-label]');
-  const town = document.querySelector<HTMLDetailsElement>('[data-town]');
-  const statusEl = document.getElementById('status');
-  const listEl = document.getElementById('list');
-  const pins = Array.from(document.querySelectorAll<HTMLElement>('.pin'));
-  const empty = document.getElementById('empty');
+  if (page) {
+    const d = page.dataset;
+    page.setAttribute('data-js', '');
+    const sheet = page.querySelector<HTMLElement>('[data-sheet]')!;
+    const placeLabel = page.querySelector<HTMLElement>('[data-place-label]')!;
+    const geoLabel = page.querySelector<HTMLElement>('[data-geo-label]');
+    const statusEl = document.getElementById('status');
+    const listEl = document.getElementById('list')!;
+    const empty = document.getElementById('empty');
+    const pins = Array.from(page.querySelectorAll<HTMLElement>('.pin'));
+    const dateButtons = Array.from(page.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+    const kmButtons = Array.from(page.querySelectorAll<HTMLButtonElement>('[data-km]'));
+    const towns: { slug: string; name: string; lat: number; lng: number }[] = JSON.parse(
+      page.querySelector<HTMLElement>('[data-ts]')?.dataset.towns ?? '[]',
+    ).map(([slug, name, , , , , lat, lng]: [string, string, string, string, string, number, number, number]) => ({ slug, name, lat, lng }));
 
-  let currentWindow: DateWindow = 'all';
-  let currentKm = Number(page?.dataset.defaultKm ?? 25);
-  let origin: { lat: number; lng: number } | null = null;
+    let state: State = 'before';
+    let origin: Origin | null = null;
+    let km = Number(d.defaultKm ?? 25);
+    let when: DateWindow = 'all';
 
-  const lang = document.documentElement.lang || 'de-CH';
-  const oneDecimal = new Intl.NumberFormat(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const lang = document.documentElement.lang || 'de';
+    const oneDecimal = new Intl.NumberFormat(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const count = (n: number) => ((n === 1 ? d.countOne : d.countMany) ?? '').replace(/\d+/, String(n));
 
-  /** "1,2 km" in German and French, "1.2 km" in English. */
-  function formatKm(km: number): string {
-    return `${oneDecimal.format(km)} km`;
-  }
-
-  const stateOf = (): State => (page?.dataset.state as State) ?? 'before';
-
-  function setState(state: State) {
-    page?.setAttribute('data-state', state);
-    if (whereLabel) {
-      const d = whereLabel.dataset;
-      whereLabel.textContent = state === 'locating' ? d.locating ?? '' : state === 'located' ? d.located ?? '' : d.default ?? '';
+    function openSheet(yes: boolean) {
+      sheet.hidden = !yes;
+      document.documentElement.style.overflow = yes ? 'hidden' : '';
     }
-    if (geoLabel) geoLabel.textContent = (state === 'refused' ? geoLabel.dataset.again : geoLabel.dataset.ask) ?? '';
-    for (const button of kmButtons) {
-      button.setAttribute('aria-pressed', String(Number(button.dataset.km) === currentKm));
+
+    /* The URL says what is on screen, so a list can be shared and Back works. */
+    function writeUrl() {
+      const q = new URLSearchParams();
+      if (origin?.town) q.set('town', origin.town.slug);
+      else if (origin) { q.set('lat', origin.lat.toFixed(4)); q.set('lng', origin.lng.toFixed(4)); }
+      if (origin) q.set('km', String(km));
+      if (when !== 'all') q.set('zeit', when);
+      history.replaceState(null, '', `${location.pathname}${q.toString() ? `?${q}` : ''}`);
     }
-  }
 
-  /** The sentence at the top. It is always true: the count is what is shown. */
-  function setStatus(state: State, shown: number) {
-    if (!statusEl) return;
-    const d = statusEl.dataset;
-    if (state === 'locating') statusEl.textContent = d.asking ?? '';
-    else if (state === 'refused') statusEl.textContent = d.denied ?? '';
-    else if (state === 'located') {
-      const template = (shown === 1 ? d.withinOne : d.withinMany) ?? '';
-      statusEl.textContent = template.replace('{n}', String(shown)).replace('{km}', String(currentKm));
-    } else statusEl.textContent = d.none ?? '';
-  }
+    function render() {
+      page!.setAttribute('data-state', state);
+      placeLabel.textContent = origin
+        ? `${origin.town ? (d.nearTown ?? '').replace('{town}', origin.town.name) : d.nearYou} · ${km} km`
+        : d.pick ?? '';
+      if (geoLabel) geoLabel.textContent = (state === 'refused' ? geoLabel.dataset.again : geoLabel.dataset.ask) ?? '';
+      for (const b of kmButtons) b.setAttribute('aria-pressed', String(Number(b.dataset.km) === km));
 
-  function apply(state: State) {
-    const now = new Date();
-
-    const evaluated = pins.map((pin) => {
-      const row = pin.querySelector<HTMLElement>('[data-date]');
-      const label = pin.querySelector<HTMLElement>('[data-distance]');
-      const dateOk = inWindow(row?.dataset.date ?? '', currentWindow, now);
-
-      let km: number | null = null;
-      if (origin) {
-        km = distanceKm(origin.lat, origin.lng, Number(pin.dataset.lat), Number(pin.dataset.lng));
-      }
-      const radiusOk = !origin || (km !== null && km <= currentKm);
-      const visible = dateOk && radiusOk;
-
-      if (label) {
-        if (visible && km !== null) {
-          label.textContent = formatKm(km);
-          label.hidden = false;
-        } else {
-          label.textContent = '';
-          label.hidden = true;
-        }
+      for (const band of Array.from(listEl.querySelectorAll('.band'))) band.remove();
+      if (!origin) {
+        if (statusEl) statusEl.textContent = state === 'locating' ? d.asking ?? '' : state === 'refused' ? statusEl.dataset.denied ?? '' : '';
+        if (empty) empty.hidden = true;
+        return;
       }
 
-      pin.hidden = !visible;
-      return { pin, km, visible };
-    });
+      const now = new Date();
+      const shown = pins
+        .map((pin) => {
+          const row = pin.querySelector<HTMLElement>('[data-date]');
+          const label = pin.querySelector<HTMLElement>('[data-distance]');
+          const dist = distanceKm(origin!.lat, origin!.lng, Number(pin.dataset.lat), Number(pin.dataset.lng));
+          const ok = dist <= km && inWindow(row?.dataset.date ?? '', when, now);
+          pin.hidden = !ok;
+          if (label) { label.hidden = !ok; label.textContent = ok ? `${oneDecimal.format(dist)} km` : ''; }
+          return { pin, dist, date: row?.dataset.date ?? '' };
+        })
+        .filter((x) => !x.pin.hidden);
 
-    // Nearest first — but only once a real distance exists. With no origin the
-    // list keeps the chronological order it was built with; there is nothing
-    // honest to sort it by.
-    if (origin && listEl) {
-      evaluated
-        .filter((e) => e.visible)
-        .sort((a, b) => (a.km ?? Infinity) - (b.km ?? Infinity))
-        .forEach((e) => listEl.appendChild(e.pin));
+      /* Bands up to the chosen distance; the soonest first inside each. */
+      const edges = [0, 10, 25, 50, 100].filter((e) => e < km).concat(km);
+      for (let i = 0; i < edges.length - 1; i++) {
+        const from = edges[i], to = edges[i + 1];
+        const inBand = shown.filter((x) => x.dist > from - (i === 0 ? 1 : 0) && x.dist <= to).sort((a, b) => a.date.localeCompare(b.date) || a.dist - b.dist);
+        if (!inBand.length) continue;
+        const head = document.createElement('div');
+        head.className = 'band';
+        const h2 = document.createElement('h2');
+        h2.textContent = (from === 0 ? d.bandFirst ?? '' : d.band ?? '').replace('{from}', String(from)).replace('{to}', String(to));
+        const n = document.createElement('span');
+        n.textContent = count(inBand.length);
+        head.append(h2, n);
+        listEl.appendChild(head);
+        for (const x of inBand) listEl.appendChild(x.pin);
+      }
+
+      if (empty) empty.hidden = shown.length > 0;
+      if (statusEl) {
+        const tpl = (shown.length === 1 ? statusEl.dataset.withinOne : statusEl.dataset.withinMany) ?? '';
+        statusEl.textContent = tpl.replace('{n}', String(shown.length)).replace('{km}', String(km));
+      }
     }
 
-    const shown = evaluated.filter((e) => e.visible).length;
-    if (empty) empty.hidden = shown > 0;
-    setStatus(state, shown);
-  }
+    function set(next: State, where: Origin | null = origin) {
+      state = next;
+      origin = where;
+      render();
+      writeUrl();
+    }
 
-  function enter(state: State) {
-    setState(state);
-    apply(state);
-  }
+    const geo = (detail: Record<string, string>) => document.dispatchEvent(new CustomEvent('fynda:geo', { detail }));
+    function locate() {
+      openSheet(false);
+      if (!('geolocation' in navigator)) { geo({ outcome: 'denied', reason: 'unavailable' }); set('refused', null); openSheet(true); return; }
+      set('locating', null);
+      geo({ outcome: 'requested' });
+      navigator.geolocation.getCurrentPosition(
+        (pos) => { geo({ outcome: 'granted' }); set('located', { lat: pos.coords.latitude, lng: pos.coords.longitude }); },
+        (err) => {
+          const reason = err.code === err.PERMISSION_DENIED ? 'denied' : err.code === err.TIMEOUT ? 'timeout' : 'unavailable';
+          geo({ outcome: 'denied', reason });
+          set('refused', null);
+          openSheet(true);
+        },
+        { enableHighAccuracy: false, timeout: 8000 },
+      );
+    }
 
-  for (const button of dateButtons) {
-    button.addEventListener('click', () => {
-      for (const other of dateButtons) other.setAttribute('aria-pressed', String(other === button));
-      currentWindow = (button.dataset.filter ?? 'all') as DateWindow;
-      apply(stateOf());
+    function useTown(slug: string | null | undefined) {
+      const town = towns.find((x) => x.slug === slug);
+      if (!town) return false;
+      openSheet(false);
+      set('located', { lat: town.lat, lng: town.lng, town: { slug: town.slug, name: town.name } });
+      return true;
+    }
+
+    page.querySelector('[data-place]')?.addEventListener('click', () => openSheet(true));
+    for (const el of Array.from(page.querySelectorAll('[data-sheet-close]'))) el.addEventListener('click', () => openSheet(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sheet.hidden) openSheet(false); });
+    for (const b of Array.from(page.querySelectorAll<HTMLElement>('[data-geo]'))) b.addEventListener('click', (e) => { e.preventDefault(); locate(); });
+    page.addEventListener('fynda:locate', locate);
+    page.addEventListener('fynda:town', (e) => useTown((e as CustomEvent).detail?.slug));
+    for (const b of kmButtons) b.addEventListener('click', () => { km = Number(b.dataset.km); if (origin) { openSheet(false); set('located'); } else render(); });
+    for (const b of dateButtons) b.addEventListener('click', () => {
+      for (const o of dateButtons) o.setAttribute('aria-pressed', String(o === b));
+      when = (b.dataset.filter ?? 'all') as DateWindow;
+      render(); writeUrl();
     });
+
+    /* Where the page starts: the URL, then the town this browser remembers,
+       then the sheet. The home page sends `?lat&lng`, or `?denied=` when the
+       phone said no there. */
+    const q = new URLSearchParams(location.search);
+    const kmParam = Number(q.get('km'));
+    if (kmParam > 0) km = kmParam;
+    const zeit = q.get('zeit');
+    dateButtons.find((b) => b.dataset.filter === zeit)?.click();
+    const lat = Number(q.get('lat')), lng = Number(q.get('lng'));
+    let remembered: string | undefined;
+    try { remembered = JSON.parse(localStorage.getItem(TOWN_KEY) ?? 'null')?.slug; } catch { /* private mode */ }
+    if (q.get('lat') && Number.isFinite(lat) && Number.isFinite(lng)) set('located', { lat, lng });
+    else if (useTown(q.get('town'))) { /* done */ }
+    else if (q.get('denied')) { set('refused', null); openSheet(true); }
+    else if (useTown(remembered)) { /* done */ }
+    else { set('before', null); openSheet(true); }
   }
-
-  for (const button of kmButtons) {
-    button.addEventListener('click', () => {
-      currentKm = Number(button.dataset.km ?? currentKm);
-      enter('located');
-    });
-  }
-
-  const geo = (detail: Record<string, string>) => document.dispatchEvent(new CustomEvent('fynda:geo', { detail }));
-
-  function locate() {
-    if (town) town.open = false;
-    if (!('geolocation' in navigator)) { geo({ outcome: 'denied', reason: 'unavailable' }); enter('refused'); return; }
-    enter('locating');
-    geo({ outcome: 'requested' });
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        origin = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        geo({ outcome: 'granted' });
-        enter('located');
-        // The answer changed; bring the radius and the first rows into view.
-        document.querySelector('[data-only~="located"]')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      },
-      (err) => {
-        origin = null;
-        const reason = err.code === err.PERMISSION_DENIED ? 'denied' : err.code === err.TIMEOUT ? 'timeout' : 'unavailable';
-        geo({ outcome: 'denied', reason });
-        enter('refused');
-      },
-      { enableHighAccuracy: false, timeout: 8000 }
-    );
-  }
-  for (const button of geoButtons) {
-    button.addEventListener('click', (event) => { event.preventDefault(); locate(); });
-  }
-
-  // The home page's control sends people here with `lat`, `lng` and `km`
-  // (docs/ARCHITECTURE.md: /{locale}/{nearby}?lat=…&lng=…&km=…), or with
-  // `denied=<reason>` when the phone said no there. This is the only way a
-  // static build can ever learn a location — there is no server left at
-  // request time to read the query string for us.
-  const params = new URLSearchParams(window.location.search);
-  const latParam = params.get('lat');
-  const lngParam = params.get('lng');
-  if (latParam !== null && lngParam !== null) {
-    const lat = Number(latParam);
-    const lng = Number(lngParam);
-    if (Number.isFinite(lat) && Number.isFinite(lng)) origin = { lat, lng };
-  }
-
-  const kmParam = params.get('km');
-  if (kmParam !== null) {
-    const km = Number(kmParam);
-    if (Number.isFinite(km) && km > 0) currentKm = km;
-  }
-
-  // The date arrives as `zeit`, exactly as it does on a city page — a named
-  // window or one YYYY-MM-DD. Pressing the matching control rather than
-  // filtering directly keeps one code path: the chips and the calendar stay
-  // showing what is actually applied.
-  const wanted = params.get('zeit');
-  const preset = wanted && dateButtons.find((button) => button.dataset.filter === wanted);
-  if (preset) preset.click();
-
-  enter(origin ? 'located' : params.get('denied') ? 'refused' : 'before');
 </script>

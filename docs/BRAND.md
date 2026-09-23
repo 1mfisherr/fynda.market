@@ -29,6 +29,7 @@ The most important fact on the page is the only accented thing on the page. Hier
 | Token | Value | Use |
 |---|---|---|
 | `--color-accent` | **`#FF4A2B`** Zinnober | Dates, "findet statt", the logo dot, the primary action, **a form error**. Nothing else |
+| `--color-accent-text` | **`#D63A1F`** | The same accent where it is **small text** — dates in lists, day headers, stamps, errors — and the Flohmarkt fill under white text. `#FF4A2B` is 3.35:1 on white, enough for a 60px date and not for a 13px one; this is 4.7:1 (Delfim, 2026-09-23) |
 | `--color-ink` | `#111110` | All text, headings, primary buttons |
 | `--color-grey` | `#6E6C68` | Secondary text |
 | `--color-quiet` | `#75706A` | Timestamps, provenance, disabled. 4.6:1 on white; a lighter grey fails contrast on exactly the lines that carry the trust claim |

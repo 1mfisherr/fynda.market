@@ -20,7 +20,8 @@ import Section from '../../components/Section.astro';
 import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
-import SearchControl from '../../components/SearchControl.astro';
+import TownSearch from '../../components/TownSearch.astro';
+import { townIndex } from '../../lib/towns';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
 import { LOCALES, cityPath, countryName, homePath, isCityState, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
@@ -78,8 +79,6 @@ const byCountry = [...new Map(markets.map((m) => [m.countryCode, m.countrySlug])
   })
   .sort((a, b) => b.markets - a.markets);
 const several = byCountry.length > 1;
-/** The town sheet: every town, with its canton for the headings. */
-const towns = [...new Map(markets.map((m) => [m.citySlug, { slug: m.citySlug, name: m.city, region: m.region, href: cityPath(locale, m.countrySlug, m.citySlug) }])).values()];
 
 /**
  * Cancellations in the coming week. Nobody else in the category surfaces these
@@ -111,8 +110,7 @@ const jsonLd = {
       The three-field search card that used to sit here is gone. It stood
       between a visitor and the goods, and it is the shape of the one
       competitor in the category whose home page shows no markets at all.
-      Choosing a place now happens below, once there is something to choose
-      about — components/TownPicker.astro. */}
+      Choosing a place happens just below it — components/TownSearch.astro. */}
   <section class="page-head home-head gutter">
     <h1>{s.heroLine1}<br />{s.heroLine2}</h1>
     {/* The claim and the proof are one thought, so they move as one: under the
@@ -130,25 +128,14 @@ const jsonLd = {
       search card below, so the two read as one stack rather than two widths. */}
   <div class="shortcut-slot"><TownShortcut locale={locale} /></div>
 
-  {/* Where and when. Free text is deliberately absent — a search box needs
-      the German text-search decision STACK.md still has open, and a box that
-      finds nothing is worse than no box. No radius either: a radius around a
-      point the site does not have is a promise it cannot keep; it lives on
-      the radius view, once there is a point (docs/specs/near-me.md).
-
-      This is also the site's only place-chooser. A separate row of town
-      buttons lived below the markets for a day; two ways to pick a town on
-      one page is the incoherence this page is supposed to be free of.
-      Choosing here is what the return-visit shortcut above remembers. */}
+  {/* Where. One box: type a town, or take "near me", which is always the
+      first suggestion — components/TownSearch.astro. When is asked on the
+      page you land on, which has the dates; asking it here, before a single
+      market was in view, was the second of four controls in a row (UI audit,
+      2026-09-23). This is the site's only place-chooser, and what the
+      return-visit card above remembers. */}
   <div class="search">
-    <SearchControl
-      locale={locale}
-      mode="home"
-      dates={rows.map((row) => row.next!.date)}
-      perMarket={[...Map.groupBy(rows, (row) => row.slug).values()].map((group) => ({ town: group[0].citySlug, dates: group.map((row) => row.next!.date) }))}
-      towns={towns}
-      nearbyHref={nearbyPath(locale)}
-    />
+    <TownSearch locale={locale} towns={townIndex(locale, markets)} mode="go" nearbyHref={nearbyPath(locale)} showBig />
   </div>
 
   {/* Two at full size, then four compact. A block with one size in it has no

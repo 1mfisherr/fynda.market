@@ -1,0 +1,339 @@
+---
+/**
+ * The town search: one box. docs/PAGES.md §Home, §Near me.
+ *
+ * Type three letters, pick a town. It replaced a closed dropdown of every town
+ * under its canton, a separate round location button, a date control and a
+ * "Show 195" button — four controls before a single market (Delfim, UI audit
+ * 2026-09-23: "the whole pick a city search is very weird"). Booking,
+ * GetYourGuide and Meetup all ask the same one question the same way.
+ *
+ * "Near me" is always the first suggestion, so location needs no button of its
+ * own; it asks the phone on that tap and never on load. Towns only — no
+ * postcodes, no market names (Delfim). A town matches on the start of any
+ * word, with or without its umlaut: "mün", "muen" and "munchen" all find
+ * München.
+ *
+ * Two modes. `go` (home): a town opens its page, near me opens the radius view
+ * at the visitor's point. `pick` (the radius view): nothing navigates — the
+ * choice is announced as a `fynda:town` or `fynda:locate` event for the page to
+ * measure from. Either way the town is remembered for the return-visit card and
+ * the header pill (`fynda:town` in browser storage).
+ *
+ * Without JavaScript the box does nothing, and every town is still one link
+ * away in the blocks further down the home page; the radius view is noindex.
+ */
+import Icon from './Icon.astro';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/strings';
+import type { TownEntry } from '../lib/towns';
+
+interface Props {
+  locale?: Locale;
+  towns: TownEntry[];
+  mode: 'go' | 'pick';
+  nearbyHref: string;
+  /** The five biggest towns as plain links under the box. */
+  showBig?: boolean;
+  id?: string;
+}
+const { locale = DEFAULT_LOCALE, towns, mode, nearbyHref, showBig = false, id = 'town-search' } = Astro.props;
+const s = t(locale);
+const big = towns.slice(0, 5);
+---
+<div
+  class="ts"
+  data-ts
+  data-mode={mode}
+  data-nearby={nearbyHref}
+  data-towns={JSON.stringify(towns.map((x) => [x.slug, x.name, x.href, x.region, x.country, x.n, x.lat, x.lng]))}
+  data-near={s.nearMe}
+  data-near-hint={s.geoHint}
+  data-locating={s.locating}
+  data-last={s.lastTime}
+  data-none={s.townNoMatch}
+  data-count-one={s.marketCount(1)}
+  data-count-many={s.marketCount(2)}
+>
+  <div class="box">
+    <Icon name="search" size={20} />
+    <input
+      id={id}
+      type="search"
+      role="combobox"
+      aria-label={s.townSearchLabel}
+      aria-autocomplete="list"
+      aria-expanded="false"
+      aria-controls={`${id}-list`}
+      autocomplete="off"
+      autocapitalize="words"
+      spellcheck="false"
+      enterkeyhint="go"
+      placeholder={s.townSearchPlaceholder}
+      data-ts-input
+    />
+  </div>
+  <ul class="list-reset sug" id={`${id}-list`} role="listbox" aria-label={s.townSearchLabel} data-ts-list hidden></ul>
+
+  {showBig && (
+    <div class="big">
+      <p class="label">{s.bigTownsLabel}</p>
+      <div class="chips">
+        {big.map((town) => (
+          <a class="chip" href={town.href} data-ts-town={town.slug}>{town.name}<span>{town.n}</span></a>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .ts { position: relative; display: grid; gap: var(--space-4); }
+
+  /* Set in the text, like every control here (BRAND.md §Controls): a strong
+     hairline under the words, no box. */
+  .box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: calc(var(--tap-min) + var(--space-3));
+    border-block-end: calc(var(--border-width) * 2) solid var(--color-ink);
+  }
+  .box input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-block: var(--space-2);
+    border: 0;
+    background: none;
+    color: var(--color-ink);
+    font: inherit;
+    font-size: var(--text-title);
+    font-weight: var(--weight-bold);
+    outline: none;
+  }
+  .box input::placeholder { color: var(--color-quiet); font-weight: var(--weight-semibold); }
+  .box input::-webkit-search-cancel-button { display: none; }
+  .box:focus-within { border-block-end-color: var(--color-accent); }
+
+  /* The suggestions sit under the box and push nothing: a panel over the page. */
+  .sug {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: calc(var(--tap-min) + var(--space-3));
+    z-index: 6;
+    max-height: 60vh;
+    overflow-y: auto;
+    border: var(--border-width) solid var(--color-line);
+    border-block-start: 0;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 12%);
+  }
+  .sug :global(li) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-min);
+    padding: var(--space-2) var(--space-4);
+    border-block-start: var(--border-width) solid var(--color-line);
+    cursor: pointer;
+  }
+  .sug :global(li:first-child) { border-block-start: 0; }
+  .sug :global(li[aria-selected='true']) { background: var(--color-paper); }
+  .sug :global(.name) { display: grid; min-width: 0; font-weight: var(--weight-semibold); }
+  .sug :global(.name b) { font-weight: var(--weight-black); }
+  .sug :global(.where) { color: var(--color-quiet); font-size: var(--text-micro); font-weight: var(--weight-regular); }
+  .sug :global(.n) { margin-inline-start: auto; color: var(--color-quiet); font-size: var(--text-micro); white-space: nowrap; }
+  .sug :global(.near) { font-weight: var(--weight-black); }
+  .sug :global(.none) { color: var(--color-quiet); cursor: default; }
+
+  .big { display: grid; gap: var(--space-2); }
+  .label {
+    color: var(--color-quiet);
+    font-size: var(--text-tiny);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: var(--tap-min);
+    padding-inline: var(--space-3);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-pill);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+  }
+  .chip span { color: var(--color-quiet); font-weight: var(--weight-regular); }
+  .chip:hover { border-color: var(--color-ink); }
+</style>
+
+<script>
+  import { TOWN_KEY, adopt } from '../lib/local-keys';
+
+  type Town = { slug: string; name: string; href: string; region: string; country: string; n: number; lat: number; lng: number };
+
+  /* "München", "Muenchen" and "Munchen" are one town to a person typing. */
+  const MARKS = /\p{M}/gu;
+  const fold = (s: string) =>
+    s.toLowerCase().normalize('NFD').replace(MARKS, '')
+      .replace(/ae/g, 'a').replace(/oe/g, 'o').replace(/ue/g, 'u').replace(/ß/g, 'ss');
+
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  adopt(TOWN_KEY);
+
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-ts]'))) {
+    const d = root.dataset;
+    const mode = d.mode;
+    const input = root.querySelector<HTMLInputElement>('[data-ts-input]')!;
+    const list = root.querySelector<HTMLUListElement>('[data-ts-list]')!;
+    const towns: Town[] = JSON.parse(d.towns ?? '[]').map(
+      ([slug, name, href, region, country, n, lat, lng]: [string, string, string, string, string, number, number, number]) =>
+        ({ slug, name, href, region, country, n, lat, lng }));
+    /* The slug is the town's own name in plain letters (geneve, fribourg,
+       muenchen), so matching it too lets "Genève" find "Genf" on /de/. */
+    const folded = towns.map((town) => ({
+      town,
+      key: fold(town.name),
+      words: [...fold(town.name).split(/[\s\-/().]+/), fold(town.slug.replace(/-/g, ' '))],
+    }));
+    const count = (n: number) => ((n === 1 ? d.countOne : d.countMany) ?? '').replace(/\d+/, String(n));
+
+    let options: ({ kind: 'near' } | { kind: 'town'; town: Town })[] = [];
+    let active = -1;
+
+    const remembered = (): Town | null => {
+      try {
+        const saved = JSON.parse(localStorage.getItem(TOWN_KEY) ?? 'null');
+        return towns.find((town) => town.slug === saved?.slug) ?? null;
+      } catch { return null; }
+    };
+
+    function match(query: string): Town[] {
+      const q = fold(query.trim());
+      if (!q) return [];
+      const scored = folded
+        /* The start of the name, then the start of any word in it — never the
+           middle of a word, or "mün" finds Dortmund. */
+        .map(({ town, key, words }) => ({ town, score: key.startsWith(q) ? 0 : words.some((w) => w.startsWith(q)) ? 1 : 9 }))
+        .filter((x) => x.score < 9)
+        .sort((a, b) => a.score - b.score || b.town.n - a.town.n);
+      return scored.slice(0, 6).map((x) => x.town);
+    }
+
+    /* The typed letters in bold. Marked on a one-to-one fold (accents off,
+       nothing merged), so the positions line up with the name; a query that
+       only matched through "ue" = "ü" simply shows no bold. */
+    const light = (s: string) => Array.from(s).map((c) => c.toLowerCase().normalize('NFD').replace(MARKS, '').charAt(0) || c).join('');
+    function highlight(name: string, query: string) {
+      const q = light(query.trim());
+      if (!q) return esc(name);
+      const f = light(name);
+      let at = -1;
+      for (let i = 0; i < f.length && at < 0; i++) {
+        if ((i === 0 || ' -/(.'.includes(f[i - 1])) && f.startsWith(q, i)) at = i;
+      }
+      if (at < 0) return esc(name);
+      return `${esc(name.slice(0, at))}<b>${esc(name.slice(at, at + q.length))}</b>${esc(name.slice(at + q.length))}`;
+    }
+
+    function render() {
+      const q = input.value;
+      const found = q.trim() ? match(q) : [];
+      const last = !q.trim() ? remembered() : null;
+      const start = !q.trim() ? towns.filter((town) => town.slug !== last?.slug).slice(0, 4) : [];
+      options = [{ kind: 'near' }, ...(last ? [{ kind: 'town' as const, town: last }] : []), ...[...found, ...start].map((town) => ({ kind: 'town' as const, town }))];
+      active = -1;
+      list.innerHTML = options.map((o, i) => o.kind === 'near'
+        ? `<li role="option" id="${list.id}-${i}" aria-selected="false" data-i="${i}"><span class="name near">${esc(d.near ?? '')}<span class="where">${esc(d.nearHint ?? '')}</span></span></li>`
+        : `<li role="option" id="${list.id}-${i}" aria-selected="false" data-i="${i}"><span class="name"><span>${highlight(o.town.name, q)}</span><span class="where">${esc(o.town === last ? `${d.last} · ${o.town.region}` : `${o.town.region} · ${o.town.country}`)}</span></span><span class="n">${esc(count(o.town.n))}</span></li>`
+      ).join('') + (q.trim() && !found.length ? `<li class="none" aria-disabled="true">${esc(d.none ?? '')}</li>` : '');
+      open(true);
+    }
+
+    function open(yes: boolean) {
+      list.hidden = !yes;
+      input.setAttribute('aria-expanded', String(yes));
+      if (!yes) input.removeAttribute('aria-activedescendant');
+    }
+
+    function move(to: number) {
+      if (!options.length) return;
+      active = (to + options.length) % options.length;
+      for (const li of Array.from(list.querySelectorAll('[role=option]'))) li.setAttribute('aria-selected', String(li.getAttribute('data-i') === String(active)));
+      input.setAttribute('aria-activedescendant', `${list.id}-${active}`);
+      list.querySelector(`[data-i="${active}"]`)?.scrollIntoView({ block: 'nearest' });
+    }
+
+    function remember(town: Town) {
+      try { localStorage.setItem(TOWN_KEY, JSON.stringify({ slug: town.slug, name: town.name, href: town.href })); } catch { /* private mode */ }
+    }
+
+    function chooseTown(town: Town) {
+      remember(town);
+      open(false);
+      if (mode === 'go') { location.href = town.href; return; }
+      input.value = '';
+      root.dispatchEvent(new CustomEvent('fynda:town', { bubbles: true, detail: town }));
+    }
+
+    function chooseNear() {
+      open(false);
+      input.value = '';
+      if (mode === 'pick') { root.dispatchEvent(new CustomEvent('fynda:locate', { bubbles: true })); return; }
+      const nearby = d.nearby ?? '/';
+      const geo = (detail: Record<string, string>) => document.dispatchEvent(new CustomEvent('fynda:geo', { detail }));
+      if (!('geolocation' in navigator)) { location.href = `${nearby}?denied=unavailable`; return; }
+      input.placeholder = d.locating ?? '';
+      geo({ outcome: 'requested' });
+      navigator.geolocation.getCurrentPosition(
+        (pos) => { geo({ outcome: 'granted' }); location.href = `${nearby}?lat=${pos.coords.latitude.toFixed(4)}&lng=${pos.coords.longitude.toFixed(4)}&km=25`; },
+        (err) => {
+          const reason = err.code === err.PERMISSION_DENIED ? 'denied' : err.code === err.TIMEOUT ? 'timeout' : 'unavailable';
+          geo({ outcome: 'denied', reason });
+          location.href = `${nearby}?denied=${reason}`;
+        },
+        { enableHighAccuracy: false, timeout: 8000 },
+      );
+    }
+
+    function choose(i: number) {
+      const o = options[i];
+      if (!o) return;
+      if (o.kind === 'near') chooseNear(); else chooseTown(o.town);
+    }
+
+    input.addEventListener('focus', render);
+    input.addEventListener('input', render);
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown') { event.preventDefault(); if (list.hidden) render(); move(active + 1); }
+      else if (event.key === 'ArrowUp') { event.preventDefault(); move(active - 1); }
+      else if (event.key === 'Enter') {
+        event.preventDefault();
+        /* Enter with nothing highlighted takes the best town, not "near me". */
+        if (active >= 0) choose(active);
+        else { const first = options.findIndex((o) => o.kind === 'town'); if (first >= 0 && input.value.trim()) choose(first); }
+      } else if (event.key === 'Escape') { open(false); }
+    });
+    list.addEventListener('mousedown', (event) => event.preventDefault());
+    list.addEventListener('click', (event) => {
+      const li = (event.target as HTMLElement).closest<HTMLElement>('[data-i]');
+      if (li) choose(Number(li.dataset.i));
+    });
+    document.addEventListener('click', (event) => { if (!root.contains(event.target as Node)) open(false); });
+
+    /* The big-town chips are real links; in `pick` mode they choose instead. */
+    for (const chip of Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-ts-town]'))) {
+      chip.addEventListener('click', (event) => {
+        const town = towns.find((x) => x.slug === chip.dataset.tsTown);
+        if (!town) return;
+        remember(town);
+        if (mode === 'pick') { event.preventDefault(); chooseTown(town); }
+      });
+    }
+  }
+</script>

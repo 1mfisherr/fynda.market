@@ -48,6 +48,19 @@ export interface Strings {
   howFarLabel: string;
   /** The Where field before a town is chosen; also the sheet's title. */
   pickTown: string;
+  /** The town search: its accessible name, the words in the empty box, and what it says when nothing matches. */
+  townSearchLabel: string;
+  townSearchPlaceholder: string;
+  townNoMatch: string;
+  /** Over the five biggest towns under the box. */
+  bigTownsLabel: string;
+  /** Beside the town remembered from the last visit. */
+  lastTime: string;
+  /** The radius view's place pill: near a town, or near the visitor's own point. */
+  nearTown: (town: string) => string;
+  nearYou: string;
+  /** A distance band on the radius view: "Bis 10 km", "10–25 km". */
+  distanceBand: (from: number, to: number) => string;
   /** The first row of the town sheet, and the round button's name. */
   nearMe: string;
   locating: string;
@@ -375,6 +388,14 @@ const de: Strings = {
   whenLabel: 'Wann',
   howFarLabel: 'Wie weit',
   pickTown: 'Ort wählen',
+  townSearchLabel: 'Ort suchen',
+  townSearchPlaceholder: 'Ort eingeben',
+  townNoMatch: 'Diesen Ort haben wir noch nicht. Versuch einen grösseren in der Nähe.',
+  bigTownsLabel: 'Oder direkt in eine Stadt',
+  lastTime: 'Zuletzt',
+  nearTown: (town) => `In der Nähe von ${town}`,
+  nearYou: 'In deiner Nähe',
+  distanceBand: (from, to) => (from === 0 ? `Bis ${to} km` : `${from}–${to} km`),
   nearMe: 'In meiner Nähe',
   locating: 'Standort wird ermittelt…',
   yourLocation: 'Dein Standort',
@@ -568,6 +589,14 @@ const en: Strings = {
   whenLabel: 'When',
   howFarLabel: 'How far',
   pickTown: 'Pick a town',
+  townSearchLabel: 'Find a town',
+  townSearchPlaceholder: 'Type a town',
+  townNoMatch: "We don't cover that town yet. Try a bigger one nearby.",
+  bigTownsLabel: 'Or jump to a city',
+  lastTime: 'Last time',
+  nearTown: (town) => `Near ${town}`,
+  nearYou: 'Near you',
+  distanceBand: (from, to) => (from === 0 ? `Within ${to} km` : `${from}–${to} km`),
   nearMe: 'Near me',
   locating: 'Locating…',
   yourLocation: 'Your location',
@@ -767,6 +796,14 @@ const fr: Strings = {
   whenLabel: 'Quand',
   howFarLabel: 'Distance',
   pickTown: 'Choisir une ville',
+  townSearchLabel: 'Chercher une localité',
+  townSearchPlaceholder: 'Tapez une localité',
+  townNoMatch: "Nous ne couvrons pas encore cette localité. Essayez une plus grande à proximité.",
+  bigTownsLabel: 'Ou directement dans une ville',
+  lastTime: 'La dernière fois',
+  nearTown: (town) => `Près de ${town}`,
+  nearYou: 'Près de vous',
+  distanceBand: (from, to) => (from === 0 ? `À moins de ${to} km` : `${from}–${to} km`),
   nearMe: 'Près de moi',
   locating: 'Localisation…',
   yourLocation: 'Votre position',
@@ -960,6 +997,14 @@ const it: Strings = {
   whenLabel: 'Quando',
   howFarLabel: 'Distanza',
   pickTown: 'Scegli una località',
+  townSearchLabel: 'Cerca una località',
+  townSearchPlaceholder: 'Scrivi una località',
+  townNoMatch: 'Questa località non la copriamo ancora. Prova con una più grande qui vicino.',
+  bigTownsLabel: 'Oppure direttamente in una città',
+  lastTime: "L'ultima volta",
+  nearTown: (town) => `Vicino a ${town}`,
+  nearYou: 'Vicino a te',
+  distanceBand: (from, to) => (from === 0 ? `Entro ${to} km` : `${from}–${to} km`),
   nearMe: 'Vicino a me',
   locating: 'Localizzazione…',
   yourLocation: 'La sua posizione',

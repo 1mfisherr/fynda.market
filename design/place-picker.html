@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Picking a place — mockups</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @font-face { font-family: 'Schibsted Grotesk'; src: url('../public/fonts/schibsted-grotesk-latin.woff2') format('woff2'); font-weight: 400 900; }
+  :root { --ink:#111110; --paper:#fff; --muted:#6E6C68; --quiet:#6E6A64; --line:#E8E6E2; --soft:#F5F4F2; --accent:#FF4A2B; --accent-text:#D63A1F; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#DEDCD7; font-family:'Schibsted Grotesk', system-ui, sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+  .intro { max-width:1240px; margin:28px auto 0; padding:0 28px; }
+  .intro h1 { font-size:26px; margin:0 0 6px; letter-spacing:-.02em; }
+  .intro p { margin:0; color:#3F3D3A; font-size:15px; line-height:1.5; max-width:760px; }
+  .stage { display:flex; gap:26px; padding:24px 28px 40px; align-items:flex-start; overflow-x:auto; }
+  .col { flex:0 0 375px; }
+  .cap { font-size:13px; color:#3F3D3A; margin:0 0 10px; line-height:1.45; min-height:76px; }
+  .cap b { color:var(--ink); font-size:14px; display:block; margin-bottom:2px; }
+  .phone { width:375px; height:780px; background:var(--paper); border-radius:22px; box-shadow:0 10px 40px rgba(0,0,0,.14); overflow:hidden; position:relative; }
+  .bar { display:flex; justify-content:space-between; align-items:center; padding:14px 16px 12px; }
+  .wm { font-weight:800; font-size:19px; letter-spacing:-.02em; } .wm .y { color:var(--accent); }
+  .nav { font-size:13px; color:var(--muted); font-weight:600; }
+  .pad { padding:4px 16px 16px; }
+  h2 { font-size:30px; line-height:1.05; letter-spacing:-.03em; margin:6px 0 8px; font-weight:800; }
+  .sub { color:var(--muted); font-size:15px; margin:0 0 16px; line-height:1.4; }
+  .search { display:flex; align-items:center; gap:10px; border:2px solid var(--ink); border-radius:8px; padding:13px 14px; font-size:17px; }
+  .search .ph { color:var(--quiet); } .search .typed { font-weight:700; } .caret { width:2px; height:20px; background:var(--ink); display:inline-block; margin-left:-8px; }
+  svg.i { width:18px; height:18px; flex:none; }
+  .sug { list-style:none; margin:0; padding:0; border:1px solid var(--line); border-top:0; border-radius:0 0 8px 8px; }
+  .sug li { display:flex; align-items:center; gap:12px; padding:12px 14px; border-top:1px solid var(--line); font-size:16px; }
+  .sug li:first-child { border-top:0; }
+  .sug .meta { color:var(--muted); font-size:13px; } .sug .n { margin-left:auto; color:var(--muted); font-size:13px; white-space:nowrap; }
+  .sug .me { font-weight:700; } .sug b { font-weight:800; }
+  .lab { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--quiet); font-weight:600; margin:22px 0 8px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip { border:1px solid var(--line); border-radius:999px; padding:8px 13px; font-size:15px; font-weight:600; }
+  .chip span { color:var(--muted); font-weight:500; margin-left:4px; }
+  .btn { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:16px; border-radius:10px; background:var(--ink); color:#fff; font-weight:700; font-size:17px; }
+  .btn.ghost { background:var(--paper); color:var(--ink); border:1px solid var(--ink); }
+  .small { color:var(--quiet); font-size:13px; margin:8px 0 0; text-align:center; }
+  .row { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .ph-img { width:64px; height:64px; border-radius:10px; flex:none; background:linear-gradient(135deg,#cfc9bf,#8f877a); }
+  .row .d { color:var(--accent-text); font-weight:900; font-size:13px; letter-spacing:.04em; text-transform:uppercase; }
+  .row .t { font-weight:700; font-size:16px; margin:2px 0; } .row .m { color:var(--muted); font-size:13px; }
+  .km { margin-left:auto; font-size:13px; font-weight:700; color:var(--ink); white-space:nowrap; align-self:center; }
+  .band { display:flex; justify-content:space-between; align-items:baseline; margin:18px 0 0; padding-bottom:6px; border-bottom:2px solid var(--ink); }
+  .band h3 { margin:0; font-size:17px; letter-spacing:-.01em; } .band span { color:var(--muted); font-size:13px; }
+  .pill { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--ink); border-radius:999px; padding:8px 14px; font-weight:700; font-size:15px; }
+  .tabs { display:flex; gap:18px; border-bottom:1px solid var(--line); margin:14px 0 4px; font-size:15px; font-weight:600; color:var(--muted); }
+  .tabs span { padding:10px 0; } .tabs .on { color:var(--ink); box-shadow:inset 0 -3px 0 var(--accent); }
+  .sheet { position:absolute; left:0; right:0; bottom:0; background:var(--paper); border-radius:18px 18px 0 0; box-shadow:0 -12px 40px rgba(0,0,0,.18); padding:10px 16px 22px; }
+  .grab { width:40px; height:5px; border-radius:3px; background:var(--line); margin:0 auto 12px; }
+  .dim { position:absolute; inset:0; background:rgba(17,17,16,.35); }
+  .ctry { display:flex; align-items:center; gap:8px; font-weight:800; font-size:15px; margin:18px 0 8px; }
+  .flag { width:18px; height:18px; border-radius:3px; flex:none; }
+  .ch { background:#D8232A; position:relative; } .ch::after { content:''; position:absolute; inset:0; background: linear-gradient(#fff,#fff) center/4px 11px no-repeat, linear-gradient(#fff,#fff) center/11px 4px no-repeat; }
+  .de { background:linear-gradient(#000 0 33.3%, #D00 33.3% 66.6%, #FFCE00 66.6%); }
+  .verdict { background:var(--soft); border-radius:10px; padding:12px 14px; font-size:13px; line-height:1.5; margin-top:12px; color:#3F3D3A; }
+  .verdict b { color:var(--ink); }
+</style></head>
+<body>
+<div class="intro">
+  <h1>Picking a place — three ways</h1>
+  <p>Today "Where" is a closed dropdown of 148 towns sorted under their cantons, a separate round location button, a separate "When", and then a "Show 195" button. Four controls before you see a market. Each option below asks one thing and shows markets the moment it knows where you are. Towns and counts are real.</p>
+</div>
+<div class="stage">
+
+<!-- ============ 1. TYPE A TOWN ============ -->
+<div class="col">
+  <p class="cap"><b>1 · Type a town</b>One box, like Booking's "Where". Type three letters, pick a town, you land on its page. "Near me" is the first suggestion, so there is no second button.</p>
+  <div class="phone">
+    <div class="bar"><span class="wm">f<span class="y">y</span>nda.market</span><span class="nav">EN · Saved</span></div>
+    <div class="pad">
+      <h2>You never know what you'll find.</h2>
+      <p class="sub">We find the flea markets. You do the hunting.</p>
+      <div class="search" style="border-radius:8px 8px 0 0">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="typed">Mün</span><span class="caret"></span>
+      </div>
+      <ul class="sug">
+        <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span class="me">Near me</span><span class="n">uses your location once</span></li>
+        <li><span><b>Mün</b>chen<br><span class="meta">Bavaria · Germany</span></span><span class="n">3 markets</span></li>
+        <li><span>Neu<b>mün</b>ster<br><span class="meta">Schleswig-Holstein · Germany</span></span><span class="n">1 market</span></li>
+        <li><span>Bero<b>mün</b>ster<br><span class="meta">Lucerne · Switzerland</span></span><span class="n">1 market</span></li>
+      </ul>
+      <div class="lab">Or start from a big one</div>
+      <div class="chips"><span class="chip">Basel<span>28</span></span><span class="chip">Zürich<span>17</span></span><span class="chip">Bern<span>15</span></span><span class="chip">Lausanne<span>15</span></span><span class="chip">Berlin<span>5</span></span></div>
+      <div class="verdict"><b>Cost:</b> small. Town names are already in every page. <b>Needs a decision:</b> postcodes — "8001" needs a postcode list for two countries (open data, ~6 MB). Towns only is a day's work.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2. NEAR ME FIRST ============ -->
+<div class="col">
+  <p class="cap"><b>2 · Near me first</b>Most people want "what's on near me". One big button does exactly that; the towns are the fallback for people who say no, grouped by country with their counts.</p>
+  <div class="phone">
+    <div class="bar"><span class="wm">f<span class="y">y</span>nda.market</span><span class="nav">EN · Saved</span></div>
+    <div class="pad">
+      <h2>You never know what you'll find.</h2>
+      <p class="sub">We find the flea markets. You do the hunting.</p>
+      <div class="btn"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Show markets near me</div>
+      <p class="small">Your location is used once and never stored.</p>
+      <div class="ctry"><i class="flag ch"></i>Switzerland</div>
+      <div class="chips"><span class="chip">Basel<span>28</span></span><span class="chip">Zürich<span>17</span></span><span class="chip">Bern<span>15</span></span><span class="chip">Lausanne<span>15</span></span><span class="chip">Luzern<span>8</span></span><span class="chip">Genève<span>4</span></span></div>
+      <div class="ctry"><i class="flag de"></i>Germany</div>
+      <div class="chips"><span class="chip">Berlin<span>5</span></span><span class="chip">München<span>3</span></span><span class="chip">Hamburg<span>3</span></span><span class="chip">Leipzig<span>2</span></span><span class="chip">Frankfurt<span>2</span></span><span class="chip">Jena<span>2</span></span></div>
+      <p class="small" style="text-align:left;margin-top:14px"><u>All 148 towns</u> →</p>
+      <div class="verdict"><b>Cost:</b> smallest — it is a re-arrangement of what exists. <b>Risk:</b> people who refuse location and live in a small town scroll to "All 148 towns".</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3. NEAR ME, AS A LIST BY DISTANCE ============ -->
+<div class="col">
+  <p class="cap"><b>3 · The results, by distance</b>What "In der Nähe" becomes once it knows where you are: your place in a pill at the top, markets in distance bands, this weekend first. No 35-screen list of both countries.</p>
+  <div class="phone">
+    <div class="bar"><span class="wm">f<span class="y">y</span>nda.market</span><span class="nav">EN · Saved</span></div>
+    <div class="pad">
+      <span class="pill"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Near Zürich ▾</span>
+      <div class="tabs"><span class="on">This weekend</span><span>Next 30 days</span><span>Pick a date</span></div>
+      <div class="band"><h3>Within 10 km</h3><span>6 markets</span></div>
+      <div class="row"><i class="ph-img"></i><div><div class="d">Sat 26 · 07:00–17:00</div><div class="t">Flohmarkt Bürkliplatz</div><div class="m">Stadthausanlage · Zürich</div></div><span class="km">1 km</span></div>
+      <div class="row"><i class="ph-img"></i><div><div class="d">Sat 26 · 07:20–16:00</div><div class="t">Flohmarkt Kanzlei</div><div class="m">Kanzleistrasse · Zürich</div></div><span class="km">2 km</span></div>
+      <div class="row"><i class="ph-img"></i><div><div class="d">Sat 26 · 09:00–16:00</div><div class="t">Flohmarkt Chilbiplatz</div><div class="m">Dübendorf</div></div><span class="km">8 km</span></div>
+      <div class="band"><h3>10–25 km</h3><span>4 markets</span></div>
+      <div class="row"><i class="ph-img"></i><div><div class="d">Sat 26 · 08:00–15:00</div><div class="t">Flohmarkt Wetzikon</div><div class="m">Wetzikon</div></div><span class="km">21 km</span></div>
+    </div>
+    <div class="dim" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ============ 3b. CHANGING PLACE ============ -->
+<div class="col">
+  <p class="cap"><b>3b · Changing place</b>Tap the pill: a sheet with the same type-a-town box as option 1. Before anyone has chosen, this sheet is what opens — instead of the list of all 195.</p>
+  <div class="phone">
+    <div class="bar"><span class="wm">f<span class="y">y</span>nda.market</span><span class="nav">EN · Saved</span></div>
+    <div class="pad">
+      <span class="pill">Near Zürich ▾</span>
+      <div class="tabs"><span class="on">This weekend</span><span>Next 30 days</span><span>Pick a date</span></div>
+      <div class="band"><h3>Within 10 km</h3><span>6 markets</span></div>
+    </div>
+    <div class="dim"></div>
+    <div class="sheet">
+      <div class="grab"></div>
+      <div class="lab" style="margin-top:0">Where are you?</div>
+      <div class="search" style="border-radius:8px 8px 0 0"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="ph">Town</span></div>
+      <ul class="sug">
+        <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span class="me">Use my location</span></li>
+        <li><span>Zürich<br><span class="meta">Last time</span></span><span class="n">17 markets</span></li>
+        <li><span>Winterthur<br><span class="meta">Zürich · Switzerland</span></span><span class="n">4 markets</span></li>
+        <li><span>Basel<br><span class="meta">Basel-Stadt · Switzerland</span></span><span class="n">28 markets</span></li>
+      </ul>
+      <div class="lab">Distance</div>
+      <div class="chips"><span class="chip">10 km</span><span class="chip" style="border-color:var(--ink)">25 km</span><span class="chip">50 km</span><span class="chip">100 km</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="intro" style="margin-bottom:40px">
+  <p><b>My pick:</b> 1 on the home page, 3 + 3b for "In der Nähe". Together they replace the dropdown, the separate location button and the "Show 195" button with one box and one list. 2 is the cheapest if you'd rather not change much.</p>
+</div>
+</body></html>
