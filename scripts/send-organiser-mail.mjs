@@ -86,6 +86,13 @@ const rows = await query(
         select 1 from public.organiser_mail_sends s
         where s.organiser_id = org.id and o.id = any (s.occurrence_ids)
       )
+      -- Only organisers who have heard from us: the welcome letter went out,
+      -- or they have opened their page. A first mail that is three buttons
+      -- asking a stranger to confirm a date reads as spam (2026-09-23).
+      and (
+        exists (select 1 from public.organiser_mail_sends w where w.organiser_id = org.id and w.kind = 'welcome')
+        or l.last_used_at is not null
+      )
   )
   select n.*,
     coalesce(

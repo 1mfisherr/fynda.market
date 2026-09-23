@@ -351,7 +351,7 @@ const CLAIM_ACK: Record<Locale, Ack> = {
     subject: 'Ihre Marktseite — wir melden uns',
     body: [
       'Danke, dass Sie sich gemeldet haben: %s.',
-      'Delfim prüft Ihre Anfrage, und Sie erhalten Ihren persönlichen Link per E-Mail, meist innert eines Tages. Bis dahin ändert sich an Ihrer Marktseite nichts.',
+      'Delfim prüft Ihre Anfrage, und Sie erhalten Ihren persönlichen Link per E-Mail, meist innerhalb eines Tages. Bis dahin ändert sich an Ihrer Marktseite nichts.',
       'Kostenlos, für immer, kein Konto nötig. Wenn Sie in der Zwischenzeit etwas ergänzen möchten, antworten Sie einfach auf diese E-Mail.',
     ],
   },
@@ -436,7 +436,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     ],
     button: 'Meine Seite öffnen',
     after: [
-      'Darum schreibe ich Ihnen. Besucher vertrauen einem Termin viel mehr, wenn der Veranstalter ihn bestätigt hat, als wenn jemand wie ich ihn von einer Website abgeschrieben hat. Wenn Ihre Seite zeigt, dass Sie ihn geprüft haben, entscheiden sich mehr Leute zu kommen. Und falls Sie einmal absagen müssen, erfahren es durch ein Wort an uns alle in der Nähe, die informiert werden wollten, noch am selben Tag — und nicht erst an Ihrem Tor.',
+      'Darum schreibe ich Ihnen. Besucher vertrauen einem Termin viel mehr, wenn der Veranstalter ihn bestätigt hat, als wenn jemand wie ich ihn von einer Website abgeschrieben hat. Wenn Ihre Seite zeigt, dass Sie ihn geprüft haben, entscheiden sich mehr Leute zu kommen. Und falls Sie einmal absagen müssen, genügt ein Wort an uns: Alle in der Nähe, die informiert werden wollten, erfahren es noch am selben Tag — und nicht erst an Ihrem Tor.',
       'Die Seite gehört Ihnen. Sie können Termine und Öffnungszeiten korrigieren, angeben, wie viele Stände es gibt, was bei Regen gilt und wo man einen Stand buchen kann. Vor jedem Termin schicke ich Ihnen eine kurze E-Mail mit der Frage, ob er stattfindet, und ein Klick genügt als Antwort.',
       'Wenn Sie ein Foto Ihres Marktes haben, stelle ich es gern auf die Seite — antworten Sie einfach damit.',
     ],
@@ -586,7 +586,7 @@ const ASK: Record<Locale, Ask> = {
     on: 'Ja, findet statt',
     cancelled: 'Abgesagt',
     changed: 'Etwas hat sich geändert',
-    footer: 'Ein Tipp genügt, kein Login. Ihre Antwort steht innert einer Stunde auf Ihrer Seite — als „Vom Veranstalter bestätigt“. Ein Foto oder eine Frage? Einfach auf diese E-Mail antworten.',
+    footer: 'Ein Klick genügt, ein Konto brauchen Sie nicht. Ihre Antwort steht innerhalb einer Stunde auf Ihrer Seite, als „Vom Veranstalter bestätigt“. Für ein Foto oder eine Frage antworten Sie einfach auf diese E-Mail.',
   },
   fr: {
     subjectOne: '%m, %d — a lieu ?',
@@ -597,7 +597,7 @@ const ASK: Record<Locale, Ask> = {
     on: 'Oui, a lieu',
     cancelled: 'Annulé',
     changed: 'Quelque chose a changé',
-    footer: "Un clic suffit, sans connexion. Votre réponse apparaît sur votre page dans l'heure — « Confirmé par l'organisateur ». Une photo, une question ? Répondez simplement à cet e-mail.",
+    footer: "Un clic suffit, et vous n'avez pas besoin de compte. Votre réponse apparaît sur votre page dans l'heure, avec la mention « Confirmé par l'organisateur ». Pour une photo ou une question, répondez simplement à cet e-mail.",
   },
   it: {
     subjectOne: '%m, %d — si fa?',
@@ -608,7 +608,7 @@ const ASK: Record<Locale, Ask> = {
     on: 'Sì, si fa',
     cancelled: 'Annullato',
     changed: 'Qualcosa è cambiato',
-    footer: "Basta un tocco, nessun login. La tua risposta compare sulla tua pagina entro un'ora — «Confermato dall'organizzatore». Una foto, una domanda? Rispondi semplicemente a questa e-mail.",
+    footer: "Basta un clic, e non ti serve un account. La tua risposta compare sulla tua pagina entro un'ora, come «Confermato dall'organizzatore». Per una foto o una domanda, rispondi semplicemente a questa e-mail.",
   },
   en: {
     subjectOne: '%m, %d — still on?',
@@ -619,7 +619,7 @@ const ASK: Record<Locale, Ask> = {
     on: "Yes, it's on",
     cancelled: 'Cancelled',
     changed: 'Something changed',
-    footer: 'One tap, no login. Your answer shows on your page within the hour — “Confirmed by the organiser”. A photo, a question? Just reply to this e-mail.',
+    footer: 'One click is enough, and you don’t need an account. Your answer shows on your page within the hour, as “Confirmed by the organiser”. For a photo or a question, just reply to this e-mail.',
   },
 };
 

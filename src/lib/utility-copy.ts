@@ -129,7 +129,7 @@ const report: Record<Locale, FormPage> = {
     submit: 'Meldung senden',
     note: 'Ein Mensch liest jede Meldung, bevor sich auf der Seite etwas ändert.',
     subject: 'Meldung',
-    success: 'Danke — deine Meldung ist angekommen. Wir prüfen sie von Hand, in der Regel innert ein bis zwei Tagen.',
+    success: 'Danke — deine Meldung ist angekommen. Wir prüfen sie von Hand, in der Regel innerhalb von ein bis zwei Tagen.',
     failure: 'Das hat gerade nicht geklappt. Wir öffnen dein E-Mail-Programm — schicke uns die Meldung einfach so.',
     errors: {
       invalid: 'Diese E-Mail-Adresse sieht nicht richtig aus. Prüfe sie noch einmal.',
@@ -348,9 +348,9 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'Was das bringt',
     list: [
       'Ein persönlicher Link per E-Mail — kein Passwort, kein Konto nötig. Er öffnet Ihre Seite: Termine, Standzahl, drinnen oder draussen, was bei Regen gilt.',
-      'Sieben Tage vor jedem Termin eine E-Mail mit drei Knöpfen: findet statt · abgesagt · etwas hat sich geändert. Ein Tipp genügt.',
+      'Sieben Tage vor jedem Termin eine E-Mail mit drei Knöpfen: findet statt · abgesagt · etwas hat sich geändert. Ein Klick darauf genügt als Antwort.',
       'Jeder Termin, den Sie bestätigen, trägt „Vom Veranstalter bestätigt“ und den Tag, an dem Sie es getan haben.',
-      'Eine Absage steht innert einer Stunde auf der Seite, und wer den Newsletter für Ihre Gegend hat, erfährt es sofort.',
+      'Eine Absage steht innerhalb einer Stunde auf der Seite, und wer den Newsletter für Ihre Gegend hat, erfährt es sofort.',
     ],
     after: 'Fragen? Schreiben Sie an contact@fynda.market.',
     fields: [
@@ -361,9 +361,9 @@ const organiser: Record<Locale, FormPage> = {
       { name: 'nachricht', label: 'Nachricht (optional)', type: 'textarea', hint: 'Zum Beispiel: welches Datum wir aktualisieren sollen.' },
     ],
     submit: 'Meinen Markt übernehmen',
-    note: 'Delfim liest jede Anfrage selbst. Ihr persönlicher Link kommt per E-Mail, meist innert eines Tages.',
+    note: 'Delfim liest jede Anfrage selbst. Ihr persönlicher Link kommt per E-Mail, meist innerhalb eines Tages.',
     subject: 'Veranstalter',
-    success: 'Danke — Ihre Anfrage ist angekommen. Ihr persönlicher Link kommt per E-Mail, meist innert eines Tages.',
+    success: 'Danke — Ihre Anfrage ist angekommen. Ihr persönlicher Link kommt per E-Mail, meist innerhalb eines Tages.',
     failure: 'Das hat gerade nicht geklappt. Wir öffnen Ihr E-Mail-Programm — schicken Sie uns die Nachricht einfach so.',
     errors: {
       invalid: 'Diese E-Mail-Adresse sieht nicht richtig aus. Prüfe sie noch einmal.',
@@ -416,7 +416,7 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'A cosa serve',
     list: [
       "Un link personale via e-mail — nessuna password, nessun account. Apre la tua pagina: date, numero di bancarelle, al coperto o all'aperto, cosa succede se piove.",
-      "Sette giorni prima di ogni data, un'e-mail con tre pulsanti: si fa · annullato · qualcosa è cambiato. Basta un tocco.",
+      "Sette giorni prima di ogni data, un'e-mail con tre pulsanti: si fa · annullato · qualcosa è cambiato. Basta un clic sul pulsante giusto per rispondere.",
       "Ogni data che confermi riporta «Confermato dall'organizzatore» e il giorno in cui l'hai fatto.",
       "Un annullamento compare sulla pagina entro un'ora, e chi ha la newsletter per la tua zona lo sa subito.",
     ],
@@ -450,7 +450,7 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'What you get',
     list: [
       'A personal link by e-mail — no password, no account needed. It opens your page: dates, number of stalls, indoor or outdoor, what happens when it rains.',
-      "Seven days before each date, an e-mail with three buttons: it's on · cancelled · something changed. One tap.",
+      "Seven days before each date, an e-mail with three buttons: it's on · cancelled · something changed. One click on the right one is your answer.",
       'Every date you confirm says "Confirmed by the organiser", with the day you did.',
       'A cancellation is on the page within the hour, and newsletter subscribers in your area hear at once.',
     ],

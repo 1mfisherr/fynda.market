@@ -29,6 +29,13 @@ const value = (name) => args.find((a) => a.startsWith(`--${name}=`))?.split('=')
 const send = has('send');
 const only = value('only')?.trim().toLowerCase();
 const test = value('test')?.trim().toLowerCase();
+/*
+ * Resend's free plan takes 100 mails a day and 2 a second. 90 leaves room for
+ * the day's other mail; whoever is left gets theirs on the next run, because
+ * the query only picks organisers without a welcome row.
+ */
+const limit = Number(value('limit')) || 90;
+const pause = () => new Promise((resolve) => setTimeout(resolve, 600));
 const say = (...parts) => console.log(...parts);
 
 const SIGNING = secret('ADMIN_SIGNING_SECRET');
@@ -79,7 +86,7 @@ const list = rows.filter((row) => !only || row.email === only);
 
 /** "Alpin-Flohmi Basel und 8 weitere Märkte" — the mail's %m for an organiser with several. */
 const OTHERS = {
-  de: (n) => `und ${n} weitere ${n === 1 ? 'Markt' : 'Märkte'}`,
+  de: (n) => (n === 1 ? 'und ein weiterer Markt' : `und ${n} weitere Märkte`),
   fr: (n) => `et ${n} ${n === 1 ? 'autre marché' : 'autres marchés'}`,
   it: (n) => `e ${n === 1 ? 'un altro mercatino' : `altri ${n} mercatini`}`,
   en: (n) => `and ${n} other ${n === 1 ? 'market' : 'markets'}`,
@@ -89,7 +96,7 @@ const marketPhrase = (row) => {
   return others > 0 ? `${row.market_name} ${(OTHERS[row.locale] ?? OTHERS.en)(others)}` : row.market_name;
 };
 
-say(`\n  Welcome mail: ${list.length} organiser${list.length === 1 ? '' : 's'} without one${only ? ` (only ${only})` : ''}.`);
+say(`\n  Welcome mail: ${list.length} organiser${list.length === 1 ? '' : 's'} without one${only ? ` (only ${only})` : ''}; at most ${limit} this run.`);
 if (!send) say('  Dry run — nobody is mailed. Pass --send to send.\n');
 
 let sent = 0;
@@ -112,6 +119,8 @@ for (const row of list) {
   }
 
   if (!send) continue;
+  if (sent >= limit) break;
+  await pause();
 
   const [log] = await query(
     `insert into public.organiser_mail_sends (organiser_id, occurrence_ids, kind) values ($1, '{}'::uuid[], 'welcome') returning id`,
