@@ -29,7 +29,7 @@ const line = LINES[kind];
 ---
 <span
   class:list={['badge', variant, { muted }]}
-  style={muted ? undefined : `background:var(${line.token})`}
+  style={muted ? undefined : `background:var(${line.token});color:var(${line.token}-ink)`}
 >
   <Icon name={line.icon} size={variant === 'tile' ? 22 : 14} />
 </span>

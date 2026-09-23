@@ -48,7 +48,7 @@ export function page(
      uppercase label; a segmented choice underlined in the accent; one filled
      button per moment. Type is fluid on the site's two anchors. */
   main.wide { max-width: 720px; }
-  .eyebrow { font-size: 12px; font-weight: 500; color: #75706A; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; }
+  .eyebrow { font-size: 12px; font-weight: 500; color: #6E6A64; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; }
   .wide h1 { font-size: clamp(34px, calc(30px + 1.1vw), 49px); letter-spacing: -0.045em; line-height: 1.02; }
   .lede { font-size: clamp(15px, calc(13.4px + 0.42vw), 19.5px); color: #6E6C68; margin: 0 0 20px; }
   .photo { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; background: #F5F4F2; margin: 0 0 24px; }
@@ -58,8 +58,8 @@ export function page(
   .card h2 { margin: 0 0 12px; }
   h2 { font-size: clamp(21px, calc(18.8px + 0.59vw), 27px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin: 44px 0 6px; }
   .date { font-size: clamp(22px, calc(19.5px + 0.65vw), 29px); font-weight: 700; color: #FF4A2B; letter-spacing: -0.015em; }
-  .quiet { color: #75706A; font-size: 13px; font-weight: 500; }
-  .hint { color: #75706A; font-size: 13px; line-height: 1.45; margin: 6px 0 0; }
+  .quiet { color: #6E6A64; font-size: 13px; font-weight: 500; }
+  .hint { color: #6E6A64; font-size: 13px; line-height: 1.45; margin: 6px 0 0; }
   .btn.accent { background: #FF4A2B; border-color: #FF4A2B; font-weight: 700; }
   .btn.quiet { background: #fff; color: #6E6C68; border-color: #E8E6E2; font-weight: 500; }
   .btn.inline { display: inline-block; width: auto; padding: 12px 22px; }
@@ -69,7 +69,7 @@ export function page(
   .list .top, .list .under { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .list .top .quiet { text-align: right; flex-shrink: 0; }
   .list .day { font-size: 17px; font-weight: 700; color: #FF4A2B; }
-  .list .day.off { color: #75706A; }
+  .list .day.off { color: #6E6A64; }
   .list .under { margin-top: 8px; flex-wrap: wrap; }
   .list .acts { display: flex; gap: 16px; font-size: 14px; font-weight: 500; }
   .list .acts a.grey { color: #6E6C68; }
@@ -82,7 +82,7 @@ export function page(
   .actions { display: flex; gap: 10px; margin: 14px 0 0; }
   .actions .btn { margin: 0; }
   .field { margin: 26px 0 0; }
-  .field label, .field .lab { display: block; font-size: 12px; font-weight: 500; color: #75706A; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; }
+  .field label, .field .lab { display: block; font-size: 12px; font-weight: 500; color: #6E6A64; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; }
   .field input[type=text], .field input[type=url], .field input[type=number], .field input[type=date], .field input[type=time] { box-sizing: border-box; width: 100%; padding: 8px 0; border: 0; border-bottom: 1px solid #111110; border-radius: 0; background: transparent; font: inherit; font-size: 18px; font-weight: 700; outline-offset: 4px; text-overflow: ellipsis; }
   .field input::placeholder, .field textarea::placeholder { color: #B5B2AD; font-weight: 500; }
   .field textarea { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #111110; border-radius: 6px; font: inherit; font-size: 16px; line-height: 1.45; resize: vertical; min-height: 110px; }

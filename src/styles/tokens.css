@@ -17,9 +17,11 @@
 
   --color-ink: #111110;
   --color-grey: #6E6C68;
-  /* 4.6:1 on white. It was #9A968F (2.9:1), which failed contrast on every
-     timestamp and provenance line — the words that carry the trust claim. */
-  --color-quiet: #75706A;
+  /* 5.4:1 on white, 4.9:1 on paper. It was #9A968F (2.9:1), which failed on
+     every timestamp and provenance line — the words that carry the trust
+     claim — and then #75706A, which passed on white but not on the paper the
+     footer sits on (4.46:1, UI audit 2026-09-23). */
+  --color-quiet: #6E6A64;
   --color-line: #E8E6E2;
   --color-paper: #F5F4F2;
   --color-surface: #FFFFFF;
@@ -28,8 +30,8 @@
 
   /* status — never colour alone, always paired with a word */
   --color-status-confirmed: var(--color-accent);
-  --color-status-cancelled: #75706A;
-  --color-status-unverified: #75706A;
+  --color-status-cancelled: var(--color-quiet);
+  --color-status-unverified: var(--color-quiet);
 
   /* line colours — market type, like a transit map */
   --line-floh: #FF4A2B;
@@ -37,6 +39,13 @@
   --line-nacht: #7C3AED;
   --line-kinder: #F5A524;
   --line-troedel: #E4007F;
+  /* The text on each line colour: white where it reads, ink where it does
+     not. The children's yellow gave white text 2.0:1 (UI audit 2026-09-23). */
+  --line-floh-ink: var(--color-white);
+  --line-halle-ink: var(--color-white);
+  --line-nacht-ink: var(--color-white);
+  --line-kinder-ink: var(--color-ink);
+  --line-troedel-ink: var(--color-white);
 
   /* illustration grounds */
   --color-art-sand: #F0E6DC;
@@ -79,7 +88,9 @@
   --text-body: clamp(16px, calc(14.31px + 0.451vw), 20.8px);
   --text-small: clamp(13px, calc(11.627px + 0.366vw), 16.9px);
   --text-micro: clamp(12px, calc(10.732px + 0.338vw), 15.6px);
-  --text-tiny: clamp(10.5px, calc(9.391px + 0.296vw), 13.65px);
+  /* 12px floor: the uppercase labels (WO, WANN, RHYTHMUS) were 10.5px on a
+     phone, below what anyone reads comfortably (UI audit 2026-09-23). */
+  --text-tiny: clamp(12px, calc(11.419px + 0.155vw), 13.65px);
   --text-code: clamp(8.5px, calc(7.602px + 0.239vw), 11.05px);
   --text-day-band: clamp(44px, calc(39.352px + 1.239vw), 57.2px);
   --text-market-date: clamp(40px, calc(35.775px + 1.127vw), 52px);

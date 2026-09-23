@@ -322,7 +322,7 @@ const title = firstFitting([
           on a dark picture and invisible on a bright one. The fill is the
           kind's own line colour — docs/BRAND.md gives the line colours exactly
           one job, marking the type of market, and this is it. */}
-      <span class="type eyebrow" style={`background: var(${kind.token})`}>
+      <span class="type eyebrow" style={`background: var(${kind.token}); color: var(${kind.token}-ink)`}>
         <Icon name={kind.icon} size={14} />{kind.full[locale]}
       </span>
       {/* Saving and going are two different decisions. As a block button the

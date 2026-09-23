@@ -93,7 +93,7 @@ const size = variant === 'feature' ? 720 : 148;
     </p>
     <h3 class="name">
       <a href={marketPath(locale, market.slug)}>{market.name}</a>
-      {badge && <i class="badge" style={`background:var(${line.token})`}>{badge}</i>}
+      {badge && <i class="badge" style={`background:var(${line.token});color:var(${line.token}-ink)`}>{badge}</i>}
     </h3>
     {showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
     <p class="where">{where}</p>
