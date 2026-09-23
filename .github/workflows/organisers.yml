@@ -15,9 +15,11 @@ name: Organiser mail
 
 on:
   schedule:
-    # 06:00 UTC daily. The nightly publish at 03:00 has finished, so the dates
-    # the script reads are the ones the site shows.
-    - cron: '0 6 * * *'
+    # GitHub starts scheduled jobs late, and latest of all on the hour: in
+    # September 2026 every run began about five hours after its time. So an
+    # odd minute, and early enough that five hours late is still on time.
+    # 04:07 UTC daily.
+    - cron: '7 4 * * *'
   workflow_dispatch:
     inputs:
       only:

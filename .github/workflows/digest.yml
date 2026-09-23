@@ -28,10 +28,13 @@ name: Friday digest
 
 on:
   schedule:
-    # 06:00 UTC on Fridays — 08:00 in Swiss summer, 07:00 in winter. The
-    # nightly rebuild at 03:00 has long finished, so the dates this reads are
-    # the same ones the site is showing.
-    - cron: '0 6 * * 5'
+    # GitHub starts scheduled jobs late, and latest of all on the hour: in
+    # September 2026 every run began about five hours after its time. So an
+    # odd minute, and early enough that five hours late is still on time.
+    # Set for 06:00 UTC, the "Friday morning" issue arrived at 12:23 in Zurich. 02:07 UTC on Fridays
+    # lands it in the morning even when late; it reads the database, not the
+    # built site, so it does not wait for the publish.
+    - cron: '7 2 * * 5'
   workflow_dispatch:
     inputs:
       only:

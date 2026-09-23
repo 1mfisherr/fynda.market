@@ -8,7 +8,7 @@ Updated 2026-09-23.
 
 ## Now
 
-**Two countries since 2026-09-22.** Live at `fynda.market`: 277 markets — 222 Swiss in four locales, 55 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,636 are in the sitemap. Rebuilt nightly at 03:00 UTC on GitHub; ten guardrails and the tests gate every publish.
+**Two countries since 2026-09-22.** Live at `fynda.market`: 277 markets — 222 Swiss in four locales, 55 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,636 are in the sitemap. Rebuilt nightly on GitHub at 23:07 and 03:07 UTC, which GitHub starts up to five hours late; ten guardrails and the tests gate every publish.
 
 Germany was researched, imported, photographed and built in one day, and published the same evening. Every German market's dates were read from the organiser's own page, which is stored as its source. Nothing about Switzerland changed.
 
@@ -57,6 +57,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
 - **Two newsletter forms in a row** on home, city, canton and market pages (card, then footer). Needs a layout decision, not a one-liner.
+- **Operations audit 2026-09-23.** Every scheduled job has succeeded, but GitHub starts them about five hours late: the 03:00 rebuild landed near 10:00 in Zurich, so Saturday mornings showed Friday under "Today", and the Friday digest arrived at 12:23. All schedules moved to odd minutes and earlier (rebuild 23:07 and 03:07 UTC, digest Fridays 02:07). **Delfim's, at the desktop:** add a DMARC record in Cloudflare DNS (`_dmarc` TXT `v=DMARC1; p=none; rua=mailto:contact@fynda.market`) before the organiser letters go; and once, restore the latest backup to prove the key works (commands at the top of `backup.yml`).
 - **Security audit 2026-09-23.** RLS on every table, no policies, the public API roles now hold nothing at all (migration 20260923160000, applied the same day; live inserts read back after). Organiser links are safe from mail scanners, the Resend webhook checks signature and age, backups are encrypted. Added: frame and HTTPS headers on every page, five posts an hour per connection on each form (three for claims), Telegram pings carry only an address's domain and the privacy page names Telegram. After the push: post once to each form and read the row back.
 - **Ceilings, measured 2026-09-23** (scalability audit). Cloudflare Pages takes 20,000 files per deploy: 2,779 today, ~6–8 per market, so images to R2 before ~2,500 more markets. The Near-me page carries every market (275 KB of HTML at 277): split it by country or load it as data past ~800. Resend's free plan sends 100 mails a day and the digest goes out in one morning: the paid plan before ~80 subscribers. Database 40 MB of 500. Build 21 s.
 - **A Metabase host, €6/month** — only when looking without Docker is worth it.
