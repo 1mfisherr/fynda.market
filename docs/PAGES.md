@@ -43,6 +43,8 @@ Not here: a country picker, a map (Delfim, 2026-09-22: "gimmicky"), a big search
 
 Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm it is happening, then get them there.
 
+**Title: the next date, with its own year** (2026-09-23) — *Flohmi Muttenz – nächster Termin 12. Sept 2027*, falling back to *name, town – date*, then to *name – Termine 2026* when there is no date. The year is the date's, never the build's. It also separates the weekday editions of one market. Every page's description is cut to whole sentences within 160 characters in `Base.astro` (`fitDescription`), so no template has to count.
+
 1. Photo or illustration, never stock, with **Save** on it — saving and going are different decisions.
 2. Kind and town, then the name.
 3. **The status line in words** — *Heute · läuft gerade · endet in 6 Std.* Today and tomorrow resolve in the build; "running now" and hours left in the browser. Without JavaScript it still says Heute and the times.

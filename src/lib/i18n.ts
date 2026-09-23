@@ -84,6 +84,15 @@ export interface CountryInfo {
   region: Partial<Record<Locale, string>>;
   /** The BCP 47 tag for `<html lang>` and hreflang, per locale. */
   tag: Partial<Record<Locale, string>>;
+  /** ISO 4217. An entry fee is printed and marked up in it. */
+  currency: string;
+  /**
+   * Regions that are one city — Berlin, Hamburg, Bremen. Their region page
+   * would repeat the town page word for word and compete with it for the same
+   * query, so it is not built; every link to it goes to the town instead, and
+   * the address it was published at 301s there (scripts/redirects.mjs).
+   */
+  cityStates: string[];
 }
 
 export const COUNTRY: Record<CountryCode, CountryInfo> = {
@@ -92,12 +101,18 @@ export const COUNTRY: Record<CountryCode, CountryInfo> = {
     name: { de: 'Schweiz', fr: 'Suisse', it: 'Svizzera', en: 'Switzerland' },
     region: { de: 'kanton', fr: 'canton', it: 'cantone', en: 'canton' },
     tag: { de: 'de-CH', fr: 'fr-CH', it: 'it-CH', en: 'en' },
+    currency: 'CHF',
+    cityStates: [],
   },
   DE: {
     locales: ['de', 'en'],
     name: { de: 'Deutschland', en: 'Germany' },
     region: { de: 'bundesland', en: 'state' },
     tag: { de: 'de-DE', en: 'en' },
+    currency: 'EUR',
+    // Bremen the Land also holds Bremerhaven; the day a Bremerhaven market
+    // arrives, Bremen leaves this list and gets its region page back.
+    cityStates: ['berlin', 'hamburg', 'bremen'],
   },
 };
 
@@ -105,6 +120,13 @@ export const COUNTRY: Record<CountryCode, CountryInfo> = {
 export const REGION_SEGMENTS = [
   ...new Set(Object.values(COUNTRY).flatMap((c) => Object.values(c.region))),
 ];
+
+/** True where the region is one city and its page would be the town's twin. */
+export const isCityState = (country: CountryCode, regionSlug: string) =>
+  COUNTRY[country].cityStates.includes(regionSlug);
+
+/** "4 CHF", "4 EUR" — the currency is the country's, never assumed. */
+export const formatFee = (amount: number, country: CountryCode) => `${amount} ${COUNTRY[country].currency}`;
 
 /** The country's name in this locale. */
 export const countryName = (locale: Locale, country: CountryCode) =>

@@ -39,3 +39,44 @@ if (existsSync(sitemap)) {
 }
 writeFileSync(join(dist, '_hashes.json'), JSON.stringify(hashes));
 console.log(`postbuild: ${Object.keys(hashes).length} page hashes in _hashes.json`);
+
+/*
+ * <lastmod> in the sitemap: the day each page last actually changed.
+ *
+ * Fresh dates are the site's whole argument, and lastmod is how a sitemap tells
+ * a crawler which pages to come back to first. Google uses it only when it is
+ * consistently true, so it is not the build date: a page keeps the day it last
+ * changed until its HTML hash moves. The previous hashes and days are read off
+ * the live site; a page whose hash matches keeps its day, any other gets today.
+ *
+ * Only for a build from the live database — a fixtures build is not what the
+ * site serves. And if the live files cannot be read, no <lastmod> at all: a
+ * guessed date is worse than none.
+ */
+if (process.env.FYNDA_DATA_SOURCE === 'supabase' && existsSync(sitemap)) {
+  const { todayIso } = await import('../src/lib/format.ts');
+  const today = todayIso();
+  const live = async (file) => {
+    try {
+      const res = await fetch(`https://fynda.market/${file}`, { headers: { 'user-agent': 'fynda-postbuild/1' } });
+      return res.ok ? await res.json() : null;
+    } catch { return null; }
+  };
+  const [wasHash, wasDay] = await Promise.all([live('_hashes.json'), live('_modified.json')]);
+  if (wasHash) {
+    const modified = {};
+    for (const [path, hash] of Object.entries(hashes)) {
+      modified[path] = wasHash[path] === hash && wasDay?.[path] ? wasDay[path] : today;
+    }
+    writeFileSync(join(dist, '_modified.json'), JSON.stringify(modified));
+    const xml = readFileSync(sitemap, 'utf8').replace(/<url><loc>([^<]+)<\/loc>/g, (whole, loc) => {
+      const day = modified[new URL(loc).pathname];
+      return day ? `${whole}<lastmod>${day}</lastmod>` : whole;
+    });
+    writeFileSync(sitemap, xml);
+    const fresh = Object.values(modified).filter((d) => d === today).length;
+    console.log(`postbuild: <lastmod> on ${Object.keys(modified).length} pages, ${fresh} changed today`);
+  } else {
+    console.log('postbuild: live hashes unreadable — sitemap ships without <lastmod>');
+  }
+}

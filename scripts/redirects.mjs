@@ -15,7 +15,7 @@
  */
 
 import { withClient, DB_URL } from './db.mjs';
-import { LOCALE, regionSegment } from '../src/lib/i18n.ts';
+import { COUNTRY, LOCALE, regionSegment } from '../src/lib/i18n.ts';
 
 /**
  * Retired slugs, with the slug that replaced them, for entities that still have
@@ -82,6 +82,23 @@ export async function buildRedirects() {
     const retired = await rows(RETIRED);
 
     const exact = [...MOVED];
+
+    /* A city-state's region page was published for one night (2026-09-22)
+       before it was folded into its town page, and a published address never
+       dies. Its words come from the country, so a new city-state needs no line
+       here — only its slug in src/lib/i18n.ts. */
+    for (const [countryId, code] of iso2) {
+      for (const slug of COUNTRY[code]?.cityStates ?? []) {
+        for (const locale of COUNTRY[code].locales) {
+          const country = countryNow.get(`${countryId}|${locale}`);
+          if (!country) continue;
+          exact.push({
+            from: `/${locale}/${country}/${regionSegment(locale, code)}/${slug}/`,
+            to: `/${locale}/${country}/${slug}/`,
+          });
+        }
+      }
+    }
     const wildcard = [];
 
     for (const r of retired) {

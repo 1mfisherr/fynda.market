@@ -192,6 +192,10 @@ export interface Strings {
   titleNext: (date: string) => string;
   /** The market title: name, venue, town, then the year's dates. */
   marketTitle: (name: string, venue: string | undefined, city: string | undefined, year: number) => string;
+  /** "Flohmarkt Bürkliplatz – Zürich – nächster Termin 26. Sept 2026" */
+  marketTitleNext: (name: string, venue: string | undefined, city: string | undefined, when: string) => string;
+  /** The short fallback: "Flohmarkt Bürkliplatz, Zürich – 26. Sept 2026" */
+  marketTitleDate: (name: string, city: string | undefined, when: string) => string;
   /** A market page with no confirmed date still says what it knows. */
   marketNoDateDescription: (kind: string, city: string, venue: string | undefined, rhythm: string | undefined) => string;
   /** The canton description, built from the data like the town one. */
@@ -453,6 +457,8 @@ const de: Strings = {
     n === 1 ? `Der Flohmarkt in ${city} ${year}` : `Die ${n} Flohmärkte in ${city} ${year}`,
   titleNext: (date) => `nächster Termin ${date}`,
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Termine ${year}`,
+  marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – nächster Termin ${when}`,
+  marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}Der nächste Termin ist noch nicht bestätigt — wir prüfen ihn und tragen ihn ein, sobald er feststeht.`,
   regionDescription: (n, towns, region, code, next) =>
@@ -644,6 +650,8 @@ const en: Strings = {
     n === 1 ? `The flea market in ${city} ${year}` : `The ${n} flea markets in ${city} ${year}`,
   titleNext: (date) => `next on ${date}`,
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
+  marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – next on ${when}`,
+  marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}The next date is not confirmed yet — we check and list it as soon as it is set.`,
   regionDescription: (n, towns, region, code, next) =>
@@ -841,6 +849,8 @@ const fr: Strings = {
     n === 1 ? `La brocante à ${city} ${year}` : `Les ${n} brocantes à ${city} ${year}`,
   titleNext: (date) => `prochaine date ${date}`,
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
+  marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – prochaine date ${when}`,
+  marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} à ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prochaine date n'est pas encore confirmée — nous la vérifions et l'ajoutons dès qu'elle est fixée.`,
   regionDescription: (n, towns, region, _code, next) =>
@@ -1032,6 +1042,8 @@ const it: Strings = {
     n === 1 ? `Il mercatino delle pulci a ${city} ${year}` : `I ${n} mercatini delle pulci a ${city} ${year}`,
   titleNext: (date) => `prossima data ${date}`,
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Date ${year}`,
+  marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – prossima data ${when}`,
+  marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm) =>
     `${kind} a ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prossima data non è ancora confermata — la verifichiamo e la inseriamo appena fissata.`,
   regionDescription: (n, towns, region, _code, next) =>

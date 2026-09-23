@@ -26,7 +26,7 @@ import TypeLegend from '../../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../../lib/markets';
 import { byMarket, datedRows, lastChecked, undatedMarkets } from '../../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange } from '../../../../lib/format';
-import { LOCALES, cityPath, homePath, regionPath, regionSegment, type Locale } from '../../../../lib/i18n';
+import { LOCALES, cityPath, homePath, isCityState, regionPath, regionSegment, type Locale } from '../../../../lib/i18n';
 import { t } from '../../../../lib/strings';
 import { fitTitle } from '../../../../lib/titles';
 import type { Market } from '../../../../lib/types';
@@ -52,6 +52,8 @@ export async function getStaticPaths() {
     const markets = byLocale.get(locale)!;
     const regions = new Map(markets.map((m) => [m.regionSlug, m]));
     for (const [region, sample] of regions) {
+      // Berlin, Hamburg, Bremen: the town page is this page. src/lib/i18n.ts.
+      if (isCityState(sample.countryCode, region)) continue;
       const here = markets.filter((m) => m.regionSlug === region);
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(region);

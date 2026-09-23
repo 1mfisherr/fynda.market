@@ -17,7 +17,7 @@
 
 import { weekendBounds } from './date-window.ts';
 import { datedRows, weekendLead, type Dated } from './lists.ts';
-import { marketPath, regionPath, homePath, nearbyPath, type Locale } from './i18n.ts';
+import { cityPath, isCityState, marketPath, regionPath, homePath, nearbyPath, type Locale } from './i18n.ts';
 import { LINES, BADGED_KINDS } from './vocabulary.ts';
 import { t } from './strings.ts';
 import { thumbUrl } from './images.ts';
@@ -272,7 +272,9 @@ export function buildDigest(
            where they are, which is the page holding what got cut. */
         href: near
           ? `${nearbyPath(locale)}?lat=${near.lat.toFixed(4)}&lng=${near.lng.toFixed(4)}&km=${near.km}`
-          : regionPath(locale, first.countryCode, first.countrySlug, first.regionSlug),
+          : isCityState(first.countryCode, first.regionSlug)
+            ? cityPath(locale, first.countrySlug, first.citySlug)
+            : regionPath(locale, first.countryCode, first.countrySlug, first.regionSlug),
         count: theirs.length,
         scope,
       }

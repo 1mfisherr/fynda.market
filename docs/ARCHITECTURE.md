@@ -39,6 +39,10 @@ Switzerland: de, fr, it, en. Germany: de, en. Any other country: its own languag
 
 Nothing enforces the locale list: the build joins each place's name and slug in the page's own locale, so a country simply has no pages in a locale nobody wrote. `getMarkets('fr')` returns no German market. Alternates are read back off what was built rather than assumed, because an hreflang pointing at a page that does not exist voids the whole cluster.
 
+**Also the country's:** the currency an entry fee is printed and marked up in (CHF / EUR — until 2026-09-23 every German fee read "4 CHF"), and its **city-states** — Berlin, Hamburg, Bremen — whose region page would be the town page's twin, so it is not built, links go to the town, and the one night it was published 301s (`scripts/redirects.mjs`).
+
+**Sitemap `<lastmod>` is the day a page last changed** (`scripts/postbuild.mjs`): a page keeps its day until its HTML hash moves, compared with the live `_hashes.json` and `_modified.json`. No live files, no `<lastmod>` — never the build date.
+
 **The region word is in the copy too, not only the path.** "im Kanton Zürich" is how a Swiss person says it; "im Bundesland Bayern" is how nobody says it — in Germany the Land carries no noun ("Flohmärkte in Bayern"), which is also the query people type. `src/lib/strings.ts` holds one phrase builder per language, and the country picks the phrase.
 
 **Localise the facts and the interface; never mass-translate prose.** Interface strings in `src/lib/strings.ts`, written by a person per language. Names, descriptions and recurrence sentences are rows in `texts` per locale; a locale renders only what has a row. Only genuine exonyms are translated (Bâle, Zurigo, Coire); Lausanne is Lausanne everywhere. The URL-to-entity ratio counts **per locale** — a translation is a full page, not a facet.
