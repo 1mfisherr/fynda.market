@@ -432,3 +432,27 @@ test('a pause holds until its date, and that date is the first issue back', () =
   assert.equal(owedIssue({ cadence: 'monthly', pausedUntil: '2026-12-01' }, '2026-12-04'), true);
   assert.equal(owedIssue({ cadence: 'monthly', pausedUntil: '2026-12-01' }, '2026-12-11'), false);
 });
+
+test('elsewhere stays in the reader\'s own country', () => {
+  const HAMBURG = { lat: 53.5511, lng: 9.9937 };
+  const LEIPZIG = { lat: 51.3397, lng: 12.3731 };
+  const german = (name: string, city: string, at: { lat: number; lng: number }, region: string): Market =>
+    ({ ...market(name, city, saturday, { at, region }), countrySlug: 'deutschland', countryCode: 'DE' });
+  const markets = [
+    german('Flohschanze', 'Hamburg', HAMBURG, 'hamburg'),
+    german('agra', 'Leipzig', LEIPZIG, 'sachsen'),
+    market('Bürkliplatz', 'Zürich', saturday, { at: ZURICH }),
+  ];
+
+  /* A Hamburg reader's "elsewhere" was Zürich under "Anderswo in der Schweiz". */
+  const digest = buildDigest(markets, {
+    near: { lat: HAMBURG.lat, lng: HAMBURG.lng, km: 25, city: 'Hamburg' }, locale: 'de', now,
+  });
+  assert.equal(digest.country, 'DE');
+  assert.deepEqual(away(digest).map((r) => r.name), ['agra']);
+
+  /* A canton reader keeps Switzerland. */
+  const swiss = buildDigest(markets, { region: 'zurich', locale: 'de', now });
+  assert.equal(swiss.country, 'CH');
+  assert.ok(!away(swiss).some((r) => r.name === 'agra'));
+});

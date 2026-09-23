@@ -825,6 +825,8 @@ export interface DigestIssue {
   leadInRegion: boolean;
   own: DigestLine[];
   elsewhere: DigestLine[];
+  /** The reader's country, which the "elsewhere" block is drawn from. */
+  country?: 'CH' | 'DE';
   total: number;
   more: { href: string; count: number; scope?: string };
 }
@@ -855,11 +857,19 @@ interface DigestCopy {
   why: string;
 }
 
+/* "in der Schweiz", "en Allemagne": what `{country}` becomes in the copy below. */
+const IN_COUNTRY: Record<Locale, Record<'CH' | 'DE', string>> = {
+  de: { CH: 'in der Schweiz', DE: 'in Deutschland' },
+  fr: { CH: 'en Suisse', DE: 'en Allemagne' },
+  it: { CH: 'in Svizzera', DE: 'in Germania' },
+  en: { CH: 'in Switzerland', DE: 'in Germany' },
+};
+
 const DIGEST: Record<Locale, DigestCopy> = {
   de: {
     subject: 'Flohmärkte am Wochenende — {dates}',
     subjectScope: 'Flohmärkte {scope} — {dates}',
-    preheaderScope: '{own} {scope}, {rest} anderswo in der Schweiz.',
+    preheaderScope: '{own} {scope}, {rest} anderswo {country}.',
     preheaderNone: 'Nichts {scope} an diesem Wochenende — aber {rest} anderswo.',
     preheaderCountry: 'Alle Flohmärkte des Wochenendes, mit den Absagen.',
     headline: 'Dieses Wochenende',
@@ -867,7 +877,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     countOne: '{total} Flohmarkt',
     countMany: '{total} Flohmärkte',
     inScope: '{scope}',
-    elsewhere: 'Anderswo in der Schweiz',
+    elsewhere: 'Anderswo {country}',
     nothingHere: 'Hier ist an diesem Wochenende nichts angekündigt.',
     cancelled: 'Abgesagt',
     more: 'Alle {count} Märkte ansehen',
@@ -878,7 +888,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
   fr: {
     subject: 'Brocantes ce week-end — {dates}',
     subjectScope: 'Brocantes {scope} — {dates}',
-    preheaderScope: '{own} {scope}, {rest} ailleurs en Suisse.',
+    preheaderScope: '{own} {scope}, {rest} ailleurs {country}.',
     preheaderNone: 'Rien {scope} ce week-end — mais {rest} ailleurs.',
     preheaderCountry: 'Toutes les brocantes du week-end, annulations comprises.',
     headline: 'Ce week-end',
@@ -886,7 +896,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     countOne: '{total} brocante',
     countMany: '{total} brocantes',
     inScope: '{scope}',
-    elsewhere: 'Ailleurs en Suisse',
+    elsewhere: 'Ailleurs {country}',
     nothingHere: "Rien n'est annoncé ici ce week-end.",
     cancelled: 'Annulée',
     more: 'Voir les {count} brocantes',
@@ -897,7 +907,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
   it: {
     subject: 'Mercatini questo fine settimana — {dates}',
     subjectScope: 'Mercatini {scope} — {dates}',
-    preheaderScope: '{own} {scope}, {rest} altrove in Svizzera.',
+    preheaderScope: '{own} {scope}, {rest} altrove {country}.',
     preheaderNone: 'Niente {scope} questo fine settimana — ma {rest} altrove.',
     preheaderCountry: 'Tutti i mercatini del fine settimana, cancellazioni incluse.',
     headline: 'Questo fine settimana',
@@ -905,7 +915,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     countOne: '{total} mercatino',
     countMany: '{total} mercatini',
     inScope: '{scope}',
-    elsewhere: 'Altrove in Svizzera',
+    elsewhere: 'Altrove {country}',
     nothingHere: 'Qui non è annunciato nulla per questo fine settimana.',
     cancelled: 'Annullato',
     more: 'Vedere tutti i {count} mercatini',
@@ -916,7 +926,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
   en: {
     subject: 'Flea markets this weekend — {dates}',
     subjectScope: 'Flea markets {scope} — {dates}',
-    preheaderScope: '{own} {scope}, {rest} elsewhere in Switzerland.',
+    preheaderScope: '{own} {scope}, {rest} elsewhere {country}.',
     preheaderNone: 'Nothing {scope} this weekend — but {rest} elsewhere.',
     preheaderCountry: 'Every flea market on this weekend, cancellations included.',
     headline: 'This weekend',
@@ -924,7 +934,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     countOne: '{total} flea market',
     countMany: '{total} flea markets',
     inScope: '{scope}',
-    elsewhere: 'Elsewhere in Switzerland',
+    elsewhere: 'Elsewhere {country}',
     nothingHere: 'Nothing is announced here this weekend.',
     cancelled: 'Cancelled',
     more: 'See all {count} markets',
@@ -1106,7 +1116,13 @@ const daysHtml = (locale: Locale, lines: DigestLine[], copy: DigestCopy, leadPat
  * that does not load is worse than one that was never promised.
  */
 export function digestMail(locale: Locale, issue: DigestIssue, token: string): Omit<Mail, 'to'> {
-  const copy = DIGEST[locale] ?? DIGEST.de;
+  const base = DIGEST[locale] ?? DIGEST.de;
+  const inCountry = IN_COUNTRY[locale]?.[issue.country ?? 'CH'] ?? '';
+  const copy: DigestCopy = {
+    ...base,
+    elsewhere: base.elsewhere.replace('{country}', inCountry),
+    preheaderScope: base.preheaderScope.replace('{country}', inCountry),
+  };
   const url = unsubscribeUrl(token);
   const dates = range(locale, issue.from, issue.to);
   const scope = issue.scope ?? '';

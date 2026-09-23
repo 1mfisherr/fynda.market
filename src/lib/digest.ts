@@ -17,7 +17,7 @@
 
 import { weekendBounds } from './date-window.ts';
 import { datedRows, weekendLead, type Dated } from './lists.ts';
-import { cityPath, isCityState, marketPath, regionPath, homePath, nearbyPath, type Locale } from './i18n.ts';
+import { cityPath, isCityState, marketPath, regionPath, homePath, nearbyPath, type CountryCode, type Locale } from './i18n.ts';
 import { LINES, BADGED_KINDS } from './vocabulary.ts';
 import { t } from './strings.ts';
 import { thumbUrl } from './images.ts';
@@ -111,6 +111,12 @@ export interface Digest {
   own: DigestRow[];
   /** A sample of the rest of the country, at most one market per town per day. */
   elsewhere: DigestRow[];
+  /**
+   * The subscriber's country, where their place tells us — what "elsewhere"
+   * is drawn from and what the mail calls it. Absent for a whole-list
+   * subscription, which has no elsewhere block.
+   */
+  country?: CountryCode;
   /** Markets on this weekend anywhere, before anything was cut. */
   total: number;
   /**
@@ -186,8 +192,20 @@ export function buildDigest(
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
   const floor = today > start ? today : start;
 
+  /*
+   * Their country, from their place: the market nearest their point, or any
+   * market in their canton. Without it a Hamburg reader's "elsewhere" was
+   * Zürich and Bern under the heading "Anderswo in der Schweiz" (2026-09-23).
+   */
+  const wantedRegion = region?.trim().toLowerCase() ?? '';
+  const nearest = near
+    ? markets.reduce<Market | undefined>((best, m) =>
+        !best || distanceKm(near.lat, near.lng, m.lat, m.lng) < distanceKm(near.lat, near.lng, best.lat, best.lng) ? m : best, undefined)
+    : wantedRegion ? markets.find((m) => m.regionSlug === wantedRegion) : undefined;
+  const country = nearest?.countryCode;
+
   const weekend = datedRows(markets).filter(
-    (row) => row.next.date >= floor && row.next.date <= end
+    (row) => row.next.date >= floor && row.next.date <= end && (!country || row.countryCode === country)
   );
 
   /*
@@ -197,7 +215,7 @@ export function buildDigest(
    * coordinates against the subscriber's, which is why `geo.ts` holds the
    * distance formula the radius view also uses.
    */
-  const wanted = region?.trim().toLowerCase() ?? '';
+  const wanted = wantedRegion;
   const isTheirs = near
     ? (row: Dated) => distanceKm(near.lat, near.lng, row.lat, row.lng) <= near.km
     : (row: Dated) => wanted !== '' && row.regionSlug === wanted;
@@ -288,6 +306,7 @@ export function buildDigest(
     leadInRegion,
     own,
     elsewhere,
+    country,
     total: new Set(weekend.map((row) => row.slug)).size,
     more,
   };
