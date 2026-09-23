@@ -180,7 +180,7 @@ const jsonLd = {
   ].map((step, i) => ({ '@type': 'ListItem', position: i + 1, ...step })),
 };
 ---
-<Page locale={locale} alternates={alternates} country={markets[0].countryCode} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={description} analytics={{ city: stadt, region: regionSlug }}>
+<Page locale={locale} alternates={alternates} country={markets[0].countryCode} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={description} analytics={{ city: stadt, region: regionSlug }} footerSignup={false}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
@@ -217,6 +217,11 @@ const jsonLd = {
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
 
+  {/* Straight after the markets that have a date, while people are still in
+      the list. At the foot of the page it sat behind every undated market and
+      almost nobody reached it (2026-09-23). */}
+  <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} anchors /></div>
+
   {undated.length > 0 && (
     <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
       <div class="gutter">
@@ -251,7 +256,6 @@ const jsonLd = {
 
   {hasBadge && <TypeLegend locale={locale} />}
 
-  <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} /></div>
 </Page>
 
 <style>

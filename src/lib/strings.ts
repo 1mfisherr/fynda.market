@@ -291,6 +291,17 @@ export interface Strings {
   /** The signup block's body when the page knows where it is about. */
   subscribeBodyScope: (scope: string) => string;
   /**
+   * The signup card's heading. With a town it names the town — the page already
+   * knows it, and "the weekend around Basel" is the thing being offered. A canton
+   * page passes nothing: a bare canton name wants a different preposition per
+   * canton in every language (see `subscribeScopeRegion`).
+   */
+  subscribeTitle: (town?: string) => string;
+  /** The card's button. The footer and the newsletter page keep the form's own verb. */
+  subscribeSend: string;
+  /** The body where the card carries the region picker instead of a place. */
+  subscribeBodyPick: string;
+  /**
    * The picker's label, where the page cannot know.
    *
    * "Region", not "Kanton" — and the options below it are bare names rather
@@ -542,9 +553,12 @@ const de: Strings = {
   scopeRadius: (km, city) => `im Umkreis von ${km} km um ${city}`,
   nearbyHeading: (km) => `Im Umkreis von ${km} km`,
   nearbyLede: (city) => `Die nächsten Termine in den Orten um ${city}.`,
-  subscribeBodyScope: (scope) => `Neue Termine und Absagen ${scope}, jeden Freitagmorgen.`,
+  subscribeBodyScope: (scope) => `Eine E-Mail am Freitagmorgen: die Märkte am Wochenende ${scope} – und welche abgesagt wurden.`,
+  subscribeTitle: (town) => (town ? `Das Wochenende rund um ${town}, im Postfach` : 'Das Wochenende in deiner Nähe, im Postfach'),
+  subscribeSend: 'Schick sie mir',
+  subscribeBodyPick: 'Eine E-Mail am Freitagmorgen: die Märkte am Wochenende in der Region, die du unten wählst – und welche abgesagt wurden.',
   subscribeRegionLabel: 'Region',
-  subscribeAnywhere: 'Überall in der Schweiz',
+  subscribeAnywhere: 'Überall',
   newsletterTitle: 'Newsletter',
   newsletterBody: 'Jeden Freitag: was am Wochenende in deiner Nähe läuft.',
   newsletterAction: 'Newsletter abonnieren',
@@ -743,9 +757,12 @@ const en: Strings = {
   scopeRadius: (km, city) => `within ${km} km of ${city}`,
   nearbyHeading: (km) => `Within ${km} km`,
   nearbyLede: (city) => `The next dates in the towns around ${city}.`,
-  subscribeBodyScope: (scope) => `New dates and cancellations ${scope}, every Friday morning.`,
+  subscribeBodyScope: (scope) => `One email on Friday morning: the weekend's markets ${scope}, and any that were called off.`,
+  subscribeTitle: (town) => (town ? `The weekend around ${town}, in your inbox` : 'The weekend near you, in your inbox'),
+  subscribeSend: 'Send it to me',
+  subscribeBodyPick: "One email on Friday morning: the weekend's markets in the region you pick below, and any that were called off.",
   subscribeRegionLabel: 'Region',
-  subscribeAnywhere: 'Anywhere in Switzerland',
+  subscribeAnywhere: 'Anywhere',
   newsletterTitle: 'Newsletter',
   newsletterBody: "Every Friday: what's on this weekend near you.",
   newsletterAction: 'Subscribe',
@@ -950,9 +967,12 @@ const fr: Strings = {
   scopeRadius: (km, city) => `dans un rayon de ${km} km autour de ${city}`,
   nearbyHeading: (km) => `Dans un rayon de ${km} km`,
   nearbyLede: (city) => `Les prochaines dates dans les localités autour de ${city}.`,
-  subscribeBodyScope: (scope) => `Nouvelles dates et annulations ${scope}, chaque vendredi matin.`,
+  subscribeBodyScope: (scope) => `Un e-mail le vendredi matin : les brocantes du week-end ${scope}, et celles qui ont été annulées.`,
+  subscribeTitle: (town) => (town ? `Le week-end autour de ${town}, dans votre boîte mail` : 'Le week-end près de chez vous, dans votre boîte mail'),
+  subscribeSend: 'Je veux le recevoir',
+  subscribeBodyPick: 'Un e-mail le vendredi matin : les brocantes du week-end dans la région choisie ci-dessous, et celles qui ont été annulées.',
   subscribeRegionLabel: 'Région',
-  subscribeAnywhere: 'Partout en Suisse',
+  subscribeAnywhere: 'Partout',
   newsletterTitle: 'Newsletter',
   newsletterBody: 'Chaque vendredi : ce qui se passe ce week-end près de chez vous.',
   newsletterAction: "S'abonner à la newsletter",
@@ -1151,9 +1171,12 @@ const it: Strings = {
   scopeRadius: (km, city) => `entro ${km} km da ${city}`,
   nearbyHeading: (km) => `Entro ${km} km`,
   nearbyLede: (city) => `Le prossime date nelle località intorno a ${city}.`,
-  subscribeBodyScope: (scope) => `Nuove date e cancellazioni ${scope}, ogni venerdì mattina.`,
+  subscribeBodyScope: (scope) => `Una e-mail il venerdì mattina: i mercatini del fine settimana ${scope}, e quelli annullati.`,
+  subscribeTitle: (town) => (town ? `Il fine settimana intorno a ${town}, nella tua casella` : 'Il fine settimana vicino a te, nella tua casella'),
+  subscribeSend: 'Mandamela',
+  subscribeBodyPick: 'Una e-mail il venerdì mattina: i mercatini del fine settimana nella regione che scegli qui sotto, e quelli annullati.',
   subscribeRegionLabel: 'Regione',
-  subscribeAnywhere: 'Ovunque in Svizzera',
+  subscribeAnywhere: 'Ovunque',
   newsletterTitle: 'Newsletter',
   newsletterBody: "Ogni venerdì: cosa c'è questo fine settimana vicino a te.",
   newsletterAction: 'Iscriversi alla newsletter',

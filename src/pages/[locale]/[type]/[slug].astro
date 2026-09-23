@@ -302,6 +302,7 @@ const title = firstFitting([
     ? `${kind.full[locale]}, ${market.city}. ${s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName)}`
     : s.marketNoDateDescription(kind.full[locale], market.city, market.venueName, market.recurrenceText?.replace(/\.\s*$/, ''))}
   analytics={{ market: market.id, city: market.citySlug, region: market.regionSlug, next: next?.date }}
+  footerSignup={false}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
@@ -520,6 +521,12 @@ const title = firstFitting([
         )}
       </Section>
 
+      {/* The visitor's ask, straight after the dates: this is the page where
+          somebody has shown they care about one market in one town, so the town
+          is known and never asked for. Above the organiser line and the claim
+          card, which are addressed to someone else. */}
+      <div class="gutter"><SubscribeForm locale={locale} near={{ slug: market.citySlug, name: market.city }} anchors /></div>
+
       {/* Who runs it. Held for 94% of markets and, until now, printed only
           into the structured data — a fact we had, that a person could not
           read. It sits above the claim card on purpose: naming the organiser
@@ -543,13 +550,6 @@ const title = firstFitting([
         <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="primary" /></div>
       )}
 
-      {/* The market page had no newsletter ask at all — only the claim card,
-          which is addressed to an organiser rather than to the visitor. This is
-          the page where somebody has already shown they care about one
-          particular Saturday in one particular canton, so the canton is known
-          and never asked for. On every market page, not only the unclaimed
-          ones: the visitor is the customer either way. */}
-      <div class="gutter"><SubscribeForm locale={locale} near={{ slug: market.citySlug, name: market.city }} /></div>
 
       <Section level="sub" title={s.wasItDifferent} id="report">
         <p class="gutter meta">{s.reportIntro}</p>

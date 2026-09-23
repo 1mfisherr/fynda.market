@@ -21,8 +21,15 @@ interface Props {
   locale?: Locale;
   /** The same page in the other languages — the switcher at the foot. */
   alternates?: { locale: Locale; path: string }[];
+  /**
+   * False on a page that carries its own signup card. Two identical forms on
+   * one page is one too many, and the card is the one placed where people
+   * read; the footer keeps its Newsletter link. The card then owns the
+   * `#sub-*` ids (its `anchors` prop).
+   */
+  signup?: boolean;
 }
-const { locale = DEFAULT_LOCALE, alternates = [] } = Astro.props;
+const { locale = DEFAULT_LOCALE, alternates = [], signup = true } = Astro.props;
 const s = t(locale);
 const year = new Date().getFullYear();
 
@@ -58,9 +65,11 @@ const legal: { href: string; label: string; cookies?: boolean }[] = [
     <p class="meta">{s.footerTagline}</p>
   </div>
 
-  <div class="signup gutter">
-    <SubscribeForm locale={locale} options={cantons} variant="footer" anchors />
-  </div>
+  {signup && (
+    <div class="signup gutter">
+      <SubscribeForm locale={locale} options={cantons} variant="footer" anchors />
+    </div>
+  )}
 
   <div class="cols gutter">
     <nav aria-labelledby="foot-fynda">

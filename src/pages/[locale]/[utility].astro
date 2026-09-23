@@ -110,6 +110,7 @@ const savedCopy = saved && {
   title={copy.title}
   description={copy.description}
   indexable={INDEXED_UTILITY.includes(key)}
+  footerSignup={key !== 'newsletter'}
 >
   {form && (
     <>
@@ -138,7 +139,7 @@ const savedCopy = saved && {
           happens to be the page somebody arrives at on purpose, so it is the
           one that draws the canton picker instead of carrying a canton. */}
       {key === 'newsletter' && (
-        <div class="gutter"><SubscribeForm locale={locale} options={cantons} /></div>
+        <div class="gutter"><SubscribeForm locale={locale} options={cantons} anchors /></div>
       )}
 
       {/* Above the prose, not below it. On a phone the first field used to sit

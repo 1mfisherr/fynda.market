@@ -77,7 +77,12 @@ const scope = near
     ? s.subscribeScopeRegion(region.name)
     : null;
 
-const body = scope ? s.subscribeBodyScope(scope) : s.newsletterBody;
+const body = scope ? s.subscribeBodyScope(scope) : options.length > 0 ? s.subscribeBodyPick : s.newsletterBody;
+
+/* The card says what it offers in its heading; the word "Newsletter" steps down
+   to a label above it. Nobody signed up to a block headed "Newsletter" (378
+   views, 0 taps, 2026-09-23). */
+const title = s.subscribeTitle(near?.name);
 
 /* The picker is drawn only where the page cannot answer the question itself. */
 const picker = !scope && options.length > 0;
@@ -89,7 +94,8 @@ const picker = !scope && options.length > 0;
 const id = `sub-${variant}`;
 ---
 <section class={`subscribe subscribe--${variant}`} data-subscribe-block>
-  {variant === 'card' && <h2>{s.newsletterTitle}</h2>}
+  {variant === 'card' && <p class="eyebrow">{s.newsletterTitle}</p>}
+  {variant === 'card' && <h2>{title}</h2>}
   <p class="meta body">{body}</p>
 
   <form
@@ -149,7 +155,7 @@ const id = `sub-${variant}`;
     <Honeypot id={id} />
 
     <Button type="submit" variant={variant === 'card' ? 'primary' : 'secondary'} block>
-      {copy.submit}
+      {variant === 'card' ? s.subscribeSend : copy.submit}
     </Button>
   </form>
 
@@ -175,6 +181,7 @@ const id = `sub-${variant}`;
     background: var(--color-paper);
   }
 
+  .subscribe .eyebrow { margin: 0 0 calc(var(--space-2) * -1); }
   .subscribe h2 { margin: 0; }
   .subscribe .body { color: var(--color-grey); }
 

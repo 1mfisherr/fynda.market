@@ -52,7 +52,8 @@ Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm 
 5. **The decision strip:** rhythm, upcoming-date count (cancelled dates not counted), distance once the town picker stores coordinates; each segment only when it exists. Under it **the check stamp, the one line that never disappears**, in one grammar: "Checked 19 Sep" · "Confirmed by the organiser, 19 Sep" (accent) · "Not confirmed yet".
 6. **Directions, primary** (55% of outbound clicks) · **Organiser website, secondary** (45%).
 7. All upcoming dates — visible content, one `Event` in markup. A row carries a word only when it is an exception: Today, Cancelled, Provisional, Not confirmed yet, Confirmed by the organiser; an ordinary checked date says nothing, the stamp above said it (2026-09-19). A date in another year shows the year.
-8. Address, times.
+8. Address, times.  
+8b. **The signup card**, straight after the dates and above the organiser line and the claim card: *The weekend around Basel, in your inbox* (`design/newsletter.html`, Delfim 2026-09-23).
 9. **"Is this your market?"** — on every unclaimed market, after the dates: claim it to confirm dates, add a photo or cancel a day; free, no account needed (Delfim, 2026-09-16). A claimed market shows the organiser stamp and one owned line — organiser · ~80 stalls · outdoors · runs in rain — each part only when the fact exists.
 10. **"Something not right?"** — the report card, same name as the report page and the footer link ("Report a problem").
 
@@ -69,13 +70,14 @@ The biggest, best-converting segment: `flohmarkt luzern 2026` was v1's best quer
 5. **A cancelled market stays in the list**, struck through, with the reason.
 5b. **A market with no date yet stays too** — after the day groups, under *No date yet* with its rhythm line, shown under All and hidden by any other When. The heading counts every market the town has. Hiding them put "Die 0 Flohmärkte" over towns and whole cantons that have markets (2026-09-20).
 6. **Within 25 km** (Delfim): on a town with fewer than three upcoming dates, up to five rows from towns within 25 km with their distance, under the same day headers, as `<aside data-outside-floor>` so they never clear this page's floor. 28 of 57 towns carry it.
-7. Short town paragraph, real facts only · type legend only when a badged kind is on the page · newsletter after the list.
+6b. **The signup card straight after the dated markets**, before *No date yet* — at the foot it sat 80% down behind every undated market and 378 views brought 0 taps (2026-09-23). One form per page: a page with a card drops the footer's form and keeps its Newsletter link (`Page footerSignup={false}`).
+7. Short town paragraph, real facts only · type legend only when a badged kind is on the page.
 
 Not here: any `Event` markup, a nearby-town link list, category sub-pages. Measured against v1's 25.5 clicks/page.
 
 ## Region — `/{locale}/{country}/{canton}/[region]/`
 
-Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland the best-earning type per page (0.5 clicks/page, 7 days to 2026-09-18). **Towns first, with counts**, then the When control and every market in the canton, one row each — dated ones first, the rest under *No date yet* (as on the city page). No density gate — the content floor measures the rendered page; Schaffhausen with one market clears it. The region template for every country is decided with Germany on real counts (`PLAN.md` step 6).
+Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland the best-earning type per page (0.5 clicks/page, 7 days to 2026-09-18). **Towns first, with counts**, then the When control and every market in the canton, one row each — dated ones first, then the signup card, then the rest under *No date yet* (as on the city page). No density gate — the content floor measures the rendered page; Schaffhausen with one market clears it. The region template for every country is decided with Germany on real counts (`PLAN.md` step 6).
 
 ## Near me — `/{locale}/{nearby}/`
 

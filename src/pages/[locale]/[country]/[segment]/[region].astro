@@ -118,7 +118,7 @@ const jsonLd = {
   ],
 };
 ---
-<Page locale={locale} alternates={alternates} country={code} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={s.regionDescription(markets.length, cities.length, regionName, code, soonest ? { name: soonest.name, city: soonest.city, date: formatDateShort(soonest.next!.date, locale) } : undefined)} analytics={{ region }}>
+<Page locale={locale} alternates={alternates} country={code} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={s.regionDescription(markets.length, cities.length, regionName, code, soonest ? { name: soonest.name, city: soonest.city, date: formatDateShort(soonest.next!.date, locale) } : undefined)} analytics={{ region }} footerSignup={false}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <section class="page-head gutter">
@@ -152,6 +152,9 @@ const jsonLd = {
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
 
+  {/* After the dated markets, not at the foot — see the town page. */}
+  <div class="gutter"><SubscribeForm locale={locale} region={{ slug: region, name: regionName }} anchors /></div>
+
   {undated.length > 0 && (
     <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
       <div class="gutter">
@@ -162,7 +165,6 @@ const jsonLd = {
 
   <TypeLegend locale={locale} />
 
-  <div class="gutter"><SubscribeForm locale={locale} region={{ slug: region, name: regionName }} /></div>
 </Page>
 
 <script>
