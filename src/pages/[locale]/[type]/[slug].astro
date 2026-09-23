@@ -648,7 +648,7 @@ const title = firstFitting([
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-size: var(--text-micro);
     font-weight: var(--weight-black);
     text-transform: uppercase;
@@ -732,7 +732,7 @@ const title = firstFitting([
     color: var(--color-quiet);
     font-size: var(--text-micro);
   }
-  .stamp.organiser { color: var(--color-accent); font-weight: var(--weight-bold); }
+  .stamp.organiser { color: var(--color-accent-text); font-weight: var(--weight-bold); }
 
   .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
 
@@ -837,7 +837,7 @@ const title = firstFitting([
   /* The accent marks the date and whether it is happening — this is the second
      of those, and the only row in the list that earns it. */
   .dates li > em.is-today,
-  .dates li > em.organiser { color: var(--color-accent); }
+  .dates li > em.organiser { color: var(--color-accent-text); }
   .no-dates { display: flex; flex-direction: column; gap: var(--space-half); max-width: var(--measure); }
   .no-dates > strong { font-weight: var(--weight-bold); }
   .no-dates > span { color: var(--color-grey); }

@@ -355,7 +355,7 @@ h1 {
    say what it means, which is the rule in BRAND.md. The border repeats the
    message rather than replacing it: colour is never the only signal. */
 .field-error {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-size: var(--text-micro);
   font-weight: var(--weight-bold);
 }

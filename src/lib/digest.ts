@@ -33,7 +33,7 @@ import type { Market } from './types';
  * and have to be changed with it.
  */
 const LINE_HEX: Record<string, string> = {
-  '--line-floh': '#FF4A2B',
+  '--line-floh': '#D63A1F',
   '--line-halle': '#3D5AFE',
   '--line-nacht': '#7C3AED',
   '--line-kinder': '#F5A524',

@@ -14,6 +14,10 @@
   /* ---- colour ---------------------------------------------------------- */
   --color-accent: #FF4A2B;
   --color-accent-hover: #E03B1E;
+  /* The accent where it is small text. #FF4A2B is 3.35:1 on white, which
+     carries a 60px date and fails a 13px one; this is 4.7:1. Big dates and
+     fills keep the bright one (Delfim, UI audit 2026-09-23). */
+  --color-accent-text: #D63A1F;
 
   --color-ink: #111110;
   --color-grey: #6E6C68;
@@ -34,7 +38,7 @@
   --color-status-unverified: var(--color-quiet);
 
   /* line colours — market type, like a transit map */
-  --line-floh: #FF4A2B;
+  --line-floh: var(--color-accent-text);   /* white on it: 4.7:1 */
   --line-halle: #3D5AFE;
   --line-nacht: #7C3AED;
   --line-kinder: #F5A524;

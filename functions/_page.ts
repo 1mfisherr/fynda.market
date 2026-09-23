@@ -37,7 +37,7 @@ export function page(
   h1 { font-size: 26px; line-height: 1.2; letter-spacing: -0.03em; font-weight: 800; margin: 0 0 12px; }
   p { margin: 0 0 16px; }
   .meta { color: #6b6b70; font-size: 14px; }
-  .status { color: #FF4A2B; font-weight: 500; }
+  .status { color: #D63A1F; font-weight: 500; }
   .saved { border-left: 4px solid #FF4A2B; padding: 14px 18px; margin: 0 0 24px; background: #F5F4F2; border-radius: 0 6px 6px 0; }
   .saved h2 { margin: 0 0 4px; color: #FF4A2B; }
   .saved p { margin: 0; color: #6E6C68; }
@@ -60,7 +60,7 @@ export function page(
   .date { font-size: clamp(22px, calc(19.5px + 0.65vw), 29px); font-weight: 700; color: #FF4A2B; letter-spacing: -0.015em; }
   .quiet { color: #6E6A64; font-size: 13px; font-weight: 500; }
   .hint { color: #6E6A64; font-size: 13px; line-height: 1.45; margin: 6px 0 0; }
-  .btn.accent { background: #FF4A2B; border-color: #FF4A2B; font-weight: 700; }
+  .btn.accent { background: #D63A1F; border-color: #D63A1F; font-weight: 700; }
   .btn.quiet { background: #fff; color: #6E6C68; border-color: #E8E6E2; font-weight: 500; }
   .btn.inline { display: inline-block; width: auto; padding: 12px 22px; }
   .textlink { display: block; text-align: center; margin: 12px 0 0; font-weight: 500; color: #111110; }
@@ -68,7 +68,7 @@ export function page(
   .list li { padding: 14px 0; border-bottom: 1px solid #E8E6E2; }
   .list .top, .list .under { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .list .top .quiet { text-align: right; flex-shrink: 0; }
-  .list .day { font-size: 17px; font-weight: 700; color: #FF4A2B; }
+  .list .day { font-size: 17px; font-weight: 700; color: #D63A1F; }
   .list .day.off { color: #6E6A64; }
   .list .under { margin-top: 8px; flex-wrap: wrap; }
   .list .acts { display: flex; gap: 16px; font-size: 14px; font-weight: 500; }
