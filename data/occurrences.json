@@ -1,5 +1,45 @@
 [
   {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-11-22",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-12-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "agra-antikmarkt-leipzig",
+    "date": "2026-12-30",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "alpin-flohmi-bern",
     "date": "2026-10-14",
     "status": "confirmed"
@@ -35,8 +75,98 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "altstadtflohmarkt-hannover",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "altstadtflohmarkt-hannover",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "altstadtflohmarkt-hannover",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "altstadtflohmarkt-hannover",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "altstadtflohmarkt-hannover",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
     "marketSlug": "antik-flohmarkt-fehraltorf",
     "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "antik-und-troedelmarkt-messe-halle-saale",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "antik-und-troedelmarkt-messe-halle-saale",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "antik-und-troedelmarkt-messe-halle-saale",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "antik-und-troedelmarkt-messe-halle-saale",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-22",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "auer-dult-muenchen",
+    "date": "2026-10-25",
     "status": "confirmed"
   },
   {
@@ -73,6 +203,166 @@
     "marketSlug": "bergflohmarkt-chur",
     "date": "2026-11-14",
     "status": "confirmed"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-15",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-22",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-11-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2026-12-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2027-01-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2027-01-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "date": "2027-01-17",
+    "status": "unverified"
   },
   {
     "marketSlug": "brocante-de-carouge-geneve",
@@ -180,6 +470,56 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "elbeflohmarkt-dresden",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "enter-flohmarkt-derendingen",
     "date": "2026-10-10",
     "status": "confirmed"
@@ -255,6 +595,256 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-bauernmarkt-weberplatz-potsdam",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "floh-und-troedelmarkt-buergerpark-saarbruecken",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "floh-und-troedelmarkt-buergerpark-saarbruecken",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-09-23",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-09-30",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-03",
+    "status": "cancelled"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-23",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2026-12-30",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2027-01-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2027-01-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
+    "date": "2027-01-20",
+    "status": "unverified"
+  },
+  {
     "marketSlug": "flohmaert-zueg-ond-sache-beromuenster",
     "date": "2026-09-26",
     "status": "confirmed"
@@ -288,6 +878,366 @@
     "marketSlug": "flohmarkt-alte-holzbruecke-olten",
     "date": "2026-10-31",
     "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-09-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-10-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-10-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-10-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-10-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-11-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-11-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-11-15",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-11-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-12-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-12-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-12-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2026-12-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2027-01-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2027-01-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
+    "date": "2027-01-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-cc-landau",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-09-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-10-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-10-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-10-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-10-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-11-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-11-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-11-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-12-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-12-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-12-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2026-12-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2027-01-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2027-01-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-mauerpark-berlin",
+    "date": "2027-01-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-09-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-11-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2026-12-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2027-01-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2027-01-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
+    "date": "2027-01-17",
+    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-am-see-wollishofen-zuerich",
@@ -362,6 +1312,21 @@
   {
     "marketSlug": "flohmarkt-chilbiplatz-duebendorf",
     "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-citti-park-luebeck",
+    "date": "2026-10-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-citti-park-luebeck",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-citti-park-luebeck",
+    "date": "2026-12-06",
     "status": "confirmed"
   },
   {
@@ -460,6 +1425,21 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-ekz-schoene-aussicht-weissenfels",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-ekz-schoene-aussicht-weissenfels",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-ekz-schoene-aussicht-weissenfels",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-emmen",
     "date": "2026-09-26",
     "status": "confirmed"
@@ -482,6 +1462,26 @@
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-globus-jena-isserstedt",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-globus-jena-isserstedt",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-globus-jena-isserstedt",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-globus-jena-isserstedt",
+    "date": "2026-12-12",
     "status": "confirmed"
   },
   {
@@ -520,6 +1520,121 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
+    "date": "2026-12-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-10-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-10-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-12-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hansa-carre-bremen",
+    "date": "2026-12-27",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-hofmattplatz-kriens",
     "date": "2026-10-03",
     "status": "confirmed"
@@ -537,6 +1652,11 @@
   {
     "marketSlug": "flohmarkt-hofmattplatz-kriens",
     "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-innenstadt-kiel",
+    "date": "2026-09-27",
     "status": "confirmed"
   },
   {
@@ -625,8 +1745,103 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-karlsplatz-stuttgart",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
     "marketSlug": "flohmarkt-kloten",
     "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-koelner-altstadt-koeln",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-koelner-altstadt-koeln",
+    "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-koelner-altstadt-koeln",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-koelner-altstadt-koeln",
+    "date": "2026-10-25",
     "status": "confirmed"
   },
   {
@@ -637,6 +1852,26 @@
   {
     "marketSlug": "flohmarkt-malters",
     "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-markt-und-eventhalle-wismar",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-markt-und-eventhalle-wismar",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-markt-und-eventhalle-wismar",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-markt-und-eventhalle-wismar",
+    "date": "2026-11-01",
     "status": "confirmed"
   },
   {
@@ -658,6 +1893,156 @@
     "marketSlug": "flohmarkt-oetwil-am-see",
     "date": "2026-10-31",
     "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-09-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-23",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-30",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-12-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-12-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-12-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2027-01-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2027-01-15",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-olympiapark-muenchen",
+    "date": "2027-01-16",
+    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-petersplatz-basel",
@@ -725,6 +2110,36 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-rheinaue-bonn",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-riem-muenchen",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-riem-muenchen",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-riem-muenchen",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-riem-muenchen",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-riem-muenchen",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-rueticenter-pratteln",
     "date": "2026-10-04",
     "status": "confirmed"
@@ -737,6 +2152,86 @@
   {
     "marketSlug": "flohmarkt-sarnen-center",
     "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-09-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-10-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-10-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-10-30",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
+    "date": "2026-11-28",
     "status": "confirmed"
   },
   {
@@ -802,6 +2297,16 @@
   {
     "marketSlug": "flohmarkt-theaterplatz-baden",
     "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-ulm-messe",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-ulm-messe",
+    "date": "2026-11-08",
     "status": "confirmed"
   },
   {
@@ -925,6 +2430,36 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmaxx-beetzsee-center-brandenburg-an-der-havel",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmaxx-beetzsee-center-brandenburg-an-der-havel",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmaxx-beetzsee-center-brandenburg-an-der-havel",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmaxx-beetzsee-center-brandenburg-an-der-havel",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmaxx-stadthafen-schwerin",
+    "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmaxx-stadthafen-schwerin",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmi-am-see-bern",
     "date": "2026-10-18",
     "status": "confirmed"
@@ -945,6 +2480,71 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohschanze-hamburg",
+    "date": "2026-12-19",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flommbo-flohmarkt-altstaetten",
     "date": "2026-10-11",
     "status": "confirmed"
@@ -962,6 +2562,56 @@
   {
     "marketSlug": "flosch-schwamendingen-zuerich",
     "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+    "date": "2026-12-12",
     "status": "confirmed"
   },
   {
@@ -997,6 +2647,11 @@
   {
     "marketSlug": "gaenggali-markt-chur",
     "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "gross-flohmarkt-messplatz-karlsruhe",
+    "date": "2026-11-14",
     "status": "confirmed"
   },
   {
@@ -1065,6 +2720,16 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "jenaer-troedelmarkt-jena",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "jenaer-troedelmarkt-jena",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "kinder-flohmi-schloss-arbon",
     "date": "2026-10-24",
     "status": "confirmed"
@@ -1087,6 +2752,21 @@
   {
     "marketSlug": "kreisflohmi-zuerich",
     "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "krempelmarkt-rheinufer-mainz",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "krempelmarkt-rheinufer-mainz",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "krempelmarkt-rheinufer-mainz",
+    "date": "2026-11-07",
     "status": "confirmed"
   },
   {
@@ -1190,6 +2870,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "les-puces-du-cpo-lausanne",
+    "date": "2027-01-21",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "liesberger-flohmarkt",
     "date": "2026-11-15",
     "status": "confirmed"
@@ -1242,6 +2927,16 @@
   {
     "marketSlug": "maedelsflohmarkt-xxl-dietikon",
     "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "mannheimer-krempelmarkt-mannheim",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "mannheimer-krempelmarkt-mannheim",
+    "date": "2026-11-21",
     "status": "confirmed"
   },
   {
@@ -1410,6 +3105,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+    "date": "2027-01-20",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2026-09-26",
     "status": "confirmed"
@@ -1527,11 +3227,6 @@
   {
     "marketSlug": "marche-calabash-lausanne",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mardi",
-    "date": "2026-09-22",
     "status": "confirmed"
   },
   {
@@ -1702,6 +3397,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2027-01-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-mercredi",
+    "date": "2027-01-20",
     "status": "confirmed"
   },
   {
@@ -1985,8 +3685,128 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "nachtflohmarkt-cottbus",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-magdeburg",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-magdeburg",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-magdeburg",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-messe-erfurt",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-messe-erfurt",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-messe-erfurt",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-09-23",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-09-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-09-30",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-15",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-22",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "date": "2026-10-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-rostock",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "night-flohmarkt-kloten",
     "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nord-flohmarkt-holstenhallen-neumuenster",
+    "date": "2026-09-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nord-flohmarkt-holstenhallen-neumuenster",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nord-flohmarkt-holstenhallen-neumuenster",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nord-flohmarkt-holstenhallen-neumuenster",
+    "date": "2027-01-10",
     "status": "confirmed"
   },
   {
@@ -1997,6 +3817,36 @@
   {
     "marketSlug": "nostalgie-flohmarkt-worb-bern",
     "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nowkoelln-flowmarkt-berlin",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nowkoelln-flowmarkt-berlin",
+    "date": "2026-10-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nowkoelln-flowmarkt-berlin",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nowkoelln-flowmarkt-berlin",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nuernberg-nightmarket",
+    "date": "2026-10-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nuernberg-nightmarket",
+    "date": "2026-11-13",
     "status": "confirmed"
   },
   {
@@ -2037,6 +3887,46 @@
   {
     "marketSlug": "quartierflohmarkt-hirzbrunnen",
     "date": "2026-10-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-09-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-10-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-11-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-12-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-12-05",
     "status": "confirmed"
   },
   {
@@ -2160,6 +4050,441 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-100-5-arena-aachen",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-10-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2026-12-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-alte-messe-leipzig",
+    "date": "2026-10-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-alte-messe-leipzig",
+    "date": "2026-11-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-barmen-rathaus-wuppertal",
+    "date": "2026-10-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-barmen-rathaus-wuppertal",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-barmen-rathaus-wuppertal",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-globus-saarbruecken-guedingen",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-globus-saarbruecken-guedingen",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-globus-saarbruecken-guedingen",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-globus-saarbruecken-guedingen",
+    "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-ludwigshafen",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-ludwigshafen",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-ruhr-park-bochum",
+    "date": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-ruhr-park-bochum",
+    "date": "2026-10-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-ruhr-park-bochum",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-ruhr-park-bochum",
+    "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-09-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-universitaet-dortmund",
+    "date": "2026-12-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-09-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-09-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-10-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-03",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-15",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-22",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-26",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2026-12-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2027-01-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2027-01-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "date": "2027-01-19",
+    "status": "unverified"
+  },
+  {
     "marketSlug": "vide-dressing-flon-lausanne",
     "date": "2026-10-03",
     "status": "confirmed"
@@ -2232,6 +4557,26 @@
   {
     "marketSlug": "wbz-flohmarkt-reinach",
     "date": "2026-11-02",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "xxl-flohmarkt-messe-kassel",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "xxl-flohmarkt-messe-kassel",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "xxl-flohmarkt-messe-kassel",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "xxl-flohmarkt-messe-kassel",
+    "date": "2026-12-13",
     "status": "confirmed"
   }
 ]

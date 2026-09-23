@@ -4,6 +4,30 @@
     "to": "/de/umkreis/"
   },
   {
+    "from": "/de/deutschland/bundesland/berlin/",
+    "to": "/de/deutschland/berlin/"
+  },
+  {
+    "from": "/en/germany/state/berlin/",
+    "to": "/en/germany/berlin/"
+  },
+  {
+    "from": "/de/deutschland/bundesland/hamburg/",
+    "to": "/de/deutschland/hamburg/"
+  },
+  {
+    "from": "/en/germany/state/hamburg/",
+    "to": "/en/germany/hamburg/"
+  },
+  {
+    "from": "/de/deutschland/bundesland/bremen/",
+    "to": "/de/deutschland/bremen/"
+  },
+  {
+    "from": "/en/germany/state/bremen/",
+    "to": "/en/germany/bremen/"
+  },
+  {
     "from": "/de/schweiz/freiburg/",
     "to": "/de/schweiz/fribourg/"
   },
