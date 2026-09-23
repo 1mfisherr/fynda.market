@@ -2,75 +2,73 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-23.
+Updated 2026-09-23, end of session.
 
 ---
 
 ## Now
 
-**Two countries since 2026-09-22.** Live at `fynda.market`: 277 markets — 222 Swiss in four locales, 55 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,636 are in the sitemap. Rebuilt nightly on GitHub at 23:07 and 03:07 UTC, which GitHub starts up to five hours late; ten guardrails and the tests gate every publish.
-
-Germany was researched, imported, photographed and built in one day, and published the same evening. Every German market's dates were read from the organiser's own page, which is stored as its source. Nothing about Switzerland changed.
+**Two countries since 2026-09-22.** Live at `fynda.market`: 277 markets — 222 Swiss in four locales, 55 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,630 are in the sitemap. Rebuilt nightly on GitHub at 23:07 UTC (just after midnight in Zurich) and again at 03:07, because GitHub starts scheduled jobs up to five hours late; ten guardrails and 30 tests gate every publish.
 
 | Running | State |
 |---|---|
-| **Newsletter** | Friday digest since 2026-09-11, welcome and unsubscribe in four languages, pause and monthly options, Resend delivery events in. 1 subscriber |
-| **Forms** | `/n` `/r` `/o` `/u` write rows and ping Telegram; queues are the views `open_reports`, `open_organiser_claims` |
-| **Organisers** | Live 2026-09-16, proven end to end; the page rebuilt 2026-09-21 (`PAGES.md` §Organiser page). Claim → Telegram Approve → personal link → seven-day mail with three buttons → stamp / cancellation / alert → edit page. Daily job runs as a **dry run** until `ORGANISER_SENDING=on` |
-| **Analytics** | Everything first-party (2026-09-17): page views with market/town/canton and lead time, time on page and scroll, sessions, Web Vitals, errors, 404s, towns, browser language, robots in `crawler_hits` with AI roles. Metabase: six dashboards, bots-or-people filter. ~10–30 real people a day, 85% of raw views are crawlers, two thirds from Google, 60% on a phone, ChatGPT sends a couple of visits a day. Audit 2026-09-23: the bot flag holds (25–100 real people a day since 16 Sep, 75% on a phone); our own browsers are now excluded with `?intern=1` on any page, once per device; the tab's session id is kept only with cookie consent, the daily hash groups everyone else |
-| **Backups** | Nightly 02:30 UTC, encrypted, 90 days in GitHub artifacts (`.github/workflows/backup.yml`). The private key is in `.env.local` and Delfim's password manager only |
-| **Search Console** | 7 days to 2026-09-17: 94 clicks, 7,836 impressions, position ~10; 78% of impressions on a phone. Canton pages earn most per page (Bern 7, Aargau 6 clicks); market pages with 500 impressions get 2–3. Germany: 151 impressions, 0 clicks. Titles rewritten 2026-09-15 — only two days of data since (16 Sep: 19 clicks, CTR 3.0%); **the 2026-09-27 export is the first that can judge it.** A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, **re-read 2026-10-16** SEO audit 2026-09-23: the technical side clean across all 1,669 pages; fixed the next date in every market title, the year taken from that date, city-state twins, conflicting home hreflang, 160-character descriptions, German fees shown in CHF, and `<lastmod>`. Market titles changed again, so judge them on the exports from 2026-10-04 on |
-| **Copy** | Brand line and voice settled 2026-09-19 (`BRAND.md` §Voice): every page type and every mail rewritten in four languages, the site no longer talks about itself, one stamp grammar, visitors du / vous / tu and organisers Sie / vous / tu everywhere. Market descriptions cleaned 2026-09-23: dates, stale years, hype, keyword tails and template filler out of every text (0 left on the sweep); 34 markets that had generic filler in some languages now carry one real description in all four. Left: a native speaker's pass over DE/FR/IT |
-| **Performance** | Lighthouse mobile 97–99, first paint 1.2 s, font self-hosted, 720px hero on phones |
-| **Photos** | Every market has one — 226 Swiss, 55 German (Delfim, 2026-09-22). Real ones arrive through organisers |
-| **Front door** | The home page carries one block per country — flag, name, counts, towns, regions. No country picker anywhere: six comparable sites were read live on 2026-09-22 and not one has one; they all ask for a town. The root keeps a plain redirect, and the visitor's country is never guessed — two of those six guessed wrong from a Zurich IP |
-| **Your town** | Picked in the search control, kept in browser storage, shown as a card on the home page and as a pill in the header of every other page (`PlacePill.astro`, 2026-09-22). A shortcut, not a second place-chooser |
+| **Newsletter** | Friday digest, sent (last two Fridays went out). Scheduled 02:07 UTC so it lands in the morning. The card sits after the dated markets on town, canton and market pages and says what it sends — *The weekend around Basel, in your inbox* (`design/newsletter.html`); one form per page. A town signup keeps its town, and "elsewhere" is the reader's own country. 2 subscribers. Resend **free plan**: 100 mails a day |
+| **Forms** | `/n` `/r` `/o` `/u` write rows and ping Telegram (an address's domain only); at most 5 posts an hour per connection, 3 for claims. Queues: `open_reports`, `open_organiser_claims` |
+| **Organisers** | Built end to end and proven (claim → Telegram Approve → personal link → seven-day mail → stamp / cancellation / alert → edit page). **Not started:** no welcome letter sent yet — step 1 below. The seven-day mail only goes to organisers who got the welcome or opened their page; the daily job is a dry run until `ORGANISER_SENDING=on` |
+| **Analytics** | First-party (`reference/analytics-research/build-plan.md`). Metabase stays on Delfim's PC (Delfim, 2026-09-23). The `bot_likely` view holds: 25–100 real people a day since 16 Sep, 75% on a phone, mostly from Google. `?intern=1` on any page stops a browser being counted, once per device. The tab's session id only with cookie consent. Robots keep 90 days in `crawler_hits`, then fold nightly into `crawler_daily` |
+| **Speed** | Real users, phones, p75: LCP 0.6 s, INP 86 ms, CLS 0. A market page is ~170 KB. `/_astro/*` cached a year |
+| **Backups** | Nightly 22:37 UTC, encrypted with age, 90 days in GitHub artifacts. Private key in `.env.local` and Delfim's password manager only. **Never restored yet** — step 1 |
+| **Security** | RLS on every table, no policies; the public API roles hold nothing (2026-09-23). Frame and HTTPS headers on every page, including the Functions' pages. Static files skip the Functions (`public/_routes.json`) |
+| **Search Console** | 7 days to 2026-09-17: 94 clicks, 7,836 impressions, position ~10, 78% phone; canton pages earn most per page. Market titles changed 2026-09-23 (next date, year from that date) — judge them on the exports from 2026-10-04. A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, re-read 2026-10-16 |
+| **Copy** | Voice settled (`BRAND.md` §Voice); visitors du / vous / tu, organisers Sie / vous / tu. Descriptions cleaned 2026-09-23: no dates, stale years, hype, keyword tails or template filler left. Organiser mails reread: German that reads as German in both countries (*innerhalb*, not *innert*), no country named, full sentences |
+| **Front door & place** | One block per country on the home page, flags, no country picker, no geo redirect. One town search (`TownSearch.astro`) on home and Near me; Near me groups by distance bands. The chosen town is a pill in the header |
+| **Photos** | Every market has one — 226 Swiss, 55 German. Real ones arrive through organisers |
 
-Not built: tags shown to visitors (organisers can set them since 2026-09-21; nothing renders until some are set) · country page (parked, Delfim 2026-09-22) · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
+Not built: tags shown to visitors · country page (parked) · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
 
 ---
 
 ## Next, in order
 
-**Germany live by end of November 2026** (Delfim, 2026-09-16). Ten weeks.
+1. **Delfim's desktop session** — the build side is done; these need his accounts.
+   1. **DMARC** in Cloudflare DNS, before any organiser letter: TXT `_dmarc` = `v=DMARC1; p=none; rua=mailto:contact@fynda.market`. SPF and DKIM for Resend are already right.
+   2. **Organiser welcome letters.** GitHub → Actions → *Organiser welcome* → *Run workflow* → your own address in the **third** box ("Send a preview…"), the rest empty → read it. Then again with *send* ticked: 90 go (Resend free: 100 a day). Next day once more for the last 14. "Did it leave?" is a query on `organiser_mail_sends`, not a guess.
+   3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
+   4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
+   5. **Search Console and Bing:** add the German paths.
+2. **Read, on these dates** — nothing to build until then.
+   - 2026-09-27 and 2026-10-04 Search Console exports: titles, and whether Germany earns anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page.
+   - Four weeks after the letters: organiser answer rate (`organiser_funnel`). >25% build more for organisers, 10–25% keep as a data feed, <10% stop.
+   - 2026-10-21: Near me allow rate, `geo_prompt` granted ÷ requested. Below ~30% the button is in the wrong place.
+   - Newsletter: sign-ups per form view now the card has moved.
+3. **Analytics partitioning**, October.
+4. **More markets, both countries.** `intake/README.md`, `node scripts/import-intake.mjs intake/<country>`; they arrive `unverified`. `confirm.mjs` needs an `--until` before the next big confirmation round (it stamps every future date).
+5. Buffer.
 
-0. **Organiser page — done.** Rebuilt 2026-09-21, reshaped 2026-09-22 after Delfim drove it as an organiser (`PAGES.md` §Organiser page): one form, the next date is a question answered with the one Confirm button at the foot, the opening introduces Delfim, a link to the visitor's page. Every write proven live and reverted. Nothing left here.
-1. **Organisers, round one — Delfim's.** He sends the welcome and talks to organisers himself (2026-09-22); the build side is finished. 104 organisers have an address and a personal link (Swiss and German, 2026-09-23); a run sends at most 90, Resend's free plan being 100 a day, and the next run sends the rest (`organiser_mail_sends`). The daily seven-day mail only goes to organisers who got the welcome or opened their page. **To send:** GitHub → Actions → *Organiser welcome* → *Run workflow* → your address in the **third** box ("Send a preview…"), everything else empty → read it in your inbox; then again with *send* ticked. "Did it leave?" is a query on `newsletter_events`, not a guess (three attempts on 2026-09-20 sent nothing: wrong workflow, empty box). Then `ORGANISER_SENDING=on` for the daily mail. E-mails for the ~90 with only a website: `scripts/import-organiser-emails.mjs <csv> --apply`, the same workflow welcomes them. **Read the answer rate after four weeks** (`organiser_funnel`): >25% extend, 10–25% keep as a data feed, <10% stop building for organisers.
-2. **Analytics v2** — built 2026-09-17 (`reference/analytics-research/build-plan.md` phases 1–3). Left: partitioning, in October. Dropped 2026-09-19: the key-forgetting job (all data stays as is — Delfim) and the edge `suspect` flag (checked a week of rows: the `bot_likely` view already catches 1,268 of 1,478 visitor-days and the 210 it passes are on Swiss ISPs or arrive from Google — nothing for an edge flag to add). Before Germany: Queues, Supabase Pro, R2. No GA4, no Clarity. Read the Engagement dashboard after a week of data.
-3. **Visual pass, UI audit, copy** — done 2026-09-17 and 2026-09-19/20. Every page type and interaction driven live at 375 and 1440; every line of interface copy rewritten in the settled voice. Market descriptions cleaned 2026-09-23 (see Copy above).
-4. **Near me and the search control** — built and live 2026-09-18: one editorial control on home and Near me, Near me's four states, the distance pill, gutters on Near me and canton lists, `geo_prompt` events (migration applied the same day). `PAGES.md` §Home and §Near me, `BRAND.md` §Controls. **Read the allow rate after four weeks:** `geo_prompt` granted ÷ requested; below ~30% the button is in the wrong place. One `DateFilters` look on every page (checked live 2026-09-19).
-5. **Market watch agent.** Runs on fleafind and stays there (Delfim, 2026-09-19); its source pages are in our `facts` as `source_page`. A new one is built for other countries when they come.
-6. **Germany — live 2026-09-22.** Built and published in a day: 55 markets from the organisers' own pages (`intake/`, `scripts/import-intake.mjs`), Delfim's 55 photographs, the country in the URL tree with `de-DE` beside `de-CH`, the region word country-aware in path and copy, the front door, the place pill. `GERMANY-SPEC.md` holds what is left — Queues, Supabase Pro, R2 before the traffic grows, and the German organisers. **Watch for four weeks:** the Sunday Search Console exports, and whether Bremen and Saarland (1 and 2 markets) earn anything or get excluded as thin.
-7. Buffer.
-
-SEO follow-ups (`reference/seo-research/plan.md`): Bing Webmaster Tools registered 2026-09-18 — read its AI Performance report monthly; Delfim opens the Search Console *Generative AI* report; image sitemap once real photos exist.
-
-Parked, not urgent: country page (Delfim, 2026-09-22 — the front door carries the towns, so nothing needs it); German text search (settle the compound-word question in `STACK.md` first; v1 saw 64 searches against 281 filter uses).
+Parked: country page (the front door carries the towns); German text search (settle compounds in `STACK.md` first).
 
 ---
 
-## Open decisions
+## Open decisions and ceilings
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **Distance on cards.** Blocked: the town picker stores a name, not coordinates. Never print a guessed distance.
-- **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
+- **Ceilings (measured 2026-09-23).** Resend free sends 100 a day and the digest goes in one morning → paid plan before ~80 subscribers. Cloudflare Pages takes 20,000 files per deploy: 2,779 now, ~6–8 per market → images to R2 before ~2,500 more markets. Near me carries every market (275 KB at 277) → split by country or load as data past ~800. Database 40 MB of 500. Build 21 s.
+- **German silent visits count as bots** (`bot_likely` rule 1 predates Germany). Revisit when German traffic exists to check against.
+- **A native speaker's pass** over DE/FR/IT.
+- **Distance on cards** — the town picker stores a name, not coordinates; never print a guessed distance.
+- **Tags** — nothing fills them yet. Revisit when organisers supply facts.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
-- **Two newsletter forms in a row** on home, city, canton and market pages (card, then footer). Needs a layout decision, not a one-liner.
-- **Operations audit 2026-09-23.** Every scheduled job has succeeded, but GitHub starts them about five hours late: the 03:00 rebuild landed near 10:00 in Zurich, so Saturday mornings showed Friday under "Today", and the Friday digest arrived at 12:23. All schedules moved to odd minutes and earlier (rebuild 23:07 and 03:07 UTC, digest Fridays 02:07). **Delfim's, at the desktop:** add a DMARC record in Cloudflare DNS (`_dmarc` TXT `v=DMARC1; p=none; rua=mailto:contact@fynda.market`) before the organiser letters go; and once, restore the latest backup to prove the key works (commands at the top of `backup.yml`).
-- **Security audit 2026-09-23.** RLS on every table, no policies, the public API roles now hold nothing at all (migration 20260923160000, applied the same day; live inserts read back after). Organiser links are safe from mail scanners, the Resend webhook checks signature and age, backups are encrypted. Added: frame and HTTPS headers on every page, five posts an hour per connection on each form (three for claims), Telegram pings carry only an address's domain and the privacy page names Telegram. After the push: post once to each form and read the row back.
-- **Ceilings, measured 2026-09-23** (scalability audit). Cloudflare Pages takes 20,000 files per deploy: 2,779 today, ~6–8 per market, so images to R2 before ~2,500 more markets. The Near-me page carries every market (275 KB of HTML at 277): split it by country or load it as data past ~800. Resend's free plan sends 100 mails a day and the digest goes out in one morning: the paid plan before ~80 subscribers. Database 40 MB of 500. Build 21 s.
-- **A Metabase host, €6/month** — only when looking without Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
-- **Cross-border locales.** The structure allows it; let Search Console decide.
-- Decided and closed: photos stay as they are, real ones via organisers (2026-09-15); the four dateless markets stay `active` (2026-09-15); the logo, chosen and shipped (2026-09-17); analytics stay first-party and keep everything, behaviour included (2026-09-17); `x-default` is English (2026-09-18); no Swiss beachhead region — the focus is Europe (2026-09-19).
+- **Cross-border locales** — let Search Console decide.
+- Closed: photos stay, real ones via organisers; dateless markets stay `active`; logo shipped; analytics first-party, everything kept; `x-default` English; no Swiss beachhead — the focus is Europe; Metabase on Delfim's PC only (2026-09-23).
 
 ---
 
 ## Data
 
-**Data-quality audit 2026-09-23:** every active market has a photo on disk, coordinates within 8 km of its town, a well-formed postal code, sane hours, no duplicate dates. A random 14 upcoming markets were checked against the organisers' own sites: **every date right**, one closing time wrong (Wetzikon, 16:00 → 15:00, fixed), two unverifiable (Dietikon's page lists no dates, flosch.ch refuses bots). 256 links checked: 4 dead links on market pages fixed or accepted (glarus.swiss refuses bots, works for people), 7 dead organiser links replaced. The checked markets carry today's stamp. Known and fine: 88 markets with no stated fee, 70 Swiss markets awaiting next year's date, 265 German dates derived from a stated rhythm and shown as *not yet confirmed*. One tool gap: `confirm.mjs` stamps every future date of a market, including ones beyond what the source page lists — give it an `--until` before the next big confirmation round.
+**Audits, 2026-09-23** — SEO, data quality, UI, copy, conversion, analytics, performance, architecture, scalability, organisers, security, operations; each one's fixes are in the commit that names it. Data quality: 14 random upcoming markets checked against the organisers' own sites, **every date right**; one closing time fixed (Wetzikon); 11 dead links fixed; Flohdom Bahrenfeld's one-off cancellation on 3 Oct added from kreaktiva.de.
 
-226 Swiss markets, 2,583 occurrences, 105 towns, 23 cantons, 173 organisers (63 with an e-mail and a link); plus 55 German markets, unverified, 467 occurrences, 38 towns, all 16 Bundesländer, 46 organisers (42 with a link). Thinnest: Bremen 1, Saarland 2; every other Bundesland has 3 or more. Photos: all 55 supplied by Delfim 2026-09-22 and imported (`scripts/import-photos.mjs`, three sizes each in `public/images/`); every German market has one, so nothing blocks the flip to `active` but step 2. Complete on all 226: descriptions, names and slugs in four locales, rhythm line in four, coordinates, source URLs, a photo. The 64 added 2026-09-20 (`import-v1-additions.mjs`) were researched on fleafind from organiser sites on 2026-09-19/20; their opening times, fees and parking notes sit in `market_private.admin_notes` until a facts pass reads them. Nine cantons are new and thin — Uri and Glarus hold only annual markets with no 2027 date yet, listed under *No date yet*. Missing: 1 postal code, 2 websites, 2 fees, every tag, and for every market size and indoor/outdoor — the organiser page collects those. Prose quality is a spot-check, not a known defect. Data-quality pass 2026-09-19: 13 dead organiser links replaced, 16 missing opening times filled from organiser sites (10 still unpublished by the organisers), one wrong-town description fixed; dates spot-checked against nine organiser calendars, all matching; every upcoming date stamped as verified 2026-09-19 from Delfim's fleafind export (`scripts/confirm.mjs` is the tool for any later check). 60 markets carry no upcoming date — annual ones awaiting 2027 — which the organiser mail is for; since 2026-09-20 they are listed on their town and canton pages rather than hidden. Alpin-Flohmi Interlaken added 2026-09-19 with a photo from Delfim (town Interlaken; the hall is in Wilderswil).
+222 Swiss markets in four locales, 55 German in de and en, all `active`. 218 organisers, 104 with an e-mail and a personal link, 110 with only a website (`scripts/import-organiser-emails.mjs <csv> --apply` adds addresses; the same workflow welcomes them). Thinnest regions: Bremen 1, Saarland 2. About 60 markets carry no upcoming date — annual ones awaiting next year, listed under *No date yet*; the organiser mail is how those fill. Known and fine: markets with no stated fee, German dates derived from a stated rhythm and shown as *not yet confirmed*. The 64 markets added 2026-09-20 keep opening times, fees and parking notes in `market_private.admin_notes` until a facts pass reads them. Missing everywhere: tags, size, indoor/outdoor — the organiser page collects those.
 
 How the import works: `ARCHITECTURE.md` §Import.
