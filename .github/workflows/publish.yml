@@ -59,3 +59,10 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node scripts/deploy.mjs
+
+      # The robot log keeps 90 days of rows and a daily count after that;
+      # without this it fills the database (scripts/prune-logs.mjs).
+      - name: Fold old robot rows
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: node scripts/prune-logs.mjs

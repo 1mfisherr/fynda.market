@@ -64,8 +64,11 @@ facts   (entity_type, entity_id, field, value, source_type, source_ref,
 tags, market_tags, organisers, market_private, reports, organiser_claims
 newsletter_subscribers, newsletter_sends, newsletter_events, newsletter_alerts
 organiser_links, organiser_mail_sends, organiser_answers, organiser_edits
-admin_actions, publish_requests, analytics_events, crawler_hits
+admin_actions, publish_requests, analytics_events, crawler_hits, crawler_daily
 ```
+
+- **Robots keep 90 days.** `crawler_hits` older than that folds into `crawler_daily` (one row per day, robot and page type) every night after the publish (`scripts/prune-logs.mjs`); unfolded it filled the free 500 MB inside a year. `analytics_events` is kept raw.
+- **Static files never reach the Functions.** `public/_routes.json` excludes images, fonts, `/_astro/`, calendars and the root files, because the root `_middleware.ts` otherwise runs on every request and each one counts against the Functions quota (100,000 a day free). Add a new static folder there.
 
 - **One region level:** the country's official first-level unit (canton, Bundesland). A city has exactly one, plain foreign key. "Zürich should include Dietikon" is what the radius filter answers.
 - **The country is a row in the tree** with its own slug rows, not a route constant.

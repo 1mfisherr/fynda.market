@@ -57,6 +57,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Tags.** Nothing fills them yet; a tag that filters to nothing is a dead end. Revisit when organisers supply facts. Small when it comes.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
 - **Two newsletter forms in a row** on home, city, canton and market pages (card, then footer). Needs a layout decision, not a one-liner.
+- **Ceilings, measured 2026-09-23** (scalability audit). Cloudflare Pages takes 20,000 files per deploy: 2,779 today, ~6–8 per market, so images to R2 before ~2,500 more markets. The Near-me page carries every market (275 KB of HTML at 277): split it by country or load it as data past ~800. Resend's free plan sends 100 mails a day and the digest goes out in one morning: the paid plan before ~80 subscribers. Database 40 MB of 500. Build 21 s.
 - **A Metabase host, €6/month** — only when looking without Docker is worth it.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales.** The structure allows it; let Search Console decide.

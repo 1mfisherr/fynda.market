@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/_astro/*",
+    "/images/*",
+    "/fonts/*",
+    "/brand/*",
+    "/ics/*",
+    "/favicon.ico",
+    "/favicon.svg",
+    "/apple-touch-icon.png",
+    "/icon-192.png",
+    "/icon-512.png",
+    "/og-image.png",
+    "/robots.txt",
+    "/site.webmanifest",
+    "/sitemap-index.xml",
+    "/sitemap-0.xml",
+    "/_hashes.json",
+    "/_modified.json",
+    "/0da62ab4321770e0e19dced49d705d98.txt"
+  ]
+}
