@@ -78,6 +78,20 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(request.url);
 
   /*
+   * `?intern=1` marks this browser as ours for a year and nothing it does is
+   * counted from then on (_collect.ts); `?intern=0` undoes it. Run once on
+   * every phone and laptop we test from.
+   */
+  const intern = url.searchParams.get('intern');
+  if (intern === '1' || intern === '0') {
+    const marked = new Response(response.body, response);
+    marked.headers.append('Set-Cookie', intern === '1'
+      ? 'fynda_internal=1; Max-Age=31536000; Path=/; Secure; SameSite=Lax'
+      : 'fynda_internal=; Max-Age=0; Path=/; Secure; SameSite=Lax');
+    return marked;
+  }
+
+  /*
    * `/` is not a page. It is a two-line HTML stub that redirects to /de/, and
    * because it answers 200 with text/html it was passing every test above:
    * 458 of the first 1,695 page views were it. Every one of them was recorded

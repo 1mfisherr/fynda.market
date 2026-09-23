@@ -23,15 +23,27 @@
 
   const ENDPOINT = '/e';
 
-  /** One id per tab, gone when the tab closes. Groups a sitting; not identity. */
-  const sessionId = (() => {
+  /**
+   * One id per tab, gone when the tab closes. Groups a sitting; not identity.
+   *
+   * Only once the visitor has accepted cookies: it is written to the browser
+   * and sent with every event, and the privacy page says that what is stored
+   * without a choice never leaves the browser. Without it the collector's
+   * daily hash still groups a visit (_collect.ts). Read per event, so a
+   * choice made on this page counts from the next click.
+   */
+  const consented = () => /(?:^|;\s*)fynda_consent=granted(?:;|$)/.test(document.cookie);
+  let sessionId: string | null = null;
+  const session = (): string | null => {
+    if (!consented()) return null;
+    if (sessionId) return sessionId;
     try {
       const key = 'fynda:session';
-      let id = sessionStorage.getItem(key);
-      if (!id) { id = crypto.randomUUID(); sessionStorage.setItem(key, id); }
-      return id;
-    } catch { return crypto.randomUUID(); }
-  })();
+      sessionId = sessionStorage.getItem(key);
+      if (!sessionId) { sessionId = crypto.randomUUID(); sessionStorage.setItem(key, sessionId); }
+    } catch { sessionId = crypto.randomUUID(); }
+    return sessionId;
+  };
 
   /** One id per page load, so a click can be tied to the view it came from. */
   const pageViewId = crypto.randomUUID();
@@ -41,7 +53,7 @@
     const body = JSON.stringify({
       event_name,
       path: location.pathname,
-      session_id: sessionId,
+      session_id: session(),
       page_view_id: pageViewId,
       market_id: market ?? null,
       viewport_w: window.innerWidth,

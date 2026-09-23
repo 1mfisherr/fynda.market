@@ -306,6 +306,11 @@ export function parseCookies(header: string | null): Record<string, string> {
 export async function collect(env: Env, request: Request, input: EventInput): Promise<void> {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY || !env.ANALYTICS_SALT) return;
 
+  /* Our own browsers. The most active "people" on the dashboards were Delfim
+     and the agent testing the site (2026-09-23). Set by visiting any page with
+     ?intern=1 — see _middleware.ts. */
+  if (parseCookies(request.headers.get('cookie')).fynda_internal === '1') return;
+
   const ua = request.headers.get('user-agent');
   const ip =
     request.headers.get('cf-connecting-ip') ??
