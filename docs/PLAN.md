@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-23, end of session.
+Updated 2026-09-24.
 
 ---
 
@@ -31,8 +31,8 @@ Not built: tags shown to visitors · country page (parked) · text search · dis
 ## Next, in order
 
 1. **Delfim's desktop session** — the build side is done; these need his accounts.
-   1. **DMARC** in Cloudflare DNS, before any organiser letter: TXT `_dmarc` = `v=DMARC1; p=none; rua=mailto:contact@fynda.market`. SPF and DKIM for Resend are already right.
-   2. **Organiser welcome letters.** GitHub → Actions → *Organiser welcome* → *Run workflow* → your own address in the **third** box ("Send a preview…"), the rest empty → read it. Then again with *send* ticked: 90 go (Resend free: 100 a day). Next day once more for the last 14. "Did it leave?" is a query on `organiser_mail_sends`, not a guess.
+   1. ~~DMARC~~ — done 2026-09-24, `p=none`, reports to contact@fynda.market. SPF and DKIM for Resend already right.
+   2. **Organiser welcome letters.** GitHub → Actions → *Organiser welcome* → *Run workflow* → your own address in the **third** box ("Send a preview…"), the rest empty → read it. Then again with *send* ticked: 90 go (Resend free: 100 a day). Next day once more for the other 68. "Did it leave?" is a query on `organiser_mail_sends`, not a guess.
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
    5. **Search Console and Bing:** add the German paths.
@@ -69,6 +69,6 @@ Each waits on Delfim or on data. Don't assume an answer.
 
 **Audits, 2026-09-23** — SEO, data quality, UI, copy, conversion, analytics, performance, architecture, scalability, organisers, security, operations; each one's fixes are in the commit that names it. Data quality: 14 random upcoming markets checked against the organisers' own sites, **every date right**; one closing time fixed (Wetzikon); 11 dead links fixed; Flohdom Bahrenfeld's one-off cancellation on 3 Oct added from kreaktiva.de.
 
-222 Swiss markets in four locales, 55 German in de and en, all `active`. 218 organisers, 104 with an e-mail and a personal link, 110 with only a website (`scripts/import-organiser-emails.mjs <csv> --apply` adds addresses; the same workflow welcomes them). Thinnest regions: Bremen 1, Saarland 2. About 60 markets carry no upcoming date — annual ones awaiting next year, listed under *No date yet*; the organiser mail is how those fill. Known and fine: markets with no stated fee, German dates derived from a stated rhythm and shown as *not yet confirmed*. The 64 markets added 2026-09-20 keep opening times, fees and parking notes in `market_private.admin_notes` until a facts pass reads them. Missing everywhere: tags, size, indoor/outdoor — the organiser page collects those.
+222 Swiss markets in four locales, 55 German in de and en, all `active`. 217 organisers with a live market, 158 with an e-mail and a personal link (54 found on their own sites 2026-09-24), 59 with only a website or phone — for those, no address is published on the site, or only a town hall's (`scripts/import-organiser-emails.mjs <csv> --apply` adds addresses; the same workflow welcomes them). Thinnest regions: Bremen 1, Saarland 2. About 60 markets carry no upcoming date — annual ones awaiting next year, listed under *No date yet*; the organiser mail is how those fill. Known and fine: markets with no stated fee, German dates derived from a stated rhythm and shown as *not yet confirmed*. The 64 markets added 2026-09-20 keep opening times, fees and parking notes in `market_private.admin_notes` until a facts pass reads them. Missing everywhere: tags, size, indoor/outdoor — the organiser page collects those.
 
 How the import works: `ARCHITECTURE.md` §Import.

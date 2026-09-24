@@ -7,9 +7,9 @@
  *
  * The file is CSV with a header row and at least two columns: `market` (the
  * market's slug, or its name in any language) and `email`. Optional: `locale`
- * (de/fr/it/en); without it the canton's language is used, English if the
- * canton has none. Anything Delfim can export from a spreadsheet works; the
- * columns may be in any order.
+ * (de/fr/it/en); without it the canton's language in Switzerland, the country's
+ * elsewhere, English if neither has one. Anything Delfim can export from a
+ * spreadsheet works; the columns may be in any order.
  *
  * For each row: find the market, find its organiser row, set the address and
  * the language, and mint a personal link if there is none. An address already
@@ -60,6 +60,9 @@ function parseCsv(text) {
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
 const LANG_OF_REGION = { ZH: 'de', BE: 'de', LU: 'de', UR: 'de', SZ: 'de', OW: 'de', NW: 'de', GL: 'de', ZG: 'de', FR: 'fr', SO: 'de', BS: 'de', BL: 'de', SH: 'de', AR: 'de', AI: 'de', SG: 'de', GR: 'de', AG: 'de', TG: 'de', TI: 'it', VD: 'fr', VS: 'fr', NE: 'fr', GE: 'fr', JU: 'fr' };
 
+// Outside Switzerland the country's one language; Swiss canton codes can collide with other countries' region codes.
+const LANG_OF_COUNTRY = { DE: 'de' };
+
 const rows = parseCsv(readFileSync(file, 'utf8'));
 console.log(`\n  ${rows.length} row${rows.length === 1 ? '' : 's'} in ${file}. ${apply ? 'Applying.' : 'Dry run — pass --apply to write.'}\n`);
 
@@ -71,12 +74,13 @@ for (const row of rows) {
   if (!key || !EMAIL.test(email)) { console.log(`  skip: ${JSON.stringify(row)}`); skipped++; continue; }
 
   const [market] = await query(
-    `select m.id, m.slug, m.organiser_id, r.code as region_code,
+    `select m.id, m.slug, m.organiser_id, r.code as region_code, co.iso2 as country,
             (select value from texts t where t.entity_type='market' and t.entity_id=m.id and t.field='name' and t.locale='en') as name
        from markets m
        join venues v on v.id = m.venue_id
        join cities c on c.id = v.city_id
        join regions r on r.id = c.region_id
+       join countries co on co.id = r.country_id
       where m.slug = $1
          or exists (select 1 from texts t where t.entity_type='market' and t.entity_id=m.id and t.field='name' and lower(t.value) = lower($1))
       limit 1`,
@@ -86,7 +90,7 @@ for (const row of rows) {
   if (!market.organiser_id) { console.log(`  ${market.slug}: no organiser row — add one first`); skipped++; continue; }
 
   const [org] = await query(`select id, name, email, locale from organisers where id = $1`, [market.organiser_id]);
-  const locale = ['de', 'fr', 'it', 'en'].includes(row.locale) ? row.locale : (LANG_OF_REGION[market.region_code] ?? 'en');
+  const locale = ['de', 'fr', 'it', 'en'].includes(row.locale) ? row.locale : (market.country === 'CH' ? LANG_OF_REGION[market.region_code] : LANG_OF_COUNTRY[market.country]) ?? 'en';
 
   if (org.email && org.email !== email) {
     console.log(`  ${market.slug}: ${org.name} already has ${org.email}, not overwriting with ${email}`);
