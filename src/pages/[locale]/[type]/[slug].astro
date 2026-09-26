@@ -16,6 +16,7 @@ import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
 import MarketRow from '../../../components/MarketRow.astro';
 import { sameDayNearby } from '../../../lib/nearby';
+import { kmLabel } from '../../../lib/geo';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset, todayIso } from '../../../lib/format';
 import { EVENT_STATUS, LINES } from '../../../lib/vocabulary';
@@ -189,7 +190,7 @@ const afterLine = after
 
 /* "0,7 km" in German, "0.7 km" in English — one decimal under a kilometre,
    where rounding would print "1 km" for a two-minute walk. */
-const km = (n: number) => `${new Intl.NumberFormat(localeTag(locale), { maximumFractionDigits: n < 1 ? 1 : 0 }).format(n < 1 ? n : Math.round(n))} km`;
+const km = (n: number) => kmLabel(n, localeTag(locale));
 const nearbyTitle = !next ? '' : next.date === today ? s.nearbyToday : next.date === tomorrow ? s.nearbyTomorrow : s.nearbyOn(formatDate(next.date, locale));
 
 /* The preview a chat app shows for a shared link: the market's own picture,
@@ -420,7 +421,7 @@ const title = firstFitting([
           href without coordinates. The slot is left for it. */}
       <div class="strip">
         <ul class="list-reset">
-          <li data-distance hidden><b data-distance-value></b><span data-distance-label></span></li>
+          <li data-distance hidden data-lat={market.lat} data-lng={market.lng} data-from={s.fromTown}><b data-distance-value></b><span data-distance-label></span></li>
           {market.recurrenceText && <li><b>{market.recurrenceText}</b><span>{s.howOften}</span></li>}
           {liveDates > 0 && <li><b>{liveDates}</b><span>{s.upcoming(liveDates)}</span></li>}
         </ul>
@@ -946,6 +947,28 @@ const title = firstFitting([
 <script>
   import { SAVED_KEY, adopt } from '../../../lib/local-keys';
   import { WINDOW_MIN, clockState, clockWords, formatSpan, instantsOf } from '../../../lib/clock';
+  import { DISTANCE_MAX_KM, distanceKm, kmLabel, type PickedTown } from '../../../lib/geo';
+  import { TOWN_KEY } from '../../../lib/local-keys';
+
+  /**
+   * "19 km from Zurich", first in the decision strip — the slot left for it
+   * since the strip was built, waiting for the town picker to store where a
+   * town is. Only within 50 km, and only once the visitor has picked a town.
+   */
+  const slot = document.querySelector<HTMLElement>('.strip [data-distance]');
+  const picked = ((): PickedTown | null => {
+    try { return JSON.parse(localStorage.getItem(TOWN_KEY) ?? 'null'); } catch { return null; }
+  })();
+  if (slot && picked?.name && typeof picked.lat === 'number' && typeof picked.lng === 'number') {
+    const d = distanceKm(picked.lat, picked.lng, Number(slot.dataset.lat), Number(slot.dataset.lng));
+    const value = slot.querySelector<HTMLElement>('[data-distance-value]');
+    const label = slot.querySelector<HTMLElement>('[data-distance-label]');
+    if (d <= DISTANCE_MAX_KM && value && label) {
+      value.textContent = kmLabel(d, document.documentElement.lang || 'en');
+      label.textContent = (slot.dataset.from ?? '').replace('{town}', picked.name);
+      slot.hidden = false;
+    }
+  }
   /**
    * "Alle 17 Termine" opens the rest of the list in place.
    *

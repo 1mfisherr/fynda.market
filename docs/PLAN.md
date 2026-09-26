@@ -23,9 +23,9 @@ Updated 2026-09-26.
 | **Copy** | Voice settled (`BRAND.md` §Voice); visitors du / vous / tu, organisers Sie / vous / tu. Descriptions cleaned 2026-09-23: no dates, stale years, hype, keyword tails or template filler left. Organiser mails reread: German that reads as German in both countries (*innerhalb*, not *innert*), no country named, full sentences |
 | **Front door & place** | One block per country on the home page, flags, no country picker, no geo redirect. One town search (`TownSearch.astro`) on home and Near me; Near me groups by distance bands. The chosen town is a pill in the header |
 | **Photos** | Every market has one — 226 Swiss, 55 German. Real ones arrive through organisers. A shared market link previews with its own photo (`/share/*.jpg`, 900 × 472, made at build) |
-| **Market page** (2026-09-26, `design/market-v1.html`) | The status line knows the hour — *Opens in 40 min · Open now · Closes in 1 h 10 min · Over for today, next Sat 3 Oct* — and today's list rows everywhere say *Closes in…* and fade when over. *Also today, nearby* under the buttons: ≤3 same-day markets within 15 km. Share (the phone's own sheet). Home shows the visitor's own country first in *This weekend* (picked town, else browser language region). Town search on the 404s |
+| **Market page** (2026-09-26, `design/market-v1.html`) | The status line knows the hour — *Opens in 40 min · Open now · Closes in 1 h 10 min · Over for today, next Sat 3 Oct* — and today's list rows everywhere say *Closes in…* and fade when over. *Also today, nearby* under the buttons: ≤3 same-day markets within 15 km. Share (the phone's own sheet). **Distance on cards**: after a visitor picks a town, every list card within 50 km carries "4 km", and the market page's strip "19 km · from Zurich" (`design/distance-v1.html`); a town picked before 2026-09-26 has no coordinates until picked again. Home shows the visitor's own country first in *This weekend* (picked town, else browser language region). Town search on the 404s |
 
-Not built: tags shown to visitors · country page (parked) · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
+Not built: tags shown to visitors · country page (parked) · text search · organiser photo upload · the annual "what are your dates" mail.
 
 ---
 
@@ -60,7 +60,6 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Ceilings (measured 2026-09-23).** Resend free sends 100 a day and the digest goes in one morning → paid plan before ~80 subscribers. Cloudflare Pages takes 20,000 files per deploy: 2,779 now, ~6–8 per market → images to R2 before ~2,500 more markets. Near me carries every market (275 KB at 277) → split by country or load as data past ~800. Database 40 MB of 500. Build 21 s.
 - **German silent visits count as bots** (`bot_likely` rule 1 predates Germany). Revisit when German traffic exists to check against.
 - **A native speaker's pass** over DE/FR/IT.
-- **Distance on cards** — the town picker stores a name, not coordinates; never print a guessed distance.
 - **Tags** — nothing fills them yet. Revisit when organisers supply facts.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.

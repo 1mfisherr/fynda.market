@@ -270,7 +270,9 @@ const big = towns.slice(0, 5);
     }
 
     function remember(town: Town) {
-      try { localStorage.setItem(TOWN_KEY, JSON.stringify({ slug: town.slug, name: town.name, href: town.href })); } catch { /* private mode */ }
+      // Its coordinates too, so every card can say how far it is (MarketRow).
+      // A town's centre, never the visitor's own position.
+      try { localStorage.setItem(TOWN_KEY, JSON.stringify({ slug: town.slug, name: town.name, href: town.href, lat: town.lat, lng: town.lng })); } catch { /* private mode */ }
     }
 
     function chooseTown(town: Town) {

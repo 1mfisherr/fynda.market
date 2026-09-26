@@ -191,6 +191,8 @@ export interface Strings {
   straightLine: string;
   share: string;
   linkCopied: string;
+  /** Under the distance in a market page's strip. `{town}` is the town the visitor picked. */
+  fromTown: string;
   /** Label under the recurrence phrase in the decision strip. */
   howOften: string;
   /* The three things a list row may say about a date, and it says one only
@@ -504,6 +506,7 @@ const de: Strings = {
   straightLine: 'Entfernung in Luftlinie.',
   share: 'Teilen',
   linkCopied: 'Link kopiert',
+  fromTown: 'von {town}',
   howOften: 'Rhythmus',
   flagCancelled: 'Fällt aus',
   flagUnconfirmed: 'Noch nicht bestätigt',
@@ -721,6 +724,7 @@ const en: Strings = {
   straightLine: 'Distances as the crow flies.',
   share: 'Share',
   linkCopied: 'Link copied',
+  fromTown: 'from {town}',
   howOften: 'How often',
   flagCancelled: 'Cancelled',
   flagUnconfirmed: 'Not confirmed yet',
@@ -944,6 +948,7 @@ const fr: Strings = {
   straightLine: "Distances à vol d'oiseau.",
   share: 'Partager',
   linkCopied: 'Lien copié',
+  fromTown: 'de {town}',
   howOften: 'Fréquence',
   flagCancelled: 'Annulé',
   flagUnconfirmed: 'Pas encore confirmé',
@@ -1161,6 +1166,7 @@ const it: Strings = {
   straightLine: "Distanze in linea d'aria.",
   share: 'Condividi',
   linkCopied: 'Link copiato',
+  fromTown: 'da {town}',
   howOften: 'Cadenza',
   flagCancelled: 'Annullato',
   flagUnconfirmed: 'Non ancora confermato',

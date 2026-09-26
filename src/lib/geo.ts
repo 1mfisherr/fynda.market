@@ -20,6 +20,27 @@ export function distanceKm(lat1: number, lng1: number, lat2: number, lng2: numbe
 }
 
 /**
+ * How far a card's distance pill reaches from the visitor's town. Beyond it the
+ * card stays as it was: "670 km" on a Berlin page helps nobody in Zürich
+ * (Delfim, 2026-09-26 — 100 was too much).
+ */
+export const DISTANCE_MAX_KM = 50;
+
+/**
+ * "0,7 km" in German, "0.7 km" in English — one decimal under a kilometre,
+ * where rounding would print "1 km" for a two-minute walk; whole kilometres
+ * above it. `tag` is a BCP 47 tag: localeTag() in a build, <html lang> in a
+ * browser.
+ */
+export function kmLabel(km: number, tag: string): string {
+  const n = km < 1 ? km : Math.round(km);
+  return `${new Intl.NumberFormat(tag, { maximumFractionDigits: km < 1 ? 1 : 0 }).format(n)} km`;
+}
+
+/** The town a visitor picked, as TownSearch remembers it — coordinates since 2026-09-26. */
+export interface PickedTown { slug?: string; name?: string; href?: string; lat?: number; lng?: number }
+
+/**
  * The distances a subscription may be for.
  *
  * The same four the radius view offers, so a person who has used the one

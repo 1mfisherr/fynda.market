@@ -85,7 +85,7 @@ const size = variant === 'feature' ? 720 : 148;
 
 {/* data-date is always present: the When control reads it, and a row with no
     date yet ("") is shown under All and hidden under any real window. */}
-<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end}>
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end} data-lat={distance ? undefined : market.lat} data-lng={distance ? undefined : market.lng}>
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
   <div class="body">
     <p class="meta">
@@ -94,8 +94,10 @@ const size = variant === 'feature' ? 720 : 148;
       {flag?.tone === 'bad' && <span class="flag bad">{flag.text}</span>}
       {/* The distance, as a pill at the end of the line. The slot is always in
           the markup and empty until someone has a real origin to measure from:
-          the radius view's script fills it, and the city page's "within 25 km"
-          block fills it at build time. Never a distance we guessed. */}
+          the radius view's script fills it, the city page's "within 25 km"
+          block and the market page's nearby block at build time, and on every
+          other list the script below, from the town the visitor picked. Never
+          a distance we guessed. */}
       <span class="km" data-distance hidden={!distance}>{distance}</span>
     </p>
     <h3 class="name">
@@ -155,6 +157,29 @@ const size = variant === 'feature' ? 720 : 148;
 
 <script>
   import { clockState, clockWords, formatSpan, instantsOf } from '../lib/clock';
+  import { DISTANCE_MAX_KM, distanceKm, kmLabel, type PickedTown } from '../lib/geo';
+  import { TOWN_KEY, adopt } from '../lib/local-keys';
+
+  /* How far each card is from the town the visitor picked — within 50 km, and
+     only once they have picked one. Straight line; the list keeps its order,
+     because sorting by distance is the Near me page's job, and that page
+     measures from its own origin, so its cards are left alone. */
+  adopt(TOWN_KEY);
+  const town = ((): PickedTown | null => {
+    try { return JSON.parse(localStorage.getItem(TOWN_KEY) ?? 'null'); } catch { return null; }
+  })();
+  if (town && typeof town.lat === 'number' && typeof town.lng === 'number') {
+    const tag = document.documentElement.lang || 'en';
+    for (const card of Array.from(document.querySelectorAll<HTMLElement>('article.card[data-lat][data-lng]'))) {
+      if (card.closest('.pin')) continue;
+      const pill = card.querySelector<HTMLElement>('[data-distance]');
+      if (!pill || pill.textContent) continue;
+      const km = distanceKm(town.lat, town.lng, Number(card.dataset.lat), Number(card.dataset.lng));
+      if (km > DISTANCE_MAX_KM) continue;
+      pill.textContent = kmLabel(km, tag);
+      pill.hidden = false;
+    }
+  }
 
   /* Every row on the page that is on today, painted now and again each
      minute: a town page left open on a phone at 15:58 should not still be
