@@ -36,14 +36,15 @@ Not built: tags shown to visitors · country page (parked) · text search · dis
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
    5. **Search Console and Bing:** add the German paths.
-2. **Read, on these dates** — nothing to build until then.
+2. **Next session: pick from the product review** in `IDEAS.md` (2026-09-24). Recommended: home ordered by country, *Also that day, nearby*, the closing-time line.
+3. **Read, on these dates** — nothing to build until then.
    - 2026-09-27 and 2026-10-04 Search Console exports: titles, and whether Germany earns anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page.
    - Four weeks after the letters: organiser answer rate (`organiser_funnel`). >25% build more for organisers, 10–25% keep as a data feed, <10% stop.
    - 2026-10-21: Near me allow rate, `geo_prompt` granted ÷ requested. Below ~30% the button is in the wrong place.
    - Newsletter: sign-ups per form view now the card has moved.
-3. **Analytics partitioning**, October.
-4. **More markets, both countries.** `intake/README.md`, `node scripts/import-intake.mjs intake/<country>`; they arrive `unverified`. `confirm.mjs` needs an `--until` before the next big confirmation round (it stamps every future date).
-5. Buffer.
+4. **Analytics partitioning**, October.
+5. **More markets, both countries.** `intake/README.md`, `node scripts/import-intake.mjs intake/<country>`; they arrive `unverified`. `confirm.mjs` needs an `--until` before the next big confirmation round (it stamps every future date).
+6. Buffer.
 
 Parked: country page (the front door carries the towns); German text search (settle compounds in `STACK.md` first).
 

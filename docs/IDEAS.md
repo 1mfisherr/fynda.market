@@ -4,6 +4,26 @@ Nothing here is scoped or promised. An idea leaves this file only when someone w
 
 ---
 
+## Product review, 2026-09-24 — for Delfim to pick from
+
+Walked on a phone. Size S = a day, M = days, L = weeks.
+
+- **Home: your own country first in *This weekend*** — a Zurich visitor sees Hamburg on top. Order only, no redirect. S
+- **Market page: *Also that day, nearby*** (see routing below) — the page is a dead end today. S
+- **Closing-time line** — *Until 13:00, stalls pack up after*; on the day *Open now, closes in 2 h*. S
+- **Town page: nearby towns** — Zurich's page ignores Kloten, Dübendorf, Dietikon. M
+- **WhatsApp share + preview image** on market pages. S
+- **Town search on the 404 page.** S
+- **Organiser monthly "your page" mail** — views, calendar adds; the first thing chargeable. Waits on the four-week answer rate. M
+- **Annual dates mail** — must exist by December. M
+- **QR poster for organisers.** S
+- **Dates in any form** — PDF, flyer photo, link; we read it. Waits on the answer rate. M
+- **Germany deep in four cities** (Berlin 5 listed of ~11 a weekend) before thin breadth. L
+- **Stall booking on the market page** — the `stall_booking` column exists; the vendor path. M
+- **One data story a season** for press links. S
+
+Recommended first: the first three.
+
 ## Vendor tooling — the strongest parked idea
 
 **The gap:** every flea-market booking system in German-speaking Europe is single-market. Organiser software, Shopify stores selling "Standmeter", municipal forms, phone. No aggregation layer exists. Nobody answers *"where can I sell next Saturday within 50 km, what does it cost, is there space?"*
