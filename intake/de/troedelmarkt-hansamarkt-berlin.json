@@ -1,0 +1,62 @@
+{
+  "slug": "troedelmarkt-hansamarkt-berlin",
+  "name": "Trödelmarkt HansaMarkt",
+  "kind": "troedelmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "HansaMarkt",
+    "address": "Hansastraße 188",
+    "postal_code": "13088"
+  },
+  "lat": 52.5555,
+  "lng": 13.4861,
+  "rhythm": {
+    "de": "Jeden Sonntag",
+    "en": "Every Sunday"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-04",
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.hansamarkt.de/",
+  "organiser": {
+    "name": "Trödelmarkt-HansaMarkt",
+    "website": "https://www.hansamarkt.de/",
+    "email": "info@hansamarkt.de"
+  },
+  "source_page": "https://www.hansamarkt.de/termine-und-buchung/",
+  "facts": [
+    "every Sunday, visitors 09:00–16:00",
+    "closed 15.11.2026 (Volkstrauertag) and 22.11.2026 (Totensonntag)",
+    "flea market and weekly market in one",
+    "fresh fruit and vegetables every Sunday",
+    "freshly smoked fish: trout, hake, eel, mackerel",
+    "field kitchen: currywurst, bratwurst, home cooking, soups, soft-serve ice cream, coffee",
+    "covered stalls with storage boxes for traders, by the day or by the month",
+    "pitches charged by the metre, with own table, rented table or car"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser date list runs only to 27.12.2026 (headed \"Termine 2026\"), so January 2027 Sundays are left out until they publish 2027. Impressum page on the site is empty (Jimdo placeholder); organiser name taken from the contact block. E-mail from the site footer. Entry fee not stated.",
+  "description": {
+    "de": "Trödelmarkt und Wochenmarkt in einem, mitten in Weißensee. Zwischen den Ständen mit Gebrauchtem gibt es frisches Obst und Gemüse und frisch geräucherten Fisch – Forelle, Aal, Makrele. An der Feldküche warten Currywurst, Hausmannskost und Softeis, falls das Stöbern länger dauert.",
+    "en": "A flea market and a weekly market in one, in Weißensee. Between the second-hand stalls you’ll find fresh fruit and veg and freshly smoked fish – trout, eel, mackerel. The field kitchen does currywurst, home cooking and soft-serve, in case the rummaging runs long."
+  }
+}

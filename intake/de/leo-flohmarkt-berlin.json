@@ -1,0 +1,65 @@
+{
+  "slug": "leo-flohmarkt-berlin",
+  "name": "Leo Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Leopoldplatz, vor der Alten Nazarethkirche",
+    "address": "Leopoldplatz",
+    "postal_code": "13353"
+  },
+  "lat": 52.5472,
+  "lng": 13.3597,
+  "rhythm": {
+    "de": "Jeden Samstag",
+    "en": "Every Saturday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19",
+    "2027-01-02",
+    "2027-01-09",
+    "2027-01-16",
+    "2027-01-23"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.leo-flohmarkt.de/",
+  "organiser": {
+    "name": "Pützer & Parent GbR",
+    "website": "https://www.leo-flohmarkt.de/",
+    "email": "info@leo-flohmarkt.de"
+  },
+  "source_page": "https://www.leo-flohmarkt.de/",
+  "facts": [
+    "new market, running since January 2026",
+    "every Saturday 10:00–16:00",
+    "on Leopoldplatz in front of the Schinkel church",
+    "vintage, books, clothing, rarities",
+    "street food and a programme for the neighbourhood",
+    "private and commercial sellers",
+    "U-Bahn Leopoldplatz"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser site states 'every Saturday' with no winter break or holiday closures mentioned; 26.12 dropped per brief, 03.10 (public holiday) kept. Imprint gives the venue postcode as 13353 (research notes had 13347, which is the organiser's own address). Entry fee not stated. Also sold as 'Neuer Flohmarkt Leopoldplatz'.",
+  "description": {
+    "de": "Ein junger Kiezflohmarkt mitten auf dem Leopoldplatz, direkt vor der Schinkelkirche. Private und gewerbliche Händler bringen Vintage, Bücher, Kleidung und die eine oder andere Rarität mit. Streetfood und ein kleines Programm machen daraus einen Treffpunkt für die Nachbarschaft.",
+    "en": "A young neighbourhood flea market in the middle of Leopoldplatz, right in front of the Schinkel church. Private and professional sellers bring vintage, books, clothing and the odd rarity. Street food and a small programme turn it into a meeting place for the neighbourhood."
+  }
+}

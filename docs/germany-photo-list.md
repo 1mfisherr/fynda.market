@@ -27,6 +27,22 @@ Name the file after the slug in brackets, e.g. `flohmarkt-am-mauerpark-berlin.we
 - **Flohmarkt am Rathaus Schöneberg** — Berlin · `flohmarkt-am-rathaus-schoeneberg-berlin`
 - **Nowkoelln Flowmarkt** — Berlin · `nowkoelln-flowmarkt-berlin`
 
+## Berlin, second batch — waiting for photos (9)
+
+Researched and imported 2026-09-26 as **unverified**: nothing shows until each has a photo. Name the file after the market (`RAW Flohmarkt.jpg`) or the slug; `node scripts/import-photos.mjs "<folder>"` matches them, then the market is set to `active`. **Karlshorst Riesenflohmarkt is on 2–4 October — its photo by Thursday 1 October, or it misses the weekend.**
+
+- **Riesenflohmarkt Trabrennbahn Karlshorst** — 2–4 Oct · `riesenflohmarkt-trabrennbahn-karlshorst-berlin`
+- **RAW Flohmarkt** — Friedrichshain · `raw-flohmarkt-berlin`
+- **Antik- und Buchmarkt am Bodemuseum** — Mitte · `antik-und-buchmarkt-am-bodemuseum-berlin`
+- **Kunst- & Trödelmarkt Fehrbelliner Platz** — Wilmersdorf · `kunst-und-troedelmarkt-fehrbelliner-platz-berlin`
+- **Trödelmarkt Marheinekeplatz** — Kreuzberg · `troedelmarkt-marheinekeplatz-berlin`
+- **Antikmarkt Ostbahnhof** — Friedrichshain · `antikmarkt-ostbahnhof-berlin`
+- **Leo Flohmarkt** — Leopoldplatz, Wedding · `leo-flohmarkt-berlin`
+- **Trödelmarkt HansaMarkt** — Weißensee · `troedelmarkt-hansamarkt-berlin`
+- **Antikflohmarkt Trabrennbahn Karlshorst** — 7–8 Nov · `antikflohmarkt-trabrennbahn-karlshorst-berlin`
+
+Left out: Antik- & Trödelhalle Spandau (one dealer's shop, not a flea market — `intake/batch-berlin/excluded/`), Flohmarkt am Boxhagener Platz (Facebook only; needs a hand check). 16 more recurring Berlin markets — car-park markets and fortnightly neighbourhood ones — are listed in the plan for spring.
+
 ## Brandenburg (3)
 
 - **Flohmaxx Beetzsee-Center** — Brandenburg an der Havel · `flohmaxx-beetzsee-center-brandenburg-an-der-havel`

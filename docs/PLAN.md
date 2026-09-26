@@ -37,6 +37,7 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
    5. **Search Console and Bing:** add the German paths.
+   6. **Nine Berlin photos** (`docs/germany-photo-list.md`, second batch). Researched and imported 2026-09-26, invisible until each has one. **Karlshorst Riesenflohmarkt (2–4 Oct) by Thursday 1 October.** Then `import-photos.mjs`, set them `active`, deploy — Berlin goes from 5 markets to 14.
 2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
    - Known bug, not fixed: the town page's date picker offers only each market's *next* date — Zurich cannot pick Sat 3 Oct though three markets run that day.
 3. **Read, on these dates** — nothing to build until then.
@@ -46,7 +47,7 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    - Newsletter: sign-ups per form view now the card has moved.
    - From 2026-10-10: the *nearby* block — `market_click` events whose page is a market page (it is the only list there), against market-page views. If nobody clicks it, it goes. Share taps are not counted (the event vocabulary would need a migration).
 4. **Analytics partitioning**, October.
-5. **More markets, both countries.** `intake/README.md`, `node scripts/import-intake.mjs intake/<country>`; they arrive `unverified`. `confirm.mjs` needs an `--until` before the next big confirmation round (it stamps every future date).
+5. **More markets, both countries.** Berlin: 19 more recurring markets researched 2026-09-26 and left for spring (`intake/batch-berlin/README.md`). `intake/README.md`, `node scripts/import-intake.mjs intake/<country>`; they arrive `unverified`. `confirm.mjs` needs an `--until` before the next big confirmation round (it stamps every future date).
 6. Buffer.
 
 Parked: country page (the front door carries the towns); German text search (settle compounds in `STACK.md` first).

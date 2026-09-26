@@ -1,0 +1,83 @@
+{
+  "slug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
+  "name": "Kunst- & Trödelmarkt Fehrbelliner Platz",
+  "kind": "troedelmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Parkplatz zwischen Hohenzollerndamm und Preußenpark",
+    "address": "Fehrbelliner Platz",
+    "postal_code": "10707"
+  },
+  "lat": 52.4909,
+  "lng": 13.3141,
+  "rhythm": {
+    "de": "Samstag und Sonntag",
+    "en": "Saturday and Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-26",
+    "2026-12-27",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-09",
+    "2027-01-10",
+    "2027-01-16",
+    "2027-01-17",
+    "2027-01-23"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://burdack-maerkte.de/",
+  "organiser": {
+    "name": "Burdack Märkte e.K.",
+    "website": "https://burdack-maerkte.de/",
+    "email": "info@burdack-maerkte.de"
+  },
+  "source_page": "https://burdack-maerkte.de/?page_id=41",
+  "facts": [
+    "every Saturday and Sunday all year, 10:00–16:00",
+    "closed 15.11.2026 (Volkstrauertag) and 22.11.2026 (Totensonntag)",
+    "open 26 and 27.12.2026; last day of 2026 is 27.12, first day of 2027 is 02.01.2027",
+    "on a car park between Hohenzollerndamm and Preußenpark, directly at U-Bahn Fehrbelliner Platz",
+    "founded 1985, often called 'Fehrbi'",
+    "covered wooden stalls provided by the organiser",
+    "private sellers, professional dealers and artists",
+    "areas: Antikmeile (porcelain, silver cutlery, old photographs, pictures, furniture), Trödelkarree (films, records, crockery, radios, clocks, 60s and 70s pieces, curiosities), Kleidergasse (clothes and accessories), Kunstmeile (art, Sundays)",
+    "no new goods, food or plants"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser states the rhythm plus the 2026 exceptions and the first 2027 date; all dates derived from that, 26.12 kept because the organiser lists it as open. The closures sentence says '2025' but lists the 2026 dates, read as a typo. Fee not stated.",
+  "description": {
+    "de": "Überdachte Holzstände direkt am U-Bahnhof Fehrbelliner Platz, an denen Private, Profihändler und Künstler nebeneinander verkaufen. Der Markt ist in Gassen aufgeteilt: Porzellan, Silberbesteck und alte Fotografien auf der Antikmeile, Platten, Radios und Lampen aus den Sechzigern und Siebzigern im Trödelkarree, dazu eine Kleidergasse und eine Kunstmeile. Neuware gibt es hier keine.",
+    "en": "Covered wooden stalls right by Fehrbelliner Platz U-Bahn station, where private sellers, professional dealers and artists trade side by side. The market is laid out in lanes: porcelain, silver cutlery and old photographs on the antiques row, records, radios and lamps from the sixties and seventies in the junk quarter, plus a clothing lane and an art row. No new goods are sold."
+  }
+}

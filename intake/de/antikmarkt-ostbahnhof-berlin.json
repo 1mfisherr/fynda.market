@@ -1,0 +1,66 @@
+{
+  "slug": "antikmarkt-ostbahnhof-berlin",
+  "name": "Antikmarkt Ostbahnhof",
+  "kind": "antikmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Erich-Steinfurth-Straße (Ostbahnhof)",
+    "address": "Erich-Steinfurth-Straße, Ecke Koppenstraße",
+    "postal_code": "10243"
+  },
+  "lat": 52.5112,
+  "lng": 13.4348,
+  "rhythm": {
+    "de": "Jeden Sonntag",
+    "en": "Every Sunday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "15:30"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-03",
+    "2027-01-10",
+    "2027-01-17"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://oldthing.de/Berliner-Flohmarkt/Antikes-und-Sammeln/Antikmarkt-Ostbahnhof/",
+  "organiser": {
+    "name": "Beste Sammelfreunde UG (haftungsbeschränkt)",
+    "website": "https://oldthing.de/Berliner-Flohmarkt/",
+    "email": "info@oldthing.de"
+  },
+  "source_page": "https://oldthing.de/Berliner-Flohmarkt/",
+  "facts": [
+    "every Sunday 08:00–15:30",
+    "closed on the Sundays the Antikflohmarkt Karlshorst runs, and on Volkstrauertag and Totensonntag",
+    "antiques and collectors' market: stamps, postcards, photos and other paper ephemera are the focus",
+    "also small antiques, toys, records, jewellery, books",
+    "mostly professional traders",
+    "around 30–40 stalls, room for up to 150",
+    "running since 1998",
+    "on Erich-Steinfurth-Straße between the back of Ostbahnhof and the department store; entrance from Koppenstraße",
+    "food stalls and toilets on site",
+    "S-Bahn and regional/long-distance trains at Ostbahnhof; buses 140, 142, 147, 240, 340",
+    "no market car park; parking fees do not apply on Sundays"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser's own pages disagree on hours: market listing on the overview says 08:00–15:30 (used), its dates page says 9–16/17 and the market page prose says 'from nine'. Closures (04.10, 08.11 Karlshorst weekends; 15.11, 22.11) are from oldthing.de/flohmaerkte-und-sammlerboersen-termine; overview's next-dates box confirms 27.09, 11.10, 18.10 and skips 04.10. No winter break stated. Entry fee not stated. Imprint header also names 'oldthing.de Flohmärkte Berlin P&S eGbR'; imprint e-mail is service@oldthing.de, contact page gives info@oldthing.de (used).",
+  "description": {
+    "de": "Ein Sammlermarkt in einer ruhigen Straße hinter dem Ostbahnhof, wo sich Händler und Stammkunden kennen. Im Mittelpunkt stehen Briefmarken, Ansichtskarten, alte Fotos und anderes Papier, dazu Kleinantiquitäten, Spielzeug, Schallplatten, Schmuck und Bücher. Die meisten Stände betreiben Profis, und für ein Fachgespräch ist fast immer Zeit.",
+    "en": "A collectors' market on a quiet street behind Ostbahnhof, where traders and regulars know each other. Stamps, postcards, old photographs and other paper are the heart of it, with small antiques, toys, records, jewellery and books around them. Most stalls are run by professionals, and there is nearly always time for a proper conversation about what you're holding."
+  }
+}

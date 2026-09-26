@@ -1,0 +1,54 @@
+{
+  "slug": "riesenflohmarkt-trabrennbahn-karlshorst-berlin",
+  "name": "Riesenflohmarkt Trabrennbahn Karlshorst",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Trabrennbahn Karlshorst",
+    "address": "Treskowallee 159",
+    "postal_code": "10318"
+  },
+  "lat": 52.4755,
+  "lng": 13.5224,
+  "rhythm": {
+    "de": "Zu Pfingsten und zum Tag der Deutschen Einheit",
+    "en": "At Whitsun and on German Unity Day"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-10-02",
+    "2026-10-03",
+    "2026-10-04"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://oldthing.de/riesenflohmarkt",
+  "organiser": {
+    "name": "Beste Sammelfreunde UG (haftungsbeschränkt)",
+    "website": "https://oldthing.de/Berliner-Flohmarkt/",
+    "email": "info@oldthing.de"
+  },
+  "source_page": "https://oldthing.de/riesenflohmarkt",
+  "facts": [
+    "three-day edition of the Antikflohmarkt Karlshorst, held at Whitsun and for German Unity Day",
+    "about 500 exhibitors",
+    "antiques, design, furniture, art and second-hand",
+    "9–17, longer if it is busy",
+    "entry free for visitors",
+    "visitors can park on the grounds next to the stalls for EUR 5, handy for carrying off larger pieces",
+    "Designbörse Berlin (vintage design fair) in the grandstand hall the same weekend",
+    "new goods not allowed, except crafts",
+    "at the Karlshorst trotting track"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser says the Riesenflohmarkt is the Antikflohmarkt held over three days; its October weekend (02.–04.10) is listed only here, not in the Antikflohmarkt file, to avoid two listings for one event. Overview calls it 'twice a year' though Easter 2026 was also a 3-day edition. Hall taken by the Designbörse this weekend.",
+  "description": {
+    "de": "Die große Ausgabe des Antikflohmarkts auf der Trabrennbahn Karlshorst: drei Tage, rund 500 Aussteller mit Antiquitäten, Möbeln, Design, Kunst und viel eigenwilligem Second Hand. Wer etwas Großes findet, kann gegen Gebühr direkt neben den Ständen parken und es gleich einladen. In der Tribünenhalle läuft parallel die Designbörse Berlin mit Vintage-Design.",
+    "en": "The big edition of the antiques flea market at the Karlshorst trotting track: three days and around 500 exhibitors with antiques, furniture, design, art and plenty of odd second-hand. If you find something large, you can park beside the stalls for a small fee and load it straight away. The Designbörse Berlin, a vintage design fair, runs in the grandstand hall at the same time."
+  }
+}

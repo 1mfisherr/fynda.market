@@ -1,0 +1,78 @@
+{
+  "slug": "antik-und-buchmarkt-am-bodemuseum-berlin",
+  "name": "Antik- und Buchmarkt am Bodemuseum",
+  "kind": "antikmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Am Kupfergraben, gegenüber dem Bode-Museum",
+    "address": "Am Kupfergraben 3",
+    "postal_code": "10117"
+  },
+  "lat": 52.5213,
+  "lng": 13.394,
+  "rhythm": {
+    "de": "Samstag und Sonntag",
+    "en": "Saturday and Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-09",
+    "2027-01-10",
+    "2027-01-16",
+    "2027-01-17",
+    "2027-01-23"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.antikbuchmarkt.de/",
+  "organiser": {
+    "name": "M.S.P-Marktservice UG",
+    "website": "https://www.antikbuchmarkt.de/",
+    "email": "info@antikbuchmarkt.de"
+  },
+  "source_page": "https://www.antikbuchmarkt.de/",
+  "facts": [
+    "every Saturday, Sunday and public holiday 10:00–17:00",
+    "antiques and books",
+    "opposite the Bode-Museum",
+    "a few minutes' walk from Friedrichstraße and Hackescher Markt stations",
+    "stalls by phone reservation; new traders welcome"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Address Am Kupfergraben 3 from the organiser's Anfahrt page. Organiser says 'also on public holidays' but lists no dates: derived Sat+Sun only, added no weekday holidays (25.12, 01.01), dropped 15.11, 22.11 and 26.12 per the Berlin rule (26.12 may well be open). Fee not stated. Two phone numbers on the site (…715 on pages, …716 in imprint).",
+  "description": {
+    "de": "Bücher und Antiquitäten am Kupfergraben, direkt gegenüber dem Bode-Museum an der Spitze der Museumsinsel. Hier wird geschlendert, gestöbert und mit den Händlern geplaudert. Die Bahnhöfe Friedrichstraße und Hackescher Markt sind nur ein paar Gehminuten entfernt.",
+    "en": "Books and antiques on the Kupfergraben, directly opposite the Bode-Museum at the tip of Museum Island. People come to stroll, browse and chat with the dealers. Friedrichstraße and Hackescher Markt stations are a few minutes' walk away."
+  }
+}

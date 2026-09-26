@@ -1,0 +1,109 @@
+{
+  "slug": "antik-und-troedelhalle-spandau-berlin",
+  "name": "Antik- und Trödelhalle Spandau",
+  "kind": "hallenflohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Trödelhalle Spandau",
+    "address": "Am Juliusturm 55",
+    "postal_code": "13599"
+  },
+  "lat": 52.5378,
+  "lng": 13.2146,
+  "rhythm": {
+    "de": "Mittwoch, Samstag und Sonntag",
+    "en": "Wednesday, Saturday and Sunday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "16:00"
+  },
+  "opening_by_weekday": {
+    "wed": {
+      "start": "14:00",
+      "end": "18:00"
+    },
+    "sat": {
+      "start": "08:00",
+      "end": "16:00"
+    },
+    "sun": {
+      "start": "08:00",
+      "end": "16:00"
+    }
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-09-30",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-07",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-14",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-21",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-28",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-04",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-11",
+    "2026-11-14",
+    "2026-11-18",
+    "2026-11-21",
+    "2026-11-25",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-02",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-09",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-16",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-23",
+    "2026-12-27",
+    "2026-12-30",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-06",
+    "2027-01-09",
+    "2027-01-10",
+    "2027-01-13",
+    "2027-01-16",
+    "2027-01-17",
+    "2027-01-20",
+    "2027-01-23"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://troedelhalle-spandau.de/",
+  "organiser": {
+    "name": "Antik- und Trödelhalle Spandau",
+    "website": "https://troedelhalle-spandau.de/",
+    "email": "info@troedelhalle-spandau.de"
+  },
+  "source_page": "https://troedelhalle-spandau.de/",
+  "facts": [
+    "indoor hall",
+    "Wednesday 14:00–18:00, Saturday and Sunday 08:00–16:00; closed Monday, Tuesday, Thursday, Friday",
+    "used furniture, antiques, household goods and rarities",
+    "kitchens, lamps, vintage pieces and modern furniture",
+    "buys and sells (An- und Verkauf)"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser site reads as one trader's second-hand hall (sole trader, \"An- und Verkauf\"), not a market of many stallholders — kind hallenflohmarkt is a judgment call. berlin.de's \"3 halls\" and public-holiday opening are not on the organiser site, so not used. Organiser is silent on holidays; 15.11, 22.11 and 26.12 dropped by default. Impressum names the owner as Mischael Rudolph-Häntzschel (spelling as published). Entry fee not stated.",
+  "description": {
+    "de": "Eine Trödelhalle in Spandau, voll mit gebrauchten Möbeln, Antiquitäten und Hausrat. Neben Sofas und Schränken stehen Lampen, Küchen und Einzelstücke, alte wie moderne. Die Halle kauft auch an, und drinnen bleibt man trocken, egal wie das Wetter ist.",
+    "en": "An indoor second-hand hall in Spandau, full of used furniture, antiques and household goods. Sofas and cupboards share the floor with lamps, kitchens and odd rarities, old and modern alike. It buys as well as sells, and you stay dry whatever the weather."
+  }
+}

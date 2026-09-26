@@ -33,7 +33,7 @@ Markets researched by hand or by agent before they enter the database. One JSON 
 - `kind`: one of `flohmarkt` `hallenflohmarkt` `nachtflohmarkt` `kinderflohmarkt` `troedelmarkt` `antikmarkt` `strassenmarkt`.
 - `town`: the postal town on the venue's address. `region`: the Bundesland, in German (`Bayern`, `Nordrhein-Westfalen`).
 - `dates`: every date from today to 120 days out. `dates_from` says whether the organiser lists them (`listed`) or you derived them from the stated rhythm (`rhythm`) — derived dates are imported as `unverified`, listed ones as `confirmed`.
-- `opening`: 24 h. Omit `end` if the organiser gives none.
+- `opening`: 24 h. Omit `end` if the organiser gives none. Where hours differ by day, add `opening_by_weekday` — `{ "wed": { "start": "14:00", "end": "18:00" }, "sun": { … } }`, keys `sun`…`sat` — which wins on the days it names.
 - `fee`: visitor entry in EUR, `0` for free, `null` if not stated.
 - `facts`: short bullet strings, each true on the source page. No adjectives you did not read there. The description is written from these later, in the site's voice.
 - `notes`: whatever a second reader should know — "dates page shows 2025 only", "two organisers, chose the one on the poster".

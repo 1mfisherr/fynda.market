@@ -1,0 +1,93 @@
+{
+  "slug": "troedelmarkt-marheinekeplatz-berlin",
+  "name": "Trödelmarkt Marheinekeplatz",
+  "kind": "troedelmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Marheinekeplatz",
+    "address": "Marheinekeplatz",
+    "postal_code": "10961"
+  },
+  "lat": 52.4891,
+  "lng": 13.3943,
+  "rhythm": {
+    "de": "Samstag und Sonntag",
+    "en": "Saturday and Sunday"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "opening_by_weekday": {
+    "sat": {
+      "start": "10:00",
+      "end": "16:00"
+    },
+    "sun": {
+      "start": "11:00",
+      "end": "16:00"
+    }
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-05",
+    "2026-12-06",
+    "2026-12-12",
+    "2026-12-13",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-09",
+    "2027-01-10",
+    "2027-01-16",
+    "2027-01-17",
+    "2027-01-23"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "http://xn--trdelmarkt-marheinekeplatz-dvc.de/",
+  "organiser": {
+    "name": "Marktstandverleih Krüger",
+    "website": "http://xn--trdelmarkt-marheinekeplatz-dvc.de/",
+    "email": "troedelmarkt.marheinekeplatz@googlemail.com"
+  },
+  "source_page": "http://xn--trdelmarkt-marheinekeplatz-dvc.de/?page_id=8",
+  "facts": [
+    "every Saturday and Sunday, all year",
+    "Saturday 10:00–16:00; Sunday 11:00–17:00 in summer time, 11:00–16:00 in winter time",
+    "special openings announced at short notice",
+    "at the end of Bergmannstraße in Kreuzberg",
+    "antiques, fashion, children's things, bikes and accessories, art and design pieces, handicrafts, books, household junk, records and DVDs",
+    "stalls with table and roof provided by the organiser, about 6 m² each",
+    "cafés and restaurants around the square; the market hall serves food on Saturdays",
+    "small playground; a fountain in summer",
+    "no food, plants or counterfeit brand goods sold",
+    "stall reservations by phone only"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Sunday hours: Termine page says 11–17 (summer time); Marktordnung (?page_id=10) says 11–16 in winter time. Gave Sunday 11:00–16:00 since winter time starts 25.10.2026 and covers most dates; the Sundays 27.09–18.10 actually run to 17:00. No closures listed: dropped 15.11, 22.11, 26.12 per the Berlin rule. Imprint names Mario Krüger, Marktstandverleih Krüger. Fee not stated.",
+  "description": {
+    "de": "Am Ende der Bergmannstraße in Kreuzberg: Antiquitäten, Kleidung, Kindersachen, Fahrräder, Bücher, Platten und DVDs, dazu Kunst, Designstücke und Handarbeiten. Die Stände mit Tisch und Dach stellt der Veranstalter. Rund um den Platz gibt es Cafés und Restaurants und für Kinder einen kleinen Spielplatz.",
+    "en": "At the end of Bergmannstraße in Kreuzberg: antiques, clothes, children's things, bikes, books, records and DVDs, plus art, design pieces and handicrafts. The organiser provides the stalls, each with a table and a roof. Cafés and restaurants ring the square, and there is a small playground for younger visitors."
+  }
+}

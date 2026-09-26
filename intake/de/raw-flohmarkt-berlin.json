@@ -1,0 +1,66 @@
+{
+  "slug": "raw-flohmarkt-berlin",
+  "name": "RAW Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "RAW-Gelände",
+    "address": "Revaler Straße 99",
+    "postal_code": "10245"
+  },
+  "lat": 52.5077,
+  "lng": 13.4534,
+  "rhythm": {
+    "de": "Jeden Sonntag",
+    "en": "Every Sunday"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-09-27",
+    "2026-10-04",
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-03",
+    "2027-01-10",
+    "2027-01-17"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.rawflohmarkt.de/",
+  "organiser": {
+    "name": "B. Feka",
+    "website": "https://www.rawflohmarkt.de/",
+    "email": null
+  },
+  "source_page": "https://www.rawflohmarkt.de/",
+  "facts": [
+    "every Sunday 08:00–17:00",
+    "on the RAW site in Friedrichshain, among old factory buildings with clubs, a climbing hall and a skate hall",
+    "mostly private sellers",
+    "large choice of fashion: vintage, retro and unworn",
+    "curiosities and useful things",
+    "local artists every week with crafts, jewellery and pictures",
+    "street food every week: coffee, juices, pizza, burgers, Arabic food",
+    "toilets on site",
+    "stall reservations by phone only, Mondays 18:00–20:00"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser site is a dated Jimdo page (still carries a Covid notice and 'reopened 24.05.20') but states every Sunday 08–17; no closures listed, so 15.11 and 22.11 dropped per the Berlin rule. No e-mail published (phone only); fee not stated. Coordinates from the OSM 'RAW-Flohmarkt' marketplace node.",
+  "description": {
+    "de": "Zwischen den alten Fabrikgebäuden des RAW-Geländes in Friedrichshain, gleich neben Clubs, Kletterhalle und Skatehalle, verkaufen vor allem Privatleute ihre ehemaligen Lieblingsstücke. Am meisten gibt es Kleidung – Vintage, Retro und nie Getragenes –, dazu Kurioses, Nützliches und Schmuck, Bilder und Handwerk von Künstlerinnen und Künstlern aus der Gegend. Für die Pause zwischendurch gibt es Streetfood vom Kaffee bis zum Burger.",
+    "en": "Among the old factory buildings of the RAW site in Friedrichshain, next door to clubs, a climbing hall and a skate hall, mostly private sellers part with their former favourites. Clothing is the big draw – vintage, retro and never worn – alongside curiosities, useful odds and ends, and jewellery, pictures and crafts from local artists. Street food, from coffee to burgers, is there when you need a break."
+  }
+}

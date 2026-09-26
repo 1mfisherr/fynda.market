@@ -1,0 +1,53 @@
+{
+  "slug": "antikflohmarkt-trabrennbahn-karlshorst-berlin",
+  "name": "Antikflohmarkt Trabrennbahn Karlshorst",
+  "kind": "antikmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Trabrennbahn Karlshorst",
+    "address": "Treskowallee 129",
+    "postal_code": "10318"
+  },
+  "lat": 52.4759,
+  "lng": 13.524,
+  "rhythm": {
+    "de": "Einmal im Monat, April bis November",
+    "en": "Once a month, April to November"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-11-07",
+    "2026-11-08"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://oldthing.de/riesenflohmarkt",
+  "organiser": {
+    "name": "Beste Sammelfreunde UG (haftungsbeschränkt)",
+    "website": "https://oldthing.de/Berliner-Flohmarkt/",
+    "email": "info@oldthing.de"
+  },
+  "source_page": "https://oldthing.de/riesenflohmarkt",
+  "facts": [
+    "one weekend a month, season April to November",
+    "200–500 national and international traders",
+    "old furniture, antiques, art, design from Art Deco and mid-century to contemporary, second-hand",
+    "outdoors and in the grandstand hall",
+    "9–17, longer if it is busy",
+    "entry free for visitors",
+    "visitors can park on the grounds next to the stalls for EUR 5",
+    "food stalls, coffee and draught beer",
+    "new goods not allowed, except crafts"
+  ],
+  "checked": "2026-09-26",
+  "notes": "Organiser's 2026 list ends 07.–08.11, no winter dates. Its booking page also lists 02.10 and 04.10, but that weekend is the Riesenflohmarkt (the same market over three days), filed separately. Two street numbers in use: 129 on the Antikflohmarkt booking, 159 on the Riesenflohmarkt.",
+  "description": {
+    "de": "Ein Antik- und Trödelmarkt auf dem weiten Gelände der Trabrennbahn Karlshorst, mit Händlern aus ganz Deutschland und dem Ausland. Man findet alte Möbel, Antiquitäten, Kunst und Design von Art déco bis Midcentury, dazu reichlich schräges Second Hand. Größere Stücke lassen sich bequem mitnehmen, weil man gegen Gebühr direkt neben den Ständen parken kann.",
+    "en": "An antiques and junk market on the wide grounds of the Karlshorst trotting track, with traders from across Germany and abroad. Expect old furniture, antiques, art and design from Art Deco to mid-century, plus plenty of quirky second-hand. Bigger pieces are easy to take home, since you can park right by the stalls for a small fee."
+  }
+}

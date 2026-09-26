@@ -40,6 +40,11 @@ if (!SIGNING) throw new Error('ADMIN_SIGNING_SECRET is not set; organiser links 
 const KINDS = ['flohmarkt', 'hallenflohmarkt', 'nachtflohmarkt', 'kinderflohmarkt', 'troedelmarkt', 'brocante', 'antikmarkt', 'strassenmarkt'];
 const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
+/* A market whose hours differ by day — Spandau's hall opens Wednesday
+   afternoons and weekend mornings — gives `opening_by_weekday`, which wins
+   over `opening` on the days it names. */
+const WEEKDAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const openingOn = (m, date) => m.opening_by_weekday?.[WEEKDAYS[new Date(`${date}T12:00:00Z`).getUTCDay()]] ?? m.opening;
 const say = (...parts) => console.log(...parts);
 const lower = (s) => (s ?? '').trim().toLowerCase();
 const host = (url) => { try { return new URL(url).host.replace(/^www\./, ''); } catch { return null; } };
@@ -73,6 +78,10 @@ function readIntake() {
     if (!m.rhythm?.de || !m.rhythm?.en) bad('rhythm.de and rhythm.en are required');
     if (m.opening?.start && !TIME.test(m.opening.start)) bad(`opening.start "${m.opening.start}"`);
     if (m.opening?.end && !TIME.test(m.opening.end)) bad(`opening.end "${m.opening.end}"`);
+    for (const [day, o] of Object.entries(m.opening_by_weekday ?? {})) {
+      if (!WEEKDAYS.includes(day)) bad(`opening_by_weekday: "${day}" is not one of ${WEEKDAYS.join(', ')}`);
+      if (!TIME.test(o?.start ?? '') || (o.end && !TIME.test(o.end))) bad(`opening_by_weekday.${day}`);
+    }
     if (!Array.isArray(m.dates)) bad('dates must be a list');
     else {
       for (const d of m.dates) if (!DATE.test(d)) bad(`date "${d}"`);
@@ -298,7 +307,7 @@ async function write(d, ours) {
           const occ = await one(
             `insert into public.occurrences (market_id, date, start_time, end_time, status, origin, confirmed_at)
              values ($1,$2,$3,$4,$5,'import',$6) returning id`,
-            [row.id, date, m.opening?.start ?? null, m.opening?.end ?? null, listed ? 'confirmed' : 'unverified', listed ? checked : null]);
+            [row.id, date, openingOn(m, date)?.start ?? null, openingOn(m, date)?.end ?? null, listed ? 'confirmed' : 'unverified', listed ? checked : null]);
           occurrences += 1;
           if (listed) {
             await fact('occurrence', occ.id, 'date', date, { source_type: 'website_crawl', source_ref: m.source_page, observed_at: checked, confidence: 'confirmed' });
