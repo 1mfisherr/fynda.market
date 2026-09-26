@@ -385,6 +385,21 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "brocante-de-la-gruyere-bulle",
+    "date": "2027-01-22",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "brocante-de-la-gruyere-bulle",
+    "date": "2027-01-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "brocante-de-la-gruyere-bulle",
+    "date": "2027-01-24",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "brocante-quai-de-nogent-yverdon",
     "date": "2026-10-02",
     "status": "confirmed"
@@ -536,11 +551,6 @@
   },
   {
     "marketSlug": "fete-de-la-brocante-le-landeron",
-    "date": "2026-09-25",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "fete-de-la-brocante-le-landeron",
     "date": "2026-09-26",
     "status": "confirmed"
   },
@@ -673,11 +683,6 @@
     "marketSlug": "floh-und-troedelmarkt-buergerpark-saarbruecken",
     "date": "2026-11-14",
     "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
-    "date": "2026-09-23",
-    "status": "unverified"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
@@ -1250,11 +1255,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "flohmarkt-barfuesserplatz-basel",
-    "date": "2026-09-23",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "flohmarkt-biel",
     "date": "2026-10-03",
     "status": "confirmed"
@@ -1407,6 +1407,11 @@
   {
     "marketSlug": "flohmarkt-dietikon",
     "date": "2027-01-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-dietikon",
+    "date": "2027-01-23",
     "status": "confirmed"
   },
   {
@@ -1745,6 +1750,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-kanzlei-zuerich",
+    "date": "2027-01-23",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-karlsplatz-stuttgart",
     "date": "2026-09-26",
     "status": "unverified"
@@ -1893,11 +1903,6 @@
     "marketSlug": "flohmarkt-oetwil-am-see",
     "date": "2026-10-31",
     "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-olympiapark-muenchen",
-    "date": "2026-09-25",
-    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-olympiapark-muenchen",
@@ -2095,6 +2100,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-petersplatz-basel",
+    "date": "2027-01-23",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-presswerk-arbon",
     "date": "2026-11-08",
     "status": "confirmed"
@@ -2152,11 +2162,6 @@
   {
     "marketSlug": "flohmarkt-sarnen-center",
     "date": "2026-10-10",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
-    "date": "2026-09-25",
     "status": "confirmed"
   },
   {
@@ -2397,6 +2402,11 @@
   {
     "marketSlug": "flohmarkt-vogesenplatz-basel",
     "date": "2027-01-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-vogesenplatz-basel",
+    "date": "2027-01-23",
     "status": "confirmed"
   },
   {
@@ -2786,11 +2796,6 @@
   },
   {
     "marketSlug": "les-puces-du-cpo-lausanne",
-    "date": "2026-09-24",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "les-puces-du-cpo-lausanne",
     "date": "2026-10-01",
     "status": "confirmed"
   },
@@ -3021,11 +3026,6 @@
   },
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
-    "date": "2026-09-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
     "date": "2026-09-30",
     "status": "confirmed"
   },
@@ -3192,6 +3192,11 @@
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2027-01-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
+    "date": "2027-01-23",
     "status": "confirmed"
   },
   {
@@ -3316,11 +3321,6 @@
   },
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
-    "date": "2026-09-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-09-30",
     "status": "confirmed"
   },
@@ -3490,8 +3490,8 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "marche-rumine-lausanne-vendredi",
-    "date": "2026-09-25",
+    "marketSlug": "marche-rumine-lausanne-samedi",
+    "date": "2027-01-23",
     "status": "confirmed"
   },
   {
@@ -3572,6 +3572,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-vendredi",
     "date": "2027-01-15",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-vendredi",
+    "date": "2027-01-22",
     "status": "confirmed"
   },
   {
@@ -3675,6 +3680,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "mercato-antiquariato-maghetti-lugano",
+    "date": "2027-01-23",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "musiker-flohmarkt-zuerich-kronensaal",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -3718,16 +3728,6 @@
     "marketSlug": "nachtflohmarkt-messe-erfurt",
     "date": "2026-12-12",
     "status": "confirmed"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
-    "date": "2026-09-23",
-    "status": "unverified"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
-    "date": "2026-09-24",
-    "status": "unverified"
   },
   {
     "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
@@ -3887,11 +3887,6 @@
   {
     "marketSlug": "quartierflohmarkt-hirzbrunnen",
     "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "riesenflohmarkt-freiburg",
-    "date": "2026-09-25",
     "status": "confirmed"
   },
   {
