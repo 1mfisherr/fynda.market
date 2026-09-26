@@ -66,7 +66,7 @@ The biggest, best-converting segment: `flohmarkt luzern 2026` was v1's best quer
 
 1. **H1 and title with the year** — it is in 38% of queries — plus the next date in the title.
 2. One sentence naming the next market, date, hours, venue; then the count. This is also the search snippet.
-3. The When control, only the parts with a date behind them — a chip that empties the list is a dead end.
+3. The When control, only the parts with a date behind them — a chip that empties the list is a dead end. The calendar and the chips find a market on **any** of its dates, not only its next: each row carries its dates inside the horizon (`src/lib/date-rows.ts`), and a chosen day shows its markets under that day with that day's hours (2026-09-26 — Zurich could not pick 3 October).
 4. **One row per market, soonest first, grouped under sticky day headers** — weekday, date in the accent, count; a month label where the month turns. One feature row (the next market), then compact rows. Two features put the first name 1,300px down a phone.
 5. **A cancelled market stays in the list**, struck through, with the reason.
 5b. **A market with no date yet stays too** — after the day groups, under *No date yet* with its rhythm line, shown under All and hidden by any other When. The heading counts every market the town has. Hiding them put "Die 0 Flohmärkte" over towns and whole cantons that have markets (2026-09-20).

@@ -193,13 +193,23 @@ const jsonLd = {
 
   {/* The nearby rows count too: on Worb, "Wochenende" showing Bern's Saturday
       market is the point of the block. */}
-  <DateFilters locale={locale} dates={[...list.map((m) => m.next.date), ...nearby.map((n) => n.market.next.date)]} />
+  {/* Every day a market runs, not only each market's next one — a weekly
+      market is on the calendar every week (src/lib/date-rows.ts). */}
+  <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} />
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
       the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
-    <div id="list">
+    <div
+      id="list"
+      data-weekdays={JSON.stringify(s.weekdaysLong)}
+      data-months={JSON.stringify(s.monthsLong)}
+      data-today={s.filterToday}
+      data-dot={locale === 'de' ? '.' : ''}
+      data-count-one={s.marketCount(1)}
+      data-count-many={s.marketCount(2)}
+    >
       {groups.map((group, g) => (
         <section class="day-group gutter" data-day={group.date}>
           {group.monthLabel && <p class="month">{group.monthLabel}</p>}
@@ -209,11 +219,19 @@ const jsonLd = {
             <span class="count">{s.marketCount(group.rows.length)}</span>
           </h2>
           {group.rows.map((market, i) => (
-            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} showRhythm omitCity showDay={false} />
+            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} showRhythm omitCity showDay={false} allDates />
           ))}
         </section>
       ))}
     </div>
+    {/* A chosen day or weekend, built by the script from the rows above: the
+        markets on those days under their own headers, with that day's hours. */}
+    <div id="picked" hidden></div>
+    <template id="day-template">
+      <section class="day-group gutter">
+        <h2 class="day-head"><span class="weekday"></span><span class="date"></span><span class="count"></span></h2>
+      </section>
+    </template>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
 
@@ -304,12 +322,69 @@ const jsonLd = {
 </style>
 
 <script>
-  import { inWindow, type DateWindow } from '../../../lib/date-window';
+  import { inWindow, iso, type DateWindow } from '../../../lib/date-window';
+  import { matching } from '../../../lib/date-rows';
 
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
-  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
+  const list = document.getElementById('list');
+  const picked = document.getElementById('picked');
+  const template = document.getElementById('day-template') as HTMLTemplateElement | null;
   const empty = document.getElementById('empty');
   const undated = document.getElementById('undated');
+  /* The town's own rows, and the "within 25 km" block's. The block's rows are
+     other towns' markets at their next date only, so they keep filtering on
+     that one date. */
+  const own = list ? Array.from(list.querySelectorAll<HTMLElement>('article.card')) : [];
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]')).filter((row) => !own.includes(row));
+  const read = <T,>(key: string, fallback: T): T => { try { return JSON.parse(list?.dataset[key] ?? ''); } catch { return fallback; } };
+  const weekdays = read<string[]>('weekdays', []);
+  const months = read<string[]>('months', []);
+
+  /**
+   * A chosen window, as its own list: every market with a date in it, under
+   * that date's header, showing that date's hours. A row is copied, not moved
+   * — a market on Saturday and Sunday belongs under both — and the copy drops
+   * today's clock when it stands for another day.
+   */
+  const renderPicked = (window: DateWindow, now: Date): number => {
+    if (!picked || !template) return 0;
+    picked.replaceChildren();
+    const byDate = new Map<string, { row: HTMLElement; hours: string }[]>();
+    for (const row of own) {
+      for (const d of matching(row, window, now)) {
+        if (!byDate.has(d.date)) byDate.set(d.date, []);
+        byDate.get(d.date)!.push({ row, hours: d.hours });
+      }
+    }
+    const today = iso(now);
+    let shown = 0;
+    for (const date of [...byDate.keys()].sort()) {
+      const items = byDate.get(date)!.sort((a, b) => a.hours.localeCompare(b.hours));
+      const group = (template.content.firstElementChild as HTMLElement).cloneNode(true) as HTMLElement;
+      const d = new Date(`${date}T12:00:00`);
+      group.dataset.day = date;
+      group.querySelector('.weekday')!.textContent = date === today ? (list?.dataset.today ?? '') : (weekdays[d.getDay()] ?? '');
+      group.querySelector('.date')!.textContent = `${d.getDate()}${list?.dataset.dot ?? ''} ${months[d.getMonth()] ?? ''}`;
+      group.querySelector('.count')!.textContent = items.length === 1
+        ? (list?.dataset.countOne ?? '')
+        : (list?.dataset.countMany ?? '').replace('2', String(items.length));
+      for (const { row, hours } of items) {
+        const copy = row.cloneNode(true) as HTMLElement;
+        copy.classList.replace('feature', 'row');
+        copy.dataset.date = date;
+        const shownHours = copy.querySelector<HTMLElement>('.hours');
+        if (shownHours && hours) shownHours.textContent = hours;
+        if (date !== today) {
+          copy.classList.remove('over');
+          copy.querySelector<HTMLElement>('[data-clock]')?.setAttribute('hidden', '');
+        }
+        group.appendChild(copy);
+        shown++;
+      }
+      picked.appendChild(group);
+    }
+    return shown;
+  };
 
   /**
    * A row is a market, and it filters on the date it displays — so the day a
@@ -317,10 +392,13 @@ const jsonLd = {
    * are no day bands to hide or recount any more. The "No date yet" block has
    * nothing to say about a chosen day, so it goes with any window but All.
    */
-  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-day]'));
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-day]')).filter((g) => !list?.contains(g));
   const apply = (window: DateWindow) => {
     const now = new Date();
-    let shown = 0;
+    const all = window === 'all';
+    if (list) list.hidden = !all;
+    if (picked) picked.hidden = all;
+    let shown = all ? own.length : renderPicked(window, now);
     for (const row of rows) {
       const visible = inWindow(row.dataset.date ?? '', window, now);
       row.hidden = !visible;

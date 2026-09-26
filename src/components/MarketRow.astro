@@ -30,7 +30,9 @@
  */
 import type { Market } from '../lib/types';
 import { BADGED_KINDS, LINES } from '../lib/vocabulary';
-import { formatTime, toIsoWithOffset, todayIso } from '../lib/format';
+import { formatTime, formatTimeRange, toIsoWithOffset, todayIso } from '../lib/format';
+import { withinHorizon } from '../lib/markets';
+import { encodeDates } from '../lib/date-rows';
 import { flagFor } from '../lib/freshness';
 import { DEFAULT_LOCALE, formatFee, marketPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
@@ -49,10 +51,16 @@ interface Props {
   distance?: string;
   /** Off where the page groups rows under a day header that already says it. */
   showDay?: boolean;
+  /**
+   * Every date inside the horizon on the row, for a page whose When control
+   * must find the market on any of them, not only its next — src/lib/date-rows.ts.
+   * Town and canton lists; nowhere else pays the bytes.
+   */
+  allDates?: boolean;
 }
 const {
   market, locale = DEFAULT_LOCALE, variant = 'row',
-  omitCity = false, showRhythm = false, distance, showDay = true,
+  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false,
 } = Astro.props;
 
 const s = t(locale);
@@ -76,6 +84,13 @@ const live = occurrence && !cancelled && occurrence.date === todayIso() && occur
   ? { start: toIsoWithOffset(occurrence.date, occurrence.startTime, market.timezone), end: toIsoWithOffset(occurrence.date, occurrence.endTime, market.timezone) }
   : undefined;
 
+const dates = allDates
+  ? encodeDates(withinHorizon([market.next, ...market.upcoming].filter(Boolean) as NonNullable<typeof market.next>[])
+    .filter((o) => o.status !== 'cancelled')
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .map((o) => ({ date: o.date, hours: formatTimeRange(o.startTime, o.endTime, locale) ?? '' })))
+  : undefined;
+
 const entry = market.entryFee ? formatFee(market.entryFee, market.countryCode) : undefined;
 const where = [market.venueName, omitCity ? undefined : market.city, entry]
   .filter(Boolean).join(' · ');
@@ -85,7 +100,7 @@ const size = variant === 'feature' ? 720 : 148;
 
 {/* data-date is always present: the When control reads it, and a row with no
     date yet ("") is shown under All and hidden under any real window. */}
-<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end} data-lat={distance ? undefined : market.lat} data-lng={distance ? undefined : market.lng}>
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end} data-lat={distance ? undefined : market.lat} data-lng={distance ? undefined : market.lng} data-dates={dates || undefined}>
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
   <div class="body">
     <p class="meta">
@@ -157,6 +172,7 @@ const size = variant === 'feature' ? 720 : 148;
 
 <script>
   import { clockState, clockWords, formatSpan, instantsOf } from '../lib/clock';
+  import { iso } from '../lib/date-window';
   import { DISTANCE_MAX_KM, distanceKm, kmLabel, type PickedTown } from '../lib/geo';
   import { TOWN_KEY, adopt } from '../lib/local-keys';
 
@@ -192,6 +208,9 @@ const size = variant === 'feature' ? 720 : 148;
       const slot = row.querySelector<HTMLElement>('[data-clock]');
       const state = at && clockState(...at);
       if (!state || !slot || !words) continue;
+      // A When filter can show this row for a later date (src/lib/date-rows.ts);
+      // then today's clock has nothing to say about it.
+      if (row.dataset.date !== iso(new Date())) { row.classList.remove('over'); slot.hidden = true; continue; }
       row.classList.toggle('over', state.phase === 'over');
       row.dataset.phase = state.phase;
       if (state.phase === 'closing') slot.textContent = words.closesIn.replace('{t}', formatSpan(state.minutes, words));

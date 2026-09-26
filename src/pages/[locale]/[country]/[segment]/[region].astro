@@ -137,17 +137,17 @@ const jsonLd = {
     }))} />
   </Section>
 
-  <DateFilters locale={locale} dates={list.map((m) => m.next.date)} />
+  <DateFilters locale={locale} dates={rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date)} />
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
       the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
-    <div id="list" class="gutter">
+    <div id="list" class="gutter" data-weekdays={JSON.stringify(s.weekdaysShort)} data-dot={locale === 'de' ? '.' : ''}>
       <div class="leads">
-        {list.slice(0, 2).map((market) => <MarketRow market={market} locale={locale} variant="feature" showRhythm />)}
+        {list.slice(0, 2).map((market) => <MarketRow market={market} locale={locale} variant="feature" showRhythm allDates />)}
       </div>
-      {list.slice(2).map((market) => <MarketRow market={market} locale={locale} showRhythm />)}
+      {list.slice(2).map((market) => <MarketRow market={market} locale={locale} showRhythm allDates />)}
     </div>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
   </Section>
@@ -168,7 +168,8 @@ const jsonLd = {
 </Page>
 
 <script>
-  import { inWindow, type DateWindow } from '../../../../lib/date-window';
+  import { iso, type DateWindow } from '../../../../lib/date-window';
+  import { matching } from '../../../../lib/date-rows';
 
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
@@ -181,11 +182,40 @@ const jsonLd = {
    * are no day bands to hide or recount any more. The "No date yet" block has
    * nothing to say about a chosen day, so it goes with any window but All.
    */
+  /* A row stands for every date of its market (src/lib/date-rows.ts). Under a
+     chosen day or weekend it shows the first date that matches — its day label
+     and hours — and goes back to its next date under All. */
+  const list = document.getElementById('list');
+  let weekdays: string[] = [];
+  try { weekdays = JSON.parse(list?.dataset.weekdays ?? '[]'); } catch { weekdays = []; }
+  const dot = list?.dataset.dot ?? '';
+  const original = new Map(rows.map((row) => [row, {
+    date: row.dataset.date ?? '',
+    day: row.querySelector('.day')?.textContent ?? '',
+    hours: row.querySelector('.hours')?.textContent ?? '',
+  }]));
+  const show = (row: HTMLElement, date: string, day: string, hours: string) => {
+    row.dataset.date = date;
+    const dayEl = row.querySelector('.day'), hoursEl = row.querySelector('.hours');
+    if (dayEl) dayEl.textContent = day;
+    if (hoursEl && hours) hoursEl.textContent = hours;
+    if (date !== iso(new Date())) {
+      row.classList.remove('over');
+      row.querySelector('[data-clock]')?.setAttribute('hidden', '');
+    }
+  };
   const apply = (window: DateWindow) => {
     const now = new Date();
     let shown = 0;
     for (const row of rows) {
-      const visible = inWindow(row.dataset.date ?? '', window, now);
+      const was = original.get(row)!;
+      const first = window === 'all' ? undefined : matching(row, window, now)[0];
+      if (window === 'all') show(row, was.date, was.day, was.hours);
+      else if (first) {
+        const d = new Date(`${first.date}T12:00:00`);
+        show(row, first.date, `${weekdays[d.getDay()] ?? ''} ${d.getDate()}${dot}`, first.hours);
+      }
+      const visible = window === 'all' || Boolean(first);
       row.hidden = !visible;
       if (visible) shown++;
     }

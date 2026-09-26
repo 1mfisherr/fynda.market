@@ -39,7 +39,6 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    5. **Search Console and Bing:** add the German paths.
    6. **Nine Berlin photos** (`docs/germany-photo-list.md`, second batch). Researched and imported 2026-09-26, invisible until each has one. **Karlshorst Riesenflohmarkt (2–4 Oct) by Thursday 1 October.** Then `import-photos.mjs`, set them `active`, deploy — Berlin goes from 5 markets to 14.
 2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
-   - Known bug, not fixed: the town page's date picker offers only each market's *next* date — Zurich cannot pick Sat 3 Oct though three markets run that day.
 3. **Read, on these dates** — nothing to build until then.
    - 2026-09-27 and 2026-10-04 Search Console exports: titles, and whether Germany earns anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page.
    - Four weeks after the letters: organiser answer rate (`organiser_funnel`). >25% build more for organisers, 10–25% keep as a data feed, <10% stop.
