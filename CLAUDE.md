@@ -19,6 +19,7 @@ Solo founder, non-technical, makes every final call. You are the technical judgm
 1. Read `docs/PLAN.md`. Then only the doc the task needs — map in `docs/README.md`. Never `docs/archive/` unless asked.
 2. Small and obviously safe → do it. Touches data, URLs or architecture → look, recommend, discuss, build. Big or fuzzy → interview him, write a spec, build from it in a fresh session.
 3. A decision made is a line changed in the doc that owns it, the same session. Rewrite superseded text in place — git is the changelog, the docs are not. Update `PLAN.md` before ending.
+4. **Push and deploy once, at the end of the session — never after each step.** Commit locally as you go; `git push` and `npm run deploy` only when the session ends or Delfim says "push now". Every push runs GitHub Actions and every deploy pings IndexNow; GitHub warned him at 90% of his Actions allowance on 2026-09-26.
 
 ## Commands
 
