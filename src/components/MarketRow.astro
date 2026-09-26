@@ -30,7 +30,7 @@
  */
 import type { Market } from '../lib/types';
 import { BADGED_KINDS, LINES } from '../lib/vocabulary';
-import { formatTime } from '../lib/format';
+import { formatTime, toIsoWithOffset, todayIso } from '../lib/format';
 import { flagFor } from '../lib/freshness';
 import { DEFAULT_LOCALE, formatFee, marketPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
@@ -69,6 +69,13 @@ const times = occurrence?.startTime
   ? `${formatTime(occurrence.startTime)}${occurrence.endTime ? `–${formatTime(occurrence.endTime)}` : ''}`
   : undefined;
 
+/* Today's instants, for the clock line (src/lib/clock.ts). Only a date that
+   is today, not cancelled, with both ends known — the rest have no minute to
+   tell. The build knows the day; the browser works out the hour. */
+const live = occurrence && !cancelled && occurrence.date === todayIso() && occurrence.startTime && occurrence.endTime
+  ? { start: toIsoWithOffset(occurrence.date, occurrence.startTime, market.timezone), end: toIsoWithOffset(occurrence.date, occurrence.endTime, market.timezone) }
+  : undefined;
+
 const entry = market.entryFee ? formatFee(market.entryFee, market.countryCode) : undefined;
 const where = [market.venueName, omitCity ? undefined : market.city, entry]
   .filter(Boolean).join(' · ');
@@ -78,7 +85,7 @@ const size = variant === 'feature' ? 720 : 148;
 
 {/* data-date is always present: the When control reads it, and a row with no
     date yet ("") is shown under All and hidden under any real window. */}
-<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id}>
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end}>
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
   <div class="body">
     <p class="meta">
@@ -95,6 +102,9 @@ const size = variant === 'feature' ? 720 : 148;
       <a href={marketPath(locale, market.slug)}>{market.name}</a>
       {badge && <i class="badge" style={`background:var(${line.token});color:var(${line.token}-ink)`}>{badge}</i>}
     </h3>
+    {/* "Closes in 40 min", or "Over for today" — the exceptions only. An open
+        market with hours to go says nothing: its times already do. */}
+    {live && <p class="clock" data-clock hidden></p>}
     {showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
     <p class="where">{where}</p>
     {flag?.tone === 'warn' && <p class="check">{flag.text}</p>}
@@ -119,6 +129,13 @@ const size = variant === 'feature' ? 720 : 148;
   .name { margin-block-start:var(--space-half); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.2; }
   .name a::after { position:absolute; inset:0; content:''; }
   .badge { display:inline-block; margin-inline-start:var(--space-2); padding:var(--space-half) var(--space-2); border-radius:var(--radius-pill); color:var(--color-white); font-size:var(--text-micro); font-style:normal; font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); vertical-align:var(--space-half); white-space:nowrap; }
+  .clock { margin:var(--space-1) 0 0; color:var(--color-accent-text); font-size:var(--text-small); font-weight:var(--weight-bold); line-height:1.4; }
+  .clock[hidden] { display:none; }
+  /* Finished for today: still listed, so the list does not jump, but it steps
+     back. The picture fades with it, as a cancellation's does. */
+  .over .clock { color:var(--color-quiet); }
+  .over .name a { color:var(--color-quiet); }
+  .over .pic { opacity:0.45; }
   .rhythm { margin:var(--space-1) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
   .where { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-small); line-height:1.4; }
   .check { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-micro); line-height:1.4; }
@@ -135,3 +152,30 @@ const size = variant === 'feature' ? 720 : 148;
   .cancelled .name a { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
   .cancelled .pic { filter:grayscale(1); opacity:0.55; }
 </style>
+
+<script>
+  import { clockState, clockWords, formatSpan, instantsOf } from '../lib/clock';
+
+  /* Every row on the page that is on today, painted now and again each
+     minute: a town page left open on a phone at 15:58 should not still be
+     recommending a market that closed at 16:00. */
+  const words = clockWords();
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('article.card[data-start][data-end]'));
+  const paint = () => {
+    for (const row of rows) {
+      const at = instantsOf(row);
+      const slot = row.querySelector<HTMLElement>('[data-clock]');
+      const state = at && clockState(...at);
+      if (!state || !slot || !words) continue;
+      row.classList.toggle('over', state.phase === 'over');
+      row.dataset.phase = state.phase;
+      if (state.phase === 'closing') slot.textContent = words.closesIn.replace('{t}', formatSpan(state.minutes, words));
+      else if (state.phase === 'over') slot.textContent = words.overToday;
+      slot.hidden = !(state.phase === 'closing' || state.phase === 'over');
+    }
+  };
+  if (rows.length && words) {
+    paint();
+    setInterval(paint, 60_000);
+  }
+</script>

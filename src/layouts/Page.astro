@@ -33,20 +33,30 @@ interface Props {
   analytics?: { market?: string; city?: string; region?: string; next?: string };
   /** False when the page carries its own signup card — see SiteFooter. */
   footerSignup?: boolean;
+  /** The picture a shared link shows — see Base.astro. */
+  image?: string;
 }
 const {
   title, description, indexable = true, mainId = 'inhalt',
-  locale = DEFAULT_LOCALE, alternates = [], country, analytics, footerSignup = true,
+  locale = DEFAULT_LOCALE, alternates = [], country, analytics, footerSignup = true, image,
 } = Astro.props;
 const s = t(locale);
+
+/* The words src/lib/clock.ts needs, once per page rather than once per row:
+   a town page carries dozens of rows and they all say the same four things. */
+const clockWords = {
+  opensIn: s.opensIn, closesIn: s.closesIn, onRightNow: s.onRightNow, overToday: s.overToday,
+  spanH: s.spanH, spanM: s.spanM, spanHM: s.spanHM,
+};
 ---
-<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates} country={country} analytics={analytics}>
+<Base title={title} description={description} indexable={indexable} locale={locale} alternates={alternates} country={country} analytics={analytics} image={image}>
   <slot name="head" slot="head" />
   <a class="skip button" href={`#${mainId}`}>{s.skipToContent}</a>
   <SiteHeader locale={locale} alternates={alternates} />
   <main id={mainId} class="stack wrapper"><slot /></main>
   <SiteFooter locale={locale} alternates={alternates} signup={footerSignup} />
   <CookieBanner locale={locale} />
+  <script is:inline type="application/json" id="clock-words" set:html={JSON.stringify(clockWords)} />
 </Base>
 
 <style>

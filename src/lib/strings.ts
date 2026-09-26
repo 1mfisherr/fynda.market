@@ -161,7 +161,7 @@ export interface Strings {
      an AI answer can quote.
 
      Today and tomorrow are resolved during the build, which knows its own
-     date. `onRightNow` and the two ends-in strings are filled in by the
+     date. `onRightNow` and the clock templates below are filled in by the
      browser instead: the page is written at 03:00 and cannot know what the
      hour will be when someone reads it. They are templates rather than
      functions because the client script receives them as data attributes and
@@ -170,9 +170,27 @@ export interface Strings {
   statusToday: string;
   statusTomorrow: string;
   onRightNow: string;
-  /** `{h}` is replaced with whole hours remaining. */
-  endsInTemplate: string;
-  endsSoon: string;
+  /** `{t}` is a span from the three span templates below. */
+  opensIn: string;
+  closesIn: string;
+  /** Replaces the big word once today's market has closed. */
+  overToday: string;
+  /** `{t}` is today's time range, shown quiet under "over for today". */
+  todayRange: string;
+  /** `{d}` is the next date and its times. */
+  nextOn: string;
+  spanH: string;
+  spanM: string;
+  spanHM: string;
+  /* The other markets on the same day, under the buttons. */
+  nearbyToday: string;
+  nearbyTomorrow: string;
+  nearbyOn: (date: string) => string;
+  /** Once this market has closed and others close by are still open. */
+  nearbyStillOpen: string;
+  straightLine: string;
+  share: string;
+  linkCopied: string;
   /** Label under the recurrence phrase in the decision strip. */
   howOften: string;
   /* The three things a list row may say about a date, and it says one only
@@ -471,8 +489,21 @@ const de: Strings = {
   statusToday: 'Heute',
   statusTomorrow: 'Morgen',
   onRightNow: 'läuft gerade',
-  endsInTemplate: 'endet in {h} Std.',
-  endsSoon: 'endet in weniger als einer Stunde',
+  opensIn: 'Öffnet in {t}',
+  closesIn: 'Noch {t} offen',
+  overToday: 'Für heute vorbei',
+  todayRange: 'Heute, {t}',
+  nextOn: 'Nächster Termin: {d}',
+  spanH: '{h} Std.',
+  spanM: '{m} Min.',
+  spanHM: '{h} Std. {m} Min.',
+  nearbyToday: 'Heute auch in der Nähe',
+  nearbyTomorrow: 'Morgen auch in der Nähe',
+  nearbyOn: (date) => `Am ${date} auch in der Nähe`,
+  nearbyStillOpen: 'In der Nähe noch offen',
+  straightLine: 'Entfernung in Luftlinie.',
+  share: 'Teilen',
+  linkCopied: 'Link kopiert',
   howOften: 'Rhythmus',
   flagCancelled: 'Fällt aus',
   flagUnconfirmed: 'Noch nicht bestätigt',
@@ -675,8 +706,21 @@ const en: Strings = {
   statusToday: 'Today',
   statusTomorrow: 'Tomorrow',
   onRightNow: 'on right now',
-  endsInTemplate: 'ends in {h} hrs',
-  endsSoon: 'ends within the hour',
+  opensIn: 'Opens in {t}',
+  closesIn: 'Closes in {t}',
+  overToday: 'Over for today',
+  todayRange: 'Today, {t}',
+  nextOn: 'Next: {d}',
+  spanH: '{h} h',
+  spanM: '{m} min',
+  spanHM: '{h} h {m} min',
+  nearbyToday: 'Also today, nearby',
+  nearbyTomorrow: 'Also tomorrow, nearby',
+  nearbyOn: (date) => `Also on ${date}, nearby`,
+  nearbyStillOpen: 'Still open nearby',
+  straightLine: 'Distances as the crow flies.',
+  share: 'Share',
+  linkCopied: 'Link copied',
   howOften: 'How often',
   flagCancelled: 'Cancelled',
   flagUnconfirmed: 'Not confirmed yet',
@@ -885,8 +929,21 @@ const fr: Strings = {
   statusToday: "Aujourd'hui",
   statusTomorrow: 'Demain',
   onRightNow: 'en cours',
-  endsInTemplate: 'se termine dans {h} h',
-  endsSoon: "se termine dans moins d'une heure",
+  opensIn: 'Ouvre dans {t}',
+  closesIn: 'Ferme dans {t}',
+  overToday: "Terminé pour aujourd'hui",
+  todayRange: "Aujourd'hui, {t}",
+  nextOn: 'Prochaine date : {d}',
+  spanH: '{h} h',
+  spanM: '{m} min',
+  spanHM: '{h} h {m}',
+  nearbyToday: "Aussi aujourd'hui, tout près",
+  nearbyTomorrow: 'Aussi demain, tout près',
+  nearbyOn: (date) => `Aussi le ${date}, tout près`,
+  nearbyStillOpen: 'Encore ouverts tout près',
+  straightLine: "Distances à vol d'oiseau.",
+  share: 'Partager',
+  linkCopied: 'Lien copié',
   howOften: 'Fréquence',
   flagCancelled: 'Annulé',
   flagUnconfirmed: 'Pas encore confirmé',
@@ -1089,8 +1146,21 @@ const it: Strings = {
   statusToday: 'Oggi',
   statusTomorrow: 'Domani',
   onRightNow: 'in corso',
-  endsInTemplate: 'termina tra {h} ore',
-  endsSoon: "termina entro un'ora",
+  opensIn: 'Apre tra {t}',
+  closesIn: 'Chiude tra {t}',
+  overToday: 'Finito per oggi',
+  todayRange: 'Oggi, {t}',
+  nextOn: 'Prossima data: {d}',
+  spanH: '{h} h',
+  spanM: '{m} min',
+  spanHM: '{h} h {m} min',
+  nearbyToday: 'Anche oggi, qui vicino',
+  nearbyTomorrow: 'Anche domani, qui vicino',
+  nearbyOn: (date) => `Anche il ${date}, qui vicino`,
+  nearbyStillOpen: 'Ancora aperti qui vicino',
+  straightLine: "Distanze in linea d'aria.",
+  share: 'Condividi',
+  linkCopied: 'Link copiato',
   howOften: 'Cadenza',
   flagCancelled: 'Annullato',
   flagUnconfirmed: 'Non ancora confermato',

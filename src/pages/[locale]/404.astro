@@ -14,7 +14,10 @@
  * for, and removes the folder so no `/de/404/` address exists.
  */
 import Page from '../../layouts/Page.astro';
-import { LOCALES, homePath, type Locale } from '../../lib/i18n';
+import TownSearch from '../../components/TownSearch.astro';
+import { getMarkets } from '../../lib/markets';
+import { townIndex } from '../../lib/towns';
+import { LOCALES, homePath, nearbyPath, type Locale } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
 export function getStaticPaths() {
@@ -23,6 +26,10 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const s = t(locale);
+/* Most dead links were a market or a town that someone meant to reach, so the
+   page offers the one box that gets them to a town — the same search as the
+   home page — before the way home. */
+const towns = townIndex(locale, await getMarkets(locale));
 ---
 
 <Page title={s.notFoundTitle} description={s.notFoundBody} indexable={false} locale={locale}>
@@ -31,6 +38,7 @@ const s = t(locale);
       <h1>{s.notFoundHeading}</h1>
       <p class="meta">{s.notFoundBody}</p>
     </div>
+    <TownSearch locale={locale} towns={towns} mode="go" nearbyHref={nearbyPath(locale)} showBig />
     <p><a class="button" href={homePath(locale)}>fynda.market</a></p>
   </section>
 </Page>

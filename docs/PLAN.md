@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-24.
+Updated 2026-09-26.
 
 ---
 
@@ -22,7 +22,8 @@ Updated 2026-09-24.
 | **Search Console** | 7 days to 2026-09-17: 94 clicks, 7,836 impressions, position ~10, 78% phone; canton pages earn most per page. Market titles changed 2026-09-23 (next date, year from that date) — judge them on the exports from 2026-10-04. A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, re-read 2026-10-16 |
 | **Copy** | Voice settled (`BRAND.md` §Voice); visitors du / vous / tu, organisers Sie / vous / tu. Descriptions cleaned 2026-09-23: no dates, stale years, hype, keyword tails or template filler left. Organiser mails reread: German that reads as German in both countries (*innerhalb*, not *innert*), no country named, full sentences |
 | **Front door & place** | One block per country on the home page, flags, no country picker, no geo redirect. One town search (`TownSearch.astro`) on home and Near me; Near me groups by distance bands. The chosen town is a pill in the header |
-| **Photos** | Every market has one — 226 Swiss, 55 German. Real ones arrive through organisers |
+| **Photos** | Every market has one — 226 Swiss, 55 German. Real ones arrive through organisers. A shared market link previews with its own photo (`/share/*.jpg`, 900 × 472, made at build) |
+| **Market page** (2026-09-26, `design/market-v1.html`) | The status line knows the hour — *Opens in 40 min · Open now · Closes in 1 h 10 min · Over for today, next Sat 3 Oct* — and today's list rows everywhere say *Closes in…* and fade when over. *Also today, nearby* under the buttons: ≤3 same-day markets within 15 km. Share (the phone's own sheet). Home shows the visitor's own country first in *This weekend* (picked town, else browser language region). Town search on the 404s |
 
 Not built: tags shown to visitors · country page (parked) · text search · distance on cards · organiser photo upload · the annual "what are your dates" mail.
 
@@ -36,12 +37,14 @@ Not built: tags shown to visitors · country page (parked) · text search · dis
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
    5. **Search Console and Bing:** add the German paths.
-2. **Next session: pick from the product review** in `IDEAS.md` (2026-09-24). Recommended: home ordered by country, *Also that day, nearby*, the closing-time line.
+2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
+   - Known bug, not fixed: the town page's date picker offers only each market's *next* date — Zurich cannot pick Sat 3 Oct though three markets run that day.
 3. **Read, on these dates** — nothing to build until then.
    - 2026-09-27 and 2026-10-04 Search Console exports: titles, and whether Germany earns anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page.
    - Four weeks after the letters: organiser answer rate (`organiser_funnel`). >25% build more for organisers, 10–25% keep as a data feed, <10% stop.
    - 2026-10-21: Near me allow rate, `geo_prompt` granted ÷ requested. Below ~30% the button is in the wrong place.
    - Newsletter: sign-ups per form view now the card has moved.
+   - From 2026-10-10: the *nearby* block — `market_click` events whose page is a market page (it is the only list there), against market-page views. If nobody clicks it, it goes. Share taps are not counted (the event vocabulary would need a migration).
 4. **Analytics partitioning**, October.
 5. **More markets, both countries.** `intake/README.md`, `node scripts/import-intake.mjs intake/<country>`; they arrive `unverified`. `confirm.mjs` needs an `--until` before the next big confirmation round (it stamps every future date).
 6. Buffer.

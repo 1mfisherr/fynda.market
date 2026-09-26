@@ -47,17 +47,18 @@ Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm 
 
 1. Photo or illustration, never stock, with **Save** on it — saving and going are different decisions.
 2. Kind and town, then the name.
-3. **The status line in words** — *Heute · läuft gerade · endet in 6 Std.* Today and tomorrow resolve in the build; "running now" and hours left in the browser. Without JavaScript it still says Heute and the times.
+3. **The status line in words, and it knows the hour** (2026-09-26, `design/market-v1.html`). Today and tomorrow resolve in the build; the minute in the browser (`src/lib/clock.ts`): *Opens in 40 min* (last two hours before), *Open now*, *Closes in 1 h 10 min* (last two hours), and once it has closed **Over for today**, the times quiet under it and *Next: Sat 3 Oct* — it used to say *Today* in red all evening. Without JavaScript it still says Today and the times.
 4. Cancellation notice with the reason, when it applies.
 5. **The decision strip:** rhythm, upcoming-date count (cancelled dates not counted), distance once the town picker stores coordinates; each segment only when it exists. Under it **the check stamp, the one line that never disappears**, in one grammar: "Checked 19 Sep" · "Confirmed by the organiser, 19 Sep" (accent) · "Not confirmed yet".
-6. **Directions, primary** (55% of outbound clicks) · **Organiser website, secondary** (45%).
+6. **Directions, primary** (55% of outbound clicks) · **Organiser website, secondary** (45%) · **Add to calendar** and **Share** side by side, quieter. Share opens the phone's own share sheet (on a computer it copies the link); a shared link previews with the market's own photo (`/share/{name}.jpg`, made in `postbuild.mjs`).
+6b. **Also today, nearby** — first under the buttons: up to three other markets on the same date within 15 km, straight-line, closest first, in `MarketRow` with the distance (`src/lib/nearby.ts`). *Also tomorrow* / *Also on Sun 27 Sep* before the day. On the day a row that has closed is dropped, and once this market has closed the block reads *Still open nearby*; absent when nothing qualifies.
 7. All upcoming dates — visible content, one `Event` in markup. A row carries a word only when it is an exception: Today, Cancelled, Provisional, Not confirmed yet, Confirmed by the organiser; an ordinary checked date says nothing, the stamp above said it (2026-09-19). A date in another year shows the year.
 8. Address, times.  
 8b. **The signup card**, straight after the dates and above the organiser line and the claim card: *The weekend around Basel, in your inbox* (`design/newsletter.html`, Delfim 2026-09-23).
 9. **"Is this your market?"** — on every unclaimed market, after the dates: claim it to confirm dates, add a photo or cancel a day; free, no account needed (Delfim, 2026-09-16). A claimed market shows the organiser stamp and one owned line — organiser · ~80 stalls · outdoors · runs in rain — each part only when the fact exists.
 10. **"Something not right?"** — the report card, same name as the report page and the footer link ("Report a problem").
 
-Not here: related markets (doorway), reviews, ratings, an embedded map, a fee line when it is free, the type legend. Measured by outbound clicks per view; v1 did 87–145%.
+Not here: "related markets" by similarity (the doorway pattern — links that exist because a template can make them; *Also today, nearby* is the opposite: a handful, only when the same day and place make them true, no new URL), reviews, ratings, an embedded map, a fee line when it is free, the type legend. Measured by outbound clicks per view; v1 did 87–145%.
 
 ## City — `/{locale}/{country}/[city]/`
 
@@ -136,9 +137,9 @@ From 636 reviews of 90 markets (CH and DE): size and stall count 51% · price le
 
 Fields worth collecting, in order: stall count · who may sell (private / mixed / traders) · real timing (when the good stock is gone, when packing starts) · getting there as advice · covered or open-air · dogs, toilets, strollers. Organisers supply size, setting and the rain answer today; the rest is the organiser page's next ask.
 
-**Decided:** built — save, organiser facts (size, setting, rain). Next — distance on cards (blocked: the town picker stores a name, not coordinates). Later — reliability score ("ran 11 of its last 12 dates", only our ledger can compute it), "open now", calendar export as a quiet control. Maybe — weather, only once indoor/outdoor exists. No — reviews, ratings, related markets, embedded map, share buttons, fee on cards, badges beyond the three.
+**Decided:** built — save, organiser facts (size, setting, rain). Next — distance on cards (blocked: the town picker stores a name, not coordinates). Built 2026-09-26 — the hour-aware status line on market pages and on today's list rows (*Closes in 40 min*, *Over for today*, faded), same-day nearby, one Share button. Later — reliability score ("ran 11 of its last 12 dates", only our ledger can compute it). Maybe — weather, only once indoor/outdoor exists. No — reviews, ratings, similarity-based related markets, embedded map, a row of social-network buttons (one Share that opens the phone's own sheet is not that), fee on cards, badges beyond the three.
 
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-19
+last_reviewed: 2026-09-26

@@ -4,6 +4,7 @@
   "exclude": [
     "/_astro/*",
     "/images/*",
+    "/share/*",
     "/fonts/*",
     "/brand/*",
     "/ics/*",

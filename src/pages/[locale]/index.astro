@@ -24,7 +24,7 @@ import TownSearch from '../../components/TownSearch.astro';
 import { townIndex } from '../../lib/towns';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
-import { LOCALES, cityPath, countryName, homePath, isCityState, localeTag, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
+import { COUNTRY, LOCALES, cityPath, countryName, homePath, isCityState, localeTag, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 
 export async function getStaticPaths() {
@@ -79,6 +79,29 @@ const byCountry = [...new Map(markets.map((m) => [m.countryCode, m.countrySlug])
   })
   .sort((a, b) => b.markets - a.markets);
 const several = byCountry.length > 1;
+
+/**
+ * This weekend, the visitor's own country first.
+ *
+ * The six are picked one per town, biggest towns first, across every country —
+ * so a visitor in Zürich opened the page on Hamburg. Each country's own six are
+ * written into the page as well, hidden, and the script below shows the one
+ * for the visitor's country when it can tell: the town they picked, else the
+ * region of their browser's language (de-CH, de-DE). Order only: no redirect,
+ * no country picker, nothing hidden that the mixed list showed — "all 38"
+ * below still opens every market.
+ */
+const leadsByCountry = several
+  ? byCountry
+    .map((c) => ({ code: c.code, ...weekendLead(rows.filter((r) => r.countryCode === c.code), 6) }))
+    .filter((c) => c.lead.length > 0)
+  : [];
+/* Every locale's spelling of each country's URL word, so a town remembered
+   from /de/schweiz/… is recognised on /en/. */
+const countryWords = Object.fromEntries(
+  (Object.keys(COUNTRY) as (keyof typeof COUNTRY)[]).flatMap((code) =>
+    Object.values(COUNTRY[code].name).map((name) => [name!.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(), code]))
+);
 
 /**
  * Cancellations in the coming week. Nobody else in the category surfaces these
@@ -143,12 +166,24 @@ const jsonLd = {
       dump. The picture is the argument — a flea market is stuff you can see. */}
   {total > 0 && (
     <Section title={s.thisWeekend} lede={s.thisWeekendLede(total, formatDateShort(from, locale), formatDateShort(to, locale))}>
-      <div class="leads gutter">
-        {lead.map((market) => <MarketRow market={market} locale={locale} variant="feature" />)}
+      <div data-weekend="all" data-country-words={several ? JSON.stringify(countryWords) : undefined}>
+        <div class="leads gutter">
+          {lead.map((market) => <MarketRow market={market} locale={locale} variant="feature" />)}
+        </div>
+        <div class="gutter">
+          {rest.map((market) => <MarketRow market={market} locale={locale} />)}
+        </div>
       </div>
-      <div class="gutter">
-        {rest.map((market) => <MarketRow market={market} locale={locale} />)}
-      </div>
+      {leadsByCountry.map((c) => (
+        <div data-weekend={c.code} hidden>
+          <div class="leads gutter">
+            {c.lead.map((market) => <MarketRow market={market} locale={locale} variant="feature" />)}
+          </div>
+          <div class="gutter">
+            {c.rest.map((market) => <MarketRow market={market} locale={locale} />)}
+          </div>
+        </div>
+      ))}
       {/* Opens in place. It used to link to /umkreis/, which is the radius
           view and holds a different list — a button that says "all 38" and
           then shows something else is worse than no button. */}
@@ -230,6 +265,38 @@ const jsonLd = {
    * crawler to save a scroll trades the thing that earns traffic for the thing
    * that costs nothing.
    */
+  import { TOWN_KEY, adopt } from '../../lib/local-keys';
+
+  /**
+   * Which country's six to show first. The town the visitor picked says it
+   * best; failing that, the region of the browser's language. Neither is a
+   * guess about a person — both are things their own browser already says.
+   */
+  const mixed = document.querySelector<HTMLElement>('[data-weekend="all"]');
+  const words: Record<string, string> = (() => {
+    try { return JSON.parse(mixed?.dataset.countryWords ?? '{}'); } catch { return {}; }
+  })();
+  const visitorCountry = (): string | undefined => {
+    adopt(TOWN_KEY);
+    try {
+      const href: string | undefined = JSON.parse(localStorage.getItem(TOWN_KEY) ?? 'null')?.href;
+      const word = href?.split('/')[2];
+      if (word && words[word]) return words[word];
+    } catch { /* private mode */ }
+    const codes = new Set(Object.values(words));
+    for (const lang of navigator.languages ?? []) {
+      const region = lang.split('-')[1]?.toUpperCase();
+      if (region && codes.has(region)) return region;
+    }
+    return undefined;
+  };
+  const own = mixed && Object.keys(words).length ? visitorCountry() : undefined;
+  const block = own ? document.querySelector<HTMLElement>(`[data-weekend="${own}"]`) : null;
+  if (mixed && block) {
+    block.hidden = false;
+    mixed.hidden = true;
+  }
+
   const button = document.querySelector<HTMLButtonElement>('[data-expand]');
   const rest = document.getElementById('rest-of-weekend');
 

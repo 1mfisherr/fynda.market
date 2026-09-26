@@ -4,25 +4,17 @@ Nothing here is scoped or promised. An idea leaves this file only when someone w
 
 ---
 
-## Product review, 2026-09-24 — for Delfim to pick from
+## Product review, 2026-09-24 — what is left after Delfim's picks
 
-Walked on a phone. Size S = a day, M = days, L = weeks.
+Built 2026-09-26: own country first on the home page, *Also today, nearby*, the hour-aware status line, Share with photo previews, town search on the 404. Delfim's verdicts on the rest (2026-09-26):
 
-- **Home: your own country first in *This weekend*** — a Zurich visitor sees Hamburg on top. Order only, no redirect. S
-- **Market page: *Also that day, nearby*** (see routing below) — the page is a dead end today. S
-- **Closing-time line** — *Until 13:00, stalls pack up after*; on the day *Open now, closes in 2 h*. S
-- **Town page: nearby towns** — Zurich's page ignores Kloten, Dübendorf, Dietikon. M
-- **WhatsApp share + preview image** on market pages. S
-- **Town search on the 404 page.** S
-- **Organiser monthly "your page" mail** — views, calendar adds; the first thing chargeable. Waits on the four-week answer rate. M
-- **Annual dates mail** — must exist by December. M
-- **QR poster for organisers.** S
-- **Dates in any form** — PDF, flyer photo, link; we read it. Waits on the answer rate. M
-- **Germany deep in four cities** (Berlin 5 listed of ~11 a weekend) before thin breadth. L
-- **Stall booking on the market page** — the `stall_booking` column exists; the vendor path. M
-- **One data story a season** for press links. S
-
-Recommended first: the first three.
+- **Annual dates mail, with an "upload your dates" box on the organiser page** (PDF or flyer photo; a Telegram ping, and one of us types them in) — a must, before December. Next session. M
+- **Germany deep in four cities** (Berlin 5 listed of ~11 a weekend) before thin breadth — a must, after the dates mail. L
+- **Town page: nearby towns** — Zurich's page ignores Kloten, Dübendorf, Dietikon. Discuss as a product question with Delfim first. M
+- **Organiser monthly "your page" mail** — views, calendar adds; the first thing chargeable. Keep in mind; waits on the four-week answer rate. M
+- **Stall booking on the market page** — the `stall_booking` column exists. Only once there are real relationships with organisers. M
+- **One data story a season** for press links. Maybe, later. S
+- QR poster / stickers — Delfim's own, off the build list.
 
 ## Vendor tooling — the strongest parked idea
 
@@ -50,7 +42,7 @@ Why it stays parked:
 - **The distances are trivial.** Bürkliplatz → Helvetiaplatz 1.5 km. Basel Petersplatz → Vogesenplatz 950 m. That needs a sentence, not a planner.
 - **Optimising by distance is wrong anyway.** The category rule is "go early, the good stock is gone by ten", so the right first stop is the *best* market, not the nearest.
 
-**Worth building instead, on the market page under the directions button:** "Am selben Tag in der Nähe" — two or three markets, with distance and the times that constrain the order (Wollishofen opens at 11:00, so it cannot be first; Luzern Vögeligärtli closes at 14:00). One `ST_DWithin` query, no new URL. If nobody clicks the second market, a route planner would have failed too.
+**Built instead, 2026-09-26, under the directions button:** *Also today, nearby* — up to three markets with distance and times, and on the day the clock says which close soon and drops those that have closed. No new URL. If nobody clicks the second market, a route planner would have failed too.
 
 **If it is ever built, build it curated, not generated.** Lange Nacht der Museen Berlin is the closest analogue that exists — ~10 editor-written routes at `/route/{slug}/`, each card reading `5 Stopps · 2 km · Zu Fuss`, plus accessibility as route types (DGS-Route, Rolli-Route). One static page an editor made, which passes the content floor honestly. Komoot's generated `smarttour` pages are the opposite — the "URL pattern permits it" machine that killed v1, survivable only on their domain authority.
 

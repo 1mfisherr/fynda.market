@@ -14,10 +14,12 @@ import SubscribeForm from '../../../components/SubscribeForm.astro';
 import Icon from '../../../components/Icon.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
+import MarketRow from '../../../components/MarketRow.astro';
+import { sameDayNearby } from '../../../lib/nearby';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset, todayIso } from '../../../lib/format';
 import { EVENT_STATUS, LINES } from '../../../lib/vocabulary';
-import { LOCALE, LOCALES, COUNTRY, cityPath, formatFee, homePath, isCityState, marketPath, regionPath, utilityPath, type Locale } from '../../../lib/i18n';
+import { LOCALE, LOCALES, COUNTRY, cityPath, formatFee, homePath, isCityState, localeTag, marketPath, regionPath, utilityPath, type Locale } from '../../../lib/i18n';
 import { t } from '../../../lib/strings';
 import type { Market } from '../../../lib/types';
 import { firstFitting } from '../../../lib/titles';
@@ -44,7 +46,8 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const locale of LOCALES) {
-    for (const market of byLocale.get(locale)!) {
+    const all = byLocale.get(locale)!;
+    for (const market of all) {
       const alternates = LOCALES.map((l) => {
         const slug = slugOf.get(l)!.get(market.id);
         return slug ? { locale: l, path: marketPath(l, slug) } : null;
@@ -52,14 +55,16 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, type: LOCALE[locale].segments.market, slug: market.slug },
-        props: { locale, market, alternates },
+        props: { locale, market, alternates, nearby: sameDayNearby(market, all) },
       });
     }
   }
   return paths;
 }
 
-const { locale, market, alternates } = Astro.props;
+const { locale, market, alternates, nearby } = Astro.props as {
+  locale: Locale; market: Market; alternates: { locale: Locale; path: string }[]; nearby: { market: Market; km: number }[];
+};
 const s = t(locale);
 const next = market.next;
 const cityState = isCityState(market.countryCode, market.regionSlug);
@@ -92,7 +97,7 @@ const event = next ? {
   location: {
     '@type': 'Place',
     name: market.venueName,
-    address: { '@type': 'PostalAddress', streetAddress: market.addressLine, postalCode: market.postalCode, addressLocality: market.city, addressCountry: 'CH' },
+    address: { '@type': 'PostalAddress', streetAddress: market.addressLine, postalCode: market.postalCode, addressLocality: market.city, addressCountry: market.countryCode },
     geo: { '@type': 'GeoCoordinates', latitude: market.lat, longitude: market.lng },
   },
   url,
@@ -174,6 +179,26 @@ const liveStart = next && next.date === today && next.startTime
 const liveEnd = next && next.date === today && next.endTime
   ? toIsoWithOffset(next.date, next.endTime, market.timezone) : undefined;
 const canBeLive = !cancelled && Boolean(liveStart && liveEnd);
+
+/* For when today's market has closed: the date after it, which the page then
+   points at under "Over for today". */
+const after = canBeLive ? dates.find((o) => o.date > next!.date && o.status !== 'cancelled') : undefined;
+const afterLine = after
+  ? s.nextOn.replace('{d}', [formatDate(after.date, locale), formatTimeRange(after.startTime, after.endTime, locale)].filter(Boolean).join(', '))
+  : undefined;
+
+/* "0,7 km" in German, "0.7 km" in English — one decimal under a kilometre,
+   where rounding would print "1 km" for a two-minute walk. */
+const km = (n: number) => `${new Intl.NumberFormat(localeTag(locale), { maximumFractionDigits: n < 1 ? 1 : 0 }).format(n < 1 ? n : Math.round(n))} km`;
+const nearbyTitle = !next ? '' : next.date === today ? s.nearbyToday : next.date === tomorrow ? s.nearbyTomorrow : s.nearbyOn(formatDate(next.date, locale));
+
+/* The preview a chat app shows for a shared link: the market's own picture,
+   made at build time by scripts/postbuild.mjs as a JPEG, because not every chat
+   app takes WebP. Name and date travel as the text beside it, so nothing
+   printed into the image can go stale. */
+const shareImage = market.imageUrl
+  ? `/share/${market.imageUrl.split('/').pop()!.replace(/\.webp$/, '').replace(/-(720|thumb)$/, '')}.jpg`
+  : undefined;
 
 /**
  * One stamp, not the two grey lines this replaced. The date-level claim leads,
@@ -302,6 +327,7 @@ const title = firstFitting([
     ? `${kind.full[locale]}, ${market.city}. ${s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName)}`
     : s.marketNoDateDescription(kind.full[locale], market.city, market.venueName, market.recurrenceText?.replace(/\.\s*$/, ''))}
   analytics={{ market: market.id, city: market.citySlug, region: market.regionSlug, next: next?.date }}
+  image={shareImage}
   footerSignup={false}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
@@ -368,24 +394,16 @@ const title = firstFitting([
                 actually open. Hidden is the correct resting state: a static
                 page written at 03:00 cannot claim anything about 14:00. */}
             {canBeLive && (
-              <span
-                class="live"
-                data-live
-                hidden
-                data-start={liveStart}
-                data-end={liveEnd}
-                data-on-now={s.onRightNow}
-                data-ends-in={s.endsInTemplate}
-                data-ends-soon={s.endsSoon}
-              ><i></i><b data-live-text></b></span>
+              <span class="live" data-live hidden data-start={liveStart} data-end={liveEnd}><i></i><b data-live-text></b></span>
             )}
           </p>
           {timeRange && (
-            <p class="clock">{timeRange} {s.timeSuffix}<span data-ends hidden></span></p>
+            <p class="clock" data-clock-range data-over-text={canBeLive ? s.todayRange.replace('{t}', `${timeRange} ${s.timeSuffix}`.trim()) : undefined}>{timeRange} {s.timeSuffix}</p>
           )}
           {/* The single most useful thing we ever tell anyone, and the reason
               this site deserves to exist. It was held in the database and
               never rendered. */}
+          {afterLine && <p class="after" data-after hidden>{afterLine}</p>}
           {cancelled && next.cancellationNote && <p class="reason">{next.cancellationNote}</p>}
         </div>
       )}
@@ -433,6 +451,10 @@ const title = firstFitting([
           getting there, which it is not — Route is 55% of all outbound clicks. */}
       <div class="keep gutter">
         <Button href={`/ics/${market.slug}.ics`} block><Icon name="check" size={16} />{s.addToCalendar}</Button>
+        {/* The phone's own share sheet — WhatsApp, Signal, Messages, whatever
+            this person uses — and on a computer, the link copied. A market is
+            chosen in a group chat more often than alone. */}
+        <Button block data-share data-share-title={market.name} data-copied={s.linkCopied}><Icon name="share" size={16} /><span data-share-label>{s.share}</span></Button>
       </div>
     </div>
 
@@ -440,6 +462,19 @@ const title = firstFitting([
         page_leave.sections: which blocks of the page were actually on
         screen before the visitor left. */}
     <div class="detail">
+      {/* First in the detail column, so on a phone it sits straight under the
+          buttons: the moment someone has decided on this market is the moment
+          "and what else is on" is worth asking. The script below drops rows
+          that have closed and renames the block once this market has. */}
+      {nearby.length > 0 && (
+        <Section level="sub" title={nearbyTitle} id="nearby">
+          <div class="gutter nearby" data-nearby data-still-open={next?.date === today ? s.nearbyStillOpen : undefined}>
+            {nearby.map(({ market: m, km: d }) => <MarketRow market={m} locale={locale} showRhythm distance={km(d)} />)}
+          </div>
+          <p class="gutter crow">{s.straightLine}</p>
+        </Section>
+      )}
+
       {market.description && (
         <Section level="sub" id="about"><p class="blurb meta gutter">{market.description}</p></Section>
       )}
@@ -734,10 +769,22 @@ const title = firstFitting([
   }
   .stamp.organiser { color: var(--color-accent-text); font-weight: var(--weight-bold); }
 
+  .after { margin-block-start: var(--space-1); font-weight: var(--weight-bold); }
+  .after[hidden] { display: none; }
+  /* Over for today: the word steps down from the accent to ink — it is no
+     longer the thing to act on — and the times go quiet under it. */
+  .status.over > .word > strong { color: var(--color-ink); }
+  /* Proportional figures here: a tabular comma after the word left a gap. */
+  .status.over .clock { color: var(--color-grey); font-weight: var(--weight-regular); font-variant-numeric: normal; }
+  .crow { margin-block-start: var(--space-2); color: var(--color-grey); font-size: var(--text-micro); }
+
   .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
 
   .actions { display: grid; gap: var(--space-2); }
+  .keep { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
   .keep :global(.button) { font-size: var(--text-micro); }
+  /* "In Kalender eintragen" is long enough to squeeze the tick otherwise. */
+  .keep :global(svg) { flex-shrink: 0; }
 
   /* Merken, on the picture. Top right, opposite the type badge. */
   .photo-hero :global(.save) {
@@ -898,6 +945,7 @@ const title = firstFitting([
 
 <script>
   import { SAVED_KEY, adopt } from '../../../lib/local-keys';
+  import { WINDOW_MIN, clockState, clockWords, formatSpan, instantsOf } from '../../../lib/clock';
   /**
    * "Alle 17 Termine" opens the rest of the list in place.
    *
@@ -963,33 +1011,93 @@ const title = firstFitting([
   }
 
   /**
-   * "Läuft gerade", and how long is left.
+   * Where today's market stands at this minute: "Opens in 40 min", "Open now",
+   * "Closes in 1 h 10 min", and once it has closed, "Over for today" with the
+   * next date — the page used to go on saying "Today" in red all evening.
    *
-   * The page is written by a build that runs at 03:00, so it can say which day
-   * a market is on and nothing about the hour. This is the other half, and it
-   * is strictly additive: with no JavaScript the page still says "Heute" and
-   * the opening times, which is the whole answer minus one detail.
+   * The build runs at 03:00 and knows the day, never the hour; src/lib/clock.ts
+   * works the hour out here. Strictly additive: with no JavaScript the page
+   * still says "Today" and the times. Painted again each minute, for a phone
+   * left open on the page.
    */
+  const words = clockWords();
+  const status = document.querySelector<HTMLElement>('.status');
   const live = document.querySelector<HTMLElement>('[data-live]');
-  const startsAt = live?.dataset.start ? new Date(live.dataset.start) : undefined;
-  const endsAt = live?.dataset.end ? new Date(live.dataset.end) : undefined;
+  const liveText = live?.querySelector<HTMLElement>('[data-live-text]');
+  const strong = status?.querySelector<HTMLElement>('.word > strong');
+  const range = status?.querySelector<HTMLElement>('[data-clock-range]');
+  const afterLine = status?.querySelector<HTMLElement>('[data-after]');
+  const todayWord = strong?.textContent ?? '';
+  const todayRange = range?.textContent ?? '';
 
-  if (live && startsAt && endsAt && !Number.isNaN(startsAt.valueOf()) && !Number.isNaN(endsAt.valueOf())) {
-    const now = Date.now();
-    if (now >= startsAt.valueOf() && now < endsAt.valueOf()) {
-      const text = live.querySelector<HTMLElement>('[data-live-text]');
-      if (text) text.textContent = live.dataset.onNow ?? '';
-      live.hidden = false;
+  /* The block of markets nearby that day. On the day, a row that has closed
+     is dropped — this block answers "where can I still go" — and once this
+     market has closed too, the heading says so. */
+  const nearby = document.querySelector<HTMLElement>('[data-nearby]');
+  const nearbySection = nearby?.closest<HTMLElement>('section');
+  const nearbyHeading = nearbySection?.querySelector<HTMLElement>('h2');
+  const nearbyTitle = nearbyHeading?.textContent ?? '';
 
-      // Round up, so the last stretch reads "1 Std." rather than "0 Std.".
-      const hours = Math.ceil((endsAt.valueOf() - now) / 3_600_000);
-      const ends = document.querySelector<HTMLElement>('[data-ends]');
-      if (ends) {
-        ends.textContent = ` · ${hours <= 1
-          ? live.dataset.endsSoon ?? ''
-          : (live.dataset.endsIn ?? '').replace('{h}', String(hours))}`;
-        ends.hidden = false;
-      }
+  const paintHero = () => {
+    const at = live && instantsOf(live);
+    const state = at && clockState(...at);
+    if (!words || !state || !live || !liveText || !status || !strong) return undefined;
+    const span = formatSpan(state.minutes, words);
+    const text = state.phase === 'before' ? (state.minutes <= WINDOW_MIN ? words.opensIn.replace('{t}', span) : '')
+      : state.phase === 'open' ? words.onRightNow
+      : state.phase === 'closing' ? words.closesIn.replace('{t}', span)
+      : '';
+    liveText.textContent = text;
+    live.hidden = !text;
+    const over = state.phase === 'over';
+    status.classList.toggle('over', over);
+    strong.textContent = over ? words.overToday : todayWord;
+    if (range) range.textContent = over && range.dataset.overText ? range.dataset.overText : todayRange;
+    if (afterLine) afterLine.hidden = !over;
+    return state.phase;
+  };
+
+  const paintNearby = (phase?: string) => {
+    if (!nearby || !nearbySection) return;
+    const rows = Array.from(nearby.querySelectorAll<HTMLElement>('article.card'));
+    let shown = 0;
+    for (const row of rows) {
+      const at = instantsOf(row);
+      const state = at && clockState(...at);
+      row.hidden = state?.phase === 'over';
+      if (!row.hidden) shown++;
     }
+    nearbySection.hidden = shown === 0;
+    if (nearbyHeading) nearbyHeading.textContent = phase === 'over' && nearby.dataset.stillOpen ? nearby.dataset.stillOpen : nearbyTitle;
+  };
+
+  const paint = () => paintNearby(paintHero());
+  paint();
+  if (live || nearby?.querySelector('[data-start]')) setInterval(paint, 60_000);
+
+  /**
+   * Share. The phone's own share sheet where there is one — WhatsApp, Signal,
+   * Messages, whatever this person uses — and the link copied where there is
+   * not, which is most computers. The canonical address, never whatever query
+   * string brought this visitor here.
+   */
+  const share = document.querySelector<HTMLButtonElement>('[data-share]');
+  const shareLabel = share?.querySelector<HTMLElement>('[data-share-label]');
+  if (share) {
+    const url = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ?? location.href;
+    share.addEventListener('click', async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title: share.dataset.shareTitle, url }); } catch { /* closed the sheet */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        if (shareLabel) {
+          const was = shareLabel.textContent;
+          shareLabel.textContent = share.dataset.copied ?? '';
+          setTimeout(() => { shareLabel.textContent = was; }, 2000);
+        }
+      } catch { /* no clipboard: nothing to do but leave the button as it was */ }
+    });
   }
 </script>

@@ -13,7 +13,7 @@
  * what we ask engines to index, so it is the list of what we tell them about.
  */
 import { createHash } from 'node:crypto';
-import { existsSync, readdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const dist = new URL('../dist/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
@@ -39,6 +39,34 @@ if (existsSync(sitemap)) {
 }
 writeFileSync(join(dist, '_hashes.json'), JSON.stringify(hashes));
 console.log(`postbuild: ${Object.keys(hashes).length} page hashes in _hashes.json`);
+
+/*
+ * The picture a shared link shows in a chat: `/share/{name}.jpg` for every
+ * market photo, which the market page names as its og:image.
+ *
+ * JPEG, because not every chat app shows a WebP preview, and 900 x 472 — the
+ * 1.91 : 1 frame the apps crop to, from the largest copy we hold. Made here
+ * rather than committed, so a photo added through import-photos.mjs gets its
+ * preview on the next build with nothing else to remember.
+ */
+{
+  const sharp = (await import('sharp')).default;
+  const images = join(dist, 'images');
+  const out = join(dist, 'share');
+  if (existsSync(images)) {
+    mkdirSync(out, { recursive: true });
+    const names = readdirSync(images).filter((f) => f.endsWith('.webp') && !/-(720|thumb)\.webp$/.test(f));
+    const width = async (file) => (existsSync(file) ? (await sharp(file).metadata()).width ?? 0 : 0);
+    await Promise.all(names.map(async (name) => {
+      const base = name.replace(/\.webp$/, '');
+      const candidates = [join(images, name), join(images, `${base}-720.webp`)];
+      const widths = await Promise.all(candidates.map(width));
+      const from = candidates[widths.indexOf(Math.max(...widths))];
+      await sharp(from).resize({ width: 900, height: 472, fit: 'cover' }).jpeg({ quality: 78, mozjpeg: true }).toFile(join(out, `${base}.jpg`));
+    }));
+    console.log(`postbuild: ${names.length} share previews in /share/`);
+  }
+}
 
 /*
  * <lastmod> in the sitemap: the day each page last actually changed.
