@@ -14,7 +14,7 @@
  */
 
 import { readFileSync, existsSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 
@@ -59,9 +59,19 @@ export const V1_URL = from('V1_DATABASE_URL') && requireConnectionString(from('V
 /** Supabase terminates unencrypted connections; its cert chain is not in Node's store. */
 const ssl = { rejectUnauthorized: false };
 
+/**
+ * The script's own file name, as the connection's application_name. The
+ * history book (migration 20260927170000) writes it beside every change, so
+ * "who moved this market to 9:00" answers with a script, not "postgres".
+ */
+const application_name = basename(process.argv[1] ?? 'script').slice(0, 63);
+
 export async function withClient(url, fn) {
-  const client = new pg.Client({ connectionString: url, ssl });
+  const client = new pg.Client({ connectionString: url, ssl, application_name });
   await client.connect();
+  // The session pooler replaces the startup application_name with its own
+  // ("Supavisor"), so it is set again once the session exists.
+  await client.query(`select set_config('application_name', $1, false)`, [application_name]);
   try {
     return await fn(client);
   } finally {

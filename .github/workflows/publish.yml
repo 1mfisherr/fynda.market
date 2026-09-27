@@ -74,3 +74,11 @@ jobs:
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: node scripts/prune-logs.mjs
+
+      # This month's row per country and region: how many markets, dates,
+      # cancellations, organiser confirmations. A month freezes on its last
+      # night (scripts/snapshot-stats.mjs).
+      - name: Monthly market stats
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: node scripts/snapshot-stats.mjs

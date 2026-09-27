@@ -65,8 +65,10 @@ tags, market_tags, organisers, market_private, reports, organiser_claims
 newsletter_subscribers, newsletter_sends, newsletter_events, newsletter_alerts
 organiser_links, organiser_mail_sends, organiser_answers, organiser_edits
 admin_actions, publish_requests, analytics_events, crawler_hits, crawler_daily
+history, market_stats_monthly
 ```
 
+- **Nothing about a market is overwritten without a trace.** Since 2026-09-27 a trigger writes every insert, update and delete on `markets`, `occurrences`, `venues`, `texts` and `market_tags` to `history` — an update as `{column: [old, new]}`, with `who` (`site` for the Functions, else the script's file name, which `scripts/db.mjs` sets). Append-only: the database refuses UPDATE, DELETE and TRUNCATE on it. No organiser e-mails in it, so it can be shared. `market_stats_monthly` is the monthly photo per country and region (markets, dates, cancellations, organiser confirmations, indoor/outdoor, kinds), recomputed nightly for the current month by `scripts/snapshot-stats.mjs` and closed on the 1st. This is the dataset's history — the part nobody can buy later.
 - **Robots keep 30 days** (90 until 2026-09-27: ~140 MB at 3,800 rows a day). `crawler_hits` older than that folds into `crawler_daily` (one row per day, robot and page type) every night after the publish (`scripts/prune-logs.mjs`); unfolded it filled the free 500 MB inside a year. `analytics_events` is kept raw.
 - **Static files never reach the Functions.** `public/_routes.json` excludes images, fonts, `/_astro/`, calendars and the root files, because the root `_middleware.ts` otherwise runs on every request and each one counts against the Functions quota (100,000 a day free). Add a new static folder there.
 
