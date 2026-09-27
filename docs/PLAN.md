@@ -19,7 +19,7 @@ Updated 2026-09-27.
 | **Speed** | Real users, phones, p75: LCP 0.6 s, INP 86 ms, CLS 0. A market page is ~170 KB. `/_astro/*` cached a year |
 | **Backups** | Nightly 22:37 UTC, encrypted with age, 90 days in GitHub artifacts. Private key in `.env.local` and Delfim's password manager only. **Never restored yet** — step 1 |
 | **Security** | RLS on every table, no policies; the public API roles hold nothing (2026-09-23). Frame and HTTPS headers on every page, including the Functions' pages. Static files skip the Functions (`public/_routes.json`) |
-| **Search Console** | 7 days to 2026-09-17: 94 clicks, 7,836 impressions, position ~10, 78% phone; canton pages earn most per page. Market titles changed 2026-09-23 (next date, year from that date) — judge them on the exports from 2026-10-04. A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, re-read 2026-10-16 |
+| **Search Console** | 7 days to 2026-09-24: 231 clicks (week before: 94), 9,945 impressions, position ~8, 80% of clicks on a phone. Click rate by page: canton 4.2%, town 2.6%, market 1.1% — market pages get 45% of impressions but only 22% of clicks. Germany: 2 pages seen once each, no clicks — too new. AI features: 311 impressions, same pages as search. Market titles changed 2026-09-23 (next date, year from that date) — the 2026-10-04 export is the first real read. A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, re-read 2026-10-16 |
 | **Copy** | Voice settled (`BRAND.md` §Voice); visitors du / vous / tu, organisers Sie / vous / tu. Descriptions cleaned 2026-09-23: no dates, stale years, hype, keyword tails or template filler left. Organiser mails reread: German that reads as German in both countries (*innerhalb*, not *innert*), no country named, full sentences |
 | **Front door & place** | One block per country on the home page, flags, no country picker, no geo redirect. One town search (`TownSearch.astro`) on home and Near me; Near me groups by distance bands. The chosen town is a pill in the header |
 | **Photos** | Every market has one — 226 Swiss, 64 German. Real ones arrive through organisers. A shared market link previews with its own photo (`/share/*.jpg`, 900 × 472, made at build) |
@@ -39,7 +39,7 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    5. **Search Console and Bing:** add the German paths.
 2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
 3. **Read, on these dates** — nothing to build until then.
-   - 2026-09-27 and 2026-10-04 Search Console exports: titles, and whether Germany earns anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page.
+   - 2026-10-04 and 2026-10-11 Search Console exports: do market titles lift market-page click rate above 1.1%; does Germany earn anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page. (2026-09-27 export ended 2026-09-24 — too early for both.)
    - Four weeks after the letters: organiser answer rate (`organiser_funnel`). >25% build more for organisers, 10–25% keep as a data feed, <10% stop.
    - 2026-10-21: Near me allow rate, `geo_prompt` granted ÷ requested. Below ~30% the button is in the wrong place.
    - Newsletter: sign-ups per form view now the card has moved.
