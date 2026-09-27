@@ -95,6 +95,8 @@ export interface OrganiserCopy {
   footLink: string;
   footReply: string;
   footOut: string;
+  /** The terms line. The part in {braces} becomes the link to the terms page in this language. */
+  footTerms: string;
   savedTitle: string;
   savedBody: string;
   backToPage: string;
@@ -175,10 +177,11 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     photoLabel: 'Ein Foto',
     photoHint: 'Haben Sie eines? Antworten Sie auf unsere E-Mail damit. Es ist noch in derselben Woche auf der Seite. Ein Handyfoto an einem vollen Morgen ist perfekt.',
     save: 'Bestätigen',
-    saveHint: 'Innert einer Stunde auf Ihrer Seite.',
+    saveHint: 'Innerhalb einer Stunde auf Ihrer Seite.',
     footLink: 'Dieser Link gehört Ihnen. Wer ihn hat, kann die Seite ändern — geben Sie ihn nur weiter, wenn es jemand soll.',
     footReply: 'Alles andere — der Name, die Adresse, der Tag, an dem er stattfindet — einfach auf die E-Mail antworten. Ich lese jede.',
     footOut: 'Keine E-Mails mehr von uns? Ganz unten in jeder ist ein Link dafür.',
+    footTerms: 'Alles, was Sie uns schicken, bleibt Ihres. Unsere {Nutzungsbedingungen} erklären, wie wir es verwenden.',
     savedTitle: 'Bestätigt.',
     savedBody: 'Danke. Innert einer Stunde steht es auf Ihrer Seite.',
     backToPage: 'Zurück zu Ihrer Seite',
@@ -261,6 +264,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: "Ce lien est le vôtre. Quiconque l'a peut modifier la page — ne le partagez qu'avec quelqu'un qui doit l'avoir.",
     footReply: "Pour tout le reste — le nom, l'adresse, le jour où il a lieu — répondez simplement à l'e-mail. Je lis chacun d'eux.",
     footOut: "Vous ne voulez plus d'e-mails de notre part ? Il y a un lien pour ça en bas de chacun.",
+    footTerms: 'Tout ce que vous nous envoyez reste à vous. Nos {conditions générales} expliquent comment nous l’utilisons.',
     savedTitle: 'Confirmé.',
     savedBody: "Merci. C'est sur votre page dans l'heure.",
     backToPage: 'Retour à votre page',
@@ -343,6 +347,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: 'Questo link è tuo. Chiunque lo abbia può modificare la pagina — passalo solo a chi deve averlo.',
     footReply: "Tutto il resto — il nome, l'indirizzo, il giorno in cui si fa — rispondi semplicemente alla e-mail. Le leggo tutte.",
     footOut: "Non vuoi più e-mail da noi? In fondo a ognuna c'è un link per questo.",
+    footTerms: 'Tutto ciò che ci mandi resta tuo. Le nostre {condizioni generali} spiegano come lo usiamo.',
     savedTitle: 'Confermato.',
     savedBody: "Grazie. È sulla tua pagina entro un'ora.",
     backToPage: 'Torna alla tua pagina',
@@ -425,6 +430,7 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: 'This link is yours. Anyone who has it can change the page, so only share it with someone who should.',
     footReply: 'Anything else — the name, the address, the day it runs — just reply to the mail. I read every one.',
     footOut: "Don't want mail from us? There's a link at the bottom of every one.",
+    footTerms: 'Everything you send us stays yours. Our {terms} explain how we use it.',
     savedTitle: 'Confirmed.',
     savedBody: 'Thank you. It’s on your page within the hour.',
     backToPage: 'Back to your page',

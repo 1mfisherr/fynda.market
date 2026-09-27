@@ -76,7 +76,7 @@ history, market_stats_monthly
 - **The country is a row in the tree** with its own slug rows, not a route constant.
 - **Venues are separate from markets:** two markets on one square share an address and a timezone; the timezone is what makes a correct `startDate` offset possible. `venues.point` is PostGIS `geography`, GIST-indexed — radius search is the product.
 - **`market_private`** holds organiser e-mail, source URL and raw import, so personal data is never in a readable table.
-- **`publishable_markets`** (view) is the one definition of "this market has a page": active, with a venue in a city in a region. Closed markets are imported and never published.
+- **`publishable_markets`** (view) is the one definition of "this market has a page": active, with a venue in a city in a region. A closed market (`permanently_closed`) has no page; every address it ever had redirects to its town page, or the home page if the town has none left (`scripts/redirects.mjs`).
 - **Every table has RLS on and no policies.** The build connects as owner; a Function as service role, which still needs a `GRANT` per table. A missing grant is an empty result, not an error.
 - **`reports.market_id` is nullable:** a footer report names a market in words; a null id means a person matches it (`reports_unmatched_idx`). Guessing would attach a cancellation to a market that is running.
 - **A claim is not a report** (`organiser_claims`): a report says a fact is wrong; a claim says a person will answer for the market from now on.

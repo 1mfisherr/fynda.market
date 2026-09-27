@@ -46,6 +46,8 @@ interface Market {
 }
 
 const MARKET_WORD: Record<string, string> = { de: 'markt', fr: 'marche', it: 'mercato', en: 'market' };
+/** The terms page's path word, copied from src/lib/i18n.ts UTILITY.terms (a Function may not import it). */
+const TERMS_WORD: Record<string, string> = { de: 'nutzungsbedingungen', fr: 'conditions-generales', it: 'condizioni-generali', en: 'terms' };
 
 export const onRequestGet: PagesFunction<Env> = (ctx) => handle(ctx);
 export const onRequestPost: PagesFunction<Env> = (ctx) => handle(ctx);
@@ -466,6 +468,7 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
       <p>${escape(c.footLink)}</p>
       <p>${escape(c.footReply)}</p>
       <p>${escape(c.footOut)}</p>
+      <p>${escape(c.footTerms).replace(/\{([^}]+)\}/, `<a href="https://fynda.market/${locale}/${TERMS_WORD[locale]}/" target="_blank" rel="noopener">$1</a>`)}</p>
       <p>Delfim</p>
     </div>`;
 
