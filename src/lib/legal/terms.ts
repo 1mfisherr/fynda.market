@@ -14,7 +14,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
     title: 'General Site Terms — fynda.market',
     description: 'How fynda.market works, and what applies when you use the site or submit something through a form.',
     heading: 'General Site Terms',
-    effective: 'Effective from 6 September 2026',
+    effective: 'Effective from 27 September 2026',
     lede: [
       'These terms explain how fynda.market works, and what applies when you use fynda.market or submit something through our forms.',
     ],
@@ -51,7 +51,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "You give fynda.market permission to verify, edit, translate, publish, or combine what you submit as part of running the directory. It stays yours — we're not taking ownership, just permission to use it for fynda.market. Submitting something doesn't guarantee we'll publish it.",
+          "You give fynda.market permission to verify, edit, translate, publish, or combine what you submit, and to share or license it with partners, on its own or as part of our market data. It stays yours — we're not taking ownership, just permission to use it. Submitting something doesn't guarantee we'll publish it.",
         ],
       },
       {
@@ -100,7 +100,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
     title: 'Nutzungsbedingungen — fynda.market',
     description: 'Wie fynda.market funktioniert und was gilt, wenn Sie die Seite nutzen oder ein Formular abschicken.',
     heading: 'Allgemeine Nutzungsbedingungen',
-    effective: 'Gültig ab 6. September 2026',
+    effective: 'Gültig ab 27. September 2026',
     lede: [
       'Diese Bedingungen erklären, wie fynda.market funktioniert und was gilt, wenn Sie fynda.market nutzen oder uns über eines unserer Formulare etwas schicken.',
     ],
@@ -137,7 +137,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          'Sie erlauben fynda.market, das Eingereichte im Rahmen des Verzeichnisses zu prüfen, zu bearbeiten, zu übersetzen, zu veröffentlichen oder mit anderen Angaben zusammenzuführen. Es bleibt Ihres — wir übernehmen kein Eigentum, sondern nur die Erlaubnis zur Nutzung für fynda.market. Eine Einreichung bedeutet nicht, dass wir sie veröffentlichen.',
+          'Sie erlauben fynda.market, das Eingereichte zu prüfen, zu bearbeiten, zu übersetzen, zu veröffentlichen oder mit anderen Angaben zusammenzuführen und es, einzeln oder als Teil unserer Marktdaten, mit Partnern zu teilen oder an sie zu lizenzieren. Es bleibt Ihres — wir übernehmen kein Eigentum, sondern nur die Erlaubnis zur Nutzung. Eine Einreichung bedeutet nicht, dass wir sie veröffentlichen.',
         ],
       },
       {
@@ -186,7 +186,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
     title: "Conditions générales d'utilisation — fynda.market",
     description: "Comment fynda.market fonctionne, et ce qui s'applique quand vous utilisez le site ou envoyez un formulaire.",
     heading: "Conditions générales d'utilisation",
-    effective: 'En vigueur depuis le 6 septembre 2026',
+    effective: 'En vigueur depuis le 27 septembre 2026',
     lede: [
       "Ces conditions expliquent comment fynda.market fonctionne, et ce qui s'applique lorsque vous utilisez fynda.market ou nous envoyez quelque chose via l'un de nos formulaires.",
     ],
@@ -223,7 +223,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "Vous autorisez fynda.market à vérifier, modifier, traduire, publier ou combiner ce que vous envoyez dans le cadre de l'annuaire. Cela reste à vous — nous n'en prenons pas la propriété, seulement l'autorisation de l'utiliser pour fynda.market. Un envoi ne garantit pas que nous le publierons.",
+          "Vous autorisez fynda.market à vérifier, modifier, traduire, publier ou combiner ce que vous envoyez, et à le partager avec des partenaires ou à leur en concéder une licence, seul ou dans le cadre de nos données sur les marchés. Cela reste à vous — nous n'en prenons pas la propriété, seulement l'autorisation de l'utiliser. Un envoi ne garantit pas que nous le publierons.",
         ],
       },
       {
@@ -272,7 +272,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
     title: 'Condizioni generali — fynda.market',
     description: 'Come funziona fynda.market e che cosa vale quando usa il sito o invia un modulo.',
     heading: 'Condizioni generali di utilizzo',
-    effective: 'In vigore dal 6 settembre 2026',
+    effective: 'In vigore dal 27 settembre 2026',
     lede: [
       'Queste condizioni spiegano come funziona fynda.market e che cosa vale quando usa fynda.market o ci invia qualcosa tramite uno dei nostri moduli.',
     ],
@@ -309,7 +309,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       },
       {
         p: [
-          "Autorizza fynda.market a verificare, modificare, tradurre, pubblicare o combinare quanto invia nell'ambito dell'elenco. Resta Suo — non ne acquisiamo la proprietà, soltanto il permesso di usarlo per fynda.market. Un invio non garantisce che lo pubblicheremo.",
+          "Autorizza fynda.market a verificare, modificare, tradurre, pubblicare o combinare quanto invia, e a condividerlo con partner o concederlo loro in licenza, da solo o come parte dei nostri dati sui mercatini. Resta Suo — non ne acquisiamo la proprietà, soltanto il permesso di usarlo. Un invio non garantisce che lo pubblicheremo.",
         ],
       },
       {
