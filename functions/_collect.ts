@@ -73,8 +73,12 @@ const cfOf = (request: Request): CfInfo => (request as Request & { cf?: CfInfo }
 const LOCALES = new Set(['de', 'fr', 'it', 'en']);
 
 // The translated path words, copied from src/lib/i18n.ts (a Function may not
-// import it). A new locale or a renamed utility page is a change here too.
-const COUNTRY = new Set(['schweiz', 'suisse', 'svizzera', 'switzerland']);
+// import it). A new locale, country or renamed utility page is a change here
+// too — src/lib/collect-words.test.ts fails until it is. Germany went live
+// on 2026-09-22 without its words here, and its country and Bundesland pages
+// were counted as 'other' until 2026-09-27.
+const COUNTRY = new Set(['schweiz', 'suisse', 'svizzera', 'switzerland', 'deutschland', 'germany']);
+const REGION = new Set(['kanton', 'canton', 'cantone', 'bundesland', 'state']);
 const UTILITY = new Set([
   'melden', 'signaler', 'segnalare', 'report',
   'newsletter',
@@ -98,10 +102,10 @@ export function pageTypeOf(pathname: string): string {
   // Forms, saved markets, legal text, About: one bucket, so "how many people
   // opened a form" is a question the table can answer.
   if (parts.length === 2 && UTILITY.has(section)) return 'utility';
-  // /{locale}/{country}/ is the country; /kanton/{region}/ under it a region;
-  // /{locale}/{country}/{city}/ a city.
+  // /{locale}/{country}/ is the country; /kanton/{region}/ (or /bundesland/…)
+  // under it a region; /{locale}/{country}/{city}/ a city.
   if (parts.length === 2 && COUNTRY.has(section)) return 'country';
-  if (parts.length === 4 && ['kanton', 'canton', 'cantone'].includes(third)) return 'region';
+  if (parts.length === 4 && REGION.has(third)) return 'region';
   if (parts.length === 3) return 'city';
   return 'other';
 }
