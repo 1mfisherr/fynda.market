@@ -1,0 +1,12 @@
+[
+  { "slug": "flohmarkt-altdorf", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://altdorf.ch/themen/kultur-sport-freizeit/warenmarkt", "quote": "auf dem Lehnplatz" },
+  { "slug": "maedelsflohmarkt-tanzwerk-101-zuerich", "field": "setting", "value": "indoor", "confidence": "stated", "source": "https://www.maedelsflohmarkt.ch/", "quote": "Indoor-Shopping in einmaliger Atmosphäre" },
+  { "slug": "flohmarkt-stadtbibliothek-aarau", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.stadtbibliothekaarau.ch/angebot/flohmarkt.html/2602", "quote": "vor der Bibliothek" },
+  { "slug": "flohmarkt-papieriplatz-cham", "field": "setting", "value": "outdoor", "confidence": "inferred", "source": "https://vereiniglanghuus.clubdesk.com/anmeldung_flohmarkt", "quote": "held on the Papieriplatz, a public square; 9 m² pitches" },
+  { "slug": "marche-aux-puces-jardin-anglais-neuchatel", "field": "setting", "value": "outdoor", "confidence": "inferred", "source": "https://www.j3l.ch/en/P178647/things-to-do/events/tradition-market-craft/flea-market", "quote": "held regularly in the Jardin Anglais (a public park)" },
+  { "slug": "flohmarkt-schuetzenplatz-braunschweig", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.pinguin-maerkte.de/", "quote": "auf dem traditionellen Schützenplatz" },
+  { "slug": "flohmarkt-schuetzenplatz-braunschweig", "field": "stall_count", "value": 200, "confidence": "stated", "source": "https://www.pinguin-maerkte.de/", "quote": "Bis zu 200 Händler bieten ihre Trödelware" },
+  { "slug": "altstadtflohmarkt-hannover", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.visit-hannover.com/Event-Highlights,-Kultur-Freizeit/Altstadtflohmarkt-Hannover", "quote": "am Hohen Ufer ... entlang der Leine" },
+  { "slug": "flohmarkt-hansa-carre-bremen", "field": "setting", "value": "indoor", "confidence": "stated", "source": "https://www.breminale.de/Flohmarkt", "quote": "unter das schützende Dach des Einkaufscenters Hansa Carré" },
+  { "slug": "flohmarkt-ulm-messe", "field": "setting", "value": "indoor", "confidence": "stated", "source": "https://www.fetzer-veranstaltungen.de/flohmarkt-ulm.php", "quote": "Messehalle Ulm-Messe" }
+]
