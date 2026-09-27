@@ -1,0 +1,20 @@
+[
+  { "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.gilles-de-plainpalais.com/les-puces-de-geneve-suisse", "quote": "dispersés sur cette grande plaine" },
+  { "slug": "quartierflohmarkt-gotthelf-iselin", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "quote": "Hinterhöfe und Gärten" },
+  { "slug": "flohmarkt-bienzgut-bern", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://bienzgut.ch/flohmarkt/", "quote": "vor und rund ums Bienzgut" },
+  { "slug": "hallen-flohmarkt-flumserei", "field": "setting", "value": "indoor", "confidence": "stated", "source": "https://www.flumserei.ch/", "quote": "in der geheizten Halle der Flumserei auf einer Fläche von über 1'600 m2" },
+  { "slug": "hallen-flohmarkt-flumserei", "field": "rain_policy", "value": "runs", "confidence": "inferred", "source": "https://www.flumserei.ch/", "quote": "in der geheizten Halle — a heated indoor hall" },
+  { "slug": "troedelmarkt-universitaet-dortmund", "field": "setting", "value": "outdoor", "confidence": "inferred", "source": "https://marktcom-maerkte.de/standort/view/5115727207989248/", "quote": "Parkflächen der TU Dortmund — the university's car parks" },
+  { "slug": "quartierflohmarkt-pratteln-gehrenacker", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://mach-mit.pratteln.ch/quartierflohmarkt", "quote": "auf privatem Grund (z. B. Garten, Vorplatz oder Einfahrt)" },
+  { "slug": "kids-store-flohmarkt-beromuenster", "field": "setting", "value": "indoor", "confidence": "stated", "source": "https://www.familientreff-beromuenster.ch/kids-store/", "quote": "Mehrzweckhalle, Schuelgass 1, Beromünster" },
+  { "slug": "liesberger-flohmarkt", "field": "setting", "value": "both", "confidence": "stated", "source": "https://liesberger-flohmarkt.ch/", "quote": "Aussen ! ... und Innen !" },
+  { "slug": "liesberger-flohmarkt", "field": "stall_count", "value": 100, "confidence": "stated", "source": "https://liesberger-flohmarkt.ch/", "quote": "Über 100 Aussteller" },
+  { "slug": "flohmarkt-uster-stadthausplatz", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "quote": "Stadthausplatz bzw. Stadthausparkplatz" },
+  { "slug": "night-flohmarkt-kloten", "field": "setting", "value": "outdoor", "confidence": "inferred", "source": "https://www.kloten.ch/maerkte/10849", "quote": "Stadtplatz — the open town square the town's own market page names" },
+  { "slug": "antikmarkt-ostbahnhof-berlin", "field": "setting", "value": "outdoor", "confidence": "inferred", "source": "https://oldthing.de/Berliner-Flohmarkt/Antikes-und-Sammeln/Antikmarkt-Ostbahnhof/", "quote": "Scharen von promenierenden Berlinern — stalls along the street" },
+  { "slug": "nowkoelln-flowmarkt-berlin", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://nowkoelln.de/", "quote": "ans idyllische Maybachufer nach Neukölln" },
+  { "slug": "nowkoelln-flowmarkt-berlin", "field": "stall_count", "value": 130, "confidence": "stated", "source": "https://nowkoelln.de/anmeldung-info/", "quote": "maximal 130 buchbare Stände pro Markttermin" },
+  { "slug": "nowkoelln-flowmarkt-berlin", "field": "rain_policy", "value": "decided_on_the_day", "confidence": "stated", "source": "https://nowkoelln.de/anmeldung-info/", "quote": "abgebrochen/abgesagt wird wegen höherer Gewalt (Starkregen, Sturm, Hagel)" },
+  { "slug": "flohmarkt-oetwil-am-see", "field": "setting", "value": "outdoor", "confidence": "inferred", "source": "https://flohmi-oetwilamsee.ch/flohmarktregeln/", "quote": "Flohmarktplatz — on the Gemeindehausplatz, an open square" },
+  { "slug": "herbst-flohmarkt-richterswil", "field": "setting", "value": "outdoor", "confidence": "stated", "source": "https://www.richterswil.ch/online-schalter/91370/detail", "quote": "auf dem Wisshusplatz" }
+]
