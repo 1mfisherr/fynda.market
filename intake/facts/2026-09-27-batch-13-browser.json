@@ -1,0 +1,5 @@
+[
+  { "slug": "flohmarkt-rueticenter-pratteln", "field": "rain_policy", "value": "runs", "confidence": "stated", "source": "https://www.flohmarktkoenig.ch/infos/1", "quote": "Dank des idealen Standorts sind weder Regen noch Schnee ein Hindernis" },
+  { "slug": "flohmarkt-stuecki-basel", "field": "setting", "value": "indoor", "confidence": "stated", "source": "https://www.flohmarktkoenig.ch/", "quote": "Indoor-Flohmarkt-Erlebnis im Stücki Park Center – wetterunabhängig" },
+  { "slug": "flohmarkt-stuecki-basel", "field": "rain_policy", "value": "runs", "confidence": "stated", "source": "https://www.flohmarktkoenig.ch/", "quote": "Indoor-Flohmarkt-Erlebnis im Stücki Park Center – wetterunabhängig" }
+]
