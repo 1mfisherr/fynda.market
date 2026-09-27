@@ -9,7 +9,7 @@ Nothing here is scoped or promised. An idea leaves this file only when someone w
 Built 2026-09-26: own country first on the home page, *Also today, nearby*, the hour-aware status line, Share with photo previews, town search on the 404. Delfim's verdicts on the rest (2026-09-26):
 
 - **Annual dates mail, with an "upload your dates" box on the organiser page** (PDF or flyer photo; a Telegram ping, and one of us types them in) — a must, before December. Next session. M
-- **Germany deep in four cities** before thin breadth — a must. Berlin started 2026-09-26: 9 more imported, waiting for photos (5 → 14); 19 more for spring in `intake/batch-berlin/README.md`. Hamburg, München, Köln next. L
+- **Germany deep in four cities** before thin breadth — a must. Berlin: 5 → 14 markets, live 2026-09-27; 19 more for spring in `intake/batch-berlin/README.md`. Hamburg, München, Köln next. L
 - **Town page: nearby towns** — Zurich's page ignores Kloten, Dübendorf, Dietikon. Discuss as a product question with Delfim first. M
 - **Organiser monthly "your page" mail** — views, calendar adds; the first thing chargeable. Keep in mind; waits on the four-week answer rate. M
 - **Stall booking on the market page** — the `stall_booking` column exists. Only once there are real relationships with organisers. M

@@ -2,13 +2,13 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story of how things got here is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-09-26.
+Updated 2026-09-27.
 
 ---
 
 ## Now
 
-**Two countries since 2026-09-22.** Live at `fynda.market`: 277 markets — 222 Swiss in four locales, 55 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,630 are in the sitemap. Rebuilt nightly on GitHub at 23:07 UTC (just after midnight in Zurich) and again at 03:07, because GitHub starts scheduled jobs up to five hours late; ten guardrails and 30 tests gate every publish.
+**Two countries since 2026-09-22.** Live at `fynda.market`: 286 markets — 222 Swiss in four locales, 64 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,669 pages of which 1,630 are in the sitemap. Rebuilt nightly on GitHub at 23:07 UTC (just after midnight in Zurich) and again at 03:07, because GitHub starts scheduled jobs up to five hours late; ten guardrails and 30 tests gate every publish.
 
 | Running | State |
 |---|---|
@@ -22,7 +22,7 @@ Updated 2026-09-26.
 | **Search Console** | 7 days to 2026-09-17: 94 clicks, 7,836 impressions, position ~10, 78% phone; canton pages earn most per page. Market titles changed 2026-09-23 (next date, year from that date) — judge them on the exports from 2026-10-04. A fresh export every Sunday into `docs/GSCdata/`. SEO plan: `reference/seo-research/plan.md`, re-read 2026-10-16 |
 | **Copy** | Voice settled (`BRAND.md` §Voice); visitors du / vous / tu, organisers Sie / vous / tu. Descriptions cleaned 2026-09-23: no dates, stale years, hype, keyword tails or template filler left. Organiser mails reread: German that reads as German in both countries (*innerhalb*, not *innert*), no country named, full sentences |
 | **Front door & place** | One block per country on the home page, flags, no country picker, no geo redirect. One town search (`TownSearch.astro`) on home and Near me; Near me groups by distance bands. The chosen town is a pill in the header |
-| **Photos** | Every market has one — 226 Swiss, 55 German. Real ones arrive through organisers. A shared market link previews with its own photo (`/share/*.jpg`, 900 × 472, made at build) |
+| **Photos** | Every market has one — 226 Swiss, 64 German. Real ones arrive through organisers. A shared market link previews with its own photo (`/share/*.jpg`, 900 × 472, made at build) |
 | **Market page** (2026-09-26, `design/market-v1.html`) | The status line knows the hour — *Opens in 40 min · Open now · Closes in 1 h 10 min · Over for today, next Sat 3 Oct* — and today's list rows everywhere say *Closes in…* and fade when over. *Also today, nearby* under the buttons: ≤3 same-day markets within 15 km. Share (the phone's own sheet). **Distance on cards**: after a visitor picks a town, every list card within 50 km carries "4 km", and the market page's strip "19 km · from Zurich" (`design/distance-v1.html`); a town picked before 2026-09-26 has no coordinates until picked again. Home shows the visitor's own country first in *This weekend* (picked town, else browser language region). Town search on the 404s |
 
 Not built: tags shown to visitors · country page (parked) · text search · organiser photo upload · the annual "what are your dates" mail.
@@ -37,7 +37,6 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
    5. **Search Console and Bing:** add the German paths.
-   6. **Nine Berlin photos** (`docs/germany-photo-list.md`, second batch). Researched and imported 2026-09-26, invisible until each has one. **Karlshorst Riesenflohmarkt (2–4 Oct) by Thursday 1 October.** Then `import-photos.mjs`, set them `active`, deploy — Berlin goes from 5 markets to 14.
 2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
 3. **Read, on these dates** — nothing to build until then.
    - 2026-09-27 and 2026-10-04 Search Console exports: titles, and whether Germany earns anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page.
@@ -72,6 +71,6 @@ Each waits on Delfim or on data. Don't assume an answer.
 
 **Audits, 2026-09-23** — SEO, data quality, UI, copy, conversion, analytics, performance, architecture, scalability, organisers, security, operations; each one's fixes are in the commit that names it. Data quality: 14 random upcoming markets checked against the organisers' own sites, **every date right**; one closing time fixed (Wetzikon); 11 dead links fixed; Flohdom Bahrenfeld's one-off cancellation on 3 Oct added from kreaktiva.de.
 
-222 Swiss markets in four locales, 55 German in de and en, all `active`. 217 organisers with a live market, 158 with an e-mail and a personal link (54 found on their own sites 2026-09-24), 59 with only a website or phone — for those, no address is published on the site, or only a town hall's (`scripts/import-organiser-emails.mjs <csv> --apply` adds addresses; the same workflow welcomes them). Thinnest regions: Bremen 1, Saarland 2. About 60 markets carry no upcoming date — annual ones awaiting next year, listed under *No date yet*; the organiser mail is how those fill. Known and fine: markets with no stated fee, German dates derived from a stated rhythm and shown as *not yet confirmed*. The 64 markets added 2026-09-20 keep opening times, fees and parking notes in `market_private.admin_notes` until a facts pass reads them. Missing everywhere: tags, size, indoor/outdoor — the organiser page collects those.
+222 Swiss markets in four locales, 64 German in de and en, all `active` — Berlin 14 since 2026-09-27 (nine added, photos from Delfim; Ostbahnhof and Leo photos are small, 460 and 600 px — replace when better ones turn up). 217 organisers with a live market, 158 with an e-mail and a personal link (54 found on their own sites 2026-09-24), 59 with only a website or phone — for those, no address is published on the site, or only a town hall's (`scripts/import-organiser-emails.mjs <csv> --apply` adds addresses; the same workflow welcomes them). Thinnest regions: Bremen 1, Saarland 2. About 60 markets carry no upcoming date — annual ones awaiting next year, listed under *No date yet*; the organiser mail is how those fill. Known and fine: markets with no stated fee, German dates derived from a stated rhythm and shown as *not yet confirmed*. The 64 markets added 2026-09-20 keep opening times, fees and parking notes in `market_private.admin_notes` until a facts pass reads them. Missing everywhere: tags, size, indoor/outdoor — the organiser page collects those.
 
 How the import works: `ARCHITECTURE.md` §Import.

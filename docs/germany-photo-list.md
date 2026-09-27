@@ -27,9 +27,9 @@ Name the file after the slug in brackets, e.g. `flohmarkt-am-mauerpark-berlin.we
 - **Flohmarkt am Rathaus Schöneberg** — Berlin · `flohmarkt-am-rathaus-schoeneberg-berlin`
 - **Nowkoelln Flowmarkt** — Berlin · `nowkoelln-flowmarkt-berlin`
 
-## Berlin, second batch — waiting for photos (9)
+## Berlin, second batch (9) — live since 2026-09-27
 
-Researched and imported 2026-09-26 as **unverified**: nothing shows until each has a photo. Name the file after the market (`RAW Flohmarkt.jpg`) or the slug; `node scripts/import-photos.mjs "<folder>"` matches them, then the market is set to `active`. **Karlshorst Riesenflohmarkt is on 2–4 October — its photo by Thursday 1 October, or it misses the weekend.**
+Researched 2026-09-26, photos from Delfim 2026-09-27, all `active`. Antikmarkt Ostbahnhof (460 px) and Leo Flohmarkt (600 px) have small photos — worth replacing.
 
 - **Riesenflohmarkt Trabrennbahn Karlshorst** — 2–4 Oct · `riesenflohmarkt-trabrennbahn-karlshorst-berlin`
 - **RAW Flohmarkt** — Friedrichshain · `raw-flohmarkt-berlin`
