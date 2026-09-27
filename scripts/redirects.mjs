@@ -60,6 +60,38 @@ const COUNTRY_NOW = `
 const ISO2 = `select id, iso2 from public.countries`;
 
 /**
+ * Markets that have ended for good, and where their addresses go now.
+ *
+ * `permanently_closed` takes a market off the site, and without this its page
+ * would simply vanish — every shared link and every Google result with it.
+ * Instead each of its addresses, current and retired, in every language it
+ * had, points at its town's page: someone looking for a market there finds
+ * the ones that are still on. If the town has no market left, its page is gone
+ * too, and the address goes to the home page in the same language — never to
+ * a region page, which the content floor may have withheld.
+ *
+ * The first case (2026-09-27): a vide-grenier in Lausanne that was a one-off
+ * inside the city's Caravane des quartiers. Markets that were imported already
+ * closed and never had a page get lines too; a redirect nobody follows costs
+ * nothing, a 404 on an address someone did follow costs a visitor.
+ */
+const ENDED = `
+  select s.locale, s.slug as was, r.country_id,
+         (select cs.slug from public.slugs cs
+           where cs.entity_type = 'city' and cs.entity_id = ci.id
+             and cs.locale = s.locale and cs.is_current)           as city,
+         exists (select 1 from public.publishable_cities pc
+                  where pc.city_id = ci.id)                         as city_live
+    from public.markets m
+    join public.venues v   on v.id = m.venue_id
+    join public.cities ci  on ci.id = v.city_id
+    join public.regions r  on r.id = ci.region_id
+    join public.slugs s    on s.entity_type = 'market' and s.entity_id = m.id
+   where m.status = 'permanently_closed'
+   order by s.locale, s.slug
+`;
+
+/**
  * Pages we have moved by hand, as opposed to places renamed in the database.
  *
  * The slug ledger only knows about entities. `/umkreis/` was a page of our own
@@ -99,6 +131,16 @@ export async function buildRedirects() {
         }
       }
     }
+    for (const r of await rows(ENDED)) {
+      const country = countryNow.get(`${r.country_id}|${r.locale}`);
+      const segments = LOCALE[r.locale]?.segments;
+      if (!segments || !country) continue;
+      exact.push({
+        from: `/${r.locale}/${segments.market}/${r.was}/`,
+        to: r.city_live && r.city ? `/${r.locale}/${country}/${r.city}/` : `/${r.locale}/`,
+      });
+    }
+
     const wildcard = [];
 
     for (const r of retired) {
