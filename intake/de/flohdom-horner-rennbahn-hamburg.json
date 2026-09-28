@@ -1,0 +1,63 @@
+{
+  "slug": "flohdom-horner-rennbahn-hamburg",
+  "name": "Flohdom Horner Rennbahn",
+  "kind": "flohmarkt",
+  "town": "Hamburg",
+  "region": "Hamburg",
+  "venue": {
+    "name": "Horner Rennbahn",
+    "address": "Rennbahnstraße 96",
+    "postal_code": "22111"
+  },
+  "lat": 53.5596,
+  "lng": 10.0814,
+  "rhythm": {
+    "de": "Jeden Samstag",
+    "en": "Every Saturday"
+  },
+  "opening": {
+    "start": "06:00",
+    "end": "15:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-10",
+    "2026-10-17",
+    "2026-10-24",
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19",
+    "2027-01-02",
+    "2027-01-09",
+    "2027-01-16",
+    "2027-01-23"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://kreaktiva.de/",
+  "organiser": {
+    "name": "KREAKTIVA Werbe- und Veranstaltungs GmbH",
+    "website": "https://kreaktiva.de/",
+    "email": "anmeldung@kreaktiva.de"
+  },
+  "source_page": "https://kreaktiva.de/",
+  "facts": [
+    "every Saturday, 06:00–15:00",
+    "running at the Horn racecourse since 2009, per the organiser",
+    "inside the racecourse grandstand building, and outside on the grass in fine weather",
+    "junk, knick-knacks, household goods and second-hand clothes; pitches for used and new goods",
+    "grounds of about 20,000 m², per the organiser"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Organiser lists Saturdays 3 Oct to 7 Nov 2026 (3 Oct included — only Bahrenfeld is cancelled that day); later dates derived from the stated 'jeden Samstag'. Sat 26 Dec dropped (public holiday), unconfirmed. Homepage says 06:00–15:00 twice, the booking page says 6 am–2 pm; recorded the homepage. Entry fee not stated. Address on the booking page: Rennbahnstraße 96 (homepage abbreviates 'Rennbahnstr.'); coordinates are the OSM house number 96 node on the racecourse grounds.",
+  "description": {
+    "de": "Jeden Samstag von 6 bis 15 Uhr auf dem Gelände der Horner Galopprennbahn, seit 2009. Gehandelt wird im Tribünengebäude und bei gutem Wetter auch draußen auf der Rasenfläche: Trödel, Nippes, Hausrat und Second-Hand-Kleidung, dazu etwas Neuware.",
+    "en": "Every Saturday from 6 to 3 on the grounds of the Horn racecourse, since 2009. Trading happens inside the grandstand building and, in fine weather, out on the grass too: junk, knick-knacks, household goods and second-hand clothes, with some new goods."
+  }
+}

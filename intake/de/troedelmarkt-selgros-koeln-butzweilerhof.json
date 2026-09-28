@@ -1,0 +1,50 @@
+{
+  "slug": "troedelmarkt-selgros-koeln-butzweilerhof",
+  "name": "Trödelmarkt am SELGROS Köln-Butzweilerhof",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "SELGROS Köln-Butzweilerhof",
+    "address": "Von-Hünefeld-Straße 100",
+    "postal_code": "50829"
+  },
+  "lat": 50.9892,
+  "lng": 6.8943,
+  "rhythm": {
+    "de": "An einzelnen Terminen",
+    "en": "On selected dates"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-18"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Butzweilerhof-SELGROS-232y/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Butzweilerhof-SELGROS-232y/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "under a large roof, shelter in bad weather",
+    "a wide range of second-hand and new goods",
+    "at the Köln-Nord motorway junction, between the junction and the city centre",
+    "parking in the surrounding business park",
+    "line 5 and bus 139",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Only one date in the window, 18 Oct; nothing later published. The organiser calls it a new location. 'Eintritt frei' is from the site-wide Melan header, hence fee 0. Organiser writes 'S-Bahn: 5'; recorded as 'line 5'. Coordinates from Nominatim for Von-Hünefeld-Straße 100 (the SELGROS store).",
+  "description": {
+    "de": "Ein Trödelmarkt beim SELGROS am Butzweilerhof, am Kreuz Köln-Nord, von 11 bis 18 Uhr. Ein großes Dach schützt Stände und Besucher auch bei schlechtem Wetter; angeboten werden Trödel und Neuware. Erreichbar mit der Linie 5 und dem Bus 139; der Eintritt ist frei.",
+    "en": "A second-hand market at the SELGROS by Butzweilerhof, at the Köln-Nord junction, open 11 to 6. A large roof keeps stalls and visitors dry in bad weather, with second-hand and new goods on offer. Line 5 and bus 139 stop nearby, and entry is free."
+  }
+}

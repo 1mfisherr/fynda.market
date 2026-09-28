@@ -1,0 +1,50 @@
+{
+  "slug": "troedelmarkt-roller-koeln-marsdorf",
+  "name": "Trödelmarkt am ROLLER Köln-Marsdorf",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "ROLLER Köln-Marsdorf",
+    "address": "Max-Planck-Straße 5",
+    "postal_code": "50858"
+  },
+  "lat": 50.9211,
+  "lng": 6.8568,
+  "rhythm": {
+    "de": "An einzelnen Terminen",
+    "en": "On selected dates"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-03"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Marsdorf-ROLLER-163O/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Marsdorf-ROLLER-163O/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "long rows laid out in a loop",
+    "popular with second-hand sellers",
+    "right next to the Köln-West motorway junction",
+    "good parking, including at Globus and Trösser Marsdorf",
+    "line 7",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Only one date in the window, Sat 3 Oct (a public holiday; listed by the organiser); no later 2026 or 2027 dates published. 'Eintritt frei' is from the site-wide Melan header, hence fee 0. Organiser writes 'S-Bahn: 7' for public transport; recorded as 'line 7'. Coordinates from Nominatim for Max-Planck-Straße 5 (the ROLLER store).",
+  "description": {
+    "de": "Ein Trödelmarkt auf dem Gelände des ROLLER in Marsdorf, direkt am Autobahnkreuz Köln-West, von 11 bis 18 Uhr. Die langen Reihen laufen im Kreis und sind bei privaten Trödlern beliebt. Parkplätze gibt es reichlich, der Eintritt ist frei.",
+    "en": "A second-hand market on the ROLLER grounds in Marsdorf, right by the Köln-West motorway junction, open 11 to 6. Its long rows run in a loop and are popular with private sellers. Parking is plentiful and entry is free."
+  }
+}

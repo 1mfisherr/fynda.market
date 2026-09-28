@@ -1,0 +1,46 @@
+{
+  "slug": "flohmarkt-riehler-guertel-koeln",
+  "name": "Flohmarkt Riehler Gürtel",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Riehler Gürtel",
+    "address": "Riehler Gürtel",
+    "postal_code": "50735"
+  },
+  "lat": 50.9659,
+  "lng": 6.9724,
+  "rhythm": {
+    "de": "Mehrmals im Jahr",
+    "en": "Several times a year"
+  },
+  "opening": null,
+  "dates": [
+    "2026-10-11",
+    "2026-11-08"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.coelln-konzept.de/markt/riehl.html",
+  "organiser": {
+    "name": "Cölln Konzept – Agentur für Veranstaltungen (Bruno Deutzmann)",
+    "website": "https://www.coelln-konzept.de/",
+    "email": "info@coelln-konzept.de"
+  },
+  "source_page": "https://www.coelln-konzept.de/markt/riehl.html",
+  "facts": [
+    "book, collectors' and junk market several times a year in Riehl",
+    "over 150 exhibitors",
+    "books, rarities and second-hand goods; new goods prohibited",
+    "stalls stand between the trees of an avenue on the Riehler Gürtel, between Amsterdamer Straße and Stammheimer Straße, by the zoo's side entrance",
+    "tram 16 (Kinderkrankenhaus) and 18 (Zoo/Flora), bus 140 (Riehler Gürtel)"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Organiser lists two 2026 dates (11 Oct, 8 Nov), matching its termine.php overview; nothing for 2027 yet. No visitor opening hours or entry fee given (only set-up from 09:30), so opening and fee are null. Coordinates are a Nominatim point on the Riehler Gürtel near the stated stretch, not a building.",
+  "description": {
+    "de": "Ein Bücher-, Sammler- und Trödelmarkt, der mehrmals im Jahr auf dem Riehler Gürtel am Seiteneingang des Zoos stattfindet. Über 150 Aussteller stehen zwischen den Bäumen einer Allee und verkaufen Bücher, Raritäten und Gebrauchtes; Neuware ist verboten. Erreichbar mit den Linien 16 und 18 sowie dem Bus 140.",
+    "en": "A book, collectors' and junk market held several times a year on the Riehler Gürtel, by the side entrance of the zoo. Over 150 exhibitors set up between the trees of an avenue with books, rarities and second-hand goods; new goods are banned. Trams 16 and 18 and bus 140 stop nearby."
+  }
+}

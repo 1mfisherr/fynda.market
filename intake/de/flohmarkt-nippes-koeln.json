@@ -1,0 +1,46 @@
+{
+  "slug": "flohmarkt-nippes-koeln",
+  "name": "Flohmarkt Nippes",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Wilhelmplatz",
+    "address": "Wilhelmplatz",
+    "postal_code": "50733"
+  },
+  "lat": 50.9631,
+  "lng": 6.9522,
+  "rhythm": {
+    "de": "Mehrmals im Jahr",
+    "en": "Several times a year"
+  },
+  "opening": null,
+  "dates": [
+    "2026-10-18",
+    "2026-11-29"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.coelln-konzept.de/markt/nippes.html",
+  "organiser": {
+    "name": "Cölln Konzept – Agentur für Veranstaltungen (Bruno Deutzmann)",
+    "website": "https://www.coelln-konzept.de/",
+    "email": "info@coelln-konzept.de"
+  },
+  "source_page": "https://www.coelln-konzept.de/markt/nippes.html",
+  "facts": [
+    "junk and collectors' market held several times a year on Wilhelmplatz in the heart of Nippes",
+    "more than 150 traders",
+    "antiques and second-hand goods; new goods prohibited",
+    "tram 12 and 15, buses 147, 184 and 186 to Florastraße",
+    "no parking on the streets around Wilhelmplatz on market day"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Organiser lists two 2026 dates (18 Oct, 29 Nov), also on its termine.php overview; nothing for 2027 yet. No visitor opening hours or entry fee given — only stall set-up from 09:30, pitches taken by 10:00 — so opening and fee are null. Coordinates are the Wilhelmplatz centroid from Nominatim.",
+  "description": {
+    "de": "Ein Trödel- und Sammlermarkt, der mehrmals im Jahr auf dem Wilhelmplatz mitten in Nippes stattfindet. Mehr als 150 Händler bieten Antiquitäten und Gebrauchtes an; Neuware ist nicht erlaubt. Die Straßenbahnlinien 12 und 15 halten an der Florastraße.",
+    "en": "A junk and collectors' market held several times a year on Wilhelmplatz in the middle of Nippes. More than 150 traders sell antiques and second-hand goods; new goods are not allowed. Tram lines 12 and 15 stop at Florastraße."
+  }
+}

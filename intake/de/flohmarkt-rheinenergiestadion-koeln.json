@@ -1,0 +1,46 @@
+{
+  "slug": "flohmarkt-rheinenergiestadion-koeln",
+  "name": "Flohmarkt am RheinEnergieStadion",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "RheinEnergieStadion",
+    "address": "Junkersdorfer Straße",
+    "postal_code": "50933"
+  },
+  "lat": 50.9323,
+  "lng": 6.8812,
+  "rhythm": {
+    "de": "Mehrmals im Jahr",
+    "en": "Several times a year"
+  },
+  "opening": null,
+  "dates": [
+    "2026-10-18",
+    "2026-12-06"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.coelln-konzept.de/markt/p6.html",
+  "organiser": {
+    "name": "Cölln Konzept – Agentur für Veranstaltungen (Bruno Deutzmann)",
+    "website": "https://www.coelln-konzept.de/",
+    "email": "info@coelln-konzept.de"
+  },
+  "source_page": "https://www.coelln-konzept.de/markt/p6.html",
+  "facts": [
+    "flea and antiques market several times a year on the forecourt at the back of the RheinEnergieStadion, opposite the Jahnwiese, entrance on Junkersdorfer Straße",
+    "antiques and second-hand goods; new goods prohibited",
+    "pitches indoors and outdoors",
+    "free parking at the Jahnwiese (P5) and on P7",
+    "tram 1 to RheinEnergieStadion; buses 141, 143, 144 and 172 to Alter Militärring"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Two 2026 dates listed (18 Oct, 6 Dec); 2027 continues with 18 Apr plus planned 14 Mar and 30 May, all outside the window. No visitor opening hours or entry fee given (set-up 06:00–09:00), so opening and fee are null. 'Indoors and outdoors' is read from the stall price line '(drinnen / draußen)'. Organiser page URL is p6.html; the separate 'Flohmarkt P6' (p6_parkplatz.html) has no date before April 2027 and is not included. Coordinates are the Junkersdorfer Straße point from Nominatim, beside the stadium.",
+  "description": {
+    "de": "Ein Floh- und Antikmarkt auf dem Vorplatz an der Rückseite des RheinEnergieStadions, gegenüber der Jahnwiese, mehrmals im Jahr. Angeboten werden Antiquitäten und Trödel, Neuware ist verboten; Stände gibt es drinnen und draußen. Parken ist an der Jahnwiese und auf P7 kostenlos, die Linie 1 hält am Stadion.",
+    "en": "A flea and antiques market on the forecourt at the back of the RheinEnergieStadion, opposite the Jahnwiese, held several times a year. Antiques and second-hand goods only, no new stock, with pitches both indoors and outdoors. Parking at the Jahnwiese and on P7 is free, and tram 1 stops at the stadium."
+  }
+}

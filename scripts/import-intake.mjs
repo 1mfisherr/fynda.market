@@ -85,8 +85,11 @@ function readIntake() {
     if (!Array.isArray(m.dates)) bad('dates must be a list');
     else {
       for (const d of m.dates) if (!DATE.test(d)) bad(`date "${d}"`);
-      const past = m.dates.filter((d) => d < today), far = m.dates.filter((d) => d > limit);
-      if (past.length) bad(`${past.length} date(s) in the past`);
+      // A date that has passed is dropped, not refused: every file stays in
+      // intake/de after its import, and the day any of its dates went by it
+      // blocked every later batch (2026-09-28). Nothing past is imported.
+      m.dates = m.dates.filter((d) => d >= today);
+      const far = m.dates.filter((d) => d > limit);
       if (far.length) bad(`${far.length} date(s) beyond 120 days (${limit}) — the horizon guardrail`);
     }
     if (!['listed', 'rhythm'].includes(m.dates_from)) bad(`dates_from must be "listed" or "rhythm"`);

@@ -1,0 +1,103 @@
+{
+  "slug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
+  "name": "Flohmarkt an der Galopprennbahn Weidenpesch",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Galopprennbahn Weidenpesch",
+    "address": "Scheibenstraße 40",
+    "postal_code": "50737"
+  },
+  "lat": 50.9839,
+  "lng": 6.9521,
+  "rhythm": {
+    "de": "Jeden Mittwoch, Freitag und Samstag, dazu einmal im Monat sonntags",
+    "en": "Every Wednesday, Friday and Saturday, plus one Sunday a month"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "13:00"
+  },
+  "opening_by_weekday": {
+    "wed": {
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "fri": {
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "sat": {
+      "start": "08:00",
+      "end": "14:00"
+    },
+    "sun": {
+      "start": "11:00",
+      "end": "16:00"
+    }
+  },
+  "dates": [
+    "2026-09-30",
+    "2026-10-02",
+    "2026-10-07",
+    "2026-10-09",
+    "2026-10-10",
+    "2026-10-14",
+    "2026-10-16",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-21",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-28",
+    "2026-10-30",
+    "2026-11-04",
+    "2026-11-06",
+    "2026-11-07",
+    "2026-11-11",
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-18",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-25",
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-12-02",
+    "2026-12-04",
+    "2026-12-05",
+    "2026-12-09",
+    "2026-12-11",
+    "2026-12-12",
+    "2026-12-16",
+    "2026-12-18",
+    "2026-12-19",
+    "2026-12-20",
+    "2026-12-23"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.troedel-mit.de/",
+  "organiser": {
+    "name": "Troedel-Mit – Oliver Dollmann",
+    "website": "https://www.troedel-mit.de/",
+    "email": "info@troedel-mit.de"
+  },
+  "source_page": "https://www.troedel-mit.de/termine/",
+  "facts": [
+    "every Wednesday, Friday and Saturday, plus one Sunday a month",
+    "selling hours Wednesday and Friday 08:00–13:00, Saturday 08:00–14:00, Sunday 11:00–16:00",
+    "on car park A of the Köln racecourse (Pferderennbahn), Scheibenstraße 40",
+    "sellers set up with a car or a table; stalls from 2 m",
+    "sellers can also come without booking while space lasts"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Dates are the organiser's event calendar (termine list, read in full through its events feed): 38 dates to 23 Dec, exactly matching the stated rhythm minus its stated exceptions (3 and 31 Oct, 25, 26 and 30 Dec) plus the listed Sundays (18 Oct, 29 Nov, 20 Dec). Nothing for January 2027 is listed yet, so none added. The calendar shows 06:00–13:00/14:00, 07:00–16:00 Sun — that is the gate time for sellers; the recorded hours are the 'Verkauf' (selling) hours from the event page, e.g. https://www.troedel-mit.de/termine/koeln-pferderennbahn-parkplatz-157/. Visitor entry fee not stated. Organiser also runs a separate market on the racecourse spectator area (next date May 2027) — not included. Imprint names Oliver Dollmann, Leverkusen, info@troedel-mit.de. Coordinates from Nominatim for Scheibenstraße 40.",
+  "description": {
+    "de": "Jeden Mittwoch, Freitag und Samstag und an einem Sonntag im Monat auf dem Parkplatz A der Galopprennbahn in Weidenpesch. Verkauft wird mittwochs und freitags von 8 bis 13 Uhr, samstags bis 14 Uhr, sonntags von 11 bis 16 Uhr. Die Händler verkaufen vom Auto oder vom Tisch.",
+    "en": "Every Wednesday, Friday and Saturday, plus one Sunday a month, on car park A of the Weidenpesch racecourse. Selling runs 8 to 1 on Wednesdays and Fridays, until 2 on Saturdays, and 11 to 4 on Sundays. Sellers trade from their cars or from tables."
+  }
+}

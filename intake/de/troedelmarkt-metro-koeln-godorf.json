@@ -1,0 +1,53 @@
+{
+  "slug": "troedelmarkt-metro-koeln-godorf",
+  "name": "Trödelmarkt am METRO Köln-Godorf",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "METRO Köln-Godorf",
+    "address": "Otto-Hahn-Straße 15",
+    "postal_code": "50997"
+  },
+  "lat": 50.8572,
+  "lng": 6.9708,
+  "rhythm": {
+    "de": "Etwa einmal im Monat",
+    "en": "About once a month"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-11-08",
+    "2026-12-06"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Godorf-METRO-5i/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Godorf-METRO-5i/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "a large number of second-hand and new-goods stalls; the organiser calls it its biggest",
+    "large covered area; pitches both covered and uncovered",
+    "many food and specialty stalls",
+    "close to IKEA and OBI; paid parking there",
+    "tram 16 to Godorf Bahnhof",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Four dates in the window: Sat 3 and Sun 4 Oct back to back, then 8 Nov and 6 Dec; nothing for January 2027 published yet. 'Eintritt frei' is stated site-wide in the Melan header, not on this market's page, which is why fee is 0. Coordinates from Nominatim for Otto-Hahn-Straße 15 (the METRO store).",
+  "description": {
+    "de": "Etwa einmal im Monat von 11 bis 18 Uhr auf dem Gelände des METRO in Godorf, gleich bei IKEA und OBI. Viele Stände mit Trödel und Neuware, ein großer Teil davon überdacht, dazu reichlich Essen und Trinken. Die Straßenbahnlinie 16 fährt bis Godorf Bahnhof; der Eintritt ist frei.",
+    "en": "About once a month from 11 to 6 on the METRO grounds in Godorf, next to IKEA and OBI. Plenty of stalls with second-hand and new goods, much of it under cover, plus a wide choice of food. Tram 16 runs to Godorf Bahnhof, and entry is free."
+  }
+}

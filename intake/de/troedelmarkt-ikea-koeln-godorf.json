@@ -1,0 +1,52 @@
+{
+  "slug": "troedelmarkt-ikea-koeln-godorf",
+  "name": "Trödelmarkt am IKEA Köln-Godorf",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "IKEA Köln-Godorf",
+    "address": "Godorfer Hauptstraße 171",
+    "postal_code": "50997"
+  },
+  "lat": 50.8617,
+  "lng": 6.971,
+  "rhythm": {
+    "de": "Meist am vierten Sonntag im Monat",
+    "en": "Usually the fourth Sunday of the month"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-25",
+    "2026-11-29",
+    "2026-12-27"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Godorf-IKEA-206h/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Godorf-IKEA-206h/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "on the fourth Sunday of the month, per the organiser",
+    "between Rodenkirchen and Godorf",
+    "food stalls on site",
+    "paid parking on the IKEA grounds; also at METRO and OBI",
+    "tram 16 to Godorf Bahnhof",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Three dates in the window (25 Oct, 29 Nov, 27 Dec). The organiser says 'fourth Sunday', but 29 Nov is the fifth Sunday of November — used the listed date. Nothing for January 2027 yet. 'Eintritt frei' is from the site-wide Melan header, hence fee 0. Organiser hours read '11.00 bis 18:00'. Coordinates from Nominatim for Godorfer Hauptstraße 171 (the IKEA store).",
+  "description": {
+    "de": "Meist am vierten Sonntag im Monat von 11 bis 18 Uhr beim IKEA zwischen Rodenkirchen und Godorf. Essensstände sorgen für die Pause zwischendurch, geparkt wird bei IKEA, METRO oder OBI. Die Straßenbahnlinie 16 fährt bis Godorf Bahnhof; der Eintritt ist frei.",
+    "en": "Usually on the fourth Sunday of the month from 11 to 6 at the IKEA between Rodenkirchen and Godorf. There are food stalls on site, and parking at IKEA, METRO or OBI. Tram 16 runs to Godorf Bahnhof, and entry is free."
+  }
+}

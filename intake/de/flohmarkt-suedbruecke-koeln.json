@@ -1,0 +1,45 @@
+{
+  "slug": "flohmarkt-suedbruecke-koeln",
+  "name": "Flohmarkt Südbrücke",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Südbrücke",
+    "address": "Am Rheinufer, unter der Südbrücke",
+    "postal_code": "50678"
+  },
+  "lat": 50.9171,
+  "lng": 6.973,
+  "rhythm": {
+    "de": "Mehrmals im Jahr",
+    "en": "Several times a year"
+  },
+  "opening": null,
+  "dates": [
+    "2026-10-03"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.coelln-konzept.de/markt/flohmarkt_koeln_sued.html",
+  "organiser": {
+    "name": "Cölln Konzept – Agentur für Veranstaltungen (Bruno Deutzmann)",
+    "website": "https://www.coelln-konzept.de/",
+    "email": "info@coelln-konzept.de"
+  },
+  "source_page": "https://www.coelln-konzept.de/markt/flohmarkt_koeln_sued.html",
+  "facts": [
+    "junk and collectors' market several times a year on the Rhine bank beneath the Südbrücke in Bayenthal",
+    "more than 150 traders",
+    "antiques and second-hand goods",
+    "tram 16 to Schönhauser Straße",
+    "vehicle access via Agrippinaufer towards the Rhine"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Only one 2026 date listed — Sat 3 Oct (a public holiday, but the organiser lists it on both the market page and termine.php); nothing for 2027 yet. No visitor opening hours or entry fee; stall-holder vehicles may leave from 17:00, set-up 06:30–08:30. Organiser gives no street number, only 'Am Rheinufer' under the bridge, 50678, entry via Agrippinaufer. Coordinates are the Nominatim point where the Südbrücke footway meets the left bank (Bayenthal side), approximate. Organiser page URL is flohmarkt_koeln_sued.html, not suedbruecke.html.",
+  "description": {
+    "de": "Ein Trödel- und Sammlermarkt direkt am Rheinufer unter der Südbrücke in Bayenthal, mehrmals im Jahr. Mehr als 150 Händler bieten Antiquitäten und Gebrauchtes an. Die Straßenbahnlinie 16 hält an der Schönhauser Straße.",
+    "en": "A junk and collectors' market right on the Rhine bank beneath the Südbrücke in Bayenthal, held several times a year. More than 150 traders sell antiques and second-hand goods. Tram 16 stops at Schönhauser Straße."
+  }
+}

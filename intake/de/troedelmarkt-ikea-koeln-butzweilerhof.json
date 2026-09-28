@@ -1,0 +1,52 @@
+{
+  "slug": "troedelmarkt-ikea-koeln-butzweilerhof",
+  "name": "Trödelmarkt am IKEA Köln-Butzweilerhof",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "IKEA Köln-Butzweilerhof",
+    "address": "Butzweilerstraße 51",
+    "postal_code": "50829"
+  },
+  "lat": 50.9848,
+  "lng": 6.8969,
+  "rhythm": {
+    "de": "Etwa einmal im Monat",
+    "en": "About once a month"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-11",
+    "2026-11-08",
+    "2026-12-13"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Butzweilerhof-IKEA-218w/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Butzweilerhof-IKEA-218w/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "a wide range of second-hand and new goods",
+    "right at the Köln-Nord motorway junction",
+    "many food and specialty stalls",
+    "paid parking in the IKEA car park and on surrounding car parks",
+    "line 5 and bus 139",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Three dates in the window (11 Oct, 8 Nov, 13 Dec); nothing for January 2027 yet. 'Eintritt frei' is from the site-wide Melan header, hence fee 0. Organiser writes 'S-Bahn: 5'; recorded as 'line 5'. Coordinates from Nominatim for Butzweilerstraße 51 (the IKEA store).",
+  "description": {
+    "de": "Etwa einmal im Monat von 11 bis 18 Uhr beim IKEA am Butzweilerhof, direkt am Autobahnkreuz Köln-Nord. Es gibt Trödel und Neuware in großer Auswahl und viele Essensstände. Erreichbar mit der Linie 5 und dem Bus 139; der Eintritt ist frei.",
+    "en": "About once a month from 11 to 6 at the IKEA by Butzweilerhof, right at the Köln-Nord motorway junction. A wide mix of second-hand and new goods, with plenty of food stalls. Line 5 and bus 139 get you there, and entry is free."
+  }
+}

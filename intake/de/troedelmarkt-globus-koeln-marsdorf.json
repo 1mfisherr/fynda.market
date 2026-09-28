@@ -1,0 +1,53 @@
+{
+  "slug": "troedelmarkt-globus-koeln-marsdorf",
+  "name": "Trödelmarkt am GLOBUS Köln-Marsdorf",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "GLOBUS Köln-Marsdorf",
+    "address": "Max-Planck-Straße 9",
+    "postal_code": "50858"
+  },
+  "lat": 50.9219,
+  "lng": 6.8532,
+  "rhythm": {
+    "de": "Am dritten Sonntag im Monat",
+    "en": "Third Sunday of the month"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-18",
+    "2026-11-15",
+    "2026-12-20"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Marsdorf-GLOBUS-290C/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Marsdorf-GLOBUS-290C/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "on the third Sunday of the month",
+    "a balanced mix of second-hand and new goods",
+    "a market location for over 20 years",
+    "many food stalls",
+    "near the Köln-West motorway junction; parking at ROLLER and Media Markt Marsdorf",
+    "line 7",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Three dates in the window, all third Sundays (18 Oct, 15 Nov, 20 Dec); nothing for January 2027 yet (the rhythm would give 17 Jan, not added). 'Eintritt frei' is from the site-wide Melan header, hence fee 0. Coordinates from Nominatim for Max-Planck-Straße 9.",
+  "description": {
+    "de": "Am dritten Sonntag im Monat von 11 bis 18 Uhr beim GLOBUS in Marsdorf, nahe dem Autobahnkreuz Köln-West. Trödel und Neuware halten sich die Waage, und an zahlreichen Ständen gibt es Essen und Trinken. Der Standort besteht seit über 20 Jahren; der Eintritt ist frei.",
+    "en": "On the third Sunday of the month from 11 to 6 at the GLOBUS in Marsdorf, near the Köln-West motorway junction. An even mix of second-hand and new goods, with plenty of food stalls. The market has been held here for over 20 years, and entry is free."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "troedelmarkt-porta-koeln-lind",
+  "name": "Trödelmarkt am PORTA Köln-Lind",
+  "kind": "troedelmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "PORTA Köln-Lind",
+    "address": "Portastraße 1",
+    "postal_code": "51147"
+  },
+  "lat": 50.848,
+  "lng": 7.0939,
+  "rhythm": {
+    "de": "Von März bis Oktober",
+    "en": "March to October"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-04"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Lind-PORTA-137I/",
+  "organiser": {
+    "name": "Melan macht Märkte Veranstaltungs GmbH",
+    "website": "https://www.melan.de/",
+    "email": "info@melan.de"
+  },
+  "source_page": "https://www.melan.de/fuer-alle/standorte/details/~/Koeln-Lind-PORTA-137I/",
+  "facts": [
+    "open 11:00 to 18:00",
+    "runs every year from March to October",
+    "in the Köln-Süd business park",
+    "popular with second-hand sellers",
+    "a small selection of food stalls",
+    "buses 162 and 167",
+    "entry free"
+  ],
+  "checked": "2026-09-28",
+  "notes": "Only one date left in the window, 4 Oct — the season ends in October per the organiser. 'Eintritt frei' is from the site-wide Melan header, hence fee 0. Coordinates are the Nominatim point for Portastraße (service road), not the store building — the address 1 was not matched exactly.",
+  "description": {
+    "de": "Ein Trödelmarkt im Gewerbegebiet Köln-Süd in Lind, der jedes Jahr von März bis Oktober von 11 bis 18 Uhr stattfindet. Er ist vor allem bei privaten Trödlern beliebt, dazu gibt es eine kleine Auswahl an Essensständen. Die Buslinien 162 und 167 fahren hin; der Eintritt ist frei.",
+    "en": "A second-hand market in the Köln-Süd business park in Lind, held every year from March to October, 11 to 6. It is popular with private sellers and has a small choice of food stalls. Buses 162 and 167 serve it, and entry is free."
+  }
+}
