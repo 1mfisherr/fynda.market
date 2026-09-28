@@ -28,6 +28,86 @@
     "to": "/en/germany/bremen/"
   },
   {
+    "from": "/de/markt/marches-tunnel-lausanne-mardi/",
+    "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/de/markt/marches-tunnel-lausanne-mercredi/",
+    "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/de/markt/marches-tunnel-lausanne-samedi/",
+    "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/de/markt/marches-tunnel-lausanne-vendredi/",
+    "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/de/markt/vide-grenier-prelaz-valency-lausanne/",
+    "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/en/market/marches-tunnel-lausanne-mardi/",
+    "to": "/en/switzerland/lausanne/"
+  },
+  {
+    "from": "/en/market/marches-tunnel-lausanne-mercredi/",
+    "to": "/en/switzerland/lausanne/"
+  },
+  {
+    "from": "/en/market/marches-tunnel-lausanne-samedi/",
+    "to": "/en/switzerland/lausanne/"
+  },
+  {
+    "from": "/en/market/marches-tunnel-lausanne-vendredi/",
+    "to": "/en/switzerland/lausanne/"
+  },
+  {
+    "from": "/en/market/vide-grenier-prelaz-valency-lausanne/",
+    "to": "/en/switzerland/lausanne/"
+  },
+  {
+    "from": "/fr/marche/marches-tunnel-lausanne-mardi/",
+    "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/fr/marche/marches-tunnel-lausanne-mercredi/",
+    "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/fr/marche/marches-tunnel-lausanne-samedi/",
+    "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/fr/marche/marches-tunnel-lausanne-vendredi/",
+    "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/fr/marche/vide-grenier-prelaz-valency-lausanne/",
+    "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/it/mercato/marches-tunnel-lausanne-mardi/",
+    "to": "/it/svizzera/lausanne/"
+  },
+  {
+    "from": "/it/mercato/marches-tunnel-lausanne-mercredi/",
+    "to": "/it/svizzera/lausanne/"
+  },
+  {
+    "from": "/it/mercato/marches-tunnel-lausanne-samedi/",
+    "to": "/it/svizzera/lausanne/"
+  },
+  {
+    "from": "/it/mercato/marches-tunnel-lausanne-vendredi/",
+    "to": "/it/svizzera/lausanne/"
+  },
+  {
+    "from": "/it/mercato/vide-grenier-prelaz-valency-lausanne/",
+    "to": "/it/svizzera/lausanne/"
+  },
+  {
     "from": "/de/schweiz/freiburg/",
     "to": "/de/schweiz/fribourg/"
   },
