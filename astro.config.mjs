@@ -28,7 +28,7 @@ export default defineConfig({
   site: 'https://fynda.market',
   output: 'static',
   trailingSlash: 'always',
-  redirects: { '/': '/de/' },
+  redirects: { '/': '/en/' },
   build: {
     // Emit /de/schweiz/zurich/index.html rather than /de/schweiz/zurich.html
     format: 'directory',

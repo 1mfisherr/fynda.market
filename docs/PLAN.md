@@ -66,8 +66,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales** — let Search Console decide.
-- **The bare address goes to `/de/`** for every browser, English and French ones included (`scripts/redirects-format.mjs`). The not-German-first rule says it should be `/en/`; the cost is Google re-reading which page is the home page. Recommended: switch. Waits on Delfim.
-- Closed: photos stay, real ones via organisers; dateless markets stay `active`; logo shipped; analytics first-party, everything kept; `x-default` English; no Swiss beachhead — the focus is Europe; Metabase on Delfim's PC only (2026-09-23); a market that has ended (`permanently_closed`) sends every address to its town page, or the home page if the town has none left — `scripts/redirects.mjs` (2026-09-27, first: Prélaz-Valency).
+- Closed: the bare address goes to `/en/`, not `/de/` (Delfim, 2026-09-28); photos stay, real ones via organisers; dateless markets stay `active`; logo shipped; analytics first-party, everything kept; `x-default` English; no Swiss beachhead — the focus is Europe; Metabase on Delfim's PC only (2026-09-23); a market that has ended (`permanently_closed`) sends every address to its town page, or the home page if the town has none left — `scripts/redirects.mjs` (2026-09-27, first: Prélaz-Valency).
 
 ---
 

@@ -17,7 +17,7 @@ URLs, locales, the data model, the import, structured data, the guardrails. Ever
 | Market | market | `/de/markt/[slug]/` |
 | Utility, Near me | locale, `noindex` | `/de/melden/`, `/de/umkreis/` |
 
-One indexable URL per entity per locale (v1: ~60 per market). Everything else — date, type, tag, radius — is a filter, never a URL. `/` is a 301 to `/de/`. `src/pages/404.astro` must exist: without it Cloudflare answers every unknown path with HTTP 200.
+One indexable URL per entity per locale (v1: ~60 per market). Everything else — date, type, tag, radius — is a filter, never a URL. `/` is a 301 to `/en/` (to `/de/` until 2026-09-28; Delfim: English stands in where one language must serve all). `src/pages/404.astro` must exist: without it Cloudflare answers every unknown path with HTTP 200.
 
 **A filter becomes a page type only through the gate:** ≥5 markets on the average instance and 80% of instances clear it · the query is measurably searched · ten hand-checked instances for four weeks · then scaled only to instances that pass the floor individually. Queue, best first: national date page (v1's best CTR, 14.8%) · region × time · month. City × date is what killed v1 — never.
 

@@ -14,8 +14,11 @@ export function formatRedirects(redirects) {
   // The bare root. Astro's own `redirects` config writes a meta-refresh page
   // with a robots noindex for `/`, which is the one address Google reads the
   // site name from (docs/reference/seo-research/01-what-google-says.md §3).
-  // A real 301 hands Google the German home page as the home page instead.
-  const root = ['# The bare root goes to the default locale as a real redirect, not a meta-refresh.', '/ /de/ 301', ''];
+  // A real 301 hands Google a real home page instead. English, not German:
+  // someone who types the bare address from a French, Italian or English
+  // browser landed in German (Delfim, 2026-09-28 — nothing shared across
+  // locales is German; where one language stands for all, it is English).
+  const root = ['# The bare root goes to the English home page as a real redirect, not a meta-refresh.', '/ /en/ 301', ''];
   // Each retired address also without its final slash. Cloudflare matches a
   // rule exactly, and only adds the slash for a file that exists — so a
   // retired address typed or pasted without it was a 404 (2026-09-28).
