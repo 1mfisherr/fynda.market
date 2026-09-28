@@ -387,6 +387,16 @@ const description = next
         aria-pressed="false"
       ><Icon name="bookmark" size={15} /><span data-save-label>{s.save}</span></Button>
     </div>
+    {/* The photographer, where the licence asks for a name — a Commons photo
+        under CC BY or BY-SA. Quiet, under the picture, never on it. */}
+    {market.imageUrl && market.imageCredit && (
+      <p class="credit gutter">
+        {s.photo}: <a href={market.imageCredit.sourceUrl} rel="noopener nofollow" target="_blank">{market.imageCredit.author}</a>,
+        {market.imageCredit.licenceUrl
+          ? <a href={market.imageCredit.licenceUrl} rel="noopener nofollow license" target="_blank">{market.imageCredit.licence}</a>
+          : market.imageCredit.licence}
+      </p>
+    )}
 
     <div class="head gutter">
       {/* Orientation before identity — PAGES.md has always said the page opens
@@ -655,6 +665,8 @@ const description = next
   .blurb { max-width: var(--measure); }
 
   .photo-hero { position: relative; height: var(--hero-height); overflow: hidden; background: var(--color-paper); }
+  .credit { margin: var(--space-1) 0 0; color: var(--color-quiet); font-size: var(--text-micro); text-align: end; }
+  .credit a { color: inherit; }
   .type {
     position: absolute;
     inset-block-start: var(--space-hero);

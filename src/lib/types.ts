@@ -82,6 +82,8 @@ export interface Market {
   recurrenceText?: string;
   /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
   imageUrl?: string;
+  /** The photographer and licence, where the licence asks for a credit (Wikimedia Commons, CC BY / BY-SA). */
+  imageCredit?: { author: string; licence: string; licenceUrl?: string; sourceUrl: string };
   /**
    * Who last checked this market. 'organiser' is the strong claim — 33 of 157
    * — and it is the only one the accent is spent on. `verifiedAt` is held but

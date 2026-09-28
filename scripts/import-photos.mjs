@@ -14,12 +14,17 @@
  *   name-720.webp    the phone hero
  *   name-thumb.webp  the 148px square a MarketRow shows at 74
  *
+ * A photo from Wikimedia Commons carries its credit: any credits*.json in the
+ * folder — [{ "file", "author", "licence", "licence_url", "commons_page" }] —
+ * sets `markets.image_credit`, which the market page prints under the photo.
+ * A photo with no credit entry clears it (Delfim's own need none).
+ *
  * Re-running is safe: it re-encodes from the source and rewrites the column.
  * Matching is exact on the name, then on the slugified name; anything it cannot
  * place is listed and nothing is written until every file has a market.
  */
 
-import { existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { basename, extname, join } from 'node:path';
 
 import sharp from 'sharp';
@@ -54,6 +59,16 @@ for (const m of markets) {
   }
 }
 
+/* ---- credits ------------------------------------------------------------ */
+
+const credits = new Map();
+for (const f of readdirSync(source).filter((f) => /^credits.*\.json$/i.test(f))) {
+  for (const c of JSON.parse(readFileSync(join(source, f), 'utf8'))) {
+    if (!c.file || !c.author || !c.licence || !c.commons_page) throw new Error(`${f}: an entry needs file, author, licence and commons_page`);
+    credits.set(c.file, { author: c.author, licence: c.licence, licence_url: c.licence_url ?? undefined, source_url: c.commons_page });
+  }
+}
+
 /* ---- match -------------------------------------------------------------- */
 
 const files = readdirSync(source).filter((f) => KINDS.has(extname(f).toLowerCase()));
@@ -67,7 +82,7 @@ for (const file of files) {
 }
 
 console.log(`${files.length} image(s) in ${source}`);
-for (const { file, market } of matched) console.log(`  ${file}  ->  ${market.slug}${market.image_url ? '  (replacing a photo)' : ''}`);
+for (const { file, market } of matched) console.log(`  ${file}  ->  ${market.slug}${market.image_url ? '  (replacing a photo)' : ''}${credits.has(file) ? `  (credit: ${credits.get(file).author}, ${credits.get(file).licence})` : ''}`);
 if (unmatched.length) {
   console.log(`\n${unmatched.length} file(s) match no market — nothing is written until they do:`);
   for (const f of unmatched) console.log(`  - ${f}`);
@@ -96,7 +111,8 @@ await withClient(DB_URL, async (client) => {
   await client.query('begin');
   try {
     for (const w of written) {
-      await client.query(`update public.markets set image_url = $2, updated_at = now() where id = $1`, [w.id, w.url]);
+      const credit = credits.get(w.file) ?? null;
+      await client.query(`update public.markets set image_url = $2, image_credit = $3::jsonb, updated_at = now() where id = $1`, [w.id, w.url, credit && JSON.stringify(credit)]);
       await client.query(
         `update public.facts set superseded_by = $1
           where entity_type = 'market' and entity_id = $1 and field = 'image_url' and superseded_by is null`,
@@ -105,7 +121,7 @@ await withClient(DB_URL, async (client) => {
       await client.query(
         `insert into public.facts (entity_type, entity_id, field, value, source_type, source_ref, observed_at, confidence)
          values ('market', $1, 'image_url', $2::jsonb, 'manual', $3, now(), 'confirmed')`,
-        [w.id, JSON.stringify(w.url), `supplied by hand as "${w.file}"`]
+        [w.id, JSON.stringify(w.url), credits.has(w.file) ? credits.get(w.file).source_url : `supplied by hand as "${w.file}"`]
       );
     }
     await client.query('commit');

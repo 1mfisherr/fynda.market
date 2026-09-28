@@ -241,6 +241,8 @@ export interface Strings {
   cityLast: (name: string, date: string) => string;
   /** On a market page with no next date: when it last ran. */
   lastHeld: (date: string) => string;
+  /** "Foto" before a photographer's name, under a credited photo. */
+  photo: string;
   /** The canton description, built from the data like the town one. */
   regionDescription: (n: number, towns: number, region: string, code: CountryCode, next?: { name: string; city: string; date: string }) => string;
   cityNext: (name: string, date: string, time: string | undefined, venue: string) => string;
@@ -541,6 +543,7 @@ const de: Strings = {
     `${date}${time ? `, ${time} Uhr` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Danach ${later.join(' und ')}.` : ''}`,
   cityLast: (name, date) => `Zuletzt: ${name} am ${date}.`,
   lastHeld: (date) => `Zuletzt am ${date}`,
+  photo: 'Foto',
   regionDescription: (n, towns, region, code, next) =>
     `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} ${inRegionDe(region, code)}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
   cityNext: (name, date, time, venue) =>
@@ -763,6 +766,7 @@ const en: Strings = {
     `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Then ${later.join(' and ')}.` : ''}`,
   cityLast: (name, date) => `Last: ${name} on ${date}.`,
   lastHeld: (date) => `Last held ${date}`,
+  photo: 'Photo',
   regionDescription: (n, towns, region, code, next) =>
     `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} ${inRegionEn(region, code)}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
   cityNext: (name, date, time, venue) =>
@@ -991,6 +995,7 @@ const fr: Strings = {
     `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Puis ${later.join(' et ')}.` : ''}`,
   cityLast: (name, date) => `Dernière : ${name}, le ${date}.`,
   lastHeld: (date) => `Dernière édition le ${date}`,
+  photo: 'Photo',
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton ${deFr(region)}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
   cityNext: (name, date, time, venue) =>
@@ -1213,6 +1218,7 @@ const it: Strings = {
     `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Poi ${later.join(' e ')}.` : ''}`,
   cityLast: (name, date) => `L'ultimo: ${name} il ${date}.`,
   lastHeld: (date) => `Ultima edizione il ${date}`,
+  photo: 'Foto',
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari e cancellazioni.`,
   cityNext: (name, date, time, venue) =>

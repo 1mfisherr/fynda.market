@@ -48,6 +48,7 @@ interface Row {
   organiser_note: string | null;
   organiser_note_locale: string | null;
   last_date: string | null;
+  image_credit: { author: string; licence: string; licence_url?: string; source_url: string } | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -85,6 +86,7 @@ const SQL = `
     extensions.st_x(v.point::extensions.geometry)   as lng,
     m.entry_fee,
     m.image_url,
+    m.image_credit,
     m.website_url,
     m.verified_by,
     m.verified_at::date::text                        as verified_at,
@@ -210,6 +212,9 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         organiserNote: row.organiser_note ?? undefined,
         organiserNoteLocale: row.organiser_note_locale ?? undefined,
         lastDate: row.last_date ?? undefined,
+        imageCredit: row.image_credit
+          ? { author: row.image_credit.author, licence: row.image_credit.licence, licenceUrl: row.image_credit.licence_url, sourceUrl: row.image_credit.source_url }
+          : undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
       };
     });
