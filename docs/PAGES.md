@@ -43,9 +43,9 @@ Not here: a country picker, a map (Delfim, 2026-09-22: "gimmicky"), a big search
 
 Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm it is happening, then get them there.
 
-**Title: the next date, with its own year** (2026-09-23) — *Flohmi Muttenz – nächster Termin 12. Sept 2027*, falling back to *name, town – date*, then to *name – Termine 2026* when there is no date. The year is the date's, never the build's. It also separates the weekday editions of one market. Every page's description is cut to whole sentences within 160 characters in `Base.astro` (`fitDescription`), so no template has to count.
+**Title: the place and the next date, with its own year** (2026-09-23, reordered 2026-09-28) — *Flohmi am See Bern – Werkhof Egelsee – 18. Okt 2026*. When it runs long, the words *nächster Termin* go before the venue does, then the town, then the venue; a street address is never the venue here. Falls back to *name – Termine 2026* when there is no date. The year is the date's, never the build's. **Description: the facts, not the title again** — date, hours, place, indoors or out, the next two dates; with no date, the rhythm and when it last ran. Every page's description is cut to whole sentences within 160 characters in `Base.astro` (`fitDescription`), so no template has to count.
 
-1. Photo or illustration, never stock, with **Save** on it — saving and going are different decisions.
+1. Photo or illustration, never stock, with **Save** on it — saving and going are different decisions. A Wikimedia Commons photo of the venue is fine when there is none of the market; its photographer and licence sit quietly under it (`markets.image_credit`, since 2026-09-28). Never a photo from an organiser's site.
 2. Kind and town, then the name.
 3. **The status line in words, and it knows the hour** (2026-09-26, `design/market-v1.html`). Today and tomorrow resolve in the build; the minute in the browser (`src/lib/clock.ts`): *Opens in 40 min* (last two hours before), *Open now*, *Closes in 1 h 10 min* (last two hours), and once it has closed **Over for today**, the times quiet under it and *Next: Sat 3 Oct* — it used to say *Today* in red all evening. Without JavaScript it still says Today and the times.
 4. Cancellation notice with the reason, when it applies.
