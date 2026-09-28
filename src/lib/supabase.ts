@@ -140,7 +140,10 @@ function toOccurrence(row: NonNullable<Row['occurrences']>[number]): Occurrence 
     startTime: row.start_time?.slice(0, 5) ?? undefined,
     endTime: row.end_time?.slice(0, 5) ?? undefined,
     status: row.status,
-    cancellationNote: row.cancellation_note ?? undefined,
+    // An organiser's one-tap cancellation writes the word 'organiser' here
+    // (functions/a/[[path]].ts) — a marker, not a reason; `origin` already says
+    // who. Printed, it read "Cancelled — organiser" on every locale.
+    cancellationNote: row.cancellation_note && row.cancellation_note !== 'organiser' ? row.cancellation_note : undefined,
     // A timestamptz in the database, a calendar date on the page. The German
     // formatters parse YYYY-MM-DD and nothing else, so it is narrowed here
     // rather than in a template — "Bestätigt am NaN. undefined" otherwise.

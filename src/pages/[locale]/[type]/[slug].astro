@@ -451,7 +451,10 @@ const title = firstFitting([
           buttons of the same size made "Merken" look like as big a decision as
           getting there, which it is not — Route is 55% of all outbound clicks. */}
       <div class="keep gutter">
-        <Button href={`/ics/${market.slug}.ics`} block><Icon name="check" size={16} />{s.addToCalendar}</Button>
+        {/* Only with a date to add: without one the file is an empty calendar
+            and the tap does nothing (found 2026-09-28). A calendar, not a tick —
+            the tick read as "already added". */}
+        {dates.length > 0 && <Button href={`/ics/${market.slug}.ics`} block><Icon name="calendar" size={16} />{s.addToCalendar}</Button>}
         {/* The phone's own share sheet — WhatsApp, Signal, Messages, whatever
             this person uses — and on a computer, the link copied. A market is
             chosen in a group chat more often than alone. */}
@@ -782,7 +785,7 @@ const title = firstFitting([
   .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
 
   .actions { display: grid; gap: var(--space-2); }
-  .keep { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .keep { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--space-2); }
   .keep :global(.button) { font-size: var(--text-micro); }
   /* "In Kalender eintragen" is long enough to squeeze the tick otherwise. */
   .keep :global(svg) { flex-shrink: 0; }

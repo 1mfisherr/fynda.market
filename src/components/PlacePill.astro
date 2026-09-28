@@ -25,7 +25,7 @@ interface Props { locale?: Locale }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const s = t(locale);
 ---
-<a class="pill" href="/" data-place-pill hidden aria-label={s.yourTown}>
+<a class="pill" href="/" data-place-pill data-locale={locale} hidden aria-label={s.yourTown}>
   <span data-place-name></span>
 </a>
 
@@ -50,6 +50,7 @@ const s = t(locale);
 
 <script>
   import { TOWN_KEY, adopt } from '../lib/local-keys';
+  import { isLocale, townPathIn } from '../lib/i18n';
 
   const el = document.querySelector<HTMLAnchorElement>('[data-place-pill]');
   const name = el?.querySelector<HTMLElement>('[data-place-name]');
@@ -65,7 +66,8 @@ const s = t(locale);
       // Same-origin, root-relative only — never navigate somewhere storage says.
       if (saved?.name && saved.href?.startsWith('/') && !saved.href.startsWith('//')) {
         name.textContent = saved.name;
-        el.href = saved.href;
+        const locale = el.dataset.locale ?? '';
+        el.href = isLocale(locale) ? townPathIn(saved.href, locale) : saved.href;
         el.hidden = false;
       }
     } catch { /* nothing remembered, or it is not ours. Stay hidden. */ }

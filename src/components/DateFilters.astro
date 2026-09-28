@@ -288,7 +288,14 @@ while (cursor <= last) {
         step.disabled = target < 0 || target > grids.length - 1;
       }
     };
-    showMonth(0);
+    // Open on the first month with a day to tap. On 28 September the grid
+    // opened on a September with three greyed-out days, which read as broken
+    // until someone found the arrow (2026-09-28).
+    const d = new Date();
+    const todayIso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const firstUseful = grids.findIndex((grid) =>
+      Array.from(grid.querySelectorAll<HTMLElement>('.cell.has')).some((cell) => (cell.dataset.filter ?? '') >= todayIso));
+    showMonth(Math.max(firstUseful, 0));
 
     toggle.addEventListener('click', () => open(!root.hasAttribute('data-open')));
     for (const step of steps) {

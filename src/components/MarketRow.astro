@@ -30,7 +30,7 @@
  */
 import type { Market } from '../lib/types';
 import { BADGED_KINDS, LINES } from '../lib/vocabulary';
-import { formatTime, formatTimeRange, toIsoWithOffset, todayIso } from '../lib/format';
+import { formatDate, formatTime, formatTimeRange, toIsoWithOffset, todayIso } from '../lib/format';
 import { withinHorizon } from '../lib/markets';
 import { encodeDates } from '../lib/date-rows';
 import { flagFor } from '../lib/freshness';
@@ -70,9 +70,9 @@ const flag = flagFor(occurrence, s, locale);
 const line = LINES[market.kind];
 const badge = BADGED_KINDS.has(market.kind) ? line.short[locale] : undefined;
 
-const day = occurrence ? new Date(`${occurrence.date}T00:00:00`) : undefined;
-// "Sa. 19." is German; the ordinal dot has no business on the other three locales.
-const dayLabel = showDay && day ? `${s.weekdaysShort[day.getDay()]} ${day.getDate()}${locale === 'de' ? '.' : ''}` : '';
+// "Sat 31 Oct", with the month: a canton list runs 120 days, and "Sat 31"
+// followed by "Sun 1" read as the same October weekend (found 2026-09-28).
+const dayLabel = showDay && occurrence ? formatDate(occurrence.date, locale) : '';
 const times = occurrence?.startTime
   ? `${formatTime(occurrence.startTime)}${occurrence.endTime ? `–${formatTime(occurrence.endTime)}` : ''}`
   : undefined;

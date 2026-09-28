@@ -143,7 +143,7 @@ const jsonLd = {
       under a heading that said 17; the recurrence phrase on each row says what
       the other forty-seven were repeating. See src/lib/lists.ts. */}
   <Section>
-    <div id="list" class="gutter" data-weekdays={JSON.stringify(s.weekdaysShort)} data-dot={locale === 'de' ? '.' : ''}>
+    <div id="list" class="gutter" data-weekdays={JSON.stringify(s.weekdaysShort)} data-months={JSON.stringify(s.monthsShort)} data-dot={locale === 'de' ? '.' : ''}>
       <div class="leads">
         {list.slice(0, 2).map((market) => <MarketRow market={market} locale={locale} variant="feature" showRhythm allDates />)}
       </div>
@@ -186,9 +186,12 @@ const jsonLd = {
      chosen day or weekend it shows the first date that matches — its day label
      and hours — and goes back to its next date under All. */
   const list = document.getElementById('list');
-  let weekdays: string[] = [];
+  let weekdays: string[] = [], months: string[] = [];
   try { weekdays = JSON.parse(list?.dataset.weekdays ?? '[]'); } catch { weekdays = []; }
+  try { months = JSON.parse(list?.dataset.months ?? '[]'); } catch { months = []; }
   const dot = list?.dataset.dot ?? '';
+  // The same label MarketRow writes at build time — formatDate in src/lib/format.ts.
+  const label = (d: Date) => `${weekdays[d.getDay()] ?? ''} ${d.getDate()}${dot} ${months[d.getMonth()] ?? ''}${d.getFullYear() === new Date().getFullYear() ? '' : ` ${d.getFullYear()}`}`;
   const original = new Map(rows.map((row) => [row, {
     date: row.dataset.date ?? '',
     day: row.querySelector('.day')?.textContent ?? '',
@@ -213,7 +216,7 @@ const jsonLd = {
       if (window === 'all') show(row, was.date, was.day, was.hours);
       else if (first) {
         const d = new Date(`${first.date}T12:00:00`);
-        show(row, first.date, `${weekdays[d.getDay()] ?? ''} ${d.getDate()}${dot}`, first.hours);
+        show(row, first.date, label(d), first.hours);
       }
       const visible = window === 'all' || Boolean(first);
       row.hidden = !visible;

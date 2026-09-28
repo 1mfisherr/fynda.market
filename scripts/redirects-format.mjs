@@ -16,5 +16,14 @@ export function formatRedirects(redirects) {
   // site name from (docs/reference/seo-research/01-what-google-says.md §3).
   // A real 301 hands Google the German home page as the home page instead.
   const root = ['# The bare root goes to the default locale as a real redirect, not a meta-refresh.', '/ /de/ 301', ''];
-  return [...header, ...root, ...redirects.map((r) => `${r.from} ${r.to} 301`), ''].join('\n');
+  // Each retired address also without its final slash. Cloudflare matches a
+  // rule exactly, and only adds the slash for a file that exists — so a
+  // retired address typed or pasted without it was a 404 (2026-09-28).
+  const lines = redirects.flatMap((r) => {
+    const rule = `${r.from} ${r.to} 301`;
+    return r.from.endsWith('/') && r.from.length > 1 && !r.from.includes('*')
+      ? [rule, `${r.from.slice(0, -1)} ${r.to} 301`]
+      : [rule];
+  });
+  return [...header, ...root, ...lines, ''].join('\n');
 }

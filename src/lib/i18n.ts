@@ -160,6 +160,29 @@ export const countryPath = (locale: Locale, country: string) => `/${locale}/${co
 export const cityPath = (locale: Locale, country: string, city: string) =>
   `/${locale}/${country}/${city}/`;
 
+/** "schweiz", "svizzera", "germany" — the country's path word: its name, as a slug. */
+export const countrySlug = (locale: Locale, code: CountryCode): string | undefined =>
+  COUNTRY[code].name[locale]?.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+/**
+ * A remembered town's page in the language being read. The browser keeps the
+ * address from the day the town was picked; on a French page, a pill that
+ * took the visitor to `/en/switzerland/basel/` switched their language
+ * (found 2026-09-28). Town slugs are the same in every locale, so only the
+ * locale and the country word change. A country this locale does not carry —
+ * a German town on an Italian page — keeps the address it was saved with.
+ */
+export function townPathIn(href: string, locale: Locale): string {
+  const [, , country, town, ...rest] = href.split('/');
+  if (!country || !town || rest.some(Boolean)) return href;
+  for (const code of Object.keys(COUNTRY) as CountryCode[]) {
+    if (!LOCALES.some((l) => countrySlug(l, code) === country)) continue;
+    const here = COUNTRY[code].locales.includes(locale) ? countrySlug(locale, code) : undefined;
+    return here ? cityPath(locale, here, town) : href;
+  }
+  return href;
+}
+
 export const regionPath = (locale: Locale, code: CountryCode, country: string, region: string) =>
   `/${locale}/${country}/${regionSegment(locale, code)}/${region}/`;
 
