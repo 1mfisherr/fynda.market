@@ -293,7 +293,12 @@ const facilityItems = market.facilities ? [
    town do not — "vidmarhallen flohmarkt" is how people search for the market
    at the VIDMARhalle, and the title never said so (Search Console, 2026-09-18). */
 const says = (text: string, word: string) => text.toLowerCase().includes(word.toLowerCase());
-const venueForTitle = market.venueName && !says(market.name, market.venueName) && market.venueName !== market.city
+/* A street address is not what anyone searches — "Kanzleistrasse 56" took the
+   place of "Kanzlei" and "Helvetiaplatz". A street and a house number stays
+   off the title; "VIDMARhalle 2" and "Messe Erfurt, Halle 3" are names. */
+const isAddress = (venue: string) =>
+  /\d+[a-z]?$/i.test(venue.trim()) && /(strasse|straße|weg|gasse|graben|(?<!park)platz|allee)\b|\b(rue|chemin|via|avenue)\b/i.test(venue);
+const venueForTitle = market.venueName && !says(market.name, market.venueName) && market.venueName !== market.city && !isAddress(market.venueName)
   ? market.venueName
   : undefined;
 /* "Flohmi Muttenz – Muttenz" says Muttenz twice; the town goes in only when
@@ -305,28 +310,45 @@ const cityForTitle = says(market.name, market.city) ? undefined : market.city;
    2026" on Flohmi Muttenz, whose next date is in September 2027 (SEO audit,
    2026-09-23). It also separates the weekday editions of one market —
    Plainpalais on Wednesday and on Saturday — which shared a title. Longest
-   first, dropping the venue, then the wording, then the date. */
+   first, then the wording goes before the venue does: people search the place
+   ("egelsee", 195 impressions a week) and never the words "nächster Termin",
+   and dropping the venue first cut it from 142 of ~193 dated titles
+   (Search Console, 2026-09-28). Then the venue, then the date. */
 const upcoming = next && next.status !== 'cancelled' ? next.date : undefined;
 const year = upcoming ? Number(upcoming.slice(0, 4)) : new Date().getFullYear();
 const when = upcoming ? `${formatDateShort(upcoming, locale)} ${year}` : undefined;
 const title = firstFitting([
   ...(when ? [
     s.marketTitleNext(market.name, venueForTitle, cityForTitle, when),
+    ...(venueForTitle ? [`${[market.name, [venueForTitle, cityForTitle].filter(Boolean).join(', ')].join(' – ')} – ${when}`] : []),
+    // The place over the town: the town is in the snippet under it, and
+    // "helvetiaplatz" is the search the town name never answered.
+    ...(venueForTitle && cityForTitle ? [`${market.name} – ${venueForTitle} – ${when}`] : []),
     s.marketTitleNext(market.name, undefined, cityForTitle, when),
     s.marketTitleDate(market.name, cityForTitle, when),
   ] : []),
   s.marketTitle(market.name, venueForTitle, cityForTitle, year),
   s.marketTitle(market.name, undefined, cityForTitle, year),
 ]);
+/* The snippet: when, where, indoors or out, and the next two dates after —
+   what the searcher came for, none of it a repeat of the title above it. */
+const later = next
+  ? dates.filter((o) => o.status !== 'cancelled' && o.date > next.date).slice(0, 2).map((o) => formatDateShort(o.date, locale))
+  : [];
+const place = [market.venueName, says(market.venueName ?? '', market.city) ? undefined : market.city].filter(Boolean).join(', ');
+// French and Italian weekdays are lower case ("mar. 29 sept."); a snippet
+// that opens a sentence with one does not.
+const capital = (text: string) => text.charAt(0).toLocaleUpperCase(locale) + text.slice(1);
+const description = next
+  ? capital(s.marketSnippet(formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), place, market.setting && s.setting[market.setting], later))
+  : s.marketNoDateDescription(kind.full[locale], market.city, market.venueName, market.recurrenceText?.replace(/\.\s*$/, ''), market.lastDate && formatDate(market.lastDate, locale));
 ---
 <Page
   locale={locale}
   alternates={alternates}
   country={market.countryCode}
   title={title}
-  description={next
-    ? `${kind.full[locale]}, ${market.city}. ${s.cityNext(market.name, formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), market.venueName)}`
-    : s.marketNoDateDescription(kind.full[locale], market.city, market.venueName, market.recurrenceText?.replace(/\.\s*$/, ''))}
+  description={description}
   analytics={{ market: market.id, city: market.citySlug, region: market.regionSlug, next: next?.date }}
   image={shareImage}
   footerSignup={false}
@@ -556,6 +578,7 @@ const title = firstFitting([
             {/* A date beyond the 120-day horizon is in the hero already; saying "no next date" under it contradicted the page. */}
             {!next && <strong>{s.cityNoDate}</strong>}
             {market.recurrenceText && <span>{market.recurrenceText}</span>}
+            {!next && market.lastDate && <span>{s.lastHeld(formatDate(market.lastDate, locale))}</span>}
           </p>
         )}
       </Section>

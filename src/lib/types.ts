@@ -106,6 +106,12 @@ export interface Market {
   /** The organiser's own words, shown as theirs in the language they wrote. */
   organiserNote?: string;
   organiserNoteLocale?: string;
+  /**
+   * The most recent date that has passed and was not cancelled. An annual
+   * market between editions says when it last ran, which is a fact, rather
+   * than only "no date yet" (Search Console, 2026-09-28).
+   */
+  lastDate?: string;
   stallCountBadWeather?: number;
   sellerMix?: 'private' | 'mixed' | 'trader' | 'new_goods';
   priceLevel?: 'cheap' | 'flohmarkt' | 'trader';

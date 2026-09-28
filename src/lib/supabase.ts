@@ -47,6 +47,7 @@ interface Row {
   getting_there: string | null;
   organiser_note: string | null;
   organiser_note_locale: string | null;
+  last_date: string | null;
   occurrences: {
     date: string;
     start_time: string | null;
@@ -96,6 +97,10 @@ const SQL = `
     m.organiser_note_locale,
     org.name                                        as organiser_name,
     coalesce(rt.value, m.recurrence_text)           as recurrence_text,
+    (
+      select max(date)::text from public.occurrences
+       where market_id = p.id and date < current_date and status <> 'cancelled'
+    )                                               as last_date,
     (
       select jsonb_agg(o order by o.date)
         from (
@@ -204,6 +209,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         gettingThere: row.getting_there ?? undefined,
         organiserNote: row.organiser_note ?? undefined,
         organiserNoteLocale: row.organiser_note_locale ?? undefined,
+        lastDate: row.last_date ?? undefined,
         entryFee: row.entry_fee === null ? undefined : Number(row.entry_fee),
       };
     });

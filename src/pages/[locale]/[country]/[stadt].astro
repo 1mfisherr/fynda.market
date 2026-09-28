@@ -119,6 +119,11 @@ const answer = soonest
  * opens with, plus the count — the generic line stays only for a city with
  * nothing upcoming, where it is the honest description.
  */
+/* With nothing upcoming, the most recent market that ran — a fact the
+   searcher can use ("so it was last month; it is annual"), where the snippet
+   used to open on "Noch kein nächster Termin" on 33 town pages
+   (Search Console, 2026-09-28). */
+const latest = [...markets].filter((m) => m.lastDate).sort((a, b) => b.lastDate!.localeCompare(a.lastDate!))[0];
 const description = soonest
   ? s.cityDescription(
       city,
@@ -129,7 +134,7 @@ const description = soonest
       rows.length,
       Math.round(HORIZON_DAYS / 30)
     )
-  : `${s.cityNoDate} ${s.cityIntro(city, region, markets[0].countryCode)}`;
+  : [latest && s.cityLast(latest.name, formatDate(latest.lastDate!, locale)), s.cityNoDate, s.cityIntro(city, region, markets[0].countryCode)].filter(Boolean).join(' ');
 /**
  * The list, grouped under the day it happens. It was fifteen rows each carrying
  * its own "SA 19." — the same day four times over, and the month changing

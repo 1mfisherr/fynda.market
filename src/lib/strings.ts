@@ -230,7 +230,17 @@ export interface Strings {
   /** The short fallback: "Flohmarkt Bürkliplatz, Zürich – 26. Sept 2026" */
   marketTitleDate: (name: string, city: string | undefined, when: string) => string;
   /** A market page with no confirmed date still says what it knows. */
-  marketNoDateDescription: (kind: string, city: string, venue: string | undefined, rhythm: string | undefined) => string;
+  marketNoDateDescription: (kind: string, city: string, venue: string | undefined, rhythm: string | undefined, last?: string) => string;
+  /**
+   * A market page's search snippet: the facts, not the title again. "Flohmarkt,
+   * Basel. Der nächste ist Flohmarkt Stücki Basel am…" repeated the title on
+   * 168 of 285 markets (Search Console, 2026-09-28).
+   */
+  marketSnippet: (date: string, time: string | undefined, place: string, setting: string | undefined, later: string[]) => string;
+  /** A town with nothing upcoming says when its last market ran. */
+  cityLast: (name: string, date: string) => string;
+  /** On a market page with no next date: when it last ran. */
+  lastHeld: (date: string) => string;
   /** The canton description, built from the data like the town one. */
   regionDescription: (n: number, towns: number, region: string, code: CountryCode, next?: { name: string; city: string; date: string }) => string;
   cityNext: (name: string, date: string, time: string | undefined, venue: string) => string;
@@ -525,8 +535,12 @@ const de: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Termine ${year}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – nächster Termin ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
-  marketNoDateDescription: (kind, city, venue, rhythm) =>
-    `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}Der nächste Termin ist noch nicht bestätigt — wir prüfen ihn und tragen ihn ein, sobald er feststeht.`,
+  marketNoDateDescription: (kind, city, venue, rhythm, last) =>
+    `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}${last ? `Zuletzt am ${last}. ` : ''}Der nächste Termin ist noch nicht bestätigt — wir prüfen ihn und tragen ihn ein, sobald er feststeht.`,
+  marketSnippet: (date, time, place, setting, later) =>
+    `${date}${time ? `, ${time} Uhr` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Danach ${later.join(' und ')}.` : ''}`,
+  cityLast: (name, date) => `Zuletzt: ${name} am ${date}.`,
+  lastHeld: (date) => `Zuletzt am ${date}`,
   regionDescription: (n, towns, region, code, next) =>
     `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} ${inRegionDe(region, code)}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
   cityNext: (name, date, time, venue) =>
@@ -743,8 +757,12 @@ const en: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – next on ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
-  marketNoDateDescription: (kind, city, venue, rhythm) =>
-    `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}The next date is not confirmed yet — we check and list it as soon as it is set.`,
+  marketNoDateDescription: (kind, city, venue, rhythm, last) =>
+    `${kind} in ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}${last ? `Last held ${last}. ` : ''}The next date is not confirmed yet — we check and list it as soon as it is set.`,
+  marketSnippet: (date, time, place, setting, later) =>
+    `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Then ${later.join(' and ')}.` : ''}`,
+  cityLast: (name, date) => `Last: ${name} on ${date}.`,
+  lastHeld: (date) => `Last held ${date}`,
   regionDescription: (n, towns, region, code, next) =>
     `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} ${inRegionEn(region, code)}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
   cityNext: (name, date, time, venue) =>
@@ -967,8 +985,12 @@ const fr: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – prochaine date ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
-  marketNoDateDescription: (kind, city, venue, rhythm) =>
-    `${kind} à ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prochaine date n'est pas encore confirmée — nous la vérifions et l'ajoutons dès qu'elle est fixée.`,
+  marketNoDateDescription: (kind, city, venue, rhythm, last) =>
+    `${kind} à ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}${last ? `Dernière édition le ${last}. ` : ''}La prochaine date n'est pas encore confirmée — nous la vérifions et l'ajoutons dès qu'elle est fixée.`,
+  marketSnippet: (date, time, place, setting, later) =>
+    `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Puis ${later.join(' et ')}.` : ''}`,
+  cityLast: (name, date) => `Dernière : ${name}, le ${date}.`,
+  lastHeld: (date) => `Dernière édition le ${date}`,
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton ${deFr(region)}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
   cityNext: (name, date, time, venue) =>
@@ -1185,8 +1207,12 @@ const it: Strings = {
   marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Date ${year}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – prossima data ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
-  marketNoDateDescription: (kind, city, venue, rhythm) =>
-    `${kind} a ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}La prossima data non è ancora confermata — la verifichiamo e la inseriamo appena fissata.`,
+  marketNoDateDescription: (kind, city, venue, rhythm, last) =>
+    `${kind} a ${city}${venue ? `, ${venue}` : ''}. ${rhythm ? `${rhythm}. ` : ''}${last ? `Ultima edizione il ${last}. ` : ''}La prossima data non è ancora confermata — la verifichiamo e la inseriamo appena fissata.`,
+  marketSnippet: (date, time, place, setting, later) =>
+    `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Poi ${later.join(' e ')}.` : ''}`,
+  cityLast: (name, date) => `L'ultimo: ${name} il ${date}.`,
+  lastHeld: (date) => `Ultima edizione il ${date}`,
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari e cancellazioni.`,
   cityNext: (name, date, time, venue) =>
