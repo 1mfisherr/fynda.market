@@ -36,7 +36,7 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    2. **Organiser welcome letters.** GitHub → Actions → *Organiser welcome* → *Run workflow* → your own address in the **third** box ("Send a preview…"), the rest empty → read it. Then again with *send* ticked: 90 go (Resend free: 100 a day). Next day once more for the other 68. "Did it leave?" is a query on `organiser_mail_sends`, not a guess. The 33 who confirmed on v1 are the warmest.
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. **Restore one backup** to prove the key opens it (commands at the top of `.github/workflows/backup.yml`).
-   5. **Search Console and Bing:** add the German paths.
+   5. ~~Search Console and Bing~~ — done 2026-09-28: the domain property and sitemap already covered Germany; sitemap resubmitted, five German pages pushed on both.
 2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
 3. **Read, on these dates** — nothing to build until then.
    - 2026-10-04 and 2026-10-11 Search Console exports: do market titles lift market-page click rate above 1.1%; does Germany earn anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page. (2026-09-27 export ended 2026-09-24 — too early for both.)

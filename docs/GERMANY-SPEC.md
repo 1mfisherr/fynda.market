@@ -6,7 +6,7 @@ Germany went live 2026-09-22: 55 markets, 43 towns, 16 Bundesländer, in German 
 
 1. **Infrastructure, before the traffic grows.** Cloudflare Queues in front of the analytics insert, Supabase Pro, images to R2 when `public/images/` stops fitting in git (`reference/analytics-research/build-plan.md` phase 4). 48 MB today.
 2. **German organisers.** The welcome letter and the seven-day mail speak German and name no country (2026-09-23). 46 German organisers are on file, 42 with a personal link, none mailed.
-3. **Search Console and Bing** — add the German paths, then read the Sunday exports. **Two things to watch for four weeks:** whether the German section earns anything at all, and whether Bremen (1 market) and Saarland (2) get excluded as thin. If they do, they stop having their own page.
+3. **Search Console and Bing** — nothing to add: Search Console is a domain property and the sitemap carries every German page. Sitemap resubmitted and indexing requested for Berlin, Hamburg, München, Köln and Bayern on both, 2026-09-28 (Bing had Berlin as "discovered, not crawled"). Now read the Sunday exports. **Two things to watch for four weeks:** whether the German section earns anything at all, and whether Bremen (1 market) and Saarland (2) get excluded as thin. If they do, they stop having their own page.
 4. **More German markets.** The intake takes any number: research agents write one JSON per market into `intake/de/` (`intake/README.md` is the shape and the one rule — a directory may only say a market exists, every fact comes from the organiser's own page), then `node scripts/import-intake.mjs intake/de`. They arrive as `unverified` and publish when someone flips them.
 
 ## Settled, so nobody re-opens it
