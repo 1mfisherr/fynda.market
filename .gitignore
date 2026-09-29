@@ -30,3 +30,7 @@ sm.xml
 metabase-password.txt
 metabase/.env
 .dev.vars
+
+# Sticker concepts are 19 MB of drafts; only the print-ready QR code is kept.
+stickers/*
+!stickers/fynda-qr.*
