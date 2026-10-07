@@ -6,7 +6,7 @@
  * permanent, and where it sends people can move without reprinting anything.
  *
  * It sends a phone to the home page in the language the phone asks for —
- * the bare root would land a French speaker in German — and tags the visit
+ * the bare root always opens English, and a sticker in Lausanne should not — and tags the visit
  * utm_source=sticker. The page view the edge records on arrival carries that
  * tag, so "do stickers bring anyone" is a count in analytics_events with no
  * new event, no cookie and nothing stored about the person who scanned.
