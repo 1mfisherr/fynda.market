@@ -270,7 +270,7 @@ const rowWord = (o: { status: string; origin?: string; date: string }) =>
   : STATUS[locale][o.status];
 
 const facts = [
-  market.stallCount ? ['Stände', `~${market.stallCount}${market.stallCountBadWeather ? `, bei schlechtem Wetter ~${market.stallCountBadWeather}` : ''}`] : undefined,
+  market.stallCount ? [s.stallsLabel, `~${market.stallCount}${market.stallCountBadWeather ? `, ${s.stallsInBadWeather(market.stallCountBadWeather)}` : ''}`] : undefined,
   market.sellerMix ? ['Verkäufer', { private: 'nur Private', mixed: 'Private und Händler', trader: 'Händler', new_goods: 'Neuware' }[market.sellerMix]] : undefined,
   market.priceLevel ? ['Preisniveau', { cheap: 'günstig', flohmarkt: 'Flohmarkt', trader: 'Händler' }[market.priceLevel]] : undefined,
   // Say the exception, never the rule — docs/BRAND.md. 151 of 157 markets are

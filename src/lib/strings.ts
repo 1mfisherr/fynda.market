@@ -361,6 +361,9 @@ export interface Strings {
   organiserConfirmedOn: (date: string) => string;
   /** The owned line: "about 120 stalls", the setting, the rain answer. */
   stallsAbout: (n: number) => string;
+  /** The term beside the count under What to expect, and its bad-weather figure. */
+  stallsLabel: string;
+  stallsInBadWeather: (n: number) => string;
   setting: Record<'indoor' | 'outdoor' | 'both', string>;
   rain: Record<'runs' | 'cancelled' | 'decided_on_the_day', string>;
   organiserBody: string;
@@ -619,6 +622,8 @@ const de: Strings = {
   claimAction: 'Das ist mein Markt',
   organiserConfirmedOn: (date) => `Vom Veranstalter bestätigt, ${date}`,
   stallsAbout: (n) => `rund ${n} Stände`,
+  stallsLabel: 'Stände',
+  stallsInBadWeather: (n) => `bei schlechtem Wetter ~${n}`,
   setting: { indoor: 'drinnen', outdoor: 'draussen', both: 'drinnen und draussen' },
   rain: { runs: 'findet auch bei Regen statt', cancelled: 'bei Regen abgesagt', decided_on_the_day: 'bei Regen wird am Morgen entschieden' },
   organiserBody: 'Übernehmen Sie Ihren Markt oder tragen Sie einen neuen ein. Kostenlos, kein Konto nötig.',
@@ -842,6 +847,8 @@ const en: Strings = {
   claimAction: 'This is my market',
   organiserConfirmedOn: (date) => `Confirmed by the organiser, ${date}`,
   stallsAbout: (n) => `about ${n} stalls`,
+  stallsLabel: 'Stalls',
+  stallsInBadWeather: (n) => `~${n} in bad weather`,
   setting: { indoor: 'indoor', outdoor: 'outdoor', both: 'indoor and outdoor' },
   rain: { runs: 'runs in the rain', cancelled: 'cancelled in rain', decided_on_the_day: 'rain: decided on the morning' },
   organiserBody: 'Claim your market or add a new one. Free, no account needed.',
@@ -1071,6 +1078,8 @@ const fr: Strings = {
   claimAction: "C'est ma brocante",
   organiserConfirmedOn: (date) => `Confirmé par l'organisateur, ${date}`,
   stallsAbout: (n) => `environ ${n} stands`,
+  stallsLabel: 'Stands',
+  stallsInBadWeather: (n) => `~${n} par mauvais temps`,
   setting: { indoor: 'en intérieur', outdoor: 'en extérieur', both: 'intérieur et extérieur' },
   rain: { runs: 'a lieu même sous la pluie', cancelled: 'annulé en cas de pluie', decided_on_the_day: 'pluie : décidé le matin même' },
   organiserBody: 'Reprenez votre brocante ou ajoutez-en une nouvelle. Gratuit, sans compte à créer.',
@@ -1294,6 +1303,8 @@ const it: Strings = {
   claimAction: 'È il mio mercatino',
   organiserConfirmedOn: (date) => `Confermato dall'organizzatore, ${date}`,
   stallsAbout: (n) => `circa ${n} bancarelle`,
+  stallsLabel: 'Bancarelle',
+  stallsInBadWeather: (n) => `~${n} con il maltempo`,
   setting: { indoor: 'al coperto', outdoor: "all'aperto", both: "al coperto e all'aperto" },
   rain: { runs: 'si fa anche con la pioggia', cancelled: 'annullato in caso di pioggia', decided_on_the_day: 'pioggia: si decide la mattina' },
   organiserBody: 'Prendi in mano il tuo mercatino o aggiungine uno nuovo. Gratis, senza account.',
