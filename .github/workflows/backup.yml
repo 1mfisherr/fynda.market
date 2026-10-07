@@ -11,9 +11,18 @@
 # GitHub included, can read a backup. Lose that key and every backup is a
 # brick — copy it somewhere safe before trusting this.
 #
-# Restore, on a laptop with age and postgresql-client-17 installed:
-#   age -d -i <file holding BACKUP_AGE_KEY> fynda-2026-09-17.dump.age > fynda.dump
-#   pg_restore --clean --if-exists --no-owner -d "$SUPABASE_DB_URL" fynda.dump
+# Restore — tested 2026-10-07 into a throwaway container; every count matched.
+# Never aim pg_restore at the live database to "test" a backup: --clean drops
+# live tables first. Download the artifact (Actions → backup → run → Artifacts), then:
+#   age -d -i <file holding BACKUP_AGE_KEY> -o fynda.dump fynda-2026-10-07.dump.age
+#   docker run -d --name r -e POSTGRES_PASSWORD=x -v "$PWD:/bk" postgis/postgis:17-3.5
+#   docker exec r psql -U postgres -c "create schema extensions" -c "create extension postgis schema extensions" \
+#     -c "create extension pg_trgm schema extensions" -c "create extension pgcrypto schema extensions" \
+#     -c "create extension unaccent schema extensions"
+#   docker exec r pg_restore --no-owner --no-privileges -U postgres -d postgres /bk/fynda.dump
+# One error is expected ("schema public already exists"). Delete the decrypted
+# dump afterwards: it holds subscribers' addresses. A real disaster restore onto
+# a fresh Supabase project is the same pg_restore against its connection string.
 #
 # The public schema only: Supabase owns auth/storage/extensions and rebuilds
 # them itself. Roles (metabase_ro, the collector) are cluster-level and not in
