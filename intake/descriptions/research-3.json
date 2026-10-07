@@ -1,0 +1,642 @@
+[
+ {
+  "slug": "quartierflohmarkt-bottmingen",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1fFT391I1GZi_bAwDJbdJoqsBc5Jh6XA", "seen": "2026-10-07", "what": "organiser's stand map (Google My Maps, read as KML)"},
+   {"url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "seen": "2026-10-07", "what": "organiser annual report 2025"},
+   {"url": "https://bajour.ch/a/die-zukunft-der-quartierflohmis-ist-ungewiss", "seen": "2026-10-07", "what": "local news (Bajour, Feb 2026)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers from their own homes.", "quote": "Flohmärkte von Privaten für Private", "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/", "confidence": "high"},
+   {"field": "venue", "value": "Spread across the whole neighbourhood around Spitzackerstrasse on the Bruderholz; stalls in backyards and gardens, each location marked with balloons; printable map.", "quote": "Im ganzen Quartier rund um die Spitzackerstrasse auf dem Bruderholz", "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/", "confidence": "high"},
+   {"field": "venue", "value": "The 2026 map marks two group pitches for people without their own space: by the Felixhägli kindergarten and on Spitzackerstrasse.", "quote": "Gruppenplatz beim Kindergarten Felixhägli", "url": "https://www.google.com/maps/d/embed?mid=1fFT391I1GZi_bAwDJbdJoqsBc5Jh6XA", "confidence": "medium"},
+   {"field": "food", "value": "The 2026 map marks a coffee van, a food stand and a WC.", "quote": "Kaffee-Mobil / Essensstand / WC", "url": "https://www.google.com/maps/d/embed?mid=1fFT391I1GZi_bAwDJbdJoqsBc5Jh6XA", "confidence": "medium"},
+   {"field": "size", "value": "The 2026 map layer lists 57 registered stand entries at about 52 distinct addresses (registrations, not a stall count).", "quote": "Bottmingenn 2026", "url": "https://www.google.com/maps/d/embed?mid=1fFT391I1GZi_bAwDJbdJoqsBc5Jh6XA", "confidence": "medium"},
+   {"field": "history", "value": "Bottmingen joined the Basel Quartierflohmi series for the first time in 2025, the first municipality from Basel-Landschaft to do so.", "quote": "Zum ersten Mal war Bottmingen, eine basellandschaftliche Gemeinde mit dabei.", "url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "confidence": "high"},
+   {"field": "distinctive", "value": "In 2025 Bottmingen was one of the neighbourhoods with car-free streets during the market (closed with barriers).", "quote": "autofreie Strassen am Ring, im St Johann, im Neubad, im Gellert, im Wettsteinquartier und in Bottmingen", "url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "confidence": "medium"},
+   {"field": "organiser", "value": "Run by Verein Stadtprojekt together with a local organising committee (OK Bottmingen), all volunteers.", "quote": "Verein Stadtprojekt und das OK Bottmingen", "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Sellers register online; stand fee is voluntary, paid as a TWINT donation that funds communication and infrastructure.", "quote": "Freiwillige Standgebühr", "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 23 August 2026, 10:00-16:00.", "quote": "Sonntag, 23. August 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "venue 'Spitzackerpromenade', address 'Spitzackerpromenade, 4103 Bottmingen'", "source_says": "Neighbourhood 'rund um die Spitzackerstrasse auf dem Bruderholz'; map group pitches at Spitzackerstrasse and Kindergarten Felixhägli. No 'Spitzackerpromenade' found in any source.", "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/"}
+  ],
+  "thin": false,
+  "notes": "No Bring&Nimm listed for Bottmingen on the 2026 page. Registration page now says the 2026 edition is over."
+ },
+ {
+  "slug": "quartierflohmarkt-breite-st-alban",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1taTi7m0KKwHFz1TjU0mszB_RiJlk7m_G", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://www.quartierflohmibasel.ch/de/", "seen": "2026-10-07", "what": "organiser home page"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers in front of their homes, in backyards and gardens.", "quote": "Flohmärkte von Privaten für Private statt", "url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "confidence": "high"},
+   {"field": "venue", "value": "Covers both the Breite and St. Alban neighbourhoods; locations marked with balloons and shown on an online map.", "quote": "In den Quartieren Breite und St. Alban", "url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm (bring-and-take swap run by the canton's environment office, AUE) on the St. Alban-Pfalz, 10:00-17:00: bring working items, take what you like for free; no car access.", "quote": "Auf der St. Alban-Pfalz, von 10 - 17 Uhr.", "url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 125 registered stand entries at about 114 distinct addresses.", "quote": "Breite/St. Alban 2026", "url": "https://www.google.com/maps/d/embed?mid=1taTi7m0KKwHFz1TjU0mszB_RiJlk7m_G", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt with the local committee OK Breite/St. Alban; volunteers.", "quote": "Verein Stadtprojekt OK Breite/St.Alban", "url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "confidence": "high"},
+   {"field": "history", "value": "The Quartierflohmi idea came from private citizens who formed Verein Stadtprojekt with the first market in 2016.", "quote": "Realisierung des ersten Quartierflohmarktes im 2016", "url": "https://www.quartierflohmibasel.ch/de/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Voluntary stand fee via TWINT donation.", "quote": "Freiwillige Standgebühr", "url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 7 June 2026, 10:00-17:00.", "quote": "Sonntag, 7. Juni 2026 10:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/breite-st-alban/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our description calls the St. Alban-Pfalz the 'zentraler Treffpunkt'; the source only names it as the Bring&Nimm location."
+ },
+ {
+  "slug": "quartierflohmarkt-gellert",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=146q3HI5PbVOqSbLpRC3XXBKvY_DZZlnD", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "seen": "2026-10-07", "what": "organiser annual report 2025"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers in backyards and gardens across the Gellert quarter.", "quote": "Im Gellert Quartier finden am 6. September Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"},
+   {"field": "venue", "value": "Community flea market (Gemeinschafts-Flohmi) at Hardstrasse 43 by the gatehouse, for residents with no space at home.", "quote": "Gemeinschafts-Flohmi an der Hardstrasse 43, beim Pförtnerhaus", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap at the Gellertkirche on Christoph Merian-Platz, 11:00-17:00.", "quote": "Bei der Gellertkirche auf den Christoph Merian-Platz, 11-17 Uhr", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"},
+   {"field": "food", "value": "The 2026 map marks Café Stoa with pizza, drinks, coffee and cake.", "quote": "Café Stoa - Pizza, Getränke, Kaffee und Kuchen", "url": "https://www.google.com/maps/d/embed?mid=146q3HI5PbVOqSbLpRC3XXBKvY_DZZlnD", "confidence": "medium"},
+   {"field": "seller_booking", "value": "Community stand: residents only, free of charge, bring own equipment and take everything home; stall holders may not sell food or drinks to visitors.", "quote": "Es werden keine Gebühren für den Stand erhoben.", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"},
+   {"field": "parking", "value": "No parking at the community stand; bike and public transport preferred. Brief unloading 09:30-10:30, pick-up from 17:00.", "quote": "da keine Parkplätze vorhanden sind", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 155 registered stand entries at about 146 distinct addresses.", "quote": "Gellert 2026", "url": "https://www.google.com/maps/d/embed?mid=146q3HI5PbVOqSbLpRC3XXBKvY_DZZlnD", "confidence": "medium"},
+   {"field": "distinctive", "value": "In 2025 Gellert had car-free streets during the market.", "quote": "autofreie Strassen ... im Gellert", "url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt with OK Gellert.", "quote": "Verein Stadtprojekt OK Gellert", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 6 September 2026, 11:00-17:00.", "quote": "Sonntag, 6. September 2026 11:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/gellert/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Hours differ from most other quarters (11-17)."
+ },
+ {
+  "slug": "quartierflohmarkt-gotthelf-iselin",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1nnll-ShWuuE5AvebGDQbhG0A8tm62oBf", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers in the Gotthelf and Iselin quarters.", "quote": "In den beiden Quartieren Gotthelf und Iselin finden am 17. Mai Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"},
+   {"field": "venue", "value": "Two group pitches in 2026 for residents with no space at home: Helvetiaplatz and Westfeld (former Felix Platter hospital).", "quote": "Helvetiaplatz und Westfeld (ehem. Felix Platter-Spital)", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "The former group pitch at Oekolampad was dropped because the market had drifted there away from the residential streets; the organisers want stalls in front of homes.", "quote": "Der Gruppenstandort am Oekolampad ENTFÄLLT.", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap on Helvetiaplatz, 11:00-17:00.", "quote": "Den Bring&Nimm-Stand findet ihr dieses Jahr erneut auf dem Helvetiaplatz.", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Group pitches: residents only, first come first served, no confirmation, bring own tables; voluntary TWINT stand fee.", "quote": "«Dr Schnäller, isch dr Gschwinder»", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 377 registered stand entries at about 349 distinct addresses - the largest of the Basel maps checked.", "quote": "Gotthelf Iselin 2026", "url": "https://www.google.com/maps/d/embed?mid=1nnll-ShWuuE5AvebGDQbhG0A8tm62oBf", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt and OK Gotthelf/Iselin.", "quote": "Verein Stadtprojekt und OK Gotthelf/Iselin", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 17 May 2026, 11:00-17:00.", "quote": "Sonntag, 17. Mai 2026 11:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/gotthelf-iselin/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": ""
+ },
+ {
+  "slug": "quartierflohmarkt-gundeli",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1_hE0tt3-OmE6a2EDTovCA1dZBcU", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the whole Gundeldingen quarter, plus other activities.", "quote": "Flohmärkte von Privaten für Private und andere Aktivitäten", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "venue", "value": "Locations marked with coloured balloons or found via the online map; Liesbergermätteli hosts Bring&Nimm and the kids' market.", "quote": "mittels farbiger Ballone gekennzeichnet oder ihr orientiert euch mit Hilfe der Online-Karte", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Children's flea market on the Liesbergermatte with Robi Spielaktionen, 10:00-17:00; no registration, children just bring their own stand of kids' items; set-up from 09:00.", "quote": "Unkompliziert und ohne Anmeldung.", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "food", "value": "Mobile Xav Café with coffee and waffles and Xavier's chips stand on the Liesbergermätteli; crêpes at Pflegezentrum Falkenstein (Falkensteinerstrasse 30).", "quote": "sorgt mit Kaffee und Waffeln für eine leckere Zwischen-Verköstigung", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "venue", "value": "Community flea market at Gundelidräff, corner Solothurnerstrasse/Güterstrasse (Solothurnerstrasse 39), indoors and outdoors.", "quote": "heisst euch drinnen wie draussen herzlich willkommen", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "transport", "value": "Tram 16 stop 'Solothurnerstrasse' is right outside Gundelidräff; bus 36 'Falkensteinerstrasse' and tram 16 'Mönchsbergerstrasse' near Pflegezentrum Falkenstein.", "quote": "gut erreichbar via Tram 16", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "size", "value": "The organiser's map layer (still named '2025') lists 334 stand entries at about 294 distinct addresses; year unclear.", "quote": "Gundeli 2025", "url": "https://www.google.com/maps/d/embed?mid=1_hE0tt3-OmE6a2EDTovCA1dZBcU", "confidence": "low"},
+   {"field": "organiser", "value": "Verein Stadtprojekt with OK Gundeli.", "quote": "Verein Stadtprojekt und euer OK Gundeli", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Saturday 9 May 2026, 10:00-17:00.", "quote": "Samstag, 9. Mai 2026 10:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/gundeli/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our setting is null; source shows outdoor private stalls plus one indoor/outdoor community stand. Held on a Saturday in 2026, unlike most Sunday editions."
+ },
+ {
+  "slug": "quartierflohmarkt-hirzbrunnen",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/anmelden/", "seen": "2026-10-07", "what": "organiser registration page"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1QRl-HXuf4icak0j07zPvBHDXNBvt91sU", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the whole Hirzbrunnen quarter.", "quote": "Im ganzen Hirzbrunnenquartier finden am 18. Oktober Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "First year with car-free side streets: closed with barriers 11:00-17:00; main roads and access to the Claraspital stay open.", "quote": "Zum ersten Mal werden während des Quartierflohmis Hirzbrunnen einige Seitenstrassen autofrei sein.", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/info/", "confidence": "high"},
+   {"field": "venue", "value": "Community stands at QTP Hirzbrunnen (Im Rheinacker 15) and Quartierraum Schoren (Schorenweg 33); Bring&Nimm at Quartierraum Schoren 11:00-17:00.", "quote": "Beim Quartierraum Schoren (Schorenweg 33) von 11-17 Uhr", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/info/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Registration via online form; stalls in your own garden, courtyard or forecourt, on private ground only (not public land), with balloons hung as markers; take your own rubbish home.", "quote": "nur auf Privatgelände (nicht auf Allmend) stattfinden", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/anmelden/", "confidence": "high"},
+   {"field": "other", "value": "Runs in any weather.", "quote": "Der Anlass findet bei jedem Wetter statt!", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/anmelden/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 129 registered stand entries at about 123 distinct addresses.", "quote": "Hirzbrunnen 2026", "url": "https://www.google.com/maps/d/embed?mid=1QRl-HXuf4icak0j07zPvBHDXNBvt91sU", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt and OK Hirzbrunnen.", "quote": "Verein Stadtprojekt und OK Hirzbrunnen", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/anmelden/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 18 October 2026, 11:00-17:00 - the last Quartierflohmi of the 2026 season per the home page.", "quote": "Sonntag, 18. Oktober 2026 11:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/info/", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "postal_code 4125, address 'Schorenweg 33, 4125 Basel'", "source_says": "Quartierraum Schoren, Schorenweg 33, in Basel's Hirzbrunnen quarter. The source prints no postcode, but 4125 is Riehen's; Hirzbrunnen/Schorenweg is Basel 4058.", "url": "https://www.quartierflohmibasel.ch/de/hirzbrunnen/info/"}
+  ],
+  "thin": false,
+  "notes": "Our setting is null; all stalls are outdoors in gardens/courtyards. Rain policy can be set to 'runs'. Our description says 'one of 18' - the site lists 18 neighbourhood pages; Bajour quotes 17."
+ },
+ {
+  "slug": "quartierflohmarkt-innerstadt",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1doIfFeO205CrnyeN-wrva858DKbmYuZa", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers in the inner city's backyards and gardens.", "quote": "In der Innerstadt finden am 16. August Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"},
+   {"field": "venue", "value": "Community flea market on the Münsterplatz, in the outdoor area of the Allianz OpenAir Cinema; tables provided by Verein pro Münsterplatz and the Basler Marionetten Theater.", "quote": "Gemeinschaftsflohmi auf dem Münsterplatz (Areal OpenAir Cinema).", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Food stands and short performances by the Basler Marionetten Theater on its mobile 'Ainewäägeli' stage at the Münsterplatz.", "quote": "mit ihrer mobilen Ainewäägeli-Bühne", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"},
+   {"field": "food", "value": "Food stands at the Münsterplatz community market.", "quote": "Mit Verpflegungsständen und kulturellen Häppchen vom BMT.", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Münsterplatz community stand: inner-city residents only, register at least 5 days ahead; set-up from 09:30, pitches cleared by 16:00.", "quote": "Anmeldung (nur für Bewohner*innen der Innerstadt) bis mindestens 5 Tage im Voraus", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap on the Fasnachtsgasse.", "quote": "An der Fasnachtsgasse.", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 61 registered stand entries at about 58 distinct addresses; the map also shows an info point.", "quote": "Innerstadt 2026", "url": "https://www.google.com/maps/d/embed?mid=1doIfFeO205CrnyeN-wrva858DKbmYuZa", "confidence": "medium"},
+   {"field": "other", "value": "2026 edition: Sunday 16 August 2026, 10:00-17:00.", "quote": "Sonntag, 16. August 2026 10:00 bis 17:00 Uhr", "url": "https://www.quartierflohmibasel.ch/de/innerstadt/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our description mentions a children's market at the Primarschule Peterskirchplatz - not on the 2026 page (probably an older edition). Bring&Nimm is at Fasnachtsgasse, not Münsterplatz."
+ },
+ {
+  "slug": "quartierflohmarkt-klybeck-kleinhueningen",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1uoLwtEZ8ex3uU1dD_uHZLxagP5_bGXbK", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers in the Klybeck and Kleinhüningen quarters.", "quote": "In den Quartieren Klybeck und Kleinhüningen finden am 13. September Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap on the Wiesenplatz, 10:00-16:00.", "quote": "Ort: Wiesenplatz, 10.00 - 16.00 Uhr", "url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "confidence": "high"},
+   {"field": "venue", "value": "Group pitch (community market) by the Ackermätteli for residents without their own space.", "quote": "Beim Ackermätteli", "url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Children's play afternoon on the Ackermätteli run by the Spielbude Ackermätteli (Robi-Spiel-Aktionen), with play-equipment loan.", "quote": "Auf dem Ackermätteli findet ein Spielnachmittag für Kinder statt.", "url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "confidence": "high"},
+   {"field": "food", "value": "The Ackermätteli bistro is open 11:00-16:00.", "quote": "Öffnungszeit Bistro und Spielmaterialverleih: 11.00 – 16.00", "url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 111 registered stand entries at about 93 distinct addresses.", "quote": "Klybeck 2026", "url": "https://www.google.com/maps/d/embed?mid=1uoLwtEZ8ex3uU1dD_uHZLxagP5_bGXbK", "confidence": "medium"},
+   {"field": "other", "value": "2026 edition: Sunday 13 September 2026, 10:00-16:00.", "quote": "Sonntag, 13. September 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/klybeck-kleinhueningen/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our setting is null; all outdoor. Sponsors listed include the Dorfverein Kleinhüningen and QTP Klybeck."
+ },
+ {
+  "slug": "quartierflohmarkt-lehenmatt",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1cEcQIklVdPAeJcDv8JXVchrRZCAZwkk", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://bajour.ch/a/neues-co-praesidium-fuer-die-quartierflohmis", "seen": "2026-10-07", "what": "local news (Bajour, 29 Apr 2026)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "A large flea market by private sellers for everyone, across the whole Lehenmatt quarter.", "quote": "ein grosser Flohmarkt von Privaten für alle Interessierten statt", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"},
+   {"field": "venue", "value": "Group pitch in the Schwarzpark, on the gravel paths.", "quote": "Schwarzpark (auf den Mergelwegen)", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm tent between the high-rise blocks on Redingstrasse and Lehenmattstrasse, behind the Migros.", "quote": "Das bring&nimm-Zelt steht zwischen den Hochäusern an der Reding- und Lehenmattstrasse hinter der Migros.", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"},
+   {"field": "other", "value": "Runs in any weather; sellers should prepare umbrellas and tarps and take their rubbish home.", "quote": "Der Anlass findet bei jedem Wetter statt!", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"},
+   {"field": "history", "value": "Lehenmatt (and Riehen Niederholz) joined the Basel Quartierflohmi series as new neighbourhoods in 2026.", "quote": "Mit dem Lehenmatt und Riehen Niederholz kommen zwei weitere Quartiere hinzu.", "url": "https://bajour.ch/a/neues-co-praesidium-fuer-die-quartierflohmis", "confidence": "medium"},
+   {"field": "other", "value": "An English version of the information is published on the QTP Basel site.", "quote": "For the English version, click here.", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 54 registered stand entries at about 42 distinct addresses.", "quote": "Lehenmatt 2026", "url": "https://www.google.com/maps/d/embed?mid=1cEcQIklVdPAeJcDv8JXVchrRZCAZwkk", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt with a five-person local committee (OK Quartierflohmarkt Lehenmatt).", "quote": "Verein Stadtprojekt und OK Lehenmatt", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 28 June 2026, 10:00-16:00.", "quote": "Sonntag, 28. Juni 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/lehenmatt/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Rain policy 'runs' is confirmed by the source."
+ },
+ {
+  "slug": "quartierflohmarkt-matthaeus",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/matthaeus/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1fUWMLWHhiXp-TkSAtSqyVeIQ5beEfSPj", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://bajour.ch/a/die-zukunft-der-quartierflohmis-ist-ungewiss", "seen": "2026-10-07", "what": "local news (Bajour, Feb 2026)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the whole Matthäus quarter.", "quote": "Im ganzen Matthäusquartier finden am 20. Juni Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/matthaeus/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "2026 had a full day programme: Florazmorge breakfast on Florastrasse from 09:00, string-school music in the 'Superblock' (Oetlingerstrasse), Kamishibai paper theatre for children on Matthäusplatz, a ping-pong party with DJ at Bläsiring/Müllheimerstrasse, a jazz trio roaming the quarter.", "quote": "Kamishibai Japanisches Papiertheater mit Johanna Metzler für Kinder ab 4", "url": "https://www.quartierflohmibasel.ch/de/matthaeus/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap on the Matthäusplatz in front of the church, 11:00-17:00.", "quote": "11-17 Uhr auf dem Matthäusplatz vor der Kirche.", "url": "https://www.quartierflohmibasel.ch/de/matthaeus/info/", "confidence": "high"},
+   {"field": "food", "value": "The 2026 map has a separate 'Food & Drinks' layer with 22 entries; one special stall offered old vinyl records with four DJ sets through the day.", "quote": "Anhören und Kaufen alter Vinylplatten. 4 DJ Sets über den Tag verteilt.", "url": "https://www.google.com/maps/d/embed?mid=1fUWMLWHhiXp-TkSAtSqyVeIQ5beEfSPj", "confidence": "medium"},
+   {"field": "size", "value": "The 2026 map layer lists 174 registered stand entries at about 154 distinct addresses.", "quote": "Matthäus 2026", "url": "https://www.google.com/maps/d/embed?mid=1fUWMLWHhiXp-TkSAtSqyVeIQ5beEfSPj", "confidence": "medium"},
+   {"field": "history", "value": "Founder Andrea Otto lives in the Matthäus quarter; in 2016 she had the idea of a Quartierflohmi for 'her' quarter after seeing a similar concept in Munich - i.e. the series began here.", "quote": "2016 hatte Otto die Idee, einen Quartierflohmi für «ihr» Quartier zu organisieren.", "url": "https://bajour.ch/a/die-zukunft-der-quartierflohmis-ist-ungewiss", "confidence": "medium"},
+   {"field": "other", "value": "2026 edition: Saturday 20 June 2026, 11:00-17:00.", "quote": "Samstag, 20. Juni 2026 11:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/matthaeus/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "2025 edition was 30 August; 2026 moved to 20 June. Programme items are 2026-specific."
+ },
+ {
+  "slug": "quartierflohmarkt-neubad",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/neubad/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=13cdBDCovh4QBmzZ8nd2LtQf19NIhoiDR", "seen": "2026-10-07", "what": "organiser's stand map 'Neubad 2026' (KML)"},
+   {"url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "seen": "2026-10-07", "what": "organiser annual report 2025"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the whole Neubad quarter; several stalls on the 2026 map advertise children's clothes, toys and Lego.", "quote": "Im ganzen Neubadquartier finden am 22. August Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/neubad/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap at the Stephanus church square, Furkastrasse 12.", "quote": "Stephanus Kirchplatz, Furkastrasse 12", "url": "https://www.quartierflohmibasel.ch/de/neubad/info/", "confidence": "high"},
+   {"field": "access", "value": "The 2026 map marks public toilets on Neuweilerplatz at the tram stop, and a wheelchair-accessible public toilet by the Steinbühlmätteli.", "quote": "Öffentliche Toilette, rollstuhlgängig | Beim Steinbühlmätteli", "url": "https://www.google.com/maps/d/embed?mid=13cdBDCovh4QBmzZ8nd2LtQf19NIhoiDR", "confidence": "medium"},
+   {"field": "food", "value": "The 2026 map lists about 30 food and drink offers from residents: coffee, cakes, popcorn, ice cream, empanadas, grilled pizza, Swedish cinnamon buns, Japanese shaved ice; the Allerheiligen parish held its new parish-hall opening party the same day.", "quote": "Kakigori (Japanisches geschabtes Eis mit Sirup, Vegan)", "url": "https://www.google.com/maps/d/embed?mid=13cdBDCovh4QBmzZ8nd2LtQf19NIhoiDR", "confidence": "medium"},
+   {"field": "size", "value": "The 2026 map layer lists 288 registered stand entries at about 265 distinct addresses.", "quote": "Neubad 2026", "url": "https://www.google.com/maps/d/embed?mid=13cdBDCovh4QBmzZ8nd2LtQf19NIhoiDR", "confidence": "medium"},
+   {"field": "distinctive", "value": "In 2025 Neubad had car-free streets during the market.", "quote": "autofreie Strassen ... im Neubad", "url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt and OK Neubad; sponsors include the Neutraler Quartierverein Neubad and the Generationenhaus Neubad.", "quote": "Verein Stadtprojekt und OK Neubad", "url": "https://www.quartierflohmibasel.ch/de/neubad/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Saturday 22 August 2026, 10:00-17:00.", "quote": "Samstag, 22. August 2026 10:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/neubad/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Food items are 2026 resident offers, not fixed features."
+ },
+ {
+  "slug": "quartierflohmarkt-riehen-grenzacherweg",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/riehen/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1D4plCjHsMupk2xlfS9FBK_JOOR7ynVsN", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the Grenzacherweg neighbourhood of Riehen.", "quote": "Im ganzen Grenzacherwegquartier finden am 21. Juni Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/riehen/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap on Grenzacherweg by the upper entrance of the Hörnli cemetery, 10:00-16:00.", "quote": "am Grenzacherweg beim oberen Hörnli-Eingang", "url": "https://www.quartierflohmibasel.ch/de/riehen/info/", "confidence": "high"},
+   {"field": "size", "value": "The organiser's map layer (named '2025') lists 83 stand entries at about 80 distinct addresses; year unclear.", "quote": "Riehen 2025", "url": "https://www.google.com/maps/d/embed?mid=1D4plCjHsMupk2xlfS9FBK_JOOR7ynVsN", "confidence": "low"},
+   {"field": "organiser", "value": "Verein Stadtprojekt; sponsors include Riehen Tourismus.", "quote": "Gruss ins Quartier Verein Stadtprojekt", "url": "https://www.quartierflohmibasel.ch/de/riehen/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 21 June 2026, 10:00-16:00.", "quote": "Sonntag, 21. Juni 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/riehen/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Page is short; no group pitches or food listed. Page shows Bring&Nimm end time as '16:09' (typo)."
+ },
+ {
+  "slug": "quartierflohmarkt-riehen-niederholz",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/niederholz/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=19zwvK8myMiJqvR6fpiIQl0v6OJsezv0", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://bajour.ch/a/neues-co-praesidium-fuer-die-quartierflohmis", "seen": "2026-10-07", "what": "local news (Bajour, 29 Apr 2026)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the whole Niederholz quarter of Riehen.", "quote": "Im ganzen Niederholzquartier finden am 19. April Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/niederholz/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap at the Rauracher Zentrum (Rauracherstrasse 33), 10:00-16:00.", "quote": "10:00 bis 16:00 Uhr beim Rauracher Zentrum (Rauracherstrasse 33)", "url": "https://www.quartierflohmibasel.ch/de/niederholz/info/", "confidence": "high"},
+   {"field": "food", "value": "The 2026 map lists about 15 resident food offers (cakes, hot dogs, pizza, paella, lemonade, coffee), a rest stop with seats and tea, and a Lego printing activity.", "quote": "Ausruhestation mit Sitzgelegenheit und Tee", "url": "https://www.google.com/maps/d/embed?mid=19zwvK8myMiJqvR6fpiIQl0v6OJsezv0", "confidence": "medium"},
+   {"field": "size", "value": "The 2026 map layer lists 168 registered stand entries at about 147 distinct addresses.", "quote": "Riehen Niederholz 2026", "url": "https://www.google.com/maps/d/embed?mid=19zwvK8myMiJqvR6fpiIQl0v6OJsezv0", "confidence": "medium"},
+   {"field": "history", "value": "Riehen Niederholz was one of two neighbourhoods newly added to the series in 2026.", "quote": "Mit dem Lehenmatt und Riehen Niederholz kommen zwei weitere Quartiere hinzu.", "url": "https://bajour.ch/a/neues-co-praesidium-fuer-die-quartierflohmis", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt and OK Flohmärkte Niederholz.", "quote": "Verein Stadtprojekt und OK Flohmärkte Niederholz", "url": "https://www.quartierflohmibasel.ch/de/niederholz/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 19 April 2026, 10:00-16:00 (season opener).", "quote": "Sonntag, 19. April 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/niederholz/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Organiser name 'OK Flohmärkte Niederholz' (plural) may hint at an older local tradition, but Bajour calls the neighbourhood new to the series in 2026."
+ },
+ {
+  "slug": "quartierflohmarkt-rosental-erlenmatt",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/rosental-erlenmatt/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=170xtcQwSJ1FMh5Xm97KTpNEtqA2yAZyO", "seen": "2026-10-07", "what": "organiser's stand map (KML)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers in the Rosental/Erlenmatt quarter.", "quote": "Im Quartier Rosental/Erlenmatt finden am 30. August Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/rosental-erlenmatt/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap at the Quartiertreffpunkt Erlenmatt, 10:00-16:00.", "quote": "Ort: Quartiertreffpunkt Erlenmatt, 10.00 - 16.00 Uhr", "url": "https://www.quartierflohmibasel.ch/de/rosental-erlenmatt/info/", "confidence": "high"},
+   {"field": "venue", "value": "The map legend includes a community flea market (Gemeinschafts-Flohmi); its location is not named in text.", "quote": "Gemeinschafts-Flohmi", "url": "https://www.quartierflohmibasel.ch/de/rosental-erlenmatt/info/", "confidence": "medium"},
+   {"field": "size", "value": "The 2026 map layer lists 149 registered stand entries at about 109 distinct addresses.", "quote": "Rosental Erlenmatt 2026", "url": "https://www.google.com/maps/d/embed?mid=170xtcQwSJ1FMh5Xm97KTpNEtqA2yAZyO", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt and OK Rosental/Erlenmatt.", "quote": "Verein Stadtprojekt und OK Rosental/Erlenmatt", "url": "https://www.quartierflohmibasel.ch/de/rosental-erlenmatt/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 30 August 2026, 10:00-16:00.", "quote": "Sonntag, 30. August 2026 10:00 bis 16:00 Uhr", "url": "https://www.quartierflohmibasel.ch/de/rosental-erlenmatt/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our description names a community stand at 'Erle Perle' - not on the 2026 page or map. Thinner than most Basel pages."
+ },
+ {
+  "slug": "quartierflohmarkt-spalen-holbein",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/spalen-holbein/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1akKUQPGpPsJ3fmHWLaQCI2eI04jkbBk", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "seen": "2026-10-07", "what": "organiser annual report 2025"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "A large flea market by private sellers for everyone, across the whole Spalen/Holbein quarter ('Am Ring').", "quote": "ein grosser Flohmarkt von Privaten für alle Interessierten statt", "url": "https://www.quartierflohmibasel.ch/de/spalen-holbein/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap in the garden of the Basler Mission, 10:00-16:00.", "quote": "Im Garten der Basler Mission von 10:00 – 16:00 Uhr", "url": "https://www.quartierflohmibasel.ch/de/spalen-holbein/info/", "confidence": "high"},
+   {"field": "venue", "value": "The 2026 map marks group-stand points including the Missionsgarten, Spalentor, Holbein-Plätzli, Antilopen-Plätzli and fountains on Eulerstrasse and Holbeinstrasse (36 group entries).", "quote": "Spalentor / Holbein-Plätzli / Antilopen-Plätzli", "url": "https://www.google.com/maps/d/embed?mid=1akKUQPGpPsJ3fmHWLaQCI2eI04jkbBk", "confidence": "low"},
+   {"field": "size", "value": "The 2026 map layer lists 107 private stand entries at about 95 distinct addresses, plus 36 group-pitch entries.", "quote": "Spalen/Holbein 2026", "url": "https://www.google.com/maps/d/embed?mid=1akKUQPGpPsJ3fmHWLaQCI2eI04jkbBk", "confidence": "medium"},
+   {"field": "distinctive", "value": "In 2025 'Am Ring' had car-free streets during the market.", "quote": "autofreie Strassen am Ring", "url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "confidence": "medium"},
+   {"field": "organiser", "value": "Verein Stadtprojekt and OK Am Ring.", "quote": "Verein Stadtprojekt und OK Am Ring", "url": "https://www.quartierflohmibasel.ch/de/spalen-holbein/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Saturday 13 June 2026, 10:00-16:00.", "quote": "Samstag, 13. Juni 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/spalen-holbein/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": ""
+ },
+ {
+  "slug": "quartierflohmarkt-wettstein",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "seen": "2026-10-07", "what": "organiser page (2026 edition)"},
+   {"url": "https://www.google.com/maps/d/embed?mid=1I5rqYb-1L1SYfkEZuz2U0YQDYeY", "seen": "2026-10-07", "what": "organiser's stand map (KML)"},
+   {"url": "https://bajour.ch/a/die-zukunft-der-quartierflohmis-ist-ungewiss", "seen": "2026-10-07", "what": "local news (Bajour, Feb 2026)"},
+   {"url": "https://www.quartierflohmibasel.ch/site/assets/files/1057/verein_stadtprojekt_jahresbericht_2025.pdf", "seen": "2026-10-07", "what": "organiser annual report 2025"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private households selling to private buyers across the whole Wettstein quarter.", "quote": "Im ganzen Wettsteinquartier finden am 19. September Flohmärkte von Privaten für Private statt.", "url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Car-free edition: marked residential streets closed with barriers 11:00-17:00; Grenzacherstrasse, Wettsteinallee, Riehenring and Peter Rot-Strasse stay open.", "quote": "Quartier­flohmarkt WETTSTEIN_AUTOFREI*", "url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "confidence": "high"},
+   {"field": "venue", "value": "Group pitches 'In der Burg' (Quartiertreffpunkt Wettstein) and at the Landhof sports ground, stalls in front of the stand; places limited.", "quote": "Landhof (Sportplatz, Stände vor der Tribüne)", "url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "Bring&Nimm swap at the Theodorskirchplatz next to the church, 11:00-17:00.", "quote": "Beim Theodorskirchplatz neben der Kirche von 11.00 bis 17.00", "url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "confidence": "high"},
+   {"field": "history", "value": "One of the two original 2016 Quartierflohmis: co-founder Christine Renold planned the Wettstein market in parallel with the first one.", "quote": "Parallel hat Christine Renold für das Wettsteinquartier einen Quartierflohmi geplant", "url": "https://bajour.ch/a/die-zukunft-der-quartierflohmis-ist-ungewiss", "confidence": "medium"},
+   {"field": "organiser", "value": "OK-Flohmi Wettstein, Verein Stadtprojekt, Quartiertreffpunkt Wettstein and Wettstein21.", "quote": "OK-Flohmi Wettstein, Verein Stadtprojekt, Quartiertreffpunkt Wettstein und Wettstein21", "url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 map layer lists 303 registered stand entries at about 190 distinct addresses.", "quote": "Wettstein 2026", "url": "https://www.google.com/maps/d/embed?mid=1I5rqYb-1L1SYfkEZuz2U0YQDYeY", "confidence": "medium"},
+   {"field": "other", "value": "2026 edition: Saturday 19 September 2026, 11:00-17:00.", "quote": "Samstag, 19. September 2026 11:00 BIS 17:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/wettstein/info/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Annual report: first Quartierflohmis in 2016 were in two quarters; Renold is 'Mitinitiantin des QF Wettstein'."
+ },
+ {
+  "slug": "quartierflohmi-neu-allschwil",
+  "sources": [
+   {"url": "https://quartierflohmiallschwil.ch/etn/quartieflohmi-neu-allschwil/", "seen": "2026-10-07", "what": "organiser event page (2026)"},
+   {"url": "https://quartierflohmiallschwil.ch/", "seen": "2026-10-07", "what": "organiser home page"},
+   {"url": "https://www.google.com/maps/d/u/0/edit?mid=1VRxT6hSuM75vL83-g7Cju6mNcR5xThs", "seen": "2026-10-07", "what": "organiser's registration map (via tinyurl.com/QFAllschwil)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Private sellers to private buyers; the organiser lists rarities, curiosities, useful and indispensable things.", "quote": "Stöbert im Quartier und entdeckt Raritäten, Kuriositäten, Nützliches und Unverzichtbares.", "url": "https://quartierflohmiallschwil.ch/etn/quartieflohmi-neu-allschwil/", "confidence": "high"},
+   {"field": "venue", "value": "Spread across the neighbourhood from the Morgartenring to the church, and from the Bachgraben promenade to the Langen Loh.", "quote": "Vom Morgartenring bis zur Kirche, von der Bachgraben Promenade bis zum Langen Loh.", "url": "https://quartierflohmiallschwil.ch/etn/quartieflohmi-neu-allschwil/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Free for all residents with a stall on private property (driveway, front garden, garden); registering via the form puts the stall on the public map.", "quote": "Kostenlose Teilnahme für alle Anwohner mit Stand auf privatem Grundstück", "url": "https://quartierflohmiallschwil.ch/etn/quartieflohmi-neu-allschwil/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Registrants confirm they live in the quarter and have read the conditions on selling food; a voluntary stand fee supports the market's communication.", "quote": "Freiwillige Standgebühr", "url": "https://quartierflohmiallschwil.ch/", "confidence": "high"},
+   {"field": "organiser", "value": "Verein Quartierflohmärkte Allschwil, founded 2025 by two regular flea-market goers to network the neighbourhood flea markets in Allschwil and Schönenbuch, modelled on Basel.", "quote": "Der Verein Quartierflohmärkte Allschwil wurde 2025 gegründet", "url": "https://quartierflohmiallschwil.ch/", "confidence": "high"},
+   {"field": "proceeds", "value": "The municipality of Allschwil provided start-up funding for the platform.", "quote": "Die Gemeinde Allschwil hat die Startfinanzierung des Projekts übernommen", "url": "https://quartierflohmiallschwil.ch/", "confidence": "high"},
+   {"field": "size", "value": "The 2026 registration map shows roughly 155 distinct stand addresses (many duplicate entries; approximate).", "quote": "20.9.2026", "url": "https://www.google.com/maps/d/u/0/edit?mid=1VRxT6hSuM75vL83-g7Cju6mNcR5xThs", "confidence": "low"},
+   {"field": "other", "value": "2026 edition: 20 September 2026, 10:00-16:00.", "quote": "20. September 2026 ... 10:00 - 16:00", "url": "https://quartierflohmiallschwil.ch/etn/quartieflohmi-neu-allschwil/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our description's 'Kleidung, Haushaltswaren' and 'ohne professionelle Händler' are not stated by the source ('von Privaten für Private' is). The map entries contain private names and e-mails - do not reuse."
+ },
+ {
+  "slug": "saeuliaemtler-flohmarkt-affoltern",
+  "sources": [
+   {"url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/", "seen": "2026-10-07", "what": "organiser home page"},
+   {"url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/aktuelles.php", "seen": "2026-10-07", "what": "organiser news page"},
+   {"url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf", "seen": "2026-10-07", "what": "organiser terms 2026 (PDF)"},
+   {"url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/anmeldetalon.pdf", "seen": "2026-10-07", "what": "organiser registration form 2026 (PDF)"},
+   {"url": "https://www.guidle.com/de/veranstaltungen/dies-das/affoltern-am-albis/saeuliaemtlerflohmarkt-affoltern-am-albis_Akq4g2q", "seen": "2026-10-07", "what": "event listing (guidle)"}
+  ],
+  "facts": [
+   {"field": "size", "value": "About 80 exhibitors per market (organiser's own site; guidle listing says about 90).", "quote": "vielseitige Angebot unserer cà 80 Aussteller", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/", "confidence": "medium"},
+   {"field": "history", "value": "Has been a fixture of the Säuliamt for over 35 years; held 7 times a year in any weather.", "quote": "Seit über 35 Jahren ein fester Bestandteil im Säuliamt", "url": "https://www.guidle.com/de/veranstaltungen/dies-das/affoltern-am-albis/saeuliaemtlerflohmarkt-affoltern-am-albis_Akq4g2q", "confidence": "medium"},
+   {"field": "other", "value": "Runs whatever the weather.", "quote": "egal welches Wetter gerade herrscht, es ist immer etwas los bei uns", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/", "confidence": "high"},
+   {"field": "venue", "value": "Kronenplatz, Affoltern am Albis; no cars on the square until 16:00 except the food stand and committee.", "quote": "während dem Flohmarkt bis 16 Uhr werden keine Autos auf dem Kronenplatz geduldet", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf", "confidence": "high"},
+   {"field": "food", "value": "One fixed food stand (the Staffras Imbiss, now run by Swiss Fire Devils); no other food stands allowed; extra catering announced for 31 Oct 2026.", "quote": "Verpflegungsstand: ist fest zugeteilt, weitere werden nicht zugelassen.", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf", "confidence": "high"},
+   {"field": "parking", "value": "Parking at the Sportplatz Moos; the 2026 news page says it is now chargeable, and all parking in Affoltern is paid.", "quote": "Neu ist leider auch das Parken beim Sportplatz Moos gebührenpflichtig", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/aktuelles.php", "confidence": "high"},
+   {"field": "seller_booking", "value": "Written registration only (PDF form by e-mail), deadline the Monday before; pitch fees CHF 35 (up to 3 m), 40 (4 m), 50 (3x3 m), covered rental stall CHF 65 incl. CHF 10 deposit; pay 3 weeks ahead; set-up from 05:30.", "quote": "generell werden nur schriftlich angemeldete Aussteller zugelassen!", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf", "confidence": "high"},
+   {"field": "goods", "value": "Banned: weapons, drugs, food, alcohol, medicines, violent or pornographic material.", "quote": "Wir dulden keine Waffen, Drogen, Lebensmittel, Alkoholische Erzeugnisse, Medikamente", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf", "confidence": "high"},
+   {"field": "organiser", "value": "Run by a private 'Flohmi-Team' (contact couple named in the terms); guidle lists the organiser as A. von Ballmoos.", "quote": "vor-freudige Grüsse vom Flohmi-Team", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/", "confidence": "medium"},
+   {"field": "other", "value": "2026 dates: 28 Mar, 25 Apr, 30 May, 27 Jun, 29 Aug, 26 Sep, 31 Oct (season end); Saturdays 09:00-16:00.", "quote": "Jeweils am Samstag von 9 Uhr bis 16 Uhr", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "next date 2026-10-31 08:00-16:00", "source_says": "Market hours 'Jeweils am Samstag von 9 Uhr bis 16 Uhr' (guidle also 09:00-16:00).", "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf"},
+   {"our_value": "stall_count 80", "source_says": "Own site 'cà 80 Aussteller'; guidle listing 'ca. 90 Ausstellern' - sources disagree.", "url": "https://www.guidle.com/de/veranstaltungen/dies-das/affoltern-am-albis/saeuliaemtlerflohmarkt-affoltern-am-albis_Akq4g2q"},
+   {"our_value": "organiser null", "source_says": "Flohmi-Team / A. von Ballmoos (private individuals).", "url": "https://www.guidle.com/de/veranstaltungen/dies-das/affoltern-am-albis/saeuliaemtlerflohmarkt-affoltern-am-albis_Akq4g2q"}
+  ],
+  "thin": false,
+  "notes": "The AGB PDF still says parking at Sportplatz Moos is free; the 2026 news page says it is now chargeable - use the newer. Our description's 'Festbänke und Schirme' is not stated in any source found. '35 years' comes only from the guidle listing (organiser-supplied text)."
+ },
+ {
+  "slug": "slow-fashion-market-lausanne",
+  "sources": [
+   {"url": "https://colormygeneva.ch/events/the-slow-fashion-market/", "seen": "2026-10-07", "what": "our source_url - page now gone ('Oups, cette page a disparu')"},
+   {"url": "https://www.facebook.com/events/773448639173264", "seen": "2026-10-07", "what": "Facebook event - only the title readable"},
+   {"url": "https://vide-greniers.org/evenement/977869", "seen": "2026-10-07", "what": "aggregator listing - now 'page introuvable'; details seen only in search-engine snippets"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "A pop-up market for independent designers, responsible fashion, clothing and accessories, curated vintage and second-hand, jewellery and textile craft (search-snippet summary of the listing).", "quote": "THE SLOW FASHION MARKET – LAUSANNE", "url": "https://vide-greniers.org/evenement/977869", "confidence": "low"},
+   {"field": "other", "value": "2026 edition reported as Sunday 4 October 2026, 10:00-18:00, free entry, at Montbenon, Rue du Grand-Chêne, organised by Lawen.", "quote": "", "url": "https://vide-greniers.org/evenement/977869", "confidence": "low"}
+  ],
+  "conflicts": [
+   {"our_value": "source_url https://colormygeneva.ch/events/the-slow-fashion-market/", "source_says": "Page no longer exists.", "url": "https://colormygeneva.ch/events/the-slow-fashion-market/"},
+   {"our_value": "venue Casino de Montbenon, Allée Ernest-Ansermet 3", "source_says": "Listing (via search snippet) gives 'Montbenon, Rue du Grand-Chêne' - same area, but the Casino building itself is not confirmed.", "url": "https://vide-greniers.org/evenement/977869"}
+  ],
+  "thin": true,
+  "notes": "No first-hand page could be read. Nothing found on stall count, DJ or coffee (both in our description). The vide-greniers listing was readable only through search summaries, so treat every fact as unverified."
+ },
+ {
+  "slug": "strandgut-flohmarkt-neubad-luzern",
+  "sources": [
+   {"url": "https://neubad.org/node/9275", "seen": "2026-10-07", "what": "organiser event page (25 Oct 2026)"},
+   {"url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "seen": "2026-10-07", "what": "organiser market rules, Oct 2025 (PDF)"},
+   {"url": "https://neubad.org/veranstaltungen", "seen": "2026-10-07", "what": "organiser event calendar"},
+   {"url": "https://neubad.org/verein-netzwerk-neubad", "seen": "2026-10-07", "what": "organiser about page"},
+   {"url": "https://neubad.org/anfahrt", "seen": "2026-10-07", "what": "organiser directions page"},
+   {"url": "https://neubad.org/barrierefreiheit", "seen": "2026-10-07", "what": "organiser accessibility page"},
+   {"url": "https://blog.luzern.com/flohmaerkte-luzern/", "seen": "2026-10-07", "what": "Lucerne Tourism blog (2019, updated 2022)"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "Held inside the pool ('Pool') of the Neubad; no outdoor pitches. The Neubad is the former Biregg indoor swimming pool, the market sits in the old pool basin.", "quote": "Der Flohmarkt findet im Pool statt, draussen gibt es keine Standplätze.", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"},
+   {"field": "history", "value": "Lucerne Tourism describes the market as being in the former swimming basin of the Biregg indoor pool.", "quote": "Im ehemaligen Schwimmbecken des Biregg-Hallenbades planschen heute keine Wasserratten mehr", "url": "https://blog.luzern.com/flohmaerkte-luzern/", "confidence": "high"},
+   {"field": "goods", "value": "Antiquarian books, crafts, bags, shoes and clothing, tech and tools, music and lamps.", "quote": "Von antiquarischen Büchern, Kunsthandwerk, Taschen, Lieblingsschuhen und Kleidung, Technik und Werkzeuge, Musik und Lampen", "url": "https://neubad.org/node/9275", "confidence": "high"},
+   {"field": "goods", "value": "Only clearly used goods plus art and craft; banned include new liquidation stock, mass-produced items, computers, smartphones, cosmetics, food and live plants.", "quote": "Waren, die klar als gebraucht erkennbar sind sowie Kunst- und Handwerk.", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"},
+   {"field": "food", "value": "The Poolbar and the Neubad Bistro provide food on site.", "quote": "Die Poolbar und das Neubad Bistro sorgen für die notwendige Verpflegung auf dem Areal.", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"},
+   {"field": "other", "value": "Buyers admitted from 10:00, no sales before; selling ends 15:00. Free entry.", "quote": "Einlass für Kaufende ist ab 10:00 Uhr", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"},
+   {"field": "other", "value": "Dogs are not allowed on the market during market hours (assistance dogs welcome in the Neubad).", "quote": "Auf dem Marktplatz gilt während den Marktzeiten ein allgemeines Hundeverbot", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"},
+   {"field": "seller_booking", "value": "Tables booked online (ticketleo), one per booking, opening about two weeks ahead; CHF 50 incl. table (about 72x144 cm) and chairs, approx. 5 m2; since Nov 2025. Max 3 sellers per stand; no tents; don't book twice in a row.", "quote": "Ab November 2025 beträgt die Standgebühr neu CHF 50.–.", "url": "https://neubad.org/node/9275", "confidence": "high"},
+   {"field": "parking", "value": "Parking around the Neubad is scarce and partly paid; vehicles only on site during unloading.", "quote": "Die Parkplätze um das Neubad sind rar und teilweise kostenpflichtig", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"},
+   {"field": "transport", "value": "About 10 minutes' walk from Lucerne station; bus 4 from the station (towards Hubelmatt) to Steghof; plenty of bike parking.", "quote": "Zu Fuss ca. 10 Minuten vom Bahnhof entfernt", "url": "https://neubad.org/anfahrt", "confidence": "high"},
+   {"field": "access", "value": "Wheelchair parking space by the Neubad on the Kleinmattstrasse side; companions attend events free; inclusion phone line Mon-Fri.", "quote": "Es gibt einen Rollstuhlparkplatz gleich beim Neubad, Seite Kleinmattstrasse.", "url": "https://neubad.org/barrierefreiheit", "confidence": "high"},
+   {"field": "organiser", "value": "Organised by Verein Netzwerk Neubad, the association behind the Neubad culture centre, founded 21 Nov 2012, about 1000 members.", "quote": "Organisation des Flohmarktes ist der Verein Netzwerk Neubad", "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "rhythm '1st and 3rd Sunday of the month'", "source_says": "Rules say 'grundsätzlich' 1st and 3rd Sunday with possible shifts; the published calendar has 25 Oct, 1 Nov, 22 Nov, 6 Dec, 20 Dec 2026, 17 Jan, 24 Jan, 14 Feb, 21 Feb 2027 - often not 1st/3rd Sundays.", "url": "https://neubad.org/veranstaltungen"}
+  ],
+  "thin": false,
+  "notes": "Our setting is null - indoor. Our description's 'Kunst, Schallplatten ... begleitet von Musik' is partly from the old tourism blog (records, art); music accompaniment not found. Our next_dates (25 Oct, 1 Nov, 22 Nov) match the calendar."
+ },
+ {
+  "slug": "svuotacantine-muralto",
+  "sources": [
+   {"url": "https://www.imercantini.ch/svuotacantine-muralto-2026", "seen": "2026-10-07", "what": "organiser event page (2026)"},
+   {"url": "https://www.imercantini.ch/", "seen": "2026-10-07", "what": "organiser home page"},
+   {"url": "https://www.imercantini.ch/le-cifre", "seen": "2026-10-07", "what": "organiser figures / event history"},
+   {"url": "https://www.imercantini.ch/regolamento-2026", "seen": "2026-10-07", "what": "organiser rules 2026"},
+   {"url": "https://www.imercantini.ch/chi-siamo", "seen": "2026-10-07", "what": "organiser about page"}
+  ],
+  "facts": [
+   {"field": "distinctive", "value": "An evening edition: Saturday 16:00-23:00, unlike the organiser's other daytime markets; 2026 was the first Muralto edition.", "quote": "la 1° edizione di Muralto si svolgerà di Sabato dalle 16:00 alle 23:00", "url": "https://www.imercantini.ch/svuotacantine-muralto-2026", "confidence": "high"},
+   {"field": "venue", "value": "At the Burbaglio in Muralto, outdoors.", "quote": "Il Mercatino Svuotacantine approda come grande novità anche al Burbaglio di Muralto.", "url": "https://www.imercantini.ch/svuotacantine-muralto-2026", "confidence": "high"},
+   {"field": "other", "value": "2026 date: 20 June 2026, with 27 June as the bad-weather reserve date.", "quote": "data di riserva in caso di meteo sfavorevole 27 giugno 2026", "url": "https://www.imercantini.ch/svuotacantine-muralto-2026", "confidence": "high"},
+   {"field": "seller_booking", "value": "Pitches assigned by the organiser; CHF 45 per pitch including lighting; sellers must bring their own 25 m extension cable; online registration.", "quote": "Costo base di 1 postazione: Fr. 45.- (con illuminazione)", "url": "https://www.imercantini.ch/svuotacantine-muralto-2026", "confidence": "high"},
+   {"field": "goods", "value": "Only clearly used items from private cellars and attics; no food or drinks, live animals, erotic items or mass-market goods.", "quote": "È possibile vendere esclusivamente articoli usati provenienti da cantine o solai personali.", "url": "https://www.imercantini.ch/regolamento-2026", "confidence": "high"},
+   {"field": "organiser", "value": "Associazione I Mercantini, a volunteer association (Avegno-Gordevio) running 'Svuotacantine' cellar-clearing markets in Ticino since 2018 (first at the Manor car park in Ascona).", "quote": "Il primo \"Svuotacantine\" nasce nel 2018 sul piazzale della Manor di Ascona", "url": "https://www.imercantini.ch/", "confidence": "high"},
+   {"field": "proceeds", "value": "Proceeds are donated to local charities; CHF 21,893 donated in total and 1,275 sellers registered as of 1 April 2026.", "quote": "Fr 21'893.- donazioni in totale", "url": "https://www.imercantini.ch/le-cifre", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "description: 'Private verkaufen aus dem Kofferraum, dazu Live-Musik und Essen'", "source_says": "Muralto page says this edition differs 'per il tipo di postazioni' (lit pitches, CHF 45); no mention of selling from cars, live music or food for Muralto.", "url": "https://www.imercantini.ch/svuotacantine-muralto-2026"}
+  ],
+  "thin": false,
+  "notes": "Entry fee not stated anywhere. '5 minutes from Locarno station' in our description is not sourced. The 2026 list on 'le-cifre' includes 20.06.2026 but no sellers/donation figure yet, so I could not confirm it went ahead."
+ },
+ {
+  "slug": "vide-dressing-bains-payes-vevey",
+  "sources": [
+   {"url": "https://lesbainspayes.ch/", "seen": "2026-10-07", "what": "venue site (JS only; WordPress pages read via API - no vide-dressing mention)"},
+   {"url": "https://torpille.ch/listing/bains-payes/", "seen": "2026-10-07", "what": "local guide page about the venue"},
+   {"url": "https://www.instagram.com/ch_ocloset", "seen": "2026-10-07", "what": "organiser Instagram - not fetchable"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "Les Bains Payes sit on Quai Ernest-Ansermet in Vevey: lakeside bathing area with a seasonal bar (April-October), wooden deck and a rooftop terrace that hosts regular events including pop-up markets.", "quote": "des événements réguliers organisés sur le toit-terrasse, comme des cours de yoga ... ou des marchés éphémères", "url": "https://torpille.ch/listing/bains-payes/", "confidence": "medium"},
+   {"field": "food", "value": "The Bains Payes bar serves burgers, salads, bowls, sharing boards, local craft beer and homemade lemonades; it closes on bad-weather days.", "quote": "le lieu ferme toutefois ses portes lors des journées de mauvais temps", "url": "https://torpille.ch/listing/bains-payes/", "confidence": "medium"}
+  ],
+  "conflicts": [],
+  "thin": true,
+  "notes": "No source found for the vide-dressing itself: no date, no '35 exhibitors', no luxury goods, no 2026 edition. Could not confirm it still runs. Venue's own site has a 'Événements Roof Top' page that is empty in the API. Address could be completed to Quai Ernest-Ansermet, Vevey (not verified against a street number)."
+ },
+ {
+  "slug": "vide-dressing-flon-lausanne",
+  "sources": [
+   {"url": "https://flon.ch/fr/agenda/loisirs-sport-2/vide-dressing-et-vide-grenier-413/", "seen": "2026-10-07", "what": "venue (Quartier du Flon) agenda page"},
+   {"url": "https://www.amisduchibre.ch", "seen": "2026-10-07", "what": "organiser site (mostly empty; stand booking via Infomaniak widget)"},
+   {"url": "https://www.lausanne-tourisme.ch/fr/evenement/vide-dressings-et-vide-greniers/", "seen": "2026-10-07", "what": "Lausanne Tourisme event listing"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Second-hand clothes, accessories and objects - a combined vide-dressing and vide-grenier.", "quote": "habits, accessoires et objets de seconde main uniques", "url": "https://flon.ch/fr/agenda/loisirs-sport-2/vide-dressing-et-vide-grenier-413/", "confidence": "high"},
+   {"field": "organiser", "value": "Organised by the Association des Amis du Chibre together with the Quartier du Flon.", "quote": "L’Association des Amis du Chibre et le Quartier du Flon organisent des vide-dressings et vide-greniers", "url": "https://www.lausanne-tourisme.ch/fr/evenement/vide-dressings-et-vide-greniers/", "confidence": "high"},
+   {"field": "other", "value": "Saturdays 09:00-18:00; free entry.", "quote": "Sa 09 h 00 – 18 h 00", "url": "https://flon.ch/fr/agenda/loisirs-sport-2/vide-dressing-et-vide-grenier-413/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Stall availability is checked and booked with the Amis du Chibre via their website; they publish a stand plan for participants before each date (e.g. 3 Oct 2026).", "quote": "Plan pour les participants du vide grenier, vide dressing du 03.10.2026 dans le Quartier du Flon", "url": "https://www.amisduchibre.ch", "confidence": "high"},
+   {"field": "other", "value": "2026 dates listed by Lausanne Tourisme: 4 Apr, 2 May, 6 Jun, 4 Jul, 5 Sep, 3 Oct, 7 Nov 2026.", "quote": "Du 04.04.2026 au 07.11.2026", "url": "https://www.lausanne-tourisme.ch/fr/evenement/vide-dressings-et-vide-greniers/", "confidence": "medium"}
+  ],
+  "conflicts": [
+   {"our_value": "rhythm 'first Saturday of the month, April to November (except August)', next date 2026-11-07", "source_says": "Flon's own agenda says first Saturdays 'entre avril et octobre (sauf en août)'; Lausanne Tourisme lists 7 Nov 2026 as well. Sources disagree on November.", "url": "https://flon.ch/fr/agenda/loisirs-sport-2/vide-dressing-et-vide-grenier-413/"}
+  ],
+  "thin": false,
+  "notes": "Stand price and stall count not found (Infomaniak booking widget is JS-only). Our next_dates jump from 2026-11-07 to 2027-09-04, skipping spring 2027 - worth checking."
+ },
+ {
+  "slug": "vide-grenier-bern-altstadt",
+  "sources": [
+   {"url": "https://www.bern-altstadt.ch/vide-grenier-25-04-2026/", "seen": "2026-10-07", "what": "organiser page (VAL) for 2026 edition"},
+   {"url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Merkblatt-A5-2026.pdf", "seen": "2026-10-07", "what": "organiser rules 2026 (PDF)"},
+   {"url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Anmeldeformular-2026.pdf", "seen": "2026-10-07", "what": "organiser registration form 2026 (PDF)"},
+   {"url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Flyer-Vide-Grenier-2026-A6.pdf", "seen": "2026-10-07", "what": "organiser flyer 2026 (PDF)"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "Held in the Kramgasse and Gerechtigkeitsgasse in Bern's lower Old Town; tables stand under the arcades (Lauben) or on shop forecourts, not on the street.", "quote": "Der Vide Grenier findet in der Kram- und Gerechtigkeitsgasse statt.", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Anmeldeformular-2026.pdf", "confidence": "high"},
+   {"field": "goods", "value": "Residents and shops of the lower Old Town clear out their cellars and attics.", "quote": "BewohnerInnen und Geschäfte der unteren Altstadt räumen ihre Keller und Estriche.", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Flyer-Vide-Grenier-2026-A6.pdf", "confidence": "high"},
+   {"field": "history", "value": "2026 was the 21st edition; the market has existed for more than 20 years, originally an idea of two members of the Kramgass-Leist.", "quote": "die 21. Ausgabe des Vide Grenier 2026", "url": "https://www.bern-altstadt.ch/vide-grenier-25-04-2026/", "confidence": "high"},
+   {"field": "organiser", "value": "Under the patronage of the Vereinigte Altstadtleiste (VAL), run by a four-person OK; the VAL receives any net profit.", "quote": "Die VAL erhalten vom OK jährlich eine Abrechnung und den allfälligen Reingewinn.", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Merkblatt-A5-2026.pdf", "confidence": "high"},
+   {"field": "seller_booking", "value": "Open to Leist members, shop owners/staff, property owners and residents of the VAL area; sellers find their own arcade spot with the shop owner's signed consent; CHF 30 for Leist members, CHF 50 others, cash only (no TWINT/cards), collected on the day; 2026 deadline 10 April.", "quote": "Nur Barzahlung möglich.", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Merkblatt-A5-2026.pdf", "confidence": "high"},
+   {"field": "distinctive", "value": "Children living in the lanes may sell their things for free.", "quote": "In den Gassen wohnhafte Kinder dürfen ihre Waren kostenlos verkaufen.", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Merkblatt-A5-2026.pdf", "confidence": "high"},
+   {"field": "goods", "value": "No alcohol, tobacco, food, knives/firearms or pornography may be sold.", "quote": "Es dürfen kein Alkohol, Tabak, Esswaren, Stich- und Schusswaffen oder Pornografie verkauft werden.", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Merkblatt-A5-2026.pdf", "confidence": "high"},
+   {"field": "other", "value": "Annually on the fourth or last Saturday of April, 10:00-16:00; it runs alongside the regular Saturday market. 2026: 25 April.", "quote": "jährlich – am vierten oder letzten Samstag – im April zwischen 10:00 und 16:00 Uhr", "url": "https://www.bern-altstadt.ch/wp-content/uploads/2026/01/Merkblatt-A5-2026.pdf", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our venue 'Bern Altstadt' could be narrowed to Kramgasse/Gerechtigkeitsgasse (Untere Altstadt), postcode 3011 rather than 3000. Founding year 2006 is consistent with a 21st edition in 2026 if held every year (not stated)."
+ },
+ {
+  "slug": "vide-grenier-echichens",
+  "sources": [
+   {"url": "https://www.echichens.ch/_rte/anlass/7654582", "seen": "2026-10-07", "what": "commune event calendar entry (2026)"},
+   {"url": "https://vide-greniers.org/evenement/1027098", "seen": "2026-10-07", "what": "aggregator listing (organiser-submitted, Sept 2026)"},
+   {"url": "http://www.association-enfants.org/crbst_2.html", "seen": "2026-10-07", "what": "organiser history page"},
+   {"url": "http://www.association-enfants.org/crbst_12.html", "seen": "2026-10-07", "what": "organiser donations/local page"},
+   {"url": "http://www.association-enfants.org/crbst_27.html", "seen": "2026-10-07", "what": "organiser page (2019 edition)"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Homeware and decoration, bric-a-brac, books, vinyl, games and toys, clothes for women, men, teens and children, at low prices.", "quote": "Vente d'articles pour la maison et la décoration, brocante, livres, vinyles, jeux et jouets, habits", "url": "https://www.echichens.ch/_rte/anlass/7654582", "confidence": "high"},
+   {"field": "distinctive", "value": "It is a 'Vide-Local': the association itself sells goods donated to it, collected and sorted year-round at its premises under the salle polyvalente.", "quote": "nous récoltons, trions et stockons toutes sortes de choses afin d’alimenter les différents stands de nos Vide-Local", "url": "http://www.association-enfants.org/crbst_12.html", "confidence": "high"},
+   {"field": "proceeds", "value": "Funds go to helping children, today mostly locally via social services (music lessons, winter clothes, homework help, holiday camps).", "quote": "la majeure partie du budget annuel est maintenant consacrée au soutient d'enfants ici, tout près de chez nous", "url": "http://www.association-enfants.org/crbst_2.html", "confidence": "high"},
+   {"field": "history", "value": "Association Enfants was founded in October 1983 after aid convoys to a Polish orphanage in 1982; volunteer-run, about 400 members.", "quote": "un soir du mois d'octobre 1983, \"Enfants, association d'entraide et de secours\" est née", "url": "http://www.association-enfants.org/crbst_2.html", "confidence": "high"},
+   {"field": "venue", "value": "Salle polyvalente, Route de Saint-Fiacre 5, Echichens; indoors. The commune lends the association its premises under the hall free of charge.", "quote": "la commune d'Echichens lui mettant gratuitement à disposition les locaux qu'elle occupe sous la salle polyvalente", "url": "http://www.association-enfants.org/crbst_2.html", "confidence": "high"},
+   {"field": "food", "value": "Snack bar and food on site; free parking; toilets.", "quote": "Buvette et restauration sur place. Parking gratuit", "url": "https://www.echichens.ch/_rte/anlass/7654582", "confidence": "high"},
+   {"field": "size", "value": "About 10 sellers/stands expected (aggregator, organiser-submitted).", "quote": "10 exposants attendus", "url": "https://vide-greniers.org/evenement/1027098", "confidence": "medium"},
+   {"field": "other", "value": "Next edition: Sunday 1 November 2026, 09:00-16:00.", "quote": "1 nov. 2026, 9h00 - 16h00", "url": "https://www.echichens.ch/_rte/anlass/7654582", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "rhythm 'Once a year, in April'; next_dates null", "source_says": "Commune calendar lists Sunday 1 November 2026, 09:00-16:00 (the 2019 edition was 25 May).", "url": "https://www.echichens.ch/_rte/anlass/7654582"},
+   {"our_value": "name 'Vide-Grenier Echichens'", "source_says": "Organiser calls it 'Vide-Local' (Vide Local Association Enfants).", "url": "https://www.echichens.ch/_rte/anlass/7654582"}
+  ],
+  "thin": false,
+  "notes": "Our setting is null - indoor. Organiser website is dated (latest flyer 2019) and says the committee is changing."
+ },
+ {
+  "slug": "vide-grenier-ecobroc-saxon",
+  "sources": [
+   {"url": "https://ecobroc.ch/vide-grenier-ecobroc/", "seen": "2026-10-07", "what": "organiser vide-grenier page"},
+   {"url": "https://ecobroc.ch/events/vide-grenier/", "seen": "2026-10-07", "what": "organiser event page"},
+   {"url": "https://ecobroc.ch/event-directory/", "seen": "2026-10-07", "what": "organiser event calendar"},
+   {"url": "https://ecobroc.ch/product/place-3-metres-sans-vehicule/", "seen": "2026-10-07", "what": "organiser stand booking page"},
+   {"url": "https://vide-greniers.org/evenement/966993", "seen": "2026-10-07", "what": "aggregator listing"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Second-hand goods brought by anyone: decoration, crockery, small furniture, toys, clothes, books, old objects and unusual finds.", "quote": "décoration, vaisselle, petits meubles, jouets, vêtements, livres, objets anciens, trouvailles insolites", "url": "https://ecobroc.ch/vide-grenier-ecobroc/", "confidence": "high"},
+   {"field": "size", "value": "About thirty exhibitors (aggregator listing for 31 Oct 2026: 32 expected).", "quote": "les stands d'une trentaine d'exposants", "url": "https://ecobroc.ch/vide-grenier-ecobroc/", "confidence": "high"},
+   {"field": "food", "value": "Food corner with coffee and croissants, sandwiches, wine and mineral water.", "quote": "café et croissants sandwichs vins et minérales", "url": "https://ecobroc.ch/vide-grenier-ecobroc/", "confidence": "high"},
+   {"field": "venue", "value": "On the grounds of EcoBroc, a second-hand shop (brocante) at Route du Léman 33, Saxon (listed as Meubles Decarte SA).", "quote": "Route du Léman 33 - 1907 Saxon", "url": "https://ecobroc.ch/event-directory/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Book in the shop, online or by e-mail, paid in advance (limited places). Prices: CHF 30 for 3 m without vehicle, 3 m or 4 m with vehicle CHF 30/40 (listed at CHF 10 per metre); sellers bring own tables and rails; set-up 07:00-08:30.", "quote": "Tarif exposant 10.-CHF/m", "url": "https://ecobroc.ch/events/vide-grenier/", "confidence": "high"},
+   {"field": "other", "value": "One Saturday a month from March to October, 09:00-17:00; remaining 2026 date 31 October. Free entry per aggregator.", "quote": "1 samedi par mois de mars à octobre de 9h à 17h", "url": "https://ecobroc.ch/events/vide-grenier/", "confidence": "high"},
+   {"field": "organiser", "value": "EcoBroc, a second-hand shop in Saxon that collects, resells and clears household goods; the shop is open Mon-Fri afternoons and Saturdays.", "quote": "Eco Broc, votre brocante en Valais", "url": "https://ecobroc.ch/event-directory/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Entry fee null in our data - aggregator says 'Entrée gratuite'. Train-station walking time in our description is not sourced."
+ },
+ {
+  "slug": "vide-grenier-lutry",
+  "sources": [
+   {"url": "https://www.sdlutry.ch/vide-grenier", "seen": "2026-10-07", "what": "organiser page"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "On the lakeside quays of Lutry; each family gets a 3 x 3 m pitch.", "quote": "quais de Lutry où un emplacement de 3 m x 3 m est attribué par famille", "url": "https://www.sdlutry.ch/vide-grenier", "confidence": "high"},
+   {"field": "seller_booking", "value": "Only Lutry residents may register; professional second-hand dealers are not allowed; registration opened 14 February at noon; stands ready by 09:00.", "quote": "Les brocanteurs professionnels ne sont pas autorisés.", "url": "https://www.sdlutry.ch/vide-grenier", "confidence": "high"},
+   {"field": "other", "value": "2026 dates: Saturday 2 May and Saturday 3 October; no postponement in bad weather.", "quote": "Samedi 2 mai 2026 et samedi 3 octobre 2026 (pas de report en cas de mauvais temps)", "url": "https://www.sdlutry.ch/vide-grenier", "confidence": "high"},
+   {"field": "distinctive", "value": "Organisers ask parents to accompany young children who sell.", "quote": "Nous recommandons vivement aux parents d’accompagner leurs jeunes enfants à cette journée.", "url": "https://www.sdlutry.ch/vide-grenier", "confidence": "medium"},
+   {"field": "organiser", "value": "Société de Développement de Lutry (SDL), founded in the early 20th century to promote Lutry's cultural, social and economic life; also runs the Saturday market, Christmas market and other events.", "quote": "La SDL, fondée au début du XXe siècle", "url": "https://www.sdlutry.ch/vide-grenier", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "venue 'Chemin de la Cantine', address 'Chemin de la Cantine, 1095 Lutry'", "source_says": "Held 'sur les quais de Lutry'; Chemin de la Cantine is not mentioned (a parking plan is an image I could not read).", "url": "https://www.sdlutry.ch/vide-grenier"}
+  ],
+  "thin": false,
+  "notes": "The page says 'Une fois par année' but lists two 2026 dates (May and October) - our 'twice a year' matches the dates. 'Pas de report' means no rescheduling; the page does not say whether it is cancelled or held in rain."
+ },
+ {
+  "slug": "vide-grenier-sallaz-lausanne",
+  "sources": [
+   {"url": "https://lescaledesvoisins.ch/", "seen": "2026-10-07", "what": "organiser home page"},
+   {"url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/vd-gr.13.09.2026.png", "seen": "2026-10-07", "what": "organiser flyer, 13 Sept 2026"},
+   {"url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/Annotation-2026-08-18-103205-1.png", "seen": "2026-10-07", "what": "City of Lausanne / organiser flyer, car-free day 2026"},
+   {"url": "https://lescaledesvoisins.ch/retrospectives/", "seen": "2026-10-07", "what": "organiser past-events page"}
+  ],
+  "facts": [
+   {"field": "distinctive", "value": "The September edition is part of Lausanne's car-free day (Journée sans voiture, Semaine de la mobilité) on the Place de la Sallaz, with free games and crafts workshops, face painting, a café-littéraire, music and snacks.", "quote": "La Ville de Lausanne et l’association l’Escale Des Voisins vous proposent une journée d’animations.", "url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/Annotation-2026-08-18-103205-1.png", "confidence": "high"},
+   {"field": "seller_booking", "value": "8 m2 square stand: adults CHF 20 members / 40 non-members; youth 12-17 CHF 10 / 20; children under 12 free (4 m2). Register by e-mail or phone; set-up 09:00-10:00.", "quote": "Enfant < 12 ans (4m²) : Gratuit", "url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/vd-gr.13.09.2026.png", "confidence": "high"},
+   {"field": "other", "value": "Cancelled if it rains.", "quote": "En cas de pluie le vide-greniers est annulé", "url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/vd-gr.13.09.2026.png", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Sunday 13 September 2026, 10:00-16:00, Place de la Sallaz.", "quote": "Dimanche 13 septembre 2026 10h - 16h.", "url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/vd-gr.13.09.2026.png", "confidence": "high"},
+   {"field": "food", "value": "Music and small food offer on car-free day.", "quote": "MUSIQUE ET PETITE RESTAURATION", "url": "https://lescaledesvoisins.ch/wp-content/uploads/2026/08/Annotation-2026-08-18-103205-1.png", "confidence": "high"},
+   {"field": "organiser", "value": "L'Escale Des Voisins, a non-political, secular, intergenerational and intercultural non-profit fostering links between neighbours in La Sallaz.", "quote": "association apolitique, laïque, intergénérationnelle et interculturelle à but non lucratif", "url": "https://lescaledesvoisins.ch/", "confidence": "high"},
+   {"field": "history", "value": "Past vide-greniers on the Place de la Sallaz include 8 Sept 2018, 13 Sept 2020, 12 June 2022 and the car-free day of 17 Sept 2022.", "quote": "Vide-greniers, 12 juin 2022. Place de la Sallaz.", "url": "https://lescaledesvoisins.ch/retrospectives/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our website_url is vide-greniers.org (an aggregator), not the organiser - lescaledesvoisins.ch is the organiser. No 2026 spring edition found; rhythm 'spring and September' is supported only by past years (June 2022). Rain policy can be set to 'cancelled'."
+ },
+ {
+  "slug": "vinyl-market-markthalle-basel",
+  "sources": [
+   {"url": "https://markthallebasel.ch/flohmarkt/", "seen": "2026-10-07", "what": "organiser flea-market page"},
+   {"url": "https://markthallebasel.ch/kalender/", "seen": "2026-10-07", "what": "organiser calendar"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "A record fair: vinyl of all genres and eras - hip-hop, funk, soul, jazz, rock, pop, electro - plus rarities.", "quote": "Von Hip-Hop, Funk und Soul über Jazz, Rock und Pop bis zu Electro", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "size", "value": "Up to 30 selected exhibitors (heading says 'rund 30').", "quote": "Bis zu 30 ausgewählte Aussteller:innen bringen Vinyl in die Markthalle.", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "venue", "value": "In the 'Wohnzimmer' room of the Markthalle Basel, Steinentorberg 20; indoor.", "quote": "Wohnzimmer", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "other", "value": "Next date: Saturday 6 February 2027, 12:00-21:00.", "quote": "Vinyl Markt Sa. 06.02.2027 12:00 — 21:00", "url": "https://markthallebasel.ch/kalender/", "confidence": "high"},
+   {"field": "organiser", "value": "Markthallen AG Basel, which also runs a hall flea market under the dome, a music-gear flea market, a night flea market and 'Nerd Yard' and 'Vinyl Sunday' formats.", "quote": "Ob Hallenflohmarkt, Nachtflohmarkt, Nerd Yard oder Vinyl Sunday", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "next_dates null", "source_says": "Vinyl Markt on Saturday 6 February 2027, 12:00-21:00.", "url": "https://markthallebasel.ch/kalender/"},
+   {"our_value": "stall_count 30", "source_says": "'Bis zu 30' (up to 30) in the text; 'rund 30' in the heading - a ceiling, not a fixed count.", "url": "https://markthallebasel.ch/flohmarkt/"}
+  ],
+  "thin": false,
+  "notes": "Entry fee not stated on the current page. Rhythm 'about three times a year' could not be verified - only one future date is listed."
+ },
+ {
+  "slug": "vrd-flohmarkt-riehen",
+  "sources": [
+   {"url": "https://www.riehenevents.ch/de/event/vrd-flohmarkt", "seen": "2026-10-07", "what": "municipal events calendar (Riehen Events)"},
+   {"url": "https://www.riehenerdorfmarkt.ch/flohmarkt", "seen": "2026-10-07", "what": "organiser page"},
+   {"url": "https://www.riehenerdorfmarkt.ch/%C3%BCber-uns", "seen": "2026-10-07", "what": "organiser about page"},
+   {"url": "http://files.web.host.ch/d4/73/d473088c-cd8f-4051-aab7-1e1f04f85617.pdf", "seen": "2026-10-07", "what": "organiser registration form and rules 2026 (PDF)"}
+  ],
+  "facts": [
+   {"field": "size", "value": "More than 20 exhibitors.", "quote": "Mehr als 20 Aussteller präsentieren im Webergässchen viele alte, antike, lustige, neue und spannende Schätze.", "url": "https://www.riehenevents.ch/de/event/vrd-flohmarkt", "confidence": "high"},
+   {"field": "goods", "value": "Market rules allow only used goods; banned include weapons, counterfeits, medicines, live animals, food and drink, and services.", "quote": "Am Flohmarkt dürfen ausschliesslich gebrauchte Waren angeboten werden.", "url": "http://files.web.host.ch/d4/73/d473088c-cd8f-4051-aab7-1e1f04f85617.pdf", "confidence": "high"},
+   {"field": "venue", "value": "On the Dorfplatz / Webergässchen in Riehen's village centre.", "quote": "Auf dem schönen Dorfplatz / Webergässchen findet an folgenden Daten der VRD Flohmarkt statt", "url": "https://www.riehenerdorfmarkt.ch/flohmarkt", "confidence": "high"},
+   {"field": "other", "value": "2026 dates: Saturday 13 June and Saturday 19 September, 09:00-16:00.", "quote": "Samstag, 13. Juni 2026 09 – 16 Uhr", "url": "http://files.web.host.ch/d4/73/d473088c-cd8f-4051-aab7-1e1f04f85617.pdf", "confidence": "high"},
+   {"field": "seller_booking", "value": "Written registration with the market manager; covered stall provided by VRD CHF 40, own stand/tent (max 4x4 m, limited) CHF 30; confirmation with invoice about 3 weeks before; set-up from 08:00.", "quote": "Marktstand mit Dach (von VRD gestellt) Kosten: Fr. 40.00", "url": "http://files.web.host.ch/d4/73/d473088c-cd8f-4051-aab7-1e1f04f85617.pdf", "confidence": "high"},
+   {"field": "organiser", "value": "VRD - Vereinigung Riehener Dorfgeschäfte, the village shopkeepers' association founded 1979 to enliven the village centre; it also runs the Riehener Dorfmarkt.", "quote": "Die Vereinigung Riehener Dorfgeschäfte (VRD) wurde 1979 gegründet.", "url": "https://www.riehenerdorfmarkt.ch/%C3%BCber-uns", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Riehen Events text says 'neue ... Schätze' but the organiser's rules say used goods only - prefer the rules. Our description's Schmiedgasse, half-timbered houses and 'one of the few real village centres' are not in any source."
+ }
+]

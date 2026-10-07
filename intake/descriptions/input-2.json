@@ -1,0 +1,804 @@
+[
+ {
+  "slug": "flohmarkt-uster-stadthausplatz",
+  "status": "active",
+  "website_url": "https://www.maerkte-uster.ch/maerkte/flohmarkt",
+  "source_url": "https://www.maerkte-uster.ch/maerkte/flohmarkt",
+  "organiser": "City of Uster",
+  "name": "Flohmarkt Uster (Stadthausplatz)",
+  "town": "Uster",
+  "venue": "Stadthausplatz",
+  "address_line": "Stadthausplatz, 8610 Uster",
+  "postal_code": "8610",
+  "rhythm": "First Saturday of the month, April to October",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Stadthausplatz Uster findet jeden ersten Samstag von April bis Oktober von 08:00 bis 16:00 Uhr statt. Als beliebter Nachbarschaftsflohmarkt am Stadthausplatz bietet er eine grosse Auswahl an Secondhand-Waren direkt von Privatverkäufern aus der Region.",
+  "next_dates": [
+   "2027-04-03 08:00:00-16:00:00",
+   "2027-05-01 08:00:00-16:00:00",
+   "2027-06-05 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmi-bullingerhof-zuerich",
+  "status": "active",
+  "website_url": "https://www.flohmi-bullingerhof.ch",
+  "source_url": "https://www.flohmi-bullingerhof.ch/",
+  "organiser": "Verein Lebendiger Bullingerhof",
+  "name": "Flohmi Bullingerhof",
+  "town": "Zürich",
+  "venue": "Agnesstrasse 36",
+  "address_line": "Agnesstrasse 36, 8004 Zürich",
+  "postal_code": "8004",
+  "rhythm": "Last Saturday of the month, March to October",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Ein echter Quartierflohmarkt im grünen Innenhof der Wohnsiedlung Bullingerhof im Kreis 4 — seit Jahrzehnten ein Treffpunkt der Nachbarschaft. Jeden letzten Samstag des Monats von März bis Oktober, von 8 bis 16 Uhr, bieten rund 30–50 Verkäuferinnen und Verkäufer Hausrat, Kleider, Bücher und Spielzeug an. Das Flohmicafé mit Kaffee und Kuchen macht den Besuch zum gemütlichen Ausflug. Eine der entspanntesten Flohmarktatmosphären der Stadt.",
+  "next_dates": [
+   "2026-10-31 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.8
+  }
+ },
+ {
+  "slug": "flohmi-muttenz",
+  "status": "active",
+  "website_url": "https://www.flohmi-muttenz.ch/",
+  "source_url": "https://www.flohmi-muttenz.ch/",
+  "organiser": "Sophie Baumann",
+  "name": "Flohmi Muttenz",
+  "town": "Muttenz",
+  "venue": "Muttenz",
+  "address_line": "Muttenz, 4132 Muttenz",
+  "postal_code": "4132",
+  "rhythm": "Once a year, one Sunday in September",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmi Muttenz ist kein klassischer Platzmarkt — er verteilt sich über die ganze Gemeinde. Vor Häusern, in Gärten, Einfahrten und auf privaten Grundstücken bieten Anwohnerinnen und Anwohner ihre Waren an. Das macht den Besuch zu einem Spaziergang durch Muttenz, bei dem sich die Route von Stand zu Stand ergibt. Das Angebot ist bewusst gemischt: Kleidung, Spielzeug, Haushaltswaren, Bücher, Dekoration und persönliche Fundstücke aus dem Alltag. Der nachbarschaftliche Charakter ist das Besondere — Begegnungen und Gespräche gehören hier genauso dazu wie die Sachen selbst.",
+  "next_dates": [
+   "2027-09-12 10:00:00-17:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmi-schmittiplatz-pratteln",
+  "status": "active",
+  "website_url": "https://schmittiflohmi.ch/",
+  "source_url": "https://www.pratteln.ch/vereinsliste/9331",
+  "organiser": "Verein Flohmarkt Schmittiplatz",
+  "name": "Flohmi Schmittiplatz Pratteln",
+  "town": "Pratteln",
+  "venue": "Schmittiplatz",
+  "address_line": "Hauptstrasse 23, 4133 Pratteln",
+  "postal_code": "4133",
+  "rhythm": "Seven times a year, first Saturday of the month (except July and August)",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmi Schmittiplatz ist ein klassischer Samstagsmarkt im Zentrum von Pratteln, direkt beim Schmittiplatz an der Hauptstrasse. Das Angebot ist bodenständig und direkt: Secondhand-Waren, Haushaltsgegenstände, Raritäten und Alltagsfundstücke von Privatverkäufern aus der Region. Der Markt ist überschaubar und lebt von seiner zentralen Lage — unkompliziert erreichbar, ohne Umwege, ideal für einen spontanen Samstagmorgen. Für alle, die einen lokalen Flohmarkt in der Region Basel suchen, ohne grossen Stadttrubel.",
+  "next_dates": [
+   "2026-11-14 08:00:00-15:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.49
+  }
+ },
+ {
+  "slug": "flohmi-spass-heimstrasse-bern",
+  "status": "active",
+  "website_url": "https://www.facebook.com/flohmi.spass/",
+  "source_url": "https://www.facebook.com/flohmi.spass/",
+  "organiser": "Quartierverein Heimstrasse",
+  "name": "Flohmi & Spass ar Heimstrass",
+  "town": "Bern",
+  "venue": "Heimstrasse",
+  "address_line": "Heimstrasse, Tramhaltestelle Statthalterstrasse, Bern",
+  "postal_code": "3018",
+  "rhythm": "Once a year, in April",
+  "setting": "outdoor",
+  "stall_count": 80,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Jährlicher Quartierflohmarkt an der Heimstrasse in Bern, direkt bei der Tramhaltestelle Statthalterstrasse. Über 80 Privatverkäufer bieten Secondhand-Waren aus dem Quartier an. Flohmarkt Bern mit Verpflegung vor Ort. Fällt bei Regen aus.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 0.68
+  }
+ },
+ {
+  "slug": "flosch-schwamendingen-zuerich",
+  "status": "active",
+  "website_url": "https://www.flosch.ch",
+  "source_url": "https://www.flosch.ch/",
+  "organiser": "FLOSCH Verein",
+  "name": "FLOSCH Schwamendingen Flohmarkt",
+  "town": "Zürich",
+  "venue": "Schwamendingerplatz 1",
+  "address_line": "Schwamendingerplatz 1, 8051 Zürich",
+  "postal_code": "8051",
+  "rhythm": "Last Saturday of the month, February to November",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Quartierflohmarkt von Schwamendingen, direkt auf dem belebten Schwamendingerplatz zwischen Coop und Migros — praktischer geht es kaum. Jeden letzten Samstag des Monats von Februar bis November, von 8 bis 17 Uhr. Das Angebot reicht von Alltagströdel bis zu versteckten Sammlerstücken, die Atmosphäre ist familiär und unkompliziert. Tram und Bus halten direkt am Platz.",
+  "next_dates": [
+   "2026-10-31 08:00:00-17:00:00",
+   "2026-11-28 08:00:00-17:00:00",
+   "2027-02-27 07:00:00-17:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.51
+  }
+ },
+ {
+  "slug": "folie-flea-market-lausanne",
+  "status": "active",
+  "website_url": "https://folievoltaire.ch",
+  "source_url": "https://folievoltaire.ch",
+  "organiser": "Folie Voltaire",
+  "name": "Les Puces de la Folie",
+  "town": "Lausanne",
+  "venue": "Esplanade de la Folie Voltaire",
+  "address_line": "Esplanade de la Folie Voltaire, Parc Mon Repos, Lausanne",
+  "postal_code": "1005",
+  "rhythm": "Once a year, in April.",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Folie Flea Market ist ein Brocante- und Vide-Grenier-Markt auf der Esplanade de la Folie Voltaire im Parc Mon-Repos in Lausanne. Secondhand-Kleidung, Bücher, Vinyl, Bilder und verschiedene Fundstücke stehen im Mittelpunkt. Die Öffnungszeiten variieren je nach Saison und Wetter.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 0.88
+  }
+ },
+ {
+  "slug": "gaenggali-markt-chur",
+  "status": "active",
+  "website_url": "https://www.chur.ch/brauchtum/62",
+  "source_url": "https://flohmarkt-chur.ch/",
+  "organiser": "Stadt Chur",
+  "name": "Gänggali-Markt",
+  "town": "Chur",
+  "venue": "Martinsplatz / Arcas",
+  "address_line": "Martinsplatz / Arcas, 7000 Chur",
+  "postal_code": "7000",
+  "rhythm": "Every first Saturday, April to December",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Gänggali-Markt belebt von April bis Dezember jeden ersten Samstag den Martinsplatz und das Arcas in der Churer Altstadt. Zwischen Haushaltswaren, Kuriositaeten, Vintage-Funden und gebrauchten Schätzen entsteht früh am Morgen eine klassische Flohmarktstimmung unter freiem Himmel. Die Stadt Chur beschreibt ihn als traditionellen Flohmarkt im Herzen der Altstadt.",
+  "next_dates": [
+   "2026-11-07 07:00:00-14:00:00",
+   "2026-12-05 07:00:00-14:00:00",
+   "2027-04-03 07:00:00-14:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.89
+  }
+ },
+ {
+  "slug": "hallenflohmarkt-hoelstein",
+  "status": "active",
+  "website_url": "https://www.flohmarkt-hoelstein.ch",
+  "source_url": "https://flohmarkt-hoelstein.ch/",
+  "organiser": "Hallenflohmarkt Hölstein",
+  "name": "Hallenflohmarkt Hölstein",
+  "town": "Hölstein",
+  "venue": "MZH Rübmatt",
+  "address_line": "MZH Rübmatt, Gassenbachweg 15, 4434 Hölstein",
+  "postal_code": "4434",
+  "rhythm": "Twice a year, usually April and October",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Hallenflohmarkt Hölstein ist ein Indoor-Flohmarkt im Dorf Hölstein, rund 20 Kilometer südlich von Basel im Baselbiet. Zweimal pro Jahr findet er in der Mehrzweckhalle MZH Rübmatt statt und kombiniert Tische in der Halle mit einigen Aussenplätzen, einem Verpflegungsstand sowie einem Kuchenbuffet. Dadurch wirkt er weniger wie ein klassischer Markt und mehr wie ein entspannter Quartieranlass. Für Flohmarktfans aus Basel lohnt sich der Ausflug aufs Land.",
+  "next_dates": [
+   "2026-10-11 09:00:00-16:00:00",
+   "2027-04-04 09:00:00-16:00:00",
+   "2027-04-11 09:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "hallenflohmarkt-markthalle-basel",
+  "status": "active",
+  "website_url": "https://markthallebasel.ch/flohmarkt",
+  "source_url": "https://markthallebasel.ch/flohmarkt/",
+  "organiser": "Markthalle Basel",
+  "name": "Hallenflohmarkt Markthalle Basel",
+  "town": "Basel",
+  "venue": "Markthalle Basel",
+  "address_line": "Steinentorberg 20, 4051 Basel",
+  "postal_code": "4051",
+  "rhythm": "Twice a month (Saturday and Sunday), dates vary",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "In der historischen Markthalle Basel, einem Jugendstilbau, findet zweimal monatlich ein Hallenflohmarkt statt. Unter einem Dach gibt es Vintage-Möbel, Kleider, Bücher und allerlei Kuriositäten. Der Indoor-Markt ist wetterunabhängig und familienfreundlich.",
+  "next_dates": [
+   "2026-11-07 11:00:00-16:00:00",
+   "2026-11-08 11:00:00-16:00:00",
+   "2026-12-05 11:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.46
+  }
+ },
+ {
+  "slug": "hyper-bazar-la-chaux-de-fonds",
+  "status": "active",
+  "website_url": "https://www.j3l.ch/fr/P223324/a-faire/manifestations/excursion-visite-guidee-animation/hyper-bazar",
+  "source_url": "https://www.j3l.ch/fr/P223324/a-faire/manifestations/excursion-visite-guidee-animation/hyper-bazar",
+  "organiser": "Hyper Bazar",
+  "name": "Hyper Bazar",
+  "town": "La Chaux-de-Fonds",
+  "venue": "Place de la Carmagnole",
+  "address_line": "Place de la Carmagnole",
+  "postal_code": "2300",
+  "rhythm": "Last Saturday of the month, April to September",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Hyper Bazar ist der Flohmarkt von La Chaux-de-Fonds: jeden letzten Samstag im Monat von April bis September, 10 bis 16 Uhr auf der Place de la Carmagnole mitten in der Stadt. Rund 90 Stände, Privatverkäuferinnen und Privatverkäufer, Kleider, Vinyl, Hausrat. Der Platz liegt fünf Minuten vom Bahnhof.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 0.8,
+   "de": 0.64
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-gz-bachwiesen",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/",
+  "source_url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/",
+  "organiser": "GZ Bachwiesen",
+  "name": "Flohmarkt für Kindersachen GZ Bachwiesen",
+  "town": "Zürich",
+  "venue": "GZ Bachwiesen",
+  "address_line": "Bachwiesenstrasse 40",
+  "postal_code": "8047",
+  "rhythm": "Occasionally, outdoors only",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": "cancelled",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Das GZ Bachwiesen liegt inmitten des Bachwiesenparks in Altstetten — einem der grünsten GZ-Geländes der Stadt. Der Kinderflohmarkt findet draussen statt und profitiert von dieser Umgebung: Rasen, Bäume, viel Platz, kein Gedränge. Verkauft werden ausschliesslich Kindersachen bis 12 Jahre — Spielsachen, Kleider, Bücher, Kinderartikel. Die Parkanlage macht diesen Markt zu einem der angenehmsten GZ-Flohmärkte der Stadt. Nur bei trockenem Wetter.",
+  "next_dates": [
+   "2026-10-18 10:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.39
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-gz-heuried",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-heuried/angebote/flohmarkt-fuer-kindersachen/",
+  "source_url": "https://gz-zh.ch/gz-heuried/angebote/flohmarkt-fuer-kindersachen/",
+  "organiser": "GZ Heuried",
+  "name": "Flohmarkt für Kindersachen GZ Heuried",
+  "town": "Zürich",
+  "venue": "GZ Heuried Atrium",
+  "address_line": "Döltschiweg 130",
+  "postal_code": "8055",
+  "rhythm": "Twice a year, in spring and autumn",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Im Atrium des GZ Heuried in Wiedikon findet zweimal jährlich ein Kinderflohmarkt statt — im Frühling und im Herbst. Wiedikon ist ein aktives, familienreiches Quartier in Zürichs Südwesten. Das Angebot ist auf Kindersachen beschränkt: Spielsachen, Kleider, Bücher, Kinderartikel. Der Markt findet im Atrium statt und ist damit wetterunabhängig — ein Vorteil gegenüber den meisten Outdoor-GZ-Märkten.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-gz-hottingen",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-hottingen/",
+  "source_url": "https://gz-zh.ch/gz-hottingen/angebote/kinderflohmarkt/",
+  "organiser": "GZ Hottingen",
+  "name": "Kinder-Flohmarkt GZ Hottingen",
+  "town": "Zürich",
+  "venue": "GZ Hottingen — Platz vor dem GZ",
+  "address_line": "Gemeindestrasse 54",
+  "postal_code": "8032",
+  "rhythm": "Occasionally, outdoors only; cancelled in rain",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Auf dem Platz vor dem GZ Hottingen in Kreis 7 können Kinder in Begleitung Erwachsener ihre Sachen verkaufen. Hottingen ist eines der ruhigsten und gepflegtesten Wohnquartiere Zürichs — Altbauten, stille Strassen, Zürichberg-Nähe. Der Flohmarkt hat diesen Charakter: geordnet, familiär, ohne Trubel. Für Familien aus Kreis 7 eine naheliegende Wahl — für andere ein entspannter Ausflug in ein ruhiges Zürcher Wohnquartier. Fällt bei Regen aus.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-uster",
+  "status": "active",
+  "website_url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt",
+  "source_url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt",
+  "organiser": "Stadt Uster",
+  "name": "Kinderflohmarkt Uster",
+  "town": "Uster",
+  "venue": "Stadthausplatz",
+  "address_line": "Stadthausplatz, 8610 Uster",
+  "postal_code": "8610",
+  "rhythm": "Once a year",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Am letzten Samstag vor den Sommerferien gehört der Stadthausplatz in Uster den Kindern. Spielsachen, Bücher, Spiele und Kinderartikel aus Zürcher Oberländer Haushalten wechseln den Besitzer. Der Stadthausplatz ist offen und gut zugänglich, der Uster Bahnhof liegt zu Fuss wenige Minuten entfernt. Ein lokales Familienevent — für Familien im Zürcher Oberland ein schöner Saisonabschluss vor den Ferien.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "les-puces-du-cpo-lausanne",
+  "status": "active",
+  "website_url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/",
+  "source_url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/",
+  "organiser": "CPO - Centre Pluriculturel et social d Ouchy",
+  "name": "Les Puces du CPO",
+  "town": "Lausanne",
+  "venue": "Chemin de Beau-Rivage 2",
+  "address_line": "Chemin de Beau-Rivage 2, 1006 Lausanne",
+  "postal_code": "1006",
+  "rhythm": "Every Thursday, all year",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Les Puces du CPO im Centre Pluriculturel et social d Ouchy bieten jeden Donnerstag von 10:00 bis 18:00 Uhr drinnen Flohmarkt-Feeling in Lausanne. Bücher, Geschirr, Kleider, Spielzeug, kleine Möbel und mehr - alles zu kleinen Preisen in entspannter Atmosphäre.",
+  "next_dates": [
+   "2026-10-08 10:00:00-18:00:00",
+   "2026-10-15 10:00:00-18:00:00",
+   "2026-10-22 10:00:00-18:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "les-puces-du-loup-lausanne",
+  "status": "active",
+  "website_url": "https://www.instagram.com/lespucesduloup/",
+  "source_url": "https://www.instagram.com/lespucesduloup/",
+  "organiser": "Les Puces du Loup",
+  "name": "Les Puces du Loup",
+  "town": "Lausanne",
+  "venue": "Écoquartier des Plaines-du-Loup",
+  "address_line": "Rue Germaine-Ernst 3",
+  "postal_code": "1018",
+  "rhythm": "Once a year, in June. First held in 2026.",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Les Puces du Loup ist der brandneue Flohmarkt im Ökoviertel Plaines-du-Loup in Lausanne. Bei dieser ersten Ausgabe bevölkern rund fünfzig Stände der Anwohnerinnen und Anwohner des Plateau de la Blécherette den Schulhof der École des Plaines-du-Loup. Kleider, Gegenstände, Spielzeug, Bücher — alles in einer freundlichen Quartiersatmosphäre. Die umliegenden Restaurants sind geöffnet, der Eintritt ist frei.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 0.7
+  }
+ },
+ {
+  "slug": "liesberger-flohmarkt",
+  "status": "active",
+  "website_url": "https://liesberger-flohmarkt.ch/",
+  "source_url": "https://liesberger-flohmarkt.ch/",
+  "organiser": "Marktorganisation Kohler / Balmer",
+  "name": "Liesberger Flohmarkt",
+  "town": "Liesberg",
+  "venue": "Mehrzweckhalle Seemättli",
+  "address_line": "Dorfstrasse 10, 4254 Liesberg",
+  "postal_code": "4254",
+  "rhythm": "Four times a year: March, May, September and November",
+  "setting": "both",
+  "stall_count": 100,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Der Liesberger Flohmarkt findet in der Mehrzweckhalle Seemättli in Liesberg statt — einem kleinen Dorf im Laufental, südlich von Basel. Der Hallenstandort macht den Markt wetterunabhängig und eignet sich gut für einen Sonntagsausflug ins Baselbieter Hinterland. Das Angebot ist typisch für einen ländlichen Regionalmarkt: Antiquitäten, Haushaltsgegenstände, Secondhand-Waren und Kurioses aus der näheren Umgebung. Der Markt wirkt persönlicher und ruhiger als die grossen Stadtmärkte — Stände von Privatverkäufern aus dem Dorf und der Region überwiegen.",
+  "next_dates": [
+   "2026-11-15 09:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "maedelsflohmarkt-tanzwerk-101-zuerich",
+  "status": "active",
+  "website_url": "https://www.maedelsflohmarkt.ch/",
+  "source_url": "https://www.maedelsflohmarkt.ch/",
+  "organiser": "Maedelsflohmarkt Schweiz",
+  "name": "Mädelsflohmarkt Tanzwerk 101",
+  "town": "Zürich",
+  "venue": "Pfingstweidstrasse 101",
+  "address_line": "Pfingstweidstrasse 101, 8005 Zürich",
+  "postal_code": "8005",
+  "rhythm": "Selected Sundays in 2026 at Tanzwerk 101",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Zürichs beliebter Frauen-Flohmarkt findet mehrmals jährlich im Tanzwerk 101 in Zürich-West statt. Secondhand-Mode, Accessoires, Schmuck und Dekoartikel werden ausschliesslich von Frauen für Frauen angeboten. Der Eintritt ist frei, Umkleidekabinen sind vorhanden und Hunde sind im gesamten Migros-Komplex nicht erlaubt.",
+  "next_dates": [
+   "2026-10-25 11:00:00-16:00:00",
+   "2026-11-22 11:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.86
+  }
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-cathedrale",
+  "status": "active",
+  "website_url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+  "source_url": "https://www.myswitzerland.com/fr-ch/decouvrir/villes-culture/listicles/hippe-stadtflohmaerkte/#:~:text=Marché aux puces à Fribourg,des bibelots et autres objets.",
+  "organiser": "Marché aux puces de Fribourg",
+  "name": "Marché aux puces de Fribourg (Vieille Ville)",
+  "town": "Freiburg",
+  "venue": "Autour de la Cathedrale Saint-Nicolas",
+  "address_line": "Autour de la Cathedrale Saint-Nicolas, 1700 Fribourg",
+  "postal_code": "1700",
+  "rhythm": "Every first Saturday, March to November",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Marché aux puces de Fribourg belebt von März bis November zweimal im Monat die Altstadt. Besucher finden Brocante, Vintage, Hausrat und kleine Raritäten von 30 bis 50 Ausstellern. Diese Ausgabe findet am ersten Samstag des Monats rund um die Kathedrale statt.",
+  "next_dates": [
+   "2026-11-07 08:00:00-16:30:00",
+   "2027-03-06 08:00:00-16:30:00",
+   "2027-04-03 08:00:00-16:30:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "marche-aux-puces-glovelier",
+  "status": "active",
+  "website_url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html",
+  "source_url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html",
+  "organiser": null,
+  "name": "Marché aux puces et brocante de Glovelier",
+  "town": "Glovelier",
+  "venue": "Place du Café de la Poste et halle Post Aréa",
+  "address_line": "Place du Café de la Poste",
+  "postal_code": "2855",
+  "rhythm": "Twice a year, a Sunday in April and one in October",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "In Glovelier im Jura gibt es zweimal im Jahr einen Marché aux puces mit Brocante: an einem Sonntag im April und einem im Oktober, jeweils von 9 bis 16 Uhr auf der Place du Café de la Poste und in der Halle Post Aréa im Dorfzentrum, also teilweise gedeckt. Dazu gehören ein Kinderflohmarkt und ein Verpflegungsstand. Glovelier liegt an der Bahnlinie Delémont–Porrentruy, der Bahnhof ist fünf Gehminuten entfernt.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 0.88,
+   "fr": 0.66
+  }
+ },
+ {
+  "slug": "marche-aux-puces-jardin-anglais-neuchatel",
+  "status": "active",
+  "website_url": "https://www.j3l.ch/en/P178647/things-to-do/events/tradition-market-craft/flea-market",
+  "source_url": "https://www.j3l.ch/en/P178647/things-to-do/events/tradition-market-craft/flea-market",
+  "organiser": "Marché aux puces du Jardin anglais",
+  "name": "Marché aux puces du Jardin anglais",
+  "town": "Neuchâtel",
+  "venue": "Jardin anglais",
+  "address_line": "Avenue du Premier-Mars",
+  "postal_code": "2000",
+  "rhythm": "Once or twice a month, on Saturdays, March to October",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Der Marché aux puces im Jardin anglais liegt direkt am See in Neuenburg, an der Avenue du Premier-Mars. Von März bis Oktober findet er ein- bis zweimal im Monat statt, jeweils samstags von 10 bis 17 Uhr: alte Bücher, Deko, Kurioses und Antiquitäten in einer kleinen, freundlichen Runde. Vom Bahnhof sind es zehn Minuten bergab, das Parkhaus Port liegt nebenan.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 0.86,
+   "de": 0.67
+  }
+ },
+ {
+  "slug": "marche-aux-puces-vevey",
+  "status": "active",
+  "website_url": "https://www.vevey.ch/vivre-vevey/vie-de-quartier/marches",
+  "source_url": "https://www.vevey.ch/vivre-vevey/vie-de-quartier/marches",
+  "organiser": "APERO – Association pour les Environs de la place Robin",
+  "name": "Marché aux puces de Vevey",
+  "town": "Vevey",
+  "venue": "Place Robin",
+  "address_line": "Place Robin, 1800 Vevey",
+  "postal_code": "1800",
+  "rhythm": "Every first Saturday of the month",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Marche aux puces de Vevey findet jeden ersten Samstag des Monats auf der Place Robin statt. Der Quartierflohmarkt bringt gebrauchte Schätze, Alltagsgegenstaende, kleine Vintage-Funde und nachbarschaftliche Stimmung mitten nach Vevey. Organisiert wird er von der Association pour les Environs de la place Robin, kurz APERO.",
+  "next_dates": [
+   "2026-11-07 07:30:00-16:30:00",
+   "2026-12-05 07:30:00-16:30:00",
+   "2027-01-02 07:30:00-16:30:00"
+  ],
+  "copy_share": {
+   "de": 0.88,
+   "fr": 0.57
+  }
+ },
+ {
+  "slug": "marche-calabash-lausanne",
+  "status": "active",
+  "website_url": "https://www.associationcalabash.ch/",
+  "source_url": "https://www.associationcalabash.ch/",
+  "organiser": "Association Calabash",
+  "name": "Marché Calabash",
+  "town": "Lausanne",
+  "venue": "Place de la Riponne",
+  "address_line": "Place de la Riponne, 1005 Lausanne",
+  "postal_code": "1005",
+  "rhythm": "Every 1st Sunday, February to December",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Marche Calabash auf der Place de la Riponne ist Lausannes klassischster Flohmarkt. Jeden ersten Sonntag im Monat verwandelt die Association Calabash den zentralen Platz in einen belebten Brocante-Markt von 08:00 bis 16:00 Uhr.",
+  "next_dates": [
+   "2026-11-01 08:00:00-16:00:00",
+   "2026-12-06 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.49
+  }
+ },
+ {
+  "slug": "mercantico-bellinzona",
+  "status": "active",
+  "website_url": "https://ondemedia.com/",
+  "source_url": "https://www.incitta.ch/eventi/mercantico-3/",
+  "organiser": "Ondemedia",
+  "name": "Mercantico Bellinzona",
+  "town": "Bellinzona",
+  "venue": "Piazza Giuseppe Buffi",
+  "address_line": "Piazza Giuseppe Buffi",
+  "postal_code": "6500",
+  "rhythm": "Several times a year, on a Saturday or Sunday",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Mercantico ist der Brocante-Markt von Bellinzona auf der Piazza Giuseppe Buffi in der Altstadt: Antiquitäten, Sammlerstücke, Vintage, Bücher und Comics an rund 30 Ständen, von 8 bis 18 Uhr und bei jedem Wetter. Mehrmals im Jahr, im Dezember mit einer Weihnachtsausgabe im Parco della Foca. Die Piazza liegt fünf Minuten vom Bahnhof.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 0.86,
+   "de": 0.69
+  }
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "status": "active",
+  "website_url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+  "source_url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+  "organiser": "Mercato delle Pulci Massagno, mit dem Comune di Massagno",
+  "name": "Mercato delle Pulci di Massagno",
+  "town": "Massagno",
+  "venue": "Piazzale del Municipio",
+  "address_line": "Via Giuseppe Motta 53",
+  "postal_code": "6908",
+  "rhythm": "Once a year, a Sunday afternoon in autumn",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Der Mercato delle Pulci von Massagno ist ein Nachmittags-Flohmarkt vor dem Gemeindehaus an der Via Giuseppe Motta 53, gleich oberhalb von Lugano: Secondhand, Vintage, lokale Kreationen, dazu ein DJ mit alten Platten, Kinderprogramm und Essen und Trinken. Mit dem Bus 4 ab Lugano bis Massagno, Municipio.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 0.87,
+   "de": 0.37
+  }
+ },
+ {
+  "slug": "musiker-flohmarkt-zuerich-kronensaal",
+  "status": "active",
+  "website_url": "https://eventfrog.ch",
+  "source_url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-7379073192457938526.html",
+  "organiser": "Kronensaal",
+  "name": "Musiker Flohmarkt Zürich",
+  "town": "Zürich",
+  "venue": "Kronensaal",
+  "address_line": "Kronensaal, Wehntalerstrasse 551, 8046 Zürich",
+  "postal_code": "8046",
+  "rhythm": "Several times a year, no fixed pattern",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Spezialisierter Flohmarkt für Musikerinnen und Musiker im Kronensaal in Zürich-Affoltern. Angeboten werden Instrumente, Verstaerker, Effektgeraete, Noten und weiteres Musikzubehoer aus zweiter Hand. Eine Pflichtveranstaltung für alle, die günstig hochwertige Musikausrüstung suchen oder verkaufen möchten.",
+  "next_dates": [
+   "2026-11-01 10:00:00-17:00:00",
+   "2027-04-11 10:00:00-16:00:00",
+   "2027-11-07 10:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.68
+  }
+ },
+ {
+  "slug": "musikflohmarkt-markthalle-basel",
+  "status": "active",
+  "website_url": "https://markthallebasel.ch/flohmarkt/",
+  "source_url": "https://markthallebasel.ch/flohmarkt/",
+  "organiser": "Markthalle Basel",
+  "name": "Musikflohmarkt Markthalle Basel",
+  "town": "Basel",
+  "venue": "Wohnzimmer, Markthalle Basel",
+  "address_line": "Steinentorberg 20, 4051 Basel",
+  "postal_code": "4051",
+  "rhythm": "Once a year, in December",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Musikflohmarkt in der Markthalle Basel findet einmal im Jahr statt und bringt Musikerinnen und Musiker, Sammler und Neugierige zusammen. Angeboten werden Instrumente, Effektgeräte, Kabel, Noten, Cases und elektronische Komponenten – zum Stöbern, Ausprobieren und Entdecken.",
+  "next_dates": [
+   "2026-12-05 11:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "nerdyartist-markthalle-basel",
+  "status": "active",
+  "website_url": "https://markthallebasel.ch/flohmarkt/",
+  "source_url": "https://www.basellife.com/event/nerdyartist/",
+  "organiser": "Markthalle Basel",
+  "name": "NerdYartist",
+  "town": "Basel",
+  "venue": "Wohnzimmer, Markthalle Basel",
+  "address_line": "Steinentorberg 20, 4051 Basel",
+  "postal_code": "4051",
+  "rhythm": "A few dates a year, held in the Markthalle.",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Im Wohnzimmer der Markthalle Basel verwandelt das NerdYard-Team die Halle in einen lebendigen Künstlermarkt. Handgemachte Anhänger, Prints und Unikate von lokalen Kreativen – NerdYartist ist der richtige Ort für alle, die Kunst zum Anfassen suchen.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 0.32
+  }
+ },
+ {
+  "slug": "puces-de-nyon",
+  "status": "active",
+  "website_url": "https://www.quartierderive.ch/",
+  "source_url": "https://www.lacote-tourisme.ch/fr/P8560/les-puces-de-nyon-quartier-de-rive-nyon",
+  "organiser": "Association pour l'animation du Quartier de Rive",
+  "name": "Puces de Nyon",
+  "town": "Nyon",
+  "venue": "Quais de Nyon",
+  "address_line": "Quais de Nyon, Quartier de Rive, 1260 Nyon",
+  "postal_code": "1260",
+  "rhythm": "Every last Sunday of the month (except August)",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Am letzten Sonntag des Monats füllen sich die Quais im Quartier de Rive in Nyon mit Ständen für Vintage, Hausrat, Bücher und Brocante, direkt am Genfersee. Im August pausiert der Markt.",
+  "next_dates": [
+   "2026-10-25 08:00:00-18:00:00",
+   "2026-11-29 08:00:00-18:00:00",
+   "2026-12-13 08:00:00-18:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.52
+  }
+ },
+ {
+  "slug": "quartierflohmarkt-bachletten",
+  "status": "active",
+  "website_url": "https://www.quartierflohmibasel.ch/de/bachletten/info/",
+  "source_url": "https://www.quartierflohmibasel.ch/de/bachletten/info/",
+  "organiser": "Verein Stadtprojekt Basel",
+  "name": "Quartierflohmarkt Bachletten",
+  "town": "Basel",
+  "venue": "Benkenpark",
+  "address_line": "Benkenpark, Benkenstrasse, 4054 Basel",
+  "postal_code": "4054",
+  "rhythm": "Once a year, between April and October.",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Quartierflohmarkt Bachletten erstreckt sich einmal pro Jahr über das gesamte Bachletten-Quartier in Basel. Private Anwohnende betreiben Stände in Gärten, Innenhöfen und auf Einfahrten im ganzen Quartier, markiert mit Ballons zur Orientierung für Besuchende. Parallel zum Hauptanlass findet ein Kinderflohmarkt statt, ergänzt durch Verpflegungsstände und Aktivitäten für Familien. Mit Quartierplan und Ballon-Markierungen lässt sich eine ruhigere, wohnliche Seite von Basel entdecken. Einer von 17 Quartierflohmärkten in Basel, organisiert vom Verein Stadtprojekt.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ }
+]

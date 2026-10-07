@@ -1,0 +1,801 @@
+[
+ {
+  "slug": "boutique-kleider-flohmarkt-wbz-reinach",
+  "status": "active",
+  "website_url": "https://wbz.ch",
+  "source_url": "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+  "organiser": "Wohn- und Bürozentrum für Körperbehinderte (WBZ)",
+  "name": "Boutique-Kleider-Flohmarkt WBZ Reinach",
+  "town": "Reinach",
+  "venue": "WBZ Reinach",
+  "address_line": "Aumattstrasse 71, 4153 Reinach",
+  "postal_code": "4153",
+  "rhythm": "Several times a year, dates on the website",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Boutique-Kleider-Flohmarkt im WBZ Reinach ist das kleinere, modezentrierte Format des bekannten WBZ-Flohmarkts — und findet mehrmals jährlich statt. Im Fokus stehen gut erhaltene Secondhand-Kleider, Taschen, Schuhe und Accessoires. Die Atmosphäre ist indoor, übersichtlich und angenehm ruhig. Wie beim grossen WBZ-Flohmarkt kommt der Erlös Menschen mit Behinderung zugute. Besonders geeignet für alle, die gezielt nach tragbaren Mode-Fundstücken suchen, ohne durch einen riesigen Allgemeinmarkt zu laufen.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "brocante-17-terra-geneve",
+  "status": "active",
+  "website_url": "https://www.17-terra.com",
+  "source_url": "https://www.hinto.ch/fr/sites/brocante-mensuelle-au-cour-de-geneve-galerie-17-terra-21272-21.html",
+  "organiser": "Brocante & Co / Galerie 17 Terra",
+  "name": "Brocante mensuelle Galerie 17 Terra",
+  "town": "Genf",
+  "venue": "Rue de la Terrassiere 17",
+  "address_line": "Rue de la Terrassière 17, 1207 Genève",
+  "postal_code": "1207",
+  "rhythm": "Roughly once a month, a week at a time",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Die monatliche Brocante in der Galerie 17 Terra im Quartier Eaux-Vives ist ein gehobener Indoor-Flohmarkt. Jeden Monat praesentieren professionelle Händler kuratierte Vintage-Möbel, Designobjekte, Schmuck und Antiquitäten in einer komfortablen Galerieumgebung.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 0.83,
+   "fr": 0.75
+  }
+ },
+ {
+  "slug": "brocante-de-carouge-geneve",
+  "status": "active",
+  "website_url": "https://www.carouge.ch",
+  "source_url": "https://www.carouge.ch/vie-pratique/culture-fetes-et-loisirs/fetes-et-manifestations/brocante",
+  "organiser": "Association des Commercants et Artisans de Carouge",
+  "name": "Brocante de Carouge",
+  "town": "Carouge",
+  "venue": "Rue Saint-Joseph",
+  "address_line": "Rue Saint-Joseph, 1227 Carouge",
+  "postal_code": "1227",
+  "rhythm": "Every 1st Sunday, March to December",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Die Brocante de Carouge findet jeden ersten Sonntag von März bis Dezember im Altstadtviertel von Carouge statt. Rund 50 Händler und Sammler bieten auf der Rue Saint-Joseph Antiquitäten, Vintage-Möbel, Bücher, Porzellan und mehr an.",
+  "next_dates": [
+   "2026-11-01 09:00:00-17:00:00",
+   "2026-12-06 09:00:00-17:00:00",
+   "2027-03-07 09:00:00-17:00:00"
+  ],
+  "copy_share": {
+   "de": 0.88,
+   "fr": 0.87
+  }
+ },
+ {
+  "slug": "brocante-de-la-gruyere-bulle",
+  "status": "active",
+  "website_url": "https://www.brocantedelagruyere.ch/",
+  "source_url": "https://www.brocantedelagruyere.ch/",
+  "organiser": "Brocante de la Gruyère",
+  "name": "Brocante de la Gruyère",
+  "town": "Bulle",
+  "venue": "Espace Gruyère",
+  "address_line": "Rue de Vevey 136",
+  "postal_code": "1630",
+  "rhythm": "Once a year, a weekend at the end of January",
+  "setting": "indoor",
+  "stall_count": 250,
+  "rain_policy": "runs",
+  "entry_fee": "10.00",
+  "getting_there": null,
+  "description_de": "Die Brocante de la Gruyère ist eine der grossen Antik- und Trödelmessen der Romandie: über 250 Händlerinnen und Händler auf 8000 Quadratmetern in den Hallen des Espace Gruyère in Bulle, jedes Jahr an einem Wochenende Ende Januar. Freitag und Samstag 10 bis 19 Uhr, Sonntag 10 bis 17 Uhr. Eintritt 10 Franken, AHV/IV 8 Franken, Kinder gratis; Hunde sind nicht zugelassen. Vom Bahnhof Bulle sind es 15 Minuten zu Fuss, Parkplätze beim Espace Gruyère.",
+  "next_dates": [
+   "2027-01-22 10:00:00-19:00:00",
+   "2027-01-23 10:00:00-19:00:00",
+   "2027-01-24 10:00:00-17:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.96
+  }
+ },
+ {
+  "slug": "brocante-de-rive-nyon",
+  "status": "active",
+  "website_url": "https://www.quartierderive.ch/",
+  "source_url": "https://swissbrocante.org/brocante-rive-nyon",
+  "organiser": "Association pour l'animation du Quartier de Rive / Swiss Brocante",
+  "name": "Brocante de Rive",
+  "town": "Nyon",
+  "venue": "Place de la Collegiale",
+  "address_line": "Place de la Collegiale, Quais de Nyon, 1260 Nyon",
+  "postal_code": "1260",
+  "rhythm": "Once a year, on the last weekend of August",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Die Brocante de Rive ist Nyons grosser Antik- und Brocante-Anlass am Seeufer. Am letzten Augustwochenende praesentieren professionelle Händler im Quartier de Rive / Rue de Rive Möbel, Dekor, Sammlerstücke und Vintage-Funde. Der Eintritt ist frei.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 1,
+   "de": 0.84
+  }
+ },
+ {
+  "slug": "brocante-lutry",
+  "status": "active",
+  "website_url": "https://www.sdlutry.ch",
+  "source_url": "https://swissbrocante.org/brocante-lutry",
+  "organiser": "Societe de Developpement Lutry",
+  "name": "Brocante de Lutry",
+  "town": "Lutry",
+  "venue": "Quai Gustave Doret",
+  "address_line": "Quai Gustave Doret, 1095 Lutry",
+  "postal_code": "1095",
+  "rhythm": "Once a year, in June.",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Die Brocante de Lutry ist eine grosse jährliche Brocante auf den Kais des alten Hafens von Lutry am Genfersee. Rund 70 Ausstellende verteilen sich über mehrere Tage, zwischen dem See und dem UNESCO-geschützten Weinbaugebiet Lavaux.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 0.87,
+   "de": 0.66
+  }
+ },
+ {
+  "slug": "brocante-quai-de-nogent-yverdon",
+  "status": "active",
+  "website_url": "https://yverdonlesbainsregion.ch/evenement/brocante-du-quai-de-nogent/",
+  "source_url": "https://www.broc-antic.com/manifestations/brocante-du-quai-de-nogent-yverdon.html",
+  "organiser": "Association la Brocante des Amis",
+  "name": "Brocante du Quai de Nogent",
+  "town": "Yverdon-les-Bains",
+  "venue": "Quai de Nogent",
+  "address_line": "Quai de Nogent",
+  "postal_code": "1400",
+  "rhythm": "Twice a year, a weekend in April and one in October",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Die Brocante du Quai de Nogent findet zweimal im Jahr am Ufer der Thièle in Yverdon-les-Bains statt, an einem Wochenende im April und einem im Oktober, jeweils Freitag bis Sonntag. Üblicherweise Freitag 10 bis 18, Samstag 9 bis 18 und Sonntag 9 bis 17 Uhr. Vom Bahnhof Yverdon sind es fünf Minuten zu Fuss.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 0.85,
+   "fr": 0.48
+  }
+ },
+ {
+  "slug": "brocantissima-morges",
+  "status": "active",
+  "website_url": "https://swissbrocante.org/morges",
+  "source_url": "https://swissbrocante.org/morges",
+  "organiser": "Association pour l'animation du Quartier de Rive / Swiss Brocante",
+  "name": "Brocantissima Morges",
+  "town": "Morges",
+  "venue": "Cube Beausobre",
+  "address_line": "Avenue de Vertou 2",
+  "postal_code": "1110",
+  "rhythm": "Once a year, a weekend at the start of December",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Brocantissima ist die Winter-Brocante von SwissBrocante im Cube Beausobre in Morges, drinnen und gleich beim Theater: Antiquitäten, Vintage und Trödel an einem Wochenende Anfang Dezember. Vom Bahnhof Morges sind es 15 Minuten zu Fuss, Parkhaus Beausobre nebenan.",
+  "next_dates": [
+   "2026-12-05 -",
+   "2026-12-06 -"
+  ],
+  "copy_share": {
+   "fr": 0.8,
+   "de": 0.79
+  }
+ },
+ {
+  "slug": "coffre-ouvert-villeneuve",
+  "status": "active",
+  "website_url": "https://www.coffreouvert.ch",
+  "source_url": "https://www.coffreouvert.ch/",
+  "organiser": "Coffre Ouvert",
+  "name": "Coffre Ouvert",
+  "town": "Villeneuve",
+  "venue": "Avenue Comtes de Savoie",
+  "address_line": "Avenue Comtes de Savoie, Marche de Villeneuve, 1844 Villeneuve",
+  "postal_code": "1844",
+  "rhythm": "The 2nd and last Saturday of the month, March to November.",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Coffre Ouvert ist der Flohmarkt der Waadtlaender Riviera im Herzen von Villeneuve zwischen See und Bergen. Jeden zweiten und letzten Samstag im Monat empfaengt der Markt zahlreiche private und professionelle Ausstellende mit antiken Möbeln, Vintage-Kleidung, seltenen Büchern, Sammlerobjekten und vielem mehr. Vier Themenzonen sorgen für eine authentische Marktatmosphäre.",
+  "next_dates": [
+   "2026-10-10 08:00:00-16:00:00",
+   "2026-10-31 08:00:00-16:00:00",
+   "2026-11-14 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "fr": 0.89,
+   "de": 0.78
+  }
+ },
+ {
+  "slug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
+  "status": "active",
+  "website_url": "https://www.thun.ch/dienstleistungen/111205",
+  "source_url": "https://www.thun.ch/dienstleistungen/111205",
+  "organiser": "Schadaumaerit",
+  "name": "Floh- und Antiquitätenmarkt (Schadaumärit)",
+  "town": "Thun",
+  "venue": "Schadaugärtnerei",
+  "address_line": "Schadaugärtnerei, Schadaupark, 3604 Thun",
+  "postal_code": "3604",
+  "rhythm": "Every third Sunday, March to November",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Schadaumärit in Thun bringt von März bis November jeden dritten Sonntag Flohmarkt- und Antiquitätenstimmung in den Schadaupark. Rund um die Schadaugaertnerei kann man zwischen Secondhand-Funden, kleinen Sammlerstücken und Trouvaillen stöbern. Der Eintritt ist frei.",
+  "next_dates": [
+   "2026-10-18 10:00:00-16:00:00",
+   "2026-11-15 10:00:00-16:00:00",
+   "2027-03-21 10:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "fr": 0.89,
+   "de": 0.84
+  }
+ },
+ {
+  "slug": "flohmarkt-aarau",
+  "status": "active",
+  "website_url": "https://www.flohmarkt-aarau.ch/",
+  "source_url": "https://www.flohmarkt-aarau.ch/",
+  "organiser": "Verein Kramer",
+  "name": "Flohmarkt Aarau",
+  "town": "Aarau",
+  "venue": "Markthalle",
+  "address_line": "Markthalle, Färbergässli 4, 5000 Aarau",
+  "postal_code": "5000",
+  "rhythm": "Every first Saturday, March to November",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Aarau belebt von März bis November jeden ersten Samstag im Monat die Markthalle und den Faerberplatz. Zwischen gebrauchten Schätzen, Vintage-Stücken, Hausrat und kleinen Raritäten entsteht mitten in der Altstadt eine lebendige Flohmarktstimmung. Der Eintritt ist frei.",
+  "next_dates": [
+   "2026-11-07 08:00:00-17:00:00",
+   "2027-03-06 08:00:00-17:00:00",
+   "2027-04-03 08:00:00-17:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.86
+  }
+ },
+ {
+  "slug": "flohmarkt-adliswil",
+  "status": "active",
+  "website_url": "https://www.adliswil.ch/dienstleistungen/30594",
+  "source_url": "https://www.adliswil.ch/dienstleistungen/30594",
+  "organiser": "Stadt Adliswil",
+  "name": "Brugge- und Flohmärt Adliswil",
+  "town": "Adliswil",
+  "venue": "Bahnhofplatz Adliswil",
+  "address_line": "Bahnhofplatz",
+  "postal_code": "8134",
+  "rhythm": "Selected Saturdays",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Brugge- und Flohmärt auf dem Bahnhofplatz Adliswil vereint zwei Marktcharaktere an einem Ort. Der Flohmärt-Teil bringt private Verkäufer aus Adliswil zusammen — Gebrauchtes aus zweiten Händen, Feilschen ausdrücklich erlaubt. Der Bruggemärt vor dem Haus Brugg zeigt Artikel aus eigener Produktion: Handgemachtes und Selbstproduziertes von lokalen Kreativen. Dazu gibt es Kaffee, Getränke und selbstgebackene Kuchen vor Ort. Das Angebot ist breit und ungekünstelt, der Charakter entspannt und lokal. Der Bahnhof Adliswil liegt direkt nebenan.",
+  "next_dates": [
+   "2026-10-24 09:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-am-see-wollishofen-zuerich",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-wollishofen/angebote/flohmarkt-am-see/",
+  "source_url": "https://gz-zh.ch/gz-wollishofen/angebote/flohmarkt-am-see/",
+  "organiser": "GZ Wollishofen",
+  "name": "Flohmarkt am See Wollishofen",
+  "town": "Zürich",
+  "venue": "Gemeinschaftszentrum Wollishofen",
+  "address_line": "Bachstrasse 7",
+  "postal_code": "8038",
+  "rhythm": "Every 1st Sunday of the month, April to October",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt am See beim GZ Wollishofen findet jeden ersten Sonntag des Monats von April bis Oktober statt, direkt am Zürichseeufer. Kein Anmelden, kein Stress: einfach ab 11 Uhr vorbeikommen, einen freien Platz suchen und loslegen. Organisiert von Freiwilligen aus dem Quartier, mit Café-Betrieb vor Ort. Nur bei trockenem Wetter.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 0.91,
+   "fr": 0.88
+  }
+ },
+ {
+  "slug": "flohmarkt-barfuesserplatz-basel",
+  "status": "active",
+  "website_url": "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-barfuesserplatz",
+  "source_url": "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-barfuesserplatz",
+  "organiser": "Kanton Basel-Stadt",
+  "name": "Flohmarkt Barfüsserplatz",
+  "town": "Basel",
+  "venue": "Barfüsserplatz",
+  "address_line": "Barfüsserplatz, 4001 Basel",
+  "postal_code": "4001",
+  "rhythm": "2nd and 4th Wednesday of the month, all year",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Mitten in der Basler Innenstadt, direkt am Barfüsserplatz, findet jeden 2. und 4. Mittwoch im Monat ein Flohmarkt statt. Der Standort ist eine der belebtesten Plätze der Stadt – ideal zum Flanieren und Entdecken. Das Angebot reicht von Antiquitäten über Vintage-Kleider bis hin zu Alltagsgegenständen. Der Markt ist wetterabhängig und kostenlos zugänglich.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-bienzgut-bern",
+  "status": "active",
+  "website_url": "https://bienzgut.ch/flohmarkt/",
+  "source_url": "https://bienzgut.ch/flohmarkt/",
+  "organiser": "Stiftung B (Bienzgut)",
+  "name": "Flohmarkt Bienzgut",
+  "town": "Bern",
+  "venue": "Bienzgut",
+  "address_line": "Bernstrasse 77",
+  "postal_code": "3018",
+  "rhythm": "Last Saturday of the month, according to the organiser",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": null,
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Bienzgut findet vor und rund um das Bienzgut statt, das alte Bauernhaus an der Bernstrasse 77 in Bümpliz. Trödlerinnen und Trödler bieten von 8 bis 16 Uhr ihre Trouvaillen an – laut Stiftung B jeweils am letzten Samstag im Monat. Mit dem Tram 7 oder 8 bis Bümpliz sind es wenige Minuten zu Fuss.",
+  "next_dates": [
+   "2026-10-31 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.84
+  }
+ },
+ {
+  "slug": "flohmarkt-bruderholzallee",
+  "status": "active",
+  "website_url": "https://www.quartieroase.ch",
+  "source_url": "https://www.quartieroase.ch/veranstaltung/flohmarkt_bruderholzallee",
+  "organiser": "QuartierOase & Neutraler Quartierverein Bruderholz",
+  "name": "Flohmarkt Bruderholzallee",
+  "town": "Basel",
+  "venue": "Bruderholzallee",
+  "address_line": "Bruderholzallee, 4059 Basel",
+  "postal_code": "4059",
+  "rhythm": "Once a year, usually late summer or early autumn",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Bruderholzallee ist ein jährlicher Quartierflohmarkt im Basler Bruderholz und findet inzwischen in der 11. Ausgabe statt. Die Stände ziehen sich entlang der Bruderholzallee zwischen dem Restaurant Stucki und dem Primarschulhaus, organisiert von und für die Nachbarschaft. Unaufgeregt, gut besucht und genau die Art von echtem Quartiermarkt, die in klassischen Flohmarktkalendern oft untergeht. Der Weg aufs Bruderholz lohnt sich für einen entspannten Samstag mit Secondhand-Funden.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 0.95,
+   "fr": 0.93
+  }
+ },
+ {
+  "slug": "flohmarkt-buelach-stadthalle",
+  "status": "active",
+  "website_url": "https://www.buelach.ch/dienstleistungen/100984",
+  "source_url": "https://www.buelach.ch/dienstleistungen/100984",
+  "organiser": "Stadthalle Buelach",
+  "name": "Flohmarkt Buelach (Stadthalle)",
+  "town": "Bülach",
+  "venue": "Stadthalle Bülach",
+  "address_line": "Stadthalle Bülach, Allmendstrasse 6, 8180 Bülach",
+  "postal_code": "8180",
+  "rhythm": "Four times a year",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Viermal jährlich verwandelt sich die Stadthalle Bülach in einen grossen Flohmarkt mit bis zu 80 Hallenplätzen und - je nach Saison - 140 zusätzlichen Aussenplätzen. Besucher zahlen keinen Eintritt. Eine kleine Festwirtschaft sorgt für Verpflegung. Standplätze können über ticketino.ch reserviert werden.",
+  "next_dates": [
+   "2027-05-22 08:00:00-15:00:00",
+   "2027-10-02 08:00:00-15:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-chilbiplatz-duebendorf",
+  "status": "active",
+  "website_url": "https://www.duebendorf.ch/veranstaltungengd",
+  "source_url": "https://www.ludo-duebendorf.ch/de/aktuell/flohmarkt-duebendorf",
+  "organiser": "Ludothek Duebendorf",
+  "name": "Flohmarkt Chilbiplatz Duebendorf",
+  "town": "Dübendorf",
+  "venue": "Chilbiplatz",
+  "address_line": "Chilbiplatz, Zürichstrasse / Wilstrasse, 8600 Dübendorf",
+  "postal_code": "8600",
+  "rhythm": "Twice a year, spring and autumn",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Beliebter Flohmarkt auf dem Chilbiplatz im Zentrum von Dübendorf, organisiert von der Ludothek Dübendorf. Ein buntes Angebot erwartet die Besucher: Schmuck, Kleider, Spielzeug, Elektronik und vieles mehr. Am OK-Stand gibt es Kaffee, hausgemachte Kuchen, Hot Dogs, Bier und Softgetraenke. Der Eintritt ist frei - Standreservierungen unter info@ludo-Dübendorf.ch.",
+  "next_dates": null,
+  "copy_share": {
+   "fr": 1,
+   "de": 0.89
+  }
+ },
+ {
+  "slug": "flohmarkt-dietikon",
+  "status": "active",
+  "website_url": "https://www.dietikon.ch/traditionelleanlaesse",
+  "source_url": "https://www.dietikon.ch/traditionelleanlaesse/6178",
+  "organiser": "Stadt Dietikon",
+  "name": "Flohmarkt Dietikon",
+  "town": "Dietikon",
+  "venue": "Bahnhofplatz / Kirchstrasse Dietikon",
+  "address_line": "Bahnhofplatz bis Kirchstrasse",
+  "postal_code": "8953",
+  "rhythm": "Every Saturday except public holidays",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Dietikon ist einer der wenigen wöchentlich stattfindenden Flohmärkte im Kanton Zürich. Jeden Samstag belegt er den Bereich zwischen Bahnhofplatz und Kirchstrasse mit privaten Verkäuferinnen und Verkäufern aus Dietikon und den umliegenden Gemeinden. Das Angebot ist unvorhersehbar und genau deshalb interessant: Kleider, Spielsachen, Haushaltsgegenstände, Bücher, Werkzeug, manchmal auch Möbel oder Vintage-Stücke. Kein kuratierter Vintagemarkt, sondern echter Rümpelstil mit Stammbesuchern und echten Schnäppchen. Die Gesichter wechseln, aber die Stimmung bleibt lokal und echt.",
+  "next_dates": [
+   "2026-10-10 08:00:00-16:00:00",
+   "2026-10-17 08:00:00-16:00:00",
+   "2026-10-24 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-gz-heuried",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-heuried/programm/",
+  "source_url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf",
+  "organiser": "GZ Heuried",
+  "name": "Flohmarkt für Erwachsene GZ Heuried",
+  "town": "Zürich",
+  "venue": "GZ Heuried Atrium",
+  "address_line": "Döltschiweg 130",
+  "postal_code": "8055",
+  "rhythm": "Twice a year",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Das GZ Heuried in Wiedikon bietet zweimal im Jahr auch Erwachsenen einen Marktplatz im Atrium. Haushaltswaren, Kleider, Bücher und allerlei Gebrauchtes wechseln den Besitzer. Wiedikon ist ein dichtes Wohnquartier mit hoher Nachbarschaftskultur — der Markt hat den Charakter eines echten Quartiertauschs eher als einer kuratierten Verkaufsveranstaltung. Wetterunabhängig dank Innenlage.",
+  "next_dates": [
+   "2026-11-22 13:00:00-17:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-gz-hirzenbach",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-hirzenbach/angebote/gz-flohmarkt/",
+  "source_url": "https://gz-zh.ch/gz-hirzenbach/angebote/gz-flohmarkt/",
+  "organiser": "GZ Hirzenbach",
+  "name": "Flohmarkt GZ Hirzenbach",
+  "town": "Zürich",
+  "venue": "Gemeinschaftszentrum Hirzenbach",
+  "address_line": "Gemeinschaftszentrum Hirzenbach, 8051 Zürich",
+  "postal_code": "8051",
+  "rhythm": "Once a year",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Flohmarkt im Gemeinschaftszentrum Hirzenbach in Zürich-Schwamendingen. Der Markt findet mehrmals jährlich statt - je nach Wetter in der grossen Halle oder draussen. Privatverkäufer aus dem Quartier bieten Haushaltswaren, Kleider und Allerlei aus zweiter Hand an. Eintritt frei.",
+  "next_dates": [
+   "2026-11-28 10:00:00-14:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-gz-seebach",
+  "status": "active",
+  "website_url": "https://gz-zh.ch/gz-seebach/angebote/flohmarkt/",
+  "source_url": "https://gz-zh.ch/gz-seebach/angebote/flohmarkt/",
+  "organiser": "GZ Seebach",
+  "name": "Flohmarkt GZ Seebach",
+  "town": "Zürich",
+  "venue": "GZ Seebach",
+  "address_line": "Hertensteinstrasse 20",
+  "postal_code": "8052",
+  "rhythm": "Occasionally",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": "cancelled",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Vor dem GZ Seebach an der Hertensteinstrasse findet ein offener Quartierflohmarkt statt. Seebach ist ein Wohnquartier im Norden Zürichs — suburban, multikulturell, mit starker Nachbarschaftskultur. Der Markt spiegelt das wider: private Verkäufer aus dem Quartier, gemischtes Angebot aus Haushalt und Kindersachen, entspannte Atmosphäre ohne professionelle Händler. Ein typischer, ehrlicher Stadtrandflohmarkt für alle, die in der Nähe sind. Der Markt findet nur bei trockenem Wetter statt.",
+  "next_dates": [
+   "2026-10-31 10:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-kloten",
+  "status": "active",
+  "website_url": "https://www.kloten.ch/maerkte/10849",
+  "source_url": "https://www.kloten.ch/maerkte/10849",
+  "organiser": "Stadt Kloten, Zentrumsmanagement",
+  "name": "Klotener Flohmarkt",
+  "town": "Kloten",
+  "venue": "Stadtplatz Kloten",
+  "address_line": "Stadtplatz",
+  "postal_code": "8302",
+  "rhythm": "Once a year",
+  "setting": "outdoor",
+  "stall_count": 80,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Klotener Flohmarkt ist das jährliche Herbst-Marktevent auf dem Stadtplatz Kloten. Über 80 Aussteller besetzen den zentralen Platz der Flughafenstadt mit einem breiten Angebot an Gebrauchtem — kombiniert mit einem Kinderflohmarkt, bei dem der Nachwuchs eigene Sachen verkauft. Der Stadtplatz Kloten ist ein offener, gut erreichbarer Platz im Herzen der Stadt, das Publikum ist lokal und familiär. Ein lebhafter Herbsttag für die ganze Familie.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 0.5
+  }
+ },
+ {
+  "slug": "flohmarkt-mosergarten-schaffhausen",
+  "status": "active",
+  "website_url": "https://www.flohmarktkalender.ch/termin/flohmarkt-mosergarten-2025-10-04/",
+  "source_url": "https://www.nordagenda.ch/Flohmarkt-im-Mosergarten-nordagenda-196053.html",
+  "organiser": "Flohmarkt Mosergarten",
+  "name": "Flohmarkt Mosergarten",
+  "town": "Schaffhausen",
+  "venue": "Mosergarten",
+  "address_line": "Mosergarten, 8200 Schaffhausen",
+  "postal_code": "8200",
+  "rhythm": "Every first Saturday, April to October, in good weather only",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Mosergarten belebt von April bis Oktober jeden ersten Samstag den Mosergarten in Schaffhausen. Zwischen Vintage-Stücken, Büchern, Antiquitäten, Spielzeug und allerlei Gebrauchtwaren entsteht ein klassischer Quartierflohmarkt unter freiem Himmel. Bei Dauerregen oder Sturm faellt der Markt aus; für Aussteller gibt es keine Voranmeldung und der Standplatz kostet CHF 8 pro Laufmeter.",
+  "next_dates": [
+   "2027-04-03 08:00:00-16:00:00",
+   "2027-05-01 08:00:00-16:00:00",
+   "2027-06-05 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "fr": 1,
+   "de": 0.9
+  }
+ },
+ {
+  "slug": "flohmarkt-obere-muehle-duebendorf",
+  "status": "active",
+  "website_url": "https://www.oberemuehle.ch/events/markt/flohmarkt",
+  "source_url": "https://www.oberemuehle.ch/events/markt/flohmarkt",
+  "organiser": "Obere Mühle – Kultur in Dübendorf",
+  "name": "Flohmarkt Obere Mühle Dübendorf",
+  "town": "Dübendorf",
+  "venue": "Obere Mühle — Kiesplatz",
+  "address_line": "Oberdorfstrasse 15",
+  "postal_code": "8600",
+  "rhythm": "Twice a year, in spring and summer",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Einmal im Sommer öffnet die Obere Mühle in Dübendorf ihren Kiesplatz für einen Aussenflohmarkt. Die historische Mühle an der Oberdorfstrasse ist ein ungewöhnlicher Schauplatz: ein denkmalgeschütztes Gebäude am Rande der alten Dorfstruktur Dübendorfs, umgeben von Kiesplatz und Grünflächen. Das Angebot ist breit und ungekünstelt — Kleider, Spielsachen, Bücher, CDs, Haushaltswaren, Elektronik. Ein einziges Datum im Jahr bedeutet, dass dieser Markt kaum Sammler anzieht, dafür aber ein echtes Dorfflair hat.",
+  "next_dates": [
+   "2027-05-29 08:00:00-15:00:00"
+  ],
+  "copy_share": {
+   "de": 0.95,
+   "fr": 0.95
+  }
+ },
+ {
+  "slug": "flohmarkt-oetwil-am-see",
+  "status": "active",
+  "website_url": "https://flohmi-oetwilamsee.ch/",
+  "source_url": "https://flohmi-oetwilamsee.ch/",
+  "organiser": "Verein Märtlüüt Oetwil am See",
+  "name": "Flohmi Oetwil am See",
+  "town": "Oetwil am See",
+  "venue": "Gemeindehausplatz Oetwil am See",
+  "address_line": "Willikonerstrasse 9",
+  "postal_code": "8618",
+  "rhythm": "Last Saturday of the month, March to June and August to October; no market in July",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Am Gemeindehausplatz in Oetwil am See findet von März bis Oktober jeden letzten Samstag im Monat — mit Ausnahme des Julis — ein echter Dorfflohmi statt. Der Markt besticht durch private Verkäufer aus dem Dorf und der unmittelbaren Umgebung, ausschliesslich gebrauchte Waren, keine professionellen Händler. Ein Verpflegungsstand sorgt für Kaffee und Snacks vor Ort. Wer einen ungekünstelt-lokalen Markt am Zürichsee sucht, ist hier richtig.",
+  "next_dates": [
+   "2026-10-31 08:00:00-16:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 0.46
+  }
+ },
+ {
+  "slug": "flohmarkt-ruemlang",
+  "status": "active",
+  "website_url": null,
+  "source_url": "https://www.guidle.com/de/veranstaltungen/dies-das/ruemlang/ruemlanger-flohmarkt-2025_AcxgiRG",
+  "organiser": null,
+  "name": "Rümlanger Flohmarkt",
+  "town": "Rümlang",
+  "venue": "Gemeindehaus Rümlang",
+  "address_line": "Glattalstrasse 201",
+  "postal_code": "8153",
+  "rhythm": "Three Saturdays a year",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Rümlanger Flohmarkt findet dreimal im Jahr beim Gemeindehaus statt — in April, Juni und September. Rümlang liegt im nördlichen Zürcher Unterland zwischen Opfikon und Bülach, nah am Flughafen, weit weg vom Trubel. Der Markt ist klein, familiär und ohne professionelle Händler — ein klassischer Quartierflohmarkt, bei dem private Haushalte ausräumen und die Nachbarschaft kauft. Wer eine Pause braucht: Floh's Bistro bietet salzige und süsse Snacks direkt am Markt. Wer früh kommt und gezielt sucht, findet Unerwartetes.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-rueticenter-pratteln",
+  "status": "active",
+  "website_url": "https://www.flohmarktkoenig.ch/infos/1",
+  "source_url": "https://www.flohmarktkoenig.ch/infos/1",
+  "organiser": "Rüticenter Pratteln",
+  "name": "Flohmarkt Rueticenter Pratteln",
+  "town": "Pratteln",
+  "venue": "Rütiweg 9",
+  "address_line": "Rütiweg 9, 4133 Pratteln",
+  "postal_code": "4133",
+  "rhythm": "Ten times a year, usually one Sunday a month (except July and August)",
+  "setting": null,
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Rüticenter findet seit rund 30 Jahren auf dem Dach und in den Hallen des Rüticenters in Pratteln statt und gehoert damit zu den etabliertesten Flohmaerkten der Region Basel. Organisiert von Flohmarkt King laeuft er zehnmal pro Jahr auf drei Etagen - überdacht und wetterunabhaengig in jeder Jahreszeit. Verpflegung und Getraenke gibt es vor Ort bei CC Prodega. Kostenlose Parkplätze in der Nähe und gute Erreichbarkeit ab Basel mit dem Bus vom Bahnhof Pratteln machen ihn zu einer verlaesslichen, grossen Option für engagierte Flohmarktgaenger im Raum Basel.",
+  "next_dates": [
+   "2026-11-01 08:30:00-15:00:00",
+   "2027-02-07 08:30:00-15:00:00"
+  ],
+  "copy_share": {
+   "fr": 0.91,
+   "de": 0.59
+  }
+ },
+ {
+  "slug": "flohmarkt-schlieren-herbstmarkt",
+  "status": "active",
+  "website_url": "https://m.schlieren.ch/kibou",
+  "source_url": "https://m.schlieren.ch/index.php?apid=1472420620&jsr=1",
+  "organiser": "Kulturkommission Schlieren",
+  "name": "Herbstmarkt und Kinderflohmarkt Schlieren",
+  "town": "Schlieren",
+  "venue": "Kirchgasse Schlieren",
+  "address_line": "Kirchgasse",
+  "postal_code": "8952",
+  "rhythm": "Once a year",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Herbstmarkt Schlieren ist ein Stadtzentrumsevent auf der Kirchgasse mit dem Charakter eines klassischen Jahresmarkts. Kulinarisch gibt es Apfelchüechli, Zopf und weitere Spezialitäten, dazu Einblicke in die Arbeit lokaler Vereine an ihren Infoständen. Gleichzeitig findet auf der Wiese an der Ecke Freiestrasse/Stationsstrasse ein separater Kinderflohmarkt statt — mit Spielsachen, Lego, Puzzles und Kinderbüchern zu günstigen Preisen. Schlieren ist mit der S-Bahn aus Zürich in wenigen Minuten erreichbar. Ein guter Grund für einen Herbstausflug.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ },
+ {
+  "slug": "flohmarkt-seeplatz-waedenswil",
+  "status": "active",
+  "website_url": "https://www.club-interfun.ch/flohmarkt",
+  "source_url": "https://www.waedenswil.ch/vereinsliste/40092",
+  "organiser": "Club Interfun",
+  "name": "Flohmarkt Seeplatz Waedenswil",
+  "town": "Wädenswil",
+  "venue": "Seeplatz",
+  "address_line": "Seeplatz, 8820 Wädenswil",
+  "postal_code": "8820",
+  "rhythm": "Seven Saturdays, April to October, usually the first",
+  "setting": "outdoor",
+  "stall_count": null,
+  "rain_policy": null,
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Flohmarkt am Seeplatz in Wädenswil, direkt am Zürichsee. Der von Club Interfun organisierte Markt findet an sieben Samstagen von April bis Oktober statt. Privatverkäufer bieten Haushaltswaren, Kleider und Allerlei aus zweiter Hand an - der Besuch ist kostenlos.",
+  "next_dates": null,
+  "copy_share": {
+   "de": 1,
+   "fr": 0.9
+  }
+ },
+ {
+  "slug": "flohmarkt-stuecki-basel",
+  "status": "active",
+  "website_url": "https://www.flohmarktkoenig.ch/infos/9",
+  "source_url": "https://www.flohmarktkoenig.ch/infos/9",
+  "organiser": "Stücki Basel",
+  "name": "Flohmarkt Stücki Basel",
+  "town": "Basel",
+  "venue": "Stücki Shopping Center",
+  "address_line": "Stücki Shopping Center, Hochbergerstrasse 70, 4057 Basel",
+  "postal_code": "4057",
+  "rhythm": "Monthly, on selected Sundays",
+  "setting": "indoor",
+  "stall_count": null,
+  "rain_policy": "runs",
+  "entry_fee": "0.00",
+  "getting_there": null,
+  "description_de": "Der Flohmarkt Stücki ist ein Indoor-Flohmarkt im Stücki Shopping Center im Norden von Basel und wird von Flohmarkt King organisiert. Er findet an ausgewählten Sonntagen über das Jahr verteilt vollständig im Einkaufszentrum statt - wetterunabhängig, hell und mit klarer Wegeführung. Die Tramhaltestelle Stücki liegt direkt vor dem Center, Parkplätze gibt es im Stücki-Parkhaus. Verpflegung ist vor Ort über die Restaurants und Take-aways im Center verfügbar. Eine praktische und verlässliche Indoor-Option für Basel.",
+  "next_dates": [
+   "2026-10-18 08:30:00-15:00:00",
+   "2026-11-15 08:30:00-15:00:00",
+   "2026-12-13 08:30:00-15:00:00"
+  ],
+  "copy_share": {
+   "de": 1,
+   "fr": 1
+  }
+ }
+]

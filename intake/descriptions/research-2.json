@@ -1,0 +1,648 @@
+[
+ {
+  "slug": "flohmarkt-uster-stadthausplatz",
+  "sources": [
+   {"url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "seen": "2026-10-07", "what": "City of Uster market page (rules, fees, registration form)"}
+  ],
+  "facts": [
+   {"field": "size", "value": "50 to 80 sellers per market (a range, current city page)", "quote": "Von 08:00 bis 16:00 Uhr laden 50 bis 80 Händlerinnen und Händler dazu ein", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "medium"},
+   {"field": "venue", "value": "Held on Stadthausplatz / the Stadthaus car park, Bahnhofstrasse 17. Pitches are city-rented market stalls of 3 x 3 m, or arcade spots of 2.5 m where sellers bring their own table", "quote": "Marktort: 8610 Uster, Bahnhofstrasse 17, Stadthausplatz bzw. Stadthausparkplatz", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"},
+   {"field": "goods", "value": "Only clearly used items may be sold; no bulk-bought liquidation stock, no counterfeits, no weapons, pornography or medicines", "quote": "Zum Verkauf dürfen nur Gegenstände angeboten werden, die klar erkennbar gebraucht sind.", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"},
+   {"field": "goods", "value": "The city's intro mentions antiques, vintage fashion and odd curiosities (promotional wording)", "quote": "von den antiken Schätzen, der Vintage-Mode und den ausgefallenen Kuriositäten überraschen", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "low"},
+   {"field": "organiser", "value": "Run by the city: the Stadtpolizei Uster assigns pitches, keeps the waiting list and can permit food stalls", "quote": "führt die Stadtpolizei eine Warteliste für interessierte Teilnehmende", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"},
+   {"field": "seller_booking", "value": "Written application by 31 December of the previous year, handled in order of arrival; late applicants go on a waiting list; unoccupied pitches are given away from 08:00", "quote": "Anmeldungsgesuche sind schriftlich bis zum 31. Dezember des Vorjahres einzureichen.", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"},
+   {"field": "seller_booking", "value": "Fees per market day: pitch with city stall CHF 78.45 incl. VAT; arcade pitch CHF 46.00 excl. VAT; stall rental CHF 30; electricity CHF 20; paid in advance", "quote": "Verkaufsplatz mit Stadtstand Fr. 78.45/Teilnahme (inkl. MwSt.)", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"},
+   {"field": "other", "value": "Set-up 06:30-08:00, pack-up 16:00-17:30; at most one clothes rail (max 1.2 m) per stall", "quote": "Pro Flohmarktstand ist maximal ein Kleiderständer erlaubt.", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"},
+   {"field": "food", "value": "Food and drink stalls only with a special permit from the Stadtpolizei (none stated as standard)", "quote": "Die Stadtpolizei kann Essens- und Getränkestände zur Attraktivitätssteigerung genehmigen.", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "medium"},
+   {"field": "parking", "value": "Parking is up to the sellers; 15 minutes maximum for loading", "quote": "Das Parkieren ist Sache der Teilnehmenden.", "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Source says the market runs 'in der Regel' on the first Saturday April-October, 08:00-16:00, matching our data. No history, rain policy or stall count beyond the 50-80 range."
+ },
+ {
+  "slug": "flohmi-bullingerhof-zuerich",
+  "sources": [
+   {"url": "https://www.flohmi-bullingerhof.ch/", "seen": "2026-10-07", "what": "organiser homepage"},
+   {"url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "seen": "2026-10-07", "what": "organiser market rules (Feb 2020)"},
+   {"url": "https://www.flohmi-bullingerhof.ch/docs/Flohmidaten-2026-definitiv.pdf", "seen": "2026-10-07", "what": "organiser 2026 dates PDF"}
+  ],
+  "facts": [
+   {"field": "organiser", "value": "Organised by the association Verein Lebendiger Bullingerhof, which runs the market with its members", "quote": "Der Verein führt mit seinen Mitgliedern den Flohmarkt und stellt die Einhaltung der Marktordnung sicher.", "url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "confidence": "high"},
+   {"field": "venue", "value": "Held in the Bullingerhof (a housing estate); the whole site is closed to driving and parking during the market", "quote": "organisiert der Verein Lebendiger Bullingerhof von 8 bis 16 Uhr den Flohmarkt im schönen Bullingerhof", "url": "https://www.flohmi-bullingerhof.ch/", "confidence": "high"},
+   {"field": "other", "value": "2026: last Saturday of the month, March to October, 8:00-16:00; eight dates, the last on 31 October 2026", "quote": "31. Oktober 2026 (8 – 16 Uhr)", "url": "https://www.flohmi-bullingerhof.ch/docs/Flohmidaten-2026-definitiv.pdf", "confidence": "high"},
+   {"field": "goods", "value": "Only goods clearly recognisable as used; no new goods, no liquidation or mass goods; phones and jewellery only as single pieces among used goods", "quote": "Der Flohmarkt ist ein Markt für Waren, die klar als gebraucht erkennbar sind.", "url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "confidence": "high"},
+   {"field": "food", "value": "The Flohmicafé sells coffee and cake, croissants, sausages with bread and drinks; food and drink may only be sold there or at stalls authorised by the board", "quote": "Mit Kaffee und Kuchen, Gipfeli, Wienerli mit Brot, diversen Getränken etc.", "url": "https://www.flohmi-bullingerhof.ch/", "confidence": "high"},
+   {"field": "seller_booking", "value": "No reservations: no one is entitled to a particular spot. Fees: up to 2 x 2 m CHF 28, up to 3 x 3 m CHF 42; no discount for pensioners. Payment in cash on site (stated in a page summary, not seen in the PDF)", "quote": "Platzreservationen sind nicht erlaubt.", "url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "confidence": "high"},
+   {"field": "distinctive", "value": "Children selling toys may do so without an adult, and then pay no stall fee", "quote": "der Verkauf von Spielsachen ist ohne Begleitung von Erwachsenen erlaubt, in diesem Fall entfällt auch die Standgebühr", "url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "confidence": "high"},
+   {"field": "access", "value": "Visitors' dogs must be on a short lead; stall-holders may not bring dogs", "quote": "BesucherInnen des Marktes haben Hunde an kurzer Leine zu führen.", "url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "confidence": "high"},
+   {"field": "other", "value": "Stalls may be set up from 7:00; cars unload 7:00-8:00 and load 16:00-16:45; sales end 16:00", "quote": "Die Stände dürfen ab 7.00 Uhr morgens aufgestellt werden.", "url": "https://www.flohmi-bullingerhof.ch/docs/Marktordnung-Februar-2020.pdf", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "notes": "Our description's '30-50 sellers' and 'for decades' are not supported by any source found. The only street address on the site (Ernst-Zöbeli-Strasse 9, 8048 Zürich) is the president's contact address, not the venue; our venue 'Agnesstrasse 36, 8004' is neither confirmed nor contradicted. No rain policy and no founding year found.",
+  "thin": false
+ },
+ {
+  "slug": "flohmi-muttenz",
+  "sources": [
+   {"url": "https://www.flohmi-muttenz.ch/", "seen": "2026-10-07", "what": "organiser homepage"},
+   {"url": "https://www.flohmi-muttenz.ch/fragen", "seen": "2026-10-07", "what": "organiser FAQ"},
+   {"url": "https://www.flohmi-muttenz.ch/location", "seen": "2026-10-07", "what": "organiser stall map page"},
+   {"url": "https://www.flohmi-muttenz.ch/post/flohmi-muttenz-2026", "seen": "2026-10-07", "what": "organiser review of 2026 edition"},
+   {"url": "https://www.flohmi-muttenz.ch/post/r%C3%BCckblick-flohmi-2025-1", "seen": "2026-10-07", "what": "organiser review of 2025 edition"},
+   {"url": "https://www.flohmi-muttenz.ch/_files/ugd/cdd383_f94789ba82974d97a54080715af38d03.pdf", "seen": "2026-10-07", "what": "2026 flyer"}
+  ],
+  "facts": [
+   {"field": "distinctive", "value": "No central site: residents sell across the whole of Muttenz, in front of their house, in the garden, in the house or flat", "quote": "Die Ware wird vor dem eigenen Haus, im Garten, im Haus, in der Wohnung, etc. verkauft", "url": "https://www.flohmi-muttenz.ch/", "confidence": "high"},
+   {"field": "history", "value": "Started by Sophie Baumann in 2020 and organised by her every year since", "quote": "Im Jahr 2020 habe ich mit dem Flohmi Muttenz gestartet und seither organisiere ich ihn jedes Jahr.", "url": "https://www.flohmi-muttenz.ch/", "confidence": "high"},
+   {"field": "size", "value": "2026 edition (13 Sept 2026): about 240 stalls, a new registration record; 228 web registrations were on the map by 12 Sept 2026", "quote": "Mit rund 240 Ständen konnten wir einen neuen Anmelderekord erreichen.", "url": "https://www.flohmi-muttenz.ch/post/flohmi-muttenz-2026", "confidence": "high"},
+   {"field": "size", "value": "2025 edition: 130 stalls across the village", "quote": "130 Stände im ganzen Dorf luden zum Stöbern, Feilschen und Begegnen ein.", "url": "https://www.flohmi-muttenz.ch/post/r%C3%BCckblick-flohmi-2025-1", "confidence": "high"},
+   {"field": "goods", "value": "Anything legal may be sold; the 2026 flyer names furniture, clothes, decor and bikes", "quote": "Möbel, Kleider, Deko, Velos etc.", "url": "https://www.flohmi-muttenz.ch/_files/ugd/cdd383_f94789ba82974d97a54080715af38d03.pdf", "confidence": "high"},
+   {"field": "seller_booking", "value": "No stall fee. Registration is optional but needed (up to two days before) to appear on the online stall map. Voluntary donations by TWINT or bank go into advertising", "quote": "Für den Stand möchte ich keine Gebühr verlangen.", "url": "https://www.flohmi-muttenz.ch/fragen", "confidence": "high"},
+   {"field": "distinctive", "value": "An online map shows all registered stalls; sellers mark their stall with the flyer and balloons a week ahead", "quote": "Auf der Karte findest du alle Flohmistände 2026.", "url": "https://www.flohmi-muttenz.ch/location", "confidence": "high"},
+   {"field": "transport", "value": "Visitors are asked to come on foot or by bike", "quote": "kommst du am besten zu Fuss oder mit dem Velo", "url": "https://www.flohmi-muttenz.ch/location", "confidence": "high"},
+   {"field": "other", "value": "Hours 10:00-17:00 (most stalls). Next edition Sunday 12 September 2027", "quote": "Der Flohmi findet in ganz Muttenz von 10:00-17:00 Uhr statt.", "url": "https://www.flohmi-muttenz.ch/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "The organiser now posts and receives donations as Sophie Brunner (same person as Sophie Baumann, per the site). No food, rain or toilet information."
+ },
+ {
+  "slug": "flohmi-schmittiplatz-pratteln",
+  "sources": [
+   {"url": "https://schmittiflohmi.ch/services/", "seen": "2026-10-07", "what": "organiser page 'Der Flohmarkt'"},
+   {"url": "https://schmittiflohmi.ch/portfolio/", "seen": "2026-10-07", "what": "organiser market rules (Marktordnung)"},
+   {"url": "https://schmittiflohmi.ch/portfolio-2/", "seen": "2026-10-07", "what": "organiser directions page"},
+   {"url": "https://www.pratteln.ch/vereinsliste/9331", "seen": "2026-10-07", "what": "Pratteln commune club list entry"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Second-hand goods, small antiques and toys; no new goods, food or alcohol", "quote": "Bei uns gibt es Flohmarktartikel, Kleinantiquitäten und Spielsachen etc.", "url": "https://schmittiflohmi.ch/services/", "confidence": "high"},
+   {"field": "organiser", "value": "Run by Sandra Baumann, who signs as the market's organiser; Pratteln lists it as club 'Flohmarkt' with her as contact", "quote": "Eure Flohmi-Organisatorin Sandra Baumann", "url": "https://schmittiflohmi.ch/", "confidence": "high"},
+   {"field": "food", "value": "Food comes from the Kaffi Schmittiplatz and the Finkbeiner bakery", "quote": "Verpflegen lassen wir uns jeweils vom Kaffi Schmittiplatz und der Bäckerei Finkbeiner", "url": "https://schmittiflohmi.ch/services/", "confidence": "high"},
+   {"field": "parking", "value": "Visitor parking at the Kuspo culture and sports centre", "quote": "Parkplätze für Besucher sind auf dem Kultur-und Sportzentrum Kuspo vorhanden", "url": "https://schmittiflohmi.ch/services/", "confidence": "high"},
+   {"field": "transport", "value": "Tram 14 from Basel (Marktplatz, Barfüsserplatz, Aeschenplatz) to the Pratteln terminus, then walk towards the Schloss", "quote": "Mit dem Tram Nr. 14 ... (Pratteln Endstation) aussteigen und in Richtung Schloss gehen", "url": "https://schmittiflohmi.ch/portfolio-2/", "confidence": "high"},
+   {"field": "access", "value": "Four public toilets behind the school opposite Restaurant Schlossgarten, plus toilets in the Kaffi Schmittiplatz", "quote": "Es befinden sich vier öffentliche Toiletten hinter dem Schulhaus vis à vis Restaurant Schlossgarten", "url": "https://schmittiflohmi.ch/portfolio/", "confidence": "high"},
+   {"field": "other", "value": "Runs in all weather", "quote": "Der Floh- und Kleinantiquitätenmarkt findet bei jeder Witterung statt", "url": "https://schmittiflohmi.ch/portfolio/", "confidence": "high"},
+   {"field": "seller_booking", "value": "CHF 10 per running metre (table max 1 m deep), minimum 2 m = CHF 20; pay at least two weeks before; register by form at least two weeks before; tents of 2x2 to 2x4 m can be rented; annual tenants possible", "quote": "Der Preis pro Laufmeter beträgt Fr. 10.-, (Tischtiefe höchstens 1m).", "url": "https://schmittiflohmi.ch/portfolio/", "confidence": "high"},
+   {"field": "other", "value": "Sales 8:00-15:00, set-up from 6:30; prices must leave room for haggling; free boxes only from 14:00", "quote": "Die Verkaufspreise müssen so festgelegt werden, dass der Kunde „märten“ kann.", "url": "https://schmittiflohmi.ch/portfolio/", "confidence": "high"},
+   {"field": "other", "value": "No market in July and August; next market 14 November 2026", "quote": "JULI UND AUGUST FINDET KEIN FLOHMARKT STATT. Nächster Flohmarkt am 14.11.2026", "url": "https://www.pratteln.ch/vereinsliste/9331", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "Seven times a year, first Saturday of the month (except July and August)", "source_says": "Market rules say 'Er findet zwei mal im Jahr statt' (twice a year); the next date, 14.11.2026, is the second Saturday of November, not the first", "url": "https://schmittiflohmi.ch/portfolio/"},
+   {"our_value": "Organiser: Verein Flohmarkt Schmittiplatz", "source_says": "Organiser named as Sandra Baumann (contact address in Eptingen); commune lists the club simply as 'Flohmarkt'", "url": "https://www.pratteln.ch/vereinsliste/9331"}
+  ],
+  "thin": false,
+  "notes": "The 'twice a year' line in the rules may be old text; the commune page only confirms 'no market July/August' and the 14.11.2026 date. Rhythm needs a check with the organiser."
+ },
+ {
+  "slug": "flohmi-spass-heimstrasse-bern",
+  "sources": [
+   {"url": "https://www.facebook.com/flohmi.spass/", "seen": "2026-10-07", "what": "organiser Facebook page (only the title loads)"},
+   {"url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg", "seen": "2026-10-07", "what": "event listing, now 404; content known only from a search-engine snippet"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "On Heimstrasse, next to the Statthalterstrasse tram stop; 11:00-17:00 (year not stated)", "quote": "", "url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg", "confidence": "low"},
+   {"field": "size", "value": "'Over 80 people have already registered for a stall' (for an unstated year)", "quote": "", "url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg", "confidence": "low"},
+   {"field": "distinctive", "value": "A street-party format: a flea market by and for local residents, with a play bus for children and pizzas and sweets from the local bakery", "quote": "", "url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg", "confidence": "low"},
+   {"field": "other", "value": "Does not take place in rain; contact heimstrasse@swissonline.ch", "quote": "", "url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg", "confidence": "low"}
+  ],
+  "conflicts": [
+   {"our_value": "rain_policy: null", "source_says": "Listing snippet says the market does not take place in rainy weather (our own description also says 'Fällt bei Regen aus')", "url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg"},
+   {"our_value": "stall_count: 80", "source_says": "Only 'over 80 registered' for an unstated year, from a listing that is now 404", "url": "https://www.myfarm.ch/en/events/9-flohmi-und-spass-ar-heimstrass-bern_AM7ctwg"}
+  ],
+  "thin": true,
+  "notes": "The facts come from a search-engine summary (in English) of a listing that now returns 404, so there are no original-language quotes. Facebook shows nothing without a login. No date for 2027, no first-hand confirmation that 'Quartierverein Heimstrasse' is the organiser. Status unclear."
+ },
+ {
+  "slug": "flosch-schwamendingen-zuerich",
+  "sources": [
+   {"url": "https://www.flosch.ch/", "seen": "2026-10-07", "what": "organiser homepage"},
+   {"url": "https://www.flosch.ch/daten", "seen": "2026-10-07", "what": "organiser 2026 dates"},
+   {"url": "https://www.flosch.ch/anmeldung", "seen": "2026-10-07", "what": "organiser registration page"},
+   {"url": "https://www.flosch.ch/standgeb%C3%BChren", "seen": "2026-10-07", "what": "organiser stall fees"},
+   {"url": "https://www.flosch.ch/teilnahmebedingungen", "seen": "2026-10-07", "what": "organiser conditions of participation"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "On and around Schwamendingerplatz", "quote": "findet monatlich der Flohmarkt Schwamendingen auf und um den Schwamendingerplatz", "url": "https://www.flosch.ch/", "confidence": "high"},
+   {"field": "organiser", "value": "Run by the FLOSCH Verein (board); all bookings go through board member Brigitte Roulet", "quote": "Vorstand FLOSCH Verein, Schwamendingen", "url": "https://www.flosch.ch/", "confidence": "high"},
+   {"field": "other", "value": "08:00-17:00, held in any weather", "quote": "Der Flosch dauert jeweils von 8- 17 Uhr und wird bei jeder Witterung durchgeführt", "url": "https://www.flosch.ch/daten", "confidence": "high"},
+   {"field": "other", "value": "2026 dates: 28 Feb, 28 Mar, 25 Apr, 6 Jun, 27 Jun, 25 Jul, 29 Aug, 12 Sep, 31 Oct, 28 Nov", "quote": "06. Juni 2026 • 27. Juni 2026 • 25. Juli 2026 • 29. August 2026 • 12. September 2026", "url": "https://www.flosch.ch/daten", "confidence": "high"},
+   {"field": "goods", "value": "No alcohol, new, cheap or mass-produced goods; no food or drink sales; every item must carry a price and every stall the seller's name and town", "quote": "Kein Verkauf von Alkohol, Neu-, Billig- und Massenware erlaubt", "url": "https://www.flosch.ch/teilnahmebedingungen", "confidence": "high"},
+   {"field": "seller_booking", "value": "Bookings only by phone/WhatsApp/e-mail to Brigitte Roulet, from January; deadline Friday 18:30 two weeks before; payment by the Monday two weeks before; CHF 10 surcharge for late or cash payment", "quote": "Anmeldungen und Einzahlungen können ab Januar des neuen Jahres erfolgen", "url": "https://www.flosch.ch/anmeldung", "confidence": "high"},
+   {"field": "seller_booking", "value": "Fees: minimum CHF 20; 2 m CHF 30; 3 m (standard) CHF 45; 4 m CHF 60 (maximum 4 m wide, 3 m deep); sellers bring all their own tables and cover", "quote": "Standard-Grösse 3 Laufmeter Fr. 45.00", "url": "https://www.flosch.ch/standgeb%C3%BChren", "confidence": "high"},
+   {"field": "other", "value": "Free or bargain goods may only be offered from 15:30, out of fairness to other sellers; pitches open from 06:00", "quote": "Gratis- und Billigware darf ... frühestens ab 15.30 Uhr angeboten ... werden", "url": "https://www.flosch.ch/teilnahmebedingungen", "confidence": "high"},
+   {"field": "parking", "value": "No parking on or next to the market area during market hours", "quote": "Kein Parking auf/ neben dem Marktareal während der Marktzeit erlaubt", "url": "https://www.flosch.ch/teilnahmebedingungen", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "Last Saturday of the month, February to November", "source_says": "'normalerweise' (normally) the last Saturday; 2026 had no May date, two June dates (6 and 27 June) and 12 September instead of the last Saturday", "url": "https://www.flosch.ch/daten"},
+   {"our_value": "2027-02-27 starts 07:00", "source_says": "Market runs 8-17 Uhr (2027 dates not yet published)", "url": "https://www.flosch.ch/daten"}
+  ],
+  "thin": false,
+  "notes": "Our description's 'between Coop and Migros' and 'tram and bus stop at the square' are not on the organiser site. No founding year found."
+ },
+ {
+  "slug": "folie-flea-market-lausanne",
+  "sources": [
+   {"url": "https://folievoltaire.ch/index.php/evenements/", "seen": "2026-10-07", "what": "venue (café) events page"},
+   {"url": "https://folievoltaire.ch/index.php/contact/", "seen": "2026-10-07", "what": "venue info and contact"},
+   {"url": "https://www.lausanne-tourisme.ch/fr/decouvrir/la-folie-voltaire/", "seen": "2026-10-07", "what": "Lausanne tourism venue page"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "La Folie Voltaire is a seasonal café in a period kiosk under the chestnut avenue at the centre of Parc Mon-Repos; it opens only when the weather allows", "quote": "Nous nous trouvons au centre du Parc Mon Repos à Lausanne", "url": "https://folievoltaire.ch/index.php/contact/", "confidence": "high"},
+   {"field": "goods", "value": "The edition announced by the café combined a flea market, second-hand clothes and crafts, 10:00-16:00 on a Saturday, 7 June (year not given; 7 June is a Saturday in 2025)", "quote": "Samedi 7 juin de 10h à 16h – Marché aux Puces, Friperie et Artisanat sur l’Esplanade des Marronniers", "url": "https://folievoltaire.ch/index.php/evenements/", "confidence": "medium"},
+   {"field": "food", "value": "The café serves coffee, tea and cold drinks; Lausanne tourism adds daily dishes, crêpes and home-made ice cream, and a playground next door", "quote": "Cafés, thés et boissons fraîches", "url": "https://folievoltaire.ch", "confidence": "high"},
+   {"field": "history", "value": "Parc Mon-Repos once had a theatre that hosted Voltaire, which inspired the café's name", "quote": "Un théâtre s’y trouvait autrefois, il avait notamment accueilli Voltaire", "url": "https://www.lausanne-tourisme.ch/fr/decouvrir/la-folie-voltaire/", "confidence": "high"},
+   {"field": "other", "value": "Search-engine summary of an aggregator listing (vide-greniers.org, now 404): 'Les Puces de la Folie', Sunday 13 Sept 2026, 10:00-17:00, free entry, about 12 sellers, vintage clothes, records, books, pictures", "quote": "", "url": "https://vide-greniers.org/evenement/985464", "confidence": "low"}
+  ],
+  "conflicts": [
+   {"our_value": "Once a year, in April", "source_says": "Café's events page announces a Saturday 7 June edition; an aggregator snippet gives Sunday 13 September 2026. No April edition found", "url": "https://folievoltaire.ch/index.php/evenements/"},
+   {"our_value": "Venue: Esplanade de la Folie Voltaire", "source_says": "Esplanade des Marronniers (at the Folie)", "url": "https://folievoltaire.ch/index.php/evenements/"}
+  ],
+  "thin": false,
+  "notes": "The café's events page mixes years (the concert dates listed are from 2024). The name 'Les Puces de la Folie' appears only in the aggregator snippet. Rhythm and frequency are unclear; possibly irregular, organised by the café."
+ },
+ {
+  "slug": "gaenggali-markt-chur",
+  "sources": [
+   {"url": "https://www.chur.ch/brauchtum/62", "seen": "2026-10-07", "what": "City of Chur customs page"},
+   {"url": "https://flohmarkt-chur.ch/", "seen": "2026-10-07", "what": "market organisers' site (2026 dates, fees)"}
+  ],
+  "facts": [
+   {"field": "history", "value": "The name 'Gänggali' probably derives from the French 'quincaillerie' (hardware/household goods); the city lists the market among its yearly customs", "quote": "vermutlich mit dem französischen Wort «Quincaillerie», d.h. «Eisen-, Haushaltwaren» verwandt", "url": "https://www.chur.ch/brauchtum/62", "confidence": "high"},
+   {"field": "goods", "value": "Both dealers and private sellers; dealers are explicitly welcome", "quote": "verkaufen Händler und Private auf dem Arcas und beim Martinsbrunnen alles, was das Herz begehrt", "url": "https://www.chur.ch/brauchtum/62", "confidence": "high"},
+   {"field": "venue", "value": "On the Arcas square and by the Martinsbrunnen in the old town; the market continues during the building works on the Arcas", "quote": "Der Marktbetrieb des Floh- & Gänggalimarktes ist trotz Bauarbeiten auf dem Arcas gewährleistet !", "url": "https://flohmarkt-chur.ch/", "confidence": "high"},
+   {"field": "organiser", "value": "City page gives Armin Schneller as contact; the market site is signed with e-mails of Armin Schneller and Hubi Pazeller", "quote": "Kontakt Armin Schneller", "url": "https://www.chur.ch/brauchtum/62", "confidence": "high"},
+   {"field": "other", "value": "2026: 4 Apr, 2 May, 6 Jun (ends 12:30 because of the Buskers festival), 4 Jul, 8 Aug (moved for the 1 August celebration), 5 Sep, 3 Oct, 7 Nov, 5 Dec ('Röteli' day); 07:00-14:00", "quote": "6. Juni (wegen Buskers 12:30 Uhr Ende des Marktes).", "url": "https://flohmarkt-chur.ch/", "confidence": "high"},
+   {"field": "seller_booking", "value": "No advance bookings: spots are reserved on the day with a blanket from 07:00, set-up from 07:10; fees collected on the square: children with children's things CHF 5/m², adults CHF 10/m², professionals CHF 15/m²; no tables provided; no food may be sold", "quote": "Es sind KEINE Reservationen im voraus über uns möglich.", "url": "https://flohmarkt-chur.ch/", "confidence": "high"},
+   {"field": "parking", "value": "Nearest paid parking: Parkhaus Arcas or Parkhaus Lindenquai", "quote": "im Parkhaus Arcas oder im Parkhaus Lindenquai", "url": "https://flohmarkt-chur.ch/", "confidence": "high"},
+   {"field": "distinctive", "value": "The organisers offer to advise sellers on what their goods are worth", "quote": "Sind Sie nicht sicher, wieviel Ihre Ware wert ist, fragen Sie uns", "url": "https://flohmarkt-chur.ch/", "confidence": "high"},
+   {"field": "size", "value": "Organisers' own claim: the biggest flea market in south-east Switzerland (unverified claim, no stall count given)", "quote": "Der grösste Flohmarkt in der Süd-Ost-Schweiz.", "url": "https://flohmarkt-chur.ch/", "confidence": "low"}
+  ],
+  "conflicts": [
+   {"our_value": "Organiser: Stadt Chur", "source_says": "The city only lists it and names Armin Schneller as contact; the market is run by Armin Schneller and Hubi Pazeller", "url": "https://flohmarkt-chur.ch/"}
+  ],
+  "thin": false,
+  "notes": "The site's market name is 'Floh- & Gänggalimarkt'. No founding year found."
+ },
+ {
+  "slug": "hallenflohmarkt-hoelstein",
+  "sources": [
+   {"url": "https://flohmarkt-hoelstein.ch/", "seen": "2026-10-07", "what": "organiser homepage (dates, team, history)"},
+   {"url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Flyer-Flomi-A6-Internet.pdf", "seen": "2026-10-07", "what": "2026 flyer front"},
+   {"url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Flyer-Ruckseite-A6.pdf", "seen": "2026-10-07", "what": "2026 flyer back"},
+   {"url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Reglement%20Flohmarkt.pdf", "seen": "2026-10-07", "what": "2026 rules"},
+   {"url": "https://flohmarkt-hoelstein.ch/fragen.html", "seen": "2026-10-07", "what": "organiser FAQ"}
+  ],
+  "facts": [
+   {"field": "organiser", "value": "Now organised by the Marktverein Hölstein (an OK team led by Samantha Fahrni); otherwise unchanged", "quote": "Neu wird der Flohmarkt vom Markt Verein Hölstein organisiert, alles andere bleibt wie gehabt.", "url": "https://flohmarkt-hoelstein.ch/", "confidence": "high"},
+   {"field": "history", "value": "The team were regular flea-market buyers and sellers, found few markets in the Waldenburgertal/Fünflibertal, and outgrew their own garage sale", "quote": "Nachdem wir mit unserem Garagenflohmi keinen Platz mehr hatten musste etwas grösserer her.", "url": "https://flohmarkt-hoelstein.ch/", "confidence": "high"},
+   {"field": "history", "value": "The 11 April 2027 market is billed as the 16th hall flea market, 17 October 2027 as the 17th", "quote": "16. Hallen-Flohmarkt", "url": "https://flohmarkt-hoelstein.ch/", "confidence": "high"},
+   {"field": "size", "value": "2026: 65 hall tables and 12 outdoor tables, tables provided (no floor-metre pitches)", "quote": "65 Hallentische - 12 Aussentische - Tische stehen bereit", "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Flyer-Ruckseite-A6.pdf", "confidence": "high"},
+   {"field": "venue", "value": "Multi-purpose hall MzH Rübmatt (at the Rübmatt school), Hölstein; Sundays 9:00-16:00 (2026: 12 April and 11 October)", "quote": "Sonntag, 11.Oktober 2026 von 9 - 16 Uhr MzH Rüebmatt, 4434 Hölstein", "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Flyer-Flomi-A6-Internet.pdf", "confidence": "high"},
+   {"field": "food", "value": "Food and drink on site ('Marktwirtschaft'); organisers are found at the buffet", "quote": "Selbstverständlich haben wir wieder ein ausgesuchtes Sortiment an Esswaren und Getränken.", "url": "https://flohmarkt-hoelstein.ch/", "confidence": "high"},
+   {"field": "other", "value": "Runs in any weather", "quote": "Der Flohmarkt findet bei jedem Wetter statt.", "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Reglement%20Flohmarkt.pdf", "confidence": "high"},
+   {"field": "seller_booking", "value": "Written registration only, via form; deadlines 30 March / 28 September 2026; waiting list; hall table (180 x 70 cm) CHF 25, outdoor table CHF 40, clothes rail +CHF 10; tables and chairs provided; autumn 2026 is fully booked", "quote": "Anmeldung nicht mehr möglich wir sind ausgebucht", "url": "https://flohmarkt-hoelstein.ch/", "confidence": "high"},
+   {"field": "goods", "value": "No new goods, alcohol, food, weapons or ammunition", "quote": "Der Verkauf von Neuwaren, alkoholischen Getränken und Lebensmitteln ist untersagt", "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Reglement%20Flohmarkt.pdf", "confidence": "high"},
+   {"field": "access", "value": "Aisles are kept clear so they stay wheelchair-accessible (checked by organisers)", "quote": "damit die Gänge frei bleiben und auch Rollstuhlgängig bleiben", "url": "https://flohmarkt-hoelstein.ch/fragen.html", "confidence": "high"},
+   {"field": "parking", "value": "Spaces in front of the school are kept for visitors; sellers park free on the old gym square; no roadside parking in Hölstein", "quote": "Die Parkplätze vor dem Schulhaus sind für unsere Besucher freizuhalten", "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Reglement%20Flohmarkt.pdf", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "next_dates include 2027-04-04", "source_says": "2027 dates are Sunday 11 April and Sunday 17 October; 3 April 2027 (a Friday) is a separate 'Männer Markt'", "url": "https://flohmarkt-hoelstein.ch/"},
+   {"our_value": "Organiser: Hallenflohmarkt Hölstein", "source_says": "Marktverein Hölstein", "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Reglement%20Flohmarkt.pdf"}
+  ],
+  "thin": false,
+  "notes": "Outdoor table size differs between the rules (100 x 250 cm, with plastic cover) and the FAQ (2.0 x 1.0 m). Our address 'Gassenbachweg 15' is not on the site; the site links to a map of Schulhaus Rübmatt."
+ },
+ {
+  "slug": "hallenflohmarkt-markthalle-basel",
+  "sources": [
+   {"url": "https://markthallebasel.ch/flohmarkt/", "seen": "2026-10-07", "what": "venue/organiser flea-market page with dates"},
+   {"url": "https://markthallebasel.ch/faq/", "seen": "2026-10-07", "what": "venue FAQ"},
+   {"url": "https://www.bs.ch/en/verwaltung/prasidialdepartement/amter-und-bereiche/external-affairs-and-marketing/fairs-and-markets/basel-markets/other-markets", "seen": "2026-10-07", "what": "Canton Basel-Stadt markets page"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "Held under the dome of the Markthalle, a listed domed hall near Basel SBB with about 25 food stalls", "quote": "Unter der Kuppel", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "other", "value": "Once a month over a weekend, Saturday and Sunday, 11:00-16:00 (next: 7-8 Nov and 5-6 Dec 2026)", "quote": "The popular indoor flea markets take place once a month at the weekend.", "url": "https://www.bs.ch/en/verwaltung/prasidialdepartement/amter-und-bereiche/external-affairs-and-marketing/fairs-and-markets/basel-markets/other-markets", "confidence": "high"},
+   {"field": "goods", "value": "Clothes, children's things, design and everyday objects, small curiosities", "quote": "von Kleidung und Kindersachen über Design- und Alltagsobjekte bis zu kleinen Kuriositäten", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Stalls are booked online ('Stand buchen' via an Eventim Light page); a flea-market newsletter announces dates", "quote": "Stand buchen", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "access", "value": "Largely step-free; wheelchair-accessible toilet, changing table", "quote": "Ja, die Markthalle ist weitgehend stufenlos zugänglich.", "url": "https://markthallebasel.ch/faq/", "confidence": "high"},
+   {"field": "transport", "value": "Basel SBB station is 2 minutes' walk; tram stop 'Markthalle' at the main entrance (lines 1, 2, 8, 16)", "quote": "Tramstation «Markthalle» vor dem Haupteingang (Linien 1, 2, 8 und 16).", "url": "https://markthallebasel.ch/faq/", "confidence": "high"},
+   {"field": "parking", "value": "Car parks within walking distance: Elisabethen, Steinenparking, Bahnhof Basel SBB", "quote": "Parkhäuser in Gehdistanz: Elisabethen, Steinenparking und Bahnhof Basel SBB.", "url": "https://markthallebasel.ch/faq/", "confidence": "high"},
+   {"field": "access", "value": "Dogs allowed on a lead", "quote": "Ja, angeleint und rücksichtsvoll.", "url": "https://markthallebasel.ch/faq/", "confidence": "high"},
+   {"field": "food", "value": "The hall's food stalls are open; most accept cash, card, mobile payment and TWINT (this refers to the hall's stalls, not flea sellers)", "quote": "An den meisten Ständen: Bargeld, Kartenzahlung, Mobile Payment, Twint.", "url": "https://markthallebasel.ch/faq/", "confidence": "medium"},
+   {"field": "other", "value": "The Markthalle also runs a night flea market, Nerd Yard, and a vinyl market (6 Feb 2027, up to 30 exhibitors)", "quote": "Ob Hallenflohmarkt, Nachtflohmarkt, Nerd Yard oder Vinyl Sunday", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "Twice a month (Saturday and Sunday), dates vary", "source_says": "Once a month at the weekend (Saturday + Sunday)", "url": "https://www.bs.ch/en/verwaltung/prasidialdepartement/amter-und-bereiche/external-affairs-and-marketing/fairs-and-markets/basel-markets/other-markets"}
+  ],
+  "thin": false,
+  "notes": "Our setting is null; all sources describe it as indoors (under the dome). No stall count or stall fee seen (booking page blocked)."
+ },
+ {
+  "slug": "hyper-bazar-la-chaux-de-fonds",
+  "sources": [
+   {"url": "https://www.j3l.ch/fr/P223324/a-faire/manifestations/excursion-visite-guidee-animation/hyper-bazar", "seen": "2026-10-07", "what": "regional tourism listing; returns HTTP 410 Gone"}
+  ],
+  "facts": [
+   {"field": "other", "value": "Search-engine summaries of a Brocabrac listing (no longer on the page) name 'Hyper bazar - marché aux puces', Place de la Carmagnole, with 2026 dates 29 August and 26 September (both last Saturdays)", "quote": "", "url": "https://brocabrac.fr/ne/la-chaux-de-fonds/vide-grenier/", "confidence": "low"}
+  ],
+  "conflicts": [
+   {"our_value": "website_url / source_url: j3l.ch Hyper Bazar page", "source_says": "Page returns HTTP 410 Gone (removed)", "url": "https://www.j3l.ch/fr/P223324/a-faire/manifestations/excursion-visite-guidee-animation/hyper-bazar"}
+  ],
+  "thin": true,
+  "notes": "No organiser page found. The '90 stalls', '10-16 Uhr' and 'five minutes from the station' claims in our description are unverified. The 2026 dates in search snippets suggest it still ran in 2026."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-bachwiesen",
+  "sources": [
+   {"url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "seen": "2026-10-07", "what": "organiser (community centre) event page"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Used toys and children's items for ages up to 12; no household goods, adult clothing or media rated 16+", "quote": "gebrauchte Spielsachen und Kinderartikel bis 12 Jahren (keine Haushaltsgegenstände, Bekleidung für Erwachsene", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "distinctive", "value": "Children and adults both swap or sell", "quote": "Kinder und Erwachsene tauschen oder verkaufen", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "venue", "value": "Outdoors only, on the community centre grounds", "quote": "Der Flohmarkt findet nur draussen statt.", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "seller_booking", "value": "No reservations; pitches are free; the centre rents a table for CHF 10 or a bench for CHF 4", "quote": "Die Standfläche ist kostenlos.", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "other", "value": "Cancelled in wet weather; decision on the website from Friday 12:00 before the Sunday", "quote": "Bei nassem Wetter: Keine Durchführung.", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "food", "value": "The centre's cafeteria is open; no food or drink stalls by sellers", "quote": "Die Cafeteria ist während des Flohmarktes geöffnet.", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "parking", "value": "No parking; loading and unloading only", "quote": "Es stehen keine Parkplätze zur Verfügung.", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "high"},
+   {"field": "other", "value": "Next: Sunday 18 October 2026, 10:00-16:00", "quote": "", "url": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/", "confidence": "medium"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "The date and time came from a page summary; the page text itself only says 'Sunday'. Our description places it in Altstetten; the source doesn't name the district (8047 is Albisrieden)."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-heuried",
+  "sources": [
+   {"url": "https://gz-zh.ch/gz-heuried/angebote/flohmarkt-fuer-kindersachen/", "seen": "2026-10-07", "what": "our source_url; returns 404"},
+   {"url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf", "seen": "2026-10-07", "what": "GZ Heuried letter to sellers, 8 Oct 2025"}
+  ],
+  "facts": [
+   {"field": "other", "value": "From 2026 the children's-things flea market runs twice a year, spring and autumn: 12 April and 27 September 2026", "quote": "Der Flohmarkt für Kindersachen findet neu zweimal im Jahr statt, jeweils im Frühling und im Herbst.", "url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf", "confidence": "high"},
+   {"field": "other", "value": "The schedule was reduced because of high demand for rooms from other groups", "quote": "Aufgrund des hohen Raumbedarfs verschiedener Gruppen und eine faire Verteilung der Räume", "url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf", "confidence": "high"},
+   {"field": "distinctive", "value": "GZ Heuried also holds two adult flea markets where anything for adults may be sold: 15 March and 22 November 2026", "quote": "zwei Flohmarkte für Erwachsene geben, bei welchem alles für Erwachsene verkauft werden kann", "url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf", "confidence": "high"},
+   {"field": "seller_booking", "value": "Registration opens online at least one month before each date (gz-zh.ch/gz-heuried/programm); help available from the community worker Sara Lunin", "quote": "spätestens einen Monat vor Veranstaltungsdatum auf unserer Webseite ... das Anmeldefenster freischalten", "url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf", "confidence": "high"},
+   {"field": "other", "value": "Search-engine summary of an older (2024) info sheet, now 404: market 12:00-17:00 with set-up from 11:00, children's items only, a popcorn stand, no car access to the building", "quote": "", "url": "https://gz-zh.ch/app/uploads/sites/7/2024/09/Information-Kinderflohmarkt-2024.pdf", "confidence": "low"}
+  ],
+  "conflicts": [
+   {"our_value": "website_url / source_url", "source_says": "Page returns HTTP 404", "url": "https://gz-zh.ch/gz-heuried/angebote/flohmarkt-fuer-kindersachen/"}
+  ],
+  "thin": false,
+  "notes": "Both 2026 children's dates have passed; 2027 dates not found. 'Atrium' as the venue is not confirmed by any source seen. The adult flea market on 22 Nov 2026 is not in our data."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-hottingen",
+  "sources": [
+   {"url": "https://gz-zh.ch/gz-hottingen/angebote/kinderflohmarkt/", "seen": "2026-10-07", "what": "our source_url; returns 404"},
+   {"url": "https://gz-zh.ch/gz-hottingen/", "seen": "2026-10-07", "what": "GZ Hottingen homepage; no flea market listed"}
+  ],
+  "facts": [],
+  "conflicts": [
+   {"our_value": "source_url: gz-zh.ch/gz-hottingen/angebote/kinderflohmarkt/", "source_says": "Page returns HTTP 404; no flea market on the GZ Hottingen homepage or programme", "url": "https://gz-zh.ch/gz-hottingen/angebote/kinderflohmarkt/"}
+  ],
+  "thin": true,
+  "notes": "Nothing found anywhere. It may have stopped, or it is simply not announced at the moment."
+ },
+ {
+  "slug": "kinderflohmarkt-uster",
+  "sources": [
+   {"url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "seen": "2026-10-07", "what": "City of Uster market page"}
+  ],
+  "facts": [
+   {"field": "other", "value": "Held on the last Saturday before the long summer holidays; in 2026 on 11 July, 8:00-12:00 on Stadthausplatz", "quote": "Der Ustermer Stadthausplatz ist am 11. Juli von 8.00 bis 12.00 Uhr ein Ort emsigen Treibens", "url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "confidence": "high"},
+   {"field": "history", "value": "The city calls it a traditional children's flea market, a chance for children to top up their holiday money", "quote": "am traditionellen Kinderflohmarkt die einmalige Chance, das eigene Ferienkässeli noch ein wenig aufzubessern", "url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "confidence": "high"},
+   {"field": "distinctive", "value": "Only children sell; adults come as visitors, buyers or companions", "quote": "an diesem Kindertag allerdings nur als Besucherinnen und Besucher, Käuferinnen und Käufer oder als Begleitpersonen", "url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "confidence": "high"},
+   {"field": "seller_booking", "value": "Children who register enter a draw for covered stalls; spontaneous sellers just bring their bundle and a woollen blanket ('Bündelitag')", "quote": "Wer sich anmeldet, nimmt an der Verlosung von gedeckten Standplätzen teil.", "url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "confidence": "high"},
+   {"field": "food", "value": "A stand gives out free ice cream", "quote": "Ein Stand mit Gratis-Glace sorgt dafür, dass alle ... Schleckmäuler nicht zu kurz kommen.", "url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "confidence": "high"},
+   {"field": "organiser", "value": "Contact is the Stadtpolizei Uster (city police), Oberlandstrasse 82", "quote": "Kontakt Stadtpolizei Uster Oberlandstrasse 82 8610 Uster", "url": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "The 2026 edition has passed; no 2027 date published yet."
+ },
+ {
+  "slug": "les-puces-du-cpo-lausanne",
+  "sources": [
+   {"url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/", "seen": "2026-10-07", "what": "organiser page"},
+   {"url": "https://www.cpo-ouchy.ch/infos-pratiques/acces/", "seen": "2026-10-07", "what": "organiser access page"},
+   {"url": "https://www.cpo-ouchy.ch/infos-pratiques/histoire/", "seen": "2026-10-07", "what": "organiser history page"},
+   {"url": "https://www.cpo-ouchy.ch/activites/vide-grenier/", "seen": "2026-10-07", "what": "organiser vide-grenier page"}
+  ],
+  "facts": [
+   {"field": "distinctive", "value": "Not a market of individual sellers: the CPO runs its own second-hand corner, stocked with donated items and sold at low prices, once a week", "quote": "Le CPO ouvre son espace brocante chaque semaine", "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/", "confidence": "high"},
+   {"field": "goods", "value": "Books, decorations, crockery, small furniture, kitchen utensils, clothes and accessories for all ages, children's equipment, toys; no household appliances", "quote": "livres, décorations, vaisselle, petit mobilier, ustensiles de cuisine, vêtements et accessoires pour petits et grands", "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/", "confidence": "high"},
+   {"field": "other", "value": "Every Thursday 10:00-18:00, except public holidays and the Christmas and summer holidays", "quote": "Tous les jeudis de 10h à 18h, sauf fériés et vacances de Noël / d’été.", "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/", "confidence": "high"},
+   {"field": "venue", "value": "In the basement of the CPO", "quote": "L’espace brocante se situe au sous-sol du CPO.", "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/", "confidence": "high"},
+   {"field": "other", "value": "Donations of items in good condition: CPO hall Mon-Fri 9:00-13:00, or Thursdays at the Puces 10:00-18:00", "quote": "Apportez-nous vos trésors en bon état pour leur offrir une seconde vie", "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/", "confidence": "high"},
+   {"field": "history", "value": "The centre (formerly the Centre Paroissial d'Ouchy) opened on 20 April 1969; its director Eugène Roy created the flea market in a social spirit", "quote": "Eugène Roy donne au CPO son aspect communautaire en y créant ... le marché aux puces", "url": "https://www.cpo-ouchy.ch/infos-pratiques/histoire/", "confidence": "high"},
+   {"field": "access", "value": "Step-free access by a ramp at the back (south side of the Temple de la Croix d'Ouchy), an inside ramp and a ground-floor toilet", "quote": "Le CPO est accessible aux personnes à mobilité réduite", "url": "https://www.cpo-ouchy.ch/infos-pratiques/acces/", "confidence": "high"},
+   {"field": "transport", "value": "M2 stop Délices, bus 2 Croix-d'Ouchy, bus 25 Elysée; 10 minutes on foot from the station along the M2; limited parking, public car park at Hôtel Royal Savoy", "quote": "M2, arrêt Délices", "url": "https://www.cpo-ouchy.ch/infos-pratiques/acces/", "confidence": "high"},
+   {"field": "other", "value": "The CPO also holds a vide-grenier on Saturday 14 November 2026, 10:00-17:00 (34 tables at CHF 40, fully booked), when the Thursday Puces are also open along with a book exchange and a Repair Café", "quote": "Durant cette journée, les Puces du Jeudi seront ouvertes", "url": "https://www.cpo-ouchy.ch/activites/vide-grenier/", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "Every Thursday, all year", "source_says": "Except public holidays and the Christmas and summer holidays", "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/"}
+  ],
+  "thin": false,
+  "notes": "It is a donation-based charity second-hand shop open one day a week, not a flea market with stalls. The decision whether it belongs on fynda.market is yours to take. The CPO calls it 'Les Puces du Jeudi' on one page."
+ },
+ {
+  "slug": "les-puces-du-loup-lausanne",
+  "sources": [
+   {"url": "https://www.instagram.com/lespucesduloup/", "seen": "2026-10-07", "what": "organiser Instagram; content not readable without login"}
+  ],
+  "facts": [],
+  "conflicts": [],
+  "thin": true,
+  "notes": "Nothing found beyond the Instagram handle. Searches for the name with Plaines-du-Loup, Blécherette and the school return nothing about the market. Our description's ~50 stalls in the school yard of the École des Plaines-du-Loup is unverified."
+ },
+ {
+  "slug": "liesberger-flohmarkt",
+  "sources": [
+   {"url": "https://liesberger-flohmarkt.ch/", "seen": "2026-10-07", "what": "organiser homepage (dates, history, team)"},
+   {"url": "https://liesberger-flohmarkt.ch/userfiles/downloads/Anmeldung-Flohmarkt-Liesberger-26.pdf", "seen": "2026-10-07", "what": "2026 seller registration form"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "The 2026 form calls it an antiques, flea and farmers' market", "quote": "Liesberger Antiquitäten Floh- und Buuremärt", "url": "https://liesberger-flohmarkt.ch/userfiles/downloads/Anmeldung-Flohmarkt-Liesberger-26.pdf", "confidence": "high"},
+   {"field": "venue", "value": "Mehrzweckhalle Seemättli, with pitches inside the hall, outside in the open and covered; large car park directly in front, post-bus stop a few metres away", "quote": "mit grossem Parkplatz direkt vor der Halle, Posthaltestelle nur wenige Meter davon entfernt", "url": "https://liesberger-flohmarkt.ch/userfiles/downloads/Anmeldung-Flohmarkt-Liesberger-26.pdf", "confidence": "high"},
+   {"field": "history", "value": "Founded by the Kohler and Balmer families after a family visit in April 2009; the first market, on Sunday 27 September 2009, drew 86 exhibitors (they had hoped for 50)", "quote": "am Sonntag den 27. September durften wir 86 Aussteller aus diversen Regionen begrüssen", "url": "https://liesberger-flohmarkt.ch/", "confidence": "high"},
+   {"field": "history", "value": "The site marks 15 years of the market", "quote": "Wir feiern 15 Jahre Liesberger Flohmarkt", "url": "https://liesberger-flohmarkt.ch/", "confidence": "medium"},
+   {"field": "organiser", "value": "Marktorganisation Kohler / Balmer, a family team (Kilian and Verena Kohler, Vanessa, Leonie and Lars Balmer, Seline Brander)", "quote": "Eine ganz besondere Mischung!", "url": "https://liesberger-flohmarkt.ch/", "confidence": "high"},
+   {"field": "other", "value": "2026: Sundays 1 March, 3 May, 6 September, 15 November, 09:00-16:00", "quote": "Sonntag 15. Nov. 2026 - von 09.00 bis 16.00", "url": "https://liesberger-flohmarkt.ch/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Paper form returned to K. Kohler. Outdoors 3/4/5 m CHF 30/40/50, 3x3 m CHF 50; in the hall 3/4/5/6 m CHF 50/70/90/100; covered 4 m CHF 70, 6 m CHF 100; tables on request", "quote": "3 m in der Halle 50.-", "url": "https://liesberger-flohmarkt.ch/userfiles/downloads/Anmeldung-Flohmarkt-Liesberger-26.pdf", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "stall_count: 100", "source_says": "No current stall count; the only figure is 86 exhibitors at the first market in 2009", "url": "https://liesberger-flohmarkt.ch/"},
+   {"our_value": "Address: Dorfstrasse 10, 4254 Liesberg", "source_says": "Site gives no street address for the hall; Oberdorf 10 is the organiser's contact address", "url": "https://liesberger-flohmarkt.ch/"}
+  ],
+  "thin": false,
+  "notes": "Our description says the hall makes it weather-proof; the source shows outdoor pitches too (setting 'both' is right). No visitor entry fee or food information found."
+ },
+ {
+  "slug": "maedelsflohmarkt-tanzwerk-101-zuerich",
+  "sources": [
+   {"url": "https://www.maedelsflohmarkt.ch/", "seen": "2026-10-07", "what": "organiser homepage"},
+   {"url": "https://www.maedelsflohmarkt.ch/wichtige-infos-f%C3%BCr-verk%C3%A4uferinnen-2026/", "seen": "2026-10-07", "what": "organiser seller information 2026"},
+   {"url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-z%C3%BCrich/", "seen": "2026-10-07", "what": "organiser Zürich registration and dates 2026"}
+  ],
+  "facts": [
+   {"field": "history", "value": "Running since 2017", "quote": "MÄDELSFLOHMARKT Schweiz (seit 2017)", "url": "https://www.maedelsflohmarkt.ch/", "confidence": "high"},
+   {"field": "goods", "value": "Only well-kept second-hand items for women: clothing, accessories, shoes, jewellery, lingerie, handbags; designer, vintage, known brands or no-name", "quote": "ausschliesslich gut erhaltene Secondhand Ware für Frauen", "url": "https://www.maedelsflohmarkt.ch/", "confidence": "high"},
+   {"field": "goods", "value": "Private sellers only: no dealers, no commercial sellers, no handmade goods, no food or drink; cheap junk and selling out of boxes not wanted", "quote": "ANMELDUNG nur für Privatpersonen - nur SECOND HAND (keine Händler / kein Gewerbe / kein Handmade", "url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-z%C3%BCrich/", "confidence": "high"},
+   {"field": "venue", "value": "Tanzwerk 101, on the roof terrace of the Migros complex at Pfingstweidstrasse 101: a large event hall with bar, wooden floor and daylight, plus an adjoining small hall", "quote": "Das Tanzwerk 101 liegt auf der Dachterrasse des MIGROS-Komplexes an der Pfingstweidstrasse 101.", "url": "https://www.maedelsflohmarkt.ch/wichtige-infos-f%C3%BCr-verk%C3%A4uferinnen-2026/", "confidence": "high"},
+   {"field": "distinctive", "value": "Changing rooms for trying things on", "quote": "An unserem Fashion-Flohmarkt bieten wir Umkleidekabinen an.", "url": "https://www.maedelsflohmarkt.ch/", "confidence": "high"},
+   {"field": "transport", "value": "Tram 4 to 'Toni-Areal', almost opposite the entrance; paid parking deck above the venue (max height 2.20 m)", "quote": "ANREISE mit ÖV: Tramhaltestelle \"Toniareal\", Tramlinie 4", "url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-z%C3%BCrich/", "confidence": "high"},
+   {"field": "access", "value": "Dogs are not allowed anywhere in the Migros complex", "quote": "Hunde sind leider im gesamten MIGROS Komplex verboten!", "url": "https://www.maedelsflohmarkt.ch/", "confidence": "high"},
+   {"field": "other", "value": "Free entry; open 11:00-16:00. 2026 Zürich Sundays: 1 Mar, 29 Mar, 26 Apr, 31 May, 27 Sep, 25 Oct, 22 Nov", "quote": "EINTRITT FREI !!!", "url": "https://www.maedelsflohmarkt.ch/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Bare floor pitches (e.g. 2.3 x 2.0 m) from CHF 115 to CHF 175, for 2-3 sellers; tables and chairs bookable extra; drop-off from 9:30; paid in advance; refunds minus CHF 20 up to 14 days before", "quote": "reine Standfläche (2.3 m breit zum Gang und 2.0 m tief) ohne alles", "url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-z%C3%BCrich/", "confidence": "high"},
+   {"field": "other", "value": "Sister event: Mädelsflohmarkt XXL at Stadthalle Dietikon (8 March and 8 November 2026), which also allows things for children and men", "quote": "Verkauft werden dürfen in Dietikon am Mädelsflohmarkt XXL Sachen für Frauen, Kinder, Männer", "url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-z%C3%BCrich/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "October 2026 is almost sold out (one free pitch left in each of three categories). No food sales on site, but the venue hall has a bar."
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-cathedrale",
+  "sources": [
+   {"url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/", "seen": "2026-10-07", "what": "Fribourg tourism page with 2026 dates"},
+   {"url": "https://www.blick.ch/fr/suisse/la-saison-commence-en-suisse-les-marches-aux-puces-sont-en-plein-boom-id18537420.html", "seen": "2026-10-07", "what": "Blick article, 2 May 2023"},
+   {"url": "https://brocabrac.fr/fr/fribourg/1348903-marche-de-la-cathedrale-antiquites-brocante-puces", "seen": "2026-10-07", "what": "Brocabrac listing (organiser-entered)"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "First-Saturday markets are currently held around the Cathedral, replacing Place du Petit-Saint-Jean, which is under construction", "quote": "le marché a lieu autour de la cathédrale (en remplacement de la place St Jean qui est en travaux )", "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/", "confidence": "high"},
+   {"field": "goods", "value": "Antique furniture, grandmothers' porcelain, small decorative knick-knacks", "quote": "meubles anciens, porcelaines de grand-mères, petites babioles décoratives", "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/", "confidence": "high"},
+   {"field": "size", "value": "30 to 50 exhibitors depending on the weather (tourism page, both Fribourg flea markets); the 2023 article said 15-30 for the first-Saturday old-town market; the Brocabrac listing says 50-100", "quote": "présentés par 30 à 50 exposants (selon la météo)", "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/", "confidence": "medium"},
+   {"field": "history", "value": "In 2023 the first-Saturday old-town market had been held on Place du Petit-Saint-Jean for nearly 40 years, with a family feel and many sellers from the neighbourhood", "quote": "se tient sur la place du Petit-Saint-Jean depuis près de 40 ans", "url": "https://www.blick.ch/fr/suisse/la-saison-commence-en-suisse-les-marches-aux-puces-sont-en-plein-boom-id18537420.html", "confidence": "high"},
+   {"field": "organiser", "value": "Robin Harteveld organises both Fribourg flea markets (first Saturday old town, last Saturday Place Python)", "quote": "Organisateur Harteveld robin", "url": "https://brocabrac.fr/fr/fribourg/1348903-marche-de-la-cathedrale-antiquites-brocante-puces", "confidence": "high"},
+   {"field": "other", "value": "2026 cathedral dates: 7 Mar, 4 Apr, 2 May, 6 Jun, 4 Jul, 1 Aug, 5 Sep, 3 Oct, 7 Nov, 8:00-16:30. A second market runs on the last Saturdays at Place Georges-Python (or Place de l'Équilibre)", "quote": "Cathédrale 8h-16h30", "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Stall bookings by phone (079 513 40 68); Brocabrac lists 3x3 m CHF 50, 2x1 m CHF 25, unloading 6:00-8:30, packing 16:30-18:00; private and professional sellers", "quote": "emplacement 3x3m 50 frs 2x1m 25 frs", "url": "https://brocabrac.fr/fr/fribourg/1348903-marche-de-la-cathedrale-antiquites-brocante-puces", "confidence": "medium"}
+  ],
+  "conflicts": [
+   {"our_value": "Venue: Autour de la Cathédrale Saint-Nicolas", "source_says": "The cathedral site is a temporary stand-in for Place du Petit-Saint-Jean during building works, so the venue may move back", "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/"}
+  ],
+  "thin": false,
+  "notes": "Brocabrac gives the cathedral address as 'Place de la cathédrale et pont muré', 08:30-16:30. The size figures disagree (15-30 / 30-50 / 50-100); treat as unknown or use the tourism page's 30-50 range."
+ },
+ {
+  "slug": "marche-aux-puces-glovelier",
+  "sources": [
+   {"url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html", "seen": "2026-10-07", "what": "Guide Rousseau / Broc-antic listing (not the organiser)"},
+   {"url": "https://vide-greniers.org/evenement/429709", "seen": "2026-10-07", "what": "vide-greniers.org listing (aggregator)"}
+  ],
+  "facts": [
+   {"field": "other", "value": "2026: Sunday 12 April and Sunday 4 October, 9:00-16:00; next listed Sunday 3 October 2027", "quote": "Dimanche 12 avril Dimanche 4 octobre ... De 9h à 16h", "url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html", "confidence": "high"},
+   {"field": "venue", "value": "Place du Café de la Poste, 3 rue de la Gare, Glovelier", "quote": "3, Rue de la Gare Place du Café de la Poste", "url": "https://vide-greniers.org/evenement/429709", "confidence": "medium"},
+   {"field": "food", "value": "Food and drinks on site", "quote": "Restauration - Boissons", "url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html", "confidence": "high"},
+   {"field": "other", "value": "Free entry", "quote": "Tarif : Entrée gratuite", "url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html", "confidence": "high"},
+   {"field": "seller_booking", "value": "Professionals register by SMS or WhatsApp (079 153 58 38); payment by TWINT at registration, or IBAN on request", "quote": "paiement par TWINT à l’inscription ou IBAN sur demande", "url": "https://www.broc-antic.com/manifestations/marche-aux-puces-et-brocante-aux-enfants.html", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "No organiser site found; vide-greniers names only a contact 'Julia'. The 'halle Post Aréa' and the children's flea market in our description are not confirmed (only the listing's URL contains 'brocante-aux-enfants'). Broc-antic is a listings site, not the organiser."
+ },
+ {
+  "slug": "marche-aux-puces-jardin-anglais-neuchatel",
+  "sources": [
+   {"url": "https://www.j3l.ch/fr/P178647/a-faire/manifestations/coutume-marche-artisanat/marche-aux-puces", "seen": "2026-10-07", "what": "regional tourism listing (FR)"},
+   {"url": "https://www.j3l.ch/en/P178647/things-to-do/events/tradition-market-craft/flea-market", "seen": "2026-10-07", "what": "regional tourism listing (EN)"}
+  ],
+  "facts": [
+   {"field": "other", "value": "Once or twice a month, March to October, in the Jardin anglais", "quote": "Le marché aux puces a lieu une à deux fois par mois de mars à octobre", "url": "https://www.j3l.ch/fr/P178647/a-faire/manifestations/coutume-marche-artisanat/marche-aux-puces", "confidence": "high"},
+   {"field": "goods", "value": "Unusual objects, old books, decorations, antiques and curiosities", "quote": "une grande variété d'objets insolites, des livres anciens, des décorations", "url": "https://www.j3l.ch/fr/P178647/a-faire/manifestations/coutume-marche-artisanat/marche-aux-puces", "confidence": "high"},
+   {"field": "other", "value": "Free entry; contact via the Facebook page 'pucesjardinanglais' or +41 79 359 79 41", "quote": "Tarif unique Entrée - Gratuit", "url": "https://www.j3l.ch/fr/P178647/a-faire/manifestations/coutume-marche-artisanat/marche-aux-puces", "confidence": "high"},
+   {"field": "other", "value": "Search-engine summaries of MySwitzerland listings (page needs JavaScript): Saturdays 10:00-17:00, 14 March to 3 October 2026, e-mail pucesjardinanglais@bluewin.ch", "quote": "", "url": "https://www.myswitzerland.com/en-au/experiences/events/flea-market-2/", "confidence": "low"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Organiser not named anywhere. No stall count, seller info or history found. Our description's 'Parkhaus Port next door' and 'ten minutes downhill from the station' are unverified."
+ },
+ {
+  "slug": "marche-aux-puces-vevey",
+  "sources": [
+   {"url": "https://www.vevey.ch/vivre-vevey/vie-de-quartier/marches", "seen": "2026-10-07", "what": "City of Vevey markets page"},
+   {"url": "https://vide-greniers.org/evenement/560167/20261107", "seen": "2026-10-07", "what": "vide-greniers.org listing posted by 'aperomp'"},
+   {"url": "https://www.apero1800vevey.ch/", "seen": "2026-10-07", "what": "APERO website linked by the city; domain does not resolve"}
+  ],
+  "facts": [
+   {"field": "organiser", "value": "Organised by APERO (Association pour les environs de la place Robin); the city says dates follow the association's calendar", "quote": "se tient selon le calendrier à consulter", "url": "https://www.vevey.ch/vivre-vevey/vie-de-quartier/marches", "confidence": "medium"},
+   {"field": "size", "value": "Up to 90 exhibitors expected", "quote": "", "url": "https://vide-greniers.org/evenement/560167/20261107", "confidence": "medium"},
+   {"field": "other", "value": "Monthly; 8:00-16:00; sellers check in at 7:30 and may not set up before check-in; listed dates include 7 Nov 2026, 6 Mar 2027 and 5 Jun 2027", "quote": "", "url": "https://vide-greniers.org/evenement/560167/20261107", "confidence": "medium"},
+   {"field": "seller_booking", "value": "Online registration; CHF 10 per pitch, cash only (no TWINT); a table can be rented for CHF 10, subject to availability", "quote": "", "url": "https://vide-greniers.org/evenement/560167/20261107", "confidence": "medium"},
+   {"field": "food", "value": "A food truck on site; free entry", "quote": "", "url": "https://vide-greniers.org/evenement/560167/20261107", "confidence": "medium"}
+  ],
+  "conflicts": [
+   {"our_value": "07:30-16:30", "source_says": "Market 8:00-16:00; 7:30 is the sellers' check-in", "url": "https://vide-greniers.org/evenement/560167/20261107"},
+   {"our_value": "Organiser site apero1800vevey.ch (linked by the city)", "source_says": "Domain does not resolve (DNS failure)", "url": "https://www.apero1800vevey.ch/"}
+  ],
+  "thin": false,
+  "notes": "vide-greniers.org content was read through a page summarizer (the site blocks direct reading), so I have no verbatim French quotes. The listing poster 'aperomp' is probably APERO."
+ },
+ {
+  "slug": "marche-calabash-lausanne",
+  "sources": [
+   {"url": "https://www.associationcalabash.ch/", "seen": "2026-10-07", "what": "organiser homepage and booking"},
+   {"url": "https://www.associationcalabash.ch/a-propos/", "seen": "2026-10-07", "what": "organiser about page"},
+   {"url": "https://www.associationcalabash.ch/faq/", "seen": "2026-10-07", "what": "organiser FAQ"},
+   {"url": "https://www.associationcalabash.ch/reglement/", "seen": "2026-10-07", "what": "organiser market rules"}
+  ],
+  "facts": [
+   {"field": "organiser", "value": "Association Calabash is a non-profit humanitarian association helping children and families in Sierra Leone (health, micro-credit for women, cultural exchange); its income includes proceeds from its events. The site does not say explicitly that market income goes there", "quote": "association humanitaire à but non lucratif, d’aide et de soutien aux enfants et leur famille vivant en Sierra Leone", "url": "https://www.associationcalabash.ch/a-propos/", "confidence": "high"},
+   {"field": "other", "value": "First Sunday of every month, all year round, on Place de la Riponne; open to the public 9:00-18:00", "quote": "le premier dimanche de chaque mois, durant toute l’année, sur la place de la Riponne", "url": "https://www.associationcalabash.ch/reglement/", "confidence": "high"},
+   {"field": "goods", "value": "Open to private sellers, traders, artisans and creators; the FAQ allows new or used goods (the rules speak of second-hand goods); food and drink sales forbidden", "quote": "Tout personne, tel qu’un particulier, un commerçant, un artisan ou un créateur, peut participer", "url": "https://www.associationcalabash.ch/faq/", "confidence": "medium"},
+   {"field": "seller_booking", "value": "Book a numbered pitch online; CHF 10 per running metre, minimum 3 m; pay by the Friday before; TWINT or card; no tables provided; set up from 7:30, ready by 9:00", "quote": "CHF 10.– par mètre linéaire, avec un minimum de 3 mètres.", "url": "https://www.associationcalabash.ch/reglement/", "confidence": "high"},
+   {"field": "food", "value": "The Pâtisserie des Escaliers bakery is usually open on Sundays", "quote": "la boulangerie « Pâtisserie des Escaliers » est ouverte le dimanche", "url": "https://www.associationcalabash.ch/faq/", "confidence": "high"},
+   {"field": "parking", "value": "Free Sunday parking e.g. on Place du Château or Place du Tunnel", "quote": "Le dimanche vous pouvez parquer gratuitement votre véhicule sur la place du chateau", "url": "https://www.associationcalabash.ch/faq/", "confidence": "high"},
+   {"field": "other", "value": "Free entry for visitors", "quote": "L’entrée au vide-grenier est gratuite pour tous les visiteurs.", "url": "https://www.associationcalabash.ch/faq/", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "08:00-16:00 (next_dates)", "source_says": "Open to the public 9:00-18:00", "url": "https://www.associationcalabash.ch/reglement/"},
+   {"our_value": "Every 1st Sunday, February to December", "source_says": "First Sunday of each month, all year round", "url": "https://www.associationcalabash.ch/reglement/"}
+  ],
+  "thin": false,
+  "notes": "The booking page for 1 Nov 2026 showed 14 places left; there was no total stall count. The site calls it 'Marché Brocante / Vide-grenier'."
+ },
+ {
+  "slug": "mercantico-bellinzona",
+  "sources": [
+   {"url": "https://www.incitta.ch/eventi/mercantico-3/", "seen": "2026-10-07", "what": "Bellinzona events listing (May 2026 edition)"},
+   {"url": "https://www.incitta.ch/wp-content/uploads/2026/05/nex_forms_file_6a188f4fd1fbf-1.pdf", "seen": "2026-10-07", "what": "2026 flyer"},
+   {"url": "https://ondemedia.com/", "seen": "2026-10-07", "what": "organiser homepage"},
+   {"url": "https://www.laregione.ch/agenda/evento/43253/servizi", "seen": "2026-10-07", "what": "laRegione agenda, December 2022 edition"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Brocante, antiques, collectables, vintage, books, comics and 'grandmother's things'; the listing also names farm tools, crockery, fabrics and table linen, furniture", "quote": "fiera di brocante, antiquariato, collezionismo, vintage, libri, fumetti, oggetti della nonna", "url": "https://www.incitta.ch/wp-content/uploads/2026/05/nex_forms_file_6a188f4fd1fbf-1.pdf", "confidence": "high"},
+   {"field": "size", "value": "About thirty stalls (May 2026 edition)", "quote": "Saranno allestite una trentina di bancarelle", "url": "https://www.incitta.ch/eventi/mercantico-3/", "confidence": "high"},
+   {"field": "other", "value": "2026 spring editions: Saturday 30 May and Saturday 13 June (the last spring date), 8:00-18:00, Piazza Giuseppe Buffi", "quote": "30.05.26 / 13.06.26 dalle 08.00 alle 18.00", "url": "https://www.incitta.ch/wp-content/uploads/2026/05/nex_forms_file_6a188f4fd1fbf-1.pdf", "confidence": "high"},
+   {"field": "other", "value": "2026: held in any weather (the December 2022 edition was only held in stable weather)", "quote": "L'evento avrà luogo con qualsiasi meteo.", "url": "https://www.incitta.ch/eventi/mercantico-3/", "confidence": "high"},
+   {"field": "access", "value": "Wheelchair accessible (per the listing)", "quote": "Accessibile con sedia a rotelle Si", "url": "https://www.incitta.ch/eventi/mercantico-3/", "confidence": "medium"},
+   {"field": "organiser", "value": "Ondemedia, a non-profit association of public benefit for cultural services and book promotion; volunteer-run since 2020", "quote": "Siamo un'associazione no-profit riconosciuta di pubblica utilità.", "url": "https://ondemedia.com/", "confidence": "high"},
+   {"field": "history", "value": "Described in 2022 as Bellinzona's traditional brocante fair; the 18 Dec 2022 edition, alongside the Christmas market, had roast chestnuts, music and mulled wine with Bar Cervo", "quote": "la tradizionale fiera bellinzonese di brocante, antiquariato, collezionismo e mondo vintage", "url": "https://www.laregione.ch/agenda/evento/43253/servizi", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "Our description's December edition 'im Parco della Foca' is not confirmed; the only December edition found (2022) was in Piazza Buffi. No autumn or winter 2026 dates found. Our setting is null; the source describes the piazza (outdoors)."
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "sources": [
+   {"url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600", "seen": "2026-10-07", "what": "Comune di Massagno news page"},
+   {"url": "https://www4.ti.ch/typo3conf/ext/tich_osservatorio/Resources/Public/PHP/dettaglioPdf.php?uid=106642", "seen": "2026-10-07", "what": "Canton Ticino cultural agenda entry"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "Second-hand items, vintage curiosities, local creations, plus workshops", "quote": "Troverete oggetti di seconda mano, curiosità vintage, creazioni locali e alcuni workshop.", "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600", "confidence": "high"},
+   {"field": "other", "value": "Autumn edition Sunday 20 September 2026, an afternoon event in the piazzale del Municipio, via Giuseppe Motta 53, with a DJ set and a yoga workshop as new additions", "quote": "Questa edizione si svolgerà nel piazzale del Municipio, in via Giuseppe Motta 53", "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600", "confidence": "high"},
+   {"field": "other", "value": "Spring edition Saturday 18 April 2026 from 13:00 at Piazza Girasole, with workshops for all ages, board games and a swap party", "quote": "La seconda mano torna in piazza", "url": "https://www4.ti.ch/typo3conf/ext/tich_osservatorio/Resources/Public/PHP/dettaglioPdf.php?uid=106642", "confidence": "high"},
+   {"field": "organiser", "value": "Associazione La Ghirlanda (per the cantonal agenda); contact mercatopulcimassagno@gmail.com", "quote": "Organizzatore ... Associazione La Ghirlanda", "url": "https://www4.ti.ch/typo3conf/ext/tich_osservatorio/Resources/Public/PHP/dettaglioPdf.php?uid=106642", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "Once a year, a Sunday afternoon in autumn", "source_says": "Two 2026 editions: Saturday 18 April (Piazza Girasole) and Sunday 20 September (piazzale del Municipio)", "url": "https://www4.ti.ch/typo3conf/ext/tich_osservatorio/Resources/Public/PHP/dettaglioPdf.php?uid=106642"},
+   {"our_value": "Organiser: Mercato delle Pulci Massagno, with the Comune di Massagno", "source_says": "Organiser: Associazione La Ghirlanda", "url": "https://www4.ti.ch/typo3conf/ext/tich_osservatorio/Resources/Public/PHP/dettaglioPdf.php?uid=106642"},
+   {"our_value": "Venue: Piazzale del Municipio", "source_says": "The venue changes by edition ('Questa edizione...'); spring 2026 was at Piazza Girasole", "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600"}
+  ],
+  "thin": false,
+  "notes": "Our description's 'DJ with old records', 'children's programme' and 'bus 4 to Massagno, Municipio' are unverified (the source says a DJ set). No stall count or 2027 dates found."
+ },
+ {
+  "slug": "musiker-flohmarkt-zuerich-kronensaal",
+  "sources": [
+   {"url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "seen": "2026-10-07", "what": "organiser's Eventfrog event and booking page"}
+  ],
+  "facts": [
+   {"field": "venue", "value": "Kronensaal of the Hotel Kronenhof, Wehntalerstrasse 551, Zürich-Affoltern; organised by the Hotel Kronenhof", "quote": "Kronensaal, Hotel Kronenhof, Wehntalerstrasse 551, 8046 Zürich", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "confidence": "high"},
+   {"field": "goods", "value": "A mix of instruments, equipment, records and more; sellers may bring anything that fits through the door", "quote": "Eine bunte Mischung aus Instrumenten, Equipment, Platten und vielem mehr.", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "confidence": "high"},
+   {"field": "other", "value": "Sunday 1 November 2026, 10:00-17:00; free entry for visitors; billed as open to everyone", "quote": "Freier Einlass für Besucher", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "confidence": "high"},
+   {"field": "food", "value": "Café in the building", "quote": "Café im Haus: Genießt Kaffee und Leckereien für eine entspannte Pause.", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "confidence": "high"},
+   {"field": "seller_booking", "value": "CHF 9 per table (1.70 x 0.70 m, up to 3 tables) or CHF 9 per 2 m² of floor; booked by buying a ticket on Eventfrog; unloading right in front of the hall from 08:00; no pack-up before 16:30", "quote": "Standgebühr: 9 CHF pro Tisch L: 1m70 B: 70cm (bis zu 3 Tische pro Anbieter)", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "confidence": "high"},
+   {"field": "parking", "value": "Underground garage for smaller vehicles; tall vehicles park outside, buses in front of the hotel", "quote": "Tiefgarage für kleinere Fahrzeuge verfügbar", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html", "confidence": "high"}
+  ],
+  "conflicts": [
+   {"our_value": "Organiser: Kronensaal", "source_says": "Veranstalter:in: Hotel Kronenhof (the Kronensaal is its hall)", "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html"}
+  ],
+  "thin": false,
+  "notes": "Our description lists amplifiers, effects units and sheet music; the source only says instruments, equipment and records. The 2027 dates in our data were not checked."
+ },
+ {
+  "slug": "musikflohmarkt-markthalle-basel",
+  "sources": [
+   {"url": "https://markthallebasel.ch/flohmarkt/", "seen": "2026-10-07", "what": "venue/organiser flea-market page"},
+   {"url": "https://markthallebasel.ch/faq/", "seen": "2026-10-07", "what": "venue FAQ"}
+  ],
+  "facts": [
+   {"field": "other", "value": "Basler Musikflohmarkt, once a year: Saturday 5 December 2026, 11:00-16:00, in the Wohnzimmer room of the Markthalle", "quote": "Einmal im Jahr wird die Markthalle Basel zum Treffpunkt für Musiker:innen, Sammler:innen, Bastler:innen und Neugierige.", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "goods", "value": "Instruments, accessories, electronic components, sheet music, cables, cases, effects units", "quote": "Instrumente, Zubehör, elektronische Komponenten, Noten, Kabel, Cases, Effektgeräte und vieles mehr", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "distinctive", "value": "Visitors can browse, compare and try things out", "quote": "lässt sich stöbern, vergleichen, ausprobieren und ins Gespräch kommen", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "venue", "value": "The Wohnzimmer is one of the side rooms; the venue says it is usually quieter and cooler in summer than under the main dome", "quote": "In den Räumen Wohnzimmer, Salon und Mono ist es meist ruhiger als unter der grossen Kuppel.", "url": "https://markthallebasel.ch/faq/", "confidence": "high"},
+   {"field": "other", "value": "Same day as the monthly hall flea market under the dome (Saturday 5 December 2026)", "quote": "Flohmi am Samstag Hallenflohmarkt Sa. 05.12.2026 11:00 — 16:00", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Stalls booked online via 'Stand buchen'", "quote": "Stand buchen", "url": "https://markthallebasel.ch/flohmarkt/", "confidence": "high"},
+   {"field": "transport", "value": "Tram stop 'Markthalle' (lines 1, 2, 8, 16) at the main entrance; Basel SBB 2 minutes on foot; largely step-free building", "quote": "Bahnhof SBB in 2 Minuten Gehdistanz.", "url": "https://markthallebasel.ch/faq/", "confidence": "high"}
+  ],
+  "conflicts": [],
+  "thin": false,
+  "notes": "No stall count, fee or founding year found."
+ },
+ {
+  "slug": "nerdyartist-markthalle-basel",
+  "sources": [
+   {"url": "https://www.basellife.com/event/nerdyartist/", "seen": "2026-10-07", "what": "Basel events listing (English)"},
+   {"url": "https://markthallebasel.ch/flohmarkt/", "seen": "2026-10-07", "what": "venue flea-market page (no NerdYartist date)"},
+   {"url": "https://altemarkthalle.ch/agenda/nerdyartist", "seen": "2026-10-07", "what": "former organiser event URL; now redirects to the general calendar"}
+  ],
+  "facts": [
+   {"field": "goods", "value": "An artists' market: artists sell their own work as products such as pendants, prints and handmade one-off pieces", "quote": "pendants, prints, and handmade unique pieces", "url": "https://www.basellife.com/event/nerdyartist/", "confidence": "high"},
+   {"field": "organiser", "value": "Run by the team behind the Nerd Yard, in parallel with the Markthalle's night flea market", "quote": "Brought to you by the team behind the Nerd Yard, and running in parallel with the night flea market", "url": "https://www.basellife.com/event/nerdyartist/", "confidence": "high"},
+   {"field": "other", "value": "Listed edition: Saturday 5 September, 12:00-21:00 (no year given; described as new); free entry; artists applied through an online form", "quote": "Admission is free.", "url": "https://www.basellife.com/event/nerdyartist/", "confidence": "medium"}
+  ],
+  "conflicts": [
+   {"our_value": "Listed as a flea market (category of fynda.market)", "source_says": "It is an artists' market selling new, handmade work, not second-hand goods", "url": "https://www.basellife.com/event/nerdyartist/"},
+   {"our_value": "A few dates a year, held in the Markthalle (venue: Wohnzimmer)", "source_says": "No NerdYartist date on the Markthalle's current calendar or flea page; the old event URL redirects to the calendar. The source says only 'Markthalle Basel', not the Wohnzimmer", "url": "https://markthallebasel.ch/flohmarkt/"}
+  ],
+  "thin": true,
+  "notes": "It may not recur, and it may not fit the site at all. The decision is yours to take."
+ },
+ {
+  "slug": "puces-de-nyon",
+  "sources": [
+   {"url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "seen": "2026-10-07", "what": "organiser page (rules, prices, history, dates)"},
+   {"url": "https://www.lacote-tourisme.ch/fr/P8560/les-puces-de-nyon-quartier-de-rive-nyon", "seen": "2026-10-07", "what": "La Côte tourism listing"}
+  ],
+  "facts": [
+   {"field": "history", "value": "First held in September 2001 after two years of preparation; founded by the Groupement d'Animation de Rive à Nyon (G.A.R.N.) and its organiser Gérard Hardy", "quote": "en septembre 2001, sa première édition voyait le jour sous un soleil radieux", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "organiser", "value": "Run by the Quartier de Rive association, which aims to boost tourism and trade in the Rive district and along the lake", "quote": "ont pour but le développement touristique et commercial du quartier de Rive et du bord du lac", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "venue", "value": "In the rue de Rive and on the lakeside quays, in sectors including Quai Louis Bonnard, Musée du Léman, the marina, Quai des Alpes, Place des fêtes de Rive, Grande Jetée and Place de Savoie", "quote": "Le marché se déroule le dernier dimanche du mois dans la rue de Rive et sur les quais.", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "other", "value": "Unpacking from 7:00, market 8:00-19:00", "quote": "Déballage dès 7h, marché de 8h à 19h.", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "goods", "value": "Private sellers, second-hand dealers, antique dealers; garage and cellar clear-outs, brocante, antiques, second-hand and vintage clothes; no new goods or counterfeits", "quote": "Autorisé : vide-grenier, débarras de cave, brocante, antiquités, vêtements seconde main, vintage.", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "distinctive", "value": "A children's and teens' area in Parc Bourg de Rive with the theme 'Vide ta chambre' (empty your room); free numbered 3x3 m pitches", "quote": "Espace réservé au Parc Bourg de Rive. Thème « Vide ta chambre ».", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "other", "value": "Held in bad weather too; no refunds", "quote": "Les Puces sont maintenues par mauvais temps.", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "seller_booking", "value": "3x3 m CHF 60; 3x2 m CHF 40 (limited); Rive shop members CHF 30; Rive residents/associations CHF 40; co-seller CHF 10; no tables or electricity; booking valid only once paid", "quote": "Emplacement 3×3 m CHF 60.–", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "other", "value": "Last Sunday of the month except August; 2026 dates also include January and a December edition on 13 December (the weekend of the Village de Noël)", "quote": "cette manifestation accueille des milliers de badauds à chaque édition, excepté en août", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon", "confidence": "high"},
+   {"field": "venue", "value": "The tourism office stresses the lakeside panorama; the market runs whatever the weather", "quote": "Qu’il fasse beau, pleuve, ou neige", "url": "https://www.lacote-tourisme.ch/fr/P8560/les-puces-de-nyon-quartier-de-rive-nyon", "confidence": "medium"}
+  ],
+  "conflicts": [
+   {"our_value": "08:00-18:00", "source_says": "Market 8h-19h (packing 18h-19h)", "url": "https://www.quartierderive.ch/commissions/puces-de-nyon"}
+  ],
+  "thin": false,
+  "notes": "The December 2026 date (13 Dec) is the second Sunday, not the last; our data already has it. The tourism line 'le plus beau marché aux Puces de Suisse' is promotional and not a fact. A separate annual 'Brocante de Rive' (29-30 Aug 2026) is run by Swissbrocante."
+ },
+ {
+  "slug": "quartierflohmarkt-bachletten",
+  "sources": [
+   {"url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "seen": "2026-10-07", "what": "organiser info page for Bachletten"},
+   {"url": "https://www.quartierflohmibasel.ch/de/verein/", "seen": "2026-10-07", "what": "organiser association page"}
+  ],
+  "facts": [
+   {"field": "distinctive", "value": "Residents sell across the whole Bachletten quarter from backyards and gardens; stall locations are marked with balloons and shown on a printable map", "quote": "Die einzelnen Standorte sind mittels Ballons gekennzeichnet. Drucken Sie sich den Plan aus", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "other", "value": "2026 edition: Saturday 25 April, 10:00-16:00", "quote": "Samstag, 25. April 2026 10:00 BIS 16:00 UHR", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "venue", "value": "Two shared market places for residents without their own space: Benkenpark and Pfirterpark (Rütimeyerplatz unavailable in 2026 because of works); food stands around the advertising column in Benkenpark", "quote": "Wir bieten auch in diesem Jahr zwei Marktplätze (Gemeinschaftsplätze) an", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "A children's flea market run by the Primarstufe Neubad school on its north playground (entrance from Kaltbrunnenpromenade), with food stalls by school classes and games and crafts", "quote": "organisiert die Primarstufe Neubad einen kunterbunten Kinderflohmarkt auf dem Schulareal", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "distinctive", "value": "A 'bring&nimm' tent from the cantonal environment office in the Pfirterpärkli: leave usable items, take what you like for free", "quote": "Gefällt dir etwas? Nimm es mit, es gehört dir!", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "seller_booking", "value": "Only residents of the quarter may register; no assigned pitches on the shared places (first come, first served); dealers from outside set up behind the Pauluskirche at CHF 10 per metre; voluntary stall fee by TWINT", "quote": "Anmeldung NUR für Quartierbewohner:innen.", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "organiser", "value": "Verein Stadtprojekt with the OK Bachletten; volunteer residents run the Quartierflohmis", "quote": "Die Quartierflohmis Basel werden ehrenamtlich von engagierten Quartiersanwohnern organisiert.", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/", "confidence": "high"},
+   {"field": "history", "value": "Verein Stadtprojekt was started in 2016 (founder Andrea Otto Knopp)", "quote": "2016 haben sie etwas ins Leben gerufen", "url": "https://www.quartierflohmibasel.ch/de/verein/", "confidence": "medium"}
+  ],
+  "conflicts": [
+   {"our_value": "Venue: Benkenpark", "source_says": "The market spans the whole quarter; Benkenpark is one of two shared market places (with Pfirterpark)", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/"},
+   {"our_value": "Description: 'one of 17 Quartierflohmärkte'", "source_says": "The site's menu lists 19 neighbourhood markets (including Bottmingen and Riehen)", "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/"}
+  ],
+  "thin": false,
+  "notes": "The 2026 edition has passed; no 2027 date yet."
+ }
+]
