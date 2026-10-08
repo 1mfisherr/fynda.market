@@ -8,7 +8,7 @@ Updated 2026-10-08.
 
 ## Now
 
-**Two countries since 2026-09-22.** Live at `fynda.market`: 294 markets — 221 Swiss in four locales, 73 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,695 pages of which 1,662 are in the sitemap. Rebuilt nightly on GitHub at 23:07 UTC (just after midnight in Zurich) and again at 03:07, because GitHub starts scheduled jobs up to five hours late; ten guardrails and 39 tests gate every publish.
+**Two countries since 2026-09-22.** Live at `fynda.market`: 294 markets — 221 Swiss in four locales, 73 German in de and en — across 148 towns, 23 cantons and 16 Bundesländer, 1,694 pages of which 1,662 are in the sitemap. Rebuilt nightly on GitHub at 23:07 UTC (just after midnight in Zurich) and again at 03:07, because GitHub starts scheduled jobs up to five hours late; ten guardrails and 39 tests gate every publish. CI's schema test was red from 2026-09-27 to 2026-10-08 (its database lacked Supabase's `extensions` search path; data checks raised on an empty database) — fixed and replayed locally green.
 
 | Running | State |
 |---|---|
@@ -39,7 +39,7 @@ Not built: tags shown to visitors · country page (parked) · text search · org
    3. Then repository variable `ORGANISER_SENDING=on` — the daily seven-day mail starts for those who got the letter.
    4. ~~Restore one backup~~ — done 2026-10-07.
    5. ~~Search Console and Bing~~ — done 2026-09-28: the domain property and sitemap already covered Germany; sitemap resubmitted, five German pages pushed on both.
-2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Telegram → typed in). Must exist before December. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
+2. **Next session: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Claude reads the dates → Delfim approves in Telegram, instead of typing them in). Must exist before December. Pays for itself from the **Claude Startups** membership (accepted 2026-10, under flightbrief.news — check the terms cover fynda): $1,000 API credit (check the expiry), a year of Claude Team for up to five Premium seats (Delfim keeps Max for himself; seats for helpers such as the native speaker), office hours with Anthropic's Applied AI team — book one when building this. Then **Germany deep in four cities**. The rest of the product review, with Delfim's verdicts, is in `IDEAS.md`.
 3. **Read, on these dates** — nothing to build until then.
    - 2026-10-04 and 2026-10-11 Search Console exports: does Germany earn anything; Bremen (1 market) and Saarland (2) excluded as thin → they lose their page. (2026-09-27 export ended 2026-09-24 — too early for both.)
    - **2026-10-25 export: do the new market titles work?** Stücki, Flohmi am See, GZ Bachwiesen and Schadaumärit had 1,611 impressions and 1.8% clicks on 20 Sep with the old titles; all four run again 18 Oct. Above 3% means yes.
