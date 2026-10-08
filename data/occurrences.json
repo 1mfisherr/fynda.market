@@ -771,11 +771,6 @@
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
-    "date": "2026-10-07",
-    "status": "unverified"
-  },
-  {
-    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-10",
     "status": "unverified"
   },
@@ -1492,11 +1487,6 @@
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
-    "date": "2026-10-07",
     "status": "confirmed"
   },
   {
@@ -3061,16 +3051,6 @@
   },
   {
     "marketSlug": "les-puces-du-cpo-lausanne",
-    "date": "2026-12-24",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "les-puces-du-cpo-lausanne",
-    "date": "2026-12-31",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "les-puces-du-cpo-lausanne",
     "date": "2027-01-07",
     "status": "confirmed"
   },
@@ -3192,11 +3172,6 @@
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
     "date": "2027-01-03",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
-    "date": "2026-10-07",
     "status": "confirmed"
   },
   {
@@ -3481,11 +3456,6 @@
   },
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
-    "date": "2026-10-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-10-14",
     "status": "confirmed"
   },
@@ -3740,13 +3710,13 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "mercatino-pulci-ragazzi-locarno",
-    "date": "2026-10-17",
+    "marketSlug": "marche-rumine-lausanne-vendredi",
+    "date": "2027-02-05",
     "status": "confirmed"
   },
   {
-    "marketSlug": "mercatino-usato-paradiso-lugano",
-    "date": "2026-10-07",
+    "marketSlug": "mercatino-pulci-ragazzi-locarno",
+    "date": "2026-10-17",
     "status": "confirmed"
   },
   {
@@ -3883,11 +3853,6 @@
     "marketSlug": "nachtflohmarkt-messe-erfurt",
     "date": "2026-12-12",
     "status": "confirmed"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
-    "date": "2026-10-07",
-    "status": "unverified"
   },
   {
     "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
@@ -4787,6 +4752,11 @@
   {
     "marketSlug": "vide-dressing-flon-lausanne",
     "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "vide-grenier-echichens",
+    "date": "2026-11-01",
     "status": "confirmed"
   },
   {
