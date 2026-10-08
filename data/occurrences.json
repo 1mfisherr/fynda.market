@@ -2187,7 +2187,7 @@
   {
     "marketSlug": "flohmarkt-petersplatz-basel",
     "date": "2027-01-02",
-    "status": "confirmed"
+    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-petersplatz-basel",
@@ -3051,11 +3051,6 @@
   },
   {
     "marketSlug": "les-puces-du-cpo-lausanne",
-    "date": "2027-01-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "les-puces-du-cpo-lausanne",
     "date": "2027-01-14",
     "status": "confirmed"
   },
@@ -3142,7 +3137,7 @@
   {
     "marketSlug": "marche-aux-puces-coupole-biel",
     "date": "2027-01-10",
-    "status": "confirmed"
+    "status": "unverified"
   },
   {
     "marketSlug": "marche-aux-puces-fribourg-cathedrale",
@@ -3357,7 +3352,7 @@
   {
     "marketSlug": "marche-aux-puces-vevey",
     "date": "2027-01-02",
-    "status": "confirmed"
+    "status": "unverified"
   },
   {
     "marketSlug": "marche-calabash-lausanne",
