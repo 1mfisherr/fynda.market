@@ -10,6 +10,8 @@ begin;
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   insert into public.occurrences (market_id, date, start_time, end_time, status, origin)
   select m.id, d::date, '10:00', '16:00', 'unverified', 'manual'
     from public.markets m,

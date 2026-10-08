@@ -802,6 +802,8 @@ insert into d_del values
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   update public.occurrences o set confirmed_at = now(), updated_at = now()
     from d_pub p join public.markets m on m.slug = p.slug
    where o.market_id = m.id and o.date = p.date and o.status = 'confirmed';

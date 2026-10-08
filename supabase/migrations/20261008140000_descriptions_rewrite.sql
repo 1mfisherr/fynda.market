@@ -312,6 +312,8 @@ insert into new_description values
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   update public.texts t
      set value = d.value, updated_at = now()
     from public.markets m, new_description d

@@ -88,6 +88,8 @@ insert into venue_rename values
 do $$
 declare missing int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   select count(*) into missing from venue_rename r where not exists (select 1 from public.venues v where v.name = r.old);
   if missing > 0 then raise exception '% venue name(s) not found — nothing renamed', missing; end if;
 end $$;

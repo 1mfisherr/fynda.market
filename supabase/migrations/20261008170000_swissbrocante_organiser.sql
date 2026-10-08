@@ -20,6 +20,8 @@ update public.organisers
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   update public.markets set organiser_id = 'cbf19ae2-8bbd-4197-a25f-5f7e00597848', updated_at = now()
    where slug = 'brocante-de-rive-nyon' and organiser_id = 'fe6d7a3c-a166-4a1a-b0d3-81bda2805da6';
   get diagnostics n = row_count;

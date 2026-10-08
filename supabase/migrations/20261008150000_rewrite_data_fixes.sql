@@ -97,6 +97,8 @@ insert into rhythm values
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   update public.markets m set recurrence_text = r.value, updated_at = now()
     from rhythm r where r.locale = 'de' and m.slug = r.slug;
   get diagnostics n = row_count;
@@ -135,6 +137,8 @@ insert into occ_fix values
 do $$
 declare n int; want int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   select count(*) into want from occ_fix where action = 'delete';
   delete from public.occurrences o using occ_fix f, public.markets m
    where f.action = 'delete' and m.slug = f.slug and o.market_id = m.id and o.date = f.date;
@@ -187,6 +191,8 @@ insert into org_fix values
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   if exists (select 1 from org_fix f join public.markets m on m.slug = f.slug
               where (select count(*) from public.markets x where x.organiser_id = m.organiser_id) <> 1)
   then raise exception 'an organiser row serves more than one market'; end if;

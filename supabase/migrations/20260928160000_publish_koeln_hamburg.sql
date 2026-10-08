@@ -11,6 +11,8 @@ begin;
 do $$
 declare n int;
 begin
+  -- An empty database (the CI schema test) has nothing to correct.
+  if not exists (select 1 from public.markets) then return; end if;
   update public.markets set status = 'active', updated_at = now()
    where status = 'unverified' and image_url is not null
      and slug in (

@@ -83,6 +83,17 @@ jobs:
             -v ON_ERROR_STOP=1 \
             -c 'create database fynda_test template template0'
 
+          # Supabase puts PostGIS and friends in the extensions schema and keeps
+          # it on every connection's search path; a plain Postgres does not, so
+          # an unqualified ST_MakePoint or ::geography in a migration fails here
+          # while working live (20260927210000 did). Match Supabase.
+          psql \
+            -h localhost \
+            -U postgres \
+            -d postgres \
+            -v ON_ERROR_STOP=1 \
+            -c 'alter database fynda_test set search_path = "$user", public, extensions'
+
           # Supabase ships three roles that a plain Postgres does not have, and
           # the migrations grant to all three. Creating them here means CI runs
           # the real GRANT statements instead of skipping past them, so a grant
