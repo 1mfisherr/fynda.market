@@ -1,0 +1,503 @@
+[
+ {
+  "slug": "brocante-de-carouge-geneve",
+  "conflicts": [
+   {
+    "our_value": "organiser: Association des Commerçants et Artisans de Carouge",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Association des Intérêts de Carouge (IC)",
+    "url": "https://www.carouge.ch/vie-pratique/culture-fetes-et-loisirs/fetes-et-manifestations/brocante",
+    "quote": "Cette manifestation est organisée par l'association des Intérêts de Carouge.",
+    "page_date": "2026 (page footer 2026)",
+    "confidence": "high",
+    "note": "The same commune page lists the commerçants et artisans association only under 'Contact et renseignements'. The traders' site (commerces-carouge.ch) is signed Association des Intérêts de Carouge and the exhibitor contract is between 'Intérêts de Carouge' and the dealers."
+   },
+   {
+    "our_value": "venue: Rue Saint-Joseph",
+    "verdict": "ours_wrong",
+    "field": "venue_name",
+    "correct_value": "Rue Saint-Joseph (from Place d'Armes to Place du Marché) and Place du Marché",
+    "url": "https://www.carouge.ch/vie-pratique/culture-fetes-et-loisirs/fetes-et-manifestations/brocante",
+    "quote": "Rendez-vous sur toute la rue Saint-Joseph et la place du Marché.",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "Ours is incomplete rather than wrong. The exhibitor contract (undated template, 2022/23 era) says only 'Place du Marché et parvis de l'église St-Croix' for the stall pitches, so the current commune page and the older contract differ slightly; the commune page is the newer public statement. Publish 'Rue Saint-Joseph and Place du Marché'. Dates 1 Nov, 6 Dec 2026, 7 Mar 2027 match the first-Sunday rule; hours 9h-17h confirmed."
+   },
+   {
+    "our_value": "description: about 50 dealers",
+    "verdict": "unclear",
+    "field": "description_only",
+    "correct_value": null,
+    "url": "https://www.carouge.ch/vie-pratique/culture-fetes-et-loisirs/fetes-et-manifestations/brocante",
+    "quote": "une multitude d'objets en tous genres: livres, porcelaines ou encore vêtements",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "No exhibitor count on the commune page, the traders' page or the contract. Cannot confirm 50; recommend dropping the number. Commune page lists clothes among goods, contract bans clothes."
+   }
+  ]
+ },
+ {
+  "slug": "brocante-de-rive-nyon",
+  "conflicts": [
+   {
+    "our_value": "venue: Place de la Collégiale",
+    "verdict": "ours_wrong",
+    "field": "venue_name",
+    "correct_value": "Quartier de Rive and the lakeside quays (Rue de Rive, quai), Nyon",
+    "url": "https://www.quartierderive.ch/",
+    "quote": "Brocante annuelle emblématique à Nyon dans le Quartier de Rive et sur les quais.",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "No source I could open (quartierderive.ch, swissbrocante.org, brocabrac, a web search) mentions Place de la Collégiale. Directory listings give 'Rue de Rive, Quai et Cantine'. The organiser publishes no exact street list, so keep the wording at neighbourhood level. 2026 edition was Sat 29 and Sun 30 Aug (Sat 9h30-19h, Sun 9h30-17h) per swissbrocante.org; next dates not published; 'last weekend of August' rhythm matches."
+   }
+  ]
+ },
+ {
+  "slug": "brocante-lutry",
+  "conflicts": [
+   {
+    "our_value": "organiser: Société de Développement Lutry",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "SwissBrocante (Jacques Dufour)",
+    "url": "https://swissbrocante.org/brocante-lutry",
+    "quote": "Brocante de lutry — Dates : Vendredi 12 juin 2026 ... info@swissbrocante.org",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "The SDL Lutry site lists a Vide-Grenier, Vide-Dressings, the Saturday market and the Christmas market, no brocante. SwissBrocante's own site carries the event with its contact (Jacques Dufour, 079 279 61 17). A search turned up a 2022 commune newsletter that links the 'Brocante sur les quais' to swissbrocante.org and the vide-dressing to sdlutry.ch (not opened directly, snippet only). No page states the word 'organisé par', hence medium."
+   },
+   {
+    "our_value": "website_url: sdlutry.ch",
+    "verdict": "ours_wrong",
+    "field": "website_url",
+    "correct_value": "https://swissbrocante.org/brocante-lutry",
+    "url": "https://swissbrocante.org/brocante-lutry",
+    "quote": "Lutry · Sur les quais ... Vendredi 12 juin 2026, Samedi 13 juin 2026, Dimanche 14 juin 2026",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "2026 hours: Fri 14h-18h, Sat 9h-18h, Sun 9h-17h. 2027 dates not yet published."
+   },
+   {
+    "our_value": "description: about 70 exhibitors, between lake and UNESCO Lavaux",
+    "verdict": "unclear",
+    "field": "description_only",
+    "correct_value": null,
+    "url": "https://www.fleamarketinsiders.com/lutry-flea-market",
+    "quote": "gathers more than 65 antiques merchants who set their booths along the banks of Lutry",
+    "page_date": "blog text refers to 2016 edition (old)",
+    "confidence": "medium",
+    "note": "Only an old third-party blog gives a count (65+, written around 2016). The organiser publishes none. Recommend no number, or at most 'dozens of dealers'. Same blog says third weekend of June; 2026 was 12-14 June, which is the second weekend, so 'in June' is the safe wording."
+   }
+  ]
+ },
+ {
+  "slug": "brocantissima-morges",
+  "conflicts": [
+   {
+    "our_value": "organiser: Association pour l'animation du Quartier de Rive / Swiss Brocante",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "SwissBrocante (Jacques Dufour)",
+    "url": "https://swissbrocante.org/morges",
+    "quote": "Brocantissima Morges — Raretés · Élégance · Signatures — 079 279 61 17 info@swissbrocante.org",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "The Quartier de Rive association is the Nyon neighbourhood body (quartierderive.ch) and has no stated role in Morges. Dates 5 and 6 Dec 2026 confirmed; hours 'À définir' on the organiser page, so our blank hours are correct for now."
+   }
+  ]
+ },
+ {
+  "slug": "coffre-ouvert-villeneuve",
+  "conflicts": [
+   {
+    "our_value": "hours 08:00-16:00",
+    "verdict": "unclear",
+    "field": "hours",
+    "correct_value": null,
+    "url": "https://www.coffreouvert.ch/contact.php",
+    "quote": "Chaque 2ème et dernier samedi du mois de 7h00 à 15h00. Installation des exposants dès 6h00.",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "Organiser's own pages disagree. Contact page: 7h-15h. FAQ (faq.php) says 'dès 8:00 à 16.:00' and the Villeneuve market page (market.php?zone=villeneuve) shows '08:00-16:00 — Installation dès 06:00'. Two of three pages agree with ours, so 8-16 is the likelier visitor time, but only the organiser can settle it. Dates 10 Oct, 31 Oct, 14 Nov 2026 follow the stated rule (2nd and last Saturday, March to November)."
+   }
+  ]
+ },
+ {
+  "slug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
+  "conflicts": [
+   {
+    "our_value": "address: Schadaugärtnerei, Schadaupark, 3604 Thun",
+    "verdict": "ours_wrong",
+    "field": "address",
+    "correct_value": "Schadaugärtnerei, Seestrasse 42, 3600 Thun",
+    "url": "https://schadaugaertnerei.ch/event/schadaumaerit-35/",
+    "quote": "Veranstaltungsort Schadaugärtnerei — Seestrasse 42, 3600 Thun",
+    "page_date": "event of 15 Nov 2026",
+    "confidence": "high",
+    "note": "The venue site's home page gives 'Seestrasse 42 - 48, 3600 Thun'. The city page says 'Schadaugärtnerei' and postcode 3600. Event pages say 'findet in der Regel am dritten Sonntag im Monat statt' and the city says '3. Sonntag im Monat (ausser Wintermonate), 10.00 - 16.00 Uhr'; only 18 Oct and 15 Nov 2026 are published on the venue calendar, so 21 Mar 2027 is an extrapolation. Organiser is private (maeritpost@gmail.com)."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-aarau",
+  "conflicts": [
+   {
+    "our_value": "organiser: Verein Kramer",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Kramer Brocki & Secondhand (run by Kramer Logistik GmbH)",
+    "url": "https://www.flohmarkt-aarau.ch/ueber",
+    "quote": "Der Flohmarkt Aarau wird vom Kramer Brocki & Secondhand organisiert und durchgeführt.",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "Same page: 'Die Ladenlokale in Aarau und Lenzburg werden als Vereine ... geführt' (the shops are Vereine) but 'Die Kramer Logistik GmbH organisiert Projekte wie der Flohmarkt Aarau'. So 'Verein Kramer' is half right; the market itself is a GmbH project. The organiser's home page is inconsistent on the season: heading 'März - Oktober', body text and booking page 'März bis November'. Its date list shows only 4 April 2026 (stale), so our 7 Nov 2026 follows the first-Saturday rule rather than a published date."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-barfuesserplatz-basel",
+  "conflicts": [
+   {
+    "our_value": "rhythm: 2nd and 4th Wednesday, all year",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Usually the 2nd and 4th Wednesday of the month, January to early October",
+    "url": "https://media.bs.ch/original_file/d9c1faf95f65d5db8df6e4d2491950c96b92e57c/vorschrift-flohmaerkte-2026.pdf",
+    "quote": "Grundsätzlich jeden 2. und 4. Mittwoch im Monat von Januar bis Anfang Oktober.",
+    "page_date": "Vorschrift für das Jahr 2026",
+    "confidence": "high",
+    "note": "The canton's own market page (bs.ch ... flohmarkt-barfuesserplatz) confirms: 2026 dates listed Jan-Sep (last 23.09.), October shows '-', plus 'Am 25.02. findet kein Markt statt' and 'Kein Markt an allgemeinen Feiertagen'. Hours 8-19. Practical effect: no Barfüsserplatz market from now until January 2027; 2027 list not yet published, so show no upcoming dates. The old description's 'wetterabhängig' has no source."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-buelach-stadthalle",
+  "conflicts": [
+   {
+    "our_value": "rhythm: four times a year",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Four times a year in 2026; in 2027 only two (22 May and 2 Oct), January and March are cancelled for renovation",
+    "url": "https://www.buelach.ch/dienstleistungen/100984",
+    "quote": "Januar 2027 entfällt aufgrund von Umbau-Arbeiten / März 2027 entfällt aufgrund von Umbau-Arbeiten",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "City page: 'Vier Flohmärkte finden jährlich in Bülach statt'; 2026 dates 10 Jan, 7 Mar, 30 May, 3 Oct; 2027: 22 May and 2 Oct, 8-15 Uhr. Our next_dates (22 May 2027, 2 Oct 2027) are right."
+   },
+   {
+    "our_value": "description: up to 140 outdoor pitches",
+    "verdict": "ours_wrong",
+    "field": "description_only",
+    "correct_value": "80 hall pitches; outdoor pitches in May and October only: 140 in 2026, 94 in 2027",
+    "url": "https://www.buelach.ch/dienstleistungen/100984",
+    "quote": "22. Mai 2027, 08:00 - 15:00 Uhr, 80 Hallenplätze à CHF 70.- (inkl. Tisch), 94 Aussenplätze à CHF 40.-",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "Since all upcoming dates are 2027, 94 is the number that applies to what visitors can still attend."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-gz-hirzenbach",
+  "conflicts": [
+   {
+    "our_value": "rhythm: once a year",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Four times a year",
+    "url": "https://gz-zh.ch/gz-hirzenbach/angebote/gz-flohmarkt/",
+    "quote": "Viermal im Jahr findet dazu der GZ-Flohmarkt statt.",
+    "page_date": "2026 (event Sa 28 Nov 2026)",
+    "confidence": "high",
+    "note": "Only one date (28 Nov 2026, 10-14 Uhr) is published right now. Held in the large hall or, in summer, outdoors, in any weather ('bei jeder Witterung'); only runs with at least 10 sellers."
+   },
+   {
+    "our_value": "description: household goods, clothes and general second-hand, private sellers from the neighbourhood",
+    "verdict": "ours_wrong",
+    "field": "description_only",
+    "correct_value": "A children's flea market: children's clothes, books, toys and odds and ends",
+    "url": "https://gz-zh.ch/gz-hirzenbach/angebote/gz-flohmarkt/",
+    "quote": "Für alle, die schöne Kindersachen suchen oder verkaufen möchten. Habt Ihr Kinderkleider, Bücher, Spielsachen, Krimskrams ...",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "The event is titled 'Kinder – Flohmarkt' (and 'Besondere Hinweise für alle'). Old text 'je nach Wetter in der Halle oder draussen' is also off: the page says hall or outdoors in summer, held whatever the weather. Consider showing it as a children's flea market."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-obere-muehle-duebendorf",
+  "conflicts": [
+   {
+    "our_value": "description: once in summer, a single date a year",
+    "verdict": "ours_wrong",
+    "field": "description_only",
+    "correct_value": "Twice a year: a spring market (Sat 29 May 2027, 8-15 Uhr) and a summer market (a 'Sommer-Flohmarkt 2026' ran)",
+    "url": "https://www.oberemuehle.ch/events/markt/flohmarkt",
+    "quote": "Frühlings-Flohmarkt 2027 — Sa, 29.05.2027 — 08:00 - 15:00 — Obere Mühle - Kiesplatz",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "The organiser's pages also carry 'Sommer-Flohmarkt 2026' (hours 8-15, KulturBar open 7:30, grilled food 11:30-14:00, children's flea market moved to the Chäferfäscht for lack of space). The summer 2026 date is not shown in my text extract. No 2027 summer date yet, so the rhythm line 'twice a year, spring and summer' stands and the 'single date' wording must go. 'Listed building' remains unverified."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-ruemlang",
+  "conflicts": [
+   {
+    "our_value": "source_url guidle.com/...ruemlanger-flohmarkt-2025",
+    "verdict": "ours_wrong",
+    "field": "other",
+    "correct_value": "https://www.localcities.ch/it/eventi/rumlang/293/4446569",
+    "url": "https://www.localcities.ch/it/eventi/rumlang/293/4446569",
+    "quote": "Rümlanger Flohmarkt 2026 — Samstag; 11.4/ 13.6/19.9/ von 8:00-15:00 Uhr",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "The guidle URL returns HTTP 410 (checked today). The localcities page is a live event-portal listing (an aggregator, not the organiser; the organiser has no site found, only ruemlanger-flohmi@bluewin.ch / 079 914 56 31). All three 2026 dates have passed and no 2027 dates are published, so next_dates null is right. 'No professional dealers' in the old description has no source. Venue Gemeindehaus, Glattalstrasse 201, 8153 Rümlang confirmed."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-rueticenter-pratteln",
+  "conflicts": [
+   {
+    "our_value": "rhythm: ten times a year, usually one Sunday a month (except July and August)",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "About ten Sundays a year (organiser's wording); in 2026 nine dates, Feb to Nov, with a break in August (a July market does run)",
+    "url": "https://www.flohmarktkoenig.ch/infos/1",
+    "quote": "ganze zehn Mal im Jahr ... auf dem Areal des Rüticenters in Pratteln",
+    "page_date": "2026 calendar (api.flohmarktkoenig.ch/v1/locations, 'Kalender 2026')",
+    "confidence": "medium",
+    "note": "The organiser's calendar lists Rüticenter Pratteln on 01.02, 01.03, 12.04, 03.05, 07.06, 05.07, 06.09, 04.10, 01.11.2026: nine dates, July yes, August no, and no January or December. The site text says ten. Only 1 Nov 2026 is still to come and no 2027 dates exist yet, so our 2027-02-07 is an extrapolation, not a published date. The XXXLutz market on 27 Sep and 13 Dec uses the same street but is a different market."
+   },
+   {
+    "our_value": "organiser: Rüticenter Pratteln (description: 'Flohmarkt King')",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Flohmarktkönig",
+    "url": "https://www.flohmarktkoenig.ch/infos/1",
+    "quote": "Euer Flohmarktkönigteam",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "Rüticenter is the venue, not the organiser. The market is on three floors under cover ('Auf drei Stockwerken verteilt ... weder Regen noch Schnee ein Hindernis'), free parking on Rütiweg, bus 83 to Pratteln Rankacker, food from CC Prodega on the ground floor."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-seeplatz-waedenswil",
+  "conflicts": [
+   {
+    "our_value": "rhythm: seven Saturdays, April to October, usually the first",
+    "verdict": "ours_right",
+    "field": "rhythm",
+    "correct_value": null,
+    "url": "https://www.club-interfun.ch/flohmarkt",
+    "quote": "Der Flohmarkt in Wädenswil findet an sieben Samstagen zwischen April und Oktober statt.",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "2026 dates: 4 Apr, 2 May, 6 Jun, 11 Jul, 8 Aug, 5 Sep, 3 Oct, all 08:00-16:00. Five of the seven are first Saturdays; only July and August are second Saturdays. 'Usually the first' is accurate and already hedged. Optional tweak: 'except July and August, which fall on the second Saturday'. 2027 dates not yet published."
+   }
+  ]
+ },
+ {
+  "slug": "flohmarkt-stuecki-basel",
+  "conflicts": [
+   {
+    "our_value": "organiser: Stücki Basel",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Flohmarktkönig",
+    "url": "https://www.flohmarktkoenig.ch/infos/9",
+    "quote": "Wir erweitern unser Flohmarkt-Angebot und bringen den beliebten Flohmi direkt ins Herz von Basel – ins Stücki Park Center!",
+    "page_date": "2026 (organiser API events 229-231)",
+    "confidence": "high",
+    "note": "Stücki Park Center is the venue. Verified via api.flohmarktkoenig.ch events-by-location/9: Stücki Flohmi on 18 Oct, 15 Nov, 13 Dec 2026, 08:30-15:00 (our dates match). The page is signed by the Flohmarktkönig team. Brand-new market: first date was 20 Sep 2026."
+   },
+   {
+    "our_value": "rhythm: monthly, on selected Sundays",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Several times a year, on Sundays (2026: 20 Sep, 18 Oct, 15 Nov, 13 Dec)",
+    "url": "https://www.flohmarktkoenig.ch/infos/9",
+    "quote": "Mehrmals im Jahr erwartet euch hier ein besonderes Indoor-Flohmarkt-Erlebnis",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "It is monthly only for Sep-Dec 2026; no 2027 calendar yet. 'Monthly, on selected Sundays' contradicts itself. Indoor-only, no vehicles at stalls, 'wetterunabhängig' confirmed."
+   }
+  ]
+ },
+ {
+  "slug": "flohmi-schmittiplatz-pratteln",
+  "conflicts": [
+   {
+    "our_value": "rhythm: seven times a year, first Saturday of the month (except July and August)",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Twice a year, on a Saturday in spring and autumn (2026: 11 April and 14 November), 8-15 Uhr",
+    "url": "https://schmittiflohmi.ch/",
+    "quote": "11. April / 14. November (2026 flyer shown on the home page, 08.00-15.00 Uhr, Hauptstrasse 23, 4133 Pratteln)",
+    "page_date": "2026 flyer (uploaded 2026/08)",
+    "confidence": "high",
+    "note": "Three sources agree on two a year: the organiser's flyer (read as an image on the home page) lists only 11 April and 14 November 2026; the Marktordnung says 'Er findet zwei mal im Jahr statt'; the commune entry says 'Nächster Flohmarkt am 14.11.2026'. The commune line 'Juli und August findet kein Flohmarkt statt' is a leftover from the monthly days. 14 Nov is the second Saturday, so 'first Saturday' is also wrong. Our next_dates (14 Nov 2026, 8-15) are right; no 2027 dates yet."
+   },
+   {
+    "our_value": "organiser: Verein Flohmarkt Schmittiplatz",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Sandra Baumann (private organiser, Flohmi Schmittiplatz)",
+    "url": "https://schmittiflohmi.ch/",
+    "quote": "Eure Flohmi-Organisatorin Sandra Baumann",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "The Pratteln commune lists a club entry titled just 'Flohmarkt' with Sandra Baumann (Eptingen) as contact; no association named 'Verein Flohmarkt Schmittiplatz' appears anywhere I looked. Whether a legal Verein sits behind it is not stated, hence medium. Food from Kaffi Schmittiplatz and Bäckerei Finkbeiner, visitor parking at the Kuspo, tram 14, runs in all weather."
+   }
+  ]
+ },
+ {
+  "slug": "flohmi-spass-heimstrasse-bern",
+  "conflicts": [
+   {
+    "our_value": "rain_policy: null",
+    "verdict": "ours_wrong",
+    "field": "rain_policy",
+    "correct_value": "Cancelled in rain: the market is not held in rainy weather",
+    "url": "https://www.xn--bmpliz-3ya.ch/beitraege/flohmi-und-spass-ar-heimstrass-2026",
+    "quote": "Bei Regenwetter kann der Flohmi leider nicht durchgeführt werden.",
+    "page_date": "21.04.2026",
+    "confidence": "high",
+    "note": "Same sentence appears on the 2020 and 2024 Bümpliz.ch pages. The original myfarm listing is a 404 (checked), but the neighbourhood portal Bümpliz.ch carries the 2026 article."
+   },
+   {
+    "our_value": "stall_count: 80",
+    "verdict": "unclear",
+    "field": "stall_count",
+    "correct_value": null,
+    "url": "https://www.xn--bmpliz-3ya.ch/beitraege/7-flohmi-spass-ar-heimstrass",
+    "quote": "Mit über 60 Standanmeldungen herrscht schon jetzt reges Treiben",
+    "page_date": "20.04.2024",
+    "confidence": "low",
+    "note": "2024 (7th edition): over 60 stall registrations. The 2026 article gives no number, only 'Die Anzahl der Standplätze ist begrenzt'. An English search snippet of the dead myfarm listing said 'over 80 registered' but I could not open it. 80 is unproven; use 'over 60' or no number."
+   },
+   {
+    "our_value": "rhythm: once a year, in April",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Once a year, in spring (late April or May)",
+    "url": "https://www.xn--bmpliz-3ya.ch/beitraege-archiv",
+    "quote": "Am Samstag, 25. April 2026, wird die Heimstrasse in Bümpliz erneut zum bunten Treffpunkt für Gross und Klein. Der 9. Flohmi & Spass ar Heimstrass lädt von 11.00 bis 17.00 Uhr ... ein",
+    "page_date": "19.03.2026",
+    "confidence": "medium",
+    "note": "Added by me, not in the original list. Past editions: 2 May 2020, 21 May 2022, 4 May 2024, 25 April 2026, always Saturday 11-17. Market is alive (9th edition in 2026); the next date is not yet announced. Contact heimstrasse@swissonline.ch, 077 470 61 23; organiser wording is 'von und für Quartierbewohner' (a listing snippet names 'IG Flohmi & Spass', unverified), so 'Quartierverein Heimstrasse' is also unconfirmed."
+   }
+  ]
+ },
+ {
+  "slug": "flosch-schwamendingen-zuerich",
+  "conflicts": [
+   {
+    "our_value": "rhythm: last Saturday of the month, February to November",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Usually the last Saturday of the month, February to November, with exceptions",
+    "url": "https://www.flosch.ch/",
+    "quote": "findet monatlich der Flohmarkt Schwamendingen auf und um den Schwamendingerplatz - normalerweise am letzten Samstag des Monats - statt.",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "Published 2026 list (flosch.ch/daten): 28 Feb, 28 Mar, 25 Apr, 6 Jun, 27 Jun, 25 Jul, 29 Aug, 12 Sep, 31 Oct, 28 Nov. No May, two in June, 12 Sep instead of the 26th. For dates, the published list wins; 2027 dates are not out, so 27 Feb 2027 is an extrapolation."
+   },
+   {
+    "our_value": "2027-02-27 starts 07:00",
+    "verdict": "ours_wrong",
+    "field": "hours",
+    "correct_value": "08:00-17:00",
+    "url": "https://www.flosch.ch/daten",
+    "quote": "Der Flosch dauert jeweils von 8- 17 Uhr und wird bei jeder Witterung durchgeführt",
+    "page_date": "2026",
+    "confidence": "high",
+    "note": "Pitches open to sellers from 06:00 and are held until 08:00, which is where a 07:00 may have come from. Sales end by 17:00 at the latest. Our 31 Oct and 28 Nov 2026 entries (8-17) are right. 'Between Coop and Migros' and tram stop at the square are not on the organiser site."
+   }
+  ]
+ },
+ {
+  "slug": "folie-flea-market-lausanne",
+  "conflicts": [
+   {
+    "our_value": "Once a year, in April",
+    "verdict": "unclear",
+    "field": "rhythm",
+    "correct_value": null,
+    "url": "https://folievoltaire.ch/index.php/evenements/",
+    "quote": "Samedi 7 juin de 10h à 16h – Marché aux Puces, Friperie et Artisanat sur l’Esplanade des Marronniers à la Folie !",
+    "page_date": "undated; 7 June fell on a Saturday in 2025; page also lists 2024 concerts, so it is stale",
+    "confidence": "low",
+    "note": "No April edition found anywhere, so April is unsupported. Evidence points to an irregular, warm-season event run by the café: Sat 7 June (2025 by weekday) and, per an aggregator listing seen only through search (vide-greniers.org, now 404), Sun 13 Sept 2026, 10-17h, free, about 12 sellers, listed under organiser 'La_Folie'. Suggested wording: 'A few days in the warm season, dates set by the café' or hide the rhythm. This market may be too small and irregular to carry a page; no future date is published."
+   },
+   {
+    "our_value": "venue: Esplanade de la Folie Voltaire",
+    "verdict": "ours_right",
+    "field": "venue_name",
+    "correct_value": null,
+    "url": "https://folievoltaire.ch/index.php/evenements/",
+    "quote": "sur l’Esplanade des Marronniers à la Folie",
+    "page_date": "undated",
+    "confidence": "medium",
+    "note": "Same place under another name: the café calls it the Esplanade des Marronniers at the Folie (centre of Parc Mon-Repos); the aggregator snippet says esplanade of the Folie Voltaire. Either wording works; 'Esplanade des Marronniers, La Folie Voltaire' is the organiser's own."
+   }
+  ]
+ },
+ {
+  "slug": "gaenggali-markt-chur",
+  "conflicts": [
+   {
+    "our_value": "organiser: Stadt Chur",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Armin Schneller and Hubi Pazeller (the Floh- und Gänggalimarkt team)",
+    "url": "https://flohmarkt-chur.ch/",
+    "quote": "Euer Gänggali- und Flohmi Team — Armin und Hubi",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "The city page (chur.ch/brauchtum/62) lists the market among customs and gives Armin Schneller as the contact, but never says the city organises it. No page names a legal entity, so it is a private team. The market's own name is 'Floh- & Gänggalimarkt'."
+   },
+   {
+    "our_value": "rhythm: every first Saturday, April to December",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Usually the first Saturday of the month, April to December",
+    "url": "https://flohmarkt-chur.ch/",
+    "quote": "6. Juni (wegen Buskers 12:30 Uhr Ende des Marktes).",
+    "page_date": "2026",
+    "confidence": "medium",
+    "note": "Added by me. The city says 'Erster Samstag im Monat, April - Dezember, 07.00 bis 14.00 Uhr', but the market's own 2026 list moves August to the 8th (1 August celebration) and shortens 6 June. Dates 7 Nov and 5 Dec 2026 confirmed, 7-14 Uhr."
+   }
+  ]
+ },
+ {
+  "slug": "hallenflohmarkt-hoelstein",
+  "conflicts": [
+   {
+    "our_value": "next_dates include 2027-04-04",
+    "verdict": "ours_wrong",
+    "field": "dates",
+    "correct_value": "2026-10-11 09:00-16:00; 2027-04-11 (hours for 2027 not yet published, 2026 was 9-16); 2027-10-17",
+    "url": "https://flohmarkt-hoelstein.ch/",
+    "quote": "11. April , 2027 16. Hallen-Flohmarkt / 17. Oktober 2027 17. Hallen-Flohmarkt",
+    "page_date": "Aktualisiert 14.09.2026",
+    "confidence": "high",
+    "note": "Friday 3 April 2027 on the same page is the separate 'Männer Markt', not the flea market. Autumn 2026 (Sun 11 Oct, 9-16, MzH Rüebmatt) is fully booked for sellers; visitors are free. Rhythm 'twice a year, April and October' is right."
+   },
+   {
+    "our_value": "organiser: Hallenflohmarkt Hölstein",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Marktverein Hölstein",
+    "url": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Reglement%20Flohmarkt.pdf",
+    "quote": "Der Flohmarkt wird vom Marktverein Hölstein organisiert und durchgeführt.",
+    "page_date": "2026 rules",
+    "confidence": "high",
+    "note": "Home page: 'Neu wird der Flohmarkt vom Markt Verein Hölstein organisiert, alles andere bleibt wie gehabt' (OK team led by Samantha Fahrni). Runs in any weather ('findet bei jedem Wetter statt')."
+   }
+  ]
+ }
+]

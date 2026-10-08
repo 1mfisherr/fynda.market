@@ -1,0 +1,443 @@
+[
+ {
+  "slug": "hallenflohmarkt-markthalle-basel",
+  "conflicts": [
+   {
+    "our_value": "Twice a month (Saturday and Sunday), dates vary",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Once a month, over a weekend (Saturday and Sunday), 11:00–16:00; dates vary",
+    "url": "https://markthallebasel.ch/kalender/",
+    "quote": "Hallenflohmarkt | Sa. 07.11.2026 | 11:00 — 16:00 | Unter der Kuppel (also So. 08.11., Sa. 05.12., So. 06.12.2026)",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Organiser's own calendar lists exactly one Sat+Sun pair per month: 7+8 Nov 2026 and 5+6 Dec 2026 (no January 2027 date published yet; calendar runs to Feb 2027). Canton page agrees: 'once a month at the weekend'. Our next_dates is MISSING 2026-12-06 11:00–16:00 (we have Nov 7, Nov 8, Dec 5 only). Add it. The old 'zweimal monatlich' is a misreading of the Saturday+Sunday pair."
+   }
+  ]
+ },
+ {
+  "slug": "les-puces-du-cpo-lausanne",
+  "conflicts": [
+   {
+    "our_value": "Every Thursday, all year",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Every Thursday, 10:00–18:00, except public holidays and the Christmas and summer holidays",
+    "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/",
+    "quote": "Tous les jeudis de 10h à 18h, sauf fériés et vacances de Noël / d’été.",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Organiser page. No autumn-holiday closure is mentioned, so Oct 15/22 stay. Bigger issue (previous agent's note holds): this is the centre's own donation-stocked second-hand corner in the basement, not a market of private stalls; whether it belongs in the directory is an editorial call."
+   }
+  ]
+ },
+ {
+  "slug": "liesberger-flohmarkt",
+  "conflicts": [
+   {
+    "our_value": "stall_count: 100",
+    "verdict": "ours_right",
+    "field": "stall_count",
+    "correct_value": null,
+    "url": "https://liesberger-flohmarkt.ch/",
+    "quote": "Über 100 Aussteller jedes Jahr !",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Previous agent missed this: the organiser's homepage headline claims 'over 100 exhibitors every year'. 100 is fine; best worded 'over 100' (organiser's claim). The 86 figure is only the 2009 first edition."
+   },
+   {
+    "our_value": "Address: Dorfstrasse 10, 4254 Liesberg",
+    "verdict": "ours_wrong",
+    "field": "address",
+    "correct_value": "Seemättliweg 19, 4254 Liesberg",
+    "url": "https://www.kkc-nws.ch/index.php/component/dpcalendar/location/34",
+    "quote": "Kultur- und Sporthalle Seemättli | Seemättliweg 19 | 4254 Liesberg",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Hall address confirmed by three independent pages: kkc-nws.ch, raumsuche.ch ('Seemättliweg 19, 4254 Liesberg Dorf') and the commune site liesberg.ch ('Sporthalle Seemättli, Seemättliweg 19, 4253 Liesberg'; commune uses 4253, organiser uses 4254 Liesberg-Dorf; 4254 is the better fit). The organiser's own address is Oberdorf 10, Liesberg-Dorf (K. Kohler) - that is a contact address, not the hall. 'Dorfstrasse 10' appears in no source. Organiser calls the hall 'Mehrzweckhalle Seemättli'; commune calls it 'Kultur- und Sporthalle Seemättli'."
+   }
+  ]
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-cathedrale",
+  "conflicts": [
+   {
+    "our_value": "Venue: Autour de la Cathédrale Saint-Nicolas",
+    "verdict": "ours_right",
+    "field": "venue_name",
+    "correct_value": null,
+    "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+    "quote": "Premiers samedis du mois de mars à novembre, le marché a lieu autour de la cathédrale (en remplacement de la place St Jean qui est en travaux )",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Cathedral is the current venue for all nine 2026 first-Saturday dates (7 Mar–7 Nov, 08:00–16:30). Square Petit-Saint-Jean works run until spring 2028 (frapp.ch, 'va se poursuivre jusqu'au printemps 2028'), so the cathedral venue should hold through 2027 - low risk of moving back soon. Caution: the tourism page publishes only 2026 dates; our 2027-03-06 and 2027-04-03 are extrapolated from the 'first Saturday March to November' rule, not published."
+   }
+  ]
+ },
+ {
+  "slug": "marche-aux-puces-vevey",
+  "conflicts": [
+   {
+    "our_value": "07:30-16:30",
+    "verdict": "ours_wrong",
+    "field": "hours",
+    "correct_value": "08:00–16:00 (sellers check in from 07:30)",
+    "url": "https://vide-greniers.org/evenement/560167/20261107",
+    "quote": "Événement mensuel | 8 h 00 à 16 h 00 ... Arrivée à 7 h 30 au check-in (ne pas installer les affaires avant le ckeck-in)",
+    "page_date": "published 2025-08-06, updated 2025-11-23",
+    "confidence": "medium",
+    "note": "Listing is posted by user 'aperomp' (almost certainly APERO) so it is organiser-sourced, but it is an aggregator, and APERO's own site is dead. Older third-party pages disagree (Vevey s'engage 2023: 08:00–18:00; localcities: 9–17), so use 08:00–16:00 and expect some doubt. Same listing: up to 90 exhibitors, CHF 10 per pitch cash only, food truck, free entry. Dates in our data (7 Nov, 5 Dec 2026, 2 Jan 2027) fit 'first Saturday'; 2 Jan 2027 unverified."
+   },
+   {
+    "our_value": "Organiser site apero1800vevey.ch (linked by the city)",
+    "verdict": "ours_right",
+    "field": "website_url",
+    "correct_value": null,
+    "url": "https://www.apero1800vevey.ch/",
+    "quote": "(no page: domain does not resolve - NXDOMAIN, 'Could not resolve host')",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Our website_url is the city page https://www.vevey.ch/vivre-vevey/vie-de-quartier/marches, not the dead domain, so nothing to fix. Do NOT switch to apero1800vevey.ch. APERO's live presence is https://www.facebook.com/apero1800vevey/ ('Marché aux puces, place Robin tous les premiers samedis du mois'); the city page itself still tells readers to consult the dead site."
+   }
+  ]
+ },
+ {
+  "slug": "marche-calabash-lausanne",
+  "conflicts": [
+   {
+    "our_value": "08:00-16:00 (next_dates)",
+    "verdict": "ours_wrong",
+    "field": "hours",
+    "correct_value": "09:00–18:00 (sellers set up from 07:30, stalls ready by 09:00)",
+    "url": "https://www.associationcalabash.ch/reglement/",
+    "quote": "Le marché est ouvert au public de 9h00 à 18h00.",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Confirmed twice: the FAQ says 'tous les 1er dimanche du mois de 9h le matin à 18h le soir' and 'En général le vide-grenier est ouvert au public de 9h à 18h'. The regulations add that dates/hours can change exceptionally. Fix both next_dates: 2026-11-01 and 2026-12-06 -> 09:00–18:00."
+   },
+   {
+    "our_value": "Every 1st Sunday, February to December",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "First Sunday of every month, all year round",
+    "url": "https://www.associationcalabash.ch/reglement/",
+    "quote": "le premier dimanche de chaque mois, durant toute l’année, sur la place de la Riponne",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Homepage currently lists only 1 Nov 2026 and 6 Dec 2026; January 2027 is not yet published, so do not add 2027-01-03 as a date until it appears. The regulations say 'sous réserve des autorisations nécessaires', so a January edition is not guaranteed in practice."
+   }
+  ]
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "conflicts": [
+   {
+    "our_value": "Once a year, a Sunday afternoon in autumn",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Twice a year, a spring and an autumn afternoon (13:00–18:00); dates announced per edition",
+    "url": "https://www4.ti.ch/decs/dcsu/osservatorio/agenda-culturale/cerca-evento/dettaglio/106642/mercato_delle_pulci_massagno",
+    "quote": "Mercato delle pulci Massagno ... Sabato 18 aprile 2026 13:00 ... Piazza Girasole (and massagno.ch: 'Domenica 20 settembre torna il Mercato delle Pulci')",
+    "page_date": "canton agenda entry printed 2026-10-08",
+    "confidence": "high",
+    "note": "2026: Sat 18 Apr (Piazza Girasole, 13:00–18:00) and Sun 20 Sep (piazzale del Municipio, 13:00–18:00 per laRegione). 2025: Sat 7 Jun and Sat 27 Sep (postponed to Sat 4 Oct for bad weather; massagno.ch notes this). So two per year, but the weekday varies (Saturday or Sunday) - 'a Sunday afternoon' is wrong too. Both 2026 editions are past; no 2027 date published, so next_dates null is correct."
+   },
+   {
+    "our_value": "Organiser: Mercato delle Pulci Massagno, with the Comune di Massagno",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Associazione La Ghirlanda (Mercato delle pulci Massagno)",
+    "url": "https://www4.ti.ch/typo3conf/ext/tich_osservatorio/Resources/Public/PHP/dettaglioPdf.php?uid=106642",
+    "quote": "Organizzatore Associazione La Ghirlanda",
+    "page_date": "2026-10-08 (print date)",
+    "confidence": "medium",
+    "note": "Second source: garagesales.ch listing for 20 Sep 2026 also names Associazione La Ghirlanda (+41 76 331 63 59, instagram @mercatopulcimassagno). The 2025 cantonal entry just says 'Mercato delle pulci Massagno'. 'Via Giuseppe Motta 53' is the Comune's own address (footer of massagno.ch), so the Comune hosts/publicises; no source says it co-organises. Drop 'with the Comune'. Contact on massagno.ch: mercatopulcimassagno@gmail.com."
+   },
+   {
+    "our_value": "Venue: Piazzale del Municipio",
+    "verdict": "unclear",
+    "field": "venue_name",
+    "correct_value": null,
+    "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+    "quote": "Questa edizione si svolgerà nel piazzale del Municipio, in via Giuseppe Motta 53",
+    "page_date": null,
+    "confidence": "high",
+    "note": "True for the 20 Sep 2026 edition only. The April 2026 edition and the 2025 editions were at Piazza Girasole (Massagno, 6900), and the 2025 autumn notice gives 'via Giuseppe Motta 64'. Recommendation: do not pin one venue; say 'central Massagno - Piazza Girasole or the piazzale del Municipio (Via Motta), announced per edition'. Address field 'Via Giuseppe Motta 53' is the Municipio address, correct only for the autumn-2026 form. Also unverified in old description: 'bus 4 to Massagno, Municipio'; DJ set confirmed for 2026 (as 'dj set'), not 'old records'."
+   }
+  ]
+ },
+ {
+  "slug": "musiker-flohmarkt-zuerich-kronensaal",
+  "conflicts": [
+   {
+    "our_value": "Organiser: Kronensaal",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Hotel Kronenhof (Kronensaal)",
+    "url": "https://eventfrog.ch/de/p/maerkte/flohmarkt/musiker-flohmarkt-zuerich-offen-fuer-alle-so-01-11-26-zuerich-7379073192457938526.html",
+    "quote": "Veranstalter:in : Hotel Kronenhof",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Source also says 'Quellenangabe: Hotel Kronenhof' and 'Weitere Infos unter: hotel-kronenhof.ch'. Also fix website_url: ours is the bare 'https://eventfrog.ch' homepage - use the event page above or https://hotel-kronenhof.ch. 2027 dates (not in the conflict list) CHECKED and correct: Sun 11 Apr 2027 10:00–16:00 and Sun 7 Nov 2027 10:00–16:00 (Eventfrog event pages); 2026-11-01 is 10:00–17:00 (our data already has that). Pattern seen: 29 Mar 2026, 1 Nov 2026, 11 Apr 2027, 7 Nov 2027 - looks like twice a year (spring + autumn), so 'several times a year, no fixed pattern' is probably too vague (medium confidence)."
+   }
+  ]
+ },
+ {
+  "slug": "puces-de-nyon",
+  "conflicts": [
+   {
+    "our_value": "08:00-18:00",
+    "verdict": "ours_wrong",
+    "field": "hours",
+    "correct_value": "08:00–19:00 (unpacking from 07:00, packing 18:00–19:00)",
+    "url": "https://www.quartierderive.ch/commissions/puces-de-nyon",
+    "quote": "Déballage dès 7h, marché de 8h à 19h.",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Rules on the same page: 'Déchargement 7h–8h, remballage 18h–19h. Les emplacements doivent être libérés et propres à 19h'. Fix the three next_dates (2026-10-25, 2026-11-29, 2026-12-13) to 08:00–19:00. Dates are on the organiser's list (25 Oct, 29 Nov, 13 Dec 2026). Note the 2026 list has no February edition and December is the 13th (Village de Noël weekend), so 'every last Sunday except August' is a rule with exceptions - say 'usually'."
+   }
+  ]
+ },
+ {
+  "slug": "quartierflohmarkt-bachletten",
+  "conflicts": [
+   {
+    "our_value": "Venue: Benkenpark",
+    "verdict": "ours_wrong",
+    "field": "venue_name",
+    "correct_value": "The whole Bachletten quarter (private stalls in gardens and courtyards, marked with balloons); shared market places at Benkenpark and Pfirterpark",
+    "url": "https://www.quartierflohmibasel.ch/de/bachletten/info/",
+    "quote": "Im ganzen Bachlettenquartier findet am Samstag, 25.4.2026 ein grosser Flohmarkt von Privaten statt ... zwei Marktplätze (Gemeinschaftsplätze): Benkenpark ... und Pfirterpark",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Benkenpark is one of two shared places for residents without a space of their own. 2026 edition (Sat 25 Apr, 10:00–16:00) is past; no 2027 date published. Extras on the page: children's flea market at Primarstufe Neubad (north playground), bring&nimm tent in the Pfirterpärkli."
+   },
+   {
+    "our_value": "Description: 'one of 17 Quartierflohmärkte'",
+    "verdict": "unclear",
+    "field": "description_only",
+    "correct_value": null,
+    "url": "https://www.quartierflohmibasel.ch/de/",
+    "quote": "(site menu lists 18 quarter pages: Riehen/Niederholz, Bachletten, Gundeli, Gotthelf/Iselin, Breite/St. Alban, Spalen/Holbein, Matthäus, Riehen, Lehenmatt, St. Johann, Innerstadt, Neubad, Bottmingen, Rosental/Erlenmatt, Gellert, Klybeck/Kleinh., Wettstein, Hirzbrunnen)",
+    "page_date": null,
+    "confidence": "medium",
+    "note": "I count 18 menu entries, not 19 (previous agent) and not 17. The organiser states no number; 17 was a press figure. Three entries (Riehen/Niederholz, Riehen, Bottmingen) are outside the city of Basel. Recommendation: drop the number from the description."
+   }
+  ]
+ },
+ {
+  "slug": "quartierflohmarkt-bottmingen",
+  "conflicts": [
+   {
+    "our_value": "venue 'Spitzackerpromenade', address 'Spitzackerpromenade, 4103 Bottmingen'",
+    "verdict": "unclear",
+    "field": "venue_name",
+    "correct_value": null,
+    "url": "https://www.quartierflohmibasel.ch/de/bottmingen/info/",
+    "quote": "Im ganzen Quartier rund um die Spitzackerstrasse auf dem Bruderholz finden am 23. August Flohmärkte von Privaten für Private statt.",
+    "page_date": null,
+    "confidence": "medium",
+    "note": "Previous agent's 'no Spitzackerpromenade in any source' is false: the promenade is real (municipal page bottmingen.ch/.../Spitzackerpromenade.php, 'beliebter Spazierweg') and flohfindr.ch says 'around Spitzackerpromenade'. But the organiser names the Spitzacker quarter / Spitzackerstrasse, and the market is quarter-wide, not on the promenade. Recommendation: venue 'Spitzacker quarter, around Spitzackerstrasse (Bruderholz)', keep postcode 4103. 2026 edition was Sun 23 Aug, 10:00–16:00 (past); no 2027 date."
+   }
+  ]
+ },
+ {
+  "slug": "quartierflohmarkt-hirzbrunnen",
+  "conflicts": [
+   {
+    "our_value": "postal_code 4125, address 'Schorenweg 33, 4125 Basel'",
+    "verdict": "ours_wrong",
+    "field": "address",
+    "correct_value": "Schorenweg 33, 4058 Basel",
+    "url": "https://quartierraum-schoren.jimdofree.com/kontakt-anfahrt/",
+    "quote": "Adresse: Schorenweg 33, 4058 Basel.",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Quartierraum Schoren's own contact page; firmania.ch and bizarchive.ch agree (4058). 4125 is Riehen. Also: Schorenweg 33 is only one of two group stall locations (the other is QTP Hirzbrunnen, Im Rheinacker 15) plus the bring&nimm point; the market itself covers the whole quarter, with some side streets car-free 11:00–17:00. Date 2026-10-18 11:00–17:00 confirmed on the organiser page (Sunday 18 October 2026). The site menu lists 18 quarter pages, so 'one of 18' fits the site."
+   }
+  ]
+ },
+ {
+  "slug": "saeuliaemtler-flohmarkt-affoltern",
+  "conflicts": [
+   {
+    "our_value": "next date 2026-10-31 08:00-16:00",
+    "verdict": "ours_wrong",
+    "field": "hours",
+    "correct_value": "2026-10-31 09:00–16:00 (stallholders may enter the Kronenplatz from 05:30)",
+    "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/download/agb.pdf",
+    "quote": "Säuliämtler Flohmarkt 2026 – Kronenplatz 8910 Affoltern a/A – Jeweils am Samstag von 9 Uhr bis 16 Uhr",
+    "page_date": "2026 season sheet",
+    "confidence": "high",
+    "note": "The 2026 sheet lists exactly 28 Mar, 25 Apr, 30 May, 27 Jun, 29 Aug, 26 Sep, 31 Oct (all last Saturdays, no July). guidle also says 09:00 - 16:00 Uhr. The homepage says 31 Oct still has a few free pitches; the 'Aktuelles' page confirms 31 Oct is the last market of 2026. Parking at Sportplatz Moos is now chargeable (Aktuelles page, 2026) - the PDF still says free."
+   },
+   {
+    "our_value": "stall_count 80",
+    "verdict": "ours_right",
+    "field": "stall_count",
+    "correct_value": null,
+    "url": "https://www.xn--sulimtler-flohmarkt-gwbd.ch/",
+    "quote": "das vielseitige Angebot unserer cà 80 Aussteller",
+    "page_date": null,
+    "confidence": "medium",
+    "note": "Organiser's own homepage says about 80; the guidle listing (organiser-supplied text) says 'ca. 90'. Keep 80 and word it 'about 80'; both are the organiser's approximations."
+   },
+   {
+    "our_value": "organiser null",
+    "verdict": "ours_wrong",
+    "field": "organiser",
+    "correct_value": "Säuliämtler Flohmarkt Flohmi-Team",
+    "url": "https://www.guidle.com/de/veranstaltungen/dies-das/affoltern-am-albis/saeuliaemtlerflohmarkt-affoltern-am-albis_Akq4g2q",
+    "quote": "A.von Ballmoos | Organisator",
+    "page_date": null,
+    "confidence": "high",
+    "note": "The organiser's own site is signed 'Euer Flohmiteam' / 'vor-freudige Grüsse vom Flohmi-Team', and its season sheet names Uschi and Alex von Ballmoos (Hunzenschwil AG) as contact. They are private individuals - publish the team name only, no personal names or addresses. No association or company found."
+   }
+  ]
+ },
+ {
+  "slug": "slow-fashion-market-lausanne",
+  "conflicts": [
+   {
+    "our_value": "source_url https://colormygeneva.ch/events/the-slow-fashion-market/",
+    "verdict": "ours_wrong",
+    "field": "other",
+    "correct_value": "https://colormygeneva.ch/events/the-slow-fashion-market-2/",
+    "url": "https://colormygeneva.ch/events/the-slow-fashion-market-2/",
+    "quote": "📅 Dimanche 4 octobre 2026 🕙 10h – 18h 📍 Casino de Montbenon – Lausanne ... contact@lawenlounge.ch",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Old URL returns 404. The '-2' page is live and is the organiser-text copy (same text as the vide-greniers.org listing; contact Lawen Lounge). Bigger problem: the 4 Oct 2026 edition has already happened and I found NO sign of any earlier or later edition - it is billed as a 'marché éphémère' (one-day pop-up). 'Once a year, in October' is unsupported; consider 'one-off / occasional' or marking it for removal unless Lawen Lounge announces another date. It is also mainly designers + curated vintage/second-hand, with DJ set and food/drinks."
+   },
+   {
+    "our_value": "venue Casino de Montbenon, Allée Ernest-Ansermet 3",
+    "verdict": "ours_right",
+    "field": "venue_name",
+    "correct_value": null,
+    "url": "https://colormygeneva.ch/events/the-slow-fashion-market-2/",
+    "quote": "Casino de Montbenon All. Ernest-Ansermet 3, 1003 Lausanne",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Confirmed by the organiser-text page plus Brocabrac, AllEvents and Happeningnext ('Casino de Montbenon, Allée Ernest-Ansermet 3, 1003 Lausanne'). The 'Rue du Grand-Chêne' snippet was a loose area description. DJ confirmed ('DJ set, espace food & boissons'); coffee not confirmed as such; stall count not published ('places limitées')."
+   }
+  ]
+ },
+ {
+  "slug": "strandgut-flohmarkt-neubad-luzern",
+  "conflicts": [
+   {
+    "our_value": "rhythm '1st and 3rd Sunday of the month'",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Usually the 1st and 3rd Sunday of the month, with occasional shifted dates; 10:00–15:00",
+    "url": "https://neubad.org/sites/default/files/2025-10/Strandgut_Marktordnung_10_25.pdf",
+    "quote": "Grundsätzlich findet der Strandgut Flohmarkt vom Neubad am 1. und 3. Sonntag im Monat statt (Verschiebungsdaten sind möglich).",
+    "page_date": "Marktordnung dated 10/2025",
+    "confidence": "high",
+    "note": "Published calendar (https://neubad.org/veranstaltungen, organiser's own, each start 10:00): 2026-10-25, 2026-11-01, 2026-11-22, 2026-12-06, 2026-12-20, 2027-01-17, 2027-01-24, 2027-02-14, 2027-02-21, 2027-03-07, 2027-03-21, 2027-04-04, 2027-04-25, 2027-05-02, 2027-05-16, 2027-05-30. Exceptions to 1st/3rd: 22 Nov, 24 Jan, 14 Feb, 25 Apr, 30 May; Jan and Feb have no first-Sunday date. The published date list wins. End time 15:00 comes from aggregator copies of the market rules (09:00-15:00 in an old 2014 Neubad post; '10:00 – 15:00' on meine-flohmarkt-termine) - medium confidence; the organiser calendar gives only the 10:00 start. Held inside the former pool, no outdoor pitches ('Der Flohmarkt findet im Pool statt, draussen gibt es keine Standplätze'), so setting = indoor. Stall fee CHF 50; free entry."
+   }
+  ]
+ },
+ {
+  "slug": "svuotacantine-muralto",
+  "conflicts": [
+   {
+    "our_value": "description: 'Private verkaufen aus dem Kofferraum, dazu Live-Musik und Essen'",
+    "verdict": "ours_wrong",
+    "field": "description_only",
+    "correct_value": null,
+    "url": "https://www.imercantini.ch/svuotacantine-muralto-2026",
+    "quote": "L'evento di Muralto si differenzia da tutti gli altri Mercatini Svuotacantine, per il giorno, per l'orario e per il tipo di postazioni.",
+    "page_date": null,
+    "confidence": "medium",
+    "note": "Organiser says the other Svuotacantine let sellers use their own vehicle as the stall, and Muralto differs in the type of pitches (assigned by the organiser, lit, CHF 45) - so the car-boot claim is wrong/unsupported for Muralto. The 'live music and food' part IS supported by the event promo copied on happeningnext.com ('Cucina non stop (Hamburger Svuotacantine) | Musica dal vivo | Grande parco giochi per i bambini'), medium confidence since that is an aggregator copy. Facts: Saturday 20 June 2026, 16:00–23:00, backup date 27 June; the page calls it the '1° edizione', so 'once a year' is an assumption - no proof it repeats in 2027. The 5-minutes-from-Locarno-station line is still unsourced."
+   }
+  ]
+ },
+ {
+  "slug": "vide-dressing-flon-lausanne",
+  "conflicts": [
+   {
+    "our_value": "rhythm 'first Saturday of the month, April to November (except August)', next date 2026-11-07",
+    "verdict": "ours_right",
+    "field": "rhythm",
+    "correct_value": null,
+    "url": "https://flon.ch/fr/agenda/nt-0/vide-dressing-et-vide-grenier-419/",
+    "quote": "le samedi 7 novembre de 9h à 18h. A vos agendas ! En 2026, le vide-dressing vous donne rendez-vous tous les premiers samedis du mois ente avril et novembre (sauf en août).",
+    "page_date": "07.11.2026 entry",
+    "confidence": "high",
+    "note": "The previous agent read the Sept entry (which says 'avril et octobre'); the quartier's own Nov entry says 'avril et novembre'. Flon agenda lists 4 Apr, 2 May, 6 Jun, 5 Sep, 3 Oct, 7 Nov 2026 (Sat 9h–18h, install 08:00–09:00, 3x3 m pitch CHF 45 via Infomaniak tickets). Real problem: our next_dates 2027-09-04 and 2027-10-02 (and the gap over spring 2027) have no source - the organiser only publishes 2026. Remove or mark as unconfirmed; do not claim spring 2027 dates."
+   }
+  ]
+ },
+ {
+  "slug": "vide-grenier-echichens",
+  "conflicts": [
+   {
+    "our_value": "rhythm 'Once a year, in April'; next_dates null",
+    "verdict": "ours_wrong",
+    "field": "rhythm",
+    "correct_value": "Once a year, usually in autumn (November)",
+    "url": "https://www.echichens.ch/_rte/anlass/7654582",
+    "quote": "Salle polyvalente d'Echichens, Route de Saint-Fiacre 5, 1112 Echichens, 1 nov. 2026, 9h00 - 16h00",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Next date: 2026-11-01 (Sunday) 09:00–16:00, free entry, buvette, free parking; vide-greniers.org says up to 10 exhibitors. Past editions: Sun 13 Nov 2022 (Journal de Morges, 'rendez-vous traditionnel qui n'avait pas pu avoir lieu depuis plus de 3 ans'), Sun 12 Nov 2023 (MySwitzerland), but Sat 25 May 2019 (association-enfants.org flyer) - so April was never right; autumn is the recent pattern. It is a charity sale for Association Enfants (vide-local), small scale. The association's own site is dated (committee changing), so the rhythm is the recent pattern, not a promise."
+   },
+   {
+    "our_value": "name 'Vide-Grenier Echichens'",
+    "verdict": "ours_wrong",
+    "field": "name",
+    "correct_value": "Vide-Local Echichens (Association Enfants)",
+    "url": "https://www.echichens.ch/_rte/anlass/7654582",
+    "quote": "Vide Local Association Enfants",
+    "page_date": null,
+    "confidence": "medium",
+    "note": "Commune event title, vide-greniers.org title and association-enfants.org ('notre désormais traditionnel Vide-Local') all use 'Vide Local'. A name choice, not a hard fact: 'Vide-Grenier' is the generic term, but visitors searching the organiser's name will look for 'Vide-Local'. Changing the name does not require a slug change."
+   }
+  ]
+ },
+ {
+  "slug": "vide-grenier-lutry",
+  "conflicts": [
+   {
+    "our_value": "venue 'Chemin de la Cantine', address 'Chemin de la Cantine, 1095 Lutry'",
+    "verdict": "ours_wrong",
+    "field": "venue_name",
+    "correct_value": "Quais de Lutry (lakeside quays), 1095 Lutry",
+    "url": "https://www.sdlutry.ch/d-tails-et-inscription/vide-grenier-3-octobre-2026",
+    "quote": "Quais de Lutry, Lutry, Suisse ... L'emplacement que vous avez choisi est numéroté et correspond à celui qui sera marqué sur les quais.",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Organiser page for the 3 Oct 2026 edition: vehicles enter via Quai Vaudaire (east side) and leave via Rue du Port; weekly market has priority on the quays 07:00–15:00. 'Chemin de la Cantine' appears only on aggregators (fleafind), never on the organiser's pages - likely a parking location. Also correct: public hours 09:00–17:00 (08:00 set-up). Important for the description: only Lutry residents can book a pitch (3x3 m, CHF 20, no professional dealers); visitors are welcome. Dates 2026: Sat 2 May and Sat 3 Oct (both past); no 2027 dates yet. The page's 'Une fois par année' is per-resident wording; two dates a year are listed, so 'twice a year, May and October' stands."
+   }
+  ]
+ },
+ {
+  "slug": "vinyl-market-markthalle-basel",
+  "conflicts": [
+   {
+    "our_value": "next_dates null",
+    "verdict": "ours_wrong",
+    "field": "dates",
+    "correct_value": "2027-02-06 12:00–21:00",
+    "url": "https://markthallebasel.ch/kalender/",
+    "quote": "Plattenbörse mit rund 30 ausgewählten Aussteller:innen | Vinyl Markt | Sa. 06.02.2027 | 12:00 — 21:00 | Wohnzimmer",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Only one future date is published (calendar runs to 6 Feb 2027). The previous edition was Sat 3 Oct 2026 (swiss-markt / mybasel), so the rhythm 'about three times a year' is plausible but not proven - recommend 'a few times a year'."
+   },
+   {
+    "our_value": "stall_count 30",
+    "verdict": "ours_right",
+    "field": "stall_count",
+    "correct_value": null,
+    "url": "https://markthallebasel.ch/kalender/",
+    "quote": "Bis zu 30 ausgewählte Aussteller:innen bringen Vinyl in die Markthalle.",
+    "page_date": null,
+    "confidence": "high",
+    "note": "Heading says 'rund 30', body says 'bis zu 30'. 30 is the organiser's figure; word it 'up to 30 sellers' in copy."
+   }
+  ]
+ }
+]

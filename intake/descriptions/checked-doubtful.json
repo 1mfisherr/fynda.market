@@ -1,0 +1,302 @@
+[
+  {
+    "slug": "boutique-kleider-flohmarkt-wbz-reinach",
+    "verdict": "running",
+    "evidence": [
+      {
+        "url": "https://www.wbz.ch/file/4634/38673f34/WBZ_Anlaesse_2026_A5_web.pdf",
+        "quote": "Boutique-Kleider-Flohmarkt 29. Januar 2026 9-18 Uhr ... 20. Maerz 2026 9-14 Uhr (WBZ 2026 events flyer; the Jan, Mar and Jun editions are listed)",
+        "page_date": "2026 (organiser flyer 'Gastro- und WBZ-Anlaesse 2026', read 2026-10-08)"
+      },
+      {
+        "url": "https://www.wbz.ch/file/4263/e37a4f65/20241028_WBZ_Maerkte_Plakat_A4_2025.pdf",
+        "quote": "Boutique-Kleider-Flohmarkt 12.-13.06.2025, 9.30-19 Uhr, Kleider, Taschen, Schuhe etc.",
+        "page_date": "2024-10-28 (poster 'WBZ-Maerkte 2025'; also lists 30.-31.01.2025 and 27.-28.03.2025)"
+      },
+      {
+        "url": "https://www.wbz.ch/aktuell/agenda/214/boutique-kleider-flohmarkt",
+        "quote": "Boutique-Kleider-Flohmarkt 30.01.2025, 9.30-19 Uhr. Kontakt fuer den Anlass: Daniel Burkart, Co-Gruppenleiter Flohmarkt, Raum und Natur",
+        "page_date": "2025 (archived entry on the organiser's own agenda, read 2026-10-08)"
+      },
+      {
+        "url": "https://www.reinach-bl.ch/de/veranstaltungen/",
+        "quote": "Municipal market list Jan-Jun 2026 (seen via search snippet, PDF itself not retrievable): 'Boutique-Kleider-Flohmarkt WBZ, Piazza, Aumattstrasse 71, Do 9-18, Fr 9-14 Uhr' on 29./30.01, 19./20.03, 11./12.06.2026",
+        "page_date": "2026-10-08 (snippet only; municipal event detail pages for the individual dates are now gone)"
+      },
+      {
+        "url": "https://www.wbz.ch/aktuell/agenda",
+        "quote": "Current agenda lists only the annual WBZ-Flohmarkt 30.10.-02.11.2026; no Boutique date is published yet",
+        "page_date": "2026-10-08"
+      }
+    ],
+    "next_known_date": null,
+    "correct_details": {
+      "organiser": "WBZ (Wohn- und Buerozentrum fuer Koerperbehinderte); event contact on WBZ site: Daniel Burkart, Co-Gruppenleiter Flohmarkt",
+      "venue": "WBZ Piazza (ground floor), Aumattstrasse 71, 4153 Reinach BL, indoor",
+      "rhythm": "A few two-day editions a year, usually Thursday + Friday. 2025: 30-31 Jan, 27-28 Mar, 12-13 Jun. 2026: 29-30 Jan, 19-20 Mar, 11-12 Jun (Thu 9-18h, Fri 9-14h; 2025 posters said 9.30-19h). No autumn edition seen. A separate 'Muttertagsflohmarkt' appears on the 2025 poster.",
+      "goods": "Second-hand clothes, bags, shoes (jewellery per eventfrog)",
+      "relation_to_main_market": "Separate small event from the annual 4-day WBZ-Flohmarkt (30 Oct - 2 Nov 2026). Our data already has the main market as its own listing (slug wbz-flohmarkt-reinach appears in data/occurrences.json).",
+      "our_listing": "Name, venue, address, organiser and 'several times a year' are all right. The earlier agent's conclusion that no such market exists was wrong: it only looked at the WBZ agenda page, which shows the next event only. The old description 'Erloes kommt Menschen mit Behinderung zugute' is consistent with WBZ's purpose but the proceeds claim for this specific market is not verified. 'Indoor, ruhig' atmosphere claims are not sourced."
+    },
+    "recommendation": "Keep the listing; add 2027 dates when the WBZ publishes its 2027 flyer (the 2025 and 2026 flyers came out in Oct/Nov of the previous year), and write the description only from the sourced facts above (clothes, bags, shoes; two days; Piazza).",
+    "confidence": "high"
+  },
+  {
+    "slug": "brocante-17-terra-geneve",
+    "verdict": "running_but_wrong_details",
+    "evidence": [
+      {
+        "url": "https://brocabrac.fr/ge/geneve/1409441-brocante-mensuelle",
+        "quote": "Organisateur Nadler ... Horaires : du lundi au samedi de 9h a 19h ... Moins de 50 exposants, Professionnels ... Magasin au rez, 17 rue de la Terrassiere",
+        "page_date": "2026-10-08 (editions listed 8 and 9 Oct 2026; header 8-10 Oct)"
+      },
+      {
+        "url": "https://vide-greniers.org/evenement/1031692",
+        "quote": "Evenement mensuel 9h-19h, Entree gratuite, 4 exposants attendus, Brocante & Decoration: Mobilier, miroirs, tableaux, bijoux, luminaires ... En interieur. Publie le 3 Octobre 2026",
+        "page_date": "2026-10-03 (published), updated 2026-10-06; user-submitted listing, no contact given"
+      },
+      {
+        "url": "https://17-terra.com/blogs/programme",
+        "quote": "du 23 au 28 Mars Brocante (posted 18 mars 2026)",
+        "page_date": "2026-10-08 (venue programme lists a one-week 'Brocante' in March, but no other brocante and nothing after June)"
+      },
+      {
+        "url": "https://www.17-terra.com",
+        "quote": "l'arcade TERRA 17 vous invite a promouvoir votre entreprise, vos creations, vos collections ou vos marques dans notre boutique ephemere",
+        "page_date": "2026-10-08 (venue is a rentable pop-up shop; site never uses the word brocante in its own text beyond the programme item)"
+      }
+    ],
+    "next_known_date": "2026-10-09 (last day of the 7/8-10 Oct 2026 edition, Mon-Sat 9-19h per brocabrac); no later edition published",
+    "correct_details": {
+      "organiser": "Nadler (as named on brocabrac; nothing else found about who this is). 'Brocante & Co' appears nowhere. The venue and landlord is Galerie / arcade 17 Terra, which rents its space to different organisers.",
+      "venue": "Ground-floor shop at Rue de la Terrassiere 17, 1207 Geneve (Eaux-Vives), indoor",
+      "rhythm": "Roughly monthly, one week at a time: 1-6 Sep 2026 and 7-10 Oct 2026 are listed on brocabrac. Only the third-party aggregators say 'monthly'; the venue's own programme does not.",
+      "size_and_type": "Professional dealers only (not private sellers); vide-greniers.org says max 4 exhibitors, brocabrac says fewer than 50 and that exhibitor places are full. Goods: furniture, mirrors, paintings, jewellery, lamps, tableware, decorative objects. Entry free.",
+      "notes": "Aggregator listings are self-submitted and disagree on exhibitor count; both are low-trust. 17-terra.com is not an organiser page for this event."
+    },
+    "recommendation": "Keep only if you accept third-party-only evidence: change organiser to 'Nadler' (or leave blank), call it a small dealers' brocante rather than a 'monthly gallery brocante', set the website to the brocabrac or 17 Terra programme page, and consider marking it unverified until a second source (venue programme or Instagram) confirms the rhythm.",
+    "confidence": "medium"
+  },
+  {
+    "slug": "flohmarkt-am-see-wollishofen-zuerich",
+    "verdict": "running",
+    "evidence": [
+      {
+        "url": "https://www.regioactive.de/markt/flohmarkt-am-see-zuerich-openair-wollishofen-2026-07-05-X3LpjbkBKc",
+        "quote": "Quartier-Flohmarkt every first Sunday of the month 11.00-17.00, April to October; 2026 dates 5 Jul, 2 Aug, 6 Sep, 4 Oct; only in dry weather; no registration, CHF 15 per spot (max 2x2 m), CHF 20 with a GZ table (search snippet, page returns 403 to scripts)",
+        "page_date": "2026-10-08 (dates up to 4 Oct 2026)"
+      },
+      {
+        "url": "http://web.archive.org/web/20220809110215/https://gz-zh.ch/gz-wollishofen/angebote/flohmarkt-am-see/",
+        "quote": "Der Flohmarkt findet jeden ersten Sonntag des Monats von 11.00-17.00 Uhr waehrend den Monaten April bis Oktober statt ... Freiwilliges Flohmi Team ... nur bei trockenem Wetter",
+        "page_date": "2022-08-09 (Wayback copy of the GZ page)"
+      },
+      {
+        "url": "https://gz-zh.ch/gz-wollishofen/angebote-sitemap.xml",
+        "quote": "The current GZ Wollishofen offers sitemap (79 entries, read 2026-10-08) contains only 'flohmi-im-entlisberg' as a flea market; the Flohmarkt am See page is not published",
+        "page_date": "2026-10-08"
+      },
+      {
+        "url": "https://gz-zh.ch/gz-heuried/angebote/winterboerse/",
+        "quote": "Pattern check: GZ offer pages disappear after the last date. Heuried's flea-market pages and Hottingen's 2026 page are 404 too although those markets ran in 2026.",
+        "page_date": "2026-10-08"
+      }
+    ],
+    "next_known_date": "2027-04-04 (inferred from the first-Sunday-April rule; not published yet)",
+    "correct_details": {
+      "organiser": "GZ Wollishofen with a volunteer 'Flohmi-Team' (regioactive names one contact person)",
+      "venue": "Lawn at GZ Wollishofen, Bachstrasse 7, 8038 Zuerich, near the lake",
+      "rhythm": "First Sunday of the month, April to October, 11:00-17:00; sellers from 9:00, ready by 11:00; only in dry weather, cancellations posted 1-2 days before on the GZ site, Instagram and Facebook. 2026 editions seen: 5 Jul, 2 Aug, 6 Sep, 4 Oct (April-June not seen but covered by the rule).",
+      "sellers": "No registration; CHF 15 per spot (max 2x2 m), CHF 20 with a GZ table; no parking, unloading by car only in the morning",
+      "notes": "The 404 on the GZ page is most likely the GZ unpublishing its season pages after the last date (the same happened to Heuried and Hottingen), not the end of the market. 'Cafe-Betrieb vor Ort' in the old description is not confirmed by any source; the 2022 page says only to enjoy 'einen gemuetlichen Sonntag am See'."
+    },
+    "recommendation": "Keep, correct nothing but the dead URL (point it at gz-zh.ch/gz-wollishofen/ and re-check in March 2027 when the new season page should appear); drop 'cafe on site' and 'Freiwillige aus dem Quartier' unless a source is found.",
+    "confidence": "medium"
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "verdict": "running_but_wrong_details",
+    "evidence": [
+      {
+        "url": "https://m.schlieren.ch/appl/download.php?objid=1472420620&id=62825648&nr=1&filename=Merkblatt_Kinderflohmarkt.pdf&usid=7930&cmd=viewinline",
+        "quote": "Kinderflohmarkt Samstag, 5. September 2026, 9.00 bis 16.00 Uhr, Wiese zwischen Stadthaus und Stuermeierhuus. Kulturkommission",
+        "page_date": "2026 (official city fact sheet, still online 2026-10-08; same objid as our dead source_url)"
+      },
+      {
+        "url": "https://www.limmatstadt.ch/veranstaltungen/herbst-und-kinderflohmarkt-schlieren-00393/",
+        "quote": "Wann: Samstag, 6. September, 9 bis 16 Uhr. Wo: Ref. Kirche/Kirchgasse, Schlieren. Veranstalter: Kul[turkommission] ... Der Kinderflohmarkt findet gleichzeitig auf der Wiese an der Ecke Freiestrasse/Stationsstrasse statt",
+        "page_date": "2025-09-06 (event date of the 2025 edition)"
+      },
+      {
+        "url": "https://m.schlieren.ch/index.php?apid=14552707",
+        "quote": "City calendar (Oct-Nov 2026) has no Herbstmarkt or flea market entry; only 'Gemeinsam in den Herbst' on 24 Oct 2026 (boule tournament, AmRietpark)",
+        "page_date": "2026-10-08"
+      }
+    ],
+    "next_known_date": null,
+    "correct_details": {
+      "organiser": "Kulturkommission Schlieren (Freiestrasse 6, 8952 Schlieren)",
+      "venue_2026_kids_market": "Wiese zwischen Stadthaus und Stuermeierhuus; moves to the Stadthaus underground car park in rain; no food sales; sellers (school children) take a spot from 8:30 and pay CHF 2 to Kulturkommission members",
+      "venue_2025": "Herbstmarkt at the Reformed church / Kirchgasse; kids market on the lawn at Freiestrasse/Stationsstrasse. Venues change between years (Pischte 52 / Badenerstrasse in earlier years, Stadthaus area in 2026).",
+      "rhythm": "Once a year, first Saturday of September, 9-16h (6 Sep 2025, 5 Sep 2026). 2027 date not announced.",
+      "notes": "The Kinderflohmarkt 2026 is confirmed by the city. The Herbstmarkt 2026 itself was not found online (no 2026 announcement), though 2025 and many earlier years are documented. The listing's 'Kirchgasse' and 'Freiestrasse/Stationsstrasse' venues were the 2025 locations and are not right for the 2026 kids market. The earlier agent's 404s are dead CMS links, not the end of the event."
+    },
+    "recommendation": "Keep as a once-a-year children's flea market with the autumn market alongside, but do not state a fixed venue (say 'central Schlieren, location set each year') and replace the dead URLs with the city's calendar; confirm the 2027 date with the Kulturkommission (kuko@schlieren.ch) next summer.",
+    "confidence": "medium"
+  },
+  {
+    "slug": "hyper-bazar-la-chaux-de-fonds",
+    "verdict": "running",
+    "evidence": [
+      {
+        "url": "https://hyperbazar.ch/",
+        "quote": "D'avril a septembre, chaque dernier samedi du mois, la Place de la Carmagnole et ses abords se transforment en un vaste marche aux puces avec 90 stands ... CHAQUE DERNIER SAMEDI DU MOIS DE 10 H - 16 H ... 2027: 24 avril, 29 mai (edition speciale Fete de mai), 26 juin, 31 juillet (pause estivale Plage des Six Pompes), 28 aout, 25 septembre",
+        "page_date": "2026-10-08 (official site of the organising association)"
+      },
+      {
+        "url": "https://le-o.ch/2026/06/26/nouveau-marche-cest-quoi-cet-hyper-bazar-sur-la-place-de-la-carmagnole/",
+        "quote": "chaque dernier samedi du mois d'avril a septembre, ce sera aussi marche aux puces desormais ... Le premier rendez-vous est agende au 29 aout ... reserver un stand pour 35 francs sur le site hyperbazar.ch",
+        "page_date": "2026-06-26"
+      },
+      {
+        "url": "https://www.broc-antic.com/manifestations/hyper-bazar-la-chaux-de-fonds.html",
+        "quote": "Samedi 26 septembre de 10h00 a 16h00 ... Entree gratuite ... 90 stands ... Premiere edition - samedi 29 aout 2026",
+        "page_date": "2026-10-08"
+      }
+    ],
+    "next_known_date": "2027-04-24 (Saturday, 10-16h; 29 May 2027 is a special Fete de mai edition, 31 July 2027 a summer pause)",
+    "correct_details": {
+      "organiser": "Hyper Bazar, an association (statutes linked on hyperbazar.ch); project run by Emeline Fichot with Andrea Valdeavellano per Journal le O",
+      "venue": "Place de la Carmagnole and surrounding passages, La Chaux-de-Fonds, next to the Saturday morning fruit and vegetable market",
+      "rhythm": "Last Saturday of the month, April to September, 10:00-16:00. Brand new: first edition 29 Aug 2026, second 26 Sep 2026. 2027 season dates published (see next_known_date).",
+      "format": "Max 90 stalls in five zones: vide-dressing (1-15), brocante with professionals (16-34), open boot/'coffre ouvert' (35-45), vide-grenier with private sellers (50-81), creators (46-49, 82-90). Kids' selling area and an open stage. Free entry; stall CHF 35.",
+      "access": "Parking de la Ronde (5 min walk), bus stop Grande Fontaine. The old description's 'five minutes from the station' is not stated anywhere, and 'Privatverkaeufer only' is not accurate (the brocante zone is for professionals).",
+      "notes": "The j3l.ch tourism page was a pre-launch listing that has since been removed; this is why it is 410. The old description was already right about 90 stalls and 10-16h."
+    },
+    "recommendation": "Keep and add the 2027 dates now; replace the website with https://hyperbazar.ch/ and fix 'private sellers only' and the station-distance claim.",
+    "confidence": "high"
+  },
+  {
+    "slug": "kinderflohmarkt-gz-heuried",
+    "verdict": "running",
+    "evidence": [
+      {
+        "url": "https://gz-zh.ch/app/uploads/sites/7/2025/10/Informationen-Flohmarkt-GZ-Heuried_2026.pdf",
+        "quote": "Der Flohmarkt fuer Kindersachen findet neu zweimal im Jahr statt, jeweils im Fruehling und im Herbst ... Flohmarkt fuer Kindersachen 12. April 2026 / 27. September 2026 ... Flohmarkt fuer Erwachsene 15. Maerz 2026 / 22. November 2026",
+        "page_date": "2025-10-08 (letter from GZ Heuried, Sara Lunin, Quartierarbeit; PDF still online 2026-10-08)"
+      },
+      {
+        "url": "https://gz-zh.ch/gz-heuried/programm/",
+        "quote": "Programme page (read 2026-10-08) shows events to late October; the flea-market registration window opens 'spaetestens einen Monat vor Veranstaltungsdatum' per the letter, so the 22 Nov adult market should appear from about 22 Oct",
+        "page_date": "2026-10-08"
+      },
+      {
+        "url": "https://gz-zh.ch/gz-heuried/angebote-sitemap.xml",
+        "quote": "No flohmarkt offer page is published right now (sitemap read 2026-10-08), which fits GZ unpublishing event pages after the date",
+        "page_date": "2026-10-08"
+      }
+    ],
+    "next_known_date": "2026-11-22 (adult flea market, anything for adults; NOT a children's market). Next children's market: spring 2027, date not published (letter gives only 2026 dates).",
+    "correct_details": {
+      "organiser": "GZ Heuried (Zuercher Gemeinschaftszentren), Quartierarbeit",
+      "venue": "GZ Heuried, Doeltschiweg 130, 8055 Zuerich. 'Atrium' is not confirmed by any source seen (the info sheet only says GZ Heuried). The 2024 info sheet (404 now, seen via search snippet only) gave 12:00-17:00 with set-up from 11:00, children's items only, popcorn stand, no car access.",
+      "rhythm": "From 2026 the children's market runs twice a year, spring and autumn (12 Apr and 27 Sep 2026, both passed), reduced from more frequent dates because of room demand. Two adult flea markets also run (15 Mar and 22 Nov 2026).",
+      "sellers": "Online registration on gz-zh.ch/gz-heuried/programm, opens at the latest one month before each date; help from the neighbourhood worker (contact in the letter)",
+      "notes": "The 404 on the old offer page is a page that is taken down after the last date, not evidence of closure. Our data is missing the adult flea market of 22 Nov 2026, which is a real, upcoming event at the same place."
+    },
+    "recommendation": "Keep as a children's market with 'twice a year, spring and autumn' (already correct), swap the dead URL for the programme page, and consider adding the 22 Nov 2026 adult flea market as the next date or a sibling listing.",
+    "confidence": "high"
+  },
+  {
+    "slug": "kinderflohmarkt-gz-hottingen",
+    "verdict": "running",
+    "evidence": [
+      {
+        "url": "https://gz-zh.ch/gz-hottingen/angebote/kinderflohmarkt/",
+        "quote": "Sa., 29. Aug. 2026 10:00-14:00 Uhr GZ Hottingen ... Platz vor dem GZ, Gemeindestrasse 54, organised by GZ Hottingen with support from QV Hottingen ... Kinder in Begleitung Erwachsener ... bei Regen findet der Flohmarkt nicht statt (seen only as a search-engine copy of the page; the live URL is 404 now)",
+        "page_date": "2026-10-08 (cached copy; the event date 29 Aug 2026 is past)"
+      },
+      {
+        "url": "http://web.archive.org/web/20220802113025/https://gz-zh.ch/gz-hottingen/angebote/kinderflohmarkt/",
+        "quote": "KINDER-FLOHMARKT - Sa, 3. Sep 2022, 10:00-14:00 Uhr, GZ Hottingen",
+        "page_date": "2022-08-02 (Wayback copy)"
+      },
+      {
+        "url": "https://gz-zh.ch/gz-hottingen/angebote/secondhand-aus-erster-hand/",
+        "quote": "KIDS FLOWMARKT Sa., 20. Maerz 2027 09:00-13:00 Uhr, Klosbachstrasse 118 ... Kinderkleider- und Spielzeugboerse (a different, second kids' market run by two parents, registration by e-mail)",
+        "page_date": "2026-10-08 (live page)"
+      }
+    ],
+    "next_known_date": "2027-03-20 only for the separate KIDS FLOWMARKT at Klosbachstrasse 118; no date published for the open-air Kinder-Flohmarkt in front of the GZ (past editions late Aug/early Sep: 3 Sep 2022, 29 Aug 2026)",
+    "correct_details": {
+      "organiser": "GZ Hottingen with support from QV Hottingen (Quartierverein)",
+      "venue": "Square in front of GZ Hottingen, Gemeindestrasse 54, 8032 Zuerich; outdoors only, cancelled in rain (not moved inside)",
+      "rhythm": "Roughly once a year in late summer, Saturday 10:00-14:00; seen 3 Sep 2022 and 29 Aug 2026; 2023-2025 editions not found. 'Occasionally' is a fair description.",
+      "sellers": "Children selling and swapping their belongings must be accompanied by an adult; bring your own bedsheet-sized cloth or small table, set-up from 9:30; no food or drink sales",
+      "notes": "The earlier agent's 404 is the GZ taking the page down after the date. The only support for 2026 is a search-engine copy of the page, not a live read, hence medium confidence. The KIDS FLOWMARKT (Klosbachstrasse 118, 20 Mar 2027) is a different event and not in our data."
+    },
+    "recommendation": "Keep, as an annual late-summer children's market (write 'usually late August or early September'), point the website at the GZ Hottingen programme page, and ask GZ Hottingen for the 2027 date; consider adding the KIDS FLOWMARKT on 20 Mar 2027 as its own listing.",
+    "confidence": "medium"
+  },
+  {
+    "slug": "les-puces-du-loup-lausanne",
+    "verdict": "running_but_wrong_details",
+    "evidence": [
+      {
+        "url": "https://participer.lausanne.ch/assemblies/blecherette/f/85/meetings/319",
+        "quote": "Venez decouvrir la toute premiere edition du vide-grenier Les puces du loup! 50 stands tenus par les habitant.e.s du Plateau de la Blecherette ... 14.06.2026, 10h - 16h ... Ecoquartier des Plaines-du-Loup ... Inscriptions closes : tous les stands ont ete attribues. Stands reserves aux habitant.e.s du Plateau de la Blecherette ... uniquement non-professionnel.le.s",
+        "page_date": "2026 (City of Lausanne participation platform, version 30; meeting 14 Jun 2026)"
+      },
+      {
+        "url": "https://lausannecites.ch/articles/lagenda-des-sorties-de-la-semaine-du-11-juin",
+        "quote": "L'Ecoquartier des Plaines-du-Loup attend le public ce dimanche 14 juin de 10h a 16h pour son premier vide-grenier. 50 stands seront proposes par les habitants du Plateau de la Blecherette",
+        "page_date": "2026-06-11"
+      },
+      {
+        "url": "https://www.instagram.com/lespucesduloup/",
+        "quote": "Account @lespucesduloup exists (about 5 posts); search snippet of its bio: 'vide-grenier 50 stands 1ere edition, 14 Juin 2026, 10-16h, Ecoquartier des Plaines-du-Loup, Rue Germaine Ernst 3, 1018 Lausanne'",
+        "page_date": "2026-10-08 (bio via search snippet; posts not readable without login)"
+      }
+    ],
+    "next_known_date": null,
+    "correct_details": {
+      "organiser": "Not the generic 'Les Puces du Loup'. A search snippet of the stall rules (a Google Doc on participer.lausanne.ch) says it is run by the Maison de quartier de la Louve; contact lespucesduloup@gmail.com. The organiser attribution rests on that one snippet.",
+      "venue": "Ecoquartier des Plaines-du-Loup, around the Plaines-du-Loup school, Rue Germaine-Ernst 3, 1018 Lausanne. Bus 1 stop Bois-Gentil, bus 21 stops Grattapaille or Bossons; Parking du Velodrome free, Parking du Loup paid.",
+      "rhythm": "One edition so far: Sunday 14 June 2026, 10:00-16:00, 50 stalls, free entry, local restaurants open. Nothing published about a 2027 edition. 'Once a year, in June' on our page is an assumption.",
+      "sellers": "Stalls reserved for residents of the Plateau de la Blecherette (Bois-Gentil, Bossons, Grattapaille, Plaines-du-Loup), non-professionals only; registration was closed before the day. Visitors cannot book a stall.",
+      "notes": "The market is real and the old description (50 stalls, school yard area, restaurants open) is broadly right. 'School yard of the Ecole des Plaines-du-Loup' was said by a search summary but the official page says 'autour du college des Plaines-du-Loup'."
+    },
+    "recommendation": "Keep as a neighbourhood market, but remove 'once a year' and show it as 'first edition 14 June 2026, next date not announced' (or hold it back until a 2027 date appears); say clearly that only residents of the plateau can sell.",
+    "confidence": "high"
+  },
+  {
+    "slug": "nerdyartist-markthalle-basel",
+    "verdict": "not_a_flea_market",
+    "evidence": [
+      {
+        "url": "https://www.basellife.com/event/nerdyartist/",
+        "quote": "running in parallel with the night flea market at the Markthalle, will be the new \"NerdYartist\" artistic market ... artists who present and offer their works for sale in the form of lovingly designed products, such as pendants, prints, and handmade unique pieces ... Saturday, 05 September 12:00-21:00 ... Admission is free",
+        "page_date": "2026-06-11 (page last modified; no year printed, 5 Sep is a Saturday in 2026)"
+      },
+      {
+        "url": "https://markthallebasel.ch/flohmarkt/",
+        "quote": "Ob Hallenflohmarkt, Nachtflohmarkt, Nerd Yard oder Vinyl Sunday ... (upcoming: Hallenflohmarkt 07./08.11.2026 and 05./06.12.2026, Basler Musikflohmarkt 05.12.2026 in the Wohnzimmer); no NerdYartist date",
+        "page_date": "2026-10-08"
+      },
+      {
+        "url": "https://markthallebasel.ch/kalender/",
+        "quote": "The Markthalle calendar (read 2026-10-08) shows pop-ups, flea markets and concerts but no NerdYartist; the old altemarkthalle.ch/agenda/nerdyartist link redirects here",
+        "page_date": "2026-10-08"
+      }
+    ],
+    "next_known_date": null,
+    "correct_details": {
+      "organiser": "The team behind the 'Nerd Yard' (a Markthalle flea-market format, per the Markthalle flea-market page), not the Markthalle itself",
+      "venue": "Markthalle Basel, Steinentorberg 20, 4051 Basel. The source says only 'Markthalle Basel', not the Wohnzimmer.",
+      "rhythm": "Announced as a 'new' artists' market on a single day, Saturday 5 September 2026, 12-21h, next to the night flea market. No sign it recurs.",
+      "type": "Artists sell their own new handmade work (pendants, prints, unique pieces); artists applied by an online form. This is a craft/art market, not second-hand goods."
+    },
+    "recommendation": "Remove the listing, or move it to an 'artisan markets' category if you ever add one; list the Markthalle's real flea markets instead (Hallenflohmarkt 7-8 Nov and 5-6 Dec 2026, Basler Musikflohmarkt 5 Dec 2026).",
+    "confidence": "high"
+  }
+]
