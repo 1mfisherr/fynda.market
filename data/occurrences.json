@@ -665,6 +665,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "enter-flohmarkt-derendingen",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "fete-livres-disques-ouchy-lausanne",
     "date": "2026-10-11",
     "status": "confirmed"
@@ -1450,6 +1455,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-dietikon",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-dorfplatz-horgen",
     "date": "2026-10-10",
     "status": "confirmed"
@@ -1905,6 +1915,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-kanzlei-zuerich",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-karlsplatz-stuttgart",
     "date": "2026-10-10",
     "status": "unverified"
@@ -2210,6 +2225,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-petersplatz-basel",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-presswerk-arbon",
     "date": "2026-11-08",
     "status": "confirmed"
@@ -2402,7 +2422,7 @@
   {
     "marketSlug": "flohmarkt-theaterplatz-baden",
     "date": "2026-10-24",
-    "status": "confirmed"
+    "status": "cancelled"
   },
   {
     "marketSlug": "flohmarkt-ulm-messe",
@@ -2497,6 +2517,11 @@
   {
     "marketSlug": "flohmarkt-vogesenplatz-basel",
     "date": "2027-01-30",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-vogesenplatz-basel",
+    "date": "2027-02-06",
     "status": "confirmed"
   },
   {
@@ -2910,16 +2935,6 @@
     "status": "unverified"
   },
   {
-    "marketSlug": "ladies-flohmarkt-fundus-root",
-    "date": "2026-10-25",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "ladies-flohmarkt-fundus-root",
-    "date": "2026-11-29",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "leo-flohmarkt-berlin",
     "date": "2026-10-10",
     "status": "unverified"
@@ -2993,11 +3008,6 @@
     "marketSlug": "leo-flohmarkt-berlin",
     "date": "2027-01-23",
     "status": "unverified"
-  },
-  {
-    "marketSlug": "les-puces-du-cpo-lausanne",
-    "date": "2026-10-08",
-    "status": "confirmed"
   },
   {
     "marketSlug": "les-puces-du-cpo-lausanne",
@@ -3340,6 +3350,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-aux-puces-vevey",
     "date": "2026-11-07",
     "status": "confirmed"
@@ -3352,6 +3367,11 @@
   {
     "marketSlug": "marche-aux-puces-vevey",
     "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "marche-aux-puces-vevey",
+    "date": "2027-02-06",
     "status": "unverified"
   },
   {
@@ -3620,6 +3640,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-rumine-lausanne-samedi",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-rumine-lausanne-vendredi",
     "date": "2026-10-09",
     "status": "confirmed"
@@ -3805,6 +3830,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "mercato-antiquariato-maghetti-lugano",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "musiker-flohmarkt-zuerich-kronensaal",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -3851,11 +3881,6 @@
   },
   {
     "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
-    "date": "2026-10-08",
-    "status": "unverified"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-rindermarkthalle-hamburg",
     "date": "2026-10-14",
     "status": "unverified"
   },
@@ -3887,6 +3912,11 @@
   {
     "marketSlug": "nachtflohmarkt-rostock",
     "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-stellwerk-bern",
+    "date": "2026-10-23",
     "status": "confirmed"
   },
   {
@@ -3947,6 +3977,11 @@
   {
     "marketSlug": "progr-vintage-flea-market-bern",
     "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "progr-vintage-flea-market-bern",
+    "date": "2026-12-19",
     "status": "confirmed"
   },
   {
@@ -4137,6 +4172,16 @@
   {
     "marketSlug": "strandgut-flohmarkt-neubad-luzern",
     "date": "2026-12-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "strandgut-flohmarkt-neubad-luzern",
+    "date": "2027-01-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "strandgut-flohmarkt-neubad-luzern",
+    "date": "2027-01-24",
     "status": "confirmed"
   },
   {
@@ -4757,6 +4802,11 @@
   {
     "marketSlug": "vide-grenier-ecobroc-saxon",
     "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "vinyl-market-markthalle-basel",
+    "date": "2027-02-06",
     "status": "confirmed"
   },
   {

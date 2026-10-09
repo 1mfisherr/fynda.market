@@ -188,7 +188,8 @@ for (const r of results) {
 
   const extracted = extractDates(r.lines, { today });
   const seen = new Set(src.seen ?? []);
-  const firstRead = !src.fetched_at;
+  // First read = this page has never been read through to the end (see the AI note before writing).
+  const firstRead = !(src.seen ?? []).length;
   const ids = r.lines.map(lineId);
   const watched = new Set([...extracted.dates.map((d) => d.line), ...r.lines.map((l, i) => (CANCEL_RE.test(normalise(l)) ? i : -1)).filter((i) => i >= 0)]);
   const newLines = new Set([...watched].filter((i) => !seen.has(ids[i])));
@@ -265,6 +266,15 @@ const runId = await withClient(DB_URL, async (c) => {
     [null, sources.length, counts.read ?? 0, counts.not_modified ?? 0, counts.unchanged ?? 0,
       stamps.size, questions.length, answer.findings.length + notes.length, answer.ai, JSON.stringify(answer.errors)]);
 
+  // Questions the AI could not answer (no login, a failure) must come back next run: their pages
+  // are written as not yet read — no hash, the lines they had seen before — so they are read afresh.
+  if (!['ok', 'not_needed'].includes(answer.ai)) {
+    const unanswered = new Set(questions.map((q) => q.src.id));
+    for (const p of pages) if (unanswered.has(p.source_id)) {
+      const src = sources.find((x) => x.id === p.source_id);
+      p.text_hash = null; p.seen = src.seen ?? []; p.etag = null; p.last_modified = null;
+    }
+  }
   for (const p of pages) {
     await c.query(
       `insert into public.watch_pages (source_id, fetched_at, outcome, http_status, final_url, renderer, etag, last_modified, text_hash, dates, seen, fail_streak, changed_at)
