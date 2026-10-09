@@ -20,6 +20,13 @@ const APPLY = args.includes('--apply');
 const COUNTRY = args.includes('--country') ? args[args.indexOf('--country') + 1].toUpperCase() : null;
 
 const SOCIAL = /(^|\.)(facebook|fb|instagram|tiktok|x|twitter)\.com$/i;
+/**
+ * Listing sites, city guides, tourism boards and encyclopedias: they may tell us
+ * a market exists, never its dates (intake/README.md). The first live run put
+ * marktcom.de's 2027 Erfurt dates before Delfim as if they were the organiser's
+ * (2026-10-09). Such a page is recorded, inactive, so it is never read again.
+ */
+export const LISTING = /(^|\.)(marktcom\.de|meine-flohmarkt-termine\.de|krencky24\.de|flohmarkt-termine\.net|flohmarktnavi\.de|meinestadt\.de|oldthing\.de|visitberlin\.de|berlin-flohmaerkte\.de|inberlin\.de|top10berlin\.de|frankfurt-inklusiv\.de|visit-hannover\.com|visit\.kassel\.de|wikipedia\.org|in-muenchen\.de|koeln\.de|guidle\.com|myswitzerland\.com|loisirs\.ch|swiss-markt\.ch)$/i;
 
 /** One spelling per page: no fragment, no tracking, lower-case host. */
 export function normaliseUrl(raw) {
@@ -79,11 +86,14 @@ if (!APPLY) { console.log('Dry run. Add --apply to write.'); process.exit(0); }
 await withClient(DB_URL, async (c) => {
   await c.query('begin');
   for (const [url, ms] of links) {
-    const access = SOCIAL.test(new URL(url).host.replace(/^www\./, '')) ? 'social' : 'fetch';
+    const host = new URL(url).host.replace(/^www\./, '');
+    const access = SOCIAL.test(host) ? 'social' : 'fetch';
+    const listing = LISTING.test(host);
     const kind = /\.pdf($|\?)/i.test(url) ? 'pdf' : /\.ics($|\?)/i.test(url) ? 'ics' : 'page';
     const { rows: [src] } = await c.query(
-      `insert into public.watch_sources (url, kind, access) values ($1, $2, $3)
-       on conflict (url) do update set url = excluded.url returning id`, [url, kind, access]);
+      `insert into public.watch_sources (url, kind, access, active, notes) values ($1, $2, $3, $4, $5)
+       on conflict (url) do update set url = excluded.url returning id`,
+      [url, kind, access, !listing, listing ? 'a listing site — never a source of dates (intake/README.md)' : null]);
     for (const [marketId, via] of ms) {
       await c.query(`insert into public.watch_source_markets (source_id, market_id, via) values ($1, $2, $3) on conflict do nothing`, [src.id, marketId, via]);
     }
