@@ -112,7 +112,7 @@ const id = `sub-${variant}`;
         answer should land on, so this form's results and the utility pages'
         never fight over one set of ids. */}
     <input type="hidden" name="path" value={Astro.url.pathname} />
-    <input type="hidden" name="consent_text" value={copy.note} />
+    <input type="hidden" name="consent_text" value={[variant === 'card' ? title : null, body].filter(Boolean).join(' — ')} />
     <input type="hidden" name="anchor" value="sub" />
     {region && <input type="hidden" name="region" value={region.slug} />}
     {near && (
@@ -159,7 +159,6 @@ const id = `sub-${variant}`;
     </Button>
   </form>
 
-  <p class="meta note">{copy.note}</p>
 
   {/* Shown in place of the form once the address is saved. The script reveals
       it; the ids only exist on the instance that owns them. */}

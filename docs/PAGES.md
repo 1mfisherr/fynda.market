@@ -43,7 +43,7 @@ Not here: a country picker, a map (Delfim, 2026-09-22: "gimmicky"), a big search
 
 Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm it is happening, then get them there.
 
-**Title: the place and the next date, with its own year** (2026-09-23, reordered 2026-09-28) — *Flohmi am See Bern – Werkhof Egelsee – 18. Okt 2026*. When it runs long, the words *nächster Termin* go before the venue does, then the town, then the venue; a street address is never the venue here. Falls back to *name – Termine 2026* when there is no date. The year is the date's, never the build's. **Description: the facts, not the title again** — date, hours, place, indoors or out, the next two dates; with no date, the rhythm and when it last ran. Every page's description is cut to whole sentences within 160 characters in `Base.astro` (`fitDescription`), so no template has to count.
+**Title: the place and the next date, with its own year** (2026-09-23, reordered 2026-09-28) — *Flohmi am See Bern – Werkhof Egelsee – 18. Okt 2026*. When it runs long, the words *nächster Termin* go before the venue does, then the town, then the venue; a street address is never the venue here. With no date coming it is *name – venue, town* and **no year**: a year with no date in it is a page that does not match its title (398 did, SEO audit 2026-10-07; fixed 2026-10-09). The year is the date's, never the build's. **Description: the facts, not the title again** — date, hours, place, indoors or out, the next two dates; with no date, the rhythm and when it last ran. Every page's description is cut to whole sentences within 160 characters in `Base.astro` (`fitDescription`), so no template has to count.
 
 1. Photo or illustration, never stock, with **Save** on it — saving and going are different decisions. A Wikimedia Commons photo of the venue is fine when there is none of the market; its photographer and licence sit quietly under it (`markets.image_credit`, since 2026-09-28). Never a photo from an organiser's site.
 2. Kind and town, then the name.
@@ -64,7 +64,7 @@ Not here: "related markets" by similarity (the doorway pattern — links that ex
 
 The biggest, best-converting segment: `flohmarkt luzern 2026` was v1's best query (148 clicks, 15.7% CTR). Job: the complete, current answer, routing fast.
 
-1. **H1 and title with the year** — it is in 38% of queries — plus the next date in the title.
+1. **H1 and title with the year of the next date** — it is in 38% of queries — plus the next date in the title. No date coming, no year.
 2. One sentence naming the next market, date, hours, venue; then the count. This is also the search snippet.
 3. The When control, only the parts with a date behind them — a chip that empties the list is a dead end. The calendar and the chips find a market on **any** of its dates, not only its next: each row carries its dates inside the horizon (`src/lib/date-rows.ts`), and a chosen day shows its markets under that day with that day's hours (2026-09-26 — Zurich could not pick 3 October).
 4. **One row per market, soonest first, grouped under sticky day headers** — weekday, date in the accent, count; a month label where the month turns. One feature row (the next market), then compact rows. Two features put the first name 1,300px down a phone.
