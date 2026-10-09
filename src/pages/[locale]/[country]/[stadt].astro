@@ -72,7 +72,13 @@ const list = byMarket(rows);
    their own header with the rhythm line, hidden by any When but All. */
 const undated = undatedMarkets(markets);
 
-const year = new Date().getFullYear();
+/* The year in a heading is the year of the next real date here, or none: "2026"
+   over a page whose next date is in 2027, or that has none, does not match its
+   title (582 titles did, SEO audit 2026-10-07). */
+const year = (() => {
+  const first = rows.filter((row) => row.next!.status !== 'cancelled').map((row) => row.next!.date).sort()[0];
+  return first ? Number(first.slice(0, 4)) : undefined;
+})();
 
 /**
  * The answer sentence, before the list. Tripadvisor opens a city page with the

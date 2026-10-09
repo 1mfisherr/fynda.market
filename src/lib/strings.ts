@@ -214,7 +214,7 @@ export interface Strings {
   bookAStall: string;
 
   /* city page */
-  cityHeading: (n: number, city: string, year: number) => string;
+  cityHeading: (n: number, city: string, year?: number) => string;
   /**
    * The tail of a town or canton title: the next date, the one fact that makes
    * fifty-six otherwise identical titles fifty-six different ones. Google
@@ -223,8 +223,8 @@ export interface Strings {
    * took its place (docs/reference/seo-research/plan.md).
    */
   titleNext: (date: string) => string;
-  /** The market title: name, venue, town, then the year's dates. */
-  marketTitle: (name: string, venue: string | undefined, city: string | undefined, year: number) => string;
+  /** The market title: name, venue, town, then the year's dates — no year when no date is coming (a "2026" with no 2026 date is a page that does not match its title). */
+  marketTitle: (name: string, venue: string | undefined, city: string | undefined, year?: number) => string;
   /** "Flohmarkt Bürkliplatz – Zürich – nächster Termin 26. Sept 2026" */
   marketTitleNext: (name: string, venue: string | undefined, city: string | undefined, when: string) => string;
   /** The short fallback: "Flohmarkt Bürkliplatz, Zürich – 26. Sept 2026" */
@@ -283,7 +283,7 @@ export interface Strings {
   footerAbout: string;
 
   /* canton page */
-  regionHeading: (n: number, region: string, year: number, code: CountryCode) => string;
+  regionHeading: (n: number, region: string, year: number | undefined, code: CountryCode) => string;
   regionIntro: (region: string, code: CountryCode) => string;
   /** "Kanton Luzern". The city of Luzern and the canton share a name — the
    *  label is what tells a link on the city page which one it means. */
@@ -535,9 +535,9 @@ const de: Strings = {
   bookAStall: 'Stand buchen',
 
   cityHeading: (n, city, year) =>
-    n === 1 ? `Der Flohmarkt in ${city} ${year}` : `Die ${n} Flohmärkte in ${city} ${year}`,
+    n === 1 ? `Der Flohmarkt in ${city}${year ? ` ${year}` : ''}` : `Die ${n} Flohmärkte in ${city}${year ? ` ${year}` : ''}`,
   titleNext: (date) => `nächster Termin ${date}`,
-  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Termine ${year}`,
+  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')}${year ? ` – Termine ${year}` : ''}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – nächster Termin ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm, last) =>
@@ -593,7 +593,7 @@ const de: Strings = {
   footerAbout: 'Über fynda.market',
 
   regionHeading: (n, region, year, code) =>
-    n === 1 ? `Der Flohmarkt ${inRegionDe(region, code)} ${year}` : `Die ${n} Flohmärkte ${inRegionDe(region, code)} ${year}`,
+    n === 1 ? `Der Flohmarkt ${inRegionDe(region, code)}${year ? ` ${year}` : ''}` : `Die ${n} Flohmärkte ${inRegionDe(region, code)}${year ? ` ${year}` : ''}`,
   regionIntro: (region, code) =>
     `Alle bekannten Flohmärkte ${inRegionDe(region, code)} — nach Ort und Datum, mit Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
 
@@ -760,9 +760,9 @@ const en: Strings = {
   bookAStall: 'Book a stall',
 
   cityHeading: (n, city, year) =>
-    n === 1 ? `The flea market in ${city} ${year}` : `The ${n} flea markets in ${city} ${year}`,
+    n === 1 ? `The flea market in ${city}${year ? ` ${year}` : ''}` : `The ${n} flea markets in ${city}${year ? ` ${year}` : ''}`,
   titleNext: (date) => `next on ${date}`,
-  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
+  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')}${year ? ` – Dates ${year}` : ''}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – next on ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm, last) =>
@@ -818,7 +818,7 @@ const en: Strings = {
   footerAbout: 'About fynda.market',
 
   regionHeading: (n, region, year, code) =>
-    n === 1 ? `The flea market ${inRegionEn(region, code)} ${year}` : `The ${n} flea markets ${inRegionEn(region, code)} ${year}`,
+    n === 1 ? `The flea market ${inRegionEn(region, code)}${year ? ` ${year}` : ''}` : `The ${n} flea markets ${inRegionEn(region, code)}${year ? ` ${year}` : ''}`,
   regionIntro: (region, code) =>
     `Every known flea market ${inRegionEn(region, code)} — by town and by date, with opening hours and cancellations. Cancelled dates stay visible.`,
 
@@ -991,9 +991,9 @@ const fr: Strings = {
   bookAStall: 'Réserver un stand',
 
   cityHeading: (n, city, year) =>
-    n === 1 ? `La brocante à ${city} ${year}` : `Les ${n} brocantes à ${city} ${year}`,
+    n === 1 ? `La brocante à ${city}${year ? ` ${year}` : ''}` : `Les ${n} brocantes à ${city}${year ? ` ${year}` : ''}`,
   titleNext: (date) => `prochaine date ${date}`,
-  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Dates ${year}`,
+  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')}${year ? ` – Dates ${year}` : ''}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – prochaine date ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm, last) =>
@@ -1049,7 +1049,7 @@ const fr: Strings = {
   footerAbout: 'À propos',
 
   regionHeading: (n, region, year) =>
-    n === 1 ? `La brocante dans le canton ${deFr(region)} ${year}` : `Les ${n} brocantes dans le canton ${deFr(region)} ${year}`,
+    n === 1 ? `La brocante dans le canton ${deFr(region)}${year ? ` ${year}` : ''}` : `Les ${n} brocantes dans le canton ${deFr(region)}${year ? ` ${year}` : ''}`,
   regionIntro: (region) =>
     `Toutes les brocantes connues dans le canton ${deFr(region)} — par commune et par date, avec les horaires et les annulations. Les dates annulées restent visibles.`,
 
@@ -1216,9 +1216,9 @@ const it: Strings = {
   bookAStall: 'Prenota una bancarella',
 
   cityHeading: (n, city, year) =>
-    n === 1 ? `Il mercatino delle pulci a ${city} ${year}` : `I ${n} mercatini delle pulci a ${city} ${year}`,
+    n === 1 ? `Il mercatino delle pulci a ${city}${year ? ` ${year}` : ''}` : `I ${n} mercatini delle pulci a ${city}${year ? ` ${year}` : ''}`,
   titleNext: (date) => `prossima data ${date}`,
-  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – Date ${year}`,
+  marketTitle: (name, venue, city, year) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')}${year ? ` – Date ${year}` : ''}`,
   marketTitleNext: (name, venue, city, when) => `${[name, [venue, city].filter(Boolean).join(', ')].filter(Boolean).join(' – ')} – prossima data ${when}`,
   marketTitleDate: (name, city, when) => `${[name, city].filter(Boolean).join(', ')} – ${when}`,
   marketNoDateDescription: (kind, city, venue, rhythm, last) =>
@@ -1274,7 +1274,7 @@ const it: Strings = {
   footerAbout: 'Chi siamo',
 
   regionHeading: (n, region, year) =>
-    n === 1 ? `Il mercatino delle pulci nel Cantone ${region} ${year}` : `I ${n} mercatini delle pulci nel Cantone ${region} ${year}`,
+    n === 1 ? `Il mercatino delle pulci nel Cantone ${region}${year ? ` ${year}` : ''}` : `I ${n} mercatini delle pulci nel Cantone ${region}${year ? ` ${year}` : ''}`,
   regionIntro: (region) =>
     `Tutti i mercatini delle pulci conosciuti nel Cantone ${region} — per località e per data, con orari di apertura e cancellazioni. Le date cancellate restano visibili.`,
 

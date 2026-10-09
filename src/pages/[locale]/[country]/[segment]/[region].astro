@@ -85,7 +85,13 @@ const cities = [...new Map(markets.map((m) => [m.citySlug, m.city]))]
   .map(([slug, city]) => ({ slug, city, count: markets.filter((m) => m.citySlug === slug).length }))
   .sort((a, b) => b.count - a.count || a.city.localeCompare(b.city, locale));
 
-const year = new Date().getFullYear();
+/* The year in a heading is the year of the next real date here, or none: "2026"
+   over a page whose next date is in 2027, or that has none, does not match its
+   title (582 titles did, SEO audit 2026-10-07). */
+const year = (() => {
+  const first = rows.filter((row) => row.next!.status !== 'cancelled').map((row) => row.next!.date).sort()[0];
+  return first ? Number(first.slice(0, 4)) : undefined;
+})();
 /* The count is what the page lists: every market in the canton, one row each —
    the dated ones first, the rest under "No date yet". Counting only the dated
    ones put "Die 0 Flohmärkte im Kanton Uri" over a canton with a market. */

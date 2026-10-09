@@ -315,7 +315,8 @@ const cityForTitle = says(market.name, market.city) ? undefined : market.city;
    and dropping the venue first cut it from 142 of ~193 dated titles
    (Search Console, 2026-09-28). Then the venue, then the date. */
 const upcoming = next && next.status !== 'cancelled' ? next.date : undefined;
-const year = upcoming ? Number(upcoming.slice(0, 4)) : new Date().getFullYear();
+// No upcoming date, no year: "Dates 2026" over a market with no 2026 date does not match its page.
+const year = upcoming ? Number(upcoming.slice(0, 4)) : undefined;
 const when = upcoming ? `${formatDateShort(upcoming, locale)} ${year}` : undefined;
 const title = firstFitting([
   ...(when ? [
