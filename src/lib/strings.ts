@@ -309,6 +309,11 @@ export interface Strings {
   scopeRadius: (km: number, city: string) => string;
   /** The block of markets from the towns around a sparse city. */
   nearbyHeading: (km: number) => string;
+  /** A town with no date of its own (design/town-v3.html): the next few markets around it, and the towns around it. */
+  untilThenNearby: string;
+  nearbyTowns: string;
+  /** The snippet's second sentence on such a town: the nearest coming market. */
+  cityNearbyNext: (name: string, town: string, date: string) => string;
   nearbyLede: (city: string) => string;
   /**
    * The same thing for the signup block, which says no canton anywhere.
@@ -606,6 +611,9 @@ const de: Strings = {
   subscribeScopeRegion: (name) => `für ${name}`,
   scopeRadius: (km, city) => `im Umkreis von ${km} km um ${city}`,
   nearbyHeading: (km) => `Im Umkreis von ${km} km`,
+  untilThenNearby: 'Bis dahin, in der Nähe',
+  nearbyTowns: 'Orte in der Nähe',
+  cityNearbyNext: (name, town, date) => `In der Nähe: ${name}, ${town}, am ${date}.`,
   nearbyLede: (city) => `Die nächsten Termine in den Orten um ${city}.`,
   subscribeBodyScope: (scope) => `Eine E-Mail am Freitagmorgen: die Märkte am Wochenende ${scope} – und welche abgesagt wurden.`,
   subscribeTitle: (town) => (town ? `Das Wochenende rund um ${town}, im Postfach` : 'Das Wochenende in deiner Nähe, im Postfach'),
@@ -831,6 +839,9 @@ const en: Strings = {
   subscribeScopeRegion: (name) => `for ${name}`,
   scopeRadius: (km, city) => `within ${km} km of ${city}`,
   nearbyHeading: (km) => `Within ${km} km`,
+  untilThenNearby: 'Until then, nearby',
+  nearbyTowns: 'Nearby towns',
+  cityNearbyNext: (name, town, date) => `Nearby: ${name}, ${town}, on ${date}.`,
   nearbyLede: (city) => `The next dates in the towns around ${city}.`,
   subscribeBodyScope: (scope) => `One email on Friday morning: the weekend's markets ${scope}, and any that were called off.`,
   subscribeTitle: (town) => (town ? `The weekend around ${town}, in your inbox` : 'The weekend near you, in your inbox'),
@@ -1062,6 +1073,9 @@ const fr: Strings = {
   subscribeScopeRegion: (name) => `pour ${name}`,
   scopeRadius: (km, city) => `dans un rayon de ${km} km autour de ${city}`,
   nearbyHeading: (km) => `Dans un rayon de ${km} km`,
+  untilThenNearby: "D'ici là, tout près",
+  nearbyTowns: 'Localités voisines',
+  cityNearbyNext: (name, town, date) => `Tout près : ${name}, ${town}, le ${date}.`,
   nearbyLede: (city) => `Les prochaines dates dans les localités autour de ${city}.`,
   subscribeBodyScope: (scope) => `Un e-mail le vendredi matin : les brocantes du week-end ${scope}, et celles qui ont été annulées.`,
   subscribeTitle: (town) => (town ? `Le week-end autour de ${town}, dans votre boîte mail` : 'Le week-end près de chez vous, dans votre boîte mail'),
@@ -1287,6 +1301,9 @@ const it: Strings = {
   subscribeScopeRegion: (name) => `per ${name}`,
   scopeRadius: (km, city) => `entro ${km} km da ${city}`,
   nearbyHeading: (km) => `Entro ${km} km`,
+  untilThenNearby: 'Nel frattempo, qui vicino',
+  nearbyTowns: 'Località vicine',
+  cityNearbyNext: (name, town, date) => `Qui vicino: ${name}, ${town}, il ${date}.`,
   nearbyLede: (city) => `Le prossime date nelle località intorno a ${city}.`,
   subscribeBodyScope: (scope) => `Una e-mail il venerdì mattina: i mercatini del fine settimana ${scope}, e quelli annullati.`,
   subscribeTitle: (town) => (town ? `Il fine settimana intorno a ${town}, nella tua casella` : 'Il fine settimana vicino a te, nella tua casella'),

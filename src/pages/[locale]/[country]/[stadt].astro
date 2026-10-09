@@ -14,7 +14,7 @@ import PillList from '../../../components/PillList.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
-import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets, undatedMarkets } from '../../../lib/lists';
+import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets, nearbyTowns, undatedMarkets } from '../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
 import { DEFAULT_RADIUS } from '../../../lib/geo';
@@ -47,6 +47,7 @@ export async function getStaticPaths() {
     for (const [stadt, sample] of cities) {
       const here = markets.filter((m) => m.citySlug === stadt);
       const nearby = nearbyMarkets(here, markets);
+      const towns = nearbyTowns(here, markets);
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(stadt);
         return country ? { locale: other, path: cityPath(other, country, stadt) } : null;
@@ -54,20 +55,27 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, country: sample.countrySlug, stadt },
-        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby, alternates },
+        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby, towns, alternates },
       });
     }
   }
   return paths;
 }
 
-const { locale, city, stadt, region, regionSlug, markets, nearby, alternates } = Astro.props;
+const { locale, city, stadt, region, regionSlug, markets, nearby, towns, alternates } = Astro.props;
 const s = t(locale);
 /* Every date, for the counts and the answer sentence; then one row per market,
    which is what the page actually renders — src/lib/lists.ts. */
 const rows = datedRows(markets);
 const checked = lastChecked(rows);
 const list = byMarket(rows);
+/* A town with no date of its own (45 of 106 Swiss towns, 2026-10-09). Its page
+   used to say "No next date yet" over an empty calendar and fill up with other
+   towns' rows. Now it opens with its own markets — photo, rhythm, when they last
+   ran — then the next three markets nearby, then the nearby towns as links
+   (design/town-v3.html, Delfim 2026-10-09). Its Google clicks stayed: the week
+   to 27 Sep, today's empty town pages had 18 clicks and 1,148 impressions. */
+const quiet = rows.length === 0;
 /* The rest of the town's markets: no date inside the horizon, listed under
    their own header with the rhythm line, hidden by any When but All. */
 const undated = undatedMarkets(markets);
@@ -140,7 +148,11 @@ const description = soonest
       rows.length,
       Math.round(HORIZON_DAYS / 30)
     )
-  : [latest && s.cityLast(latest.name, formatDate(latest.lastDate!, locale)), s.cityNoDate, s.cityIntro(city, region, markets[0].countryCode)].filter(Boolean).join(' ');
+  : [
+      latest && s.cityLast(latest.name, formatDate(latest.lastDate!, locale)),
+      nearby[0] ? s.cityNearbyNext(nearby[0].market.name, nearby[0].market.city, formatDate(nearby[0].market.next.date, locale)) : s.cityNoDate,
+      s.cityIntro(city, region, markets[0].countryCode),
+    ].filter(Boolean).join(' ');
 /**
  * The list, grouped under the day it happens. It was fifteen rows each carrying
  * its own "SA 19." — the same day four times over, and the month changing
@@ -196,7 +208,7 @@ const jsonLd = {
 
   <section class="page-head gutter">
     <h1>{heading}</h1>
-    <p class="answer">{answer}</p>
+    {!quiet && <p class="answer">{answer}</p>}
     {rows.length > 0 && (
       <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</p>
     )}
@@ -206,12 +218,44 @@ const jsonLd = {
       market is the point of the block. */}
   {/* Every day a market runs, not only each market's next one — a weekly
       market is on the calendar every week (src/lib/date-rows.ts). */}
-  <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} />
+  {!quiet && <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} />}
+
+  {quiet && (
+    <>
+      {/* The town's own markets first, each saying when it last ran. */}
+      <Section>
+        <div class="gutter">
+          {undated.map((market, i) => <MarketRow market={market} locale={locale} variant={i === 0 ? 'feature' : 'row'} showRhythm omitCity showDay={false} quiet />)}
+        </div>
+      </Section>
+      {nearby.length > 0 && (
+        <aside data-outside-floor>
+          <Section title={s.untilThenNearby}>
+            <div class="gutter">
+              {nearby.slice(0, 3).map(({ market, km }) => <MarketRow market={market} locale={locale} distance={`${Math.round(km)} km`} />)}
+            </div>
+          </Section>
+        </aside>
+      )}
+      {towns.length > 0 && (
+        <aside data-outside-floor>
+          <Section title={s.nearbyTowns}>
+            <ul class="towns gutter">
+              {towns.map((town) => (
+                <li><a href={cityPath(locale, markets[0].countrySlug, town.slug)}><span class="town">{town.city}</span><span class="town-meta">{Math.round(town.km)} km · {s.marketCount(town.count)}</span></a></li>
+              ))}
+            </ul>
+          </Section>
+        </aside>
+      )}
+      <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} anchors /></div>
+    </>
+  )}
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
       the other forty-seven were repeating. See src/lib/lists.ts. */}
-  <Section>
+  {!quiet && <Section>
     <div
       id="list"
       data-weekdays={JSON.stringify(s.weekdaysLong)}
@@ -244,14 +288,14 @@ const jsonLd = {
       </section>
     </template>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
-  </Section>
+  </Section>}
 
   {/* Straight after the markets that have a date, while people are still in
       the list. At the foot of the page it sat behind every undated market and
       almost nobody reached it (2026-09-23). */}
-  <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} anchors /></div>
+  {!quiet && <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} anchors /></div>}
 
-  {undated.length > 0 && (
+  {!quiet && undated.length > 0 && (
     <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
       <div class="gutter">
         {undated.map((market) => <MarketRow market={market} locale={locale} showRhythm omitCity showDay={false} />)}
@@ -259,7 +303,7 @@ const jsonLd = {
     </Section>
   )}
 
-  {nearby.length > 0 && (
+  {!quiet && nearby.length > 0 && (
     <aside data-outside-floor>
       <Section title={s.nearbyHeading(DEFAULT_RADIUS)} lede={s.nearbyLede(city)}>
         {nearbyGroups.map((group) => (
@@ -309,6 +353,14 @@ const jsonLd = {
   }
   .day-head .date { color: var(--color-accent-text); font-weight: var(--weight-black); }
   .day-head .count { margin-inline-start: auto; color: var(--color-quiet); font-size: var(--text-micro); font-weight: var(--weight-semibold); white-space: nowrap; }
+
+  /* Nearby towns: one link per town, its distance and market count beside it. */
+  .towns { margin: 0; padding-inline-start: 0; list-style: none; }
+  .towns li { border-block-end: var(--border-width) solid var(--color-line); }
+  .towns a { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); padding-block: var(--space-3); color: var(--color-ink); text-decoration: none; }
+  .towns a:hover .town { text-decoration: underline; }
+  .towns .town { font-weight: var(--weight-bold); }
+  .towns .town-meta { color: var(--color-quiet); font-size: var(--text-small); font-weight: var(--weight-semibold); white-space: nowrap; }
 
   .month {
     margin: var(--space-6) 0 0;

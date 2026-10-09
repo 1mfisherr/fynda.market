@@ -36,6 +36,7 @@ import { encodeDates } from '../lib/date-rows';
 import { flagFor } from '../lib/freshness';
 import { DEFAULT_LOCALE, formatFee, marketPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
+import { fitDescription } from '../lib/titles';
 import PhotoOrArt from './PhotoOrArt.astro';
 
 interface Props {
@@ -57,10 +58,16 @@ interface Props {
    * Town and canton lists; nowhere else pays the bytes.
    */
   allDates?: boolean;
+  /**
+   * A market with no date yet, shown as a town's own market (design/town-v3.html):
+   * when it last ran and two lines of what it is, instead of nothing. Only
+   * where the page has no dated list to show — the town page with no date.
+   */
+  quiet?: boolean;
 }
 const {
   market, locale = DEFAULT_LOCALE, variant = 'row',
-  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false,
+  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false, quiet = false,
 } = Astro.props;
 
 const s = t(locale);
@@ -96,6 +103,12 @@ const where = [market.venueName, omitCity ? undefined : market.city, entry]
   .filter(Boolean).join(' · ');
 
 const size = variant === 'feature' ? 720 : 148;
+
+/* "Last held 20 Sep 2026 · No date yet", then the description's first sentences. */
+const quietWhen = quiet && !occurrence
+  ? [market.lastDate && s.lastHeld(formatDate(market.lastDate, locale)), s.noDateYet].filter(Boolean).join(' · ')
+  : undefined;
+const quietAbout = quiet && !occurrence && market.description ? fitDescription(market.description, 180) : undefined;
 ---
 
 {/* data-date is always present: the When control reads it, and a row with no
@@ -124,6 +137,8 @@ const size = variant === 'feature' ? 720 : 148;
     {live && <p class="clock" data-clock hidden></p>}
     {showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
     <p class="where">{where}</p>
+    {quietWhen && <p class="last">{quietWhen}</p>}
+    {quietAbout && <p class="about">{quietAbout}</p>}
     {flag?.tone === 'warn' && <p class="check">{flag.text}</p>}
   </div>
 </article>
@@ -155,6 +170,8 @@ const size = variant === 'feature' ? 720 : 148;
   .over .pic { opacity:0.45; }
   .rhythm { margin:var(--space-1) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
   .where { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-small); line-height:1.4; }
+  .last { margin:var(--space-1) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
+  .about { margin:var(--space-2) 0 0; color:var(--color-ink); font-size:var(--text-small); line-height:1.5; }
   .check { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-micro); line-height:1.4; }
 
   /* ---- the lead ---- */
