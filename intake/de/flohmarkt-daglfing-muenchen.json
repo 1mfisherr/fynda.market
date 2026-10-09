@@ -20,8 +20,14 @@
     "end": "15:00"
   },
   "opening_by_weekday": {
-    "fri": { "start": "07:00", "end": "15:00" },
-    "sat": { "start": "06:00", "end": "16:00" }
+    "fri": {
+      "start": "07:00",
+      "end": "15:00"
+    },
+    "sat": {
+      "start": "06:00",
+      "end": "16:00"
+    }
   },
   "dates": [
     "2026-10-09",
@@ -80,5 +86,9 @@
     "by car: A94 exit Daglfing-München – Burgauer Straße"
   ],
   "checked": "2026-10-09",
-  "notes": "The organiser lists dates only to 30.10.2026 (9, 10, 16, 17, 23, 24, 30 Oct), and those match; the rest are derived from 'An jedem Wochenende (ausser an Feiertagen)… Freitag… Samstag', dropping 25.12, 26.12.2026 and 01.01.2027 (Bavarian holidays). Whether it runs through the winter is not stated. Saturday closing: 16:00 on the Termine page and in every date entry, but 15:00 on the 'Flohmarkt Daglfing' page — used 16:00. No visitor entry fee stated; the home page currently advertises free parking on Fridays. Address is the organiser's Impressum (Rennbahnstr. 35, 81929); coordinates are the Trabrennbahn Daglfing area from Nominatim."
+  "notes": "The organiser lists dates only to 30.10.2026 (9, 10, 16, 17, 23, 24, 30 Oct), and those match; the rest are derived from 'An jedem Wochenende (ausser an Feiertagen)… Freitag… Samstag', dropping 25.12, 26.12.2026 and 01.01.2027 (Bavarian holidays). Whether it runs through the winter is not stated. Saturday closing: 16:00 on the Termine page and in every date entry, but 15:00 on the 'Flohmarkt Daglfing' page — used 16:00. No visitor entry fee stated; the home page currently advertises free parking on Fridays. Address is the organiser's Impressum (Rennbahnstr. 35, 81929); coordinates are the Trabrennbahn Daglfing area from Nominatim.",
+  "description": {
+    "de": "Direkt neben der Trabrennbahn Daglfing, dazu ein Antikmarkt unter alten Bäumen mit überdachtem Bereich. Neben Antiquitäten gibt es Spielzeug, Kinderkleidung und Babysachen, dazu etwas Neuware und Essen. Bei Regen hat das Antikhaus auf dem Gelände ein Restaurant und ein Café. Der Bus 183 fährt alle 20 Minuten zur Trabrennbahn, ab S8 Daglfing, U4 Arabellapark und U2 Messestadt West; Parkplätze gibt es über 2000.",
+    "en": "Right beside the Daglfing trotting track, with an antiques market alongside under old trees and a roofed area. Besides antiques there are toys, children's clothes and baby things, plus some new goods and food. When it rains, the antiques house on the grounds has a restaurant and a café. Bus 183 runs to the Trabrennbahn every 20 minutes from S8 Daglfing, U4 Arabellapark and U2 Messestadt West; there are over 2,000 parking spaces."
+  }
 }

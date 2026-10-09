@@ -52,5 +52,9 @@
     "parking on neighbouring Banksstraße; the organiser recommends public transport or bike"
   ],
   "checked": "2026-10-09",
-  "notes": "Dates are the organiser's list: 16/17 Oct, 13/14 Nov, 27/28 Nov, 18/19 Dec 2026, '… Termine für 2027 folgen'. The home page repeats the list (its second block shows only Oct and Nov). The '2€ Kulturbeitrag' is on the home page. Same organiser and e-mail as nachtflohmarkt-rindermarkthalle-hamburg (Julien von der Hoeden, info@schanzenmarkt.de), so the import will reuse that organiser. Address and postcode from the organiser; coordinates are the Gleishalle building at Stockmeyerstraße 43 in OpenStreetMap (Nominatim)."
+  "notes": "Dates are the organiser's list: 16/17 Oct, 13/14 Nov, 27/28 Nov, 18/19 Dec 2026, '… Termine für 2027 folgen'. The home page repeats the list (its second block shows only Oct and Nov). The '2€ Kulturbeitrag' is on the home page. Same organiser and e-mail as nachtflohmarkt-rindermarkthalle-hamburg (Julien von der Hoeden, info@schanzenmarkt.de), so the import will reuse that organiser. Address and postcode from the organiser; coordinates are the Gleishalle building at Stockmeyerstraße 43 in OpenStreetMap (Nominatim).",
+  "description": {
+    "de": "Ein Abendflohmarkt mit Streetfood, Getränken und Livemusik in der Gleishalle im Oberhafenquartier, zwischen Deichtorhallen und HafenCity. Auf den Tischen: Möbel, Platten, Kunst, Bücher und Kurioses aus zweiter Hand, dazu Vintage-Mode, Schmuck und handgemachte Einzelstücke. Die Halle ist ganz überdacht und mit Lichterketten behängt, Regen stört also nicht. Die U1-Station Steinstraße liegt wenige Gehminuten entfernt, vor der Halle steht eine StadtRad-Station.",
+    "en": "An evening flea market with street food, drinks and live music in the Gleishalle, in the Oberhafen quarter between the Deichtorhallen and HafenCity. On the tables: second-hand furniture, records, art, books and curiosities, plus vintage fashion, jewellery and handmade one-offs. The hall is fully roofed and strung with lights, so rain doesn't matter. U1 Steinstraße is a few minutes' walk, and there is a StadtRad bike station in front of the hall."
+  }
 }

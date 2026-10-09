@@ -9,7 +9,7 @@
     "address": "Arnulfstraße 195–199",
     "postal_code": "80634"
   },
-  "lat": 48.1470,
+  "lat": 48.147,
   "lng": 11.5234,
   "rhythm": {
     "de": "Freitag- und Samstagabend",
@@ -61,5 +61,9 @@
     "the Arnulfstraße gate closes at 20:00; after that use the entrance on Wilhelm-Hale-Straße"
   ],
   "checked": "2026-10-09",
-  "notes": "One market, not two: the directory's 'Thrifty Friday' and 'Nachtflohmarkt, Streetfood & Live Musik' entries are the same night market — one organiser page ('Freitag und Samstag ab 17 Uhr'), same hall, same hours; Thrifty Friday is the cheaper Friday edition. The Saturday-morning Kinderflohmarkt (9:00–13:00) is a children's market and is left out. Dates are the organiser's list (termine, pages 1–2) up to 28.11.2026; no Saturday market on 24.10; nothing listed after 28.11 yet. Hours: every date entry says 17:00–23:00, the info page says 'ab 17 Uhr bis 0 Uhr' — used 23:00. Postal code 80634 per the date list and OpenStreetMap; the info page writes 80639. One event title reads '10.10.2027' but is dated 10.10.2026 — an organiser typo. Fee is the regular/door price; the Friday price is 'günstiger' but not stated. Coordinates: OSM point for Pineapple Park, Arnulfstraße 195–199 (Nominatim)."
+  "notes": "One market, not two: the directory's 'Thrifty Friday' and 'Nachtflohmarkt, Streetfood & Live Musik' entries are the same night market — one organiser page ('Freitag und Samstag ab 17 Uhr'), same hall, same hours; Thrifty Friday is the cheaper Friday edition. The Saturday-morning Kinderflohmarkt (9:00–13:00) is a children's market and is left out. Dates are the organiser's list (termine, pages 1–2) up to 28.11.2026; no Saturday market on 24.10; nothing listed after 28.11 yet. Hours: every date entry says 17:00–23:00, the info page says 'ab 17 Uhr bis 0 Uhr' — used 23:00. Postal code 80634 per the date list and OpenStreetMap; the info page writes 80639. One event title reads '10.10.2027' but is dated 10.10.2026 — an organiser typo. Fee is the regular/door price; the Friday price is 'günstiger' but not stated. Coordinates: OSM point for Pineapple Park, Arnulfstraße 195–199 (Nominatim).",
+  "description": {
+    "de": "Ein Nachtflohmarkt in der alten Paketposthalle, Teil der Zwischennutzung Pineapple Park. Die meisten Verkäufer räumen ihren eigenen Haushalt aus. Draußen stehen vier bis fünf Foodtrucks, drinnen gibt es Bars und ein Programm mit Musik, Comedy, Tanz oder Spieleabenden. Der günstigere Abend heißt Thrifty Friday. Kinder unter 12 zahlen nichts, Hunde an der Leine sind willkommen. An den Bars zahlst du nur mit Karte. Ab 20 Uhr ist das Tor an der Arnulfstraße zu; dann nimmst du den Eingang an der Wilhelm-Hale-Straße.",
+    "en": "A night flea market inside the old Paketposthalle, part of the Pineapple Park interim-use project. Most sellers are clearing out their own homes. Outside there are four or five food trucks; inside, bars and a programme of music, comedy, dance or game nights. The cheaper evening is called Thrifty Friday. Children under 12 get in free, and dogs on a lead are welcome. The bars take cards only. After 8 pm the Arnulfstraße gate closes; use the entrance on Wilhelm-Hale-Straße."
+  }
 }
