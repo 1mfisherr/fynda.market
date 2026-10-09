@@ -221,7 +221,10 @@ for (const r of results) {
       q.dates = q.dates.filter((d) => !askedDates.has(`${m.id}|${q.kind}|${d}`));
       if (!q.dates.length || asked.has(`${m.id}|${q.kind}|${[...q.dates].sort().join(',')}`)) continue;
       for (const d of q.dates) askedDates.add(`${m.id}|${q.kind}|${d}`);
-      const snippet = snippetFor(r.lines, q.lines);
+      const timeWords = q.kind === 'hours'
+        ? r.lines.map((l, i) => (/aufbau|einlass|verkauf|öffnungszeit|geöffnet|händler|anlieferung|besucher|opening|horaire|déballage|orari/i.test(l) ? i : -1)).filter((i) => i >= 0).slice(0, 6)
+        : [];
+      const snippet = snippetFor(r.lines, [...q.lines, ...timeWords]);
       const snippetLines = new Set(q.lines.flatMap((i) => [i - 3, i - 2, i - 1, i, i + 1, i + 2, i + 3]));
       questions.push({
         ...q, id: `Q${++qn}`, market: { id: m.id, name: m.name, venue: m.venue, town: m.town }, src, url: r.got?.finalUrl ?? src.url,
@@ -251,7 +254,7 @@ if (DRY) {
  * ------------------------------------------------------------------------- */
 
 const env = { ...process.env, ...(secret('CLAUDE_CODE_OAUTH_TOKEN') ? { CLAUDE_CODE_OAUTH_TOKEN: secret('CLAUDE_CODE_OAUTH_TOKEN') } : {}) };
-const answer = NO_AI ? { findings: [], ai: questions.length ? 'no_login' : 'not_needed', errors: [] } : await askAll(questions, { today, env });
+const answer = NO_AI ? { findings: [], ai: questions.length ? 'no_login' : 'not_needed', errors: [], unanswered: questions.map((q) => q.id) } : await askAll(questions, { today, env });
 say(`AI: ${answer.ai}; ${answer.findings.length} finding(s)${answer.errors.length ? `; errors: ${answer.errors.map((e) => e.why).join(' | ')}` : ''}`);
 
 const signing = secret('ADMIN_SIGNING_SECRET')?.trim();
@@ -268,8 +271,9 @@ const runId = await withClient(DB_URL, async (c) => {
 
   // Questions the AI could not answer (no login, a failure) must come back next run: their pages
   // are written as not yet read — no hash, the lines they had seen before — so they are read afresh.
-  if (!['ok', 'not_needed'].includes(answer.ai)) {
-    const unanswered = new Set(questions.map((q) => q.src.id));
+  {
+    const missed = new Set(answer.unanswered ?? (['ok', 'not_needed'].includes(answer.ai) ? [] : questions.map((q) => q.id)));
+    const unanswered = new Set(questions.filter((q) => missed.has(q.id)).map((q) => q.src.id));
     for (const p of pages) if (unanswered.has(p.source_id)) {
       const src = sources.find((x) => x.id === p.source_id);
       p.text_hash = null; p.seen = src.seen ?? []; p.etag = null; p.last_modified = null;

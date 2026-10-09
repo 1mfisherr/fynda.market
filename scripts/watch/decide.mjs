@@ -38,6 +38,11 @@ export function marketTokens({ name = '', venue = '', town = '' }) {
 
 const mentions = (text, tokens) => tokens.some((t) => text.includes(t));
 
+/** "Jeden Samstag", "every Sunday", "chaque samedi", "ogni sabato", "jeden 1. Sonntag": the page states a rule. */
+const RULE_RE = /(jede[nrs]?|every|chaque|tous les|ogni|tutti i)\s+(\S+\s+)?(montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonnabend|sonntag|wochenende|monday|tuesday|wednesday|thursday|friday|saturday|sunday|weekend|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|lunedì|martedì|mercoledì|giovedì|venerdì|sabato|domenica)/iu;
+/** "6./7. November nur FM Harz u. Heide": on that line only another market runs. */
+const ONLY_RE = /(^|[^\p{L}])(nur|only|uniquement|seulement|solo|soltanto)([^\p{L}]|$)/iu;
+
 /**
  * @param {object} page
  * @param {string[]} page.lines
@@ -70,10 +75,35 @@ export function decide(page, market) {
     return '';
   };
   const relevant = (d) => {
+    // "nur FM Harz u. Heide" on a line that does not name us: another market's day.
+    if (ONLY_RE.test(lower[d.line]) && !mentions(lower[d.line], market.tokens)) return false;
     if (dedicated) return true;
     if (single) return mentions(window(d.line), market.tokens) || FLEA.test(window(d.line));
     return mentions(lower[d.line], market.tokens) || mentions(heading(d.line), market.tokens);
   };
+
+  /**
+   * Whether a date is written as this market's, not merely on a page about it:
+   * its own line names the market; or the line under it — a caption, not another
+   * date — names it; or, walking up past dates and plain lines, the first line
+   * that names a market names this one. An organiser's programme lists its other
+   * markets too: Hansen put "Hann.Münden Weserpark" under 7/8 November on the
+   * page we read for Kassel (2026-10-09). Required for a new date, never a stamp.
+   */
+  const belongs = (i) => {
+    if (mentions(lower[i], market.tokens)) return true;
+    if (lower[i + 1] !== undefined && !dateLines.has(i + 1) && lower[i + 1].length > 2) {
+      return mentions(lower[i + 1], market.tokens);
+    }
+    for (let j = i - 1; j >= Math.max(0, i - 40); j--) {
+      if (dateLines.has(j)) continue;
+      if (mentions(lower[j], market.tokens)) return true;
+      if (FLEA.test(lower[j])) return false;
+    }
+    return false;
+  };
+  // A page that states a weekly or monthly rule often shows only the next few dates of it.
+  const statesRule = lower.some((l) => RULE_RE.test(l));
   const pageDates = page.dates.filter(relevant);
   const on = new Map(pageDates.filter((d) => !d.off).map((d) => [d.iso, d]));
   const off = new Map(pageDates.filter((d) => d.off).map((d) => [d.iso, d]));
@@ -111,7 +141,11 @@ export function decide(page, market) {
     if (p) {
       const trusted = !page.stale && (!p.assumed || p.weekday === true) && p.weekday !== false;
       const h = hoursIn(page.lines[p.line]);
-      if (h && o.start && (h.start !== o.start || (o.end && h.end !== o.end))) {
+      // An earlier start with the same end is the sellers' gate, not the visitors' hours:
+      // Weidenpesch's calendar says "6:00 - 14:00", its event page "Einlass: 6 Uhr …
+      // Verkauf: Sa. 8 – 14 Uhr" (2026-10-09).
+      const sellersGate = h && o.start && o.end && h.end === o.end && h.start < o.start;
+      if (h && o.start && !sellersGate && (h.start !== o.start || (o.end && h.end !== o.end))) {
         ask('hours', [o.date], [p.line], `Our hours for ${o.date} are ${o.start}–${o.end ?? '?'}; the line says ${h.start}–${h.end}.`, h);
       } else if (trusted) {
         stamp.push(o.date);
@@ -120,7 +154,7 @@ export function decide(page, market) {
       continue;
     }
     // Inside the page's list but absent — only meaningful on a page about this market alone.
-    if (dedicated && fullSchedule && o.date > page.today && o.date < last && o.origin !== 'organiser') {
+    if (dedicated && fullSchedule && !statesRule && o.date > page.today && o.date < last && o.origin !== 'organiser') {
       const before = [...on.values()].filter((d) => d.iso < o.date).at(-1);
       const after = [...on.values()].find((d) => d.iso > o.date);
       ask('missing', [o.date], [before?.line, after?.line].filter((n) => n != null),
@@ -129,8 +163,8 @@ export function decide(page, market) {
   }
 
   // Dates we do not have, on lines this page has not shown before (on a first read: only beside the market's name).
-  const fresh = [...on.values()].filter((d) => !oursSet.has(d.iso) && d.iso > page.today
-    && (page.firstRead ? mentions(window(d.line), market.tokens) || dedicated : page.newLines.has(d.line)));
+  const fresh = [...on.values()].filter((d) => !oursSet.has(d.iso) && d.iso > page.today && belongs(d.line)
+    && (page.firstRead || page.newLines.has(d.line)));
   if (fresh.length) {
     ask('new_date', fresh.map((d) => d.iso), fresh.map((d) => d.line),
       `The page lists ${fresh.map((d) => d.iso).join(', ')}, which we do not have.`);
