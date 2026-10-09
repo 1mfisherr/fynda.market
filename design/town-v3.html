@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Town page v3 — Allschwil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+/* v2 was too much (Delfim, 2026-10-09): the market comes first, with its photo,
+   and only what a visitor needs. Real data for Allschwil, 9 October 2026. */
+:root{--ink:#111110;--grey:#6E6C68;--quiet:#6E6A64;--line:#E8E6E2;--paper:#F5F4F2;--accent:#FF4A2B;--accent-text:#D63A1F;--stage:#2A2926;--note:#B5B1A8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--stage);color:#fff;font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;padding:28px 16px 80px}
+.lab{max-width:1000px;margin:0 auto}
+.mk{font-size:17px;font-weight:800;letter-spacing:-.045em}.mk span{color:var(--accent)}
+.lab>h1{font-size:26px;font-weight:800;letter-spacing:-.04em;margin-top:10px}
+.intro{color:var(--note);font-size:14px;line-height:1.6;margin-top:10px;max-width:640px}.intro b{color:#fff}
+.grid{display:grid;grid-template-columns:392px 1fr;gap:36px;margin-top:28px;align-items:start}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.phone{background:#fff;color:var(--ink);border-radius:28px;overflow:hidden;border:8px solid #000;max-width:392px;width:100%;margin:0 auto}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.bar .mk{font-size:18px}.bar small{font-size:13px;font-weight:600}
+.sec{padding:18px;border-bottom:1px solid var(--line);position:relative}
+.n{position:absolute;right:10px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--stage);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.crumb{font-size:12.5px;color:var(--grey)}
+.ph1{font-size:26px;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-top:6px}
+.photo{height:170px;border-radius:12px;background:linear-gradient(135deg,#d9d1c4,#b9ae9c);position:relative;margin-top:14px}
+.photo i{position:absolute;left:10px;top:10px;background:var(--accent-text);color:#fff;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.04em;padding:5px 9px;border-radius:999px}
+.mname{font-size:19px;font-weight:800;letter-spacing:-.03em;margin-top:12px}
+.when{font-size:14.5px;margin-top:6px;line-height:1.45}.when span{display:block;color:var(--quiet);font-size:13.5px}
+.desc{font-size:14px;line-height:1.5;margin-top:10px;color:#2b2a28}
+.btn{display:block;text-align:center;border:1.5px solid var(--ink);border-radius:999px;padding:11px;font-size:14px;font-weight:700;margin-top:12px}
+.h2{font-size:17px;font-weight:800;letter-spacing:-.03em}
+.row{display:grid;grid-template-columns:54px 1fr auto;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0;margin-top:6px}
+.day{font-size:12px;font-weight:700;line-height:1.2}.day b{display:block;color:var(--accent-text);font-size:18px;font-weight:800}
+.t{font-size:14.5px;font-weight:700}.m{font-size:12.5px;color:var(--grey);margin-top:2px}
+.km{font-size:12.5px;font-weight:700;white-space:nowrap}
+.town{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid var(--line)}.town:first-of-type{border-top:0;margin-top:6px}
+.town b{font-size:14.5px}.town .c{font-size:12.5px;font-weight:700;text-align:right;color:var(--grey)}
+.mail{display:flex;gap:6px;margin-top:10px}.mail div{flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;font-size:13px;color:var(--quiet)}
+.mail span{background:var(--ink);color:#fff;border-radius:999px;padding:10px 14px;font-size:13px;font-weight:700}
+.sub{font-size:13px;color:var(--grey);margin-top:3px}
+.notes{display:flex;flex-direction:column;gap:14px}
+.note{background:#34322E;border-radius:12px;padding:14px 16px}
+.note h3{font-size:15px;font-weight:800;display:flex;gap:10px;align-items:center}
+.note h3 i{font-style:normal;width:22px;height:22px;border-radius:50%;background:#fff;color:var(--stage);font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+.note p{font-size:13px;line-height:1.55;color:var(--note);margin-top:7px}.note p b{color:#fff;font-weight:600}
+</style>
+<div class="lab">
+  <div class="mk">fynda<span>.</span>market</div>
+  <h1>Town page v3: simpler, the market first</h1>
+  <p class="intro">Four parts. The town's own market comes first, with its photo and <b>when it runs</b>, instead of "No next date yet". Then what's on nearby. The empty calendar is gone. Real data for Allschwil.</p>
+  <div class="grid">
+    <div class="phone">
+      <div class="bar"><div class="mk">fynda<span>.</span>market</div><small>DE · Saved</small></div>
+      <div class="sec"><span class="n">1</span>
+        <div class="crumb">Switzerland · Basel-Landschaft</div>
+        <div class="ph1">Flea market in Allschwil</div>
+        <div class="photo"><i>FLEA MARKET</i></div>
+        <div class="mname">Quartierflohmi Neu-Allschwil</div>
+        <p class="when">Once a year, in September<span>Last held 20 Sep 2026 · the 2027 date isn't out yet</span></p>
+        <p class="desc">Residents sell from their own driveways, front gardens and gardens, from the Morgartenring to the church. Free entry.</p>
+        <a class="btn">Market page</a>
+      </div>
+      <div class="sec"><span class="n">2</span>
+        <div class="h2">Until then, nearby</div>
+        <div class="row"><div class="day">Sat<b>10</b>Oct</div><div><div class="t">Flohmarkt Vogesenplatz</div><div class="m">Basel · 08:00–18:30</div></div><div class="km">2.6 km</div></div>
+        <div class="row"><div class="day">Sun<b>11</b>Oct</div><div><div class="t">Hallenflohmarkt Hölstein</div><div class="m">Hölstein · indoor</div></div><div class="km">22 km</div></div>
+        <div class="row"><div class="day">Sun<b>18</b>Oct</div><div><div class="t">Flohmarkt Stücki Basel</div><div class="m">Basel · 11:00–17:00</div></div><div class="km">5 km</div></div>
+      </div>
+      <div class="sec"><span class="n">3</span>
+        <div class="h2">Nearby towns</div>
+        <div class="town"><b>Basel</b><span class="c">2.6 km · 28 markets</span></div>
+        <div class="town"><b>Bottmingen</b><span class="c">4.5 km · 1 market</span></div>
+        <div class="town"><b>Reinach</b><span class="c">6.6 km · 3 markets</span></div>
+        <div class="town"><b>Riehen</b><span class="c">7 km · 3 markets</span></div>
+      </div>
+      <div class="sec"><span class="n">4</span>
+        <div class="h2">The weekend around Allschwil, in your inbox</div>
+        <p class="sub">One email on Friday morning.</p>
+        <div class="mail"><div>Email address</div><span>Send it</span></div>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="note"><h3><i>1</i>The town's market, first</h3><p>Photo, name, <b>how often it runs and when it last ran</b>, two lines about it. Replaces "No next date yet" and the empty calendar. A town with several markets shows each one here.</p></div>
+      <div class="note"><h3><i>2</i>Until then, nearby</h3><p>The next three markets within 25 km, closest dates first, with distance. Short, and below the town's own market.</p></div>
+      <div class="note"><h3><i>3</i>Nearby towns</h3><p>One line per town, each a link to its page. Replaces today's long list of other towns' markets.</p></div>
+      <div class="note"><h3><i>4</i>Newsletter</h3><p>As today.</p></div>
+      <div class="note"><h3><i>–</i>Left out for now</h3><p>The month chart, the questions block and the date-alert button from v2. We can add any of them later, one at a time, if the numbers say the page needs more.</p></div>
+    </div>
+  </div>
+</div>
+</html>
