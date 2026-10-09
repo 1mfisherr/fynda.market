@@ -219,34 +219,3 @@ export function nearbyMarkets(here: Market[], all: Market[]): Nearby[] {
     .sort((a, b) => a.market.next.date.localeCompare(b.market.next.date) || a.km - b.km)
     .slice(0, NEARBY_MAX);
 }
-
-/** A town near another, for the "Nearby towns" links on a town page. */
-export interface NearbyTown { slug: string; city: string; km: number; count: number }
-
-/**
- * The towns around a town, nearest first: each with its distance (to its
- * nearest market) and how many markets it has. Drawn from `all`, which is one
- * locale's markets — so a link never points at a town page that locale does
- * not build. Shown on a town with no date of its own (design/town-v3.html),
- * where it replaces a long list of other towns' rows with one link per town.
- */
-export function nearbyTowns(here: Market[], all: Market[], max = 6): NearbyTown[] {
-  const anchors = here.filter((m) => Number.isFinite(m.lat) && Number.isFinite(m.lng));
-  if (anchors.length === 0) return [];
-  const lat = anchors.reduce((sum, m) => sum + m.lat, 0) / anchors.length;
-  const lng = anchors.reduce((sum, m) => sum + m.lng, 0) / anchors.length;
-  const own = new Set(here.map((m) => m.citySlug));
-  const towns = new Map<string, NearbyTown>();
-  for (const m of all) {
-    if (own.has(m.citySlug) || !Number.isFinite(m.lat) || !Number.isFinite(m.lng)) continue;
-    const km = distanceKm(lat, lng, m.lat, m.lng);
-    const town = towns.get(m.citySlug) ?? { slug: m.citySlug, city: m.city, km, count: 0 };
-    town.km = Math.min(town.km, km);
-    town.count += 1;
-    towns.set(m.citySlug, town);
-  }
-  return [...towns.values()]
-    .filter((t) => t.km <= DEFAULT_RADIUS)
-    .sort((a, b) => a.km - b.km || a.city.localeCompare(b.city))
-    .slice(0, max);
-}
