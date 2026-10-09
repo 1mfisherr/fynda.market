@@ -1,0 +1,65 @@
+{
+  "slug": "midnightbazar-nachtflohmarkt-muenchen",
+  "name": "Midnightbazar – Nachtflohmarkt im Pineapple Park",
+  "kind": "nachtflohmarkt",
+  "town": "München",
+  "region": "Bayern",
+  "venue": {
+    "name": "Paketposthalle (Pineapple Park)",
+    "address": "Arnulfstraße 195–199",
+    "postal_code": "80634"
+  },
+  "lat": 48.1470,
+  "lng": 11.5234,
+  "rhythm": {
+    "de": "Freitag- und Samstagabend",
+    "en": "Friday and Saturday evenings"
+  },
+  "opening": {
+    "start": "17:00",
+    "end": "23:00"
+  },
+  "dates": [
+    "2026-10-09",
+    "2026-10-10",
+    "2026-10-16",
+    "2026-10-17",
+    "2026-10-23",
+    "2026-10-30",
+    "2026-10-31",
+    "2026-11-06",
+    "2026-11-07",
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-27",
+    "2026-11-28"
+  ],
+  "dates_from": "listed",
+  "fee": 5,
+  "currency": "EUR",
+  "website": "https://midnightbazar.de/",
+  "organiser": {
+    "name": "Midnightbazar UG",
+    "website": "https://midnightbazar.de/",
+    "email": "info@midnightbazar.de"
+  },
+  "source_page": "https://midnightbazar.de/markte/nachtflohmarkt-live-musik-streetfood",
+  "facts": [
+    "night flea market inside the old Paketposthalle, part of the Pineapple Park interim-use project",
+    "Friday and Saturday evenings from 17:00",
+    "Fridays are 'Thrifty Friday', with cheaper stalls and cheaper entry",
+    "entry 5 EUR at the door; online 3 EUR super early bird, 4 EUR early bird, 5 EUR regular, plus booking fee",
+    "children under 12 free",
+    "sellers offer mostly used things from private households; commercial traders book separately",
+    "4–5 food trucks outside, bars, and a live programme: music, comedy, dance and game evenings",
+    "card payment only at the bars",
+    "dogs welcome on a lead",
+    "S-Bahn Hirschgarten, bus 62 to Wilhelm-Hale-Straße, tram 16/17 to Briefzentrum",
+    "parking 5 EUR; the organiser asks visitors to come by public transport",
+    "the Arnulfstraße gate closes at 20:00; after that use the entrance on Wilhelm-Hale-Straße"
+  ],
+  "checked": "2026-10-09",
+  "notes": "One market, not two: the directory's 'Thrifty Friday' and 'Nachtflohmarkt, Streetfood & Live Musik' entries are the same night market — one organiser page ('Freitag und Samstag ab 17 Uhr'), same hall, same hours; Thrifty Friday is the cheaper Friday edition. The Saturday-morning Kinderflohmarkt (9:00–13:00) is a children's market and is left out. Dates are the organiser's list (termine, pages 1–2) up to 28.11.2026; no Saturday market on 24.10; nothing listed after 28.11 yet. Hours: every date entry says 17:00–23:00, the info page says 'ab 17 Uhr bis 0 Uhr' — used 23:00. Postal code 80634 per the date list and OpenStreetMap; the info page writes 80639. One event title reads '10.10.2027' but is dated 10.10.2026 — an organiser typo. Fee is the regular/door price; the Friday price is 'günstiger' but not stated. Coordinates: OSM point for Pineapple Park, Arnulfstraße 195–199 (Nominatim)."
+}

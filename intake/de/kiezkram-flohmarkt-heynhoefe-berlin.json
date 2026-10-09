@@ -1,0 +1,45 @@
+{
+  "slug": "kiezkram-flohmarkt-heynhoefe-berlin",
+  "name": "KiezKram Flohmarkt in den Heynhöfen",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Heynhöfe",
+    "address": "Heynstraße 15",
+    "postal_code": "13187"
+  },
+  "lat": 52.5630,
+  "lng": 13.4026,
+  "rhythm": {
+    "de": "An einzelnen Sonntagen",
+    "en": "On selected Sundays"
+  },
+  "opening": {
+    "start": "12:00",
+    "end": "18:00"
+  },
+  "dates": [
+    "2026-10-11",
+    "2026-11-08"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.heynhoefe.de/",
+  "organiser": {
+    "name": "Heynhöfe GbR",
+    "website": "https://www.heynhoefe.de/",
+    "email": "markttreiben@heynhoefe.de"
+  },
+  "source_page": "https://www.heynhoefe.de/event-details/kiezkram-anmeldung-fur-aussteller-innen-2026-10-11-12-00",
+  "facts": [
+    "neighbourhood flea market in the Heynhöfe, a creative commercial courtyard in Pankow",
+    "Sundays 12:00 to 18:00",
+    "only second-hand things from private owners; no commercial selling",
+    "sellers do not sell food or drink; there is food on site",
+    "address: Heynstraße 15, 13187 Berlin"
+  ],
+  "checked": "2026-10-09",
+  "notes": "The organiser's page is a seller-registration page; it lists two dates, 11.10 and 08.11.2026, both 12:00–18:00 (separate event page for 8 Nov). Rhythm is not stated — both are second Sundays, but that is not claimed. 'Second-hand from private owners only', 'no food or drink sales by sellers' and 'catering on site' (sellers get discount cards for it) come from the exhibitor agreement PDF linked on that page (Ausstellervereinbarung_KiezKram_V02.pdf, heynhoefe.de). Not stated: indoor or outdoor, visitor entry fee (null), number of stalls. October seller places are sold out. The directory calls it 'Fritz-Heyn-Höfe'; the organiser says Heynhöfe. Looks like a young series — only two dates ever shown. Coordinates: Heynstraße 15 from Nominatim."
+}

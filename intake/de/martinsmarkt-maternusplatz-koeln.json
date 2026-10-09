@@ -1,0 +1,41 @@
+{
+  "slug": "martinsmarkt-maternusplatz-koeln",
+  "name": "Martinsmarkt – Antik- und Lifestylemarkt",
+  "kind": "antikmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Maternusplatz, Rodenkirchen",
+    "address": "Maternusplatz",
+    "postal_code": "50996"
+  },
+  "lat": 50.8925,
+  "lng": 6.9940,
+  "rhythm": {
+    "de": "Im November",
+    "en": "In November"
+  },
+  "opening": null,
+  "dates": [
+    "2026-11-08"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.coelln-konzept.de/markt/martinsmarkt.html",
+  "organiser": {
+    "name": "Cölln Konzept – Agentur für Veranstaltungen (Bruno Deutzmann)",
+    "website": "https://www.coelln-konzept.de/",
+    "email": "info@coelln-konzept.de"
+  },
+  "source_page": "https://www.coelln-konzept.de/markt/martinsmarkt.html",
+  "facts": [
+    "antiques and lifestyle market on Maternusplatz in Köln-Rodenkirchen",
+    "new goods prohibited",
+    "the organiser provides the market stalls",
+    "underground car park at Maternusplatz",
+    "tram 16 and 17 to Rodenkirchen Bahnhof; buses 130, 131 and 135 to Maternusplatz"
+  ],
+  "checked": "2026-10-09",
+  "notes": "One date only: the market page says 'Termine 2026: So 08.Nov.', and termine.php lists it on the same day. Nothing says it is annual; 'In November' is the most the page supports. No visitor opening hours or entry fee given — only stall set-up Saturday from 17:00 and Sunday from 07:00 — so opening and fee are null. Pitch prices disagree between the market page (15 EUR/m, 4 m hire stall 80 EUR) and termine.php (20,00 / 90,00); not used. Same organiser as our other Cölln Konzept markets. Coordinates: Maternusplatz marketplace node from Nominatim."
+}

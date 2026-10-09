@@ -1,0 +1,48 @@
+{
+  "slug": "flohmarkt-am-ebertplatz-koeln",
+  "name": "Flohmarkt am Ebertplatz",
+  "kind": "flohmarkt",
+  "town": "Köln",
+  "region": "Nordrhein-Westfalen",
+  "venue": {
+    "name": "Ebertplatz",
+    "address": "Ebertplatz",
+    "postal_code": "50668"
+  },
+  "lat": 50.9506,
+  "lng": 6.9575,
+  "rhythm": {
+    "de": "Mehrmals im Jahr an einem Samstag, Frühjahr bis Herbst",
+    "en": "Several Saturdays a year, spring to autumn"
+  },
+  "opening": {
+    "start": "11:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-10"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://ebertplatz-flohmarkt.de/",
+  "organiser": {
+    "name": "krimskramsclub (David Bodarwé)",
+    "website": "https://krimskramsclub.de/",
+    "email": "hallo@ebertplatz-flohmarkt.de"
+  },
+  "source_page": "https://ebertplatz-flohmarkt.de/",
+  "facts": [
+    "flea market on Ebertplatz, 11:00 to 16:00",
+    "private sellers only, with used things from their own homes and wardrobes: clothes, shoes, toys",
+    "no professional traders and no handmade design goods",
+    "stalls spread over three areas: the passage (sheltered from sun and rain), the lower level by the DJ, and the upper level by the fountain",
+    "flea-market music from DJs, a screen-printing stand with Ebertplatz motifs, coffee and drinks from the square's gastro container",
+    "the art spaces in the Ebertplatz passage show their current exhibitions",
+    "runs in rain; may be called off in extreme weather",
+    "dogs welcome on a lead",
+    "run by the krimskramsclub, a group of residents and friends of Ebertplatz, supported by the city-funded project Unser Ebertplatz"
+  ],
+  "checked": "2026-10-09",
+  "notes": "The market page names only the next date (10.10.2026, 11:00–16:00). The organiser's club site krimskramsclub.de lists the 2026 editions No. 9–13: 11.04, 16.05, 20.06, 19.09 and 10.10 (all Saturdays) — so after 10 October nothing is announced until the 2027 season, and the market will have no upcoming date on our site for months. Rhythm wording is derived from that list, not stated by the organiser. No visitor entry fee stated, so fee is null. Organiser is 'krimskramsclub n.e.V.' (association being founded) per the Impressum, Neusser Straße 41, 50670 Köln; the page also shows typo'd addresses (hallo@flohmarkt-ebertplatz.de, hallo@ebertplatz.flohmarkt.de) — the Impressum uses hallo@ebertplatz-flohmarkt.de. Coordinates: Ebertplatz square centroid from Nominatim."
+}
