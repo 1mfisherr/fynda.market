@@ -1,1 +1,402 @@
-[]
+[
+  {
+    "slug": "flohmarkt-kanzlei-zuerich",
+    "kind": "add",
+    "dates": [
+      "2027-05-01",
+      "2027-12-25"
+    ],
+    "reason": "The organiser's market rules ('gültig ab Juni 2026') exclude 1 May and the days between Christmas and New Year; 25 Dec 2027 is Christmas Day itself, a Saturday, so both stay off.",
+    "url": "https://studio.flohmarktkanzlei.ch/assets/6bcc9622-5224-4502-b6f9-315b86e0443d",
+    "quote": "Jeden Samstag (ausser am 1.5., 1.8. und zwischen Weihnachten und Neujahr)",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "flohmarkt-mosergarten-schaffhausen",
+    "kind": "status",
+    "dates": [
+      "2027-04-03",
+      "2027-05-01",
+      "2027-06-05",
+      "2027-07-03",
+      "2027-08-07",
+      "2027-09-04",
+      "2027-10-02"
+    ],
+    "reason": "No organiser or town page exists (searched stadt-schaffhausen.ch and Bing today); the only semi-official line is this regional-tourism one, which names no months and no 2027 dates, so nothing is published.",
+    "url": "https://www.schaffhausen-area.ch/de/maerkte",
+    "quote": "Von Frühling bis Herbst findet der Flohmarkt jeden ersten Samstag im Monat im Mosergarten in Schaffhausen statt.",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "flohmarkt-petersplatz-basel",
+    "kind": "status",
+    "dates": [
+      "2027-01-02",
+      "2027-03-27",
+      "2027-05-08",
+      "2027-10-09",
+      "2027-10-16",
+      "2027-11-13",
+      "2027-11-20"
+    ],
+    "reason": "The canton still lists 2026 only, and its 2026 closures go beyond its stated rule (Saturday after New Year, Easter Saturday, Saturday after Ascension, a long Herbstmesse pause) — these seven 2027 dates are exactly their 2027 equivalents.",
+    "url": "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-petersplatz",
+    "quote": "Im Jahr 2026 findet an folgenden Tagen kein Markt statt: 3. Januar, 4. April, 16. Mai, 27. Juni, 01. August, vom 10. Oktober bis 19. November und 26. Dezember.",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "flohmarkt-rueticenter-pratteln",
+    "kind": "status",
+    "dates": [
+      "2027-02-07"
+    ],
+    "reason": "The operator Flohmarktkönig's '2026 Kalender' (read through the site's own API, api.flohmarktkoenig.ch) ends for Rüticenter on 1 Nov 2026 and its event list stops at 13 Dec 2026; no 2027 date anywhere.",
+    "url": "https://www.flohmarktkoenig.ch/infos/1",
+    "quote": "01.11.26 Rüticenter Pratteln BL – 08:30-15:00 Uhr – Rütiweg, 4133 Pratteln BL",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "flohmarkt-uster-stadthausplatz",
+    "kind": "status",
+    "dates": [
+      "2027-04-03",
+      "2027-05-01",
+      "2027-08-07"
+    ],
+    "reason": "Only 2026 dates are published, and in 2026 the city moved exactly the April, May and August markets off the first Saturday, so these three 2027 dates are not covered by the 'in der Regel' rule.",
+    "url": "https://www.maerkte-uster.ch/maerkte/flohmarkt",
+    "quote": "Der Flohmarkt findet in der Regel am ersten Samstag im Monat von April bis Oktober statt … Samstag, 11. April Samstag, 09. Mai … Samstag, 08. August (kleiner Flohmarkt)",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "flosch-schwamendingen-zuerich",
+    "kind": "hours",
+    "dates": [
+      "2027-02-27",
+      "2027-03-27",
+      "2027-04-24",
+      "2027-05-29",
+      "2027-06-26",
+      "2027-07-31",
+      "2027-08-28",
+      "2027-09-25",
+      "2027-10-30",
+      "2027-11-27"
+    ],
+    "reason": "The organiser says 8 to 17; v1's 07:00 start is on no organiser page.",
+    "url": "https://www.flosch.ch/daten",
+    "quote": "Der Flosch dauert jeweils von 8- 17 Uhr und wird bei jeder Witterung durchgeführt",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "flosch-schwamendingen-zuerich",
+    "kind": "status",
+    "dates": [
+      "2027-02-27",
+      "2027-03-27",
+      "2027-04-24",
+      "2027-05-29",
+      "2027-06-26",
+      "2027-07-31",
+      "2027-08-28",
+      "2027-09-25",
+      "2027-10-30",
+      "2027-11-27"
+    ],
+    "reason": "Only 2026 dates are published and they break the 'normalerweise am letzten Samstag' pattern (no May, two in June, 12 Sep), so 2027 cannot be read off the rule.",
+    "url": "https://www.flosch.ch/daten",
+    "quote": "Daten für 2026 • 28. Februar 2026 … • 25. April 2026 • 06. Juni 2026 • 27. Juni 2026 … • 12. September 2026",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "hyper-bazar-la-chaux-de-fonds",
+    "kind": "remove",
+    "dates": [
+      "2027-04-24",
+      "2027-05-29",
+      "2027-06-26",
+      "2027-08-28",
+      "2027-09-25"
+    ],
+    "reason": "The organiser still lists all five 2027 dates, with its question mark, so they stay on our page as 'not yet confirmed' rather than being deleted.",
+    "url": "https://hyperbazar.ch/",
+    "quote": "2027 ? – Samedi 24 avril – Samedi 29 mai — édition spéciale Fête de mai – Samedi 26 juin – Samedi 31 juillet — pause estivale Plage des Six Pompes – Samedi 28 août – Samedi 25 septembre",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "les-puces-du-cpo-lausanne",
+    "kind": "add",
+    "dates": [
+      "2026-12-24",
+      "2026-12-31",
+      "2027-01-07",
+      "2027-05-06",
+      "2027-07-08",
+      "2027-07-15",
+      "2027-07-22",
+      "2027-07-29",
+      "2027-08-05",
+      "2027-08-12",
+      "2027-08-19",
+      "2027-12-30"
+    ],
+    "reason": "These 12 Thursdays fall in the Vaud school Christmas holidays (24 Dec 2026–10 Jan 2027, 24 Dec 2027–9 Jan 2028), on Ascension (6 May 2027) or in the summer holidays (3 Jul–22 Aug 2027) per vd.ch, all excluded by the organiser.",
+    "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/",
+    "quote": "Tous les jeudis de 10h à 18h, sauf fériés et vacances de Noël / d’été.",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "les-puces-du-cpo-lausanne",
+    "kind": "add",
+    "dates": [
+      "2027-12-23"
+    ],
+    "reason": "unclear — The CPO does not define its Christmas break, and the Vaud school holidays start Friday 24 Dec 2027 (vd.ch calendar 2023–2031), so Thursday 23 Dec 2027 is not clearly excluded — our 8 Oct removal of this one date went a little beyond the evidence.",
+    "url": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/",
+    "quote": "Tous les jeudis de 10h à 18h, sauf fériés et vacances de Noël / d’été.",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-coupole-biel",
+    "kind": "status",
+    "dates": [
+      "2027-01-10",
+      "2027-02-14",
+      "2027-03-14"
+    ],
+    "reason": "The venue's programme runs to 6 Dec 2026 and shows the flea market only on 11 Oct and 29 Nov 2026; no 2027 dates and no stated rhythm.",
+    "url": "https://caj.ch/fr/coupole/programme/",
+    "quote": "11.10 dim Start: 11:00 End: 16:00 Marché aux puces … 29.11 dim Start: 11:00 End: 16:00 Marché aux puces",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-fribourg-cathedrale",
+    "kind": "hours",
+    "dates": [
+      "2026-11-07",
+      "2027-03-06",
+      "2027-04-03",
+      "2027-05-01",
+      "2027-06-05",
+      "2027-07-03",
+      "2027-08-07",
+      "2027-09-04",
+      "2027-10-02",
+      "2027-11-06"
+    ],
+    "reason": "unclear — The town's page gives 8–16 (v1) but still names the old square, closed for works until 2028, so it looks out of date; the tourist office's current 2026 page (fribourg.ch) says 'Cathédrale 8h-16h30' (ours). Neither is the organiser; only the stall-booking number could settle it.",
+    "url": "https://www.ville-fribourg.ch/marches-fribourg",
+    "quote": "De mars à novembre: chaque premier samedi du mois Quartier de l’Auge (place du Petit Saint-Jean) De 8h00 à 16h00",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+    "kind": "add",
+    "dates": [
+      "2027-08-01"
+    ],
+    "reason": "The City of Geneva says the flea market does not take place on 1 August; 1 Aug 2027 is a Sunday.",
+    "url": "https://www.geneve.ch/marche-plainpalais",
+    "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+    "kind": "hours",
+    "dates": [
+      "2027-01-03",
+      "2027-02-07",
+      "2027-03-07",
+      "2027-11-07",
+      "2027-12-05"
+    ],
+    "reason": "The city gives 17:15 closing in winter and these are winter dates; the page doesn't define winter, so 7 Mar and 7 Nov rest on our reading of it as Swiss winter time.",
+    "url": "https://www.geneve.ch/marche-plainpalais",
+    "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+    "kind": "hours",
+    "dates": [
+      "2027-01-06",
+      "2027-01-13",
+      "2027-01-20",
+      "2027-01-27",
+      "2027-02-03",
+      "2027-02-10",
+      "2027-02-17",
+      "2027-02-24",
+      "2027-03-03",
+      "2027-03-10",
+      "2027-03-17",
+      "2027-03-24",
+      "2027-11-03",
+      "2027-11-10",
+      "2027-11-17",
+      "2027-11-24",
+      "2027-12-01",
+      "2027-12-08",
+      "2027-12-15",
+      "2027-12-22",
+      "2027-12-29"
+    ],
+    "reason": "The city gives 17:15 closing in winter; all these dates are Jan–Mar or Nov–Dec (the March and early-November ones rest on reading 'winter' as Swiss winter time).",
+    "url": "https://www.geneve.ch/marche-plainpalais",
+    "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-plainpalais-geneve-samstag",
+    "kind": "hours",
+    "dates": [
+      "2027-01-02",
+      "2027-01-09",
+      "2027-01-16",
+      "2027-01-23",
+      "2027-01-30",
+      "2027-02-06",
+      "2027-02-13",
+      "2027-02-20",
+      "2027-02-27",
+      "2027-03-06",
+      "2027-03-13",
+      "2027-03-20",
+      "2027-03-27",
+      "2027-11-06",
+      "2027-11-13",
+      "2027-11-20",
+      "2027-11-27",
+      "2027-12-04",
+      "2027-12-11",
+      "2027-12-18",
+      "2027-12-25"
+    ],
+    "reason": "The city gives 17:15 closing in winter; all these dates are Jan–Mar or Nov–Dec (27 Mar is the day before summer time starts).",
+    "url": "https://www.geneve.ch/marche-plainpalais",
+    "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-aux-puces-vevey",
+    "kind": "status",
+    "dates": [
+      "2027-01-02",
+      "2027-02-06",
+      "2027-03-06",
+      "2027-04-03",
+      "2027-05-01",
+      "2027-06-05",
+      "2027-07-03",
+      "2027-08-07",
+      "2027-09-04",
+      "2027-10-02",
+      "2027-11-06",
+      "2027-12-04"
+    ],
+    "reason": "The commune defers to the organiser's calendar, and that site does not resolve today (DNS failure); no 2027 dates on any official page.",
+    "url": "https://www.vevey.ch/vivre-vevey/vie-de-quartier/marches",
+    "quote": "L’association pour les environs de la place Robin (APERO) organise un marché aux puces sur ladite place. Il se tient selon le calendrier à consulter sur www.apero1800vevey.ch",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-calabash-lausanne",
+    "kind": "hours",
+    "dates": [
+      "2026-11-01",
+      "2026-12-06"
+    ],
+    "reason": "The organiser says 9–18 (its FAQ repeats it); 08:00–16:00 appears on no official page (the city's page says 8h–18h30, for a 2026 date).",
+    "url": "https://www.associationcalabash.ch/reglement/",
+    "quote": "Le marché est ouvert au public de 9h00 à 18h00",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "mercatino-usato-paradiso-lugano",
+    "kind": "status",
+    "dates": [
+      "2027-03-03",
+      "2027-04-07",
+      "2027-05-05",
+      "2027-06-02",
+      "2027-09-01",
+      "2027-10-06",
+      "2027-11-03"
+    ],
+    "reason": "The commune's provisional calendar (updated September 2026) covers 2026 only (first Wednesdays, March–November, none in August); nothing is published for 2027.",
+    "url": "https://paradiso.ch/cms/wp-content/uploads/2026/09/Eventi-2026_0910.pdf",
+    "quote": "EVENTI 2026 PROGRAMMA PROVVISORIO … NOVEMBRE … Mercatino usato (4)",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "puces-de-nyon",
+    "kind": "hours",
+    "dates": [
+      "2026-10-25",
+      "2026-11-29",
+      "2026-12-13",
+      "2027-01-31",
+      "2027-02-28",
+      "2027-03-28",
+      "2027-04-25",
+      "2027-05-30",
+      "2027-06-27",
+      "2027-07-25",
+      "2027-09-26",
+      "2027-10-31",
+      "2027-11-28",
+      "2027-12-26"
+    ],
+    "reason": "The organiser says the market runs 8 to 19 (packing up 18–19h); v1's 18:30 comes from a tourism listing, not the organiser.",
+    "url": "https://www.quartierderive.ch/commissions/puces-de-nyon",
+    "quote": "Déballage dès 7h, marché de 8h à 19h.",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "puces-de-nyon",
+    "kind": "status",
+    "dates": [
+      "2027-12-26"
+    ],
+    "reason": "The organiser lists 2026 only and moved December 2026 to the 13th (its Village de Noël weekend) instead of the last Sunday, so 26 Dec 2027 is not covered.",
+    "url": "https://www.quartierderive.ch/commissions/puces-de-nyon",
+    "quote": "October 25, 2026 … November 29, 2026 … December 13, 2026",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "vide-dressing-flon-lausanne",
+    "kind": "add",
+    "dates": [
+      "2027-09-04",
+      "2027-10-02"
+    ],
+    "reason": "The venue announces the 2026 season only, and the organiser's site (amisduchibre.ch) shows nothing for 2027.",
+    "url": "https://flon.ch/fr/agenda/nt-0/vide-dressing-et-vide-grenier-419/",
+    "quote": "A vos agendas ! En 2026, le vide-dressing vous donne rendez-vous tous les premiers samedis du mois ente avril et novembre (sauf en août).",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "vide-grenier-echichens",
+    "kind": "remove",
+    "dates": [
+      "2026-11-01"
+    ],
+    "reason": "The commune still lists Sunday 1 November 2026, 9–16, so the date stays.",
+    "url": "https://www.echichens.ch/_rte/anlass/7654582",
+    "quote": "Vide Local Association Enfants Salle polyvalente d'Echichens … 1 nov. 2026, 9h00 - 16h00",
+    "decided": "2026-10-09"
+  },
+  {
+    "slug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
+    "kind": "status",
+    "dates": [
+      "2027-03-21",
+      "2027-11-21"
+    ],
+    "reason": "The organiser has not listed 2027; March and November follow only from past years. Stays not yet confirmed (Delfim, 2026-10-09).",
+    "url": "https://schadaugaertnerei.ch/events/list/?eventDisplay=past",
+    "quote": "März 2026 So. 15 Schadaumärit 15. März um 10:00 - 16:00",
+    "decided": "2026-10-09"
+  }
+]
