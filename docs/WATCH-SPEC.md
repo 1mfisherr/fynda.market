@@ -9,15 +9,10 @@ Built 2026-10-09; how it works is in `ARCHITECTURE.md` §Watch, the commands in 
 - **The program reads, the AI only settles doubts**, and every change is approved in Telegram — except the "confirmed on" stamp for a date the page shows exactly as we have it.
 - **The finder starts from the established directories**, names only; every market is checked on its organiser's page.
 
-## First run (needs Delfim)
-
-1. `claude setup-token` in a terminal, log in, put the token in `.env.local` as `CLAUDE_CODE_OAUTH_TOKEN=…`. Without it the run still fetches and stamps; questions wait and Telegram says so.
-2. `powershell -ExecutionPolicy Bypass -File scripts\watch\schedule.ps1` registers the weekly run: five minutes after each login, only if the last run is six days old.
-3. The first run is `node scripts/watch/run.mjs`: the 2026-10-09 dry run read 116 of 117 German pages, would stamp 180 dates and ask 48 questions.
-
 ## Left to build
 
 - **Rule pages.** "Jeden ersten Samstag von April bis Oktober": the AI turns the rule into JSON once (`{weekday, nth, months, exceptions}`), keyed by a hash of the paragraph; code expands it and compares. Today such a page stamps nothing and asks nothing.
+- **Exclusions scoped to their words.** A line like "außer 3. + 31.10 … Termine Sonntags: 29.11. + 20.12." marks every date on it excluded, so the Sundays become a cancellation question (the AI settles it; nothing changes alone). The exclusion should reach only the dates after its own word.
 - **Hours on the page, not on the date line.** "Öffnungszeiten 8–16 Uhr" in a sidebar is ignored; only hours on a date's own line are compared.
 - **Finder: the doubtful leads.** 191 of 223 new German leads were dropped on 2026-10-09 — 110 because no date sat beside their town and a flea-market word on the organiser page (the check is strict on purpose), 57 for no organiser page or only a directory or social one, 24 unreachable or closed to robots. Send the first group to the AI step; the second needs a person or the organiser.
 - **Finder: more sources**, in this order: marktcom.de (categories 1, 42, 2; its imprint shares an address with Melan), then the big organisers' own schedules (Melan, Kreaktiva, Hochberg, Höfges, NMV, Gero's, Weiß), then berlin.de / hamburg.de / hannover.de. Skip meinestadt.de, flohmarkt-termine.net, flohmarktnavi.de, in-muenchen.de.

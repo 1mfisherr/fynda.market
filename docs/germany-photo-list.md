@@ -1,6 +1,6 @@
 # German markets — photo list
 
-55 markets, 38 towns, all 16 Bundeslaender. Researched 2026-09-22; in the database as **unverified**, so nothing is published. Each needs one photo before it can go live.
+**Waiting for a photo now (2026-10-09): five Melan car-park markets in Köln** — GLOBUS Marsdorf, METRO Godorf, SELGROS Butzweilerhof, PORTA Lind, ROLLER Marsdorf; Commons has no picture of those stores. Everything else below is live. The list as researched on 2026-09-22:
 
 Name the file after the slug in brackets, e.g. `flohmarkt-am-mauerpark-berlin.webp` — or send a folder named however you like and I will match them up. Landscape, roughly 3:2 or 16:10, the wider the better.
 
