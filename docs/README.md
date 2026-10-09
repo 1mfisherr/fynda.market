@@ -13,7 +13,7 @@ Read only what the task needs. Every line loaded is context spent.
 | `BRAND.md` | Identity, the design system, e-mail |
 | `IDEAS.md` | Parked, not committed |
 | `GERMANY-SPEC.md` | What is left of Germany, and the decisions nobody should re-open; deleted when the list is empty |
-| `WATCH-SPEC.md` | Building the Market Watch (keeps dates true) or the Market Finder (finds missing markets); deleted when built |
+| `WATCH-SPEC.md` | What is left to build in the Market Watch and the Market Finder (both running; how they work is `ARCHITECTURE.md` §Watch); deleted when the list is empty |
 
 **Loaded on demand:** `../.claude/rules/` — `functions.md`, `migrations.md`, `styles.md` — appear by themselves when a file in that directory is touched.
 
