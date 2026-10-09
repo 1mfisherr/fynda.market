@@ -2,21 +2,23 @@
 /**
  * The Market Watch's daily run (docs/WATCH-SPEC.md).
  *
- *   node scripts/watch/run.mjs              today's seventh of the sources, everything written, Telegram told
+ *   node scripts/watch/run.mjs              every source, everything written, Telegram told
+ *   node scripts/watch/run.mjs --if-due     the same, unless a run finished in the last six days — what
+ *                                           Windows starts at every login, so it runs once a week
  *   node scripts/watch/run.mjs --dry        fetch, read and decide, print it; write nothing, ask no AI
- *   --all                                   every source, not today's seventh
  *   --source <text>                         only sources whose URL contains it
  *   --no-ai                                 questions wait for the next run
  *   --limit <n>                             the first n sources (smoke tests)
  *
- * Windows Task Scheduler starts it every morning (`scripts/watch/schedule.ps1` sets that up).
+ * Windows starts it at login with --if-due (`scripts/watch/schedule.ps1`): once a week, whenever the PC
+ * is on — Delfim is not at the PC at a fixed hour (2026-10-09).
  * What it writes: the "confirmed on" stamp for dates a page shows exactly as we
  * have them (confirm.mjs's write: confirmed_at plus a facts row naming the page),
  * findings for everything else, and one Telegram message when something waits
  * for Delfim. It never changes a date itself.
  */
 
-import { createHash, createHmac } from 'node:crypto';
+import { createHmac } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { query, withClient, DB_URL, secret } from '../db.mjs';
@@ -32,7 +34,7 @@ const flag = (f) => args.includes(f);
 const opt = (f) => (args.includes(f) ? args[args.indexOf(f) + 1] : null);
 const DRY = flag('--dry');
 const NO_AI = flag('--no-ai') || DRY;
-const ALL = flag('--all');
+const IF_DUE = flag('--if-due');
 const ONLY = opt('--source');
 const LIMIT = opt('--limit') ? Number(opt('--limit')) : null;
 const SITE = 'https://fynda.market';
@@ -40,10 +42,20 @@ const SNAPSHOTS = new URL('../../watch-data/snapshots/', import.meta.url);
 const SEEN_CAP = 3000;
 
 const today = todayIso();
-const weekday = new Date(`${today}T12:00:00Z`).getUTCDay();
 const say = (...p) => console.log(...p);
-const sliceOf = (id) => parseInt(createHash('sha1').update(id).digest('hex').slice(0, 8), 16) % 7;
 const short = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+/* ---------------------------------------------------------------------------
+ * due? — at login, only when the last real run is six days old or more
+ * ------------------------------------------------------------------------- */
+
+if (IF_DUE && !DRY) {
+  const [last] = await query(`select max(finished_at) as at from public.watch_runs where finished_at is not null`);
+  if (last?.at && Date.now() - new Date(last.at).getTime() < 6 * 24 * 3600 * 1000) {
+    say(`Market Watch: last run ${new Date(last.at).toISOString().slice(0, 10)}, not due yet.`);
+    process.exit(0);
+  }
+}
 
 /* ---------------------------------------------------------------------------
  * what to read today
@@ -56,7 +68,6 @@ let sources = await query(`
     left join public.watch_pages p on p.source_id = s.id
    where s.active and s.access in ('fetch', 'browser')`);
 if (ONLY) sources = sources.filter((s) => s.url.includes(ONLY));
-else if (!ALL) sources = sources.filter((s) => sliceOf(s.id) === weekday);
 if (LIMIT) sources = sources.slice(0, LIMIT);
 
 const links = await query(`select source_id, market_id from public.watch_source_markets where source_id = any($1)`, [sources.map((s) => s.id)]);
@@ -89,7 +100,7 @@ const findingsSoFar = await query(`select market_id, kind, dates::text[] as date
 const asked = new Set(findingsSoFar.map((f) => `${f.market_id}|${f.kind}|${[...f.dates].sort().join(',')}`));
 const askedDates = new Set(findingsSoFar.flatMap((f) => f.dates.map((d) => `${f.market_id}|${f.kind}|${d}`)));
 
-say(`Market Watch ${today} — ${sources.length} page(s) for ${markets.size} market(s)${ALL || ONLY ? '' : `, slice ${weekday}`}${DRY ? ' (dry run)' : ''}`);
+say(`Market Watch ${today} — ${sources.length} page(s) for ${markets.size} market(s)${DRY ? ' (dry run)' : ''}`);
 
 /* ---------------------------------------------------------------------------
  * reading one page
@@ -251,7 +262,7 @@ const runId = await withClient(DB_URL, async (c) => {
   const { rows: [run] } = await c.query(
     `insert into public.watch_runs (slice, sources_planned, fetched, not_modified, unchanged, stamped, questions, findings, ai, errors)
      values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning id`,
-    [ALL || ONLY ? null : weekday, sources.length, counts.read ?? 0, counts.not_modified ?? 0, counts.unchanged ?? 0,
+    [null, sources.length, counts.read ?? 0, counts.not_modified ?? 0, counts.unchanged ?? 0,
       stamps.size, questions.length, answer.findings.length + notes.length, answer.ai, JSON.stringify(answer.errors)]);
 
   for (const p of pages) {
@@ -322,8 +333,8 @@ const runId = await withClient(DB_URL, async (c) => {
   return run.id;
 });
 
-// Tell Delfim when something waits, and on Mondays in any case.
-if (decisions.length || notes.length || weekday === 1 || (answer.ai === 'no_login' && questions.length)) {
+// One message per weekly run: the summary, and whatever waits for Delfim.
+{
   if (!signing) say('No ADMIN_SIGNING_SECRET: report stored, not sent.');
   else {
     const res = await fetch(`${SITE}/adm/notify`, {

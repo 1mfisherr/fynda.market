@@ -12,8 +12,8 @@ Built 2026-10-09; how it works is in `ARCHITECTURE.md` §Watch, the commands in 
 ## First run (needs Delfim)
 
 1. `claude setup-token` in a terminal, log in, put the token in `.env.local` as `CLAUDE_CODE_OAUTH_TOKEN=…`. Without it the run still fetches and stamps; questions wait and Telegram says so.
-2. `powershell -ExecutionPolicy Bypass -File scripts\watch\schedule.ps1` registers the daily 07:00 run.
-3. The first run is `node scripts/watch/run.mjs --all`: the 2026-10-09 dry run read 116 of 117 German pages, would stamp 180 dates and ask 48 questions.
+2. `powershell -ExecutionPolicy Bypass -File scripts\watch\schedule.ps1` registers the weekly run: five minutes after each login, only if the last run is six days old.
+3. The first run is `node scripts/watch/run.mjs`: the 2026-10-09 dry run read 116 of 117 German pages, would stamp 180 dates and ask 48 questions.
 
 ## Left to build
 
