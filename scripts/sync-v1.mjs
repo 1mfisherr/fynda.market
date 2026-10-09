@@ -179,11 +179,12 @@ for (const ourMarket of ourMarkets) {
 
   for (const [date, t] of theirs) {
     const o = mine.get(date);
-    const tStatus = t.status === 'cancelled' ? 'cancelled' : t.status === 'tentative' ? 'tentative' : 'confirmed';
+    // v1's "tentative" is shown as "not yet confirmed" — our 'unverified', not our 'tentative' ("provisional").
+    const tStatus = t.status === 'cancelled' ? 'cancelled' : t.status === 'tentative' ? 'unverified' : 'confirmed';
 
     if (!o) {
       if (tStatus === 'cancelled') continue; // nothing to cancel here
-      push('add', date, `add, ${hours(t.st, t.et)}`, { op: 'insert', market_id: ourMarket.id, date, st: t.st, et: t.et, status: tStatus, stampAt, source });
+      push('add', date, `add, ${hours(t.st, t.et)}`, { op: 'insert', market_id: ourMarket.id, date, st: t.st, et: t.et, status: tStatus, stampAt: tStatus === 'confirmed' ? stampAt : null, source });
       continue;
     }
     if (o.origin === 'organiser') {
@@ -201,7 +202,7 @@ for (const ourMarket of ourMarkets) {
       const label = (s) => (s === 'unverified' ? 'not yet confirmed' : s);
       push('status', date, `${label(o.status)} → ${label(tStatus)}`, { op: 'status', id: o.id, date, status: tStatus, source, stampAt });
     }
-    if (stampAt && (!o.confirmed_at || new Date(o.confirmed_at) < new Date(stampAt))) {
+    if (stampAt && tStatus === 'confirmed' && (!o.confirmed_at || new Date(o.confirmed_at) < new Date(stampAt))) {
       stampWrites.push({ id: o.id, date, stampAt, source, status: o.status });
     }
   }
@@ -228,8 +229,8 @@ for (const c of changes) {
 const writes = changes.filter((c) => c.writes);
 // A date stays "not yet confirmed" unless its status change is written, so it
 // must not get a "confirmed on" stamp either — the page would say both.
-const confirmedNow = new Set(writes.filter((c) => c.kind === 'status').map((c) => c.write.id));
-const stampsToWrite = stampWrites.filter((s) => s.status === 'confirmed' || s.status === 'tentative' || confirmedNow.has(s.id));
+const confirmedNow = new Set(writes.filter((c) => c.kind === 'status' && c.write.status === 'confirmed').map((c) => c.write.id));
+const stampsToWrite = stampWrites.filter((s) => s.status === 'confirmed' || confirmedNow.has(s.id));
 
 const bySlug = group(changes);
 const kinds = ['add', 'cancel', 'hours', 'status', 'remove'];
@@ -285,7 +286,7 @@ await withClient(DB_URL, async (c) => {
         `insert into public.occurrences (market_id, date, start_time, end_time, status, origin, confirmed_at)
          values ($1, $2, $3, $4, $5, 'import', $6) returning id`,
         [w.market_id, w.date, w.st, w.et, w.status, w.stampAt]);
-      await fact(c, row.id, w.date, w.source, w.stampAt);
+      if (w.status === 'confirmed') await fact(c, row.id, w.date, w.source, w.stampAt);
     } else if (w.op === 'cancel') {
       await c.query(`update public.occurrences set status = 'cancelled', cancellation_note = $2, updated_at = now() where id = $1`, [w.id, w.note]);
       await fact(c, w.id, w.date, w.source, w.stampAt);
