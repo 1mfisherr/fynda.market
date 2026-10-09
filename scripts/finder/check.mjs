@@ -168,7 +168,8 @@ await politely(todo.map((l) => ({ ...l, url: l.organiser_url })), async (lead) =
 }, 5);
 await closeBrowser();
 
-const out = file.replace(/leads-[^/\\]+\.json$/, `check-${COUNTRY.toLowerCase()}-${today}.json`);
+// leads-mft-berlin-…-<date>.json → check-de-mft-berlin-…-<date>.json, beside it: one check per lead file.
+const out = file.replace(/leads-([^/\\]+)\.json$/, `check-${COUNTRY.toLowerCase()}-$1.json`);
 writeFileSync(out, JSON.stringify({ checked: today, candidates, dropped, known: knownList }, null, 1) + '\n');
 console.log(`${candidates.length} candidate(s) with dates on the organiser's own page; ${dropped.length} dropped; ${knownList.length} already ours → ${out}`);
 process.exit(0);

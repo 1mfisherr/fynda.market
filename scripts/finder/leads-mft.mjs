@@ -7,6 +7,8 @@
  *
  *   node scripts/finder/leads-mft.mjs            → intake/finder/leads-mft-<today>.json
  *   --limit <n>                                  only the first n series (a smoke test)
+ *   --min-dates <n>                              dated pages a series needs (default 3; 1 includes monthly and yearly markets)
+ *   --towns berlin,hamburg,muenchen,koeln        only series whose name carries one of these towns
  *
  * A directory may only tell us a market exists (intake/README.md). From each
  * series we keep its name, town, postcode, country, the organiser's website and
@@ -24,7 +26,12 @@ import { fetchSource, politely } from '../watch/fetch.mjs';
 import { todayIso } from '../../src/lib/format.ts';
 
 const SITEMAP = 'https://meine-flohmarkt-termine.de/sitemaps/mft/eventdetail-sitemap.xml';
-const LIMIT = process.argv.includes('--limit') ? Number(process.argv[process.argv.indexOf('--limit') + 1]) : null;
+const opt = (f) => (process.argv.includes(f) ? process.argv[process.argv.indexOf(f) + 1] : null);
+const LIMIT = opt('--limit') ? Number(opt('--limit')) : null;
+const MIN_DATES = Number(opt('--min-dates') ?? 3);
+// Slugs drop umlauts ("munchen", "koln"); accept both spellings.
+const TOWNS = opt('--towns') ? opt('--towns').split(',').map((t) => t.trim().toLowerCase().replace(/ue/g, 'u?e?').replace(/oe/g, 'o?e?').replace(/ae/g, 'a?e?')) : null;
+const inTowns = (slug) => !TOWNS || TOWNS.some((t) => new RegExp(`(^|-)${t}(-|$)`).test(slug));
 // The directory lists every kind of event; a lead must say flea, junk or antique market in its name.
 const FLEA = /floh|trodel|troedel|trödel|antik|sammler|krempel|raritat|vintage|second-?hand|flowmarkt|nachtmarkt-?floh/i;
 const SKIP = /kinder|kids|baby|hof-?flohmarkt|garagen|strassenflohmarkt|haushalt|privat|frauen|maedchen|mädchen|madels|mädels|ladies|damen|schul|kita|basar-fur-kinder|kleiderbasar|spielzeug|nachbarschaft/i;
@@ -39,9 +46,9 @@ for (const url of urls) {
   const m = url.match(/meine-flohmarkt-termine\.de\/([^/]+)\/\d+\/details/);
   if (m) series.set(m[1], [...(series.get(m[1]) ?? []), url]);
 }
-let recurring = [...series].filter(([slug, list]) => list.length >= 3 && FLEA.test(slug) && !SKIP.test(slug));
+let recurring = [...series].filter(([slug, list]) => list.length >= MIN_DATES && FLEA.test(slug) && !SKIP.test(slug) && inTowns(slug));
 if (LIMIT) recurring = recurring.slice(0, LIMIT);
-console.log(`${urls.length} dated pages, ${series.size} series, ${recurring.length} recurring flea, junk or antique (children's, yard and private sales left out).`);
+console.log(`${urls.length} dated pages, ${series.size} series, ${recurring.length} with ${MIN_DATES}+ dates, flea, junk or antique (children's, yard and private sales left out).`);
 
 const leads = [];
 await politely(recurring.map(([slug, list]) => ({ url: list[0], slug, count: list.length })), async (s) => {
@@ -67,7 +74,8 @@ await politely(recurring.map(([slug, list]) => ({ url: list[0], slug, count: lis
   });
 }, 2, [1000, 1500]);
 
-const out = new URL(`../../intake/finder/leads-mft-${todayIso()}.json`, import.meta.url);
+const tag = TOWNS ? `-${opt('--towns').replace(/,/g, '-')}` : '';
+const out = new URL(`../../intake/finder/leads-mft${tag}-${todayIso()}.json`, import.meta.url);
 mkdirSync(new URL('.', out), { recursive: true });
 writeFileSync(out, JSON.stringify(leads.sort((a, b) => a.postcode.localeCompare(b.postcode)), null, 1) + '\n');
 const byCountry = leads.reduce((c, l) => ({ ...c, [l.country || '?']: (c[l.country || '?'] ?? 0) + 1 }), {});
