@@ -1,0 +1,375 @@
+[
+ {
+  "slug": "flohmarkt-hinwil",
+  "description": {
+   "de": "Zum Markt gehört ein eigenes Beizli, das Flohmibeizli, mit Mittagsmenü. Für die Musik sorgt DJ Gummistiefel.",
+   "en": "The market has its own café, the Flohmibeizli, with a lunch menu. DJ Gummistiefel takes care of the music.",
+   "fr": "Le marché a sa propre buvette, le Flohmibeizli, avec un menu de midi. DJ Gummistiefel s'occupe de la musique.",
+   "it": "Il mercatino ha un suo punto ristoro, il Flohmibeizli, con un menù di mezzogiorno. Alla musica pensa DJ Gummistiefel."
+  },
+  "rhythm": {
+   "en": "About once a month, on a Sunday",
+   "fr": "Environ une fois par mois, un dimanche",
+   "it": "Circa una volta al mese, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.hinwil.ch/_rte/anlass/7419847",
+    "quote": "Auf dem Gemeindeplatz hinter ZKB-Bank mit Flohmibeizli, Mittagsmenu und Musik von DJ Gummistiefel von 09:00 -16:00 Uhr"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Municipal event calendar (organiser contact R. Frutig). The source_url entry shows only 8 Nov 2026; 11 Oct (entry 7415635) and 13 Dec (entry 7419844) are separate entries on the same calendar, all 09:00-16:00 — all three of our dates match."
+ },
+ {
+  "slug": "flohmarkt-marktplatz-amriswil",
+  "description": {
+   "de": "Toni Pfeffer organisiert diesen Flohmarkt auf dem Marktplatz von Amriswil.",
+   "en": "Toni Pfeffer runs this flea market on Amriswil's Marktplatz.",
+   "fr": "Toni Pfeffer organise ce marché aux puces sur la Marktplatz d'Amriswil.",
+   "it": "Toni Pfeffer organizza questo mercatino delle pulci sulla Marktplatz di Amriswil."
+  },
+  "rhythm": {
+   "en": "Monthly, on a Saturday, April to November (not in July)",
+   "fr": "Chaque mois, un samedi, d'avril à novembre (sauf en juillet)",
+   "it": "Ogni mese, di sabato, da aprile a novembre (escluso luglio)"
+  },
+  "sources": [
+   {
+    "url": "https://www.fliba.ch/Daten/Flohmarkt%20Amriswil%202026",
+    "quote": "FLOHMARKT 2026 MARKTPLATZ AMRISWIL"
+   },
+   {
+    "url": "https://www.fliba.ch/Daten/Flohmarkt%20Amriswil%202026",
+    "quote": "Anmeldung: Toni Pfeffer"
+   }
+  ],
+  "conflicts": [],
+  "notes": "The source is a scanned flyer (JPEG image), quotes read off the image. It lists only dates (18 Apr - 14 Nov 2026, no July), stall prices and the organiser — no hours, no description of goods, so one sentence is all the facts allow. 17 Oct and 14 Nov match ours; the flyer gives no hours, nor do we."
+ },
+ {
+  "slug": "flohmarkt-schlossgut-muensingen",
+  "description": {
+   "de": "Auf dem Schlossgutplatz stehen Händler und Privathaushalte nebeneinander. Auch Kinder können hier verkaufen. Veranstalter ist Patrick Schlapbach.",
+   "en": "On the Schlossgutplatz, professional dealers and private households sell side by side. Children can have a stall too. The organiser is Patrick Schlapbach.",
+   "fr": "Sur la Schlossgutplatz, marchands professionnels et particuliers vendent côte à côte. Les enfants peuvent aussi tenir un stand. Le marché est organisé par Patrick Schlapbach.",
+   "it": "Sulla Schlossgutplatz espongono fianco a fianco commercianti professionisti e privati. Anche i bambini possono avere una bancarella. L'organizzatore è Patrick Schlapbach."
+  },
+  "rhythm": {
+   "en": "Several times a year, on a Sunday",
+   "fr": "Plusieurs fois par an, un dimanche",
+   "it": "Più volte all'anno, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.muensingen.ch/de/veranstaltungen/detail/detail.php?i=4631",
+    "quote": "vom Profi bis zum Privathaushalt haben alle die Möglichkeit auszustellen"
+   },
+   {
+    "url": "https://www.muensingen.ch/de/veranstaltungen/detail/detail.php?i=4631",
+    "quote": "Für Kinder ist das Ausstellen kostenlos und erfordert keine Anmeldung."
+   },
+   {
+    "url": "https://www.muensingen.ch/de/veranstaltungen/detail/detail.php?i=4631",
+    "quote": "Veranstalter Patrick Schlapbach"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Municipal event calendar; the list page links one detail entry per date (i=4631, 4634, …). 11 Oct, 25 Oct and 22 Nov 2026, 10:00-16:00, all match."
+ },
+ {
+  "slug": "grosse-burgdorfer-brocante",
+  "description": {
+   "de": "2026 findet die Burgdorfer Brocante zum 46. Mal statt. In der Markthalle gibt es Kleinantiquitäten, Möbel, Silber, Schmuck, Glas, Porzellan, Grafik und Postkarten. Einen Händlertag vorab gibt es nicht: Auch Profis kommen erst zu den offiziellen Öffnungszeiten herein.",
+   "en": "In 2026 the Burgdorf brocante holds its 46th edition. In the Markthalle you'll find small antiques, furniture, silver, jewellery, glass, porcelain, prints and postcards. There is no early trade day: dealers get in at the official opening hours, like everyone else.",
+   "fr": "En 2026, la Grosse Burgdorfer Brocante en est à sa 46e édition. Dans la Markthalle : petites antiquités, meubles, argenterie, bijoux, verre, porcelaine, estampes et cartes postales. Pas de journée réservée aux marchands : les professionnels entrent aux heures d'ouverture, comme tout le monde.",
+   "it": "Nel 2026 la Grosse Burgdorfer Brocante arriva alla 46ª edizione. Nella Markthalle si trovano piccole antichità, mobili, argenteria, gioielli, vetro, porcellana, stampe e cartoline. Non c'è una giornata riservata ai commercianti: anche i professionisti entrano solo negli orari ufficiali."
+  },
+  "rhythm": {
+   "en": "Every year, one weekend in November",
+   "fr": "Chaque année, un week-end de novembre",
+   "it": "Ogni anno, un fine settimana di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.grosseburgdorferbrocante.ch/files/Burgdorfer-Brocante--2026.webp",
+    "quote": "Kleinantiquitäten · Möbel Silber · Schmuck · Glas Porzellan · Grafik Postkarten"
+   },
+   {
+    "url": "https://www.grosseburgdorferbrocante.ch/files/Burgdorfer-Brocante--2026.webp",
+    "quote": "46. Ausgabe"
+   },
+   {
+    "url": "https://www.grosseburgdorferbrocante.ch/",
+    "quote": "Ein spezieller „Händlertag“ findet nicht statt."
+   }
+  ],
+  "conflicts": [
+   "Entry fee: the 2026 flyer says \"Eintritt CHF 7,-\"; our entry_fee is empty."
+  ],
+  "notes": "Organiser's own site plus its 2026 flyer (an image linked from the home page). Dates and hours (Fri 12-18, Sat 10-18, Sun 10-17) match both the flyer and the exhibitor page. I left out the home page's \"dealers from all over Switzerland\": that paragraph sits under the spring collectors' fair, so it may not be about this event. '46th edition' is tied to 2026 and needs updating next year."
+ },
+ {
+  "slug": "haerkinger-flohmi",
+  "description": {
+   "de": "Der Härkinger Flohmi findet drinnen statt, das Wetter spielt also keine Rolle. Auf den Tischen: Antiquitäten und Raritäten, Altes und Neues, auch Selbstgemachtes. Dazu gibt es ein Beizli mit Gluschtigem zu günstigen Preisen.",
+   "en": "The Härkinger Flohmi is held indoors, so the weather doesn't matter. On the tables: antiques and rarities, old and new things, handmade pieces too. There's also a small café with snacks at low prices.",
+   "fr": "Le Härkinger Flohmi se tient à l'intérieur, la météo n'a donc pas d'importance. Sur les tables : antiquités et raretés, objets anciens et neufs, et du fait main. Une petite buvette propose de quoi grignoter à petits prix.",
+   "it": "L'Härkinger Flohmi si svolge al coperto, quindi il tempo non conta. Sui tavoli: antichità e rarità, cose vecchie e nuove, anche oggetti fatti a mano. C'è anche un piccolo bar con qualcosa da mangiare a prezzi contenuti."
+  },
+  "rhythm": {
+   "en": "Every year, one Sunday in autumn",
+   "fr": "Chaque année, un dimanche d'automne",
+   "it": "Ogni anno, una domenica d'autunno"
+  },
+  "sources": [
+   {
+    "url": "https://sites.google.com/site/flohmarkthaerkingen",
+    "quote": "Der Markt für Antiquitäten, Raritäten, Altes, Neues und Selbstgemachtes"
+   },
+   {
+    "url": "https://sites.google.com/site/flohmarkthaerkingen",
+    "quote": "witterungsunabhängiger Indoor-Flohmi"
+   },
+   {
+    "url": "https://sites.google.com/site/flohmarkthaerkingen",
+    "quote": "Gemütliches Beizli mit Gluschtigem zu günstigen Preisen erwartet Sie und ihre Gäste"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Organiser's own Google site. It confirms the date (\"Unser 15. Flohmi findet am 08.11.2026 statt\") but shows no hours and does not name the hall, so our 09:00-16:00 and 'Mehrzweckhalle Härkingen' are unconfirmed, not contradicted. Left out the sister site's 'upper hall with stage and Fröschensaal': not on the page. 'Gluschtigem' (Swiss German for 'tasty treats') is the organiser's word; a native speaker may prefer plainer German."
+ },
+ {
+  "slug": "hallenflohmarkt-aadorf",
+  "description": {
+   "de": "Marktfieber organisiert diesen Hallenflohmarkt im Gemeindezentrum. An den Ständen gibt es Flohmarktware und Handgemachtes.",
+   "en": "Marktfieber runs this indoor flea market in the Gemeindezentrum (community centre). The stalls carry second-hand goods and handmade things.",
+   "fr": "Marktfieber organise ce marché aux puces couvert au Gemeindezentrum (centre communal). Sur les stands : articles de brocante et objets faits main.",
+   "it": "Marktfieber organizza questo mercatino al coperto nel Gemeindezentrum (centro comunale). Sulle bancarelle: articoli usati e oggetti fatti a mano."
+  },
+  "rhythm": {
+   "en": "At irregular intervals, on a Sunday",
+   "fr": "À intervalles irréguliers, un dimanche",
+   "it": "A intervalli irregolari, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.marktfieber.ch/",
+    "quote": "HALLENFLOHMARKT - AADORF"
+   },
+   {
+    "url": "https://www.marktfieber.ch/",
+    "quote": "Verkauf Flohmarkt & Handgemachtes"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Organiser's own site (Marktfieber, Andy Röder). 15 Nov 2026, 10-17 matches. The site holds very little beyond that; the seller terms say no food or drink may be sold at stalls, which I left out as a seller rule."
+ },
+ {
+  "slug": "hallenflohmarkt-pentorama-amriswil",
+  "description": {
+   "de": "Der Coro Tricolore di Amriswil, ein Chor, veranstaltet diesen Hallenflohmarkt im Pentorama und kümmert sich auch um Essen und Trinken. An den Ständen: Raritäten, Dinge für den Alltag und Vintage.",
+   "en": "The Coro Tricolore di Amriswil, a choir, puts on this indoor flea market at the Pentorama and also takes care of food and drink. At the stalls: rarities, everyday things and vintage.",
+   "fr": "Le Coro Tricolore di Amriswil, une chorale, organise ce marché aux puces couvert au Pentorama et s'occupe aussi de la restauration. Sur les stands : raretés, objets du quotidien et vintage.",
+   "it": "Il Coro Tricolore di Amriswil organizza questo mercatino al coperto al Pentorama e pensa anche a cibo e bevande. Sulle bancarelle: rarità, oggetti di uso quotidiano e vintage."
+  },
+  "rhythm": {
+   "en": "Every year, in November",
+   "fr": "Chaque année, en novembre",
+   "it": "Ogni anno, a novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.pentorama.ch/besucher/veranstaltungskalender/detailansicht/hallenflohmarkt-pentorama-1050/",
+    "quote": "Besucherinnen und Besucher erwartet eine Vielzahl an Ständen mit Raritäten, Alltagsgegenständen, Vintage-Artikeln"
+   },
+   {
+    "url": "https://www.pentorama.ch/besucher/veranstaltungskalender/detailansicht/hallenflohmarkt-pentorama-1050/",
+    "quote": "Für das leibliche Wohl sorgt erneut der Coro Tricolore di Amriswil."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Venue's event page (promoter: Coro Tricolore di Amriswil). 1 Nov 2026, 08:00-16:00 matches. The page says it is back after last year, so 'every year' rests on two editions."
+ },
+ {
+  "slug": "hallenflohmarkt-therwil",
+  "description": {
+   "de": "Die Gemeinde Therwil organisiert diesen Flohmarkt selbst. Die Stände stehen in der Mehrzweckhalle und davor. Neben ausgesuchten Antiquitäten, Raritäten und Kuriositäten gibt es Alltägliches zu günstigen Preisen.",
+   "en": "The municipality of Therwil runs this flea market itself. The stalls are inside the Mehrzweckhalle (multi-purpose hall) and in front of it. Next to selected antiques, rarities and curiosities, there are everyday things at low prices.",
+   "fr": "La commune de Therwil organise elle-même ce marché aux puces. Les stands sont installés dans la Mehrzweckhalle (salle polyvalente) et devant. À côté d'antiquités, de raretés et de curiosités choisies, on trouve des objets du quotidien à petits prix.",
+   "it": "È il Comune di Therwil a organizzare questo mercatino. Le bancarelle sono dentro la Mehrzweckhalle (sala multiuso) e davanti. Accanto ad antichità, rarità e curiosità scelte ci sono oggetti di uso quotidiano a buon prezzo."
+  },
+  "rhythm": {
+   "en": "Every year, one weekend in January",
+   "fr": "Chaque année, un week-end de janvier",
+   "it": "Ogni anno, un fine settimana di gennaio"
+  },
+  "sources": [
+   {
+    "url": "https://www.therwil.ch/de/veranstaltungen/detail/detail.php?i=22929",
+    "quote": "Veranstalter Gemeinde Therwil"
+   },
+   {
+    "url": "https://www.therwil.ch/de/veranstaltungen/detail/detail.php?i=22929",
+    "quote": "In und vor der Mehrzweckhalle findet der beliebte «Flohmi» jeweils an einem Wochenende (Samstag/Sonntag) im Januar statt."
+   },
+   {
+    "url": "https://www.therwil.ch/de/veranstaltungen/detail/detail.php?i=22929",
+    "quote": "Ein grosses Angebot an ausgesuchten Antiquitäten, Raritäten und Kuriositäten sowie an alltäglichen Gegenständen zu günstigen Preisen erwarten Sie."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Municipality's own pages. The event entry gives 09.01.2027 09:00 to 10.01.2027 16:00; the per-day hours (Sat 09-17, Sun 10-16) are in the guidelines PDF (Richtlinien-HFM, dated January 2026) — all match ours. The PDF also says no new goods and that on-site parking is kept free for visitors; left out to stay within the facts I could quote."
+ },
+ {
+  "slug": "hallenflohmarkt-uster",
+  "description": {
+   "de": "Verkauft werden darf hier nur Gebrauchtes. Im Saal hat es überall Steckdosen, um Geräte vor dem Kauf zu testen. Wer mit dem Auto kommt, stellt es auf dem Stadthausplatz, im Parkhaus Iluster oder beim Zeughausareal ab – direkt beim Saal gibt es keine Plätze mehr.",
+   "en": "Only used goods may be sold here. There are sockets all over the hall, so you can test a device before you buy it. If you come by car, park on Stadthausplatz, in the Iluster car park or at the Zeughaus site — there are no spaces at the hall itself any more.",
+   "fr": "Seuls les objets d'occasion peuvent être vendus ici. Des prises électriques un peu partout dans la salle permettent d'essayer un appareil avant de l'acheter. En voiture, on se gare sur la Stadthausplatz, au parking Iluster ou vers le Zeughausareal : il n'y a plus de places devant la salle.",
+   "it": "Qui si può vendere solo merce usata. Nella sala ci sono prese elettriche ovunque, così si può provare un apparecchio prima di comprarlo. In auto si parcheggia sulla Stadthausplatz, nel parcheggio Iluster o allo Zeughausareal: vicino alla sala non ci sono più posti."
+  },
+  "rhythm": {
+   "en": "Monthly, on a Sunday, October to April",
+   "fr": "Chaque mois, un dimanche, d'octobre à avril",
+   "it": "Ogni mese, di domenica, da ottobre ad aprile"
+  },
+  "sources": [
+   {
+    "url": "https://www.flohmarkt-uster.ch/home",
+    "quote": "Es dürfen nur gebrauchte Waren verkauft werden !"
+   },
+   {
+    "url": "https://www.flohmarkt-uster.ch/wer-sind-wir",
+    "quote": "Und es hat z.B. genügend Steckdosen überall wo Sachen getestet werden können."
+   },
+   {
+    "url": "https://www.flohmarkt-uster.ch/anfahrt-hallenflohmarkt-uster",
+    "quote": "Keine Parkplätze mehr beim Stadthofsaal vorhanden !!!"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Organiser's own site. All seven dates (25 Oct 2026 - 25 Apr 2027), 09:00-16:00, match. The site says Brian's Flohmi (Andi and Brigitte Haussmann) took over this market from the previous Flohmi-Team Uster in March 2026, so check that our organiser record names them. The 'used goods only' line is the city's rule for stallholders; I kept it because it tells a buyer there is no new stock."
+ },
+ {
+  "slug": "mercalibro-bellinzona",
+  "description": {
+   "de": "Der Mercalibro ist ein Markt für gebrauchte Bücher. Daneben gibt es Comics, Zeitschriften, Drucke, Sammel- und Postkarten, Briefmarken und anderes Gedrucktes. Es verkaufen Profis wie auch Gelegenheitshändler.",
+   "en": "Mercalibro is a market for second-hand books. Alongside them you'll find comics, magazines, prints, trading cards and postcards, stamps and other printed matter. Both professional and occasional sellers take part.",
+   "fr": "Le Mercalibro est un marché du livre d'occasion. On y trouve aussi des bandes dessinées, des revues, des gravures, des cartes à collectionner et des cartes postales, des timbres et d'autres imprimés. Professionnels et vendeurs occasionnels s'y côtoient.",
+   "it": "Il Mercalibro è un mercato del libro usato. Accanto ai libri ci sono fumetti, riviste, stampe, carte da collezione e cartoline, francobolli e altri stampati. Vendono sia professionisti sia espositori occasionali."
+  },
+  "rhythm": {
+   "en": "Monthly, on the first Wednesday",
+   "fr": "Chaque mois, le premier mercredi",
+   "it": "Ogni mese, il primo mercoledì"
+  },
+  "sources": [
+   {
+    "url": "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/mercalibro-gebrauchtbuchmarkt/",
+    "quote": "Verschiedene Händler bieten gebrauchte Bücher, Comics, Zeitschriften, Drucke, Sammelkarten, Steuerkarten und Postkarten zu erschwinglichen Preisen an."
+   },
+   {
+    "url": "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/mercalibro-gebrauchtbuchmarkt/",
+    "quote": "Auch Briefmarken und andere Druckerzeugnisse sind erhältlich."
+   },
+   {
+    "url": "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/mercalibro-gebrauchtbuchmarkt/",
+    "quote": "professionelle und gelegentliche Aussteller"
+   }
+  ],
+  "conflicts": [
+   "Hours: the page gives Wednesdays 11:00-17:00; our dates have start 11:00 and no end time.",
+   "Organiser: our website_url is Flamingo Edizioni, whose site no longer mentions Mercalibro. laRegione headlines (2026) say Flamingo Edizioni gave up the market and the Cooperativa Area took it over this year."
+  ],
+  "notes": "No organiser page found: Flamingo Edizioni's site has nothing on it and I found no page from the Cooperativa Area. Written from the source_url, a Switzerland Tourism listing (fed by the local tourist office), which lists 4 Nov and 2 Dec 2026 — both match ours. I left out the market's 30th anniversary (1996) because it comes only from press headlines. Someone should find the Cooperativa Area's contact and update website_url and the organiser."
+ },
+ {
+  "slug": "mercatino-lusso-vintage-lugano",
+  "description": {
+   "de": "Gebrauchte Luxusmode und echtes Vintage: Kleider, Accessoires, Brillen und mehr, laut Veranstalterin alles wie neu. Für den Einlass braucht jede Person ein eigenes Ticket auf ihren Namen, online über Ticket Tailor. Veranstalterin ist La Ghianda von Simona Trabucco.",
+   "en": "Second-hand luxury fashion and true vintage: clothes, accessories, glasses and more, all like new, according to the organiser. Every visitor needs their own ticket in their name, booked online through Ticket Tailor. Organised by La Ghianda (Simona Trabucco).",
+   "fr": "Mode de luxe de seconde main et vrai vintage : vêtements, accessoires, lunettes et plus encore, tout comme neuf selon l'organisatrice. Chaque visiteur a besoin de son propre billet nominatif, à réserver en ligne sur Ticket Tailor. Organisé par La Ghianda (Simona Trabucco).",
+   "it": "Moda di lusso di seconda mano e vero vintage: abiti, accessori, occhiali e molto altro, tutto come nuovo secondo l'organizzatrice. Ogni visitatore deve avere il proprio biglietto nominativo, da scaricare online su Ticket Tailor. Organizza La Ghianda di Simona Trabucco."
+  },
+  "rhythm": {
+   "en": "One weekend in November",
+   "fr": "Un week-end de novembre",
+   "it": "Un fine settimana di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.tickettailor.com/events/laghiandadisimonatrabucco/2408113",
+    "quote": "capi di lusso usati ma come nuovi e vero vintage"
+   },
+   {
+    "url": "https://www.tickettailor.com/events/laghiandadisimonatrabucco/2408113",
+    "quote": "abbigliamento, accessori, occhiali e molto altro, tutti articoli come nuovi e di ottima qualità"
+   },
+   {
+    "url": "https://www.tickettailor.com/events/laghiandadisimonatrabucco/2408113",
+    "quote": "OGNI VISITATORE DEVE SCARICARE IL PROPRIO BIGLIETTO INSERENDO I PROPRI DATI"
+   }
+  ],
+  "conflicts": [
+   "Entry fee: our entry_fee is empty. The ticket page says the pass is free, except a priority-entry pass on Saturday 10-12 for CHF 5."
+  ],
+  "notes": "Organiser's own ticket page; laghianda.ch/events lists the same event (14-15 Nov 2026, 10:00-18:00). Dates and hours match. I kept the named-ticket requirement because a visitor without one may not get in; the price itself is left to the entry-fee field."
+ },
+ {
+  "slug": "metalboerse-schweiz-zofingen",
+  "description": {
+   "de": "Eine Börse für Schallplatten und CDs. Wie der Name sagt, richtet sie sich vor allem an Metal-Fans.",
+   "en": "A fair for vinyl records and CDs. As the name says, it is aimed first of all at metal fans.",
+   "fr": "Une bourse aux disques vinyles et aux CD. Comme son nom l'indique, elle s'adresse d'abord aux amateurs de metal.",
+   "it": "Una borsa di dischi in vinile e CD. Come dice il nome, si rivolge soprattutto agli appassionati di metal."
+  },
+  "rhythm": {
+   "en": "One Saturday in November",
+   "fr": "Un samedi de novembre",
+   "it": "Un sabato di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.facebook.com/metalboerseschweiz",
+    "quote": "Die Metalbörse Schweiz ist eine Schallplatten- (Vinyl) und CD-Börse, welche in erster Linie Liebhaber der..."
+   },
+   {
+    "url": "https://www.stadtsaal.ch/veranstaltungskalender",
+    "quote": "Ausstellung - Metalbörse"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Facebook only shows its page summary without a login, and it is cut off at 'Liebhaber der…'. 'Aimed at metal fans' comes from the event's name, not from a sentence I could read in full — check it, or cut the second sentence. Venue calendar: Saturday 28 Nov 2026, 'Beginn: 10.00 Uhr', no end time — matches ours."
+ },
+ {
+  "slug": "modellbahnboerse-koeniz",
+  "description": {
+   "de": "Die Weihnachtsbörse des Könizer Eisenbahnklubs KEK. Händler bieten Modelleisenbahnmaterial an, und der Klub verkauft auch Material im Auftrag Dritter, etwa aus Erbschaften. Die Cafeteria serviert Getränke, ein warmes Menü und Kuchen. Mit dem Bus 10 bis Köniz Schloss.",
+   "en": "The Christmas fair of the Könizer Eisenbahnklub KEK, a model railway club. Dealers sell model railway equipment, and the club also sells items on behalf of others, for example from estates. The cafeteria serves drinks, a hot meal and cake. Take bus 10 to Köniz Schloss.",
+   "fr": "La bourse de Noël du Könizer Eisenbahnklub KEK, un club de modélisme ferroviaire. Des marchands y vendent du matériel de train miniature, et le club vend aussi du matériel pour le compte de tiers, par exemple issu de successions. La cafétéria sert des boissons, un plat chaud et des gâteaux. En bus : ligne 10 jusqu'à Köniz Schloss.",
+   "it": "La borsa di Natale del Könizer Eisenbahnklub KEK, un club di fermodellismo. I commercianti vendono materiale per trenini, e il club vende anche materiale per conto terzi, per esempio da eredità. La caffetteria serve bevande, un piatto caldo e torte. In bus: linea 10 fino a Köniz Schloss."
+  },
+  "rhythm": {
+   "en": "Every year, one Sunday in December",
+   "fr": "Chaque année, un dimanche de décembre",
+   "it": "Ogni anno, una domenica di dicembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.mykek.ch/",
+    "quote": "Der KEK unterstützt Sie beim Material-Verkauf in Ihrem Auftrag, sei es an der traditionellen Modellbahnbörse Köniz oder via Internet."
+   },
+   {
+    "url": "https://www.mykek.ch/boerse__bourse/ausblick",
+    "quote": "Getränke u warmes Menu"
+   },
+   {
+    "url": "https://www.mykek.ch/boerse__bourse/ausblick",
+    "quote": "Linie 10 bis Köniz Schloss"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Club's own site. The second and third quotes come from the 2026 flyer PDF linked as 'Flyer Boerse 2026' on the Ausblick page; its text layer is partly garbled (the cake is on the same line, after a symbol). Flyer: Sunday 6 Dec 2026, 10.00-15.00, adults CHF 5 — all match. Ausblick also confirms Sunday 12 Dec 2027."
+ }
+]

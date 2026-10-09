@@ -56,11 +56,16 @@ const lower = (s) => (s ?? '').trim().toLowerCase();
 
 async function readOurs() {
   const markets = await query(`select id, slug, hub_market_id from public.markets`);
-  const regions = await query(`select id, code from public.regions`);
+  // v1 is Swiss only, and canton codes collide with Bundesland codes — BE is Bern and Berlin,
+  // SH Schaffhausen and Schleswig-Holstein, NW Nidwalden and Nordrhein-Westfalen. Matching on the
+  // code alone filed five new Bernese and Schaffhausen towns under Germany (2026-10-09).
+  const regions = await query(`
+    select r.id, r.code from public.regions r join public.countries k on k.id = r.country_id where k.iso2 = 'CH'`);
   const cities = await query(`
     select c.id, c.region_id, r.code as region_code, t.value as name
       from public.cities c
       join public.regions r on r.id = c.region_id
+      join public.countries k on k.id = r.country_id and k.iso2 = 'CH'
       join public.texts t on t.entity_type = 'city' and t.entity_id = c.id and t.locale = 'de' and t.field = 'name'`);
   const venues = await query(`select id, city_id, name, postal_code from public.venues`);
   const organisers = await query(`select id, name, email, locale from public.organisers`);

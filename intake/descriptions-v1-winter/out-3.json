@@ -1,0 +1,276 @@
+[
+ {
+  "slug": "modelleisenbahn-auto-spielzeugboerse-buchs-sg",
+  "description": {
+   "de": "Eine Börse für Modelleisenbahnen, Modellautos und Spielzeug in der Mehrzweckhalle BZB. Veranstalter ist Modellbau Kreuzlingen, ein Modellbau- und Spielwarengeschäft in Tägerwilen.",
+   "en": "A collectors' fair for model railways, model cars and toys in the BZB multi-purpose hall. It is run by Modellbau Kreuzlingen, a model and toy shop in Tägerwilen.",
+   "fr": "Une bourse aux trains miniatures, aux voitures miniatures et aux jouets, dans la salle polyvalente du BZB. Elle est organisée par Modellbau Kreuzlingen, un magasin de modélisme et de jouets à Tägerwilen.",
+   "it": "Una borsa di trenini, modellini d'auto e giocattoli nella sala multiuso del BZB. La organizza Modellbau Kreuzlingen, un negozio di modellismo e giocattoli a Tägerwilen."
+  },
+  "rhythm": {
+   "en": "Once a year, on a Sunday",
+   "fr": "Une fois par an, un dimanche",
+   "it": "Una volta all'anno, di domenica"
+  },
+  "sources": [
+   {"url": "https://www.modellbaukreuzlingen.ch/boersen-messen", "quote": "Hallentisch Börse Buchs SG Sonntag 22. November 2026"},
+   {"url": "https://www.facebook.com/www.modellbaukreuzlingen.ch", "quote": "Achtung Neue Adresse Hauptstrasse 137C, 8274 Tägerwilen"}
+  ],
+  "conflicts": [],
+  "notes": "The organiser's page is a shop page that only sells stall tables (date 22 Nov 2026 matches). It does not name the hall, the hours (10–15), the entry fee or what is sold; 'model railways, model cars and toys' comes from the market's own name in our record, not from the page. Visitor tickets are meant to be sold through an embedded Ticketino shop, which currently shows no events. The same page also sells tables for a Börse in Amriswil TG on 3–4 April 2027, which may not be in our database."
+ },
+ {
+  "slug": "modelleisenbahn-auto-spielzeugboerse-neuhausen",
+  "description": {
+   "de": "Eine Börse für Modelleisenbahnen, Modellautos und Spielzeug in der Rhyfall-Halle. Veranstalter ist Modellbau Kreuzlingen, ein Modellbau- und Spielwarengeschäft in Tägerwilen.",
+   "en": "A collectors' fair for model railways, model cars and toys in the Rhyfall-Halle. It is run by Modellbau Kreuzlingen, a model and toy shop in Tägerwilen.",
+   "fr": "Une bourse aux trains miniatures, aux voitures miniatures et aux jouets, à la Rhyfall-Halle. Elle est organisée par Modellbau Kreuzlingen, un magasin de modélisme et de jouets à Tägerwilen.",
+   "it": "Una borsa di trenini, modellini d'auto e giocattoli nella Rhyfall-Halle. La organizza Modellbau Kreuzlingen, un negozio di modellismo e giocattoli a Tägerwilen."
+  },
+  "rhythm": {
+   "en": "Once a year, on a Sunday",
+   "fr": "Une fois par an, un dimanche",
+   "it": "Una volta all'anno, di domenica"
+  },
+  "sources": [
+   {"url": "https://www.modellbaukreuzlingen.ch/boersen-messen", "quote": "Hallentisch Börse Neuhausen SH Sonntag 1. November 2026"},
+   {"url": "https://www.facebook.com/www.modellbaukreuzlingen.ch", "quote": "Achtung Neue Adresse Hauptstrasse 137C, 8274 Tägerwilen"}
+  ],
+  "conflicts": [],
+  "notes": "Same organiser page as Buchs SG: only a table sale for 'Börse Neuhausen SH' on 1 Nov 2026 (matches). Hall, hours (10–15), entry fee and goods are not on the page; the goods come from the market's name in our record. Nothing more found on the web."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-lyssach",
+  "description": {
+   "de": "Die Stände stehen in der Einstellhalle der Landi-Agrola und draussen auf dem Gelände. Angeboten werden Antikes, Sammlerstücke und Ware aus Haushaltsauflösungen; Velo- und Elektrohändler sind nicht zugelassen. An den Ständen gibt es nichts zu essen, Sandwiches und Kaffee findest du im Tankstellenshop der Landi. Rauchen ist in der Halle nicht erlaubt.",
+   "en": "The stalls fill the Landi-Agrola's underground car park and the grounds outside. Sellers bring antiques, collectables and finds from house clearances; bicycle and electronics dealers are not admitted. No food is sold at the stalls, but the Landi petrol-station shop has sandwiches and coffee. Smoking is not allowed in the car park.",
+   "fr": "Les stands occupent le parking souterrain de la Landi-Agrola et le terrain attenant. On y trouve des antiquités, des objets de collection et des lots de débarras ; les marchands de vélos et d'électronique n'y sont pas admis. Rien à manger aux stands, mais le shop de la station-service Landi propose sandwichs et café. Interdit de fumer dans le parking.",
+   "it": "Le bancarelle occupano l'autorimessa sotterranea della Landi-Agrola e il piazzale accanto. Si trovano oggetti d'antiquariato, da collezione e da sgomberi di case; i venditori di biciclette e di elettronica non sono ammessi. Alle bancarelle non si vende cibo, ma il negozio del distributore Landi ha panini e caffè. Nell'autorimessa è vietato fumare."
+  },
+  "rhythm": {
+   "en": "Monthly, on the fourth Sunday",
+   "fr": "Chaque mois, le quatrième dimanche",
+   "it": "Ogni mese, la quarta domenica"
+  },
+  "sources": [
+   {"url": "https://nostalgiemarkt-lyssach.jimdofree.com/vorgehen-anmeldung-regeln/", "quote": "Verkaufen darf man alles schöne Antique, Sammlerstücke, Haushaltsauflösungen und und und..."},
+   {"url": "https://nostalgiemarkt-lyssach.jimdofree.com/vorgehen-anmeldung-regeln/", "quote": "Bitte keine Velo oder Elektrohändler. Kein Lebensmittel und Getränke verkauf."},
+   {"url": "https://nostalgiemarkt-lyssach.jimdofree.com/vorgehen-anmeldung-regeln/", "quote": "Sandwiches, Kaffi ect... findet man im Tankstellenshop der Landi."}
+  ],
+  "conflicts": [],
+  "notes": "Home page lists 2026 dates (25 Oct, 22 Nov, 27 Dec) and 10:00–15:00, all matching ours. The 2027 dates are not published yet. The page also links to the same organiser's flea market in Worb; I left that out."
+ },
+ {
+  "slug": "pop-up-flohmi-industrie45-zug",
+  "description": {
+   "de": "Ein Pop-up-Flohmarkt in den Räumen und auf dem Vorplatz des Jugendkulturzentrums industrie45. Am «Pimp your Clothes»-Stand kannst du mitgebrachte Kleider oder frische Fundstücke upcyceln; dazu sind ein Tattoo- und ein Henna-Artist da. Es gibt süsse und salzige Crêpes, Selbstgebackenes und eine Bar, Dari und Sophia Biermann spielen live.",
+   "en": "A pop-up flea market spread across the rooms and forecourt of the industrie45 youth culture centre. At the “Pimp your Clothes” stand you can upcycle clothes you bring along or have just found, and a tattoo artist and a henna artist are there too. Sweet and savoury crêpes, home baking and a bar; Dari and Sophia Biermann play live.",
+   "fr": "Un vide-grenier éphémère dans les salles et sur le parvis du centre culturel jeunesse industrie45. Au stand « Pimp your Clothes », vous pouvez customiser des vêtements apportés de chez vous ou tout juste dénichés ; un tatoueur et un artiste au henné sont aussi de la partie. Crêpes sucrées et salées, pâtisseries maison et un bar ; Dari et Sophia Biermann jouent en live.",
+   "it": "Un mercatino pop-up nelle sale e sul piazzale del centro culturale giovanile industrie45. Allo stand «Pimp your Clothes» puoi rinnovare i vestiti che porti da casa o che hai appena trovato; ci sono anche un tatuatore e un artista dell'henné. Crêpes dolci e salate, dolci fatti in casa e un bar; Dari e Sophia Biermann suonano dal vivo."
+  },
+  "rhythm": {
+   "en": "One-off",
+   "fr": "Édition unique",
+   "it": "Evento unico"
+  },
+  "sources": [
+   {"url": "https://i45.ch/events/2026-11-15--pop-up-flohmi", "quote": "Am «Pimp your Clothes»-Stand kannst du mitgebrachte Kleider oder deine frisch ergatterten Fundstücke upcyceln"},
+   {"url": "https://i45.ch/events/2026-11-15--pop-up-flohmi", "quote": "Ein Tattoo- und ein Henna-Artist sind ebenfalls dabei."},
+   {"url": "https://i45.ch/events/2026-11-15--pop-up-flohmi", "quote": "Für den Hunger gibt’s süsse und salzige Crêpes sowie Selbstgebackenes, an der Bar findest du etwas zum Anstossen."}
+  ],
+  "conflicts": [],
+  "notes": "Event page confirms 15 Nov 2026, 13:00–17:00, free entry for guests. Rooms listed on the page: Wohnzimmer, Mainstage, Vorplatz (written as 'rooms and forecourt'). Performers: Dari and Sophia Biermann. The page does not give the tattoo or henna artists' gender; fr/it use the generic masculine."
+ },
+ {
+  "slug": "puppen-baeren-spielzeugboerse-zollikon",
+  "description": {
+   "de": "Eine Börse für antikes Spielzeug, die 1994 in Zürich begann und jetzt im Gemeindesaal Zollikon stattfindet. Zu finden sind Porzellankopfpuppen aus deutscher und französischer Produktion samt Garderobe, Sasha-Puppen, Steiff-Bären, Blechspielzeug, Puppenstuben und Krämerläden, alte Gesellschaftsspiele und Kinderbücher, Holzspielzeug aus dem Erzgebirge und Weihnachtsschmuck aus Glas, Watte und Dresdner Pappe. Auch Puppen- und Bärenkünstler verkaufen ihre eigenen Stücke. Bring eine Puppe, einen Bären oder ein Spielzeug mit: Experten schauen es sich an und schätzen den Wert, kostenlos.",
+   "en": "A fair for antique toys that began in Zürich in 1994 and is now held in the Gemeindesaal Zollikon. Look for porcelain-headed dolls from German and French makers with their clothes, Sasha dolls, Steiff bears, tin toys, dolls' rooms and toy shops, old board games and children's books, wooden toys from the Erzgebirge and Christmas decorations of glass, cotton wool and Dresden card. Doll and bear artists sell their own work too. Bring a doll, bear or toy along and experts will look at it and estimate its value, free of charge.",
+   "fr": "Une bourse de jouets anciens, née à Zurich en 1994 et installée désormais au Gemeindesaal de Zollikon. On y trouve des poupées à tête de porcelaine de fabrication allemande et française avec leurs garde-robes, des poupées Sasha, des ours Steiff, des jouets en tôle, des chambres de poupée et des épiceries miniatures, des jeux de société et des livres pour enfants anciens, des jouets en bois de l'Erzgebirge et des décorations de Noël en verre, en ouate et en carton de Dresde. Des artistes créateurs de poupées et d'ours y vendent aussi leurs pièces. Apportez une poupée, un ours ou un jouet : des experts l'examinent et en estiment la valeur, gratuitement.",
+   "it": "Una borsa di giocattoli antichi, nata a Zurigo nel 1994 e oggi ospitata nel Gemeindesaal di Zollikon. Si trovano bambole con testa in porcellana di produzione tedesca e francese con i loro corredi, bambole Sasha, orsetti Steiff, giocattoli di latta, case di bambola e negozietti in miniatura, vecchi giochi da tavolo e libri per bambini, giocattoli in legno dell'Erzgebirge e decorazioni natalizie di vetro, ovatta e cartone di Dresda. Anche artisti di bambole e orsetti vendono le loro creazioni. Porta una bambola, un orsetto o un giocattolo: degli esperti lo esaminano e ne stimano il valore, gratis."
+  },
+  "rhythm": {
+   "en": "Yearly, one Sunday in autumn",
+   "fr": "Chaque année, un dimanche d'automne",
+   "it": "Ogni anno, una domenica d'autunno"
+  },
+  "sources": [
+   {"url": "https://www.puppenboerse.ch/Geschichte", "quote": "Die erste Zürcher Puppen & Spielzeugbörse fand am 16. Oktober 1994 im Casino Zürichhorn statt."},
+   {"url": "https://www.puppenboerse.ch", "quote": "Porzellan-Kopf-Puppen aus deutscher und französischer Produktion mit den dazu gehörenden Garderoben."},
+   {"url": "https://www.puppenboerse.ch", "quote": "es gibt auf der Börse die Möglichkeit einer kostenfreien Begutachtung und Schätzung von mitgebrachten Puppen, Bären und Spielzeug."}
+  ],
+  "conflicts": [],
+  "notes": "1 Nov 2026, 10:00–16:00 and Gemeindesaal Zollikon all match. The entry fee (CHF 6) is not in the page text; it may be on the flyer PDF, which I did not open. A second paragraph naming a specific Dorotheum appraiser is commented out in the page's HTML (not shown to visitors), so I wrote 'experts', as the visible text does. Artist dolls and bears since 2019 per the page."
+ },
+ {
+  "slug": "romeo-hallenflohmarkt-muenchwilen",
+  "description": {
+   "de": "Rund 135 Aussteller bauen in der Dreifachhalle Waldegg ihre Tische auf, für einen Floh- und Antiquitätenmarkt. Er begann 2014 in einer Einfachhalle mit 75 Ausstellern und zog um, als der Platz nicht mehr reichte. Der Name setzt sich aus den Familiennamen der zwei Familien zusammen, die ihn führen. Am Verpflegungsstand gibt es Grilliertes, Kaffee, Kuchen und Getränke, im Dezember auch Glühwein; der Eingang ist stufenlos.",
+   "en": "Around 135 sellers set up their tables in the Waldegg triple sports hall for this flea and antiques market. It began in 2014 in a single hall with 75 stalls and moved when it ran out of room. The name is made from the surnames of the two families who run it. The food stand has grilled food, coffee, cake and drinks, with mulled wine in December; the entrance has no steps.",
+   "fr": "Quelque 135 exposants installent leurs tables dans la triple salle de sport Waldegg pour ce marché aux puces et d'antiquités. Il a débuté en 2014 dans une salle simple avec 75 exposants, puis a déménagé faute de place. Son nom réunit les noms des deux familles qui l'organisent. Au stand de restauration : grillades, café, gâteaux et boissons, et vin chaud en décembre ; l'entrée est de plain-pied.",
+   "it": "Circa 135 espositori allestiscono i loro tavoli nella tripla palestra Waldegg per questo mercatino delle pulci e dell'antiquariato. È nato nel 2014 in una palestra singola con 75 espositori e si è trasferito quando lo spazio non bastava più. Il nome unisce i cognomi delle due famiglie che lo organizzano. Allo stand gastronomico ci sono grigliate, caffè, torte e bevande, a dicembre anche vin brulé; l'ingresso è senza gradini."
+  },
+  "rhythm": {
+   "en": "Three times a year, a weekend in March, September and December",
+   "fr": "Trois fois par an, un week-end en mars, septembre et décembre",
+   "it": "Tre volte all'anno, un fine settimana a marzo, settembre e dicembre"
+  },
+  "sources": [
+   {"url": "https://www.romeoflohmarkt.ch/", "quote": "Der ROMEO Hallenflohmarkt zog in die Dreifachhalle Waldegg (hinter dem Sportplatz) der mittlerweile jedes Mal auf 135 Aussteller zählen kann."},
+   {"url": "https://www.romeoflohmarkt.ch/files/romeo/content/pdf/Reglement-Aussteller-2026.pdf", "quote": "Samstag:  Grill, Kaffee, Kuchen, Getränke, (Glühwein nur im Dezember)"},
+   {"url": "https://www.romeoflohmarkt.ch/files/romeo/content/pdf/Reglement-Aussteller-2026.pdf", "quote": "Der Eingang ist eben und hat somit keine Treppen."}
+  ],
+  "conflicts": [],
+  "notes": "Dates (5/6 Dec 2026; 6/7 Mar, 4/5 Sep, 4/5 Dec 2027) come from the online sign-up form and match ours; hours Sat 13–18, Sun 8–16 from the 2026 rules PDF match. The rules PDF gives Weinfelderstr. 21, as we have; the site's info page calls the venue 'Im Eigen 5, Waldegg (hinter dem Sportplatz)', which is the organiser's postal address. The flyer PDF linked as 'next dates' still shows 2025 dates. The 'two families' fact comes from the home page (name built from the Di Roma and Meola surnames)."
+ },
+ {
+  "slug": "shoppi-flohmi-spreitenbach",
+  "description": {
+   "de": "Rund 100 Stände unter dem Dach des ShoppiParking, des Parkhauses beim Shoppi Tivoli; Regen oder Schnee sind darum kein Grund zur Absage. Die Verkäuferinnen und Verkäufer stellen direkt neben ihrem Auto aus. Es gibt ein paar Foodstände, dazu die Restaurants Hans im Glück und WonderWaffel. Flohmarktkönig führt den Markt seit 2021; die Linie 20 hält bei der Station Shoppi Tivoli.",
+   "en": "Around 100 stalls under the roof of ShoppiParking, the car park of the Shoppi Tivoli centre, so rain or snow does not call it off. Sellers set out their goods right beside their cars. There are a few food stands, plus the Hans im Glück and WonderWaffel restaurants. Flohmarktkönig has run it since 2021; line 20 stops at Shoppi Tivoli.",
+   "fr": "Une centaine de stands à l'abri dans le ShoppiParking, le parking couvert du centre Shoppi Tivoli : pluie ou neige, il a lieu. Les vendeurs exposent juste à côté de leur voiture. Quelques stands de restauration, et les restaurants Hans im Glück et WonderWaffel. Flohmarktkönig l'organise depuis 2021 ; la ligne 20 s'arrête à Shoppi Tivoli.",
+   "it": "Un centinaio di bancarelle al coperto nello ShoppiParking, l'autosilo del centro Shoppi Tivoli: pioggia o neve, si fa comunque. I venditori espongono proprio accanto alla loro auto. Ci sono alcuni stand gastronomici, oltre ai ristoranti Hans im Glück e WonderWaffel. Lo organizza Flohmarktkönig dal 2021; la linea 20 ferma a Shoppi Tivoli."
+  },
+  "rhythm": {
+   "en": "About ten times a year, on a Sunday",
+   "fr": "Une dizaine de fois par an, le dimanche",
+   "it": "Una decina di volte all'anno, di domenica"
+  },
+  "sources": [
+   {"url": "https://www.shoppitivoli.ch/news-events/events/flohmarkt/", "quote": "Dank dem gedeckten Parkhaus kann der Flohmi bei jeder Witterung durchgeführt werden."},
+   {"url": "https://www.shoppitivoli.ch/news-events/events/flohmarkt/", "quote": "Es stehen ein paar Flohmi Food-Stände zur Verfügung."},
+   {"url": "https://www.flohmarktkoenig.ch/infos/2", "quote": "2021 erstmals durchgeführt, ist der Shoppi Flohmi sowohl in der Ausstellerzahl, sondern auch in der Anzahl der Veranstaltungen deutlich gewachsen."}
+  ],
+  "conflicts": [],
+  "notes": "Shoppi Tivoli page and Flohmarktkönig event page (flohmarktkoenig.ch/events/2, JavaScript-only) both give 29 Nov 2026, 08:30–15:00, matching ours; only that one date is published. 'Around 100 stalls' and 'Linie 20 bis Bahnhof «Shoppi Tivoli»' are from the Shoppi Tivoli page; sellers beside their cars from both pages."
+ },
+ {
+  "slug": "swiss-vintage-and-design-market-granges-paccot",
+  "description": {
+   "de": "Ein Markt für Vintage und Design im Forum Fribourg. Veranstalter ist Dakota Events, ein Familienbetrieb aus Poliez-Pittet, der dort auch eine Brocante und mehrere Sammlerbörsen durchführt.",
+   "en": "A vintage and design market at Forum Fribourg. It is run by Dakota Events, a family business from Poliez-Pittet that also holds a brocante and several collector fairs in the same venue.",
+   "fr": "Un marché vintage et design au Forum Fribourg. Il est organisé par Dakota Events, une entreprise familiale de Poliez-Pittet qui y tient aussi une brocante et plusieurs bourses de collection.",
+   "it": "Un mercato di vintage e design al Forum Fribourg. Lo organizza Dakota Events, un'azienda di famiglia di Poliez-Pittet che vi tiene anche una brocante e diverse borse per collezionisti."
+  },
+  "rhythm": {
+   "en": "One weekend in March",
+   "fr": "Un week-end de mars",
+   "it": "Un fine settimana di marzo"
+  },
+  "sources": [
+   {"url": "https://dakotaevents.ch/?page_id=63", "quote": "Où/Wo : Forum Fribourg, Rte du Lac 13, 1763 Granges-Paccot"},
+   {"url": "https://dakotaevents.ch/?page_id=29", "quote": "Une entreprise familiale active dans l'organisation de manifestations en Suisse  (salons, expo, bourse de jouets anciens, brocante,…)"}
+  ],
+  "conflicts": [
+   "Address: the organiser's page gives 'Rte du Lac 13' for this market (and for the Brocante de Fribourg), but 'Rte du Lac 12' for its other Forum Fribourg fairs; we have Route du Lac 12. Dates (20–21 Mar 2027), hours (Sat 10–18, Sun 10–17) and entry (CHF 7) match."
+  ],
+  "notes": "The organiser's page is a bare listing (date, venue, hours, prices), so the description is thin. Forum Fribourg's own agenda loads by script and I could not read it. A web search found no other page for this market."
+ },
+ {
+  "slug": "vide-grenier-brocante-les-brenets",
+  "description": {
+   "de": "Dieser Vide-grenier mit Brocante findet zum 18. Mal statt, organisiert von der Association pour les Enfants des Brenets. Es gibt eine Buvette mit Sandwiches, Gebäck und Raclette.",
+   "en": "This vide-grenier and brocante is in its 18th edition, organised by the Association pour les Enfants des Brenets. There is a bar, with sandwiches, pastries and raclette.",
+   "fr": "18e édition de ce vide-grenier brocante, organisé par l'Association pour les Enfants des Brenets. Buvette et petite restauration : sandwichs, pâtisseries et raclette.",
+   "it": "Diciottesima edizione di questo vide-grenier con brocante, organizzato dall'Association pour les Enfants des Brenets. C'è una buvette con panini, dolci e raclette."
+  },
+  "rhythm": {
+   "en": "One Saturday in November",
+   "fr": "Un samedi de novembre",
+   "it": "Un sabato di novembre"
+  },
+  "sources": [
+   {"url": "https://www.lelocle.ch/event/18eme-vide-grenier-brocante/", "quote": "Société: Association pour les Enfants des Brenets"},
+   {"url": "https://www.lelocle.ch/event/18eme-vide-grenier-brocante/", "quote": "Petite restauration (sandwichs, pâtisseries, raclette)"}
+  ],
+  "conflicts": [],
+  "notes": "Source is the Le Locle municipal agenda (the URL now redirects to /event/18eme-vide-grenier-brocante/). 7 Nov 2026, 8h–17h matches. The page gives only 'Champ-Nauger 1', not 'Salle de gym'. The '18th edition' line will be out of date after this year."
+ },
+ {
+  "slug": "vide-grenier-villars-tiercelin",
+  "description": {
+   "de": "Ein Vide-grenier in der Grande salle von Villars-Tiercelin.",
+   "en": "A vide-grenier in the Grande salle of Villars-Tiercelin.",
+   "fr": "Un vide-grenier à la grande salle de Villars-Tiercelin.",
+   "it": "Un vide-grenier nella Grande salle di Villars-Tiercelin."
+  },
+  "rhythm": {
+   "en": "One Sunday in November",
+   "fr": "Un dimanche de novembre",
+   "it": "Una domenica di novembre"
+  },
+  "sources": [
+   {"url": "https://www.jorat-menthue.ch/manifestations.php", "quote": "Grande salle / 1058 Villars-Tiercelin"}
+  ],
+  "conflicts": [],
+  "notes": "Only source is a one-line entry in the Jorat-Menthue municipal calendar: 29.11.2026, Grande salle, 'Vide Grenier'. No organiser, hours or details; a web search found nothing else. One sentence from our record and that entry."
+ },
+ {
+  "slug": "vinylboerse-villa-flora-wald",
+  "description": {
+   "de": "Eine Schallplattenbörse in der herrschaftlichen Villa Flora, seit 2022. Händler bringen gebrauchte und neue Platten mit, LPs, Singles und Schellack, dazu Kassetten, CDs und Abspielgeräte. Das Bistro bietet den ganzen Tag Essen und Getränke.",
+   "en": "A record fair in the stately Villa Flora, held since 2022. Dealers bring used and new records, LPs, singles and shellac, along with cassettes, CDs and players. The bistro serves food and drinks all day.",
+   "fr": "Une bourse aux disques dans la maison de maître Villa Flora, depuis 2022. Les marchands proposent des disques d'occasion et neufs, 33 tours, 45 tours et 78 tours en gomme-laque, ainsi que des cassettes, des CD et des lecteurs. Le bistrot sert à manger et à boire toute la journée.",
+   "it": "Una borsa del disco nella signorile Villa Flora, dal 2022. I commercianti portano dischi usati e nuovi, LP, singoli e dischi in gommalacca, oltre a cassette, CD e apparecchi per l'ascolto. Il bistrot serve da mangiare e da bere tutto il giorno."
+  },
+  "rhythm": {
+   "en": "Twice a year, a Sunday in May/June and in October/November",
+   "fr": "Deux fois par an, un dimanche en mai/juin et en octobre/novembre",
+   "it": "Due volte all'anno, una domenica a maggio/giugno e a ottobre/novembre"
+  },
+  "sources": [
+   {"url": "https://villaflora-wald.ch/vinylboerse/", "quote": "In der herrschaftlichen Villa Flora-Wald ZH finden seit 2022"},
+   {"url": "https://villaflora-wald.ch/events/8-vinylboerse-245-867/", "quote": "Angeboten werden gebrauchte sowie neue Schallplatten. LP's, Singles, Schellack's, MC's, CD's und Abspielgeräte."},
+   {"url": "https://villaflora-wald.ch/events/8-vinylboerse-245-867/", "quote": "Das Bistro mit Essen und Getränken ist am Morgen ab 7:30 Uhr den ganzen Tag geöffnet."}
+  ],
+  "conflicts": [
+   "Hours: the venue's event page for 1 Nov 2026 gives 10:00 – 16:00; we have no hours.",
+   "Entry: the same event page says 'EINTRITT FREI'; our entry_fee is empty."
+  ],
+  "notes": "Date 1 Nov 2026 (the 10th fair) matches. The event page URL slug says '8-vinylboerse' but the page content is the 10th fair on 1 Nov 2026."
+ },
+ {
+  "slug": "weihnachtsdekomarkt-hardmatt-strengelbach",
+  "description": {
+   "de": "Ein Weihnachtsdekomarkt im Flohmarkt des Seniorenzentrums Hardmatt, in den Kellerräumen, die über eine Treppe erreichbar sind. Im Angebot ist, was Leute abgegeben haben: Kupferkannen, handbemaltes Geschirr, Bilder, altes Spielzeug und Alltägliches. Über die angeschriebenen Preise lässt sich reden.",
+   "en": "A Christmas decorations market in the Hardmatt senior centre's flea market, in basement rooms reached by a flight of stairs. On offer is what people have handed in: copper jugs, hand-painted tableware, pictures, old toys and everyday things. Marked prices are open to haggling.",
+   "fr": "Un marché de décorations de Noël au marché aux puces du centre pour seniors Hardmatt, dans des locaux en sous-sol accessibles par un escalier. On y trouve ce que les gens ont déposé : cruches en cuivre, vaisselle peinte à la main, tableaux, vieux jouets et objets du quotidien. Les prix affichés se discutent.",
+   "it": "Un mercatino di decorazioni natalizie nel mercatino dell'usato del centro anziani Hardmatt, in locali seminterrati raggiungibili da una scala. In vendita c'è ciò che la gente ha portato: brocche di rame, stoviglie dipinte a mano, quadri, vecchi giocattoli e oggetti di tutti i giorni. Sui prezzi esposti si può trattare."
+  },
+  "rhythm": {
+   "en": "Three days in November",
+   "fr": "Trois jours en novembre",
+   "it": "Tre giorni a novembre"
+  },
+  "sources": [
+   {"url": "https://www.hardmatt.ch/event/flohmarkt", "quote": "Steigen Sie Stufe um Stufe hinab"},
+   {"url": "https://www.hardmatt.ch/event/flohmarkt", "quote": "Versuchen Sie zu feilschen, der angeschriebene Preis ist mit einem Lächeln oder einem grossen Interesse sicher verhandelbar."},
+   {"url": "https://www.strengelbach.ch/de/veranstaltungen/", "quote": "Flohmarkt Seniorenzentrum Hartmatt: Weihnachtsdekomarkt vom 13.11.2026"}
+  ],
+  "conflicts": [],
+  "notes": "Dates and hours (13 Nov 14–17, 14 Nov 9–17, 15 Nov 10–16) come from the Strengelbach municipal calendar and match ours. Hardmatt's own page describes the regular flea market only, not the Christmas market; the goods described are the flea market's usual stock. That page also says the flea market is open every Saturday 9:00–11:30 (first Saturday of the month until 16:00), except during school holidays. That regular market may deserve its own listing; check whether we have it."
+ },
+ {
+  "slug": "zuercher-schallplatten-cd-boerse",
+  "description": {
+   "de": "Eine Schallplatten- und CD-Börse im Theatersaal des Volkshauses Zürich. Veranstalter ist BLUTT Records, ein Secondhand-Plattenladen an der Limmatstrasse, den es seit 1995 gibt.",
+   "en": "A record and CD fair in the Theatersaal of the Volkshaus Zürich. It is run by BLUTT Records, a second-hand record shop on Limmatstrasse that has been trading since 1995.",
+   "fr": "Une bourse aux disques et CD dans le Theatersaal du Volkshaus de Zurich. Elle est organisée par BLUTT Records, un disquaire d'occasion de la Limmatstrasse ouvert depuis 1995.",
+   "it": "Una borsa di dischi e CD nel Theatersaal del Volkshaus di Zurigo. La organizza BLUTT Records, un negozio di dischi usati in Limmatstrasse attivo dal 1995."
+  },
+  "rhythm": {
+   "en": "Twice a year, on Sundays",
+   "fr": "Deux fois par an, le dimanche",
+   "it": "Due volte all'anno, di domenica"
+  },
+  "sources": [
+   {"url": "https://bluttrecords.ch/zuercher-schallplattenboerse/", "quote": "Die Zürcher Schallplatten- und CD-Börse findet zweimal jährlich im Volkshaus Zürich statt."},
+   {"url": "https://bluttrecords.ch/kontakt/", "quote": "Blutt Records ist euer Laden, wenn es um Secondhand Vinyl, CDs, DVDs, Blu-rays und Games geht. Mein Geschäft existiert seit 30 Jahren."},
+   {"url": "https://www.volkshaus.ch/veranstaltungen", "quote": "ZÜRCHER SCHALLPLATTENBÖRSE BÖRSE 10:00 Uhr THEATERSAAL"}
+  ],
+  "conflicts": [
+   "Missing date: the Volkshaus Zürich events page also lists the Zürcher Schallplattenbörse on Sunday 4 April 2027 (10:00, Theatersaal); we only have 22 Nov 2026."
+  ],
+  "notes": "22 Nov 2026, 10:00–17:00 matches the organiser's page. 'Since 1995' is the shop's own site tagline ('BLUTT Records – Since 1995'); the address Limmatstrasse 125, 8005 Zürich is from its contact page."
+ }
+]

@@ -1,0 +1,237 @@
+[
+  {
+    "slug": "bourse-jouets-collection-fribourg-granges-paccot",
+    "description": {
+      "de": "Eine Börse für altes Sammlerspielzeug, mit 400 Tischen. Vor Ort gibt es ein Restaurant, Kaffee und Sandwiches. Organisiert wird sie von Dakota Events, einem Familienbetrieb. Am selben Wochenende findet im Forum Fribourg auch deren Börse für Fotoapparate, alte Papiere, Bücher und Schallplatten statt.",
+      "en": "A fair for old collectors' toys, with 400 tables. There is a restaurant on site, with coffee and sandwiches. It is run by Dakota Events, a family business. The same weekend, Forum Fribourg also hosts their fair for cameras, old paper, books and records.",
+      "fr": "Une bourse de vieux jouets de collection, sur 400 tables. Sur place, un restaurant propose café et sandwichs. Elle est organisée par Dakota Events, une entreprise familiale. Le même week-end, Forum Fribourg accueille aussi leur bourse d'appareils photo, de vieux papiers, de livres et de vinyles.",
+      "it": "Una borsa di vecchi giocattoli da collezione, su 400 tavoli. Sul posto c'è un ristorante, con caffè e panini. La organizza Dakota Events, un'azienda di famiglia. Lo stesso fine settimana il Forum Fribourg ospita anche la loro borsa di macchine fotografiche, carte d'epoca, libri e vinili."
+    },
+    "rhythm": { "en": "One Saturday in February", "fr": "Un samedi de février", "it": "Un sabato di febbraio" },
+    "sources": [
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/InscriptionF27.pdf", "quote": "400 tables disponibles. Restaurant. Café. Sandwichs" },
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/InscriptionF27.pdf", "quote": "pour la bourse de jouets anciens de Fribourg" },
+      { "url": "https://dakotaevents.ch/?page_id=29", "quote": "Une entreprise familiale active dans l’organisation de manifestations en Suisse (salons, expo, bourse de jouets anciens, brocante,…)" }
+    ],
+    "conflicts": [],
+    "notes": "Event page (dakotaevents.ch/?page_id=63) agrees: Sat 6 Feb 2027, 9:00-16:00. Facts come from the organiser's exhibitor form for this fair (linked from the event page) and its About page; the poster in the same PDF reads '400 tables' and 'Restauration'. The 400 tables is the number offered to sellers, i.e. the fair's size."
+  },
+  {
+    "slug": "bourse-jouets-collection-geneve-le-grand-saconnex",
+    "description": {
+      "de": "Die 30. Ausgabe dieser Börse für Sammlerspielzeug in der Palexpo. Sie findet gemeinsam mit der Vinyl- und CD-Börse statt; zusammen sind es über 200 Tische. Es gibt eine Buvette und kleine Speisen.",
+      "en": "The 30th edition of this collectors' toy fair at Palexpo. It runs together with the record and CD fair, with more than 200 tables between them. There is a bar with light food.",
+      "fr": "La 30e édition de cette bourse de jouets de collection à Palexpo. Elle se tient avec la bourse de vinyles et CD, et l'ensemble compte plus de 200 tables. Buvette et petite restauration sur place.",
+      "it": "La 30ª edizione di questa borsa di giocattoli da collezione al Palexpo. Si svolge insieme alla borsa di vinili e CD, con oltre 200 tavoli in tutto. C'è un bar con piccola ristorazione."
+    },
+    "rhythm": { "en": "One Sunday in January", "fr": "Un dimanche de janvier", "it": "Una domenica di gennaio" },
+    "sources": [
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-P27.pdf", "quote": "30e Bourse aux Jouets de collection" },
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-P27.pdf", "quote": "Buvette, petite restauration" },
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-P27.pdf", "quote": "Plus de 200 tables disponibles en collaboration avec la bourse de vinyls et CD" }
+    ],
+    "conflicts": [],
+    "notes": "Event page agrees: Sun 17 Jan 2027, 10:00-16:00. Quotes are transcribed from the poster image in the organiser's exhibitor form (linked from the event page), not from page text. 'Plus de 200 tables ... en collaboration avec' is ambiguous: I read it as 200+ tables for both fairs together; the toy fair alone may have that many. The event page writes 'Rue François-Peyrot 30'; our record has 'Route François-Peyrot 30' (Palexpo's address is Route; the page looks like a typo)."
+  },
+  {
+    "slug": "bourse-photo-vieux-papiers-fribourg-granges-paccot",
+    "description": {
+      "de": "Eine Börse für Fotoapparate und Fotos, Ansichtskarten, alte Papiere, antiquarische Bücher, Comics, Schallplatten und CDs, in der Halle 4 des Forum Fribourg. Am selben Wochenende findet dort auch die Börse für Sammlerspielzeug von Dakota Events statt.",
+      "en": "A fair for cameras and photographs, postcards, old paper, antiquarian books, comics, records and CDs, in Hall 4 of Forum Fribourg. The same weekend, the venue also hosts Dakota Events' collectors' toy fair.",
+      "fr": "Une bourse d'appareils photo et de photographies, de cartes postales, de vieux papiers, de livres anciens, de bandes dessinées, de vinyles et de CD, dans la halle 4 de Forum Fribourg. Le même week-end, le lieu accueille aussi la bourse de jouets de collection de Dakota Events.",
+      "it": "Una borsa di macchine fotografiche e fotografie, cartoline, carte d'epoca, libri antichi, fumetti, dischi in vinile e CD, nella Halle 4 del Forum Fribourg. Lo stesso fine settimana il Forum ospita anche la borsa di giocattoli da collezione di Dakota Events."
+    },
+    "rhythm": { "en": "One Sunday in February", "fr": "Un dimanche de février", "it": "Una domenica di febbraio" },
+    "sources": [
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-APIP.pdf", "quote": "d´appareils photos, de photos, de cartes postales, de vieux papiers, de livres anciens, bandes dessinées, disques vinyls, CD..." },
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-APIP.pdf", "quote": "Elle aura lieu en halle 4 à Forum Fribourg le 7 février 2027." },
+      { "url": "https://dakotaevents.ch/?page_id=63", "quote": "Horaires/Öffnungszeiten : Samedi de 9h00 à 16h00 / Samstag von 9.00 bis 16.00" }
+    ],
+    "conflicts": [
+      "Opening time: we have 09:00-16:00. The event page says 'Samedi de 9h00 à 16h00' (it names Saturday, though the date is Sunday 7 Feb 2027 - looks copied from the toy fair above it), but the organiser's own poster for this fair, in the exhibitor form linked from the same page, says '10h-16h' (French) and '10.00-16.00' (German). Likely 10:00-16:00; ask Dakota Events."
+    ],
+    "notes": "Date agrees (Sun 7 Feb 2027). The exhibitor form calls it 'Une nouvelle bourse' - a new fair, first edition in 2027. Left out of the description because it will age; could be added for this winter."
+  },
+  {
+    "slug": "bourse-vinyls-cd-geneve-le-grand-saconnex",
+    "description": {
+      "de": "Die 5. Ausgabe dieser Börse für Schallplatten und CDs in der Palexpo. Sie teilt den Tag mit der Börse für Sammlerspielzeug; zusammen sind es über 200 Tische.",
+      "en": "The fifth edition of this record and CD fair at Palexpo. It shares the day with the collectors' toy fair, and together they have more than 200 tables.",
+      "fr": "La 5e édition de cette bourse de vinyles et CD à Palexpo. Elle partage la journée avec la bourse de jouets de collection, et les deux réunissent plus de 200 tables.",
+      "it": "La 5ª edizione di questa borsa di vinili e CD al Palexpo. Condivide la giornata con la borsa di giocattoli da collezione, e insieme contano oltre 200 tavoli."
+    },
+    "rhythm": { "en": "One Sunday in January", "fr": "Un dimanche de janvier", "it": "Una domenica di gennaio" },
+    "sources": [
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-P27.pdf", "quote": "5e Bourse aux Vinyls et CD" },
+      { "url": "https://dakotaevents.ch/wp-content/uploads/2026/06/Inscription-P27.pdf", "quote": "Plus de 200 tables disponibles en collaboration avec la bourse de jouets de collection" }
+    ],
+    "conflicts": [],
+    "notes": "Event page agrees: Sun 17 Jan 2027, 10:00-16:00. Quotes transcribed from the poster image in the exhibitor form. Same table-count ambiguity as the toy fair. The food line on this poster is hidden behind the artwork, so food is left out here. Same 'Rue' vs 'Route François-Peyrot' typo on the page."
+  },
+  {
+    "slug": "brocante-de-fribourg-granges-paccot",
+    "description": {
+      "de": "Eine Brocante im Forum Fribourg, organisiert von Dakota Events, einem Familienbetrieb, der auch Börsen für altes Spielzeug veranstaltet.",
+      "en": "A brocante at Forum Fribourg, run by Dakota Events, a family business that also organises fairs for old toys.",
+      "fr": "Une brocante à Forum Fribourg, organisée par Dakota Events, une entreprise familiale qui met aussi sur pied des bourses de jouets anciens.",
+      "it": "Una brocante al Forum Fribourg, organizzata da Dakota Events, un'azienda di famiglia che allestisce anche borse di giocattoli d'epoca."
+    },
+    "rhythm": { "en": "One weekend in November", "fr": "Un week-end de novembre", "it": "Un fine settimana di novembre" },
+    "sources": [
+      { "url": "https://dakotaevents.ch/?page_id=29", "quote": "Une entreprise familiale active dans l’organisation de manifestations en Suisse (salons, expo, bourse de jouets anciens, brocante,…)" },
+      { "url": "https://dakotaevents.ch/?page_id=63", "quote": "Où/Wo : Forum Fribourg, Rte du Lac 13, 1763 Granges-Paccot" }
+    ],
+    "conflicts": [],
+    "notes": "Event page agrees: 21-22 Nov 2026, Sat 10:00-18:00, Sun 10:00-17:00. The organiser publishes nothing about the brocante beyond date, place and entry, so the description stays at one sentence. Forum Fribourg's agenda lists it but only links back to Dakota. A listing site (brocabrac.fr) claims 400+ professional exhibitors on about 9,000 m2 - not from the organiser, not used. Address: the page gives 'Rte du Lac 13' for this event but 'Rte du Lac 12' for the February fairs; Forum Fribourg's own footer says Rte du Lac 12, which matches our record."
+  },
+  {
+    "slug": "brocante-vide-grenier-55-plus-ecublens",
+    "description": {
+      "de": "Die 55+ d'Ecublens, ein Verein von Freiwilligen für die über 55-Jährigen der Gemeinde, organisieren diese Brocante mit Vide-grenier. Laut Flyer wird alles günstig verkauft. Es gibt eine Buvette, und alle sind willkommen.",
+      "en": "Run by the 55+ d'Ecublens, a volunteer association for the town's over-55s, this is a brocante and vide-grenier in one. The flyer says everything goes at low prices. There is a refreshment bar, and everyone is welcome.",
+      "fr": "Une brocante et vide-grenier organisés par les 55+ d'Ecublens, une association de bénévoles tournée vers les plus de 55 ans de la commune. Tout y est bradé à petit prix, annonce le flyer. Buvette sur place, et tout le monde est bienvenu.",
+      "it": "Un mercatino dell'usato e svuota-soffitte organizzato dai 55+ d'Ecublens, un'associazione di volontari per gli over 55 del comune. Secondo il volantino, tutto viene venduto a prezzi bassi. C'è un punto ristoro, e tutti sono benvenuti."
+    },
+    "rhythm": { "en": "One Saturday in November", "fr": "Un samedi de novembre", "it": "Un sabato di novembre" },
+    "sources": [
+      { "url": "https://www.ecublens.ch/images/stories/Greffe/documents/aines/Automne_hiver_2026/Flyers_oct-nov-15dec2026-Mdi.pdf", "quote": "Venez chiner et trouver l'objet de votre bonheur. Tout sera bradé à bas prix." },
+      { "url": "https://www.ecublens.ch/images/stories/Greffe/documents/aines/Automne_hiver_2026/2026-Agenda_55plus-octobre-15_dec-Corr_MDi1.pdf", "quote": "Buvette à disposition" },
+      { "url": "https://www.ecublens.ch/cadre-de-vie/residents/55", "quote": "L'Association « 55+ d'Ecublens » est composée exclusivement de bénévoles" }
+    ],
+    "conflicts": [],
+    "notes": "Commune event page agrees: Sat 7 Nov 2026, 8:00-16:00, 'Entrée libre'. Facts from the association's autumn agenda ('Buvette à disposition', 'Bienvenue à tous') and its flyer (image PDF; the quote is transcribed from page 8). The 'over-55s' framing comes from the commune's 55+ page: the programme 's’adresse aux plus de 55 ans de la Commune'."
+  },
+  {
+    "slug": "comicboerse-zuerich",
+    "description": {
+      "de": "Es geht um Comics, Mangas und Film. An 80 Tischen gibt es alte und neue Hefte, Bücher, Originale, Karten und Figuren, von Händlern und Privatleuten aus der Schweiz und aus Deutschland. Künstlerinnen und Künstler signieren vor Ort ihre Comics, und die Swiss Garrison kommt in Kostümen.",
+      "en": "Comics, manga and film are the subject. At 80 tables, dealers and private sellers from Switzerland and Germany bring old and new comic books, books, original art, cards and figures. Artists sign their comics on the spot, and the Swiss Garrison turns up in costume.",
+      "fr": "Bandes dessinées, mangas et cinéma : sur 80 tables, des marchands et des particuliers de Suisse et d'Allemagne proposent des BD anciennes et récentes, des livres, des originaux, des cartes et des figurines. Des artistes dédicacent leurs albums sur place, et la Swiss Garrison vient en costume.",
+      "it": "Fumetti, manga e cinema: su 80 tavoli, commercianti e privati dalla Svizzera e dalla Germania portano albi vecchi e nuovi, libri, tavole originali, carte e statuine. Alcuni artisti firmano i loro fumetti sul posto, e la Swiss Garrison arriva in costume."
+    },
+    "rhythm": { "en": "Once a year, on a Sunday", "fr": "Une fois par an, un dimanche", "it": "Una volta all'anno, di domenica" },
+    "sources": [
+      { "url": "https://www.comic-boerse.ch/", "quote": "Sammeln, stöbern, handeln, tauschen, ramschen und fachsimpeln rund um Comics, Mangas und den Film!" },
+      { "url": "https://www.comic-boerse.ch/", "quote": "(80 Verkaufstische, 190x75cm) alte und neue Hefte, Bücher, Originale, Karten und Figuren" },
+      { "url": "https://www.comic-boerse.ch/", "quote": "Mit dabei ist wie immer die SWISS GARRISON in ihren Kostümen." }
+    ],
+    "conflicts": [],
+    "notes": "Organiser page agrees: Sun 20 Dec 2026, 10:00-17:00, Volkshaus Zürich. The facts are the same ones the sister site used (there are few), so the sentences are built differently: subject first, then tables, then signings and the Swiss Garrison (a costume group; the page does not say which franchise, so neither do we). Tram stops are on the page but left out as address detail."
+  },
+  {
+    "slug": "enter-modellbau-boerse-derendingen",
+    "description": {
+      "de": "Eine Börse rund um den Modellbau: Bausätze, Modelle und Zubehör für Autos, Modelleisenbahnen, Flugzeuge und mehr. Sie findet in der Eventhalle der Enter Technikwelt statt, einem Technikmuseum; mit einem Kombiticket ist auch das Museum offen. Für das Essen sorgt das Enter Restaurant.",
+      "en": "A model-making fair: kits, models and accessories for cars, model railways, aircraft and more. It is held in the event hall of the Enter Technikwelt, a technology museum, and a combined ticket gets you into the museum too. The Enter restaurant serves food.",
+      "fr": "Une bourse consacrée au modélisme : maquettes, modèles et accessoires pour voitures, trains miniatures, avions et plus encore. Elle a lieu dans la halle événementielle de l'Enter Technikwelt, un musée de la technique ; un billet combiné donne aussi accès au musée. Le restaurant Enter sert à manger.",
+      "it": "Una borsa dedicata al modellismo: kit di montaggio, modelli e accessori per auto, ferromodellismo, aerei e altro. Si tiene nella sala eventi dell'Enter Technikwelt, un museo della tecnica, e con un biglietto combinato si visita anche il museo. Il ristorante Enter serve da mangiare."
+    },
+    "rhythm": { "en": "One weekend in December", "fr": "Un week-end de décembre", "it": "Un fine settimana di dicembre" },
+    "sources": [
+      { "url": "https://enter.ch/de/events/modellbau-boerse-2026/", "quote": "Eine Börse für alles rund um den Modellbau statt: Bausätze oder Zubehör für Autos, Züge, Flugzeuge und mehr." },
+      { "url": "https://enter.ch/de/events/modellbau-boerse-2026/", "quote": "Eintritt inkl. Tagespass Museum" },
+      { "url": "https://enter.ch/de/events/modellbau-boerse-2026/", "quote": "Kulinarisch werden Sie von unserem Küchenteam im Enter Restaurant verwöhnt." }
+    ],
+    "conflicts": [],
+    "notes": "Event page agrees: Sat 19 - Sun 20 Dec, 10:00-17:00, Eventhalle (no year on the page; the Enter fairs overview lists it as 2026). The combined museum ticket is mentioned without its price; drop that clause if it reads as entry-price talk."
+  },
+  {
+    "slug": "enter-retrotechnikmarkt-derendingen",
+    "description": {
+      "de": "Ein Markt für historische Technik, auf dem Privatpersonen und Firmen Sammlerstücke, Occasionen und Liquidationsware anbieten, für Sammler, Handwerker und Bastler. Maschinen und Apparate aller Art: Dampfmaschinen, Motoren, Mess- und medizinische Instrumente, Uhren, Haushaltgeräte, Musik- und Spielautomaten. Dazu Radios, Fernseher, Tonbandgeräte, Plattenspieler, Schreibmaschinen und Computer, Werkzeuge, Ersatzteile und technische Literatur. Es gibt 500 Gratis-Parkplätze, die Haltestelle Derendingen, Freiheit liegt fünf Minuten zu Fuss entfernt.",
+      "en": "A market for historic technology, where private sellers and companies offer collectors' pieces, second-hand goods and clearance stock to collectors, craftspeople and tinkerers. Machines and devices of every kind: steam engines, motors, measuring and medical instruments, clocks, household appliances, music and coin-operated machines. Also radios, televisions, tape recorders, record players, typewriters and computers, plus tools, spare parts and technical books. There are 500 free parking spaces, and the Derendingen, Freiheit stop is a five-minute walk.",
+      "fr": "Un marché de la technique d'autrefois, où particuliers et entreprises proposent pièces de collection, occasions et liquidations aux collectionneurs, artisans et bricoleurs. Machines et appareils de tous genres : machines à vapeur, moteurs, instruments de mesure et médicaux, horloges, électroménager, automates musicaux et de jeu. Aussi des radios, téléviseurs, magnétophones, tourne-disques, machines à écrire et ordinateurs, ainsi que des outils, des pièces détachées et de la littérature technique. 500 places de parc gratuites ; l'arrêt Derendingen, Freiheit est à cinq minutes à pied.",
+      "it": "Un mercato della tecnica storica, dove privati e aziende offrono pezzi da collezione, usato e merce di liquidazione a collezionisti, artigiani e appassionati del fai da te. Macchine e apparecchi di ogni tipo: macchine a vapore, motori, strumenti di misura e medici, orologi, elettrodomestici, automi musicali e macchine da gioco. Poi radio, televisori, registratori a nastro, giradischi, macchine da scrivere e computer, oltre ad attrezzi, ricambi e letteratura tecnica. Ci sono 500 posteggi gratuiti, e la fermata Derendingen, Freiheit è a cinque minuti a piedi."
+    },
+    "rhythm": { "en": "One weekend in November", "fr": "Un week-end de novembre", "it": "Un fine settimana di novembre" },
+    "sources": [
+      { "url": "https://enter.ch/de/events/enter-retrotechnikmarkt-nov/", "quote": "Die Messe ist Treffpunkt und Handelsplatz für technisches Sammler-, Occasions- und Liquidationsmaterial." },
+      { "url": "https://enter.ch/de/events/enter-retrotechnikmarkt-nov/", "quote": "Zahlreiche Privatpersonen und Unternehmen präsentieren ein vielseitiges Angebot für Sammler, Handwerker und Bastler." },
+      { "url": "https://enter.ch/de/events/enter-retrotechnikmarkt-nov/", "quote": "500 kostenlose Parkplätze" }
+    ],
+    "conflicts": [],
+    "notes": "Event page agrees: Sat 28 - Sun 29 Nov, 10:00-17:00, Eventhalle. The page gives a long item list; I kept the groups it names and dropped the rest. Four sentences - the longest in this batch; the parking/stop sentence can go if it is too much. The page also has '5 min Fussweg ab ÖV-Haltestelle «Derendingen, Freiheit»'."
+  },
+  {
+    "slug": "enter-vinyl-film-buecher-boerse-derendingen",
+    "description": {
+      "de": "Eine Börse für analoge Medien: Schallplatten, CDs, Bücher, Kameras, Filmausrüstung und andere Raritäten. Draussen gibt es zusätzlich einen Kofferraumflohmarkt. Das Enter Restaurant sorgt für das Essen.",
+      "en": "A fair for analogue media: records, CDs, books, cameras, film equipment and other rarities. Outside, there is also a car-boot sale. The Enter restaurant serves food.",
+      "fr": "Une bourse pour les médias analogiques : vinyles, CD, livres, appareils photo, matériel de cinéma et autres raretés. Dehors, il y a aussi un vide-coffres. Le restaurant Enter sert à manger.",
+      "it": "Una borsa per i media analogici: dischi, CD, libri, macchine fotografiche, attrezzatura cinematografica e altre rarità. Fuori c'è anche un mercatino dal bagagliaio. Il ristorante Enter serve da mangiare."
+    },
+    "rhythm": { "en": "One Sunday in February", "fr": "Un dimanche de février", "it": "Una domenica di febbraio" },
+    "sources": [
+      { "url": "https://enter.ch/de/events/vinyl-film-bucher-borse/", "quote": "Entdecken Sie Schallplatten, CDs, Bücher, Kameras, Filmequipment und andere Raritäten der Medienwelt." },
+      { "url": "https://enter.ch/de/events/vinyl-film-bucher-borse/", "quote": "Kofferraumflohmarkt draussen: CHF 20.-" },
+      { "url": "https://enter.ch/de/events/vinyl-film-bucher-borse/", "quote": "Kulinarisch werden Sie von unserem Küchenteam im Enter Restaurant verwöhnt." }
+    ],
+    "conflicts": [],
+    "notes": "Event page agrees: Sun 21 Feb, 10:00-17:00 (no year on the page; the Enter fairs overview lists 'So. 21. Februar 2027'). The car-boot sale is a pitch type offered to sellers ('Kofferraumflohmarkt draussen'); I read it as there being a car-boot area outside. If that feels like over-reading a price list, drop the sentence."
+  },
+  {
+    "slug": "floh-sammler-antikmarkt-grabs",
+    "description": {
+      "de": "Ein Floh-, Sammler- und Antikmarkt auf dem Marktplatz von Grabs, den es seit 1999 gibt. Für das Essen sorgt jedes Mal ein mobiler Imbiss.",
+      "en": "A flea, collectors' and antiques market on the Marktplatz in Grabs, running since 1999. A mobile caterer is there every time with food.",
+      "fr": "Un marché aux puces, de collection et d'antiquités sur la Marktplatz de Grabs, qui existe depuis 1999. Un stand de restauration ambulante est présent à chaque fois.",
+      "it": "Un mercato delle pulci, del collezionismo e dell'antiquariato sulla Marktplatz di Grabs, che esiste dal 1999. A ogni edizione c'è uno stand di ristorazione ambulante."
+    },
+    "rhythm": { "en": "Monthly, on a Saturday, March to November", "fr": "Une fois par mois, un samedi, de mars à novembre", "it": "Una volta al mese, di sabato, da marzo a novembre" },
+    "sources": [
+      { "url": "https://www.fliba.ch/Daten/Grabs_marktzirkel2026.pdf", "quote": "Immer mit Imbiss. (Reisegastronomie)" },
+      { "url": "https://www.fliba.ch/Daten/Grabs_marktzirkel2026.pdf", "quote": "Seit 1999" }
+    ],
+    "conflicts": [],
+    "notes": "All dates agree: 2026 poster (31 Oct, 28 Nov, 8:00-16:00) and the 2027/28 plan PDF (incl. Sun 25 Apr 2027 from 9:00). The organiser only publishes these posters, so the description is short. The 2026 poster also shows '28' beside 'Seit 1999', which fits 2026 being the 28th season."
+  },
+  {
+    "slug": "floh-sammler-antikmarkt-romanshorn",
+    "description": {
+      "de": "Ein Floh-, Sammler- und Antikmarkt am Hafen von Romanshorn, den es seit 1995 gibt. Für das Essen sorgt jedes Mal ein mobiler Imbiss.",
+      "en": "A flea, collectors' and antiques market at the harbour in Romanshorn, running since 1995. A mobile caterer is there every time with food.",
+      "fr": "Un marché aux puces, de collection et d'antiquités au port de Romanshorn, qui existe depuis 1995. Un stand de restauration ambulante est présent à chaque fois.",
+      "it": "Un mercato delle pulci, del collezionismo e dell'antiquariato al porto di Romanshorn, che esiste dal 1995. A ogni edizione c'è uno stand di ristorazione ambulante."
+    },
+    "rhythm": { "en": "Monthly, on a Saturday, March to November", "fr": "Une fois par mois, un samedi, de mars à novembre", "it": "Una volta al mese, di sabato, da marzo a novembre" },
+    "sources": [
+      { "url": "https://www.fliba.ch/Daten/Plakat%20Floh.%20Romanshorn%202026%20Farbig%20Schulze%20Wappen%20und%20Markt%20Zirkel.pdf", "quote": "Immer mit Imbiss, Reisegastronomie" },
+      { "url": "https://www.fliba.ch/Daten/Plakat%20Floh.%20Romanshorn%202026%20Farbig%20Schulze%20Wappen%20und%20Markt%20Zirkel.pdf", "quote": "Seit 1995" },
+      { "url": "https://www.fliba.ch/Daten/Romanshorn27_28.pdf", "quote": "8590 Romanshorn am Hafen, beim alten Fähreplatz, Hafenstrasse 68" }
+    ],
+    "conflicts": [],
+    "notes": "All dates agree: 2026 poster (10 Oct, 14 Nov, 7:00-16:00) and the 2027/28 plan (incl. Sun 14 Mar and Sat 10 Apr 2027 from 8:00). Venue wording differs between the organiser's own documents: 2026 poster 'Am Hafen, beim Park' with 'NEU Hafenstrasse 68'; 2027/28 plan 'beim alten Fähreplatz'. Our venue line uses the 2027 wording; fine either way."
+  },
+  {
+    "slug": "flohmarkt-ace-cafe-rothenburg",
+    "description": {
+      "de": "Ein Flohmarkt im Ace Cafe Luzern, einem Café, in dem das ganze Jahr über Auto- und Töfftreffen stattfinden. Am Morgen gibt es aus der Küche Frühstück.",
+      "en": "A flea market at the Ace Cafe Luzern, a café that hosts car and motorbike meets all year round. In the morning, the kitchen serves breakfast.",
+      "fr": "Un marché aux puces à l'Ace Cafe Luzern, un café qui accueille toute l'année des rencontres de voitures et de motos. Le matin, la cuisine sert le petit-déjeuner.",
+      "it": "Un mercatino delle pulci all'Ace Cafe Luzern, un caffè che tutto l'anno ospita raduni di auto e moto. Al mattino la cucina serve la colazione."
+    },
+    "rhythm": { "en": "Monthly, on the first Sunday", "fr": "Chaque mois, le premier dimanche", "it": "Ogni mese, la prima domenica" },
+    "sources": [
+      { "url": "https://cdn.prod.website-files.com/6540d29e71137819380b982b/69ef5814913065630e91b210_DD-AceCafe_ProgrammMeets_2026%20F.pdf", "quote": "So 1.11. FLOHMARKT" },
+      { "url": "https://www.acecafeluzern.ch/events", "quote": "Wir sind die Anlaufstelle und das Petrolhead-Mekka für Classic Car-Enthusiasten." },
+      { "url": "https://www.acecafeluzern.ch/events", "quote": "Küche 10.00 - 11.30 Frühstück" }
+    ],
+    "conflicts": [],
+    "notes": "The events page lists only the next few car meets; the flea market dates are in the 2026 annual programme PDF linked from it ('Download Jahreskalender'), which agrees with ours (first Sunday every month; 1 Nov and 6 Dec 2026). No flea-market hours are published anywhere; the café opens at 10:00 on Sundays, which is café hours, not market hours - our null start/end stays right. The programme says the café is closed 21.12.2026-1.1.2027; the 2027 programme is not out, so no January date can be checked yet. 'Töff' (Swiss German for motorbike) used deliberately in de."
+  },
+  {
+    "slug": "flohmarkt-glattbrugg",
+    "description": {
+      "de": "Ein Flohmarkt auf dem Roten Marktplatz in Glattbrugg, Gemeinde Opfikon. Ist das Wetter schlecht, lohnt sich vorher eine Nachfrage beim Organisator Willi von Allmen, ob er stattfindet.",
+      "en": "A flea market on the Roter Marktplatz in Glattbrugg, part of Opfikon. When the weather is poor, ask the organiser, Willi von Allmen, before you go whether it is on.",
+      "fr": "Un marché aux puces sur la Roter Marktplatz de Glattbrugg, à Opfikon. Par mauvais temps, renseignez-vous auprès de l'organisateur, Willi von Allmen, avant de vous déplacer.",
+      "it": "Un mercatino delle pulci sulla Roter Marktplatz di Glattbrugg, nel comune di Opfikon. Con il brutto tempo, chiedi prima all'organizzatore, Willi von Allmen, se si svolge."
+    },
+    "rhythm": { "en": "One Saturday in November", "fr": "Un samedi de novembre", "it": "Un sabato di novembre" },
+    "sources": [
+      { "url": "https://www.opfikon.ch/_rte/anlass/6994951", "quote": "7. Nov. 2026, 9.00 Uhr - 16.00 Uhr, Bei schlechter Witterung gibt Willi von Allmen gerne Auskunft bezüglich der Durchführung." }
+    ],
+    "conflicts": [],
+    "notes": "Commune page and the organiser's flyer (opfikon.ch/_doc/6257473) agree: Sat 7 Nov 2026, 09:00-16:00. Nothing else about the market is published, so the bad-weather line is the only fact beyond the place. His phone number is on the page; left out of the description."
+  }
+]
