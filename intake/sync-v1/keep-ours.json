@@ -398,5 +398,16 @@
     "url": "https://schadaugaertnerei.ch/events/list/?eventDisplay=past",
     "quote": "März 2026 So. 15 Schadaumärit 15. März um 10:00 - 16:00",
     "decided": "2026-10-09"
+  },
+  {
+    "slug": "marche-calabash-lausanne",
+    "kind": "remove",
+    "dates": [
+      "2027-01-03"
+    ],
+    "reason": "Derived from the organiser's rule \"le premier dimanche de chaque mois, durant toute l'année\"; not yet confirmed. Added to v1 as tentative the same day.",
+    "url": "https://www.associationcalabash.ch/reglement/",
+    "quote": "le premier dimanche de chaque mois, durant toute l’année",
+    "decided": "2026-10-09"
   }
 ]

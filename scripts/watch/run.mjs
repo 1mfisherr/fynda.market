@@ -9,6 +9,7 @@
  *   --source <text>                         only sources whose URL contains it
  *   --no-ai                                 questions wait for the next run
  *   --limit <n>                             the first n sources (smoke tests)
+ *   --no-swiss                              skip the weekly copy of v1's Swiss dates
  *
  * Windows starts it at login with --if-due (`scripts/watch/schedule.ps1`): once a week, whenever the PC
  * is on — Delfim is not at the PC at a fixed hour (2026-10-09).
@@ -19,6 +20,8 @@
  */
 
 import { createHmac } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { query, withClient, DB_URL, secret } from '../db.mjs';
@@ -55,6 +58,27 @@ if (IF_DUE && !DRY) {
     say(`Market Watch: last run ${new Date(last.at).toISOString().slice(0, 10)}, not due yet.`);
     process.exit(0);
   }
+}
+
+/* ---------------------------------------------------------------------------
+ * Switzerland: v1 watches it, we copy (Delfim, 2026-10-09: "add it to the weekly
+ * run"). Once a week, with this run: sync-v1.mjs --apply writes what v1 changed,
+ * holds back anything that would undo our own edits, and its two summary lines
+ * go into the Telegram report so a held-back change is never silent.
+ * ------------------------------------------------------------------------- */
+
+const swiss = [];
+if (!DRY && !ONLY && !LIMIT && !flag('--no-swiss')) {
+  const sync = spawnSync(process.execPath, [fileURLToPath(new URL('../sync-v1.mjs', import.meta.url)), '--apply'], { encoding: 'utf8', timeout: 10 * 60_000 });
+  const out = `${sync.stdout ?? ''}${sync.stderr ?? ''}`;
+  const written = out.match(/^To write: .*$/m)?.[0];
+  const held = out.match(/^⚠ (\d+) change\(s\) would undo/m)?.[1];
+  if (sync.status !== 0 || !written) swiss.push(`⚠ Swiss copy from v1 failed: ${out.trim().split('\n').pop()?.slice(0, 160) ?? 'no output'}`);
+  else {
+    swiss.push(`Swiss copy from v1 — ${written.replace(/^To write: /, '').replace(/\.$/, '')}.`);
+    if (held) swiss.push(`⚠ ${held} Swiss change(s) held back: they would undo our own edits. Check the organiser's page, then run: node scripts/sync-v1.mjs`);
+  }
+  say(swiss.join('\n'));
 }
 
 /* ---------------------------------------------------------------------------
@@ -328,6 +352,7 @@ const runId = await withClient(DB_URL, async (c) => {
   // The message Delfim gets — written here, sent by the site, which holds the Telegram key.
   const lines = [`Market Watch · ${short(today)}`,
     `${pages.length} page(s) read · ${stamps.size} date(s) re-confirmed · ${decisions.length} to decide${notes.length ? ` · ${notes.length} page(s) broken` : ''}`];
+  lines.push(...swiss);
   if (answer.ai === 'no_login' && questions.length) lines.push(`⚠ ${questions.length} question(s) waiting: the AI login is missing or expired. On the PC, run: claude setup-token`);
   decisions.forEach(({ f, approve, dismiss }, i) => {
     const what = { new_date: 'new date', cancelled: 'cancelled', missing: 'date not on the page', hours: `hours ${f.start}–${f.end}` }[f.kind];
