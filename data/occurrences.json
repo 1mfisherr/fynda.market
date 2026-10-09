@@ -540,6 +540,21 @@
     "status": "unverified"
   },
   {
+    "marketSlug": "bourse-jouets-collection-fribourg-granges-paccot",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "bourse-jouets-collection-geneve-le-grand-saconnex",
+    "date": "2027-01-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "bourse-vinyls-cd-geneve-le-grand-saconnex",
+    "date": "2027-01-17",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "brocante-de-carouge-geneve",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -547,6 +562,16 @@
   {
     "marketSlug": "brocante-de-carouge-geneve",
     "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "brocante-de-fribourg-granges-paccot",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "brocante-de-fribourg-granges-paccot",
+    "date": "2026-11-22",
     "status": "confirmed"
   },
   {
@@ -562,6 +587,11 @@
   {
     "marketSlug": "brocante-de-la-gruyere-bulle",
     "date": "2027-01-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "brocante-vide-grenier-55-plus-ecublens",
+    "date": "2026-11-07",
     "status": "confirmed"
   },
   {
@@ -607,6 +637,11 @@
   {
     "marketSlug": "coffre-ouvert-villeneuve",
     "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "comicboerse-zuerich",
+    "date": "2026-12-20",
     "status": "confirmed"
   },
   {
@@ -675,6 +710,26 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "enter-modellbau-boerse-derendingen",
+    "date": "2026-12-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "enter-modellbau-boerse-derendingen",
+    "date": "2026-12-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "enter-retrotechnikmarkt-derendingen",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "enter-retrotechnikmarkt-derendingen",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "fete-livres-disques-ouchy-lausanne",
     "date": "2026-10-11",
     "status": "confirmed"
@@ -682,6 +737,26 @@
   {
     "marketSlug": "floh-raritaetenmarkt-europaplatz-bern",
     "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "floh-sammler-antikmarkt-grabs",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "floh-sammler-antikmarkt-grabs",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "floh-sammler-antikmarkt-romanshorn",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "floh-sammler-antikmarkt-romanshorn",
+    "date": "2026-11-14",
     "status": "confirmed"
   },
   {
@@ -1002,6 +1077,16 @@
   {
     "marketSlug": "flohmarkt-aarau",
     "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-ace-cafe-rothenburg",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-ace-cafe-rothenburg",
+    "date": "2026-12-06",
     "status": "confirmed"
   },
   {
@@ -1845,6 +1930,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-glattbrugg",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-globus-jena-isserstedt",
     "date": "2026-10-10",
     "status": "confirmed"
@@ -1982,6 +2072,21 @@
   {
     "marketSlug": "flohmarkt-hansa-carre-bremen",
     "date": "2026-12-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hinwil",
+    "date": "2026-10-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hinwil",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-hinwil",
+    "date": "2026-12-13",
     "status": "confirmed"
   },
   {
@@ -2187,6 +2292,16 @@
   {
     "marketSlug": "flohmarkt-markt-und-eventhalle-wismar",
     "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-marktplatz-amriswil",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-marktplatz-amriswil",
+    "date": "2026-11-14",
     "status": "confirmed"
   },
   {
@@ -2475,6 +2590,21 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-schlossgut-muensingen",
+    "date": "2026-10-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schlossgut-muensingen",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-schlossgut-muensingen",
+    "date": "2026-11-22",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
     "date": "2026-10-16",
     "status": "confirmed"
@@ -2512,7 +2642,7 @@
   {
     "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
     "date": "2026-11-06",
-    "status": "confirmed"
+    "status": "cancelled"
   },
   {
     "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
@@ -2890,13 +3020,38 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "grosse-burgdorfer-brocante",
+    "date": "2026-11-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "grosse-burgdorfer-brocante",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "grosse-burgdorfer-brocante",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "grosser-flohmarkt-thun",
     "date": "2026-11-01",
     "status": "confirmed"
   },
   {
+    "marketSlug": "haerkinger-flohmi",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "hallen-flohmarkt-flumserei",
     "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-aadorf",
+    "date": "2026-11-15",
     "status": "confirmed"
   },
   {
@@ -2927,6 +3082,41 @@
   {
     "marketSlug": "hallenflohmarkt-markthalle-basel",
     "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-pentorama-amriswil",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-therwil",
+    "date": "2027-01-09",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-therwil",
+    "date": "2027-01-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-uster",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-uster",
+    "date": "2026-11-15",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-uster",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-uster",
+    "date": "2027-01-24",
     "status": "confirmed"
   },
   {
@@ -3920,6 +4110,26 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "mercalibro-bellinzona",
+    "date": "2026-11-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "mercalibro-bellinzona",
+    "date": "2026-12-02",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "mercatino-lusso-vintage-lugano",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "mercatino-lusso-vintage-lugano",
+    "date": "2026-11-15",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "mercatino-pulci-ragazzi-locarno",
     "date": "2026-10-17",
     "status": "confirmed"
@@ -4020,6 +4230,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "metalboerse-schweiz-zofingen",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
     "date": "2026-10-09",
     "status": "confirmed"
@@ -4092,6 +4307,21 @@
   {
     "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
     "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "modellbahnboerse-koeniz",
+    "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "modelleisenbahn-auto-spielzeugboerse-buchs-sg",
+    "date": "2026-11-22",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "modelleisenbahn-auto-spielzeugboerse-neuhausen",
+    "date": "2026-11-01",
     "status": "confirmed"
   },
   {
@@ -4235,6 +4465,21 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "nostalgie-flohmarkt-lyssach",
+    "date": "2026-10-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nostalgie-flohmarkt-lyssach",
+    "date": "2026-11-22",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nostalgie-flohmarkt-lyssach",
+    "date": "2026-12-27",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "nostalgie-flohmarkt-worb-bern",
     "date": "2026-10-11",
     "status": "confirmed"
@@ -4270,6 +4515,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "pop-up-flohmi-industrie45-zug",
+    "date": "2026-11-15",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "progr-vintage-flea-market-bern",
     "date": "2026-10-17",
     "status": "confirmed"
@@ -4302,6 +4552,11 @@
   {
     "marketSlug": "puces-de-nyon",
     "date": "2027-01-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "puppen-baeren-spielzeugboerse-zollikon",
+    "date": "2026-11-01",
     "status": "confirmed"
   },
   {
@@ -4376,6 +4631,11 @@
   },
   {
     "marketSlug": "riesenflohmarkt-freiburg",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "riesenflohmarkt-freiburg",
     "date": "2026-10-17",
     "status": "confirmed"
   },
@@ -4402,6 +4662,16 @@
   {
     "marketSlug": "riesenflohmarkt-freiburg",
     "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "romeo-hallenflohmarkt-muenchwilen",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "romeo-hallenflohmarkt-muenchwilen",
+    "date": "2026-12-06",
     "status": "confirmed"
   },
   {
@@ -4447,6 +4717,11 @@
   {
     "marketSlug": "saeuliaemtler-flohmarkt-affoltern",
     "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "shoppi-flohmi-spreitenbach",
+    "date": "2026-11-29",
     "status": "confirmed"
   },
   {
@@ -5095,6 +5370,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "vide-grenier-brocante-les-brenets",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "vide-grenier-echichens",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -5105,8 +5385,18 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "vide-grenier-villars-tiercelin",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "vinyl-market-markthalle-basel",
     "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "vinylboerse-villa-flora-wald",
+    "date": "2026-11-01",
     "status": "confirmed"
   },
   {
@@ -5147,6 +5437,11 @@
   {
     "marketSlug": "xxl-flohmarkt-messe-kassel",
     "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "zuercher-schallplatten-cd-boerse",
+    "date": "2026-11-22",
     "status": "confirmed"
   }
 ]

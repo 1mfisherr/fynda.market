@@ -1,0 +1,444 @@
+[
+ {
+  "slug": "comicboerse-zuerich",
+  "description": {
+   "de": "Rund um Comics, Mangas und Film wird hier gesammelt, getauscht und gefachsimpelt. Auf 80 Verkaufstischen liegen Figuren, Karten, Originale, Bücher und Hefte, neue wie alte; sie stammen von Privatleuten und Händlern aus Deutschland und der Schweiz. Dazu kommen Künstlerinnen und Künstler, die vor Ort signieren, und die Swiss Garrison erscheint kostümiert.",
+   "en": "Collecting, swapping and talking shop around comics, manga and film. The 80 sales tables hold figures, cards, original art, books and comic books, new as well as old, brought by private sellers and dealers from Germany and Switzerland. Comic artists are there to sign, and the Swiss Garrison comes along in costume.",
+   "fr": "On y collectionne, échange et discute autour de la BD, du manga et du cinéma. Les 80 tables de vente accueillent figurines, cartes, originaux, livres et albums, récents comme anciens, apportés par des particuliers et des marchands venus d'Allemagne et de Suisse. Des dessinateurs dédicacent sur place, et la Swiss Garrison se montre en costume.",
+   "it": "Si colleziona, si scambia e si chiacchiera di fumetti, manga e cinema. Sugli 80 tavoli di vendita ci sono statuine, carte, tavole originali, libri e albi, nuovi e vecchi, portati da privati e commercianti di Germania e Svizzera. Sul posto alcuni artisti autografano i propri fumetti, e la Swiss Garrison si presenta in costume."
+  },
+  "rhythm": {
+   "en": "Once a year, on a Sunday",
+   "fr": "Une fois par an, un dimanche",
+   "it": "Una volta all'anno, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.comic-boerse.ch/",
+    "quote": "Sammeln, stöbern, handeln, tauschen, ramschen und fachsimpeln rund um Comics, Mangas und den Film!"
+   },
+   {
+    "url": "https://www.comic-boerse.ch/",
+    "quote": "(80 Verkaufstische, 190x75cm) alte und neue Hefte, Bücher, Originale, Karten und Figuren"
+   },
+   {
+    "url": "https://www.comic-boerse.ch/",
+    "quote": "Mit dabei ist wie immer die SWISS GARRISON in ihren Kostümen."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Organiser page agrees: Sun 20 Dec 2026, 10:00-17:00, Volkshaus Zürich. The facts are the same ones the sister site used (there are few), so the sentences are built differently: subject first, then tables, then signings and the Swiss Garrison (a costume group; the page does not say which franchise, so neither do we). Tram stops are on the page but left out as address detail."
+ },
+ {
+  "slug": "enter-modellbau-boerse-derendingen",
+  "description": {
+   "de": "Wer Modelle baut, findet hier Bausätze und Zubehör für Flugzeuge, Züge, Autos und mehr. Schauplatz ist die Eventhalle des Technikmuseums Enter Technikwelt, und das Ticket gilt zugleich als Tagespass fürs Museum. Essen gibt es im hauseigenen Restaurant.",
+   "en": "For people who build models: kits and accessories for aircraft, trains, cars and more. Its home is the event hall at Enter Technikwelt, a technology museum, and the ticket doubles as a day pass to the museum. The museum's own restaurant serves food.",
+   "fr": "Pour qui construit des maquettes : kits et accessoires pour avions, trains, voitures et bien plus. La bourse se tient dans la salle événementielle de l'Enter Technikwelt, un musée de la technique, et le billet vaut aussi pass journée pour le musée. On mange au restaurant de la maison.",
+   "it": "Per chi costruisce modelli: kit e accessori per aerei, treni, auto e altro ancora. Ospita la borsa l'Enter Technikwelt, un museo della tecnica, nella sua sala eventi, e il biglietto vale anche come pass giornaliero per il museo. Si mangia al ristorante interno."
+  },
+  "rhythm": {
+   "en": "One weekend in December",
+   "fr": "Un week-end de décembre",
+   "it": "Un fine settimana di dicembre"
+  },
+  "sources": [
+   {
+    "url": "https://enter.ch/de/events/modellbau-boerse-2026/",
+    "quote": "Eine Börse für alles rund um den Modellbau statt: Bausätze oder Zubehör für Autos, Züge, Flugzeuge und mehr."
+   },
+   {
+    "url": "https://enter.ch/de/events/modellbau-boerse-2026/",
+    "quote": "Eintritt inkl. Tagespass Museum"
+   },
+   {
+    "url": "https://enter.ch/de/events/modellbau-boerse-2026/",
+    "quote": "Kulinarisch werden Sie von unserem Küchenteam im Enter Restaurant verwöhnt."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Event page agrees: Sat 19 - Sun 20 Dec, 10:00-17:00, Eventhalle (no year on the page; the Enter fairs overview lists it as 2026). The combined museum ticket is mentioned without its price; drop that clause if it reads as entry-price talk."
+ },
+ {
+  "slug": "enter-vinyl-film-buecher-boerse-derendingen",
+  "description": {
+   "de": "Kameras und Filmausrüstung, Bücher, Schallplatten und CDs: An dieser Börse gibt es Seltenes aus der Welt der Medien. Draussen kommt ein Kofferraumflohmarkt dazu, und das Restaurant der Enter Technikwelt serviert Essen.",
+   "en": "Cameras and film gear, books, vinyl and CDs: this fair is about rare finds from the world of media. Outside, a car-boot sale adds to it, and the restaurant at Enter Technikwelt serves food.",
+   "fr": "Appareils photo et matériel de cinéma, livres, vinyles et CD : cette bourse rassemble des raretés du monde des médias. À l'extérieur s'ajoute un vide-coffres, et le restaurant de l'Enter Technikwelt propose à manger.",
+   "it": "Macchine fotografiche e attrezzatura per il cinema, libri, vinili e CD: questa borsa riunisce rarità dal mondo dei media. All'esterno si aggiunge un mercatino dal bagagliaio, e il ristorante dell'Enter Technikwelt offre da mangiare."
+  },
+  "rhythm": {
+   "en": "One Sunday in February",
+   "fr": "Un dimanche de février",
+   "it": "Una domenica di febbraio"
+  },
+  "sources": [
+   {
+    "url": "https://enter.ch/de/events/vinyl-film-bucher-borse/",
+    "quote": "Entdecken Sie Schallplatten, CDs, Bücher, Kameras, Filmequipment und andere Raritäten der Medienwelt."
+   },
+   {
+    "url": "https://enter.ch/de/events/vinyl-film-bucher-borse/",
+    "quote": "Kofferraumflohmarkt draussen: CHF 20.-"
+   },
+   {
+    "url": "https://enter.ch/de/events/vinyl-film-bucher-borse/",
+    "quote": "Kulinarisch werden Sie von unserem Küchenteam im Enter Restaurant verwöhnt."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Event page agrees: Sun 21 Feb, 10:00-17:00 (no year on the page; the Enter fairs overview lists 'So. 21. Februar 2027'). The car-boot sale is a pitch type offered to sellers ('Kofferraumflohmarkt draussen'); I read it as there being a car-boot area outside. If that feels like over-reading a price list, drop the sentence."
+ },
+ {
+  "slug": "floh-sammler-antikmarkt-grabs",
+  "description": {
+   "de": "Seit 1999 gibt es auf dem Grabser Marktplatz diesen Markt für Trödel, Sammlerstücke und Antikes. Verpflegung kommt jedes Mal von einem mobilen Imbiss.",
+   "en": "Since 1999, the Marktplatz in Grabs has hosted this mix of flea market, collectables and antiques. A travelling food stand comes along every time.",
+   "fr": "Depuis 1999, ce marché mêle puces, objets de collection et antiquités sur la Marktplatz, à Grabs. Un stand de restauration ambulant vient à chaque fois.",
+   "it": "Dal 1999 questo mercato unisce pulci, collezionismo e antiquariato sulla Marktplatz, a Grabs. Ogni volta è presente uno stand di cibo ambulante."
+  },
+  "rhythm": {
+   "en": "Monthly, on a Saturday, March to November",
+   "fr": "Une fois par mois, un samedi, de mars à novembre",
+   "it": "Una volta al mese, di sabato, da marzo a novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.fliba.ch/Daten/Grabs_marktzirkel2026.pdf",
+    "quote": "Immer mit Imbiss. (Reisegastronomie)"
+   },
+   {
+    "url": "https://www.fliba.ch/Daten/Grabs_marktzirkel2026.pdf",
+    "quote": "Seit 1999"
+   }
+  ],
+  "conflicts": [],
+  "notes": "All dates agree: 2026 poster (31 Oct, 28 Nov, 8:00-16:00) and the 2027/28 plan PDF (incl. Sun 25 Apr 2027 from 9:00). The organiser only publishes these posters, so the description is short. The 2026 poster also shows '28' beside 'Seit 1999', which fits 2026 being the 28th season."
+ },
+ {
+  "slug": "floh-sammler-antikmarkt-romanshorn",
+  "description": {
+   "de": "Seit 1995 gibt es am Romanshorner Hafen diesen Markt für Trödel, Sammlerstücke und Antikes. Jedes Mal ist ein mobiler Imbiss vor Ort.",
+   "en": "Since 1995, this mix of flea market, collectables and antiques has been held on Romanshorn's harbourfront. A travelling food stand is there every time.",
+   "fr": "Depuis 1995, ce marché mêle puces, objets de collection et antiquités près du port, à Romanshorn. Un stand de restauration ambulant est là à chaque fois.",
+   "it": "Dal 1995 questo mercato unisce pulci, collezionismo e antiquariato vicino al porto, a Romanshorn. Ogni volta c'è uno stand di cibo ambulante."
+  },
+  "rhythm": {
+   "en": "Monthly, on a Saturday, March to November",
+   "fr": "Une fois par mois, un samedi, de mars à novembre",
+   "it": "Una volta al mese, di sabato, da marzo a novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.fliba.ch/Daten/Plakat%20Floh.%20Romanshorn%202026%20Farbig%20Schulze%20Wappen%20und%20Markt%20Zirkel.pdf",
+    "quote": "Immer mit Imbiss, Reisegastronomie"
+   },
+   {
+    "url": "https://www.fliba.ch/Daten/Plakat%20Floh.%20Romanshorn%202026%20Farbig%20Schulze%20Wappen%20und%20Markt%20Zirkel.pdf",
+    "quote": "Seit 1995"
+   },
+   {
+    "url": "https://www.fliba.ch/Daten/Romanshorn27_28.pdf",
+    "quote": "8590 Romanshorn am Hafen, beim alten Fähreplatz, Hafenstrasse 68"
+   }
+  ],
+  "conflicts": [],
+  "notes": "All dates agree: 2026 poster (10 Oct, 14 Nov, 7:00-16:00) and the 2027/28 plan (incl. Sun 14 Mar and Sat 10 Apr 2027 from 8:00). Venue wording differs between the organiser's own documents: 2026 poster 'Am Hafen, beim Park' with 'NEU Hafenstrasse 68'; 2027/28 plan 'beim alten Fähreplatz'. Our venue line uses the 2027 wording; fine either way."
+ },
+ {
+  "slug": "flohmarkt-glattbrugg",
+  "description": {
+   "de": "Der Rote Marktplatz in Glattbrugg, einem Ortsteil von Opfikon, wird zum Flohmarkt. Spielt das Wetter nicht mit, weiss Organisator Willi von Allmen, ob es trotzdem losgeht.",
+   "en": "Glattbrugg's Roter Marktplatz, in the town of Opfikon, is the setting for this flea market. If the weather turns, Willi von Allmen, who organises it, can say whether it still goes ahead.",
+   "fr": "Ce marché aux puces investit la Roter Marktplatz de Glattbrugg, commune d'Opfikon. Si le temps se gâte, Willi von Allmen, qui l'organise, sait dire s'il est maintenu.",
+   "it": "Il mercatino delle pulci si tiene sulla Roter Marktplatz, a Glattbrugg nel comune di Opfikon. Se il tempo è brutto, Willi von Allmen, che lo organizza, sa dire se si svolge comunque."
+  },
+  "rhythm": {
+   "en": "One Saturday in November",
+   "fr": "Un samedi de novembre",
+   "it": "Un sabato di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.opfikon.ch/_rte/anlass/6994951",
+    "quote": "7. Nov. 2026, 9.00 Uhr - 16.00 Uhr, Bei schlechter Witterung gibt Willi von Allmen gerne Auskunft bezüglich der Durchführung."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Commune page and the organiser's flyer (opfikon.ch/_doc/6257473) agree: Sat 7 Nov 2026, 09:00-16:00. Nothing else about the market is published, so the bad-weather line is the only fact beyond the place. His phone number is on the page; left out of the description."
+ },
+ {
+  "slug": "flohmarkt-marktplatz-amriswil",
+  "description": {
+   "de": "Auf dem Amriswiler Marktplatz organisiert Toni Pfeffer diesen Flohmarkt.",
+   "en": "Amriswil's Marktplatz hosts this flea market, which Toni Pfeffer runs.",
+   "fr": "La Marktplatz d'Amriswil accueille ce marché aux puces, que Toni Pfeffer organise.",
+   "it": "La Marktplatz di Amriswil ospita questo mercatino delle pulci; a organizzarlo è Toni Pfeffer."
+  },
+  "rhythm": {
+   "en": "Monthly, on a Saturday, April to November (not in July)",
+   "fr": "Chaque mois, un samedi, d'avril à novembre (sauf en juillet)",
+   "it": "Ogni mese, di sabato, da aprile a novembre (escluso luglio)"
+  },
+  "sources": [
+   {
+    "url": "https://www.fliba.ch/Daten/Flohmarkt%20Amriswil%202026",
+    "quote": "FLOHMARKT 2026 MARKTPLATZ AMRISWIL"
+   },
+   {
+    "url": "https://www.fliba.ch/Daten/Flohmarkt%20Amriswil%202026",
+    "quote": "Anmeldung: Toni Pfeffer"
+   }
+  ],
+  "conflicts": [],
+  "notes": "The source is a scanned flyer (JPEG image), quotes read off the image. It lists only dates (18 Apr - 14 Nov 2026, no July), stall prices and the organiser — no hours, no description of goods, so one sentence is all the facts allow. 17 Oct and 14 Nov match ours; the flyer gives no hours, nor do we."
+ },
+ {
+  "slug": "grosse-burgdorfer-brocante",
+  "description": {
+   "de": "Angeboten werden in der Markthalle Burgdorf Porzellan und Glas, Silber und Schmuck, Grafik, Postkarten, Möbel und Kleinantiquitäten. Einen eigenen Händlertag gibt es nicht: Profis kommen zur gleichen Zeit herein wie alle anderen.",
+   "en": "Porcelain and glass, silver and jewellery, prints, postcards, furniture and small antiques are on offer in the Markthalle in Burgdorf. There is no separate trade day: dealers come in at the same time as everyone else.",
+   "fr": "Porcelaine et verre, argenterie et bijoux, estampes, cartes postales, meubles et petites antiquités : voilà ce que propose la Markthalle de Berthoud. Pas de journée à part pour les professionnels, qui entrent en même temps que tout le monde.",
+   "it": "Porcellana e vetro, argenteria e gioielli, stampe, cartoline, mobili e piccole antichità: ecco cosa si trova nella Markthalle a Burgdorf. Non esiste una giornata a parte per i professionisti, che entrano insieme a tutti gli altri."
+  },
+  "rhythm": {
+   "en": "Every year, one weekend in November",
+   "fr": "Chaque année, un week-end de novembre",
+   "it": "Ogni anno, un fine settimana di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.grosseburgdorferbrocante.ch/files/Burgdorfer-Brocante--2026.webp",
+    "quote": "Kleinantiquitäten · Möbel Silber · Schmuck · Glas Porzellan · Grafik Postkarten"
+   },
+   {
+    "url": "https://www.grosseburgdorferbrocante.ch/files/Burgdorfer-Brocante--2026.webp",
+    "quote": "46. Ausgabe"
+   },
+   {
+    "url": "https://www.grosseburgdorferbrocante.ch/",
+    "quote": "Ein spezieller „Händlertag“ findet nicht statt."
+   }
+  ],
+  "conflicts": [
+   "Entry fee: the 2026 flyer says \"Eintritt CHF 7,-\"; our entry_fee is empty."
+  ],
+  "notes": "Organiser's own site plus its 2026 flyer (an image linked from the home page). Dates and hours (Fri 12-18, Sat 10-18, Sun 10-17) match both the flyer and the exhibitor page. I left out the home page's \"dealers from all over Switzerland\": that paragraph sits under the spring collectors' fair, so it may not be about this event. '46th edition' is tied to 2026 and needs updating next year. Revision (out-4): the '46th edition' line is gone (it goes stale), so nothing needs updating next year."
+ },
+ {
+  "slug": "metalboerse-schweiz-zofingen",
+  "description": {
+   "de": "Im Stadtsaal Zofingen dreht sich an dieser Börse alles um Schallplatten und CDs.",
+   "en": "At the Stadtsaal in Zofingen, this fair is all about vinyl records and CDs.",
+   "fr": "Cette bourse réunit vinyles et CD dans le Stadtsaal de Zofingue.",
+   "it": "Questa borsa riunisce vinili e CD presso lo Stadtsaal di Zofingen."
+  },
+  "rhythm": {
+   "en": "One Saturday in November",
+   "fr": "Un samedi de novembre",
+   "it": "Un sabato di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.facebook.com/metalboerseschweiz",
+    "quote": "Die Metalbörse Schweiz ist eine Schallplatten- (Vinyl) und CD-Börse, welche in erster Linie Liebhaber der..."
+   },
+   {
+    "url": "https://www.stadtsaal.ch/veranstaltungskalender",
+    "quote": "Ausstellung - Metalbörse"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Facebook only shows its page summary without a login, and it is cut off at 'Liebhaber der…'. 'Aimed at metal fans' comes from the event's name, not from a sentence I could read in full — check it, or cut the second sentence. Venue calendar: Saturday 28 Nov 2026, 'Beginn: 10.00 Uhr', no end time — matches ours. Revision (out-4): 'aimed at metal fans' dropped, since no source sentence says it in full; the text now says only vinyl and CDs at the Stadtsaal."
+ },
+ {
+  "slug": "modellbahnboerse-koeniz",
+  "description": {
+   "de": "Der Könizer Eisenbahnklub KEK veranstaltet diese Weihnachtsbörse. Neben Händlern mit Modellbahnmaterial verkauft der Klub auch Stücke im Auftrag Dritter, zum Beispiel aus Nachlässen. In der Cafeteria gibt es Kuchen, ein warmes Menü und Getränke; bis Köniz Schloss fährt der Bus 10.",
+   "en": "This Christmas fair is run by the KEK, Köniz's model railway club. Besides dealers with model railway equipment, the club itself sells items for other people, such as pieces from estates. The cafeteria has cake, drinks and a hot meal, and bus 10 stops at Köniz Schloss.",
+   "fr": "Cette bourse de Noël est organisée par le KEK, le club de modélisme ferroviaire de Köniz. À côté des marchands de matériel ferroviaire miniature, le club vend aussi des objets pour le compte d'autres personnes, notamment issus de successions. À la cafétéria : gâteaux, boissons et un plat chaud ; le bus 10 s'arrête à Köniz Schloss.",
+   "it": "Questa borsa di Natale la organizza il KEK, il club di fermodellismo di Köniz. Oltre ai commercianti di materiale per trenini, il club vende anche oggetti per conto di altri, per esempio da eredità. In caffetteria ci sono torte, bevande e un piatto caldo; il bus 10 ferma a Köniz Schloss."
+  },
+  "rhythm": {
+   "en": "Every year, one Sunday in December",
+   "fr": "Chaque année, un dimanche de décembre",
+   "it": "Ogni anno, una domenica di dicembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.mykek.ch/",
+    "quote": "Der KEK unterstützt Sie beim Material-Verkauf in Ihrem Auftrag, sei es an der traditionellen Modellbahnbörse Köniz oder via Internet."
+   },
+   {
+    "url": "https://www.mykek.ch/boerse__bourse/ausblick",
+    "quote": "Getränke u warmes Menu"
+   },
+   {
+    "url": "https://www.mykek.ch/boerse__bourse/ausblick",
+    "quote": "Linie 10 bis Köniz Schloss"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Club's own site. The second and third quotes come from the 2026 flyer PDF linked as 'Flyer Boerse 2026' on the Ausblick page; its text layer is partly garbled (the cake is on the same line, after a symbol). Flyer: Sunday 6 Dec 2026, 10.00-15.00, adults CHF 5 — all match. Ausblick also confirms Sunday 12 Dec 2027."
+ },
+ {
+  "slug": "modelleisenbahn-auto-spielzeugboerse-buchs-sg",
+  "description": {
+   "de": "In der Mehrzweckhalle des BZB werden Spielzeug, Modellautos und Modelleisenbahnen angeboten. Organisiert wird die Börse vom Spielwaren- und Modellbaugeschäft Modellbau Kreuzlingen aus Tägerwilen.",
+   "en": "Toys, model cars and model railways change hands in the BZB's multi-purpose hall. Behind the fair is Modellbau Kreuzlingen, a toy and model shop based in Tägerwilen.",
+   "fr": "Jouets, voitures miniatures et trains miniatures : c'est ce qu'on trouve dans la salle polyvalente du BZB. Derrière cette bourse, Modellbau Kreuzlingen, une boutique de jouets et de modélisme installée à Tägerwilen.",
+   "it": "Giocattoli, modellini d'auto e trenini: ecco cosa offre questa borsa nella sala multiuso del BZB. Dietro c'è Modellbau Kreuzlingen, un negozio di giocattoli e modellismo con sede a Tägerwilen."
+  },
+  "rhythm": {
+   "en": "Once a year, on a Sunday",
+   "fr": "Une fois par an, un dimanche",
+   "it": "Una volta all'anno, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.modellbaukreuzlingen.ch/boersen-messen",
+    "quote": "Hallentisch Börse Buchs SG Sonntag 22. November 2026"
+   },
+   {
+    "url": "https://www.facebook.com/www.modellbaukreuzlingen.ch",
+    "quote": "Achtung Neue Adresse Hauptstrasse 137C, 8274 Tägerwilen"
+   }
+  ],
+  "conflicts": [],
+  "notes": "The organiser's page is a shop page that only sells stall tables (date 22 Nov 2026 matches). It does not name the hall, the hours (10–15), the entry fee or what is sold; 'model railways, model cars and toys' comes from the market's own name in our record, not from the page. Visitor tickets are meant to be sold through an embedded Ticketino shop, which currently shows no events. The same page also sells tables for a Börse in Amriswil TG on 3–4 April 2027, which may not be in our database."
+ },
+ {
+  "slug": "modelleisenbahn-auto-spielzeugboerse-neuhausen",
+  "description": {
+   "de": "Schauplatz dieser Börse ist die Rhyfall-Halle: Hier gibt es Spielzeug, Modellautos und Modelleisenbahnen. Dahinter steht Modellbau Kreuzlingen, ein Geschäft für Spielwaren und Modellbau in Tägerwilen.",
+   "en": "The Rhyfall-Halle is where toys, model cars and model railways change hands at this fair. It is organised by Modellbau Kreuzlingen, a shop for toys and models in Tägerwilen.",
+   "fr": "C'est à la Rhyfall-Halle que cette bourse propose jouets, voitures miniatures et trains miniatures. Elle est l'œuvre de Modellbau Kreuzlingen, une boutique de jouets et de modélisme établie à Tägerwilen.",
+   "it": "Alla Rhyfall-Halle questa borsa propone giocattoli, modellini d'auto e trenini. A organizzarla è Modellbau Kreuzlingen, un negozio di giocattoli e modellismo di Tägerwilen."
+  },
+  "rhythm": {
+   "en": "Once a year, on a Sunday",
+   "fr": "Une fois par an, un dimanche",
+   "it": "Una volta all'anno, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.modellbaukreuzlingen.ch/boersen-messen",
+    "quote": "Hallentisch Börse Neuhausen SH Sonntag 1. November 2026"
+   },
+   {
+    "url": "https://www.facebook.com/www.modellbaukreuzlingen.ch",
+    "quote": "Achtung Neue Adresse Hauptstrasse 137C, 8274 Tägerwilen"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Same organiser page as Buchs SG: only a table sale for 'Börse Neuhausen SH' on 1 Nov 2026 (matches). Hall, hours (10–15), entry fee and goods are not on the page; the goods come from the market's name in our record. Nothing more found on the web."
+ },
+ {
+  "slug": "romeo-hallenflohmarkt-muenchwilen",
+  "description": {
+   "de": "Die Dreifachhalle Waldegg füllen inzwischen jedes Mal rund 135 Ausstellerinnen und Aussteller mit Flohmarktware und Antiquitäten. Angefangen hat der Markt in einer Einfachhalle mit 75 Ausstellern; als es dort zu eng wurde, zog er um. Sein Name verbindet die Nachnamen der beiden Familien, die ihn betreiben. Zu essen gibt es Grilliertes, Kuchen und Kaffee, dazu Getränke und im Dezember Glühwein; man kommt ohne Stufen hinein.",
+   "en": "These days around 135 sellers fill the triple hall at Waldegg each time with flea-market goods and antiques. The market started out in a single hall with 75 stalls and moved once it outgrew it. Its name joins the surnames of the two families behind it. There is grilled food, cake and coffee, plus drinks and, in December, mulled wine; the way in is step-free.",
+   "fr": "Environ 135 exposants remplissent désormais à chaque fois la triple salle Waldegg, entre puces et antiquités. Le marché a commencé dans une salle simple avec 75 exposants, puis a déménagé quand la place a manqué. Son nom associe les noms de famille des deux familles qui le tiennent. Côté restauration : grillades, gâteaux, café et boissons, et en décembre du vin chaud ; on entre de plain-pied.",
+   "it": "Ormai ogni volta circa 135 espositori riempiono la tripla palestra Waldegg con merce da mercatino e pezzi d'antiquariato. Il mercato è partito in una palestra singola con 75 espositori e ha traslocato quando lo spazio è diventato stretto. Il nome mette insieme i cognomi delle due famiglie che lo gestiscono. Da mangiare ci sono grigliate, torte e caffè, oltre alle bevande e, a dicembre, al vin brulé; si entra senza gradini."
+  },
+  "rhythm": {
+   "en": "Three times a year, a weekend in March, September and December",
+   "fr": "Trois fois par an, un week-end en mars, septembre et décembre",
+   "it": "Tre volte all'anno, un fine settimana a marzo, settembre e dicembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.romeoflohmarkt.ch/",
+    "quote": "Der ROMEO Hallenflohmarkt zog in die Dreifachhalle Waldegg (hinter dem Sportplatz) der mittlerweile jedes Mal auf 135 Aussteller zählen kann."
+   },
+   {
+    "url": "https://www.romeoflohmarkt.ch/files/romeo/content/pdf/Reglement-Aussteller-2026.pdf",
+    "quote": "Samstag:  Grill, Kaffee, Kuchen, Getränke, (Glühwein nur im Dezember)"
+   },
+   {
+    "url": "https://www.romeoflohmarkt.ch/files/romeo/content/pdf/Reglement-Aussteller-2026.pdf",
+    "quote": "Der Eingang ist eben und hat somit keine Treppen."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Dates (5/6 Dec 2026; 6/7 Mar, 4/5 Sep, 4/5 Dec 2027) come from the online sign-up form and match ours; hours Sat 13–18, Sun 8–16 from the 2026 rules PDF match. The rules PDF gives Weinfelderstr. 21, as we have; the site's info page calls the venue 'Im Eigen 5, Waldegg (hinter dem Sportplatz)', which is the organiser's postal address. The flyer PDF linked as 'next dates' still shows 2025 dates. The 'two families' fact comes from the home page (name built from the Di Roma and Meola surnames). Revision (out-4): the founding year (2014) is no longer in the text; it says only that the market began in a single hall with 75 exhibitors and moved."
+ },
+ {
+  "slug": "shoppi-flohmi-spreitenbach",
+  "description": {
+   "de": "Rund 100 Stände unter dem Dach des ShoppiParking, des Parkhauses beim Shoppi Tivoli; Regen oder Schnee sind darum kein Grund zur Absage. Die Verkäuferinnen und Verkäufer stellen direkt neben ihrem Auto aus. Es gibt ein paar Foodstände, dazu die Restaurants Hans im Glück und WonderWaffel. Flohmarktkönig führt den Markt seit 2021; zur Station Shoppi Tivoli fährt die Linie 20.",
+   "en": "Around 100 stalls under the roof of ShoppiParking, the car park of the Shoppi Tivoli centre, so rain or snow does not call it off. Sellers set out their goods right beside their cars. There are a few food stands, plus the Hans im Glück and WonderWaffel restaurants. Flohmarktkönig has run it since 2021; line 20 stops at Shoppi Tivoli.",
+   "fr": "Une centaine de stands à l'abri dans le ShoppiParking, le parking couvert du centre Shoppi Tivoli : pluie ou neige, il a lieu. Les vendeurs exposent juste à côté de leur voiture. Quelques stands de restauration, et les restaurants Hans im Glück et WonderWaffel. Flohmarktkönig l'organise depuis 2021 ; la ligne 20 s'arrête à Shoppi Tivoli.",
+   "it": "Un centinaio di bancarelle al coperto nello ShoppiParking, l'autosilo del centro Shoppi Tivoli: pioggia o neve, si fa comunque. I venditori espongono proprio accanto alla loro auto. Ci sono alcuni stand gastronomici, oltre ai ristoranti Hans im Glück e WonderWaffel. Lo organizza Flohmarktkönig dal 2021; la linea 20 ferma a Shoppi Tivoli."
+  },
+  "rhythm": {
+   "en": "About ten times a year, on a Sunday",
+   "fr": "Une dizaine de fois par an, le dimanche",
+   "it": "Una decina di volte all'anno, di domenica"
+  },
+  "sources": [
+   {
+    "url": "https://www.shoppitivoli.ch/news-events/events/flohmarkt/",
+    "quote": "Dank dem gedeckten Parkhaus kann der Flohmi bei jeder Witterung durchgeführt werden."
+   },
+   {
+    "url": "https://www.shoppitivoli.ch/news-events/events/flohmarkt/",
+    "quote": "Es stehen ein paar Flohmi Food-Stände zur Verfügung."
+   },
+   {
+    "url": "https://www.flohmarktkoenig.ch/infos/2",
+    "quote": "2021 erstmals durchgeführt, ist der Shoppi Flohmi sowohl in der Ausstellerzahl, sondern auch in der Anzahl der Veranstaltungen deutlich gewachsen."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Shoppi Tivoli page and Flohmarktkönig event page (flohmarktkoenig.ch/events/2, JavaScript-only) both give 29 Nov 2026, 08:30–15:00, matching ours; only that one date is published. 'Around 100 stalls' and 'Linie 20 bis Bahnhof «Shoppi Tivoli»' are from the Shoppi Tivoli page; sellers beside their cars from both pages."
+ },
+ {
+  "slug": "vide-grenier-brocante-les-brenets",
+  "description": {
+   "de": "Vide-grenier und Brocante zugleich: Diesen Markt organisiert die Association pour les Enfants des Brenets. Wer Hunger hat, findet an der Buvette Raclette, Sandwiches und Gebäck.",
+   "en": "The Association pour les Enfants des Brenets runs this market, a vide-grenier with brocante. At the bar there is raclette, along with sandwiches and pastries.",
+   "fr": "C'est l'Association pour les Enfants des Brenets qui met sur pied ce vide-grenier doublé d'une brocante. On peut se restaurer à la buvette : raclette, sandwichs et pâtisseries.",
+   "it": "A organizzarlo è l'Association pour les Enfants des Brenets: un vide-grenier che è anche brocante. Alla buvette si trovano raclette, panini e dolci."
+  },
+  "rhythm": {
+   "en": "One Saturday in November",
+   "fr": "Un samedi de novembre",
+   "it": "Un sabato di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.lelocle.ch/event/18eme-vide-grenier-brocante/",
+    "quote": "Société: Association pour les Enfants des Brenets"
+   },
+   {
+    "url": "https://www.lelocle.ch/event/18eme-vide-grenier-brocante/",
+    "quote": "Petite restauration (sandwichs, pâtisseries, raclette)"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Source is the Le Locle municipal agenda (the URL now redirects to /event/18eme-vide-grenier-brocante/). 7 Nov 2026, 8h–17h matches. The page gives only 'Champ-Nauger 1', not 'Salle de gym'. The '18th edition' line will be out of date after this year. Revision (out-4): the '18th edition' line is gone (it goes stale)."
+ },
+ {
+  "slug": "vide-grenier-villars-tiercelin",
+  "description": {
+   "de": "In Villars-Tiercelin (Jorat-Menthue) ist die Grande salle Schauplatz eines Vide-greniers.",
+   "en": "In Villars-Tiercelin (Jorat-Menthue), the Grande salle hosts a vide-grenier.",
+   "fr": "À Villars-Tiercelin (Jorat-Menthue), la grande salle accueille un vide-grenier.",
+   "it": "A Villars-Tiercelin (Jorat-Menthue) la Grande salle ospita un vide-grenier."
+  },
+  "rhythm": {
+   "en": "One Sunday in November",
+   "fr": "Un dimanche de novembre",
+   "it": "Una domenica di novembre"
+  },
+  "sources": [
+   {
+    "url": "https://www.jorat-menthue.ch/manifestations.php",
+    "quote": "Grande salle / 1058 Villars-Tiercelin"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Only source is a one-line entry in the Jorat-Menthue municipal calendar: 29.11.2026, Grande salle, 'Vide Grenier'. No organiser, hours or details; a web search found nothing else. One sentence from our record and that entry."
+ }
+]
