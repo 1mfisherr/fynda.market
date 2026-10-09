@@ -252,22 +252,22 @@
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
     "date": "2026-10-11",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
     "date": "2026-10-18",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
     "date": "2026-10-25",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
     "date": "2026-11-01",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
@@ -777,37 +777,37 @@
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-14",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-17",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-21",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-24",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-28",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-10-31",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
@@ -817,7 +817,7 @@
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-11-07",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
@@ -827,7 +827,7 @@
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-11-14",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
@@ -922,32 +922,32 @@
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
     "date": "2026-10-17",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
     "date": "2026-10-24",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
     "date": "2026-10-31",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
     "date": "2026-11-07",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
     "date": "2026-11-14",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohdom-horner-rennbahn-hamburg",
@@ -1117,7 +1117,7 @@
   {
     "marketSlug": "flohmarkt-am-cc-landau",
     "date": "2026-11-28",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohmarkt-am-mauerpark-berlin",
@@ -1378,6 +1378,171 @@
     "marketSlug": "flohmarkt-citti-park-luebeck",
     "date": "2026-12-06",
     "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-10",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-17",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-23",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-24",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-30",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-10-31",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-07",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-14",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-21",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-11-28",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-12-04",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-12-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-12-11",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-12-12",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-12-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2026-12-19",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-02",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-08",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-09",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-15",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-16",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-22",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-23",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-01-30",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-02-05",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-daglfing-muenchen",
+    "date": "2027-02-06",
+    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-dietikon",
@@ -2047,12 +2212,12 @@
   {
     "marketSlug": "flohmarkt-olympiapark-muenchen",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohmarkt-olympiapark-muenchen",
     "date": "2026-10-16",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "flohmarkt-olympiapark-muenchen",
@@ -2792,12 +2957,12 @@
   {
     "marketSlug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
     "date": "2026-10-11",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
@@ -2817,7 +2982,7 @@
   {
     "marketSlug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
     "date": "2026-10-25",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
@@ -2942,17 +3107,17 @@
   {
     "marketSlug": "leo-flohmarkt-berlin",
     "date": "2026-10-17",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "leo-flohmarkt-berlin",
     "date": "2026-10-24",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "leo-flohmarkt-berlin",
     "date": "2026-10-31",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "leo-flohmarkt-berlin",
@@ -3835,6 +4000,81 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-09",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-30",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "musiker-flohmarkt-zuerich-kronensaal",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -3847,6 +4087,46 @@
   {
     "marketSlug": "nachtflohmarkt-cottbus",
     "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-10-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-10-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-11-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-11-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-12-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "nachtflohmarkt-gleishalle-hamburg",
+    "date": "2026-12-19",
     "status": "confirmed"
   },
   {
@@ -4252,22 +4532,22 @@
   {
     "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
     "date": "2026-10-17",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
     "date": "2026-10-24",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
     "date": "2026-10-31",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-aachener-platz-duesseldorf",
@@ -4437,12 +4717,12 @@
   {
     "marketSlug": "troedelmarkt-marheinekeplatz-berlin",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-marheinekeplatz-berlin",
     "date": "2026-10-11",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-marheinekeplatz-berlin",
@@ -4647,7 +4927,7 @@
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
     "date": "2026-10-10",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
@@ -4657,7 +4937,7 @@
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
     "date": "2026-10-18",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
@@ -4702,7 +4982,7 @@
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
     "date": "2026-11-21",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
@@ -4757,7 +5037,7 @@
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
     "date": "2026-12-29",
-    "status": "unverified"
+    "status": "confirmed"
   },
   {
     "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
