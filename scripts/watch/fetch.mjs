@@ -227,7 +227,7 @@ export async function fetchSource(source, previous) {
  * Run `work` over sources: one at a time per host with a pause between, `lanes` hosts at once.
  * Order is shuffled so no host sees us at the same minute every day.
  */
-export async function politely(sources, work, lanes = 5) {
+export async function politely(sources, work, lanes = 5, gap = HOST_GAP_MS) {
   const byHost = new Map();
   for (const s of [...sources].sort(() => Math.random() - 0.5)) {
     const h = hostOf(s.url);
@@ -240,7 +240,7 @@ export async function politely(sources, work, lanes = 5) {
       const queue = queues.shift();
       for (let i = 0; i < queue.length; i++) {
         results.push(await work(queue[i]));
-        if (i < queue.length - 1) await sleep(HOST_GAP_MS[0] + Math.random() * (HOST_GAP_MS[1] - HOST_GAP_MS[0]));
+        if (i < queue.length - 1) await sleep(gap[0] + Math.random() * (gap[1] - gap[0]));
       }
     }
   }
