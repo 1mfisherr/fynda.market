@@ -4,6 +4,8 @@
  *
  *   node scripts/import-v1-additions.mjs --dry-run    read both databases, report, write nothing
  *   node scripts/import-v1-additions.mjs              one transaction, additions only
+ *   --hidden                                          new markets arrive unverified, not built — for a batch whose
+ *                                                     texts must be rewritten first (v1's words never ship twice)
  *
  * The first import (scripts/import-v1.mjs) deletes what it owns and reloads;
  * that stopped being possible the day the live database held things fleafind
@@ -32,6 +34,7 @@ import { sha256Hex, tokenFor } from '../functions/_link.ts';
 import { todayIso } from '../src/lib/format.ts';
 
 const DRY_RUN = process.argv.includes('--dry-run');
+const HIDDEN = process.argv.includes('--hidden');
 
 if (!V1_URL) {
   throw new Error('V1_DATABASE_URL is not set. It is the v1 project connection string, from its Supabase dashboard under Project Settings → Database.');
@@ -279,7 +282,7 @@ async function write(d, ours) {
              (venue_id, organiser_id, slug, status, kind, recurrence_text, entry_fee, currency, website_url)
            values ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning id`,
           [venueIds.get(m.venue_id), m.organiser_key ? organiserIds.get(m.organiser_key) : null,
-            m.slug, m.status, m.kind, m.recurrence_text, m.entry_fee, m.currency, m.website_url]);
+            m.slug, HIDDEN && m.status === 'active' ? 'unverified' : m.status, m.kind, m.recurrence_text, m.entry_fee, m.currency, m.website_url]);
         marketIds.set(m.slug, row.id);
 
         await run(

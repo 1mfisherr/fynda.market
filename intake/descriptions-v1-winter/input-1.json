@@ -1,0 +1,480 @@
+[
+ {
+  "slug": "bourse-jouets-collection-fribourg-granges-paccot",
+  "kind": "flohmarkt",
+  "website_url": "https://dakotaevents.ch/?page_id=63",
+  "recurrence_text": "Ein Samstag im Februar",
+  "venue": "Forum Fribourg",
+  "address_line": "Route du Lac 12",
+  "postal_code": "1763",
+  "town": "Granges-Paccot",
+  "name": "Bourse de jouets de collection de Fribourg",
+  "dates": [
+   {
+    "date": "2027-02-06",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://dakotaevents.ch/?page_id=63",
+  "entry_fee": "10",
+  "v1_description_de": "Eine Börse für Sammlerspielzeug im Forum Fribourg, der Ausstellungshalle an der Route du Lac 12 in Granges-Paccot bei Freiburg. Geöffnet am Samstag von 9 bis 16 Uhr. Eintritt für Erwachsene CHF 10, Kinder von 10 bis 16 Jahren CHF 4. Veranstalter ist Dakota Events; am Sonntag darauf folgt am selben Ort die Börse für Fotoapparate, alte Papiere und Bücher.",
+  "v1_description_en": "A collectors' toy fair at Forum Fribourg, the exhibition hall at Route du Lac 12 in Granges-Paccot near Fribourg. Open on Saturday from 9 am to 4 pm. Entry is CHF 10 for adults and CHF 4 for children aged 10 to 16. Organised by Dakota Events; the camera, old paper and book fair follows at the same venue the next day."
+ },
+ {
+  "slug": "bourse-jouets-collection-geneve-le-grand-saconnex",
+  "kind": "flohmarkt",
+  "website_url": "https://dakotaevents.ch/?page_id=63",
+  "recurrence_text": "Ein Sonntag im Januar",
+  "venue": "Palexpo Genève",
+  "address_line": "Route François-Peyrot 30",
+  "postal_code": "1218",
+  "town": "Le Grand-Saconnex",
+  "name": "Bourse de jouets de collection de Genève",
+  "dates": [
+   {
+    "date": "2027-01-17",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://dakotaevents.ch/?page_id=63",
+  "entry_fee": "7",
+  "v1_description_de": "Eine Börse für Sammlerspielzeug in der Palexpo in Le Grand-Saconnex bei Genf. Geöffnet am Sonntag von 10 bis 16 Uhr. Eintritt für Erwachsene CHF 7, Kinder bis 16 Jahre gratis. Am selben Tag findet in der Palexpo auch die Bourse de Vinyls et CD statt, beide veranstaltet von Dakota Events.",
+  "v1_description_en": "A collectors' toy fair at Palexpo in Le Grand-Saconnex near Geneva. Open on Sunday from 10 am to 4 pm. Entry is CHF 7 for adults and free for children up to 16. The record and CD fair runs at Palexpo on the same day; both are organised by Dakota Events."
+ },
+ {
+  "slug": "bourse-photo-vieux-papiers-fribourg-granges-paccot",
+  "kind": "flohmarkt",
+  "website_url": "https://dakotaevents.ch/?page_id=63",
+  "recurrence_text": "Ein Sonntag im Februar",
+  "venue": "Forum Fribourg",
+  "address_line": "Route du Lac 12",
+  "postal_code": "1763",
+  "town": "Granges-Paccot",
+  "name": "Bourse Appareils Photo, Vieux papiers, Cartes postales, Livres, Vinyls de Fribourg",
+  "dates": [
+   {
+    "date": "2027-02-07",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://dakotaevents.ch/?page_id=63",
+  "entry_fee": "5",
+  "v1_description_de": "Eine Sammlerbörse für Fotoapparate, alte Papiere, Postkarten, Bücher und Schallplatten im Forum Fribourg, der Ausstellungshalle an der Route du Lac 12 in Granges-Paccot bei Freiburg. Geöffnet am Sonntag von 9 bis 16 Uhr. Eintritt für Erwachsene CHF 5, Kinder bis 16 Jahre gratis. Veranstalter ist Dakota Events.",
+  "v1_description_en": "A collectors' fair for cameras, old papers, postcards, books and records at Forum Fribourg, the exhibition hall at Route du Lac 12 in Granges-Paccot near Fribourg. Open on Sunday from 9 am to 4 pm. Entry is CHF 5 for adults and free for children up to 16. Organised by Dakota Events."
+ },
+ {
+  "slug": "bourse-vinyls-cd-geneve-le-grand-saconnex",
+  "kind": "flohmarkt",
+  "website_url": "https://dakotaevents.ch/?page_id=63",
+  "recurrence_text": "Ein Sonntag im Januar",
+  "venue": "Palexpo Genève",
+  "address_line": "Route François-Peyrot 30",
+  "postal_code": "1218",
+  "town": "Le Grand-Saconnex",
+  "name": "Bourse de Vinyls et CD de Genève",
+  "dates": [
+   {
+    "date": "2027-01-17",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://dakotaevents.ch/?page_id=63",
+  "entry_fee": "7",
+  "v1_description_de": "Eine Börse für Schallplatten und CDs in der Palexpo in Le Grand-Saconnex bei Genf. Geöffnet am Sonntag von 10 bis 16 Uhr. Eintritt für Erwachsene CHF 7, Kinder bis 16 Jahre gratis. Am selben Tag findet in der Palexpo auch die Bourse de jouets de collection statt, beide veranstaltet von Dakota Events.",
+  "v1_description_en": "A record and CD fair at Palexpo in Le Grand-Saconnex near Geneva. Open on Sunday from 10 am to 4 pm. Entry is CHF 7 for adults and free for children up to 16. The collectors' toy fair runs at Palexpo on the same day; both are organised by Dakota Events."
+ },
+ {
+  "slug": "brocante-de-fribourg-granges-paccot",
+  "kind": "brocante",
+  "website_url": "https://dakotaevents.ch/?page_id=63",
+  "recurrence_text": "Ein Wochenende im November",
+  "venue": "Forum Fribourg",
+  "address_line": "Route du Lac 12",
+  "postal_code": "1763",
+  "town": "Granges-Paccot",
+  "name": "Brocante de Fribourg",
+  "dates": [
+   {
+    "date": "2026-11-21",
+    "start": "10:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-22",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://dakotaevents.ch/?page_id=63",
+  "entry_fee": "5",
+  "v1_description_de": "Eine Brocante über ein ganzes Wochenende im Forum Fribourg, der Ausstellungshalle an der Route du Lac in Granges-Paccot am Stadtrand von Freiburg. Geöffnet am Samstag von 10 bis 18 Uhr und am Sonntag von 10 bis 17 Uhr. Eintritt für Erwachsene CHF 5, Kinder bis 16 Jahre gratis. Veranstalter ist Dakota Events.",
+  "v1_description_en": "A weekend-long brocante at Forum Fribourg, the exhibition hall on Route du Lac in Granges-Paccot on the edge of Fribourg. Open on Saturday from 10 am to 6 pm and on Sunday from 10 am to 5 pm. Entry is CHF 5 for adults and free for children up to 16. Organised by Dakota Events."
+ },
+ {
+  "slug": "brocante-vide-grenier-55-plus-ecublens",
+  "kind": "brocante",
+  "website_url": "https://www.ecublens.ch/cadre-de-vie/manifestations/5931-aines/49329-brocante-et-vide-grenier-des-55",
+  "recurrence_text": "Ein Samstag im November",
+  "venue": "Grande salle du Motty",
+  "address_line": "Place du Motty",
+  "postal_code": "1024",
+  "town": "Ecublens",
+  "name": "Brocante et vide-grenier des 55+ d'Ecublens",
+  "dates": [
+   {
+    "date": "2026-11-07",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.ecublens.ch/cadre-de-vie/manifestations/5931-aines/49329-brocante-et-vide-grenier-des-55",
+  "entry_fee": null,
+  "v1_description_de": "Eine Brocante mit Vide-grenier in der Grande salle du Motty in Ecublens bei Lausanne. Veranstalter sind die 55+ d'Ecublens, die Seniorengruppe der Gemeinde. Geöffnet am Samstag von 8 bis 16 Uhr, der Eintritt ist frei.",
+  "v1_description_en": "A brocante and vide-grenier in the Grande salle du Motty in Ecublens near Lausanne. It is organised by the 55+ d'Ecublens, the municipality's seniors' group. Open on Saturday from 8 am to 4 pm; entry is free."
+ },
+ {
+  "slug": "comicboerse-zuerich",
+  "kind": "flohmarkt",
+  "website_url": "https://www.comic-boerse.ch/",
+  "recurrence_text": "Einmal jährlich, an einem Sonntag",
+  "venue": "Volkshaus Zürich",
+  "address_line": "Stauffacherstrasse 60",
+  "postal_code": "8004",
+  "town": "Zürich",
+  "name": "Comicbörse Zürich",
+  "dates": [
+   {
+    "date": "2026-12-20",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.comic-boerse.ch/",
+  "entry_fee": "7",
+  "v1_description_de": "Comicbörse im Volkshaus Zürich an der Stauffacherstrasse 60. Händler und Privatpersonen aus der Schweiz und Deutschland bieten an 80 Tischen alte und neue Hefte, Bücher, Originale, Karten und Figuren an, dazu signieren Künstlerinnen und Künstler ihre Comics. Geöffnet von 10 bis 17 Uhr, Eintritt 7 Franken, Kinder gratis.",
+  "v1_description_en": "A comics fair in the Volkshaus Zürich at Stauffacherstrasse 60. Dealers and private sellers from Switzerland and Germany offer old and new comics, books, original art, cards and figures across 80 tables, and artists sign their work. Open from 10 am to 5 pm; entry CHF 7, children free."
+ },
+ {
+  "slug": "enter-modellbau-boerse-derendingen",
+  "kind": "flohmarkt",
+  "website_url": "https://enter.ch/de/flohmaerkte/",
+  "recurrence_text": "Ein Wochenende im Dezember",
+  "venue": "Enter Technikwelt, Eventhalle",
+  "address_line": "Gewerbestrasse 4",
+  "postal_code": "4552",
+  "town": "Derendingen",
+  "name": "Enter Modellbau-Börse",
+  "dates": [
+   {
+    "date": "2026-12-19",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-20",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://enter.ch/de/events/modellbau-boerse-2026/",
+  "entry_fee": "12",
+  "v1_description_de": "Eine Börse rund um den Modellbau in der Eventhalle der Enter Technikwelt an der Gewerbestrasse 4 in Derendingen bei Solothurn, über ein Wochenende. Gehandelt werden Bausätze, Modelle und Zubehör für Autos, Modelleisenbahnen und Flugzeuge. Geöffnet an beiden Tagen von 10 bis 17 Uhr, Eintritt CHF 12 pro Tag, Essen im Enter Restaurant.",
+  "v1_description_en": "A model-making fair in the event hall of the Enter Technikwelt at Gewerbestrasse 4 in Derendingen near Solothurn, held over a weekend. Kits, models and accessories for cars, model railways and aircraft are bought and sold. Open both days 10 am to 5 pm, entry CHF 12 per day, food at the Enter restaurant."
+ },
+ {
+  "slug": "enter-retrotechnikmarkt-derendingen",
+  "kind": "flohmarkt",
+  "website_url": "https://enter.ch/de/flohmaerkte/",
+  "recurrence_text": "Ein Wochenende im November",
+  "venue": "Enter Technikwelt, Eventhalle",
+  "address_line": "Gewerbestrasse 4",
+  "postal_code": "4552",
+  "town": "Derendingen",
+  "name": "Enter Retrotechnikmarkt",
+  "dates": [
+   {
+    "date": "2026-11-28",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-29",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://enter.ch/de/events/enter-retrotechnikmarkt-nov/",
+  "entry_fee": "12",
+  "v1_description_de": "Ein Markt für historische Technik in der Eventhalle der Enter Technikwelt an der Gewerbestrasse 4 in Derendingen bei Solothurn, über ein Wochenende. Privatpersonen und Firmen verkaufen Sammler-, Occasions- und Liquidationsmaterial: Computer, Spielkonsolen, Radios, Plattenspieler, Kameras, Messgeräte, Uhren, Werkzeuge und technische Literatur. Geöffnet an beiden Tagen von 10 bis 17 Uhr, Eintritt CHF 12 pro Tag. Gratis-Parkplätze und ein Restaurant vor Ort.",
+  "v1_description_en": "A market for historic technology in the event hall of the Enter Technikwelt at Gewerbestrasse 4 in Derendingen near Solothurn, held over a weekend. Private sellers and companies offer collectors' items, second-hand and clearance stock: computers, games consoles, radios, record players, cameras, measuring instruments, clocks, tools and technical books. Open both days 10 am to 5 pm, entry CHF 12 per day. Free parking and a restaurant on site."
+ },
+ {
+  "slug": "enter-vinyl-film-buecher-boerse-derendingen",
+  "kind": "flohmarkt",
+  "website_url": "https://enter.ch/de/flohmaerkte/",
+  "recurrence_text": "Ein Sonntag im Februar",
+  "venue": "Enter Technikwelt, Eventhalle",
+  "address_line": "Gewerbestrasse 4",
+  "postal_code": "4552",
+  "town": "Derendingen",
+  "name": "Enter Vinyl- / Film- / Bücher-Börse",
+  "dates": [
+   {
+    "date": "2027-02-21",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://enter.ch/de/events/vinyl-film-bucher-borse/",
+  "entry_fee": "0",
+  "v1_description_de": "Eine Börse für analoge Medien in der Eventhalle der Enter Technikwelt an der Gewerbestrasse 4 in Derendingen bei Solothurn. Angeboten werden Schallplatten, CDs, Bücher, Kameras, Filmausrüstung und andere Raritäten aus der Medienwelt. Geöffnet von 10 bis 17 Uhr, der Eintritt ist gratis, und im Enter Restaurant gibt es Essen.",
+  "v1_description_en": "A fair for analogue media in the event hall of the Enter Technikwelt at Gewerbestrasse 4 in Derendingen near Solothurn. On offer are records, CDs, books, cameras, film equipment and other media rarities. Open 10 am to 5 pm, entry is free, and the Enter restaurant serves food."
+ },
+ {
+  "slug": "floh-sammler-antikmarkt-grabs",
+  "kind": "antikmarkt",
+  "website_url": "https://www.fliba.ch/flohmarkt.html",
+  "recurrence_text": "Monatlich, an einem Samstag, März bis November",
+  "venue": "Marktplatz",
+  "address_line": "Marktstrasse 13",
+  "postal_code": "9472",
+  "town": "Grabs",
+  "name": "Floh-, Sammler- und Antikmarkt Grabs",
+  "dates": [
+   {
+    "date": "2026-10-31",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-28",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-03-27",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-04-24",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-04-25",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-05-29",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-06-26",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-07-31",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-08-28",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-09-25",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-10-30",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-11-27",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   }
+  ],
+  "source_url": "https://www.fliba.ch/Daten/Grabs27_28.pdf",
+  "entry_fee": null,
+  "v1_description_de": "Floh-, Sammler- und Antikmarkt auf dem Marktplatz in Grabs an der Marktstrasse 13. Von März bis November einmal im Monat am Samstag von 8 bis 16 Uhr, im April zusätzlich am Sonntag ab 9 Uhr. Es gibt immer einen Imbiss. Organisiert von Uwe Schulze (Markt Zirkel / FLIBA).",
+  "v1_description_en": "A flea, collectors' and antiques market on the Marktplatz in Grabs at Marktstrasse 13. Once a month on a Saturday from March to November, 8 am to 4 pm, with an extra Sunday in April from 9 am. There is always a food stall. Organised by Uwe Schulze (Markt Zirkel / FLIBA)."
+ },
+ {
+  "slug": "floh-sammler-antikmarkt-romanshorn",
+  "kind": "antikmarkt",
+  "website_url": "https://www.fliba.ch/flohmarkt.html",
+  "recurrence_text": "Monatlich, an einem Samstag, März bis November",
+  "venue": "Am Hafen, beim alten Fähreplatz",
+  "address_line": "Hafenstrasse 68",
+  "postal_code": "8590",
+  "town": "Romanshorn",
+  "name": "Floh-, Sammler- und Antikmarkt Romanshorn",
+  "dates": [
+   {
+    "date": "2026-10-10",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-14",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-03-13",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-03-14",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-04-10",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-05-08",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-06-12",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-07-10",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-08-14",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-09-11",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-10-09",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   },
+   {
+    "date": "2027-11-13",
+    "start": "07:00",
+    "end": "16:00",
+    "status": "tentative"
+   }
+  ],
+  "source_url": "https://www.fliba.ch/Daten/Romanshorn27_28.pdf",
+  "entry_fee": null,
+  "v1_description_de": "Floh-, Sammler- und Antikmarkt am Hafen von Romanshorn, beim alten Fähreplatz an der Hafenstrasse 68. Von März bis November einmal im Monat am Samstag, im März zusätzlich am Sonntag, meist von 7 bis 16 Uhr. Es gibt immer einen Imbiss. Organisiert von Uwe Schulze (Markt Zirkel / FLIBA).",
+  "v1_description_en": "A flea, collectors' and antiques market at the harbour in Romanshorn, by the old ferry square at Hafenstrasse 68. Once a month on a Saturday from March to November, with an extra Sunday in March, mostly from 7 am to 4 pm. There is always a food stall. Organised by Uwe Schulze (Markt Zirkel / FLIBA)."
+ },
+ {
+  "slug": "flohmarkt-ace-cafe-rothenburg",
+  "kind": "flohmarkt",
+  "website_url": "https://www.acecafeluzern.ch/events",
+  "recurrence_text": "Monatlich, jeweils am 1. Sonntag",
+  "venue": "Ace Cafe Luzern",
+  "address_line": "Sonnmatthof 2",
+  "postal_code": "6023",
+  "town": "Rothenburg",
+  "name": "Flohmarkt Ace Cafe Luzern",
+  "dates": [
+   {
+    "date": "2026-11-01",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-06",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.acecafeluzern.ch/events",
+  "entry_fee": null,
+  "v1_description_de": "Ein Flohmarkt beim Ace Cafe Luzern am Sonnmatthof 2 in Rothenburg, jeweils am ersten Sonntag im Monat. Das Ace Cafe ist ein Treffpunkt für Auto- und Töfffans, am Sonntag ab 10 Uhr geöffnet, mit Frühstück bis 11.30 Uhr. Zeiten für den Flohmarkt sind nicht veröffentlicht. Vom 21. Dezember bis 1. Januar ist das Ace Cafe geschlossen.",
+  "v1_description_en": "A flea market at the Ace Cafe Luzern, Sonnmatthof 2 in Rothenburg, on the first Sunday of the month. The Ace Cafe is a meeting place for car and motorbike fans, open on Sundays from 10 am, with breakfast until 11:30 am. Flea market hours are not published. The Ace Cafe is closed from 21 December to 1 January."
+ },
+ {
+  "slug": "flohmarkt-glattbrugg",
+  "kind": "flohmarkt",
+  "website_url": "https://www.opfikon.ch/_rte/anlass/6994951",
+  "recurrence_text": "Ein Samstag im November",
+  "venue": "Roter Marktplatz",
+  "address_line": "Schaffhauserstrasse 94/104",
+  "postal_code": "8152",
+  "town": "Glattbrugg",
+  "name": "Flohmarkt Glattbrugg",
+  "dates": [
+   {
+    "date": "2026-11-07",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.opfikon.ch/_rte/anlass/6994951",
+  "entry_fee": null,
+  "v1_description_de": "Flohmarkt auf dem Roten Marktplatz an der Schaffhauserstrasse in Glattbrugg (Opfikon). Samstags von 9 bis 16 Uhr. Bei schlechtem Wetter gibt der Organisator Willi von Allmen Auskunft, ob der Markt stattfindet; er nimmt auch die Anmeldungen für Standplätze entgegen.",
+  "v1_description_en": "A flea market on the Roter Marktplatz on Schaffhauserstrasse in Glattbrugg (Opfikon). Saturday from 9 am to 4 pm. In bad weather the organiser, Willi von Allmen, can tell you whether it goes ahead; he also takes stall bookings."
+ }
+]

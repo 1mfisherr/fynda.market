@@ -1,0 +1,373 @@
+[
+ {
+  "slug": "modelleisenbahn-auto-spielzeugboerse-buchs-sg",
+  "kind": "flohmarkt",
+  "website_url": "https://www.modellbaukreuzlingen.ch/boersen-messen",
+  "recurrence_text": "Einmal jährlich, an einem Sonntag",
+  "venue": "Mehrzweckhalle BZB",
+  "address_line": "Hanflandstrasse 19",
+  "postal_code": "9471",
+  "town": "Buchs SG",
+  "name": "Modelleisenbahn-, Auto- und Spielzeug-Börse Buchs SG",
+  "dates": [
+   {
+    "date": "2026-11-22",
+    "start": "10:00",
+    "end": "15:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.modellbaukreuzlingen.ch/boersen-messen",
+  "entry_fee": "5",
+  "v1_description_de": "Börse für Modelleisenbahnen, Modellautos und Spielzeug in der Mehrzweckhalle BZB an der Hanflandstrasse 19 in Buchs SG, 2026 zum 33. Mal. Geöffnet von 10 bis 15 Uhr, Eintritt ab 16 Jahren 5 Franken, Kinder gratis; mit VIP-Eintritt für 10 Franken schon ab 9 Uhr. Genügend Parkplätze, vom Bahnhof Buchs SG fünf bis zehn Minuten zu Fuss.",
+  "v1_description_en": "A fair for model railways, model cars and toys in the BZB multi-purpose hall at Hanflandstrasse 19 in Buchs SG, in its 33rd edition in 2026. Open from 10 am to 3 pm; entry CHF 5 from age 16, children free, or CHF 10 VIP entry from 9 am. Plenty of parking; five to ten minutes on foot from Buchs SG station."
+ },
+ {
+  "slug": "modelleisenbahn-auto-spielzeugboerse-neuhausen",
+  "kind": "flohmarkt",
+  "website_url": "https://www.modellbaukreuzlingen.ch/boersen-messen",
+  "recurrence_text": "Einmal jährlich, an einem Sonntag",
+  "venue": "Rhyfall-Halle",
+  "address_line": "Rheingoldstrasse 11",
+  "postal_code": "8212",
+  "town": "Neuhausen",
+  "name": "Modelleisenbahn-, Auto- und Spielzeugbörse Neuhausen",
+  "dates": [
+   {
+    "date": "2026-11-01",
+    "start": "10:00",
+    "end": "15:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.modellbaukreuzlingen.ch/boersen-messen",
+  "entry_fee": "5",
+  "v1_description_de": "Börse für Modelleisenbahnen, Modellautos und Spielzeug in der Rhyfall-Halle an der Rheingoldstrasse 11 in Neuhausen am Rheinfall, 2026 zum 34. Mal. Geöffnet von 10 bis 15 Uhr, Eintritt 5 Franken, Kinder unter 16 Jahren gratis. Parkplätze sind vorhanden; ab Bahnhof Schaffhausen fährt der Trolleybus 1 bis Neuhausen Zentrum.",
+  "v1_description_en": "A fair for model railways, model cars and toys in the Rhyfall-Halle at Rheingoldstrasse 11 in Neuhausen am Rheinfall, in its 34th edition in 2026. Open from 10 am to 3 pm; entry CHF 5, children under 16 free. Parking is available; trolleybus 1 runs from Schaffhausen station to Neuhausen Zentrum."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-lyssach",
+  "kind": "flohmarkt",
+  "website_url": "https://nostalgiemarkt-lyssach.jimdofree.com/",
+  "recurrence_text": "Monatlich, jeweils am 4. Sonntag",
+  "venue": "Landi-Agrola, Einstellhalle und Gelände",
+  "address_line": "Schachenstrasse 39",
+  "postal_code": "3421",
+  "town": "Lyssach",
+  "name": "Nostalgie Floh-Markt Lyssach",
+  "dates": [
+   {
+    "date": "2026-10-25",
+    "start": "10:00",
+    "end": "15:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-22",
+    "start": "10:00",
+    "end": "15:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-27",
+    "start": "10:00",
+    "end": "15:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://nostalgiemarkt-lyssach.jimdofree.com/",
+  "entry_fee": null,
+  "v1_description_de": "Ein Nostalgie-Flohmarkt in der Einstellhalle und auf dem Gelände der Landi-Agrola an der Schachenstrasse 39 in Lyssach. Er findet jeden vierten Sonntag im Monat statt, von 10 bis 15 Uhr. In der Einstellhalle gilt Rauchverbot. Organisiert von Jürg Engel, der auch den Nostalgie-Flohmarkt in Worb führt.",
+  "v1_description_en": "A nostalgia flea market in the underground car park and on the grounds of the Landi-Agrola at Schachenstrasse 39 in Lyssach. It runs on the fourth Sunday of every month, from 10 am to 3 pm. Smoking is not allowed in the car park. Organised by Jürg Engel, who also runs the nostalgia flea market in Worb."
+ },
+ {
+  "slug": "pop-up-flohmi-industrie45-zug",
+  "kind": "flohmarkt",
+  "website_url": "https://www.industrie45.ch/",
+  "recurrence_text": "Einmalig",
+  "venue": "Jugendkulturzentrum industrie45",
+  "address_line": "Industriestrasse 45",
+  "postal_code": "6300",
+  "town": "Zug",
+  "name": "Pop-up Flohmi industrie45",
+  "dates": [
+   {
+    "date": "2026-11-15",
+    "start": "13:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://i45.ch/events/2026-11-15--pop-up-flohmi",
+  "entry_fee": "0",
+  "v1_description_de": "Ein Pop-up-Flohmarkt im Jugendkulturzentrum industrie45 an der Industriestrasse 45 in Zug, an einem Sonntagnachmittag von 13 bis 17 Uhr. Neben den Ständen gibt es einen Stand zum Upcyceln von Kleidern, einen Tattoo- und einen Henna-Artist sowie Live-Musik. Crêpes, Selbstgebackenes und eine Bar sorgen fürs Essen und Trinken. Der Eintritt ist gratis.",
+  "v1_description_en": "A pop-up flea market at the industrie45 youth culture centre, Industriestrasse 45 in Zug, on a Sunday afternoon from 1 pm to 5 pm. Besides the stalls there is a stand for upcycling clothes, a tattoo artist and a henna artist, and live music. Crêpes, home baking and a bar take care of food and drink. Entry is free."
+ },
+ {
+  "slug": "puppen-baeren-spielzeugboerse-zollikon",
+  "kind": "flohmarkt",
+  "website_url": "https://www.puppenboerse.ch",
+  "recurrence_text": "Jährlich, ein Sonntag im Herbst",
+  "venue": "Gemeindesaal Zollikon",
+  "address_line": "Rotfluhstrasse 96",
+  "postal_code": "8702",
+  "town": "Zollikon",
+  "name": "Puppen-, Bären- und Spielzeugbörse",
+  "dates": [
+   {
+    "date": "2026-11-01",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.puppenboerse.ch",
+  "entry_fee": "6",
+  "v1_description_de": "Die Zürcher Puppen- und Spielzeugbörse, seit 1994, findet neu im Gemeindesaal Zollikon an der Rotfluhstrasse 96 statt. Angeboten werden antike Puppen und Künstlerpuppen, Steiff-Bären, Blechspielzeug, Eisenbahnen, Puppenstuben, Kinderbücher, Spiele und Weihnachtsschmuck. Mitgebrachte Puppen, Bären und Spielzeug werden vor Ort kostenlos begutachtet und geschätzt. Geöffnet von 10 bis 16 Uhr, Eintritt 6 Franken, Kinder bis 12 Jahre gratis.",
+  "v1_description_en": "The Zürich doll and toy fair, running since 1994, now takes place in the Gemeindesaal Zollikon at Rotfluhstrasse 96. On offer are antique and artist dolls, Steiff bears, tin toys, model trains, dolls' houses, children's books, games and Christmas decorations. Dolls, bears and toys you bring along are appraised and valued free of charge. Open from 10 am to 4 pm; entry CHF 6, children up to 12 free."
+ },
+ {
+  "slug": "romeo-hallenflohmarkt-muenchwilen",
+  "kind": "hallenflohmarkt",
+  "website_url": "https://www.romeoflohmarkt.ch/",
+  "recurrence_text": "Dreimal jährlich, ein Wochenende im März, September und Dezember",
+  "venue": "Dreifachhalle Waldegg (hinter dem Sportplatz)",
+  "address_line": "Weinfelderstrasse 21",
+  "postal_code": "9542",
+  "town": "Münchwilen TG",
+  "name": "ROMEO Hallenflohmarkt",
+  "dates": [
+   {
+    "date": "2026-12-05",
+    "start": "13:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-06",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-03-06",
+    "start": "13:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-03-07",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-09-04",
+    "start": "13:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-09-05",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-12-04",
+    "start": "13:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-12-05",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.romeoflohmarkt.ch/online-anmeldung",
+  "entry_fee": null,
+  "v1_description_de": "Floh- und Antiquitätenmarkt in der Dreifachhalle Waldegg in Münchwilen TG, hinter dem Sportplatz an der Weinfelderstrasse. Rund 135 Aussteller, dreimal im Jahr an einem ganzen Wochenende: samstags von 13 bis 18 Uhr, sonntags von 8 bis 16 Uhr. Ein Verpflegungsstand bietet Grill, Kaffee, Kuchen und Getränke, im Dezember auch Glühwein. Der Eingang ist stufenlos, Parkplätze gibt es beim Sportplatz.",
+  "v1_description_en": "A flea and antiques market in the Waldegg triple sports hall in Münchwilen TG, behind the sports ground on Weinfelderstrasse. Around 135 stallholders, three times a year over a whole weekend: Saturday 1 pm to 6 pm, Sunday 8 am to 4 pm. A food stand serves grilled food, coffee, cake and drinks, plus mulled wine in December. The entrance is step-free and there is parking at the sports ground."
+ },
+ {
+  "slug": "shoppi-flohmi-spreitenbach",
+  "kind": "flohmarkt",
+  "website_url": "https://www.flohmarktkoenig.ch/",
+  "recurrence_text": "Rund zehnmal im Jahr, an einem Sonntag",
+  "venue": "ShoppiParking, Shoppi Tivoli",
+  "address_line": "Shopping-Center 9",
+  "postal_code": "8957",
+  "town": "Spreitenbach",
+  "name": "Shoppi Flohmi",
+  "dates": [
+   {
+    "date": "2026-11-29",
+    "start": "08:30",
+    "end": "15:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.shoppitivoli.ch/news-events/events/flohmarkt/",
+  "entry_fee": null,
+  "v1_description_de": "Ein Flohmarkt mit rund 100 Ständen im gedeckten Parkhaus des Einkaufszentrums Shoppi Tivoli in Spreitenbach, rund zehnmal im Jahr an einem Sonntag. Wegen des Dachs findet er bei jedem Wetter statt. Geöffnet von 8.30 bis 15 Uhr, es gibt einige Essensstände. Organisiert von Flohmarktkönig.",
+  "v1_description_en": "A flea market with around 100 stalls in the covered car park of the Shoppi Tivoli shopping centre in Spreitenbach, held on a Sunday about ten times a year. As it is under cover, it runs in any weather. Open 8:30 am to 3 pm, with a few food stalls. Organised by Flohmarktkönig."
+ },
+ {
+  "slug": "swiss-vintage-and-design-market-granges-paccot",
+  "kind": "brocante",
+  "website_url": "https://dakotaevents.ch/?page_id=63",
+  "recurrence_text": "Ein Wochenende im März",
+  "venue": "Forum Fribourg",
+  "address_line": "Route du Lac 12",
+  "postal_code": "1763",
+  "town": "Granges-Paccot",
+  "name": "Swiss Vintage and Design Market",
+  "dates": [
+   {
+    "date": "2027-03-20",
+    "start": "10:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-03-21",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://dakotaevents.ch/?page_id=63",
+  "entry_fee": "7",
+  "v1_description_de": "Ein Markt für Vintage und Design über ein Wochenende im Forum Fribourg, der Ausstellungshalle an der Route du Lac in Granges-Paccot bei Freiburg. Geöffnet am Samstag von 10 bis 18 Uhr und am Sonntag von 10 bis 17 Uhr. Eintritt für Erwachsene CHF 7, Kinder bis 16 Jahre gratis. Veranstalter ist Dakota Events.",
+  "v1_description_en": "A weekend vintage and design market at Forum Fribourg, the exhibition hall on Route du Lac in Granges-Paccot near Fribourg. Open on Saturday from 10 am to 6 pm and on Sunday from 10 am to 5 pm. Entry is CHF 7 for adults and free for children up to 16. Organised by Dakota Events."
+ },
+ {
+  "slug": "vide-grenier-brocante-les-brenets",
+  "kind": "brocante",
+  "website_url": "https://www.lelocle.ch/loisirs-et-manifestations/culture/agenda/18eme-vide-grenier-brocante",
+  "recurrence_text": "Ein Samstag im November",
+  "venue": "Salle de gym",
+  "address_line": "Champ-Nauger 1",
+  "postal_code": "2416",
+  "town": "Les Brenets",
+  "name": "Vide Grenier Brocante Les Brenets",
+  "dates": [
+   {
+    "date": "2026-11-07",
+    "start": "08:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.lelocle.ch/loisirs-et-manifestations/culture/agenda/18eme-vide-grenier-brocante",
+  "entry_fee": null,
+  "v1_description_de": "Ein Vide-grenier mit Brocante in der Turnhalle am Champ-Nauger 1 in Les Brenets, das heute zur Gemeinde Le Locle gehört. 2026 findet die 18. Ausgabe statt, von 8 bis 17 Uhr, mit vielen Ausstellern. Es gibt eine Buvette und kleine Verpflegung mit Sandwiches, Gebäck und Raclette. Der Eintritt ist frei, Veranstalter ist die Association pour les Enfants des Brenets.",
+  "v1_description_en": "A vide-grenier and brocante in the gym hall at Champ-Nauger 1 in Les Brenets, now part of the municipality of Le Locle. The 18th edition runs in 2026, from 8 am to 5 pm, with many exhibitors. There is a bar and light food with sandwiches, pastries and raclette. Entry is free; it is organised by the Association pour les Enfants des Brenets."
+ },
+ {
+  "slug": "vide-grenier-villars-tiercelin",
+  "kind": "flohmarkt",
+  "website_url": "https://www.jorat-menthue.ch/manifestations.php",
+  "recurrence_text": "Ein Sonntag im November",
+  "venue": "Grande salle de Villars-Tiercelin",
+  "address_line": "Grande salle",
+  "postal_code": "1058",
+  "town": "Villars-Tiercelin",
+  "name": "Vide-grenier de Villars-Tiercelin",
+  "dates": [
+   {
+    "date": "2026-11-29",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.jorat-menthue.ch/manifestations.php",
+  "entry_fee": null,
+  "v1_description_de": "Ein Vide-grenier in der Grande salle von Villars-Tiercelin, einem Dorf der Gemeinde Jorat-Menthue im Gros-de-Vaud. Die Gemeinde führt ihn in ihrem Veranstaltungskalender; Öffnungszeiten und Veranstalter sind dort nicht angegeben.",
+  "v1_description_en": "A vide-grenier in the Grande salle of Villars-Tiercelin, a village in the municipality of Jorat-Menthue in the Gros-de-Vaud. The municipality lists it in its events calendar; opening hours and organiser are not given there."
+ },
+ {
+  "slug": "vinylboerse-villa-flora-wald",
+  "kind": "flohmarkt",
+  "website_url": "https://villaflora-wald.ch/vinylboerse/",
+  "recurrence_text": "Zweimal jährlich, ein Sonntag im Mai/Juni und im Oktober/November",
+  "venue": "Villa Flora",
+  "address_line": "Rütistrasse 15",
+  "postal_code": "8636",
+  "town": "Wald",
+  "name": "Vinylbörse Villa Flora",
+  "dates": [
+   {
+    "date": "2026-11-01",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://villaflora-wald.ch/vinylboerse/",
+  "entry_fee": null,
+  "v1_description_de": "Schallplattenbörse in der Villa Flora an der Rütistrasse 15 in Wald ZH, seit 2022 zweimal im Jahr an einem Sonntag, im Mai oder Juni und im Oktober oder November. Zahlreiche Plattenhändler bieten LPs, Singles, Kassetten, CDs und Abspielgeräte an. Das Bistro ist von 7.30 bis 16.30 Uhr geöffnet.",
+  "v1_description_en": "A record fair in the Villa Flora at Rütistrasse 15 in Wald ZH, held twice a year on a Sunday since 2022, in May or June and in October or November. Many record dealers sell LPs, singles, cassettes, CDs and players. The bistro is open from 7.30 am to 4.30 pm."
+ },
+ {
+  "slug": "weihnachtsdekomarkt-hardmatt-strengelbach",
+  "kind": "flohmarkt",
+  "website_url": "https://www.hardmatt.ch/event/flohmarkt",
+  "recurrence_text": "Im November, drei Tage",
+  "venue": "Seniorenzentrum Hardmatt, Flohmarkt",
+  "address_line": "Hardmattenweg 15",
+  "postal_code": "4802",
+  "town": "Strengelbach",
+  "name": "Weihnachtsdekomarkt im Flohmarkt Hardmatt",
+  "dates": [
+   {
+    "date": "2026-11-13",
+    "start": "14:00",
+    "end": "17:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-14",
+    "start": "09:00",
+    "end": "17:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-15",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.strengelbach.ch/de/veranstaltungen/",
+  "entry_fee": null,
+  "v1_description_de": "Ein Weihnachtsdekomarkt über drei Tage im Flohmarkt des Seniorenzentrums Hardmatt, in den Kellerräumen am Hardmattenweg 15 in Strengelbach. Der Flohmarkt verkauft gespendete Gegenstände, von Geschirr und Bildern bis zu Spielsachen und Alltäglichem, und die Preise sind verhandelbar. Geöffnet am Freitag von 14 bis 17 Uhr, am Samstag von 9 bis 17 Uhr und am Sonntag von 10 bis 16 Uhr.",
+  "v1_description_en": "A three-day Christmas decorations market at the flea market of the Hardmatt senior centre, in the basement rooms at Hardmattenweg 15 in Strengelbach. The flea market sells donated items, from tableware and pictures to toys and everyday things, and prices are negotiable. Open Friday 2 pm to 5 pm, Saturday 9 am to 5 pm and Sunday 10 am to 4 pm."
+ },
+ {
+  "slug": "zuercher-schallplatten-cd-boerse",
+  "kind": "flohmarkt",
+  "website_url": "https://bluttrecords.ch/zuercher-schallplattenboerse/",
+  "recurrence_text": "Zweimal jährlich, sonntags",
+  "venue": "Volkshaus Zürich",
+  "address_line": "Stauffacherstrasse 60",
+  "postal_code": "8004",
+  "town": "Zürich",
+  "name": "Zürcher Schallplatten- und CD-Börse",
+  "dates": [
+   {
+    "date": "2026-11-22",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://bluttrecords.ch/zuercher-schallplattenboerse/",
+  "entry_fee": null,
+  "v1_description_de": "Die Zürcher Schallplatten- und CD-Börse findet zweimal im Jahr im Volkshaus Zürich an der Stauffacherstrasse statt, an einem Sonntag von 10 bis 17 Uhr. Händler verkaufen Schallplatten und CDs. Organisiert von BLUTT Records.",
+  "v1_description_en": "The Zürich record and CD fair takes place twice a year in the Volkshaus Zürich on Stauffacherstrasse, on a Sunday from 10 am to 5 pm. Dealers sell vinyl records and CDs. Organised by BLUTT Records."
+ }
+]

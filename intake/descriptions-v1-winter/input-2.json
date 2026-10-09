@@ -1,0 +1,403 @@
+[
+ {
+  "slug": "flohmarkt-hinwil",
+  "kind": "flohmarkt",
+  "website_url": "https://www.hinwil.ch/_rte/anlass/7419847",
+  "recurrence_text": "Etwa monatlich, an einem Sonntag",
+  "venue": "Gemeindeplatz (hinter der ZKB)",
+  "address_line": "Dürntnerstrasse 2",
+  "postal_code": "8340",
+  "town": "Hinwil",
+  "name": "Flohmarkt Hinwil",
+  "dates": [
+   {
+    "date": "2026-10-11",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-08",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-13",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.hinwil.ch/_rte/anlass/7419847",
+  "entry_fee": null,
+  "v1_description_de": "Flohmarkt auf dem Gemeindeplatz in Hinwil, hinter der ZKB an der Dürntnerstrasse. Sonntags von 9 bis 16 Uhr, mit Flohmibeizli, Mittagsmenü und Musik von DJ Gummistiefel. Ein Standplatz von 3 x 4 Metern mit dem Auto hinter dem Stand kostet 40 Franken.",
+  "v1_description_en": "A flea market on the Gemeindeplatz in Hinwil, behind the ZKB bank on Dürntnerstrasse. Sundays from 9 am to 4 pm, with a flea-market café, a lunch menu and music by DJ Gummistiefel. A 3 x 4 metre pitch with your car behind the stall costs CHF 40."
+ },
+ {
+  "slug": "flohmarkt-marktplatz-amriswil",
+  "kind": "flohmarkt",
+  "website_url": "https://www.fliba.ch/flohmarkt.html",
+  "recurrence_text": "Monatlich, an einem Samstag, April bis November (ohne Juli)",
+  "venue": "Marktplatz Amriswil",
+  "address_line": "Marktplatz",
+  "postal_code": "8580",
+  "town": "Amriswil",
+  "name": "Flohmarkt Marktplatz Amriswil",
+  "dates": [
+   {
+    "date": "2026-10-17",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-14",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.fliba.ch/Daten/Flohmarkt%20Amriswil%202026",
+  "entry_fee": null,
+  "v1_description_de": "Flohmarkt auf dem Marktplatz in Amriswil, organisiert von Toni Pfeffer. Von April bis November einmal im Monat an einem Samstag, ausser im Juli. Ein Platz von 3 x 3 Metern kostet 30 Franken, ein Platz mit Pavillon und drei Tischen 50 Franken (Anzahl begrenzt). Abfälle müssen die Verkäufer wieder mitnehmen.",
+  "v1_description_en": "A flea market on the Marktplatz in Amriswil, organised by Toni Pfeffer. Once a month on a Saturday from April to November, except July. A 3 x 3 metre pitch costs CHF 30, a pitch with a gazebo and three tables CHF 50 (limited number). Sellers must take their rubbish home."
+ },
+ {
+  "slug": "flohmarkt-schlossgut-muensingen",
+  "kind": "flohmarkt",
+  "website_url": "https://www.muensingen.ch/de/veranstaltungen/",
+  "recurrence_text": "Mehrmals im Jahr, an einem Sonntag",
+  "venue": "Schlossgutplatz",
+  "address_line": "Schlossstrasse",
+  "postal_code": "3110",
+  "town": "Münsingen",
+  "name": "Flohmarkt Schlossgut Münsingen",
+  "dates": [
+   {
+    "date": "2026-10-11",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-10-25",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-22",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.muensingen.ch/de/veranstaltungen/",
+  "entry_fee": null,
+  "v1_description_de": "Ein Flohmarkt auf dem Schlossgutplatz an der Schlossstrasse in Münsingen, jeweils an einem Sonntag von 10 bis 16 Uhr. Profis und Privathaushalte stellen aus, das Angebot ist entsprechend breit. Kinder verkaufen gratis und ohne Anmeldung, Erwachsene melden ihren Stand vorher beim Veranstalter an.",
+  "v1_description_en": "A flea market on the Schlossgutplatz on Schlossstrasse in Münsingen, held on Sundays from 10 am to 4 pm. Both professional dealers and private households sell here, so the range is wide. Children sell for free without registering; adults book their stall with the organiser in advance."
+ },
+ {
+  "slug": "grosse-burgdorfer-brocante",
+  "kind": "brocante",
+  "website_url": "https://www.grosseburgdorferbrocante.ch/",
+  "recurrence_text": "Jährlich, ein Wochenende im November",
+  "venue": "Markthalle Burgdorf",
+  "address_line": "Sägegasse 19",
+  "postal_code": "3400",
+  "town": "Burgdorf",
+  "name": "Grosse Burgdorfer Brocante",
+  "dates": [
+   {
+    "date": "2026-11-06",
+    "start": "12:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-07",
+    "start": "10:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-08",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.grosseburgdorferbrocante.ch/",
+  "entry_fee": null,
+  "v1_description_de": "Eine grosse Antiquitäten-Brocante in der Markthalle Burgdorf an der Sägegasse 19, über drei Tage von Freitag bis Sonntag. Händlerinnen und Händler aus der ganzen Schweiz zeigen Antiquitäten, Raritäten und Sammlerstücke, von Möbeln und Schmuck bis zu Postkarten und Kleinantiquitäten. Geöffnet am Freitag von 12 bis 18 Uhr, am Samstag von 10 bis 18 Uhr und am Sonntag von 10 bis 17 Uhr. Einen Händlertag gibt es nicht, alle kommen zu den offiziellen Öffnungszeiten.",
+  "v1_description_en": "A large antiques brocante in the Markthalle Burgdorf at Sägegasse 19, held over three days from Friday to Sunday. Dealers from all over Switzerland show antiques, rarities and collectables, from furniture and jewellery to postcards and small antiques. Open Friday 12 noon to 6 pm, Saturday 10 am to 6 pm and Sunday 10 am to 5 pm. There is no trade day: everyone comes during the official opening hours."
+ },
+ {
+  "slug": "haerkinger-flohmi",
+  "kind": "flohmarkt",
+  "website_url": "https://sites.google.com/site/flohmarkthaerkingen",
+  "recurrence_text": "Jährlich, ein Sonntag im Herbst",
+  "venue": "Mehrzweckhalle Härkingen",
+  "address_line": "Fröschengasse 10",
+  "postal_code": "4624",
+  "town": "Härkingen",
+  "name": "Härkinger Flohmi",
+  "dates": [
+   {
+    "date": "2026-11-08",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://sites.google.com/site/flohmarkthaerkingen",
+  "entry_fee": null,
+  "v1_description_de": "Der Härkinger Floh- und Antiquitätenmarkt ist ein Indoor-Flohmarkt in der Mehrzweckhalle Härkingen und findet bei jedem Wetter statt. Angeboten werden Antiquitäten, Raritäten, Altes, Neues und Selbstgemachtes, verteilt auf die obere Halle mit Bühne und den Fröschensaal. Markt von 9 bis 16 Uhr, dazu ein Beizli mit Essen zu günstigen Preisen.",
+  "v1_description_en": "The Härkingen flea and antiques market is an indoor flea market in the Mehrzweckhalle (multi-purpose hall) in Härkingen, so it runs in any weather. On offer are antiques, rarities, old and new things and handmade items, spread over the upper hall with its stage and the Fröschensaal. Open 9 am to 4 pm, with a small café serving food at low prices."
+ },
+ {
+  "slug": "hallenflohmarkt-aadorf",
+  "kind": "hallenflohmarkt",
+  "website_url": "https://www.marktfieber.ch/",
+  "recurrence_text": "Unregelmässig, an einem Sonntag",
+  "venue": "Gemeindezentrum Aadorf",
+  "address_line": "Gemeindeplatz 1",
+  "postal_code": "8355",
+  "town": "Aadorf",
+  "name": "Hallenflohmarkt Aadorf",
+  "dates": [
+   {
+    "date": "2026-11-15",
+    "start": "10:00",
+    "end": "17:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.marktfieber.ch/",
+  "entry_fee": null,
+  "v1_description_de": "Hallenflohmarkt im Gemeindezentrum Aadorf am Gemeindeplatz 1, organisiert von Marktfieber. Verkauft werden Flohmarktwaren und Handgemachtes, Essen und Getränke dürfen die Verkäufer nicht anbieten. Geöffnet von 10 bis 17 Uhr.",
+  "v1_description_en": "An indoor flea market in the Gemeindezentrum Aadorf at Gemeindeplatz 1, run by Marktfieber. On sale are secondhand goods and handmade items; stallholders may not sell food or drink. Open from 10 am to 5 pm."
+ },
+ {
+  "slug": "hallenflohmarkt-pentorama-amriswil",
+  "kind": "hallenflohmarkt",
+  "website_url": "https://www.pentorama.ch/besucher/veranstaltungskalender/detailansicht/hallenflohmarkt-pentorama-1050/",
+  "recurrence_text": "Jährlich, im November",
+  "venue": "Pentorama",
+  "address_line": "Arbonerstrasse 2",
+  "postal_code": "8580",
+  "town": "Amriswil",
+  "name": "Hallenflohmarkt Pentorama",
+  "dates": [
+   {
+    "date": "2026-11-01",
+    "start": "08:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.pentorama.ch/besucher/veranstaltungskalender/detailansicht/hallenflohmarkt-pentorama-1050/",
+  "entry_fee": null,
+  "v1_description_de": "Hallenflohmarkt im Pentorama an der Arbonerstrasse 2 in Amriswil, organisiert vom Coro Tricolore di Amriswil. Viele Stände mit Raritäten, Alltagsgegenständen und Vintage-Artikeln. Für Essen und Getränke sorgt der Chor selbst. Geöffnet von 8 bis 16 Uhr.",
+  "v1_description_en": "An indoor flea market in the Pentorama at Arbonerstrasse 2 in Amriswil, run by the Coro Tricolore di Amriswil. Plenty of stalls with rarities, everyday items and vintage pieces. The choir itself takes care of food and drink. Open from 8 am to 4 pm."
+ },
+ {
+  "slug": "hallenflohmarkt-therwil",
+  "kind": "hallenflohmarkt",
+  "website_url": "https://www.therwil.ch/de/gemeinde-und-wirtschaft/gemeinde/kultur-und-freizeit-markt.php",
+  "recurrence_text": "Jährlich, ein Wochenende im Januar",
+  "venue": "Mehrzweckhalle Therwil",
+  "address_line": "Marchbachwägli",
+  "postal_code": "4106",
+  "town": "Therwil",
+  "name": "Hallenflohmarkt Therwil",
+  "dates": [
+   {
+    "date": "2027-01-09",
+    "start": "09:00",
+    "end": "17:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-01-10",
+    "start": "10:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.therwil.ch/de/veranstaltungen/detail/detail.php?i=22929",
+  "entry_fee": null,
+  "v1_description_de": "Der Hallenflohmarkt der Gemeinde Therwil findet einmal im Jahr an einem Wochenende im Januar statt, in und vor der Mehrzweckhalle. Angeboten werden ausgesuchte Antiquitäten, Raritäten und Kuriositäten sowie alltägliche Gegenstände zu günstigen Preisen. Geöffnet am Samstag von 9 bis 17 Uhr und am Sonntag von 10 bis 16 Uhr.",
+  "v1_description_en": "The Therwil municipality's indoor flea market takes place once a year over a weekend in January, in and in front of the Mehrzweckhalle (multi-purpose hall). On offer are selected antiques, rarities and curiosities as well as everyday items at low prices. Open Saturday 9 am to 5 pm and Sunday 10 am to 4 pm."
+ },
+ {
+  "slug": "hallenflohmarkt-uster",
+  "kind": "hallenflohmarkt",
+  "website_url": "https://www.flohmarkt-uster.ch",
+  "recurrence_text": "Monatlich, jeweils am Sonntag, Oktober bis April",
+  "venue": "Stadthofsaal",
+  "address_line": "Theaterstrasse 1",
+  "postal_code": "8610",
+  "town": "Uster",
+  "name": "Hallenflohmarkt Uster",
+  "dates": [
+   {
+    "date": "2026-10-25",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-15",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-13",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-01-24",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-02-21",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-03-21",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-04-25",
+    "start": "09:00",
+    "end": "16:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.flohmarkt-uster.ch",
+  "entry_fee": null,
+  "v1_description_de": "Hallenflohmarkt im Stadthofsaal an der Theaterstrasse 1 in Uster, organisiert von Brian's Flohmi. Aussteller verkaufen, was sie zuhause aussortiert haben, und man stöbert im Trockenen und in der Wärme. Von Oktober bis April einmal im Monat am Sonntag, jeweils von 9 bis 16 Uhr. Beim Stadthofsaal gibt es keine Parkplätze; Besucher parkieren auf dem Stadthausplatz, im Parkhaus Iluster oder beim Zeughausareal.",
+  "v1_description_en": "An indoor flea market in the Stadthofsaal at Theaterstrasse 1 in Uster, run by Brian's Flohmi. Stallholders sell what they have cleared out at home, and you browse in the dry and the warm. Once a month on a Sunday from October to April, 9 am to 4 pm. There is no parking at the Stadthofsaal; visitors park on Stadthausplatz, in the Iluster car park or at the Zeughaus site."
+ },
+ {
+  "slug": "mercalibro-bellinzona",
+  "kind": "flohmarkt",
+  "website_url": "https://flamingoedizioni.com/",
+  "recurrence_text": "Monatlich, am ersten Mittwoch",
+  "venue": "Piazza Giuseppe Buffi",
+  "address_line": "Piazza Giuseppe Buffi",
+  "postal_code": "6500",
+  "town": "Bellinzona",
+  "name": "Mercalibro",
+  "dates": [
+   {
+    "date": "2026-11-04",
+    "start": "11:00",
+    "end": null,
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-12-02",
+    "start": "11:00",
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/mercalibro-gebrauchtbuchmarkt/",
+  "entry_fee": null,
+  "v1_description_de": "Der Gebrauchtbuchmarkt Mercalibro findet am ersten Mittwoch im Monat auf der Piazza Giuseppe Buffi in Bellinzona statt. Professionelle und gelegentliche Händler verkaufen gebrauchte Bücher, Comics, Zeitschriften, Drucke, Sammelkarten und Postkarten zu erschwinglichen Preisen, dazu Briefmarken und andere Druckerzeugnisse. Ab 11 Uhr. Veranstalter ist Flamingo Edizioni.",
+  "v1_description_en": "The Mercalibro second-hand book market takes place on the first Wednesday of the month on Piazza Giuseppe Buffi in Bellinzona. Professional and occasional sellers offer used books, comics, magazines, prints, collector cards and postcards at affordable prices, plus stamps and other printed items. From 11 am. Organised by Flamingo Edizioni."
+ },
+ {
+  "slug": "mercatino-lusso-vintage-lugano",
+  "kind": "brocante",
+  "website_url": "https://www.laghianda.ch/events/",
+  "recurrence_text": "Ein Wochenende im November",
+  "venue": "Hotel Pestalozzi",
+  "address_line": "Piazza Indipendenza 9",
+  "postal_code": "6900",
+  "town": "Lugano",
+  "name": "Mercatino Lusso e Vintage Lugano",
+  "dates": [
+   {
+    "date": "2026-11-14",
+    "start": "10:00",
+    "end": "18:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2026-11-15",
+    "start": "10:00",
+    "end": "18:00",
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.tickettailor.com/events/laghiandadisimonatrabucco/2408113",
+  "entry_fee": null,
+  "v1_description_de": "Ein Markt für gebrauchte Luxusmode und Vintage im Hotel Pestalozzi an der Piazza Indipendenza 9 in Lugano: Kleider, Accessoires, Brillen und mehr, alles in sehr gutem Zustand. Geöffnet am Samstag und Sonntag jeweils von 10 bis 18 Uhr. Jede Besucherin und jeder Besucher braucht ein persönliches Ticket über Ticket Tailor; es ist gratis, nur der frühe Einlass am Samstag von 10 bis 12 Uhr kostet CHF 5. Veranstalterin ist La Ghianda di Simona Trabucco.",
+  "v1_description_en": "A market for second-hand luxury fashion and vintage at Hotel Pestalozzi, Piazza Indipendenza 9 in Lugano: clothes, accessories, glasses and more, all in very good condition. Open on Saturday and Sunday from 10 am to 6 pm. Every visitor needs a personal ticket from Ticket Tailor; it is free, except the early-entry pass on Saturday from 10 am to noon, which costs CHF 5. Organised by La Ghianda di Simona Trabucco."
+ },
+ {
+  "slug": "metalboerse-schweiz-zofingen",
+  "kind": "flohmarkt",
+  "website_url": "https://www.facebook.com/metalboerseschweiz",
+  "recurrence_text": "Ein Samstag im November",
+  "venue": "Stadtsaal Zofingen",
+  "address_line": "Weiherstrasse 2",
+  "postal_code": "4800",
+  "town": "Zofingen",
+  "name": "Metalbörse Schweiz",
+  "dates": [
+   {
+    "date": "2026-11-28",
+    "start": "10:00",
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.stadtsaal.ch/veranstaltungskalender",
+  "entry_fee": null,
+  "v1_description_de": "Die Metalbörse Schweiz ist eine Börse für Schallplatten (Vinyl) und CDs. Sie findet im Stadtsaal Zofingen an der Weiherstrasse 2 statt und beginnt um 10 Uhr.",
+  "v1_description_en": "The Metalbörse Schweiz is a record (vinyl) and CD fair. It takes place in the Stadtsaal Zofingen at Weiherstrasse 2 and opens at 10 am."
+ },
+ {
+  "slug": "modellbahnboerse-koeniz",
+  "kind": "flohmarkt",
+  "website_url": "https://www.mykek.ch/",
+  "recurrence_text": "Jährlich, ein Sonntag im Dezember",
+  "venue": "Aula Oberstufenzentrum Köniz",
+  "address_line": "Schwarzenburgstrasse",
+  "postal_code": "3098",
+  "town": "Köniz",
+  "name": "Modellbahnbörse Köniz",
+  "dates": [
+   {
+    "date": "2026-12-06",
+    "start": "10:00",
+    "end": "15:00",
+    "status": "confirmed"
+   },
+   {
+    "date": "2027-12-12",
+    "start": null,
+    "end": null,
+    "status": "confirmed"
+   }
+  ],
+  "source_url": "https://www.mykek.ch/boerse__bourse/ausblick",
+  "entry_fee": "5",
+  "v1_description_de": "Die Weihnachtsbörse des Könizer Eisenbahnklubs KEK ist eine Modellbahnbörse in der Aula des Oberstufenzentrums Köniz, jedes Jahr an einem Sonntag im Dezember. Händler verkaufen Modelleisenbahnen und Zubehör, passend für Weihnachtsgeschenke an kleine und grosse Bahnfans. Geöffnet von 10 bis 15 Uhr, Eintritt für Erwachsene CHF 5. Eine Cafeteria bietet Getränke, ein warmes Menü und Kuchen; Bus Linie 10 bis Köniz Schloss.",
+  "v1_description_en": "The Christmas fair of the Könizer Eisenbahnklub KEK is a model railway fair in the assembly hall of the Oberstufenzentrum Köniz (secondary school), held every year on a Sunday in December. Dealers sell model trains and accessories, good for Christmas presents for railway fans young and old. Open 10 am to 3 pm, entry for adults CHF 5. A cafeteria serves drinks, a hot meal and cakes; take bus 10 to Köniz Schloss."
+ }
+]
