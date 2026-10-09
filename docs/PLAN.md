@@ -61,6 +61,8 @@ Parked: country page (the front door carries the towns); German text search (set
 
 ---
 
+**Product work, next: the market page, then the town page, for markets and towns with no date** (Delfim, 2026-10-09, after the town redesign was rolled back). Look first, build after: both pages side by side, live, on a phone, a dated and an undated example. What Delfim sees on a market page without a date: it feels empty and looks odd; no nearby markets, no nearby towns, no link to the canton, no kind icons (flea · indoor · night · kids · bric-a-brac); "getting there" is one bare line; no visible "something's not right" button. Plan the fix as a mockup he approves before any code.
+
 ## Open decisions and ceilings
 
 Each waits on Delfim or on data. Don't assume an answer.
