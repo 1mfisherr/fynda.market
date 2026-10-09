@@ -610,6 +610,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "disco-flohmi-dreigaenger-liebefeld",
+    "date": "2026-10-22",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "elbeflohmarkt-dresden",
     "date": "2026-10-10",
     "status": "confirmed"
@@ -2895,6 +2900,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "hallenflohmarkt-arboldswil",
+    "date": "2026-10-24",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "hallenflohmarkt-hoelstein",
     "date": "2026-10-11",
     "status": "confirmed"
@@ -2917,6 +2927,11 @@
   {
     "marketSlug": "hallenflohmarkt-markthalle-basel",
     "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hinterhof-flohmarkt-st-gallen",
+    "date": "2026-10-24",
     "status": "confirmed"
   },
   {
@@ -3548,6 +3563,11 @@
     "marketSlug": "marche-calabash-lausanne",
     "date": "2026-12-06",
     "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-calabash-lausanne",
+    "date": "2027-01-03",
+    "status": "unverified"
   },
   {
     "marketSlug": "marche-rumine-lausanne-mardi",
