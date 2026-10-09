@@ -148,4 +148,24 @@ export async function deleteRows(env: RestEnv, table: string, filter: string): P
   }
 }
 
+/** Calls a database function (`/rest/v1/rpc/<name>`); returns its JSON result, or null on any failure. */
+export async function rpc<T = unknown>(env: RestEnv, name: string, args: Record<string, unknown>): Promise<T | null> {
+  if (!ready(env)) return null;
+  try {
+    const res = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/${name}`, {
+      method: 'POST',
+      headers: headers(env),
+      body: JSON.stringify(args),
+    });
+    if (!res.ok) {
+      console.log(`${name} rpc rejected`, res.status, await res.text());
+      return null;
+    }
+    return (await res.json()) as T;
+  } catch (error) {
+    console.log(`${name} rpc failed`, String(error));
+    return null;
+  }
+}
+
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

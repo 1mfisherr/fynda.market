@@ -34,3 +34,6 @@ metabase/.env
 # Sticker concepts are 19 MB of drafts; only the print-ready QR code is kept.
 stickers/*
 !stickers/fynda-qr.*
+
+# Market Watch snapshots: last pages read, on the PC only (docs/WATCH-SPEC.md).
+watch-data/

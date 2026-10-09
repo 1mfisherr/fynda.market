@@ -16,7 +16,7 @@ import { markUsed, verifyDecision, type AdminAction, type AdminEnv } from '../_a
 import { organiserWelcome, sendMail, type Locale, type MailEnv } from '../_mail';
 import { editUrl, mintLink, type Organiser } from '../_organiser';
 import { escape, page } from '../_page';
-import { insertOne, selectOne, updateRows, UUID } from '../_rest';
+import { insertOne, rpc, selectOne, updateRows, UUID } from '../_rest';
 import { requestPublish } from '../_publish';
 
 interface Env extends AdminEnv, MailEnv { GITHUB_DISPATCH_TOKEN?: string }
@@ -65,6 +65,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
 
   if (action.kind === 'claim') return claim(env, origin, action, verb as 'approve' | 'reject');
   if (action.kind === 'market_stopped') return stopped(env, action, verb as 'approve' | 'reject');
+  if (action.kind === 'watch') return watch(env, action, verb as 'approve' | 'reject');
 
   // edit arrives with day 3 of the spec.
   return done('Not yet', [`Decisions of kind <code>${escape(action.kind)}</code> are not wired up yet.`], 501);
@@ -191,4 +192,19 @@ async function stopped(env: Env, action: AdminAction, verb: 'approve' | 'reject'
     `<b>${escape(market.slug)}</b> is now permanently closed. Its page stays and says so.`,
     `<span class="meta">Publish: ${escape(publish)}.</span>`,
   ]);
+}
+
+/**
+ * A Market Watch finding (scripts/watch/run.mjs). The database applies it in one
+ * transaction — watch_decide() writes the dates, the facts row naming the page
+ * and the stamp — so this handler only passes the decision on and says what
+ * happened. No rebuild: it shows after the nightly one.
+ */
+async function watch(env: Env, action: AdminAction, verb: 'approve' | 'reject'): Promise<Response> {
+  const findingId = String(action.payload.finding_id ?? '');
+  if (!UUID.test(findingId)) return done('Nothing done', ['The action names no finding.'], 500);
+  const said = await rpc<string>(env, 'watch_decide', { p_finding: findingId, p_verb: verb });
+  if (said === null) return done('Nothing done', ['The database did not answer. Check the Cloudflare log; the link still works.'], 500);
+  await markUsed(env, action.id, verb === 'approve' ? 'approved' : 'rejected');
+  return done(verb === 'approve' ? 'Applied' : 'Dismissed', [escape(said)]);
 }

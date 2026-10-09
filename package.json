@@ -12,7 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:functions": "tsc -p tsconfig.functions.json",
-    "test": "node --test \"src/**/*.test.ts\"",
+    "test": "node --test \"src/**/*.test.ts\" \"scripts/**/*.test.mjs\"",
     "db:test": "node scripts/db-test.mjs",
     "guardrails": "node scripts/guardrails.mjs",
     "verify": "npm run check && npm run check:functions && npm run test && npm run build && npm run guardrails",
@@ -30,7 +30,12 @@
     "@cloudflare/workers-types": "^5.20260906.1",
     "@types/node": "^26.4.0",
     "@types/pg": "^8.23.1",
+    "cheerio": "^1.2.0",
+    "chrono-node": "^2.10.2",
+    "html-to-text": "^10.0.1",
     "pg": "^8.23.0",
+    "playwright-core": "^1.64.0",
+    "robots-parser": "^3.0.1",
     "typescript": "^6.0.3",
     "wrangler": "^4.129.0"
   }

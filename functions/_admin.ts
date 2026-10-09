@@ -19,7 +19,7 @@ export interface AdminEnv extends FormEnv, RestEnv {
   ADMIN_SIGNING_SECRET?: string;
 }
 
-export type ActionKind = 'claim' | 'market_stopped' | 'edit';
+export type ActionKind = 'claim' | 'market_stopped' | 'edit' | 'watch';
 export type Verb = 'approve' | 'reject';
 
 export interface AdminAction {
