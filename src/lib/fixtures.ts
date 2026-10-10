@@ -106,6 +106,11 @@ export function sampleMarkets(): Market[] {
       // Between editions: no date, the months it runs, when it last ran.
       upcoming: [],
       lastDate: '2026-10-04',
+      earlier: [
+        { date: '2026-10-04', status: 'confirmed', seen: true },
+        { date: '2026-09-06', status: 'confirmed' },
+        { date: '2026-08-09', status: 'cancelled' },
+      ],
       seasonFrom: 4,
       seasonTo: 10,
       sellerMix: 'private',

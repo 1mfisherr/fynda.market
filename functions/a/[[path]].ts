@@ -290,6 +290,18 @@ async function upcoming(env: Env, marketId: string): Promise<Dated[]> {
   );
 }
 
+/**
+ * People waiting for this market's next date: who asked on its own page, and
+ * who asked on its town's page — a date here answers both (date_alerts_waiting,
+ * which holds counts and no addresses).
+ */
+async function waitingFor(env: Env, market: Market): Promise<number> {
+  const venue = await selectOne<{ city_id: string }>(env, 'venues', `id=eq.${market.venue_id}`, 'city_id');
+  const filter = venue ? `or=(market_id.eq.${market.id},city_id.eq.${venue.city_id})` : `market_id=eq.${market.id}`;
+  const rows = await selectRows<{ waiting: number }>(env, 'date_alerts_waiting', filter, 'waiting');
+  return rows.reduce((sum, row) => sum + Number(row.waiting), 0);
+}
+
 /** The market's rhythm in the organiser's language, falling back to the stored line. */
 async function rhythm(env: Env, market: Market, locale: Locale, stored: string | null): Promise<string> {
   const rows = await selectRows<{ locale: string; value: string }>(
@@ -327,7 +339,12 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
      (Delfim, 2026-09-22: the top button was pressed before reading). */
   const next = dates[0];
   let nextBlock: string;
-  if (!next) {
+  /* No date, and people asked to be told it: how many, and nothing more —
+     the number makes the case by itself (Delfim, 2026-10-10). */
+  const waiting = next ? 0 : await waitingFor(env, market);
+  if (!next && waiting > 0) {
+    nextBlock = `<div class="card"><h2 style="margin:0">${escape(waiting === 1 ? c.waitingOne : c.waitingMany.replace('%n', String(waiting)))}</h2></div>`;
+  } else if (!next) {
     nextBlock = `<div class="card"><h2>${escape(c.nextTitle)}</h2><p class="quiet">${escape(c.nextNone)}</p></div>`;
   } else {
     const stamp = next.origin === 'organiser' && next.confirmed_at

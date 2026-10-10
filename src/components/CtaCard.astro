@@ -33,8 +33,10 @@ interface Props {
   variant?: 'primary' | 'secondary';
   /** One short line under the button — the claim card's "Free. Always." */
   note?: string;
+  /** A fact that makes the ask, before the body, in bold — "12 people are waiting for its next date." */
+  lead?: string;
 }
-const { kind, locale = DEFAULT_LOCALE, body, href, variant = 'primary', note } = Astro.props;
+const { kind, locale = DEFAULT_LOCALE, body, href, variant = 'primary', note, lead } = Astro.props;
 const s = t(locale);
 const COPY = {
   newsletter: { title: s.newsletterTitle, body: s.newsletterBody, action: s.newsletterAction, key: 'newsletter' },
@@ -45,7 +47,7 @@ const copy = COPY[kind];
 ---
 <section class="cta">
   <h2>{copy.title}</h2>
-  <p class="meta">{body ?? copy.body}</p>
+  <p class="meta">{lead && <><b class="lead">{lead}</b>{' '}</>}{body ?? copy.body}</p>
   <Button href={href ?? utilityPath(locale, copy.key)} variant={variant} block>{copy.action}</Button>
   {note && <p class="meta note">{note}</p>}
 </section>
@@ -69,4 +71,5 @@ const copy = COPY[kind];
      the card is alone the row collapses to the button and this does nothing. */
   .cta > :last-child { align-self: end; }
   .note { text-align: center; margin: 0; }
+  .lead { color: var(--color-ink); font-weight: var(--weight-bold); }
 </style>

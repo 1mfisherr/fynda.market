@@ -23,6 +23,8 @@ export type MarketKind =
   | 'strassenmarkt';
 
 export interface Occurrence {
+  /** The database id — what a "Were you there?" answer names. Absent in fixtures. */
+  id?: string;
   /** ISO date, YYYY-MM-DD. Never a Date object — timezones are the venue's. */
   date: string;
   startTime?: string;
@@ -124,6 +126,14 @@ export interface Market {
   seasonTo?: number;
   /** Who sells — what buyers ask most after size. Rendered only when set. */
   sellerMix?: 'private' | 'mixed' | 'trader';
+  /**
+   * The record: this calendar year's dates that have passed, newest first,
+   * cancelled ones included. They were listed; `seen` says a visitor told us
+   * one actually ran ("Were you there?", table date_answers).
+   */
+  earlier?: (Occurrence & { seen?: boolean })[];
+  /** How many people asked to be told this market's next date — its own alerts and its town's. */
+  waiting?: number;
   entryFee?: number;
   gettingThere?: string;
 }

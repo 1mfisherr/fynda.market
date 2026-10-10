@@ -45,6 +45,9 @@ export interface OrganiserCopy {
   nextChecked: string;      // %d
   nextConfirmed: string;    // %d
   nextNone: string;
+  /** No date, and people asked to be told it: the card says how many, and nothing else (Delfim, 2026-10-10). %n from 2 up. */
+  waitingOne: string;
+  waitingMany: string;
   nextYes: string;
   nextChanged: string;
   nextHint: string;         // after the two choices: the button is at the foot
@@ -131,6 +134,8 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     nextChecked: 'Zuletzt von uns geprüft am %d.',
     nextConfirmed: 'Von Ihnen bestätigt am %d.',
     nextNone: 'Noch kein kommender Termin auf Ihrer Seite. Tragen Sie unten einen ein.',
+    waitingOne: 'Eine Person wartet auf Ihren nächsten Termin.',
+    waitingMany: '%n Personen warten auf Ihren nächsten Termin.',
     nextYes: 'Ja, findet statt',
     nextChanged: 'Etwas hat sich geändert',
     nextHint: 'Bestätigen unten, nach einem Blick auf den Rest.',
@@ -214,6 +219,8 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     nextChecked: 'Vérifié par nous le %d.',
     nextConfirmed: 'Confirmé par vous le %d.',
     nextNone: "Pas encore de date à venir sur votre page. Ajoutez-en une ci-dessous.",
+    waitingOne: 'Une personne attend votre prochaine date.',
+    waitingMany: '%n personnes attendent votre prochaine date.',
     nextYes: 'Oui, a lieu',
     nextChanged: 'Quelque chose a changé',
     nextHint: "Confirmez en bas, après un coup d'œil au reste.",
@@ -297,6 +304,8 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     nextChecked: "Controllato da noi il %d.",
     nextConfirmed: 'Confermato da te il %d.',
     nextNone: 'Nessuna data in arrivo sulla tua pagina. Aggiungine una qui sotto.',
+    waitingOne: 'Una persona aspetta la tua prossima data.',
+    waitingMany: '%n persone aspettano la tua prossima data.',
     nextYes: 'Sì, si fa',
     nextChanged: 'È cambiato qualcosa',
     nextHint: "Conferma in fondo, dopo un'occhiata al resto.",
@@ -380,6 +389,8 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     nextChecked: 'We last checked this on %d.',
     nextConfirmed: 'You confirmed this on %d.',
     nextNone: 'No upcoming date on your page yet. Add one below.',
+    waitingOne: 'One person is waiting for your next date.',
+    waitingMany: '%n people are waiting for your next date.',
     nextYes: "Yes, it's on",
     nextChanged: "Something's changed",
     nextHint: 'Confirm at the bottom, after a look at the rest.',

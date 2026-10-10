@@ -422,6 +422,8 @@ interface OrganiserWelcome {
   after: string[];
   listed: { subject: string; intro: string[]; optOut: string };
   thanks: string;
+  /** Straight under the button, when people asked to be told the next date: the number, and nothing else (Delfim, 2026-10-10). Mirrors the organiser page's waitingOne / waitingMany. */
+  waiting: [one: string, many: string];
 }
 
 export type WelcomeKind = 'claimed' | 'listed';
@@ -449,6 +451,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
       optOut: 'Und wenn Sie lieber nichts mehr von mir hören möchten, antworten Sie und sagen es mir, dann schreibe ich nicht mehr.',
     },
     thanks: 'Danke, dass Sie einen Markt organisieren. Es ist mehr Arbeit, als die meisten ahnen.',
+    waiting: ['Eine Person wartet auf Ihren nächsten Termin.', '%n Personen warten auf Ihren nächsten Termin.'],
   },
   fr: {
     subject: '%m sur fynda.market — votre page',
@@ -471,6 +474,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
       optOut: "Et si vous préférez ne plus avoir de mes nouvelles, répondez-moi pour me le dire, et je ne vous écrirai plus.",
     },
     thanks: "Merci d'organiser un marché. C'est plus de travail que la plupart des gens ne l'imaginent.",
+    waiting: ['Une personne attend votre prochaine date.', '%n personnes attendent votre prochaine date.'],
   },
   it: {
     subject: '%m su fynda.market — la tua pagina',
@@ -493,6 +497,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
       optOut: 'E se preferisci non sentirmi più, rispondimi e dimmelo: non ti scriverò più.',
     },
     thanks: 'Grazie per organizzare un mercatino. È più lavoro di quanto la maggior parte della gente immagini.',
+    waiting: ['Una persona aspetta la tua prossima data.', '%n persone aspettano la tua prossima data.'],
   },
   en: {
     subject: '%m on fynda.market — your page',
@@ -515,6 +520,7 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
       optOut: "And if you would rather not hear from me, reply and say so, and I won't write again.",
     },
     thanks: "Thank you for running a market. It's more work than most people realise.",
+    waiting: ['One person is waiting for your next date.', '%n people are waiting for your next date.'],
   },
 };
 
@@ -523,12 +529,16 @@ export function organiserWelcome(
   _name: string,
   market: string,
   url: string,
-  kind: WelcomeKind = 'claimed'
+  kind: WelcomeKind = 'claimed',
+  /** People waiting for the next date of the organiser's markets; said under the button when there are any. */
+  waiting = 0
 ): Omit<Mail, 'to'> {
   const copy = ORGANISER_WELCOME[locale] ?? ORGANISER_WELCOME.en;
   const fill = (line: string) => line.replace('%m', market);
+  const waitingLine = waiting === 1 ? copy.waiting[0] : waiting > 1 ? copy.waiting[1].replace('%n', String(waiting)) : undefined;
   const before = [copy.hello, ...(kind === 'listed' ? copy.listed.intro : copy.intro).map(fill)];
-  const after = [...copy.after, ...(kind === 'listed' ? [copy.listed.optOut] : []), copy.thanks];
+  // Straight under the button: the intro's last line introduces the button, so the number cannot sit between them.
+  const after = [...(waitingLine ? [waitingLine] : []), ...copy.after, ...(kind === 'listed' ? [copy.listed.optOut] : []), copy.thanks];
   const subject = fill(kind === 'listed' ? copy.listed.subject : copy.subject);
 
   const footer = `

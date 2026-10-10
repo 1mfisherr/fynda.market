@@ -248,6 +248,41 @@ const betweenLine = next ? undefined : [
   market.lastDate ? s.lastHeld(formatDate(market.lastDate, locale)) : undefined,
 ].filter(Boolean).map((part) => `${part}.`).join(' ');
 
+/* People waiting for this market's next date ("tell me when it's back", its
+   own and its town's). Said on the claim card from three up — an organiser
+   looking their market up is who it is for; one or two is noise in public.
+   The organiser's own page says it from the first. */
+const WAITING_PUBLIC_FROM = 3;
+const waitingLead = (market.waiting ?? 0) >= WAITING_PUBLIC_FROM ? s.claimWaiting(market.waiting!) : undefined;
+
+/**
+ * The record: this year's dates that have passed, newest first (PAGES.md,
+ * 2026-10-10). "Earlier", not "held": a date was listed, and only a visitor's
+ * "yes" says it ran — that date says *Seen on*. Over three, one line sums it
+ * up — "21 Saturdays since 2 May, none cancelled" — and the rest open in place.
+ */
+const EARLIER_SHOWN = 3;
+const earlier = market.earlier ?? [];
+const weekdayOf = (iso: string) => parseDate(iso).getDay();
+const earlierLine = (() => {
+  if (earlier.length <= EARLIER_SHOWN) return undefined;
+  const oldest = parseDate(earlier[earlier.length - 1].date);
+  const since = `${oldest.getDate()}${locale === 'de' ? '.' : ''} ${s.monthsLong[oldest.getMonth()]}`;
+  const sameDay = earlier.every((o) => weekdayOf(o.date) === weekdayOf(earlier[0].date)) ? weekdayOf(earlier[0].date) : undefined;
+  return s.earlierSummary(earlier.length, sameDay, since, earlier.filter((o) => o.status === 'cancelled').length);
+})();
+
+/**
+ * "Were you there?" — the one date a visitor can still vouch for: today's,
+ * once it has closed (the script reveals it), or one that ran in the last two
+ * days. Only a date with an id, so the answer names it.
+ */
+const daysAgo = (iso: string) => Math.round((parseDate(today).getTime() - parseDate(iso).getTime()) / 86_400_000);
+const recent = earlier.find((o) => o.status !== 'cancelled' && o.id && daysAgo(o.date) <= 2);
+const askAbout = canBeLive && next?.id
+  ? { id: next.id, today: true, title: s.wasItOnToday }
+  : recent ? { id: recent.id!, today: false, title: s.wasItOnTitle(formatDate(recent.date, locale)) } : undefined;
+
 const claimHref = `${utilityPath(locale, 'organiser')}`
   + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`
   + `&mid=${market.id}`;
@@ -515,6 +550,28 @@ const description = next
         page_leave.sections: which blocks of the page were actually on
         screen before the visitor left. */}
     <div class="detail">
+      {/* Were you there? A form, so it works with no script: two submit
+          buttons posting to /v. The script answers in place and remembers the
+          answer on this device. Today's question waits, hidden, for the market
+          to close. */}
+      {askAbout && (
+        <div class="gutter" data-wason={askAbout.id} data-when-over={askAbout.today ? '' : undefined} hidden={askAbout.today}>
+          <section class="wason" id="wason">
+            <form class="wason-form" action="/v" method="post">
+              <input type="hidden" name="occurrence" value={askAbout.id} />
+              <input type="hidden" name="path" value={Astro.url.pathname} />
+              <h2>{askAbout.title}</h2>
+              <p>{s.wasItOnBody}</p>
+              <div class="two">
+                <Button type="submit" name="answer" value="on" block>{s.wasItOnYes}</Button>
+                <Button type="submit" name="answer" value="off" block>{s.wasItOnNo}</Button>
+              </div>
+            </form>
+            <div class="thanks" id="wason-done" hidden><h2>{s.wasItOnThanks}</h2><p>{s.wasItOnThanksBody}</p></div>
+          </section>
+        </div>
+      )}
+
       {/* No date: the date is what this visitor came for, so the offer to send
           it comes first, straight under the buttons. It takes the weekly
           card's place — one form per page — and carries the weekly mail as an
@@ -598,6 +655,26 @@ const description = next
             {next ? market.recurrenceText && <span>{market.recurrenceText}</span> : <strong>{s.cityNoDate}</strong>}
           </p>
         )}
+        {earlier.length > 0 && (
+          <div class="gutter earlier">
+            <p class="earlier-title">{s.earlierThisYear}</p>
+            {earlierLine && <p class="record">{earlierLine}</p>}
+            <ul class="dates past list-reset" id="earlier-dates">
+              {earlier.map((o, i) => (
+                <li class:list={{ cancelled: o.status === 'cancelled' }} hidden={i >= EARLIER_SHOWN}>
+                  <strong>{formatDate(o.date, locale)}</strong>
+                  <span></span>
+                  {o.status === 'cancelled' ? <em>{STATUS[locale].cancelled}</em> : o.seen && <em class="seen">{s.seenOn}</em>}
+                </li>
+              ))}
+            </ul>
+            {earlier.length > EARLIER_SHOWN && (
+              <div class="more">
+                <Button variant="quiet" data-expand aria-controls="earlier-dates" aria-expanded="false">{s.allDates(earlier.length)}</Button>
+              </div>
+            )}
+          </div>
+        )}
       </Section>
 
       {/* The visitor's ask, straight after the dates: this is the page where
@@ -624,7 +701,7 @@ const description = next
           it is the page's main ask: engaged organisers are what keep the page
           true (PRODUCT.md, 2026-09-16), so the button is the filled one. */}
       {!claimed && (
-        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="primary" /></div>
+        <div class="gutter"><CtaCard kind="claim" locale={locale} href={claimHref} variant="primary" lead={waitingLead} /></div>
       )}
 
 
@@ -921,6 +998,23 @@ const description = next
   }
   .report { margin-block-start: var(--space-3); }
 
+  /* The record: quieter than the dates to come, which are the point. */
+  .earlier { margin-block-start: var(--space-5); max-width: var(--measure); }
+  .earlier-title { margin: 0; font-size: var(--text-small); font-weight: var(--weight-bold); }
+  .record { margin: var(--space-1) 0 0; color: var(--color-grey); font-size: var(--text-small); }
+  .past li > strong { font-weight: var(--weight-semibold); color: var(--color-grey); }
+  .past li > em.seen { color: var(--color-ink); }
+
+  /* Were you there? A card like the signup's, smaller: one question. */
+  .wason { display: grid; gap: var(--space-3); padding: var(--space-5); border-radius: var(--radius-md); background: var(--color-paper); }
+  .wason h2 { margin: 0; font-size: var(--text-row-name); }
+  .wason p { margin: 0; color: var(--color-grey); font-size: var(--text-small); }
+  .wason-form { display: grid; gap: var(--space-3); }
+  .wason .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .wason [hidden], [data-wason][hidden] { display: none; }
+  .thanks { display: grid; gap: var(--space-1); }
+  .thanks:target { display: grid !important; }
+
   /*
     The change worth the most on this page. Route is 55% of every outbound
     click on the site and it sat 859px down — below the fold, behind the whole
@@ -1004,16 +1098,43 @@ const description = next
    * One-way, because a list that can be folded back up invites fiddling with
    * it rather than reading it.
    */
-  const expand = document.querySelector<HTMLButtonElement>('[data-expand]');
-  const list = document.getElementById('all-dates');
-
-  if (expand && list) {
+  /* Two lists can carry one now — the dates to come and the record — so each
+     button opens the list it names. */
+  for (const expand of Array.from(document.querySelectorAll<HTMLButtonElement>('[data-expand]'))) {
+    const list = document.getElementById(expand.getAttribute('aria-controls') ?? '');
+    if (!list) continue;
     expand.addEventListener('click', () => {
       for (const row of Array.from(list.querySelectorAll<HTMLElement>('li[hidden]'))) row.hidden = false;
       expand.setAttribute('aria-expanded', 'true');
       expand.hidden = true;
     });
   }
+
+  /**
+   * Were you there? Answered in place, and remembered on this device so the
+   * question does not come back on the next visit. The form posts to /v by
+   * itself when there is no script.
+   */
+  const wason = document.querySelector<HTMLElement>('[data-wason]');
+  const ANSWERED = 'fynda:answered';
+  const answered = (): string[] => { try { return JSON.parse(localStorage.getItem(ANSWERED) ?? '[]'); } catch { return []; } };
+  if (wason && answered().includes(wason.dataset.wason ?? '')) wason.remove();
+  const askForm = wason?.isConnected ? wason.querySelector<HTMLFormElement>('form.wason-form') : null;
+  askForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const answer = (event.submitter as HTMLButtonElement | null)?.value;
+    if (answer !== 'on' && answer !== 'off') return;
+    const occurrence = wason!.dataset.wason ?? '';
+    void fetch('/v', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({ occurrence, answer, path: location.pathname }),
+    }).catch(() => undefined);
+    try { localStorage.setItem(ANSWERED, JSON.stringify([...answered(), occurrence].slice(-50))); } catch { /* private mode */ }
+    askForm.hidden = true;
+    const thanks = wason!.querySelector<HTMLElement>('.thanks');
+    if (thanks) thanks.hidden = false;
+  });
 
   /**
    * Saved markets live in the visitor's own browser. No account, no server, and
@@ -1104,6 +1225,9 @@ const description = next
     strong.textContent = over ? words.overToday : todayWord;
     if (range) range.textContent = over && range.dataset.overText ? range.dataset.overText : todayRange;
     if (afterLine) afterLine.hidden = !over;
+    // Today's "Were you there?" waits for the market to close.
+    const ask = document.querySelector<HTMLElement>('[data-wason][data-when-over]');
+    if (ask) ask.hidden = !over;
     return state.phase;
   };
 

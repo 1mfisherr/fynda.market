@@ -86,6 +86,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '8. Writing to us, and organisers',
         p: [
           'When you report a correction, suggest a market or contact us as an organiser, we keep what you send — typically your name, e-mail address, the market and your message — together with the language and the page the form was sent from. We use it to reply, to check the report and to keep the market information right. If you give an e-mail address you get a short acknowledgement; for a report it is optional.',
+          'Answering "Were you there?" on a market page stores only the date, your answer and the page, with a scrambled form of your connection that stops one connection answering many times. Nothing in it identifies you.',
           'Organisers who take over their market\'s page get a personal link by e-mail and, before each date, a short mail asking whether it is still on. Their answers are shown on the market page as "confirmed by the organiser" with the date. Reports and organiser correspondence are the record of when a detail was last checked, so they are kept; you can ask for deletion at any time.',
         ],
       },
@@ -210,6 +211,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '8. Wenn Sie uns schreiben, und Veranstalter',
         p: [
           'Wenn Sie eine Korrektur melden, einen Markt vorschlagen oder uns als Veranstalter kontaktieren, behalten wir, was Sie senden — in der Regel Name, E-Mail-Adresse, Markt und Nachricht — zusammen mit der Sprache und der Seite, von der das Formular kam. Wir verwenden es, um zu antworten, die Meldung zu prüfen und die Marktangaben richtig zu halten. Wer eine E-Mail-Adresse angibt, erhält eine kurze Bestätigung; bei einer Meldung ist sie freiwillig.',
+          'Wenn Sie auf einer Marktseite «Warst du dort?» beantworten, speichern wir nur den Termin, Ihre Antwort und die Seite, dazu eine unkenntlich gemachte Form Ihrer Verbindung, die verhindert, dass eine Verbindung vielfach antwortet. Nichts davon identifiziert Sie.',
           'Veranstalter, die ihre Marktseite übernehmen, erhalten per Mail einen persönlichen Link und vor jedem Termin eine kurze Mail mit der Frage, ob er stattfindet. Ihre Antworten erscheinen auf der Marktseite als „vom Veranstalter bestätigt“ mit Datum. Meldungen und Veranstalter-Korrespondenz sind der Nachweis, wann eine Angabe zuletzt geprüft wurde, und werden deshalb aufbewahrt; eine Löschung können Sie jederzeit verlangen.',
         ],
       },
@@ -326,6 +328,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '8. Quand vous nous écrivez, et les organisateurs',
         p: [
           "Quand vous signalez une correction, proposez un marché ou nous contactez en tant qu'organisateur, nous conservons ce que vous envoyez — en général nom, adresse e-mail, marché et message — avec la langue et la page d'où venait le formulaire. Nous nous en servons pour répondre, vérifier le signalement et garder les informations exactes. Si vous indiquez une adresse e-mail, vous recevez un bref accusé de réception ; pour un signalement, elle est facultative.",
+          "Répondre à « Vous y étiez ? » sur une page de marché n'enregistre que la date, votre réponse et la page, avec une forme brouillée de votre connexion qui empêche une même connexion de répondre de nombreuses fois. Rien de cela ne vous identifie.",
           "Les organisateurs qui prennent en main la page de leur marché reçoivent un lien personnel par e-mail et, avant chaque date, un court message demandant si elle a bien lieu. Leurs réponses apparaissent sur la page du marché comme « confirmé par l'organisateur » avec la date. Les signalements et la correspondance avec les organisateurs constituent la trace de la dernière vérification d'une information ; ils sont donc conservés, et vous pouvez en demander la suppression à tout moment.",
         ],
       },
@@ -442,6 +445,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '8. Quando ci scrivi, e gli organizzatori',
         p: [
           "Quando segnali una correzione, proponi un mercatino o ci contatti come organizzatore, conserviamo ciò che invii — di solito nome, indirizzo e-mail, mercatino e messaggio — insieme alla lingua e alla pagina da cui è partito il modulo. Lo usiamo per rispondere, verificare la segnalazione e tenere corrette le informazioni. Se indichi un indirizzo e-mail ricevi una breve conferma; per una segnalazione è facoltativo.",
+          "Rispondere a «Eri lì?» su una pagina di un mercatino registra solo la data, la tua risposta e la pagina, con una forma resa irriconoscibile della tua connessione che impedisce a una stessa connessione di rispondere molte volte. Niente di tutto questo ti identifica.",
           "Gli organizzatori che prendono in mano la pagina del loro mercatino ricevono un link personale via e-mail e, prima di ogni data, un breve messaggio che chiede se si fa. Le loro risposte compaiono sulla pagina come «confermato dall'organizzatore» con la data. Segnalazioni e corrispondenza con gli organizzatori sono la traccia dell'ultima verifica di un'informazione, quindi vengono conservate; puoi chiederne la cancellazione in qualsiasi momento.",
         ],
       },

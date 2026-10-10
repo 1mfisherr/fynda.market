@@ -65,7 +65,16 @@ const rows = await query(
       (select value from public.texts t where t.entity_type = 'market' and t.entity_id = m.id and t.field = 'name' and t.locale = coalesce(org.locale, 'en')),
       (select value from public.texts t where t.entity_type = 'market' and t.entity_id = m.id and t.field = 'name' and t.locale = 'en'),
       m.slug
-    ) as market_name
+    ) as market_name,
+    -- People waiting for a date from any of this organiser's markets: asked on
+    -- the market's page, or on its town's (date_alerts; each request once).
+    (
+      select count(*)::int from public.date_alerts a
+       where a.email is not null
+         and (a.market_id in (select mm.id from public.markets mm where mm.organiser_id = org.id and mm.status = 'active')
+           or a.city_id in (select v.city_id from public.markets mm join public.venues v on v.id = mm.venue_id
+                             where mm.organiser_id = org.id and mm.status = 'active'))
+    ) as waiting
   from public.organisers org
   join public.organiser_links l on l.organiser_id = org.id and l.revoked_at is null
   join lateral (
@@ -104,7 +113,7 @@ let shown = false;
 
 for (const row of list) {
   const url = editUrl(SITE, await tokenFor(SIGNING, row.link_id));
-  const mail = organiserWelcome(row.locale, row.organiser_name, marketPhrase(row), url, 'listed');
+  const mail = organiserWelcome(row.locale, row.organiser_name, marketPhrase(row), url, 'listed', Number(row.waiting));
   say(`  ${row.organiser_name} <${row.email}> [${row.locale}] — ${marketPhrase(row)}`);
 
   if (!shown) {

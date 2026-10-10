@@ -264,6 +264,25 @@ export interface Strings {
   alertWeekly: (town: string) => string;
   alertSend: string;
   alertDone: string;
+  /**
+   * The record: this year's earlier dates on a market page. "Earlier", not
+   * "held" — a date was listed; only a visitor's "yes" says it ran (`seenOn`).
+   * The summary is one line over a long list: "21 Saturdays since 2 May, none
+   * cancelled"; `weekday` is the index of the day they all fell on, if they did.
+   */
+  earlierThisYear: string;
+  earlierSummary: (n: number, weekday: number | undefined, since: string, cancelled: number) => string;
+  seenOn: string;
+  /** "Were you there?" — the day a market closed and the two days after. */
+  wasItOnTitle: (date: string) => string;
+  wasItOnToday: string;
+  wasItOnBody: string;
+  wasItOnYes: string;
+  wasItOnNo: string;
+  wasItOnThanks: string;
+  wasItOnThanksBody: string;
+  /** On the claim card of a market people are waiting for. */
+  claimWaiting: (n: number) => string;
   /** "Foto" before a photographer's name, under a credited photo. */
   photo: string;
   /** The canton description, built from the data like the town one. */
@@ -579,6 +598,18 @@ const de: Strings = {
   alertWeekly: (town) => `Schick mir auch das Wochenende rund um ${town}, jeden Freitagmorgen`,
   alertSend: 'Bescheid geben',
   alertDone: 'Erledigt. Du bekommst eine E-Mail, sobald der Termin feststeht.',
+  earlierThisYear: 'Früher in diesem Jahr',
+  earlierSummary: (n, weekday, since, cancelled) =>
+    `${n} ${weekday === undefined ? 'Termine' : ['Sonntage', 'Montage', 'Dienstage', 'Mittwoche', 'Donnerstage', 'Freitage', 'Samstage'][weekday]} seit dem ${since}, ${cancelled ? `${cancelled} abgesagt` : 'keiner abgesagt'}.`,
+  seenOn: 'Fand statt',
+  wasItOnTitle: (date) => `Warst du am ${date} dort?`,
+  wasItOnToday: 'Warst du heute dort?',
+  wasItOnBody: 'Ein Tipp zeigt dem Nächsten, dass er wirklich stattfand.',
+  wasItOnYes: 'Ja, er fand statt',
+  wasItOnNo: 'Nein',
+  wasItOnThanks: 'Danke.',
+  wasItOnThanksBody: 'So bleibt diese Seite wahr.',
+  claimWaiting: (n) => (n === 1 ? 'Eine Person wartet auf den nächsten Termin.' : `${n} Leute warten auf den nächsten Termin.`),
   photo: 'Foto',
   regionDescription: (n, towns, region, code, next) =>
     `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} ${inRegionDe(region, code)}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
@@ -815,6 +846,18 @@ const en: Strings = {
   alertWeekly: (town) => `Also send me the weekend around ${town}, every Friday morning`,
   alertSend: 'Tell me',
   alertDone: "Done. You'll get one email, the day the date is out.",
+  earlierThisYear: 'Earlier this year',
+  earlierSummary: (n, weekday, since, cancelled) =>
+    `${n} ${weekday === undefined ? 'dates' : ['Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'][weekday]} since ${since}, ${cancelled ? `${cancelled} cancelled` : 'none cancelled'}.`,
+  seenOn: 'Seen on',
+  wasItOnTitle: (date) => `Were you there on ${date}?`,
+  wasItOnToday: 'Were you there today?',
+  wasItOnBody: 'One tap tells the next person it really happened.',
+  wasItOnYes: 'Yes, it was on',
+  wasItOnNo: "No, it wasn't",
+  wasItOnThanks: 'Thank you.',
+  wasItOnThanksBody: "That's how this page stays true.",
+  claimWaiting: (n) => (n === 1 ? 'One person is waiting for its next date.' : `${n} people are waiting for its next date.`),
   photo: 'Photo',
   regionDescription: (n, towns, region, code, next) =>
     `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} ${inRegionEn(region, code)}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
@@ -1057,6 +1100,22 @@ const fr: Strings = {
   alertWeekly: (town) => `Envoyez-moi aussi le week-end autour de ${town}, chaque vendredi matin`,
   alertSend: 'Prévenez-moi',
   alertDone: "C'est noté. Vous recevrez un e-mail le jour où la date tombe.",
+  earlierThisYear: 'Plus tôt cette année',
+  /* "dates" is feminine, every weekday masculine: the agreement follows. */
+  earlierSummary: (n, weekday, since, cancelled) => {
+    const noun = weekday === undefined ? 'dates' : ['dimanches', 'lundis', 'mardis', 'mercredis', 'jeudis', 'vendredis', 'samedis'][weekday];
+    const f = weekday === undefined;
+    return `${n} ${noun} depuis le ${since}, ${cancelled ? `${cancelled} ${f ? 'annulée' : 'annulé'}${cancelled > 1 ? 's' : ''}` : f ? 'aucune annulée' : 'aucun annulé'}.`;
+  },
+  seenOn: 'A eu lieu',
+  wasItOnTitle: (date) => `Vous y étiez le ${date} ?`,
+  wasItOnToday: "Vous y étiez aujourd'hui ?",
+  wasItOnBody: "Un clic montre au prochain visiteur qu'il a bien eu lieu.",
+  wasItOnYes: 'Oui, il a eu lieu',
+  wasItOnNo: 'Non',
+  wasItOnThanks: 'Merci.',
+  wasItOnThanksBody: "C'est ainsi que cette page reste juste.",
+  claimWaiting: (n) => (n === 1 ? 'Une personne attend sa prochaine date.' : `${n} personnes attendent sa prochaine date.`),
   photo: 'Photo',
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton ${deFr(region)}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
@@ -1294,6 +1353,22 @@ const it: Strings = {
   alertWeekly: (town) => `Mandami anche il fine settimana intorno a ${town}, ogni venerdì mattina`,
   alertSend: 'Avvisami',
   alertDone: "Fatto. Riceverai un'e-mail il giorno in cui esce la data.",
+  earlierThisYear: "Prima, quest'anno",
+  /* "date" and "domeniche" are feminine, the other weekdays masculine. */
+  earlierSummary: (n, weekday, since, cancelled) => {
+    const noun = weekday === undefined ? 'date' : ['domeniche', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabati'][weekday];
+    const f = weekday === undefined || weekday === 0;
+    return `${n} ${noun} dal ${since}, ${cancelled ? `${cancelled} ${f ? 'annullate' : 'annullati'}` : f ? 'nessuna annullata' : 'nessuno annullato'}.`;
+  },
+  seenOn: 'Si è svolto',
+  wasItOnTitle: (date) => `Eri lì il ${date}?`,
+  wasItOnToday: 'Eri lì oggi?',
+  wasItOnBody: 'Un tocco dice al prossimo che si è svolto davvero.',
+  wasItOnYes: "Sì, c'era",
+  wasItOnNo: 'No',
+  wasItOnThanks: 'Grazie.',
+  wasItOnThanksBody: 'È così che questa pagina resta vera.',
+  claimWaiting: (n) => (n === 1 ? 'Una persona aspetta la prossima data.' : `${n} persone aspettano la prossima data.`),
   photo: 'Foto',
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari e cancellazioni.`,

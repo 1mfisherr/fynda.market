@@ -62,7 +62,7 @@ facts   (entity_type, entity_id, field, value, source_type, source_ref,
          observed_at, recorded_at, confidence, superseded_by) -- append-only provenance
 
 tags, market_tags, organisers, market_private, reports, organiser_claims
-newsletter_subscribers, newsletter_sends, newsletter_events, newsletter_alerts, date_alerts
+newsletter_subscribers, newsletter_sends, newsletter_events, newsletter_alerts, date_alerts, date_answers
 organiser_links, organiser_mail_sends, organiser_answers, organiser_edits
 admin_actions, publish_requests, analytics_events, crawler_hits, crawler_daily
 history, market_stats_monthly
@@ -76,7 +76,8 @@ history, market_stats_monthly
 - **The country is a row in the tree** with its own slug rows, not a route constant.
 - **Venues are separate from markets:** two markets on one square share an address and a timezone; the timezone is what makes a correct `startDate` offset possible. `venues.point` is PostGIS `geography`, GIST-indexed — radius search is the product.
 - **A market knows its months.** `markets.season_from` / `season_to` (1–12, may wrap the new year; equal for an annual market) are read from its own rhythm line — 155 of 339 on 2026-10-10, the rest name no months. `src/lib/season.ts` is the one reading: outside the season, or once its last month has had its edition, the market is *Back in April*; an annual one is *Usually in September*; otherwise a page says when it last ran. A new market gets its months by hand in an intake file or a migration, never a guess (`20261010130000_market_seasons.sql`). `seller_mix` (private / mixed / trader) sits with stalls, setting and rain as a fact the decision strip shows when set.
-- **`date_alerts`** is "tell me when it's back": one address and one market (or one town with nothing dated), written by `functions/b.ts`. `scripts/send-date-alerts.mjs` runs in the nightly publish after the upload and sends each alert its one mail once its market — or any market in its town — has a date, clearing the address as it goes; unanswered after 400 days the address is cleared without a mail. `date_alerts_waiting` counts who waits for what, with no address in it.
+- **`date_alerts`** is "tell me when it's back": one address and one market (or one town with nothing dated), written by `functions/b.ts`. `scripts/send-date-alerts.mjs` runs in the nightly publish after the upload and sends each alert its one mail once its market — or any market in its town — has a date, clearing the address as it goes; unanswered after 400 days the address is cleared without a mail. `date_alerts_waiting` counts who waits for what, with no address in it. The organiser page, the welcome letter and a market page's claim card read it.
+- **`date_answers`** is "Were you there?": a date, *on* or *off*, the page and a hashed connection (`functions/v.ts`), anonymous. `occurrence_seen` turns it into one flag per date — seen when someone said yes and nobody said no — which the build reads into a market's record (`Market.earlier`, this calendar year's past dates).
 - **`market_private`** holds organiser e-mail, source URL and raw import, so personal data is never in a readable table.
 - **`publishable_markets`** (view) is the one definition of "this market has a page": active, with a venue in a city in a region. A closed market (`permanently_closed`) has no page; every address it ever had redirects to its town page, or the home page if the town has none left (`scripts/redirects.mjs`).
 - **Every table has RLS on and no policies.** The build connects as owner; a Function as service role, which still needs a `GRANT` per table. A missing grant is an empty result, not an error.

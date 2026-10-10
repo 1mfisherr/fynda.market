@@ -51,8 +51,11 @@ interface Row {
   organiser_note: string | null;
   organiser_note_locale: string | null;
   last_date: string | null;
+  earlier: { id: string; date: string; status: OccurrenceStatus; seen: boolean }[] | null;
+  waiting: number;
   image_credit: { author: string; licence: string; licence_url?: string; source_url: string } | null;
   occurrences: {
+    id: string;
     date: string;
     start_time: string | null;
     end_time: string | null;
@@ -109,10 +112,27 @@ const SQL = `
       select max(date)::text from public.occurrences
        where market_id = p.id and date < current_date and status <> 'cancelled'
     )                                               as last_date,
+    -- The record: this year's dates that have passed, newest first, and
+    -- whether a visitor said one ran (occurrence_seen).
+    (
+      select jsonb_agg(e order by e.date desc)
+        from (
+          select oc.id, oc.date::text, oc.status, coalesce(s.seen, false) as seen
+            from public.occurrences oc
+            left join public.occurrence_seen s on s.occurrence_id = oc.id
+           where oc.market_id = p.id and oc.date < current_date
+             and oc.date >= date_trunc('year', current_date)
+        ) e
+    )                                               as earlier,
+    -- People waiting for its next date: its own alerts and its town's.
+    (
+      select coalesce(sum(w.waiting), 0)::int from public.date_alerts_waiting w
+       where w.market_id = p.id or w.city_id = p.city_id
+    )                                               as waiting,
     (
       select jsonb_agg(o order by o.date)
         from (
-          select date::text, start_time::text, end_time::text, status, origin,
+          select id, date::text, start_time::text, end_time::text, status, origin,
                  cancellation_note, confirmed_at
             from public.occurrences
            where market_id = p.id and date >= current_date
@@ -149,6 +169,7 @@ const SQL = `
 
 function toOccurrence(row: NonNullable<Row['occurrences']>[number]): Occurrence {
   return {
+    id: row.id,
     date: row.date,
     startTime: row.start_time?.slice(0, 5) ?? undefined,
     endTime: row.end_time?.slice(0, 5) ?? undefined,
@@ -221,6 +242,8 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         organiserNote: row.organiser_note ?? undefined,
         organiserNoteLocale: row.organiser_note_locale ?? undefined,
         lastDate: row.last_date ?? undefined,
+        earlier: (row.earlier ?? []).map((e) => ({ id: e.id, date: e.date, status: e.status, seen: e.seen })),
+        waiting: row.waiting,
         imageCredit: row.image_credit
           ? { author: row.image_credit.author, licence: row.image_credit.licence, licenceUrl: row.image_credit.licence_url, sourceUrl: row.image_credit.source_url }
           : undefined,
