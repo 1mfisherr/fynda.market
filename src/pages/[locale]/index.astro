@@ -53,7 +53,9 @@ const rows = datedRows(markets);
  * one per town so it reads as a country rather than as one city's diary, and
  * the picker underneath is the way out of it. `src/lib/lists.ts`.
  */
-const { lead, rest, more, total, from, to } = weekendLead(rows, 6);
+/* Only what will run: a cancellation has its own block further down. */
+const running = rows.filter((r) => r.next!.status !== 'cancelled');
+const { lead, rest, more, total, from, to } = weekendLead(running, 6);
 
 /**
  * The front door, grouped by country.
@@ -93,7 +95,7 @@ const several = byCountry.length > 1;
  */
 const leadsByCountry = several
   ? byCountry
-    .map((c) => ({ code: c.code, ...weekendLead(rows.filter((r) => r.countryCode === c.code), 6) }))
+    .map((c) => ({ code: c.code, ...weekendLead(running.filter((r) => r.countryCode === c.code), 6) }))
     .filter((c) => c.lead.length > 0)
   : [];
 /* Every locale's spelling of each country's URL word, so a town remembered
@@ -200,6 +202,38 @@ const jsonLd = {
     </Section>
   )}
 
+  {/* Only what is on or still to come (Delfim, 2026-10-10). The page is built
+      at night, so on a Saturday evening its two lead photographs were markets
+      that had closed at four. A card whose end today has passed leaves, and
+      the next row steps up into the lead with the larger picture. Inline and
+      right here, so it is settled before the first paint rather than after. */}
+  <script is:inline>
+    (function () {
+      var now = Date.now();
+      var over = function (card) { return card.dataset.end && Date.parse(card.dataset.end) <= now; };
+      document.querySelectorAll('[data-weekend] article.card, #rest-of-weekend article.card').forEach(function (card) {
+        if (over(card)) card.remove();
+      });
+      document.querySelectorAll('[data-weekend]').forEach(function (block) {
+        var leads = block.querySelector('.leads');
+        var rows = leads && leads.nextElementSibling;
+        var card;
+        while (leads && rows && leads.querySelectorAll('article.card').length < 2 && (card = rows.querySelector('article.card'))) {
+          card.classList.replace('row', 'feature');
+          var img = card.querySelector('img');
+          if (img && /-thumb\.webp$/.test(img.getAttribute('src'))) {
+            img.src = img.getAttribute('src').replace(/-thumb\.webp$/, '-720.webp');
+            img.width = img.height = 720;
+          }
+          leads.appendChild(card);
+        }
+      });
+      /* A Sunday evening: the whole weekend is over. Tonight's build brings the
+         next one; until then the block goes rather than stand empty. */
+      var all = document.querySelector('[data-weekend="all"]');
+      if (all && !all.querySelector('article.card')) all.closest('section').hidden = true;
+    })();
+  </script>
 
   {/* Two full-width black buttons stacked one above the other were two equally
       loud asks, and two equally loud asks are neither. Side by side above
