@@ -19,9 +19,11 @@ interface Props {
   options?: FormOption[];
   /** Namespaces the id, for a page carrying more than one of the same field. */
   idPrefix?: string;
+  /** A <datalist> id: the browser's own suggestions under a text field. */
+  list?: string;
 }
 const {
-  label, name, type = 'text', hint, required = false, placeholder, options = [], idPrefix = 'f',
+  label, name, type = 'text', hint, required = false, placeholder, options = [], idPrefix = 'f', list,
 } = Astro.props;
 /* `f-email` was fine while only one form was ever on a page. The signup block
    now sits in the footer of every page and in a card on most of them, so two
@@ -54,7 +56,7 @@ const describedBy = [hintId, errorId].filter(Boolean).join(' ');
     </select>
   )}
   {(type === 'text' || type === 'email') && (
-    <input id={id} type={type} name={name} required={required} placeholder={placeholder} aria-describedby={describedBy} />
+    <input id={id} type={type} name={name} required={required} placeholder={placeholder} aria-describedby={describedBy} list={list} autocomplete={list ? 'off' : undefined} />
   )}
   <p class="field-error" id={errorId} hidden></p>
 </label>

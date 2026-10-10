@@ -23,7 +23,6 @@ import Field from '../../components/Field.astro';
 import MarketRow from '../../components/MarketRow.astro';
 import Section from '../../components/Section.astro';
 import SubscribeForm from '../../components/SubscribeForm.astro';
-import { regionOptions } from '../../lib/regions';
 import { getMarkets } from '../../lib/markets';
 import { byMarket, datedRows, type Dated } from '../../lib/lists';
 import { FORMS, SAVED, type FormKey } from '../../lib/utility-copy';
@@ -83,7 +82,6 @@ const ENDPOINT: Record<FormKey, string> = {
 
 /* The newsletter page is the one signup a person arrives at on purpose, and
    it is the one page with no canton of its own — so it draws the picker. */
-const cantons = key === 'newsletter' ? await regionOptions(locale) : [];
 
 const legal = LEGAL_KEYS.includes(key as LegalKey) ? LEGAL[key as LegalKey][locale] : null;
 const form = legal || key === 'saved' ? null : FORMS[key as FormKey][locale];
@@ -140,7 +138,7 @@ const savedCopy = saved && {
           happens to be the page somebody arrives at on purpose, so it is the
           one that draws the canton picker instead of carrying a canton. */}
       {key === 'newsletter' && (
-        <div class="gutter"><SubscribeForm locale={locale} options={cantons} anchors /></div>
+        <div class="gutter"><SubscribeForm locale={locale} pick anchors /></div>
       )}
 
       {/* Above the prose, not below it. On a phone the first field used to sit

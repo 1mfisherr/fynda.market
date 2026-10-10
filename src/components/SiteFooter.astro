@@ -14,7 +14,6 @@
 import Wordmark from './Wordmark.astro';
 import SubscribeForm from './SubscribeForm.astro';
 import { DEFAULT_LOCALE, LOCALE, localeTag, nearbyPath, utilityPath, type Locale } from '../lib/i18n';
-import { regionOptions } from '../lib/regions';
 import { t } from '../lib/strings';
 
 interface Props {
@@ -43,7 +42,6 @@ const year = new Date().getFullYear();
  * block guaranteed to be present — a visitor with no JavaScript is redirected
  * here and lands on the answer.
  */
-const cantons = await regionOptions(locale);
 
 const fynda = [
   { href: utilityPath(locale, 'about'), label: s.footerAbout },
@@ -71,7 +69,7 @@ const legal: { href: string; label: string; cookies?: boolean }[] = [
 
   {signup && (
     <div class="signup gutter">
-      <SubscribeForm locale={locale} options={cantons} variant="footer" anchors />
+      <SubscribeForm locale={locale} pick variant="footer" anchors />
     </div>
   )}
 

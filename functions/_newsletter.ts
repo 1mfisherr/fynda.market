@@ -31,6 +31,20 @@ export async function resolveSlug(env: FormEnv, kind: 'region' | 'city', slug: s
   return found[0]?.entity_id ?? null;
 }
 
+/**
+ * A town by the name a visitor typed, in any language — the signup's town
+ * field when the browser posted it with no script to turn the name into a
+ * slug (components/SubscribeForm.astro). Exact names only; null otherwise.
+ */
+export async function resolveTownName(env: FormEnv, name: string | null): Promise<string | null> {
+  if (!name || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return null;
+  const url = `${env.SUPABASE_URL}/rest/v1/texts?entity_type=eq.city&field=eq.name&value=ilike.${encodeURIComponent(name.replace(/[%*,()]/g, ''))}&select=entity_id&limit=1`;
+  const found = (await fetch(url, { headers: { apikey: env.SUPABASE_SERVICE_ROLE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` } })
+    .then((r) => (r.ok ? r.json() : []))
+    .catch(() => [])) as Array<{ entity_id?: string }>;
+  return found[0]?.entity_id ?? null;
+}
+
 export interface Subscription {
   email: string;
   locale: Locale;

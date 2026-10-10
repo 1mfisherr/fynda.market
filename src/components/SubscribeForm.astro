@@ -9,9 +9,12 @@
  * whoever was already determined enough to travel.
  *
  * **It never asks where the visitor is.** A market page, a city page and a
- * canton page all carry the canton in their own URL, so the form carries it in
+ * canton page all carry the place in their own URL, so the form carries it in
  * a hidden field and shows one box. Only the pages that genuinely cannot know —
- * home, nearby, saved, and the newsletter page itself — draw the picker.
+ * home, the footer and the newsletter page itself — draw the picker, and it
+ * asks for a town and a distance, not a region (Delfim, 2026-10-10): the list
+ * of 39 cantons and Länder, ungrouped, had no Munich in it, and a canton is
+ * thirty times bigger in Graubünden than in Zug. Left empty, it is everywhere.
  *
  * Canton and not city: fifty-five cities is fifty-five segments, most of them
  * holding nobody; fourteen cantons is a list worth cutting. It is also roughly
@@ -24,6 +27,8 @@ import Field from './Field.astro';
 import { FORMS } from '../lib/utility-copy';
 import { t } from '../lib/strings';
 import { DEFAULT_RADIUS } from '../lib/geo';
+import { getMarkets } from '../lib/markets';
+import { townIndex } from '../lib/towns';
 import type { RegionOption } from '../lib/regions';
 import type { Locale } from '../lib/i18n';
 
@@ -43,8 +48,8 @@ interface Props {
    * Graubünden is thirty times the size of Zug.
    */
   near?: { slug: string; name: string; km?: number };
-  /** Every canton, for the pages that cannot know. Ignored when `region` is set. */
-  options?: RegionOption[];
+  /** Ask for a town and a distance — the pages that cannot know where the visitor is. Ignored when `region` or `near` is set. */
+  pick?: boolean;
   /**
    * `card` is the block on a content page. `footer` is the one line at the
    * bottom of every page, including the legal ones where a card would be noise.
@@ -69,7 +74,7 @@ interface Props {
   anchors?: boolean;
 }
 
-const { locale, region, near, options = [], variant = 'card', alert, anchors = false } = Astro.props;
+const { locale, region, near, pick = false, variant = 'card', alert, anchors = false } = Astro.props;
 const s = t(locale);
 const copy = FORMS.newsletter[locale];
 if (alert && !near) throw new Error('SubscribeForm: an alert needs `near`, the town it is about or around.');
@@ -97,11 +102,18 @@ const title = alert
   : s.subscribeTitle(near?.name);
 const body = alert
   ? (alert.market ? s.alertBodyMarket(alert.market.name) : s.alertBodyTown(town))
-  : scope ? s.subscribeBodyScope(scope) : options.length > 0 ? s.subscribeBodyPick : s.newsletterBody;
+  : scope ? s.subscribeBodyScope(scope) : pick ? s.subscribeBodyPick : s.newsletterBody;
 const success = alert ? s.alertDone : copy.success;
 
 /* The picker is drawn only where the page cannot answer the question itself. */
-const picker = !scope && options.length > 0;
+const picker = !scope && pick;
+/* Every town with a market, by name — the browser's own suggestion list.
+   The script turns the name into the town's slug; /n can too, for a post
+   made with no script. */
+const towns = picker
+  ? townIndex(locale, await getMarkets(locale)).map((x) => ({ slug: x.slug, name: x.name })).sort((a, b) => a.name.localeCompare(b.name, locale))
+  : [];
+const RADII = [10, 25, 50];
 
 /* Unique per instance, and the same on every build: a page carries the card and
    the footer at once, and two fields with the same id are two labels pointing at
@@ -150,16 +162,17 @@ const id = `sub-${variant}`;
         heading and breadcrumb still say it, where it distinguishes the canton
         from the city that shares its name. */}
     {picker && (
-      <Field
-        label={s.subscribeRegionLabel}
-        name="region"
-        type="select"
-        idPrefix={id}
-        options={[
-          { value: '', label: s.subscribeAnywhere },
-          ...options.map((option) => ({ value: option.slug, label: option.name })),
-        ]}
-      />
+      <>
+        <Field label={s.subscribeTownLabel} name="town" type="text" hint={s.subscribeTownHint} idPrefix={id} list={`${id}-towns`} />
+        <datalist id={`${id}-towns`}>{towns.map((x) => <option value={x.name} />)}</datalist>
+        <input type="hidden" name="city" value="" data-town-slug data-towns={JSON.stringify(Object.fromEntries(towns.map((x) => [x.name.toLowerCase(), x.slug])))} data-unknown={s.subscribeTownUnknown} />
+        {variant === 'card' ? (
+          <fieldset class="radius-pick">
+            <legend>{s.howFarLabel}</legend>
+            {RADII.map((r) => <label><input type="radio" name="radius" value={String(r)} checked={r === DEFAULT_RADIUS} /><span>{r} km</span></label>)}
+          </fieldset>
+        ) : <input type="hidden" name="radius" value={String(DEFAULT_RADIUS)} />}
+      </>
     )}
 
     <Field
@@ -201,6 +214,14 @@ const id = `sub-${variant}`;
 </section>
 
 <style>
+  /* How far, as three chips — the radius view's control, smaller. */
+  .radius-pick { display: flex; gap: var(--space-2); margin: 0; padding: 0; border: 0; }
+  .radius-pick legend { width: 100%; margin-block-end: var(--space-2); padding: 0; font-size: var(--text-small); font-weight: var(--weight-bold); }
+  .radius-pick label { flex: 1 1 0; }
+  .radius-pick input { position: absolute; opacity: 0; pointer-events: none; }
+  .radius-pick span { display: block; padding: var(--space-2) var(--space-1); border: var(--border-width) solid var(--color-line); border-radius: var(--radius-pill); background: var(--color-surface); text-align: center; font-size: var(--text-small); font-weight: var(--weight-semibold); cursor: pointer; }
+  .radius-pick input:checked + span { border-color: var(--color-ink); color: var(--color-ink); box-shadow: inset 0 0 0 var(--border-width) var(--color-ink); }
+  .radius-pick input:focus-visible + span { outline: calc(var(--border-width) * 2) solid var(--color-ink); outline-offset: calc(var(--border-width) * 2); }
   .subscribe { display: grid; gap: var(--space-3); }
 
   .subscribe--card {
@@ -248,7 +269,8 @@ const id = `sub-${variant}`;
   for (const form of forms) {
     const block = form.closest('[data-subscribe-block]') as HTMLElement | null;
     const email = form.elements.namedItem('email') as HTMLInputElement | null;
-    const error = form.querySelector<HTMLElement>('.field-error');
+    // The e-mail's own slot: a town field above it has one too.
+    const error = email?.closest('.field')?.querySelector<HTMLElement>('.field-error') ?? null;
     const done = block?.querySelector<HTMLElement>('.subscribe-done') ?? null;
     const errors = JSON.parse(form.dataset.errors ?? '{}') as Partial<
       Record<'empty' | 'invalid' | 'failed' | 'offline', string>
@@ -310,6 +332,23 @@ const id = `sub-${variant}`;
       const value = email.value.trim();
       if (!value) { show(errors.empty ?? ''); return; }
       if (!looksLikeAddress(value)) { show(errors.invalid ?? ''); return; }
+
+      /* The town, typed or picked, into its slug. A name we do not know is
+         asked about rather than quietly saved as "everywhere". */
+      const slugField = form.querySelector<HTMLInputElement>('[data-town-slug]');
+      const townField = form.elements.namedItem('town') as HTMLInputElement | null;
+      if (slugField && townField) {
+        const typed = townField.value.trim().toLowerCase();
+        const known = JSON.parse(slugField.dataset.towns ?? '{}') as Record<string, string>;
+        const townError = townField.closest('.field')?.querySelector<HTMLElement>('.field-error');
+        if (typed && !known[typed]) {
+          if (townError) { townError.textContent = slugField.dataset.unknown ?? ''; townError.hidden = false; }
+          townField.focus();
+          return;
+        }
+        if (townError) townError.hidden = true;
+        slugField.value = typed ? known[typed] : '';
+      }
 
       clear();
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');

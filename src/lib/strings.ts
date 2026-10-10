@@ -406,6 +406,10 @@ export interface Strings {
    * whose whole job is to be answered without thinking.
    */
   subscribeRegionLabel: string;
+  /** The picker on pages that cannot know where the visitor is: a town, then a distance (2026-10-10). */
+  subscribeTownLabel: string;
+  subscribeTownHint: string;
+  subscribeTownUnknown: string;
   /** The picker's first option: no region, the whole country. */
   subscribeAnywhere: string;
   organiserTitle: string;
@@ -726,8 +730,11 @@ const de: Strings = {
   subscribeBodyScope: (scope) => `Eine E-Mail am Freitagmorgen: die Märkte am Wochenende ${scope} – und welche abgesagt wurden.`,
   subscribeTitle: (town) => (town ? `Das Wochenende rund um ${town}, im Postfach` : 'Das Wochenende in deiner Nähe, im Postfach'),
   subscribeSend: 'Schick sie mir',
-  subscribeBodyPick: 'Eine E-Mail am Freitagmorgen: die Märkte am Wochenende in der Region, die du unten wählst – und welche abgesagt wurden.',
+  subscribeBodyPick: 'Eine E-Mail am Freitagmorgen: die Märkte am Wochenende rund um den Ort, den du unten wählst – und welche abgesagt wurden.',
   subscribeRegionLabel: 'Region',
+  subscribeTownLabel: 'Rund um welchen Ort?',
+  subscribeTownHint: 'Leer lassen für alle Märkte.',
+  subscribeTownUnknown: 'Wähle einen Ort aus der Liste – oder lass das Feld leer.',
   subscribeAnywhere: 'Überall',
   newsletterTitle: 'Newsletter',
   newsletterBody: 'Jeden Freitag: was am Wochenende in deiner Nähe läuft.',
@@ -1003,8 +1010,11 @@ const en: Strings = {
   subscribeBodyScope: (scope) => `One email on Friday morning: the weekend's markets ${scope}, and any that were called off.`,
   subscribeTitle: (town) => (town ? `The weekend around ${town}, in your inbox` : 'The weekend near you, in your inbox'),
   subscribeSend: 'Send it to me',
-  subscribeBodyPick: "One email on Friday morning: the weekend's markets in the region you pick below, and any that were called off.",
+  subscribeBodyPick: "One email on Friday morning: the weekend's markets around the town you pick below, and any that were called off.",
   subscribeRegionLabel: 'Region',
+  subscribeTownLabel: 'Around which town?',
+  subscribeTownHint: 'Leave it empty for every market.',
+  subscribeTownUnknown: 'Pick a town from the list, or leave it empty.',
   subscribeAnywhere: 'Anywhere',
   newsletterTitle: 'Newsletter',
   newsletterBody: "Every Friday: what's on this weekend near you.",
@@ -1290,8 +1300,11 @@ const fr: Strings = {
   subscribeBodyScope: (scope) => `Un e-mail le vendredi matin : les brocantes du week-end ${scope}, et celles qui sont annulées.`,
   subscribeTitle: (town) => (town ? `Le week-end autour de ${town}, dans votre boîte mail` : 'Le week-end près de chez vous, dans votre boîte mail'),
   subscribeSend: 'Je veux le recevoir',
-  subscribeBodyPick: 'Un e-mail le vendredi matin : les brocantes du week-end dans la région choisie ci-dessous, et celles qui sont annulées.',
+  subscribeBodyPick: 'Un e-mail le vendredi matin : les brocantes du week-end autour de la localité choisie ci-dessous, et celles qui sont annulées.',
   subscribeRegionLabel: 'Région',
+  subscribeTownLabel: 'Autour de quelle localité ?',
+  subscribeTownHint: 'Laissez vide pour toutes les brocantes.',
+  subscribeTownUnknown: 'Choisissez une localité dans la liste, ou laissez vide.',
   subscribeAnywhere: 'Partout',
   newsletterTitle: 'Newsletter',
   newsletterBody: 'Chaque vendredi : ce qui se passe ce week-end près de chez vous.',
@@ -1572,8 +1585,11 @@ const it: Strings = {
   subscribeBodyScope: (scope) => `Un'e-mail il venerdì mattina: i mercatini del fine settimana ${scope}, e quelli annullati.`,
   subscribeTitle: (town) => (town ? `Il fine settimana intorno a ${town}, nella tua casella` : 'Il fine settimana vicino a te, nella tua casella'),
   subscribeSend: 'Mandamela',
-  subscribeBodyPick: "Un'e-mail il venerdì mattina: i mercatini del fine settimana nella regione che scegli qui sotto, e quelli annullati.",
+  subscribeBodyPick: "Un'e-mail il venerdì mattina: i mercatini del fine settimana intorno alla località che scegli qui sotto, e quelli annullati.",
   subscribeRegionLabel: 'Regione',
+  subscribeTownLabel: 'Intorno a quale località?',
+  subscribeTownHint: 'Lascia vuoto per tutti i mercatini.',
+  subscribeTownUnknown: 'Scegli una località dalla lista, oppure lascia vuoto.',
   subscribeAnywhere: 'Ovunque',
   newsletterTitle: 'Newsletter',
   newsletterBody: "Ogni venerdì: cosa c'è questo fine settimana vicino a te.",

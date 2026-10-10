@@ -25,7 +25,7 @@ import {
   EMAIL, crossOrigin, ipHash, json, looksLikeBot, pathFrom,
   readBody, referrerHost, seeOther, text, tooFast, trapped,
 } from './_form';
-import { resolveSlug, subscribe, type NewsletterEnv } from './_newsletter';
+import { resolveSlug, resolveTownName, subscribe, type NewsletterEnv } from './_newsletter';
 import type { Locale } from './_mail';
 
 export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env, waitUntil }) => {
@@ -95,7 +95,9 @@ export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env
    * and the database refuses a row holding both anyway — see the check
    * constraint in migration 20260910160000.
    */
-  const city_id = await resolveSlug(env, 'city', citySlug);
+  /* The picker's town arrives as a slug from the script, or as the typed name
+     from a browser with none (components/SubscribeForm.astro). */
+  const city_id = (await resolveSlug(env, 'city', citySlug)) ?? (await resolveTownName(env, text(body.town, 80)));
   const region_id = city_id ? null : await resolveSlug(env, 'region', regionSlug);
 
   /* Clamped rather than rejected: a radius nobody can type wrong. The offered

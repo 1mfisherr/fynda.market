@@ -100,6 +100,8 @@ It starts from the URL (`?lat&lng`, `?town=`, `?denied=`), then from the town th
 
 Copy in `src/lib/utility-copy.ts`, legal in `src/lib/legal/`. `noindex`, own content floor of 150.
 
+**The signup where the page cannot know the place** (home, footer, the newsletter page — 2026-10-10, Delfim): *Around which town?* — a text field with every town as the browser's own suggestions, then *10 / 25 / 50 km* (the footer keeps 25 km) — the town-and-distance subscription the town and market pages already make. Left empty, it is every market. A name not on the list is asked about, never saved as "everywhere". It replaced a dropdown of 39 cantons and Länder, ungrouped, with no Munich in it (`SubscribeForm pick`). A canton page still subscribes its canton.
+
 **Saved** (`/{locale}/saved/`, 2026-10-10, `design/saved-mail-v1.html`): above the list, *Your markets, by e-mail* — an address, and before a weekend when one of the saved markets is on, one mail saying which, when and where; nothing when none is. Signed up, the card is one line with *Stop*. The same offer rises as a sheet on a market page after the first save in a browser — once, answered or not, never on arrival (`components/SavedAsk.astro`). No footer signup on this page: one Friday offer per page. Opened from the mail's *Your saved markets* link (`?t=`), a phone takes the list kept with the address.
 
 ## Organiser page — `/a/{token}/edit`
