@@ -328,15 +328,30 @@ async function rhythm(env: Env, market: Market, locale: Locale, stored: string |
   return rows.find((r) => r.locale === locale)?.value ?? rows.find((r) => r.locale === 'en')?.value ?? stored ?? '';
 }
 
+/**
+ * Where a market is, as far as this page cares: its money and its spelling.
+ * The venue's timezone already names the country, and a Function may not
+ * import src/lib/i18n. A German organiser typed "3" and got "3 CHF" back, and
+ * read "draussen" where Germany writes "draußen" (organiser review, 2026-10-10).
+ */
+const CURRENCY_BY_TZ: Record<string, string> = { 'Europe/Zurich': 'CHF', 'Europe/Berlin': 'EUR' };
+async function placeOf(env: Env, market: Market): Promise<{ currency: string; germany: boolean }> {
+  const venue = await selectOne<{ timezone: string | null }>(env, 'venues', `id=eq.${market.venue_id}`, 'timezone');
+  const tz = venue?.timezone ?? 'Europe/Zurich';
+  return { currency: CURRENCY_BY_TZ[tz] ?? 'EUR', germany: tz === 'Europe/Berlin' };
+}
+
 async function editPage(env: Env, token: string, market: Market, locale: Locale, c: OrganiserCopy, justSaved = false): Promise<Response> {
-  const [names, facts, dates, tagRows, people] = await Promise.all([
+  const [names, facts, dates, tagRows, people, place] = await Promise.all([
     labels(env, market, locale),
     selectOne<Facts>(env, 'markets', `id=eq.${market.id}`,
       'stall_count,setting,rain_policy,entry_fee,currency,website_url,image_url,stall_booking,getting_there,organiser_note,verified_at,verified_by,recurrence_text'),
     upcoming(env, market.id),
     selectRows<{ tag_id: string; tags: { key: string } }>(env, 'market_tags', `market_id=eq.${market.id}`, 'tag_id,tags(key)'),
     selectOne<{ people: number }>(env, 'market_people_30d', `market_id=eq.${market.id}`, 'people'),
+    placeOf(env, market),
   ]);
+  if (place.germany && locale === 'de') c = { ...c, settingLabel: 'Drinnen oder draußen', settingOutdoor: 'Draußen' };
   const line = await rhythm(env, market, locale, facts?.recurrence_text ?? null);
   const mine = new Set(tagRows.map((r) => r.tags?.key).filter(Boolean));
   const self = `/a/${token}/edit/${market.id}`;
@@ -416,7 +431,7 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
   const radio = (name: string, value: string, label: string, current: string | null) =>
     `<label><input type="radio" name="${name}" value="${value}"${current === value ? ' checked' : ''}><span>${escape(label)}</span></label>`;
 
-  const fee = facts?.entry_fee == null ? '' : Number(facts.entry_fee) === 0 ? c.feeFree : `${Number(facts.entry_fee)} ${facts.currency ?? 'CHF'}`;
+  const fee = facts?.entry_fee == null ? '' : Number(facts.entry_fee) === 0 ? c.feeFree : `${Number(facts.entry_fee)} ${facts.currency ?? place.currency}`;
   const photo = facts?.image_url ? `<img class="photo" src="https://fynda.market${escape(facts.image_url)}" alt="" width="1440" height="900">` : '';
 
   const body = `
@@ -555,7 +570,7 @@ async function saveEdit(env: Env, request: Request, organiser: Organiser, market
     if (FREE.test(fee)) { patch.entry_fee = 0; }
     else {
       const amount = Number((fee.match(/\d+([.,]\d{1,2})?/)?.[0] ?? '').replace(',', '.'));
-      if (Number.isFinite(amount) && amount > 0 && amount < 1000) { patch.entry_fee = amount; patch.currency = 'CHF'; }
+      if (Number.isFinite(amount) && amount > 0 && amount < 1000) { patch.entry_fee = amount; patch.currency = (await placeOf(env, market)).currency; }
     }
   }
   const website = get('website');
