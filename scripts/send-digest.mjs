@@ -92,8 +92,10 @@ const candidates = await query(
      -- The canton as the slug the site puts in its own URLs. One slug serves
      -- every locale (docs/ARCHITECTURE.md), so the join is on the subscriber's
      -- own language purely to pick one row.
+     -- Current slugs only: a retired one ('bale-ville') matched too and built
+     -- that subscriber's issue twice (found 2026-10-10).
      left join slugs sl
-       on sl.entity_type = 'region' and sl.entity_id = s.region_id and sl.locale = s.locale
+       on sl.entity_type = 'region' and sl.entity_id = s.region_id and sl.locale = s.locale and sl.is_current
      -- A radius subscription measures from the city's centroid, and names the
      -- city in the reader's own language.
      left join cities c on c.id = s.city_id
