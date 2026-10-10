@@ -213,9 +213,20 @@ export function nearbyMarkets(here: Market[], all: Market[]): Nearby[] {
   const lat = anchors.reduce((sum, m) => sum + m.lat, 0) / anchors.length;
   const lng = anchors.reduce((sum, m) => sum + m.lng, 0) / anchors.length;
   const own = new Set(here.map((m) => m.id));
-  return byMarket(datedRows(all.filter((m) => !own.has(m.id))))
+  return soonestAround(lat, lng, datedRows(all.filter((m) => !own.has(m.id))), NEARBY_MAX);
+}
+
+/**
+ * The soonest markets within 25 km of a point, one row per market, each with
+ * its distance — soonest first, then closest. The one "what is on around
+ * here" on the site: a thin town's *Within 25 km* and a market page's
+ * *Meanwhile, nearby* (src/lib/nearby.ts) both ask it, so the radius and the
+ * order cannot drift apart. The caller decides which rows are candidates.
+ */
+export function soonestAround(lat: number, lng: number, rows: Dated[], max: number): Nearby[] {
+  return byMarket(rows)
     .map((market) => ({ market, km: distanceKm(lat, lng, market.lat, market.lng) }))
     .filter(({ km }) => km <= DEFAULT_RADIUS)
     .sort((a, b) => a.market.next.date.localeCompare(b.market.next.date) || a.km - b.km)
-    .slice(0, NEARBY_MAX);
+    .slice(0, max);
 }

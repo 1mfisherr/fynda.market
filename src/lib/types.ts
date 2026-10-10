@@ -114,14 +114,16 @@ export interface Market {
    * than only "no date yet" (Search Console, 2026-09-28).
    */
   lastDate?: string;
-  stallCountBadWeather?: number;
-  sellerMix?: 'private' | 'mixed' | 'trader' | 'new_goods';
-  priceLevel?: 'cheap' | 'flohmarkt' | 'trader';
-  packUpFrom?: string;
+  /**
+   * The months it runs, 1–12, read from its own rhythm line: "April to
+   * October" is 4 / 10, an annual market in September 9 / 9, and a season over
+   * the new year wraps. What lets a page with no date say "Back in April" —
+   * src/lib/season.ts is the one reading of it.
+   */
+  seasonFrom?: number;
+  seasonTo?: number;
+  /** Who sells — what buyers ask most after size. Rendered only when set. */
+  sellerMix?: 'private' | 'mixed' | 'trader';
   entryFee?: number;
-  covered?: 'open' | 'partly' | 'indoor';
-  groundSurface?: string;
-  timing?: { from: string; label: string; note?: string }[];
   gettingThere?: string;
-  facilities?: { wc?: boolean; dogs?: boolean; strollers?: string; food?: string; cash?: string };
 }

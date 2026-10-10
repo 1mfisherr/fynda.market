@@ -76,6 +76,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '7. The newsletter',
         p: [
           'When you sign up we keep your e-mail address, the town or canton you chose and the language of the page, and we use them to send you the newsletter you asked for. The subscription starts at once — there is no confirmation mail to click. We also note when and where you signed up and the wording you agreed to, so that your consent can be shown rather than asserted.',
+          'If you ask to be told when a market — or a town — has its next date, we keep your e-mail address, the market or town and the language of the page until that date is out. Then we send you one e-mail and delete the address; if no date comes within 400 days, we delete it without writing. What stays is only that someone asked, so we know how many people are waiting for a market. Ticking the box beside it also signs you up for the weekly newsletter, as above.',
           'Our mails are delivered by Resend (Resend Inc., USA), which receives your address and the content of each mail for delivery only. Resend tells us whether a mail arrived, bounced, was opened or which link was clicked, and we use that to keep the list healthy: an address that bounces for good or reports us as spam comes off the list at once, and an address that has opened nothing for a long time may be removed so we stop writing to nobody.',
           'Your e-mail address is used for the newsletter and for replying to you — it is not connected to what you do on the site.',
           'You can unsubscribe with the link in any mail or by writing to contact@fynda.market. Afterwards we keep only your address and the dates you joined and left, so that we never contact you again by mistake.',
@@ -123,6 +124,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '12. How long we keep it',
         ul: [
           'newsletter data: while you are subscribed, then only the suppression record described above;',
+          '"tell me when it\'s back": your address until the one e-mail is sent, and 400 days at most;',
           'messages, reports and organiser correspondence: while they remain relevant, as part of the record of when a listing was last checked;',
           'usage data: kept, so trends can be followed over years — it carries no name, no e-mail address and no readable IP address;',
           'short-lived security records: deleted when no longer needed.',
@@ -198,6 +200,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '7. Der Newsletter',
         p: [
           'Bei der Anmeldung behalten wir Ihre E-Mail-Adresse, den gewählten Ort oder Kanton und die Sprache der Seite, und wir verwenden sie, um Ihnen den bestellten Newsletter zu schicken. Das Abo beginnt sofort — es gibt keine Bestätigungsmail. Wir halten auch fest, wann und wo Sie sich angemeldet haben und welchem Text Sie zugestimmt haben, damit Ihre Einwilligung belegt und nicht nur behauptet werden kann.',
+          'Wenn Sie sich benachrichtigen lassen, sobald ein Markt — oder ein Ort — seinen nächsten Termin hat, behalten wir Ihre E-Mail-Adresse, den Markt oder Ort und die Sprache der Seite, bis der Termin feststeht. Dann schicken wir Ihnen eine einzige E-Mail und löschen die Adresse; kommt innerhalb von 400 Tagen kein Termin, löschen wir sie, ohne zu schreiben. Es bleibt nur festgehalten, dass jemand gefragt hat, damit wir wissen, wie viele Leute auf einen Markt warten. Wer das Kästchen daneben ankreuzt, abonniert zusätzlich den wöchentlichen Newsletter, wie oben beschrieben.',
           'Unsere Mails werden von Resend (Resend Inc., USA) zugestellt; Resend erhält Ihre Adresse und den Inhalt jeder Mail ausschliesslich zur Zustellung. Resend sagt uns, ob eine Mail angekommen ist, unzustellbar war, geöffnet wurde oder welcher Link angeklickt wurde, und wir nutzen das, um die Liste gesund zu halten: Eine Adresse, die dauerhaft unzustellbar ist oder uns als Spam meldet, kommt sofort von der Liste, und eine Adresse, die lange nichts öffnet, kann entfernt werden, damit wir nicht ins Leere schreiben.',
           'Ihre E-Mail-Adresse dient dem Newsletter und unseren Antworten — sie wird nicht mit dem verbunden, was Sie auf der Seite tun.',
           'Abmelden können Sie sich über den Link in jeder Mail oder per Mail an contact@fynda.market. Danach behalten wir nur Ihre Adresse und die Daten von An- und Abmeldung, damit wir Sie nie versehentlich wieder anschreiben.',
@@ -239,6 +242,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '12. Wie lange wir es aufbewahren',
         ul: [
           'Newsletter-Daten: solange Sie abonniert sind, danach nur den oben beschriebenen Sperrvermerk;',
+          'eine Benachrichtigung über den nächsten Termin: Ihre Adresse, bis die eine E-Mail verschickt ist, höchstens 400 Tage;',
           'Nachrichten, Meldungen und Veranstalter-Korrespondenz: solange sie relevant sind, als Nachweis, wann ein Eintrag zuletzt geprüft wurde;',
           'Nutzungsdaten: werden behalten, damit sich Trends über Jahre verfolgen lassen — sie enthalten weder Namen noch E-Mail-Adresse noch eine lesbare IP-Adresse;',
           'kurzlebige Sicherheitsdaten: werden gelöscht, sobald sie nicht mehr gebraucht werden.',
@@ -312,6 +316,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '7. La newsletter',
         p: [
           "À l'inscription, nous conservons votre adresse e-mail, la commune ou le canton choisi et la langue de la page, et nous les utilisons pour vous envoyer la newsletter demandée. L'abonnement démarre immédiatement — il n'y a pas d'e-mail de confirmation. Nous notons aussi quand et d'où vous vous êtes inscrit et le texte que vous avez accepté, afin que votre consentement puisse être démontré plutôt qu'affirmé.",
+          "Si vous demandez à être prévenu quand un marché — ou une localité — a sa prochaine date, nous conservons votre adresse e-mail, le marché ou la localité et la langue de la page jusqu'à ce que la date soit connue. Nous vous envoyons alors un seul e-mail et supprimons l'adresse ; si aucune date n'arrive dans les 400 jours, nous la supprimons sans écrire. Il ne reste que le fait que quelqu'un a demandé, pour savoir combien de personnes attendent un marché. Cocher la case à côté vous abonne aussi à la newsletter hebdomadaire, comme décrit ci-dessus.",
           "Nos e-mails sont distribués par Resend (Resend Inc., USA), qui reçoit votre adresse et le contenu de chaque message uniquement pour la distribution. Resend nous dit si un e-mail est arrivé, a été rejeté, ouvert, ou quel lien a été cliqué, et nous nous en servons pour garder la liste saine : une adresse définitivement injoignable ou qui nous signale comme spam est retirée aussitôt, et une adresse qui n'ouvre rien depuis longtemps peut être retirée pour que nous n'écrivions pas dans le vide.",
           "Votre adresse e-mail sert à la newsletter et à vous répondre — elle n'est pas reliée à ce que vous faites sur le site.",
           "Vous pouvez vous désabonner via le lien de chaque e-mail ou en écrivant à contact@fynda.market. Nous ne gardons ensuite que votre adresse et les dates d'inscription et de désinscription, pour ne jamais vous recontacter par erreur.",
@@ -353,6 +358,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '12. Combien de temps nous conservons',
         ul: [
           "données de newsletter : tant que vous êtes abonné, puis seulement la trace de désinscription décrite ci-dessus ;",
+          "une demande « prévenez-moi » : votre adresse jusqu'à l'envoi de l'unique e-mail, 400 jours au plus ;",
           "messages, signalements et correspondance avec les organisateurs : tant qu'ils restent pertinents, comme trace de la dernière vérification d'une fiche ;",
           "données d'usage : conservées, pour suivre les tendances sur plusieurs années — elles ne contiennent ni nom, ni adresse e-mail, ni adresse IP lisible ;",
           "données de sécurité de courte durée : supprimées dès qu'elles ne sont plus nécessaires.",
@@ -426,6 +432,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '7. La newsletter',
         p: [
           "All'iscrizione conserviamo il tuo indirizzo e-mail, la località o il cantone scelto e la lingua della pagina, e li usiamo per inviarti la newsletter richiesta. L'iscrizione parte subito — non c'è nessuna e-mail di conferma. Annotiamo anche quando e da dove ti sei iscritto e il testo che hai accettato, così che il tuo consenso possa essere dimostrato e non solo affermato.",
+          "Se chiedi di essere avvisato quando un mercatino — o una località — ha la prossima data, conserviamo il tuo indirizzo e-mail, il mercatino o la località e la lingua della pagina finché la data non è nota. Allora ti mandiamo una sola e-mail e cancelliamo l'indirizzo; se entro 400 giorni non arriva nessuna data, lo cancelliamo senza scriverti. Resta solo il fatto che qualcuno l'ha chiesto, così sappiamo quante persone aspettano un mercatino. Spuntando la casella accanto ti iscrivi anche alla newsletter settimanale, come descritto sopra.",
           "Le nostre e-mail sono recapitate da Resend (Resend Inc., USA), che riceve il tuo indirizzo e il contenuto di ogni messaggio solo per la consegna. Resend ci dice se un'e-mail è arrivata, è stata respinta, aperta, o quale link è stato cliccato, e lo usiamo per tenere sana la lista: un indirizzo definitivamente irraggiungibile o che ci segnala come spam viene tolto subito, e un indirizzo che non apre nulla da molto tempo può essere rimosso perché non scriviamo nel vuoto.",
           "Il tuo indirizzo e-mail serve per la newsletter e per risponderti — non viene collegato a ciò che fai sul sito.",
           "Puoi disiscriverti dal link in ogni e-mail o scrivendo a contact@fynda.market. Dopo conserviamo solo il tuo indirizzo e le date di iscrizione e disiscrizione, per non ricontattarti mai per errore.",
@@ -467,6 +474,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '12. Per quanto tempo li conserviamo',
         ul: [
           'dati della newsletter: finché sei iscritto, poi solo la traccia di disiscrizione descritta sopra;',
+          "una richiesta «avvisami»: il tuo indirizzo finché non parte l'unica e-mail, al massimo 400 giorni;",
           "messaggi, segnalazioni e corrispondenza con gli organizzatori: finché restano rilevanti, come traccia dell'ultima verifica di una scheda;",
           "dati d'uso: conservati, per seguire le tendenze negli anni — non contengono né nome, né indirizzo e-mail, né indirizzo IP leggibile;",
           'dati di sicurezza di breve durata: cancellati appena non servono più.',

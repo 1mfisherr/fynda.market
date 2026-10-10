@@ -43,6 +43,9 @@ interface Row {
   stall_count: number | null;
   setting: Market['setting'] | null;
   rain_policy: Market['rainPolicy'] | null;
+  season_from: number | null;
+  season_to: number | null;
+  seller_mix: Market['sellerMix'] | null;
   stall_booking: string | null;
   getting_there: string | null;
   organiser_note: string | null;
@@ -93,6 +96,9 @@ const SQL = `
     m.stall_count,
     m.setting,
     m.rain_policy,
+    m.season_from,
+    m.season_to,
+    m.seller_mix,
     m.stall_booking,
     m.getting_there,
     m.organiser_note,
@@ -207,6 +213,9 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         stallCount: row.stall_count ?? undefined,
         setting: row.setting ?? undefined,
         rainPolicy: row.rain_policy ?? undefined,
+        seasonFrom: row.season_from ?? undefined,
+        seasonTo: row.season_to ?? undefined,
+        sellerMix: row.seller_mix ?? undefined,
         stallBooking: row.stall_booking ?? undefined,
         gettingThere: row.getting_there ?? undefined,
         organiserNote: row.organiser_note ?? undefined,

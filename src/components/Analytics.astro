@@ -253,7 +253,7 @@
    * its canton picker is taller than half a phone, so a bare 50% threshold
    * would never fire on the device 60% of visitors hold.
    */
-  const blocks = document.querySelectorAll<HTMLElement>('[data-subscribe-block]');
+  const blocks = document.querySelectorAll<HTMLElement>('[data-subscribe-block]:not([data-alert])');
   if (blocks.length && 'IntersectionObserver' in window) {
     const onNewsletterPage = /^\/(de|fr|it|en)\/newsletter\/$/.test(location.pathname);
     const seen = new WeakSet<Element>();
@@ -418,7 +418,7 @@
   /** First touch of the signup form: seen → started → submitted becomes a funnel. */
   const started = new WeakSet<Element>();
   document.addEventListener('focusin', (event) => {
-    const form = (event.target as Element | null)?.closest?.('form[data-subscribe]');
+    const form = (event.target as Element | null)?.closest?.('form[data-subscribe]:not([data-alert])');
     if (!form || started.has(form)) return;
     started.add(form);
     const block = form.closest<HTMLElement>('[data-subscribe-block]');

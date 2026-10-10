@@ -175,10 +175,11 @@
     above. A fixed column with 30% larger text in it is not a column, it is a
     wrap. --tap-min is the exception: 44px is a WCAG floor, not a size.
   */
-  /* The label column on the market page's "Wann hingehen" block. 52 and not
-     46, because "08:00" at --text-date measures 47.4px and the narrower value
-     had been overflowing silently since it was written. */
-  --row-time: clamp(52px, calc(46.507px + 1.465vw), 67.6px);
+  /* The picture beside a compact row — a name and one line, under a market
+     page's buttons, where the market itself is the page and its neighbours
+     are a footnote (Delfim, 2026-10-10). A recognisable mark, not a photograph
+     to read; --row-thumb is that. */
+  --row-thumb-compact: clamp(52px, calc(46.507px + 1.465vw), 67.6px);
   /* The picture beside a compact row. Big enough to read as a photograph
      rather than a smudge — 56px was a smudge. */
   --row-thumb: clamp(72px, calc(64.394px + 2.028vw), 93.6px);

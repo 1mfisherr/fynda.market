@@ -2,9 +2,10 @@
  * Newsletter signup — POST /n.
  *
  * The first form on this site that did not open the visitor's mail program, and
- * now one of three: /r takes a report and /o an organiser claim. Everything the
- * three agree about lives in `_form.ts`; what is left here is what only a
- * signup decides.
+ * now one of four: /r takes a report, /o an organiser claim and /b a "tell me
+ * when it's back". Everything they agree about lives in `_form.ts`, and putting
+ * an address on the weekly list — which /b can do too — in `_newsletter.ts`;
+ * what is left here is what only this signup decides.
  *
  * It writes a row and answers; the page then says "you're in" without leaving.
  *
@@ -21,14 +22,13 @@
 import { localeOf } from './_collect';
 import { recentFrom } from './_rest';
 import {
-  EMAIL, crossOrigin, ipHash, json, looksLikeBot, pathFrom, ping,
-  domainOf, readBody, referrerHost, seeOther, text, tooFast, trapped, type FormEnv,
+  EMAIL, crossOrigin, ipHash, json, looksLikeBot, pathFrom,
+  readBody, referrerHost, seeOther, text, tooFast, trapped,
 } from './_form';
-import { sendMail, welcomeMail, type Locale, type MailEnv } from './_mail';
+import { resolveSlug, subscribe, type NewsletterEnv } from './_newsletter';
+import type { Locale } from './_mail';
 
-interface Env extends FormEnv, MailEnv {}
-
-export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUntil }) => {
+export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env, waitUntil }) => {
   if (crossOrigin(request)) return json(403, { ok: false });
   if (looksLikeBot(request)) return json(202, { ok: true });
 
@@ -91,33 +91,12 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   }
 
   /*
-   * A slug we do not hold resolves to nothing, and nothing is what an absent
-   * one means too: the whole country. So a made-up value cannot reach the row
-   * the way a made-up town could.
-   */
-  /* Captured after the guard above: inside a closure TypeScript widens
-     `env.X` back to possibly-undefined, because a closure could run later. */
-  const base = env.SUPABASE_URL;
-  const key = env.SUPABASE_SERVICE_ROLE_KEY;
-
-  const resolve = async (kind: 'region' | 'city', slug: string | null) => {
-    if (!slug || !/^[a-z0-9-]+$/.test(slug)) return null;
-    const found = (await fetch(
-      `${base}/rest/v1/slugs?entity_type=eq.${kind}&slug=eq.${encodeURIComponent(slug)}&select=entity_id&limit=1`,
-      { headers: { apikey: key, Authorization: `Bearer ${key}` } }
-    )
-      .then((r) => (r.ok ? r.json() : []))
-      .catch(() => [])) as Array<{ entity_id?: string }>;
-    return found[0]?.entity_id ?? null;
-  };
-
-  /*
    * A city wins where both arrive, because it is the more precise of the two
    * and the database refuses a row holding both anyway — see the check
    * constraint in migration 20260910160000.
    */
-  const city_id = await resolve('city', citySlug);
-  const region_id = city_id ? null : await resolve('region', regionSlug);
+  const city_id = await resolveSlug(env, 'city', citySlug);
+  const region_id = city_id ? null : await resolveSlug(env, 'region', regionSlug);
 
   /* Clamped rather than rejected: a radius nobody can type wrong. The offered
      values are in src/lib/geo.ts. */
@@ -130,78 +109,19 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
   const signup_ip_hash = await ipHash(env, request, 'newsletter');
   if ((await recentFrom(env, 'newsletter_subscribers', 'signup_ip_hash', 'created_at', signup_ip_hash)) >= 5) return quiet();
 
-  const row: Record<string, unknown> = {
+  const saved = await subscribe(env, waitUntil, {
     email,
+    locale: locale as Locale,
     region_id,
     city_id,
     radius_km,
-    locale,
     source_path: path,
     referrer_host: referrerHost(request),
     signup_ip_hash,
-    // A second signup un-does an earlier unsubscribe.
-    unsubscribed_at: null,
-  };
+    // The exact words shown next to the button, kept so consent can be shown rather than asserted.
+    consent_text: text(body.consent_text, 500),
+    where: city_id ? `${radius_km} km um ${citySlug}` : region_id ? String(regionSlug) : '',
+  });
 
-  /*
-   * The exact words shown next to the button, kept so consent can be shown
-   * rather than asserted.
-   *
-   * Only set when we have one. An upsert updates exactly the columns present
-   * in the payload, so sending null here would let a later signup erase the
-   * consent record of an earlier one — which is the one field that must not be
-   * lost.
-   */
-  const consent = text(body.consent_text, 500);
-  if (consent) row.consent_text = consent;
-
-  /*
-   * Upsert on the address rather than a plain insert, which is why this does
-   * not use `_form.ts`'s `insertRow`. A second signup from the same person
-   * updates their canton and undoes an earlier unsubscribe — it must never fail
-   * with a duplicate-key error that the page would show as "something went
-   * wrong". created_at and unsubscribe_token are left alone, so old unsubscribe
-   * links keep working.
-   *
-   * The row comes back rather than nothing, because the welcome mail below
-   * needs the unsubscribe token and this is the only place it is knowable
-   * without a second query.
-   */
-  const res = await fetch(
-    `${env.SUPABASE_URL}/rest/v1/newsletter_subscribers?on_conflict=email&select=unsubscribe_token`,
-    {
-      method: 'POST',
-      headers: {
-        apikey: env.SUPABASE_SERVICE_ROLE_KEY,
-        Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
-        'Content-Type': 'application/json',
-        Prefer: 'resolution=merge-duplicates,return=representation',
-      },
-      body: JSON.stringify(row),
-    }
-  );
-
-  if (!res.ok) {
-    console.log('newsletter insert rejected', res.status, await res.text());
-    return failed(500, 'save_failed', 'failed');
-  }
-
-  const saved = (await res.json().catch(() => [])) as Array<{ unsubscribe_token?: string }>;
-  const token = saved[0]?.unsubscribe_token;
-
-  /*
-   * Told, then welcomed — both after the row is safe, and neither awaited.
-   *
-   * The welcome mail is what proves the address works and what carries the
-   * unsubscribe link, which is why it goes out on every signup rather than
-   * waiting for the first digest. A signup with no token back, or with sending
-   * switched off, still succeeds: the address is on the list either way.
-   */
-  const where = city_id ? `${radius_km} km um ${citySlug}` : region_id ? String(regionSlug) : '';
-  waitUntil(ping(env, `Newsletter: ${domainOf(email)}${where ? ` — ${where}` : ''} (${locale})`));
-  if (token) {
-    waitUntil(sendMail(env, { to: email, ...welcomeMail(locale as Locale, token) }));
-  }
-
-  return done();
+  return saved ? done() : failed(500, 'save_failed', 'failed');
 };

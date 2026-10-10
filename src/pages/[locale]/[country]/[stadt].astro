@@ -17,10 +17,12 @@ import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
 import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets, undatedMarkets } from '../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
-import { DEFAULT_RADIUS } from '../../../lib/geo';
-import { LOCALES, cityPath, homePath, isCityState, regionPath, type Locale } from '../../../lib/i18n';
+import { DEFAULT_RADIUS, kmLabel } from '../../../lib/geo';
+import { LOCALES, cityPath, homePath, isCityState, localeTag, regionPath, type Locale } from '../../../lib/i18n';
+import { seasonLabel } from '../../../lib/season';
 import { t } from '../../../lib/strings';
 import { fitTitle } from '../../../lib/titles';
+import { townIndex, townsAround } from '../../../lib/towns';
 import type { Market } from '../../../lib/types';
 
 /**
@@ -44,9 +46,11 @@ export async function getStaticPaths() {
   for (const locale of LOCALES) {
     const markets = byLocale.get(locale)!;
     const cities = new Map(markets.map((m) => [m.citySlug, m]));
+    const index = townIndex(locale, markets);
     for (const [stadt, sample] of cities) {
       const here = markets.filter((m) => m.citySlug === stadt);
       const nearby = nearbyMarkets(here, markets);
+      const towns = townsAround(stadt, index);
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(stadt);
         return country ? { locale: other, path: cityPath(other, country, stadt) } : null;
@@ -54,14 +58,14 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, country: sample.countrySlug, stadt },
-        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby, alternates },
+        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby, towns, alternates },
       });
     }
   }
   return paths;
 }
 
-const { locale, city, stadt, region, regionSlug, markets, nearby, alternates } = Astro.props;
+const { locale, city, stadt, region, regionSlug, markets, nearby, towns, alternates } = Astro.props;
 const s = t(locale);
 /* Every date, for the counts and the answer sentence; then one row per market,
    which is what the page actually renders — src/lib/lists.ts. */
@@ -107,6 +111,13 @@ const heading = s.cityHeading(markets.length, city, year);
 const soonest = [...rows]
   .filter((row) => row.next!.status !== 'cancelled')
   .sort((a, b) => a.next!.date.localeCompare(b.next!.date) || (a.next!.startTime ?? '').localeCompare(b.next!.startTime ?? ''))[0];
+/* A town of one market with nothing dated answers with that market's season
+   and its last edition — "Usually in September. Last held Sat 19 Sep." — the
+   same words its own page leads with (src/lib/season.ts). */
+const only = markets.length === 1 ? markets[0] : undefined;
+const between = only && !soonest
+  ? [seasonLabel(only, todayIso(), locale), only.lastDate && s.lastHeld(formatDate(only.lastDate, locale))].filter(Boolean).map((part) => `${part}.`).join(' ')
+  : '';
 const answer = soonest
   ? s.cityNext(
       soonest.name,
@@ -114,7 +125,10 @@ const answer = soonest
       formatTimeRange(soonest.next!.startTime, soonest.next!.endTime, locale),
       soonest.venueName
     )
-  : s.cityNoDate;
+  : between || s.cityNoDate;
+/* Nothing dated of its own: no date control to filter with, and the alert —
+   "tell me when Rafz has a date" — in the weekly card's place. */
+const ownDates = rows.some((row) => row.next.status !== 'cancelled');
 /**
  * The search snippet. It said "Alle bekannten Flohmärkte in Worb — mit
  * Terminen, Öffnungszeiten und Absagen" on every city page, and Search
@@ -206,7 +220,7 @@ const jsonLd = {
       market is the point of the block. */}
   {/* Every day a market runs, not only each market's next one — a weekly
       market is on the calendar every week (src/lib/date-rows.ts). */}
-  <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} />
+  {ownDates && <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} />}
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
@@ -249,15 +263,20 @@ const jsonLd = {
   {/* Straight after the markets that have a date, while people are still in
       the list. At the foot of the page it sat behind every undated market and
       almost nobody reached it (2026-09-23). */}
-  <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} anchors /></div>
+  {ownDates && <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} anchors /></div>}
 
+  {/* Each says when it is back, or when it last ran (MarketRow). */}
   {undated.length > 0 && (
-    <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
+    <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede(undated.length)}>
       <div class="gutter">
         {undated.map((market) => <MarketRow market={market} locale={locale} showRhythm omitCity showDay={false} />)}
       </div>
     </Section>
   )}
+
+  {/* A town with nothing dated: the town's own markets first, then the one
+      thing a visitor here can ask for — to be told when there is a date. */}
+  {!ownDates && <div class="gutter"><SubscribeForm locale={locale} near={{ slug: stadt, name: city }} alert={{}} anchors /></div>}
 
   {nearby.length > 0 && (
     <aside data-outside-floor>
@@ -280,7 +299,13 @@ const jsonLd = {
   )}
 
   {/* Navigation, so it sits after the thing people came for rather than
-      between the headline and the first market. */}
+      between the headline and the first market: the towns around this one
+      (src/lib/towns.ts), then the canton. */}
+  {towns.length > 0 && (
+    <Section title={s.townsNearby}>
+      <PillList items={towns.map((town) => ({ href: town.href, label: town.name, meta: kmLabel(town.km, localeTag(locale)) }))} />
+    </Section>
+  )}
   {!cityState && <PillList items={[{ href: regionPath(locale, markets[0].countryCode, markets[0].countrySlug, regionSlug), label: s.regionLabel(region, markets[0].countryCode) }]} />}
 
   {hasBadge && <TypeLegend locale={locale} />}

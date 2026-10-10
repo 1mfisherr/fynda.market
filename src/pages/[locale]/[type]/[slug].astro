@@ -3,9 +3,11 @@
  * Market page — the highest-intent visitor on the site. PAGES.md: confirm it is
  * really happening, then get them there. Nothing else.
  *
- * Every block renders only when its data exists. We hold stall counts, seller
- * mix and facilities for nobody yet, so those sections are simply absent rather
- * than filled with placeholders — PRODUCT.md §The three loops, "the honest gap".
+ * Every block renders only when its data exists. Stalls, setting, who sells,
+ * a fee and the rain answer sit in the decision strip for the markets we hold
+ * them for, and are simply absent for the rest rather than filled with
+ * placeholders — PRODUCT.md §The three loops, "the honest gap". A market with
+ * no date says when it is back instead (PAGES.md, 2026-10-10).
  */
 import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
@@ -15,7 +17,9 @@ import Icon from '../../../components/Icon.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
 import MarketRow from '../../../components/MarketRow.astro';
-import { sameDayNearby } from '../../../lib/nearby';
+import { meanwhileNearby, sameDayNearby } from '../../../lib/nearby';
+import type { Nearby } from '../../../lib/lists';
+import { seasonLabel } from '../../../lib/season';
 import { kmLabel } from '../../../lib/geo';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, toIsoWithOffset, todayIso } from '../../../lib/format';
@@ -56,15 +60,21 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, type: LOCALE[locale].segments.market, slug: market.slug },
-        props: { locale, market, alternates, nearby: sameDayNearby(market, all) },
+        props: {
+          locale, market, alternates,
+          // A market with a date: the others that day. Without one: what is on meanwhile.
+          nearby: market.next ? sameDayNearby(market, all) : meanwhileNearby(market, all),
+          // Whether the town has a page worth sending someone to from here.
+          townHasOthers: all.some((m) => m.citySlug === market.citySlug && m.id !== market.id),
+        },
       });
     }
   }
   return paths;
 }
 
-const { locale, market, alternates, nearby } = Astro.props as {
-  locale: Locale; market: Market; alternates: { locale: Locale; path: string }[]; nearby: { market: Market; km: number }[];
+const { locale, market, alternates, nearby, townHasOthers } = Astro.props as {
+  locale: Locale; market: Market; alternates: { locale: Locale; path: string }[]; nearby: Nearby[]; townHasOthers: boolean;
 };
 const s = t(locale);
 const next = market.next;
@@ -191,7 +201,7 @@ const afterLine = after
 /* "0,7 km" in German, "0.7 km" in English — one decimal under a kilometre,
    where rounding would print "1 km" for a two-minute walk. */
 const km = (n: number) => kmLabel(n, localeTag(locale));
-const nearbyTitle = !next ? '' : next.date === today ? s.nearbyToday : next.date === tomorrow ? s.nearbyTomorrow : s.nearbyOn(formatDate(next.date, locale));
+const nearbyTitle = !next ? s.meanwhileNearby : next.date === today ? s.nearbyToday : next.date === tomorrow ? s.nearbyTomorrow : s.nearbyOn(formatDate(next.date, locale));
 
 /* The preview a chat app shows for a shared link: the market's own picture,
    made at build time by scripts/postbuild.mjs as a JPEG, because not every chat
@@ -227,17 +237,16 @@ const liveDates = dates.filter((o) => o.status !== 'cancelled').length;
 const claimed = market.verifiedBy === 'organiser';
 
 /**
- * The owned line. Who runs it, and the three facts only an organiser can
- * supply — stalls, indoor or outdoor, what rain does — each part only when it
- * exists. On an unclaimed page it is the organiser's name alone, sitting above
- * the ask so the ask makes its own case.
+ * The market between editions (PAGES.md, 2026-10-10). Where a date would lead
+ * the page, it says when the market is back — "Back in April", from the
+ * months it runs — or "No date yet" when its rhythm names no months; under it
+ * the rhythm and when it last ran, the two facts we hold for certain.
  */
-const owned = [
-  market.organiserName ? s.hostedBy(market.organiserName) : undefined,
-  market.stallCount ? s.stallsAbout(market.stallCount) : undefined,
-  market.setting ? s.setting[market.setting] : undefined,
-  market.rainPolicy ? s.rain[market.rainPolicy] : undefined,
-].filter(Boolean) as string[];
+const season = next ? undefined : seasonLabel(market, today, locale);
+const betweenLine = next ? undefined : [
+  market.recurrenceText?.replace(/\.\s*$/, ''),
+  market.lastDate ? s.lastHeld(formatDate(market.lastDate, locale)) : undefined,
+].filter(Boolean).map((part) => `${part}.`).join(' ');
 
 const claimHref = `${utilityPath(locale, 'organiser')}`
   + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`
@@ -269,25 +278,24 @@ const rowWord = (o: { status: string; origin?: string; date: string }) =>
   : o.status === 'confirmed' && o.origin === 'organiser' ? s.organiserConfirmed
   : STATUS[locale][o.status];
 
+/**
+ * What decides a trip, in the decision strip under the name — each fact only
+ * when we hold it, never a dash (PAGES.md §What decides a trip). They used to
+ * be scattered: stalls, setting and rain on the organiser line at the foot of
+ * the page, under a heading of their own when there was a fee. One place now,
+ * the place a visitor reads before deciding.
+ *
+ * Say the exception, never the rule — docs/BRAND.md: 151 of 157 markets were
+ * free, so the entry shows only when there is a fee.
+ */
+const capital = (text: string) => text.charAt(0).toLocaleUpperCase(locale) + text.slice(1);
 const facts = [
-  market.stallCount ? [s.stallsLabel, `~${market.stallCount}${market.stallCountBadWeather ? `, ${s.stallsInBadWeather(market.stallCountBadWeather)}` : ''}`] : undefined,
-  market.sellerMix ? ['Verkäufer', { private: 'nur Private', mixed: 'Private und Händler', trader: 'Händler', new_goods: 'Neuware' }[market.sellerMix]] : undefined,
-  market.priceLevel ? ['Preisniveau', { cheap: 'günstig', flohmarkt: 'Flohmarkt', trader: 'Händler' }[market.priceLevel]] : undefined,
-  // Say the exception, never the rule — docs/BRAND.md. 151 of 157 markets are
-  // free, so "Eintritt: frei" separated nobody from anybody and stood alone
-  // under a heading promising what to expect. A price shows when there is one.
-  market.entryFee ? [s.entryLabel, formatFee(market.entryFee, market.countryCode)] : undefined,
-  market.covered ? ['Gelände', { open: 'offen', partly: 'teilweise gedeckt', indoor: 'drinnen' }[market.covered]] : undefined,
-  market.groundSurface ? ['Untergrund', market.groundSurface] : undefined,
+  market.stallCount ? [`~${market.stallCount}`, s.stallsLabel] : undefined,
+  market.setting ? [capital(s.setting[market.setting]), s.settingLabel] : undefined,
+  market.sellerMix ? [s.sellers[market.sellerMix], s.sellersLabel] : undefined,
+  market.entryFee ? [formatFee(market.entryFee, market.countryCode), s.entryLabel] : undefined,
+  market.rainPolicy ? [s.rain[market.rainPolicy], s.rainLabel] : undefined,
 ].filter(Boolean) as [string, string][];
-
-const facilityItems = market.facilities ? [
-  market.facilities.wc !== undefined ? ['WC', market.facilities.wc ? 'ja' : 'nein'] : undefined,
-  market.facilities.dogs !== undefined ? ['Hunde', market.facilities.dogs ? 'ja' : 'nein'] : undefined,
-  market.facilities.strollers ? ['Kinderwagen', market.facilities.strollers] : undefined,
-  market.facilities.food ? ['Essen', market.facilities.food] : undefined,
-  market.facilities.cash ? ['Bargeld', market.facilities.cash] : undefined,
-].filter(Boolean) as [string, string][] : [];
 
 /* The venue goes in the title only when it says something the name and the
    town do not — "vidmarhallen flohmarkt" is how people search for the market
@@ -338,8 +346,7 @@ const later = next
   : [];
 const place = [market.venueName, says(market.venueName ?? '', market.city) ? undefined : market.city].filter(Boolean).join(', ');
 // French and Italian weekdays are lower case ("mar. 29 sept."); a snippet
-// that opens a sentence with one does not.
-const capital = (text: string) => text.charAt(0).toLocaleUpperCase(locale) + text.slice(1);
+// that opens a sentence with one does not (`capital`, above).
 const description = next
   ? capital(s.marketSnippet(formatDate(next.date, locale), formatTimeRange(next.startTime, next.endTime, locale), place, market.setting && s.setting[market.setting], later))
   : s.marketNoDateDescription(kind.full[locale], market.city, market.venueName, market.recurrenceText?.replace(/\.\s*$/, ''), market.lastDate && formatDate(market.lastDate, locale));
@@ -442,25 +449,34 @@ const description = next
         </div>
       )}
 
-      {market.packUpFrom && <p class="pack">{s.packUpFrom(market.packUpFrom)}</p>}
+      {/* No date: when it is back, where the date would be, and the rhythm
+          and the last edition under it. "No date yet" steps down to ink — it
+          is not news to act on. */}
+      {!next && (
+        <div class="status">
+          <p class="word"><strong class:list={{ quiet: !season }}>{season ?? s.noDateYet}</strong></p>
+          {betweenLine && <p class="between">{betweenLine}</p>}
+        </div>
+      )}
 
       {/* The decision strip. Every segment is computed from what we already
           hold, so it behaves identically for a market in Dortmund we have
           never seen. A segment renders when its value exists and is simply
-          absent otherwise — never a dash, never "unbekannt".
-
-          Distance is the third segment and is not here yet: it needs the
-          visitor's own town, and `fynda:stadt` currently stores a name and a
-          href without coordinates. The slot is left for it. */}
+          absent otherwise — never a dash, never "unbekannt". The distance is
+          from the town the visitor picked, filled in by the script below. */}
       <div class="strip">
         <ul class="list-reset">
           <li data-distance hidden data-lat={market.lat} data-lng={market.lng} data-from={s.fromTown}><b data-distance-value></b><span data-distance-label></span></li>
-          {market.recurrenceText && <li><b>{market.recurrenceText}</b><span>{s.howOften}</span></li>}
+          {next && market.recurrenceText && <li><b>{market.recurrenceText}</b><span>{s.howOften}</span></li>}
           {liveDates > 0 && <li><b>{liveDates}</b><span>{s.upcoming(liveDates)}</span></li>}
+          {facts.map(([value, label]) => <li><b>{value}</b><span>{label}</span></li>)}
         </ul>
-        <p class:list={['stamp', { organiser: next?.origin === 'organiser' }]}>
-          {stampMain}{stampAlso ? ` · ${stampAlso}` : ''}
-        </p>
+        {/* The stamp is about the next date; with none there is nothing to have checked. */}
+        {next && (
+          <p class:list={['stamp', { organiser: next.origin === 'organiser' }]}>
+            {stampMain}{stampAlso ? ` · ${stampAlso}` : ''}
+          </p>
+        )}
       </div>
     </div>
 
@@ -499,15 +515,27 @@ const description = next
         page_leave.sections: which blocks of the page were actually on
         screen before the visitor left. */}
     <div class="detail">
-      {/* First in the detail column, so on a phone it sits straight under the
-          buttons: the moment someone has decided on this market is the moment
-          "and what else is on" is worth asking. The script below drops rows
-          that have closed and renames the block once this market has. */}
+      {/* No date: the date is what this visitor came for, so the offer to send
+          it comes first, straight under the buttons. It takes the weekly
+          card's place — one form per page — and carries the weekly mail as an
+          unticked offer of its own. */}
+      {!next && (
+        <div class="gutter"><SubscribeForm locale={locale} near={{ slug: market.citySlug, name: market.city }} alert={{ market: { id: market.id, name: market.name } }} anchors /></div>
+      )}
+
+      {/* Then what else is on: the moment someone has decided on this market —
+          or found it is not on — is the moment that question is worth asking.
+          Compact rows: this market is the page, they are a footnote. The
+          script below drops rows that have closed and renames the block once
+          this market has. */}
       {nearby.length > 0 && (
         <Section level="sub" title={nearbyTitle} id="nearby">
           <div class="gutter nearby" data-nearby data-still-open={next?.date === today ? s.nearbyStillOpen : undefined}>
-            {nearby.map(({ market: m, km: d }) => <MarketRow market={m} locale={locale} showRhythm distance={km(d)} />)}
+            {nearby.map(({ market: m, km: d }) => <MarketRow market={m} locale={locale} variant="compact" showDay={!next} distance={km(d)} />)}
           </div>
+          {!next && townHasOthers && (
+            <p class="gutter town-link"><a href={cityPath(locale, market.countrySlug, market.citySlug)}>{s.allMarketsIn(market.city)} →</a></p>
+          )}
           <p class="gutter crow">{s.straightLine}</p>
         </Section>
       )}
@@ -524,22 +552,6 @@ const description = next
         </Section>
       )}
 
-      {facts.length > 0 && (
-        <Section level="sub" title={s.whatToExpect} id="expect">
-          <dl class="gutter">{facts.map(([term, value]) => <><dt>{term}</dt><dd>{value}</dd></>)}</dl>
-        </Section>
-      )}
-
-      {market.timing && (
-        <Section level="sub" title={s.whenToGo} id="when">
-          <div class="timing gutter">
-            {market.timing.map((slot) => (
-              <div><strong>{slot.from}</strong><span><b>{slot.label}</b>{slot.note && <em>{slot.note}</em>}</span></div>
-            ))}
-          </div>
-        </Section>
-      )}
-
       <Section level="sub" title={s.gettingThere} id="hinkommen">
         <p class="address gutter">
           <b>{market.venueName}</b>
@@ -547,15 +559,11 @@ const description = next
           {showLocality && <span>{locality}</span>}
         </p>
         {market.gettingThere && <p class="getting gutter">{market.gettingThere}</p>}
-        {facilityItems.length > 0 && (
-          <div class="facilities gutter">{facilityItems.map(([label, value]) => <span class="chip">{label} <b>{value}</b></span>)}</div>
-        )}
       </Section>
 
-      {/* A market between seasons has no date to show, and 40 of 157 are in
-          that state in September. The heading used to stand over an empty
-          list; the rhythm is what we do know — "Einmal jährlich, zwischen
-          April und Oktober" — and it is the honest answer to "when". */}
+      {/* A market between seasons has no date to show — 94 of 339 on
+          2026-10-10. When it is back, its rhythm and its last edition lead the
+          page; here the heading says plainly that there is no date. */}
       <Section level="sub" title={s.dates} id="dates">
         {dates.length > 0 ? (
           <>
@@ -587,9 +595,7 @@ const description = next
         ) : (
           <p class="gutter no-dates">
             {/* A date beyond the 120-day horizon is in the hero already; saying "no next date" under it contradicted the page. */}
-            {!next && <strong>{s.cityNoDate}</strong>}
-            {market.recurrenceText && <span>{market.recurrenceText}</span>}
-            {!next && market.lastDate && <span>{s.lastHeld(formatDate(market.lastDate, locale))}</span>}
+            {next ? market.recurrenceText && <span>{market.recurrenceText}</span> : <strong>{s.cityNoDate}</strong>}
           </p>
         )}
       </Section>
@@ -597,17 +603,15 @@ const description = next
       {/* The visitor's ask, straight after the dates: this is the page where
           somebody has shown they care about one market in one town, so the town
           is known and never asked for. Above the organiser line and the claim
-          card, which are addressed to someone else. */}
-      <div class="gutter"><SubscribeForm locale={locale} near={{ slug: market.citySlug, name: market.city }} anchors /></div>
+          card, which are addressed to someone else. With no date, the alert
+          above has taken its place. */}
+      {next && <div class="gutter"><SubscribeForm locale={locale} near={{ slug: market.citySlug, name: market.city }} anchors /></div>}
 
-      {/* Who runs it. Held for 94% of markets and, until now, printed only
-          into the structured data — a fact we had, that a person could not
-          read. It sits above the claim card on purpose: naming the organiser
-          and then saying nobody has taken this page over is the ask making its
-          own case. */}
-      {owned.length > 0 && (
-        <p class="host gutter">{owned.join(' · ')}</p>
-      )}
+      {/* Who runs it. Held for 94% of markets and, until 2026-09-06, printed
+          only into the structured data. It sits above the claim card on
+          purpose: naming the organiser and then saying nobody has taken this
+          page over is the ask making its own case. */}
+      {market.organiserName && <p class="host gutter">{s.hostedBy(market.organiserName)}</p>}
       {market.stallBooking && (
         <p class="host gutter">{s.bookAStall}: {/^https?:\/\//i.test(market.stallBooking)
           ? <a href={market.stallBooking} rel="noopener nofollow" target="_blank">{market.stallBooking.replace(/^https?:\/\/(www\.)?/i, '').replace(/\/$/, '')}</a>
@@ -760,12 +764,16 @@ const description = next
     text-decoration-color: var(--color-line);
   }
   .status.cancelled .clock { color: var(--color-quiet); }
+  /* "No date yet" is not news to act on, so it is ink, not the accent. */
+  .word > strong.quiet { color: var(--color-ink); }
+  .between { margin-block-start: var(--space-1); max-width: var(--measure); color: var(--color-grey); font-size: var(--text-date); line-height: var(--leading-snug); }
 
   /*
     The decision strip. Everything in it is computed from what we already hold,
-    a segment renders only when its value exists, and `auto-fit` means two
-    segments fill the band as evenly as four — so a thin market reads as
-    deliberate rather than broken.
+    and a segment renders only when its value exists. Up to seven facts now,
+    so two to a row on a phone, a label under each, and no rules between them —
+    a rule between columns read as a table with holes once the row wrapped.
+    Above the breakpoint `auto-fit` spreads them along the band.
   */
   .strip {
     margin-block-start: var(--space-4);
@@ -774,7 +782,8 @@ const description = next
   }
   .strip ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--strip-column), 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3) var(--space-4);
     padding-block: var(--space-3);
   }
   .strip li {
@@ -782,11 +791,12 @@ const description = next
     flex-direction: column;
     gap: var(--space-half);
     min-width: 0;
-    padding-inline: var(--space-3);
-    border-inline-start: var(--border-width) solid var(--color-line);
   }
   .strip li[hidden] { display: none; }
-  .strip li:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  /* A market with no date and no facts held has only the distance slot,
+     still hidden — an empty band between two rules. It shows once the script
+     fills the distance in. */
+  .strip:not(:has(li:not([hidden]), .stamp)) { display: none; }
   .strip li b {
     font-size: var(--text-small);
     font-weight: var(--weight-bold);
@@ -817,8 +827,8 @@ const description = next
   /* Proportional figures here: a tabular comma after the word left a gap. */
   .status.over .clock { color: var(--color-grey); font-weight: var(--weight-regular); font-variant-numeric: normal; }
   .crow { margin-block-start: var(--space-2); color: var(--color-grey); font-size: var(--text-micro); }
-
-  .pack { margin-block-start: var(--space-2); font-size: var(--text-small); font-weight: var(--weight-bold); }
+  .town-link { margin-block-start: var(--space-3); font-size: var(--text-small); font-weight: var(--weight-bold); }
+  .town-link a { color: inherit; }
 
   .actions { display: grid; gap: var(--space-2); }
   .keep { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--space-2); }
@@ -871,35 +881,12 @@ const description = next
     100% { transform: scale(1); }
   }
 
-  dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-1) var(--space-hero);
-    margin: 0;
-    font-size: var(--text-small);
-  }
-  dt { color: var(--color-grey); }
-  dd { margin: 0; text-align: end; font-weight: var(--weight-bold); }
-
-  .timing > div {
-    display: grid;
-    grid-template-columns: var(--row-time) 1fr;
-    gap: var(--space-row);
-    padding-block: var(--space-2);
-    border-block-end: var(--border-width) solid var(--color-line);
-  }
-  .timing > div:last-child { border-block-end: 0; }
-  .timing > div > strong { color: var(--color-quiet); font-size: var(--text-micro); font-weight: var(--weight-black); }
-  .timing b, .timing em { display: block; font-size: var(--text-small); }
-  .timing em { margin-block-start: var(--space-half); color: var(--color-grey); font-style: normal; }
-
   .address { display: grid; font-size: var(--text-small); line-height: var(--leading-body); }
   .address b { font-weight: var(--weight-black); }
   .address span { color: var(--color-grey); }
   .getting { margin-block-start: var(--space-2); font-size: var(--text-small); }
 
-  .facilities, .report { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-  .facilities { margin-block-start: var(--space-3); }
+  .report { display: flex; flex-wrap: wrap; gap: var(--space-1); }
   .chip {
     padding: var(--space-1) var(--space-row);
     border: var(--border-width) solid var(--color-line);
@@ -907,7 +894,6 @@ const description = next
     font-size: var(--text-micro);
     font-weight: var(--weight-semibold);
   }
-  .facilities b { font-weight: var(--weight-black); }
 
   .dates li {
     display: grid;
@@ -963,12 +949,14 @@ const description = next
     }
     .head { grid-area: head; }
     .detail { grid-area: detail; }
+    /* Room for the facts in one band: two fill it as evenly as six. */
+    .strip ul { grid-template-columns: repeat(auto-fit, minmax(var(--strip-column), 1fr)); }
     /*
       Two- and three-column blocks push their last column to the right edge, so
       a wider container buys nothing but a longer gap between a label and its
       value. They stop where the text does.
     */
-    .dates, .timing, dl { max-width: var(--measure); }
+    .dates { max-width: var(--measure); }
     .side {
       grid-area: side;
       position: sticky;

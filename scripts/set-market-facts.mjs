@@ -6,9 +6,9 @@
  *   node scripts/set-market-facts.mjs intake/facts/<batch>.json --apply
  *
  * For the facts only an organiser or their website knows — indoor/outdoor,
- * roughly how many stalls, what rain does. A batch is a JSON array of
+ * roughly how many stalls, what rain does, who sells. A batch is a JSON array of
  *
- *   { "slug", "field": "setting" | "stall_count" | "rain_policy", "value",
+ *   { "slug", "field": "setting" | "stall_count" | "rain_policy" | "seller_mix", "value",
  *     "confidence": "stated" | "inferred", "source": "<url>", "quote": "…" }
  *
  * `stated` means the page says it; `inferred` means it follows from what the
@@ -33,6 +33,8 @@ const ALLOWED = {
   setting: (v) => ['indoor', 'outdoor', 'both'].includes(v),
   stall_count: (v) => Number.isInteger(v) && v > 0,
   rain_policy: (v) => ['runs', 'cancelled', 'decided_on_the_day'].includes(v),
+  // Private people only, a mix, or dealers — the buyer's question after size.
+  seller_mix: (v) => ['private', 'mixed', 'trader'].includes(v),
 };
 
 const batch = JSON.parse(readFileSync(file, 'utf8'));

@@ -162,7 +162,7 @@ const jsonLd = {
   <div class="gutter"><SubscribeForm locale={locale} region={{ slug: region, name: regionName }} anchors /></div>
 
   {undated.length > 0 && (
-    <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede}>
+    <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede(undated.length)}>
       <div class="gutter">
         {undated.map((market) => <MarketRow market={market} locale={locale} showRhythm />)}
       </div>

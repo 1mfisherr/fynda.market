@@ -68,6 +68,23 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node scripts/deploy.mjs
 
+      # "Tell me when it's back": one mail to everyone whose market or town now
+      # has a date — after the upload, so the page the mail links to already
+      # shows it (scripts/send-date-alerts.mjs). It sends under the same switch
+      # as the Friday digest; with NEWSLETTER_SENDING off it is a dry run.
+      - name: Date alerts
+        env:
+          FYNDA_DATA_SOURCE: supabase
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          SENDING: ${{ vars.NEWSLETTER_SENDING }}
+        run: |
+          if [ "$SENDING" = "on" ]; then
+            node scripts/send-date-alerts.mjs --send
+          else
+            node scripts/send-date-alerts.mjs
+          fi
+
       # The robot log keeps 30 days of rows and a daily count after that;
       # without this it fills the database (scripts/prune-logs.mjs).
       - name: Fold old robot rows

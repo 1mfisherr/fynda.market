@@ -51,6 +51,14 @@ interface Props {
    */
   variant?: 'card' | 'footer';
   /**
+   * "Tell me when it's back" in place of the weekly card (PAGES.md, 2026-10-10):
+   * one e-mail the night a date appears, posted to `/b` rather than `/n`. With
+   * a `market` it is about that market — a market page with no date; without,
+   * about the town in `near` — a town page with nothing dated. `near` is also
+   * where the optional tick subscribes the weekly mail, so an alert needs it.
+   */
+  alert?: { market?: { id: string; name: string } };
+  /**
    * Whether this instance owns the page's `#sub-*` result ids.
    *
    * Exactly one form per page may, or the ids repeat. The footer is on every
@@ -61,9 +69,10 @@ interface Props {
   anchors?: boolean;
 }
 
-const { locale, region, near, options = [], variant = 'card', anchors = false } = Astro.props;
+const { locale, region, near, options = [], variant = 'card', alert, anchors = false } = Astro.props;
 const s = t(locale);
 const copy = FORMS.newsletter[locale];
+if (alert && !near) throw new Error('SubscribeForm: an alert needs `near`, the town it is about or around.');
 
 /* One phrase, whichever shape this page knows: "für Zürich", or "im Umkreis
    von 25 km um Zürich". strings.ts owns the prepositions — and the region one
@@ -77,12 +86,19 @@ const scope = near
     ? s.subscribeScopeRegion(region.name)
     : null;
 
-const body = scope ? s.subscribeBodyScope(scope) : options.length > 0 ? s.subscribeBodyPick : s.newsletterBody;
-
 /* The card says what it offers in its heading; the word "Newsletter" steps down
    to a label above it. Nobody signed up to a block headed "Newsletter" (378
-   views, 0 taps, 2026-09-23). */
-const title = s.subscribeTitle(near?.name);
+   views, 0 taps, 2026-09-23). An alert says what it will send, and that it is
+   the only thing it will send. */
+const town = near?.name ?? '';
+const eyebrow = alert ? s.alertEyebrow : s.newsletterTitle;
+const title = alert
+  ? (alert.market ? s.alertTitleMarket : s.alertTitleTown(town))
+  : s.subscribeTitle(near?.name);
+const body = alert
+  ? (alert.market ? s.alertBodyMarket(alert.market.name) : s.alertBodyTown(town))
+  : scope ? s.subscribeBodyScope(scope) : options.length > 0 ? s.subscribeBodyPick : s.newsletterBody;
+const success = alert ? s.alertDone : copy.success;
 
 /* The picker is drawn only where the page cannot answer the question itself. */
 const picker = !scope && options.length > 0;
@@ -93,18 +109,19 @@ const picker = !scope && options.length > 0;
    the HTML of all 944 pages every time the site is rebuilt. */
 const id = `sub-${variant}`;
 ---
-<section class={`subscribe subscribe--${variant}`} data-subscribe-block>
-  {variant === 'card' && <p class="eyebrow">{s.newsletterTitle}</p>}
+<section class={`subscribe subscribe--${variant}`} data-subscribe-block data-alert={alert ? '' : undefined}>
+  {variant === 'card' && <p class="eyebrow">{eyebrow}</p>}
   {variant === 'card' && <h2>{title}</h2>}
   <p class="meta body">{body}</p>
 
   <form
     class="subscribe-form"
-    action="/n"
+    action={alert ? '/b' : '/n'}
     method="post"
     data-subscribe
+    data-alert={alert ? '' : undefined}
     data-errors={JSON.stringify(copy.errors ?? {})}
-    data-success={copy.success}
+    data-success={success}
   >
     {/* What the endpoint needs from a post the browser made on its own: the
         page it came from, which fixes the language and where to send the
@@ -121,6 +138,8 @@ const id = `sub-${variant}`;
         <input type="hidden" name="radius" value={String(km)} />
       </>
     )}
+    {alert?.market && <input type="hidden" name="market" value={alert.market.id} />}
+    {alert && <input type="hidden" name="weekly_consent" value={s.alertWeekly(town)} />}
 
     {/* The site's own field for both, so the label, the error slot and the aria
         wiring are the ones every other form already uses.
@@ -152,17 +171,27 @@ const id = `sub-${variant}`;
       idPrefix={id}
     />
 
+    {/* Unticked: the alert is what they came for, and the weekly mail is
+        an offer beside it, not a condition of it. The words are part of what
+        /b records as agreed to, when ticked. */}
+    {alert && (
+      <label class="tick">
+        <input type="checkbox" name="weekly" value="1" />
+        <span>{s.alertWeekly(town)}</span>
+      </label>
+    )}
+
     <Honeypot id={id} />
 
     <Button type="submit" variant={variant === 'card' ? 'primary' : 'secondary'} block>
-      {variant === 'card' ? s.subscribeSend : copy.submit}
+      {alert ? s.alertSend : variant === 'card' ? s.subscribeSend : copy.submit}
     </Button>
   </form>
 
 
   {/* Shown in place of the form once the address is saved. The script reveals
       it; the ids only exist on the instance that owns them. */}
-  <p class="subscribe-done" id={anchors ? 'sub-done' : undefined} hidden>{copy.success}</p>
+  <p class="subscribe-done" id={anchors ? 'sub-done' : undefined} hidden>{success}</p>
   {anchors && (
     <>
       <p class="subscribe-done" id="sub-invalid" hidden>{copy.errors?.invalid}</p>
@@ -185,6 +214,9 @@ const id = `sub-${variant}`;
   .subscribe .body { color: var(--color-grey); }
 
   .subscribe-form { display: grid; gap: var(--space-3); }
+
+  .tick { display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--text-small); line-height: var(--leading-snug); cursor: pointer; }
+  .tick input { flex: none; width: var(--space-5); height: var(--space-5); margin: 0; accent-color: var(--color-ink); }
 
   /* The note is the consent wording, so it is never hidden and never shortened
      — it is what the row records the visitor as having agreed to. */
@@ -292,7 +324,7 @@ const id = `sub-${variant}`;
         [...new FormData(form).entries()].filter((entry): entry is [string, string] => typeof entry[1] === 'string')
       );
 
-      void fetch('/n', {
+      void fetch(form.getAttribute('action') ?? '/n', {
         method: 'POST',
         headers: { 'content-type': 'application/json', accept: 'application/json' },
         body: JSON.stringify({
@@ -312,7 +344,9 @@ const id = `sub-${variant}`;
              because a submit event knows only that somebody pressed the button
              — and a signup that was refused looks identical to one that
              worked. The funnel is only worth having if the last step is true. */
-          form.dispatchEvent(new CustomEvent('fynda:newsletter', {
+          /* An alert is its own funnel, counted in its own table (date_alerts);
+             telling analytics it was a newsletter signup would blur both. */
+          if (!form.hasAttribute('data-alert')) form.dispatchEvent(new CustomEvent('fynda:newsletter', {
             bubbles: true,
             detail: {
               outcome:

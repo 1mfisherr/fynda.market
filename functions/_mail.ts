@@ -766,6 +766,100 @@ export function cancellationMail(
 }
 
 /* -------------------------------------------------------------------------- */
+/* "Tell me when it's back"                                                   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The one mail an alert sends, the night a date appears
+ * (scripts/send-date-alerts.mjs). It says the date, what follows, and that it
+ * was the one mail — the form promised "nothing else", and this is where that
+ * promise is kept in writing. No unsubscribe link: there is no list to leave,
+ * and the address is cleared as this goes out.
+ *
+ * %m the market, %p its town, %d the day, %h the hours (with its comma), %l
+ * the dates after it.
+ */
+interface BackCopy {
+  subject: string;
+  market: string;
+  town: string;
+  later: string;
+  once: string;
+  link: string;
+}
+
+const BACK: Record<Locale, BackCopy> = {
+  de: {
+    subject: '%m: %d',
+    market: '%m ist wieder da: %d%h.',
+    town: 'In %p gibt es wieder einen Termin: %m, %d%h.',
+    later: 'Danach: %l.',
+    once: 'Du hattest uns gebeten, Bescheid zu geben, sobald der Termin feststeht. Das war die eine E-Mail — weitere kommen nur, wenn du dich dafür anmeldest.',
+    link: 'Zur Marktseite',
+  },
+  fr: {
+    subject: '%m : %d',
+    market: '%m revient : %d%h.',
+    town: 'Il y a de nouveau une date à %p : %m, %d%h.',
+    later: 'Ensuite : %l.',
+    once: "Vous nous aviez demandé de vous prévenir dès que la date serait connue. C'était le seul e-mail : nous ne vous écrirons plus, sauf si vous vous abonnez.",
+    link: 'Voir la page du marché',
+  },
+  it: {
+    subject: '%m: %d',
+    market: '%m torna: %d%h.',
+    town: "A %p c'è di nuovo una data: %m, %d%h.",
+    later: 'Poi: %l.',
+    once: "Ci avevi chiesto di avvisarti appena la data fosse nota. Era l'unica e-mail: non ti scriveremo più, a meno che tu non ti iscriva.",
+    link: 'Alla pagina del mercatino',
+  },
+  en: {
+    subject: '%m: %d',
+    market: '%m is back: %d%h.',
+    town: 'There is a date in %p again: %m, %d%h.',
+    later: 'After that: %l.',
+    once: "You asked us to tell you as soon as the date was out. That was the one email — we won't write again unless you sign up for more.",
+    link: 'To the market page',
+  },
+};
+
+export interface BackDate {
+  /** A market alert names the market; a town alert names the town, and the market that brought it back. */
+  kind: 'market' | 'town';
+  market: string;
+  town: string;
+  date: string;
+  hours?: string;
+  /** Up to two dates after it, as YYYY-MM-DD. */
+  later: string[];
+  url: string;
+}
+
+export function backMail(locale: Locale, back: BackDate): Omit<Mail, 'to'> {
+  const copy = BACK[locale] ?? BACK.en;
+  const short = new Intl.DateTimeFormat(TAG[locale], { day: 'numeric', month: 'long' });
+  const fill = (line: string) => line
+    .replace('%m', back.market)
+    .replace('%p', back.town)
+    .replace('%d', day(locale, back.date))
+    .replace('%h', back.hours ? `, ${back.hours}` : '')
+    .replace('%l', back.later.map((d) => short.format(asDate(d))).join(', '));
+  const body = [
+    fill(back.kind === 'market' ? copy.market : copy.town),
+    ...(back.later.length ? [fill(copy.later)] : []),
+    copy.once,
+  ];
+  const footer = `\n  <p style="margin:8px 0 0;"><a href="${back.url}" style="color:#16161a;">${escape(copy.link)}</a></p>`;
+
+  return {
+    // "Flohmarkt am See Wollishofen: Sunday 4 April"; a town alert leads with the town it was about.
+    subject: copy.subject.replace('%m', back.kind === 'town' ? back.town : back.market).replace('%d', day(locale, back.date)),
+    html: column(locale, body, footer),
+    text: `fynda.market\n\n${body.join('\n\n')}\n\n${copy.link}: ${back.url}\n`,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
 /* The weekly digest                                                          */
 /* -------------------------------------------------------------------------- */
 

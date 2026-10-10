@@ -104,7 +104,7 @@ export interface Strings {
   nothingInPeriod: string;
   /** Over the markets of a town or canton that have no date yet — listed, not hidden. */
   noDateYet: string;
-  noDateYetLede: string;
+  noDateYetLede: (n: number) => string;
 
   /* the radius view — /de/umkreis/, /fr/a-proximite/ and the other two */
   radiusTitle: string;
@@ -137,8 +137,6 @@ export interface Strings {
   addToCalendar: string;
   save: string;
   savedState: string;
-  whatToExpect: string;
-  whenToGo: string;
   gettingThere: string;
   dates: string;
   wasItDifferent: string;
@@ -202,10 +200,8 @@ export interface Strings {
   flagUnconfirmed: string;
   flagStale: (date: string) => string;
   notConfirmed: string;
-  /** "Eintritt" / "frei" — the one fact under What to expect. */
+  /** "Eintritt" over a fee in the decision strip — shown only when there is one. */
   entryLabel: string;
-  entryFree: string;
-  packUpFrom: (time: string) => string;
   /** Who runs it. Held for 94% of markets and, until 2026-09-06, only in the
       structured data — a fact we had that nobody could read. */
   hostedBy: (name: string) => string;
@@ -241,6 +237,33 @@ export interface Strings {
   cityLast: (name: string, date: string) => string;
   /** On a market page with no next date: when it last ran. */
   lastHeld: (date: string) => string;
+  /** A market with no date, from the months it runs (src/lib/season.ts): "Back in April", "Usually in September". */
+  backIn: (month: string) => string;
+  usuallyIn: (month: string) => string;
+  /** Over the dated markets close by, on a market page with no date. */
+  meanwhileNearby: string;
+  /** The link under them, to the market's own town. */
+  allMarketsIn: (town: string) => string;
+  /** The facts in a market page's decision strip: their labels, and the values that need words of their own. */
+  settingLabel: string;
+  sellersLabel: string;
+  sellers: Record<'private' | 'mixed' | 'trader', string>;
+  rainLabel: string;
+  /** A town page: the towns around it, as links with their distance. */
+  townsNearby: string;
+  /**
+   * "Tell me when it's back" — on a market page with no date, and on a town
+   * page with nothing dated, in place of the weekly card. One address, one
+   * e-mail the night a date appears; the tick adds the weekly mail too.
+   */
+  alertEyebrow: string;
+  alertTitleMarket: string;
+  alertTitleTown: (town: string) => string;
+  alertBodyMarket: (name: string) => string;
+  alertBodyTown: (town: string) => string;
+  alertWeekly: (town: string) => string;
+  alertSend: string;
+  alertDone: string;
   /** "Foto" before a photographer's name, under a credited photo. */
   photo: string;
   /** The canton description, built from the data like the town one. */
@@ -359,11 +382,8 @@ export interface Strings {
   /** Under the button: the promise, three words. */
   /** The organiser stamp with the date the organiser said so. */
   organiserConfirmedOn: (date: string) => string;
-  /** The owned line: "about 120 stalls", the setting, the rain answer. */
-  stallsAbout: (n: number) => string;
-  /** The term beside the count under What to expect, and its bad-weather figure. */
+  /** The decision strip's facts: the stall count's label, indoors or out, what rain does. */
   stallsLabel: string;
-  stallsInBadWeather: (n: number) => string;
   setting: Record<'indoor' | 'outdoor' | 'both', string>;
   rain: Record<'runs' | 'cancelled' | 'decided_on_the_day', string>;
   organiserBody: string;
@@ -467,7 +487,7 @@ const de: Strings = {
   cancelledThisWeek: 'Diese Woche abgesagt',
   nothingInPeriod: 'Keine Märkte in diesem Zeitraum.',
   noDateYet: 'Noch ohne Termin',
-  noDateYetLede: 'Der nächste Termin steht noch nicht fest. Sobald er da ist, steht er hier.',
+  noDateYetLede: (n) => (n === 1 ? 'Der nächste Termin steht noch nicht fest. Öffne den Markt, und wir sagen dir Bescheid, sobald er da ist.' : 'Die nächsten Termine stehen noch nicht fest. Öffne einen Markt, und wir sagen dir Bescheid, sobald er einen hat.'),
   radiusTitle: 'Flohmärkte in der Nähe — fynda.market',
   radiusDescription: 'Flohmärkte in der Nähe: Umkreis und Zeitraum wählen, sortiert nach Entfernung.',
   radiusHeading: 'Flohmärkte in der Nähe',
@@ -492,8 +512,6 @@ const de: Strings = {
   addToCalendar: 'In Kalender eintragen',
   save: 'Merken',
   savedState: 'Gemerkt',
-  whatToExpect: 'Was dich erwartet',
-  whenToGo: 'Wann hingehen',
   gettingThere: 'Hinkommen',
   dates: 'Termine',
   wasItDifferent: 'Etwas stimmt nicht?',
@@ -528,8 +546,6 @@ const de: Strings = {
   flagStale: (date) => `Zuletzt geprüft ${date}`,
   notConfirmed: 'Noch nicht bestätigt',
   entryLabel: 'Eintritt',
-  entryFree: 'frei',
-  packUpFrom: (time) => `Ab ${time} wird abgebaut.`,
   hostedBy: (name) => `Veranstaltet von ${name}`,
   fromTheOrganiser: 'Vom Veranstalter',
   bookAStall: 'Stand buchen',
@@ -546,6 +562,23 @@ const de: Strings = {
     `${date}${time ? `, ${time} Uhr` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Danach ${later.join(' und ')}.` : ''}`,
   cityLast: (name, date) => `Zuletzt: ${name} am ${date}.`,
   lastHeld: (date) => `Zuletzt am ${date}`,
+  backIn: (month) => `Ab ${month} wieder`,
+  usuallyIn: (month) => `Meist im ${month}`,
+  meanwhileNearby: 'Bis dahin in der Nähe',
+  allMarketsIn: (town) => `Alle Märkte in ${town}`,
+  settingLabel: 'Gelände',
+  sellersLabel: 'Wer verkauft',
+  sellers: { private: 'Privatleute', mixed: 'Private und Händler', trader: 'Händler' },
+  rainLabel: 'Bei Regen',
+  townsNearby: 'Orte in der Nähe',
+  alertEyebrow: 'Nächster Termin',
+  alertTitleMarket: 'Sag mir, wenn er wieder stattfindet',
+  alertTitleTown: (town) => `Sag mir, wenn es in ${town} einen Termin gibt`,
+  alertBodyMarket: (name) => `Eine E-Mail, sobald ${name} den nächsten Termin bekannt gibt. Sonst nichts.`,
+  alertBodyTown: (town) => `Eine E-Mail, sobald ein Markt in ${town} den nächsten Termin bekannt gibt. Sonst nichts.`,
+  alertWeekly: (town) => `Schick mir auch das Wochenende rund um ${town}, jeden Freitagmorgen`,
+  alertSend: 'Bescheid geben',
+  alertDone: 'Erledigt. Du bekommst eine E-Mail, sobald der Termin feststeht.',
   photo: 'Foto',
   regionDescription: (n, towns, region, code, next) =>
     `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} in ${towns} ${towns === 1 ? 'Ort' : 'Orten'} ${inRegionDe(region, code)}${next ? `. Nächster: ${next.name} in ${next.city} am ${next.date}` : ''}. Mit Öffnungszeiten und Absagen.`,
@@ -621,11 +654,9 @@ const de: Strings = {
   claimBody: 'Übernehmen Sie ihn: Termine bestätigen, ein Foto ergänzen, einen Tag absagen. Kostenlos, kein Konto nötig.',
   claimAction: 'Das ist mein Markt',
   organiserConfirmedOn: (date) => `Vom Veranstalter bestätigt, ${date}`,
-  stallsAbout: (n) => `rund ${n} Stände`,
   stallsLabel: 'Stände',
-  stallsInBadWeather: (n) => `bei schlechtem Wetter ~${n}`,
   setting: { indoor: 'drinnen', outdoor: 'draussen', both: 'drinnen und draussen' },
-  rain: { runs: 'findet auch bei Regen statt', cancelled: 'bei Regen abgesagt', decided_on_the_day: 'bei Regen wird am Morgen entschieden' },
+  rain: { runs: 'Findet statt', cancelled: 'Abgesagt', decided_on_the_day: 'Entscheid am Morgen' },
   organiserBody: 'Übernehmen Sie Ihren Markt oder tragen Sie einen neuen ein. Kostenlos, kein Konto nötig.',
   organiserAction: 'Markt übernehmen oder eintragen',
 
@@ -692,7 +723,7 @@ const en: Strings = {
   cancelledThisWeek: 'Cancelled this week',
   nothingInPeriod: 'No markets in this period.',
   noDateYet: 'No date yet',
-  noDateYetLede: 'The next date isn\'t out yet. As soon as it is, it\'s here.',
+  noDateYetLede: (n) => (n === 1 ? "Its next date isn't out yet. Open it and we'll tell you when it is." : "Their next dates aren't out yet. Open one and we'll tell you when it has one."),
   radiusTitle: 'Flea markets near me — fynda.market',
   radiusDescription: 'Flea markets near you: choose a radius and a period, sorted by distance.',
   radiusHeading: 'Flea markets near me',
@@ -717,8 +748,6 @@ const en: Strings = {
   addToCalendar: 'Add to calendar',
   save: 'Save',
   savedState: 'Saved',
-  whatToExpect: 'What to expect',
-  whenToGo: 'When to go',
   gettingThere: 'Getting there',
   dates: 'Dates',
   wasItDifferent: 'Something not right?',
@@ -753,8 +782,6 @@ const en: Strings = {
   flagStale: (date) => `Last checked ${date}`,
   notConfirmed: 'Not confirmed yet',
   entryLabel: 'Entry',
-  entryFree: 'free',
-  packUpFrom: (time) => `Packing up starts at ${time}.`,
   hostedBy: (name) => `Organised by ${name}`,
   fromTheOrganiser: 'From the organiser',
   bookAStall: 'Book a stall',
@@ -771,6 +798,23 @@ const en: Strings = {
     `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Then ${later.join(' and ')}.` : ''}`,
   cityLast: (name, date) => `Last: ${name} on ${date}.`,
   lastHeld: (date) => `Last held ${date}`,
+  backIn: (month) => `Back in ${month}`,
+  usuallyIn: (month) => `Usually in ${month}`,
+  meanwhileNearby: 'Meanwhile, nearby',
+  allMarketsIn: (town) => `All markets in ${town}`,
+  settingLabel: 'Setting',
+  sellersLabel: 'Who sells',
+  sellers: { private: 'Private people', mixed: 'Private people and dealers', trader: 'Dealers' },
+  rainLabel: 'If it rains',
+  townsNearby: 'Towns nearby',
+  alertEyebrow: "When it's back",
+  alertTitleMarket: "Tell me when it's back",
+  alertTitleTown: (town) => `Tell me when ${town} has a date`,
+  alertBodyMarket: (name) => `One email, the day ${name} puts out its next date. Nothing else.`,
+  alertBodyTown: (town) => `One email, the day a market in ${town} puts out its next date. Nothing else.`,
+  alertWeekly: (town) => `Also send me the weekend around ${town}, every Friday morning`,
+  alertSend: 'Tell me',
+  alertDone: "Done. You'll get one email, the day the date is out.",
   photo: 'Photo',
   regionDescription: (n, towns, region, code, next) =>
     `${n} flea ${n === 1 ? 'market' : 'markets'} in ${towns} ${towns === 1 ? 'town' : 'towns'} ${inRegionEn(region, code)}${next ? `. Next: ${next.name} in ${next.city} on ${next.date}` : ''}. With opening hours and cancellations.`,
@@ -846,11 +890,9 @@ const en: Strings = {
   claimBody: 'Claim it to confirm dates, add a photo or cancel a day. Free, no account needed.',
   claimAction: 'This is my market',
   organiserConfirmedOn: (date) => `Confirmed by the organiser, ${date}`,
-  stallsAbout: (n) => `about ${n} stalls`,
   stallsLabel: 'Stalls',
-  stallsInBadWeather: (n) => `~${n} in bad weather`,
   setting: { indoor: 'indoor', outdoor: 'outdoor', both: 'indoor and outdoor' },
-  rain: { runs: 'runs in the rain', cancelled: 'cancelled in rain', decided_on_the_day: 'rain: decided on the morning' },
+  rain: { runs: 'Goes ahead', cancelled: 'Called off', decided_on_the_day: 'Decided that morning' },
   organiserBody: 'Claim your market or add a new one. Free, no account needed.',
   organiserAction: 'Claim or add your market',
 
@@ -923,7 +965,7 @@ const fr: Strings = {
   cancelledThisWeek: 'Annulé cette semaine',
   nothingInPeriod: 'Pas de brocante sur cette période.',
   noDateYet: 'Pas encore de date',
-  noDateYetLede: 'La prochaine date n\'est pas encore connue. Dès qu\'elle l\'est, elle est ici.',
+  noDateYetLede: (n) => (n === 1 ? "Sa prochaine date n'est pas encore connue. Ouvrez-le, on vous prévient dès qu'elle tombe." : "Leurs prochaines dates ne sont pas encore connues. Ouvrez-en un, on vous prévient dès qu'il en a une."),
   radiusTitle: 'Brocantes à proximité — fynda.market',
   radiusDescription: 'Brocantes à proximité : choisissez un rayon et une période, triées par distance.',
   radiusHeading: 'Brocantes à proximité',
@@ -948,8 +990,6 @@ const fr: Strings = {
   addToCalendar: 'Ajouter au calendrier',
   save: 'Enregistrer',
   savedState: 'Enregistré',
-  whatToExpect: "À quoi s'attendre",
-  whenToGo: 'Quand y aller',
   gettingThere: "Comment s'y rendre",
   dates: 'Dates',
   wasItDifferent: 'Quelque chose ne va pas ?',
@@ -984,8 +1024,6 @@ const fr: Strings = {
   flagStale: (date) => `Vérifié le ${date}`,
   notConfirmed: 'Pas encore confirmé',
   entryLabel: 'Entrée',
-  entryFree: 'gratuite',
-  packUpFrom: (time) => `Démontage à partir de ${time}.`,
   hostedBy: (name) => `Organisé par ${name}`,
   fromTheOrganiser: "De l'organisateur",
   bookAStall: 'Réserver un stand',
@@ -1002,6 +1040,23 @@ const fr: Strings = {
     `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Puis ${later.join(' et ')}.` : ''}`,
   cityLast: (name, date) => `Dernière : ${name}, le ${date}.`,
   lastHeld: (date) => `Dernière édition le ${date}`,
+  backIn: (month) => `De retour en ${month}`,
+  usuallyIn: (month) => `D'habitude en ${month}`,
+  meanwhileNearby: 'En attendant, tout près',
+  allMarketsIn: (town) => `Tous les marchés à ${town}`,
+  settingLabel: 'Cadre',
+  sellersLabel: 'Qui vend',
+  sellers: { private: 'Des particuliers', mixed: 'Particuliers et marchands', trader: 'Des marchands' },
+  rainLabel: "S'il pleut",
+  townsNearby: 'Localités voisines',
+  alertEyebrow: 'Prochaine date',
+  alertTitleMarket: 'Prévenez-moi quand il revient',
+  alertTitleTown: (town) => `Prévenez-moi quand ${town} a une date`,
+  alertBodyMarket: (name) => `Un seul e-mail, le jour où ${name} annonce sa prochaine date. Rien d'autre.`,
+  alertBodyTown: (town) => `Un seul e-mail, le jour où un marché à ${town} annonce sa prochaine date. Rien d'autre.`,
+  alertWeekly: (town) => `Envoyez-moi aussi le week-end autour de ${town}, chaque vendredi matin`,
+  alertSend: 'Prévenez-moi',
+  alertDone: "C'est noté. Vous recevrez un e-mail le jour où la date tombe.",
   photo: 'Photo',
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans ${towns} ${towns === 1 ? 'localité' : 'localités'} du canton ${deFr(region)}${next ? `. Prochaine : ${next.name} à ${next.city} le ${next.date}` : ''}. Avec horaires et annulations.`,
@@ -1077,11 +1132,9 @@ const fr: Strings = {
   claimBody: 'Reprenez-la pour confirmer vos dates, ajouter une photo ou annuler une journée. Gratuit, sans compte à créer.',
   claimAction: "C'est ma brocante",
   organiserConfirmedOn: (date) => `Confirmé par l'organisateur, ${date}`,
-  stallsAbout: (n) => `environ ${n} stands`,
   stallsLabel: 'Stands',
-  stallsInBadWeather: (n) => `~${n} par mauvais temps`,
   setting: { indoor: 'en intérieur', outdoor: 'en extérieur', both: 'intérieur et extérieur' },
-  rain: { runs: 'a lieu même sous la pluie', cancelled: 'annulé en cas de pluie', decided_on_the_day: 'pluie : décidé le matin même' },
+  rain: { runs: 'A lieu', cancelled: 'Annulé', decided_on_the_day: 'Décidé le matin même' },
   organiserBody: 'Reprenez votre brocante ou ajoutez-en une nouvelle. Gratuit, sans compte à créer.',
   organiserAction: 'Reprendre ou ajouter ma brocante',
 
@@ -1148,7 +1201,7 @@ const it: Strings = {
   cancelledThisWeek: 'Cancellato questa settimana',
   nothingInPeriod: 'Nessun mercatino in questo periodo.',
   noDateYet: 'Ancora senza data',
-  noDateYetLede: 'La prossima data non è ancora nota. Appena c\'è, la trovi qui.',
+  noDateYetLede: (n) => (n === 1 ? 'La prossima data non è ancora nota. Apri il mercatino e ti avvisiamo appena esce.' : 'Le prossime date non sono ancora note. Apri un mercatino e ti avvisiamo appena ne ha una.'),
   radiusTitle: 'Mercatini delle pulci nei dintorni — fynda.market',
   radiusDescription: 'Mercatini delle pulci nei dintorni: scelga raggio e periodo, ordinati per distanza.',
   radiusHeading: 'Mercatini delle pulci nei dintorni',
@@ -1173,8 +1226,6 @@ const it: Strings = {
   addToCalendar: 'Aggiungi al calendario',
   save: 'Salva',
   savedState: 'Salvato',
-  whatToExpect: 'Cosa aspettarsi',
-  whenToGo: 'Quando andare',
   gettingThere: 'Come arrivare',
   dates: 'Date',
   wasItDifferent: 'Qualcosa non torna?',
@@ -1209,8 +1260,6 @@ const it: Strings = {
   flagStale: (date) => `Verificato il ${date}`,
   notConfirmed: 'Non ancora confermato',
   entryLabel: 'Ingresso',
-  entryFree: 'gratuito',
-  packUpFrom: (time) => `Lo smontaggio inizia alle ${time}.`,
   hostedBy: (name) => `Organizzato da ${name}`,
   fromTheOrganiser: "Dall'organizzatore",
   bookAStall: 'Prenota una bancarella',
@@ -1227,6 +1276,24 @@ const it: Strings = {
     `${date}${time ? `, ${time}` : ''}, ${place}${setting ? `, ${setting}` : ''}.${later.length ? ` Poi ${later.join(' e ')}.` : ''}`,
   cityLast: (name, date) => `L'ultimo: ${name} il ${date}.`,
   lastHeld: (date) => `Ultima edizione il ${date}`,
+  /* "ad aprile", "ad agosto", but "a ottobre": the d goes only before an a. */
+  backIn: (month) => `Torna ${month.startsWith('a') ? 'ad' : 'a'} ${month}`,
+  usuallyIn: (month) => `Di solito ${month.startsWith('a') ? 'ad' : 'a'} ${month}`,
+  meanwhileNearby: 'Nel frattempo, qui vicino',
+  allMarketsIn: (town) => `Tutti i mercatini a ${town}`,
+  settingLabel: 'Luogo',
+  sellersLabel: 'Chi vende',
+  sellers: { private: 'Privati', mixed: 'Privati e commercianti', trader: 'Commercianti' },
+  rainLabel: 'Se piove',
+  townsNearby: 'Località vicine',
+  alertEyebrow: 'Prossima data',
+  alertTitleMarket: 'Avvisami quando torna',
+  alertTitleTown: (town) => `Avvisami quando c'è una data a ${town}`,
+  alertBodyMarket: (name) => `Una sola e-mail, il giorno in cui ${name} annuncia la prossima data. Nient'altro.`,
+  alertBodyTown: (town) => `Una sola e-mail, il giorno in cui un mercatino a ${town} annuncia la prossima data. Nient'altro.`,
+  alertWeekly: (town) => `Mandami anche il fine settimana intorno a ${town}, ogni venerdì mattina`,
+  alertSend: 'Avvisami',
+  alertDone: "Fatto. Riceverai un'e-mail il giorno in cui esce la data.",
   photo: 'Foto',
   regionDescription: (n, towns, region, _code, next) =>
     `${n} ${n === 1 ? 'mercatino' : 'mercatini'} in ${towns} ${towns === 1 ? 'località' : 'località'} nel Canton ${region}${next ? `. Prossimo: ${next.name} a ${next.city} il ${next.date}` : ''}. Con orari e cancellazioni.`,
@@ -1302,11 +1369,9 @@ const it: Strings = {
   claimBody: 'Prendilo in mano per confermare le date, aggiungere una foto o annullare una giornata. Gratis, senza account.',
   claimAction: 'È il mio mercatino',
   organiserConfirmedOn: (date) => `Confermato dall'organizzatore, ${date}`,
-  stallsAbout: (n) => `circa ${n} bancarelle`,
   stallsLabel: 'Bancarelle',
-  stallsInBadWeather: (n) => `~${n} con il maltempo`,
   setting: { indoor: 'al coperto', outdoor: "all'aperto", both: "al coperto e all'aperto" },
-  rain: { runs: 'si fa anche con la pioggia', cancelled: 'annullato in caso di pioggia', decided_on_the_day: 'pioggia: si decide la mattina' },
+  rain: { runs: 'Si fa', cancelled: 'Annullato', decided_on_the_day: 'Si decide la mattina' },
   organiserBody: 'Prendi in mano il tuo mercatino o aggiungine uno nuovo. Gratis, senza account.',
   organiserAction: 'Prendi in mano o aggiungi il tuo mercatino',
 
