@@ -2,9 +2,13 @@
 /**
  * The seven-day mail to organisers.
  *
- * For every market date exactly seven days from now whose organiser we can
- * reach — an e-mail and a live personal link — one mail per organiser with
- * three buttons per date: it's on, cancelled, something changed. The buttons
+ * An organiser with a market date exactly seven days from now that we have
+ * not asked about yet — and an e-mail, a live personal link, mail not stopped
+ * — gets one mail asking about every date of theirs not yet asked about from
+ * seven days out to five weeks out, with three buttons per date: it's on,
+ * cancelled, something changed. A weekly market is so asked about five dates
+ * at a time, about once a month; an annual one once, a week before (2026-10-10:
+ * a mail every week reached a weekly market 52 times a year). The buttons
  * carry the organiser's own link (functions/_organiser.ts derives it from the
  * link id and ADMIN_SIGNING_SECRET, so it is never stored).
  *
@@ -21,7 +25,7 @@
 
 import { query, secret } from './db.mjs';
 import { organiserAsk, sendMail } from '../functions/_mail.ts';
-import { answerUrl, tokenFor } from '../functions/_link.ts';
+import { answerUrl, stopUrl, tokenFor } from '../functions/_link.ts';
 
 const SITE = 'https://fynda.market';
 
@@ -38,6 +42,8 @@ const target = value('date') ?? (() => {
   d.setDate(d.getDate() + 7);
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 })();
+/** How far one mail looks ahead: the target date and the four weeks after it. */
+const WINDOW_DAYS = 28;
 
 const say = (...parts) => console.log(...parts);
 const localIso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -77,10 +83,10 @@ const rows = await query(
       v.city_id
     from public.occurrences o
     join public.markets m         on m.id = o.market_id and m.status = 'active'
-    join public.organisers org    on org.id = m.organiser_id and org.email is not null
+    join public.organisers org    on org.id = m.organiser_id and org.email is not null and org.mail_stopped_at is null
     join public.organiser_links l on l.organiser_id = org.id and l.revoked_at is null
     join public.venues v          on v.id = m.venue_id
-    where o.date = $1::date
+    where o.date between $1::date and $1::date + $2::int
       and o.status <> 'cancelled'
       and not exists (
         select 1 from public.organiser_mail_sends s
@@ -106,9 +112,12 @@ const rows = await query(
       ''
     ) as town
   from named n
-  order by n.organiser_name, n.slug
+  -- Due only when a date of theirs is exactly a week away and unasked; the
+  -- rest of the window rides along in the same mail.
+  where exists (select 1 from named d where d.organiser_id = n.organiser_id and d.date = $1::date)
+  order by n.organiser_name, n.date, n.slug
   `,
-  [target]
+  [target, WINDOW_DAYS]
 );
 
 const byOrganiser = new Map();
@@ -141,7 +150,7 @@ for (const organiser of byOrganiser.values()) {
     changedUrl: answerUrl(SITE, token, row.occurrence_id, 'changed'),
   }));
 
-  const mail = organiserAsk(organiser.locale, organiser.organiser_name, items);
+  const mail = organiserAsk(organiser.locale, organiser.organiser_name, items, stopUrl(SITE, token));
   say(`  ${organiser.organiser_name} <${organiser.email}> [${organiser.locale}] — ${items.map((i) => `${i.market} ${i.date}`).join('; ')}`);
 
   if (!shown) {

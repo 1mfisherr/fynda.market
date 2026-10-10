@@ -14,7 +14,7 @@
 
 import { markUsed, verifyDecision, type AdminAction, type AdminEnv } from '../_admin';
 import { organiserWelcome, sendMail, type Locale, type MailEnv } from '../_mail';
-import { editUrl, mintLink, type Organiser } from '../_organiser';
+import { editUrl, mintLink, stopUrl, type Organiser } from '../_organiser';
 import { escape, page } from '../_page';
 import { insertOne, rpc, selectOne, updateRows, UUID } from '../_rest';
 import { requestPublish } from '../_publish';
@@ -147,7 +147,7 @@ async function claim(env: Env, origin: string, action: AdminAction, verb: 'appro
   const url = editUrl(origin, token);
   const mailed = await sendMail(env, {
     to: email,
-    ...organiserWelcome(row.locale, row.organiser_name, row.market_text, url),
+    ...organiserWelcome(row.locale, row.organiser_name, row.market_text, url, 'claimed', 0, { stop: stopUrl(origin, token) }),
   });
   // The send is logged like every organiser mail; scripts/send-organiser-welcome.mjs reads this to skip them.
   if (mailed) await insertOne(env, 'organiser_mail_sends', { organiser_id: organiser.id, occurrence_ids: [], kind: 'welcome' });

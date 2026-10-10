@@ -13,7 +13,7 @@
 import { insertOne, selectOne, updateRows, UUID, type RestEnv } from './_rest';
 import { sha256Hex, tokenFor } from './_link';
 
-export { answerUrl, editUrl, tokenFor } from './_link';
+export { answerUrl, editUrl, stopUrl, tokenFor } from './_link';
 
 export interface LinkEnv extends RestEnv {
   ADMIN_SIGNING_SECRET?: string;

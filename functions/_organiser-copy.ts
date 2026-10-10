@@ -98,6 +98,13 @@ export interface OrganiserCopy {
   footLink: string;
   footReply: string;
   footOut: string;
+  /** /a/{token}/stop — every organiser mail links here, and the edit page does too (2026-10-10). */
+  stopLink: string;
+  stopTitle: string;
+  stopBody: string;
+  stopButton: string;
+  stopDoneTitle: string;
+  stopDoneBody: string;
   /** The terms line. The part in {braces} becomes the link to the terms page in this language. */
   footTerms: string;
   savedTitle: string;
@@ -186,6 +193,12 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: 'Dieser Link gehört Ihnen. Wer ihn hat, kann die Seite ändern — geben Sie ihn also nur an jemanden weiter, der das auch soll.',
     footReply: 'Für alles andere — den Namen, die Adresse, den Tag, an dem er stattfindet — antworten Sie einfach auf die E-Mail. Ich lese jede.',
     footOut: 'Sie möchten keine E-Mails mehr von uns? Ganz unten in jeder finden Sie einen Link dafür.',
+    stopLink: 'E-Mails abbestellen',
+    stopTitle: 'Keine E-Mails mehr von fynda.market?',
+    stopBody: 'Ihre Seite bleibt, und dieser Link funktioniert weiter. Sie bekommen nur keine E-Mails mehr von uns.',
+    stopButton: 'Ja, keine E-Mails mehr',
+    stopDoneTitle: 'Erledigt.',
+    stopDoneBody: 'Sie bekommen keine E-Mails mehr von uns. Falls Sie es sich anders überlegen, antworten Sie auf eine unserer E-Mails.',
     footTerms: 'Alles, was Sie uns schicken, bleibt Ihres. Unsere {Nutzungsbedingungen} erklären, wie wir es verwenden.',
     savedTitle: 'Bestätigt.',
     savedBody: 'Danke. Innerhalb einer Stunde steht es auf Ihrer Seite.',
@@ -271,6 +284,12 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: "Ce lien est personnel. Toute personne qui l'a peut modifier la page : ne le transmettez qu'à quelqu'un qui doit pouvoir le faire.",
     footReply: "Pour tout le reste — le nom, l'adresse, le jour où il a lieu —, répondez simplement à l'e-mail. Je les lis tous.",
     footOut: "Vous ne souhaitez plus recevoir nos e-mails ? Un lien en bas de chacun d'eux le permet.",
+    stopLink: 'Ne plus recevoir nos e-mails',
+    stopTitle: "Ne plus recevoir d'e-mails de fynda.market ?",
+    stopBody: "Votre page reste en ligne, et ce lien continue de fonctionner. Vous ne recevrez simplement plus d'e-mails de notre part.",
+    stopButton: "Oui, plus d'e-mails",
+    stopDoneTitle: "C'est fait.",
+    stopDoneBody: "Vous ne recevrez plus d'e-mails de notre part. Si vous changez d'avis, répondez à l'un de nos e-mails.",
     footTerms: 'Tout ce que vous nous envoyez reste à vous. Nos {conditions générales} expliquent comment nous l’utilisons.',
     savedTitle: 'Confirmé.',
     savedBody: "Merci. Ce sera sur votre page dans l'heure.",
@@ -356,6 +375,12 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: 'Questo link è tuo. Chiunque lo abbia può modificare la pagina — passalo solo a chi deve averlo.',
     footReply: "Per tutto il resto — il nome, l'indirizzo, il giorno in cui si fa — basta rispondere all'e-mail. Le leggo tutte.",
     footOut: "Non vuoi più e-mail da noi? In fondo a ognuna c'è il link per disiscriverti.",
+    stopLink: 'Non ricevere più e-mail',
+    stopTitle: 'Niente più e-mail da fynda.market?',
+    stopBody: 'La tua pagina resta online e questo link continua a funzionare. Solo, non ti scriveremo più.',
+    stopButton: 'Sì, niente più e-mail',
+    stopDoneTitle: 'Fatto.',
+    stopDoneBody: 'Non riceverai più e-mail da noi. Se cambi idea, rispondi a una delle nostre e-mail.',
     footTerms: 'Tutto ciò che ci mandi resta tuo. Le nostre {condizioni generali} spiegano come lo usiamo.',
     savedTitle: 'Confermato.',
     savedBody: "Grazie. È sulla tua pagina entro un'ora.",
@@ -441,6 +466,12 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footLink: 'This link is yours. Anyone who has it can change the page, so only share it with someone who should.',
     footReply: 'Anything else — the name, the address, the day it runs — just reply to the mail. I read every one.',
     footOut: "Don't want mail from us? There's a link at the bottom of every one.",
+    stopLink: 'Stop these e-mails',
+    stopTitle: 'No more e-mails from fynda.market?',
+    stopBody: "Your page stays, and this link keeps working. You just won't get e-mails from us any more.",
+    stopButton: 'Yes, stop the e-mails',
+    stopDoneTitle: 'Done.',
+    stopDoneBody: "You won't get e-mails from us any more. If you change your mind, reply to any of our e-mails.",
     footTerms: 'Everything you send us stays yours. Our {terms} explain how we use it.',
     savedTitle: 'Confirmed.',
     savedBody: 'Thank you. It’s on your page within the hour.',

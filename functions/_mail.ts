@@ -27,6 +27,8 @@ export interface MailEnv {
  * person reads, rather than in a no-reply hole.
  */
 export const FROM = 'fynda.market <contact@fynda.market>';
+/** Organiser mail is a letter from a person, and the inbox says so before it is opened (product review, 2026-10-10). */
+export const ORGANISER_FROM = 'Delfim · fynda.market <contact@fynda.market>';
 export const SITE = 'https://fynda.market';
 
 export interface Mail {
@@ -36,6 +38,8 @@ export interface Mail {
   text: string;
   /** Extra headers. Used for the one-click unsubscribe. */
   headers?: Record<string, string>;
+  /** The sender, when it is not FROM. */
+  from?: string;
 }
 
 /**
@@ -59,7 +63,7 @@ export async function sendMail(env: MailEnv, mail: Mail): Promise<boolean> {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        from: FROM,
+        from: mail.from ?? FROM,
         to: [mail.to],
         subject: mail.subject,
         html: mail.html,
@@ -110,7 +114,7 @@ export async function sendBatch(
       headers: { Authorization: `Bearer ${key}`, 'content-type': 'application/json' },
       body: JSON.stringify(
         mails.map((mail) => ({
-          from: FROM,
+          from: mail.from ?? FROM,
           to: [mail.to],
           subject: mail.subject,
           html: mail.html,
@@ -400,6 +404,29 @@ export const claimAck = (locale: Locale, market: string) => ack(locale, CLAIM_AC
 /* -------------------------------------------------------------------------- */
 
 /**
+ * The foot of every organiser mail: a way to stop them, and who is writing.
+ * The edit page promised "a link at the bottom of every one" and none had it
+ * (product review, 2026-10-10). The stop link is the organiser's own
+ * /a/{token}/stop, which mail clients also get as a one-click header.
+ */
+const ORGANISER_FOOT: Record<Locale, { stop: string; imprint: string; imprintPath: string }> = {
+  de: { stop: 'Keine E-Mails mehr von fynda.market', imprint: 'Impressum', imprintPath: 'impressum' },
+  fr: { stop: 'Ne plus recevoir nos e-mails', imprint: 'Mentions légales', imprintPath: 'mentions-legales' },
+  it: { stop: 'Non ricevere più e-mail', imprint: 'Note legali', imprintPath: 'note-legali' },
+  en: { stop: 'Stop e-mails from fynda.market', imprint: 'Imprint', imprintPath: 'imprint' },
+};
+function organiserFoot(locale: Locale, stop?: string) {
+  const f = ORGANISER_FOOT[locale] ?? ORGANISER_FOOT.en;
+  const imprint = `${SITE}/${locale}/${f.imprintPath}/`;
+  const links = [stop ? [f.stop, stop] : null, [f.imprint, imprint]].filter(Boolean) as [string, string][];
+  return {
+    html: `<p style="margin:16px 0 0;font-size:13px;color:#6b6b70;">${links.map(([label, href]) => `<a href="${href}" style="color:#6b6b70;">${escape(label)}</a>`).join(' · ')}</p>`,
+    text: links.map(([label, href]) => `${label}: ${href}`).join('\n'),
+    headers: stop ? { 'List-Unsubscribe': `<${stop}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' } : undefined,
+  };
+}
+
+/**
  * Sent once. A letter from Delfim, in full sentences: who he is, why he is
  * writing, what the organiser gains, and the link. Approved line by line on
  * 2026-09-21 after every shorter draft was rejected — "one tap, no account"
@@ -420,7 +447,8 @@ interface OrganiserWelcome {
   button: string;
   /** After the button, shared by both kinds. */
   after: string[];
-  listed: { subject: string; intro: string[]; optOut: string };
+  /** `introSeveral` replaces intro's last line for an organiser with several markets: the verb agrees ("… und 8 weitere Märkte sind"). */
+  listed: { subject: string; intro: string[]; introSeveral: string; optOut: string };
   thanks: string;
   /** Straight under the button, when people asked to be told the next date: the number, and nothing else (Delfim, 2026-10-10). Mirrors the organiser page's waitingOne / waitingMany. */
   waiting: [one: string, many: string];
@@ -439,15 +467,16 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     button: 'Meine Seite öffnen',
     after: [
       'Warum ich Ihnen schreibe: Besucher vertrauen einem Termin viel mehr, wenn der Veranstalter ihn bestätigt hat, als wenn jemand wie ich ihn von einer Website abgeschrieben hat. Wenn Ihre Seite zeigt, dass Sie ihn geprüft haben, entscheiden sich mehr Leute zu kommen. Und falls Sie einmal absagen müssen, genügt ein Wort an uns: Alle in der Nähe, die informiert werden wollten, erfahren es noch am selben Tag — und nicht erst vor verschlossenem Tor.',
-      'Die Seite gehört Ihnen. Sie können Termine und Öffnungszeiten korrigieren, angeben, wie viele Stände es gibt, was bei Regen gilt und wo man einen Stand buchen kann. Vor jedem Termin schicke ich Ihnen eine kurze E-Mail mit der Frage, ob er stattfindet, und ein Klick genügt als Antwort.',
+      'Die Seite gehört Ihnen. Sie können Termine und Öffnungszeiten korrigieren, angeben, wie viele Stände es gibt, was bei Regen gilt und wo man einen Stand buchen kann. Vor Ihren Terminen schicke ich Ihnen eine kurze E-Mail mit der Frage, ob sie stattfinden — bei einem wöchentlichen Markt etwa einmal im Monat —, und ein Klick genügt als Antwort.',
       'Wenn Sie ein Foto Ihres Marktes haben, stelle ich es gern auf die Seite — schicken Sie es mir einfach als Antwort auf diese E-Mail.',
     ],
     listed: {
       subject: '%m auf fynda.market — Ihre Seite',
       intro: [
         'Mein Name ist Delfim. Ich betreibe fynda.market, eine Website, auf der Leute einen Flohmarkt in ihrer Nähe finden. Ich habe sie gebaut, weil ich selbst auf Flohmärkte gehe und die Enttäuschung kenne, irgendwohin zu fahren und erst dort zu erfahren, dass der Markt abgesagt wurde.',
-        '%m ist bei fynda.market eingetragen, mit den Terminen und Öffnungszeiten, die ich auf Ihrer Website gefunden habe. Das wollte ich Sie wissen lassen — und Ihnen die Seite übergeben:',
+        '%m ist bei fynda.market eingetragen, mit den Terminen und Öffnungszeiten, die ich im Netz gefunden habe. Das wollte ich Sie wissen lassen — und Ihnen die Seite übergeben:',
       ],
+      introSeveral: '%m sind bei fynda.market eingetragen, mit den Terminen und Öffnungszeiten, die ich im Netz gefunden habe. Das wollte ich Sie wissen lassen — und Ihnen die Seiten übergeben:',
       optOut: 'Und falls Sie lieber nichts mehr von mir hören möchten, genügt eine kurze Antwort, und ich schreibe Ihnen nicht mehr.',
     },
     thanks: 'Danke, dass Sie einen Markt organisieren. Es ist mehr Arbeit, als die meisten ahnen.',
@@ -462,15 +491,16 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     button: 'Ouvrir ma page',
     after: [
       "Pourquoi je vous écris ? Les visiteurs font bien plus confiance à une date confirmée par l'organisateur qu'à une date recopiée d'un site par quelqu'un comme moi. Quand votre page montre que vous l'avez vérifiée, plus de gens se décident à venir. Et si un jour vous devez annuler, un mot suffit : tous ceux qui, dans les environs, ont demandé à être tenus au courant l'apprennent le jour même, et non une fois sur place.",
-      "La page est à vous. Vous pouvez corriger les dates et les horaires, indiquer combien il y a de stands, ce qui se passe en cas de pluie et où l'on peut réserver un stand. Avant chaque date, je vous enverrai un court e-mail pour demander si elle a toujours lieu, et un clic suffit pour répondre.",
+      "La page est à vous. Vous pouvez corriger les dates et les horaires, indiquer combien il y a de stands, ce qui se passe en cas de pluie et où l'on peut réserver un stand. Avant vos dates, je vous enverrai un court e-mail pour demander si elles ont toujours lieu — pour un marché hebdomadaire, environ une fois par mois —, et un clic suffit pour répondre.",
       "Si vous avez une photo du marché, je la mettrai volontiers sur la page : il suffit de me l'envoyer en réponse à cet e-mail.",
     ],
     listed: {
       subject: '%m sur fynda.market — votre page',
       intro: [
         "Je m'appelle Delfim. Je m'occupe de fynda.market, un site qui aide les gens à trouver une brocante près de chez eux. Je l'ai créé parce que je fréquente moi-même les marchés aux puces, et que je connais la déception de faire la route pour découvrir sur place que tout est annulé.",
-        "%m figure sur fynda.market, avec les dates et les horaires que j'ai trouvés sur votre site internet. Je tenais à vous le dire, et à vous remettre la page :",
+        "%m figure sur fynda.market, avec les dates et les horaires que j'ai trouvés en ligne. Je tenais à vous le dire, et à vous remettre la page :",
       ],
+      introSeveral: "%m figurent sur fynda.market, avec les dates et les horaires que j'ai trouvés en ligne. Je tenais à vous le dire, et à vous remettre les pages :",
       optOut: "Et si vous préférez ne plus avoir de mes nouvelles, un simple mot en réponse suffit : je ne vous écrirai plus.",
     },
     thanks: "Merci d'organiser un marché. C'est plus de travail que la plupart des gens ne l'imaginent.",
@@ -485,15 +515,16 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     button: 'Apri la mia pagina',
     after: [
       "Ecco perché ti scrivo. I visitatori si fidano molto di più di una data quando l'ha confermata l'organizzatore che quando uno come me l'ha copiata da un sito. Quando la tua pagina mostra che l'hai controllata, più persone decidono di venire. E se un giorno dovessi annullare, basta dircelo perché tutti nei dintorni che hanno chiesto di essere avvisati lo sappiano il giorno stesso, e non davanti al cancello chiuso.",
-      'La pagina è tua. Puoi correggere date e orari, dire quante bancarelle ci sono, cosa succede se piove e dove si può prenotare una bancarella. Prima di ogni data ti manderò una breve e-mail per chiederti se si fa ancora, e basta un clic per rispondere.',
+      'La pagina è tua. Puoi correggere date e orari, dire quante bancarelle ci sono, cosa succede se piove e dove si può prenotare una bancarella. Prima delle tue date ti manderò una breve e-mail per chiederti se si fanno ancora — per un mercatino settimanale, più o meno una volta al mese —, e basta un clic per rispondere.',
       'Se hai una foto del mercatino, la metto volentieri sulla pagina — rispondi semplicemente allegandola.',
     ],
     listed: {
       subject: '%m su fynda.market — la tua pagina',
       intro: [
         "Mi chiamo Delfim. Gestisco fynda.market, un sito che aiuta le persone a trovare un mercatino delle pulci vicino a loro. L'ho creato perché ai mercatini ci vado anch'io, e conosco la delusione di arrivare sul posto e scoprire che era stato annullato.",
-        '%m è su fynda.market, con le date e gli orari che ho trovato sul tuo sito. Volevo fartelo sapere, e affidarti la pagina:',
+        '%m è su fynda.market, con le date e gli orari che ho trovato online. Volevo fartelo sapere, e affidarti la pagina:',
       ],
+      introSeveral: '%m sono su fynda.market, con le date e gli orari che ho trovato online. Volevo fartelo sapere, e affidarti le pagine:',
       optOut: 'E se preferisci che non ti scriva, basta una risposta: non ti scriverò più.',
     },
     thanks: 'Grazie per il mercatino che organizzi. È più lavoro di quanto la gente immagini.',
@@ -508,15 +539,16 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     button: 'Open my page',
     after: [
       "This is why I'm writing. Visitors trust a date far more when the organiser has confirmed it than when someone like me has copied it from a website. When your page shows that you have checked it, more people decide to come. And if you ever have to cancel, telling us means that everyone nearby who asked to be kept informed finds out the same day, rather than at your gate.",
-      "The page is yours. You can correct the dates and hours, say how many stalls there are, what happens when it rains, and where people can book a stall. Before each date I'll send you a short e-mail asking whether it's still on, and one click is enough to answer.",
+      "The page is yours. You can correct the dates and hours, say how many stalls there are, what happens when it rains, and where people can book a stall. Before your dates I'll send you a short e-mail asking whether they're still on — for a weekly market, about once a month — and one click is enough to answer.",
       'If you have a photo of the market, I would be glad to put it on the page — just reply with it.',
     ],
     listed: {
       subject: '%m on fynda.market — your page',
       intro: [
         "My name is Delfim. I run fynda.market, a site that helps people find a flea market near them. I built it because I go to markets myself, and I know the disappointment of driving somewhere and finding out it was cancelled.",
-        '%m is listed on the site, with the dates and opening hours I found on your website. I wanted you to know, and to give you the page:',
+        '%m is listed on the site, with the dates and opening hours I found online. I wanted you to know, and to give you the page:',
       ],
+      introSeveral: '%m are listed on the site, with the dates and opening hours I found online. I wanted you to know, and to give you the pages:',
       optOut: "And if you would rather not hear from me, reply and say so, and I won't write again.",
     },
     thanks: "Thank you for running a market. It's more work than most people realise.",
@@ -531,12 +563,16 @@ export function organiserWelcome(
   url: string,
   kind: WelcomeKind = 'claimed',
   /** People waiting for the next date of the organiser's markets; said under the button when there are any. */
-  waiting = 0
+  waiting = 0,
+  /** `stop`: the organiser's /a/{token}/stop. `several`: `market` names more than one ("X und 8 weitere Märkte"). */
+  { stop, several = false }: { stop?: string; several?: boolean } = {}
 ): Omit<Mail, 'to'> {
   const copy = ORGANISER_WELCOME[locale] ?? ORGANISER_WELCOME.en;
   const fill = (line: string) => line.replace('%m', market);
   const waitingLine = waiting === 1 ? copy.waiting[0] : waiting > 1 ? copy.waiting[1].replace('%n', String(waiting)) : undefined;
-  const before = [copy.hello, ...(kind === 'listed' ? copy.listed.intro : copy.intro).map(fill)];
+  const listedIntro = several ? [...copy.listed.intro.slice(0, -1), copy.listed.introSeveral] : copy.listed.intro;
+  const before = [copy.hello, ...(kind === 'listed' ? listedIntro : copy.intro).map(fill)];
+  const foot = organiserFoot(locale, stop);
   // Straight under the button: the intro's last line introduces the button, so the number cannot sit between them.
   const after = [...(waitingLine ? [waitingLine] : []), ...copy.after, ...(kind === 'listed' ? [copy.listed.optOut] : []), copy.thanks];
   const subject = fill(kind === 'listed' ? copy.listed.subject : copy.subject);
@@ -547,12 +583,15 @@ export function organiserWelcome(
   </p>
   ${after.map((line) => `<p style="margin:0 0 16px;">${escape(line)}</p>`).join('')}
   <p style="margin:24px 0 0;">${SIGNOFF.map(escape).join('<br>')}</p>
-  <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;word-break:break-all;">${escape(url)}</p>`;
+  <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;word-break:break-all;">${escape(url)}</p>
+  ${foot.html}`;
 
   return {
     subject,
+    from: ORGANISER_FROM,
     html: column(locale, before, footer),
-    text: `fynda.market\n\n${before.join('\n\n')}\n\n${copy.button}: ${url}\n\n${after.join('\n\n')}\n\n${SIGNOFF.join('\n')}\n`,
+    text: `fynda.market\n\n${before.join('\n\n')}\n\n${copy.button}: ${url}\n\n${after.join('\n\n')}\n\n${SIGNOFF.join('\n')}\n\n${foot.text}\n`,
+    ...(foot.headers ? { headers: foot.headers } : {}),
   };
 }
 
@@ -577,7 +616,8 @@ export interface AskItem {
 interface Ask {
   subjectOne: string;   // %m market, %d date
   subjectMany: string;  // %n count
-  hello: string;        // %n name
+  /** No name: "Guten Tag Melan macht Märkte Veranstaltungs GmbH" was a machine talking (2026-10-10), as the welcome found first. */
+  hello: string;
   intro: string;        // one date: "fynda.market lists your market on %d, %t at %p. Is that right?"
   introMany: string;
   on: string;
@@ -589,10 +629,10 @@ interface Ask {
 const ASK: Record<Locale, Ask> = {
   de: {
     subjectOne: '%m, %d — findet er statt?',
-    subjectMany: '%n Termine nächste Woche — finden sie statt?',
-    hello: 'Guten Tag %n',
+    subjectMany: '%n Termine in den nächsten Wochen — finden sie statt?',
+    hello: 'Guten Tag',
     intro: 'Laut fynda.market findet Ihr Markt am %d%t in %p statt. Stimmt das?',
-    introMany: 'Für nächste Woche stehen diese Termine von Ihnen auf fynda.market. Stimmen sie?',
+    introMany: 'Für die nächsten Wochen stehen diese Termine von Ihnen auf fynda.market. Stimmen sie?',
     on: 'Ja, er findet statt',
     cancelled: 'Abgesagt',
     changed: 'Etwas hat sich geändert',
@@ -600,10 +640,10 @@ const ASK: Record<Locale, Ask> = {
   },
   fr: {
     subjectOne: "%m, %d — toujours d'actualité ?",
-    subjectMany: "%n dates la semaine prochaine — toujours d'actualité ?",
-    hello: 'Bonjour %n',
+    subjectMany: "%n dates dans les semaines à venir — toujours d'actualité ?",
+    hello: 'Bonjour',
     intro: 'fynda.market annonce votre marché le %d%t à %p. Est-ce exact ?',
-    introMany: 'fynda.market annonce ces dates de votre marché pour la semaine prochaine. Sont-elles exactes ?',
+    introMany: 'fynda.market annonce ces dates de votre marché pour les semaines à venir. Sont-elles exactes ?',
     on: "Oui, c'est maintenu",
     cancelled: 'Annulé',
     changed: 'Quelque chose a changé',
@@ -611,10 +651,10 @@ const ASK: Record<Locale, Ask> = {
   },
   it: {
     subjectOne: '%m, %d — si fa?',
-    subjectMany: '%n date la settimana prossima — si fanno?',
-    hello: 'Buongiorno %n',
+    subjectMany: '%n date nelle prossime settimane — si fanno?',
+    hello: 'Buongiorno',
     intro: 'Su fynda.market il tuo mercatino è in calendario il %d%t a %p. È giusto?',
-    introMany: 'Su fynda.market queste sono le tue date della settimana prossima. Sono giuste?',
+    introMany: 'Su fynda.market queste sono le tue date delle prossime settimane. Sono giuste?',
     on: 'Sì, si fa',
     cancelled: 'Annullato',
     changed: 'È cambiato qualcosa',
@@ -622,10 +662,10 @@ const ASK: Record<Locale, Ask> = {
   },
   en: {
     subjectOne: '%m, %d — still on?',
-    subjectMany: '%n dates next week — still on?',
-    hello: 'Hello %n',
+    subjectMany: '%n dates in the coming weeks — still on?',
+    hello: 'Hello',
     intro: 'fynda.market lists your market on %d%t at %p. Is that right?',
-    introMany: 'fynda.market lists these dates of yours for next week. Are they right?',
+    introMany: 'fynda.market lists these dates of yours for the coming weeks. Are they right?',
     on: "Yes, it's on",
     cancelled: 'Cancelled',
     changed: 'Something changed',
@@ -645,8 +685,9 @@ const timeRange = (start?: string | null, end?: string | null) => {
 const button = (href: string, label: string, filled: boolean) =>
   `<a href="${href}" style="display:block;box-sizing:border-box;width:100%;padding:14px 16px;margin:0 0 10px;text-align:center;text-decoration:none;border-radius:6px;font-weight:500;border:1px solid #16161a;${filled ? 'background:#16161a;color:#ffffff;' : 'background:#ffffff;color:#16161a;'}">${escape(label)}</a>`;
 
-export function organiserAsk(locale: Locale, name: string, items: AskItem[]): Omit<Mail, 'to'> {
+export function organiserAsk(locale: Locale, _name: string, items: AskItem[], stop?: string): Omit<Mail, 'to'> {
   const copy = ASK[locale] ?? ASK.en;
+  const foot = organiserFoot(locale, stop);
   const one = items.length === 1 ? items[0] : null;
 
   const subject = one
@@ -669,21 +710,22 @@ export function organiserAsk(locale: Locale, name: string, items: AskItem[]): Om
   }).join('');
 
   const footer = `${blocks}
-  <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:14px;color:#6b6b70;">${escape(copy.footer)}</p>`;
+  <p style="margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:14px;color:#6b6b70;">${escape(copy.footer)}</p>
+  ${foot.html}`;
 
-  const body = [copy.hello.replace('%n', name), intro];
+  const body = [copy.hello, intro];
   const text = [
-    'fynda.market', '', ...body, '',
+    'fynda.market', '', copy.hello, '', intro, '',
     ...items.flatMap((item) => [
       one ? '' : `${item.market} — ${day(locale, item.date)}${timeRange(item.startTime, item.endTime)}, ${item.town}`,
       `${copy.on}: ${item.onUrl}`,
       `${copy.cancelled}: ${item.cancelledUrl}`,
       `${copy.changed}: ${item.changedUrl}`, '',
     ]),
-    copy.footer, '',
+    copy.footer, '', foot.text, '',
   ].join('\n');
 
-  return { subject, html: column(locale, body, footer), text };
+  return { subject, from: ORGANISER_FROM, html: column(locale, body, footer), text, ...(foot.headers ? { headers: foot.headers } : {}) };
 }
 
 /* -------------------------------------------------------------------------- */

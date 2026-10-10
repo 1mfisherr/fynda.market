@@ -348,7 +348,7 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'Was Sie davon haben',
     list: [
       'Ein persönlicher Link per E-Mail — Sie brauchen weder Passwort noch Konto. Er öffnet Ihre Seite: Termine, Zahl der Stände, drinnen oder draussen, was bei Regen gilt.',
-      'Sieben Tage vor jedem Termin eine E-Mail mit drei Knöpfen: findet statt · abgesagt · etwas hat sich geändert. Ein Klick auf den passenden genügt als Antwort.',
+      'Eine Woche vor Ihren Terminen eine E-Mail mit drei Knöpfen pro Termin: findet statt · abgesagt · etwas hat sich geändert. Bei einem wöchentlichen Markt etwa einmal im Monat, mit den Terminen der nächsten Wochen. Ein Klick auf den passenden genügt als Antwort, und jede E-Mail lässt sich mit einem Klick abbestellen.',
       'Jeder Termin, den Sie bestätigen, trägt den Vermerk „Vom Veranstalter bestätigt“, mit dem Datum Ihrer Bestätigung.',
       'Eine Absage steht innerhalb einer Stunde auf der Seite, und wer den Newsletter für Ihre Gegend abonniert hat, erfährt es sofort.',
     ],
@@ -382,7 +382,7 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'Ce que cela vous apporte',
     list: [
       "Un lien personnel par e-mail — pas de mot de passe, pas de compte à créer. Il ouvre votre page : dates, nombre de stands, intérieur ou extérieur, ce qui se passe en cas de pluie.",
-      "Sept jours avant chaque date, un e-mail avec trois boutons : maintenu · annulé · quelque chose a changé. Un clic suffit.",
+      "Une semaine avant vos dates, un e-mail avec trois boutons par date : maintenu · annulé · quelque chose a changé. Pour un marché hebdomadaire, environ une fois par mois, avec les dates des semaines à venir. Un clic suffit, et chaque e-mail se désabonne en un clic.",
       "Chaque date que vous confirmez porte la mention « Confirmé par l'organisateur », avec le jour de votre confirmation.",
       "Une annulation apparaît sur la page dans l'heure, et les abonnés de la newsletter de votre région sont prévenus aussitôt.",
     ],
@@ -416,7 +416,7 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'A cosa serve',
     list: [
       "Un link personale via e-mail — non servono né password né account. Apre la tua pagina: date, numero di bancarelle, al coperto o all'aperto, cosa succede se piove.",
-      "Sette giorni prima di ogni data, un'e-mail con tre pulsanti: si fa · annullato · è cambiato qualcosa. Per rispondere basta un clic su quello giusto.",
+      "Una settimana prima delle tue date, un'e-mail con tre pulsanti per data: si fa · annullato · è cambiato qualcosa. Per un mercatino settimanale più o meno una volta al mese, con le date delle prossime settimane. Per rispondere basta un clic su quello giusto, e con un clic puoi anche smettere di riceverle.",
       "Ogni data che confermi porta la scritta «Confermato dall'organizzatore», con il giorno della conferma.",
       "Una data annullata compare sulla pagina entro un'ora, e chi riceve la newsletter della tua zona lo sa subito.",
     ],
@@ -450,7 +450,7 @@ const organiser: Record<Locale, FormPage> = {
     listTitle: 'What you get',
     list: [
       'A personal link by e-mail — no password, no account needed. It opens your page: dates, number of stalls, indoor or outdoor, what happens when it rains.',
-      "Seven days before each date, an e-mail with three buttons: it's on · cancelled · something changed. One click on the right one is your answer.",
+      "A week before your dates, an e-mail with three buttons for each: it's on · cancelled · something changed. For a weekly market about once a month, with the dates of the coming weeks. One click on the right one is your answer, and one click stops the e-mails.",
       'Every date you confirm says "Confirmed by the organiser", with the day you did.',
       'A cancellation is on the page within the hour, and newsletter subscribers in your area hear at once.',
     ],

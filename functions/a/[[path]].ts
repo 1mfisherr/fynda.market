@@ -5,6 +5,7 @@
  *   /a/{token}/{occurrence}/cancelled  cancelled → "just this date, or stopped?"
  *   /a/{token}/{occurrence}/changed    → the edit page
  *   /a/{token}/edit[/{market}]          the organiser's page (docs/PAGES.md)
+ *   /a/{token}/stop                     no more e-mails (every organiser mail links here)
  *
  * The token is the organiser's identity (functions/_organiser.ts). Every write
  * checks that the date belongs to a market this organiser stands behind — a
@@ -64,6 +65,23 @@ async function handle({ request, env, params, waitUntil }: Parameters<PagesFunct
 
   const locale = (organiser.locale ?? 'en') as Locale;
   const c = copyFor(locale);
+
+  /* ---- no more e-mails --------------------------------------------------- */
+
+  /* A GET asks, a POST stops: a mail scanner following the link must not
+     unsubscribe anyone. A mail client's one-click unsubscribe (RFC 8058) is a
+     POST to this same address, so it stops at once. */
+  if (second === 'stop') {
+    if (request.method !== 'POST') {
+      return page(locale, c.stopTitle, `
+        <h1>${escape(c.stopTitle)}</h1>
+        <p>${escape(c.stopBody)}</p>
+        <form method="post" action="/a/${token}/stop"><button class="btn" type="submit">${escape(c.stopButton)}</button></form>`);
+    }
+    const done = await updateRows(env, 'organisers', `id=eq.${organiser.id}&select=id`, { mail_stopped_at: new Date().toISOString() });
+    if (done.length === 0) console.log('organiser mail stop not written', organiser.id);
+    return page(locale, c.stopDoneTitle, `<h1>${escape(c.stopDoneTitle)}</h1><p>${escape(c.stopDoneBody)}</p><p class="meta"><a href="/a/${token}/edit">${escape(c.backToPage)}</a></p>`);
+  }
 
   /* ---- the edit page ---------------------------------------------------- */
 
@@ -484,7 +502,7 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
     <div class="foot">
       <p>${escape(c.footLink)}</p>
       <p>${escape(c.footReply)}</p>
-      <p>${escape(c.footOut)}</p>
+      <p>${escape(c.footOut)} <a href="/a/${token}/stop">${escape(c.stopLink)}</a></p>
       <p>${escape(c.footTerms).replace(/\{([^}]+)\}/, `<a href="https://fynda.market/${locale}/${TERMS_WORD[locale]}/" target="_blank" rel="noopener">$1</a>`)}</p>
       <p>Delfim</p>
     </div>`;

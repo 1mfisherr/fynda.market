@@ -35,5 +35,7 @@ export async function tokenFor(secret: string, linkId: string): Promise<string> 
 }
 
 export const editUrl = (origin: string, token: string) => `${origin}/a/${token}/edit`;
+/** No more e-mails — the foot of every organiser mail, and its one-click header. */
+export const stopUrl = (origin: string, token: string) => `${origin}/a/${token}/stop`;
 export const answerUrl = (origin: string, token: string, occurrenceId: string, verb: 'on' | 'cancelled' | 'changed') =>
   `${origin}/a/${token}/${occurrenceId}/${verb}`;

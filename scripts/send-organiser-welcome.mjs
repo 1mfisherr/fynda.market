@@ -10,7 +10,9 @@
  *   node scripts/send-organiser-welcome.mjs --test=me@x.ch  # the first mail, to that address, nothing logged
  *
  * Who: every organiser with an e-mail address and a live link who has no
- * `welcome` row in organiser_mail_sends yet. The claim path writes that row
+ * `welcome` row in organiser_mail_sends yet and has not stopped our mail.
+ * Those whose markets already carry *Confirmed by the organiser* go first —
+ * the warmest, and the first day's 90 should be them (2026-10-10). The claim path writes that row
  * too, so an organiser Delfim approved is never welcomed twice. The row is
  * written BEFORE the send and taken back if Resend refuses, so a re-run after
  * a crash sends only what is missing. Sends nothing without --send.
@@ -18,7 +20,7 @@
 
 import { query, secret } from './db.mjs';
 import { organiserWelcome, sendMail } from '../functions/_mail.ts';
-import { editUrl, tokenFor } from '../functions/_link.ts';
+import { editUrl, stopUrl, tokenFor } from '../functions/_link.ts';
 
 const SITE = 'https://fynda.market';
 
@@ -83,11 +85,15 @@ const rows = await query(
     order by m.slug limit 1
   ) m on true
   where org.email is not null
+    and org.mail_stopped_at is null
     and not exists (
       select 1 from public.organiser_mail_sends s
       where s.organiser_id = org.id and s.kind = 'welcome'
     )
-  order by org.name
+  order by exists (
+      select 1 from public.markets mv
+       where mv.organiser_id = org.id and mv.status = 'active' and mv.verified_by = 'organiser'
+    ) desc, org.name
   `
 );
 
@@ -112,8 +118,12 @@ let sent = 0;
 let shown = false;
 
 for (const row of list) {
-  const url = editUrl(SITE, await tokenFor(SIGNING, row.link_id));
-  const mail = organiserWelcome(row.locale, row.organiser_name, marketPhrase(row), url, 'listed', Number(row.waiting));
+  const token = await tokenFor(SIGNING, row.link_id);
+  const url = editUrl(SITE, token);
+  const mail = organiserWelcome(row.locale, row.organiser_name, marketPhrase(row), url, 'listed', Number(row.waiting), {
+    stop: stopUrl(SITE, token),
+    several: Number(row.market_count) > 1,
+  });
   say(`  ${row.organiser_name} <${row.email}> [${row.locale}] — ${marketPhrase(row)}`);
 
   if (!shown) {
