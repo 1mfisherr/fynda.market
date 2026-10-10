@@ -36,6 +36,10 @@
     "underground car park at Maternusplatz",
     "tram 16 and 17 to Rodenkirchen Bahnhof; buses 130, 131 and 135 to Maternusplatz"
   ],
-  "checked": "2026-10-09",
-  "notes": "One date only: the market page says 'Termine 2026: So 08.Nov.', and termine.php lists it on the same day. Nothing says it is annual; 'In November' is the most the page supports. No visitor opening hours or entry fee given — only stall set-up Saturday from 17:00 and Sunday from 07:00 — so opening and fee are null. Pitch prices disagree between the market page (15 EUR/m, 4 m hire stall 80 EUR) and termine.php (20,00 / 90,00); not used. Same organiser as our other Cölln Konzept markets. Coordinates: Maternusplatz marketplace node from Nominatim."
+  "checked": "2026-10-10",
+  "notes": "One date only: the market page says 'Termine 2026: So 08.Nov.', and termine.php lists it on the same day. Nothing says it is annual; 'In November' is the most the page supports. No visitor opening hours or entry fee given — only stall set-up Saturday from 17:00 and Sunday from 07:00 — so opening and fee are null. Pitch prices disagree between the market page (15 EUR/m, 4 m hire stall 80 EUR) and termine.php (20,00 / 90,00); not used. Same organiser as our other Cölln Konzept markets. Coordinates: Maternusplatz marketplace node from Nominatim. Re-checked 2026-10-10: market page unchanged, still 'Termine 2026: So 08.Nov.' only.",
+  "description": {
+    "de": "Ein Antik- und Lifestylemarkt auf dem Maternusplatz in Köln-Rodenkirchen. Neuware ist nicht erlaubt. Die Bahnen 16 und 17 halten an der Haltestelle Rodenkirchen Bahnhof, die Busse 130, 131 und 135 am Maternusplatz, und am Platz gibt es eine Tiefgarage.",
+    "en": "An antiques and lifestyle market on Maternusplatz in Köln-Rodenkirchen. New goods are not allowed. Trams 16 and 17 stop at Rodenkirchen Bahnhof, buses 130, 131 and 135 at Maternusplatz, and there is an underground car park at the square."
+  }
 }

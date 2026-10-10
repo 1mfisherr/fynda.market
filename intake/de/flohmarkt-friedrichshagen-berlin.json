@@ -1,0 +1,63 @@
+{
+  "slug": "flohmarkt-friedrichshagen-berlin",
+  "name": "Flohmarkt Friedrichshagen",
+  "kind": "flohmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Parkplatz am S-Bahnhof Friedrichshagen",
+    "address": "Schöneicher Straße 1",
+    "postal_code": "12587"
+  },
+  "lat": 52.4578,
+  "lng": 13.6260,
+  "rhythm": {
+    "de": "Jeden Sonntag, April bis Dezember",
+    "en": "Every Sunday, April to December"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-10-11",
+    "2026-10-18",
+    "2026-10-25",
+    "2026-11-01",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27"
+  ],
+  "dates_from": "rhythm",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://oldthing.de/Berliner-Flohmarkt/Secondhand-und-Kunst/Flohmarkt-Friedrichshagen/",
+  "organiser": {
+    "name": "Beste Sammelfreunde UG (haftungsbeschränkt)",
+    "website": "https://oldthing.de/Berliner-Flohmarkt/",
+    "email": "info@oldthing.de"
+  },
+  "source_page": "https://oldthing.de/Berliner-Flohmarkt/Secondhand-und-Kunst/Flohmarkt-Friedrichshagen/",
+  "facts": [
+    "flea and junk market on the car park right by S-Bahnhof Friedrichshagen, corner Schöneicher Straße / Dahlwitzer Landstraße",
+    "April to December, Sundays 09:00 to 16:00",
+    "closed on the Sundays the Antikflohmarkt at Trabrennbahn Karlshorst runs, and on Volkstrauertag and Totensonntag",
+    "60 to 100 traders; about 70% private and occasional sellers, 30% professionals",
+    "second-hand goods, collectables, coins, paper, books, pictures, model railways, toys, white linen, jewellery, porcelain, glass, GDR memorabilia, some crafts",
+    "entry free",
+    "outdoor, on a car park of about 2,500 m²",
+    "well attended in bad weather too",
+    "snack stand and toilet on site",
+    "running since 1993",
+    "near the Müggelsee",
+    "S3 to Friedrichshagen; trams 60, 61 and 88"
+  ],
+  "checked": "2026-10-10",
+  "notes": "oldthing.de is the operator, not a directory: it runs this market with Antikmarkt Ostbahnhof and the Karlshorst Antikflohmarkt (same organiser as those intake files) and takes stall bookings for it. Dates derived from 'every Sunday 9–16, April to December', minus closures stated on the organiser's dates page (oldthing.de/flohmaerkte-und-sammlerboersen-termine): 08.11 (Karlshorst weekend 07.–08.11), 15.11 Volkstrauertag, 22.11 Totensonntag. The overview's next-dates box confirms 11.10, 18.10, 25.10, 01.11. 27.12 is inside 'bis Dezember' but not confirmed anywhere; no dates January–March (winter break). Hours disagree: market page and overview say 09:00–16:00 (used); the dates page row reads 'Ab 12. April Sonntags von 8-16 Uhr'. Directory title '30 Jahre Flohmarktkultur' is not used; the organiser calls it Flohmarkt Friedrichshagen. Coordinates: OSM marketplace node 'Flohmarkt Friedrichshagen' (Schöneicher Straße 1) from Nominatim.",
+  "description": {
+    "de": "Seit 1993 gibt es diesen Floh- und Trödelmarkt auf dem Parkplatz direkt am S-Bahnhof Friedrichshagen. An 60 bis 100 Ständen, die meisten davon privat, liegen Secondhand-Sachen, Bücher, Münzen, Porzellan, Glas, Schmuck, Spielzeug und DDR-Nostalgie. Der Eintritt ist frei, es gibt einen Imbiss, und der Müggelsee ist nicht weit.",
+    "en": "This flea and junk market has been held on the car park right by Friedrichshagen S-Bahn station since 1993. Its 60 to 100 stalls, most of them run by private sellers, carry second-hand goods, books, coins, porcelain, glass, jewellery, toys and East German memorabilia. Entry is free, there is a snack stand, and the Müggelsee is close by."
+  }
+}
