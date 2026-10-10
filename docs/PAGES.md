@@ -119,7 +119,7 @@ Top to bottom, English master (the other three follow it):
 
 Out, on purpose: the name, address and description (four languages; an organiser editing one makes a mess — "in your words" is the safe version), photo upload (mail reply for now), anything about accounts. Segmented choices (indoors/out, rain, the question) are bordered buttons with the chosen one filled — a row of same-weight words did not read as clickable (Delfim, 2026-09-22).
 
-Schema: `20260921120000_organiser_page.sql` — `stall_booking`, `getting_there`, `organiser_note` (+ its locale), six tags, the `market_people_30d` view. The market page shows the note under *From the organiser* and the booking line under the host line; tags are stored, not yet shown.
+Schema: `20260921120000_organiser_page.sql` — `stall_booking`, `getting_there`, `organiser_note` (+ its locale), six tags, the `market_people_30d` view. The market page shows the note under *From the organiser* and the booking line under the host line; tags show in the market page's strip as *what's sold* (food excepted).
 
 ---
 
@@ -145,4 +145,4 @@ Fields worth collecting, in order: stall count · who may sell (private / mixed 
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-26
+last_reviewed: 2026-10-10

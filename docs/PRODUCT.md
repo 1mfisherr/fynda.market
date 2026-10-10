@@ -80,7 +80,7 @@ The product is one dataset plus the loops that keep it alive; every page is a re
 - **Weekend loop** — save a market → Friday digest → go → report → better digest. Saving is `localStorage`, no account; ICS is the same loop through the visitor's own calendar.
 - **Supply loop** — the organiser page says **"Das ist Ihre Marktseite"**, not "list your market". Useful to a church-bazaar organiser even if nobody else used fynda.market; the data arrives as a by-product.
 
-**The honest gap.** The design shows stall counts, seller mix, indoor/outdoor, packing-up times, toilets, travel advice. We hold none of them and v1 never did. Blocks render only when their data exists — no placeholders, no invented figures. A field goes on the page if we can compute it or someone else fills it in, never because we collect it market by market: that works across 157 and breaks at 10,000. **Size and indoor/outdoor are tier 1** — they decide whether someone travels — and have to be asked for.
+**The honest gap.** The design shows stall counts, seller mix, indoor/outdoor, packing-up times, toilets, travel advice. v1 held none of them; by 2026-10-10 we hold indoor/outdoor for about half the markets, what is sold for a quarter, stalls and rain for a few — each read off the organiser's own page with the quote. Blocks render only when their data exists — no placeholders, no invented figures. A field goes on the page if we can compute it or someone else fills it in, never because we collect it market by market: that works across 157 and breaks at 10,000. **Size and indoor/outdoor are tier 1** — they decide whether someone travels — and have to be asked for.
 
 ## Settled
 
