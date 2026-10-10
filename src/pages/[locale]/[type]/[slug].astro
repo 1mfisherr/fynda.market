@@ -324,7 +324,13 @@ const rowWord = (o: { status: string; origin?: string; date: string }) =>
  * free, so the entry shows only when there is a fee.
  */
 const capital = (text: string) => text.charAt(0).toLocaleUpperCase(locale) + text.slice(1);
+/* What you find there, beyond what every flea market has. A children's market
+   already says so in its badge; the tag would say it twice. Food is not
+   something sold at a flea market in this sense, and on a quarter of them it
+   marked nothing (2026-10-10): it stays an organiser's tag, unshown. */
+const sold = (market.tags ?? []).filter((tag) => tag !== 'food' && !(tag === 'kids' && market.kind === 'kinderflohmarkt'));
 const facts = [
+  sold.length ? [capital(sold.map((tag) => s.tagLabels[tag]).join(', ')), s.soldLabel] : undefined,
   market.stallCount ? [`~${market.stallCount}`, s.stallsLabel] : undefined,
   market.setting ? [capital(s.setting[market.setting]), s.settingLabel] : undefined,
   market.sellerMix ? [s.sellers[market.sellerMix], s.sellersLabel] : undefined,

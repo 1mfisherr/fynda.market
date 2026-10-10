@@ -53,6 +53,7 @@ interface Row {
   last_date: string | null;
   earlier: { id: string; date: string; status: OccurrenceStatus; seen: boolean }[] | null;
   waiting: number;
+  tags: Market['tags'] | null;
   image_credit: { author: string; licence: string; licence_url?: string; source_url: string } | null;
   occurrences: {
     id: string;
@@ -129,6 +130,11 @@ const SQL = `
       select coalesce(sum(w.waiting), 0)::int from public.date_alerts_waiting w
        where w.market_id = p.id or w.city_id = p.city_id
     )                                               as waiting,
+    (
+      select array_agg(t.key order by t.key) from public.market_tags mt
+        join public.tags t on t.id = mt.tag_id
+       where mt.market_id = p.id
+    )                                               as tags,
     (
       select jsonb_agg(o order by o.date)
         from (
@@ -244,6 +250,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         lastDate: row.last_date ?? undefined,
         earlier: (row.earlier ?? []).map((e) => ({ id: e.id, date: e.date, status: e.status, seen: e.seen })),
         waiting: row.waiting,
+        tags: row.tags ?? undefined,
         imageCredit: row.image_credit
           ? { author: row.image_credit.author, licence: row.image_credit.licence, licenceUrl: row.image_credit.licence_url, sourceUrl: row.image_credit.source_url }
           : undefined,

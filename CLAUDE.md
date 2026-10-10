@@ -57,7 +57,7 @@ Solo founder, non-technical, makes every final call. You are the technical judgm
 | Imports | From the live v1 Supabase project only. Local backups are stale — read for shape, never import. Swiss dates are copied from v1 weekly; every other country is kept by our own Market Watch (Delfim, 2026-10-09) |
 | Analytics | Our own events in our Postgres, read with self-hosted Metabase, plus Search Console. A first-party cookie behind a banner; third-party tools may be added behind the same consent. The privacy page describes what the code does, calmly — never a promise the next tool would break |
 | Brand | White, near-black, one accent for dates and status only. Schibsted Grotesk, self-hosted. `docs/BRAND.md` |
-| Tags | In the data model; filters, not URLs; small set. Shown only once organisers fill them |
+| Tags | Filters, not URLs; six. Shown on the market page as *what's sold* (Delfim, 2026-10-10) — from the organiser, or read off their own page with the quote kept (`intake/tags/`, `set-market-facts.mjs`). A tag marks what is special about a market, never what every flea market has. Waiting for organisers left all 339 blank |
 | Newsletter | Friday 06:00 UTC, list in our Postgres; a subscription is 25 km around a town, a canton, or the country |
 | Photos | Every market has one. Stock never ships |
 

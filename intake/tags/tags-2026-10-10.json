@@ -1,0 +1,962 @@
+[
+  {
+    "slug": "agra-antikmarkt-leipzig",
+    "tag": "antiques",
+    "quote": "antiques, art, vintage design and bric-a-brac"
+  },
+  {
+    "slug": "altstadtflohmarkt-hannover",
+    "tag": "antiques",
+    "quote": "Antiques, jewellery, records and vintage"
+  },
+  {
+    "slug": "altstadtflohmarkt-hannover",
+    "tag": "food",
+    "quote": "crêpe stands alongside"
+  },
+  {
+    "slug": "antik-flohmarkt-fehraltorf",
+    "tag": "antiques",
+    "quote": "Antiques, collectables, bric-a-brac"
+  },
+  {
+    "slug": "antik-flohmarkt-fehraltorf",
+    "tag": "food",
+    "quote": "a small bistro with home-made food and grilled sausages"
+  },
+  {
+    "slug": "antik-und-buchmarkt-am-bodemuseum-berlin",
+    "tag": "antiques",
+    "quote": "Books and antiques on the Kupfergraben"
+  },
+  {
+    "slug": "antik-und-buchmarkt-am-bodemuseum-berlin",
+    "tag": "records_books",
+    "quote": "Books and antiques on the Kupfergraben"
+  },
+  {
+    "slug": "antik-und-troedelmarkt-messe-halle-saale",
+    "tag": "antiques",
+    "quote": "Antik- und Trödelmarkt in der Messe Halle"
+  },
+  {
+    "slug": "antik-und-troedelmarkt-messe-halle-saale",
+    "tag": "furniture",
+    "quote": "Old furniture, jewellery, dolls, porcelain, glass, silver, clocks and linen"
+  },
+  {
+    "slug": "antikflohmarkt-trabrennbahn-karlshorst-berlin",
+    "tag": "antiques",
+    "quote": "An antiques and junk market"
+  },
+  {
+    "slug": "antikflohmarkt-trabrennbahn-karlshorst-berlin",
+    "tag": "furniture",
+    "quote": "Expect old furniture, antiques, art and design from Art Deco to mid-century"
+  },
+  {
+    "slug": "antikmarkt-ostbahnhof-berlin",
+    "tag": "antiques",
+    "quote": "A collectors' market on a quiet street behind Ostbahnhof"
+  },
+  {
+    "slug": "baden-bazaar",
+    "tag": "food",
+    "quote": "décor and food stalls"
+  },
+  {
+    "slug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "tag": "antiques",
+    "quote": "Antiques, art and crafts"
+  },
+  {
+    "slug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+    "tag": "food",
+    "quote": "Four food trucks"
+  },
+  {
+    "slug": "bourse-jouets-collection-fribourg-granges-paccot",
+    "tag": "food",
+    "quote": "There is a restaurant on site, with coffee and sandwiches."
+  },
+  {
+    "slug": "bourse-jouets-collection-geneve-le-grand-saconnex",
+    "tag": "food",
+    "quote": "There is a bar with light food."
+  },
+  {
+    "slug": "bourse-photo-vieux-papiers-fribourg-granges-paccot",
+    "tag": "records_books",
+    "quote": "antiquarian books, comics, records and CDs"
+  },
+  {
+    "slug": "bourse-vinyls-cd-geneve-le-grand-saconnex",
+    "tag": "records_books",
+    "quote": "this record and CD fair"
+  },
+  {
+    "slug": "boutique-kleider-flohmarkt-wbz-reinach",
+    "tag": "clothes",
+    "quote": "Clothes, bags and shoes are all you'll find here"
+  },
+  {
+    "slug": "boutique-kleider-flohmarkt-wbz-reinach",
+    "tag": "food",
+    "quote": "Restaurant Piazza, the WBZ's own, is in the house."
+  },
+  {
+    "slug": "breitsch-maerit-bern",
+    "tag": "food",
+    "quote": "with food and drink for young and old"
+  },
+  {
+    "slug": "brocante-17-terra-geneve",
+    "tag": "furniture",
+    "quote": "Professional dealers bring furniture, mirrors, paintings, jewellery, lamps"
+  },
+  {
+    "slug": "brocante-de-carouge-geneve",
+    "tag": "antiques",
+    "quote": "The organisers ask for antiques and brocante here"
+  },
+  {
+    "slug": "brocante-de-chambrelien",
+    "tag": "food",
+    "quote": "the bistro does grilled food, roast chestnuts and pea and pumpkin soup"
+  },
+  {
+    "slug": "brocante-de-la-gruyere-bulle",
+    "tag": "antiques",
+    "quote": "furniture, lamps, collectables and antiques from several decades"
+  },
+  {
+    "slug": "brocante-de-la-gruyere-bulle",
+    "tag": "food",
+    "quote": "Inside there's a restaurant, a tea room, a bar and a pinte du terroir."
+  },
+  {
+    "slug": "brocante-de-la-gruyere-bulle",
+    "tag": "furniture",
+    "quote": "The dealers bring furniture, lamps, collectables and antiques"
+  },
+  {
+    "slug": "brocante-locarno",
+    "tag": "antiques",
+    "quote": "antiques, mid-century pieces, vintage and design, everything at least 20 years old"
+  },
+  {
+    "slug": "brocante-quai-de-nogent-yverdon",
+    "tag": "food",
+    "quote": "The association serves light food on site."
+  },
+  {
+    "slug": "brocante-vide-grenier-55-plus-ecublens",
+    "tag": "food",
+    "quote": "There is a refreshment bar"
+  },
+  {
+    "slug": "cd-schallplatten-boerse-bern",
+    "tag": "records_books",
+    "quote": "A collectors' fair for music only: vinyl records, CDs"
+  },
+  {
+    "slug": "coffre-ouvert-villeneuve",
+    "tag": "clothes",
+    "quote": "the Vide-Dressing is only clothes and fashion accessories"
+  },
+  {
+    "slug": "comicboerse-zuerich",
+    "tag": "records_books",
+    "quote": "Collecting, swapping and talking shop around comics, manga and film."
+  },
+  {
+    "slug": "disco-flohmi-dreigaenger-liebefeld",
+    "tag": "food",
+    "quote": "with music and small things to eat"
+  },
+  {
+    "slug": "enter-flohmarkt-derendingen",
+    "tag": "food",
+    "quote": "the Enter restaurant is open"
+  },
+  {
+    "slug": "enter-modellbau-boerse-derendingen",
+    "tag": "food",
+    "quote": "The museum's own restaurant serves food."
+  },
+  {
+    "slug": "enter-vinyl-film-buecher-boerse-derendingen",
+    "tag": "food",
+    "quote": "the restaurant at Enter Technikwelt serves food"
+  },
+  {
+    "slug": "enter-vinyl-film-buecher-boerse-derendingen",
+    "tag": "records_books",
+    "quote": "Cameras and film gear, books, vinyl and CDs"
+  },
+  {
+    "slug": "fete-de-la-brocante-le-landeron",
+    "tag": "antiques",
+    "quote": "one big antiques and bric-a-brac market"
+  },
+  {
+    "slug": "fete-livres-disques-ouchy-lausanne",
+    "tag": "records_books",
+    "quote": "Lausanne's specialist book and record fair"
+  },
+  {
+    "slug": "floh-raritaetenmarkt-europaplatz-bern",
+    "tag": "antiques",
+    "quote": "Private sellers and dealers offer antiques, rarities and all kinds of second-hand goods."
+  },
+  {
+    "slug": "floh-sammler-antikmarkt-grabs",
+    "tag": "antiques",
+    "quote": "this mix of flea market, collectables and antiques"
+  },
+  {
+    "slug": "floh-sammler-antikmarkt-grabs",
+    "tag": "food",
+    "quote": "A travelling food stand comes along every time."
+  },
+  {
+    "slug": "floh-sammler-antikmarkt-romanshorn",
+    "tag": "antiques",
+    "quote": "this mix of flea market, collectables and antiques"
+  },
+  {
+    "slug": "floh-sammler-antikmarkt-romanshorn",
+    "tag": "food",
+    "quote": "A travelling food stand is there every time."
+  },
+  {
+    "slug": "floh-und-antikmarkt-wynecenter-buchs",
+    "tag": "antiques",
+    "quote": "antiques, household secondhand, decorative items and collectibles"
+  },
+  {
+    "slug": "floh-und-antiquitaetenmarkt-mellingen",
+    "tag": "antiques",
+    "quote": "An antiques and flea market in the historic small town of Mellingen"
+  },
+  {
+    "slug": "floh-und-antiquitaetenmarkt-mellingen",
+    "tag": "furniture",
+    "quote": "a lot for collectors — vintage furniture, decorative objects, household antiques and collectibles"
+  },
+  {
+    "slug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
+    "tag": "antiques",
+    "quote": "On the tables: antiques and all sorts of second-hand."
+  },
+  {
+    "slug": "flohmarkt-ace-cafe-rothenburg",
+    "tag": "food",
+    "quote": "In the morning, the kitchen serves breakfast."
+  },
+  {
+    "slug": "flohmarkt-adliswil",
+    "tag": "food",
+    "quote": "there's coffee and homemade cake"
+  },
+  {
+    "slug": "flohmarkt-am-arkonaplatz-berlin",
+    "tag": "antiques",
+    "quote": "Up to 100 traders with antiques, vintage clothing, crafts and curiosities."
+  },
+  {
+    "slug": "flohmarkt-bienzgut-bern",
+    "tag": "food",
+    "quote": "It also houses the Osteria da Santo"
+  },
+  {
+    "slug": "flohmarkt-buelach-stadthalle",
+    "tag": "food",
+    "quote": "There’s a small food and drink stand."
+  },
+  {
+    "slug": "flohmarkt-buerkliplatz-zuerich",
+    "tag": "antiques",
+    "quote": "Over 220 stands offer antiques, vintage décor, design objects, rare books, records and collectibles"
+  },
+  {
+    "slug": "flohmarkt-chilbiplatz-duebendorf",
+    "tag": "food",
+    "quote": "The organisers' own stand does coffee, homemade cakes, hot dogs, beer and soft drinks."
+  },
+  {
+    "slug": "flohmarkt-citti-park-luebeck",
+    "tag": "food",
+    "quote": "there are hot dogs, Currywurst, coffee and cake on site"
+  },
+  {
+    "slug": "flohmarkt-daglfing-muenchen",
+    "tag": "antiques",
+    "quote": "with an antiques market alongside under old trees"
+  },
+  {
+    "slug": "flohmarkt-daglfing-muenchen",
+    "tag": "food",
+    "quote": "the antiques house on the grounds has a restaurant and a café"
+  },
+  {
+    "slug": "flohmarkt-dorfplatz-horgen",
+    "tag": "food",
+    "quote": "Coffee, cake and grilled sausages on site."
+  },
+  {
+    "slug": "flohmarkt-eiszentrum-luzern",
+    "tag": "food",
+    "quote": "a grill stand on site"
+  },
+  {
+    "slug": "flohmarkt-flugplatz-buttwil",
+    "tag": "food",
+    "quote": "right next to The Hangar restaurant – which is open on market days"
+  },
+  {
+    "slug": "flohmarkt-gallusplatz-stgallen",
+    "tag": "antiques",
+    "quote": "Around 80 stalls offer antiques, rarities and vintage fashion"
+  },
+  {
+    "slug": "flohmarkt-gz-hirzenbach",
+    "tag": "kids",
+    "quote": "A flea market for children’s things"
+  },
+  {
+    "slug": "flohmarkt-gz-seebach",
+    "tag": "food",
+    "quote": "The GZ café is open."
+  },
+  {
+    "slug": "flohmarkt-hinwil",
+    "tag": "food",
+    "quote": "The market has its own café, the Flohmibeizli, with a lunch menu."
+  },
+  {
+    "slug": "flohmarkt-karlsplatz-stuttgart",
+    "tag": "antiques",
+    "quote": "Around 100 dealers and collectors with antiques, vintage and rarities."
+  },
+  {
+    "slug": "flohmarkt-nippes-koeln",
+    "tag": "antiques",
+    "quote": "A junk and collectors' market"
+  },
+  {
+    "slug": "flohmarkt-papieriplatz-cham",
+    "tag": "food",
+    "quote": "the Langhuus bar open with drinks, cake and a simple lunch"
+  },
+  {
+    "slug": "flohmarkt-paulusheim-luzern",
+    "tag": "kids",
+    "quote": "A flea market for children's clothes, toys and baby and children's items"
+  },
+  {
+    "slug": "flohmarkt-rheinenergiestadion-koeln",
+    "tag": "antiques",
+    "quote": "A flea and antiques market on the forecourt"
+  },
+  {
+    "slug": "flohmarkt-riehler-guertel-koeln",
+    "tag": "antiques",
+    "quote": "A book, collectors' and junk market"
+  },
+  {
+    "slug": "flohmarkt-riehler-guertel-koeln",
+    "tag": "records_books",
+    "quote": "A book, collectors' and junk market"
+  },
+  {
+    "slug": "flohmarkt-ruemlang",
+    "tag": "food",
+    "quote": "Floh’s Bistro does savoury and sweet snacks"
+  },
+  {
+    "slug": "flohmarkt-rueticenter-pratteln",
+    "tag": "food",
+    "quote": "Food comes from CC Prodega on the ground floor"
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "tag": "kids",
+    "quote": "Schlieren's schoolchildren sell their old toys and books here"
+  },
+  {
+    "slug": "flohmarkt-stadtbibliothek-aarau",
+    "tag": "records_books",
+    "quote": "A book and media flea market"
+  },
+  {
+    "slug": "flohmarkt-stuecki-basel",
+    "tag": "food",
+    "quote": "the centre's restaurants, cafés and take-aways are right there"
+  },
+  {
+    "slug": "flohmarkt-suedbruecke-koeln",
+    "tag": "antiques",
+    "quote": "A junk and collectors' market"
+  },
+  {
+    "slug": "flohmarkt-the-stage-liebefeld-bern",
+    "tag": "food",
+    "quote": "food at le beizli"
+  },
+  {
+    "slug": "flohmarkt-weinfelden",
+    "tag": "food",
+    "quote": "with a market café"
+  },
+  {
+    "slug": "flohmarkt-wetzikon",
+    "tag": "furniture",
+    "quote": "furniture, household goods, clothing, hobby items and large-volume lots that wouldn't fit in a city-centre stall"
+  },
+  {
+    "slug": "flohmi-bullingerhof-zuerich",
+    "tag": "food",
+    "quote": "the Flohmicafé does coffee and cake"
+  },
+  {
+    "slug": "flohmi-schmittiplatz-pratteln",
+    "tag": "food",
+    "quote": "Coffee and food come from the Kaffi Schmittiplatz and the Finkbeiner bakery."
+  },
+  {
+    "slug": "flohschanze-hamburg",
+    "tag": "antiques",
+    "quote": "A flea and antiques market with no new goods"
+  },
+  {
+    "slug": "folie-flea-market-lausanne",
+    "tag": "food",
+    "quote": "serves coffee, tea and cold drinks"
+  },
+  {
+    "slug": "grosse-burgdorfer-brocante",
+    "tag": "antiques",
+    "quote": "furniture and small antiques"
+  },
+  {
+    "slug": "grosser-flohmarkt-thun",
+    "tag": "food",
+    "quote": "snack stand on site"
+  },
+  {
+    "slug": "haerkinger-flohmi",
+    "tag": "antiques",
+    "quote": "On the tables: antiques and rarities"
+  },
+  {
+    "slug": "haerkinger-flohmi",
+    "tag": "food",
+    "quote": "There's also a small café with snacks at low prices."
+  },
+  {
+    "slug": "hallen-flohmarkt-flumserei",
+    "tag": "food",
+    "quote": "Food is available."
+  },
+  {
+    "slug": "hallenflohmarkt-arboldswil",
+    "tag": "food",
+    "quote": "the gym serves lunch, cakes and drinks"
+  },
+  {
+    "slug": "hallenflohmarkt-hoelstein",
+    "tag": "food",
+    "quote": "Food and drink are at the buffet"
+  },
+  {
+    "slug": "hallenflohmarkt-markthalle-basel",
+    "tag": "food",
+    "quote": "The hall's food stalls are right there"
+  },
+  {
+    "slug": "hallenflohmarkt-pentorama-amriswil",
+    "tag": "food",
+    "quote": "also takes care of food and drink"
+  },
+  {
+    "slug": "hallenflohmarkt-therwil",
+    "tag": "antiques",
+    "quote": "Next to selected antiques, rarities and curiosities"
+  },
+  {
+    "slug": "hinterhof-flohmarkt-st-gallen",
+    "tag": "clothes",
+    "quote": "plenty of second-hand clothes"
+  },
+  {
+    "slug": "hinterhof-flohmarkt-st-gallen",
+    "tag": "food",
+    "quote": "There are drinks and a grill in the garden."
+  },
+  {
+    "slug": "hyper-bazar-la-chaux-de-fonds",
+    "tag": "clothes",
+    "quote": "Second-hand clothes fill the Passage Guillaume-Ritter"
+  },
+  {
+    "slug": "jenaer-troedelmarkt-jena",
+    "tag": "antiques",
+    "quote": "Antiques, collectors' pieces and books"
+  },
+  {
+    "slug": "kids-store-flohmarkt-beromuenster",
+    "tag": "kids",
+    "quote": "A children's-items flea market"
+  },
+  {
+    "slug": "kinder-flohmi-schloss-arbon",
+    "tag": "kids",
+    "quote": "children from age four, accompanied by an adult, sell their used toys, clothes and books"
+  },
+  {
+    "slug": "kinderflohmarkt-chur",
+    "tag": "kids",
+    "quote": "At the Chur children's flea market, kids sell their own toys and books"
+  },
+  {
+    "slug": "kinderflohmarkt-gz-bachwiesen",
+    "tag": "food",
+    "quote": "The community centre's cafeteria is open during the market."
+  },
+  {
+    "slug": "kinderflohmarkt-gz-bachwiesen",
+    "tag": "kids",
+    "quote": "Only children's things here"
+  },
+  {
+    "slug": "kinderflohmarkt-gz-heuried",
+    "tag": "kids",
+    "quote": "Kids' things are what's on the tables at the GZ Heuried's flea market"
+  },
+  {
+    "slug": "kinderflohmarkt-gz-hottingen",
+    "tag": "kids",
+    "quote": "Kinder-Flohmarkt GZ Hottingen"
+  },
+  {
+    "slug": "kinderflohmarkt-gz-schindlergut",
+    "tag": "kids",
+    "quote": "The children's flea market takes place in Schindlergut Park"
+  },
+  {
+    "slug": "kinderflohmarkt-uster",
+    "tag": "food",
+    "quote": "A stand hands out free ice cream."
+  },
+  {
+    "slug": "kinderflohmarkt-uster",
+    "tag": "kids",
+    "quote": "Only children sell here"
+  },
+  {
+    "slug": "kinderflohmarkt-winterthur-altstadt",
+    "tag": "kids",
+    "quote": "Steinberggasse in Winterthur's old town is transformed into a children's market"
+  },
+  {
+    "slug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
+    "tag": "food",
+    "quote": "Cake and coffee at the bar."
+  },
+  {
+    "slug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
+    "tag": "kids",
+    "quote": "A flea market for children's clothes and toys"
+  },
+  {
+    "slug": "kofmehl-flohmi-solothurn",
+    "tag": "food",
+    "quote": "drinks and snacks from the bar wagon, lunch from 11.45"
+  },
+  {
+    "slug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
+    "tag": "antiques",
+    "quote": "porcelain, silver cutlery and old photographs on the antiques row"
+  },
+  {
+    "slug": "ladies-flohmarkt-fundus-root",
+    "tag": "clothes",
+    "quote": "clothing, shoes, bags and accessories sold by and for women"
+  },
+  {
+    "slug": "leo-flohmarkt-berlin",
+    "tag": "food",
+    "quote": "Street food and a small programme"
+  },
+  {
+    "slug": "liesberger-flohmarkt",
+    "tag": "antiques",
+    "quote": "The organisers bill it as an antiques, flea and farmers' market"
+  },
+  {
+    "slug": "luzerner-flohmarkt-voegeligaertli",
+    "tag": "antiques",
+    "quote": "Antiques, books, vinyl and curiosities of every kind."
+  },
+  {
+    "slug": "maedelsflohmarkt-tanzwerk-101-zuerich",
+    "tag": "clothes",
+    "quote": "Clothes, shoes, bags, jewellery, lingerie and accessories, all well-kept, all second-hand and all for women"
+  },
+  {
+    "slug": "maedelsflohmarkt-xxl-dietikon",
+    "tag": "clothes",
+    "quote": "Women's clothing, shoes, accessories, vintage pieces and designer labels"
+  },
+  {
+    "slug": "marche-aux-puces-fribourg-cathedrale",
+    "tag": "antiques",
+    "quote": "Antique furniture, grandmothers' porcelain and small decorative knick-knacks"
+  },
+  {
+    "slug": "marche-aux-puces-fribourg-cathedrale",
+    "tag": "furniture",
+    "quote": "Antique furniture"
+  },
+  {
+    "slug": "marche-aux-puces-glovelier",
+    "tag": "food",
+    "quote": "there's food and drink on site"
+  },
+  {
+    "slug": "marche-aux-puces-vevey",
+    "tag": "food",
+    "quote": "A food truck parks on the square."
+  },
+  {
+    "slug": "mercalibro-bellinzona",
+    "tag": "records_books",
+    "quote": "Mercalibro is a market for second-hand books."
+  },
+  {
+    "slug": "mercantico-bellinzona",
+    "tag": "antiques",
+    "quote": "brocante, antiques, collectables, vintage, books and comics"
+  },
+  {
+    "slug": "mercatino-lusso-vintage-lugano",
+    "tag": "clothes",
+    "quote": "Second-hand luxury fashion and true vintage: clothes, accessories, glasses and more"
+  },
+  {
+    "slug": "mercatino-pulci-ragazzi-locarno",
+    "tag": "kids",
+    "quote": "children and teenagers do the selling themselves"
+  },
+  {
+    "slug": "mercato-antiquariato-maghetti-lugano",
+    "tag": "antiques",
+    "quote": "with antiques and secondhand goods"
+  },
+  {
+    "slug": "metalboerse-schweiz-zofingen",
+    "tag": "records_books",
+    "quote": "this fair is all about vinyl records and CDs"
+  },
+  {
+    "slug": "midnightbazar-nachtflohmarkt-muenchen",
+    "tag": "food",
+    "quote": "Outside there are four or five food trucks; inside, bars"
+  },
+  {
+    "slug": "modellbahnboerse-koeniz",
+    "tag": "food",
+    "quote": "The cafeteria has cake, drinks and a hot meal"
+  },
+  {
+    "slug": "musiker-flohmarkt-zuerich-kronensaal",
+    "tag": "food",
+    "quote": "There's a café in the building."
+  },
+  {
+    "slug": "musiker-flohmarkt-zuerich-kronensaal",
+    "tag": "records_books",
+    "quote": "Instruments, gear and records fill the Kronensaal"
+  },
+  {
+    "slug": "nachtflohmarkt-gleishalle-hamburg",
+    "tag": "food",
+    "quote": "with street food, drinks and live music"
+  },
+  {
+    "slug": "nachtflohmarkt-messe-erfurt",
+    "tag": "antiques",
+    "quote": "Thuringia's largest antiques and second-hand market"
+  },
+  {
+    "slug": "nachtflohmarkt-rindermarkthalle-hamburg",
+    "tag": "food",
+    "quote": "with street food, drinks and live music"
+  },
+  {
+    "slug": "nachtflohmarkt-stellwerk-bern",
+    "tag": "food",
+    "quote": "with live music and a bistro"
+  },
+  {
+    "slug": "nostalgie-flohmarkt-lyssach",
+    "tag": "antiques",
+    "quote": "Sellers bring antiques, collectables and finds from house clearances"
+  },
+  {
+    "slug": "nostalgie-flohmarkt-worb-bern",
+    "tag": "antiques",
+    "quote": "dealers and private sellers offer antiques, rarities and nostalgic finds"
+  },
+  {
+    "slug": "nuernberg-nightmarket",
+    "tag": "food",
+    "quote": "with Thai street food in the garden hall, two bars and a DJ"
+  },
+  {
+    "slug": "pop-up-flohmi-industrie45-zug",
+    "tag": "food",
+    "quote": "Sweet and savoury crêpes, home baking and a bar"
+  },
+  {
+    "slug": "puppen-baeren-spielzeugboerse-zollikon",
+    "tag": "antiques",
+    "quote": "A fair for antique toys"
+  },
+  {
+    "slug": "quartier-flohmarkt-areal-bach",
+    "tag": "food",
+    "quote": "with a coffee cart and bar"
+  },
+  {
+    "slug": "quartierflohmarkt-bachletten",
+    "tag": "food",
+    "quote": "with food from the school classes"
+  },
+  {
+    "slug": "quartierflohmarkt-bottmingen",
+    "tag": "food",
+    "quote": "The stand map marks a coffee van, a food stand and a toilet."
+  },
+  {
+    "slug": "quartierflohmarkt-gellert",
+    "tag": "food",
+    "quote": "Café Stoa has been on the stand map with pizza, drinks, coffee and cake."
+  },
+  {
+    "slug": "quartierflohmarkt-gundeli",
+    "tag": "food",
+    "quote": "The mobile Xav Café does coffee and waffles there"
+  },
+  {
+    "slug": "quartierflohmarkt-innerstadt",
+    "tag": "food",
+    "quote": "there are food stands"
+  },
+  {
+    "slug": "quartierflohmarkt-klybeck-kleinhueningen",
+    "tag": "food",
+    "quote": "the bistro is open"
+  },
+  {
+    "slug": "quartierflohmarkt-matthaeus",
+    "tag": "food",
+    "quote": "the stand map has had its own food layer"
+  },
+  {
+    "slug": "quartierflohmarkt-neubad",
+    "tag": "food",
+    "quote": "Residents bake and cook along the way"
+  },
+  {
+    "slug": "quartierflohmarkt-neubad",
+    "tag": "kids",
+    "quote": "Look for children's clothes, toys and Lego: many stalls on the stand map list them."
+  },
+  {
+    "slug": "quartierflohmarkt-riehen-niederholz",
+    "tag": "food",
+    "quote": "Residents cook as well: paella, pizza, hot dogs, cakes and lemonade."
+  },
+  {
+    "slug": "quartierflohmarkt-st-johann",
+    "tag": "food",
+    "quote": "with stalls, games and food"
+  },
+  {
+    "slug": "raw-flohmarkt-berlin",
+    "tag": "clothes",
+    "quote": "Clothing is the big draw – vintage, retro and never worn"
+  },
+  {
+    "slug": "raw-flohmarkt-berlin",
+    "tag": "food",
+    "quote": "Street food, from coffee to burgers"
+  },
+  {
+    "slug": "riesenflohmarkt-trabrennbahn-karlshorst-berlin",
+    "tag": "antiques",
+    "quote": "The big edition of the antiques flea market"
+  },
+  {
+    "slug": "riesenflohmarkt-trabrennbahn-karlshorst-berlin",
+    "tag": "furniture",
+    "quote": "antiques, furniture, design, art and plenty of odd second-hand"
+  },
+  {
+    "slug": "romeo-hallenflohmarkt-muenchwilen",
+    "tag": "antiques",
+    "quote": "flea-market goods and antiques"
+  },
+  {
+    "slug": "romeo-hallenflohmarkt-muenchwilen",
+    "tag": "food",
+    "quote": "There is grilled food, cake and coffee"
+  },
+  {
+    "slug": "saeuliaemtler-flohmarkt-affoltern",
+    "tag": "food",
+    "quote": "There's one food stand and only one: the Staffras Imbiss"
+  },
+  {
+    "slug": "shoppi-flohmi-spreitenbach",
+    "tag": "food",
+    "quote": "There are a few food stands"
+  },
+  {
+    "slug": "slow-fashion-market-lausanne",
+    "tag": "clothes",
+    "quote": "A one-day market for slower fashion"
+  },
+  {
+    "slug": "slow-fashion-market-lausanne",
+    "tag": "food",
+    "quote": "a corner for food and drinks"
+  },
+  {
+    "slug": "strandgut-flohmarkt-neubad-luzern",
+    "tag": "food",
+    "quote": "The Poolbar and the Neubad Bistro do the food"
+  },
+  {
+    "slug": "strassenflohmarkt-rafz",
+    "tag": "food",
+    "quote": "the Märtkafi serves homemade cakes, drinks, and tarte flambée at lunchtime"
+  },
+  {
+    "slug": "talkessel-flohmarkt-seewen",
+    "tag": "food",
+    "quote": "with a grill stand, chips, bratwurst and drinks"
+  },
+  {
+    "slug": "troedelmarkt-aachener-platz-duesseldorf",
+    "tag": "antiques",
+    "quote": "Trödel- und Antikmarkt am Aachener Platz"
+  },
+  {
+    "slug": "troedelmarkt-aachener-platz-duesseldorf",
+    "tag": "food",
+    "quote": "a café with a beer garden"
+  },
+  {
+    "slug": "troedelmarkt-barmen-rathaus-wuppertal",
+    "tag": "food",
+    "quote": "with food and drink stalls"
+  },
+  {
+    "slug": "troedelmarkt-globus-saarbruecken-guedingen",
+    "tag": "food",
+    "quote": "there is food and drink on site"
+  },
+  {
+    "slug": "troedelmarkt-hansamarkt-berlin",
+    "tag": "food",
+    "quote": "The field kitchen does currywurst, home cooking and soft-serve"
+  },
+  {
+    "slug": "troedelmarkt-ikea-koeln-butzweilerhof",
+    "tag": "food",
+    "quote": "with plenty of food stalls"
+  },
+  {
+    "slug": "troedelmarkt-ikea-koeln-godorf",
+    "tag": "food",
+    "quote": "There are food stalls on site"
+  },
+  {
+    "slug": "troedelmarkt-metro-ludwigshafen",
+    "tag": "food",
+    "quote": "there is food and drink on site"
+  },
+  {
+    "slug": "troedelmarkt-ruhr-park-bochum",
+    "tag": "food",
+    "quote": "There is a row of food stalls."
+  },
+  {
+    "slug": "troedelmarkt-veltins-arena-gelsenkirchen",
+    "tag": "food",
+    "quote": "with Turkish baked goods, fruit and vegetables"
+  },
+  {
+    "slug": "vide-dressing-bains-payes-vevey",
+    "tag": "clothes",
+    "quote": "Vide-Dressing des Bains Payes"
+  },
+  {
+    "slug": "vide-dressing-bains-payes-vevey",
+    "tag": "food",
+    "quote": "The Bains' own bar does burgers, salads, bowls, local craft beer and homemade lemonade."
+  },
+  {
+    "slug": "vide-dressing-flon-lausanne",
+    "tag": "clothes",
+    "quote": "Second-hand clothes, accessories and objects: it's a vide-dressing"
+  },
+  {
+    "slug": "vide-grenier-brocante-les-brenets",
+    "tag": "food",
+    "quote": "At the bar there is raclette, along with sandwiches and pastries."
+  },
+  {
+    "slug": "vide-grenier-echichens",
+    "tag": "food",
+    "quote": "There's a snack bar with food"
+  },
+  {
+    "slug": "vide-grenier-ecobroc-saxon",
+    "tag": "food",
+    "quote": "The food corner does coffee and croissants"
+  },
+  {
+    "slug": "vide-grenier-familles-renens",
+    "tag": "kids",
+    "quote": "a flea market for clothes, toys, children's books and baby gear"
+  },
+  {
+    "slug": "vide-grenier-prilly",
+    "tag": "food",
+    "quote": "with stands, a repair café and food"
+  },
+  {
+    "slug": "vinyl-market-markthalle-basel",
+    "tag": "records_books",
+    "quote": "A record fair"
+  },
+  {
+    "slug": "vinylboerse-villa-flora-wald",
+    "tag": "food",
+    "quote": "The bistro serves food and drinks all day."
+  },
+  {
+    "slug": "vinylboerse-villa-flora-wald",
+    "tag": "records_books",
+    "quote": "A record fair in the stately Villa Flora"
+  },
+  {
+    "slug": "zuercher-schallplatten-cd-boerse",
+    "tag": "records_books",
+    "quote": "A record and CD fair"
+  }
+]

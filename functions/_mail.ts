@@ -438,17 +438,17 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     ],
     button: 'Meine Seite öffnen',
     after: [
-      'Darum schreibe ich Ihnen. Besucher vertrauen einem Termin viel mehr, wenn der Veranstalter ihn bestätigt hat, als wenn jemand wie ich ihn von einer Website abgeschrieben hat. Wenn Ihre Seite zeigt, dass Sie ihn geprüft haben, entscheiden sich mehr Leute zu kommen. Und falls Sie einmal absagen müssen, genügt ein Wort an uns: Alle in der Nähe, die informiert werden wollten, erfahren es noch am selben Tag — und nicht erst an Ihrem Tor.',
+      'Warum ich Ihnen schreibe: Besucher vertrauen einem Termin viel mehr, wenn der Veranstalter ihn bestätigt hat, als wenn jemand wie ich ihn von einer Website abgeschrieben hat. Wenn Ihre Seite zeigt, dass Sie ihn geprüft haben, entscheiden sich mehr Leute zu kommen. Und falls Sie einmal absagen müssen, genügt ein Wort an uns: Alle in der Nähe, die informiert werden wollten, erfahren es noch am selben Tag — und nicht erst vor verschlossenem Tor.',
       'Die Seite gehört Ihnen. Sie können Termine und Öffnungszeiten korrigieren, angeben, wie viele Stände es gibt, was bei Regen gilt und wo man einen Stand buchen kann. Vor jedem Termin schicke ich Ihnen eine kurze E-Mail mit der Frage, ob er stattfindet, und ein Klick genügt als Antwort.',
-      'Wenn Sie ein Foto Ihres Marktes haben, stelle ich es gern auf die Seite — antworten Sie einfach damit.',
+      'Wenn Sie ein Foto Ihres Marktes haben, stelle ich es gern auf die Seite — schicken Sie es mir einfach als Antwort auf diese E-Mail.',
     ],
     listed: {
       subject: '%m auf fynda.market — Ihre Seite',
       intro: [
-        'Mein Name ist Delfim. Ich betreibe fynda.market, eine Website, mit der Leute einen Flohmarkt in ihrer Nähe finden. Ich habe sie gebaut, weil ich selbst auf Märkte gehe und die Enttäuschung kenne, irgendwohin zu fahren und dann zu erfahren, dass abgesagt wurde.',
-        '%m ist auf der Website aufgeführt, mit den Terminen und Öffnungszeiten, die ich auf Ihrer Website gefunden habe. Ich wollte, dass Sie das wissen, und Ihnen die Seite geben:',
+        'Mein Name ist Delfim. Ich betreibe fynda.market, eine Website, auf der Leute einen Flohmarkt in ihrer Nähe finden. Ich habe sie gebaut, weil ich selbst auf Flohmärkte gehe und die Enttäuschung kenne, irgendwohin zu fahren und erst dort zu erfahren, dass der Markt abgesagt wurde.',
+        '%m ist bei fynda.market eingetragen, mit den Terminen und Öffnungszeiten, die ich auf Ihrer Website gefunden habe. Das wollte ich Sie wissen lassen — und Ihnen die Seite übergeben:',
       ],
-      optOut: 'Und wenn Sie lieber nichts mehr von mir hören möchten, antworten Sie und sagen es mir, dann schreibe ich nicht mehr.',
+      optOut: 'Und falls Sie lieber nichts mehr von mir hören möchten, genügt eine kurze Antwort, und ich schreibe Ihnen nicht mehr.',
     },
     thanks: 'Danke, dass Sie einen Markt organisieren. Es ist mehr Arbeit, als die meisten ahnen.',
     waiting: ['Eine Person wartet auf Ihren nächsten Termin.', '%n Personen warten auf Ihren nächsten Termin.'],
@@ -588,12 +588,12 @@ interface Ask {
 
 const ASK: Record<Locale, Ask> = {
   de: {
-    subjectOne: '%m, %d — findet statt?',
-    subjectMany: '%n Termine nächste Woche — finden statt?',
+    subjectOne: '%m, %d — findet er statt?',
+    subjectMany: '%n Termine nächste Woche — finden sie statt?',
     hello: 'Guten Tag %n',
-    intro: 'fynda.market zeigt Ihren Markt am %d%t in %p. Stimmt das?',
-    introMany: 'fynda.market zeigt diese Termine von Ihnen für nächste Woche. Stimmen sie?',
-    on: 'Ja, findet statt',
+    intro: 'Laut fynda.market findet Ihr Markt am %d%t in %p statt. Stimmt das?',
+    introMany: 'Für nächste Woche stehen diese Termine von Ihnen auf fynda.market. Stimmen sie?',
+    on: 'Ja, er findet statt',
     cancelled: 'Abgesagt',
     changed: 'Etwas hat sich geändert',
     footer: 'Ein Klick genügt, ein Konto brauchen Sie nicht. Ihre Antwort steht innerhalb einer Stunde auf Ihrer Seite, als „Vom Veranstalter bestätigt“. Für ein Foto oder eine Frage antworten Sie einfach auf diese E-Mail.',
@@ -708,7 +708,7 @@ const ALERT: Record<Locale, Alert> = {
     subject: 'Abgesagt: %m, %d',
     body: [
       '%m in %p am %d findet nicht statt. Der Veranstalter hat es uns um %t Uhr gemeldet.',
-      'Damit du nicht umsonst hinfährst — deshalb gibt es diese E-Mail.',
+      'Damit du nicht umsonst hinfährst, schicken wir dir diese E-Mail.',
     ],
     link: 'Zur Marktseite',
     unsubscribe: 'Abmelden',
@@ -804,7 +804,7 @@ const BACK: Record<Locale, BackCopy> = {
     market: '%m ist wieder da: %d%h.',
     town: 'In %p gibt es wieder einen Termin: %m, %d%h.',
     later: 'Danach: %l.',
-    once: 'Du hattest uns gebeten, Bescheid zu geben, sobald der Termin feststeht. Das war die eine E-Mail — weitere kommen nur, wenn du dich dafür anmeldest.',
+    once: 'Du hattest uns gebeten, dir Bescheid zu geben, sobald der Termin feststeht. Das war diese eine E-Mail — weitere schicken wir nur, wenn du dich dafür anmeldest.',
     link: 'Zur Marktseite',
   },
   fr: {
@@ -975,7 +975,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     subjectScope: 'Flohmärkte {scope} — {dates}',
     preheaderScope: '{own} {scope}, {rest} anderswo {country}.',
     preheaderNone: 'Nichts {scope} an diesem Wochenende — aber {rest} anderswo.',
-    preheaderCountry: 'Alle Flohmärkte des Wochenendes, mit den Absagen.',
+    preheaderCountry: 'Alle Flohmärkte am Wochenende, Absagen inklusive.',
     headline: 'Dieses Wochenende',
     headlineScope: 'Dieses Wochenende {scope}',
     countOne: '{total} Flohmarkt',
@@ -987,7 +987,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     more: 'Alle {count} Märkte ansehen',
     moreScope: 'Alle {count} Märkte {scope}',
     unsubscribe: 'Abmelden',
-    why: 'Du bekommst diese E-Mail, weil du dich auf fynda.market dafür eingetragen hast.',
+    why: 'Du bekommst diese E-Mail, weil du dich auf fynda.market dafür angemeldet hast.',
   },
   fr: {
     subject: 'Brocantes ce week-end — {dates}',

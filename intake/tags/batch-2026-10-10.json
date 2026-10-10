@@ -1,0 +1,650 @@
+[
+ {
+  "slug": "agra-antikmarkt-leipzig",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://agra-antikmarkt.de/",
+  "quote": "antiques, art, vintage design and bric-a-brac"
+ },
+ {
+  "slug": "altstadtflohmarkt-hannover",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.visit-hannover.com/Event-Highlights,-Kultur-Freizeit/Altstadtflohmarkt-Hannover",
+  "quote": "Antiques, jewellery, records and vintage"
+ },
+ {
+  "slug": "antik-flohmarkt-fehraltorf",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.ambiente-brocante.ch/",
+  "quote": "Antiques, collectables, bric-a-brac"
+ },
+ {
+  "slug": "antik-und-buchmarkt-am-bodemuseum-berlin",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.antikbuchmarkt.de/",
+  "quote": "Books and antiques on the Kupfergraben"
+ },
+ {
+  "slug": "antik-und-buchmarkt-am-bodemuseum-berlin",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.antikbuchmarkt.de/",
+  "quote": "Books and antiques on the Kupfergraben"
+ },
+ {
+  "slug": "antik-und-troedelmarkt-messe-halle-saale",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://herzog-maerkte.de/",
+  "quote": "Antik- und Trödelmarkt in der Messe Halle"
+ },
+ {
+  "slug": "antikflohmarkt-trabrennbahn-karlshorst-berlin",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://oldthing.de/riesenflohmarkt",
+  "quote": "An antiques and junk market"
+ },
+ {
+  "slug": "antikflohmarkt-trabrennbahn-karlshorst-berlin",
+  "field": "tag",
+  "value": "furniture",
+  "confidence": "stated",
+  "source": "https://oldthing.de/riesenflohmarkt",
+  "quote": "Expect old furniture, antiques, art and design from Art Deco to mid-century"
+ },
+ {
+  "slug": "antikmarkt-ostbahnhof-berlin",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://oldthing.de/Berliner-Flohmarkt/Antikes-und-Sammeln/Antikmarkt-Ostbahnhof/",
+  "quote": "A collectors' market on a quiet street behind Ostbahnhof"
+ },
+ {
+  "slug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://berlinertroedelmarkt.com/",
+  "quote": "Antiques, art and crafts"
+ },
+ {
+  "slug": "bourse-photo-vieux-papiers-fribourg-granges-paccot",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://dakotaevents.ch/?page_id=63",
+  "quote": "antiquarian books, comics, records and CDs"
+ },
+ {
+  "slug": "bourse-vinyls-cd-geneve-le-grand-saconnex",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://dakotaevents.ch/?page_id=63",
+  "quote": "this record and CD fair"
+ },
+ {
+  "slug": "boutique-kleider-flohmarkt-wbz-reinach",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://wbz.ch",
+  "quote": "Clothes, bags and shoes are all you'll find here"
+ },
+ {
+  "slug": "brocante-17-terra-geneve",
+  "field": "tag",
+  "value": "furniture",
+  "confidence": "stated",
+  "source": "https://www.17-terra.com",
+  "quote": "Professional dealers bring furniture, mirrors, paintings, jewellery, lamps"
+ },
+ {
+  "slug": "brocante-de-carouge-geneve",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.carouge.ch",
+  "quote": "The organisers ask for antiques and brocante here"
+ },
+ {
+  "slug": "brocante-de-la-gruyere-bulle",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.brocantedelagruyere.ch/",
+  "quote": "furniture, lamps, collectables and antiques from several decades"
+ },
+ {
+  "slug": "brocante-de-la-gruyere-bulle",
+  "field": "tag",
+  "value": "furniture",
+  "confidence": "stated",
+  "source": "https://www.brocantedelagruyere.ch/",
+  "quote": "The dealers bring furniture, lamps, collectables and antiques"
+ },
+ {
+  "slug": "brocante-locarno",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.procittavecchia.ch/",
+  "quote": "antiques, mid-century pieces, vintage and design, everything at least 20 years old"
+ },
+ {
+  "slug": "cd-schallplatten-boerse-bern",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.bka.ch/event/berner-schallplatten-cd-borse",
+  "quote": "A collectors' fair for music only: vinyl records, CDs"
+ },
+ {
+  "slug": "comicboerse-zuerich",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.comic-boerse.ch/",
+  "quote": "Collecting, swapping and talking shop around comics, manga and film."
+ },
+ {
+  "slug": "enter-vinyl-film-buecher-boerse-derendingen",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://enter.ch/de/flohmaerkte/",
+  "quote": "Cameras and film gear, books, vinyl and CDs"
+ },
+ {
+  "slug": "fete-de-la-brocante-le-landeron",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://avvl.ch/brocante/",
+  "quote": "one big antiques and bric-a-brac market"
+ },
+ {
+  "slug": "fete-livres-disques-ouchy-lausanne",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.fete-livres-disques.ch/",
+  "quote": "Lausanne's specialist book and record fair"
+ },
+ {
+  "slug": "floh-raritaetenmarkt-europaplatz-bern",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.brockicenter.ch",
+  "quote": "Private sellers and dealers offer antiques, rarities and all kinds of second-hand goods."
+ },
+ {
+  "slug": "floh-sammler-antikmarkt-grabs",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.fliba.ch/flohmarkt.html",
+  "quote": "this mix of flea market, collectables and antiques"
+ },
+ {
+  "slug": "floh-sammler-antikmarkt-romanshorn",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.fliba.ch/flohmarkt.html",
+  "quote": "this mix of flea market, collectables and antiques"
+ },
+ {
+  "slug": "floh-und-antikmarkt-wynecenter-buchs",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://flohmarkt-mittelland.ch/",
+  "quote": "antiques, household secondhand, decorative items and collectibles"
+ },
+ {
+  "slug": "floh-und-antiquitaetenmarkt-mellingen",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.mellinger-markt.ch/",
+  "quote": "An antiques and flea market in the historic small town of Mellingen"
+ },
+ {
+  "slug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.thun.ch/dienstleistungen/111205",
+  "quote": "On the tables: antiques and all sorts of second-hand."
+ },
+ {
+  "slug": "flohmarkt-buerkliplatz-zuerich",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://buerkli-flohmarkt.ch/flohmarkt-buerkliplatz.html",
+  "quote": "Over 220 stands offer antiques, vintage décor, design objects, rare books, records and collectibles"
+ },
+ {
+  "slug": "flohmarkt-daglfing-muenchen",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://flohmarkt-daglfing.de/",
+  "quote": "with an antiques market alongside under old trees"
+ },
+ {
+  "slug": "flohmarkt-gz-hirzenbach",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://gz-zh.ch/gz-hirzenbach/angebote/gz-flohmarkt/",
+  "quote": "A flea market for children’s things"
+ },
+ {
+  "slug": "flohmarkt-nippes-koeln",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.coelln-konzept.de/markt/nippes.html",
+  "quote": "A junk and collectors' market"
+ },
+ {
+  "slug": "flohmarkt-paulusheim-luzern",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.kindex.ch/luzern/flohmarkt",
+  "quote": "A flea market for children's clothes, toys and baby and children's items"
+ },
+ {
+  "slug": "flohmarkt-rheinenergiestadion-koeln",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.coelln-konzept.de/markt/p6.html",
+  "quote": "A flea and antiques market on the forecourt"
+ },
+ {
+  "slug": "flohmarkt-riehler-guertel-koeln",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.coelln-konzept.de/markt/riehl.html",
+  "quote": "A book, collectors' and junk market"
+ },
+ {
+  "slug": "flohmarkt-schlieren-herbstmarkt",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://m.schlieren.ch/kibou",
+  "quote": "Schlieren's schoolchildren sell their old toys and books here"
+ },
+ {
+  "slug": "flohmarkt-stadtbibliothek-aarau",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.stadtbibliothekaarau.ch",
+  "quote": "A book and media flea market"
+ },
+ {
+  "slug": "flohmarkt-suedbruecke-koeln",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.coelln-konzept.de/markt/flohmarkt_koeln_sued.html",
+  "quote": "A junk and collectors' market"
+ },
+ {
+  "slug": "flohschanze-hamburg",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.marktkultur-hamburg.de/index.php?p=59&var=0",
+  "quote": "A flea and antiques market with no new goods"
+ },
+ {
+  "slug": "grosse-burgdorfer-brocante",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.grosseburgdorferbrocante.ch/",
+  "quote": "furniture and small antiques"
+ },
+ {
+  "slug": "jenaer-troedelmarkt-jena",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.jenakultur.de/de/maerkte_und_stadtfeste/troedel-_und_bunte_maerkte/605605",
+  "quote": "Antiques, collectors' pieces and books"
+ },
+ {
+  "slug": "kids-store-flohmarkt-beromuenster",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.familientreff-beromuenster.ch/kids-store/",
+  "quote": "A children's-items flea market"
+ },
+ {
+  "slug": "kinder-flohmi-schloss-arbon",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.arbon.ch/freizeit/tourismus-und-mobilitaet/veranstaltungen/maerkte.html/198",
+  "quote": "children from age four, accompanied by an adult, sell their used toys, clothes and books"
+ },
+ {
+  "slug": "kinderflohmarkt-chur",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.jugendarbeitchur.ch/bereiche/kindfamiliequartier/kinderflohmi/",
+  "quote": "At the Chur children's flea market, kids sell their own toys and books"
+ },
+ {
+  "slug": "kinderflohmarkt-gz-bachwiesen",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://gz-zh.ch/gz-bachwiesen/angebote/flohmarkt-fuer-kindersachen/",
+  "quote": "Only children's things here"
+ },
+ {
+  "slug": "kinderflohmarkt-gz-heuried",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://gz-zh.ch/gz-heuried/angebote/flohmarkt-fuer-kindersachen/",
+  "quote": "Kids' things are what's on the tables at the GZ Heuried's flea market"
+ },
+ {
+  "slug": "kinderflohmarkt-gz-hottingen",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://gz-zh.ch/gz-hottingen/",
+  "quote": "Kinder-Flohmarkt GZ Hottingen"
+ },
+ {
+  "slug": "kinderflohmarkt-gz-schindlergut",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://gz-zh.ch/gz-schindlergut/",
+  "quote": "The children's flea market takes place in Schindlergut Park"
+ },
+ {
+  "slug": "kinderflohmarkt-uster",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.maerkte-uster.ch/maerkte/kinderflohmarkt",
+  "quote": "Only children sell here"
+ },
+ {
+  "slug": "kinderflohmarkt-winterthur-altstadt",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://junge-altstadt.ch/events/",
+  "quote": "Steinberggasse in Winterthur's old town is transformed into a children's market"
+ },
+ {
+  "slug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.b102.ch/aktuell.html",
+  "quote": "A flea market for children's clothes and toys"
+ },
+ {
+  "slug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://burdack-maerkte.de/",
+  "quote": "porcelain, silver cutlery and old photographs on the antiques row"
+ },
+ {
+  "slug": "ladies-flohmarkt-fundus-root",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.fundusflohmarkt.ch",
+  "quote": "clothing, shoes, bags and accessories sold by and for women"
+ },
+ {
+  "slug": "liesberger-flohmarkt",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://liesberger-flohmarkt.ch/",
+  "quote": "The organisers bill it as an antiques, flea and farmers' market"
+ },
+ {
+  "slug": "maedelsflohmarkt-tanzwerk-101-zuerich",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.maedelsflohmarkt.ch/",
+  "quote": "Clothes, shoes, bags, jewellery, lingerie and accessories, all well-kept, all second-hand and all for women"
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.maedelsflohmarkt.ch",
+  "quote": "Women's clothing, shoes, accessories, vintage pieces and designer labels"
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-cathedrale",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+  "quote": "Antique furniture, grandmothers' porcelain and small decorative knick-knacks"
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-cathedrale",
+  "field": "tag",
+  "value": "furniture",
+  "confidence": "stated",
+  "source": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+  "quote": "Antique furniture"
+ },
+ {
+  "slug": "mercalibro-bellinzona",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://flamingoedizioni.com/",
+  "quote": "Mercalibro is a market for second-hand books."
+ },
+ {
+  "slug": "mercantico-bellinzona",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://ondemedia.com/",
+  "quote": "brocante, antiques, collectables, vintage, books and comics"
+ },
+ {
+  "slug": "mercatino-lusso-vintage-lugano",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.laghianda.ch/events/",
+  "quote": "Second-hand luxury fashion and true vintage: clothes, accessories, glasses and more"
+ },
+ {
+  "slug": "mercatino-pulci-ragazzi-locarno",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://www.ggl.ch/",
+  "quote": "children and teenagers do the selling themselves"
+ },
+ {
+  "slug": "mercato-antiquariato-maghetti-lugano",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/",
+  "quote": "with antiques and secondhand goods"
+ },
+ {
+  "slug": "metalboerse-schweiz-zofingen",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://www.facebook.com/metalboerseschweiz",
+  "quote": "this fair is all about vinyl records and CDs"
+ },
+ {
+  "slug": "nachtflohmarkt-messe-erfurt",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.messe-erfurt.de/flohmarkt-erfurt",
+  "quote": "Thuringia's largest antiques and second-hand market"
+ },
+ {
+  "slug": "nostalgie-flohmarkt-lyssach",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://nostalgiemarkt-lyssach.jimdofree.com/",
+  "quote": "Sellers bring antiques, collectables and finds from house clearances"
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://flohmarkt-3076worb.jimdofree.com",
+  "quote": "dealers and private sellers offer antiques, rarities and nostalgic finds"
+ },
+ {
+  "slug": "puppen-baeren-spielzeugboerse-zollikon",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.puppenboerse.ch",
+  "quote": "A fair for antique toys"
+ },
+ {
+  "slug": "raw-flohmarkt-berlin",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.rawflohmarkt.de/",
+  "quote": "Clothing is the big draw – vintage, retro and never worn"
+ },
+ {
+  "slug": "riesenflohmarkt-trabrennbahn-karlshorst-berlin",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://oldthing.de/riesenflohmarkt",
+  "quote": "The big edition of the antiques flea market"
+ },
+ {
+  "slug": "riesenflohmarkt-trabrennbahn-karlshorst-berlin",
+  "field": "tag",
+  "value": "furniture",
+  "confidence": "stated",
+  "source": "https://oldthing.de/riesenflohmarkt",
+  "quote": "antiques, furniture, design, art and plenty of odd second-hand"
+ },
+ {
+  "slug": "romeo-hallenflohmarkt-muenchwilen",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.romeoflohmarkt.ch/",
+  "quote": "flea-market goods and antiques"
+ },
+ {
+  "slug": "slow-fashion-market-lausanne",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.facebook.com/events/773448639173264",
+  "quote": "A one-day market for slower fashion"
+ },
+ {
+  "slug": "troedelmarkt-aachener-platz-duesseldorf",
+  "field": "tag",
+  "value": "antiques",
+  "confidence": "stated",
+  "source": "https://www.troedelmarkt-aachenerplatz.de/",
+  "quote": "Trödel- und Antikmarkt am Aachener Platz"
+ },
+ {
+  "slug": "vide-dressing-bains-payes-vevey",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.instagram.com/ch_ocloset",
+  "quote": "Vide-Dressing des Bains Payes"
+ },
+ {
+  "slug": "vide-dressing-flon-lausanne",
+  "field": "tag",
+  "value": "clothes",
+  "confidence": "stated",
+  "source": "https://www.amisduchibre.ch",
+  "quote": "Second-hand clothes, accessories and objects: it's a vide-dressing"
+ },
+ {
+  "slug": "vide-grenier-familles-renens",
+  "field": "tag",
+  "value": "kids",
+  "confidence": "stated",
+  "source": "https://bulledairrenens.com/",
+  "quote": "a flea market for clothes, toys, children's books and baby gear"
+ },
+ {
+  "slug": "vinyl-market-markthalle-basel",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://markthallebasel.ch/flohmarkt/",
+  "quote": "A record fair"
+ },
+ {
+  "slug": "vinylboerse-villa-flora-wald",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://villaflora-wald.ch/vinylboerse/",
+  "quote": "A record fair in the stately Villa Flora"
+ },
+ {
+  "slug": "zuercher-schallplatten-cd-boerse",
+  "field": "tag",
+  "value": "records_books",
+  "confidence": "stated",
+  "source": "https://bluttrecords.ch/zuercher-schallplattenboerse/",
+  "quote": "A record and CD fair"
+ }
+]

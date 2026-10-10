@@ -11,6 +11,9 @@ import type { CountryCode } from './i18n';
 /** Mirrors occurrences.status. Maps 1:1 onto schema.org eventStatus. */
 export type OccurrenceStatus = 'confirmed' | 'tentative' | 'cancelled' | 'unverified';
 
+/** Mirrors tags.key — the small set (CLAUDE.md §Settled: tags). */
+export type TagKey = 'antiques' | 'furniture' | 'clothes' | 'records_books' | 'kids' | 'food';
+
 /** Mirrors markets.kind. */
 export type MarketKind =
   | 'flohmarkt'
@@ -134,6 +137,12 @@ export interface Market {
   earlier?: (Occurrence & { seen?: boolean })[];
   /** How many people asked to be told this market's next date — its own alerts and its town's. */
   waiting?: number;
+  /**
+   * What a visitor finds there, beyond what every flea market has — a records
+   * fair, a children's market, antiques. From the organiser, or read off their
+   * own page with the quote in intake/tags/. Shown only when held.
+   */
+  tags?: TagKey[];
   entryFee?: number;
   gettingThere?: string;
 }
