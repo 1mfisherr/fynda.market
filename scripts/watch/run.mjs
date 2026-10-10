@@ -31,6 +31,7 @@ import { cleanHtml, cleanText, withoutNoise, hashLines, lineId } from './clean.m
 import { fetchSource, politely, closeBrowser } from './fetch.mjs';
 import { decide, marketTokens, snippetFor } from './decide.mjs';
 import { askAll } from './ask.mjs';
+import { weekly as speedReport } from '../perf.mjs';
 
 const args = process.argv.slice(2);
 const flag = (f) => args.includes(f);
@@ -281,6 +282,12 @@ const env = { ...process.env, ...(secret('CLAUDE_CODE_OAUTH_TOKEN') ? { CLAUDE_C
 const answer = NO_AI ? { findings: [], ai: questions.length ? 'no_login' : 'not_needed', errors: [], unanswered: questions.map((q) => q.id) } : await askAll(questions, { today, env });
 say(`AI: ${answer.ai}; ${answer.findings.length} finding(s)${answer.errors.length ? `; errors: ${answer.errors.map((e) => e.why).join(' | ')}` : ''}`);
 
+/* How fast the site is, in the same weekly message (scripts/perf.mjs): real
+   visitors' numbers, and the lab pages only where something changed. Before
+   the transaction below, because the lab half drives a browser for minutes. */
+const speed = await speedReport().catch((e) => [`⚠ Speed: the check failed (${e.message}).`]);
+say(speed.join('\n'));
+
 const signing = secret('ADMIN_SIGNING_SECRET')?.trim();
 const sign = (id, verb) => createHmac('sha256', signing).update(`${id}|${verb}`).digest('hex');
 
@@ -353,6 +360,7 @@ const runId = await withClient(DB_URL, async (c) => {
   const lines = [`Market Watch · ${short(today)}`,
     `${pages.length} page(s) read · ${stamps.size} date(s) re-confirmed · ${decisions.length} to decide${notes.length ? ` · ${notes.length} page(s) broken` : ''}`];
   lines.push(...swiss);
+  lines.push(...speed);
   if (answer.ai === 'no_login' && questions.length) lines.push(`⚠ ${questions.length} question(s) waiting: the AI login is missing or expired. On the PC, run: claude setup-token`);
   decisions.forEach(({ f, approve, dismiss }, i) => {
     const what = { new_date: 'new date', cancelled: 'cancelled', missing: 'date not on the page', hours: `hours ${f.start}–${f.end}` }[f.kind];

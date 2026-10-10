@@ -32,6 +32,10 @@ export default defineConfig({
   build: {
     // Emit /de/schweiz/zurich/index.html rather than /de/schweiz/zurich.html
     format: 'directory',
+    // Every page's CSS goes inside the page. The three small files it was split
+    // into (~10 KB compressed together) held up the first paint by ~0.2 s on a
+    // slow phone, and most visitors see one page (Lighthouse, 2026-10-10).
+    inlineStylesheets: 'always',
   },
   image: {
     // Astro emits explicit width/height, which CI check 5 enforces.

@@ -66,6 +66,22 @@ const DEFAULT_KM = 25;
     data-count-one={s.marketCount(1)}
     data-count-many={s.marketCount(2)}
   >
+    {/* Decided before the first paint, not after: the module script below
+        runs once the page is drawn, and switching the full list off then made
+        the whole page jump (Lighthouse layout shift 0.77, 2026-10-10). Here,
+        inline and first: script on; and a page that will know its place — a
+        place in the URL or a town this browser remembers — starts as
+        locating, list kept, while one that will open the sheet starts without
+        it. The module script takes over from whichever this set. */}
+    <script is:inline>
+      (function (p) {
+        p.setAttribute('data-js', '');
+        try {
+          var q = new URLSearchParams(location.search);
+          if ((q.get('lat') && q.get('lng')) || q.get('town') || (!q.get('denied') && (localStorage.getItem('fynda:town') || localStorage.getItem('fynda:stadt')))) p.setAttribute('data-state', 'locating');
+        } catch (e) { /* private mode: the sheet opens, as for a first visit */ }
+      })(document.currentScript.parentElement);
+    </script>
     <section class="page-head gutter">
       <h1>{s.radiusHeading}</h1>
       <button type="button" class="place" data-place aria-haspopup="dialog">
@@ -210,6 +226,7 @@ const DEFAULT_KM = 25;
   /* The switch. A block is shown only in the states its `data-only` names. */
   [data-only] { display: none; }
   [data-state='located'] [data-only~='located'],
+  [data-state='locating'] [data-only~='located'],
   [data-state='refused'] [data-only~='refused'] { display: block; }
 
   /* Until there is a point, the list waits — with JavaScript. Without it the

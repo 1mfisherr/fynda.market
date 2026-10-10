@@ -66,10 +66,16 @@ interface Props {
    * Town and canton lists; nowhere else pays the bytes.
    */
   allDates?: boolean;
+  /**
+   * The page's largest picture — its first feature row. Fetched first and never
+   * lazily: Lighthouse found the lead photo of the home and town pages waiting
+   * behind everything else (2026-10-10).
+   */
+  eager?: boolean;
 }
 const {
   market, locale = DEFAULT_LOCALE, variant = 'row',
-  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false,
+  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false, eager = false,
 } = Astro.props;
 
 const s = t(locale);
@@ -126,7 +132,7 @@ const size = variant === 'feature' ? 720 : 148;
 {/* data-date is always present: the When control reads it, and a row with no
     date yet ("") is shown under All and hidden under any real window. */}
 <article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end} data-lat={distance ? undefined : market.lat} data-lng={distance ? undefined : market.lng} data-dates={dates || undefined}>
-  <div class="pic"><PhotoOrArt market={market} width={size} height={size} /></div>
+  <div class="pic"><PhotoOrArt market={market} width={size} height={size} loading={eager ? 'eager' : 'lazy'} /></div>
   <div class="body">
     <p class="meta">
       {dayLabel && <span class="day">{dayLabel}</span>}

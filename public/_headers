@@ -1,11 +1,12 @@
 # Cloudflare Pages headers. The font files never change under this name;
-# a photo can be replaced under the same name by import-images.mjs, so a day.
+# a photo can be replaced under the same name by import-images.mjs, so a day —
+# then the browser shows the copy it has while it checks for a new one.
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 /images/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
 /share/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
 # Astro's build output: every file name carries a hash of its content, so a
 # changed file is a new name and the old one can be kept for a year.
 /_astro/*

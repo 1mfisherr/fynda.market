@@ -34,14 +34,15 @@ const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 /**
  * The page's own description of itself, from its <head>. Reads at most the
- * first 8 KB of one copy of the body; the visitor gets the other copy
- * untouched. The tags sit right after <title>, so they are always inside.
+ * first 8 KB of its own copy of the body; the visitor's copy is never waited
+ * for — the read happens after the page has gone (in waitUntil). It used to
+ * be awaited first, which held every page back by the time it took (Lighthouse
+ * and our own field data, 2026-10-10). The tags sit right after <title>, so
+ * they are always inside.
  */
-async function readPageMeta(response: Response): Promise<{ response: Response; meta: Record<string, string> }> {
+async function readPageMeta(stream: ReadableStream<Uint8Array>): Promise<Record<string, string>> {
   const meta: Record<string, string> = {};
-  if (!response.body) return { response, meta };
-  const [forUs, forThem] = response.body.tee();
-  const reader = forUs.getReader();
+  const reader = stream.getReader();
   let text = '';
   const decoder = new TextDecoder();
   try {
@@ -55,7 +56,7 @@ async function readPageMeta(response: Response): Promise<{ response: Response; m
     reader.cancel().catch(() => {});
   }
   for (const m of text.matchAll(META_RE)) meta[m[1]] = m[2];
-  return { response: new Response(forThem, response), meta };
+  return meta;
 }
 
 /** Whole days from now to a YYYY-MM-DD, or null. -1 means the date is past. */
@@ -119,8 +120,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return response;
   }
 
-  const { response: passed, meta } = await readPageMeta(response);
-  waitUntil(
+  if (!response.body) return response;
+  const [forUs, forThem] = response.body.tee();
+  waitUntil(readPageMeta(forUs).then((meta) =>
     collect(env, request, {
       event_name: 'page_view',
       path: url.pathname,
@@ -132,7 +134,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       region_slug: meta.region && SLUG_RE.test(meta.region) ? meta.region : null,
       days_until_date: daysUntil(meta.next),
     })
-  );
+  ));
 
-  return passed;
+  return new Response(forThem, response);
 };

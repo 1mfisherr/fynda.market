@@ -244,7 +244,7 @@ const jsonLd = {
             <span class="count">{s.marketCount(group.rows.length)}</span>
           </h2>
           {group.rows.map((market, i) => (
-            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} showRhythm omitCity showDay={false} allDates />
+            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} eager={g === 0 && i === 0} showRhythm omitCity showDay={false} allDates />
           ))}
         </section>
       ))}

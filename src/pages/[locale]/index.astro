@@ -168,7 +168,7 @@ const jsonLd = {
     <Section title={s.thisWeekend} lede={s.thisWeekendLede(total, formatDateShort(from, locale), formatDateShort(to, locale))}>
       <div data-weekend="all" data-country-words={several ? JSON.stringify(countryWords) : undefined}>
         <div class="leads gutter">
-          {lead.map((market) => <MarketRow market={market} locale={locale} variant="feature" />)}
+          {lead.map((market, i) => <MarketRow market={market} locale={locale} variant="feature" eager={i === 0} />)}
         </div>
         <div class="gutter">
           {rest.map((market) => <MarketRow market={market} locale={locale} />)}
