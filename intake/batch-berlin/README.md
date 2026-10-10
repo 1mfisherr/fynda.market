@@ -1,6 +1,6 @@
 # Berlin, researched 2026-09-26
 
-The second Berlin batch. 9 were imported (files now in `intake/de/`, `unverified` until their photos arrive — `docs/germany-photo-list.md`). What the research found and left for later, each checked on the organiser's own page that day:
+The second Berlin batch. 9 were imported (files now in `intake/de/`) and are live since 2026-09-27, with photos from Delfim. What the research found and left for later, each checked on the organiser's own page that day:
 
 **Left for spring 2027** — weekly car-park markets in the outer districts, and neighbourhood markets that run fortnightly or monthly (several end their season in October/November):
 

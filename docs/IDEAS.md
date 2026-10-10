@@ -93,7 +93,7 @@ Settled: free for users, no paywalls, revenue is supply-side. Candidates: organi
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-16
+last_reviewed: 2026-10-10
 
 ## Worth the drive
 

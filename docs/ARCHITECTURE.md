@@ -152,4 +152,4 @@ A fixtures build says `SKIP` where a check needs real data; that is waiting, not
 ---
 
 owner: Delfim
-last_reviewed: 2026-09-19
+last_reviewed: 2026-10-10
