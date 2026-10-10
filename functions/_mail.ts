@@ -172,11 +172,11 @@ const WELCOME: Record<Locale, Welcome> = {
     unsubscribe: 'Abmelden',
   },
   fr: {
-    subject: 'Vous êtes inscrit — fynda.market',
+    subject: 'Inscription confirmée — fynda.market',
     body: [
       "Votre adresse est sur la liste. Le premier numéro arrive vendredi matin.",
       "Chaque vendredi : les brocantes du week-end, les nouvelles dates, les annulations. Et un mot le jour même si une brocante près de chez vous est annulée — pour ne pas vous déplacer pour rien.",
-      "Si vous ne vous êtes pas inscrit, ignorez simplement cet e-mail — ou désinscrivez-vous ci-dessous en un clic.",
+      "Si vous n'êtes pas à l'origine de cette inscription, ignorez simplement cet e-mail, ou désinscrivez-vous en un clic ci-dessous.",
     ],
     unsubscribe: 'Se désinscrire',
   },
@@ -323,9 +323,9 @@ const REPORT_ACK: Record<Locale, Ack> = {
   fr: {
     subject: 'Merci — nous vérifions',
     body: [
-      'Votre signalement nous est parvenu : %s.',
+      'Votre signalement est bien arrivé : %s.',
       "Nous vérifions chaque signalement à la main avant de modifier quoi que ce soit sur la page de la brocante — et nous y indiquons ensuite la date de cette vérification. Cela prend en général un à deux jours.",
-      "Rien ne change automatiquement. C'est voulu : une correction reprise à tort serait pire que pas de correction du tout.",
+      "Rien ne change automatiquement. C'est voulu : une correction acceptée sans vérification, et fausse, serait pire que pas de correction du tout.",
     ],
   },
   it: {
@@ -356,10 +356,10 @@ const CLAIM_ACK: Record<Locale, Ack> = {
     ],
   },
   fr: {
-    subject: 'Votre page — nous vous répondons',
+    subject: 'Votre page — nous vous écrivons bientôt',
     body: [
       'Merci de nous avoir écrit : %s.',
-      "Delfim vérifie votre demande et vous recevez votre lien personnel par e-mail, en général sous un jour. D'ici là, rien ne change sur votre page.",
+      "Delfim examine votre demande, et vous recevrez votre lien personnel par e-mail, en général sous 24 heures. D'ici là, rien ne change sur votre page.",
       "Gratuit, pour toujours, sans compte à créer. Si vous voulez ajouter quelque chose entre-temps, répondez simplement à cet e-mail.",
     ],
   },
@@ -461,17 +461,17 @@ const ORGANISER_WELCOME: Record<Locale, OrganiserWelcome> = {
     ],
     button: 'Ouvrir ma page',
     after: [
-      "Voici pourquoi je vous écris. Les visiteurs font bien plus confiance à une date lorsque l'organisateur l'a confirmée que lorsque quelqu'un comme moi l'a recopiée d'un site. Quand votre page montre que vous l'avez vérifiée, plus de gens décident de venir. Et si un jour vous devez annuler, un mot à nous suffit pour que tous ceux des environs qui ont demandé à être tenus au courant l'apprennent le jour même, plutôt qu'à votre porte.",
+      "Pourquoi je vous écris ? Les visiteurs font bien plus confiance à une date confirmée par l'organisateur qu'à une date recopiée d'un site par quelqu'un comme moi. Quand votre page montre que vous l'avez vérifiée, plus de gens se décident à venir. Et si un jour vous devez annuler, un mot suffit : tous ceux qui, dans les environs, ont demandé à être tenus au courant l'apprennent le jour même, et non une fois sur place.",
       "La page est à vous. Vous pouvez corriger les dates et les horaires, indiquer combien il y a de stands, ce qui se passe en cas de pluie et où l'on peut réserver un stand. Avant chaque date, je vous enverrai un court e-mail pour demander si elle a toujours lieu, et un clic suffit pour répondre.",
-      "Si vous avez une photo du marché, je la mettrai volontiers sur la page — répondez simplement avec.",
+      "Si vous avez une photo du marché, je la mettrai volontiers sur la page : il suffit de me l'envoyer en réponse à cet e-mail.",
     ],
     listed: {
       subject: '%m sur fynda.market — votre page',
       intro: [
-        "Je m'appelle Delfim. Je m'occupe de fynda.market, un site qui aide les gens à trouver une brocante près de chez eux. Je l'ai créé parce que je vais moi-même aux marchés, et que je connais la déception de faire la route pour apprendre sur place que c'était annulé.",
-        "%m figure sur le site, avec les dates et les horaires que j'ai trouvés sur votre site. Je tenais à vous le dire, et à vous donner la page :",
+        "Je m'appelle Delfim. Je m'occupe de fynda.market, un site qui aide les gens à trouver une brocante près de chez eux. Je l'ai créé parce que je fréquente moi-même les marchés aux puces, et que je connais la déception de faire la route pour découvrir sur place que tout est annulé.",
+        "%m figure sur fynda.market, avec les dates et les horaires que j'ai trouvés sur votre site internet. Je tenais à vous le dire, et à vous remettre la page :",
       ],
-      optOut: "Et si vous préférez ne plus avoir de mes nouvelles, répondez-moi pour me le dire, et je ne vous écrirai plus.",
+      optOut: "Et si vous préférez ne plus avoir de mes nouvelles, un simple mot en réponse suffit : je ne vous écrirai plus.",
     },
     thanks: "Merci d'organiser un marché. C'est plus de travail que la plupart des gens ne l'imaginent.",
     waiting: ['Une personne attend votre prochaine date.', '%n personnes attendent votre prochaine date.'],
@@ -599,12 +599,12 @@ const ASK: Record<Locale, Ask> = {
     footer: 'Ein Klick genügt, ein Konto brauchen Sie nicht. Ihre Antwort steht innerhalb einer Stunde auf Ihrer Seite, als „Vom Veranstalter bestätigt“. Für ein Foto oder eine Frage antworten Sie einfach auf diese E-Mail.',
   },
   fr: {
-    subjectOne: '%m, %d — a lieu ?',
-    subjectMany: '%n dates la semaine prochaine — ont lieu ?',
+    subjectOne: "%m, %d — toujours d'actualité ?",
+    subjectMany: "%n dates la semaine prochaine — toujours d'actualité ?",
     hello: 'Bonjour %n',
     intro: 'fynda.market annonce votre marché le %d%t à %p. Est-ce exact ?',
-    introMany: 'fynda.market annonce ces dates de votre part pour la semaine prochaine. Sont-elles exactes ?',
-    on: 'Oui, a lieu',
+    introMany: 'fynda.market annonce ces dates de votre marché pour la semaine prochaine. Sont-elles exactes ?',
+    on: "Oui, c'est maintenu",
     cancelled: 'Annulé',
     changed: 'Quelque chose a changé',
     footer: "Un clic suffit, et vous n'avez pas besoin de compte. Votre réponse apparaît sur votre page dans l'heure, avec la mention « Confirmé par l'organisateur ». Pour une photo ou une question, répondez simplement à cet e-mail.",
@@ -716,11 +716,11 @@ const ALERT: Record<Locale, Alert> = {
   fr: {
     subject: 'Annulé : %m, %d',
     body: [
-      "%m à %p le %d n'a pas lieu. L'organisateur nous l'a signalé à %t.",
-      "Pour que vous ne fassiez pas le déplacement pour rien — c'est la raison d'être de cet e-mail.",
+      "%m, à %p, n'a pas lieu le %d. L'organisateur nous a prévenus à %t.",
+      "Cet e-mail est là pour vous éviter un déplacement inutile.",
     ],
     link: 'Voir la page du marché',
-    unsubscribe: 'Se désabonner',
+    unsubscribe: 'Se désinscrire',
   },
   it: {
     subject: 'Annullato: %m, %d',
@@ -809,10 +809,10 @@ const BACK: Record<Locale, BackCopy> = {
   },
   fr: {
     subject: '%m : %d',
-    market: '%m revient : %d%h.',
-    town: 'Il y a de nouveau une date à %p : %m, %d%h.',
+    market: '%m est de retour : %d%h.',
+    town: 'De nouveau une date à %p : %m, %d%h.',
     later: 'Ensuite : %l.',
-    once: "Vous nous aviez demandé de vous prévenir dès que la date serait connue. C'était le seul e-mail : nous ne vous écrirons plus, sauf si vous vous abonnez.",
+    once: "Vous nous aviez demandé de vous prévenir dès que la date serait connue. C'était l'unique e-mail : nous ne vous écrirons plus, sauf si vous vous abonnez.",
     link: 'Voir la page du marché',
   },
   it: {
@@ -1006,7 +1006,7 @@ const DIGEST: Record<Locale, DigestCopy> = {
     more: 'Voir les {count} brocantes',
     moreScope: 'Voir les {count} brocantes {scope}',
     unsubscribe: 'Se désinscrire',
-    why: 'Vous recevez cet e-mail parce que vous vous êtes inscrit sur fynda.market.',
+    why: 'Vous recevez cet e-mail parce que votre adresse est inscrite sur fynda.market.',
   },
   it: {
     subject: 'Mercatini questo fine settimana — {dates}',
