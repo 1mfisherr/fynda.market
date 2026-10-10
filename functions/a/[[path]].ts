@@ -412,8 +412,17 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
           <span class="times"><input type="time" name="start_${d.id}" value="${hm(d.start_time)}" aria-label="${escape(c.fromLabel)}"> – <input type="time" name="end_${d.id}" value="${hm(d.end_time)}" aria-label="${escape(c.toLabel)}"></span>
           <span class="acts"><a class="grey" href="/a/${token}/${d.id}/cancelled">${escape(c.cancel)}</a></span>
         </div>
+        <details class="move"><summary class="grey">${escape(c.move)}</summary><input type="date" name="move_${d.id}" min="${today()}" aria-label="${escape(c.moveLabel)}"></details>
       </li>`;
-  }).join('');
+  });
+  /* The next six, then the rest folded: a weekly market's 24 rows put the
+     Confirm button at the foot of a long phone scroll (organiser review,
+     2026-10-10). Confirm stays at the foot — Delfim, 2026-09-22. */
+  const SHOWN = 6;
+  const dateRows = rows.slice(0, SHOWN).join('');
+  const moreRows = rows.length > SHOWN
+    ? `<details class="more-dates"><summary class="textlink" style="text-align:left;cursor:pointer">${escape(c.allDates(rows.length))}</summary><ul class="list" style="margin-top:0;border-top:0">${rows.slice(SHOWN).join('')}</ul></details>`
+    : '';
 
   const blank = (n: number) => `
       <li>
@@ -449,7 +458,10 @@ async function editPage(env: Env, token: string, market: Market, locale: Locale,
       <h2 id="dates">${escape(c.datesTitle)}</h2>
       <p class="hint" style="font-size:15px">${escape(c.datesIntro)}</p>
       <ul class="list">
-        ${rows}
+        ${dateRows}
+      </ul>
+      ${moreRows}
+      <ul class="list" style="margin-top:0;border-top:0">
         ${blank(1)}
       </ul>
       <details><summary class="textlink" style="text-align:left;cursor:pointer">${escape(c.addAnother)}</summary><ul class="list" style="margin-top:0;border-top:0">${blank(2)}${blank(3)}</ul></details>
@@ -606,6 +618,20 @@ async function saveEdit(env: Env, request: Request, organiser: Organiser, market
     }
   }
   if (retimed) done.push(`${retimed} time(s) changed`);
+
+  /* Moved dates: the same row on its new day, confirmed by the organiser. No
+     mail goes — nothing was cancelled. A move onto a day the market already
+     has is refused by the unique key and logged. */
+  let moved = 0;
+  for (const d of dates) {
+    const to = get(`move_${d.id}`);
+    if (!DATE.test(to) || to < today() || to === d.date.slice(0, 10)) continue;
+    const row = await updateRows(env, 'occurrences', `id=eq.${d.id}`, {
+      date: to, status: 'confirmed', origin: 'organiser', confirmed_at: now, updated_at: now,
+    });
+    if (row.length) moved += 1;
+  }
+  if (moved) done.push(`${moved} date(s) moved`);
 
   /* New dates: confirmed by the organiser on arrival. A duplicate date is
      refused by the unique key and logged, not errored. */

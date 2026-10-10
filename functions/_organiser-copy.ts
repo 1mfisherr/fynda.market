@@ -100,6 +100,11 @@ export interface OrganiserCopy {
   footOut: string;
   /** /a/{token}/stop — every organiser mail links here, and the edit page does too (2026-10-10). */
   stopLink: string;
+  /** A date moved rather than cancelled and re-added (2026-10-10). */
+  move: string;
+  moveLabel: string;
+  /** The dates after the first six, folded. */
+  allDates: (n: number) => string;
   stopTitle: string;
   stopBody: string;
   stopButton: string;
@@ -194,6 +199,9 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: 'Für alles andere — den Namen, die Adresse, den Tag, an dem er stattfindet — antworten Sie einfach auf die E-Mail. Ich lese jede.',
     footOut: 'Sie möchten keine E-Mails mehr von uns? Ganz unten in jeder finden Sie einen Link dafür.',
     stopLink: 'E-Mails abbestellen',
+    move: 'Verschieben',
+    moveLabel: 'Neues Datum',
+    allDates: (n) => `Alle ${n} Termine`,
     stopTitle: 'Keine E-Mails mehr von fynda.market?',
     stopBody: 'Ihre Seite bleibt, und dieser Link funktioniert weiter. Sie bekommen nur keine E-Mails mehr von uns.',
     stopButton: 'Ja, keine E-Mails mehr',
@@ -285,6 +293,9 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: "Pour tout le reste — le nom, l'adresse, le jour où il a lieu —, répondez simplement à l'e-mail. Je les lis tous.",
     footOut: "Vous ne souhaitez plus recevoir nos e-mails ? Un lien en bas de chacun d'eux le permet.",
     stopLink: 'Ne plus recevoir nos e-mails',
+    move: 'Déplacer',
+    moveLabel: 'Nouvelle date',
+    allDates: (n) => `Toutes les ${n} dates`,
     stopTitle: "Ne plus recevoir d'e-mails de fynda.market ?",
     stopBody: "Votre page reste en ligne, et ce lien continue de fonctionner. Vous ne recevrez simplement plus d'e-mails de notre part.",
     stopButton: "Oui, plus d'e-mails",
@@ -376,6 +387,9 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: "Per tutto il resto — il nome, l'indirizzo, il giorno in cui si fa — basta rispondere all'e-mail. Le leggo tutte.",
     footOut: "Non vuoi più e-mail da noi? In fondo a ognuna c'è il link per disiscriverti.",
     stopLink: 'Non ricevere più e-mail',
+    move: 'Sposta',
+    moveLabel: 'Nuova data',
+    allDates: (n) => `Tutte le ${n} date`,
     stopTitle: 'Niente più e-mail da fynda.market?',
     stopBody: 'La tua pagina resta online e questo link continua a funzionare. Solo, non ti scriveremo più.',
     stopButton: 'Sì, niente più e-mail',
@@ -467,6 +481,9 @@ export const COPY: Record<Locale, OrganiserCopy> = {
     footReply: 'Anything else — the name, the address, the day it runs — just reply to the mail. I read every one.',
     footOut: "Don't want mail from us? There's a link at the bottom of every one.",
     stopLink: 'Stop these e-mails',
+    move: 'Move',
+    moveLabel: 'New date',
+    allDates: (n) => `All ${n} dates`,
     stopTitle: 'No more e-mails from fynda.market?',
     stopBody: "Your page stays, and this link keeps working. You just won't get e-mails from us any more.",
     stopButton: 'Yes, stop the e-mails',

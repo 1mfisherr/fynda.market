@@ -624,8 +624,9 @@ const de: Strings = {
   alertSend: 'Bescheid geben',
   alertDone: 'Erledigt. Du bekommst eine E-Mail, sobald der Termin feststeht.',
   earlierThisYear: 'Bisher in diesem Jahr',
-  earlierSummary: (n, weekday, since, cancelled) =>
-    `${n} ${weekday === undefined ? 'Termine' : ['Sonntage', 'Montage', 'Dienstage', 'Mittwoche', 'Donnerstage', 'Freitage', 'Samstage'][weekday]} seit dem ${since}, ${cancelled ? `${cancelled} abgesagt` : 'keiner abgesagt'}.`,
+  // "seit dem 28. Februar" read as the day the market began (organiser review, 2026-10-10).
+  earlierSummary: (n, weekday, _since, cancelled) =>
+    `Dieses Jahr bisher ${n} ${weekday === undefined ? 'Termine' : ['Sonntage', 'Montage', 'Dienstage', 'Mittwoche', 'Donnerstage', 'Freitage', 'Samstage'][weekday]}, ${cancelled ? `${cancelled} abgesagt` : 'keiner abgesagt'}.`,
   seenOn: 'Fand statt',
   wasItOnTitle: (date) => `Warst du am ${date} dort?`,
   wasItOnToday: 'Warst du heute dort?',
@@ -901,8 +902,8 @@ const en: Strings = {
   alertSend: 'Tell me',
   alertDone: "Done. You'll get one email, the day the date is out.",
   earlierThisYear: 'Earlier this year',
-  earlierSummary: (n, weekday, since, cancelled) =>
-    `${n} ${weekday === undefined ? 'dates' : ['Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'][weekday]} since ${since}, ${cancelled ? `${cancelled} cancelled` : 'none cancelled'}.`,
+  earlierSummary: (n, weekday, _since, cancelled) =>
+    `${n} ${weekday === undefined ? 'dates' : ['Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'][weekday]} so far this year, ${cancelled ? `${cancelled} cancelled` : 'none cancelled'}.`,
   seenOn: 'Seen on',
   wasItOnTitle: (date) => `Were you there on ${date}?`,
   wasItOnToday: 'Were you there today?',
@@ -1185,10 +1186,10 @@ const fr: Strings = {
   alertDone: "C'est noté. Vous recevrez un seul e-mail, le jour où la date sera annoncée.",
   earlierThisYear: 'Plus tôt cette année',
   /* "dates" is feminine, every weekday masculine: the agreement follows. */
-  earlierSummary: (n, weekday, since, cancelled) => {
+  earlierSummary: (n, weekday, _since, cancelled) => {
     const noun = weekday === undefined ? 'dates' : ['dimanches', 'lundis', 'mardis', 'mercredis', 'jeudis', 'vendredis', 'samedis'][weekday];
     const f = weekday === undefined;
-    return `${n} ${noun} depuis le ${since}, ${cancelled ? `${cancelled} ${f ? 'annulée' : 'annulé'}${cancelled > 1 ? 's' : ''}` : f ? 'aucune annulée' : 'aucun annulé'}.`;
+    return `${n} ${noun} jusqu'ici cette année, ${cancelled ? `${cancelled} ${f ? 'annulée' : 'annulé'}${cancelled > 1 ? 's' : ''}` : f ? 'aucune annulée' : 'aucun annulé'}.`;
   },
   seenOn: 'A eu lieu',
   wasItOnTitle: (date) => `Vous y étiez le ${date} ?`,
@@ -1467,10 +1468,10 @@ const it: Strings = {
   alertDone: "Fatto. Riceverai un'e-mail il giorno in cui esce la data.",
   earlierThisYear: "Quest'anno, finora",
   /* "date" and "domeniche" are feminine, the other weekdays masculine. */
-  earlierSummary: (n, weekday, since, cancelled) => {
+  earlierSummary: (n, weekday, _since, cancelled) => {
     const noun = weekday === undefined ? 'date' : ['domeniche', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabati'][weekday];
     const f = weekday === undefined || weekday === 0;
-    return `${n} ${noun} dal ${since}, ${cancelled ? `${cancelled} ${f ? 'annullate' : 'annullati'}` : f ? 'nessuna annullata' : 'nessuno annullato'}.`;
+    return `${n} ${noun} finora quest'anno, ${cancelled ? `${cancelled} ${f ? 'annullate' : 'annullati'}` : f ? 'nessuna annullata' : 'nessuno annullato'}.`;
   },
   seenOn: "C'era",
   wasItOnTitle: (date) => `Eri lì il ${date}?`,

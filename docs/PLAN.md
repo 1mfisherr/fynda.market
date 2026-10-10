@@ -43,8 +43,9 @@ Not built: country page (parked) · text search · organiser photo upload · the
 6. **Before December: the annual dates mail**, with an *Upload your dates* box on the organiser page (PDF or flyer photo → Claude reads the dates → Delfim approves in Telegram). Paid from the **Claude Startups** membership (accepted 2026-10, under flightbrief.news — check the terms cover fynda; $1,000 API credit, check the expiry; Applied AI office hours — book one for this).
 7. **Organiser share kit** (proposed 2026-10-10, not yet decided): a link and QR code for their site, posters and Facebook events — a way in that is not Google.
 8. **Germany deep in four cities.** Berlin: 19 more recurring markets researched 2026-09-26, left for spring (`intake/batch-berlin/README.md`). Köln: five Melan car-park markets stay `unverified` until someone has a photo (GLOBUS Marsdorf, METRO Godorf, SELGROS Butzweilerhof, PORTA Lind, ROLLER Marsdorf); for spring Immenhof (23 May 2027), Cölln's P6 (4 Apr 2027), Weidenpesch's spectator-area market (6 May 2027). München (5 markets for 1.5 million): the Theresienwiese BRK market next. `intake/README.md`, `import-intake.mjs`; markets arrive `unverified`.
-9. **Analytics partitioning**, October.
-10. Buffer.
+9. **From the product review (Delfim's calls, 2026-10-10):** a *what's sold* filter — its own session, once more markets are tagged; the home page leading with the visitor's town — study first; why a market pauses (*Paused for the Herbstmesse until 21 Nov*) — on the page where we hold the reason; the size on each row and bigger markets first within a day — proposed; the newsletter's place picker — proposed (below); the organiser share kit — its own session; a **search session** for town pages: a summary line on towns with several markets, *Markets here ran on N days this year*, an ItemList in the structured data, a guardrail against a one-market town repeating its market page. Done the same day: the edit page folds dates after six and can move a date; the record says *so far this year*; Mauerpark's text for visitors; /faq/ lands on the home page's questions; Tiergarten's venue name without English.
+10. **Analytics partitioning**, October.
+11. Buffer.
 
 **Read, on these dates** — nothing to build until then:
 - 2026-10-17: Search Console → Indexing → Sitemaps *Last read* after the resubmit; Indexing → Pages — *excluded by noindex* falling, *discovered – not indexed* shrinking.
@@ -69,7 +70,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Content floor** counts characters and should count verified facts. Fix before any bulk prose generation.
 - **Would vendors pay for anything?** Five conversations settle it. `IDEAS.md`.
 - **Cross-border locales** — let Search Console decide.
-- Rejected 2026-10-10: cash/TWINT as a fact, getting-there advice by hand, exact predicted dates, a month strip on town pages, a map, a rain forecast on market day (too hard for now).
+- Rejected 2026-10-10: nearest stop and walking time on market pages ("gimmicky"), a calendar feed per town, cash/TWINT as a fact, getting-there advice by hand, exact predicted dates, a month strip on town pages, a map, a rain forecast on market day (too hard for now).
 - Closed: the old site stays live as an independent competitor — no noindex, no redirect (2026-10-07); growth in Germany continues through the Google drop (2026-10-07); the bare address goes to `/en/` (2026-09-28); dateless markets stay `active` and keep their page (2026-10-10); photos stay, real ones via organisers; analytics first-party; `x-default` English; Metabase on Delfim's PC only; a closed market redirects to its town, or home (`scripts/redirects.mjs`).
 
 ---

@@ -71,6 +71,7 @@ export function page(
   .list .day { font-size: 17px; font-weight: 700; color: #D63A1F; }
   .list .day.off { color: #6E6A64; }
   .list .under { margin-top: 8px; flex-wrap: wrap; }
+  .list .move { margin-top: 6px; font-size: 14px; } .list .move summary { cursor: pointer; display: inline-block; } .list .move input { margin-top: 6px; }
   .list .acts { display: flex; gap: 16px; font-size: 14px; font-weight: 500; }
   .list .acts a.grey { color: #6E6C68; }
   .times { display: flex; gap: 6px; align-items: center; }
