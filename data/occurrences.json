@@ -550,6 +550,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "bourse-photo-vieux-papiers-fribourg-granges-paccot",
+    "date": "2027-02-07",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "bourse-vinyls-cd-geneve-le-grand-saconnex",
     "date": "2027-01-17",
     "status": "confirmed"
@@ -1210,6 +1215,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-am-ebertplatz-koeln",
+    "date": "2026-10-10",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-am-mauerpark-berlin",
     "date": "2026-10-11",
     "status": "unverified"
@@ -1468,11 +1478,6 @@
     "marketSlug": "flohmarkt-citti-park-luebeck",
     "date": "2026-12-06",
     "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-daglfing-muenchen",
-    "date": "2026-10-09",
-    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-daglfing-muenchen",
@@ -1750,13 +1755,53 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "flohmarkt-gallusplatz-stgallen",
-    "date": "2026-11-07",
-    "status": "confirmed"
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-10-11",
+    "status": "unverified"
   },
   {
-    "marketSlug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
-    "date": "2026-10-09",
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-10-18",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-10-25",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-11-01",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-11-29",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-12-06",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-12-13",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-12-20",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-friedrichshagen-berlin",
+    "date": "2026-12-27",
+    "status": "unverified"
+  },
+  {
+    "marketSlug": "flohmarkt-gallusplatz-stgallen",
+    "date": "2026-11-07",
     "status": "confirmed"
   },
   {
@@ -1962,6 +2007,11 @@
   {
     "marketSlug": "flohmarkt-grosse-halle-bern",
     "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-grosse-halle-bern",
+    "date": "2027-02-07",
     "status": "confirmed"
   },
   {
@@ -2326,11 +2376,6 @@
   },
   {
     "marketSlug": "flohmarkt-olympiapark-muenchen",
-    "date": "2026-10-09",
-    "status": "unverified"
-  },
-  {
-    "marketSlug": "flohmarkt-olympiapark-muenchen",
     "date": "2026-10-10",
     "status": "confirmed"
   },
@@ -2583,6 +2628,11 @@
     "marketSlug": "flohmarkt-rueticenter-pratteln",
     "date": "2026-11-01",
     "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-rueticenter-pratteln",
+    "date": "2027-02-07",
+    "status": "unverified"
   },
   {
     "marketSlug": "flohmarkt-sarnen-center",
@@ -3130,6 +3180,16 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "kiezkram-flohmarkt-heynhoefe-berlin",
+    "date": "2026-10-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "kiezkram-flohmarkt-heynhoefe-berlin",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "kinder-flohmi-schloss-arbon",
     "date": "2026-10-24",
     "status": "confirmed"
@@ -3547,6 +3607,11 @@
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
     "date": "2027-01-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+    "date": "2027-02-07",
     "status": "confirmed"
   },
   {
@@ -4021,11 +4086,6 @@
   },
   {
     "marketSlug": "marche-rumine-lausanne-vendredi",
-    "date": "2026-10-09",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-vendredi",
     "date": "2026-10-16",
     "status": "confirmed"
   },
@@ -4107,6 +4167,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-vendredi",
     "date": "2027-02-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "martinsmarkt-maternusplatz-koeln",
+    "date": "2026-11-08",
     "status": "confirmed"
   },
   {
@@ -4232,11 +4297,6 @@
   {
     "marketSlug": "metalboerse-schweiz-zofingen",
     "date": "2026-11-28",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
-    "date": "2026-10-09",
     "status": "confirmed"
   },
   {
