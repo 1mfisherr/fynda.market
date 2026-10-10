@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Saved markets by e-mail — mockup v1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @font-face { font-family: 'Schibsted Grotesk'; src: url('https://fynda.market/fonts/schibsted-grotesk-latin.woff2') format('woff2'); font-weight: 400 900; }
+  :root { --ink:#111110; --grey:#6e6c68; --quiet:#6e6a64; --line:#e8e6e2; --paper:#f5f4f2; --accent:#ff4a2b; --accent-text:#d63a1f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #DEDCD7; font-family: 'Schibsted Grotesk', system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .intro { max-width: 1180px; margin: 28px auto 0; padding: 0 28px; }
+  .intro h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -.02em; }
+  .intro p { margin: 0 0 8px; color: #3F3D3A; font-size: 15px; line-height: 1.5; max-width: 860px; }
+  .stage { display: flex; gap: 26px; padding: 18px 28px 30px; align-items: flex-start; overflow-x: auto; }
+  .col { flex: 0 0 375px; }
+  .cap { font-size: 13px; color: #3F3D3A; margin: 0 0 10px; line-height: 1.45; min-height: 92px; }
+  .cap b { color: var(--ink); font-size: 15px; display: block; margin: 2px 0 3px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; background: var(--ink); color: #fff; }
+  .phone { width: 375px; background: #fff; border-radius: 22px; box-shadow: 0 10px 40px rgba(0,0,0,.14); overflow: hidden; position: relative; }
+  .bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
+  .word { font-weight: 800; font-size: 20px; letter-spacing: -.02em; } .word i { font-style: normal; color: var(--accent); }
+  .bar small { font-size: 14px; font-weight: 700; }
+  .pad { padding: 0 20px; }
+  .muted { color: var(--grey); font-size: 14px; line-height: 1.5; }
+  h2 { font-size: 22px; letter-spacing: -.02em; margin: 6px 0 4px; line-height: 1.15; }
+  .date { color: var(--accent-text); font-weight: 900; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .hours { color: var(--grey); font-weight: 600; font-size: 13px; margin-left: 6px; }
+  .photo { height: 170px; background: linear-gradient(135deg,#c9b9a1,#8c7a62); margin: 0 20px; border-radius: 14px; }
+  .btn { display: block; width: 100%; text-align: center; padding: 13px 16px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); }
+  .btn.primary { background: var(--ink); color: #fff; }
+  .btn.saved { display: inline-flex; width: auto; gap: 6px; padding: 8px 14px; font-size: 14px; }
+  .dim { position: absolute; inset: 0; background: rgba(17,17,16,.45); }
+  .sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 16px 16px 0 0; padding: 18px 20px 26px; }
+  .sheet .label, .card .label { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--quiet); }
+  .field { display: block; width: 100%; padding: 13px 14px; border: 1px solid #cfccc6; border-radius: 10px; font: inherit; font-size: 15px; color: #8a8780; margin: 12px 0 10px; background: #fff; }
+  .fine { font-size: 12.5px; color: var(--quiet); margin: 10px 0 0; text-align: center; }
+  .new { outline: 2px dashed var(--accent); outline-offset: 4px; border-radius: 14px; }
+  .card { background: var(--paper); border-radius: 14px; padding: 18px; margin: 14px 20px 6px; }
+  .row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .thumb { width: 64px; height: 64px; border-radius: 10px; background: linear-gradient(135deg,#b9c4c9,#71838c); }
+  .row b { display: block; font-size: 15.5px; } .row span { font-size: 13px; color: var(--grey); }
+  .mail { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.55; color: #16161a; }
+  .mailhead { background: #f4f4f6; padding: 12px 18px; font-size: 13px; color: #555; border-bottom: 1px solid #e5e5e5; }
+  .mailhead b { color: #16161a; }
+  .mailbody { padding: 18px 20px 24px; }
+  .mday { margin: 18px 0 4px; font-weight: 700; color: var(--accent-text); font-size: 13px; letter-spacing: .05em; text-transform: uppercase; }
+  .mrow { padding: 8px 0; border-bottom: 1px solid #eee; } .mrow a { color: #16161a; font-weight: 600; } .mrow span { display: block; color: #6b6b70; font-size: 13.5px; }
+  .mfoot { margin-top: 22px; padding-top: 12px; border-top: 1px solid #e5e5e5; font-size: 12.5px; color: #6b6b70; }
+  .mfoot a { color: #6b6b70; }
+  .q { max-width: 1180px; margin: 0 auto 40px; padding: 0 28px; }
+  .q h2 { font-size: 18px; margin: 10px 0 8px; }
+  .q ol { margin: 0; padding-left: 20px; color: #3F3D3A; font-size: 15px; line-height: 1.55; max-width: 860px; }
+  .q li { margin-bottom: 8px; } .q li b { color: var(--ink); }
+</style></head><body>
+<div class="intro">
+  <h1>Your saved markets, by e-mail — mockup v1</h1>
+  <p>Today a saved market lives only in this browser and nothing ever reminds you of it. This adds one offer: tell us an e-mail address, and before a weekend when one of your saved markets is on, you get one short e-mail saying which, when and where. No account. Nothing on a weekend when none of them is on. The markets and times below are real (weekend of 17–18 October); the dashed outline marks what is new.</p>
+</div>
+
+<div class="stage">
+
+  <div class="col">
+    <div class="cap"><span class="tag">New</span><b>1 · Right after you tap Save</b>The first time you save a market, a small sheet offers the e-mail. Once, not again: say no and it stays closed. Never a pop-up on arrival.</div>
+    <div class="phone" style="height:760px">
+      <div class="bar"><span class="word">fynda<i>.</i>market</span><small>Saved</small></div>
+      <div class="photo"></div>
+      <div class="pad">
+        <p class="muted" style="margin:14px 0 0">Zurich · Canton of Zurich</p>
+        <h2>Flohmarkt Kanzlei</h2>
+        <p style="margin:2px 0 10px"><span class="date">Sat 17 Oct</span><span class="hours">07:20–16:00</span></p>
+        <span class="btn saved">✓ Saved</span>
+      </div>
+      <div class="dim"></div>
+      <div class="sheet new">
+        <p class="label">Saved</p>
+        <h2 style="font-size:20px">Want to know when it's on?</h2>
+        <p class="muted" style="margin:6px 0 0">Before a weekend when one of your saved markets is on, one e-mail says which, when and where. Nothing when none of them is.</p>
+        <span class="field">Email address</span>
+        <span class="btn primary">Send me my markets</span>
+        <p class="fine">No account needed · one click stops it · <u>Not now</u></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="cap"><span class="tag">New</span><b>2 · On the Saved page</b>The same offer, as a card above the list, for anyone who said "not now". Once you're signed up it turns into one line saying so, with the list it's watching.</div>
+    <div class="phone" style="height:760px">
+      <div class="bar"><span class="word">fynda<i>.</i>market</span><small>Saved</small></div>
+      <div class="pad"><h2 style="font-size:30px;margin-top:8px">Saved markets</h2><p class="muted" style="margin:0">4 markets, 3 of them dated.</p></div>
+      <div class="card new">
+        <p class="label">Your markets, by e-mail</p>
+        <h2 style="font-size:19px">Know when they're on</h2>
+        <p class="muted" style="margin:4px 0 0">One e-mail on Friday morning, only when one of these is on that weekend. Markets you save later join in.</p>
+        <span class="field" style="margin-bottom:10px">Email address</span>
+        <span class="btn primary">Send me my markets</span>
+      </div>
+      <div class="pad">
+        <div class="row"><div class="thumb"></div><div><span class="date">Sat 17 Oct</span><b>Flohmarkt Bürkliplatz</b><span>Bürkliplatz · Zurich</span></div></div>
+        <div class="row"><div class="thumb"></div><div><span class="date">Sat 17 Oct</span><b>Flohmarkt Kanzlei</b><span>Kanzleiareal · Zurich</span></div></div>
+        <div class="row"><div class="thumb"></div><div><span class="date">Sun 18 Oct</span><b>Flohmi am See Bern</b><span>Bern</span></div></div>
+        <div class="row" style="border:0"><div class="thumb"></div><div><span class="date">No date yet</span><b>Alpin-Flohmi Basel</b><span>Basel</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="cap"><span class="tag">New</span><b>3 · The e-mail, Friday 16 October</b>Only your markets, by day, with times and the town. A market with no date gets one line and the promise we already make on its page. The subject line answers the question before it's opened.</div>
+    <div class="phone mail" style="height:760px">
+      <div class="mailhead"><b>fynda.market</b><br>This weekend: 3 of your markets are on</div>
+      <div class="mailbody">
+        <p style="margin:0 0 6px;font-weight:800;font-size:18px;letter-spacing:-.01em">fynda<span style="color:#ff4a2b">.</span>market</p>
+        <p style="margin:12px 0 0">Three of the markets you saved are on this weekend.</p>
+        <p class="mday">Saturday 17 October</p>
+        <div class="mrow"><a>Flohmarkt Bürkliplatz</a><span>07:00–17:00 · Bürkliplatz, Zurich</span></div>
+        <div class="mrow"><a>Flohmarkt Kanzlei</a><span>07:20–16:00 · Kanzleiareal, Zurich</span></div>
+        <p class="mday">Sunday 18 October</p>
+        <div class="mrow"><a>Flohmi am See Bern</a><span>11:00–16:00 · Bern</span></div>
+        <p class="mday" style="color:#6b6b70">Not this weekend</p>
+        <div class="mrow" style="border:0"><a>Alpin-Flohmi Basel</a><span>No date yet. We'll write the day it has one.</span></div>
+        <div class="mfoot"><a>Your saved markets</a> · <a>Stop these e-mails</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="q">
+  <h2>How it works, and the calls I'd make</h2>
+  <ol>
+    <li><b>One list per e-mail address, kept by us.</b> Today the saved list is only in the browser. Signing up copies it to our database, and from then on, saving or removing a market on that phone updates it. On another phone, the link in the e-mail ("Your saved markets") brings the list there.</li>
+    <li><b>Never an empty e-mail.</b> If none of your markets is on that weekend, nothing is sent. A weekly market lover gets it most weeks; someone who saved two annual fairs hears from us twice a year.</li>
+    <li><b>One e-mail on a Friday, not two.</b> Someone who also gets "The weekend around Zurich" gets one mail with their markets first, then the area. Same list, same stop link.</li>
+    <li><b>No confirm step, like the newsletter.</b> A confirmation click loses about a third of the people who meant to sign up, so the newsletter has none; this follows it. The first mail says what they signed up for and carries the stop link.</li>
+    <li><b>Same send budget.</b> It goes through the Friday digest we already run, on the free mail plan (100 a day) — fine until ~80 people.</li>
+  </ol>
+</div>
+</body></html>

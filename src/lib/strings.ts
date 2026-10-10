@@ -368,6 +368,11 @@ export interface Strings {
   nearbyLede: (city: string) => string;
   /** Over a weekend day the town has nothing on, filled from within 25 km (lists.ts weekendAround). */
   aroundNothing: (city: string) => string;
+  /** Your saved markets, by e-mail — the sheet after a first save and the card on Saved (design/saved-mail-v1.html). */
+  savedAsk: {
+    label: string; title: string; body: string; cardLabel: string; cardTitle: string; cardBody: string;
+    email: string; button: string; fine: string; notNow: string; done: string; failed: string; on: string; stop: string;
+  };
   /**
    * The same thing for the signup block, which says no canton anywhere.
    *
@@ -701,6 +706,22 @@ const de: Strings = {
   nearbyHeading: (km) => `Im Umkreis von ${km} km`,
   nearbyLede: (city) => `Die nächsten Termine in den Orten um ${city}.`,
   aroundNothing: (city) => `In ${city} ist an diesem Tag nichts. Im Umkreis von 25 km:`,
+  savedAsk: {
+    label: 'Gemerkt',
+    title: 'Willst du wissen, wann er stattfindet?',
+    body: 'Vor einem Wochenende, an dem einer deiner gemerkten Märkte stattfindet, kommt eine E-Mail: welcher, wann und wo. Sonst nichts.',
+    cardLabel: 'Deine Märkte per E-Mail',
+    cardTitle: 'Wissen, wann sie stattfinden',
+    cardBody: 'Eine E-Mail am Freitagmorgen, nur wenn einer davon an diesem Wochenende stattfindet. Märkte, die du dir später merkst, kommen dazu.',
+    email: 'E-Mail-Adresse',
+    button: 'Schick mir meine Märkte',
+    fine: 'Kein Konto nötig · mit einem Klick abbestellt',
+    notNow: 'Jetzt nicht',
+    done: 'Erledigt. Wir schreiben dir vor einem Wochenende, an dem einer davon stattfindet.',
+    failed: 'Das hat nicht geklappt. Versuch es bitte noch einmal.',
+    on: 'Wir schreiben dir vor einem Wochenende, an dem einer davon stattfindet.',
+    stop: 'Abbestellen',
+  },
   subscribeBodyScope: (scope) => `Eine E-Mail am Freitagmorgen: die Märkte am Wochenende ${scope} – und welche abgesagt wurden.`,
   subscribeTitle: (town) => (town ? `Das Wochenende rund um ${town}, im Postfach` : 'Das Wochenende in deiner Nähe, im Postfach'),
   subscribeSend: 'Schick sie mir',
@@ -962,6 +983,22 @@ const en: Strings = {
   nearbyHeading: (km) => `Within ${km} km`,
   nearbyLede: (city) => `The next dates in the towns around ${city}.`,
   aroundNothing: (city) => `Nothing in ${city} that day. Within 25 km:`,
+  savedAsk: {
+    label: 'Saved',
+    title: "Want to know when it's on?",
+    body: 'Before a weekend when one of your saved markets is on, one e-mail says which, when and where. Nothing when none of them is.',
+    cardLabel: 'Your markets, by e-mail',
+    cardTitle: "Know when they're on",
+    cardBody: 'One e-mail on Friday morning, only when one of these is on that weekend. Markets you save later join in.',
+    email: 'Email address',
+    button: 'Send me my markets',
+    fine: 'No account needed · one click stops it',
+    notNow: 'Not now',
+    done: "Done. We'll write before a weekend when one of them is on.",
+    failed: "That didn't work. Please try again.",
+    on: "We'll write before a weekend when one of these is on.",
+    stop: 'Stop',
+  },
   subscribeBodyScope: (scope) => `One email on Friday morning: the weekend's markets ${scope}, and any that were called off.`,
   subscribeTitle: (town) => (town ? `The weekend around ${town}, in your inbox` : 'The weekend near you, in your inbox'),
   subscribeSend: 'Send it to me',
@@ -1233,6 +1270,22 @@ const fr: Strings = {
   nearbyHeading: (km) => `Dans un rayon de ${km} km`,
   nearbyLede: (city) => `Les prochaines dates dans les localités autour de ${city}.`,
   aroundNothing: (city) => `Rien à ${city} ce jour-là. Dans un rayon de 25 km :`,
+  savedAsk: {
+    label: 'Enregistré',
+    title: 'Savoir quand il a lieu ?',
+    body: "Avant un week-end où l'un de vos marchés enregistrés a lieu, un e-mail vous dit lequel, quand et où. Rien sinon.",
+    cardLabel: 'Vos marchés, par e-mail',
+    cardTitle: 'Savoir quand ils ont lieu',
+    cardBody: "Un e-mail le vendredi matin, seulement quand l'un d'eux a lieu ce week-end-là. Ceux que vous enregistrez ensuite s'ajoutent.",
+    email: 'Adresse e-mail',
+    button: 'Envoyez-moi mes marchés',
+    fine: 'Sans compte · un clic pour arrêter',
+    notNow: 'Pas maintenant',
+    done: "C'est fait. Nous vous écrirons avant un week-end où l'un d'eux a lieu.",
+    failed: "Ça n'a pas marché. Merci de réessayer.",
+    on: "Nous vous écrirons avant un week-end où l'un d'eux a lieu.",
+    stop: 'Arrêter',
+  },
   subscribeBodyScope: (scope) => `Un e-mail le vendredi matin : les brocantes du week-end ${scope}, et celles qui sont annulées.`,
   subscribeTitle: (town) => (town ? `Le week-end autour de ${town}, dans votre boîte mail` : 'Le week-end près de chez vous, dans votre boîte mail'),
   subscribeSend: 'Je veux le recevoir',
@@ -1499,6 +1552,22 @@ const it: Strings = {
   nearbyHeading: (km) => `Entro ${km} km`,
   nearbyLede: (city) => `Le prossime date nelle località intorno a ${city}.`,
   aroundNothing: (city) => `Niente a ${city} quel giorno. Entro 25 km:`,
+  savedAsk: {
+    label: 'Salvato',
+    title: 'Vuoi sapere quando si tiene?',
+    body: 'Prima di un fine settimana in cui si tiene uno dei tuoi mercatini salvati, una e-mail ti dice quale, quando e dove. Altrimenti niente.',
+    cardLabel: 'I tuoi mercatini, per e-mail',
+    cardTitle: 'Sapere quando si tengono',
+    cardBody: 'Una e-mail il venerdì mattina, solo quando uno di questi si tiene quel fine settimana. Quelli che salvi dopo si aggiungono.',
+    email: 'Indirizzo e-mail',
+    button: 'Mandami i miei mercatini',
+    fine: 'Senza account · basta un clic per smettere',
+    notNow: 'Non ora',
+    done: 'Fatto. Ti scriviamo prima di un fine settimana in cui se ne tiene uno.',
+    failed: 'Non ha funzionato. Riprova, per favore.',
+    on: 'Ti scriviamo prima di un fine settimana in cui se ne tiene uno.',
+    stop: 'Smetti',
+  },
   subscribeBodyScope: (scope) => `Un'e-mail il venerdì mattina: i mercatini del fine settimana ${scope}, e quelli annullati.`,
   subscribeTitle: (town) => (town ? `Il fine settimana intorno a ${town}, nella tua casella` : 'Il fine settimana vicino a te, nella tua casella'),
   subscribeSend: 'Mandamela',

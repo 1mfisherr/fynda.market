@@ -1,0 +1,151 @@
+---
+/**
+ * Your saved markets, by e-mail (Delfim, 2026-10-10, design/saved-mail-v1.html).
+ *
+ *   variant="sheet"  on a market page, risen from the bottom after the first
+ *                    save in this browser — once, answered or not, never on
+ *                    arrival. The market page's save script opens it.
+ *   variant="card"   on the Saved page, above the list. Once signed up it is
+ *                    one line saying so, with a way to stop.
+ *
+ * Posts the address and this browser's saved list to /k (functions/k.ts). A
+ * new address gets a token back, kept in this browser so later saves follow
+ * (src/lib/saved-sync.ts).
+ */
+import Button from './Button.astro';
+import Field from './Field.astro';
+import Honeypot from './Honeypot.astro';
+import { t } from '../lib/strings';
+import type { Locale } from '../lib/i18n';
+
+interface Props { locale: Locale; variant: 'sheet' | 'card' }
+const { locale, variant } = Astro.props;
+const s = t(locale).savedAsk;
+const id = `saved-${variant}`;
+---
+{variant === 'sheet' ? (
+  <div class="saved-sheet" data-saved-sheet hidden>
+    <div class="dim" data-saved-close></div>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby={`${id}-title`}>
+      <p class="label">{s.label}</p>
+      <h2 id={`${id}-title`}>{s.title}</h2>
+      <p class="body">{s.body}</p>
+      <form class="saved-form" action="/k" method="post" data-saved-form data-done={s.done} data-failed={s.failed}>
+        <input type="hidden" name="consent_text" value={`${s.body} ${s.fine}`} />
+        <Field label={s.email} name="email" type="email" required placeholder="name@example.com" idPrefix={id} />
+        <Honeypot id={id} />
+        <Button type="submit" variant="primary" block>{s.button}</Button>
+        <p class="fine">{s.fine}</p>
+        <p class="said" role="status" hidden></p>
+      </form>
+      <button type="button" class="not-now" data-saved-close>{s.notNow}</button>
+    </div>
+  </div>
+) : (
+  <section class="saved-card" data-saved-card>
+    <div data-saved-offer>
+      <p class="label">{s.cardLabel}</p>
+      <h2>{s.cardTitle}</h2>
+      <p class="body">{s.cardBody}</p>
+      <form class="saved-form" action="/k" method="post" data-saved-form data-done={s.done} data-failed={s.failed}>
+        <input type="hidden" name="consent_text" value={`${s.body} ${s.fine}`} />
+        <Field label={s.email} name="email" type="email" required placeholder="name@example.com" idPrefix={id} />
+        <Honeypot id={id} />
+        <Button type="submit" variant="primary" block>{s.button}</Button>
+        <p class="fine">{s.fine}</p>
+        <p class="said" role="status" hidden></p>
+      </form>
+    </div>
+    <p class="on" data-saved-on hidden>{s.on} <a href="#" data-saved-stop>{s.stop}</a></p>
+  </section>
+)}
+
+<style>
+  .label { margin: 0; color: var(--color-quiet); font-size: var(--text-tiny); font-weight: var(--weight-bold); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+  h2 { margin: var(--space-1) 0 0; font-size: var(--text-title); letter-spacing: var(--tracking-title); }
+  .body { margin: var(--space-2) 0 0; color: var(--color-grey); font-size: var(--text-small); line-height: var(--leading-body); }
+  .saved-form { display: grid; gap: var(--space-3); margin-block-start: var(--space-4); }
+  .fine { margin: 0; color: var(--color-quiet); font-size: var(--text-micro); text-align: center; }
+  .said { margin: 0; font-size: var(--text-small); font-weight: var(--weight-semibold); }
+
+  .saved-sheet { position: fixed; inset: 0; z-index: 20; }
+  .dim { position: absolute; inset: 0; background: rgb(17 17 16 / 45%); }
+  .sheet {
+    position: absolute; inset: auto 0 0 0;
+    max-height: 90vh; overflow-y: auto;
+    padding: var(--space-5) var(--space-page) var(--space-6);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    background: var(--color-surface);
+  }
+  .not-now { display: block; margin: var(--space-3) auto 0; border: 0; background: none; color: var(--color-grey); font: inherit; font-size: var(--text-small); text-decoration: underline; cursor: pointer; min-height: var(--tap-min); }
+  /* A desk has room for the sheet as a centred panel. Keep in step with --breakpoint-wide. */
+  @media (min-width: 900px) {
+    .sheet { inset: 14vh auto auto 50%; width: min(var(--measure), 92vw); transform: translateX(-50%); border-radius: var(--radius-md); }
+  }
+
+  .saved-card { padding: var(--space-5); border-radius: var(--radius-md); background: var(--color-paper); }
+  .on { margin: 0; font-size: var(--text-small); }
+  .on a { color: inherit; text-decoration: underline; }
+</style>
+
+<script>
+  import { markAsked, rememberToken, savedSlugs, savedToken } from '../lib/saved-sync';
+
+  /* The sheet: closing it in any way counts as an answer. */
+  const sheet = document.querySelector<HTMLElement>('[data-saved-sheet]');
+  const close = () => { if (sheet) sheet.hidden = true; document.documentElement.style.overflow = ''; };
+  for (const el of Array.from(document.querySelectorAll('[data-saved-close]'))) el.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet && !sheet.hidden) close(); });
+  document.addEventListener('fynda:saved-ask', () => {
+    if (!sheet || savedToken()) return;
+    markAsked();
+    sheet.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+  });
+
+  /* The card: signed up already, so it says so instead of asking. */
+  const card = document.querySelector<HTMLElement>('[data-saved-card]');
+  const showOn = () => {
+    const token = savedToken();
+    if (!card || !token) return;
+    card.querySelector<HTMLElement>('[data-saved-offer]')!.hidden = true;
+    card.querySelector<HTMLElement>('[data-saved-on]')!.hidden = false;
+    card.querySelector<HTMLAnchorElement>('[data-saved-stop]')!.href = `/u?t=${token}`;
+  };
+  showOn();
+
+  for (const form of Array.from(document.querySelectorAll<HTMLFormElement>('[data-saved-form]'))) {
+    let firstTouch = 0;
+    form.addEventListener('input', () => { if (!firstTouch) firstTouch = Date.now(); }, { once: true });
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const said = form.querySelector<HTMLElement>('.said')!;
+      const data = new FormData(form);
+      try {
+        const res = await fetch('/k', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', accept: 'application/json' },
+          body: JSON.stringify({
+            email: String(data.get('email') ?? ''),
+            website: String(data.get('website') ?? ''),
+            consent_text: String(data.get('consent_text') ?? ''),
+            slugs: savedSlugs(),
+            path: location.pathname,
+            elapsed_ms: firstTouch ? Date.now() - firstTouch : null,
+          }),
+        });
+        const answer = await res.json().catch(() => ({})) as { ok?: boolean; token?: string };
+        if (!res.ok || !answer.ok) throw new Error(String(res.status));
+        if (answer.token) rememberToken(answer.token);
+        markAsked();
+        for (const el of Array.from(form.children) as HTMLElement[]) if (el !== said) el.hidden = true;
+        said.textContent = form.dataset.done ?? '';
+        said.hidden = false;
+        setTimeout(showOn, 2500);
+      } catch {
+        said.textContent = form.dataset.failed ?? '';
+        said.hidden = false;
+      }
+    });
+  }
+</script>

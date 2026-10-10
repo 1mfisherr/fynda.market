@@ -335,3 +335,40 @@ export function owedIssue(
   if (subscriber.cadence === 'monthly') return Number(issueDate.slice(8, 10)) <= 7;
   return true;
 }
+
+/**
+ * The reader's own saved markets in this issue (functions/k.ts keeps the list;
+ * design/saved-mail-v1.html). `on`: every date of theirs this weekend, by day —
+ * a Saturday-and-Sunday market under both. `later`: the rest, each with its
+ * next date or none, so the mail can say when it is back.
+ */
+export interface SavedIssue {
+  from: string;
+  to: string;
+  on: DigestRow[];
+  later: { name: string; path: string; next?: string }[];
+}
+
+export function buildSaved(markets: Market[], slugs: string[], options: { locale: Locale; now?: Date }): SavedIssue {
+  const { locale, now = new Date() } = options;
+  const { start, end } = weekendBounds(now);
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const floor = today > start ? today : start;
+  const wanted = new Set(slugs);
+  const mine = markets.filter((m) => wanted.has(m.slug));
+  const rows = datedRows(mine);
+  const on = rows
+    .filter((row) => row.next.date >= floor && row.next.date <= end)
+    .map((row) => toRow(row, locale))
+    .sort(byDateThenTime);
+  const onSlugs = new Set(rows.filter((row) => row.next.date >= floor && row.next.date <= end).map((row) => row.slug));
+  const later = mine
+    .filter((m) => !onSlugs.has(m.slug))
+    .map((m) => {
+      const next = rows.filter((row) => row.slug === m.slug && row.next.date > end && row.next.status !== 'cancelled')
+        .map((row) => row.next.date).sort()[0];
+      return { name: m.name, path: marketPath(locale, m.slug), next };
+    })
+    .sort((a, b) => (a.next ?? '9999').localeCompare(b.next ?? '9999') || a.name.localeCompare(b.name, locale));
+  return { from: start, to: end, on, later };
+}

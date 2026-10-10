@@ -17,6 +17,7 @@
  */
 import Page from '../../layouts/Page.astro';
 import Honeypot from '../../components/Honeypot.astro';
+import SavedAsk from '../../components/SavedAsk.astro';
 import Button from '../../components/Button.astro';
 import Field from '../../components/Field.astro';
 import MarketRow from '../../components/MarketRow.astro';
@@ -110,7 +111,7 @@ const savedCopy = saved && {
   title={copy.title}
   description={copy.description}
   indexable={INDEXED_UTILITY.includes(key)}
-  footerSignup={key !== 'newsletter'}
+  footerSignup={key !== 'newsletter' && key !== 'saved'}
 >
   {form && (
     <>
@@ -219,6 +220,8 @@ const savedCopy = saved && {
         <p class="answer" id="summary" data-none={saved.none} data-copy={JSON.stringify(savedCopy)}>{saved.none}</p>
         <p class="meta">{saved.note}</p>
       </section>
+      {/* Your saved markets, by e-mail — or, signed up, one line saying so. */}
+      <div class="gutter"><SavedAsk locale={locale} variant="card" /></div>
 
       <Section>
         <div id="list" data-market-prefix={marketPrefix(locale)}>
@@ -521,6 +524,7 @@ const savedCopy = saved && {
 
 <script>
   import { SAVED_KEY, adopt } from '../../lib/local-keys';
+  import { rememberToken } from '../../lib/saved-sync';
   /**
    * Saved markets. No accounts, ever (PRODUCT.md §Settled): the list lives in this
    * browser under one localStorage key, which the market page's save button
@@ -533,6 +537,24 @@ const savedCopy = saved && {
    */
   const list = document.getElementById('list');
   const summary = document.getElementById('summary');
+
+  /* Opened from "Your saved markets" in one of our e-mails: this phone takes
+     the list kept with the address, and the token, then shows the page again
+     without it in the address bar. */
+  const incoming = new URLSearchParams(location.search).get('t');
+  if (incoming && /^[0-9a-f-]{36}$/i.test(incoming)) {
+    fetch(`/k?t=${incoming}`, { headers: { accept: 'application/json' } })
+      .then((r) => r.json())
+      .then((answer: { ok?: boolean; slugs?: string[] }) => {
+        if (answer.ok && Array.isArray(answer.slugs)) {
+          const mine = (() => { try { return JSON.parse(localStorage.getItem(SAVED_KEY) ?? '[]') as string[]; } catch { return []; } })();
+          localStorage.setItem(SAVED_KEY, JSON.stringify([...new Set([...mine, ...answer.slugs])]));
+          rememberToken(incoming);
+        }
+      })
+      .catch(() => undefined)
+      .finally(() => location.replace(location.pathname));
+  }
 
   if (list && summary) {
     const KEY = SAVED_KEY;

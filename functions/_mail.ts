@@ -1254,65 +1254,15 @@ const daysHtml = (locale: Locale, lines: DigestLine[], copy: DigestCopy, leadPat
     .join('');
 
 /**
- * The weekly issue, in the subscriber's own language.
- *
- * Built by hand for the same reason the welcome mail is: mail clients throw
- * away stylesheets, ignore web fonts and disagree about everything else. No
- * images at all — most clients block them by default, and a market photograph
- * that does not load is worse than one that was never promised.
+ * The frame every weekly mail sits in — the digest, and the saved-markets mail
+ * that is the digest for someone who asked only for their own markets. Built
+ * once, so the two cannot drift apart in Outlook or in dark mode.
  */
-export function digestMail(locale: Locale, issue: DigestIssue, token: string): Omit<Mail, 'to'> {
-  const base = DIGEST[locale] ?? DIGEST.de;
-  const inCountry = IN_COUNTRY[locale]?.[issue.country ?? 'CH'] ?? '';
-  const copy: DigestCopy = {
-    ...base,
-    elsewhere: base.elsewhere.replace('{country}', inCountry),
-    preheaderScope: base.preheaderScope.replace('{country}', inCountry),
-  };
-  const url = unsubscribeUrl(token);
-  const dates = range(locale, issue.from, issue.to);
-  const scope = issue.scope ?? '';
-  const rest = issue.elsewhere.length;
-
-  const subject = scope ? fill(copy.subjectScope, { scope, dates }) : fill(copy.subject, { dates });
-  const headline = scope ? fill(copy.headlineScope, { scope }) : copy.headline;
-  const count = fill(issue.total === 1 ? copy.countOne : copy.countMany, { total: issue.total });
-
-  const preheader = !scope
-    ? copy.preheaderCountry
-    : issue.own.length === 0
-      ? fill(copy.preheaderNone, { scope, rest })
-      : fill(copy.preheaderScope, { own: issue.own.length, scope, rest });
-
-  /* The lead goes back into whichever list it came out of — the digest says
-     which — so the day it falls on is printed once, by the band above it. */
-  const leadPath = issue.lead?.path;
-  const ownLines = issue.leadInRegion && issue.lead ? [issue.lead, ...issue.own] : issue.own;
-  const elseLines = !issue.leadInRegion && issue.lead ? [issue.lead, ...issue.elsewhere] : issue.elsewhere;
-
-  const nothingRow = `<tr><td class="pad grey rule" style="${PAD}padding-top:12px;padding-bottom:12px;border-top:1px solid ${RULE};font-size:15px;color:${GREY};">${escape(copy.nothingHere)}</td></tr>`;
-
-  let ownBlock = '';
-  let elsewhereBlock = '';
-
-  if (!scope) {
-    // Nowhere in particular, so nothing to divide into sections.
-    elsewhereBlock = daysHtml(locale, elseLines, copy, leadPath);
-  } else {
-    ownBlock =
-      sectionHtml(fill(copy.inScope, { scope })) +
-      (ownLines.length ? daysHtml(locale, ownLines, copy, leadPath) : nothingRow);
-
-    if (elseLines.length) {
-      elsewhereBlock = sectionHtml(copy.elsewhere) + daysHtml(locale, elseLines, copy, leadPath);
-    }
-  }
-
-  const moreLabel = issue.more.scope
-    ? fill(copy.moreScope, { count: issue.more.count, scope: issue.more.scope })
-    : fill(copy.more, { count: issue.more.count });
-
-  const html = `<!doctype html>
+function digestShell({ locale, subject, preheader, headline, sub, blocks, cta, footer }: {
+  locale: Locale; subject: string; preheader: string; headline: string; sub: string;
+  blocks: string; cta?: { href: string; label: string }; footer: string;
+}): string {
+  return `<!doctype html>
 <html lang="${locale}">
 <head>
 <meta charset="utf-8">
@@ -1349,29 +1299,97 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
 
       <tr><td class="pad" style="${PAD}padding-top:22px;">
         <div class="h1 ink" style="font-size:28px;font-weight:800;letter-spacing:-0.025em;line-height:1.14;color:${INK};">${escape(headline)}</div>
-        <div class="grey" style="padding-top:6px;font-size:15px;color:${GREY};">${escape(dates)} · ${escape(count)}</div>
+        <div class="grey" style="padding-top:6px;font-size:15px;color:${GREY};">${escape(sub)}</div>
       </td></tr>
 
-      ${ownBlock}
-      ${elsewhereBlock}
+      ${blocks}
 
-      <tr><td class="pad" style="${PAD}padding-top:28px;">
+      ${cta ? `<tr><td class="pad" style="${PAD}padding-top:28px;">
         <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
           <td class="cta" style="background:${INK};border-radius:999px;">
-            <a href="${SITE}${issue.more.href}" style="display:inline-block;padding:13px 26px;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;">${escape(moreLabel)}</a>
+            <a href="${cta.href}" style="display:inline-block;padding:13px 26px;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;">${escape(cta.label)}</a>
           </td>
         </tr></table>
-      </td></tr>
+      </td></tr>` : ''}
 
       <tr><td class="pad rule grey" style="${PAD}margin-top:30px;padding-top:20px;padding-bottom:32px;border-top:1px solid ${RULE};font-size:13px;line-height:1.5;color:${GREY};">
-        ${escape(copy.why)}<br>
-        <a href="${url}" class="grey" style="color:${GREY};">${escape(copy.unsubscribe)}</a>
+        ${footer}
       </td></tr>
 
     </table>
   </td></tr>
 </table>
 </body></html>`;
+}
+
+/**
+ * The weekly issue, in the subscriber's own language.
+ *
+ * Built by hand for the same reason the welcome mail is: mail clients throw
+ * away stylesheets, ignore web fonts and disagree about everything else. No
+ * images at all — most clients block them by default, and a market photograph
+ * that does not load is worse than one that was never promised.
+ */
+export function digestMail(locale: Locale, issue: DigestIssue, token: string, saved?: SavedIssue): Omit<Mail, 'to'> {
+  const base = DIGEST[locale] ?? DIGEST.de;
+  const inCountry = IN_COUNTRY[locale]?.[issue.country ?? 'CH'] ?? '';
+  const copy: DigestCopy = {
+    ...base,
+    elsewhere: base.elsewhere.replace('{country}', inCountry),
+    preheaderScope: base.preheaderScope.replace('{country}', inCountry),
+  };
+  const url = unsubscribeUrl(token);
+  const dates = range(locale, issue.from, issue.to);
+  const scope = issue.scope ?? '';
+  const rest = issue.elsewhere.length;
+
+  const subject = scope ? fill(copy.subjectScope, { scope, dates }) : fill(copy.subject, { dates });
+  const headline = scope ? fill(copy.headlineScope, { scope }) : copy.headline;
+  const count = fill(issue.total === 1 ? copy.countOne : copy.countMany, { total: issue.total });
+
+  const preheader = !scope
+    ? copy.preheaderCountry
+    : issue.own.length === 0
+      ? fill(copy.preheaderNone, { scope, rest })
+      : fill(copy.preheaderScope, { own: issue.own.length, scope, rest });
+
+  /* The lead goes back into whichever list it came out of — the digest says
+     which — so the day it falls on is printed once, by the band above it. */
+  const leadPath = issue.lead?.path;
+  const ownLines = issue.leadInRegion && issue.lead ? [issue.lead, ...issue.own] : issue.own;
+  const elseLines = !issue.leadInRegion && issue.lead ? [issue.lead, ...issue.elsewhere] : issue.elsewhere;
+
+  const nothingRow = `<tr><td class="pad grey rule" style="${PAD}padding-top:12px;padding-bottom:12px;border-top:1px solid ${RULE};font-size:15px;color:${GREY};">${escape(copy.nothingHere)}</td></tr>`;
+
+  let ownBlock = '';
+  let elsewhereBlock = '';
+  /* Their own saved markets first, when any is on (functions/k.ts). */
+  const savedCopy = SAVED_MAIL[locale] ?? SAVED_MAIL.en;
+  const savedBlock = saved?.on.length ? sectionHtml(savedCopy.heading) + daysHtml(locale, saved.on, copy) : '';
+
+  if (!scope) {
+    // Nowhere in particular, so nothing to divide into sections.
+    elsewhereBlock = daysHtml(locale, elseLines, copy, leadPath);
+  } else {
+    ownBlock =
+      sectionHtml(fill(copy.inScope, { scope })) +
+      (ownLines.length ? daysHtml(locale, ownLines, copy, leadPath) : nothingRow);
+
+    if (elseLines.length) {
+      elsewhereBlock = sectionHtml(copy.elsewhere) + daysHtml(locale, elseLines, copy, leadPath);
+    }
+  }
+
+  const moreLabel = issue.more.scope
+    ? fill(copy.moreScope, { count: issue.more.count, scope: issue.more.scope })
+    : fill(copy.more, { count: issue.more.count });
+
+  const html = digestShell({
+    locale, subject, preheader, headline, sub: `${dates} · ${count}`,
+    blocks: savedBlock + ownBlock + elsewhereBlock,
+    cta: { href: `${SITE}${issue.more.href}`, label: moreLabel },
+    footer: `${escape(copy.why)}<br>${saved ? `<a href="${savedPageUrl(locale, token)}" class="grey" style="color:${GREY};">${escape((SAVED_MAIL[locale] ?? SAVED_MAIL.en).yours)}</a> · ` : ''}<a href="${url}" class="grey" style="color:${GREY};">${escape(copy.unsubscribe)}</a>`,
+  });
 
   /* The plain-text half is not a fallback nobody reads — it is what a screen
      reader and a text-only client get, and what some filters score. Same
@@ -1391,6 +1409,10 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
     }
   };
 
+  if (saved?.on.length) {
+    lines.push(savedCopy.heading.toUpperCase(), '');
+    textDays(saved.on);
+  }
   if (!scope) {
     textDays(elseLines);
   } else {
@@ -1408,6 +1430,7 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
     `${moreLabel}: ${SITE}${issue.more.href}`,
     '',
     copy.why,
+    ...(saved ? [`${savedCopy.yours}: ${savedPageUrl(locale, token)}`] : []),
     `${copy.unsubscribe}: ${url}`
   );
 
@@ -1419,5 +1442,172 @@ export function digestMail(locale: Locale, issue: DigestIssue, token: string): O
       'List-Unsubscribe': `<${url}>`,
       'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
     },
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Your saved markets, by e-mail                                              */
+/* -------------------------------------------------------------------------- */
+
+/** The Saved page's path word, copied from src/lib/i18n.ts UTILITY.saved (a Function may not import it). */
+const SAVED_WORD: Record<Locale, string> = { de: 'gemerkt', fr: 'favoris', it: 'salvati', en: 'saved' };
+/** The Saved page with this subscriber's token: it brings their list to whatever phone opens it. */
+export const savedPageUrl = (locale: Locale, token: string) => `${SITE}/${locale}/${SAVED_WORD[locale] ?? 'saved'}/?t=${token}`;
+
+/** What src/lib/digest.ts buildSaved returns, mirrored by hand like DigestIssue. */
+export interface SavedIssue {
+  from: string;
+  to: string;
+  on: DigestLine[];
+  later: { name: string; path: string; next?: string }[];
+}
+
+interface SavedMailCopy {
+  subjectOne: string;   // {name}
+  subjectMany: string;  // {n}
+  introOne: string;
+  introMany: string;    // {n}
+  heading: string;      // the section in a digest
+  notOn: string;
+  undated: string;
+  next: string;         // {date}
+  yours: string;
+  stop: string;
+  welcomeSubject: string;
+  welcome: string[];
+}
+
+const SAVED_MAIL: Record<Locale, SavedMailCopy> = {
+  de: {
+    subjectOne: 'Dieses Wochenende: {name} findet statt',
+    subjectMany: 'Dieses Wochenende: {n} deiner Märkte finden statt',
+    introOne: 'Einer der Märkte, die du dir gemerkt hast, findet dieses Wochenende statt.',
+    introMany: '{n} der Märkte, die du dir gemerkt hast, finden dieses Wochenende statt.',
+    heading: 'Deine Märkte dieses Wochenende',
+    notOn: 'Nicht dieses Wochenende',
+    undated: 'Noch kein Termin. Wir schreiben dir, sobald es einen gibt.',
+    next: 'Nächster Termin: {date}',
+    yours: 'Deine gemerkten Märkte',
+    stop: 'Keine E-Mails mehr',
+    welcomeSubject: 'Deine gemerkten Märkte per E-Mail',
+    welcome: [
+      'Du hörst an einem Freitagmorgen von uns, wenn einer der Märkte, die du dir gemerkt hast, an diesem Wochenende stattfindet – und sonst nicht.',
+      'Merkst du dir auf diesem Handy weitere, kommen sie dazu. Auf einem anderen öffnest du unten in unseren E-Mails „Deine gemerkten Märkte“.',
+    ],
+  },
+  fr: {
+    subjectOne: 'Ce week-end : {name} a lieu',
+    subjectMany: 'Ce week-end : {n} de vos marchés ont lieu',
+    introOne: 'Un des marchés que vous avez enregistrés a lieu ce week-end.',
+    introMany: '{n} des marchés que vous avez enregistrés ont lieu ce week-end.',
+    heading: 'Vos marchés ce week-end',
+    notOn: 'Pas ce week-end',
+    undated: "Pas encore de date. Nous vous écrirons dès qu'il y en a une.",
+    next: 'Prochaine date : {date}',
+    yours: 'Vos marchés enregistrés',
+    stop: 'Ne plus recevoir ces e-mails',
+    welcomeSubject: 'Vos marchés enregistrés, par e-mail',
+    welcome: [
+      "Vous recevrez un e-mail le vendredi matin quand l'un des marchés que vous avez enregistrés a lieu ce week-end-là, et rien sinon.",
+      'Ceux que vous enregistrez ensuite sur ce téléphone s\'ajoutent. Sur un autre, ouvrez « Vos marchés enregistrés » au bas de nos e-mails.',
+    ],
+  },
+  it: {
+    subjectOne: 'Questo fine settimana: c\'è {name}',
+    subjectMany: 'Questo fine settimana: {n} dei tuoi mercatini',
+    introOne: 'Uno dei mercatini che hai salvato si tiene questo fine settimana.',
+    introMany: '{n} dei mercatini che hai salvato si tengono questo fine settimana.',
+    heading: 'I tuoi mercatini questo fine settimana',
+    notOn: 'Non questo fine settimana',
+    undated: "Ancora nessuna data. Ti scriviamo appena ce n'è una.",
+    next: 'Prossima data: {date}',
+    yours: 'I tuoi mercatini salvati',
+    stop: 'Non ricevere più queste e-mail',
+    welcomeSubject: 'I tuoi mercatini salvati, per e-mail',
+    welcome: [
+      'Ti scriviamo il venerdì mattina quando uno dei mercatini che hai salvato si tiene quel fine settimana, e solo allora.',
+      'Quelli che salvi dopo su questo telefono si aggiungono. Su un altro, apri «I tuoi mercatini salvati» in fondo alle nostre e-mail.',
+    ],
+  },
+  en: {
+    subjectOne: 'This weekend: {name} is on',
+    subjectMany: 'This weekend: {n} of your markets are on',
+    introOne: 'One of the markets you saved is on this weekend.',
+    introMany: '{n} of the markets you saved are on this weekend.',
+    heading: 'Your markets this weekend',
+    notOn: 'Not this weekend',
+    undated: "No date yet. We'll write the day it has one.",
+    next: 'Next: {date}',
+    yours: 'Your saved markets',
+    stop: 'Stop these e-mails',
+    welcomeSubject: 'Your saved markets, by e-mail',
+    welcome: [
+      "You'll hear from us on a Friday morning when one of the markets you saved is on that weekend, and not when none is.",
+      'Save more on this phone and they join in. On another one, open “Your saved markets” at the bottom of our e-mails.',
+    ],
+  },
+};
+
+/**
+ * The digest for someone who asked only for their saved markets
+ * (design/saved-mail-v1.html): which are on, by day, and one line each for
+ * the rest. Sent only when `on` holds something — the sender checks.
+ */
+export function savedMail(locale: Locale, saved: SavedIssue, token: string): Omit<Mail, 'to'> {
+  const c = SAVED_MAIL[locale] ?? SAVED_MAIL.en;
+  const base = DIGEST[locale] ?? DIGEST.de;
+  const url = unsubscribeUrl(token);
+  const markets = new Set(saved.on.map((line) => line.path)).size;
+  const subject = markets === 1 ? fill(c.subjectOne, { name: saved.on[0].name }) : fill(c.subjectMany, { n: markets });
+  const intro = markets === 1 ? c.introOne : fill(c.introMany, { n: markets });
+  const dates = range(locale, saved.from, saved.to);
+  const laterLine = (m: SavedIssue['later'][number]) => (m.next ? fill(c.next, { date: day(locale, m.next) }) : c.undated);
+
+  const laterBlock = saved.later.length
+    ? sectionHtml(c.notOn) + saved.later.map((m) => `
+  <tr><td class="pad rule" style="${PAD}padding-top:12px;padding-bottom:12px;border-top:1px solid ${RULE};">
+    <a href="${SITE}${m.path}" class="ink" style="color:${INK};text-decoration:none;font-size:16px;font-weight:700;">${escape(m.name)}</a>
+    <div class="grey" style="padding-top:3px;font-size:14px;color:${GREY};">${escape(laterLine(m))}</div>
+  </td></tr>`).join('')
+    : '';
+
+  const html = digestShell({
+    locale, subject, preheader: intro, headline: subject.replace(/^[^:]+:\s*/, ''), sub: dates,
+    blocks: daysHtml(locale, saved.on, base) + laterBlock,
+    footer: `<a href="${savedPageUrl(locale, token)}" class="grey" style="color:${GREY};">${escape(c.yours)}</a> · <a href="${url}" class="grey" style="color:${GREY};">${escape(c.stop)}</a>`,
+  });
+
+  const lines = ['fynda.market', '', intro, dates, ''];
+  for (const [date, group] of byDay(saved.on)) {
+    lines.push(day(locale, date).toUpperCase(), '');
+    for (const row of group) {
+      lines.push(row.cancelled ? `${row.name} — ${base.cancelled}` : row.name, `  ${[clock(row), row.town].filter(Boolean).join(' · ')}`, `  ${SITE}${row.path}`, '');
+    }
+  }
+  if (saved.later.length) {
+    lines.push(c.notOn.toUpperCase(), '');
+    for (const m of saved.later) lines.push(m.name, `  ${laterLine(m)}`, '');
+  }
+  lines.push(`${c.yours}: ${savedPageUrl(locale, token)}`, `${c.stop}: ${url}`);
+
+  return {
+    subject, html, text: lines.join('\n'),
+    headers: { 'List-Unsubscribe': `<${url}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
+  };
+}
+
+/** Sent once, on signing up: what they will get, and how to stop it. */
+export function savedWelcomeMail(locale: Locale, token: string, _count: number): Omit<Mail, 'to'> {
+  const c = SAVED_MAIL[locale] ?? SAVED_MAIL.en;
+  const url = unsubscribeUrl(token);
+  const footer = `
+  <p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:13px;color:#6b6b70;">
+    <a href="${savedPageUrl(locale, token)}" style="color:#6b6b70;">${escape(c.yours)}</a> · <a href="${url}" style="color:#6b6b70;">${escape(c.stop)}</a>
+  </p>`;
+  return {
+    subject: c.welcomeSubject,
+    html: column(locale, c.welcome, footer),
+    text: `fynda.market\n\n${c.welcome.join('\n\n')}\n\n${c.yours}: ${savedPageUrl(locale, token)}\n${c.stop}: ${url}\n`,
+    headers: { 'List-Unsubscribe': `<${url}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
   };
 }

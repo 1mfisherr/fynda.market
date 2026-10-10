@@ -32,8 +32,8 @@
 
 import { query, withClient, DB_URL, secret } from './db.mjs';
 import { getMarkets } from '../src/lib/markets.ts';
-import { buildDigest, isEmpty, owedIssue } from '../src/lib/digest.ts';
-import { digestMail, sendBatch } from '../functions/_mail.ts';
+import { buildDigest, buildSaved, isEmpty, owedIssue } from '../src/lib/digest.ts';
+import { digestMail, savedMail, sendBatch } from '../functions/_mail.ts';
 
 /* Resend's own ceiling. Also the unit of rollback: a batch either goes or it
    does not, and the rows for it are taken back together. */
@@ -80,7 +80,7 @@ if (send && !RESEND_API_KEY) {
  * never selected — that is the suppression record the privacy policy promises.
  */
 const candidates = await query(
-  `select s.id, s.email, s.locale, s.unsubscribe_token, s.radius_km,
+  `select s.id, s.email, s.locale, s.unsubscribe_token, s.radius_km, s.area_digest,
           s.cadence, s.paused_until::text as paused_until,
           sl.slug as region,
           ct.value as city_name,
@@ -117,6 +117,14 @@ const subscribers = candidates.filter((s) =>
 );
 const wanted = limit ? subscribers.slice(0, limit) : subscribers;
 
+/* Each subscriber's saved markets (functions/k.ts), as slugs. */
+const savedRows = await query(
+  `select sm.subscriber_id, m.slug from saved_markets sm join markets m on m.id = sm.market_id where sm.subscriber_id = any($1::uuid[])`,
+  [wanted.map((s) => s.id)]
+);
+const savedBy = new Map();
+for (const r of savedRows) savedBy.set(r.subscriber_id, [...(savedBy.get(r.subscriber_id) ?? []), r.slug]);
+
 if (wanted.length === 0) {
   say(`\n  Nobody to write to for the issue of ${issueDate}.`);
   say('  Either the list is empty, or everyone on it already has this one.\n');
@@ -149,6 +157,22 @@ for (const subscriber of wanted) {
       }
     : null;
 
+  /* Their saved markets first (design/saved-mail-v1.html). Someone who asked
+     only for those gets nothing on a weekend when none of them is on. */
+  const slugs = savedBy.get(subscriber.id) ?? [];
+  const saved = slugs.length ? buildSaved(marketsByLocale[subscriber.locale], slugs, { locale: subscriber.locale, now }) : null;
+  const savedOn = saved?.on.length ?? 0;
+
+  if (!subscriber.area_digest) {
+    if (!savedOn) { empty += 1; continue; }
+    issues.push({
+      subscriber,
+      markets: savedOn,
+      mail: { to: subscriber.email, ...savedMail(subscriber.locale, saved, subscriber.unsubscribe_token) },
+    });
+    continue;
+  }
+
   const digest = buildDigest(marketsByLocale[subscriber.locale], {
     region: subscriber.region,
     near,
@@ -156,12 +180,16 @@ for (const subscriber of wanted) {
     now,
   });
 
-  if (isEmpty(digest)) { empty += 1; continue; }
+  if (isEmpty(digest)) {
+    if (!savedOn) { empty += 1; continue; }
+    issues.push({ subscriber, markets: savedOn, mail: { to: subscriber.email, ...savedMail(subscriber.locale, saved, subscriber.unsubscribe_token) } });
+    continue;
+  }
 
   issues.push({
     subscriber,
-    markets: digest.own.length + digest.elsewhere.length,
-    mail: { to: subscriber.email, ...digestMail(subscriber.locale, digest, subscriber.unsubscribe_token) },
+    markets: digest.own.length + digest.elsewhere.length + savedOn,
+    mail: { to: subscriber.email, ...digestMail(subscriber.locale, digest, subscriber.unsubscribe_token, saved ?? undefined) },
   });
 }
 

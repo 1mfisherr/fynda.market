@@ -100,6 +100,8 @@ It starts from the URL (`?lat&lng`, `?town=`, `?denied=`), then from the town th
 
 Copy in `src/lib/utility-copy.ts`, legal in `src/lib/legal/`. `noindex`, own content floor of 150.
 
+**Saved** (`/{locale}/saved/`, 2026-10-10, `design/saved-mail-v1.html`): above the list, *Your markets, by e-mail* — an address, and before a weekend when one of the saved markets is on, one mail saying which, when and where; nothing when none is. Signed up, the card is one line with *Stop*. The same offer rises as a sheet on a market page after the first save in a browser — once, answered or not, never on arrival (`components/SavedAsk.astro`). No footer signup on this page: one Friday offer per page. Opened from the mail's *Your saved markets* link (`?t=`), a phone takes the list kept with the address.
+
 ## Organiser page — `/a/{token}/edit`
 
 A Cloudflare Function, not a static page (`functions/a/[[path]].ts`, copy in `functions/_organiser-copy.ts`); in the organiser's own language; `noindex`. Built 2026-09-21 from the content and copy below, Delfim's words: **"the more organisers use it the better the product — this should be our north star."** One 720px column on every width; controls as `BRAND.md` §Controls.

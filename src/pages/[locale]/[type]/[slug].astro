@@ -12,6 +12,7 @@
 import Page from '../../../layouts/Page.astro';
 import Button from '../../../components/Button.astro';
 import CtaCard from '../../../components/CtaCard.astro';
+import SavedAsk from '../../../components/SavedAsk.astro';
 import SubscribeForm from '../../../components/SubscribeForm.astro';
 import Icon from '../../../components/Icon.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
@@ -764,6 +765,8 @@ const description = next
           for reading lists, and there is no list on the page of one market. */}
   </div>
 </div>
+  {/* After the first save in this browser: your saved markets, by e-mail. Opened by the save script below. */}
+  <SavedAsk locale={locale} variant="sheet" />
 </Page>
 
 <style>
@@ -1105,6 +1108,7 @@ const description = next
 
 <script>
   import { SAVED_KEY, adopt } from '../../../lib/local-keys';
+  import { savedToken, syncSaved, wasAsked } from '../../../lib/saved-sync';
   import { WINDOW_MIN, clockState, clockWords, formatSpan, instantsOf } from '../../../lib/clock';
   import { DISTANCE_MAX_KM, distanceKm, kmLabel, type PickedTown } from '../../../lib/geo';
   import { TOWN_KEY } from '../../../lib/local-keys';
@@ -1227,6 +1231,12 @@ const description = next
       const next = saved.includes(slug) ? saved.filter((s) => s !== slug) : [...saved, slug];
       try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* private mode */ }
       paint(next.includes(slug));
+      // Signed up for their saved markets by e-mail: the server's list follows.
+      syncSaved(next);
+      // The first save in this browser offers the e-mail, once (components/SavedAsk.astro).
+      if (next.includes(slug) && !savedToken() && !wasAsked()) {
+        setTimeout(() => document.dispatchEvent(new CustomEvent('fynda:saved-ask')), 450);
+      }
 
       if (next.includes(slug)) {
         // Off, reflow, on — an animation does not restart while its attribute

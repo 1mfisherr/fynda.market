@@ -72,7 +72,9 @@ export async function subscribe(
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return false;
 
   const { consent_text, where, ...rest } = sub;
-  const row: Record<string, unknown> = { ...rest, unsubscribed_at: null };
+  // A newsletter signup always wants the area block — even an address that
+  // until now asked only for its saved markets (functions/k.ts).
+  const row: Record<string, unknown> = { ...rest, unsubscribed_at: null, area_digest: true };
   if (consent_text) row.consent_text = consent_text;
 
   const res = await fetch(
