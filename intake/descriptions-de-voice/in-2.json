@@ -1,0 +1,680 @@
+[
+ {
+  "slug": "flohmarkt-kloten",
+  "name": "Klotener Flohmarkt",
+  "description_en": "The town of Kloten runs this market itself, once a year on the Stadtplatz. From 10 to 2 there's a children's flea market alongside, run by the Vereinigung Freizeit Kloten, where kids sell their own things. Cars can't get onto the square; there are paid car parks nearby.",
+  "description_de": "Die Stadt Kloten führt diesen Markt selbst durch, einmal im Jahr auf dem Stadtplatz. Von 10 bis 14 Uhr läuft daneben ein Kinderflohmarkt der Vereinigung Freizeit Kloten, an dem Kinder ihre eigenen Sachen verkaufen. Autos kommen nicht auf den Platz; in der Nähe gibt es kostenpflichtige Parkplätze."
+ },
+ {
+  "slug": "flohmarkt-koelner-altstadt-koeln",
+  "name": "Flohmarkt Kölner Altstadt",
+  "description_en": "On selected weekends from spring to autumn along the Rhine promenade in the old town. Over 150 dealers and private sellers from Germany and neighbouring countries; antiques and second-hand only, new goods are banned. The market has run for over 50 years.",
+  "description_de": "An einzelnen Wochenenden vom Frühjahr bis in den Herbst auf der Rheinpromenade in der Altstadt. Über 150 Händler und private Verkäufer aus Deutschland und den Nachbarländern; nur Antiquitäten und Gebrauchtes, Neuware ist verboten. Der Markt läuft seit über 50 Jahren."
+ },
+ {
+  "slug": "flohmarkt-lenzburg-metzgplatz",
+  "name": "Flohmarkt Lenzburg Metzgplatz",
+  "description_en": "An open-air flea market on the Metzgplatz in Lenzburg, three times a year: books, clothes, decorative items and toys from local sellers.",
+  "description_de": "Flohmarkt unter freiem Himmel auf dem Metzgplatz in Lenzburg, dreimal im Jahr: Bücher, Kleider, Dekoration und Spielsachen von Verkäuferinnen und Verkäufern aus der Gegend."
+ },
+ {
+  "slug": "flohmarkt-liestal",
+  "name": "Flohmärt Liestal",
+  "description_en": "Twice a year the Flohmärt fills Liestal's old town: Zeughausplatz, Rosengasse and Kanonengasse, on a Saturday in April and one in September, 8 am to 3 pm, around 100 stands. Organised by the IG Flohmarkt association on behalf of the town; goods go on tables, not on the ground. Five minutes on foot from Liestal station.",
+  "description_de": "Der Flohmärt Liestal füllt zweimal im Jahr das Stedtli: Zeughausplatz, Rosengasse und Kanonengasse, an einem Samstag im April und einem im September, 8 bis 15 Uhr, rund 100 Stände. Organisiert vom Verein IG Flohmarkt im Auftrag der Stadt; die Ware liegt auf Tischen, nicht am Boden. Vom Bahnhof Liestal sind es fünf Minuten zu Fuss."
+ },
+ {
+  "slug": "flohmarkt-mall-of-switzerland-ebikon",
+  "name": "Flohmarkt Mall of Switzerland Ebikon",
+  "description_en": "A flea market on the Ebisquare at the Mall of Switzerland in Ebikon: clear out the cellar and attic and give old things a second life — or walk the stalls and find what you've been looking for. Free entry.",
+  "description_de": "Flohmarkt auf dem Ebisquare der Mall of Switzerland in Ebikon: Keller und Estrich räumen und alten Sachen eine zweite Chance geben – oder durch die Stände gehen und finden, was man schon lange sucht. Eintritt frei."
+ },
+ {
+  "slug": "flohmarkt-malters",
+  "name": "Flohmarkt Malters",
+  "description_en": "The Malters flea market is the parents' group's autumn flea market in the Gemeindesaal on Bahnhofstrasse – indoors, on two floors, with a free blanket market for children upstairs. Used goods and handmade things; no dogs. The hall is right by Malters station.",
+  "description_de": "Der Flohmarkt Malters ist der Herbstflohmarkt der Elterngruppe im Gemeindesaal an der Bahnhofstrasse – drinnen, auf zwei Etagen, mit einem gratis Decken-Flohmarkt für Kinder im Obergeschoss. Gebrauchtes und Selbstgemachtes, Hunde bleiben draussen. Der Saal liegt gleich beim Bahnhof Malters."
+ },
+ {
+  "slug": "flohmarkt-markt-und-eventhalle-wismar",
+  "name": "Flohmarkt in der Markt- und Eventhalle",
+  "description_en": "On single weekends, usually across two days, in the Markt- und Eventhalle at the old harbour — 1,200 square metres of hall floor, with the outdoor area next door used in summer. It runs whatever the weather, all year. Step-free, five minutes from the station, at least 500 parking spaces.",
+  "description_de": "An einzelnen Wochenenden, meist zwei Tage lang, in der Markt- und Eventhalle am Alten Hafen — 1.200 Quadratmeter Hallenfläche, im Sommer dazu das Freigelände nebenan. Findet bei jedem Wetter statt, das ganze Jahr. Barrierefrei, fünf Minuten vom Bahnhof, mindestens 500 Parkplätze."
+ },
+ {
+  "slug": "flohmarkt-marktplatz-amriswil",
+  "name": "Flohmarkt Marktplatz Amriswil",
+  "description_en": "Amriswil's Marktplatz hosts this flea market, which Toni Pfeffer runs.",
+  "description_de": "Auf dem Amriswiler Marktplatz organisiert Toni Pfeffer diesen Flohmarkt."
+ },
+ {
+  "slug": "flohmarkt-minigolf-lido-luzern",
+  "name": "Flohmarkt Minigolf Lido Luzern",
+  "description_en": "A flea market at the Minigolf Lido in Lucerne, right on the lake. Secondhand finds with a lake view, once a month. Stall registration at mail@minigolf-lido.ch.",
+  "description_de": "Flohmarkt im Minigolf Lido Luzern, direkt am See. Secondhand-Fundstücke mit Seeblick, einmal im Monat. Standanmeldung unter mail@minigolf-lido.ch."
+ },
+ {
+  "slug": "flohmarkt-mosergarten-schaffhausen",
+  "name": "Flohmarkt Mosergarten",
+  "description_en": "Only steady rain or a storm calls it off; a grey sky doesn’t. Sellers don’t book ahead, they just turn up early and set out in the Mosergarten.",
+  "description_de": "Abgesagt wird nur bei Dauerregen oder Sturm, ein grauer Himmel reicht dafür nicht. Die Verkäuferinnen und Verkäufer melden sich nicht an, sie kommen einfach früh am Morgen in den Mosergarten."
+ },
+ {
+  "slug": "flohmarkt-muensterplatz-bern",
+  "name": "Flohmarkt Münsterplatz",
+  "description_en": "A small flea market right in front of Bern Minster, on the third Saturday of every month from May to October. Browsing on the Münsterplattform with a view over the Aare.",
+  "description_de": "Direkt vor dem Berner Münster findet jeden dritten Samstag im Monat von Mai bis Oktober ein kleiner Flohmarkt statt. Stöbern auf der Münsterplattform mit Blick über die Aare."
+ },
+ {
+  "slug": "flohmarkt-nippes-koeln",
+  "name": "Flohmarkt Nippes",
+  "description_en": "A junk and collectors' market held several times a year on Wilhelmplatz in the middle of Nippes. More than 150 traders sell antiques and second-hand goods; new goods are not allowed. Tram lines 12 and 15 stop at Florastraße.",
+  "description_de": "Ein Trödel- und Sammlermarkt, der mehrmals im Jahr auf dem Wilhelmplatz mitten in Nippes stattfindet. Mehr als 150 Händler bieten Antiquitäten und Gebrauchtes an; Neuware ist nicht erlaubt. Die Straßenbahnlinien 12 und 15 halten an der Florastraße."
+ },
+ {
+  "slug": "flohmarkt-obere-muehle-duebendorf",
+  "name": "Flohmarkt Obere Mühle Dübendorf",
+  "description_en": "The stalls stand on the gravel square of the Obere Mühle cultural centre, under the trees beside the Glatt. Clothes, furnishings, toys, books, CDs and electronics are what turns up. The KulturBar opens before the first stall does, and there’s food from the grill around lunchtime.",
+  "description_de": "Die Stände stehen auf dem Kiesplatz des Kulturzentrums Obere Mühle, unter den Bäumen an der Glatt. Was auftaucht: Kleider, Einrichtung, Spielsachen, Bücher, CDs und Elektronik. Die KulturBar öffnet, bevor der erste Stand verkauft, und über Mittag gibt es Grilladen."
+ },
+ {
+  "slug": "flohmarkt-oetwil-am-see",
+  "name": "Flohmi Oetwil am See",
+  "description_en": "Verein Märtlüüt runs the market and its own food stand, which is why sellers aren’t allowed to sell food. Nothing new goes on the tables; the club asks for things that are useful, appealing, unusual, antique or modern. Park at the Gemeindehaus car park, not at the Volg: fines there run up to 200 francs.",
+  "description_de": "Der Verein Märtlüüt führt den Markt und gleich auch den Verpflegungsstand – darum dürfen die Verkäufer keine Esswaren anbieten. Neues kommt nicht auf die Tische; gewünscht ist, was brauchbar, ansprechend, ausgefallen, antik oder modern ist. Parkiere beim Gemeindehaus, nicht beim Volg: Dort gibt es Bussen bis 200 Franken."
+ },
+ {
+  "slug": "flohmarkt-olympiapark-muenchen",
+  "name": "Flohmarkt im Olympiapark",
+  "description_en": "Fridays and Saturdays from 7 to 3.30 on the Olympiapark's Parkharfe, from parking block 5. Sellers just turn up; a table costs 12 to 15 euros. No market on public holidays or when a big event takes over the park. Run by the Bavarian Red Cross, Munich district.",
+  "description_de": "Freitags und samstags von 7 bis 15.30 Uhr auf der Parkharfe des Olympiaparks, ab Parkblock 5. Wer verkaufen will, kommt einfach hin, ein Tisch kostet 12 bis 15 Euro. An Feiertagen und bei großen Veranstaltungen im Park fällt der Markt aus. Veranstalter ist das Bayerische Rote Kreuz, Kreisverband München."
+ },
+ {
+  "slug": "flohmarkt-papieriplatz-cham",
+  "name": "Flohmarkt auf dem Papieriplatz",
+  "description_en": "The flea market on the Papieriplatz takes place twice a year in front of the Langhuus, the cultural centre on the old paper-mill site in Cham: Sundays 10 am to 3 pm, private sellers on pitches of around nine square metres, the Langhuus bar open with drinks, cake and a simple lunch. Ten minutes on foot from Cham station.",
+  "description_de": "Der Flohmarkt auf dem Papieriplatz findet zweimal im Jahr vor dem Langhuus statt, der Kulturfabrik auf dem alten Papieri-Areal in Cham: sonntags von 10 bis 15 Uhr, Private auf Plätzen von rund neun Quadratmetern, die Bar des Langhuus ist offen mit Getränken, Kuchen und einem einfachen Mittagessen. Vom Bahnhof Cham sind es zehn Minuten zu Fuss."
+ },
+ {
+  "slug": "flohmarkt-paulusheim-luzern",
+  "name": "Flohmarkt Paulusheim (Kinderartikelboerse)",
+  "description_en": "A flea market for children's clothes, toys and baby and children's items at the Paulusheim in Lucerne, twice a year in spring and autumn. Tables can be reserved by email a month ahead. Free entry for visitors.",
+  "description_de": "Flohmarkt für Kinderkleider, Spielsachen sowie Baby- und Kinderartikel im Paulusheim in Luzern, zweimal im Jahr – im Frühling und im Herbst. Tische können einen Monat im Voraus per Mail reserviert werden. Eintritt für Besucher kostenlos."
+ },
+ {
+  "slug": "flohmarkt-petersplatz-basel",
+  "name": "Flohmarkt Petersplatz",
+  "description_en": "A weekly flea market beside Peterskirche and the university, every Saturday. Around 300 sellers spread across the square, from quality antiques and vintage décor at one end to children's clothes and cheap household goods at the other. The crowd is as broad — collectors, students, tourists, regulars and resellers — and haggling is expected. It runs in all weathers except on public holidays and in Herbstmesse week.",
+  "description_de": "Wöchentlicher Flohmarkt jeden Samstag auf dem Petersplatz, mitten in der Altstadt von Grossbasel. Seit Jahrzehnten stöbern hier Sammler und Neugierige nach Möbeln, Büchern, Kleidern, Schmuck und Kuriositäten. Der Markt ist kostenlos zugänglich und wird vom Kanton Basel-Stadt organisiert. An gesetzlichen Feiertagen und während der Herbstmesse findet kein Markt statt."
+ },
+ {
+  "slug": "flohmarkt-presswerk-arbon",
+  "name": "Flohmarkt im Presswerk Arbon",
+  "description_en": "The Presswerk cultural centre in Arbon hosts an indoor flea market several times a year, in the event hall of the old industrial building. Paid parking around the Presswerk; ten minutes on foot from Arbon station.",
+  "description_de": "Im Kulturzentrum Presswerk in Arbon findet mehrmals im Jahr ein Hallen-Flohmarkt statt – drinnen, in der Eventhalle des alten Industriebaus. Rund ums Presswerk gibt es gebührenpflichtige Parkplätze; vom Bahnhof Arbon sind es zehn Minuten zu Fuss."
+ },
+ {
+  "slug": "flohmarkt-rathausplatz-wettingen",
+  "name": "Flohmarkt Rathausplatz Wettingen",
+  "description_en": "A flea market on the Rathausplatz in Wettingen, monthly from March to November: household goods, toys, clothes and books from local sellers. Family-oriented and local.",
+  "description_de": "Flohmarkt auf dem Rathausplatz in Wettingen, monatlich von März bis November: Haushaltswaren, Spielsachen, Kleider und Bücher von Verkäuferinnen und Verkäufern aus der Gemeinde. Familiär und lokal."
+ },
+ {
+  "slug": "flohmarkt-rheinaue-bonn",
+  "name": "Flohmarkt Rheinaue",
+  "description_en": "One Saturday a month from April to October, 8 to 6, in the Rheinaue park. Second-hand and handicrafts only, no new goods; cars stay outside, hand trucks are fine. Entry is free; buses 610, 611 and 631, trams 66 and 68, parking at the Posttower and on Ludwig-Erhard-Allee.",
+  "description_de": "Ein Samstag im Monat von April bis Oktober, 8 bis 18 Uhr, im Rheinauenpark. Nur Gebrauchtes und Kunsthandwerk, keine Neuware; Autos bleiben draußen, Sackkarren sind erlaubt. Eintritt frei; Bus 610, 611, 631 und Tram 66/68, Parkplätze am Posttower und an der Ludwig-Erhard-Allee."
+ },
+ {
+  "slug": "flohmarkt-rheinenergiestadion-koeln",
+  "name": "Flohmarkt am RheinEnergieStadion",
+  "description_en": "A flea and antiques market on the forecourt at the back of the RheinEnergieStadion, opposite the Jahnwiese, held several times a year. Antiques and second-hand goods only, no new stock, with pitches both indoors and outdoors. Parking at the Jahnwiese and on P7 is free, and tram 1 stops at the stadium.",
+  "description_de": "Ein Floh- und Antikmarkt auf dem Vorplatz an der Rückseite des RheinEnergieStadions, gegenüber der Jahnwiese, mehrmals im Jahr. Angeboten werden Antiquitäten und Trödel, Neuware ist verboten; Stände gibt es drinnen und draußen. Parken ist an der Jahnwiese und auf P7 kostenlos, die Linie 1 hält am Stadion."
+ },
+ {
+  "slug": "flohmarkt-riehler-guertel-koeln",
+  "name": "Flohmarkt Riehler Gürtel",
+  "description_en": "A book, collectors' and junk market held several times a year on the Riehler Gürtel, by the side entrance of the zoo. Over 150 exhibitors set up between the trees of an avenue with books, rarities and second-hand goods; new goods are banned. Trams 16 and 18 and bus 140 stop nearby.",
+  "description_de": "Ein Bücher-, Sammler- und Trödelmarkt, der mehrmals im Jahr auf dem Riehler Gürtel am Seiteneingang des Zoos stattfindet. Über 150 Aussteller stehen zwischen den Bäumen einer Allee und verkaufen Bücher, Raritäten und Gebrauchtes; Neuware ist verboten. Erreichbar mit den Linien 16 und 18 sowie dem Bus 140."
+ },
+ {
+  "slug": "flohmarkt-riem-muenchen",
+  "name": "Flohmarkt München-Riem",
+  "description_en": "Selected Saturdays from April to November on the open-air grounds of Messe München, 75,000 square metres of selling space. April to October 6 to 3, November 7 to 2. Entry is free, parking 3 euros; U2 Messestadt Ost, entrance opposite the Messeturm. Since 1993.",
+  "description_de": "An ausgewählten Samstagen von April bis November auf dem Freigelände der Messe München, 75.000 Quadratmeter Verkaufsfläche. Von April bis Oktober 6 bis 15 Uhr, im November 7 bis 14 Uhr. Eintritt frei, Parken 3 Euro; U2 Messestadt Ost, Eingang gegenüber dem Messeturm. Seit 1993."
+ },
+ {
+  "slug": "flohmarkt-rudolf-steiner-schule-basel",
+  "name": "Flohmarkt Rudolf Steiner Schule Basel",
+  "description_en": "The annual flea market at Rudolf Steiner Schule Basel takes place over a full weekend in April at the school grounds on Jakobsbergerholzweg. A classic school flea market with a loyal local following - two days of browsing clothing, books, toys, and household finds in a relaxed neighbourhood setting in Basel's Bruderholz district.",
+  "description_de": "Der jährliche Flohmarkt der Rudolf Steiner Schule Basel findet an einem ganzen Aprilwochenende auf dem Schulgelaende am Jakobsbergerholzweg statt. Ein klassischer Schulflohmarkt mit treuer lokaler Stammkundschaft - zwei Tage Stöbern durch Kleidung, Bücher, Spielsachen und Haushaltswaren in entspannter Quartieratmosphäre im Basler Bruderholz."
+ },
+ {
+  "slug": "flohmarkt-ruemlang",
+  "name": "Rümlanger Flohmarkt",
+  "description_en": "Floh’s Bistro does savoury and sweet snacks for when you need a break from the stalls.",
+  "description_de": "Für die Pause zwischen den Ständen gibt es Floh’s Bistro mit salzigen und süssen Snacks."
+ },
+ {
+  "slug": "flohmarkt-rueticenter-pratteln",
+  "name": "Flohmarkt Rueticenter Pratteln",
+  "description_en": "The organisers still call it “Dr Flohmi ufm Dach”, the flea market on the roof. It started small about thirty years ago and now spreads over three floors of the Rüticenter car park, all under cover, with no cars at the stalls. Food comes from CC Prodega on the ground floor, next to the lifts: croissants, cake, sandwiches, chicken hot dogs, cervelat and bratwurst. Bus 83 runs from Pratteln station to the Pratteln Rankacker stop, and there’s free parking close by on the Rütiweg.",
+  "description_de": "Die Organisatoren nennen ihn noch immer «Dr Flohmi ufm Dach». Vor rund dreissig Jahren klein angefangen, verteilt er sich heute auf drei Stockwerke des Rüticenter-Parkhauses, alles gedeckt und ohne Autos bei den Ständen. Verpflegung gibt es von CC Prodega im Erdgeschoss neben den Liften: Gipfeli, Kuchen, Sandwiches, Poulet-Hotdogs, Cervelat und Bratwurst. Ab Bahnhof Pratteln fährt der Bus 83 bis Pratteln Rankacker, und gleich in der Nähe am Rütiweg parkierst du gratis."
+ },
+ {
+  "slug": "flohmarkt-sarnen-center",
+  "name": "Flohmarkt Sarnen-Center",
+  "description_en": "The flea market at the Sarnen-Center takes place on the site between Coop and Migros on Nelkenstrasse – according to the organiser on the second Saturday of the month except March, 8 am to 5 pm. Run by Flohmarkt Obwalden, registration by WhatsApp. Ten minutes on foot from Sarnen station.",
+  "description_de": "Der Flohmarkt beim Sarnen-Center findet auf dem Areal zwischen Coop und Migros an der Nelkenstrasse statt – laut Veranstalter am zweiten Samstag im Monat, ausser im März, von 8 bis 17 Uhr. Organisiert von Flohmarkt Obwalden, Anmeldung per WhatsApp. Vom Bahnhof Sarnen sind es zehn Minuten zu Fuss."
+ },
+ {
+  "slug": "flohmarkt-schlieren-herbstmarkt",
+  "name": "Herbstmarkt und Kinderflohmarkt Schlieren",
+  "description_en": "Schlieren's schoolchildren sell their old toys and books here, laid out on plastic sheets. The Kulturkommission Schlieren runs it and sets the spot in the town centre each year. If it rains, the children's market moves into the underground car park at the Stadthaus. In past years an autumn market has run alongside, with Apfelchüechli, Zopf, crafts and stands where local clubs show what they do.",
+  "description_de": "Hier verkaufen Schlieremer Schulkinder ihre alten Spielsachen und Bücher, ausgelegt auf Plastikblachen. Die Kulturkommission Schlieren organisiert den Markt und legt den Platz im Zentrum jedes Jahr neu fest. Bei Regen zieht der Kinderflohmarkt in die Tiefgarage beim Stadthaus. In früheren Jahren lief daneben ein Herbstmarkt mit Apfelchüechli, Zopf, Kunsthandwerk und Infoständen, an denen Schlieremer Vereine ihre Arbeit zeigen."
+ },
+ {
+  "slug": "flohmarkt-schlossgut-muensingen",
+  "name": "Flohmarkt Schlossgut Münsingen",
+  "description_en": "On the Schlossgutplatz, professional dealers and private households sell side by side. Children can have a stall too. The organiser is Patrick Schlapbach.",
+  "description_de": "Auf dem Schlossgutplatz stehen Händler und Privathaushalte nebeneinander. Auch Kinder können hier verkaufen. Veranstalter ist Patrick Schlapbach."
+ },
+ {
+  "slug": "flohmarkt-schuetzenplatz-braunschweig",
+  "name": "Flohmarkt Schützenplatz",
+  "description_en": "A flea market on the Schützenplatz, Fridays and Saturdays from 6 in the morning, and about fifty years old. It ends at 12 or 2, earlier in cold or bad weather. Entry is free, parking is paid. From late September to mid-October the autumn fair takes over the square.",
+  "description_de": "Flohmarkt auf dem Schützenplatz, freitags und samstags ab 6 Uhr früh, seit rund fünfzig Jahren. Schluss ist um 12 oder 14 Uhr, bei Kälte und schlechtem Wetter früher. Eintritt frei, Parken kostet. Ende September bis Mitte Oktober steht die Herbstmesse auf dem Platz."
+ },
+ {
+  "slug": "flohmarkt-seeplatz-waedenswil",
+  "name": "Flohmarkt Seeplatz Waedenswil",
+  "description_en": "The money from this market helps pay for the activities of Club Interfun, a Wädenswil leisure club of about 20 members. The Seeplatz has room for about 40 to 50 stalls. Only used things are sold: nothing new, no job lots, no food or drinks. Children up to 12 can run a stall of their own and sell their toys and books.",
+  "description_de": "Mit diesem Markt finanziert der Club Interfun, ein Wädenswiler Freizeitverein mit rund 20 Mitgliedern, seine Vereinsaktivitäten mit. Auf dem Seeplatz hat es Platz für etwa 40 bis 50 Stände. Verkauft wird nur Gebrauchtes: keine Neuware, keine Liquidationsposten, keine Esswaren oder Getränke. Kinder bis 12 dürfen an einem eigenen Stand ihre Spielsachen und Bücher verkaufen."
+ },
+ {
+  "slug": "flohmarkt-st-mangen-quartier",
+  "name": "Flohmarkt St. Mangen-Quartier",
+  "description_en": "Every last Saturday from March to October, the old town streets around St. Mangen Church fill with around 100 stalls of vintage clothing, antique furniture, books and curiosities. A neighbourhood market, organised by the Quartierverein St. Mangen.",
+  "description_de": "Jeden letzten Samstag von März bis Oktober werden die Altstadtgassen rund um die St. Mangen-Kirche zum Quartierflohmarkt. Rund 100 Stände bieten Vintage-Kleidung, antike Möbel, Bücher und allerlei Trouvaillen; organisiert vom Quartierverein St. Mangen."
+ },
+ {
+  "slug": "flohmarkt-stadtbibliothek-aarau",
+  "name": "Flohmarkt Stadtbibliothek Aarau",
+  "description_en": "A book and media flea market run by the Aarau city library at Graben 15: secondhand books, CDs, DVDs and the occasional magazine or children's book rather than general household goods. Several times a year, on a Saturday morning.",
+  "description_de": "Bücher- und Medienflohmarkt der Stadtbibliothek Aarau am Graben 15: gebrauchte Bücher, CDs, DVDs, ab und zu Zeitschriften und Kinderbücher – keine allgemeinen Haushaltswaren. Mehrmals im Jahr an einem Samstagvormittag."
+ },
+ {
+  "slug": "flohmarkt-stuecki-basel",
+  "name": "Flohmarkt Stücki Basel",
+  "description_en": "Every stall stands inside the Stücki Park shopping centre, with no vehicles parked among them. For food, the centre's restaurants, cafés and take-aways are right there. Tram and bus stop at “Stücki”; the car park attached to the centre is paid.",
+  "description_de": "Alle Stände stehen drinnen im Einkaufszentrum Stücki Park, ohne Fahrzeuge dazwischen. Für Essen und Trinken sind die Restaurants, Cafés und Take-aways des Centers gleich da. Tram und Bus halten an der Haltestelle «Stücki»; das Parkhaus direkt am Center ist kostenpflichtig."
+ },
+ {
+  "slug": "flohmarkt-suedbruecke-koeln",
+  "name": "Flohmarkt Südbrücke",
+  "description_en": "A junk and collectors' market right on the Rhine bank beneath the Südbrücke in Bayenthal, held several times a year. More than 150 traders sell antiques and second-hand goods. Tram 16 stops at Schönhauser Straße.",
+  "description_de": "Ein Trödel- und Sammlermarkt direkt am Rheinufer unter der Südbrücke in Bayenthal, mehrmals im Jahr. Mehr als 150 Händler bieten Antiquitäten und Gebrauchtes an. Die Straßenbahnlinie 16 hält an der Schönhauser Straße."
+ },
+ {
+  "slug": "flohmarkt-the-stage-liebefeld-bern",
+  "name": "Flohmarkt the STAGE",
+  "description_en": "Indoor flea market in the VIDMAR halls in Liebefeld near Bern. Expect vintage fashion, accessories, books and more in a cool atmosphere with a live DJ and food at le beizli. Bring your own selling space - first come, first served.",
+  "description_de": "Indoor-Flohmarkt in den VIDMARhallen in Liebefeld bei Bern. Vintage-Mode, Accessoires, Bücher und mehr in cooler Atmosphäre mit Live-DJ und Verpflegung im le beizli. Eigene Verkaufsfläche mitbringen - First come, first serve."
+ },
+ {
+  "slug": "flohmarkt-theaterplatz-baden",
+  "name": "Flohmarkt Theaterplatz Baden",
+  "description_en": "An open-air flea market on the Theaterplatz in central Baden, on one Saturday a month from May to October: household goods, antiques, books, decorative items and clothing from local sellers, with cafés around the square. Free entry.",
+  "description_de": "Flohmarkt unter freiem Himmel auf dem Theaterplatz in Baden, einmal im Monat an einem Samstag von Mai bis Oktober: Haushaltswaren, Antiquitäten, Bücher, Dekoration und Kleider von Verkäuferinnen und Verkäufern aus der Gegend, mit Cafés rundherum. Eintritt frei."
+ },
+ {
+  "slug": "flohmarkt-ulm-messe",
+  "name": "Flohmarkt Ulm Messe",
+  "description_en": "One weekend a year the hall at Messe Ulm fills with second-hand goods — new stock is not wanted. Saturday and Sunday, 10 to 4 both days. Stalls must be booked in advance; the smallest is two metres.",
+  "description_de": "Ein Wochenende im Jahr füllt sich die Halle der Messe Ulm mit Gebrauchtem — Neuware ist nicht erwünscht. Samstag und Sonntag jeweils 10 bis 16 Uhr. Die Stände müssen vorab gebucht werden, der kleinste misst zwei Meter."
+ },
+ {
+  "slug": "flohmarkt-uster-stadthausplatz",
+  "name": "Flohmarkt Uster (Stadthausplatz)",
+  "description_en": "This is the city's own market: Uster's city police assign every pitch. Between 50 and 80 sellers set up, at market stalls rented from the city or under the arcades with a table of their own. The rule is short: only things that are visibly used. No job lots, no fakes.",
+  "description_de": "Das ist der Markt der Stadt selbst: Jeden Platz teilt die Stadtpolizei Uster zu. 50 bis 80 Händlerinnen und Händler stellen auf – an Marktständen, die die Stadt vermietet, oder unter den Arkaden mit eigenem Tisch. Die Regel ist kurz: nur Sachen, die klar erkennbar gebraucht sind. Keine Liquidationsposten, keine Fälschungen."
+ },
+ {
+  "slug": "flohmarkt-vogesenplatz-basel",
+  "name": "Flohmarkt Vogesenplatz",
+  "description_en": "A small flea market every Saturday on the Vogesenplatz in Basel's St. Johann district: everyday secondhand — clothes, books, records, toys, bicycles, household items — next to the weekly food market on the same square, with cafés around it. Quieter and less touristy than the Petersplatz; more for neighbours than for serious collectors.",
+  "description_de": "Im Quartier St. Johann findet jeden Samstag ein kleiner Flohmarkt auf dem Vogesenplatz statt – weniger touristisch als der Petersplatz, dafür ruhiger. Wer in Ruhe stöbern möchte, ist hier richtig."
+ },
+ {
+  "slug": "flohmarkt-weinfelden",
+  "name": "Flohmarkt Weinfelden",
+  "description_en": "Weinfelden's flea market takes place on the last Saturday of the month from March to October – not in September – on the Marktplatz, from 7 am to 4 pm, with a market café. The square is in the middle of the little town, five minutes from the station.",
+  "description_de": "Der Flohmarkt Weinfelden findet von März bis Oktober jeweils am letzten Samstag im Monat auf dem Marktplatz statt – im September nicht –, von 7 bis 16 Uhr, mit einer Flohmarktbeiz. Der Marktplatz liegt mitten im Städtli, fünf Minuten vom Bahnhof."
+ },
+ {
+  "slug": "flohmarkt-wetzikon",
+  "name": "Grosser Aussen-Flohmarkt Wetzikon",
+  "description_en": "A large outdoor flea market near the ice rink in Wetzikon, with roughly 10,000 square metres of selling space. Private sellers bring the full range — furniture, household goods, clothing, hobby items and large-volume lots that wouldn't fit in a city-centre stall. Regional in feel, unhurried in pace, and genuinely large enough to spend a proper morning in.",
+  "description_de": "Grosser Outdoor-Flohmarkt bei der Eishalle in Wetzikon. Mit fast 10'000 m2 Flaeche bietet der Aussen-Flohmarkt Wetzikon viel Platz für Aussteller und Besucher. Keine Voranmeldung noetig - einfach kommen und stöbern. Die Märkte finden bei jedem Wetter statt, ausser bei Sturm oder starkem Dauerregen. Eintritt frei."
+ },
+ {
+  "slug": "flohmarkt-winterthur-altstadt",
+  "name": "Floh- und Trödlermarkt Winterthur Altstadt",
+  "description_en": "A flea and bric-a-brac market in Winterthur's pedestrian Old Town: household goods, books, antiques, clothes and vintage décor from local sellers — more for families, students and residents than for specialist dealers.",
+  "description_de": "Floh- und Trödelmarkt in der Winterthurer Fussgängerzone der Altstadt: Haushaltswaren, Bücher, Antiquitäten, Kleider und Vintage-Deko von Verkäuferinnen und Verkäufern aus der Gegend – für Familien, Studierende und Leute aus dem Quartier eher als für Händler."
+ },
+ {
+  "slug": "flohmarkt-zofingen",
+  "name": "Roggenweg-Flohmarkt Zofingen",
+  "description_en": "A town flea market in Zofingen's old town: household goods, clothes, books, toys and vintage objects from local sellers — more for families and residents than for specialist collectors.",
+  "description_de": "Flohmarkt in der Altstadt von Zofingen: Haushaltswaren, Kleider, Bücher, Spielsachen und Vintage von Verkäuferinnen und Verkäufern aus der Gegend – eher für Familien und Leute aus dem Ort als für Sammler."
+ },
+ {
+  "slug": "flohmaxx-beetzsee-center-brandenburg-an-der-havel",
+  "name": "Flohmaxx Beetzsee-Center",
+  "description_en": "On single weekends from 9 to 4 on the open ground beside the Beetzsee-Center, and running since 2007. Around 200 private and commercial sellers, free entry and parking, any weather. Pitches go from 6 with no registration; a few are covered and cannot be reserved.",
+  "description_de": "An einzelnen Wochenenden von 9 bis 16 Uhr auf dem Freigelände am Beetzsee-Center, seit 2007. Rund 200 private und gewerbliche Verkäufer, Eintritt und Parken frei, bei jedem Wetter. Plätze werden ab 6 Uhr ohne Anmeldung vergeben; ein paar überdachte gibt es, reservieren lassen sie sich nicht."
+ },
+ {
+  "slug": "flohmaxx-stadthafen-schwerin",
+  "name": "Flohmaxx Stadthafen",
+  "description_en": "Sundays from 10 to 4 at the Stadthafen, in the middle of Schwerin. Entry and parking are free, and the market runs whatever the weather. Anyone can sell: pitches are handed out from 6 with no registration, first come first served.",
+  "description_de": "Sonntags von 10 bis 16 Uhr am Stadthafen, mitten in Schwerin. Eintritt und Parken sind frei, und der Markt findet bei jedem Wetter statt. Verkaufen kann jeder: Plätze werden ab 6 Uhr ohne Anmeldung vergeben, wer zuerst da ist, steht vorn."
+ },
+ {
+  "slug": "flohmi-am-see-bern",
+  "name": "Flohmi am See Bern",
+  "description_en": "A flea market by the Egelsee in Bern — pass things on instead of throwing them away. Private sellers only, by the lake, with dedicated spots for children's things. Free entry.",
+  "description_de": "Flohmarkt am Egelsee in Bern – weitergeben statt wegwerfen. Nur Privatpersonen verkaufen Gebrauchtes, am Ufer des Sees, mit eigenen Plätzen für Kindersachen. Eintritt frei."
+ },
+ {
+  "slug": "flohmi-bullingerhof-zuerich",
+  "name": "Flohmi Bullingerhof",
+  "description_en": "Members of the Verein Lebendiger Bullingerhof run this market themselves, café included: the Flohmicafé does coffee and cake, Gipfeli, Wienerli with bread and drinks. Only used things are allowed — nothing new, no job lots, phones and jewellery only as single pieces. Children may sell their toys here without a grown-up at the stall. The whole site is closed to cars during the market, and dogs stay on a short lead.",
+  "description_de": "Die Mitglieder des Vereins Lebendiger Bullingerhof führen diesen Markt selbst durch, das Café inklusive: Im Flohmicafé gibt es Kaffee und Kuchen, Gipfeli, Wienerli mit Brot und Getränke. Erlaubt ist nur Gebrauchtes – nichts Neues, keine Massenware, Handys und Schmuck nur als Einzelstücke. Kinder dürfen ihre Spielsachen hier auch ohne Erwachsene verkaufen. Auf dem ganzen Areal gilt während des Markts Fahr- und Parkierverbot, und Hunde gehören an die kurze Leine."
+ },
+ {
+  "slug": "flohmi-muttenz",
+  "name": "Flohmi Muttenz",
+  "description_en": "There's no market square: people all over Muttenz sell from their front door, their garden, or inside their house or flat. A stall map on the organiser's website shows everyone who registered, and sellers are asked to mark their spot with the flyer and balloons. A Muttenz resident started it in 2020 and has run it every year since; it has grown to more than 200 stalls. Anything legal can be sold — the flyer mentions furniture, clothes, decor and bikes. The organiser asks visitors to come on foot or by bike.",
+  "description_de": "Einen Marktplatz gibt es nicht: In ganz Muttenz verkaufen die Leute vor der eigenen Haustür, im Garten oder drinnen im Haus oder in der Wohnung. Eine Standkarte auf der Website der Organisatorin zeigt alle, die sich angemeldet haben; die Verkaufenden sollen ihren Stand mit dem Flyer und Ballonen kennzeichnen. Eine Muttenzerin hat den Flohmi 2020 gestartet und organisiert ihn seither jedes Jahr; inzwischen sind es über 200 Stände. Verkauft werden darf alles, was legal ist – der Flyer nennt Möbel, Kleider, Deko und Velos. Komm am besten zu Fuss oder mit dem Velo, darum bittet die Organisatorin."
+ },
+ {
+  "slug": "flohmi-schmittiplatz-pratteln",
+  "name": "Flohmi Schmittiplatz Pratteln",
+  "description_en": "The tables hold used goods, small antiques and toys; nothing new is allowed. The market rules tell sellers to price so that you can haggle, and free boxes may only come out from 2 pm. It goes ahead in any weather. Coffee and food come from the Kaffi Schmittiplatz and the Finkbeiner bakery. There are four public toilets behind the school opposite Restaurant Schlossgarten, and more in the Kaffi. From Basel, tram 14 runs to its Pratteln terminus; walk towards the Schloss. Drivers park at the Kuspo culture and sports centre.",
+  "description_de": "Auf den Tischen liegen Gebrauchtwaren, Kleinantiquitäten und Spielsachen; Neuware ist nicht erlaubt. Die Marktordnung verlangt Preise, bei denen du noch märten kannst, und Gratis-Kisten dürfen erst ab 14 Uhr hingestellt werden. Der Markt findet bei jedem Wetter statt. Für Kaffee und Essen sorgen das Kaffi Schmittiplatz und die Bäckerei Finkbeiner. Vier öffentliche Toiletten stehen hinter dem Schulhaus gegenüber dem Restaurant Schlossgarten, weitere im Kaffi. Von Basel fährt das Tram 14 bis zur Endstation Pratteln; von dort geht es Richtung Schloss. Wer mit dem Auto kommt, parkiert beim Kultur- und Sportzentrum Kuspo."
+ },
+ {
+  "slug": "flohmi-spass-heimstrasse-bern",
+  "name": "Flohmi & Spass ar Heimstrass",
+  "description_en": "For a day, the Heimstrasse in Bümpliz becomes a flea market run by and for the people of the neighbourhood, with the stalls along the street. In rain, it doesn't go ahead.",
+  "description_de": "Für einen Tag wird die Heimstrasse in Bümpliz zum Flohmarkt, von und für die Leute aus dem Quartier, mit den Ständen entlang der Strasse. Bei Regen fällt er aus."
+ },
+ {
+  "slug": "flohmii-galgenen",
+  "name": "Flohmii Galgenen",
+  "description_en": "The Flohmii Galgenen is a privately run open-air flea market on the Arthur Weber site in Galgenen in the March district, Saturdays 9 am to 4 pm in any weather: clothes, accessories, costume jewellery, children's things, toys, decor, books – haggling allowed. Children sell for free on a two by two metre spot. Free parking behind the Diga building; 15 minutes on foot from Siebnen-Wangen station.",
+  "description_de": "Der Flohmii Galgenen ist ein privat organisierter Flohmarkt im Freien auf dem Arthur-Weber-Areal in Galgenen in der March, samstags von 9 bis 16 Uhr und bei jedem Wetter: Kleider, Accessoires, Modeschmuck, Kindersachen, Spielzeug, Deko, Bücher – feilschen erlaubt. Kinder verkaufen gratis auf zwei mal zwei Metern."
+ },
+ {
+  "slug": "flohschanze-hamburg",
+  "name": "Flohschanze",
+  "description_en": "Every Saturday from 8 to 4 opposite U-Bahn Feldstraße in the Karolinenviertel. A flea and antiques market with no new goods, on open pitches, under pavilions and in the hall, whatever the weather. Leftover pitches are handed out on site from 7; free parking on Glacischaussee, five minutes on foot.",
+  "description_de": "Jeden Samstag von 8 bis 16 Uhr gegenüber dem U-Bahnhof Feldstraße im Karolinenviertel. Floh- und Antikmarkt ohne Neuware, auf freien Plätzen, unter Pavillons und in der Halle, bei jedem Wetter. Restplätze werden ab 7 Uhr vor Ort vergeben; kostenlose Parkplätze an der Glacischaussee, fünf Minuten zu Fuß."
+ },
+ {
+  "slug": "flommbo-flohmarkt-altstaetten",
+  "name": "Flommbo Flohmarkt",
+  "description_en": "The Flommbo flea market takes place on several Sundays a year on the Allmend Rheintal in Altstätten, Oberrieterstrasse 44, from 9 am to 4 pm in any weather. Plenty of parking on site; about 20 minutes on foot from Altstätten SG station.",
+  "description_de": "Der Flommbo Flohmarkt findet an mehreren Sonntagen im Jahr auf der Allmend Rheintal in Altstätten statt, Oberrieterstrasse 44, jeweils von 9 bis 16 Uhr und bei jeder Witterung. Genug Parkplätze auf dem Gelände; vom Bahnhof Altstätten SG sind es rund 20 Minuten zu Fuss."
+ },
+ {
+  "slug": "flosch-schwamendingen-zuerich",
+  "name": "FLOSCH Schwamendingen Flohmarkt",
+  "description_en": "The stalls spread over and around the Schwamendingerplatz, run by the FLOSCH Verein. Every item has to carry a price, and every stall shows the seller's name and home town — the market police check. No new goods, no cheap mass-produced stock, and nothing to eat or drink is sold at the stalls. Free and knock-down items only appear from half past three. It goes ahead in any weather; there's no parking on or beside the market.",
+  "description_de": "Die Stände verteilen sich auf und um den Schwamendingerplatz, organisiert vom FLOSCH Verein. Jeder Artikel muss angeschrieben sein, und an jedem Stand stehen Name und Wohnort der Verkäuferin oder des Verkäufers – die Marktpolizei kontrolliert. Keine Neuware, keine Billig- und Massenware, und an den Ständen wird nichts zu essen oder zu trinken verkauft. Gratis- und Billigware kommt erst ab halb vier auf den Tisch. Der Markt findet bei jedem Wetter statt; auf und neben dem Marktareal darf nicht parkiert werden."
+ },
+ {
+  "slug": "flughafen-flohmarkt-kloten-zuerich",
+  "name": "Flughafen Flohmarkt Kloten",
+  "description_en": "A flea market with more than 400 stands, held once a year on the grounds of Zurich Airport in Kloten. A fixture of the Zurich market calendar since 1983, it draws visitors from across the region. Entry is free for visitors.",
+  "description_de": "Ein Flohmarkt mit über 400 Ständen, einmal jährlich auf dem Gelände des Flughafens Zürich in Kloten. Seit 1983 fester Teil des Zürcher Marktkalenders, mit Besucherinnen und Besuchern aus der ganzen Region. Für Besucher ist der Eintritt kostenlos."
+ },
+ {
+  "slug": "folie-flea-market-lausanne",
+  "name": "Les Puces de la Folie",
+  "description_en": "The Folie Voltaire café holds this small market of flea-market finds, second-hand clothes and crafts on the esplanade under its chestnut trees. The café sits in a period kiosk in the middle of Parc Mon-Repos and serves coffee, tea and cold drinks; Lausanne's tourist office adds crêpes and home-made ice cream, and there's a playground next door. The park once had a theatre where Voltaire was a guest, which is where the café got its name.",
+  "description_de": "Das Café Folie Voltaire veranstaltet diesen kleinen Markt mit Flohmarktfunden, Secondhand-Kleidern und Handwerk auf der Esplanade unter seinen Kastanienbäumen. Das Café steht in einem historischen Kiosk mitten im Parc Mon-Repos und serviert Kaffee, Tee und kalte Getränke; laut Lausanne Tourisme gibt es auch Crêpes und hausgemachtes Glace, und gleich daneben liegt ein Spielplatz. Im Park stand einst ein Theater, in dem Voltaire zu Gast war – daher der Name des Cafés."
+ },
+ {
+  "slug": "frankfurter-flohmarkt-osthafen-frankfurt-am-main",
+  "name": "Frankfurter Flohmarkt am Osthafen",
+  "description_en": "Saturdays from 9 to 2 on Lindleystraße in the Osthafen, roughly every other Saturday in alternation with the Schaumainkai. Second-hand goods, bric-a-brac of every kind and handicrafts, no new goods. Free parking at Lindleystraße 13 on market days. Run by the city's market company HFM.",
+  "description_de": "Samstags von 9 bis 14 Uhr an der Lindleystraße im Osthafen, etwa jeden zweiten Samstag im Wechsel mit dem Schaumainkai. Gebrauchtes, Trödel aller Art und Kunsthandwerk, keine Neuware. Kostenlose Parkplätze an der Lindleystraße 13 an Markttagen. Veranstalter ist die städtische HFM."
+ },
+ {
+  "slug": "frankfurter-flohmarkt-schaumainkai-frankfurt-am-main",
+  "name": "Frankfurter Flohmarkt am Schaumainkai",
+  "description_en": "Saturdays from 9 to 2 on the museum embankment between Untermainbrücke and Holbeinsteg, roughly every other Saturday in alternation with the Osthafen. Second-hand goods, bric-a-brac of every kind and handicrafts, no new goods. Run by the city's market company HFM.",
+  "description_de": "Samstags von 9 bis 14 Uhr am Museumsufer zwischen Untermainbrücke und Holbeinsteg, etwa jeden zweiten Samstag im Wechsel mit dem Osthafen. Gebrauchtes, Trödel aller Art und Kunsthandwerk, keine Neuware. Veranstalter ist die städtische HFM."
+ },
+ {
+  "slug": "fundus-flohmarkt-arena-root",
+  "name": "fundus Flohmarkt ARENA Root",
+  "description_en": "The fundus flea market fills the big hall of the ARENA Root: private sellers offer household goods, clothes, vintage finds and much more. Free entry.",
+  "description_de": "Der fundus Flohmarkt füllt die grosse Halle der ARENA Root: Privatverkäuferinnen und -verkäufer bieten Haushaltswaren, Kleider, Vintage-Fundstücke und vieles mehr an. Eintritt frei."
+ },
+ {
+  "slug": "gaenggali-markt-chur",
+  "name": "Gänggali-Markt",
+  "description_en": "“Gänggali” probably comes from the French “quincaillerie” — hardware and household goods — and the city of Chur counts the market among its customs. Dealers and private sellers share the Arcas and the space by the Martinsbrunnen, and children sell their own things too. No food is sold at the stalls. The nearest paid parking is in the Parkhaus Arcas or the Parkhaus Lindenquai.",
+  "description_de": "«Gänggali» ist vermutlich mit dem französischen «Quincaillerie» verwandt, also Eisen- und Haushaltwaren – die Stadt Chur zählt den Markt zu ihrem Brauchtum. Händler und Private teilen sich das Arcas und den Platz beim Martinsbrunnen, und auch Kinder verkaufen ihre eigenen Sachen. An den Ständen werden keine Esswaren verkauft. Die nächsten kostenpflichtigen Parkplätze gibt es im Parkhaus Arcas und im Parkhaus Lindenquai."
+ },
+ {
+  "slug": "grenzueberschreitender-flohmarkt-kreuzlingen-konstanz",
+  "name": "Grenzüberschreitender Flohmarkt Kreuzlingen–Konstanz",
+  "description_en": "Once a year the cross-border flea market joins Kreuzlingen and Konstanz: around 1,000 stands along the Seestrasse on the Swiss side and in Klein Venedig on the German side, 24 hours non-stop, from Saturday 2 pm to Sunday 3 pm. Come by train to Kreuzlingen Hafen – parking is hopeless that weekend.",
+  "description_de": "Der grenzüberschreitende Flohmarkt verbindet einmal im Jahr Kreuzlingen und Konstanz: rund 1000 Stände entlang der Seestrasse auf der Schweizer Seite und in Klein Venedig auf der deutschen, 24 Stunden am Stück, von Samstag 14 Uhr bis Sonntag 15 Uhr. Am besten mit dem Zug nach Kreuzlingen Hafen – parkieren ist an diesem Wochenende aussichtslos."
+ },
+ {
+  "slug": "gross-flohmarkt-messplatz-karlsruhe",
+  "name": "Gross-Flohmarkt Messplatz",
+  "description_en": "Several times a year on the Messplatz at Durlacher Allee, 8 to 3. Mostly second-hand, with new goods in small numbers only. The organiser asks visitors to come by tram — there is no seller parking anywhere around the square.",
+  "description_de": "Mehrmals im Jahr auf dem Messplatz an der Durlacher Allee, 8 bis 15 Uhr. Überwiegend Gebrauchtes, Neuware nur in kleiner Zahl. Der Veranstalter bittet, mit der Tram zu kommen — rund um den Messplatz gibt es keine Parkplätze für Verkäufer."
+ },
+ {
+  "slug": "grosse-burgdorfer-brocante",
+  "name": "Grosse Burgdorfer Brocante",
+  "description_en": "Porcelain and glass, silver and jewellery, prints, postcards, furniture and small antiques are on offer in the Markthalle in Burgdorf. There is no separate trade day: dealers come in at the same time as everyone else.",
+  "description_de": "Angeboten werden in der Markthalle Burgdorf Porzellan und Glas, Silber und Schmuck, Grafik, Postkarten, Möbel und Kleinantiquitäten. Einen eigenen Händlertag gibt es nicht: Profis kommen zur gleichen Zeit herein wie alle anderen."
+ },
+ {
+  "slug": "grosser-flohmarkt-thun",
+  "name": "Grosser Flohmarkt Thun",
+  "description_en": "The Grosser Flohmarkt Thun takes place on several Sundays a year at the Panorama-Center on Weststrasse, with 80 to 120 exhibitors, from 10 am to 3 pm. Stands are set up from 8 am, and walk-in sellers are welcome without registration. From Thun station take STI bus 3 to the Arena stop, ten minutes; snack stand on site. Organised by Manuela Maurer and Christoph Oesch.",
+  "description_de": "Der Grosse Flohmarkt Thun findet an mehreren Sonntagen im Jahr beim Panorama-Center an der Weststrasse statt, mit 80 bis 120 Ausstellenden, von 10 bis 15 Uhr. Die Stände werden ab 8 Uhr aufgebaut, spontane Verkäuferinnen und Verkäufer können ohne Anmeldung kommen. Ab Bahnhof Thun mit dem STI-Bus 3 bis Haltestelle Arena, zehn Minuten; Imbiss-Stand vor Ort. Organisiert von Manuela Maurer und Christoph Oesch."
+ },
+ {
+  "slug": "haerkinger-flohmi",
+  "name": "Härkinger Flohmi",
+  "description_en": "The Härkinger Flohmi is held indoors, so the weather doesn't matter. On the tables: antiques and rarities, old and new things, handmade pieces too. There's also a small café with snacks at low prices.",
+  "description_de": "Der Härkinger Flohmi findet drinnen statt, das Wetter spielt also keine Rolle. Auf den Tischen: Antiquitäten und Raritäten, Altes und Neues, auch Selbstgemachtes. Dazu gibt es ein Beizli mit Gluschtigem zu günstigen Preisen."
+ },
+ {
+  "slug": "hallen-flohmarkt-flumserei",
+  "name": "Hallen-Flohmarkt Flumserei",
+  "description_en": "The indoor flea market at the Flumserei, the old spinning mill in Flums, runs through the winter months in the heated hall – over 1,600 square metres of small and large stands full of curiosities, antiques, odds and ends and rarities. Food is available. Ten minutes on foot from Flums station.",
+  "description_de": "Der Hallen-Flohmarkt in der Flumserei, der alten Spinnerei in Flums, findet in den Wintermonaten in der geheizten Halle statt – auf über 1600 Quadratmetern, mit kleinen und grossen Ständen voller Kuriositäten, Antiquitäten, Krimskrams und Raritäten. Für Verpflegung ist gesorgt. Vom Bahnhof Flums sind es zehn Minuten zu Fuss."
+ },
+ {
+  "slug": "hallenflohmarkt-aadorf",
+  "name": "Hallenflohmarkt Aadorf",
+  "description_en": "Marktfieber runs this indoor flea market in the Gemeindezentrum (community centre). The stalls carry second-hand goods and handmade things.",
+  "description_de": "Marktfieber organisiert diesen Hallenflohmarkt im Gemeindezentrum. An den Ständen gibt es Flohmarktware und Handgemachtes."
+ },
+ {
+  "slug": "hallenflohmarkt-arboldswil",
+  "name": "Hallenflohmarkt Arboldswil",
+  "description_en": "Indoors, in the village's multi-purpose hall. On the same day an autumn market of regional produce runs next door in the Hofmet-Schüüre, and the gym serves lunch, cakes and drinks. There is parking right by the hall.",
+  "description_de": "Drinnen, in der Mehrzweckhalle des Dorfs. Am selben Tag gibt es nebenan in der Hofmet-Schüüre einen Herbstmarkt mit regionalen Produkten, und in der Turnhalle Mittagessen, Kuchen und ein Beizli. Parkplätze hat es direkt bei der Halle."
+ },
+ {
+  "slug": "hallenflohmarkt-hoelstein",
+  "name": "Hallenflohmarkt Hölstein",
+  "description_en": "The people behind this market spent years at flea markets as buyers and sellers, found few in the Waldenburgertal and the Fünflibertal, and ran out of room for their own garage sale. Now it fills the Rübmatt multi-purpose hall, with 65 tables inside and 12 outside, all set out by the organisers. Goods may stick out no more than 10 cm past a table, so the aisles stay clear for wheelchairs. Food and drink are at the buffet, which is also where to find the organisers — or look for the green T-shirts. The spaces in front of the school are kept for visitors; roadside parking in Hölstein is not allowed.",
+  "description_de": "Das Team hinter diesem Markt war jahrelang selbst an Flohmärkten unterwegs, als Käufer und als Verkäufer, und fand im Waldenburgertal und im Fünflibertal nur wenige – zudem war für den eigenen Garagenflohmi kein Platz mehr. Heute füllt der Markt die Mehrzweckhalle Rübmatt: 65 Tische drinnen und 12 draussen, alle von den Organisatoren bereitgestellt. Waren dürfen höchstens 10 cm über die Tischkante hinausragen, damit die Gänge auch für Rollstühle frei bleiben. Essen und Getränke gibt es am Buffet; dort findest du auch das OK – oder du hältst Ausschau nach den grünen T-Shirts. Die Parkplätze vor dem Schulhaus sind für Besucherinnen und Besucher reserviert; am Strassenrand parkieren ist in Hölstein verboten."
+ },
+ {
+  "slug": "hallenflohmarkt-markthalle-basel",
+  "name": "Hallenflohmarkt Markthalle Basel",
+  "description_en": "The flea market sets up under the big dome of the Markthalle, two minutes' walk from Basel SBB. Expect clothes, children's things, design and everyday objects, and small curiosities. The hall's food stalls are right there, though each keeps its own hours. Inside is largely step-free, with a wheelchair-accessible toilet and a changing table; dogs are welcome on a lead. Tram stop “Markthalle” (lines 1, 2, 8 and 16) is at the main entrance, and the Elisabethen, Steinenparking and Basel SBB car parks are within walking distance. The same hall also runs a night flea market, the Nerd Yard and a vinyl market.",
+  "description_de": "Der Flohmarkt steht unter der grossen Kuppel der Markthalle, zwei Gehminuten vom Bahnhof SBB. Auf den Tischen: Kleider, Kindersachen, Design- und Alltagsobjekte und kleine Kuriositäten. Die Foodstände der Halle sind gleich nebenan, haben aber je eigene Öffnungszeiten. Die Halle ist weitgehend stufenlos, mit rollstuhlgängigem WC und Wickeltisch; Hunde sind an der Leine willkommen. Die Tramhaltestelle «Markthalle» (Linien 1, 2, 8 und 16) liegt vor dem Haupteingang, die Parkhäuser Elisabethen, Steinenparking und Bahnhof SBB sind zu Fuss erreichbar. Dieselbe Halle führt auch einen Nachtflohmarkt, den Nerd Yard und einen Vinylmarkt durch."
+ },
+ {
+  "slug": "hallenflohmarkt-pentorama-amriswil",
+  "name": "Hallenflohmarkt Pentorama",
+  "description_en": "The Coro Tricolore di Amriswil, a choir, puts on this indoor flea market at the Pentorama and also takes care of food and drink. At the stalls: rarities, everyday things and vintage.",
+  "description_de": "Der Coro Tricolore di Amriswil, ein Chor, veranstaltet diesen Hallenflohmarkt im Pentorama und kümmert sich auch um Essen und Trinken. An den Ständen: Raritäten, Dinge für den Alltag und Vintage."
+ },
+ {
+  "slug": "hallenflohmarkt-therwil",
+  "name": "Hallenflohmarkt Therwil",
+  "description_en": "The municipality of Therwil runs this flea market itself. The stalls are inside the Mehrzweckhalle (multi-purpose hall) and in front of it. Next to selected antiques, rarities and curiosities, there are everyday things at low prices.",
+  "description_de": "Die Gemeinde Therwil organisiert diesen Flohmarkt selbst. Die Stände stehen in der Mehrzweckhalle und davor. Neben ausgesuchten Antiquitäten, Raritäten und Kuriositäten gibt es Alltägliches zu günstigen Preisen."
+ },
+ {
+  "slug": "hallenflohmarkt-uster",
+  "name": "Hallenflohmarkt Uster",
+  "description_en": "Only used goods may be sold here. There are sockets all over the hall, so you can test a device before you buy it. If you come by car, park on Stadthausplatz, in the Iluster car park or at the Zeughaus site — there are no spaces at the hall itself any more.",
+  "description_de": "Verkauft werden darf hier nur Gebrauchtes. Im Saal hat es überall Steckdosen, um Geräte vor dem Kauf zu testen. Wer mit dem Auto kommt, stellt es auf dem Stadthausplatz, im Parkhaus Iluster oder beim Zeughausareal ab – direkt beim Saal gibt es keine Plätze mehr."
+ },
+ {
+  "slug": "herbst-flohmarkt-richterswil",
+  "name": "Herbst-Flohmarkt Richterswil",
+  "description_en": "The Richterswil autumn flea market is the municipality's flea market on the Wisshusplatz in the village centre. Anyone who registers with the municipality may sell – residents have priority – on three by three metre plots for CHF 20. No food or drink is sold at the stands. Five minutes on foot from Richterswil station; day parking cards are available online.",
+  "description_de": "Der Herbst-Flohmarkt Richterswil ist der Flohmarkt der Gemeinde auf dem Wisshusplatz im Dorfzentrum. Verkaufen darf, wer sich bei der Gemeinde anmeldet – Einheimische haben Vorrang –, Plätze von drei mal drei Metern für 20 Franken. Essen und Trinken werden an den Ständen nicht verkauft. Vom Bahnhof Richterswil sind es fünf Minuten zu Fuss; Tagesparkkarten gibt es online."
+ },
+ {
+  "slug": "hinterhof-flohmarkt-st-gallen",
+  "name": "Hinterhof Flohmarkt St. Gallen",
+  "description_en": "A small market in a back courtyard on Rorschacherstrasse, behind Restaurant Oechsli. Design, vintage and retro from the 1960s to the 1990s, antiques, plenty of second-hand clothes and old illuminated letters, with a few other dealers at small stalls. There are drinks and a grill in the garden. It runs in any weather, and the courtyard is step-free.",
+  "description_de": "Ein kleiner Markt in einem Hinterhof an der Rorschacherstrasse, hinter dem Restaurant Oechsli. Design, Vintage und Retro aus den 1960ern bis 1990ern, Antikes, viele Secondhand-Kleider und alte Leuchtbuchstaben, dazu ein paar weitere Händler mit kleinen Ständen. Im Garten gibt es Getränke und einen Grill. Er findet bei jedem Wetter statt, der Hof ist stufenlos."
+ },
+ {
+  "slug": "hyper-bazar-la-chaux-de-fonds",
+  "name": "Hyper Bazar",
+  "description_en": "Hyper Bazar spreads 90 stalls over five zones around the Place de la Carmagnole. Second-hand clothes fill the Passage Guillaume-Ritter; professional dealers with old things, books and vintage take the Passage Léopold-Robert. On the Place de l'Hôtel de Ville people sell straight from their car boots, private sellers clear out everyday things on the Carmagnole itself, and makers bring handmade goods and small labels to the Passage du Centre. Children get their own corner to sell toys, and there's an open stage. The fruit and vegetable market is close by. Parking de la Ronde is five minutes on foot; the nearest bus stop is Grande Fontaine.",
+  "description_de": "Hyper Bazar verteilt 90 Stände auf fünf Zonen rund um die Place de la Carmagnole. Secondhand-Kleider hängen in der Passage Guillaume-Ritter, professionelle Händler mit alten Sachen, Büchern und Vintage stehen in der Passage Léopold-Robert. Auf der Place de l'Hôtel de Ville wird direkt aus dem Kofferraum verkauft, auf der Carmagnole selbst räumen Privatleute aus, und in der Passage du Centre zeigen Kreative Handgemachtes und kleine Labels. Kinder haben eine eigene Ecke für ihre Spielsachen, dazu gibt es eine offene Bühne. Der Früchte- und Gemüsemarkt ist gleich in der Nähe. Vom Parking de la Ronde sind es fünf Minuten zu Fuss; die nächste Bushaltestelle heisst Grande Fontaine."
+ },
+ {
+  "slug": "jenaer-troedelmarkt-jena",
+  "name": "Jenaer Trödelmarkt",
+  "description_en": "Roughly monthly on a Saturday from February to October in the middle of Jena's old town, run by the city's own cultural service. Antiques, collectors' pieces and books; new goods are not allowed and no trade licence is needed. Pitches are handed out between 6 and quarter to 8 in the morning.",
+  "description_de": "Etwa monatlich an einem Samstag von Februar bis Oktober mitten in der Jenaer Altstadt, ausgerichtet vom städtischen Kulturbetrieb. Antiquitäten, Sammlerstücke und Bücher; Neuware ist nicht erlaubt, ein Gewerbeschein nicht nötig. Plätze werden morgens zwischen 6 und 7.45 Uhr vergeben."
+ },
+ {
+  "slug": "kids-store-flohmarkt-beromuenster",
+  "name": "Kids Store Kinderartikel Flohmarkt Beromünster",
+  "description_en": "A children's-items flea market in the Mehrzweckhalle in Beromünster, organised by the Familientreff Beromünster. Twice a year, in spring and autumn, children's clothes and toys are bought and sold. Free entry.",
+  "description_de": "Kinderartikel-Flohmarkt in der Mehrzweckhalle Beromünster, organisiert vom Familientreff Beromünster. Zweimal jährlich – im Frühling und im Herbst – werden Kinderkleider und Spielsachen gekauft und verkauft. Eintritt frei."
+ },
+ {
+  "slug": "kinder-flohmi-schloss-arbon",
+  "name": "Kinder-Flohmi im Schloss Arbon",
+  "description_en": "At the Kinder-Flohmi in Arbon Castle, children from age four, accompanied by an adult, sell their used toys, clothes and books – and find new treasures. Organised by the town of Arbon with the family association.",
+  "description_de": "Beim Kinder-Flohmi im Schloss Arbon verkaufen Kinder ab vier Jahren, begleitet von einer erwachsenen Person, ihre gebrauchten Spielsachen, Kleider und Bücher – und finden neue Schätze. Organisiert von der Stadt Arbon mit dem Familienverein."
+ },
+ {
+  "slug": "kinderflohmarkt-chur",
+  "name": "Kinderflohmarkt Chur",
+  "description_en": "At the Chur children's flea market, kids sell their own toys and books – on Bahnhofstrasse from Alexanderplatz to the station, on a Saturday in September from 10.30 am to 2.30 pm. Organised by the city's children's and youth work service; places are limited.",
+  "description_de": "Beim Kinderflohmarkt Chur verkaufen Kinder ihre Spielsachen und Bücher selbst – auf der Bahnhofstrasse vom Alexanderplatz bis zum Bahnhof, an einem Samstag im September von 10.30 bis 14.30 Uhr. Organisiert von der Kinder- und Jugendarbeit der Stadt Chur; die Plätze sind begrenzt."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-bachwiesen",
+  "name": "Flohmarkt für Kindersachen GZ Bachwiesen",
+  "description_en": "Only children's things here: used toys and kit for kids up to 12 — no household goods, no adult clothes, no media rated 16 and over. Children and grown-ups both swap or sell. The community centre's cafeteria is open during the market. When the forecast is wet, the GZ posts on its website from noon two days before whether the market goes ahead. There's no parking at the centre.",
+  "description_de": "Hier gibt es nur Kindersachen: gebrauchte Spielsachen und Kinderartikel bis 12 Jahre – keine Haushaltsgegenstände, keine Erwachsenenkleider, keine Medien ab 16. Kinder und Erwachsene tauschen oder verkaufen. Die Cafeteria des GZ ist während des Flohmarkts offen. Sieht das Wetter nass aus, steht ab Mittag zwei Tage vorher auf der Website des GZ, ob der Markt stattfindet. Parkplätze gibt es beim GZ keine."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-heuried",
+  "name": "Flohmarkt für Kindersachen GZ Heuried",
+  "description_en": "Kids' things are what's on the tables at the GZ Heuried's flea market, and nothing for grown-ups. Those get their own turn: the same community centre holds two flea markets a year where anything for adults may be sold.",
+  "description_de": "Am Flohmarkt des GZ Heuried liegen Kindersachen auf den Tischen und nichts für Erwachsene. Die haben eigene Termine: Zweimal im Jahr führt das GZ einen eigenen Flohmarkt durch, an dem alles für Erwachsene verkauft werden darf."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-hottingen",
+  "name": "Kinder-Flohmarkt GZ Hottingen",
+  "description_en": "GZ Hottingen puts this one on together with the Quartierverein Hottingen. Each stall is a bedsheet on the ground or a small table that the sellers bring themselves.",
+  "description_de": "Das GZ Hottingen führt diesen Markt zusammen mit dem Quartierverein Hottingen durch. Ein Stand ist ein Leintuch am Boden oder ein kleiner Tisch, den die Verkäuferinnen und Verkäufer selbst mitbringen."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-schindlergut",
+  "name": "Kinderflohmarkt GZ Schindlergut",
+  "description_en": "The children's flea market takes place in Schindlergut Park, a city park in District 6 between the ETH district and Unterstrass, by the community centre locals call «Schigu». Children bring a cloth, claim a space and sell toys, books and clothes — no registration. Only in fine weather.",
+  "description_de": "Der Kinderflohmarkt findet im Schindlergut Park statt, einem Stadtpark in Kreis 6 zwischen ETH-Quartier und Unterstrass, beim Gemeinschaftszentrum, das im Quartier «Schigu» heisst. Kinder bringen ein Tuch mit, belegen einen Platz und verkaufen Spielsachen, Bücher und Kleider — ohne Anmeldung. Nur bei schönem Wetter."
+ },
+ {
+  "slug": "kinderflohmarkt-uster",
+  "name": "Kinderflohmarkt Uster",
+  "description_en": "Only children sell here; grown-ups come to buy, browse or keep an eye on things. It falls just before the long summer holidays, and the city pitches it as a chance to top up the holiday money. Some children sell from covered stalls, won in a draw; others simply turn up with a bundle and spread it out on a woollen blanket. A stand hands out free ice cream.",
+  "description_de": "Hier verkaufen nur Kinder; Erwachsene kommen als Besucher, Käuferinnen oder Begleitpersonen. Der Markt liegt kurz vor den langen Sommerferien, und die Stadt sieht ihn als Chance, das Ferienkässeli aufzubessern. Ein Teil der Kinder verkauft an gedeckten Ständen, die verlost werden; andere kommen einfach mit ihrem Bündel und legen es auf einer Wolldecke aus. An einem Stand gibt es Gratis-Glace."
+ },
+ {
+  "slug": "kinderflohmarkt-winterthur-altstadt",
+  "name": "Kinderflohmarkt Winterthur Altstadt",
+  "description_en": "Once a year, Steinberggasse in Winterthur's old town is transformed into a children's market. Children and young people sell toys, books, clothes, and other children's items — set within one of the region's most beautiful pedestrian zones. The historic old-town backdrop makes this children's flea market one of the most atmospheric versions in the canton. For families specifically looking for children's items, a trip to the old town is worthwhile even without another event.",
+  "description_de": "Einmal im Jahr wird die Steinberggasse in der Winterthurer Altstadt zum Kindermarkt. Kinder und Jugendliche verkaufen Spielzeug, Bücher, Kleider und andere Kindersachen, mitten in der Fussgängerzone der Altstadt."
+ },
+ {
+  "slug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
+  "name": "Kinderkleider & Spielwaren Flohmarkt Luzern",
+  "description_en": "A flea market for children's clothes and toys at the neighbourhood venue B102 in Lucerne — secondhand for the little ones, easy on the environment and the wallet. Cake and coffee at the bar. Free entry.",
+  "description_de": "Flohmarkt für Kinderkleider und Spielsachen im Quartierlokal B102 in Luzern – Secondhand für die Kleinen, gut für die Umwelt und das Portemonnaie. An der Bar gibt es Kuchen und Kaffee. Eintritt frei."
+ },
+ {
+  "slug": "kofmehl-flohmi-solothurn",
+  "name": "Kofmehl-Flohmi",
+  "description_en": "The Kofmehl-Flohmi is the flea market of the Kulturfabrik Kofmehl in Solothurn, under the Leporello bridge right next to the concert venue – held since 1993. One Saturday in September, 9 am to 3 pm, free entry; drinks and snacks from the bar wagon, lunch from 11.45. Fifteen minutes on foot from Solothurn station.",
+  "description_de": "Der Kofmehl-Flohmi ist der Flohmarkt der Kulturfabrik Kofmehl in Solothurn, unter der Leporello-Brücke direkt neben dem Konzerthaus – seit 1993. Ein Samstag im September, 9 bis 15 Uhr, Eintritt frei; Getränke und Snacks vom Barwagen, ab 11.45 Uhr etwas zu Mittag. Vom Bahnhof Solothurn sind es 15 Minuten zu Fuss."
+ },
+ {
+  "slug": "kreisflohmi-zuerich",
+  "name": "Kreisflohmi",
+  "description_en": "The Kreisflohmi is Zürich's neighbourhood flea market by residents for everyone: each city district (Kreis) gets one Saturday on which people sell from their flats, courtyards, gardens, garages and roof terraces – never on the pavement. The map on kreisflohmi.ch shows where. From 11 am to 6 pm, in any weather; selling and visiting are free.",
+  "description_de": "Der Kreisflohmi ist Zürichs Quartierflohmarkt von Bewohnerinnen und Bewohnern für alle: Jeder Stadtkreis hat einen Samstag, an dem in Wohnungen, Innenhöfen, Gärten, Garagen und auf Dachterrassen verkauft wird – nie auf dem Trottoir. Wo genau, zeigt die Karte auf kreisflohmi.ch. Von 11 bis 18 Uhr, bei jedem Wetter, Verkaufen und Besuchen sind gratis."
+ },
+ {
+  "slug": "krempelmarkt-rheinufer-mainz",
+  "name": "Mainzer Krempelmarkt am Rheinufer",
+  "description_en": "Roughly every other Saturday from March to November, 7 to 3, on the Rhine bank between the Kaisertor and the Theodor-Heuss-Brücke. Private sellers only, no traders; antiques, odds and ends and collectibles, with a free children's section for 7 to 14 year olds. Run by the city of Mainz.",
+  "description_de": "Etwa alle zwei Wochen samstags von März bis November, 7 bis 15 Uhr, am Rheinufer zwischen Kaisertor und Theodor-Heuss-Brücke. Nur private Verkäufer, keine Händler; Antiquitäten, Krimskrams und Sammlerstücke, dazu ein Kinderbereich für 7- bis 14-Jährige ohne Standgebühr. Veranstalter ist die Stadt Mainz."
+ },
+ {
+  "slug": "kulturflohmarkt-museum-der-arbeit-hamburg",
+  "name": "Kulturflohmarkt Museum der Arbeit",
+  "description_en": "Seven times a year, from Easter Monday to 3 October, from 9 to 4 around the Museum der Arbeit between Barmbek station and the Osterbek canal. Junk, second-hand and household goods, no new stock, all sold from tables and clothes rails.",
+  "description_de": "Siebenmal im Jahr, von Ostermontag bis zum Tag der Deutschen Einheit, jeweils von 9 bis 16 Uhr rund ums Museum der Arbeit zwischen Bahnhof Barmbek und Osterbekkanal. Trödel, Second-Hand und Hausrat, keine Neuware; verkauft wird nur von Tischen und Kleiderständern."
+ },
+ {
+  "slug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
+  "name": "Kunst- & Trödelmarkt Fehrbelliner Platz",
+  "description_en": "Covered wooden stalls right by Fehrbelliner Platz U-Bahn station, where private sellers, professional dealers and artists trade side by side. The market is laid out in lanes: porcelain, silver cutlery and old photographs on the antiques row, records, radios and lamps from the sixties and seventies in the junk quarter, plus a clothing lane and an art row. No new goods are sold.",
+  "description_de": "Überdachte Holzstände direkt am U-Bahnhof Fehrbelliner Platz, an denen Private, Profihändler und Künstler nebeneinander verkaufen. Der Markt ist in Gassen aufgeteilt: Porzellan, Silberbesteck und alte Fotografien auf der Antikmeile, Platten, Radios und Lampen aus den Sechzigern und Siebzigern im Trödelkarree, dazu eine Kleidergasse und eine Kunstmeile. Neuware gibt es hier keine."
+ },
+ {
+  "slug": "ladies-flohmarkt-fundus-root",
+  "name": "Ladies-Flohmarkt by fundus Root",
+  "description_en": "An evening flea market for women only at the ARENA Root, organised by fundus: clothing, shoes, bags and accessories sold by and for women, with music — closer to a clothes swap than a classic flea market. Editions are periodic rather than monthly; tickets via the fundus website.",
+  "description_de": "Abend-Flohmarkt nur für Frauen in der ARENA Root, organisiert von fundus: Kleider, Schuhe, Taschen und Accessoires, von Frauen für Frauen verkauft, mit Musik – näher an einer Kleidertauschbörse als an einem klassischen Flohmarkt. Die Ausgaben finden unregelmässig statt; Tickets über die fundus-Website."
+ },
+ {
+  "slug": "leo-flohmarkt-berlin",
+  "name": "Leo Flohmarkt",
+  "description_en": "A young neighbourhood flea market in the middle of Leopoldplatz, right in front of the Schinkel church. Private and professional sellers bring vintage, books, clothing and the odd rarity. Street food and a small programme turn it into a meeting place for the neighbourhood.",
+  "description_de": "Ein junger Kiezflohmarkt mitten auf dem Leopoldplatz, direkt vor der Schinkelkirche. Private und gewerbliche Händler bringen Vintage, Bücher, Kleidung und die eine oder andere Rarität mit. Streetfood und ein kleines Programm machen daraus einen Treffpunkt für die Nachbarschaft."
+ },
+ {
+  "slug": "les-puces-du-cpo-lausanne",
+  "name": "Les Puces du CPO",
+  "description_en": "This isn't a market of separate sellers: the CPO, Ouchy's community centre, runs its own second-hand room in the basement, stocked with things people give it. On offer: books, decorations, crockery, small furniture, kitchen tools, clothes and accessories for all ages, children's equipment and toys — but no household appliances. The puces go back to Eugène Roy, a former director of the centre, who started them in a social spirit. Clearing out at home? Things in good condition can be dropped off right at the puces. Step-free access is by the ramp at the back, from the south side of the Temple de la Croix d'Ouchy. The M2 stops at Délices; the nearest public car park is at the Hôtel Royal Savoy.",
+  "description_de": "Hier verkaufen keine einzelnen Händler: Das CPO, das Quartierzentrum von Ouchy, betreibt im Untergeschoss seine eigene Brocante, gefüllt mit Sachen, die ihm geschenkt werden. Im Angebot: Bücher, Deko, Geschirr, kleine Möbel, Küchenutensilien, Kleider und Accessoires für Gross und Klein, Kinderausstattung und Spielsachen – aber keine Haushaltsgeräte. Die Puces gehen auf Eugène Roy zurück, einen früheren Leiter des Zentrums, der sie aus sozialem Antrieb gründete. Du räumst zu Hause aus? Gut erhaltene Sachen kannst du direkt bei den Puces abgeben. Stufenlos geht es über die Rampe auf der Rückseite, von der Südseite des Temple de la Croix d'Ouchy her. Die M2 hält bei Délices; öffentliche Parkplätze gibt es beim Hôtel Royal Savoy."
+ },
+ {
+  "slug": "les-puces-du-loup-lausanne",
+  "name": "Les Puces du Loup",
+  "description_en": "Only people who live on the Plateau de la Blécherette can take a stall – Bois-Gentil, Bossons, Grattapaille and the Plaines-du-Loup – and no professionals. The stalls stand around the Plaines-du-Loup school, and the neighbourhood's restaurants stay open. Bus 1 stops at Bois-Gentil, bus 21 at Grattapaille or Bossons. Parking du Vélodrome is free; Parking du Loup is paid.",
+  "description_de": "Einen Stand bekommt nur, wer auf dem Plateau de la Blécherette wohnt – in Bois-Gentil, Bossons, Grattapaille oder den Plaines-du-Loup –, und Profis sind nicht zugelassen. Die Stände stehen rund ums Schulhaus Plaines-du-Loup, und die Restaurants im Quartier haben offen. Der Bus 1 hält bei Bois-Gentil, der Bus 21 bei Grattapaille oder Bossons. Das Parking du Vélodrome ist gratis, das Parking du Loup kostet."
+ },
+ {
+  "slug": "letziplunder-flohmarkt-basel",
+  "name": "Letziplunder Flohmarkt",
+  "description_en": "The Letziplunder Flohmarkt takes place twice a year at the Basler Papiermühle — the Swiss Museum for Paper, Writing and Print — on the banks of the Birsig in Basel's St. Alban district. With a curated, characterful setting far removed from the bustle of Petersplatz, it bills itself as the most beautiful flea market in Basel. Stalls cost CHF 25 for a 2-metre pitch, and the museum's historic riverside location gives the whole event the feel of a brocante rather than a standard market. One of the more atmospheric flea markets in the Basel calendar.",
+  "description_de": "Der Letziplunder Flohmarkt findet zweimal jährlich bei der Basler Papiermühle – dem Schweizerischen Museum für Papier, Schrift und Druck – am Wasser im St. Alban-Quartier statt. Ein Stand kostet CHF 25 für zwei Meter. Die historische Lage am Wasser gibt dem Markt eher das Flair einer Brocante als eines klassischen Flohmarkts; der Anlass selbst nennt sich den schönsten Flohmarkt Basels."
+ },
+ {
+  "slug": "liesberger-flohmarkt",
+  "name": "Liesberger Flohmarkt",
+  "description_en": "Two families, the Kohlers and the Balmers, started this market after a family visit to Liesberg in 2009. They hoped for 50 exhibitors at the first one and got 86. The organisers bill it as an antiques, flea and farmers' market — a “Buuremärt” in the local word. Stalls stand inside the Seemättli hall, outside in the open, and under cover. A large car park sits right in front of the hall, and the post bus stops a few metres away.",
+  "description_de": "Zwei Familien, Kohler und Balmer, haben diesen Markt gegründet, nachdem ein Familienbesuch in Liesberg 2009 aus einer Idee Wirklichkeit werden liess. Für den ersten Markt hofften sie auf 50 Aussteller – es kamen 86. Die Organisatoren nennen ihn «Antiquitäten Floh- und Buuremärt». Die Stände stehen in der Mehrzweckhalle Seemättli, draussen im Freien und unter Dach. Direkt vor der Halle liegt ein grosser Parkplatz, die Postautohaltestelle ist nur wenige Meter entfernt."
+ },
+ {
+  "slug": "luzerner-flohmarkt-voegeligaertli",
+  "name": "Luzerner Flohmarkt Vögeligärtli",
+  "description_en": "Every Saturday from May to October a flea market fills the Vögeligärtli, a park in Lucerne's Neustadt a few minutes from the main station. Antiques, books, vinyl and curiosities of every kind. Run by the City of Lucerne with clear rules: used goods only, nothing new.",
+  "description_de": "Jeden Samstag von Mai bis Oktober findet im Vögeligärtli ein Flohmarkt statt – einem Park in der Neustadt, wenige Minuten vom Hauptbahnhof. Antiquitäten, Bücher, Vinyl und Kuriositäten aller Art. Organisiert von der Stadt Luzern mit klaren Regeln: nur Gebrauchtwaren, kein neues Handelsgut."
+ },
+ {
+  "slug": "maedelsflohmarkt-tanzwerk-101-zuerich",
+  "name": "Mädelsflohmarkt Tanzwerk 101",
+  "description_en": "Clothes, shoes, bags, jewellery, lingerie and accessories, all well-kept, all second-hand and all for women — designer labels and vintage next to no-name pieces. Every seller is a private person: no dealers, nothing handmade. There are changing rooms, so you can try things on first. Tanzwerk 101 sits on the roof terrace of the Migros complex: a large hall with a bar, a wooden floor and daylight, plus a smaller room next to it. Tram 4 stops at “Toni-Areal”, diagonally across from the main entrance; the paid parking deck is directly above, with a 2.20 m height limit. Dogs aren't allowed anywhere in the Migros complex. It has been running since 2017.",
+  "description_de": "Kleider, Schuhe, Taschen, Schmuck, Lingerie und Accessoires – alles gut erhalten, alles Secondhand, alles für Frauen, vom Designerlabel über Vintage bis zum No-Name-Stück. Verkauft wird nur von Privatpersonen: keine Händlerinnen, kein Handmade. Es gibt Umkleidekabinen, du kannst also zuerst anprobieren. Das Tanzwerk 101 liegt auf der Dachterrasse des Migros-Komplexes: ein grosser Saal mit Bar, Holzboden und Tageslicht, dazu ein kleiner Saal gleich daneben. Das Tram 4 hält bei «Toni-Areal», schräg gegenüber dem Haupteingang; das kostenpflichtige Parkdeck liegt direkt darüber, Einfahrtshöhe maximal 2.20 m. Hunde sind im ganzen Migros-Komplex verboten. Den Markt gibt es seit 2017."
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "name": "Maedelsflohmarkt XXL Dietikon",
+  "description_en": "The large-format edition of the Mädelsflohmarkt concept, held in the Stadthalle Dietikon. Women's clothing, shoes, accessories, vintage pieces and designer labels across an expanded selling floor with fitting rooms on site. More fashion event than flea market in atmosphere — curated, social, and focused entirely on what you'll actually wear.",
+  "description_de": "Der grosse XXL-Flohmarkt des Maedelsflohmarkts Schweiz in der Stadthalle Dietikon bietet eine vielfaeltige Auswahl an gut erhaltener Secondhand-Mode und Accessoires für Frauen, Maenner und Kinder sowie Dekorationsstücke. Mit Umkleidekabinen vor Ort."
+ },
+ {
+  "slug": "mannheimer-krempelmarkt-mannheim",
+  "name": "Mannheimer Krempelmarkt",
+  "description_en": "Seven market days a year on the Neuer Messplatz, open to visitors from 8 to 2. Second-hand only, no new goods, and the whole square becomes a pedestrian zone while it runs. Free entry, any weather. Run by the non-profit Projekt Freiraum.",
+  "description_de": "Sieben Markttage im Jahr auf dem Neuen Messplatz, für Besucher von 8 bis 14 Uhr. Nur Gebrauchtes, keine Neuware; der ganze Platz ist währenddessen Fußgängerzone. Eintritt frei, bei jedem Wetter. Getragen wird der Markt vom gemeinnützigen Verein Projekt Freiraum."
+ },
+ {
+  "slug": "marche-aux-puces-archipel-sion",
+  "name": "Marché aux puces de Sion (L'Archipel)",
+  "description_en": "Sion's flea market takes place in the courtyard of L'Archipel, the cultural venue at Rue de l'Industrie 47 – on the first Sunday of the month from March to November, not in August, from 8.30 am to 1 pm. A morning market: come early. Ten minutes on foot from Sion station towards the industrial quarter.",
+  "description_de": "Der Marché aux puces von Sitten findet im Innenhof von L'Archipel statt, dem Kulturort an der Rue de l'Industrie 47 – jeden ersten Sonntag im Monat von März bis November, im August nicht, jeweils von 8.30 bis 13 Uhr. Ein Morgenmarkt: früh kommen lohnt sich. Oktober und 1. November. Vom Bahnhof Sitten sind es zehn Minuten zu Fuss Richtung Industriequartier."
+ },
+ {
+  "slug": "marche-aux-puces-coupole-biel",
+  "name": "Marché aux puces de la Coupole",
+  "description_en": "The Coupole, the old gas holder next to Biel's Kongresshaus, hosts a flea market several times a year – indoors, so rain doesn't matter. The CAJ youth centre runs the venue and publishes the dates in its programme; we add them as soon as they appear there.",
+  "description_de": "In der Coupole, dem alten Gaskessel beim Kongresshaus Biel, findet mehrmals im Jahr ein Flohmarkt statt – drinnen, also auch bei Regen. Das Jugendzentrum CAJ betreibt den Ort und veröffentlicht die Daten in seinem Programm; wir tragen sie ein, sobald sie dort stehen."
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-cathedrale",
+  "name": "Marché aux puces de Fribourg (Vieille Ville)",
+  "description_en": "Antique furniture, grandmothers' porcelain and small decorative knick-knacks: that is how Fribourg's tourist office sums up this old-town brocante. Private sellers and professionals both take part. The town holds a second flea market later in the month, on the Place Georges-Python.",
+  "description_de": "Antike Möbel, Grossmutters Porzellan und kleiner Deko-Krimskrams – so fasst das Tourismusbüro von Freiburg diese Brocante in der Altstadt zusammen. Es verkaufen Private wie Profis. Später im Monat gibt es in Freiburg einen zweiten Flohmarkt, auf der Place Georges-Python."
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-place-python",
+  "name": "Marché aux puces de Fribourg (Place Python)",
+  "description_en": "The Fribourg flea market brings brocante, vintage finds, household goods and small treasures to the Old Town twice a month from March to November. Around 30 to 50 vendors take part depending on the weather. This edition takes place on the last Saturday of the month at Place Georges-Python or at Place de l Equilibre when Python is occupied.",
+  "description_de": "Der Marché aux puces de Fribourg belebt von März bis November zweimal im Monat die Altstadt. Besucher finden Brocante, Vintage, Hausrat und kleine Raritäten von 30 bis 50 Ausstellern. Diese Ausgabe findet am letzten Samstag des Monats auf dem Place Georges-Python oder auf dem Place de l Equilibre statt, wenn Python belegt ist."
+ },
+ {
+  "slug": "marche-aux-puces-glovelier",
+  "name": "Marché aux puces et brocante de Glovelier",
+  "description_en": "Entry is free, and there's food and drink on site. Professional brocante dealers are among the sellers.",
+  "description_de": "Der Eintritt ist frei, und für Essen und Getränke ist gesorgt. Unter den Verkaufenden sind auch professionelle Brocante-Händler."
+ },
+ {
+  "slug": "marche-aux-puces-jardin-anglais-neuchatel",
+  "name": "Marché aux puces du Jardin anglais",
+  "description_en": "The Jardin anglais market is free to enter. Neuchâtel's tourist office lists old books, decorations, odd objects and curiosities among what's on the tables. For news, the market keeps a Facebook page, “pucesjardinanglais”.",
+  "description_de": "Der Markt im Jardin anglais ist gratis. Das Tourismusbüro von Neuenburg zählt alte Bücher, Deko, ausgefallene Gegenstände und Kuriositäten zum Angebot. Neuigkeiten gibt es auf der Facebook-Seite «pucesjardinanglais»."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+  "name": "Marché aux puces de Plainpalais",
+  "description_en": "The Plainpalais Flea Market is a large open-air flea market: over 300 stalls spread across the Plaine de Plainpalais in central Geneva on the first Sunday of each month, selling furniture, antiques, vintage clothing, books and collectibles.",
+  "description_de": "Der Marché aux puces de Plainpalais ist ein grosser Flohmarkt unter freiem Himmel: Auf der Plaine de Plainpalais in Genf bieten über 300 Stände am ersten Sonntag des Monats Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Allerlei an."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+  "name": "Marché aux puces de Plainpalais",
+  "description_en": "The Plainpalais Flea Market is a large open-air flea market: over 300 stalls spread across the Plaine de Plainpalais in central Geneva every Wednesday, selling furniture, antiques, vintage clothing, books and collectibles.",
+  "description_de": "Der Marché aux puces de Plainpalais ist ein grosser Flohmarkt unter freiem Himmel: Auf der Plaine de Plainpalais in Genf bieten über 300 Stände jeden Mittwoch Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Allerlei an."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-samstag",
+  "name": "Marché aux puces de Plainpalais",
+  "description_en": "The Plainpalais Flea Market is a large open-air flea market: over 300 stalls spread across the Plaine de Plainpalais in central Geneva every Saturday, selling furniture, antiques, vintage clothing, books and collectibles.",
+  "description_de": "Der Marché aux puces de Plainpalais ist ein grosser Flohmarkt unter freiem Himmel: Auf der Plaine de Plainpalais in Genf bieten über 300 Stände jeden Samstag Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Allerlei an."
+ }
+]
