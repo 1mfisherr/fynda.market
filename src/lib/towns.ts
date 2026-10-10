@@ -7,7 +7,7 @@
  * it needs no extra query.
  */
 import { cityPath, countryName, type Locale } from './i18n';
-import { distanceKm } from './geo.ts';
+import { DISTANCE_MAX_KM, distanceKm } from './geo.ts';
 import type { Market } from './types';
 
 export interface TownEntry {
@@ -52,13 +52,17 @@ export function townIndex(locale: Locale, markets: Market[]): TownEntry[] {
  */
 export const TOWNS_NEARBY_KM = 20;
 export const TOWNS_NEARBY_MAX = 6;
+/* Fewer than this within 20 km — most of Germany — and the circle widens to
+   50 km, so Kiel points to Neumünster rather than to nothing (2026-10-10). */
+export const TOWNS_NEARBY_MIN = 3;
 export function townsAround(slug: string, towns: TownEntry[]): (TownEntry & { km: number })[] {
   const here = towns.find((town) => town.slug === slug);
   if (!here) return [];
-  return towns
+  const around = towns
     .filter((town) => town.slug !== slug)
     .map((town) => ({ ...town, km: distanceKm(here.lat, here.lng, town.lat, town.lng) }))
-    .filter(({ km }) => km <= TOWNS_NEARBY_KM)
-    .sort((a, b) => a.km - b.km)
+    .sort((a, b) => a.km - b.km);
+  const close = around.filter(({ km }) => km <= TOWNS_NEARBY_KM);
+  return (close.length >= TOWNS_NEARBY_MIN ? close : around.filter(({ km }) => km <= DISTANCE_MAX_KM))
     .slice(0, TOWNS_NEARBY_MAX);
 }

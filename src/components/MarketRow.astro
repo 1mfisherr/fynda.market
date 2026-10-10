@@ -72,10 +72,18 @@ interface Props {
    * behind everything else (2026-10-10).
    */
   eager?: boolean;
+  /**
+   * What sets this market apart, on one quiet line — *Indoor · antiques,
+   * records & books*. A town page, so three markets on one Saturday can be
+   * told apart without opening each (Delfim, 2026-10-10). The exceptions
+   * only: indoor or both, never "outdoor", which most are; tags as the market
+   * page filters them.
+   */
+  showFacts?: boolean;
 }
 const {
   market, locale = DEFAULT_LOCALE, variant = 'row',
-  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false, eager = false,
+  omitCity = false, showRhythm = false, distance, showDay = true, allDates = false, eager = false, showFacts = false,
 } = Astro.props;
 
 const s = t(locale);
@@ -127,6 +135,13 @@ const where = [market.venueName, omitCity ? undefined : market.city, entry]
   .filter(Boolean).join(' · ');
 
 const size = variant === 'feature' ? 720 : 148;
+
+const sold = (market.tags ?? []).filter((tag) => tag !== 'food' && !(tag === 'kids' && market.kind === 'kinderflohmarkt'));
+const factLine = showFacts
+  ? [market.setting && market.setting !== 'outdoor' ? s.setting[market.setting] : undefined, sold.length ? sold.map((tag) => s.tagLabels[tag]).join(', ') : undefined]
+    .filter(Boolean).join(' · ')
+  : '';
+const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLine.slice(1);
 ---
 
 {/* data-date is always present: the When control reads it, and a row with no
@@ -156,6 +171,7 @@ const size = variant === 'feature' ? 720 : 148;
     {between && <p class="state">{between}</p>}
     {!compact && showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
     {!compact && <p class="where">{where}</p>}
+    {facts && <p class="facts">{facts}</p>}
     {!compact && flag?.tone === 'warn' && <p class="check">{flag.text}</p>}
   </div>
 </article>
@@ -187,6 +203,7 @@ const size = variant === 'feature' ? 720 : 148;
   .over .pic { opacity:0.45; }
   .state { margin:var(--space-1) 0 0; color:var(--color-accent-text); font-size:var(--text-small); font-weight:var(--weight-bold); line-height:1.4; }
   .rhythm { margin:var(--space-1) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
+  .facts { margin:var(--space-half) 0 0; color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); line-height:1.4; }
   .where { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-small); line-height:1.4; }
   .check { margin:var(--space-half) 0 0; color:var(--color-quiet); font-size:var(--text-micro); line-height:1.4; }
 

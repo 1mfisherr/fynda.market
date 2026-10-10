@@ -21,7 +21,7 @@
  * visitor more than eighteen identical Saturdays did.
  */
 import type { Market, Occurrence } from './types';
-import { DEFAULT_RADIUS, distanceKm } from './geo.ts';
+import { DEFAULT_RADIUS, DISTANCE_MAX_KM, distanceKm } from './geo.ts';
 import { iso, weekendBounds } from './date-window.ts';
 import { withinHorizon } from './markets.ts';
 
@@ -206,14 +206,21 @@ export interface Nearby { market: Dated; km: number }
  */
 export const SPARSE_BELOW = 3;
 export const NEARBY_MAX = 5;
-export function nearbyMarkets(here: Market[], all: Market[]): Nearby[] {
-  if (datedRows(here).length >= SPARSE_BELOW) return [];
+/* German towns sit 30–80 km apart, where Swiss ones sit 10: within 25 km,
+   37 German town pages had nothing around them, Kiel among them (2026-10-10).
+   Fewer than SPARSE_BELOW markets within 25 km, and the circle widens to the
+   50 km the distance pills already stop at — the heading says which. */
+export function nearbyMarkets(here: Market[], all: Market[]): { rows: Nearby[]; km: number } {
+  if (datedRows(here).length >= SPARSE_BELOW) return { rows: [], km: DEFAULT_RADIUS };
   const anchors = here.filter((m) => Number.isFinite(m.lat) && Number.isFinite(m.lng));
-  if (anchors.length === 0) return [];
+  if (anchors.length === 0) return { rows: [], km: DEFAULT_RADIUS };
   const lat = anchors.reduce((sum, m) => sum + m.lat, 0) / anchors.length;
   const lng = anchors.reduce((sum, m) => sum + m.lng, 0) / anchors.length;
   const own = new Set(here.map((m) => m.id));
-  return soonestAround(lat, lng, datedRows(all.filter((m) => !own.has(m.id))), NEARBY_MAX);
+  const candidates = datedRows(all.filter((m) => !own.has(m.id)));
+  const close = soonestAround(lat, lng, candidates, NEARBY_MAX);
+  if (close.length >= SPARSE_BELOW) return { rows: close, km: DEFAULT_RADIUS };
+  return { rows: soonestAround(lat, lng, candidates, NEARBY_MAX, DISTANCE_MAX_KM), km: DISTANCE_MAX_KM };
 }
 
 /**
@@ -223,10 +230,10 @@ export function nearbyMarkets(here: Market[], all: Market[]): Nearby[] {
  * *Meanwhile, nearby* (src/lib/nearby.ts) both ask it, so the radius and the
  * order cannot drift apart. The caller decides which rows are candidates.
  */
-export function soonestAround(lat: number, lng: number, rows: Dated[], max: number): Nearby[] {
+export function soonestAround(lat: number, lng: number, rows: Dated[], max: number, radius = DEFAULT_RADIUS): Nearby[] {
   return byMarket(rows)
     .map((market) => ({ market, km: distanceKm(lat, lng, market.lat, market.lng) }))
-    .filter(({ km }) => km <= DEFAULT_RADIUS)
+    .filter(({ km }) => km <= radius)
     .sort((a, b) => a.market.next.date.localeCompare(b.market.next.date) || a.km - b.km)
     .slice(0, max);
 }

@@ -13,11 +13,13 @@ import MarketRow from '../../../components/MarketRow.astro';
 import PillList from '../../../components/PillList.astro';
 import Section from '../../../components/Section.astro';
 import TypeLegend from '../../../components/TypeLegend.astro';
+import Button from '../../../components/Button.astro';
+import Icon from '../../../components/Icon.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
 import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets, undatedMarkets } from '../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
-import { DEFAULT_RADIUS, kmLabel } from '../../../lib/geo';
+import { kmLabel } from '../../../lib/geo';
 import { LOCALES, cityPath, homePath, isCityState, localeTag, regionPath, type Locale } from '../../../lib/i18n';
 import { seasonLabel } from '../../../lib/season';
 import { t } from '../../../lib/strings';
@@ -49,7 +51,7 @@ export async function getStaticPaths() {
     const index = townIndex(locale, markets);
     for (const [stadt, sample] of cities) {
       const here = markets.filter((m) => m.citySlug === stadt);
-      const nearby = nearbyMarkets(here, markets);
+      const around = nearbyMarkets(here, markets);
       const towns = townsAround(stadt, index);
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(stadt);
@@ -58,14 +60,14 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, country: sample.countrySlug, stadt },
-        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby, towns, alternates },
+        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby: around.rows, nearbyKm: around.km, towns, alternates },
       });
     }
   }
   return paths;
 }
 
-const { locale, city, stadt, region, regionSlug, markets, nearby, towns, alternates } = Astro.props;
+const { locale, city, stadt, region, regionSlug, markets, nearby, nearbyKm, towns, alternates } = Astro.props;
 const s = t(locale);
 /* Every date, for the counts and the answer sentence; then one row per market,
    which is what the page actually renders — src/lib/lists.ts. */
@@ -191,6 +193,12 @@ const nearbyGroups = labelled(nearby, ({ market }) => market.next.date);
 /* The legend explains the badge colours. With no badged market on the page it
    teaches a colour system nothing on the page uses — the market page dropped
    it for the same reason. */
+/* A town of one market: that market, large, and the way there — the first
+   thing someone on this page does next (Delfim, 2026-10-10). Not its
+   description: that is the market page's, and two pages saying the same
+   is what Google's September update punished. */
+const routeHref = only ? `https://www.google.com/maps/dir/?api=1&destination=${only.lat},${only.lng}` : undefined;
+
 const hasBadge = [...list, ...nearby.map((n) => n.market)].some((market) => BADGED_KINDS.has(market.kind));
 
 const site = 'https://fynda.market';
@@ -244,7 +252,7 @@ const jsonLd = {
             <span class="count">{s.marketCount(group.rows.length)}</span>
           </h2>
           {group.rows.map((market, i) => (
-            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} eager={g === 0 && i === 0} showRhythm omitCity showDay={false} allDates />
+            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} eager={g === 0 && i === 0} showRhythm omitCity showDay={false} allDates showFacts />
           ))}
         </section>
       ))}
@@ -258,6 +266,9 @@ const jsonLd = {
       </section>
     </template>
     <p id="empty" class="gutter meta" hidden>{s.nothingInPeriod}</p>
+    {only && ownDates && (
+      <div class="gutter route"><Button href={routeHref} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />{s.route}</Button></div>
+    )}
   </Section>
 
   {/* Straight after the markets that have a date, while people are still in
@@ -269,8 +280,11 @@ const jsonLd = {
   {undated.length > 0 && (
     <Section id="undated" title={s.noDateYet} lede={s.noDateYetLede(undated.length)}>
       <div class="gutter">
-        {undated.map((market) => <MarketRow market={market} locale={locale} showRhythm omitCity showDay={false} />)}
+        {undated.map((market) => <MarketRow market={market} locale={locale} variant={only ? 'feature' : 'row'} eager={!!only} showRhythm omitCity showDay={false} showFacts />)}
       </div>
+      {only && !ownDates && (
+      <div class="gutter route"><Button href={routeHref} variant="primary" block rel="noopener nofollow" target="_blank"><Icon name="map" size={18} />{s.route}</Button></div>
+    )}
     </Section>
   )}
 
@@ -280,7 +294,7 @@ const jsonLd = {
 
   {nearby.length > 0 && (
     <aside data-outside-floor>
-      <Section title={s.nearbyHeading(DEFAULT_RADIUS)} lede={s.nearbyLede(city)}>
+      <Section title={s.nearbyHeading(nearbyKm)} lede={s.nearbyLede(city)}>
         {nearbyGroups.map((group) => (
           <section class="day-group gutter" data-day={group.date}>
             {group.monthLabel && <p class="month">{group.monthLabel}</p>}
@@ -290,7 +304,7 @@ const jsonLd = {
               <span class="count">{s.marketCount(group.rows.length)}</span>
             </h3>
             {group.rows.map(({ market, km }) => (
-              <MarketRow market={market} locale={locale} showRhythm showDay={false} distance={`${Math.round(km)} km`} />
+              <MarketRow market={market} locale={locale} showRhythm showDay={false} distance={`${Math.round(km)} km`} showFacts />
             ))}
           </section>
         ))}
@@ -303,7 +317,7 @@ const jsonLd = {
       (src/lib/towns.ts), then the canton. */}
   {towns.length > 0 && (
     <Section title={s.townsNearby}>
-      <PillList items={towns.map((town) => ({ href: town.href, label: town.name, meta: kmLabel(town.km, localeTag(locale)) }))} />
+      <PillList items={towns.map((town) => ({ href: town.href, label: town.name, meta: `${kmLabel(town.km, localeTag(locale))} · ${s.marketCount(town.n)}` }))} />
     </Section>
   )}
   {!cityState && <PillList items={[{ href: regionPath(locale, markets[0].countryCode, markets[0].countrySlug, regionSlug), label: s.regionLabel(region, markets[0].countryCode) }]} />}
@@ -313,6 +327,8 @@ const jsonLd = {
 </Page>
 
 <style>
+  .route { margin-block-start: var(--space-4); max-width: var(--measure); }
+
   /* Sticky, opaque, thin: the one sticky element that earns its place, because
      it is the list's own index rather than chrome. The rule beneath is grey —
      the accent is the date and nothing else. */
