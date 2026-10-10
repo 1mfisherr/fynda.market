@@ -237,3 +237,52 @@ export function soonestAround(lat: number, lng: number, rows: Dated[], max: numb
     .sort((a, b) => a.market.next.date.localeCompare(b.market.next.date) || a.km - b.km)
     .slice(0, max);
 }
+
+/**
+ * A town page's list: the coming week day by day — a market under every day
+ * it runs, so a Saturday-and-Sunday market is under both and a weekly one
+ * under each — then one row per market at its next date after that. One row
+ * per market everywhere hid the weekend: Berlin's Sunday said 7 markets when
+ * 12 ran (product review, 2026-10-10). Seven days and the weekend that ends
+ * them — at most thirteen — is a bound, not every date of every market: the
+ * rest of the horizon stays one row each.
+ */
+export const WEEK_DAYS = 7;
+export function townRows(rows: Dated[], now = new Date()): Dated[] {
+  const today = iso(now);
+  const last = new Date(now);
+  last.setDate(now.getDate() + WEEK_DAYS - 1);
+  // …and on to that week's Sunday: from a Saturday, seven days end on a
+  // Friday, and next Saturday's weekly markets looked like nothing.
+  while (last.getDay() !== 0) last.setDate(last.getDate() + 1);
+  const end = iso(last);
+  const week = rows
+    .filter((row) => row.next.date >= today && row.next.date <= end)
+    .sort((a, b) => a.next.date.localeCompare(b.next.date) || (a.next.startTime ?? '').localeCompare(b.next.startTime ?? ''));
+  const inWeek = new Set(week.map((row) => row.slug));
+  return [...week, ...byMarket(rows.filter((row) => row.next.date > end && !inWeek.has(row.slug)))];
+}
+
+/**
+ * The days of this weekend a town has nothing of its own, each with up to
+ * three markets on that day within 25 km — Zurich had nothing on a Sunday
+ * while Baden (21 km) and Hinwil (24 km) did, and the page said nothing
+ * (product review, 2026-10-10). Other towns' markets: the page marks the
+ * block outside its content floor, as it does *Within 25 km*.
+ */
+export const WEEKEND_AROUND_MAX = 3;
+export function weekendAround(here: Market[], all: Market[], now = new Date()): { date: string; rows: Nearby[] }[] {
+  const anchors = here.filter((m) => Number.isFinite(m.lat) && Number.isFinite(m.lng));
+  if (anchors.length === 0) return [];
+  const lat = anchors.reduce((sum, m) => sum + m.lat, 0) / anchors.length;
+  const lng = anchors.reduce((sum, m) => sum + m.lng, 0) / anchors.length;
+  const { start, end } = weekendBounds(now);
+  const today = iso(now);
+  const busy = new Set(datedRows(here).filter((row) => row.next.status !== 'cancelled').map((row) => row.next.date));
+  const own = new Set(here.map((m) => m.id));
+  const others = datedRows(all.filter((m) => !own.has(m.id))).filter((row) => row.next.status !== 'cancelled');
+  return [start, end]
+    .filter((date) => date >= today && !busy.has(date))
+    .map((date) => ({ date, rows: soonestAround(lat, lng, others.filter((row) => row.next.date === date), WEEKEND_AROUND_MAX) }))
+    .filter((day) => day.rows.length > 0);
+}

@@ -16,7 +16,7 @@ import TypeLegend from '../../../components/TypeLegend.astro';
 import Button from '../../../components/Button.astro';
 import Icon from '../../../components/Icon.astro';
 import { getMarkets, HORIZON_DAYS } from '../../../lib/markets';
-import { byMarket, datedRows, groupByDay, lastChecked, nearbyMarkets, undatedMarkets } from '../../../lib/lists';
+import { datedRows, groupByDay, lastChecked, nearbyMarkets, townRows, undatedMarkets, weekendAround } from '../../../lib/lists';
 import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
 import { kmLabel } from '../../../lib/geo';
@@ -52,6 +52,8 @@ export async function getStaticPaths() {
     for (const [stadt, sample] of cities) {
       const here = markets.filter((m) => m.citySlug === stadt);
       const around = nearbyMarkets(here, markets);
+      /* A thin town already lists what is around it; a busy one gets its empty weekend days filled. */
+      const weekend = around.rows.length ? [] : weekendAround(here, markets);
       const towns = townsAround(stadt, index);
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(stadt);
@@ -60,20 +62,21 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, country: sample.countrySlug, stadt },
-        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby: around.rows, nearbyKm: around.km, towns, alternates },
+        props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby: around.rows, nearbyKm: around.km, weekend, towns, alternates },
       });
     }
   }
   return paths;
 }
 
-const { locale, city, stadt, region, regionSlug, markets, nearby, nearbyKm, towns, alternates } = Astro.props;
+const { locale, city, stadt, region, regionSlug, markets, nearby, nearbyKm, weekend, towns, alternates } = Astro.props;
 const s = t(locale);
 /* Every date, for the counts and the answer sentence; then one row per market,
    which is what the page actually renders — src/lib/lists.ts. */
 const rows = datedRows(markets);
 const checked = lastChecked(rows);
-const list = byMarket(rows);
+/* The coming week day by day, then one row per market (src/lib/lists.ts townRows). */
+const list = townRows(rows);
 /* The rest of the town's markets: no date inside the horizon, listed under
    their own header with the rhythm line, hidden by any When but All. */
 const undated = undatedMarkets(markets);
@@ -188,6 +191,13 @@ function labelled<T>(items: T[], dateOf: (item: T) => string): Group<T>[] {
   });
 }
 const groups = labelled(list, (market) => market.next.date);
+/* This weekend's empty days, filled from within 25 km, in date order among the town's own days. */
+const aroundGroups = labelled(weekend.flatMap((day) => day.rows), ({ market }) => market.next.date);
+const days = [
+  ...groups.map((group) => ({ ...group, around: false as const })),
+  ...aroundGroups.map((group) => ({ ...group, around: true as const })),
+].sort((a, b) => a.date.localeCompare(b.date));
+const leadDay = groups[0]?.date;
 const nearbyGroups = labelled(nearby, ({ market }) => market.next.date);
 
 /* The legend explains the badge colours. With no badged market on the page it
@@ -199,7 +209,7 @@ const nearbyGroups = labelled(nearby, ({ market }) => market.next.date);
    is what Google's September update punished. */
 const routeHref = only ? `https://www.google.com/maps/dir/?api=1&destination=${only.lat},${only.lng}` : undefined;
 
-const hasBadge = [...list, ...nearby.map((n) => n.market)].some((market) => BADGED_KINDS.has(market.kind));
+const hasBadge = [...list, ...nearby.map((n) => n.market), ...weekend.flatMap((d) => d.rows.map((n) => n.market))].some((market) => BADGED_KINDS.has(market.kind));
 
 const site = 'https://fynda.market';
 const cityState = isCityState(markets[0].countryCode, regionSlug);
@@ -243,7 +253,20 @@ const jsonLd = {
       data-count-one={s.marketCount(1)}
       data-count-many={s.marketCount(2)}
     >
-      {groups.map((group, g) => (
+      {days.map((group) => group.around ? (
+        /* Nothing here this day, so what is on within 25 km — other towns'
+           markets, outside this page's content floor like *Within 25 km*. */
+        <aside class="day-group gutter around" data-outside-floor data-around-day={group.date}>
+          <h2 class="day-head">
+            <span class="weekday">{group.weekday}</span>
+            <span class="date">{group.label}</span>
+          </h2>
+          <p class="meta around-note">{s.aroundNothing(city)}</p>
+          {group.rows.map(({ market, km }) => (
+            <MarketRow market={market} locale={locale} showRhythm showDay={false} distance={`${Math.round(km)} km`} showFacts />
+          ))}
+        </aside>
+      ) : (
         <section class="day-group gutter" data-day={group.date}>
           {group.monthLabel && <p class="month">{group.monthLabel}</p>}
           <h2 class="day-head">
@@ -252,7 +275,7 @@ const jsonLd = {
             <span class="count">{s.marketCount(group.rows.length)}</span>
           </h2>
           {group.rows.map((market, i) => (
-            <MarketRow market={market} locale={locale} variant={g === 0 && i === 0 ? 'feature' : 'row'} eager={g === 0 && i === 0} showRhythm omitCity showDay={false} allDates showFacts />
+            <MarketRow market={market} locale={locale} variant={group.date === leadDay && i === 0 ? 'feature' : 'row'} eager={group.date === leadDay && i === 0} showRhythm omitCity showDay={false} allDates showFacts />
           ))}
         </section>
       ))}
@@ -328,6 +351,8 @@ const jsonLd = {
 
 <style>
   .route { margin-block-start: var(--space-4); max-width: var(--measure); }
+  /* The line under an empty weekend day that says the rows are other towns'. */
+  .around-note { margin: var(--space-2) 0 0; }
 
   /* Sticky, opaque, thin: the one sticky element that earns its place, because
      it is the list's own index rather than chrome. The rule beneath is grey —
@@ -387,8 +412,11 @@ const jsonLd = {
   /* The town's own rows, and the "within 25 km" block's. The block's rows are
      other towns' markets at their next date only, so they keep filtering on
      that one date. */
-  const own = list ? Array.from(list.querySelectorAll<HTMLElement>('article.card')) : [];
-  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]')).filter((row) => !own.includes(row));
+  /* One per market: the week lists a weekly market under each day it runs, and
+     a chosen window must not show it twice. The around block is other towns'. */
+  const ownAll = list ? Array.from(list.querySelectorAll<HTMLElement>('article.card')).filter((row) => !row.closest('[data-outside-floor]')) : [];
+  const own = ownAll.filter((row, i) => ownAll.findIndex((r) => r.dataset.market === row.dataset.market) === i);
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]')).filter((row) => !ownAll.includes(row));
   const read = <T,>(key: string, fallback: T): T => { try { return JSON.parse(list?.dataset[key] ?? ''); } catch { return fallback; } };
   const weekdays = read<string[]>('weekdays', []);
   const months = read<string[]>('months', []);
@@ -501,6 +529,8 @@ const jsonLd = {
           const later = days().find((g) => (g.dataset.day ?? '') > date);
           group.parentElement!.insertBefore(target, later ?? null);
         }
+        // Already under that day — a Saturday-and-Sunday market closed on Saturday.
+        if (cardsIn(target).some((c) => c !== card && c.dataset.market === card.dataset.market)) { card.remove(); continue; }
         target.appendChild(card);
       }
     }
