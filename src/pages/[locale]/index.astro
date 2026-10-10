@@ -168,7 +168,7 @@ const jsonLd = {
       dump. The picture is the argument — a flea market is stuff you can see. */}
   {total > 0 && (
     <Section title={s.thisWeekend} lede={s.thisWeekendLede(total, formatDateShort(from, locale), formatDateShort(to, locale))}>
-      <div data-weekend="all" data-country-words={several ? JSON.stringify(countryWords) : undefined}>
+      <div data-weekend="all" data-over="hide" data-country-words={several ? JSON.stringify(countryWords) : undefined}>
         <div class="leads gutter">
           {lead.map((market, i) => <MarketRow market={market} locale={locale} variant="feature" eager={i === 0} />)}
         </div>
@@ -177,7 +177,7 @@ const jsonLd = {
         </div>
       </div>
       {leadsByCountry.map((c) => (
-        <div data-weekend={c.code} hidden>
+        <div data-weekend={c.code} data-over="hide" hidden>
           <div class="leads gutter">
             {c.lead.map((market) => <MarketRow market={market} locale={locale} variant="feature" />)}
           </div>
@@ -191,7 +191,7 @@ const jsonLd = {
           then shows something else is worse than no button. */}
       {more.length > 0 && (
         <>
-          <div id="rest-of-weekend" hidden>
+          <div id="rest-of-weekend" data-over="hide" hidden>
             {more.map((market) => <MarketRow market={market} locale={locale} />)}
           </div>
           <div class="gutter more">

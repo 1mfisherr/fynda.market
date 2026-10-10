@@ -123,6 +123,12 @@ const live = occurrence && !cancelled && occurrence.date === todayIso() && occur
   ? { start: toIsoWithOffset(occurrence.date, occurrence.startTime, market.timezone), end: toIsoWithOffset(occurrence.date, occurrence.endTime, market.timezone) }
   : undefined;
 
+/* Its next date after today's, for when today's has closed — the clock below
+   moves the row on to it (src/lib/row-shift.ts). Only where there is a clock. */
+const after = live
+  ? withinHorizon(market.upcoming).find((o) => o.status !== 'cancelled' && o.date > occurrence!.date)
+  : undefined;
+
 const dates = allDates
   ? encodeDates(withinHorizon([market.next, ...market.upcoming].filter(Boolean) as NonNullable<typeof market.next>[])
     .filter((o) => o.status !== 'cancelled')
@@ -146,7 +152,7 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
 
 {/* data-date is always present: the When control reads it, and a row with no
     date yet ("") is shown under All and hidden under any real window. */}
-<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end} data-lat={distance ? undefined : market.lat} data-lng={distance ? undefined : market.lng} data-dates={dates || undefined}>
+<article class:list={['card', variant, { cancelled }]} data-date={occurrence?.date ?? ''} data-market={market.id} data-start={live?.start} data-end={live?.end} data-lat={distance ? undefined : market.lat} data-lng={distance ? undefined : market.lng} data-dates={dates || undefined} data-after-date={after?.date} data-after-day={after && showDay ? formatDate(after.date, locale) : undefined} data-after-hours={after ? (after.startTime ? `${formatTime(after.startTime)}${after.endTime ? `–${formatTime(after.endTime)}` : ''}` : '') : undefined}>
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} loading={eager ? 'eager' : 'lazy'} /></div>
   <div class="body">
     <p class="meta">
@@ -235,6 +241,7 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
   import { iso } from '../lib/date-window';
   import { DISTANCE_MAX_KM, distanceKm, kmLabel, type PickedTown } from '../lib/geo';
   import { TOWN_KEY, adopt } from '../lib/local-keys';
+  import { moveOn } from '../lib/row-shift';
 
   /* How far each card is from the town the visitor picked — within 50 km, and
      only once they have picked one. Straight line; the list keeps its order,
@@ -271,6 +278,14 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
       // A When filter can show this row for a later date (src/lib/date-rows.ts);
       // then today's clock has nothing to say about it.
       if (row.dataset.date !== iso(new Date())) { row.classList.remove('over'); slot.hidden = true; continue; }
+      /* Closed for today: on to its next date, or off the list — only what
+         is on or still to come (Delfim, 2026-10-10). A compact row is the
+         market page's, which drops its own closed rows. */
+      if (state.phase === 'over' && !row.classList.contains('compact')) {
+        const what = moveOn(row);
+        document.dispatchEvent(new CustomEvent('fynda:moved', { detail: { row, what } }));
+        continue;
+      }
       row.classList.toggle('over', state.phase === 'over');
       row.dataset.phase = state.phase;
       if (state.phase === 'closing') slot.textContent = words.closesIn.replace('{t}', formatSpan(state.minutes, words));

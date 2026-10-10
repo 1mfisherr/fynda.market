@@ -554,7 +554,8 @@ const savedCopy = saved && {
     for (const row of Array.from(list.querySelectorAll<HTMLElement>('[data-date]'))) {
       const href = row.querySelector<HTMLAnchorElement>(`a[href^="${prefix}"]`)?.getAttribute('href') ?? '';
       const slug = href.split('/').filter(Boolean).at(-1) ?? '';
-      const keep = stored.has(slug);
+      // Closed for today with no later date is off every list (src/lib/row-shift.ts).
+      const keep = stored.has(slug) && !row.dataset.gone;
       row.hidden = !keep;
       if (keep) { slugs.add(slug); dates += Number(row.dataset.dates ?? 1); }
     }

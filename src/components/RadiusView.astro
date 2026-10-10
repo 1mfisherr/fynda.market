@@ -315,7 +315,8 @@ const DEFAULT_KM = 25;
           const row = pin.querySelector<HTMLElement>('[data-date]');
           const label = pin.querySelector<HTMLElement>('[data-distance]');
           const dist = distanceKm(origin!.lat, origin!.lng, Number(pin.dataset.lat), Number(pin.dataset.lng));
-          const ok = dist <= km && inWindow(row?.dataset.date ?? '', when, now);
+          // Closed for today with no later date: off the list (src/lib/row-shift.ts).
+          const ok = !row?.dataset.gone && dist <= km && inWindow(row?.dataset.date ?? '', when, now);
           pin.hidden = !ok;
           if (label) { label.hidden = !ok; label.textContent = ok ? `${oneDecimal.format(dist)} km` : ''; }
           return { pin, dist, date: row?.dataset.date ?? '' };
@@ -399,6 +400,8 @@ const DEFAULT_KM = 25;
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sheet.hidden) openSheet(false); });
     for (const b of geoButtons) b.addEventListener('click', (e) => { e.preventDefault(); locate(); });
     page.addEventListener('fynda:locate', locate);
+    /* A market closed for today moved on to its next date: re-sort the bands. */
+    document.addEventListener('fynda:moved', () => { if (origin) render(); });
     page.addEventListener('fynda:town', (e) => useTown((e as CustomEvent).detail?.slug));
     for (const b of kmButtons) b.addEventListener('click', () => { km = Number(b.dataset.km); if (origin) { openSheet(false); set('located'); } else render(); });
     for (const b of dateButtons) b.addEventListener('click', () => {

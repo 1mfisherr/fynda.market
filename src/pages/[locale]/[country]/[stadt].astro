@@ -376,6 +376,7 @@ const jsonLd = {
 <script>
   import { inWindow, iso, type DateWindow } from '../../../lib/date-window';
   import { matching } from '../../../lib/date-rows';
+  import { cardsIn, setVariant } from '../../../lib/row-shift';
 
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const list = document.getElementById('list');
@@ -403,7 +404,10 @@ const jsonLd = {
     picked.replaceChildren();
     const byDate = new Map<string, { row: HTMLElement; hours: string }[]>();
     for (const row of own) {
+      if (row.hidden) continue;
       for (const d of matching(row, window, now)) {
+        // A row moved past today's closed date (src/lib/row-shift.ts).
+        if (d.date < (row.dataset.date ?? '')) continue;
         if (!byDate.has(d.date)) byDate.set(d.date, []);
         byDate.get(d.date)!.push({ row, hours: d.hours });
       }
@@ -444,7 +448,7 @@ const jsonLd = {
    * are no day bands to hide or recount any more. The "No date yet" block has
    * nothing to say about a chosen day, so it goes with any window but All.
    */
-  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-day]')).filter((g) => !list?.contains(g));
+  const groupsOutside = () => Array.from(document.querySelectorAll<HTMLElement>('[data-day]')).filter((g) => !list?.contains(g) && !picked?.contains(g));
   const apply = (window: DateWindow) => {
     const now = new Date();
     const all = window === 'all';
@@ -452,15 +456,15 @@ const jsonLd = {
     if (picked) picked.hidden = all;
     let shown = all ? own.length : renderPicked(window, now);
     for (const row of rows) {
-      const visible = inWindow(row.dataset.date ?? '', window, now);
+      const visible = !row.dataset.gone && inWindow(row.dataset.date ?? '', window, now);
       row.hidden = !visible;
       if (visible) shown++;
     }
     if (undated) undated.hidden = window !== 'all';
     // A day whose rows are all hidden hides with them; every row in a group
     // shares its date, so the group is shown or hidden whole.
-    for (const group of groups) {
-      group.hidden = !inWindow(group.dataset.day ?? '', window, now);
+    for (const group of groupsOutside()) {
+      group.hidden = !inWindow(group.dataset.day ?? '', window, now) || cardsIn(group).length === 0;
     }
     if (empty) empty.hidden = shown > 0;
   };
@@ -471,6 +475,50 @@ const jsonLd = {
       apply((button.dataset.filter ?? 'all') as DateWindow);
     });
   }
+
+  /**
+   * A market closed for today moves on to its next date (MarketRow,
+   * src/lib/row-shift.ts) — here that means under its own day: an existing
+   * group, or a new one in date order. A day left with nothing goes, and the
+   * soonest market is the lead again (Delfim, 2026-10-10: only what is on or
+   * still to come).
+   */
+  const regroup = (container: HTMLElement | null, lead: boolean) => {
+    if (!container || !template) return;
+    const days = () => Array.from(container.querySelectorAll<HTMLElement>('section.day-group[data-day]'));
+    for (const group of days()) {
+      for (const card of cardsIn(group)) {
+        const date = card.dataset.date ?? '';
+        if (date === group.dataset.day) continue;
+        let target = days().find((g) => g.dataset.day === date);
+        if (!target) {
+          target = (template.content.firstElementChild as HTMLElement).cloneNode(true) as HTMLElement;
+          const d = new Date(`${date}T12:00:00`);
+          target.dataset.day = date;
+          target.className = group.className;
+          target.querySelector('.weekday')!.textContent = weekdays[d.getDay()] ?? '';
+          target.querySelector('.date')!.textContent = `${d.getDate()}${list?.dataset.dot ?? ''} ${months[d.getMonth()] ?? ''}`;
+          const later = days().find((g) => (g.dataset.day ?? '') > date);
+          group.parentElement!.insertBefore(target, later ?? null);
+        }
+        target.appendChild(card);
+      }
+    }
+    for (const group of days()) {
+      const n = cardsIn(group).length;
+      if (n === 0) { group.remove(); continue; }
+      const count = group.querySelector('.count');
+      if (count) count.textContent = n === 1 ? (list?.dataset.countOne ?? '') : (list?.dataset.countMany ?? '').replace('2', String(n));
+    }
+    if (lead) {
+      const first = days()[0] ? cardsIn(days()[0])[0] : undefined;
+      for (const card of Array.from(container.querySelectorAll<HTMLElement>('article.card'))) setVariant(card, card === first ? 'feature' : 'row');
+    }
+  };
+  const nearbyBlock = document.querySelector<HTMLElement>('[data-outside-floor]');
+  const settle = () => { regroup(list, true); regroup(nearbyBlock, false); };
+  document.addEventListener('fynda:moved', settle);
+  settle();
 
   // The home page's search card sends the chosen period here. Pressing the
   // matching chip rather than filtering directly keeps one code path, and

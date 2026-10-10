@@ -176,6 +176,7 @@ const jsonLd = {
 <script>
   import { iso, type DateWindow } from '../../../../lib/date-window';
   import { matching } from '../../../../lib/date-rows';
+  import { reorderFlat } from '../../../../lib/row-shift';
 
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]'));
@@ -218,7 +219,10 @@ const jsonLd = {
     let shown = 0;
     for (const row of rows) {
       const was = original.get(row)!;
-      const first = window === 'all' ? undefined : matching(row, window, now)[0];
+      // Closed for today and nothing later: it stays off the list.
+      if (row.dataset.gone) { row.hidden = true; continue; }
+      // A row moved past today's closed date matches from its new date on.
+      const first = window === 'all' ? undefined : matching(row, window, now).find((d) => d.date >= was.date);
       if (window === 'all') show(row, was.date, was.day, was.hours);
       else if (first) {
         const d = new Date(`${first.date}T12:00:00`);
@@ -231,6 +235,18 @@ const jsonLd = {
     if (undated) undated.hidden = window !== 'all';
     if (empty) empty.hidden = shown > 0;
   };
+
+  /* A market closed for today moves on to its next date or leaves
+     (MarketRow, src/lib/row-shift.ts): remember where it went, so All brings
+     it back there, and put the list back in date order. */
+  const leads = list?.querySelector<HTMLElement>('.leads');
+  document.addEventListener('fynda:moved', (event) => {
+    const { row, what } = (event as CustomEvent<{ row: HTMLElement; what: string }>).detail;
+    if (!original.has(row)) return;
+    original.set(row, { date: row.dataset.date ?? '', day: row.querySelector('.day')?.textContent ?? '', hours: row.querySelector('.hours')?.textContent ?? '' });
+    if (list && leads) reorderFlat(leads, list, 2);
+  });
+  if (list && leads) reorderFlat(leads, list, 2);
 
   for (const button of buttons) {
     button.addEventListener('click', () => {
