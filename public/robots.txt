@@ -11,5 +11,10 @@
 
 User-agent: *
 Allow: /
+# A form opened from a market page carries the market in its address — four
+# per market page, about 4,800 in all. Each is a noindex form, and Google spent
+# its visits on 1,569 of them while 896 real pages waited (Search Console,
+# 2026-10-10). The bare forms stay open; the per-market copies do not.
+Disallow: /*?markt=
 
 Sitemap: https://fynda.market/sitemap-index.xml

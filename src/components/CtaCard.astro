@@ -48,7 +48,9 @@ const copy = COPY[kind];
 <section class="cta">
   <h2>{copy.title}</h2>
   <p class="meta">{lead && <><b class="lead">{lead}</b>{' '}</>}{body ?? copy.body}</p>
-  <Button href={href ?? utilityPath(locale, copy.key)} variant={variant} block>{copy.action}</Button>
+  {/* A caller's own href carries the market in its query — a form address
+      per market, which Google crawled 1,569 of by 2026-10-04 (robots.txt). */}
+  <Button href={href ?? utilityPath(locale, copy.key)} rel={href ? 'nofollow' : undefined} variant={variant} block>{copy.action}</Button>
   {note && <p class="meta note">{note}</p>}
 </section>
 

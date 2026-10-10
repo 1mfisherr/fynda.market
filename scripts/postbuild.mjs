@@ -6,9 +6,9 @@
  * file has to be `dist/{locale}/404.html`. Moved, not copied: a `/de/404/`
  * address must not exist, and the route guardrail would rightly refuse it.
  *
- * Then a manifest of every indexable page and a hash of its HTML, served as
- * `/_hashes.json`. The next publish reads the live copy, compares it with its
- * own, and tells IndexNow only about the pages that actually changed
+ * Then a manifest of every indexable page and a hash of what a reader of it
+ * sees — `readable()` below — served as `/_hashes.json`. The next publish
+ * reads the live copy, compares it with its own, and tells IndexNow only about the pages that actually changed
  * (scripts/indexnow.mjs). The pages are the sitemap's: that is the list of
  * what we ask engines to index, so it is the list of what we tell them about.
  */
@@ -27,6 +27,28 @@ for (const locale of readdirSync(dist, { withFileTypes: true }).filter((d) => d.
 }
 console.log(`postbuild: ${moved} locale 404 pages in place`);
 
+/**
+ * What a page says, not how it is drawn: its title, its description and its
+ * text — no markup, no styles, no scripts, no attributes. Hashed raw, every
+ * deploy that touched a stylesheet "changed" all 1,948 pages, and every night
+ * the date calendar greying out yesterday changed 936 more; the sitemap told
+ * Google that everything changed every day, and Google stopped reading it
+ * (last read 28 Sep, Search Console 2026-10-10). The calendar's day cells go
+ * too (components/DateFilters.astro): yesterday's number leaving the grid is
+ * not news. A market's new date, a new text, a cancellation still are.
+ */
+function readable(html) {
+  const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
+  const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+  const body = (html.split(/<body[^>]*>/)[1] ?? html)
+    .replace(/<(script|style|template)\b[\s\S]*?<\/\1>/g, ' ')
+    .replace(/<(span|button) class="cell[^"]*"[^>]*>[^<]*<\/\1>/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return [title, description, body].join('\n');
+}
+
 const sitemap = join(dist, 'sitemap-0.xml');
 const hashes = {};
 if (existsSync(sitemap)) {
@@ -34,7 +56,7 @@ if (existsSync(sitemap)) {
     const path = new URL(loc).pathname;
     const file = join(dist, path, 'index.html');
     if (!existsSync(file)) continue;
-    hashes[path] = createHash('sha1').update(readFileSync(file)).digest('hex').slice(0, 16);
+    hashes[path] = createHash('sha1').update(readable(readFileSync(file, 'utf8'))).digest('hex').slice(0, 16);
   }
 }
 writeFileSync(join(dist, '_hashes.json'), JSON.stringify(hashes));

@@ -29,7 +29,7 @@ One indexable URL per entity per locale (v1: ~60 per market). Everything else �
 - **A published address never dies.** A replaced slug is marked `is_current = false`, stays reserved, and the build emits a 301 for it in `_redirects`. Guardrail 9.
 - **Market URLs sit outside the geography tree** so a market never moves when its town or canton is corrected.
 - **The canton segment carries a type word** because five Swiss names are both a city and a canton, and Berlin, Hamburg and Bremen are city-states. A type segment partitions (one URL per canton); a facet multiplies (place × weekday). That is what the forbid rules encode.
-- Utility pages and Near me are `noindex`, out of the sitemap and out of the ratio; they have their own content floor (150). `/ics/*.ics`, `/_hashes.json` and the IndexNow key are files, not pages.
+- Utility pages and Near me are `noindex`, out of the sitemap and out of the ratio; they have their own content floor (150). A form opened from a market page carries the market in its address (`?markt=`) — about 4,800 addresses, of which Google crawled 1,569 while 896 real pages waited — so `robots.txt` disallows `/*?markt=` and the links are `nofollow` (2026-10-10). `/ics/*.ics`, `/_hashes.json` and the IndexNow key are files, not pages.
 
 ## Locales
 
@@ -41,7 +41,7 @@ Nothing enforces the locale list: the build joins each place's name and slug in 
 
 **Also the country's:** the currency an entry fee is printed and marked up in (CHF / EUR — until 2026-09-23 every German fee read "4 CHF"), and its **city-states** — Berlin, Hamburg, Bremen — whose region page would be the town page's twin, so it is not built, links go to the town, and the one night it was published 301s (`scripts/redirects.mjs`).
 
-**Sitemap `<lastmod>` is the day a page last changed** (`scripts/postbuild.mjs`): a page keeps its day until its HTML hash moves, compared with the live `_hashes.json` and `_modified.json`. No live files, no `<lastmod>` — never the build date.
+**Sitemap `<lastmod>` is the day a page last changed** (`scripts/postbuild.mjs`): a page keeps its day until what it *says* changes — the hash is of its title, description and text, not its HTML, so a stylesheet deploy or the date calendar greying out yesterday no longer dates all 1,948 pages today (which made Google stop reading the sitemap after 28 Sep; fixed 2026-10-10) — compared with the live `_hashes.json` and `_modified.json`. No live files, no `<lastmod>` — never the build date.
 
 **The region word is in the copy too, not only the path.** "im Kanton Zürich" is how a Swiss person says it; "im Bundesland Bayern" is how nobody says it — in Germany the Land carries no noun ("Flohmärkte in Bayern"), which is also the query people type. `src/lib/strings.ts` holds one phrase builder per language, and the country picks the phrase.
 

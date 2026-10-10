@@ -754,7 +754,7 @@ const description = next
         <div class="report gutter">
           {[['cancelled', s.reportDidNotHappen], ['wrong_date', s.reportEndedEarly], ['other', s.reportSomethingElse]].map(
             ([grund, label]) => (
-              <a class="chip" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}&mid=${market.id}`}>{label}</a>
+              <a class="chip" rel="nofollow" href={`${utilityPath(locale, 'report')}?markt=${encodeURIComponent(market.name)}&grund=${grund}&mid=${market.id}`}>{label}</a>
             )
           )}
         </div>
