@@ -12,8 +12,10 @@
  * not publish (publishable_markets reads `active` only) — someone flips it after
  * the spot-check and the photos (docs/GERMANY-SPEC.md).
  *
- * Dates the organiser lists are `confirmed` as of the day they were read; dates
- * derived from a rhythm are `unverified`. An organiser with a published e-mail
+ * Every date is `confirmed` as of the day the organiser's page was read: the
+ * ones it lists, and the ones derived from the rhythm it states — if the
+ * organiser says every Saturday, we trust it (Delfim, 2026-10-10). The ledger
+ * keeps the difference: a listed date is `confirmed`, a derived one `reported`. An organiser with a published e-mail
  * gets a personal link at once, so the welcome workflow finds them. Nothing is
  * mailed here.
  */
@@ -309,12 +311,10 @@ async function write(d, ours) {
         for (const date of m.dates) {
           const occ = await one(
             `insert into public.occurrences (market_id, date, start_time, end_time, status, origin, confirmed_at)
-             values ($1,$2,$3,$4,$5,'import',$6) returning id`,
-            [row.id, date, openingOn(m, date)?.start ?? null, openingOn(m, date)?.end ?? null, listed ? 'confirmed' : 'unverified', listed ? checked : null]);
+             values ($1,$2,$3,$4,'confirmed','import',$5) returning id`,
+            [row.id, date, openingOn(m, date)?.start ?? null, openingOn(m, date)?.end ?? null, checked]);
           occurrences += 1;
-          if (listed) {
-            await fact('occurrence', occ.id, 'date', date, { source_type: 'website_crawl', source_ref: m.source_page, observed_at: checked, confidence: 'confirmed' });
-          }
+          await fact('occurrence', occ.id, 'date', date, { source_type: 'website_crawl', source_ref: m.source_page, observed_at: checked, confidence: listed ? 'confirmed' : 'reported' });
         }
       }
 

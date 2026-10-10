@@ -141,7 +141,11 @@ const SQL = `
           select id, date::text, start_time::text, end_time::text, status, origin,
                  cancellation_note, confirmed_at
             from public.occurrences
-           where market_id = p.id and date >= current_date
+           -- A guessed date is not shown (Delfim, 2026-10-10: no market is
+           -- "not yet confirmed"). `unverified` is now only v1's tentative —
+           -- next year's dates its organiser has not published; until they
+           -- do, the market says when it is usually back.
+           where market_id = p.id and date >= current_date and status <> 'unverified'
            order by date
         ) o
     )                                               as occurrences
