@@ -66,6 +66,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
   if (action.kind === 'claim') return claim(env, origin, action, verb as 'approve' | 'reject');
   if (action.kind === 'market_stopped') return stopped(env, action, verb as 'approve' | 'reject');
   if (action.kind === 'watch') return watch(env, action, verb as 'approve' | 'reject');
+  if (action.kind === 'fact') return fact(env, action, verb as 'approve' | 'reject');
 
   // edit arrives with day 3 of the spec.
   return done('Not yet', [`Decisions of kind <code>${escape(action.kind)}</code> are not wired up yet.`], 501);
@@ -200,6 +201,27 @@ async function stopped(env: Env, action: AdminAction, verb: 'approve' | 'reject'
  * and the stamp — so this handler only passes the decision on and says what
  * happened. No rebuild: it shows after the nightly one.
  */
+/**
+ * A visitor's "one more, if you know" (functions/f.ts). Approve publishes the
+ * value where the market has none — fact_answer_apply() writes the market and
+ * the ledger row in one go; Reject only closes the link. Shows after the
+ * nightly build.
+ */
+async function fact(env: Env, action: AdminAction, verb: 'approve' | 'reject'): Promise<Response> {
+  const market = String(action.payload.market_id ?? '');
+  const field = String(action.payload.field ?? '');
+  const value = String(action.payload.value ?? '');
+  if (!UUID.test(market)) return done('Nothing done', ['The action names no market.'], 500);
+  if (verb === 'reject') {
+    await markUsed(env, action.id, 'rejected');
+    return done('Dismissed', ['Nothing published. The answer stays in fact_answers.']);
+  }
+  const said = await rpc<string>(env, 'fact_answer_apply', { p_market: market, p_field: field, p_value: value, p_how: 'approved by Delfim' });
+  if (said === null) return done('Nothing done', ['The database did not answer. Check the Cloudflare log; the link still works.'], 500);
+  await markUsed(env, action.id, 'approved');
+  return done(said === 'applied' ? 'Published' : 'Nothing changed', [escape(said === 'applied' ? `${field} = ${value}. On the page after tonight's build.` : `The market already has a ${field}; a visitor never overwrites it.`)]);
+}
+
 async function watch(env: Env, action: AdminAction, verb: 'approve' | 'reject'): Promise<Response> {
   const findingId = String(action.payload.finding_id ?? '');
   if (!UUID.test(findingId)) return done('Nothing done', ['The action names no finding.'], 500);

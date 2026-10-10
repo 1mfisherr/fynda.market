@@ -283,6 +283,14 @@ const askAbout = canBeLive && next?.id
   ? { id: next.id, today: true, title: s.wasItOnToday }
   : recent ? { id: recent.id!, today: false, title: s.wasItOnTitle(formatDate(recent.date, locale)) } : undefined;
 
+/* One more, if you know: after a yes, the first thing this page lacks that
+   someone who was there can answer — how big, who sells, indoors or out
+   (functions/f.ts). Nothing asked when the page already knows all three. */
+const askFact = (['size_band', 'seller_mix', 'setting'] as const).find((field) =>
+  field === 'size_band' ? !market.stallCount && !market.sizeBand
+  : field === 'seller_mix' ? !market.sellerMix
+  : !market.setting);
+
 const claimHref = `${utilityPath(locale, 'organiser')}`
   + `?markt=${encodeURIComponent(market.name)}&ort=${encodeURIComponent(market.city)}`
   + `&mid=${market.id}`;
@@ -331,7 +339,8 @@ const capital = (text: string) => text.charAt(0).toLocaleUpperCase(locale) + tex
 const sold = (market.tags ?? []).filter((tag) => tag !== 'food' && !(tag === 'kids' && market.kind === 'kinderflohmarkt'));
 const facts = [
   sold.length ? [capital(sold.map((tag) => s.tagLabels[tag]).join(', ')), s.soldLabel] : undefined,
-  market.stallCount ? [`~${market.stallCount}`, s.stallsLabel] : undefined,
+  market.stallCount ? [`~${market.stallCount}`, s.stallsLabel]
+    : market.sizeBand ? [s.sizeBands[market.sizeBand], s.stallsLabel] : undefined,
   market.setting ? [capital(s.setting[market.setting]), s.settingLabel] : undefined,
   market.sellerMix ? [s.sellers[market.sellerMix], s.sellersLabel] : undefined,
   market.entryFee ? [formatFee(market.entryFee, market.countryCode), s.entryLabel] : undefined,
@@ -574,6 +583,22 @@ const description = next
               </div>
             </form>
             <div class="thanks" id="wason-done" hidden><h2>{s.wasItOnThanks}</h2><p>{s.wasItOnThanksBody}</p></div>
+            {askFact && (
+              <form class="fact-form" action="/f" method="post" data-fact hidden>
+                <input type="hidden" name="market" value={market.id} />
+                <input type="hidden" name="occurrence" value={askAbout.id} />
+                <input type="hidden" name="field" value={askFact} />
+                <input type="hidden" name="path" value={Astro.url.pathname} />
+                <p>{s.factAskIntro}</p>
+                <h2>{s.factAsk[askFact]}</h2>
+                <div class="options">
+                  {Object.entries(s.factOptions[askFact]).map(([value, label]) => (
+                    <Button type="submit" name="value" value={value} block>{label}</Button>
+                  ))}
+                </div>
+              </form>
+            )}
+            <div class="thanks" data-fact-done hidden><h2>{s.factThanks}</h2></div>
           </section>
         </div>
       )}
@@ -1022,6 +1047,8 @@ const description = next
   .wason p { margin: 0; color: var(--color-grey); font-size: var(--text-small); }
   .wason-form { display: grid; gap: var(--space-3); }
   .wason .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .fact-form { display: grid; gap: var(--space-2); padding-block-start: var(--space-3); border-block-start: var(--border-width) solid var(--color-line); }
+  .fact-form .options { display: grid; gap: var(--space-2); margin-block-start: var(--space-1); }
   .wason [hidden], [data-wason][hidden] { display: none; }
   .thanks { display: grid; gap: var(--space-1); }
   .thanks:target { display: grid !important; }
@@ -1145,6 +1172,25 @@ const description = next
     askForm.hidden = true;
     const thanks = wason!.querySelector<HTMLElement>('.thanks');
     if (thanks) thanks.hidden = false;
+    // Only someone who was there is asked what it was like.
+    if (answer === 'on' && factForm) factForm.hidden = false;
+  });
+
+  /* One more, if you know: the same in place, posted to /f. */
+  const factForm = wason?.isConnected ? wason.querySelector<HTMLFormElement>('[data-fact]') : null;
+  factForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const value = (event.submitter as HTMLButtonElement | null)?.value;
+    if (!value) return;
+    const data = Object.fromEntries(new FormData(factForm)) as Record<string, string>;
+    void fetch('/f', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({ ...data, value }),
+    }).catch(() => undefined);
+    factForm.hidden = true;
+    const done = wason!.querySelector<HTMLElement>('[data-fact-done]');
+    if (done) done.hidden = false;
   });
 
   /**

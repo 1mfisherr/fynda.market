@@ -129,6 +129,8 @@ export interface Market {
   seasonTo?: number;
   /** Who sells — what buyers ask most after size. Rendered only when set. */
   sellerMix?: 'private' | 'mixed' | 'trader';
+  /** Roughly how big, from visitors (functions/f.ts) — shown only where stallCount is unknown. */
+  sizeBand?: 'small' | 'medium' | 'large';
   /**
    * The record: this calendar year's dates that have passed, newest first,
    * cancelled ones included. They were listed; `seen` says a visitor told us

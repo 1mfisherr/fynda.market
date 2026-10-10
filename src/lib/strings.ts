@@ -284,6 +284,17 @@ export interface Strings {
   wasItOnNo: string;
   wasItOnThanks: string;
   wasItOnThanksBody: string;
+  /** Roughly how big, in the facts strip under Stalls, when no count is known. */
+  sizeBands: Record<'small' | 'medium' | 'large', string>;
+  /** One more, if you know — asked after a yes, about a fact the page lacks (functions/f.ts). */
+  factAskIntro: string;
+  factAsk: Record<'size_band' | 'seller_mix' | 'setting', string>;
+  factOptions: {
+    size_band: Record<'small' | 'medium' | 'large', string>;
+    seller_mix: Record<'private' | 'mixed' | 'trader', string>;
+    setting: Record<'indoor' | 'outdoor' | 'both', string>;
+  };
+  factThanks: string;
   /** On the claim card of a market people are waiting for. */
   claimWaiting: (n: number) => string;
   /** "Foto" before a photographer's name, under a credited photo. */
@@ -616,6 +627,15 @@ const de: Strings = {
   wasItOnNo: 'Nein',
   wasItOnThanks: 'Danke.',
   wasItOnThanksBody: 'So stimmt, was hier steht.',
+  sizeBands: { small: 'Unter 30', medium: '30 bis 100', large: 'Über 100' },
+  factAskIntro: 'Noch eine Frage, falls du es weisst – sie hilft allen, die nach dir kommen.',
+  factAsk: { size_band: 'Wie viele Stände, ungefähr?', seller_mix: 'Wer hat verkauft?', setting: 'Drinnen oder draussen?' },
+  factOptions: {
+    size_band: { small: 'Unter 30', medium: '30 bis 100', large: 'Über 100' },
+    seller_mix: { private: 'Vor allem Privatleute', mixed: 'Gemischt', trader: 'Vor allem Händler' },
+    setting: { indoor: 'Drinnen', outdoor: 'Draussen', both: 'Beides' },
+  },
+  factThanks: 'Notiert. Das hilft.',
   claimWaiting: (n) => (n === 1 ? 'Jemand wartet auf den nächsten Termin.' : `${n} Leute warten auf den nächsten Termin.`),
   photo: 'Foto',
   regionDescription: (n, towns, region, code, next) =>
@@ -867,6 +887,15 @@ const en: Strings = {
   wasItOnNo: "No, it wasn't",
   wasItOnThanks: 'Thank you.',
   wasItOnThanksBody: "That's how this page stays true.",
+  sizeBands: { small: 'Under 30', medium: '30 to 100', large: 'Over 100' },
+  factAskIntro: 'One more, if you remember. It helps whoever comes next.',
+  factAsk: { size_band: 'How many stalls, roughly?', seller_mix: 'Who was selling?', setting: 'Indoors or out?' },
+  factOptions: {
+    size_band: { small: 'Under 30', medium: '30 to 100', large: 'Over 100' },
+    seller_mix: { private: 'Mostly private people', mixed: 'A mix', trader: 'Mostly dealers' },
+    setting: { indoor: 'Indoors', outdoor: 'Outdoors', both: 'Both' },
+  },
+  factThanks: 'Noted. That helps.',
   claimWaiting: (n) => (n === 1 ? 'One person is waiting for its next date.' : `${n} people are waiting for its next date.`),
   photo: 'Photo',
   regionDescription: (n, towns, region, code, next) =>
@@ -1128,6 +1157,15 @@ const fr: Strings = {
   wasItOnNo: 'Non',
   wasItOnThanks: 'Merci.',
   wasItOnThanksBody: "C'est comme ça que cette page reste exacte.",
+  sizeBands: { small: 'Moins de 30', medium: '30 à 100', large: 'Plus de 100' },
+  factAskIntro: 'Une dernière, si vous vous en souvenez : elle aide le prochain visiteur.',
+  factAsk: { size_band: 'Combien de stands, à peu près ?', seller_mix: 'Qui vendait ?', setting: 'Dedans ou dehors ?' },
+  factOptions: {
+    size_band: { small: 'Moins de 30', medium: '30 à 100', large: 'Plus de 100' },
+    seller_mix: { private: 'Surtout des particuliers', mixed: 'Un peu des deux', trader: 'Surtout des pros' },
+    setting: { indoor: 'Dedans', outdoor: 'Dehors', both: 'Les deux' },
+  },
+  factThanks: 'Noté, ça aide.',
   claimWaiting: (n) => (n === 1 ? 'Une personne attend sa prochaine date.' : `${n} personnes attendent sa prochaine date.`),
   photo: 'Photo',
   regionDescription: (n, towns, region, _code, next) =>
@@ -1384,6 +1422,15 @@ const it: Strings = {
   wasItOnNo: "No, non c'era",
   wasItOnThanks: 'Grazie.',
   wasItOnThanksBody: 'È così che questa pagina dice il vero.',
+  sizeBands: { small: 'Meno di 30', medium: 'Da 30 a 100', large: 'Più di 100' },
+  factAskIntro: 'Ancora una, se te lo ricordi: aiuta chi viene dopo.',
+  factAsk: { size_band: 'Quanti banchi, più o meno?', seller_mix: 'Chi vendeva?', setting: "Al coperto o all'aperto?" },
+  factOptions: {
+    size_band: { small: 'Meno di 30', medium: 'Da 30 a 100', large: 'Più di 100' },
+    seller_mix: { private: 'Soprattutto privati', mixed: 'Privati e commercianti', trader: 'Soprattutto commercianti' },
+    setting: { indoor: 'Al coperto', outdoor: "All'aperto", both: 'Entrambi' },
+  },
+  factThanks: 'Segnato, ci aiuta.',
   claimWaiting: (n) => (n === 1 ? 'Una persona aspetta la prossima data.' : `${n} persone aspettano la prossima data.`),
   photo: 'Foto',
   regionDescription: (n, towns, region, _code, next) =>
