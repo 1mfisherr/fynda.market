@@ -97,6 +97,7 @@ const DEFAULT_KM = 25;
         data-within-one={s.radiusWithin(1, 0).replace('0', '{km}')}
         data-within-many={s.radiusWithin(2, 0).replace('0', '{km}').replace(/^2/, '{n}')}
         data-denied={s.radiusDenied}
+        data-blocked={s.radiusBlocked}
       ></p>
     </section>
 
@@ -112,7 +113,7 @@ const DEFAULT_KM = 25;
           <strong>{s.pickTown}</strong>
           <button type="button" class="close" data-sheet-close aria-label={s.closeSheet}><Icon name="chevron-down" size={22} /></button>
         </div>
-        <p class="meta denied" data-only="refused">{s.radiusDenied}</p>
+        <p class="meta denied" data-only="refused" data-denied-line data-denied={s.radiusDenied} data-blocked={s.radiusBlocked}>{s.radiusDenied}</p>
         <Button type="button" variant="primary" block data-geo>
           <Icon name="locate" size={18} /><span data-geo-label data-ask={s.radiusUseLocation} data-again={s.tryAgain}>{s.radiusUseLocation}</span>
         </Button>
@@ -263,6 +264,12 @@ const DEFAULT_KM = 25;
 
     let state: State = 'before';
     let origin: Origin | null = null;
+    /* The browser has said no for this site, once and for all: asking again
+       fails at once and shows nothing, so the button that asks goes and the
+       sentence says where the setting is (Delfim, 2026-10-10). */
+    let blocked = false;
+    const geoButtons = Array.from(page.querySelectorAll<HTMLElement>('[data-geo]'));
+    const deniedLine = page.querySelector<HTMLElement>('[data-denied-line]');
     let km = Number(d.defaultKm ?? 25);
     let when: DateWindow = 'all';
 
@@ -291,11 +298,13 @@ const DEFAULT_KM = 25;
         ? `${origin.town ? (d.nearTown ?? '').replace('{town}', origin.town.name) : d.nearYou} · ${km} km`
         : d.pick ?? '';
       if (geoLabel) geoLabel.textContent = (state === 'refused' ? geoLabel.dataset.again : geoLabel.dataset.ask) ?? '';
+      for (const b of geoButtons) b.hidden = blocked;
+      if (deniedLine) deniedLine.textContent = (blocked ? deniedLine.dataset.blocked : deniedLine.dataset.denied) ?? '';
       for (const b of kmButtons) b.setAttribute('aria-pressed', String(Number(b.dataset.km) === km));
 
       for (const band of Array.from(listEl.querySelectorAll('.band'))) band.remove();
       if (!origin) {
-        if (statusEl) statusEl.textContent = state === 'locating' ? d.asking ?? '' : state === 'refused' ? statusEl.dataset.denied ?? '' : '';
+        if (statusEl) statusEl.textContent = state === 'locating' ? d.asking ?? '' : state === 'refused' ? (blocked ? statusEl.dataset.blocked : statusEl.dataset.denied) ?? '' : '';
         if (empty) empty.hidden = true;
         return;
       }
@@ -350,10 +359,13 @@ const DEFAULT_KM = 25;
       if (!('geolocation' in navigator)) { geo({ outcome: 'denied', reason: 'unavailable' }); set('refused', null); openSheet(true); return; }
       set('locating', null);
       geo({ outcome: 'requested' });
+      const asked = performance.now();
       navigator.geolocation.getCurrentPosition(
         (pos) => { geo({ outcome: 'granted' }); set('located', { lat: pos.coords.latitude, lng: pos.coords.longitude }); },
         (err) => {
           const reason = err.code === err.PERMISSION_DENIED ? 'denied' : err.code === err.TIMEOUT ? 'timeout' : 'unavailable';
+          // A no faster than a person can tap was the browser's, not theirs.
+          if (err.code === err.PERMISSION_DENIED && performance.now() - asked < 400) blocked = true;
           geo({ outcome: 'denied', reason });
           set('refused', null);
           openSheet(true);
@@ -370,10 +382,22 @@ const DEFAULT_KM = 25;
       return true;
     }
 
+    /* Where the browser can say so up front, the sheet opens already knowing. */
+    navigator.permissions?.query({ name: 'geolocation' }).then((p) => {
+      const read = () => {
+        blocked = p.state === 'denied';
+        if (blocked && state === 'before') state = 'refused';
+        else if (!blocked && state === 'refused' && !origin) state = 'before';
+        render();
+      };
+      read();
+      p.addEventListener?.('change', read);
+    }).catch(() => { /* older Safari: the timing above decides */ });
+
     page.querySelector('[data-place]')?.addEventListener('click', () => openSheet(true));
     for (const el of Array.from(page.querySelectorAll('[data-sheet-close]'))) el.addEventListener('click', () => openSheet(false));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sheet.hidden) openSheet(false); });
-    for (const b of Array.from(page.querySelectorAll<HTMLElement>('[data-geo]'))) b.addEventListener('click', (e) => { e.preventDefault(); locate(); });
+    for (const b of geoButtons) b.addEventListener('click', (e) => { e.preventDefault(); locate(); });
     page.addEventListener('fynda:locate', locate);
     page.addEventListener('fynda:town', (e) => useTown((e as CustomEvent).detail?.slug));
     for (const b of kmButtons) b.addEventListener('click', () => { km = Number(b.dataset.km); if (origin) { openSheet(false); set('located'); } else render(); });

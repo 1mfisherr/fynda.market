@@ -507,10 +507,10 @@ const description = next
           from the town the visitor picked, filled in by the script below. */}
       <div class="strip">
         <ul class="list-reset">
-          <li data-distance hidden data-lat={market.lat} data-lng={market.lng} data-from={s.fromTown}><b data-distance-value></b><span data-distance-label></span></li>
-          {next && market.recurrenceText && <li><b>{market.recurrenceText}</b><span>{s.howOften}</span></li>}
-          {liveDates > 0 && <li><b>{liveDates}</b><span>{s.upcoming(liveDates)}</span></li>}
-          {facts.map(([value, label]) => <li><b>{value}</b><span>{label}</span></li>)}
+          <li data-distance hidden data-lat={market.lat} data-lng={market.lng} data-from={s.fromTown}><span data-distance-label></span><b data-distance-value></b></li>
+          {next && market.recurrenceText && <li><span>{s.howOften}</span><b>{market.recurrenceText}</b></li>}
+          {liveDates > 0 && <li><span>{s.upcoming(liveDates)}</span><b>{liveDates}</b></li>}
+          {facts.map(([value, label]) => <li><span>{label}</span><b>{value}</b></li>)}
         </ul>
         {/* The stamp is about the next date; with none there is nothing to have checked. */}
         {next && (
@@ -616,10 +616,14 @@ const description = next
       )}
 
       <Section level="sub" title={s.gettingThere} id="hinkommen">
-        <p class="address gutter">
-          <b>{market.venueName}</b>
-          {addressLine !== market.venueName && <span>{addressLine}</span>}
-          {showLocality && <span>{locality}</span>}
+        {/* The address is the Directions button too: the first thing a thumb
+            tries on an address is a tap (Delfim, 2026-10-10). */}
+        <p class="gutter">
+          <a class="address" href={mapsUrl} rel="noopener nofollow" target="_blank">
+            <b>{market.venueName}</b>
+            {addressLine !== market.venueName && <span>{addressLine}</span>}
+            {showLocality && <span>{locality}</span>}
+          </a>
         </p>
         {market.gettingThere && <p class="getting gutter">{market.gettingThere}</p>}
       </Section>
@@ -881,7 +885,7 @@ const description = next
      fills the distance in. */
   .strip:not(:has(li:not([hidden]), .stamp)) { display: none; }
   .strip li b {
-    font-size: var(--text-small);
+    font-size: var(--text-micro);
     font-weight: var(--weight-bold);
     line-height: var(--leading-snug);
   }
@@ -964,8 +968,9 @@ const description = next
     100% { transform: scale(1); }
   }
 
-  .address { display: grid; font-size: var(--text-small); line-height: var(--leading-body); }
-  .address b { font-weight: var(--weight-black); }
+  .address { display: inline-grid; font-size: var(--text-small); line-height: var(--leading-body); color: inherit; text-decoration: none; }
+  .address:hover b, .address:focus-visible b { text-decoration-color: currentColor; }
+  .address b { font-weight: var(--weight-black); text-decoration: underline; text-decoration-color: var(--color-line); text-underline-offset: 0.2em; }
   .address span { color: var(--color-grey); }
   .getting { margin-block-start: var(--space-2); font-size: var(--text-small); }
 

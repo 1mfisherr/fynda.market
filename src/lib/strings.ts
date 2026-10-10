@@ -115,6 +115,8 @@ export interface Strings {
   radiusWithin: (n: number, km: number) => string;
   /** The phone said no, or never answered. */
   radiusDenied: string;
+  /** The browser said no without asking: the visitor must change a setting, a button cannot. */
+  radiusBlocked: string;
   radiusUseLocation: string;
   /** aria-label on the km chips. */
   radiusGroup: string;
@@ -516,6 +518,7 @@ const de: Strings = {
   radiusHeading: 'Flohmärkte in der Nähe',
   radiusWithin: (n, km) => `${n} ${n === 1 ? 'Flohmarkt' : 'Flohmärkte'} im Umkreis von ${km} km, die nächsten zuerst.`,
   radiusDenied: 'Kein Standort geteilt. Wähle stattdessen einen Ort oder versuche es noch einmal.',
+  radiusBlocked: 'Dein Browser blockiert den Standort für diese Seite. Wähle einen Ort – oder erlaube den Standort in den Einstellungen des Browsers.',
   radiusUseLocation: 'Meinen Standort verwenden',
   radiusGroup: 'Umkreis',
   nothingForSelection: 'Keine Märkte in diesem Zeitraum. Versuche es mit einem grösseren Umkreis oder einem anderen Zeitraum.',
@@ -766,6 +769,7 @@ const en: Strings = {
   radiusHeading: 'Flea markets near me',
   radiusWithin: (n, km) => `${n} ${n === 1 ? 'market' : 'markets'} within ${km} km of you, nearest first.`,
   radiusDenied: 'Location not shared. Pick a town instead, or try again.',
+  radiusBlocked: "Your browser is blocking location for this site. Pick a town instead, or allow location in the browser's settings.",
   radiusUseLocation: 'Use my location',
   radiusGroup: 'Radius',
   nothingForSelection: 'No markets in this period. Try a larger radius or another period.',
@@ -1022,6 +1026,7 @@ const fr: Strings = {
   radiusHeading: 'Brocantes à proximité',
   radiusWithin: (n, km) => `${n} ${n === 1 ? 'brocante' : 'brocantes'} dans un rayon de ${km} km, les plus proches d'abord.`,
   radiusDenied: 'Position non partagée. Choisissez une ville, ou réessayez.',
+  radiusBlocked: 'Votre navigateur bloque la position pour ce site. Choisissez une ville, ou autorisez la position dans les réglages du navigateur.',
   radiusUseLocation: 'Utiliser ma position',
   radiusGroup: 'Rayon',
   nothingForSelection: 'Pas de brocante sur cette période. Essayez un rayon plus grand ou une autre période.',
@@ -1276,6 +1281,7 @@ const it: Strings = {
   radiusHeading: 'Mercatini delle pulci nei dintorni',
   radiusWithin: (n, km) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'} entro ${km} km da te, i più vicini prima.`,
   radiusDenied: 'Posizione non condivisa. Scegli una località, oppure riprova.',
+  radiusBlocked: 'Il browser blocca la posizione per questo sito. Scegli una località, oppure consenti la posizione nelle impostazioni del browser.',
   radiusUseLocation: 'Usa la mia posizione',
   radiusGroup: 'Raggio',
   nothingForSelection: 'Nessun mercatino in questo periodo. Prova un raggio più ampio o un altro periodo.',
