@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "nachtflohmarkt-presswerk-arbon",
+    "question": "Are the 2026 opening hours published on presswerk-arbon.ch?",
+    "answer": "Yes. Tuesday 29 Dec 2026: flea market open 18:00-22:00. Stallholder set-up from 16:00; the hall closes at 23:00 after the stalls are cleared. The Presswerk restaurant is open. (The page's URL slug says 27-12-22 because it is a recycled old event page; its content is 29.12.2026 and it is the entry in the homepage programme for 29 Dec.)",
+    "source": "https://presswerk-arbon.ch/events/nachtflohmarkt-27-12-22/",
+    "quote": "Öffnungszeiten Flohmarkt 18.00 bis 22.00 Uhr."
+  },
+  {
+    "slug": "nachtflohmarkt-presswerk-arbon",
+    "question": "Date confirmation (same page)",
+    "answer": "29 Dec 2026, Eventhalle.",
+    "source": "https://presswerk-arbon.ch/events/nachtflohmarkt-27-12-22/",
+    "quote": "Am Dienstag, 29. Dezember 2026 findet wieder der legendäre Nachtflohmarkt im Presswerk statt!"
+  },
+  {
+    "slug": "nachtflohmarkt-presswerk-arbon",
+    "question": "Set-up and closing times (same page)",
+    "answer": "Set-up from 16:00, hall closes at 23:00.",
+    "source": "https://presswerk-arbon.ch/events/nachtflohmarkt-27-12-22/",
+    "quote": "Die Eventhalle ist ab 16.00 Uhr für Standbetreiber zum Aufbau geöffnet. Die Eventhalle schliesst nach Abbau der Stände um 23.00 Uhr."
+  },
+  {
+    "slug": "alpin-flohmi-lausanne",
+    "question": "Venue name, street address and postal code of the 2026 Lausanne edition",
+    "answer": "Grande Salle du CAS des Diablerets, Rue Beau-Séjour 24, 1003 Lausanne.",
+    "source": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Grande Salle du CAS des Diablerets, Rue Beau-Séjour 24, 1003 Lausanne"
+  },
+  {
+    "slug": "alpin-flohmi-lausanne",
+    "question": "Date and hours of the Lausanne edition (same page)",
+    "answer": "Wednesday 11 Nov 2026, 18:30-20:30; 18:30-19:00 is for members of CAS Diablerets and Mountain Wilderness only.",
+    "source": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Mercredi 11 novembre 2026, de 18h30 à 20h30 De 18h30 à 19h00, accès réservé aux membres du CAS Diablerets et de Mountain Wilderness."
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "question": "Right venue/address (the town's own 2026 notice for the children's flea market)",
+    "answer": "Wiese zwischen Stadthaus und Stürmeierhuus, Freiestrasse, 8952 Schlieren (the Stadthaus is Freiestrasse 6 and the Stürmeierhuus Freiestrasse 14, per schlieren.ch). Saturday 5 Sep 2026, 09:00-16:00. Organiser contact on the notice: Kulturkommission, M. Hatt, tel. 044 730 12 82.",
+    "source": "https://m.schlieren.ch/appl/download.php?objid=1472420620&id=62825648&nr=1&filename=Merkblatt_Kinderflohmarkt.pdf&usid=7930&cmd=viewinline",
+    "quote": "Kinderflohmarkt Samstag, 5. September 2026 9.00 bis 16.00 Uhr Wiese zwischen Stadthaus und Stürmeierhuus"
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "question": "Rain plan, who may sell, fee (same town notice)",
+    "answer": "Rain: the market moves to the underground car park at the Stadthaus (our rain_policy 'runs' is roughly right). Notice is addressed to Schlieren schoolchildren; CHF 2.00 per stall collected on the spot; no advance booking; no food sales.",
+    "source": "https://m.schlieren.ch/appl/download.php?objid=1472420620&id=62825648&nr=1&filename=Merkblatt_Kinderflohmarkt.pdf&usid=7930&cmd=viewinline",
+    "quote": "Bei Regenwetter findet der Flohmarkt in der Tiefgarage beim Stadthaus statt."
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "question": "Stable town URL to use as website",
+    "answer": "No stable per-market page exists for 2026. Our current value https://m.schlieren.ch/kibou is dead (the town's 'page not found'). The town's event pages on m.schlieren.ch (index.php?apid=...) are removed after each edition (HTTP 410) or bounce to a CMS login, and the Merkblatt PDF is a one-year document. Best stable town URL: https://www.schlieren.ch/anlaesseaktuelles (the town's events calendar; it shows the market while it is upcoming). Alternative: https://www.schlieren.ch/kuko (the organiser, Kulturkommission; does not name the market). Recommendation: use the calendar URL, or leave website empty and keep the organiser contact.",
+    "source": "https://m.schlieren.ch/kibou",
+    "quote": "Upps. Diese Seite können wir nicht finden..."
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "question": "Is our market the Herbstmarkt's flea market or a separate children's flea market?",
+    "answer": "A companion children's flea market, not the Herbstmarkt itself. The town lists ONE combined event called 'Herbst- und Kinderflohmarkt', venue Kirchgasse 8952 Schlieren (Sat, 9:00-16:00). The Herbstmarkt (food, crafts, club info stands) is the Kirchgasse market; the Kinderflohmarkt is held 'gleichzeitig' (at the same time) on a meadow on Freiestrasse. Ours (kind kinderflohmarkt, 5 Sep 2026, 09:00-16:00) is the children's one, so Kirchgasse is the Herbstmarkt's venue, not ours. Caveat: the town's 2026 event page is gone (HTTP 410), so this wording is from the Wayback copy of the town's page (2025 edition, Sa 6 Sep 2025); the 2026 Merkblatt confirms the children's market on its own meadow, same hours, 5 Sep 2026. The meadow is described as 'Ecke Freiestrasse/Stationsstrasse' in 2025 and 'zwischen Stadthaus und Stürmeierhuus' in 2026 - both on Freiestrasse, probably the same spot.",
+    "source": "https://web.archive.org/web/20241010180346/https://m.schlieren.ch/index.php?apid=872339188",
+    "quote": "Der Kinderflohmarkt findet gleichzeitig auf der Wiese an der Ecke Freiestrasse/Stationsstrasse statt."
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "question": "Same archived town page: event name and venue",
+    "answer": "Event 'Herbst- und Kinderflohmarkt', category Messen / Märkte / Feste, venue Kirchgasse, 8952 Schlieren (2025 edition).",
+    "source": "https://web.archive.org/web/20241010180346/https://m.schlieren.ch/index.php?apid=872339188",
+    "quote": "Datum Sa, 06. Sep. 2025, 09:00 - 16:00h Veranstaltungsort Kirchgasse 8952 Schlieren"
+  },
+  {
+    "slug": "flohmarkt-lenzburg-metzgplatz",
+    "question": "Melanie Masché's contact as published for this market",
+    "answer": "E-mail Flohmarkt_Lenzburg@gmx.ch (stall registrations go by e-mail). The page lists the 2026 dates: 18 April, 27 June, 17 October. No website of her own found; the only published source is the Kramer page that hands the market over, which is also our current website_url, so it stays the right source link until she has her own site.",
+    "source": "https://www.beim-kramer.ch/flohmi-lenzburg",
+    "quote": "Organisiert wird der Flohmarkt Lenzburg ab 2026 von Melanie Masché ohne Beteiligung des Kramers. Anmeldungen werden via Mail entgegen genommen: Flohmarkt_Lenzburg@gmx.ch"
+  }
+]
