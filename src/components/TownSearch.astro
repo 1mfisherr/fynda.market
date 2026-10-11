@@ -173,14 +173,11 @@ const big = towns.slice(0, 5);
 
 <script>
   import { TOWN_KEY, adopt } from '../lib/local-keys';
+  import { townMatcher } from '../lib/town-match';
 
   type Town = { slug: string; name: string; href: string; region: string; country: string; n: number; lat: number; lng: number };
 
-  /* "München", "Muenchen" and "Munchen" are one town to a person typing. */
   const MARKS = /\p{M}/gu;
-  const fold = (s: string) =>
-    s.toLowerCase().normalize('NFD').replace(MARKS, '')
-      .replace(/ae/g, 'a').replace(/oe/g, 'o').replace(/ue/g, 'u').replace(/ß/g, 'ss');
 
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
@@ -194,13 +191,9 @@ const big = towns.slice(0, 5);
     const towns: Town[] = JSON.parse(d.towns ?? '[]').map(
       ([slug, name, href, region, country, n, lat, lng]: [string, string, string, string, string, number, number, number]) =>
         ({ slug, name, href, region, country, n, lat, lng }));
-    /* The slug is the town's own name in plain letters (geneve, fribourg,
-       muenchen), so matching it too lets "Genève" find "Genf" on /de/. */
-    const folded = towns.map((town) => ({
-      town,
-      key: fold(town.name),
-      words: [...fold(town.name).split(/[\s\-/().]+/), fold(town.slug.replace(/-/g, ' '))],
-    }));
+    /* The matching rule lives in src/lib/town-match.ts, shared with the
+       newsletter's town field. */
+    const matcher = townMatcher(towns);
     const count = (n: number) => ((n === 1 ? d.countOne : d.countMany) ?? '').replace(/\d+/, String(n));
 
     let options: ({ kind: 'near' } | { kind: 'town'; town: Town })[] = [];
@@ -213,17 +206,7 @@ const big = towns.slice(0, 5);
       } catch { return null; }
     };
 
-    function match(query: string): Town[] {
-      const q = fold(query.trim());
-      if (!q) return [];
-      const scored = folded
-        /* The start of the name, then the start of any word in it — never the
-           middle of a word, or "mün" finds Dortmund. */
-        .map(({ town, key, words }) => ({ town, score: key.startsWith(q) ? 0 : words.some((w) => w.startsWith(q)) ? 1 : 9 }))
-        .filter((x) => x.score < 9)
-        .sort((a, b) => a.score - b.score || b.town.n - a.town.n);
-      return scored.slice(0, 6).map((x) => x.town);
-    }
+    const match = (query: string): Town[] => matcher.match(query);
 
     /* The typed letters in bold. Marked on a one-to-one fold (accents off,
        nothing merged), so the positions line up with the name; a query that

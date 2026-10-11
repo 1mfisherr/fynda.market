@@ -92,21 +92,19 @@ export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env
   if (res.ok) waitUntil(ping(env, `Tell me when it's back: ${domainOf(email)} — ${market_id ? `market ${path ?? ''}` : `town ${citySlug}`} (${locale})`));
 
   /* The tick. Its failure does not undo the alert, which is what was asked for.
-     The distance is the card's, clamped the same way /n clamps it. */
+     No distance: the digest picks it each week, as for every town (/n). */
   if (body.weekly && city_id) {
-    const radius = Number(body.radius);
-    const radius_km = Math.min(200, Math.max(1, Number.isFinite(radius) ? Math.round(radius) : 25));
     await subscribe(env, waitUntil, {
       email,
       locale,
       region_id: null,
       city_id,
-      radius_km,
+      radius_km: null,
       source_path: path,
       referrer_host: referrerHost(request),
       signup_ip_hash: await ipHash(env, request, 'newsletter'),
       consent_text: text(body.weekly_consent, 500),
-      where: `${radius_km} km um ${citySlug}`,
+      where: `around ${citySlug}`,
     });
   }
 

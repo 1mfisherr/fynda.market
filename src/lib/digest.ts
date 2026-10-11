@@ -151,6 +151,10 @@ function toRow(row: Dated, locale: Locale): DigestRow {
   };
 }
 
+/** The automatic distance: the town alone from this many markets that weekend, else 25 km from this many. */
+export const AUTO_TOWN_MIN = 5;
+export const AUTO_25_MIN = 3;
+
 const byDateThenTime = (a: DigestRow, b: DigestRow) =>
   a.date.localeCompare(b.date) || (a.startTime ?? '').localeCompare(b.startTime ?? '');
 
@@ -177,7 +181,7 @@ export function buildDigest(
      * Zug, so the same subscription is a two-hour drive for one reader and a
      * quarter of an hour for another.
      */
-    near?: { lat: number; lng: number; km: number; city: string } | null;
+    near?: { lat: number; lng: number; km?: number | null; city: string; slug?: string } | null;
     locale: Locale;
     now?: Date;
     limit?: number;
@@ -216,8 +220,26 @@ export function buildDigest(
    * distance formula the radius view also uses.
    */
   const wanted = wantedRegion;
+
+  /*
+   * How far, when the subscriber was never asked (Delfim, 2026-10-11): the
+   * town alone when it has five markets this weekend; else 25 km when that
+   * finds three; else 50 km. A town subscription carries no distance of its
+   * own any more — Zürich alone fills a mail, a village needs its region.
+   * `town` means the town's own markets, matched by slug.
+   */
+  const within = (km: number) => (row: Dated) => distanceKm(near!.lat, near!.lng, row.lat, row.lng) <= km;
+  const inTown = (row: Dated) => near?.slug !== undefined && row.citySlug === near.slug;
+  const reach: number | 'town' | undefined = !near
+    ? undefined
+    : near.km != null
+      ? near.km
+      : weekend.filter(inTown).length >= AUTO_TOWN_MIN
+        ? 'town'
+        : weekend.filter(within(25)).length >= AUTO_25_MIN ? 25 : 50;
+
   const isTheirs = near
-    ? (row: Dated) => distanceKm(near.lat, near.lng, row.lat, row.lng) <= near.km
+    ? reach === 'town' ? inTown : within(reach as number)
     : (row: Dated) => wanted !== '' && row.regionSlug === wanted;
 
   /*
@@ -278,7 +300,7 @@ export function buildDigest(
   const s = t(locale);
   const first = theirs[0];
   const scope = near
-    ? s.scopeRadius(near.km, near.city)
+    ? reach === 'town' ? s.scopeTown(near.city) : s.scopeRadius(reach as number, near.city)
     : first
       ? s.scopeRegion(s.regionLabel(first.region, first.countryCode))
       : undefined;
@@ -289,7 +311,11 @@ export function buildDigest(
         /* Their canton's page, or — for a radius — the nearby view centred
            where they are, which is the page holding what got cut. */
         href: near
-          ? `${nearbyPath(locale)}?lat=${near.lat.toFixed(4)}&lng=${near.lng.toFixed(4)}&km=${near.km}`
+          ? reach === 'town'
+            ? cityPath(locale, first.countrySlug, first.citySlug)
+            : near.slug
+              ? `${nearbyPath(locale)}?town=${near.slug}&km=${reach}`
+              : `${nearbyPath(locale)}?lat=${near.lat.toFixed(4)}&lng=${near.lng.toFixed(4)}&km=${reach}`
           : isCityState(first.countryCode, first.regionSlug)
             ? cityPath(locale, first.countrySlug, first.citySlug)
             : regionPath(locale, first.countryCode, first.countrySlug, first.regionSlug),

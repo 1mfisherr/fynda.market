@@ -12,9 +12,12 @@
  * canton page all carry the place in their own URL, so the form carries it in
  * a hidden field and shows one box. Only the pages that genuinely cannot know —
  * home, the footer and the newsletter page itself — draw the picker, and it
- * asks for a town and a distance, not a region (Delfim, 2026-10-10): the list
- * of 39 cantons and Länder, ungrouped, had no Munich in it, and a canton is
- * thirty times bigger in Graubünden than in Zug. Left empty, it is everywhere.
+ * asks for a town, not a region (Delfim, 2026-10-10): the list of 39 cantons
+ * and Länder, ungrouped, had no Munich in it, and a canton is thirty times
+ * bigger in Graubünden than in Zug. Left empty, it is everywhere. It asks no
+ * distance (Delfim, 2026-10-11): the digest takes the town alone, 25 km or
+ * 50 km, whichever fills a mail that weekend (src/lib/digest.ts). The town is
+ * picked from suggestions, never free text saved as "everywhere".
  *
  * Canton and not city: fifty-five cities is fifty-five segments, most of them
  * holding nobody; fourteen cantons is a list worth cutting. It is also roughly
@@ -26,7 +29,6 @@ import Honeypot from './Honeypot.astro';
 import Field from './Field.astro';
 import { FORMS } from '../lib/utility-copy';
 import { t } from '../lib/strings';
-import { DEFAULT_RADIUS } from '../lib/geo';
 import { getMarkets } from '../lib/markets';
 import { townIndex } from '../lib/towns';
 import type { RegionOption } from '../lib/regions';
@@ -47,7 +49,7 @@ interface Props {
    * — a city page and a market page. A canton is a blunt answer there:
    * Graubünden is thirty times the size of Zug.
    */
-  near?: { slug: string; name: string; km?: number };
+  near?: { slug: string; name: string };
   /** Ask for a town and a distance — the pages that cannot know where the visitor is. Ignored when `region` or `near` is set. */
   pick?: boolean;
   /**
@@ -79,14 +81,13 @@ const s = t(locale);
 const copy = FORMS.newsletter[locale];
 if (alert && !near) throw new Error('SubscribeForm: an alert needs `near`, the town it is about or around.');
 
-/* One phrase, whichever shape this page knows: "für Zürich", or "im Umkreis
-   von 25 km um Zürich". strings.ts owns the prepositions — and the region one
-   is the form's own rather than the mail's, because a bare canton name takes a
-   different preposition from "Kanton Zürich" and not the same one in every
-   canton. */
-const km = near?.km ?? DEFAULT_RADIUS;
+/* One phrase, whichever shape this page knows: "für Zürich", or "rund um
+   Zürich" — no distance, which the digest picks each week. strings.ts owns the
+   prepositions — and the region one is the form's own rather than the mail's,
+   because a bare canton name takes a different preposition from "Kanton
+   Zürich" and not the same one in every canton. */
 const scope = near
-  ? s.scopeRadius(km, near.name)
+  ? s.scopeAround(near.name)
   : region
     ? s.subscribeScopeRegion(region.name)
     : null;
@@ -107,13 +108,13 @@ const success = alert ? s.alertDone : copy.success;
 
 /* The picker is drawn only where the page cannot answer the question itself. */
 const picker = !scope && pick;
-/* Every town with a market, by name — the browser's own suggestion list.
-   The script turns the name into the town's slug; /n can too, for a post
-   made with no script. */
+/* Every town with a market, for the suggestions under the town field
+   (src/lib/town-match.ts, the town search's own rule). The script writes the
+   picked town's slug; /n resolves a typed name too, for a post made with no
+   script, and refuses one it does not know. */
 const towns = picker
-  ? townIndex(locale, await getMarkets(locale)).map((x) => ({ slug: x.slug, name: x.name })).sort((a, b) => a.name.localeCompare(b.name, locale))
+  ? townIndex(locale, await getMarkets(locale)).map((x) => [x.slug, x.name, x.region, x.country, x.n])
   : [];
-const RADII = [10, 25, 50];
 
 /* Unique per instance, and the same on every build: a page carries the card and
    the footer at once, and two fields with the same id are two labels pointing at
@@ -144,12 +145,7 @@ const id = `sub-${variant}`;
     <input type="hidden" name="consent_text" value={[variant === 'card' ? title : null, body].filter(Boolean).join(' — ')} />
     <input type="hidden" name="anchor" value="sub" />
     {region && <input type="hidden" name="region" value={region.slug} />}
-    {near && (
-      <>
-        <input type="hidden" name="city" value={near.slug} />
-        <input type="hidden" name="radius" value={String(km)} />
-      </>
-    )}
+    {near && <input type="hidden" name="city" value={near.slug} />}
     {alert?.market && <input type="hidden" name="market" value={alert.market.id} />}
     {alert && <input type="hidden" name="weekly_consent" value={s.alertWeekly(town)} />}
 
@@ -162,17 +158,11 @@ const id = `sub-${variant}`;
         heading and breadcrumb still say it, where it distinguishes the canton
         from the city that shares its name. */}
     {picker && (
-      <>
-        <Field label={s.subscribeTownLabel} name="town" type="text" hint={s.subscribeTownHint} idPrefix={id} list={`${id}-towns`} />
-        <datalist id={`${id}-towns`}>{towns.map((x) => <option value={x.name} />)}</datalist>
-        <input type="hidden" name="city" value="" data-town-slug data-towns={JSON.stringify(Object.fromEntries(towns.map((x) => [x.name.toLowerCase(), x.slug])))} data-unknown={s.subscribeTownUnknown} />
-        {variant === 'card' ? (
-          <fieldset class="radius-pick">
-            <legend>{s.howFarLabel}</legend>
-            {RADII.map((r) => <label><input type="radio" name="radius" value={String(r)} checked={r === DEFAULT_RADIUS} /><span>{r} km</span></label>)}
-          </fieldset>
-        ) : <input type="hidden" name="radius" value={String(DEFAULT_RADIUS)} />}
-      </>
+      <div class="town-pick" data-town-pick>
+        <Field label={s.subscribeTownLabel} name="town" type="text" hint={s.subscribeTownHint} idPrefix={id} />
+        <ul class="list-reset town-sug" id={`${id}-town-list`} role="listbox" aria-label={s.subscribeTownLabel} data-town-list hidden></ul>
+        <input type="hidden" name="city" value="" data-town-slug data-towns={JSON.stringify(towns)} data-unknown={s.subscribeTownUnknown} data-none={s.townNoMatch} />
+      </div>
     )}
 
     <Field
@@ -214,14 +204,16 @@ const id = `sub-${variant}`;
 </section>
 
 <style>
-  /* How far, as three chips — the radius view's control, smaller. */
-  .radius-pick { display: flex; gap: var(--space-2); margin: 0; padding: 0; border: 0; }
-  .radius-pick legend { width: 100%; margin-block-end: var(--space-2); padding: 0; font-size: var(--text-small); font-weight: var(--weight-bold); }
-  .radius-pick label { flex: 1 1 0; }
-  .radius-pick input { position: absolute; opacity: 0; pointer-events: none; }
-  .radius-pick span { display: block; padding: var(--space-2) var(--space-1); border: var(--border-width) solid var(--color-line); border-radius: var(--radius-pill); background: var(--color-surface); text-align: center; font-size: var(--text-small); font-weight: var(--weight-semibold); cursor: pointer; }
-  .radius-pick input:checked + span { border-color: var(--color-ink); color: var(--color-ink); box-shadow: inset 0 0 0 var(--border-width) var(--color-ink); }
-  .radius-pick input:focus-visible + span { outline: calc(var(--border-width) * 2) solid var(--color-ink); outline-offset: calc(var(--border-width) * 2); }
+  /* The town's suggestions: a panel under the field, over the page — the
+     town search's list, at the form's size. */
+  .town-pick { position: relative; }
+  .town-sug { position: absolute; inset-inline: 0; z-index: 6; margin-block-start: calc(var(--space-1) * -1); max-height: 50vh; overflow-y: auto; border: var(--border-width) solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-surface); box-shadow: 0 var(--space-3) var(--space-6) rgb(17 17 16 / 12%); }
+  .town-sug[hidden] { display: none; }
+  .town-sug :global(li) { display: grid; min-height: var(--tap-min); align-content: center; padding: var(--space-2) var(--space-4); border-block-start: var(--border-width) solid var(--color-line); font-weight: var(--weight-semibold); cursor: pointer; }
+  .town-sug :global(li:first-child) { border-block-start: 0; }
+  .town-sug :global(li[aria-selected='true']) { background: var(--color-paper); }
+  .town-sug :global(.where) { color: var(--color-quiet); font-size: var(--text-micro); font-weight: var(--weight-regular); }
+  .town-sug :global(.none) { color: var(--color-quiet); font-weight: var(--weight-regular); cursor: default; }
   .subscribe { display: grid; gap: var(--space-3); }
 
   .subscribe--card {
@@ -264,7 +256,100 @@ const id = `sub-${variant}`;
    * of that message reveals through CSS `:target`. Nothing here is
    * load-bearing.
    */
+  import { townMatcher } from '../lib/town-match';
+
   const forms = document.querySelectorAll<HTMLFormElement>('form[data-subscribe]');
+
+  type PickTown = { slug: string; name: string; region: string; country: string; n: number };
+  const escHtml = (v: string) => v.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  /**
+   * The town field: suggestions as you type, and only a picked (or exactly
+   * typed) town counts. Typing again forgets the pick, so gibberish after a
+   * pick is never saved as the town picked before it.
+   */
+  function townField(form: HTMLFormElement) {
+    const box = form.querySelector<HTMLElement>('[data-town-pick]');
+    const slugField = form.querySelector<HTMLInputElement>('[data-town-slug]');
+    const input = form.elements.namedItem('town') as HTMLInputElement | null;
+    const list = box?.querySelector<HTMLUListElement>('[data-town-list]');
+    if (!box || !slugField || !input || !list) return null;
+    const towns: PickTown[] = (JSON.parse(slugField.dataset.towns ?? '[]') as [string, string, string, string, number][])
+      .map(([slug, name, region, country, n]) => ({ slug, name, region, country, n }));
+    const matcher = townMatcher(towns);
+    const error = input.closest('.field')?.querySelector<HTMLElement>('.field-error') ?? null;
+    let shown: PickTown[] = [];
+    let active = -1;
+
+    input.setAttribute('role', 'combobox');
+    input.setAttribute('aria-autocomplete', 'list');
+    input.setAttribute('aria-controls', list.id);
+    input.setAttribute('aria-expanded', 'false');
+    input.setAttribute('autocomplete', 'off');
+    input.setAttribute('autocapitalize', 'words');
+    input.setAttribute('spellcheck', 'false');
+
+    const open = (yes: boolean) => {
+      list.hidden = !yes;
+      input.setAttribute('aria-expanded', String(yes));
+      if (!yes) input.removeAttribute('aria-activedescendant');
+    };
+    const hideError = () => { if (error) { error.hidden = true; error.textContent = ''; } input.removeAttribute('aria-invalid'); };
+    const render = () => {
+      const q = input.value.trim();
+      shown = matcher.match(q);
+      active = -1;
+      if (!q) { open(false); return; }
+      list.innerHTML = shown.length
+        ? shown.map((t, i) => `<li role="option" id="${list.id}-${i}" aria-selected="false" data-i="${i}"><span>${escHtml(t.name)}</span><span class="where">${escHtml(`${t.region} · ${t.country}`)}</span></li>`).join('')
+        : `<li class="none" aria-disabled="true">${escHtml(slugField.dataset.none ?? '')}</li>`;
+      open(true);
+    };
+    const pick = (t: PickTown) => {
+      input.value = t.name;
+      slugField.value = t.slug;
+      hideError();
+      open(false);
+    };
+    const move = (to: number) => {
+      if (!shown.length) return;
+      active = (to + shown.length) % shown.length;
+      for (const li of Array.from(list.querySelectorAll('[role=option]'))) li.setAttribute('aria-selected', String(li.getAttribute('data-i') === String(active)));
+      input.setAttribute('aria-activedescendant', `${list.id}-${active}`);
+    };
+
+    input.addEventListener('input', () => { slugField.value = ''; hideError(); render(); });
+    input.addEventListener('focus', () => { if (!slugField.value) render(); });
+    input.addEventListener('keydown', (event) => {
+      if (list.hidden) return;
+      if (event.key === 'ArrowDown') { event.preventDefault(); move(active + 1); }
+      else if (event.key === 'ArrowUp') { event.preventDefault(); move(active - 1); }
+      else if (event.key === 'Enter') { event.preventDefault(); const t = shown[active >= 0 ? active : 0]; if (t) pick(t); }
+      else if (event.key === 'Escape') open(false);
+    });
+    list.addEventListener('mousedown', (event) => event.preventDefault());
+    list.addEventListener('click', (event) => {
+      const li = (event.target as HTMLElement).closest<HTMLElement>('[data-i]');
+      const t = li ? shown[Number(li.dataset.i)] : undefined;
+      if (t) pick(t);
+    });
+    document.addEventListener('click', (event) => { if (!box.contains(event.target as Node)) open(false); });
+
+    /** The slug to post, '' for everywhere, or null when the name is unknown (the error is shown). */
+    return (): string | null => {
+      const typed = input.value.trim();
+      if (!typed) { slugField.value = ''; return ''; }
+      if (!slugField.value) {
+        const exact = matcher.exact(typed);
+        if (exact) pick(exact);
+      }
+      if (slugField.value) return slugField.value;
+      if (error) { error.textContent = slugField.dataset.unknown ?? ''; error.hidden = false; }
+      input.setAttribute('aria-invalid', 'true');
+      input.focus();
+      return null;
+    };
+  }
 
   for (const form of forms) {
     const block = form.closest('[data-subscribe-block]') as HTMLElement | null;
@@ -277,6 +362,7 @@ const id = `sub-${variant}`;
     >;
 
     if (!email) continue;
+    const resolveTown = townField(form);
 
     /* Milliseconds from the first touch of this form, not from page load. The
        endpoint throws away a fill no person could have typed; measured from
@@ -329,26 +415,13 @@ const id = `sub-${variant}`;
     form.addEventListener('submit', (event) => {
       event.preventDefault();
 
+      /* The town first: it is the field above. A name we do not know is
+         asked about rather than quietly saved as "everywhere". */
+      if (resolveTown && resolveTown() === null) return;
+
       const value = email.value.trim();
       if (!value) { show(errors.empty ?? ''); return; }
       if (!looksLikeAddress(value)) { show(errors.invalid ?? ''); return; }
-
-      /* The town, typed or picked, into its slug. A name we do not know is
-         asked about rather than quietly saved as "everywhere". */
-      const slugField = form.querySelector<HTMLInputElement>('[data-town-slug]');
-      const townField = form.elements.namedItem('town') as HTMLInputElement | null;
-      if (slugField && townField) {
-        const typed = townField.value.trim().toLowerCase();
-        const known = JSON.parse(slugField.dataset.towns ?? '{}') as Record<string, string>;
-        const townError = townField.closest('.field')?.querySelector<HTMLElement>('.field-error');
-        if (typed && !known[typed]) {
-          if (townError) { townError.textContent = slugField.dataset.unknown ?? ''; townError.hidden = false; }
-          townField.focus();
-          return;
-        }
-        if (townError) townError.hidden = true;
-        slugField.value = typed ? known[typed] : '';
-      }
 
       clear();
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');

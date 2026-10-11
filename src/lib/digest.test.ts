@@ -412,6 +412,64 @@ test('"see all" for a radius opens the nearby view centred on them', () => {
   assert.ok(digest.more.href.includes('km=25'), digest.more.href);
 });
 
+/* ---- a town with no distance: the digest picks it (Delfim, 2026-10-11) --- */
+
+const LUZERN = { lat: 47.0502, lng: 8.3093 };         // ~41 km from Zürich
+const auto = { lat: ZURICH.lat, lng: ZURICH.lng, city: 'Zürich', slug: 'zurich' };
+
+test('five markets in the town: the town alone', () => {
+  const markets = [
+    ...Array.from({ length: 5 }, (_, i) => market(`Stadt${i}`, 'Zürich', saturday, { at: ZURICH })),
+    market('Altstadt', 'Winterthur', saturday, { at: WINTERTHUR }),
+  ];
+  const digest = buildDigest(markets, { near: auto, locale: 'en', now });
+  assert.equal(digest.scope, 'in Zürich');
+  assert.equal(inRegion(digest).length, 5);
+  assert.ok(!inRegion(digest).some((r) => r.name === 'Altstadt'));
+});
+
+test('fewer than five in the town but three within 25 km: 25 km', () => {
+  const markets = [
+    market('Stadt', 'Zürich', saturday, { at: ZURICH }),
+    market('Altstadt', 'Winterthur', saturday, { at: WINTERTHUR }),
+    market('Steinberg', 'Winterthur', sunday, { at: WINTERTHUR }),
+    market('See', 'Luzern', saturday, { at: LUZERN, region: 'luzern' }),
+  ];
+  const digest = buildDigest(markets, { near: auto, locale: 'en', now });
+  assert.equal(digest.scope, 'within 25 km of Zürich');
+  assert.deepEqual(inRegion(digest).map((r) => r.name).sort(), ['Altstadt', 'Stadt', 'Steinberg']);
+});
+
+test('fewer than three within 25 km: 50 km', () => {
+  const markets = [
+    market('Stadt', 'Zürich', saturday, { at: ZURICH }),
+    market('See', 'Luzern', saturday, { at: LUZERN, region: 'luzern' }),
+    market('Bundesplatz', 'Bern', saturday, { at: BERN, region: 'bern' }),
+  ];
+  const digest = buildDigest(markets, { near: auto, locale: 'de', now });
+  assert.equal(digest.scope, 'im Umkreis von 50 km um Zürich');
+  assert.deepEqual(inRegion(digest).map((r) => r.name).sort(), ['See', 'Stadt']);
+});
+
+test('never more than eight, and "see all" says how many there are', () => {
+  const markets = Array.from({ length: 20 }, (_, i) => market(`Stadt${i}`, 'Zürich', saturday, { at: ZURICH }));
+  const digest = buildDigest(markets, { near: auto, locale: 'en', now });
+  assert.equal(shown(digest).length, 8);
+  assert.ok(shown(digest).every((r) => r.image));
+  assert.equal(digest.more.count, 20);
+  /* The town alone was enough, so its own page holds the rest. */
+  assert.ok(digest.more.href.startsWith('/en/') && digest.more.href.endsWith('/zurich/') && !digest.more.href.includes('nearby'), digest.more.href);
+});
+
+test('"see all" after 25 km opens Near me at the town', () => {
+  const markets = [
+    market('Stadt', 'Zürich', saturday, { at: ZURICH }),
+    ...Array.from({ length: 10 }, (_, i) => market(`Nah${i}`, 'Winterthur', saturday, { at: WINTERTHUR })),
+  ];
+  const digest = buildDigest(markets, { near: auto, locale: 'de', now });
+  assert.equal(digest.more.href, '/de/umkreis/?town=zurich&km=25');
+});
+
 /* ---- the quieter settings from the unsubscribe page --------------------- */
 
 test('weekly is owed every issue', () => {

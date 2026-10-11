@@ -241,7 +241,6 @@ const newsletter: Record<Locale, FormPage> = {
     answer: 'Jeden Freitagmorgen eine E-Mail: was am Wochenende in deiner Nähe läuft.',
     prose: [
       'Einmal pro Woche, am Freitag, für eine Stadt, einen Kanton oder das ganze Land: die Märkte am Wochenende, die neuen Termine, die abgesagten. Sagt ein Veranstalter danach einen Termin ab, bekommst du noch am selben Tag eine kurze Nachricht — damit du nicht umsonst hinfährst.',
-      'Kostenlos, kein Konto nötig. Abmelden kannst du dich mit einem Klick in jeder E-Mail.',
     ],
     fields: [
       { name: 'email', label: 'E-Mail-Adresse', type: 'email', required: true, placeholder: 'name@example.com' },
@@ -265,7 +264,6 @@ const newsletter: Record<Locale, FormPage> = {
     answer: 'Un e-mail chaque vendredi matin : ce qui se passe ce week-end près de chez vous.',
     prose: [
       "Une fois par semaine, le vendredi, pour une commune, un canton ou tout le pays : les brocantes du week-end, les nouvelles dates, celles qui sont annulées. Si un organisateur annule une date après l'envoi, vous recevez un mot le jour même, pour ne pas vous déplacer pour rien.",
-      "Gratuit, sans compte à créer. Un clic depuis n'importe quel e-mail suffit pour vous désinscrire.",
     ],
     fields: [
       { name: 'email', label: 'Adresse e-mail', type: 'email', required: true, placeholder: 'name@example.com' },
@@ -289,7 +287,6 @@ const newsletter: Record<Locale, FormPage> = {
     answer: 'Ogni venerdì mattina un’e-mail: cosa c’è questo fine settimana vicino a te.',
     prose: [
       'Una volta alla settimana, il venerdì, per una località, un cantone o tutto il paese: i mercatini del fine settimana, le nuove date, quelle annullate. Se poi un organizzatore annulla una data, ricevi un breve avviso il giorno stesso — così non fai il viaggio a vuoto.',
-      'Gratis, non serve un account. Per uscire dalla lista basta un clic in una qualsiasi e-mail.',
     ],
     fields: [
       { name: 'email', label: 'Indirizzo e-mail', type: 'email', required: true, placeholder: 'name@example.com' },
@@ -313,7 +310,6 @@ const newsletter: Record<Locale, FormPage> = {
     answer: "Every Friday morning, one email: what's on this weekend near you.",
     prose: [
       "Once a week, on Friday, for one town, one canton or the whole country: the markets on this weekend, the dates that were added, the ones that were cancelled. If an organiser cancels a date after that, you get a short note the same day — so you don't drive there for nothing.",
-      "Free, no account needed. One click in any e-mail and you're off the list.",
     ],
     fields: [
       { name: 'email', label: 'Email address', type: 'email', required: true, placeholder: 'name@example.com' },

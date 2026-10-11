@@ -20,8 +20,9 @@ export function formatRedirects(redirects) {
   // locales is German; where one language stands for all, it is English).
   const root = ['# The bare root goes to the English home page as a real redirect, not a meta-refresh.', '/ /en/ 301', ''];
   // The questions live on each home page; /faq/ is where people look for them
-  // and was a 404 (product review, 2026-10-10).
-  const faq = ['# The questions are on the home page.', ...['de', 'fr', 'it', 'en'].flatMap((l) => [`/${l}/faq/ /${l}/#faq 301`, `/${l}/faq /${l}/#faq 301`]), ''];
+  // and was a 404 (product review, 2026-10-10). The bare /faq/ goes to English,
+  // as the bare root does.
+  const faq = ['# The questions are on the home page.', '/faq/ /en/#faq 301', '/faq /en/#faq 301', ...['de', 'fr', 'it', 'en'].flatMap((l) => [`/${l}/faq/ /${l}/#faq 301`, `/${l}/faq /${l}/#faq 301`]), ''];
   // Each retired address also without its final slash. Cloudflare matches a
   // rule exactly, and only adds the slash for a file that exists — so a
   // retired address typed or pasted without it was a 404 (2026-09-28).

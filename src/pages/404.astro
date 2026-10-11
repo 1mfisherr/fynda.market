@@ -21,17 +21,20 @@
  * page can offer.
  */
 import Page from '../layouts/Page.astro';
-import { DEFAULT_LOCALE, LOCALE, LOCALES, homePath, localeTag } from '../lib/i18n';
+import { LOCALE, LOCALES, homePath, localeTag, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
-const s = t(DEFAULT_LOCALE);
+/* English, as the bare root is: where one language must stand for all, it is
+   English, never German (CLAUDE.md). */
+const locale: Locale = 'en';
+const s = t(locale);
 ---
 
 <Page
   title={s.notFoundTitle}
   description={s.notFoundBody}
   indexable={false}
-  locale={DEFAULT_LOCALE}
+  locale={locale}
 >
   <section class="stack gutter">
     <div class="page-head">
@@ -40,10 +43,10 @@ const s = t(DEFAULT_LOCALE);
     </div>
 
     <ul class="languages">
-      {LOCALES.map((locale) => (
+      {LOCALES.map((l) => (
         <li>
-          <a class="button" href={homePath(locale)} hreflang={localeTag(locale)}>
-            {LOCALE[locale].label}
+          <a class="button" href={homePath(l)} hreflang={localeTag(l)}>
+            {LOCALE[l].label}
           </a>
         </li>
       ))}

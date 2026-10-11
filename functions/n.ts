@@ -82,7 +82,7 @@ export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env
    * same subscription means very different things to two readers.
    */
   const citySlug = text(body.city, 80)?.toLowerCase() ?? null;
-  const radius = Number(body.radius);
+  const typedTown = text(body.town, 80);
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
     // Nothing is configured, so nothing can be saved. Say so plainly rather
@@ -97,14 +97,14 @@ export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env
    */
   /* The picker's town arrives as a slug from the script, or as the typed name
      from a browser with none (components/SubscribeForm.astro). */
-  const city_id = (await resolveSlug(env, 'city', citySlug)) ?? (await resolveTownName(env, text(body.town, 80)));
+  const city_id = (await resolveSlug(env, 'city', citySlug)) ?? (await resolveTownName(env, typedTown));
+  /* A typed name we do not know is refused, never saved as "everywhere". */
+  if (typedTown && !city_id) return failed(422, 'unknown_town', 'invalid');
   const region_id = city_id ? null : await resolveSlug(env, 'region', regionSlug);
 
-  /* Clamped rather than rejected: a radius nobody can type wrong. The offered
-     values are in src/lib/geo.ts. */
-  const radius_km = city_id
-    ? Math.min(200, Math.max(1, Number.isFinite(radius) ? Math.round(radius) : 25))
-    : null;
+  /* No distance: the digest decides it each week from what is on — the town
+     alone, else 25 km, else 50 km (src/lib/digest.ts; Delfim, 2026-10-11). */
+  const radius_km = null;
 
   /* Five signups an hour from one connection. Each one mails a welcome to the
      address typed, so without a cap the form could be used to mail strangers. */
@@ -122,7 +122,7 @@ export const onRequestPost: PagesFunction<NewsletterEnv> = async ({ request, env
     signup_ip_hash,
     // The exact words shown next to the button, kept so consent can be shown rather than asserted.
     consent_text: text(body.consent_text, 500),
-    where: city_id ? `${radius_km} km um ${citySlug}` : region_id ? String(regionSlug) : '',
+    where: city_id ? `around ${citySlug ?? typedTown}` : region_id ? String(regionSlug) : '',
   });
 
   return saved ? done() : failed(500, 'save_failed', 'failed');

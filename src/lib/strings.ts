@@ -363,6 +363,10 @@ export interface Strings {
    */
   scopeRegion: (label: string) => string;
   scopeRadius: (km: number, city: string) => string;
+  /** The mail's scope when the town alone filled it. */
+  scopeTown: (city: string) => string;
+  /** The form's scope for a town subscription: how far is decided each week. */
+  scopeAround: (city: string) => string;
   /** The block of markets from the towns around a sparse city. */
   nearbyHeading: (km: number) => string;
   nearbyLede: (city: string) => string;
@@ -371,7 +375,7 @@ export interface Strings {
   /** Your saved markets, by e-mail — the sheet after a first save and the card on Saved (design/saved-mail-v1.html). */
   savedAsk: {
     label: string; title: string; body: string; cardLabel: string; cardTitle: string; cardBody: string;
-    email: string; button: string; fine: string; notNow: string; done: string; failed: string; on: string; stop: string;
+    email: string; button: string; notNow: string; done: string; failed: string; on: string; stop: string;
   };
   /**
    * The same thing for the signup block, which says no canton anywhere.
@@ -708,6 +712,8 @@ const de: Strings = {
   scopeRegion: (label) => `im ${label}`,
   subscribeScopeRegion: (name) => `für ${name}`,
   scopeRadius: (km, city) => `im Umkreis von ${km} km um ${city}`,
+  scopeTown: (city) => `in ${city}`,
+  scopeAround: (city) => `rund um ${city}`,
   nearbyHeading: (km) => `Im Umkreis von ${km} km`,
   nearbyLede: (city) => `Die nächsten Termine in den Orten um ${city}.`,
   aroundNothing: (city) => `In ${city} ist an diesem Tag nichts. Im Umkreis von 25 km:`,
@@ -720,7 +726,6 @@ const de: Strings = {
     cardBody: 'Eine E-Mail am Freitagmorgen, nur wenn einer davon an diesem Wochenende stattfindet. Märkte, die du dir später merkst, kommen dazu.',
     email: 'E-Mail-Adresse',
     button: 'Schick mir meine Märkte',
-    fine: 'Kein Konto nötig · mit einem Klick abbestellt',
     notNow: 'Jetzt nicht',
     done: 'Erledigt. Wir schreiben dir vor einem Wochenende, an dem einer davon stattfindet.',
     failed: 'Das hat nicht geklappt. Versuch es bitte noch einmal.',
@@ -988,6 +993,8 @@ const en: Strings = {
   scopeRegion: (label) => `in the ${label}`,
   subscribeScopeRegion: (name) => `for ${name}`,
   scopeRadius: (km, city) => `within ${km} km of ${city}`,
+  scopeTown: (city) => `in ${city}`,
+  scopeAround: (city) => `around ${city}`,
   nearbyHeading: (km) => `Within ${km} km`,
   nearbyLede: (city) => `The next dates in the towns around ${city}.`,
   aroundNothing: (city) => `Nothing in ${city} that day. Within 25 km:`,
@@ -1000,7 +1007,6 @@ const en: Strings = {
     cardBody: 'One e-mail on Friday morning, only when one of these is on that weekend. Markets you save later join in.',
     email: 'Email address',
     button: 'Send me my markets',
-    fine: 'No account needed · one click stops it',
     notNow: 'Not now',
     done: "Done. We'll write before a weekend when one of them is on.",
     failed: "That didn't work. Please try again.",
@@ -1278,6 +1284,8 @@ const fr: Strings = {
   scopeRegion: (label) => `dans le ${label}`,
   subscribeScopeRegion: (name) => `pour ${name}`,
   scopeRadius: (km, city) => `dans un rayon de ${km} km autour de ${city}`,
+  scopeTown: (city) => `à ${city}`,
+  scopeAround: (city) => `autour de ${city}`,
   nearbyHeading: (km) => `Dans un rayon de ${km} km`,
   nearbyLede: (city) => `Les prochaines dates dans les localités autour de ${city}.`,
   aroundNothing: (city) => `Rien à ${city} ce jour-là. Dans un rayon de 25 km :`,
@@ -1290,7 +1298,6 @@ const fr: Strings = {
     cardBody: "Un e-mail le vendredi matin, seulement quand l'un d'eux a lieu ce week-end-là. Ceux que vous enregistrez ensuite s'ajoutent.",
     email: 'Adresse e-mail',
     button: 'Envoyez-moi mes marchés',
-    fine: 'Sans compte · un clic pour arrêter',
     notNow: 'Pas maintenant',
     done: "C'est fait. Nous vous écrirons avant un week-end où l'un d'eux a lieu.",
     failed: "Ça n'a pas marché. Merci de réessayer.",
@@ -1563,6 +1570,8 @@ const it: Strings = {
   scopeRegion: (label) => `nel ${label}`,
   subscribeScopeRegion: (name) => `per ${name}`,
   scopeRadius: (km, city) => `entro ${km} km da ${city}`,
+  scopeTown: (city) => `a ${city}`,
+  scopeAround: (city) => `intorno a ${city}`,
   nearbyHeading: (km) => `Entro ${km} km`,
   nearbyLede: (city) => `Le prossime date nelle località intorno a ${city}.`,
   aroundNothing: (city) => `Niente a ${city} quel giorno. Entro 25 km:`,
@@ -1575,7 +1584,6 @@ const it: Strings = {
     cardBody: 'Una e-mail il venerdì mattina, solo quando uno di questi si tiene quel fine settimana. Quelli che salvi dopo si aggiungono.',
     email: 'Indirizzo e-mail',
     button: 'Mandami i miei mercatini',
-    fine: 'Senza account · basta un clic per smettere',
     notNow: 'Non ora',
     done: 'Fatto. Ti scriviamo prima di un fine settimana in cui se ne tiene uno.',
     failed: 'Non ha funzionato. Riprova, per favore.',

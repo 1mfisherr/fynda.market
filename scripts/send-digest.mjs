@@ -84,6 +84,7 @@ const candidates = await query(
           s.cadence, s.paused_until::text as paused_until,
           sl.slug as region,
           ct.value as city_name,
+          cs.slug as city_slug,
           extensions.st_y(c.point::extensions.geometry) as lat,
           extensions.st_x(c.point::extensions.geometry) as lng
      from newsletter_subscribers s
@@ -102,6 +103,8 @@ const candidates = await query(
      left join texts ct
        on ct.entity_type = 'city' and ct.entity_id = s.city_id
       and ct.locale = s.locale and ct.field = 'name'
+     left join slugs cs
+       on cs.entity_type = 'city' and cs.entity_id = s.city_id and cs.locale = s.locale and cs.is_current
     where s.unsubscribed_at is null
       and x.subscriber_id is null
       ${only ? 'and lower(s.email) = $2' : ''}
@@ -152,8 +155,12 @@ for (const subscriber of wanted) {
     ? {
         lat: Number(subscriber.lat),
         lng: Number(subscriber.lng),
-        km: subscriber.radius_km ?? 25,
+        /* No distance: the town alone, 25 km or 50 km, picked from this
+           weekend's markets (src/lib/digest.ts). A stored radius_km is from
+           before 2026-10-11, when the form asked; it is no longer read. */
+        km: null,
         city: subscriber.city_name ?? '',
+        slug: subscriber.city_slug ?? undefined,
       }
     : null;
 

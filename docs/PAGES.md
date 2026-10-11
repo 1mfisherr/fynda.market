@@ -89,19 +89,19 @@ Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland 
 
 | State | Says | Shows |
 |---|---|---|
-| Before | — | The place sheet, open; no list |
+| Before | — | The place sheet, open; no list (only when the phone is blocked and no town is remembered) |
 | Locating | "Asking your phone where you are…" | list dims |
 | Located | "32 markets within 25 km, nearest first." | the pill, When, the bands, a distance on every row |
 | Refused | "Your phone didn't share a location…" | the sheet again, with *Try again* |
 | Blocked | "Your browser is blocking location for this site. Pick a town instead, or allow location in the browser's settings." | the sheet with the town search only — asking again fails at once and shows nothing, so the button goes (2026-10-10) |
 
-It starts from the URL (`?lat&lng`, `?town=`, `?denied=`), then from the town this browser remembers, then the sheet. `geo_prompt` events give the allow rate; below ~30% the button is in the wrong place.
+It starts from the URL (`?lat&lng`, `?town=`, `?denied=`); otherwise **it asks the phone at once** — tapping Near me brings up the location request (Delfim, 2026-10-11); if the phone says no, or has said no for good, the town this browser remembers, then the sheet. `geo_prompt` events give the allow rate.
 
 ## Utility — `/{locale}/{report|suggest|organiser|newsletter|…}/`
 
 Copy in `src/lib/utility-copy.ts`, legal in `src/lib/legal/`. `noindex`, own content floor of 150.
 
-**The signup where the page cannot know the place** (home, footer, the newsletter page — 2026-10-10, Delfim): *Around which town?* — a text field with every town as the browser's own suggestions, then *10 / 25 / 50 km* (the footer keeps 25 km) — the town-and-distance subscription the town and market pages already make. Left empty, it is every market. A name not on the list is asked about, never saved as "everywhere". It replaced a dropdown of 39 cantons and Länder, ungrouped, with no Munich in it (`SubscribeForm pick`). A canton page still subscribes its canton.
+**The signup where the page cannot know the place** (home, footer, the newsletter page — 2026-10-10, Delfim): *Around which town?* — suggestions as you type, by the town search's own rule (`src/lib/town-match.ts`); only a picked or exactly typed town counts, and anything else is refused, in the browser and again by `/n` — never saved as "everywhere". **No distance asked** (Delfim, 2026-10-11): every town subscription, from any page, gets the town alone when it has five markets that weekend, else 25 km when that finds three, else 50 km (`src/lib/digest.ts`); at most eight markets, each with its photo, and *see all* for the rest. Left empty, it is every market. It replaced a dropdown of 39 cantons and Länder, ungrouped, with no Munich in it (`SubscribeForm pick`). A canton page still subscribes its canton.
 
 **Saved** (`/{locale}/saved/`, 2026-10-10, `design/saved-mail-v1.html`): above the list, *Your markets, by e-mail* — an address, and before a weekend when one of the saved markets is on, one mail saying which, when and where; nothing when none is. Signed up, the card is one line with *Stop*. The same offer rises as a sheet on a market page after the first save in a browser — once, answered or not, never on arrival (`components/SavedAsk.astro`). No footer signup on this page: one Friday offer per page. Opened from the mail's *Your saved markets* link (`?t=`), a phone takes the list kept with the address.
 

@@ -59,7 +59,7 @@ Solo founder, non-technical, makes every final call. You are the technical judgm
 | Analytics | Our own events in our Postgres, read with self-hosted Metabase, plus Search Console. A first-party cookie behind a banner; third-party tools may be added behind the same consent. The privacy page describes what the code does, calmly — never a promise the next tool would break |
 | Brand | White, near-black, one accent for dates and status only. Schibsted Grotesk, self-hosted. `docs/BRAND.md` |
 | Tags | Filters, not URLs; six. Shown on the market page as *what's sold* (Delfim, 2026-10-10) — from the organiser, or read off their own page with the quote kept (`intake/tags/`, `set-market-facts.mjs`). A tag marks what is special about a market, never what every flea market has. Waiting for organisers left all 339 blank |
-| Newsletter | Friday 02:07 UTC, list in our Postgres; a subscription is a town and a distance, a canton, or everything — plus the markets someone saved, which lead their mail (`/k`) |
+| Newsletter | Friday 02:07 UTC, list in our Postgres; a subscription is a town (the distance picked each week: the town, 25 km or 50 km), a canton, or everything — plus the markets someone saved, which lead their mail (`/k`) |
 | Photos | Every market has one. Stock never ships |
 
 A rule that blocks something good is a bug in the doc: say what it protected against, why that is outweighed, and change doc and config in the same commit. Never route around one silently. The one forbidden move is loosening a guardrail threshold to turn a red build green.

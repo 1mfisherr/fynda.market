@@ -31,11 +31,10 @@ const id = `saved-${variant}`;
       <h2 id={`${id}-title`}>{s.title}</h2>
       <p class="body">{s.body}</p>
       <form class="saved-form" action="/k" method="post" data-saved-form data-done={s.done} data-failed={s.failed}>
-        <input type="hidden" name="consent_text" value={`${s.body} ${s.fine}`} />
+        <input type="hidden" name="consent_text" value={s.body} />
         <Field label={s.email} name="email" type="email" required placeholder="name@example.com" idPrefix={id} />
         <Honeypot id={id} />
         <Button type="submit" variant="primary" block>{s.button}</Button>
-        <p class="fine">{s.fine}</p>
         <p class="said" role="status" hidden></p>
       </form>
       <button type="button" class="not-now" data-saved-close>{s.notNow}</button>
@@ -48,11 +47,10 @@ const id = `saved-${variant}`;
       <h2>{s.cardTitle}</h2>
       <p class="body">{s.cardBody}</p>
       <form class="saved-form" action="/k" method="post" data-saved-form data-done={s.done} data-failed={s.failed}>
-        <input type="hidden" name="consent_text" value={`${s.body} ${s.fine}`} />
+        <input type="hidden" name="consent_text" value={s.cardBody} />
         <Field label={s.email} name="email" type="email" required placeholder="name@example.com" idPrefix={id} />
         <Honeypot id={id} />
         <Button type="submit" variant="primary" block>{s.button}</Button>
-        <p class="fine">{s.fine}</p>
         <p class="said" role="status" hidden></p>
       </form>
     </div>
@@ -65,7 +63,6 @@ const id = `saved-${variant}`;
   h2 { margin: var(--space-1) 0 0; font-size: var(--text-title); letter-spacing: var(--tracking-title); }
   .body { margin: var(--space-2) 0 0; color: var(--color-grey); font-size: var(--text-small); line-height: var(--leading-body); }
   .saved-form { display: grid; gap: var(--space-3); margin-block-start: var(--space-4); }
-  .fine { margin: 0; color: var(--color-quiet); font-size: var(--text-micro); text-align: center; }
   .said { margin: 0; font-size: var(--text-small); font-weight: var(--weight-semibold); }
 
   .saved-sheet { position: fixed; inset: 0; z-index: 20; }
