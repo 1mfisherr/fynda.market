@@ -1,0 +1,19 @@
+{
+  "slug": "nachtflohmarkt-presswerk-arbon",
+  "name": "Nachtflohmarkt Presswerk",
+  "kind": "nachtflohmarkt",
+  "town": "Arbon",
+  "region": "TG",
+  "venue": { "name": "Kulturzentrum Presswerk", "address": "same venue as flohmarkt-presswerk-arbon", "postal_code": null },
+  "lat": null, "lng": null,
+  "opening": null,
+  "dates": ["2026-12-29"],
+  "dates_from": "listed",
+  "fee": null, "currency": "CHF",
+  "website": "https://presswerk-arbon.ch/",
+  "organiser": { "name": "Kulturzentrum Presswerk", "website": "https://presswerk-arbon.ch/", "email": null },
+  "source_page": "https://presswerk-arbon.ch/",
+  "facts": ["indoor (Eventhalle)"],
+  "checked": "2026-10-11",
+  "notes": "Only a programme line so far: «29. Di Nachtflohmarkt Eventhalle». Look for its event page (hours) before import; reuse the Presswerk venue and organiser."
+}

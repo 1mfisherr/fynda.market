@@ -1,0 +1,19 @@
+{
+  "slug": "alpin-flohmi-la-neuveville",
+  "name": "Alpin-Flohmi La Neuveville",
+  "kind": "flohmarkt",
+  "town": "La Neuveville",
+  "region": "BE",
+  "venue": { "name": "Centre des Epancheurs", "address": "Place de la Gare 3", "postal_code": "2520" },
+  "lat": null, "lng": null,
+  "opening": { "start": "17:00", "end": "19:30" },
+  "dates": ["2026-12-05"],
+  "dates_from": "listed",
+  "fee": null, "currency": "CHF",
+  "website": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+  "organiser": { "name": "Mountain Wilderness Schweiz", "website": "https://mountainwilderness.ch/", "email": null },
+  "source_page": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+  "facts": ["mountain-sports gear, second hand", "indoor", "one evening"],
+  "checked": "2026-10-11",
+  "notes": "A new stop of the Alpin-Flohmi series (seven others listed, same organiser); the series photo /images/alpin-flohmi.webp fits. Quote: «Marché aux puces alpin La Neuveville Quand Samedi 05 décembre 2026, de 17h00 à 19h30 Où Centre des Epancheurs, Pl. de la Gare 3, 2520 La Neuveville»"
+}
