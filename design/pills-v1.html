@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Row pills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#111110; --grey:#6E6C68; --quiet:#6E6A64; --line:#E8E6E2; --paper:#F5F4F2; --accent:#D63A1F; --halle:#3D5AFE; --nacht:#7C3AED; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#fff; color:var(--ink); font-family:'Schibsted Grotesk', system-ui, sans-serif; }
+  .wrap { display:flex; flex-wrap:wrap; gap:32px; justify-content:center; padding:24px 16px 48px; }
+  .col { width:343px; max-width:100%; }
+  .col h2 { margin:0 0 4px; font-size:18px; }
+  .col .why { margin:0 0 12px; color:var(--grey); font-size:13px; line-height:1.4; min-height:54px; }
+  .rec { display:inline-block; margin-left:6px; padding:1px 8px; border-radius:999px; background:var(--ink); color:#fff; font-size:11px; vertical-align:2px; }
+  .daybar { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-weight:800; font-size:15px; }
+  .daybar b { color:var(--accent); margin-left:6px; }
+  .daybar span { color:var(--grey); font-weight:600; font-size:12px; }
+
+  .row { display:grid; grid-template-columns:72px minmax(0,1fr); gap:16px; align-items:center; padding:16px 0; border-bottom:1px solid var(--line); }
+  .pic { aspect-ratio:1; border-radius:12px; background:var(--paper) center/cover; }
+  .meta { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0; }
+  .day { color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+  .hours { color:var(--grey); font-size:13px; font-weight:600; }
+  .name { margin:2px 0 0; font-size:15.5px; font-weight:700; line-height:1.2; letter-spacing:-.01em; }
+  .rhythm { margin:4px 0 0; color:var(--grey); font-size:13px; font-weight:600; }
+  .where { margin:2px 0 0; color:var(--quiet); font-size:13px; }
+
+  /* Now */
+  .km-now { margin-left:auto; padding:2px 8px; border-radius:999px; background:var(--ink); color:#fff; font-size:12px; font-weight:700; }
+  .badge-now { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px; color:#fff; font-size:12px; font-weight:800; letter-spacing:.08em; vertical-align:2px; }
+
+  /* A: the kind as a small tag above the name; the distance joins the grey line */
+  .tag { display:inline-block; padding:1px 7px; border-radius:6px; font-size:11.5px; font-weight:700; line-height:1.5; }
+  .tag.halle { background:#EBEEFF; color:#2B44D6; }
+  .tag.nacht { background:#F1EBFD; color:#6A2BD9; }
+  .km-text { color:var(--ink); font-weight:600; }
+
+  /* B: both as small tags above the name */
+  .km-tag { display:inline-block; padding:0 7px; border:1px solid var(--line); border-radius:6px; color:var(--grey); font-size:11.5px; font-weight:700; line-height:1.5; }
+  .tags { display:flex; gap:6px; margin:0 0 4px; }
+
+  .note { max-width:720px; margin:0 auto; padding:0 16px 40px; color:var(--grey); font-size:14px; line-height:1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- NOW -->
+  <section class="col">
+    <h2>Now</h2>
+    <p class="why">Two loud pills. With no time on the top line, "28 km" sits alone above the name, and "Indoor" breaks the name onto a new line.</p>
+    <div class="daybar">Sunday<b>1 November</b><span>2 markets</span></div>
+    <article class="row">
+      <div class="pic"></div>
+      <div>
+        <p class="meta"><span class="km-now">28 km</span></p>
+        <h3 class="name">Nord-Flohmarkt Holstenhallen <i class="badge-now" style="background:var(--halle)">Indoor</i></h3>
+        <p class="rhythm">On single Sundays</p>
+        <p class="where">Holstenhallen · Neumünster</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="pic"></div>
+      <div>
+        <p class="meta"><span class="hours">18:00–23:00</span><span class="km-now">12 km</span></p>
+        <h3 class="name">Nachtflohmarkt Gleishalle <i class="badge-now" style="background:var(--nacht)">Night</i></h3>
+        <p class="where">Gleishalle · Hamburg</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- A -->
+  <section class="col">
+    <h2>A · quiet<span class="rec">Recommended</span></h2>
+    <p class="why">No pills. The kind is a small tinted tag above the name. The distance goes at the end of the grey line, where you already look for "where".</p>
+    <div class="daybar">Sunday<b>1 November</b><span>2 markets</span></div>
+    <article class="row">
+      <div class="pic"></div>
+      <div>
+        <p class="meta"><span class="tag halle">Indoor</span></p>
+        <h3 class="name">Nord-Flohmarkt Holstenhallen</h3>
+        <p class="rhythm">On single Sundays</p>
+        <p class="where">Holstenhallen · Neumünster · <span class="km-text">28 km</span></p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="pic"></div>
+      <div>
+        <p class="meta"><span class="tag nacht">Night</span><span class="hours">18:00–23:00</span></p>
+        <h3 class="name">Nachtflohmarkt Gleishalle</h3>
+        <p class="where">Gleishalle · Hamburg · <span class="km-text">12 km</span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- B -->
+  <section class="col">
+    <h2>B · tags</h2>
+    <p class="why">Both stay as tags, smaller and side by side above the name. The name is never broken and nothing floats to the right.</p>
+    <div class="daybar">Sunday<b>1 November</b><span>2 markets</span></div>
+    <article class="row">
+      <div class="pic"></div>
+      <div>
+        <p class="tags"><span class="tag halle">Indoor</span><span class="km-tag">28 km</span></p>
+        <h3 class="name">Nord-Flohmarkt Holstenhallen</h3>
+        <p class="rhythm">On single Sundays</p>
+        <p class="where">Holstenhallen · Neumünster</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="pic"></div>
+      <div>
+        <p class="tags"><span class="tag nacht">Night</span><span class="km-tag">12 km</span><span class="hours">18:00–23:00</span></p>
+        <h3 class="name">Nachtflohmarkt Gleishalle</h3>
+        <p class="where">Gleishalle · Hamburg</p>
+      </div>
+    </article>
+  </section>
+
+</div>
+<p class="note">The same change applies to every list on the site (home, town, canton, Near me, Saved), because they all use one row. On a row with a date, the tag sits before the time: <b>Indoor</b> 10:00–16:00.</p>
+</body>
+</html>

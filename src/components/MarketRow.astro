@@ -30,6 +30,11 @@
  *   the kind        badged only when it is not an ordinary Flohmarkt, which
  *                   was 41 of 45 rows. See vocabulary.ts BADGED_KINDS.
  *
+ * No pills (Delfim, 2026-10-11, `design/pills-v1.html` option A): the kind is
+ * a small tinted tag above the name, so a long name is never broken by it, and
+ * the distance ends the grey venue line — *Holstenhallen · Neumünster · 28 km*.
+ * A black distance pill floated alone above the name on rows with no time.
+ *
  * One loud thing per row: the name. Everything under it steps down a weight.
  * The check stamp ("Zuletzt geprüft 22. Mai") used to share the first line
  * with the date and the hours at the same size, and as the data aged it was
@@ -144,7 +149,8 @@ const size = variant === 'feature' ? 720 : 148;
 
 const sold = (market.tags ?? []).filter((tag) => tag !== 'food' && !(tag === 'kids' && market.kind === 'kinderflohmarkt'));
 const factLine = showFacts
-  ? [market.setting && market.setting !== 'outdoor' ? s.setting[market.setting] : undefined, sold.length ? sold.map((tag) => s.tagLabels[tag]).join(', ') : undefined]
+  /* The setting, unless the kind's tag already says it — "Indoor" twice on one row. */
+  ? [market.setting && market.setting !== 'outdoor' && !(badge && market.setting === 'indoor') ? s.setting[market.setting] : undefined, sold.length ? sold.map((tag) => s.tagLabels[tag]).join(', ') : undefined]
     .filter(Boolean).join(' · ')
   : '';
 const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLine.slice(1);
@@ -156,27 +162,29 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
   <div class="pic"><PhotoOrArt market={market} width={size} height={size} loading={eager ? 'eager' : 'lazy'} /></div>
   <div class="body">
     <p class="meta">
+      {badge && !compact && <i class="tag" style={`--tag:var(${line.token})`}>{badge}</i>}
       {dayLabel && <span class="day">{dayLabel}</span>}
       {times && <span class="hours">{times}</span>}
       {flag?.tone === 'bad' && <span class="flag bad">{flag.text}</span>}
-      {/* The distance, as a pill at the end of the line. The slot is always in
-          the markup and empty until someone has a real origin to measure from:
-          the radius view's script fills it, the city page's "within 25 km"
-          block and the market page's nearby block at build time, and on every
-          other list the script below, from the town the visitor picked. Never
-          a distance we guessed. */}
-      <span class="km" data-distance hidden={!distance}>{distance}</span>
+      {/* A compact row has no venue line, so its distance stays here. */}
+      {compact && <span class="km" data-distance hidden={!distance}>{distance}</span>}
     </p>
     <h3 class="name">
       <a href={marketPath(locale, market.slug)}>{market.name}</a>
-      {badge && <i class="badge" style={`background:var(${line.token});color:var(${line.token}-ink)`}>{badge}</i>}
+      {badge && compact && <i class="tag" style={`--tag:var(${line.token})`}>{badge}</i>}
     </h3>
     {/* "Closes in 40 min", or "Over for today" — the exceptions only. An open
         market with hours to go says nothing: its times already do. */}
     {live && <p class="clock" data-clock hidden></p>}
     {between && <p class="state">{between}</p>}
     {!compact && showRhythm && market.recurrenceText && <p class="rhythm">{market.recurrenceText}</p>}
-    {!compact && <p class="where">{where}</p>}
+    {/* The distance ends the venue line. The slot is always in the markup
+        and empty until someone has a real origin to measure from: the radius
+        view's script fills it, the city page's "within 25 km" block and the
+        market page's nearby block at build time, and on every other list the
+        script below, from the town the visitor picked. Never a distance we
+        guessed. */}
+    {!compact && <p class:list={['where', { after: where }]}>{where}<span class="km" data-distance hidden={!distance}>{distance}</span></p>}
     {facts && <p class="facts">{facts}</p>}
     {!compact && flag?.tone === 'warn' && <p class="check">{flag.text}</p>}
   </div>
@@ -194,12 +202,15 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
   .hours { color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); white-space:nowrap; }
   .flag { font-size:var(--text-small); font-weight:var(--weight-bold); }
   .flag.bad { color:var(--color-accent-text); }
-  .km { margin-inline-start:auto; padding:var(--space-half) var(--space-2); border-radius:var(--radius-pill); background:var(--color-ink); color:var(--color-white); font-size:var(--text-micro); font-weight:var(--weight-bold); font-variant-numeric:var(--figures-tabular); white-space:nowrap; }
+  /* The kind: a small tag in its line colour, tinted — the exception, said
+     quietly. The text is the colour darkened, so amber and red read too. */
+  .tag { display:inline-block; padding:0 var(--space-2); border-radius:var(--radius-xs); background:color-mix(in srgb, var(--tag) 12%, var(--color-white)); color:color-mix(in srgb, var(--tag) 60%, var(--color-ink)); font-size:var(--text-tiny); font-style:normal; font-weight:var(--weight-bold); line-height:1.6; white-space:nowrap; }
+  .km { color:var(--color-ink); font-weight:var(--weight-semibold); font-variant-numeric:var(--figures-tabular); white-space:nowrap; }
+  .where.after .km::before { content:' · '; color:var(--color-quiet); font-weight:var(--weight-regular); }
 
   /* One loud thing. Everything below it steps down a weight. */
   .name { margin-block-start:var(--space-half); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title); line-height:1.2; }
   .name a::after { position:absolute; inset:0; content:''; }
-  .badge { display:inline-block; margin-inline-start:var(--space-2); padding:var(--space-half) var(--space-2); border-radius:var(--radius-pill); color:var(--color-white); font-size:var(--text-micro); font-style:normal; font-weight:var(--weight-black); letter-spacing:var(--tracking-caps); vertical-align:var(--space-half); white-space:nowrap; }
   .clock { margin:var(--space-1) 0 0; color:var(--color-accent-text); font-size:var(--text-small); font-weight:var(--weight-bold); line-height:1.4; }
   .clock[hidden] { display:none; }
   /* Finished for today: still listed, so the list does not jump, but it steps
@@ -230,7 +241,8 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
   .compact .meta { margin-block-start:var(--space-half); gap:var(--space-1); }
   .compact .day, .compact .hours { font-size:var(--text-micro); letter-spacing:normal; text-transform:none; }
   .compact .meta > * + *::before { content:'· '; color:var(--color-quiet); }
-  .compact .km { margin:0; padding:0; background:none; color:var(--color-grey); font-weight:var(--weight-semibold); }
+  .compact .km { color:var(--color-grey); }
+  .compact .name .tag { margin-inline-start:var(--space-1); vertical-align:var(--space-half); }
 
   .cancelled .name a { color:var(--color-quiet); text-decoration:line-through; text-decoration-color:var(--color-line); }
   .cancelled .pic { filter:grayscale(1); opacity:0.55; }
