@@ -13,6 +13,7 @@ Solo founder, non-technical, makes every final call. You are the technical judgm
 - Evidence before "done": test output, a row read back, a screenshot. **Drive the live site; don't just read the code** — every serious bug so far was found that way.
 - Everything you write for him is English; his German is limited. A plan that needs fluent German is not one he can run.
 - Never attribute to him a wish he didn't state. "The docs say" is not "you said".
+- **Ask Delfim first, every time, before:** sending his e-mail or any personal detail to any outside service (not even as a "contact" in a request); signing up for, or creating an account on, anything; downloading or installing software, packages or files to keep; sharing or publishing anything outside the repo and the site's own deploy. Reading public web pages for research is allowed. Every agent's brief carries this rule (Delfim, 2026-10-11, after his e-mail went to a map service unasked).
 
 ## A session
 
