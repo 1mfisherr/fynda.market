@@ -753,7 +753,7 @@ const de: Strings = {
   setting: { indoor: 'drinnen', outdoor: 'draussen', both: 'drinnen und draussen' },
   soldLabel: 'Was es gibt',
   tagLabels: { antiques: 'Antiquitäten', furniture: 'Möbel', clothes: 'Kleidung', records_books: 'Platten & Bücher', kids: 'Kindersachen', food: 'Essen & Trinken' },
-  rain: { runs: 'Findet statt', cancelled: 'Abgesagt', decided_on_the_day: 'Wird am Morgen entschieden' },
+  rain: { runs: 'Findet statt', cancelled: 'Abgesagt', decided_on_the_day: 'Je nach Wetter' },
   organiserBody: 'Übernehmen Sie Ihren Markt oder tragen Sie einen neuen ein. Kostenlos, kein Konto nötig.',
   organiserAction: 'Markt übernehmen oder eintragen',
 
@@ -1034,7 +1034,7 @@ const en: Strings = {
   setting: { indoor: 'indoor', outdoor: 'outdoor', both: 'indoor and outdoor' },
   soldLabel: "What's sold",
   tagLabels: { antiques: 'antiques', furniture: 'furniture', clothes: 'clothes', records_books: 'records & books', kids: "kids' things", food: 'food & drink' },
-  rain: { runs: 'Goes ahead', cancelled: 'Called off', decided_on_the_day: 'Decided that morning' },
+  rain: { runs: 'Goes ahead', cancelled: 'Called off', decided_on_the_day: 'Depends on the weather' },
   organiserBody: 'Claim your market or add a new one. Free, no account needed.',
   organiserAction: 'Claim or add your market',
 
@@ -1325,7 +1325,7 @@ const fr: Strings = {
   setting: { indoor: 'en intérieur', outdoor: 'en extérieur', both: 'intérieur et extérieur' },
   soldLabel: 'On y trouve',
   tagLabels: { antiques: 'antiquités', furniture: 'meubles', clothes: 'vêtements', records_books: 'disques & livres', kids: "affaires d'enfants", food: 'à boire et à manger' },
-  rain: { runs: 'A lieu quand même', cancelled: 'Annulé', decided_on_the_day: 'Décidé le matin même' },
+  rain: { runs: 'A lieu quand même', cancelled: 'Annulé', decided_on_the_day: 'Selon la météo' },
   organiserBody: 'Prenez votre brocante en main, ou ajoutez-en une nouvelle. Gratuit, sans compte à créer.',
   organiserAction: 'Prendre en main ou ajouter ma brocante',
 
@@ -1611,7 +1611,7 @@ const it: Strings = {
   setting: { indoor: 'al coperto', outdoor: "all'aperto", both: "al coperto e all'aperto" },
   soldLabel: 'Cosa si trova',
   tagLabels: { antiques: 'antiquariato', furniture: 'mobili', clothes: 'vestiti', records_books: 'dischi e libri', kids: 'cose per bambini', food: 'da mangiare e da bere' },
-  rain: { runs: 'Si fa', cancelled: 'Non si fa', decided_on_the_day: 'Si decide la mattina stessa' },
+  rain: { runs: 'Si fa', cancelled: 'Non si fa', decided_on_the_day: 'Dipende dal tempo' },
   organiserBody: 'Prendi in mano il tuo mercatino o aggiungine uno nuovo. Gratis, non serve un account.',
   organiserAction: 'Prendi in mano o aggiungi il tuo mercatino',
 
