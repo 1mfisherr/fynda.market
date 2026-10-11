@@ -1,0 +1,379 @@
+[
+  {
+    "slug": "alpin-flohmi-zuerich",
+    "action": "venue",
+    "value": {
+      "name": "Stall6, Theater Gessnerallee",
+      "address": "Gessnerallee 8, 8001 Zürich"
+    },
+    "source": "https://mountainwilderness.ch/themen/alpin-flohmi/",
+    "quote": "Alpin-Flohmi Zürich Wann Donnerstag, 22. Oktober 2026 von 18:30 bis 21:00 Uhr Einlass für Mitglieder von Mountain Wilderness bereits ab 17:45 Uhr. Wo Stall6, Theater Gessnerallee, Gessnerallee 8, 8001 Zürich",
+    "why": "The organiser's page puts the 22 Oct 2026 edition at the Gessnerallee theatre, not at Dynamo; this is one edition, and the Zürich venue changes city by city, so a human should decide whether to change the venue for good or only this date."
+  },
+  {
+    "slug": "alpin-flohmi-lausanne",
+    "action": "venue",
+    "value": {
+      "name": "Grande Salle du CAS des Diablerets",
+      "address": "Rue Beau-Séjour 24, 1003 Lausanne"
+    },
+    "source": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Où Grande Salle du CAS des Diablerets, Rue Beau-Séjour 24, 1003 Lausanne",
+    "why": "Our venue is only the word Lausanne; the organiser gives the hall and street address for 11 Nov 2026."
+  },
+  {
+    "slug": "alpin-flohmi-basel",
+    "action": "close",
+    "value": null,
+    "source": "https://mountainwilderness.ch/themen/alpin-flohmi/",
+    "quote": "Alpin-Flohmi Bern Mittwoch, 14. Oktober 2026 – Ausgebucht Infos & Warteliste Alpin-Flohmi Interlaken Donnerstag, 15. Oktober 2026",
+    "why": "The organiser's 2026 list has eight cities and Basel is not one of them (Basel only appears in 2022 photos); it is a travelling series, so it could return, but nothing is announced."
+  },
+  {
+    "slug": "alpin-flohmi-st-gallen",
+    "action": "close",
+    "value": null,
+    "source": "https://mountainwilderness.ch/themen/alpin-flohmi/",
+    "quote": "war der Alpin-Flohmi schon in einigen Schweizer Städten wie Bern, Zürich, Basel, Luzern, St. Gallen, Lausanne und Neuchâtel zu Gast",
+    "why": "The organiser lists St. Gallen among past stops only and has no 2026 or 2027 date for it; it is a travelling series, so it could be reopened if it returns."
+  },
+  {
+    "slug": "alpin-flohmi-la-neuveville",
+    "action": "add_market",
+    "value": {
+      "name": "Alpin-Flohmi La Neuveville",
+      "date": "2026-12-05",
+      "time": "17:00-19:30",
+      "venue": "Centre des Epancheurs, Pl. de la Gare 3, 2520 La Neuveville",
+      "organiser_url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+      "setting": "indoor"
+    },
+    "source": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Marché aux puces alpin La Neuveville Quand Samedi 05 décembre 2026, de 17h00 à 19h30 Où Centre des Epancheurs, Pl. de la Gare 3, 2520 La Neuveville",
+    "why": "A new stop on the same Mountain Wilderness series, with the same kind of listing as our other seven Alpin-Flohmi."
+  },
+  {
+    "slug": "flohmarkt-am-see-wollishofen-zuerich",
+    "action": "unsure",
+    "value": null,
+    "source": "https://gz-zh.ch/gz-wollishofen/programm/",
+    "quote": "Märkte/Börsen Flohmarkt im Entlisberg , GZ Wollishofen Sa. 17.10.2026 11:00–16:00 Uhr",
+    "why": "The market's own GZ page now gives a 404 and the programme lists no Flohmarkt am See (only a different one at the Entlisberg care home on 17 Oct); the season ran April to October so 2027 dates may just not be out, so a human should ask GZ Wollishofen before closing."
+  },
+  {
+    "slug": "kofmehl-flohmi-solothurn",
+    "action": "unsure",
+    "value": null,
+    "source": "https://kofmehl.net/programm/flohmi/",
+    "quote": "Dieser Anlass liegt in der Vergangenheit zum Programm Samstag.30.04.2016",
+    "why": "The only Flohmi page on kofmehl.net is the 2016 edition and the current programme has no Flohmi; our 12 Sept 2026 date has no organiser source, so a human should email the Kofmehl before closing."
+  },
+  {
+    "slug": "brocante-17-terra-geneve",
+    "action": "close",
+    "value": null,
+    "source": "https://17-terra.com/blogs/programme",
+    "quote": "du 23 au 28 Mars Brocante 18 mars 2026",
+    "why": "17 Terra is a pop-up shop with a different concept each week; its programme shows one Brocante week (23-28 March 2026) and the other weeks are exhibitions, creators' markets and a football-shirt shop, so our monthly Brocante dates are not supported."
+  },
+  {
+    "slug": "cozy-sunday-stellwerk-bern",
+    "action": "unsure",
+    "value": null,
+    "source": "https://www.stellwerk.be/events/nachtflohmi-261023",
+    "quote": "Fr 23.10 Bistro Nachtflohmi Flohmarkt im Klub Stand reservieren",
+    "why": "No Cozy Sunday appears anywhere on the Stellwerk site, which shows only the next three weeks; the Friday-night Nachtflohmi it does list is already our separate market nachtflohmarkt-stellwerk-bern (23 Oct 2026 is in our data), so a human should ask the Stellwerk whether Cozy Sunday still runs."
+  },
+  {
+    "slug": "folie-flea-market-lausanne",
+    "action": "unsure",
+    "value": null,
+    "source": "https://folievoltaire.ch/index.php/evenements/",
+    "quote": "Samedi 7 juin de 10h à 16h – Marché aux Puces, Friperie et Artisanat",
+    "why": "The café's only flea-market entry is an old 'coming soon' line for a Saturday 7 June with no year (stale page; our 26 April 2026 date has no organiser source), and the site now says it is closed for the season, so a human should ask the Folie Voltaire on Facebook or Instagram whether it still runs."
+  },
+  {
+    "slug": "svuotacantine-muralto",
+    "action": "keep",
+    "value": null,
+    "source": "https://www.imercantini.ch/eventi-2026",
+    "quote": "Muralto+20.06.2026.png",
+    "why": "The organiser's 2026 events page carries a poster reading Svuotacantine Muralto-Burbaglio, 20 Giugno (our 20 June date), so it is a live yearly market; its 2026 programme list shows Muralto only as an image, which is why the notes missed it."
+  },
+  {
+    "slug": "wbz-flohmarkt-reinach",
+    "action": "remove",
+    "value": null,
+    "source": "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+    "quote": "Während des ganzen Jahres sammeln freiwillige Helfende Gegenstände von A wie Aktenkoffer bis Z wie Zuckerdosen, um sie jeweils Ende Oktober während vier Tagen einem grossen Publikum anzubieten.",
+    "why": "A charity sale of donated goods run by the WBZ itself, with no independent sellers; it is a good second-hand sale for visitors, so a human could instead keep it as a special case."
+  },
+  {
+    "slug": "boutique-kleider-flohmarkt-wbz-reinach",
+    "action": "remove",
+    "value": null,
+    "source": "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+    "quote": "Der jährliche Flohmarkt im WBZ gehört zu den fest verankerten, lieb gewonnenen Traditionen in Reinach.",
+    "why": "Nothing called Boutique-Kleider-Flohmarkt exists on wbz.ch; the only market there is the yearly WBZ charity sale, which is already listed as wbz-flohmarkt-reinach, so this row is a duplicate of a charity sale."
+  },
+  {
+    "slug": "les-puces-du-cpo-lausanne",
+    "action": "remove",
+    "value": null,
+    "source": "https://www.cpo-ouchy.ch/activites/les-puces-du-cpo/",
+    "quote": "Le CPO ouvre son espace brocante chaque semaine",
+    "why": "It is the community centre's own second-hand corner stocked from donations dropped at the hall, not a market with independent sellers."
+  },
+  {
+    "slug": "rosenhof-markt-zuerich",
+    "action": "remove",
+    "value": null,
+    "source": "https://rosenhof-markt.ch/",
+    "quote": "Hier stellen wir dir alle Aussteller*innen vor, die 2026 jeden Samstag Ihre wunderbaren Sachen präsentier t en.",
+    "why": "The 2026 exhibitors are makers of 3D-printed lamps, jewellery, candles and ice cream with no second-hand sellers (one makes rings from old spoons), so it is a craft and food market."
+  },
+  {
+    "slug": "talkessel-flohmarkt-seewen",
+    "action": "keep",
+    "value": null,
+    "source": "https://www.talkessel-flohmarkt.ch/preise/",
+    "quote": "Wir sind neu in einer Halle, in der aus Platzgründen keine eigenen Tisch e aufgestellt werden können",
+    "why": "We already hold indoor, which matches the organiser's move into a hall; the only outdoor thing is a food stand on the square."
+  },
+  {
+    "slug": "xxl-flohmarkt-messe-kassel",
+    "action": "keep",
+    "value": null,
+    "source": "https://hansenmaerkte.de/troedelmaerkte/flohmaerkte-hessen?view=article&id=171:kassel-messehallen-20&catid=9",
+    "quote": "Markt ist auf dem Freigelände und in der Halle.",
+    "why": "We already hold both, which is what the organiser says."
+  },
+  {
+    "slug": "flohschanze-hamburg",
+    "action": "keep",
+    "value": null,
+    "source": "https://www.marktkultur-hamburg.de/?p=59&var=0",
+    "quote": "Neben den offenen Ständen im Freien bietet die Flohschanze auch überdachte Stellflächen unter Pavillons oder in der Halle",
+    "why": "We already hold both, which is what the organiser says."
+  },
+  {
+    "slug": "hallenflohmarkt-hoelstein",
+    "action": "setting",
+    "value": "both",
+    "source": "https://flohmarkt-hoelstein.ch/index_html_files/2026-Flyer-Ruckseite-A6.pdf",
+    "quote": "65 Hallentische - 12 Aussentische",
+    "why": "The 2026 flyer and rules price 65 hall tables and 12 outdoor tables for the same edition, so stalls are inside and outside."
+  },
+  {
+    "slug": "baden-bazaar",
+    "action": "setting",
+    "value": "both",
+    "source": "https://baden-bazaar.ch/aussteller/",
+    "quote": "Der Standplatz im Innenbereich kostet CHF 45.- / im Aussenbereich CHF 30.-",
+    "why": "The exhibitor page sells indoor and outdoor pitches for the same Sunday editions (outdoor ones get pavilions when it rains), so stalls are inside and outside."
+  },
+  {
+    "slug": "enter-flohmarkt-derendingen",
+    "action": "setting",
+    "value": "both",
+    "source": "https://enter.ch/de/events/enter-flohmarkt-dezember/",
+    "quote": "Kofferraumflohmarkt draussen: CHF 20.-",
+    "why": "Every Enter Flohmarkt is in the Eventhalle and the same page also sells an outdoor boot-sale place (Kofferraumflohmarkt draussen, CHF 20), so stalls are inside and outside."
+  },
+  {
+    "slug": "liesberger-flohmarkt",
+    "action": "keep",
+    "value": null,
+    "source": "https://liesberger-flohmarkt.ch/userfiles/downloads/Anmeldung-Flohmarkt-Liesberger-26.pdf",
+    "quote": "3 m aussen im Freien 30.- ⃝ 3 m in der Halle 50.-",
+    "why": "We already hold both; the 2026 registration form sells hall and outdoor pitches for the same dates."
+  },
+  {
+    "slug": "marche-aux-puces-coupole-biel",
+    "action": "keep",
+    "value": null,
+    "source": "https://caj.ch/fr-ch/coupole/programme/",
+    "quote": "Inscription pour l'intérieur. À l'extérieur, aucune inscription n'est nécessaire.",
+    "why": "We already hold both; the organiser takes sign-ups for inside and lets people sell outside without one."
+  },
+  {
+    "slug": "flohmarkt-stuecki-basel",
+    "action": "keep",
+    "value": null,
+    "source": "https://api.flohmarktkoenig.ch/v1/events",
+    "quote": "finden sämtliche Stände im Innenbereich statt – ganz ohne Fahrzeuge bei den Verkaufsflächen",
+    "why": "We hold indoor and the organiser says every stall is inside; the word AUSSENFLOHMIPLATZ in the booking list is a price-label template, not a second area."
+  },
+  {
+    "slug": "troedelmarkt-100-5-arena-aachen",
+    "action": "venue",
+    "value": {
+      "name": "Parkplatz vor der 100,5 Arena",
+      "address": "Hubert-Wienen-Straße 8, 52070 Aachen"
+    },
+    "source": "https://hoefges-troedelmarkt.com/wp-json/ts-events/v1/events",
+    "quote": "Der beliebte Samstags Trödelmarkt vor der 100,5 Arena.",
+    "why": "The organiser says the market is in front of the arena, so the venue name 'Tivoli Eissporthalle' wrongly suggests an indoor rink; the address and our outdoor setting are right, only the name needs changing."
+  },
+  {
+    "slug": "cd-schallplatten-boerse-bern",
+    "action": "website_url",
+    "value": "https://bernerschallplattenboerse.ch/",
+    "source": "https://bernerschallplattenboerse.ch/",
+    "quote": "69. Berner CD & Schallplatten - Winter-BÖRSE Samstag 12. Dezember 2026 von 10.00 bis 17.00",
+    "why": "This is the fair's own site with the 12 Dec 2026 date and the Sternensaal venue, replacing the bka.ch culture listing."
+  },
+  {
+    "slug": "brocante-de-misery",
+    "action": "website_url",
+    "value": "https://brocantedesamis.ch/brocante-de-misery",
+    "source": "https://brocantedesamis.ch/brocante-de-misery",
+    "quote": "Située dans le charmant village de Misery, cette brocante offre une expérience unique en combinant un espace intérieur et extérieur.",
+    "why": "The organiser (Association La Brocante des Amis) has its own page for this market, which also confirms the setting is both; the 20th edition was 19-20 September."
+  },
+  {
+    "slug": "brocante-quai-de-nogent-yverdon",
+    "action": "website_url",
+    "value": "https://brocantedesamis.ch/brocantes-d-yverdon",
+    "source": "https://brocantedesamis.ch/brocantes-d-yverdon",
+    "quote": "Après quatre années d’absence, la brocante du Quai de Nogent fait son grand retour",
+    "why": "The organiser's own page for the Quai de Nogent brocante replaces the tourist-office link; it shows no dates in the text, so the dates stay as we hold them."
+  },
+  {
+    "slug": "flohmarkt-lenzburg-metzgplatz",
+    "action": "keep",
+    "value": {
+      "organiser_name": "Melanie Masché",
+      "organiser_email": "Flohmarkt_Lenzburg@gmx.ch"
+    },
+    "source": "https://www.beim-kramer.ch/flohmi-lenzburg",
+    "quote": "Organisiert wird der Flohmarkt Lenzburg ab 2026 von Melanie Masché ohne Beteiligung des Kramers.",
+    "why": "The new organiser has no site of her own, so the Kramer page (which still lists the 2026 dates and her contact) stays the best link; the organiser record should change to Melanie Masché, e-mail only."
+  },
+  {
+    "slug": "mercalibro-bellinzona",
+    "action": "website_url",
+    "value": "https://cooperativa-area.ch/",
+    "source": "https://ondemedia.com/mercato/",
+    "quote": "Mercalibro Appuntamento mensile per gli amici del libro, ideato da Fredy Conrad, ora gestito dalla Cooperativa Area.",
+    "why": "Our link is a publisher that never mentions Mercalibro; the market is now run by Cooperativa Area, whose own site promotes it (30th-anniversary news item), and the schedule (first weekday Wednesday, 11-17, Piazza Buffi) matches our dates."
+  },
+  {
+    "slug": "flohmarkt-mosergarten-schaffhausen",
+    "action": "unsure",
+    "value": null,
+    "source": "https://www.flohmarktkalender.ch/termin/flohmarkt-mosergarten-2025-10-04/",
+    "quote": "Bei Fragen: 079 826 83 79",
+    "why": "I found no organiser page or town page for this market anywhere, only listings that give a phone number (079 826 83 79); a human should call or keep the listing as source, and the rain rule (cancelled in lasting rain or storm) is from the listing only."
+  },
+  {
+    "slug": "flohmarkt-paulusheim-luzern",
+    "action": "unsure",
+    "value": null,
+    "source": "https://www.kindex.ch/luzern/flohmarkt",
+    "quote": "Die letzte Durchführung fand am 12.09.2026 statt. Das nächste Durchführungsdatum ist noch nicht bekannt.",
+    "why": "There is no organiser page, only the kindex directory (contact Karin Gautschi, flohmarkt_paulusheim at gmx.ch); the market is a children's clothes and toys sale, last held 12 Sept 2026, so a human should e-mail her for the next date."
+  },
+  {
+    "slug": "flohmarkt-presswerk-arbon",
+    "action": "website_url",
+    "value": "https://presswerk-arbon.ch/events/flohmarkt-november-2026/",
+    "source": "https://presswerk-arbon.ch/events/flohmarkt-november-2026/",
+    "quote": "Am Sonntag, 08. November 2026 findet wieder der legendäre Flohmarkt im Presswerk statt!",
+    "why": "The Presswerk's own page for the 8 Nov 2026 edition (stalls are booked via Eventfrog, which is why we linked it) replaces the ticketing link."
+  },
+  {
+    "slug": "nachtflohmarkt-presswerk-arbon",
+    "action": "add_market",
+    "value": {
+      "name": "Nachtflohmarkt Presswerk Arbon",
+      "date": "2026-12-29",
+      "venue": "Kulturzentrum Presswerk, Eventhalle, Hamelstrasse, Arbon",
+      "organiser_url": "https://presswerk-arbon.ch/",
+      "setting": "indoor"
+    },
+    "source": "https://presswerk-arbon.ch/",
+    "quote": "29. Di Nachtflohmarkt Eventhalle",
+    "why": "The Presswerk programme lists a night flea market on Tuesday 29 Dec 2026 in the Eventhalle; only a programme line, no event page yet, so a human should check for details before adding."
+  },
+  {
+    "slug": "flohmarkt-friedrichshagen-berlin",
+    "action": "unsure",
+    "value": null,
+    "source": "https://oldthing.de/Berliner-Flohmarkt/Secondhand-und-Kunst/Flohmarkt-Friedrichshagen/",
+    "quote": "Zu danken ist der Marktbetreiberin Regina Pröhm.",
+    "why": "I found no organiser site for this Art and Trodel market at the S-Bahnhof (only the old oldthing portal page, which names the operator Regina Pröhm), so the three facts taken from that page cannot be checked and a human should decide whether to keep them."
+  },
+  {
+    "slug": "hallenflohmarkt-uster",
+    "action": "keep",
+    "value": null,
+    "source": "https://www.flohmarkt-uster.ch/",
+    "quote": "Wir haben den Flohmarkt Uster ab März 2026 vom Flohmi-Team Uster übernommen.",
+    "why": "The website is right and our organiser record already is Brian's Flohmi with brian-flohmi-uster@bluewin.ch, so nothing to change."
+  },
+  {
+    "slug": "flohmarkt-schlieren-herbstmarkt",
+    "action": "website_url",
+    "value": "https://m.schlieren.ch/appl/download.php?objid=1472420620&id=62825648&nr=1&filename=Merkblatt_Kinderflohmarkt.pdf&usid=7930&cmd=viewinline",
+    "source": "https://m.schlieren.ch/appl/download.php?objid=1472420620&id=62825648&nr=1&filename=Merkblatt_Kinderflohmarkt.pdf&usid=7930&cmd=viewinline",
+    "quote": "Kinderflohmarkt Samstag, 5. September 2026 9.00 bis 16.00 Uhr Wiese zwischen Stadthaus und Stürmeierhuus",
+    "why": "The town's own notice for the 2026 children's flea market replaces the dead kibou link; it puts the market on the meadow between Stadthaus and Stürmeierhuus (our venue says Kirchgasse), so a human should also check the venue."
+  },
+  {
+    "slug": "flohmarkt-zofingen",
+    "action": "close",
+    "value": null,
+    "source": "https://www.flohmarktkalender.ch/termin/roggenweg-flohmarkt-zofingen/",
+    "quote": "Datum Samstag 09.09.2023 10:00 – 17:00",
+    "why": "The farbig Fabrik site never mentions a flea market, the newest dated listing I found is September 2023, and we hold no upcoming date, so it looks ended; a human could first ask the Roggenweg tenants."
+  },
+  {
+    "slug": "hyper-bazar-la-chaux-de-fonds",
+    "action": "website_url",
+    "value": "https://hyperbazar.ch/",
+    "source": "https://hyperbazar.ch/",
+    "quote": "D’avril à septembre, chaque dernier samedi du mois, la Place de la Carmagnole et ses abords se transforment en un vaste marché aux puces avec 90 stands.",
+    "why": "The market has its own site, which matches our rhythm (last Saturday, April to September) and gives 90 stands, replacing the tourism-directory link."
+  },
+  {
+    "slug": "kinderflohmarkt-gz-heuried",
+    "action": "website_url",
+    "value": "https://gz-zh.ch/gz-heuried/programm/",
+    "source": "https://gz-zh.ch/gz-heuried/programm/",
+    "quote": "Leider haben wir keine Angebote mit diesen Kriterien gefunden.",
+    "why": "The children's flea-market page is gone (404) and the GZ programme lists no flea market now, so the programme page is the best link; with no date held, a human may prefer to ask the GZ whether the spring and autumn sales continue."
+  },
+  {
+    "slug": "flohmarkt-gz-heuried",
+    "action": "unsure",
+    "value": null,
+    "source": "https://gz-zh.ch/gz-heuried/programm/",
+    "quote": "Leider haben wir keine Angebote mit diesen Kriterien gefunden.",
+    "why": "The GZ Heuried programme lists nothing at all right now, so our 22 Nov 2026 date has no organiser source; a human should ask the GZ before it goes on being shown."
+  },
+  {
+    "slug": "kinderflohmarkt-gz-hottingen",
+    "action": "unsure",
+    "value": null,
+    "source": "https://gz-zh.ch/gz-hottingen/programm/",
+    "quote": "Leider haben wir keine Angebote mit diesen Kriterien gefunden.",
+    "why": "The GZ Hottingen programme lists no offers and no children's flea-market page exists on gz-zh.ch, so it may be ended; we hold no date, so a human can close it or ask the GZ."
+  },
+  {
+    "slug": "kinderflohmarkt-gz-schindlergut",
+    "action": "unsure",
+    "value": null,
+    "source": "https://gz-zh.ch/gz-schindlergut/programm/",
+    "quote": "Leider haben wir keine Angebote mit diesen Kriterien gefunden.",
+    "why": "The GZ Schindlergut programme lists no offers and no children's flea-market page exists on gz-zh.ch, so it may be ended; we hold no date, so a human can close it or ask the GZ."
+  },
+  {
+    "slug": "marche-aux-puces-vevey",
+    "action": "website_url",
+    "value": "http://apero1800vevey.blogspot.com/p/blog-page_16.html",
+    "source": "http://apero1800vevey.blogspot.com/p/blog-page_16.html",
+    "quote": "Le traditionnel Marché aux puces a lieu tous les premiers samedi du mois sur la Place Robin",
+    "why": "The organiser APERO has moved to a blog (apero1800vevey.blogspot.com) after its own domain died; its page confirms the first-Saturday rhythm we hold and gives a phone number as the only booking contact."
+  }
+]
