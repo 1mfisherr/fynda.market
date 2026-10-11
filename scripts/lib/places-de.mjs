@@ -50,3 +50,12 @@ export const regionSlug = (code) => slugify(REGIONS[code].de);
 export const regionName = (code, locale) => REGIONS[code][locale] ?? REGIONS[code].de;
 export const citySlug = (deName) => slugify(deName);
 export const cityName = (deName, locale) => CITIES[deName]?.[locale] ?? deName;
+
+/** What scripts/import-intake.mjs needs of a country — every country's places file exports one. */
+export const intake = {
+  iso2: 'DE', timezone: 'Europe/Berlin', currency: 'EUR', LOCALES, COUNTRY,
+  bbox: { lat: [47, 55.2], lng: [5.8, 15.1] },
+  /** An intake file names its region by code (`BY`) or by German name (`Bayern`). */
+  regionCode: (s) => (REGIONS[s] ? s : REGION_CODE[s] ?? null),
+  regionSlug, regionName, citySlug, cityName,
+};

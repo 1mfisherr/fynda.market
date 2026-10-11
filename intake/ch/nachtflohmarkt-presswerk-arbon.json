@@ -1,19 +1,30 @@
 {
   "slug": "nachtflohmarkt-presswerk-arbon",
-  "name": "Nachtflohmarkt Presswerk",
+  "name": "Nachtflohmarkt im Presswerk",
   "kind": "nachtflohmarkt",
   "town": "Arbon",
   "region": "TG",
-  "venue": { "name": "Kulturzentrum Presswerk", "address": "same venue as flohmarkt-presswerk-arbon", "postal_code": null },
-  "lat": null, "lng": null,
-  "opening": null,
+  "venue": { "name": "Kulturzentrum Presswerk", "address": "Hamelstrasse", "postal_code": "9320" },
+  "lat": 47.5100398, "lng": 9.4311282,
+  "rhythm": {
+    "de": "Einmal im Jahr, zwischen Weihnachten und Neujahr, am Abend",
+    "fr": "Une fois par an, entre Noël et Nouvel An, en soirée",
+    "it": "Una volta all'anno, tra Natale e Capodanno, di sera",
+    "en": "Once a year, between Christmas and New Year, in the evening"
+  },
   "dates": ["2026-12-29"],
   "dates_from": "listed",
   "fee": null, "currency": "CHF",
   "website": "https://presswerk-arbon.ch/",
-  "organiser": { "name": "Kulturzentrum Presswerk", "website": "https://presswerk-arbon.ch/", "email": null },
+  "organiser": { "name": "Kulturzentrum Presswerk Arbon", "website": "https://presswerk-arbon.ch/", "email": null },
   "source_page": "https://presswerk-arbon.ch/",
-  "facts": ["indoor (Eventhalle)"],
+  "facts": ["indoor (Eventhalle)", "2022 edition: 27 Dec, 18:00–22:00 (https://presswerk-arbon.ch/events/nachtflohmarkt-27-12-22/)"],
+  "description": {
+    "de": "Zwischen Weihnachten und Neujahr wird die Eventhalle des Presswerks in Arbon für einen Abend zum Nachtflohmarkt – drinnen, im alten Industriebau. Rund ums Presswerk gibt es gebührenpflichtige Parkplätze; vom Bahnhof Arbon sind es zehn Minuten zu Fuss.",
+    "fr": "Entre Noël et Nouvel An, la halle du Presswerk, à Arbon, devient le temps d'une soirée un marché aux puces nocturne, à l'intérieur de l'ancien bâtiment industriel. Parking payant autour du Presswerk ; dix minutes à pied depuis la gare d'Arbon.",
+    "it": "Tra Natale e Capodanno la sala eventi del Presswerk di Arbon diventa per una sera un mercatino notturno, al coperto nel vecchio edificio industriale. Parcheggi a pagamento attorno al Presswerk; dieci minuti a piedi dalla stazione di Arbon.",
+    "en": "Between Christmas and New Year, the Presswerk's event hall in Arbon becomes a night flea market for one evening, indoors in the old industrial building. Paid parking around the Presswerk; ten minutes on foot from Arbon station."
+  },
   "checked": "2026-10-11",
-  "notes": "Only a programme line so far: «29. Di Nachtflohmarkt Eventhalle». Look for its event page (hours) before import; reuse the Presswerk venue and organiser."
+  "notes": "2026 is only a programme line so far: «29. Di Nachtflohmarkt Eventhalle». No hours until the event page is up (2022's were 18–22). Same venue and organiser as flohmarkt-presswerk-arbon; its photo is of the same hall."
 }

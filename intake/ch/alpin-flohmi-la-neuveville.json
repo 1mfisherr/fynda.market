@@ -5,7 +5,13 @@
   "town": "La Neuveville",
   "region": "BE",
   "venue": { "name": "Centre des Epancheurs", "address": "Place de la Gare 3", "postal_code": "2520" },
-  "lat": null, "lng": null,
+  "lat": 47.0631244, "lng": 7.0946242,
+  "rhythm": {
+    "de": "Einmal im Jahr, im Dezember",
+    "fr": "Une fois par an, en décembre",
+    "it": "Una volta all'anno, a dicembre",
+    "en": "Once a year, in December"
+  },
   "opening": { "start": "17:00", "end": "19:30" },
   "dates": ["2026-12-05"],
   "dates_from": "listed",
@@ -13,7 +19,13 @@
   "website": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
   "organiser": { "name": "Mountain Wilderness Schweiz", "website": "https://mountainwilderness.ch/", "email": null },
   "source_page": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
-  "facts": ["mountain-sports gear, second hand", "indoor", "one evening"],
+  "facts": ["second-hand mountain-sports gear", "indoor (Centre des Epancheurs)", "one evening, 17:00–19:30"],
+  "description": {
+    "de": "Alpin-Flohmi La Neuveville ist ein Flohmarkt für gebrauchte Bergsportausrüstung – einen Abend lang im Centre des Epancheurs, gleich beim Bahnhof. Kletter- und Skimaterial, Wanderkleidung und weitere Outdoor-Ausrüstung aus zweiter Hand. Organisiert von Mountain Wilderness Schweiz.",
+    "fr": "Alpin-Flohmi La Neuveville est un marché de matériel de montagne d'occasion, le temps d'une soirée au Centre des Epancheurs, à deux pas de la gare. Matériel d'escalade et de ski, vêtements de randonnée et autres équipements de plein air. Organisé par Mountain Wilderness Suisse.",
+    "it": "Alpin-Flohmi La Neuveville è un mercatino di attrezzatura usata per la montagna, per una sera al Centre des Epancheurs, a due passi dalla stazione. Materiale da arrampicata e da sci, abbigliamento da trekking e altro equipaggiamento outdoor. Organizzato da Mountain Wilderness Svizzera.",
+    "en": "Alpin-Flohmi La Neuveville is a flea market for second-hand mountain sports gear, for one evening at the Centre des Epancheurs, a few steps from the station. Climbing and ski kit, hiking clothes and other outdoor gear that is ready for another season. Organised by Mountain Wilderness Switzerland."
+  },
   "checked": "2026-10-11",
-  "notes": "A new stop of the Alpin-Flohmi series (seven others listed, same organiser); the series photo /images/alpin-flohmi.webp fits. Quote: «Marché aux puces alpin La Neuveville Quand Samedi 05 décembre 2026, de 17h00 à 19h30 Où Centre des Epancheurs, Pl. de la Gare 3, 2520 La Neuveville»"
+  "notes": "A new stop of the Alpin-Flohmi series (same organiser as our other Alpin-Flohmi); the series photo /images/alpin-flohmi.webp. Quote: «Marché aux puces alpin La Neuveville Quand Samedi 05 décembre 2026, de 17h00 à 19h30 Où Centre des Epancheurs, Pl. de la Gare 3, 2520 La Neuveville»"
 }

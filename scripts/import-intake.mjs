@@ -6,7 +6,7 @@
  *   node scripts/import-intake.mjs intake/de              one transaction, additions only
  *
  * The shape of a file is intake/README.md. The rules are import-v1-additions.mjs's:
- * a market is new when its slug is not here; a country, a Bundesland, a town, a
+ * a market is new when its slug is not here; a country, a region, a town, a
  * venue or an organiser that exists is matched and reused, never touched; nothing
  * already here is updated. A market arrives as `unverified`, which the build does
  * not publish (publishable_markets reads `active` only) — someone flips it after
@@ -18,6 +18,11 @@
  * keeps the difference: a listed date is `confirmed`, a derived one `reported`. An organiser with a published e-mail
  * gets a personal link at once, so the welcome workflow finds them. Nothing is
  * mailed here.
+ *
+ * A country is its places file (scripts/lib/places*.mjs), which exports `intake`:
+ * code, time zone, currency, the box its coordinates fall in, its locales, its
+ * regions and how its places are named and slugged. Nothing here is about any one
+ * country — a new one is a new places file and a line in PLACES.
  */
 
 import { readdirSync, readFileSync } from 'node:fs';
@@ -26,12 +31,13 @@ import { withClient, query, secret, DB_URL } from './db.mjs';
 import { sha256Hex, tokenFor } from '../functions/_link.ts';
 import { todayIso } from '../src/lib/format.ts';
 import * as DE from './lib/places-de.mjs';
+import * as CH from './lib/places.mjs';
 
 const DRY_RUN = process.argv.includes('--dry-run');
 const dir = process.argv.slice(2).find((a) => !a.startsWith('--'));
 if (!dir) throw new Error('usage: node scripts/import-intake.mjs intake/<country> [--dry-run]');
 
-const PLACES = { de: { iso2: 'DE', timezone: 'Europe/Berlin', ...DE } };
+const PLACES = { de: DE.intake, ch: CH.intake };
 const country = dir.replace(/[\\/]+$/, '').split(/[\\/]/).pop();
 const P = PLACES[country];
 if (!P) throw new Error(`no place tables for "${country}" — add scripts/lib/places-${country}.mjs`);
@@ -73,11 +79,11 @@ function readIntake() {
     if (!m.name) bad('name missing');
     if (!KINDS.includes(m.kind)) bad(`kind "${m.kind}" is not one of ${KINDS.join(', ')}`);
     if (!m.town) bad('town missing');
-    if (!P.REGION_CODE[m.region]) bad(`region "${m.region}" is not a Bundesland name in places-de.mjs`);
+    if (!P.regionCode(m.region)) bad(`region "${m.region}" is not a region of ${P.COUNTRY.en} (its places file)`);
     if (!m.venue?.address || !m.venue?.postal_code) bad('venue.address and venue.postal_code are required');
     if (typeof m.lat !== 'number' || typeof m.lng !== 'number') bad('lat/lng must be numbers');
-    else if (m.lat < 47 || m.lat > 55.2 || m.lng < 5.8 || m.lng > 15.1) bad(`lat/lng ${m.lat},${m.lng} is not in Germany`);
-    if (!m.rhythm?.de || !m.rhythm?.en) bad('rhythm.de and rhythm.en are required');
+    else if (m.lat < P.bbox.lat[0] || m.lat > P.bbox.lat[1] || m.lng < P.bbox.lng[0] || m.lng > P.bbox.lng[1]) bad(`lat/lng ${m.lat},${m.lng} is not in ${P.COUNTRY.en}`);
+    for (const l of P.LOCALES) if (!m.rhythm?.[l]) bad(`rhythm.${l} is required (${P.LOCALES.join(', ')})`);
     if (m.opening?.start && !TIME.test(m.opening.start)) bad(`opening.start "${m.opening.start}"`);
     if (m.opening?.end && !TIME.test(m.opening.end)) bad(`opening.end "${m.opening.end}"`);
     for (const [day, o] of Object.entries(m.opening_by_weekday ?? {})) {
@@ -96,11 +102,12 @@ function readIntake() {
     }
     if (!['listed', 'rhythm'].includes(m.dates_from)) bad(`dates_from must be "listed" or "rhythm"`);
     if (m.fee != null && (typeof m.fee !== 'number' || m.fee < 0)) bad('fee must be a number or null');
-    if (m.currency && m.currency !== 'EUR') bad(`currency ${m.currency}`);
+    if (m.currency && m.currency !== P.currency) bad(`currency ${m.currency}, not ${P.currency}`);
     if (!m.source_page || !/^https?:\/\//.test(m.source_page)) bad('source_page must be a URL');
     if (m.organiser?.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.organiser.email)) bad(`organiser.email "${m.organiser.email}"`);
     if (!DATE.test(m.checked ?? '')) bad('checked must be a date');
-    if (m.description && (!m.description.de || !m.description.en)) bad('description needs de and en');
+    if (m.description && P.LOCALES.some((l) => !m.description[l])) bad(`description needs ${P.LOCALES.join(', ')}`);
+    if (m.organiser?.locale && !P.LOCALES.includes(m.organiser.locale)) bad(`organiser.locale "${m.organiser.locale}"`);
     rows.push({ file, ...m });
   }
   const slugs = rows.map((r) => r.slug);
@@ -118,7 +125,7 @@ async function readOurs() {
   const cities = await query(`
     select c.id, c.region_id, t.value as name
       from public.cities c
-      join public.texts t on t.entity_type = 'city' and t.entity_id = c.id and t.field = 'name' and t.locale = 'de'`);
+      join public.texts t on t.entity_type = 'city' and t.entity_id = c.id and t.field = 'name' and t.locale = $1`, [P.LOCALES[0]]);
   const venues = await query(`select id, city_id, name, postal_code from public.venues`);
   const organisers = await query(`select id, name, email, channel_type, channel_value from public.organisers`);
   const links = await query(`select organiser_id from public.organiser_links where revoked_at is null`);
@@ -146,7 +153,7 @@ function decide(rows, ours) {
   const takenRegion = new Set(ours.slugs.filter((s) => s.entity_type === 'region').map((s) => s.slug));
 
   for (const m of markets) {
-    const code = P.REGION_CODE[m.region];
+    const code = P.regionCode(m.region);
     if (!regionIds.has(code) && !newRegions.has(code)) {
       if (takenRegion.has(P.regionSlug(code))) warnings.push(`region slug "${P.regionSlug(code)}" is taken by another country's region — a hand decision is needed`);
       newRegions.set(code, { code });
@@ -185,7 +192,7 @@ function decide(rows, ours) {
     if (organisers.has(key)) continue;
     const existing = (email && byEmail.get(email)) || (o.website && byHost.get(host(o.website))) || byName.get(lower(o.name)) || null;
     organisers.set(key, {
-      name: o.name, email, website: o.website ?? null, existing,
+      name: o.name, email, website: o.website ?? null, locale: o.locale ?? P.LOCALES[0], existing,
       mint: !!email && !(existing && linked.has(existing.id)),
     });
   }
@@ -222,7 +229,7 @@ async function write(d, ours) {
         }
       }
 
-      // --- Bundesländer ---
+      // --- regions ---
       const regionIds = new Map(ours.regions.map((r) => [r.code, r.id]));
       for (const { code } of d.newRegions.values()) {
         const row = await one(`insert into public.regions (country_id, code) values ($1,$2) returning id`, [countryId, code]);
@@ -257,7 +264,7 @@ async function write(d, ours) {
              values ($1,$2,$3,$4, extensions.st_setsrid(extensions.st_makepoint($5,$6),4326)::extensions.geography, $7) returning id`,
             [cityId, v.name ?? v.address, v.address, v.postal_code, v.lng, v.lat, P.timezone]);
           venueIds.set(`${key}|${vkey}`, nv.id);
-          await text('venue', nv.id, 'de', 'name', v.name ?? v.address);
+          await text('venue', nv.id, P.LOCALES[0], 'name', v.name ?? v.address);
         }
       }
 
@@ -269,7 +276,7 @@ async function write(d, ours) {
         if (!id) {
           id = (await one(
             `insert into public.organisers (name, channel_type, channel_value, email, locale) values ($1,$2,$3,$4,$5) returning id`,
-            [o.name, o.email ? 'email' : o.website ? 'website' : 'unknown', o.email ?? o.website, o.email, o.email ? 'de' : null])).id;
+            [o.name, o.email ? 'email' : o.website ? 'website' : 'unknown', o.email ?? o.website, o.email, o.email ? o.locale : null])).id;
         }
         organiserIds.set(key, id);
         if (o.mint) {
@@ -289,7 +296,7 @@ async function write(d, ours) {
              (venue_id, organiser_id, slug, status, kind, recurrence_text, entry_fee, currency, website_url, verified_by, verified_at)
            values ($1,$2,$3,'unverified',$4,$5,$6,$7,$8,'team',$9) returning id`,
           [venueIds.get(`${m.cityKey}|${m.venueKey}`), m.organiserKey ? organiserIds.get(m.organiserKey) : null,
-            m.slug, m.kind, m.rhythm.de, m.fee ?? null, m.fee == null ? null : 'EUR', m.website ?? m.organiser?.website ?? null, checked]);
+            m.slug, m.kind, m.rhythm[P.LOCALES[0]], m.fee ?? null, m.fee == null ? null : P.currency, m.website ?? m.organiser?.website ?? null, checked]);
 
         const { file, cityKey, venueKey, organiserKey, ...raw } = m;
         await run(
@@ -344,7 +351,7 @@ const d = decide(rows, ours);
 
 say(`\n${d.markets.length} new market(s):`);
 for (const m of d.markets) {
-  say(`  ${m.slug}  ·  ${m.town} (${P.REGION_CODE[m.region]})  ·  ${m.dates.length} date(s) ${m.dates_from}  ·  ${m.organiser?.email ? 'organiser e-mail' : m.organiser?.name ? 'organiser, no e-mail' : 'no organiser'}${m.description ? '' : '  ·  no description yet'}`);
+  say(`  ${m.slug}  ·  ${m.town} (${P.regionCode(m.region)})  ·  ${m.dates.length} date(s) ${m.dates_from}  ·  ${m.organiser?.email ? 'organiser e-mail' : m.organiser?.name ? 'organiser, no e-mail' : 'no organiser'}${m.description ? '' : '  ·  no description yet'}`);
 }
 say(`\ncountry: ${ours.country ? 'exists' : `new (${P.iso2})`}`);
 say(`regions: ${d.newRegions.size} new (${[...d.newRegions.keys()].join(', ') || '—'})`);

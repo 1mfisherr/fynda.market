@@ -29,6 +29,8 @@ export const COUNTRY = {
 /** Canton names, per locale. Keyed by the German name in the database. */
 export const CANTONS = {
   'Aargau': { fr: 'Argovie', it: 'Argovia', en: 'Aargau' },
+  'Appenzell Ausserrhoden': { fr: 'Appenzell Rhodes-Extérieures', it: 'Appenzello Esterno', en: 'Appenzell Ausserrhoden' },
+  'Appenzell Innerrhoden': { fr: 'Appenzell Rhodes-Intérieures', it: 'Appenzello Interno', en: 'Appenzell Innerrhoden' },
   'Basel-Landschaft': { fr: 'Bâle-Campagne', it: 'Basilea Campagna', en: 'Basel-Landschaft' },
   'Basel-Stadt': { fr: 'Bâle-Ville', it: 'Basilea Città', en: 'Basel-Stadt' },
   'Bern': { fr: 'Berne', it: 'Berna', en: 'Bern' },
@@ -39,6 +41,7 @@ export const CANTONS = {
   'Jura': { fr: 'Jura', it: 'Giura', en: 'Jura' },
   'Luzern': { fr: 'Lucerne', it: 'Lucerna', en: 'Lucerne' },
   'Neuenburg': { fr: 'Neuchâtel', it: 'Neuchâtel', en: 'Neuchâtel' },
+  'Nidwalden': { fr: 'Nidwald', it: 'Nidvaldo', en: 'Nidwalden' },
   'Obwalden': { fr: 'Obwald', it: 'Obvaldo', en: 'Obwalden' },
   'Schaffhausen': { fr: 'Schaffhouse', it: 'Sciaffusa', en: 'Schaffhausen' },
   'Schwyz': { fr: 'Schwytz', it: 'Svitto', en: 'Schwyz' },
@@ -105,3 +108,22 @@ export const citySlug = (deName) => slugify(SLUG_FROM.city[deName] ?? deName);
 export const regionName = (deName, locale) => CANTONS[deName]?.[locale] ?? deName;
 /** A town's name in a locale. */
 export const cityName = (deName, locale) => CITIES[deName]?.[locale] ?? deName;
+
+/** Canton codes (regions.code) → the name CANTONS is keyed by. */
+export const CANTON_CODES = {
+  AG: 'Aargau', AI: 'Appenzell Innerrhoden', AR: 'Appenzell Ausserrhoden', BE: 'Bern', BL: 'Basel-Landschaft',
+  BS: 'Basel-Stadt', FR: 'Freiburg', GE: 'Genf', GL: 'Glarus', GR: 'Graubünden', JU: 'Jura', LU: 'Luzern',
+  NE: 'Neuenburg', NW: 'Nidwalden', OW: 'Obwalden', SG: 'St. Gallen', SH: 'Schaffhausen', SO: 'Solothurn',
+  SZ: 'Schwyz', TG: 'Thurgau', TI: 'Tessin', UR: 'Uri', VD: 'Waadt', VS: 'Wallis', ZG: 'Zug', ZH: 'Zürich',
+};
+
+/** What scripts/import-intake.mjs needs of a country — every country's places file exports one. */
+export const intake = {
+  iso2: 'CH', timezone: 'Europe/Zurich', currency: 'CHF', LOCALES, COUNTRY,
+  bbox: { lat: [45.8, 47.9], lng: [5.9, 10.6] },
+  /** An intake file names its canton by code (`VD`). */
+  regionCode: (s) => (CANTON_CODES[s] ? s : null),
+  regionSlug: (code) => regionSlug(CANTON_CODES[code]),
+  regionName: (code, locale) => regionName(CANTON_CODES[code], locale),
+  citySlug, cityName,
+};
