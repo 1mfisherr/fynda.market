@@ -26,7 +26,7 @@ Solo founder, non-technical, makes every final call. You are the technical judgm
 
 | | |
 |---|---|
-| `npm run verify` | Before every push: types (site and `functions/`), the digest tests, a build, ten guardrails. Builds from fixtures unless `FYNDA_DATA_SOURCE=supabase`; a guardrail that says `SKIP` is waiting on data, not passing |
+| `npm run verify` | Before every push: types (site and `functions/`), the digest tests, a build, eleven guardrails. Builds from fixtures unless `FYNDA_DATA_SOURCE=supabase`; a guardrail that says `SKIP` is waiting on data, not passing |
 | `npm run deploy` | Tests, build against the live database, guardrails, upload to Cloudflare Pages. Refuses a fixtures build and refuses unpushed or uncommitted work — GitHub rebuilds nightly just after midnight Zurich time (23:07 UTC, again at 03:07; GitHub often starts hours late) from `origin/main` and would undo it. `-- --build-only` stops before the upload; `npm run preview` shows the result |
 | `node scripts/migrate.mjs supabase/migrations/<file>.sql` | Applies one migration to the live database, in a transaction. **Nothing else applies migrations** — committing one does nothing |
 | `node scripts/import-v1-additions.mjs --dry-run` | What fleafind has that we don't. Without the flag it adds them — markets, towns, cantons, organiser links — and never touches what exists. `--hidden` adds them unpublished: v1's texts are rewritten in our words (`intake/descriptions-v1-winter/check.mjs`) before a batch goes live. Then `import-images.mjs`, the rhythm lines it lists, verify, deploy. `docs/ARCHITECTURE.md` §Import |

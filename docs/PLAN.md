@@ -8,7 +8,7 @@ Updated 2026-10-11, end of the second session — everything below is live (depl
 
 ## Now
 
-Live at `fynda.market` since 2026-09-04, two countries since 2026-09-22: **345 markets** — 265 Swiss in four locales, 80 German in de and en — in 175 towns, 23 cantons and 16 Bundesländer; 1,992 pages, 1,960 in the sitemap. 94 markets have no upcoming date (annual ones between editions). Rebuilt nightly by GitHub at 23:07 UTC and again at 03:07 (GitHub starts late); ten guardrails and 75 tests gate every publish.
+Live at `fynda.market` since 2026-09-04, two countries since 2026-09-22: **345 markets** — 265 Swiss in four locales, 80 German in de and en — in 175 towns, 23 cantons and 16 Bundesländer; 1,992 pages, 1,960 in the sitemap. 94 markets have no upcoming date (annual ones between editions). Rebuilt nightly by GitHub at 23:07 UTC and again at 03:07 (GitHub starts late); eleven guardrails and 84 tests gate every publish.
 
 | Running | State |
 |---|---|

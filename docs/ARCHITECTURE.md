@@ -132,7 +132,7 @@ Google's scaled-content policy covers AI text "no matter how it's created". The 
 
 Four layers, each knowing only the one below: `tokens.css` (values, no selectors) → `base.css` (elements, `.button`, `.stack`, `.gutter`) → components (scoped, only what is theirs) → pages (order and data). No selector defined by two pages; no component sets its own outer margin; no raw hex or px outside `tokens.css` except inside `@media`. Domain words live in `src/lib/vocabulary.ts`. Guardrail 7 compares class names across `src/`, the one check that reads source. No CSS framework. Details: `.claude/rules/styles.md`.
 
-## The ten guardrails
+## The eleven guardrails
 
 `scripts/guardrails.mjs`, config `guardrails.config.json`, run by `npm run verify`, `npm run deploy` and CI.
 
@@ -148,6 +148,7 @@ Four layers, each knowing only the one below: `tokens.css` (values, no selectors
 | 8 | hreflang clusters | One bad link voiding a cluster |
 | 9 | Retired addresses still land | A rename killing every shared link |
 | 10 | Sitemap = indexable pages | Asking Google to index a `noindex` page |
+| 11 | One-market towns are not a copy | A town page repeating its only market's page — over 60% of its own text there |
 
 A fixtures build says `SKIP` where a check needs real data; that is waiting, not passing.
 
