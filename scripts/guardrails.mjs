@@ -615,6 +615,60 @@ check('Sitemap matches the indexable pages', () => {
 });
 
 /* -------------------------------------------------------------------------- */
+/* 11 — a one-market town is not its market's page again                      */
+/*                                                                            */
+/* A town with one market shows that market as its feature, never its         */
+/* description (PAGES.md §City): two pages saying the same thing is the        */
+/* pattern the September update punished. Measured as the share of the town   */
+/* page's own six-word runs that also appear on the market page, forms and     */
+/* other towns' rows left out. 2026-10-12: 434 such pages, median 0.29,        */
+/* highest 0.41 (Muralto — the market's name and season line); pasting the     */
+/* market's description in would put Muralto near 0.68.                       */
+/* -------------------------------------------------------------------------- */
+
+check('One-market towns are not a copy', () => {
+  const max = config.townCopy.max;
+  const own = (html) => {
+    const main = html.match(/<main[\s\S]*?>([\s\S]*?)<\/main>/i);
+    return (main ? main[1] : html)
+      .replace(/<aside[^>]*data-outside-floor[^>]*>[\s\S]*?<\/aside>/gi, ' ')
+      .replace(/<form[\s\S]*?<\/form>/gi, ' ');
+  };
+  const runs = (body) => {
+    const words = body.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase().split(' ');
+    const set = new Set();
+    for (let i = 0; i + 6 <= words.length; i++) set.add(words.slice(i, i + 6).join(' '));
+    return set;
+  };
+  const byUrl = new Map(pages.map((page) => [page.url, page]));
+  const copies = [];
+  let checked = 0;
+  let highest = 0;
+
+  for (const page of pages) {
+    if (routeTypeOf(page.url) !== 'region or city') continue;
+    const body = own(page.html);
+    const links = new Set([...body.matchAll(/href="(\/(?:de|fr|it|en)\/(?:markt|marche|mercato|market)\/[a-z0-9-]+\/)"/g)].map((m) => m[1]));
+    if (links.size !== 1) continue;
+    const market = byUrl.get([...links][0]);
+    if (!market) continue;
+    const town = runs(body);
+    const theirs = runs(own(market.html));
+    let shared = 0;
+    for (const run of town) if (theirs.has(run)) shared++;
+    const share = town.size ? shared / town.size : 0;
+    checked++;
+    highest = Math.max(highest, share);
+    if (share > max) copies.push(`${page.url}  — ${Math.round(share * 100)}% of it is on ${market.url}`);
+  }
+
+  if (checked === 0) return skip('no one-market town pages in dist');
+  if (copies.length) return fail(`${copies.length} town page(s) repeat their only market's page`, [...copies, config.townCopy.why]);
+  return pass(`${checked} one-market town pages, the most alike ${Math.round(highest * 100)}% (ceiling ${Math.round(max * 100)}%)`);
+});
+
+/* -------------------------------------------------------------------------- */
 /* output                                                                     */
 /* -------------------------------------------------------------------------- */
 

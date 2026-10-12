@@ -308,6 +308,8 @@ export interface Strings {
   cityDescription: (city: string, name: string, date: string, time: string | undefined, venue: string, n: number, months: number) => string;
   lastChecked: (date: string) => string;
   inNextMonths: (n: number) => string;
+  /** The facts line on a town of four or more markets: "2 every week · 5 for children · 6 indoors". */
+  townFacts: Record<'weekly' | 'kids' | 'indoor' | 'night' | 'antiques' | 'records', (n: number) => string>;
 
   /* the search card on the home page */
   /** Section ledes — one line saying what a block is. */
@@ -665,6 +667,14 @@ const de: Strings = {
     `Alle bekannten Flohmärkte in ${city}, ${regionLabelDe(region, code)} — mit Terminen, Öffnungszeiten und Absagen. Abgesagte Termine bleiben sichtbar.`,
   lastChecked: (date) => `geprüft am ${date}`,
   inNextMonths: (n) => `in den nächsten ${n} Monaten`,
+  townFacts: {
+    weekly: (n) => `${n} jede Woche`,
+    kids: (n) => `${n} für Kinder`,
+    indoor: (n) => `${n} drinnen`,
+    night: (n) => `${n} abends`,
+    antiques: (n) => `${n} mit Antiquitäten`,
+    records: (n) => `${n} mit Platten & Büchern`,
+  },
 
   citiesLede: '',
   regionsLede: 'Für Wochenenden, an denen in deiner Stadt nichts läuft.',
@@ -946,6 +956,14 @@ const en: Strings = {
     `Every known flea market in ${city}, ${code === 'CH' ? `canton of ${region}` : region} — with dates, opening hours and cancellations. Cancelled dates stay visible.`,
   lastChecked: (date) => `checked ${date}`,
   inNextMonths: (n) => `in the next ${n} months`,
+  townFacts: {
+    weekly: (n) => `${n} every week`,
+    kids: (n) => `${n} for children`,
+    indoor: (n) => `${n} indoors`,
+    night: (n) => `${n} in the evening`,
+    antiques: (n) => `${n} with antiques`,
+    records: (n) => `${n} with records & books`,
+  },
 
   citiesLede: '',
   regionsLede: 'For when your own town has a quiet weekend.',
@@ -1237,6 +1255,14 @@ const fr: Strings = {
     `Toutes les brocantes connues à ${city}, canton ${deFr(region)} — dates, horaires et annulations. Les dates annulées restent visibles.`,
   lastChecked: (date) => `vérifié le ${date}`,
   inNextMonths: (n) => `dans les ${n} prochains mois`,
+  townFacts: {
+    weekly: (n) => `${n} chaque semaine`,
+    kids: (n) => `${n} pour les enfants`,
+    indoor: (n) => `${n} en intérieur`,
+    night: (n) => `${n} en soirée`,
+    antiques: (n) => `${n} avec des antiquités`,
+    records: (n) => `${n} avec disques & livres`,
+  },
 
   citiesLede: '',
   regionsLede: "Pour les week-ends où il ne se passe rien dans votre commune.",
@@ -1523,6 +1549,14 @@ const it: Strings = {
     `Tutti i mercatini delle pulci conosciuti a ${city}, Cantone ${region} — con date, orari di apertura e cancellazioni. Le date annullate restano visibili.`,
   lastChecked: (date) => `controllato il ${date}`,
   inNextMonths: (n) => `nei prossimi ${n} mesi`,
+  townFacts: {
+    weekly: (n) => `${n} ogni settimana`,
+    kids: (n) => `${n} per bambini`,
+    indoor: (n) => `${n} al coperto`,
+    night: (n) => `${n} di sera`,
+    antiques: (n) => `${n} con antiquariato`,
+    records: (n) => `${n} con dischi e libri`,
+  },
 
   citiesLede: '',
   regionsLede: "Per i fine settimana in cui nella tua città non c'è niente.",

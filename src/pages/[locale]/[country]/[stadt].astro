@@ -20,11 +20,12 @@ import { datedRows, groupByDay, lastChecked, nearbyMarkets, townRows, undatedMar
 import { formatDate, formatDateShort, formatTimeRange, parseDate, todayIso } from '../../../lib/format';
 import { BADGED_KINDS } from '../../../lib/vocabulary';
 import { kmLabel } from '../../../lib/geo';
-import { LOCALES, cityPath, homePath, isCityState, localeTag, regionPath, type Locale } from '../../../lib/i18n';
+import { LOCALES, cityPath, homePath, isCityState, localeTag, marketPath, regionPath, type Locale } from '../../../lib/i18n';
 import { seasonLabel } from '../../../lib/season';
 import { t } from '../../../lib/strings';
 import { fitTitle } from '../../../lib/titles';
 import { townIndex, townsAround } from '../../../lib/towns';
+import { townFacts } from '../../../lib/town-facts';
 import type { Market } from '../../../lib/types';
 
 /**
@@ -211,8 +212,27 @@ const routeHref = only ? `https://www.google.com/maps/dir/?api=1&destination=${o
 
 const hasBadge = [...list, ...nearby.map((n) => n.market), ...weekend.flatMap((d) => d.rows.map((n) => n.market))].some((market) => BADGED_KINDS.has(market.kind));
 
+/* What sets this town's markets apart, counted (src/lib/town-facts.ts). */
+const facts = townFacts(markets, today).map(({ fact, n }) => s.townFacts[fact](n)).join(' · ');
+
 const site = 'https://fynda.market';
 const cityState = isCityState(markets[0].countryCode, regionSlug);
+/* The town's own markets, in the order the page lists them: what the page is
+   a list of, for search engines and AI answers. URL and name only — an Event
+   per market is the market page's (one per page, guardrail 6). */
+const listed = [...new Map([...list, ...undated].map((market) => [market.slug, market])).values()];
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: heading,
+  numberOfItems: listed.length,
+  itemListElement: listed.map((market, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${site}${marketPath(locale, market.slug)}`,
+    name: market.name,
+  })),
+};
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -225,12 +245,17 @@ const jsonLd = {
 ---
 <Page locale={locale} alternates={alternates} country={markets[0].countryCode} title={fitTitle(heading, soonest && s.titleNext(formatDateShort(soonest.next!.date, locale)))} description={description} analytics={{ city: stadt, region: regionSlug }} footerSignup={false}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(itemList)} slot="head" />
 
   <section class="page-head gutter">
     <h1>{heading}</h1>
     <p class="answer">{answer}</p>
-    {rows.length > 0 && (
-      <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</p>
+    {/* One block, two lines: what the markets are, then how many dates. */}
+    {(facts || rows.length > 0) && (
+      <p class="meta">
+        {facts}{facts && rows.length > 0 && <br />}
+        {rows.length > 0 && <>{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</>}
+      </p>
     )}
   </section>
 

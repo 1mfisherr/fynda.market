@@ -47,6 +47,11 @@
     "why": "v1 shipped ~8500 URLs for 157 markets. Roughly 1.2 is the target; 2.0 is the hard ceiling. Counted PER LOCALE: four languages of the same market is four full pages, not four empty cells, so the denominator is entities x locales. Changed 2026-08-31 — the old aggregate count would have blocked translation outright, which is the rule getting in the way of the product rather than protecting it."
   },
 
+  "townCopy": {
+    "max": 0.6,
+    "why": "A town with one market shows the market, never its description again: two pages saying the same is what the spam update punished (PAGES.md §City). Share of the town page's own six-word runs also on the market page; 0.41 at most on 2026-10-12."
+  },
+
   "contentFloor": {
     "_comment": "Minimum visible text characters in <main>, per page type. A page below its floor should not exist. A block marked <aside data-outside-floor> is not counted: it is another page's content shown here (the city page's within-25-km rows), and must never be what clears the floor.",
     "market": 400,
