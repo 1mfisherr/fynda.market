@@ -20,6 +20,10 @@ on:
         required: false
         type: boolean
         default: false
+      limit:
+        description: 'At most this many this run (empty = 90, the free plan leaves room for 100 a day)'
+        required: false
+        type: string
       only:
         description: 'Only this organiser address'
         required: false
@@ -58,9 +62,11 @@ jobs:
           SEND: ${{ inputs.send }}
           ONLY: ${{ inputs.only }}
           TEST: ${{ inputs.test }}
+          LIMIT: ${{ inputs.limit }}
         run: |
           ONLY_ARG=""
           if [ -n "$ONLY" ]; then ONLY_ARG="--only=$ONLY"; fi
+          if [ -n "$LIMIT" ]; then ONLY_ARG="$ONLY_ARG --limit=$LIMIT"; fi
           if [ -n "$TEST" ]; then
             echo "Preview to $TEST."
             node scripts/send-organiser-welcome.mjs --test="$TEST" $ONLY_ARG
