@@ -1,8 +1,10 @@
 /**
- * The facts line under a bigger town's answer sentence — "2 every week · 5 for
- * children · 6 indoors" (Delfim, 2026-10-12). Counted from what each market
- * holds, so every town's line is its own; a town paragraph written once for
- * all of them is the templated text the spam update punished (PAGES.md §City).
+ * The What row on a bigger town's page — *Every week 3 · For children 5 ·
+ * Indoors 6* — buttons that keep only those markets in the list (Delfim,
+ * 2026-10-12). Counted from what each market holds, so every town's row is its
+ * own. A filter, never a URL: tags and facts are filters (CLAUDE.md §Settled).
+ * Only markets whose fact we hold are counted; one we know nothing about
+ * leaves the list when a button is pressed, and comes back as facts arrive.
  */
 import type { Market } from './types';
 
@@ -10,7 +12,6 @@ export type TownFact = 'weekly' | 'kids' | 'indoor' | 'night' | 'antiques' | 're
 
 /** Below this many markets the list is short enough to read whole. */
 export const TOWN_FACTS_FROM = 4;
-const MAX_FACTS = 3;
 
 /** Monday-based week number of an ISO day, for "a different week each time". */
 const weekOf = (iso: string) => Math.floor((Date.parse(`${iso}T12:00:00Z`) / 86_400_000 + 3) / 7);
@@ -42,10 +43,9 @@ const TESTS: [TownFact, (m: Market, today: string) => boolean][] = [
   ['records', (m) => !!m.tags?.includes('records_books')],
 ];
 
-/** At most three facts, in a fixed order, each held by at least one market. None below four markets. */
-export function townFacts(markets: Market[], today: string): { fact: TownFact; n: number }[] {
+/** Every fact at least one market holds, in a fixed order, with those markets' ids. None below four markets. */
+export function townFacts(markets: Market[], today: string): { fact: TownFact; ids: string[] }[] {
   if (markets.length < TOWN_FACTS_FROM) return [];
-  return TESTS.map(([fact, holds]) => ({ fact, n: markets.filter((m) => holds(m, today)).length }))
-    .filter(({ n }) => n > 0)
-    .slice(0, MAX_FACTS);
+  return TESTS.map(([fact, holds]) => ({ fact, ids: markets.filter((m) => holds(m, today)).map((m) => m.id) }))
+    .filter(({ ids }) => ids.length > 0);
 }

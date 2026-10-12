@@ -212,8 +212,8 @@ const routeHref = only ? `https://www.google.com/maps/dir/?api=1&destination=${o
 
 const hasBadge = [...list, ...nearby.map((n) => n.market), ...weekend.flatMap((d) => d.rows.map((n) => n.market))].some((market) => BADGED_KINDS.has(market.kind));
 
-/* What sets this town's markets apart, counted (src/lib/town-facts.ts). */
-const facts = townFacts(markets, today).map(({ fact, n }) => s.townFacts[fact](n)).join(' · ');
+/* The What row: what sets this town's markets apart, as buttons that keep only those (src/lib/town-facts.ts). */
+const what = townFacts(markets, today).map(({ fact, ids }) => ({ key: fact, label: s.whatLabels[fact], ids }));
 
 const site = 'https://fynda.market';
 const cityState = isCityState(markets[0].countryCode, regionSlug);
@@ -250,12 +250,8 @@ const jsonLd = {
   <section class="page-head gutter">
     <h1>{heading}</h1>
     <p class="answer">{answer}</p>
-    {/* One block, two lines: what the markets are, then how many dates. */}
-    {(facts || rows.length > 0) && (
-      <p class="meta">
-        {facts}{facts && rows.length > 0 && <br />}
-        {rows.length > 0 && <>{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</>}
-      </p>
+    {rows.length > 0 && (
+      <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</p>
     )}
   </section>
 
@@ -263,7 +259,7 @@ const jsonLd = {
       market is the point of the block. */}
   {/* Every day a market runs, not only each market's next one — a weekly
       market is on the calendar every week (src/lib/date-rows.ts). */}
-  {ownDates && <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} />}
+  {ownDates && <DateFilters locale={locale} dates={[...rows.filter((r) => r.next.status !== 'cancelled').map((r) => r.next.date), ...nearby.map((n) => n.market.next.date)]} what={what} />}
 
   {/* One row per market, not one per date. Zürich was 61 rows for 14 markets
       under a heading that said 17; the recurrence phrase on each row says what
@@ -441,10 +437,53 @@ const jsonLd = {
      a chosen window must not show it twice. The around block is other towns'. */
   const ownAll = list ? Array.from(list.querySelectorAll<HTMLElement>('article.card')).filter((row) => !row.closest('[data-outside-floor]')) : [];
   const own = ownAll.filter((row, i) => ownAll.findIndex((r) => r.dataset.market === row.dataset.market) === i);
-  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]')).filter((row) => !ownAll.includes(row));
+  /* Other towns' rows. The town's undated rows carry an empty data-date and are its own (undatedCards below). */
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-date]')).filter((row) => !ownAll.includes(row) && !undated?.contains(row));
   const read = <T,>(key: string, fallback: T): T => { try { return JSON.parse(list?.dataset[key] ?? ''); } catch { return fallback; } };
   const weekdays = read<string[]>('weekdays', []);
   const months = read<string[]>('months', []);
+
+  /* The What row (DateFilters `what`): the ids of the markets holding the
+     pressed fact, or null for every market. It narrows the town's own rows
+     and leaves the When window as it is; other towns' rows step aside while
+     it is on, since we hold no facts for them here. */
+  const whatButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-what]'));
+  const undatedCards = undated ? Array.from(undated.querySelectorAll<HTMLElement>('article.card')) : [];
+  const outside = Array.from(document.querySelectorAll<HTMLElement>('[data-outside-floor]'));
+  let keep: Set<string> | null = null;
+  let current: DateWindow = 'all';
+  const kept = (row: HTMLElement) => !row.dataset.gone && (keep === null || keep.has(row.dataset.market ?? ''));
+
+  /**
+   * The day list under a What button: a day with none of its markets goes, the
+   * counts say what is left, the first market left is the lead, and a month
+   * label goes where the month now turns. Undone by pressing the button again.
+   */
+  const tidyList = () => {
+    if (!list) return;
+    const groups = Array.from(list.querySelectorAll<HTMLElement>('section.day-group[data-day]'));
+    for (const label of Array.from(list.querySelectorAll('[data-added-month]'))) label.remove();
+    const proto = list.querySelector<HTMLElement>('p.month');
+    let first: HTMLElement | undefined;
+    let month: string | undefined;
+    for (const group of groups) {
+      const cards = cardsIn(group);
+      group.hidden = cards.length === 0;
+      if (group.hidden) continue;
+      first ??= cards[0];
+      const count = group.querySelector('.count');
+      if (count) count.textContent = cards.length === 1 ? (list.dataset.countOne ?? '') : (list.dataset.countMany ?? '').replace('2', String(cards.length));
+      const here = (group.dataset.day ?? '').slice(0, 7);
+      if (month && here !== month && proto && !group.querySelector('p.month')) {
+        const label = proto.cloneNode(true) as HTMLElement;
+        label.dataset.addedMonth = '';
+        label.textContent = `${months[Number(here.slice(5)) - 1] ?? ''} ${here.slice(0, 4)}`;
+        group.prepend(label);
+      }
+      month = here;
+    }
+    for (const card of ownAll) setVariant(card, card === first ? 'feature' : 'row');
+  };
 
   /**
    * A chosen window, as its own list: every market with a date in it, under
@@ -505,15 +544,21 @@ const jsonLd = {
   const apply = (window: DateWindow) => {
     const now = new Date();
     const all = window === 'all';
+    current = window;
+    for (const row of [...ownAll, ...undatedCards]) row.hidden = !kept(row);
+    for (const block of outside) block.hidden = keep !== null;
+    if (all) tidyList();
     if (list) list.hidden = !all;
     if (picked) picked.hidden = all;
-    let shown = all ? own.length : renderPicked(window, now);
+    let shown = all ? own.filter((row) => !row.hidden).length : renderPicked(window, now);
     for (const row of rows) {
-      const visible = !row.dataset.gone && inWindow(row.dataset.date ?? '', window, now);
+      const visible = keep === null && !row.dataset.gone && inWindow(row.dataset.date ?? '', window, now);
       row.hidden = !visible;
       if (visible) shown++;
     }
-    if (undated) undated.hidden = window !== 'all';
+    const undatedShown = undatedCards.filter((row) => !row.hidden).length;
+    if (undated) undated.hidden = window !== 'all' || undatedShown === 0;
+    if (all) shown += undatedShown;
     // A day whose rows are all hidden hides with them; every row in a group
     // shares its date, so the group is shown or hidden whole.
     for (const group of groupsOutside()) {
@@ -526,6 +571,15 @@ const jsonLd = {
     button.addEventListener('click', () => {
       for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
       apply((button.dataset.filter ?? 'all') as DateWindow);
+    });
+  }
+
+  for (const button of whatButtons) {
+    button.addEventListener('click', () => {
+      const on = button.getAttribute('aria-pressed') !== 'true';
+      for (const other of whatButtons) other.setAttribute('aria-pressed', String(on && other === button));
+      keep = on ? new Set((button.dataset.ids ?? '').split(' ').filter(Boolean)) : null;
+      apply(current);
     });
   }
 
@@ -571,7 +625,17 @@ const jsonLd = {
     }
   };
   const nearbyBlock = document.querySelector<HTMLElement>('[data-outside-floor]');
-  const settle = () => { regroup(list, true); regroup(nearbyBlock, false); };
+  /* regroup moves and drops by what is visible, so it runs on the whole list
+     and the What button, if one is pressed, is applied again after. */
+  const settle = () => {
+    const held = keep;
+    keep = null;
+    for (const row of ownAll) row.hidden = !kept(row);
+    regroup(list, true);
+    regroup(nearbyBlock, false);
+    keep = held;
+    if (keep) apply(current);
+  };
   document.addEventListener('fynda:moved', settle);
   settle();
 

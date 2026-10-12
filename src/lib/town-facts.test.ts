@@ -1,6 +1,6 @@
 /**
- * The town facts line counts only what the markets hold — a number on a town
- * page is a claim a visitor checks by scrolling.
+ * The What row counts only what the markets hold — a number on a button is a
+ * claim a visitor checks by tapping it.
  *
  *   npm test
  */
@@ -29,20 +29,22 @@ test('a cancelled date does not make a week', () => {
   assert.equal(runsWeekly(m, TODAY), false);
 });
 
-test('below four markets there is no line', () => {
+test('below four markets there is no row', () => {
   assert.deepEqual(townFacts([market({ setting: 'indoor' }), market(), market()], TODAY), []);
 });
 
-test('facts held by nobody are left out, the rest in order, three at most', () => {
+test('facts held by nobody are left out, the rest in order, with their markets', () => {
   const town = [
-    market({ setting: 'indoor', tags: ['records_books'] }),
-    market({ kind: 'kinderflohmarkt' }),
-    market({ kind: 'nachtflohmarkt', setting: 'indoor' }),
-    market({ tags: ['antiques'] }),
+    market({ id: 'a', setting: 'indoor', tags: ['records_books'] }),
+    market({ id: 'b', kind: 'kinderflohmarkt' }),
+    market({ id: 'c', kind: 'nachtflohmarkt', setting: 'indoor' }),
+    market({ id: 'd', tags: ['antiques'] }),
   ];
   assert.deepEqual(townFacts(town, TODAY), [
-    { fact: 'kids', n: 1 },
-    { fact: 'indoor', n: 2 },
-    { fact: 'night', n: 1 },
+    { fact: 'kids', ids: ['b'] },
+    { fact: 'indoor', ids: ['a', 'c'] },
+    { fact: 'night', ids: ['c'] },
+    { fact: 'antiques', ids: ['d'] },
+    { fact: 'records', ids: ['a'] },
   ]);
 });

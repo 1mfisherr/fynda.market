@@ -135,6 +135,11 @@
     const filter = (el as HTMLElement).dataset.filter;
     if (filter) { send('filter_changed', { filter: 'zeit', value: filter }, el); return; }
 
+    // A What button on a town page (DateFilters). Its own handler runs first,
+    // so a press that turned it on reads as pressed here; letting go is not sent.
+    const what = (el as HTMLElement).dataset.what;
+    if (what) { if (el.getAttribute('aria-pressed') === 'true') send('filter_changed', { filter: 'tag', value: what }, el); return; }
+
     const km = (el as HTMLElement).dataset.km;
     if (km) { send('filter_changed', { filter: 'umkreis', value: km }, el); return; }
 

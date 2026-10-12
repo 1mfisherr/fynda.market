@@ -26,6 +26,9 @@ import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 import { HORIZON_DAYS } from '../lib/markets';
 
+/** One What button: a fact, its words, and the markets that hold it (src/lib/town-facts.ts). */
+export interface WhatOption { key: string; label: string; ids: string[] }
+
 interface Props {
   windows?: DateWindow[];
   locale?: Locale;
@@ -40,8 +43,10 @@ interface Props {
    * different clothes, and two looks for one control read as two sites.
    */
   standalone?: boolean;
+  /** The town page's What row, under the dates. The page filters on `[data-what]`, as it does on `[data-filter]`. */
+  what?: WhatOption[];
 }
-const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [], standalone = true } = Astro.props;
+const { windows = ['all', 'today', 'weekend'], locale = DEFAULT_LOCALE, dates = [], standalone = true, what = [] } = Astro.props;
 const s = t(locale);
 const LABELS: Record<string, string> = {
   all: s.filterAll,
@@ -136,10 +141,30 @@ while (cursor <= last) {
     <p class="hint meta-quiet">{s.calendarHint}</p>
   </div>
 </div>
+{/* What, beside When: one button at a time, pressed again to let go. A
+    button says how many markets hold the fact, so it never empties a list. */}
+{what.length > 0 && (
+  <>
+    <p class="label what-label">{s.whatLabel}</p>
+    <div class="what" role="group" aria-label={s.filterWhatLabel}>
+      {what.map((option) => (
+        <button class="button" type="button" aria-pressed="false" data-what={option.key} data-ids={option.ids.join(' ')}>
+          {option.label}<span class="n">{option.ids.length}</span>
+        </button>
+      ))}
+    </div>
+  </>
+)}
 </div>
 
 <style>
   .when { display: grid; gap: var(--space-2); }
+  .what-label { margin-block-start: var(--space-4); }
+  /* Pills that wrap: the words differ in length in every language, and a
+     row that scrolls sideways hides the last button on a phone. */
+  .what { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .what .n { color: var(--color-quiet); font-weight: var(--weight-semibold); }
+  .what .button[aria-pressed='true'] .n { color: inherit; }
   .label {
     color: var(--color-quiet);
     font-size: var(--text-tiny);
