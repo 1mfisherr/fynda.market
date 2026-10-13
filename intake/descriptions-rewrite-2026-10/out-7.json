@@ -1,0 +1,63 @@
+[
+ {
+  "slug": "alpin-flohmi-lausanne",
+  "description": {
+   "de": "Im November füllt sich in Lausanne die Grande Salle der SAC-Sektion Diablerets an der Rue Beau-Séjour mit gebrauchter Bergausrüstung und Bergkleidung in gutem Zustand, für Erwachsene und für Kinder. Der Markt dauert einen Abend. Die erste halbe Stunde gehört den Mitgliedern des SAC Diablerets und von Mountain Wilderness, danach ist der Saal für alle offen. Der Eintritt ist frei; Mountain Wilderness Schweiz organisiert den Anlass.",
+   "fr": "Un soir de novembre, à Lausanne, la Grande Salle de la section des Diablerets, rue Beau-Séjour, se remplit d'équipement et d'habits de montagne déjà portés, en bon état, pour les grands comme pour les petits. Les membres de la section et de Mountain Wilderness entrent une demi-heure avant les autres ; ensuite, la porte est ouverte à tous, et l'entrée ne coûte rien. Mountain Wilderness Suisse organise la soirée.",
+   "it": "A novembre, a Losanna, la Grande Salle del CAS Diablerets, in Rue Beau-Séjour, si riempie di attrezzatura e abbigliamento da montagna usati, in buono stato, per adulti e per bambini. Il mercato dura una serata. La prima mezz'ora è aperta solo ai soci del CAS Diablerets e di Mountain Wilderness, poi la sala è aperta a tutti. L'ingresso è libero; l'evento è organizzato da Mountain Wilderness Svizzera.",
+   "en": "In November, Lausanne's Grande Salle of the CAS Diablerets, on Rue Beau-Séjour, fills with used mountain gear and clothing in good condition, for adults and for children. The market lasts one evening. The first half hour is open to members of the CAS Diablerets and Mountain Wilderness only; after that the hall is open to everyone. Entry is free, and Mountain Wilderness Switzerland organises the event."
+  },
+  "sources": [
+   {
+    "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "De 18h30 à 19h00, accès réservé aux membres du CAS Diablerets et de Mountain Wilderness."
+   },
+   {
+    "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Lausanne: Grande Salle du CAS des Diablerets, Rue Beau-Séjour 24, 1003 Lausanne; Entrée gratuite"
+   },
+   {
+    "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Du matériel et des vêtements de montagne d'occasion en bon état, pour adultes et enfants."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Organiser's French page: members only for the first half hour, the public from the second half hour, so our 19:00 start is the public one and the dates agree; hall means indoor (matches our setting). French rewritten by hand 2026-10-13: the first draft took 27% of its wording from the organiser page."
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "description": {
+   "de": "Auf dem ehemaligen Güterbahnhof in St. Fiden, heute ein Zwischennutzungsareal, gibt es zwischen April und Mitte Oktober immer wieder einen Quartierflohmarkt, aber nur, wenn es trocken ist. Auf den Tischen liegt, was ein Flohmarkt so hat, dazu Secondhand- und Vintagekleider, Accessoires und Selbstgemachtes. Zu essen und zu trinken gibt es am Barwagen und bei Gustav Gleis auf dem Areal. Hinter dem Markt steht der Verein Areal Bach.",
+   "fr": "L'Areal Bach est une ancienne gare de marchandises du quartier de St-Fiden, à Saint-Gall, aujourd'hui en usage temporaire. De début avril à mi-octobre, un marché aux puces de quartier s'y tient à intervalles réguliers, uniquement par temps sec. On y trouve les objets classiques d'un marché aux puces, des vêtements de seconde main, de la mode vintage, des accessoires et de l'artisanat. Snacks et boissons au bar roulant ou chez le restaurant partenaire Gustav Gleis. C'est le Verein Areal Bach qui organise le marché.",
+   "it": "L'Areal Bach è un ex scalo merci, oggi in uso temporaneo, a San Gallo, nella zona di St. Fiden. Da inizio aprile a metà ottobre, a intervalli regolari e solo con il tempo asciutto, vi si tiene un mercatino di quartiere. Si trovano i classici articoli da mercatino, abiti di seconda mano, moda vintage, accessori e artigianato. Per spuntini e bevande c'è il carretto bar dell'Areal e il ristorante partner Gustav Gleis. Il mercato lo organizza il Verein Areal Bach.",
+   "en": "Areal Bach is former railway freight land in St. Gallen's St. Fiden district, now in temporary use. From early April to mid-October, a neighbourhood flea market runs here at regular intervals, in dry weather only. Expect classic flea-market goods, secondhand clothes, vintage fashion, accessories and crafts. Snacks and drinks come from the Areal Bach bar wagon and the partner restaurant Gustav Gleis. The Verein Areal Bach organises the market."
+  },
+  "sources": [
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "In regelmässigen Abständen findet bei trockener Witterung auf dem Areal Bach ein Quartier-Flohmarkt statt."
+   },
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "In der Zeit von Anfang April bis Mitte Oktober"
+   },
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "typische Flohmarkwaren, Second-Hand-Kleidung, Vintage Mode, Accessoires und Kunsthandwerk"
+   },
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "Snacks und Getränke gibt es beim Barwagen vom Areal Bach und beim Gastropartner Gustav Gleis."
+   },
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "das ehemalige Güterbahnhofareal St.Fiden"
+   }
+  ],
+  "conflicts": [
+   "Our kept German said 'alle zwei Wochen, von April bis Juni'. The organiser says the market runs 'in regelmässigen Abständen' on dry days within a season from early April to mid-October (2026 season opened on 12 April). A 2021 listing on the same site said every two weeks on Sundays, but that is not current. The text follows the organiser.",
+   "Our German said 'Kaffeewagen und Bar' and 'Leute aus der Gegend'; the organiser names a Barwagen and the restaurant partner Gustav Gleis, and says nothing about who sells. Both are corrected or left out."
+  ],
+  "notes": "'Temporary use' (Zwischennutzung) and the former freight-yard description are from the Areal Bach pages. The rhythm is stated as the organiser states it, with no weekday. German rewritten by hand 2026-10-13: the first draft took 20% of its wording from areal-bach.ch."
+ }
+]

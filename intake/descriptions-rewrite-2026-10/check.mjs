@@ -69,7 +69,8 @@ if (process.argv[2] === 'write') {
 -- language (audit 2026-10-13: 331 texts at 30% or more of their 4-word runs). Rebuilt from the facts
 -- and the organisers' pages, in our words (intake/descriptions-rewrite-2026-10/out-*.json, with the
 -- sources each text rests on); every text checked to share at most ${Math.round(MAX_OVERLAP * 100)}% of its 4-word runs with
--- the old text in any language. Where our German was already our own, only the translations changed.
+-- the old text in any language, and at most 15% with any page it cites (check-sources.mjs). All four
+-- languages are new: where our kept German turned out thin or wrong, it was rewritten too.
 
 begin;
 
@@ -81,11 +82,12 @@ do $$
 declare n int;
 begin
   if not exists (select 1 from public.markets) then return; end if;
-  update public.texts t set value = nt.value, updated_at = now()
+  insert into public.texts (entity_type, entity_id, locale, field, value)
+  select 'market', m.id, nt.locale, 'description', nt.value
     from new_text nt join public.markets m on m.slug = nt.slug
-   where t.entity_type = 'market' and t.entity_id = m.id and t.locale = nt.locale and t.field = 'description';
+  on conflict (entity_type, entity_id, locale, field) do update set value = excluded.value, updated_at = now();
   get diagnostics n = row_count;
-  if n <> ${values.length} then raise exception 'expected ${values.length} descriptions to change, changed %', n; end if;
+  if n <> ${values.length} then raise exception 'expected ${values.length} descriptions written, wrote %', n; end if;
 end $$;
 
 commit;
