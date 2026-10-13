@@ -254,6 +254,8 @@ export interface Strings {
   rainLabel: string;
   /** A town page: the towns around it, as links with their distance. */
   townsNearby: string;
+  /** Over a big town's own paragraph, under its markets (PAGES.md §City 7). */
+  townIntro: (city: string) => string;
   /**
    * "Tell me when it's back" — on a market page with no date, and on a town
    * page with nothing dated, in place of the weekly card. One address, one
@@ -627,6 +629,7 @@ const de: Strings = {
   sellers: { private: 'Privatleute', mixed: 'Privatleute und Händler', trader: 'Händler' },
   rainLabel: 'Bei Regen',
   townsNearby: 'Orte in der Nähe',
+  townIntro: (city) => (/[sßxz]$/.test(city) ? `${city}' Flohmärkte` : `${city}s Flohmärkte`),
   alertEyebrow: 'Nächster Termin',
   alertTitleMarket: 'Sag mir Bescheid, wenn er wieder stattfindet',
   alertTitleTown: (town) => `Sag mir Bescheid, wenn es in ${town} einen Termin gibt`,
@@ -912,6 +915,7 @@ const en: Strings = {
   sellers: { private: 'Private people', mixed: 'Private people and dealers', trader: 'Dealers' },
   rainLabel: 'If it rains',
   townsNearby: 'Towns nearby',
+  townIntro: (city) => `${city}'s flea markets`,
   alertEyebrow: "When it's back",
   alertTitleMarket: "Tell me when it's back",
   alertTitleTown: (town) => `Tell me when ${town} has a date`,
@@ -1202,6 +1206,7 @@ const fr: Strings = {
   sellers: { private: 'Particuliers', mixed: 'Particuliers et professionnels', trader: 'Professionnels' },
   rainLabel: "S'il pleut",
   townsNearby: 'Localités voisines',
+  townIntro: (city) => (/^[aeiouyéèêh]/i.test(city) ? `Les brocantes d'${city}` : `Les brocantes de ${city}`),
   alertEyebrow: 'Prochaine date',
   alertTitleMarket: 'Prévenez-moi de son retour',
   alertTitleTown: (town) => `Prévenez-moi dès qu'il y a une date à ${town}`,
@@ -1491,6 +1496,7 @@ const it: Strings = {
   sellers: { private: 'Privati', mixed: 'Privati e commercianti', trader: 'Commercianti' },
   rainLabel: 'Se piove',
   townsNearby: 'Località vicine',
+  townIntro: (city) => `I mercatini di ${city}`,
   alertEyebrow: 'Prossima data',
   alertTitleMarket: 'Avvisami quando torna',
   alertTitleTown: (town) => `Avvisami quando c'è una data a ${town}`,

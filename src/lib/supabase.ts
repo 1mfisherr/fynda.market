@@ -21,6 +21,7 @@ interface Row {
   description: string | null;
   kind: MarketKind;
   city: string;
+  city_description: string | null;
   city_slug: string;
   region: string;
   id: string;
@@ -81,6 +82,7 @@ const SQL = `
     ds.value                                        as description,
     p.kind,
     tc.value                                        as city,
+    td.value                                        as city_description,
     sc.slug                                         as city_slug,
     tr.value                                        as region,
     sr.slug                                         as region_slug,
@@ -160,6 +162,10 @@ const SQL = `
                       and sc.locale = $1 and sc.is_current
   join public.texts tc on tc.entity_type = 'city' and tc.entity_id = p.city_id
                       and tc.locale = $1 and tc.field = 'name'
+  -- A big town's own paragraph, written by hand for that town alone; no fallback
+  -- language: a locale without its text shows none (PAGES.md §City 7).
+  left join public.texts td on td.entity_type = 'city' and td.entity_id = p.city_id
+                           and td.locale = $1 and td.field = 'description'
   join public.slugs sr on sr.entity_type = 'region' and sr.entity_id = p.region_id
                       and sr.locale = $1 and sr.is_current
   join public.slugs sk on sk.entity_type = 'country' and sk.entity_id = p.country_id
@@ -224,6 +230,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         description: row.description ?? undefined,
         kind: row.kind,
         city: row.city,
+        cityDescription: row.city_description ?? undefined,
         citySlug: row.city_slug,
         region: row.region,
         regionSlug: row.region_slug,

@@ -57,6 +57,8 @@ export interface Market {
   description?: string;
   kind: MarketKind;
   city: string;
+  /** The town's own paragraph in this locale, where one was written (towns of four or more markets). */
+  cityDescription?: string;
   /** The city's German URL slug, from the database. Never derived in a template. */
   citySlug: string;
   /** Canton in CH, Bundesland in DE. One region level only — docs/ARCHITECTURE.md. */

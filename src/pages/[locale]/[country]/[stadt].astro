@@ -356,6 +356,16 @@ const jsonLd = {
     </aside>
   )}
 
+  {/* A big town's own paragraph (Delfim, 2026-10-13, design/town-intro-v1.html):
+      under its markets, so the list still comes first on a phone. Written by
+      hand for that town alone, in each of its locales, and only where one was
+      written — never a template (PAGES.md §City 7). */}
+  {markets[0].cityDescription && (
+    <Section title={s.townIntro(city)}>
+      <div class="prose gutter">{markets[0].cityDescription.split(/\n\s*\n/).map((p) => <p>{p}</p>)}</div>
+    </Section>
+  )}
+
   {/* Navigation, so it sits after the thing people came for rather than
       between the headline and the first market: the towns around this one
       (src/lib/towns.ts), then the canton. */}
