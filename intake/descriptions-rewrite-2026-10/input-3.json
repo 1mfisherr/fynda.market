@@ -1,0 +1,1574 @@
+[
+ {
+  "slug": "flughafen-flohmarkt-kloten-zuerich",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 72.7,
+   "it": 67.5,
+   "en": 56.8,
+   "de": 32.4
+  },
+  "name": "Flughafen Flohmarkt Kloten",
+  "kind": "flohmarkt",
+  "town": "Kloten",
+  "venue": "Flughafen Zürich",
+  "address_line": "Flughafen Zürich, 8058 Kloten",
+  "postal_code": "8058",
+  "rhythm_de": "Jährlicher Sondertermin am Flughafen Zürich",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2027-05-22",
+    "start": null,
+    "end": null
+   }
+  ],
+  "website_url": "https://www.flughafen-flohmarkt.ch",
+  "source_pages": [
+   "https://www.kloten.ch/vereinsliste/107161",
+   "https://www.kloten.ch/aktuellesinformationen/2744342",
+   "https://flughafen-flohmarkt.ch/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 450,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Ein Flohmarkt mit rund 450 Ständen, einmal jährlich auf dem Gelände des Flughafens Zürich in Kloten. Seit 1983 fester Teil des Zürcher Marktkalenders, mit Besucherinnen und Besuchern aus der ganzen Region. Für Besucher ist der Eintritt kostenlos.",
+   "fr": "Un marché aux puces d'environ 450 stands, une fois par an sur le site de l'aéroport de Zurich à Kloten. Depuis 1983, il fait partie du calendrier des marchés zurichois et attire des visiteurs de toute la région. L'entrée est gratuite pour les visiteurs.",
+   "it": "Un mercatino delle pulci con circa 450 bancarelle, una volta all'anno nell'area dell'aeroporto di Zurigo a Kloten. Dal 1983 fa parte del calendario dei mercati zurighesi e richiama visitatori da tutta la regione. L'ingresso è gratuito per i visitatori.",
+   "en": "A flea market with around 450 stands, held once a year on the grounds of Zurich Airport in Kloten. A fixture of the Zurich market calendar since 1983, it draws visitors from across the region. Entry is free for visitors."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Einer der grössten Flohmärkte der Schweiz mit über 400 Ständen findet einmal jährlich auf dem Gelände des Flughafens Zürich in Kloten statt. Seit 1983 ist der Anlass eine Institution im Zürcher Marktkalender und zieht Besucherinnen und Besucher aus der ganzen Region an. Für Besucher ist der Eintritt kostenlos.",
+   "fr": "L’un des plus grands marchés aux puces de Suisse, avec plus de 400 stands, a lieu une fois par an sur le site de l’aéroport de Zurich, à Kloten. Depuis 1983, l’événement fait partie du calendrier des marchés zurichois et attire des visiteurs de toute la région. L’entrée est gratuite pour les visiteurs.",
+   "it": "Uno dei più grandi mercatini delle pulci della Svizzera, con oltre 400 bancarelle, si svolge una volta all’anno nell’area dell’aeroporto di Zurigo, a Kloten. Dal 1983 è un appuntamento fisso del calendario dei mercati zurighesi e richiama visitatori da tutta la regione. L’ingresso è gratuito per i visitatori.",
+   "en": "One of the largest flea markets in Switzerland with more than 400 stands is held once a year on the grounds of Zurich Airport in Kloten. A Zurich institution since 1983, it draws visitors from across the region. Entry is free for visitors."
+  }
+ },
+ {
+  "slug": "fundus-flohmarkt-arena-root",
+  "task": "keep our German; write new en/fr/it from our German",
+  "locales_to_write": [
+   "en",
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "it": 52.4,
+   "en": 50,
+   "fr": 33.3
+  },
+  "name": "fundus Flohmarkt ARENA Root",
+  "kind": "flohmarkt",
+  "town": "Root",
+  "venue": "ARENA Root",
+  "address_line": "ARENA Root, Schulstrasse 16, 6037 Root",
+  "postal_code": "6037",
+  "rhythm_de": "Mehrmals jährlich, ausgewählte Sonntage",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-25",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   },
+   {
+    "date": "2026-11-29",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   },
+   {
+    "date": "2026-12-20",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   }
+  ],
+  "website_url": "https://www.fundusflohmarkt.ch",
+  "source_pages": [
+   "https://barni.ch/veranstaltungen/248193/fundus-flohmarkt-root",
+   "https://swiss-markt.ch/de/kanton-luzern/flohmaerkte"
+  ],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": 50,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der fundus Flohmarkt füllt die grosse Halle der ARENA Root: Privatverkäuferinnen und -verkäufer bieten Haushaltswaren, Kleidung, Vintage-Fundstücke und vieles mehr an. Eintritt frei.",
+   "fr": "Le marché aux puces fundus occupe la grande halle de l'ARENA Root : des particuliers y proposent articles ménagers, vêtements, trouvailles vintage et bien plus. Entrée libre.",
+   "it": "Il mercatino fundus riempie la grande sala dell'ARENA Root: privati propongono articoli per la casa, vestiti, pezzi vintage e molto altro. Ingresso libero.",
+   "en": "The fundus flea market fills the big hall of the ARENA Root: private sellers offer household goods, clothes, vintage finds and much more. Free entry."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Den fundus Flohmarkt gibt es seit 2019. Er findet mehrmals im Jahr an ausgewählten Sonntagen statt, drinnen in der grossen Halle der ARENA Root an der Schulstrasse 16. Private verkaufen Haushaltswaren, Kleider, Vintage-Fundstücke und vieles mehr. Eintritt frei.",
+   "fr": "Le fundus Flohmarkt existe depuis 2019. Il a lieu plusieurs fois par an, certains dimanches, à l’intérieur de la grande halle de l’ARENA Root, Schulstrasse 16, près de Lucerne. Des particuliers y vendent articles ménagers, vêtements, trouvailles vintage et bien d’autres choses. Entrée libre.",
+   "it": "Il fundus Flohmarkt esiste dal 2019. Si tiene più volte l’anno in alcune domeniche, al coperto nella grande sala dell’ARENA Root in Schulstrasse 16, vicino a Lucerna. Privati vendono articoli per la casa, vestiti, pezzi vintage e molto altro. Ingresso libero.",
+   "en": "The fundus flea market has been running since 2019. It takes place several times a year on selected Sundays, indoors in the large hall of ARENA Root at Schulstrasse 16, near Lucerne. Private sellers offer household goods, clothes, vintage finds and much more. Free entry."
+  }
+ },
+ {
+  "slug": "grenzueberschreitender-flohmarkt-kreuzlingen-konstanz",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 74.1,
+   "en": 66.7,
+   "de": 62.3,
+   "it": 55.8
+  },
+  "name": "Grenzüberschreitender Flohmarkt Kreuzlingen–Konstanz",
+  "kind": "flohmarkt",
+  "town": "Kreuzlingen",
+  "venue": "Seestrasse Kreuzlingen / Klein Venedig Konstanz",
+  "address_line": "Seestrasse",
+  "postal_code": "8280",
+  "rhythm_de": "Jährlich, ein Wochenende im Juni, 24 Stunden",
+  "season_months": [
+   6,
+   6
+  ],
+  "next_dates": [],
+  "website_url": "https://www.flohmarkt-kreuzlingen.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der grenzüberschreitende Flohmarkt verbindet einmal im Jahr Kreuzlingen und Konstanz: rund 1000 Stände entlang der Seestrasse auf der Schweizer Seite und in Klein Venedig auf der deutschen, 24 Stunden am Stück, von Samstag 14 Uhr bis Sonntag 15 Uhr. Am besten mit dem Zug nach Kreuzlingen Hafen – einen Parkplatz zu finden ist an diesem Wochenende aussichtslos.",
+   "fr": "Une fois par an, le marché aux puces transfrontalier relie Kreuzlingen et Constance : environ 1000 stands le long de la Seestrasse côté suisse et à Klein Venedig côté allemand, 24 heures d'affilée, du samedi 14 h au dimanche 15 h. Venez en train jusqu'à Kreuzlingen Hafen – se garer ce week-end-là est peine perdue.",
+   "it": "Una volta l'anno il mercatino delle pulci transfrontaliero unisce Kreuzlingen e Costanza: circa 1000 bancarelle lungo la Seestrasse sul lato svizzero e a Klein Venedig su quello tedesco, 24 ore senza sosta, dal sabato alle 14 alla domenica alle 15. Meglio arrivare in treno a Kreuzlingen Hafen: quel fine settimana trovare parcheggio è impossibile.",
+   "en": "Once a year the cross-border flea market joins Kreuzlingen and Konstanz: around 1,000 stands along the Seestrasse on the Swiss side and in Klein Venedig on the German side, 24 hours non-stop, from Saturday 2 pm to Sunday 3 pm. Come by train to Kreuzlingen Hafen – parking is hopeless that weekend."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Einmal im Jahr, an einem Wochenende im Juni, verbindet dieser Flohmarkt Kreuzlingen und Konstanz über die Grenze hinweg: rund 1000 Stände entlang der Seestrasse auf der Schweizer Seite und in Klein Venedig auf der deutschen, 24 Stunden am Stück, von Samstag 14 Uhr bis Sonntag 15 Uhr. Den genauen Termin gibt der Veranstalter jeweils bekannt. Komm am besten mit dem Zug nach Kreuzlingen Hafen – parkieren ist an diesem Wochenende aussichtslos.",
+   "fr": "Une fois par an, un week-end de juin, ce marché aux puces relie Kreuzlingen et Constance par-dessus la frontière : environ 1000 stands le long de la Seestrasse côté suisse et à Klein Venedig côté allemand, 24 heures d’affilée, du samedi 14 h au dimanche 15 h. L’organisateur annonce la date exacte chaque année. Venez en train jusqu’à Kreuzlingen Hafen : se garer ce week-end-là est peine perdue.",
+   "it": "Una volta l’anno, un fine settimana di giugno, questo mercatino unisce Kreuzlingen e Costanza oltre il confine: circa 1000 bancarelle lungo la Seestrasse sul lato svizzero e a Klein Venedig su quello tedesco, 24 ore di fila, dal sabato alle 14 alla domenica alle 15. La data esatta viene annunciata ogni anno dall’organizzatore. Meglio arrivare in treno a Kreuzlingen Hafen: quel fine settimana parcheggiare è impossibile.",
+   "en": "Once a year, on a weekend in June, this flea market joins Kreuzlingen and Konstanz across the border: around 1,000 stands along the Seestrasse on the Swiss side and in Klein Venedig on the German side, running non-stop from Saturday 2 pm to Sunday 3 pm. The organiser announces the exact date each year. Come by train to Kreuzlingen Hafen – parking is hopeless that weekend."
+  }
+ },
+ {
+  "slug": "grosser-flohmarkt-thun",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 41.7,
+   "en": 40.8,
+   "fr": 39,
+   "it": 31.5
+  },
+  "name": "Grosser Flohmarkt Thun",
+  "kind": "flohmarkt",
+  "town": "Thun",
+  "venue": "Panorama-Center",
+  "address_line": "Weststrasse 14",
+  "postal_code": "3604",
+  "rhythm_de": "Mehrere Sonntage pro Jahr, Juni bis November",
+  "season_months": [
+   6,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-01",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   }
+  ],
+  "website_url": "https://christophoesch.ch/flohmarkt-thun.html",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Grosse Flohmarkt Thun findet an mehreren Sonntagen im Jahr beim Panorama-Center an der Weststrasse statt, mit 80 bis 120 Ausstellenden, von 10 bis 15 Uhr. Ab Bahnhof Thun mit dem STI-Bus 3 bis Haltestelle Arena, zehn Minuten; Imbiss-Stand vor Ort. Organisiert von Manuela Maurer und Christoph Oesch.",
+   "fr": "Le Grosser Flohmarkt Thun a lieu plusieurs dimanches par an au Panorama-Center, sur la Weststrasse, de 10 h à 15 h, avec 80 à 120 exposants. Les stands s'installent dès 8 h. Depuis la gare de Thoune, le bus STI 3 rejoint l'arrêt Arena en dix minutes ; stand de restauration sur place. Organisé par Manuela Maurer et Christoph Oesch.",
+   "it": "Il Grosser Flohmarkt Thun si tiene in diverse domeniche dell'anno al Panorama-Center, in Weststrasse, con 80–120 espositori, dalle 10 alle 15. Le bancarelle si montano dalle 8. Dalla stazione di Thun prendi il bus STI 3 fino alla fermata Arena: dieci minuti. Sul posto c'è un chiosco. Organizzano Manuela Maurer e Christoph Oesch.",
+   "en": "The Grosser Flohmarkt Thun takes place on several Sundays a year at the Panorama-Center on Weststrasse, with 80 to 120 exhibitors, from 10 am to 3 pm. From Thun station take STI bus 3 to the Arena stop, ten minutes; snack stand on site. Organised by Manuela Maurer and Christoph Oesch."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Grosse Flohmarkt Thun findet an mehreren Sonntagen zwischen Juni und November beim Panorama-Center an der Weststrasse 14 statt, mit 80 bis 120 Ausstellenden, von 10 bis 15 Uhr. Vor Ort gibt es einen Imbissstand. Ab Bahnhof Thun fährt der STI-Bus 3 in zehn Minuten bis zur Haltestelle Arena. Organisiert von Manuela Maurer und Christoph Oesch.",
+   "fr": "Le Grosser Flohmarkt Thun se tient plusieurs dimanches entre juin et novembre au Panorama-Center, Weststrasse 14, avec 80 à 120 exposants, de 10 h à 15 h. Un stand de restauration est sur place. Depuis la gare de Thoune, le bus STI 3 rejoint l’arrêt Arena en dix minutes. Organisé par Manuela Maurer et Christoph Oesch.",
+   "it": "Il Grosser Flohmarkt Thun si svolge in diverse domeniche tra giugno e novembre al Panorama-Center, in Weststrasse 14, con 80–120 espositori, dalle 10 alle 15. Sul posto c’è un chiosco. Dalla stazione di Thun il bus STI 3 arriva in dieci minuti alla fermata Arena. Lo organizzano Manuela Maurer e Christoph Oesch.",
+   "en": "The Grosser Flohmarkt Thun takes place on several Sundays between June and November at the Panorama-Center, Weststrasse 14, with 80 to 120 exhibitors, from 10 am to 3 pm. There is a snack stand on site. From Thun station, STI bus 3 reaches the Arena stop in ten minutes. Organised by Manuela Maurer and Christoph Oesch."
+  }
+ },
+ {
+  "slug": "hallen-flohmarkt-flumserei",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 75,
+   "it": 70.2,
+   "de": 57.8,
+   "fr": 51.9
+  },
+  "name": "Hallen-Flohmarkt Flumserei",
+  "kind": "hallenflohmarkt",
+  "town": "Flums",
+  "venue": "Flumserei",
+  "address_line": "Bergstrasse 31c",
+  "postal_code": "8890",
+  "rhythm_de": "Dreimal jährlich, samstags, in der geheizten Halle",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-12-05",
+    "start": "08:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.flumserei.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Hallen-Flohmarkt in der Flumserei, der alten Spinnerei in Flums, findet in den Wintermonaten in der geheizten Halle statt – auf über 1600 Quadratmetern, mit kleinen und grossen Ständen voller Kuriositäten, Antiquitäten, Krimskrams und Raritäten. Für Verpflegung ist gesorgt. Vom Bahnhof Flums sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces couvert de la Flumserei, l'ancienne filature de Flums, se tient pendant les mois d'hiver dans la halle chauffée – plus de 1600 m² de stands petits et grands, pleins de curiosités, d'antiquités, de bric-à-brac et de raretés. Restauration sur place. Dix minutes à pied depuis la gare de Flums.",
+   "it": "Il mercatino delle pulci al coperto della Flumserei, l'antica filanda di Flums, si tiene nei mesi invernali nella sala riscaldata: oltre 1600 metri quadrati di bancarelle piccole e grandi, piene di curiosità, antiquariato, cianfrusaglie e rarità. Si mangia sul posto. Dalla stazione di Flums sono dieci minuti a piedi.",
+   "en": "The indoor flea market at the Flumserei, the old spinning mill in Flums, runs through the winter months in the heated hall – over 1,600 square metres of small and large stands full of curiosities, antiques, odds and ends and rarities. Food is available. Ten minutes on foot from Flums station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Hallen-Flohmarkt in der Flumserei, der alten Spinnerei in Flums, findet dreimal im Jahr an einem Samstag statt, vor allem in den Wintermonaten, in der geheizten Halle. Auf über 1600 Quadratmetern stehen kleine und grosse Stände mit Kuriositäten, Antiquitäten, Krimskrams und Raritäten, von 8 bis 16 Uhr; für Verpflegung ist gesorgt. Vom Bahnhof Flums sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces couvert de la Flumserei, l’ancienne filature de Flums, a lieu trois fois par an un samedi, surtout pendant les mois d’hiver, dans la halle chauffée. Sur plus de 1600 m², des stands petits et grands remplis de curiosités, d’antiquités, de bric-à-brac et de raretés, de 8 h à 16 h ; restauration sur place. La gare de Flums est à dix minutes à pied.",
+   "it": "Il mercatino delle pulci al coperto della Flumserei, l’antica filanda di Flums, si tiene tre volte l’anno di sabato, soprattutto nei mesi invernali, nella sala riscaldata. Oltre 1600 metri quadrati di bancarelle piccole e grandi, piene di curiosità, antiquariato, cianfrusaglie e rarità, dalle 8 alle 16; ristoro sul posto. Dieci minuti a piedi dalla stazione di Flums.",
+   "en": "The indoor flea market at the Flumserei, the old spinning mill in Flums, takes place on a Saturday three times a year, mainly in the winter months, in the heated hall. Over 1,600 square metres hold small and large stands full of curiosities, antiques, odds and ends and rarities, from 8 am to 4 pm; food is available. Ten minutes on foot from Flums station."
+  }
+ },
+ {
+  "slug": "herbst-flohmarkt-richterswil",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 81.8,
+   "fr": 37.5,
+   "en": 35.1
+  },
+  "name": "Herbst-Flohmarkt Richterswil",
+  "kind": "flohmarkt",
+  "town": "Richterswil",
+  "venue": "Wisshusplatz",
+  "address_line": "Wisshusplatz",
+  "postal_code": "8805",
+  "rhythm_de": "Jährlich, letzter Samstag im September",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [
+   {
+    "date": "2027-09-25",
+    "start": "08:00:00",
+    "end": "14:30:00"
+   }
+  ],
+  "website_url": "https://www.richterswil.ch/online-schalter/91370/detail",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Herbst-Flohmarkt Richterswil ist der Flohmarkt der Gemeinde auf dem Wisshusplatz im Dorfzentrum. An den Ständen werden weder Essen noch Getränke verkauft. Vom Bahnhof Richterswil sind es fünf Minuten zu Fuss; Tagesparkkarten gibt es online.",
+   "fr": "Le marché aux puces d'automne de Richterswil est celui de la commune, sur la Wisshusplatz au centre du village. Pas de nourriture ni de boissons aux stands. Cinq minutes à pied depuis la gare de Richterswil ; cartes de parking journalières en ligne.",
+   "it": "Il mercatino autunnale di Richterswil è quello del comune, sulla Wisshusplatz in centro paese. Alle bancarelle non si vendono cibo né bevande. Cinque minuti a piedi dalla stazione di Richterswil; le carte giornaliere per il parcheggio si comprano online.",
+   "en": "The Richterswil autumn flea market is the municipality's flea market on the Wisshusplatz in the village centre. No food or drink is sold at the stands. Five minutes on foot from Richterswil station; day parking cards are available online."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Herbst-Flohmarkt Richterswil ist der Flohmarkt der Gemeinde: jedes Jahr am letzten Samstag im September auf dem Wisshusplatz im Dorfzentrum, von 8 bis 14.30 Uhr. An den Ständen werden weder Essen noch Getränke verkauft. Vom Bahnhof Richterswil sind es fünf Minuten zu Fuss; Tagesparkkarten gibt es online.",
+   "fr": "Le marché aux puces d’automne de Richterswil est organisé par la commune sur la Wisshusplatz, au centre du village, chaque année le dernier samedi de septembre, de 8 h à 14 h 30. Les stands ne vendent ni nourriture ni boissons. La gare de Richterswil est à cinq minutes à pied ; les cartes de parking journalières s’achètent en ligne.",
+   "it": "Il mercatino autunnale di Richterswil è organizzato dal comune sulla Wisshusplatz, nel centro del paese, ogni anno l’ultimo sabato di settembre dalle 8 alle 14.30. Alle bancarelle non si vendono né cibo né bevande. La stazione di Richterswil è a cinque minuti a piedi; le tessere giornaliere per il parcheggio si acquistano online.",
+   "en": "The Richterswil autumn flea market is run by the municipality on the Wisshusplatz in the village centre, every year on the last Saturday of September from 8 am to 2.30 pm. No food or drink is sold at the stands. Richterswil station is five minutes away on foot; day parking cards can be bought online."
+  }
+ },
+ {
+  "slug": "kids-store-flohmarkt-beromuenster",
+  "task": "keep our German; write new fr from our German",
+  "locales_to_write": [
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "fr": 36.1
+  },
+  "name": "Kids Store Kinderartikel Flohmarkt Beromünster",
+  "kind": "kinderflohmarkt",
+  "town": "Beromünster",
+  "venue": "Mehrzweckhalle",
+  "address_line": "Mehrzweckhalle, Schuelgasse 1, 6215 Beromünster",
+  "postal_code": "6215",
+  "rhythm_de": "Zweimal jährlich, März und September",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.familientreff-beromuenster.ch/kids-store/",
+  "source_pages": [
+   "https://www.kindex.ch/beromuenster/kids-store",
+   "https://www.familientreff-beromuenster.ch/jahresprogramm-2026-1/"
+  ],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://www.familientreff-beromuenster.ch/kids-store/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Kinderartikel-Flohmarkt in der Mehrzweckhalle Beromünster, organisiert vom Familientreff Beromünster. Zweimal jährlich – im Frühling und im Herbst – werden Kinderkleidung und Spielsachen gekauft und verkauft. Eintritt frei.",
+   "fr": "Marché aux puces d'articles pour enfants à la salle polyvalente de Beromünster, organisé par le Familientreff Beromünster. Deux fois par an, au printemps et en automne, on y achète et vend vêtements d'enfants et jouets. Entrée libre.",
+   "it": "Mercatino di articoli per bambini nella sala polivalente di Beromünster, organizzato dal Familientreff Beromünster. Due volte all'anno, in primavera e in autunno, si comprano e si vendono vestiti e giocattoli per bambini. Ingresso libero.",
+   "en": "A children's-items flea market in the Mehrzweckhalle in Beromünster, organised by the Familientreff Beromünster. Twice a year, in spring and autumn, children's clothes and toys are bought and sold. Free entry."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Kids Store ist ein Flohmarkt für Kinderartikel in der Mehrzweckhalle Beromünster an der Schuelgasse 1. Zweimal im Jahr, im März und im September, kaufen und verkaufen Familien hier Kinderkleider und Spielsachen. Organisiert vom Familientreff Beromünster, der Eintritt ist frei.",
+   "fr": "Le Kids Store est un marché aux puces d’articles pour enfants, à la salle polyvalente (Mehrzweckhalle) de Beromünster, Schuelgasse 1. Deux fois par an, en mars et en septembre, les familles y achètent et vendent vêtements d’enfants et jouets. Organisé par le Familientreff Beromünster ; entrée libre.",
+   "it": "Il Kids Store è un mercatino di articoli per bambini nella sala polivalente (Mehrzweckhalle) di Beromünster, Schuelgasse 1. Due volte l’anno, a marzo e a settembre, le famiglie comprano e vendono vestiti per bambini e giocattoli. Organizzato dal Familientreff Beromünster; ingresso libero.",
+   "en": "Kids Store is a flea market for children’s things in the Mehrzweckhalle (multi-purpose hall) at Schuelgasse 1 in Beromünster. Twice a year, in March and September, families buy and sell children’s clothing and toys. Organised by the Familientreff Beromünster; free entry."
+  }
+ },
+ {
+  "slug": "kinder-flohmi-schloss-arbon",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 65.7,
+   "de": 58.1,
+   "en": 57.6,
+   "it": 54.5
+  },
+  "name": "Kinder-Flohmi im Schloss Arbon",
+  "kind": "kinderflohmarkt",
+  "town": "Arbon",
+  "venue": "Schloss Arbon",
+  "address_line": "Schlossgasse",
+  "postal_code": "9320",
+  "rhythm_de": "Jährlich, im Oktober",
+  "season_months": [
+   10,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-24",
+    "start": "10:00:00",
+    "end": "13:00:00"
+   }
+  ],
+  "website_url": "https://www.arbon.ch/freizeit/tourismus-und-mobilitaet/veranstaltungen/maerkte.html/198",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://www.arbon.ch/freizeit/tourismus-und-mobilitaet/veranstaltungen/maerkte.html/198"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Beim Kinder-Flohmi im Schloss Arbon verkaufen Kinder ab vier Jahren, begleitet von einer erwachsenen Person, ihre gebrauchten Spielsachen, Kleidung und Bücher – und finden neue Schätze. Organisiert von der Stadt Arbon mit dem Familienverein.",
+   "fr": "Au Kinder-Flohmi du château d'Arbon, les enfants dès quatre ans, accompagnés d'un adulte, vendent leurs jouets, habits et livres – et trouvent de nouveaux trésors. Organisé par la ville d'Arbon avec l'association des familles.",
+   "it": "Al Kinder-Flohmi nel castello di Arbon i bambini dai quattro anni, accompagnati da un adulto, vendono giocattoli, vestiti e libri usati – e trovano nuovi tesori. Organizzato dalla città di Arbon con l'associazione delle famiglie.",
+   "en": "At the Kinder-Flohmi in Arbon Castle, children from age four, accompanied by an adult, sell their used toys, clothes and books – and find new treasures. Organised by the town of Arbon with the family association."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Beim Kinder-Flohmi im Schloss Arbon verkaufen Kinder ab vier Jahren, begleitet von einer erwachsenen Person, ihre gebrauchten Spielsachen, Kleider und Bücher – und stöbern bei den anderen nach neuen Schätzen. Er findet einmal im Jahr an einem Samstag im Oktober statt, bisher von 10 bis 13 Uhr; die Teilnahme ist gratis. Organisiert von der Stadt Arbon zusammen mit dem Familienverein Arbon.",
+   "fr": "Au Kinder-Flohmi du château d’Arbon, les enfants dès quatre ans, accompagnés d’un adulte, vendent leurs jouets, habits et livres usagés, et cherchent de nouveaux trésors chez les autres. Il a lieu une fois par an, un samedi d’octobre, jusqu’ici de 10 h à 13 h ; la participation est gratuite. Organisé par la ville d’Arbon avec le Familienverein Arbon.",
+   "it": "Al Kinder-Flohmi nel castello di Arbon i bambini dai quattro anni in su, accompagnati da un adulto, vendono giocattoli, vestiti e libri usati, e cercano nuovi tesori sulle bancarelle degli altri. Si tiene una volta l’anno, un sabato di ottobre, finora dalle 10 alle 13; la partecipazione è gratuita. Lo organizza la città di Arbon con il Familienverein Arbon.",
+   "en": "At the Kinder-Flohmi in Arbon Castle, children aged four and up, accompanied by an adult, sell their used toys, clothes and books, and look for new treasures at the other stands. It takes place once a year on a Saturday in October, so far from 10 am to 1 pm, and taking part is free. Organised by the town of Arbon with the Familienverein Arbon."
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-chur",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 65,
+   "en": 62.2,
+   "fr": 58.8,
+   "it": 30.2
+  },
+  "name": "Kinderflohmarkt Chur",
+  "kind": "kinderflohmarkt",
+  "town": "Chur",
+  "venue": "Alexanderplatz – Bahnhofstrasse",
+  "address_line": "Alexanderplatz",
+  "postal_code": "7000",
+  "rhythm_de": "Jährlich, ein Samstag im September",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://www.jugendarbeitchur.ch/bereiche/kindfamiliequartier/kinderflohmi/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": "decided_on_the_day",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://www.jugendarbeitchur.ch/bereiche/kindfamiliequartier/kinderflohmi/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Beim Kinderflohmarkt Chur verkaufen Kinder ihre Spielsachen und Bücher selbst – auf der Bahnhofstrasse vom Alexanderplatz bis zum Bahnhof, an einem Samstag im September von 10.30 bis 14.30 Uhr. Organisiert von der Kinder- und Jugendarbeit der Stadt Chur; die Plätze sind begrenzt.",
+   "fr": "Au marché aux puces des enfants de Coire, ce sont les enfants qui vendent leurs jouets et leurs livres – sur la Bahnhofstrasse, de l'Alexanderplatz à la gare, un samedi de septembre de 10 h 30 à 14 h 30. Organisé par le service de l'enfance et de la jeunesse de la ville.",
+   "it": "Al mercatino delle pulci dei bambini di Coira sono i bambini a vendere i loro giocattoli e libri: sulla Bahnhofstrasse, dall'Alexanderplatz alla stazione, un sabato di settembre dalle 10.30 alle 14.30. Lo organizza il servizio della città per l'infanzia e la gioventù.",
+   "en": "At the Chur children's flea market, kids sell their own toys and books – on Bahnhofstrasse from Alexanderplatz to the station, on a Saturday in September from 10.30 am to 2.30 pm. Organised by the city's children's and youth work service; places are limited."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Beim Kinderflohmarkt Chur verkaufen Kinder ihre Spielsachen und Bücher selbst, auf der Bahnhofstrasse zwischen Alexanderplatz und Bahnhof. Er findet einmal im Jahr an einem Samstag im September statt, von 10.30 bis 14.30 Uhr, organisiert von der Kinder- und Jugendarbeit der Stadt Chur. Die Verkaufsplätze sind begrenzt und schnell vergeben; wer mitmachen will, meldet sich früh an.",
+   "fr": "Au marché aux puces des enfants de Coire, ce sont les enfants qui vendent eux-mêmes leurs jouets et leurs livres, sur la Bahnhofstrasse, entre l’Alexanderplatz et la gare. Il a lieu une fois par an, un samedi de septembre, de 10 h 30 à 14 h 30, organisé par le service enfance et jeunesse de la ville de Coire. Les places de vente sont limitées et partent vite : mieux vaut inscrire son enfant tôt.",
+   "it": "Al mercatino dei bambini di Coira sono i bambini stessi a vendere giocattoli e libri, sulla Bahnhofstrasse tra l’Alexanderplatz e la stazione. Si tiene una volta l’anno, un sabato di settembre, dalle 10.30 alle 14.30, organizzato dal servizio infanzia e gioventù della città di Coira. I posti di vendita sono limitati e vanno via in fretta: conviene iscriversi presto.",
+   "en": "At the Chur children’s flea market, kids sell their own toys and books along Bahnhofstrasse, between Alexanderplatz and the station. It takes place once a year on a Saturday in September, 10.30 am to 2.30 pm, organised by the city’s children’s and youth work service. Selling places are limited and go quickly, so children who want to take part should register early."
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-gz-schindlergut",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 53.3,
+   "fr": 53.1,
+   "de": 48.8,
+   "it": 31.3
+  },
+  "name": "Kinderflohmarkt GZ Schindlergut",
+  "kind": "kinderflohmarkt",
+  "town": "Zürich",
+  "venue": "Schindlergut Park",
+  "address_line": "Kronenstrasse 12",
+  "postal_code": "8006",
+  "rhythm_de": "Gelegentlich, nur draussen und bei gutem Wetter",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://gz-zh.ch/gz-schindlergut/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://gz-zh.ch/gz-schindlergut/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Der Kinderflohmarkt findet im Schindlergut Park statt, einem Stadtpark im Kreis 6 zwischen ETH-Quartier und Unterstrass, beim Gemeinschaftszentrum, das im Quartier «Schigu» heisst. Kinder bringen ein Tuch mit, belegen einen Platz und verkaufen Spielsachen, Bücher und Kleidung — ohne Anmeldung. Nur bei schönem Wetter.",
+   "fr": "Le marché aux puces pour enfants a lieu dans le parc Schindlergut, un parc urbain du 6e arrondissement entre le quartier de l'EPFZ et Unterstrass, près du centre communautaire que le quartier appelle « Schigu ». Les enfants apportent un drap, s'installent et vendent jouets, livres et vêtements. Uniquement par beau temps.",
+   "it": "Il mercatino per bambini si tiene nello Schindlergut Park, un parco cittadino del Distretto 6 tra il quartiere dell'ETH e Unterstrass, accanto al centro comunitario che gli abitanti chiamano «Schigu». I bambini portano un telo, si prendono un posto e vendono giocattoli, libri e vestiti. Solo con il bel tempo.",
+   "en": "The children's flea market takes place in Schindlergut Park, a city park in District 6 between the ETH district and Unterstrass, by the community centre locals call «Schigu». Children bring a cloth, claim a space and sell toys, books and clothes — no registration. Only in fine weather."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Kinderflohmarkt findet im Schindlergut Park statt — einem begrünten Stadtpark im Herzen von Kreis 6, zwischen ETH-Quartier und Unterstrass. Das Schigu, wie die Einheimischen das GZ nennen, hat den Ruf eines Quartier-Treffpunkts mit starkem Gemeinschaftsgefühl. Kinder bringen ein Tuch mit, belegen einen Platz und verkaufen Spielsachen, Bücher und Kleider — ohne Anmeldung. Für Familien aus anderen Quartieren eine charmante Gelegenheit, den Park kennenzulernen. Nur bei schönem Wetter.",
+   "fr": "Le marché aux puces pour enfants a lieu dans le parc Schindlergut — un parc urbain verdoyant au cœur du 6e arrondissement, entre le quartier de l'EPFZ et Unterstrass. Le Schigu, comme les habitants appellent le centre communautaire, est réputé comme lieu de rencontre du quartier avec un fort esprit communautaire. Les enfants apportent un drap, occupent une place et vendent jouets, livres et vêtements — sans inscription. Pour les familles d'autres quartiers, c'est une charmante occasion de découvrir le parc. Uniquement par beau temps.",
+   "it": "Il mercatino per bambini si svolge nello Schindlergut Park — un parco urbano verde nel cuore del Distretto 6, tra il quartiere dell'ETH e Unterstrass. Lo Schigu, come gli abitanti chiamano il centro comunitario, è noto come punto d'incontro del quartiere con un forte senso di comunità. I bambini portano un telo, occupano uno spazio e vendono giocattoli, libri e abiti — senza iscrizione. Per le famiglie di altri quartieri è un'occasione piacevole per conoscere il parco. Solo con bel tempo.",
+   "en": "The children's flea market takes place in Schindlergut Park — a green city park in the heart of District 6, between the ETH district and Unterstrass. The Schigu, as locals call the community centre, has a reputation as a neighbourhood meeting place with a strong sense of community. Children bring a cloth, claim a space, and sell toys, books, and clothes — without registration. For families from other districts, it is a charming opportunity to discover the park. Only in fine weather."
+  }
+ },
+ {
+  "slug": "kinderflohmarkt-winterthur-altstadt",
+  "task": "keep our German; write new en/fr/it from our German",
+  "locales_to_write": [
+   "en",
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "en": 100,
+   "fr": 64.9,
+   "it": 64.7
+  },
+  "name": "Kinderflohmarkt Winterthur Altstadt",
+  "kind": "kinderflohmarkt",
+  "town": "Winterthur",
+  "venue": "Steinberggasse, Altstadt Winterthur",
+  "address_line": "Steinberggasse",
+  "postal_code": "8400",
+  "rhythm_de": "Jährlich",
+  "season_months": [
+   7,
+   7
+  ],
+  "next_dates": [],
+  "website_url": "https://junge-altstadt.ch/events/",
+  "source_pages": [
+   "https://stadt.winterthur.ch/themen/leben-in-winterthur/sicherheit/nutzung-oeffentlicher-raum/maerkte",
+   "https://junge-altstadt.ch/event/kinderflohmi/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://junge-altstadt.ch/events/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Einmal im Jahr wird die Steinberggasse in der Winterthurer Altstadt zum Kindermarkt. Kinder und Jugendliche verkaufen Spielzeug, Bücher, Kleidung und andere Kindersachen, mitten in der Fussgängerzone der Altstadt.",
+   "fr": "Une fois par an, la Steinberggasse, dans la vieille ville de Winterthour, devient un marché pour enfants. Enfants et jeunes y vendent jouets, livres, vêtements et autres articles pour enfants, au milieu de la zone piétonne de la vieille ville.",
+   "it": "Una volta all'anno la Steinberggasse, nel centro storico di Winterthur, diventa un mercato per bambini. Bambini e ragazzi vendono giocattoli, libri, abiti e altri articoli per l'infanzia, nel mezzo della zona pedonale del centro storico.",
+   "en": "Once a year, Steinberggasse in Winterthur's old town is transformed into a children's market. Children and young people sell toys, books, clothes, and other children's items — set within one of the region's most beautiful pedestrian zones. The historic old-town backdrop makes this children's flea market one of the most atmospheric versions in the canton. For families specifically looking for children's items, a trip to the old town is worthwhile even without another event."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Einmal im Jahr verwandelt sich die Steinberggasse in der Winterthurer Altstadt in einen Kindermarkt. Kinder und Jugendliche verkaufen Spielzeug, Bücher, Kleider und andere Kindersachen — eingebettet in eine der schönsten Fussgängerzonen der Region. Die historische Altstadtkulisse macht diesen Kinderflohmarkt zu einer der atmosphärisch stärksten Varianten im Kanton. Für Familien, die gezielt nach Kindersachen suchen, lohnt sich der Ausflug in die Altstadt auch ohne andere Anlässe.",
+   "fr": "Une fois par an, la Steinberggasse dans la vieille ville de Winterthour se transforme en marché pour enfants. Enfants et jeunes y vendent jouets, livres, vêtements et autres articles pour enfants — au cœur de l'une des plus belles zones piétonnes de la région. Le décor historique de la vieille ville fait de ce marché aux puces pour enfants l'une des variantes les plus riches en atmosphère du canton. Pour les familles qui recherchent précisément des articles pour enfants, le déplacement dans la vieille ville vaut la peine même sans autre événement.",
+   "it": "Una volta all'anno, la Steinberggasse nel centro storico di Winterthur si trasforma in un mercato per bambini. Bambini e ragazzi vendono giocattoli, libri, abiti e altri articoli per l'infanzia — immersi in una delle più belle zone pedonali della regione. Lo scenario storico del centro rende questo mercatino per bambini una delle varianti più suggestive del cantone. Per le famiglie che cercano in modo mirato articoli per bambini, una visita al centro storico vale la pena anche senza altri eventi.",
+   "en": "Once a year, Steinberggasse in Winterthur's old town is transformed into a children's market. Children and young people sell toys, books, clothes, and other children's items — set within one of the region's most beautiful pedestrian zones. The historic old-town backdrop makes this children's flea market one of the most atmospheric versions in the canton. For families specifically looking for children's items, a trip to the old town is worthwhile even without another event."
+  }
+ },
+ {
+  "slug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 44.4,
+   "en": 39.4,
+   "it": 32.3,
+   "de": 32.1
+  },
+  "name": "Kinderkleider & Spielwaren Flohmarkt Luzern",
+  "kind": "kinderflohmarkt",
+  "town": "Luzern",
+  "venue": "Das Lokal B102",
+  "address_line": "Das Lokal B102, Bernstrasse 102, 6003 Luzern",
+  "postal_code": "6003",
+  "rhythm_de": "Zweimal jährlich, Mai und Oktober",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-24",
+    "start": "13:30:00",
+    "end": "16:30:00"
+   }
+  ],
+  "website_url": "https://www.b102.ch/aktuell.html",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://www.b102.ch/aktuell.html"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Flohmarkt für Kinderkleidung und Spielsachen im Quartierlokal B102 in Luzern – Secondhand für die Kleinen, gut für die Umwelt und das Portemonnaie. An der Bar gibt es Kuchen und Kaffee. Eintritt frei.",
+   "fr": "Marché aux puces de vêtements et de jouets pour enfants au local de quartier B102, à Lucerne — de la seconde main pour les petits, bonne pour l'environnement et le porte-monnaie. Gâteaux et café au bar. Entrée libre.",
+   "it": "Mercatino di vestiti e giocattoli per bambini nel locale di quartiere B102 a Lucerna — seconda mano per i più piccoli, a vantaggio dell'ambiente e del portafoglio. Torte e caffè al bar. Ingresso libero.",
+   "en": "A flea market for children's clothes and toys at the neighbourhood venue B102 in Lucerne — secondhand for the little ones, easy on the environment and the wallet. Cake and coffee at the bar. Free entry."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Flohmarkt für Kinderkleider und Spielsachen im Quartierlokal B102 an der Bernstrasse 102 in Luzern, zweimal im Jahr, im Mai und im Oktober. Secondhand für die Kleinen schont Umwelt und Portemonnaie. An der Bar gibt es Kuchen und Kaffee. Organisiert vom Lokal B102, der Eintritt ist frei.",
+   "fr": "Un marché aux puces consacré aux vêtements et aux jouets d’enfants, au local de quartier B102, Bernstrasse 102 à Lucerne, deux fois par an, en mai et en octobre. De la seconde main pour les petits, bonne pour l’environnement comme pour le porte-monnaie. Gâteaux et café au bar. Organisé par Das Lokal B102 ; entrée libre.",
+   "it": "Un mercatino di vestiti e giocattoli per bambini nel locale di quartiere B102, Bernstrasse 102 a Lucerna, due volte l’anno, a maggio e a ottobre. L’usato per i più piccoli fa bene all’ambiente e al portafoglio. Al bar ci sono torte e caffè. Organizza Das Lokal B102; l’ingresso è libero.",
+   "en": "A flea market for children’s clothes and toys at the B102 neighbourhood venue, Bernstrasse 102 in Lucerne, held twice a year, in May and October. Buying secondhand for small children is easy on the environment and on the wallet. There is cake and coffee at the bar. Run by Das Lokal B102; entry is free."
+  }
+ },
+ {
+  "slug": "kofmehl-flohmi-solothurn",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 78.3,
+   "de": 60.4,
+   "it": 60,
+   "en": 46.2
+  },
+  "name": "Kofmehl-Flohmi",
+  "kind": "flohmarkt",
+  "town": "Solothurn",
+  "venue": "Kulturfabrik Kofmehl",
+  "address_line": "Kofmehlweg 1",
+  "postal_code": "4502",
+  "rhythm_de": "Jährlich, ein Samstag im September",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://kofmehl.net/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Kofmehl-Flohmi ist der Flohmarkt der Kulturfabrik Kofmehl in Solothurn, unter der Leporello-Brücke direkt neben dem Konzerthaus – seit 1993. An einem Samstag im September, 9 bis 15 Uhr, Eintritt frei; Getränke und Snacks vom Barwagen, ab 11.45 Uhr Mittagessen. Vom Bahnhof Solothurn sind es 15 Minuten zu Fuss.",
+   "fr": "Le Kofmehl-Flohmi est le marché aux puces de la Kulturfabrik Kofmehl à Soleure, sous le pont Leporello, juste à côté de la salle de concert – depuis 1993. Un samedi de septembre, de 9 h à 15 h, entrée libre ; boissons et en-cas au bar roulant, de quoi manger dès 11 h 45. Quinze minutes à pied depuis la gare de Soleure.",
+   "it": "Il Kofmehl-Flohmi è il mercatino della Kulturfabrik Kofmehl di Soletta, sotto il ponte Leporello accanto alla sala concerti – dal 1993. Un sabato di settembre, dalle 9 alle 15, ingresso libero; bevande e snack dal chiosco, pranzo dalle 11.45. Quindici minuti a piedi dalla stazione di Soletta.",
+   "en": "The Kofmehl-Flohmi is the flea market of the Kulturfabrik Kofmehl in Solothurn, under the Leporello bridge right next to the concert venue – held since 1993. One Saturday in September, 9 am to 3 pm, free entry; drinks and snacks from the bar wagon, lunch from 11.45. Fifteen minutes on foot from Solothurn station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Kofmehl-Flohmi ist der Flohmarkt der Kulturfabrik Kofmehl in Solothurn, unter der Leporello-Brücke direkt neben dem Konzerthaus, und hat schon über dreissig Ausgaben hinter sich. Er findet einmal im Jahr an einem Samstag im September statt, von 9 bis 15 Uhr; der Eintritt ist frei. Getränke und Snacks gibt es vom Barwagen, ab 11.45 Uhr auch etwas zu Mittag. Vom Bahnhof Solothurn sind es 15 Minuten zu Fuss.",
+   "fr": "Le Kofmehl-Flohmi est le marché aux puces de la Kulturfabrik Kofmehl à Soleure, sous le pont Leporello, juste à côté de la salle de concert ; il compte déjà plus de trente éditions. Il a lieu une fois par an, un samedi de septembre, de 9 h à 15 h, entrée libre. Boissons et en-cas au bar roulant, de quoi manger dès 11 h 45. La gare de Soleure est à un quart d’heure à pied.",
+   "it": "Il Kofmehl-Flohmi è il mercatino della Kulturfabrik Kofmehl di Soletta, sotto il ponte Leporello accanto alla sala concerti, con oltre trenta edizioni alle spalle. Si tiene una volta l’anno, un sabato di settembre, dalle 9 alle 15, con ingresso libero. Bevande e snack dal carro bar, pranzo dalle 11.45. Dalla stazione di Soletta sono quindici minuti a piedi.",
+   "en": "The Kofmehl-Flohmi is the flea market of the Kulturfabrik Kofmehl in Solothurn, held under the Leporello bridge right next to the concert venue, with more than thirty editions behind it. It takes place once a year on a Saturday in September, 9 am to 3 pm, and entry is free. Drinks and snacks come from the bar wagon, with lunch from 11.45. Solothurn station is fifteen minutes’ walk away."
+  }
+ },
+ {
+  "slug": "kreisflohmi-zuerich",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "it": 84.9,
+   "en": 79.6,
+   "de": 64,
+   "fr": 60.9
+  },
+  "name": "Kreisflohmi",
+  "kind": "flohmarkt",
+  "town": "Zürich",
+  "venue": "Zürcher Stadtkreise",
+  "address_line": "Kanzleistrasse 109",
+  "postal_code": "8004",
+  "rhythm_de": "Ein Samstag pro Stadtkreis, Mai bis September",
+  "season_months": [
+   5,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://kreisflohmi.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "both",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Kreisflohmi ist Zürichs Quartierflohmarkt von Bewohnerinnen und Bewohnern für alle: Jeder Stadtkreis hat einen Samstag, an dem in Wohnungen, Innenhöfen, Gärten, Garagen und auf Dachterrassen verkauft wird – nie auf dem Gehweg. Wo genau, zeigt die Karte auf kreisflohmi.ch. Von 11 bis 18 Uhr, bei jedem Wetter; Verkaufen und Besuchen sind kostenlos.",
+   "fr": "Le Kreisflohmi, c'est le vide-grenier de quartier de Zurich, tenu par les habitants et ouvert à tous : chaque arrondissement (Kreis) a son samedi, où l'on vend depuis les appartements, les cours, les jardins, les garages et les toits-terrasses – jamais sur le trottoir. La carte sur kreisflohmi.ch indique où. De 11 h à 18 h, par tous les temps ; la visite est gratuite.",
+   "it": "Il Kreisflohmi è il mercatino di quartiere di Zurigo, fatto dagli abitanti per tutti: ogni circoscrizione (Kreis) ha il suo sabato, in cui si vende da appartamenti, cortili, giardini, garage e terrazze sul tetto – mai sul marciapiede. La mappa su kreisflohmi.ch indica dove. Dalle 11 alle 18, con qualsiasi tempo; vendere e visitare sono gratuiti.",
+   "en": "The Kreisflohmi is Zürich's neighbourhood flea market by residents for everyone: each city district (Kreis) gets one Saturday on which people sell from their flats, courtyards, gardens, garages and roof terraces – never on the pavement. The map on kreisflohmi.ch shows where. From 11 am to 6 pm, in any weather; selling and visiting are free."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Kreisflohmi ist Zürichs Quartierflohmarkt von Bewohnerinnen und Bewohnern für alle: Von Mai bis September hat jeder Stadtkreis einen Samstag, an dem in Wohnungen, Innenhöfen, Gärten, Garagen und auf Dachterrassen verkauft wird, nie auf dem Trottoir. Wo genau, zeigt die Karte auf kreisflohmi.ch. Jeweils von 11 bis 18 Uhr, bei jedem Wetter; der Besuch ist gratis. Organisiert vom Verein raumwerk.",
+   "fr": "Le Kreisflohmi, c’est le vide-grenier de quartier de Zurich, par les habitants et pour tout le monde : de mai à septembre, chaque arrondissement (Kreis) a son samedi, où l’on vend depuis les appartements, cours intérieures, jardins, garages et toits-terrasses – jamais sur le trottoir. La carte sur kreisflohmi.ch indique les adresses. De 11 h à 18 h, par tous les temps ; la visite est gratuite. Organisé par le Verein raumwerk.",
+   "it": "Il Kreisflohmi è il mercatino di quartiere di Zurigo, fatto dagli abitanti per tutti: da maggio a settembre ogni circoscrizione (Kreis) ha il suo sabato, in cui si vende da appartamenti, cortili, giardini, garage e terrazze sul tetto – mai sul marciapiede. La mappa su kreisflohmi.ch indica dove. Dalle 11 alle 18, con qualsiasi tempo; la visita è gratuita. Organizzato dal Verein raumwerk.",
+   "en": "The Kreisflohmi is Zürich’s neighbourhood flea market, run by residents for everyone: between May and September each city district (Kreis) gets one Saturday on which people sell from their flats, courtyards, gardens, garages and roof terraces – never on the pavement. The map on kreisflohmi.ch shows where. From 11 am to 6 pm, in any weather; visiting is free. Organised by the Verein raumwerk."
+  }
+ },
+ {
+  "slug": "ladies-flohmarkt-fundus-root",
+  "task": "keep our German; write new en/it from our German",
+  "locales_to_write": [
+   "en",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "en": 31.8,
+   "it": 30.2
+  },
+  "name": "Ladies-Flohmarkt by fundus Root",
+  "kind": "flohmarkt",
+  "town": "Root",
+  "venue": "ARENA Root",
+  "address_line": "ARENA Root, Schulstrasse 16, 6037 Root",
+  "postal_code": "6037",
+  "rhythm_de": "Einmal im Monat, sonntags.",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.fundusflohmarkt.ch",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": 50,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "clothes",
+     "source": "https://www.fundusflohmarkt.ch"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Abend-Flohmarkt nur für Frauen in der ARENA Root, organisiert von fundus: Kleidung, Schuhe, Taschen und Accessoires, von Frauen für Frauen verkauft, mit Musik – näher an einer Kleidertauschbörse als an einem klassischen Flohmarkt. Die Ausgaben finden unregelmässig statt; Tickets gibt es über die fundus-Website.",
+   "fr": "Marché aux puces en soirée réservé aux femmes à l'ARENA Root, organisé par fundus : vêtements, chaussures, sacs et accessoires vendus par et pour des femmes, en musique — plus proche d'un troc de vêtements que d'un marché aux puces classique. Les éditions sont ponctuelles plutôt que mensuelles ; billets sur le site de fundus.",
+   "it": "Mercatino serale riservato alle donne all'ARENA Root, organizzato da fundus: abiti, scarpe, borse e accessori venduti da donne per donne, con musica — più vicino a uno scambio di vestiti che a un classico mercatino. Le edizioni sono periodiche, non mensili; biglietti sul sito di fundus.",
+   "en": "An evening flea market for women only at the ARENA Root, organised by fundus: clothing, shoes, bags and accessories sold by and for women, with music — closer to a clothes swap than a classic flea market. Editions are periodic rather than monthly; tickets via the fundus website."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Ladies-Flohmarkt von fundus ist ein Abend-Flohmarkt nur für Frauen in der ARENA Root an der Schulstrasse 16. Frauen verkaufen an Frauen: Kleider, Schuhe, Taschen und Accessoires, dazu gibt es Musik. Das Ganze erinnert eher an eine Kleidertauschbörse als an einen klassischen Markt. Für den Besuch braucht es ein Ticket, erhältlich auf der Website von fundus; die Ausgaben finden nicht in einem festen Rhythmus statt.",
+   "fr": "Le Ladies-Flohmarkt de fundus est un marché aux puces en soirée, réservé aux femmes, à l’ARENA Root, Schulstrasse 16. Des femmes y vendent à des femmes vêtements, chaussures, sacs et accessoires, en musique. L’esprit tient plus du troc de vêtements que du marché classique. L’accès se fait sur billet, en vente sur le site de fundus ; les éditions n’ont pas de rythme fixe.",
+   "it": "Il Ladies-Flohmarkt di fundus è un mercatino serale riservato alle donne, all’ARENA Root, Schulstrasse 16. Donne che vendono ad altre donne abiti, scarpe, borse e accessori, con musica di sottofondo. Somiglia più a uno scambio di vestiti che a un mercato tradizionale. Si entra con un biglietto, in vendita sul sito di fundus; le edizioni non seguono un ritmo fisso.",
+   "en": "The Ladies-Flohmarkt by fundus is an evening flea market for women only at the ARENA Root, Schulstrasse 16. Women sell to women: clothing, shoes, bags and accessories, with music in the background. It feels closer to a clothes swap than a traditional market. Entry is by ticket, available on the fundus website; editions do not follow a fixed rhythm."
+  }
+ },
+ {
+  "slug": "letziplunder-flohmarkt-basel",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 66.7,
+   "en": 55.6,
+   "fr": 50,
+   "it": 31
+  },
+  "name": "Letziplunder Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Basel",
+  "venue": "Letziplatz",
+  "address_line": "im Sankt Alban-Tal",
+  "postal_code": "4052",
+  "rhythm_de": "Zweimal jährlich, Juni und September",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.letziplunder.com",
+  "source_pages": [
+   "https://www.zonta.ch/event/zc-basel-schoene-dinge-finden-am-letziplunder-herbstflohmarkt/",
+   "https://www.mybasel.ch/events-basel/letziplunder-flohmarkt"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Letziplunder Flohmarkt findet zweimal jährlich bei der Basler Papiermühle – dem Schweizerischen Museum für Papier, Schrift und Druck – am Wasser im St. Alban-Quartier statt. Die historische Lage am Wasser gibt dem Markt eher das Flair einer Brocante als eines klassischen Flohmarkts; der Anlass selbst nennt sich den schönsten Flohmarkt Basels.",
+   "fr": "Le marché aux puces Letziplunder a lieu deux fois par an à la Papiermühle de Bâle – le Musée suisse du papier, de l'écriture et de l'imprimerie –, au bord de l'eau, dans le quartier de St. Alban. Ce cadre historique lui donne un air de brocante plus que de marché aux puces ordinaire ; il se présente d'ailleurs comme le plus beau marché aux puces de Bâle.",
+   "it": "Il Letziplunder Flohmarkt si tiene due volte l'anno alla Papiermühle di Basilea, il Museo svizzero della carta, della scrittura e della stampa, in riva all'acqua nel quartiere di St. Alban. La posizione storica sull'acqua gli dà più l'aria di una brocante che di un classico mercatino; l'evento si presenta come il mercatino più bello di Basilea.",
+   "en": "The Letziplunder Flohmarkt takes place twice a year at the Basler Papiermühle — the Swiss Museum for Paper, Writing and Print — by the water in Basel's St. Alban district. The historic waterside setting gives it the feel of a brocante rather than a standard flea market; the event calls itself the most beautiful flea market in Basel."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Letziplunder Flohmarkt findet zweimal jährlich bei der Basler Papiermühle - dem Schweizerischen Museum für Papier, Schrift und Druck - am Wasser im St. Alban-Quartier statt. In einem kuratierten, charaktervollen Rahmen fernab der Hektik am Petersplatz bezeichnet sich der Anlass als der schönste Flohmarkt Basels. Ein Stand kostet CHF 25 für zwei Meter, und die historische Lage am Wasser verleiht dem Markt eher das Flair einer Brocante als eines klassischen Flohmarkts. Einer der stimmungsvollsten Flohmärkte im Basler Kalender.",
+   "fr": "Le marché aux puces Letziplunder se tient deux fois par an près de la Papiermühle de Bâle – le Musée suisse du papier, de l'écriture et de l'imprimerie –, au bord de l'eau dans le quartier de St. Alban. Dans un cadre soigné et plein de caractère, loin de l'agitation de la Petersplatz, cet événement se présente comme le plus beau marché aux puces de Bâle. Un stand coûte 25 CHF pour deux mètres, et le cadre historique au bord de l'eau confère au marché davantage l'ambiance d'une brocante que celle d'un marché aux puces classique. L'un des marchés aux puces les plus animés du calendrier bâlois.",
+   "it": "Il mercatino delle pulci Letziplunder si tiene due volte all'anno presso la Papiermühle di Basilea – il Museo svizzero della carta, della scrittura e della stampa – in riva al fiume nel quartiere di St. Alban. In un contesto curato e ricco di carattere, lontano dal trambusto di Petersplatz, l'evento si autodefinisce il mercatino delle pulci più bello di Basilea. Una bancarella costa 25 CHF per due metri e la posizione storica in riva al fiume conferisce al mercato l'atmosfera di una brocante piuttosto che di un classico mercatino delle pulci. Uno dei mercatini delle pulci più suggestivi del calendario basilese.",
+   "en": "The Letziplunder Flohmarkt takes place twice a year at the Basler Papiermühle — the Swiss Museum for Paper, Writing and Print — on the banks of the Birsig in Basel's St. Alban district. With a curated, characterful setting far removed from the bustle of Petersplatz, it bills itself as the most beautiful flea market in Basel. Stalls cost CHF 25 for a 2-metre pitch, and the museum's historic riverside location gives the whole event the feel of a brocante rather than a standard market. One of the more atmospheric flea markets in the Basel calendar."
+  }
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "task": "keep our German; write new en/fr from our German",
+  "locales_to_write": [
+   "en",
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "en": 100,
+   "fr": 45.7
+  },
+  "name": "Maedelsflohmarkt XXL Dietikon",
+  "kind": "flohmarkt",
+  "town": "Dietikon",
+  "venue": "Stadthalle Dietikon",
+  "address_line": "Fondlistrasse 15",
+  "postal_code": "8953",
+  "rhythm_de": "Zweimal jährlich, März und November",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-11-08",
+    "start": "12:00:00",
+    "end": "17:00:00"
+   }
+  ],
+  "website_url": "https://www.maedelsflohmarkt.ch",
+  "source_pages": [
+   "https://www.dietikon.ch/vergangeneveranstaltungen/6994453",
+   "https://www.myfarm.ch/de/veranstaltungen/dietikon/maedelsflohmarkt-xxl-in-dietikon_A8mZTGs",
+   "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/maedelsflohmarkt-xxl-in-dietikon/",
+   "https://www.maedelsflohmarkt.ch/anmeldung-2026-dietikon-mädelsflohmarkt-xxl/"
+  ],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "clothes",
+     "source": "https://www.maedelsflohmarkt.ch"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Die XXL-Ausgabe des Mädelsflohmarkts in der Stadthalle Dietikon: Damenmode, Schuhe, Accessoires, Vintage und Designerlabels auf grösserer Fläche, mit Umkleidekabinen. Eher Modeevent als Flohmarkt – kuratiert, gesellig, ganz auf das ausgerichtet, was du wirklich trägst.",
+   "fr": "L'édition grand format du concept « Mädelsflohmarkt », à la Stadthalle de Dietikon. Vêtements pour femmes, chaussures, accessoires, pièces vintage et marques de créateurs, sur une grande surface de vente avec des cabines d'essayage sur place. Plus proche d'un événement de mode que d'un marché aux puces.",
+   "it": "L'edizione in grande del Mädelsflohmarkt, alla Stadthalle di Dietikon. Abbigliamento femminile, scarpe, accessori, capi vintage e firme su una superficie di vendita più ampia, con camerini sul posto. Per atmosfera è più un evento di moda che un mercatino delle pulci: selezionato, conviviale e tutto incentrato su quello che indosserai davvero.",
+   "en": "The large-format edition of the Mädelsflohmarkt concept, held in the Stadthalle Dietikon. Women's clothing, shoes, accessories, vintage pieces and designer labels across an expanded selling floor with fitting rooms on site. More fashion event than flea market in atmosphere — curated, social, and focused entirely on what you'll actually wear."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der grosse XXL-Flohmarkt des Mädelsflohmarkts Schweiz in der Stadthalle Dietikon bietet eine vielfältige Auswahl an gut erhaltener Secondhand-Mode und Accessoires für Frauen, Männer und Kinder sowie Dekorationsstücke. Mit Umkleidekabinen vor Ort.",
+   "fr": "L'édition grand format du concept « Mädelsflohmarkt », organisée à la Stadthalle de Dietikon. Vêtements pour femmes, chaussures, accessoires, pièces vintage et marques de créateurs, le tout sur une surface de vente agrandie et dotée de cabines d'essayage sur place. Une ambiance qui s'apparente davantage à un événement de mode qu'à un marché aux puces : une sélection soignée, un cadre convivial et une offre entièrement axée sur ce que vous porterez réellement.",
+   "it": "L'edizione su larga scala del concept “Mädelsflohmarkt”, ospitata presso la Stadthalle di Dietikon. Abbigliamento femminile, scarpe, accessori, capi vintage e marchi di stilisti in uno spazio espositivo ampliato, con camerini a disposizione. Un evento che, per atmosfera, è più simile a una sfilata di moda che a un mercatino delle pulci: curato nei minimi dettagli, conviviale e interamente incentrato su ciò che indosserete davvero.",
+   "en": "The large-format edition of the Mädelsflohmarkt concept, held in the Stadthalle Dietikon. Women's clothing, shoes, accessories, vintage pieces and designer labels across an expanded selling floor with fitting rooms on site. More fashion event than flea market in atmosphere — curated, social, and focused entirely on what you'll actually wear."
+  }
+ },
+ {
+  "slug": "marche-aux-puces-archipel-sion",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 82,
+   "it": 77.8,
+   "de": 76.4,
+   "en": 76.4
+  },
+  "name": "Marché aux puces de Sion (L'Archipel)",
+  "kind": "flohmarkt",
+  "town": "Sion",
+  "venue": "Cour de L'Archipel",
+  "address_line": "Rue de l'Industrie 47",
+  "postal_code": "1950",
+  "rhythm_de": "Erster Sonntag im Monat, März bis November (ausser August)",
+  "season_months": [
+   3,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-01",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   }
+  ],
+  "website_url": "https://archipelsion.ch/agenda/marche-aux-puces/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché aux puces von Sitten findet im Innenhof von L'Archipel statt, dem Kulturort an der Rue de l'Industrie 47 – jeden ersten Sonntag im Monat von März bis November, im August nicht, jeweils von 8.30 bis 13 Uhr. Ein Morgenmarkt: Früh kommen lohnt sich. Vom Bahnhof Sitten sind es zehn Minuten zu Fuss Richtung Industriequartier.",
+   "fr": "Le marché aux puces de Sion se tient dans la cour de L'Archipel, le tiers-lieu de la rue de l'Industrie 47 – chaque premier dimanche du mois de mars à novembre, sauf en août, de 8 h 30 à 13 h. Un marché du matin : arrivez tôt. Dix minutes à pied depuis la gare de Sion, direction le quartier de l'Industrie.",
+   "it": "Il mercatino delle pulci di Sion si tiene nel cortile de L'Archipel, lo spazio culturale in rue de l'Industrie 47 – ogni prima domenica del mese da marzo a novembre, agosto escluso, dalle 8.30 alle 13. Un mercato del mattino: conviene arrivare presto. Dieci minuti a piedi dalla stazione di Sion verso il quartiere industriale.",
+   "en": "Sion's flea market takes place in the courtyard of L'Archipel, the cultural venue at Rue de l'Industrie 47 – on the first Sunday of the month from March to November, not in August, from 8.30 am to 1 pm. A morning market: come early. Ten minutes on foot from Sion station towards the industrial quarter."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché aux puces von Sitten findet im Innenhof von L’Archipel statt, dem Kulturort an der Rue de l’Industrie 47: jeden ersten Sonntag im Monat von März bis November, ausser im August, von 8.30 bis 13 Uhr. Es ist ein Morgenmarkt, früh kommen lohnt sich. Organisiert von Sion Puces; vom Bahnhof Sitten sind es zehn Minuten zu Fuss Richtung Industriequartier.",
+   "fr": "Le marché aux puces de Sion se tient dans la cour de L’Archipel, le tiers-lieu de la rue de l’Industrie 47 : chaque premier dimanche du mois de mars à novembre, sauf en août, de 8 h 30 à 13 h. C’est un marché du matin : arrivez tôt. Organisé par Sion Puces ; dix minutes à pied depuis la gare de Sion, en direction du quartier de l’Industrie.",
+   "it": "Il mercatino delle pulci di Sion si tiene nel cortile de L’Archipel, lo spazio culturale in rue de l’Industrie 47: ogni prima domenica del mese da marzo a novembre, agosto escluso, dalle 8.30 alle 13. È un mercato del mattino: conviene arrivare presto. Lo organizza Sion Puces; dalla stazione di Sion sono dieci minuti a piedi verso il quartiere industriale.",
+   "en": "Sion’s flea market takes place in the courtyard of L’Archipel, the cultural venue at Rue de l’Industrie 47: on the first Sunday of the month from March to November, except August, from 8.30 am to 1 pm. It is a morning market, so come early. Run by Sion Puces; ten minutes on foot from Sion station towards the industrial quarter."
+  }
+ },
+ {
+  "slug": "marche-aux-puces-coupole-biel",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "it": 55.8,
+   "fr": 54.9,
+   "en": 48.9,
+   "de": 30.8
+  },
+  "name": "Marché aux puces de la Coupole",
+  "kind": "flohmarkt",
+  "town": "Biel/Bienne",
+  "venue": "La Coupole",
+  "address_line": "Esplanade Kongresshaus 21",
+  "postal_code": "2503",
+  "rhythm_de": "Etwa alle sechs Wochen, sonntags, Oktober bis März",
+  "season_months": [
+   10,
+   3
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-29",
+    "start": "11:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-01-10",
+    "start": "11:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-02-14",
+    "start": "11:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-03-14",
+    "start": "11:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://caj.ch/fr/coupole/programme/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "both",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "In der Coupole, dem alten Gaskessel beim Kongresshaus Biel, findet mehrmals im Jahr ein Flohmarkt statt – drinnen, also auch bei Regen. Das Jugendzentrum CAJ betreibt den Ort und veröffentlicht die Daten in seinem Programm; wir tragen sie ein, sobald sie dort stehen.",
+   "fr": "La Coupole, l'ancien gazomètre à côté du Palais des Congrès de Bienne, accueille un marché aux puces plusieurs fois par an – à l'intérieur, donc même sous la pluie. Le CAJ (Centre autonome de jeunesse) gère le lieu et publie les dates dans son programme ; nous les ajoutons dès qu'elles y figurent.",
+   "it": "La Coupole, il vecchio gasometro accanto al Palazzo dei Congressi di Bienne, ospita un mercatino delle pulci più volte l'anno – al coperto, quindi anche con la pioggia. Il centro giovanile CAJ gestisce il luogo e pubblica le date nel suo programma; le aggiungiamo appena compaiono.",
+   "en": "The Coupole, the old gas holder next to Biel's Kongresshaus, hosts a flea market several times a year – indoors, so rain doesn't matter. The CAJ youth centre runs the venue and publishes the dates in its programme; we add them as soon as they appear there."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "In der Coupole, dem alten Gaskessel beim Kongresshaus Biel an der Esplanade, findet von Oktober bis März etwa alle sechs Wochen ein Flohmarkt statt, jeweils sonntags. Er ist drinnen, also auch bei Regen. Das Jugendzentrum CAJ betreibt die Coupole und veröffentlicht die Termine in seinem Programm.",
+   "fr": "La Coupole, l’ancien gazomètre à côté du Palais des Congrès de Bienne, sur l’Esplanade, accueille un marché aux puces environ toutes les six semaines d’octobre à mars, toujours le dimanche. Il se tient à l’intérieur, donc même par temps de pluie. Le CAJ (Centre autonome de jeunesse) gère le lieu et publie les dates dans son programme.",
+   "it": "La Coupole, il vecchio gasometro accanto al Palazzo dei Congressi di Bienne, sull’Esplanade, ospita un mercatino delle pulci circa ogni sei settimane da ottobre a marzo, sempre di domenica. Si svolge al coperto, quindi anche con la pioggia. Il centro giovanile CAJ gestisce la Coupole e pubblica le date nel suo programma.",
+   "en": "The Coupole, the old gas holder next to Biel’s Kongresshaus on the Esplanade, hosts a flea market roughly every six weeks from October to March, always on a Sunday. It is indoors, so rain doesn’t matter. The CAJ youth centre runs the Coupole and publishes the dates in its programme."
+  }
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-place-python",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 100,
+   "de": 50.9,
+   "fr": 46.7,
+   "it": 46.6
+  },
+  "name": "Marché aux puces de Fribourg (Place Python)",
+  "kind": "flohmarkt",
+  "town": "Freiburg",
+  "venue": "Place Georges-Python / Place de l Equilibre",
+  "address_line": "Place Georges-Python / Place de l Equilibre, 1700 Fribourg",
+  "postal_code": "1700",
+  "rhythm_de": "Jeden letzten Samstag von März bis November",
+  "season_months": [
+   3,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-31",
+    "start": "08:00:00",
+    "end": "16:30:00"
+   },
+   {
+    "date": "2026-11-28",
+    "start": "08:00:00",
+    "end": "16:30:00"
+   },
+   {
+    "date": "2027-03-27",
+    "start": "08:00:00",
+    "end": "16:30:00"
+   },
+   {
+    "date": "2027-04-24",
+    "start": "08:00:00",
+    "end": "16:30:00"
+   }
+  ],
+  "website_url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+  "source_pages": [
+   "https://www.ville-fribourg.ch/marches-fribourg"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 30,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché aux puces de Fribourg belebt von März bis November zweimal im Monat die Altstadt. Zu finden sind Brocante, Vintage, Hausrat und kleine Raritäten von 30 bis 50 Ausstellern, je nach Wetter. Diese Ausgabe findet am letzten Samstag des Monats auf der Place Georges-Python statt, oder auf der Place de l Equilibre, wenn diese belegt ist.",
+   "fr": "Le marché aux puces de Fribourg s'installe dans la Vieille-Ville deux fois par mois, de mars à novembre. On y trouve brocante, vintage, articles ménagers et petits trésors, chez 30 à 50 exposants selon la météo. Cette édition a lieu le dernier samedi du mois sur la place Georges-Python, ou sur la place de l'Équilibre quand Python est prise.",
+   "it": "Il Marché aux puces de Fribourg porta brocante, vintage, articoli per la casa e piccoli tesori nella città vecchia due volte al mese, da marzo a novembre. Gli espositori sono da 30 a 50, a seconda del tempo. Questa edizione si tiene l'ultimo sabato del mese in Place Georges-Python, oppure in Place de l'Équilibre quando Python è occupata.",
+   "en": "The Fribourg flea market brings brocante, vintage finds, household goods and small treasures to the Old Town twice a month from March to November. Around 30 to 50 vendors take part depending on the weather. This edition takes place on the last Saturday of the month at Place Georges-Python or at Place de l Equilibre when Python is occupied."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché aux puces de Fribourg belebt von März bis November zweimal im Monat die Altstadt. Besucher finden Brocante, Vintage, Hausrat und kleine Raritäten von 30 bis 50 Ausstellern. Diese Ausgabe findet am letzten Samstag des Monats auf dem Place Georges-Python oder auf dem Place de l Equilibre statt, wenn Python belegt ist.",
+   "fr": "Le Marché aux puces de Fribourg anime la Vieille-Ville deux fois par mois, de mars à novembre. On y trouve brocante, vintage, objets de maison et petites raretés proposés par 30 à 50 exposants selon la météo. Cette édition se tient le dernier samedi du mois à la place Georges-Python, ou à la place de l’Équilibre si Python est occupée.",
+   "it": "Il Marché aux puces de Fribourg anima la città vecchia due volte al mese, da marzo a novembre. Si trovano brocante, vintage, articoli per la casa e piccole rarità presentate da 30 a 50 espositori a seconda del tempo. Questa edizione si svolge l’ultimo sabato del mese in place Georges-Python, o in place de l’Équilibre se Python è occupata.",
+   "en": "The Fribourg flea market brings brocante, vintage finds, household goods and small treasures to the Old Town twice a month from March to November. Around 30 to 50 vendors take part depending on the weather. This edition takes place on the last Saturday of the month at Place Georges-Python or at Place de l Equilibre when Python is occupied."
+  }
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 74.3,
+   "de": 57.1
+  },
+  "name": "Marché aux puces de Plainpalais",
+  "kind": "flohmarkt",
+  "town": "Genf",
+  "venue": "Plaine de Plainpalais",
+  "address_line": "Plaine de Plainpalais, 1205 Genève",
+  "postal_code": "1205",
+  "rhythm_de": "Jeden 1. Sonntag des Monats",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-11-01",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-12-06",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2027-01-03",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2027-02-07",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   }
+  ],
+  "website_url": "https://www.geneve.ch",
+  "source_pages": [
+   "https://www.geneve.ch/marche-plainpalais",
+   "https://www.geneve.com/de/attraktionen/detail/flohmarkt-von-plainpalais",
+   "https://www.tpg.ch/fr/loisir/marche-aux-puces-de-plainpalais"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché aux puces de Plainpalais ist ein grosser Flohmarkt unter freiem Himmel: Auf der Plaine de Plainpalais mitten in Genf bieten über 300 Stände am ersten Sonntag des Monats Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Sammlerstücke an.",
+   "fr": "Le marché aux puces de Plainpalais est un grand marché en plein air : le premier dimanche du mois, plus de 300 stands occupent la plaine de Plainpalais, au centre de Genève, avec meubles, antiquités, vêtements vintage, livres et objets de collection.",
+   "it": "Il Marché aux puces de Plainpalais è un grande mercatino delle pulci all'aperto: la prima domenica del mese oltre 300 bancarelle occupano la Plaine de Plainpalais, nel centro di Ginevra, con mobili, antiquariato, abbigliamento vintage, libri e oggetti da collezione.",
+   "en": "The Plainpalais Flea Market is a large open-air flea market: over 300 stalls spread across the Plaine de Plainpalais in central Geneva on the first Sunday of each month, selling furniture, antiques, vintage clothing, books and collectibles."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché aux puces de Plainpalais ist einer der grössten Flohmärkte der Schweiz. Auf der Plaine de Plainpalais in Genf bieten über 300 Stände am ersten Sonntag des Monats Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Allerlei an.",
+   "fr": "Le Marché aux puces de Plainpalais est l'un des plus grands marchés aux puces en plein air de Suisse. Sur la Plaine de Plainpalais à Genève, plus de 300 stands proposent meubles, antiquités, vêtements vintage, livres et bric-à-brac le premier dimanche du mois.",
+   "it": "Il Marché aux puces de Plainpalais è uno dei più grandi mercatini delle pulci all'aperto della Svizzera. Sulla Plaine de Plainpalais a Ginevra, oltre 300 bancarelle propongono mobili, antiquita, abbigliamento vintage, libri e oggetti curiosi la prima domenica del mese.",
+   "en": "The Plainpalais Flea Market is one of Switzerland's largest open-air flea markets. Over 300 stalls spread across the Plaine de Plainpalais in central Geneva on the first Sunday of each month, selling furniture, antiques, vintage clothing, books and collectibles."
+  }
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 70,
+   "de": 53.1
+  },
+  "name": "Marché aux puces de Plainpalais",
+  "kind": "flohmarkt",
+  "town": "Genf",
+  "venue": "Plaine de Plainpalais",
+  "address_line": "Plaine de Plainpalais, 1205 Genève",
+  "postal_code": "1205",
+  "rhythm_de": "Jeden Mittwoch, ganzjährig",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-14",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-10-21",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-10-28",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-11-04",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   }
+  ],
+  "website_url": "https://www.geneve.ch",
+  "source_pages": [
+   "https://www.geneve.ch/marche-plainpalais",
+   "https://www.tpg.ch/fr/loisir/marche-aux-puces-de-plainpalais",
+   "https://www.broc-antic.com/manifestations/marche-aux-puces-de-geneve.html"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché aux puces de Plainpalais ist ein grosser Flohmarkt unter freiem Himmel: Auf der Plaine de Plainpalais mitten in Genf bieten über 300 Stände jeden Mittwoch Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Sammlerstücke an.",
+   "fr": "Le marché aux puces de Plainpalais est un grand marché en plein air : chaque mercredi, plus de 300 stands occupent la plaine de Plainpalais, au centre de Genève, avec meubles, antiquités, vêtements vintage, livres et objets de collection.",
+   "it": "Il Marché aux puces de Plainpalais è un grande mercatino delle pulci all'aperto: ogni mercoledì oltre 300 bancarelle occupano la Plaine de Plainpalais, nel centro di Ginevra, con mobili, antiquariato, abbigliamento vintage, libri e oggetti da collezione.",
+   "en": "The Plainpalais Flea Market is a large open-air flea market: over 300 stalls spread across the Plaine de Plainpalais in central Geneva every Wednesday, selling furniture, antiques, vintage clothing, books and collectibles."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché aux puces de Plainpalais ist einer der grössten Flohmärkte der Schweiz. Auf der Plaine de Plainpalais in Genf bieten über 300 Stände jeden Mittwoch Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Allerlei an.",
+   "fr": "Le Marché aux puces de Plainpalais est l'un des plus grands marchés aux puces en plein air de Suisse. Sur la Plaine de Plainpalais à Genève, plus de 300 stands proposent meubles, antiquités, vêtements vintage, livres et bric-à-brac chaque mercredi.",
+   "it": "Il Marché aux puces de Plainpalais è uno dei più grandi mercatini delle pulci all'aperto della Svizzera. Sulla Plaine de Plainpalais a Ginevra, oltre 300 bancarelle propongono mobili, antiquita, abbigliamento vintage, libri e oggetti curiosi ogni mercoledi.",
+   "en": "The Plainpalais Flea Market is one of Switzerland's largest open-air flea markets. Over 300 stalls spread across the Plaine de Plainpalais in central Geneva every Wednesday, selling furniture, antiques, vintage clothing, books and collectibles."
+  }
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-samstag",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 70,
+   "de": 53.1
+  },
+  "name": "Marché aux puces de Plainpalais",
+  "kind": "flohmarkt",
+  "town": "Genf",
+  "venue": "Plaine de Plainpalais",
+  "address_line": "Plaine de Plainpalais, 1205 Genève",
+  "postal_code": "1205",
+  "rhythm_de": "Jeden Samstag, ganzjährig (ausser 1. August)",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-10-24",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-10-31",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   },
+   {
+    "date": "2026-11-07",
+    "start": "06:30:00",
+    "end": "17:15:00"
+   }
+  ],
+  "website_url": "https://www.geneve.ch",
+  "source_pages": [
+   "https://www.tpg.ch/fr/loisir/marche-aux-puces-de-plainpalais",
+   "http://smpg.ch/les_marches/marche-aux-puces-de-plainpalais/",
+   "https://www.geneve.ch/marche-plainpalais"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché aux puces de Plainpalais ist ein grosser Flohmarkt unter freiem Himmel: Auf der Plaine de Plainpalais mitten in Genf bieten über 300 Stände jeden Samstag Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Sammlerstücke an.",
+   "fr": "Le marché aux puces de Plainpalais est un grand marché en plein air : chaque samedi, plus de 300 stands occupent la plaine de Plainpalais, au centre de Genève, avec meubles, antiquités, vêtements vintage, livres et objets de collection.",
+   "it": "Il Marché aux puces de Plainpalais è un grande mercatino delle pulci all'aperto: ogni sabato oltre 300 bancarelle occupano la Plaine de Plainpalais, nel centro di Ginevra, con mobili, antiquariato, abbigliamento vintage, libri e oggetti da collezione.",
+   "en": "The Plainpalais Flea Market is a large open-air flea market: over 300 stalls spread across the Plaine de Plainpalais in central Geneva every Saturday, selling furniture, antiques, vintage clothing, books and collectibles."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché aux puces de Plainpalais ist einer der grössten Flohmärkte der Schweiz. Auf der Plaine de Plainpalais in Genf bieten über 300 Stände jeden Samstag Möbel, Antiquitäten, Vintage-Kleidung, Bücher und Allerlei an.",
+   "fr": "Le Marché aux puces de Plainpalais est l'un des plus grands marchés aux puces en plein air de Suisse. Sur la Plaine de Plainpalais à Genève, plus de 300 stands proposent meubles, antiquités, vêtements vintage, livres et bric-à-brac chaque samedi.",
+   "it": "Il Marché aux puces de Plainpalais è uno dei più grandi mercatini delle pulci all'aperto della Svizzera. Sulla Plaine de Plainpalais a Ginevra, oltre 300 bancarelle propongono mobili, antiquita, abbigliamento vintage, libri e oggetti curiosi ogni sabato.",
+   "en": "The Plainpalais Flea Market is one of Switzerland's largest open-air flea markets. Over 300 stalls spread across the Plaine de Plainpalais in central Geneva every Saturday, selling furniture, antiques, vintage clothing, books and collectibles."
+  }
+ },
+ {
+  "slug": "marche-rumine-lausanne-mardi",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 37.2,
+   "it": 35.9,
+   "en": 35.1,
+   "de": 32.4
+  },
+  "name": "Marché de Rumine",
+  "kind": "brocante",
+  "town": "Lausanne",
+  "venue": "Place de la Riponne",
+  "address_line": "Place de la Riponne, 1005 Lausanne",
+  "postal_code": "1005",
+  "rhythm_de": "Jeden Dienstag seit März 2026",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-13",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-10-20",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-10-27",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-11-03",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   }
+  ],
+  "website_url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_pages": [
+   "https://swiss-markt.ch/fr/lausanne/marche-rumine",
+   "https://www.lausanne.ch/dam/jcr:b15a27e4-8dee-4004-bc5e-175d80445157/Doc Marché Rumine.pdf"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein Markt der Stadt ohne Lebensmittel, mit neuer und gebrauchter Ware. Seit März 2026 bringt die Dienstagsausgabe wieder Brocante-Stände auf die zentrale Riponne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire où se côtoient articles neufs et de seconde main. Depuis mars 2026, l'édition du mardi a ramené des stands de brocante sur cette place du centre-ville.",
+   "it": "Il Marché de Rumine, in Place de la Riponne a Losanna, è un mercato comunale non alimentare con articoli nuovi e di seconda mano. Da marzo 2026 l'edizione del martedì ha riportato le bancarelle di brocante nella piazza centrale della Riponne.",
+   "en": "The Marche de Rumine on Place de la Riponne in Lausanne is a city-run non-food market combining new and second-hand goods. Since March 2026, the Tuesday edition has brought brocante stalls back to the central Riponne square."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein städtischer Markt ohne Lebensmittel: Brocante-Stände mit Secondhandware, dazu neue Artikel. Die Stände stehen an vier Wochentagen auf der Riponne; dies ist der Dienstagsmarkt, im Sommer bis 18 Uhr, im Winter bis 16.30 Uhr. Organisiert von der Stadt Lausanne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire : des stands de brocante avec de la seconde main, et aussi des articles neufs. Les stands occupent la Riponne quatre jours par semaine ; ici, le marché du mardi, jusqu’à 18 h en été et 16 h 30 en hiver. Organisé par la Ville de Lausanne.",
+   "it": "Il Marché de Rumine, in place de la Riponne a Losanna, è un mercato comunale non alimentare: bancarelle di brocante con articoli di seconda mano, accanto ad articoli nuovi. Le bancarelle occupano la Riponne quattro giorni alla settimana; questo è il mercato del martedì, fino alle 18 d’estate e alle 16.30 d’inverno. Organizza la Città di Losanna.",
+   "en": "The Marché de Rumine on Place de la Riponne in Lausanne is a city-run non-food market: brocante stalls with secondhand goods, alongside some new items. The stalls are on the Riponne four days a week; this is the Tuesday market, open until 6 pm in summer and 4.30 pm in winter. Organised by the City of Lausanne."
+  }
+ },
+ {
+  "slug": "marche-rumine-lausanne-mercredi",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 37.2,
+   "it": 35.9,
+   "en": 35.1,
+   "de": 32.4
+  },
+  "name": "Marché de Rumine",
+  "kind": "brocante",
+  "town": "Lausanne",
+  "venue": "Place de la Riponne",
+  "address_line": "Place de la Riponne, 1005 Lausanne",
+  "postal_code": "1005",
+  "rhythm_de": "Jeden Mittwoch seit März 2026",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-14",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   },
+   {
+    "date": "2026-10-21",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   },
+   {
+    "date": "2026-10-28",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   },
+   {
+    "date": "2026-11-04",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   }
+  ],
+  "website_url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_pages": [
+   "https://swiss-markt.ch/fr/lausanne/marche-rumine",
+   "https://www.lausanne.ch/dam/jcr:b15a27e4-8dee-4004-bc5e-175d80445157/Doc Marché Rumine.pdf"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein Markt der Stadt ohne Lebensmittel, mit neuer und gebrauchter Ware. Seit März 2026 bringt die Mittwochsausgabe wieder Brocante-Stände auf die zentrale Riponne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire où se côtoient articles neufs et de seconde main. Depuis mars 2026, l'édition du mercredi a ramené des stands de brocante sur cette place du centre-ville.",
+   "it": "Il Marché de Rumine, in Place de la Riponne a Losanna, è un mercato comunale non alimentare con articoli nuovi e di seconda mano. Da marzo 2026 l'edizione del mercoledì ha riportato le bancarelle di brocante nella piazza centrale della Riponne.",
+   "en": "The Marche de Rumine on Place de la Riponne in Lausanne is a city-run non-food market combining new and second-hand goods. Since March 2026, the Wednesday edition has brought brocante stalls back to the central Riponne square."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein städtischer Markt ohne Lebensmittel: Brocante-Stände mit Secondhandware, dazu neue Artikel. Die Stände stehen an vier Wochentagen auf der Riponne; dies ist der Mittwochsmarkt. Organisiert von der Stadt Lausanne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire : des stands de brocante avec de la seconde main, et aussi des articles neufs. Les stands occupent la Riponne quatre jours par semaine ; ici, le marché du mercredi. Organisé par la Ville de Lausanne.",
+   "it": "Il Marché de Rumine, in place de la Riponne a Losanna, è un mercato comunale non alimentare: bancarelle di brocante con articoli di seconda mano, accanto ad articoli nuovi. Le bancarelle occupano la Riponne quattro giorni alla settimana; questo è il mercato del mercoledì. Organizza la Città di Losanna.",
+   "en": "The Marché de Rumine on Place de la Riponne in Lausanne is a city-run non-food market: brocante stalls with secondhand goods, alongside some new items. The stalls are on the Riponne four days a week; this is the Wednesday market. Organised by the City of Lausanne."
+  }
+ },
+ {
+  "slug": "marche-rumine-lausanne-samedi",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "it": 61.5,
+   "fr": 44.2,
+   "de": 44.1,
+   "en": 40.5
+  },
+  "name": "Marché de Rumine",
+  "kind": "brocante",
+  "town": "Lausanne",
+  "venue": "Place de la Riponne",
+  "address_line": "Place de la Riponne, 1005 Lausanne",
+  "postal_code": "1005",
+  "rhythm_de": "Jeden Samstag seit März 2026",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   },
+   {
+    "date": "2026-10-24",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   },
+   {
+    "date": "2026-10-31",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   },
+   {
+    "date": "2026-11-07",
+    "start": "08:30:00",
+    "end": "13:00:00"
+   }
+  ],
+  "website_url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_pages": [
+   "https://swiss-markt.ch/fr/lausanne/marche-rumine",
+   "https://www.lausanne.ch/dam/jcr:b15a27e4-8dee-4004-bc5e-175d80445157/Doc Marché Rumine.pdf"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein Markt der Stadt ohne Lebensmittel, mit neuer und gebrauchter Ware. Seit März 2026 bringt die Samstagsausgabe wieder Brocante-Stände auf die zentrale Riponne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire où se côtoient articles neufs et de seconde main. Depuis mars 2026, l'édition du samedi a ramené des stands de brocante sur cette place du centre-ville.",
+   "it": "Il Marché de Rumine, in Place de la Riponne a Losanna, è un mercato comunale non alimentare con articoli nuovi e di seconda mano. Da marzo 2026 l'edizione del sabato ha riportato le bancarelle di brocante nella piazza centrale della Riponne.",
+   "en": "The Marche de Rumine on Place de la Riponne in Lausanne is a city-run non-food market combining new and second-hand goods. Since March 2026, the Saturday edition has brought brocante stalls back to the central Riponne square."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein städtischer Markt ohne Lebensmittel, mit neuer und gebrauchter Ware. Jeden Samstag stehen dort auch Brocante-Stände, mitten auf dem zentralen Platz. Veranstalterin ist die Stadt Lausanne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire qui mêle articles neufs et de seconde main. Chaque samedi, des stands de brocante s’y installent, en plein centre. Il est organisé par la Ville de Lausanne.",
+   "it": "Il Marché de Rumine, in place de la Riponne a Losanna, è un mercato comunale non alimentare con articoli nuovi e di seconda mano. Ogni sabato ci sono anche bancarelle di brocante, nella piazza centrale. Lo organizza la Città di Losanna.",
+   "en": "The Marché de Rumine on Place de la Riponne in Lausanne is a city-run non-food market with both new and second-hand goods. Every Saturday it includes brocante stalls on the central square. It is organised by the City of Lausanne."
+  }
+ }
+]

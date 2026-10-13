@@ -1,0 +1,1484 @@
+[
+ {
+  "slug": "flohmarkt-burstelpark-frauenfeld",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 81.4,
+   "fr": 75,
+   "en": 70.2,
+   "it": 70
+  },
+  "name": "Flohmarkt im Burstelpark",
+  "kind": "flohmarkt",
+  "town": "Frauenfeld",
+  "venue": "Burstelpark",
+  "address_line": "Thundorferstrasse 29",
+  "postal_code": "8500",
+  "rhythm_de": "Jeweils am 2. Samstag im Monat, April bis Oktober",
+  "season_months": [
+   4,
+   10
+  ],
+  "next_dates": [],
+  "website_url": "https://www.frauenfeld.ch/kultur-freizeit/freizeit/maerkte/flohmarkt.html/635",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt im Burstelpark ist der Stadtflohmarkt von Frauenfeld: von April bis Oktober jeweils am zweiten Samstag im Monat, 8 bis 16 Uhr, im Park an der Thundorferstrasse gleich hinter dem Alterszentrum. Kostenlos parken kannst du beim Rüegerholz; vom Bahnhof sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces du Burstelpark est celui de la ville de Frauenfeld : d'avril à octobre, le deuxième samedi du mois, de 8 h à 16 h, dans le parc de la Thundorferstrasse, derrière le centre pour personnes âgées. Parking gratuit au Rüegerholz ; dix minutes à pied depuis la gare.",
+   "it": "Il mercatino delle pulci del Burstelpark è quello della città di Frauenfeld: da aprile a ottobre, il secondo sabato del mese, dalle 8 alle 16, nel parco di Thundorferstrasse dietro il centro anziani. Parcheggio gratuito al Rüegerholz; dieci minuti a piedi dalla stazione.",
+   "en": "The Burstelpark flea market is Frauenfeld's town flea market: from April to October on the second Saturday of the month, 8 am to 4 pm, in the park on Thundorferstrasse just behind the old people's centre. Free parking at the Rüegerholz; ten minutes on foot from the station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt im Burstelpark ist der Stadtflohmarkt von Frauenfeld: von April bis Oktober jeweils am zweiten Samstag im Monat, von 8 bis 16 Uhr, im Park an der Thundorferstrasse gleich hinter dem Alterszentrum. Die Stadt organisiert ihn. Gratis parkieren kannst du beim Rüegerholz; vom Bahnhof sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces du Burstelpark est celui de la ville de Frauenfeld : d’avril à octobre, le deuxième samedi du mois, de 8 h à 16 h, dans le parc de la Thundorferstrasse, juste derrière le centre pour personnes âgées. C’est la ville qui l’organise. Parking gratuit au Rüegerholz ; la gare est à dix minutes à pied.",
+   "it": "Il mercatino delle pulci del Burstelpark è quello della città di Frauenfeld: da aprile a ottobre, il secondo sabato del mese, dalle 8 alle 16, nel parco di Thundorferstrasse subito dietro il centro per anziani. Lo organizza la città. Parcheggio gratuito al Rüegerholz; la stazione è a dieci minuti a piedi.",
+   "en": "The Burstelpark flea market is Frauenfeld’s town flea market: from April to October on the second Saturday of the month, 8 am to 4 pm, in the park on Thundorferstrasse just behind the retirement centre. The town runs it. Free parking at the Rüegerholz; the station is ten minutes away on foot."
+  }
+ },
+ {
+  "slug": "flohmarkt-dorfplatz-horgen",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 53.7,
+   "it": 36.7,
+   "fr": 31.3
+  },
+  "name": "Flohmi Dorfplatz Horgen",
+  "kind": "flohmarkt",
+  "town": "Horgen",
+  "venue": "Dorfplatz (im und ums Dorfplatz-Zelt)",
+  "address_line": "Dorfplatz 1",
+  "postal_code": "8810",
+  "rhythm_de": "Fünf Samstage pro Jahr, Mai bis Oktober",
+  "season_months": [
+   5,
+   10
+  ],
+  "next_dates": [],
+  "website_url": "https://www.horgen.ch/leben-in-horgen/freizeit/veranstaltungen/veranstaltung-details.html/100/event/3228",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "both",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmi auf dem Dorfplatz Horgen findet fünfmal im Jahr im und ums Dorfplatz-Zelt statt, samstags von 9 bis 16 Uhr, organisiert vom Verein Dorfchärn. Kunst, Secondhand, Spielzeug und Kleidung. Kaffee, Kuchen und Grillwurst gibt es vor Ort. Das Parkhaus unter dem Platz hat einen Lift direkt nach oben; vom Bahnhof Horgen sind es fünf Minuten.",
+   "fr": "Le marché aux puces de la Dorfplatz de Horgen a lieu cinq fois par an sous la tente de la place et tout autour, le samedi de 9 h à 16 h, organisé par l'association Dorfchärn. Art, seconde main, jouets et vêtements. Café, gâteaux et saucisses grillées sur place. Un ascenseur monte directement du parking souterrain à la place ; cinq minutes depuis la gare de Horgen.",
+   "it": "Il mercatino delle pulci sulla Dorfplatz di Horgen si tiene cinque volte l'anno dentro e attorno al tendone della piazza, il sabato dalle 9 alle 16, organizzato dall'associazione Dorfchärn. Arte, usato, giocattoli e vestiti. Caffè, torte e salsicce alla griglia sul posto. Il parcheggio sotto la piazza ha un ascensore che porta direttamente in superficie; cinque minuti dalla stazione di Horgen.",
+   "en": "The flea market on Horgen's Dorfplatz takes place five times a year in and around the Dorfplatz tent, Saturdays 9 am to 4 pm, organised by the Dorfchärn association. Art, secondhand, toys and clothes. Coffee, cake and grilled sausages on site. The car park under the square has a lift straight up; five minutes from Horgen station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmi auf dem Dorfplatz Horgen findet fünfmal im Jahr statt, an Samstagen zwischen Mai und Oktober, jeweils von 9 bis 16 Uhr im und ums Dorfplatz-Zelt. Organisiert wird er vom Verein Dorfchärn. Angeboten werden Kunst, Secondhand, Spielzeug und Kleider; Kaffee, Kuchen und Grillwurst gibt es vor Ort. Vom Bahnhof Horgen sind es fünf Minuten zu Fuss, und das Parkhaus unter dem Platz hat einen Lift direkt nach oben.",
+   "fr": "Le Flohmi de la Dorfplatz de Horgen a lieu cinq samedis par an, entre mai et octobre, de 9 h à 16 h, sous la tente de la place et tout autour. C’est l’association Dorfchärn qui l’organise. On y trouve de l’art, de la seconde main, des jouets et des vêtements ; café, gâteaux et saucisses grillées sur place. La gare de Horgen est à cinq minutes à pied, et le parking sous la place a un ascenseur qui débouche directement dessus.",
+   "it": "Il Flohmi sulla Dorfplatz di Horgen si tiene cinque sabati l’anno tra maggio e ottobre, dalle 9 alle 16, dentro e attorno al tendone della piazza. Lo organizza l’associazione Dorfchärn. Si trovano arte, seconda mano, giocattoli e vestiti; sul posto caffè, torte e salsicce alla griglia. La stazione di Horgen è a cinque minuti a piedi e il parcheggio sotto la piazza ha un ascensore che porta direttamente in superficie.",
+   "en": "Horgen’s Dorfplatz flea market runs on five Saturdays a year between May and October, 9 am to 4 pm, in and around the tent on the square. It is organised by the Dorfchärn association. Expect art, secondhand goods, toys and clothes, with coffee, cake and grilled sausages on site. Horgen station is five minutes’ walk away, and the car park beneath the square has a lift straight up."
+  }
+ },
+ {
+  "slug": "flohmarkt-dreispitzpark-kreuzlingen",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 73.4,
+   "de": 58.2,
+   "it": 57.4,
+   "en": 51.6
+  },
+  "name": "Flohmarkt im Dreispitzpark",
+  "kind": "flohmarkt",
+  "town": "Kreuzlingen",
+  "venue": "Dreispitzpark",
+  "address_line": "Hauptstrasse / Pestalozzistrasse",
+  "postal_code": "8280",
+  "rhythm_de": "Jeden ersten Samstag im Monat, März bis November (ausser August)",
+  "season_months": [
+   3,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-07",
+    "start": "06:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.flohmarkt-dreispitz.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt im Dreispitzpark findet von März bis November jeden ersten Samstag im Monat statt – im August nicht –, unter den Platanen im Park zwischen Hauptstrasse und Pestalozzistrasse in Kreuzlingen, mit bis zu 100 Ausstellenden. Von 6 bis 16 Uhr; die Frühaufsteher sind ab dem Morgengrauen da. Grosser Parkplatz Bärenplatz direkt nebenan, vom Bahnhof Kreuzlingen zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces du Dreispitzpark a lieu le premier samedi du mois de mars à novembre – sauf en août – sous les platanes du parc entre la Hauptstrasse et la Pestalozzistrasse à Kreuzlingen, avec jusqu'à 100 exposants. De 6 h à 16 h ; les lève-tôt sont là dès l'aube. Grand parking Bärenplatz juste à côté ; dix minutes à pied depuis la gare de Kreuzlingen.",
+   "it": "Il mercatino delle pulci del Dreispitzpark si tiene il primo sabato del mese da marzo a novembre – non in agosto – sotto i platani del parco tra Hauptstrasse e Pestalozzistrasse a Kreuzlingen, con fino a 100 espositori. Dalle 6 alle 16; i mattinieri arrivano all'alba. Grande parcheggio Bärenplatz accanto; dieci minuti a piedi dalla stazione di Kreuzlingen.",
+   "en": "The Dreispitzpark flea market takes place on the first Saturday of the month from March to November – not in August – under the plane trees in the park between Hauptstrasse and Pestalozzistrasse in Kreuzlingen, with up to 100 exhibitors. From 6 am to 4 pm; the early birds are there at dawn. Large Bärenplatz car park right next door; ten minutes on foot from Kreuzlingen station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt im Dreispitzpark findet von März bis November jeden ersten Samstag im Monat statt, ausser im August, unter den Platanen im Park zwischen Hauptstrasse und Pestalozzistrasse in Kreuzlingen. Bis zu 100 Ausstellende, von 6 bis 16 Uhr; die Frühaufsteher sind ab dem Morgengrauen da. Organisiert von Ela Mändli und Susi Meienberger. Der grosse Parkplatz Bärenplatz liegt direkt nebenan, vom Bahnhof Kreuzlingen sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces du Dreispitzpark a lieu le premier samedi du mois de mars à novembre, sauf en août, sous les platanes du parc entre la Hauptstrasse et la Pestalozzistrasse à Kreuzlingen. Jusqu’à 100 exposants, de 6 h à 16 h ; les lève-tôt sont là dès l’aube. Organisé par Ela Mändli et Susi Meienberger. Le grand parking Bärenplatz est juste à côté ; la gare de Kreuzlingen est à dix minutes à pied.",
+   "it": "Il mercatino delle pulci del Dreispitzpark si tiene il primo sabato del mese da marzo a novembre, escluso agosto, sotto i platani del parco tra Hauptstrasse e Pestalozzistrasse a Kreuzlingen. Fino a 100 espositori, dalle 6 alle 16; i più mattinieri arrivano all’alba. Organizzato da Ela Mändli e Susi Meienberger. Il grande parcheggio Bärenplatz è proprio accanto; la stazione di Kreuzlingen è a dieci minuti a piedi.",
+   "en": "The Dreispitzpark flea market takes place on the first Saturday of the month from March to November, except August, under the plane trees in the park between Hauptstrasse and Pestalozzistrasse in Kreuzlingen. Up to 100 exhibitors, 6 am to 4 pm; the early birds arrive at dawn. Organised by Ela Mändli and Susi Meienberger. The large Bärenplatz car park is right next door; Kreuzlingen station is ten minutes away on foot."
+  }
+ },
+ {
+  "slug": "flohmarkt-emmen",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 62.7,
+   "de": 60,
+   "fr": 56.3,
+   "it": 52.7
+  },
+  "name": "Flohmarkt Emmen",
+  "kind": "flohmarkt",
+  "town": "Emmenbrücke",
+  "venue": "Sonnenplatz",
+  "address_line": "Sonnenplatz",
+  "postal_code": "6020",
+  "rhythm_de": "Einmal im Monat an ausgewählten Samstagen, April bis Oktober",
+  "season_months": [
+   4,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-31",
+    "start": "08:00:00",
+    "end": "17:00:00"
+   }
+  ],
+  "website_url": "https://www.emmen.ch/freizeit/3140",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt Emmen findet von April bis Oktober einmal im Monat auf dem Sonnenplatz in Emmenbrücke statt, an ausgewählten Samstagen von 8 bis 17 Uhr – bei jedem Wetter. Schönes, Kitschiges, Kurioses, Rares und Brauchbares; der Juli-Termin ist ein Kleiderflohmarkt. Der Sonnenplatz liegt beim Einkaufszentrum, mit dem Bus ab Luzern bis Emmenbrücke, Sonnenplatz.",
+   "fr": "Le marché aux puces d'Emmen a lieu une fois par mois d'avril à octobre sur la Sonnenplatz d'Emmenbrücke, certains samedis de 8 h à 17 h – par tous les temps. Du beau, du kitsch, du curieux, du rare et de l'utile ; la date de juillet est un vide-dressing. La Sonnenplatz est près du centre commercial ; bus depuis Lucerne jusqu'à Emmenbrücke, Sonnenplatz.",
+   "it": "Il mercatino delle pulci di Emmen si tiene una volta al mese da aprile a ottobre sulla Sonnenplatz di Emmenbrücke, in alcuni sabati, dalle 8 alle 17 – con qualsiasi tempo. Cose belle, kitsch, curiose, rare e utili; a luglio è un mercatino di vestiti. La Sonnenplatz è vicino al centro commerciale; bus da Lucerna fino a Emmenbrücke, Sonnenplatz.",
+   "en": "The Emmen flea market takes place once a month from April to October on the Sonnenplatz in Emmenbrücke, on selected Saturdays from 8 am to 5 pm – in any weather. The nice, the kitsch, the curious, the rare and the useful; the July date is a clothes flea market. The Sonnenplatz is by the shopping centre; bus from Lucerne to Emmenbrücke, Sonnenplatz."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt Emmen findet von April bis Oktober einmal im Monat an einem Samstag auf dem Sonnenplatz in Emmenbrücke statt, von 8 bis 17 Uhr und bei jedem Wetter. Schönes, Kitschiges, Kurioses, Rares und Brauchbares; der Termin im Juli ist ein Kleiderflohmarkt. Organisiert von Alfred Leuenberger. Der Sonnenplatz liegt beim Einkaufszentrum, mit dem Bus ab Luzern bis Emmenbrücke, Sonnenplatz.",
+   "fr": "Le marché aux puces d’Emmen a lieu une fois par mois d’avril à octobre, un samedi, sur la Sonnenplatz d’Emmenbrücke, de 8 h à 17 h et par tous les temps. Du beau, du kitsch, du curieux, du rare et de l’utile ; en juillet, c’est un marché aux vêtements. Organisé par Alfred Leuenberger. La Sonnenplatz est à côté du centre commercial ; bus depuis Lucerne jusqu’à l’arrêt Emmenbrücke, Sonnenplatz.",
+   "it": "Il mercatino delle pulci di Emmen si tiene una volta al mese da aprile a ottobre, di sabato, sulla Sonnenplatz di Emmenbrücke, dalle 8 alle 17 e con qualsiasi tempo. Cose belle, kitsch, curiose, rare e utili; a luglio è un mercatino di vestiti. Organizzato da Alfred Leuenberger. La Sonnenplatz è accanto al centro commerciale; da Lucerna in bus fino alla fermata Emmenbrücke, Sonnenplatz.",
+   "en": "The Emmen flea market takes place once a month from April to October, on a Saturday, on the Sonnenplatz in Emmenbrücke, from 8 am to 5 pm in any weather. The nice, the kitsch, the curious, the rare and the useful; the July market is a clothes flea market. Organised by Alfred Leuenberger. The Sonnenplatz is next to the shopping centre; take the bus from Lucerne to Emmenbrücke, Sonnenplatz."
+  }
+ },
+ {
+  "slug": "flohmarkt-flugplatz-buttwil",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 65.3,
+   "de": 53.3,
+   "fr": 50.9,
+   "it": 47.8
+  },
+  "name": "Flohmarkt Flugplatz Buttwil",
+  "kind": "flohmarkt",
+  "town": "Buttwil",
+  "venue": "Flugplatz Buttwil, beim Restaurant The Hangar",
+  "address_line": "Flugplatzstrasse",
+  "postal_code": "5632",
+  "rhythm_de": "Jeden 3. Sonntag im Monat, März bis Oktober",
+  "season_months": [
+   3,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-18",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.hangar-buttwil.ch/event/flohmarkt-2026/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt auf dem Flugplatz Buttwil im Freiamt findet von März bis Oktober jeden dritten Sonntag im Monat statt, 9 bis 16 Uhr, direkt neben dem Restaurant The Hangar – das ist an Markttagen offen. Es verkaufen Privatleute. Mit dem Auto ab Muri AG zehn Minuten; Parkplätze beim Flugplatz.",
+   "fr": "Le marché aux puces de l'aérodrome de Buttwil, dans le Freiamt argovien, a lieu de mars à octobre le troisième dimanche du mois, de 9 h à 16 h, juste à côté du restaurant The Hangar – ouvert les jours de marché. Les stands sont tenus par des particuliers. Dix minutes en voiture depuis Muri AG ; parking à l'aérodrome.",
+   "it": "Il mercatino delle pulci all'aerodromo di Buttwil, nel Freiamt argoviese, si tiene da marzo a ottobre la terza domenica del mese, dalle 9 alle 16, accanto al ristorante The Hangar – aperto nei giorni di mercato. Vendono i privati. Dieci minuti in auto da Muri AG; parcheggio all'aerodromo.",
+   "en": "The flea market at Buttwil airfield in the Freiamt takes place on the third Sunday of the month from March to October, 9 am to 4 pm, right next to The Hangar restaurant – which is open on market days. Private sellers. Ten minutes by car from Muri AG; parking at the airfield."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt auf dem Flugplatz Buttwil im Freiamt findet von März bis Oktober jeden dritten Sonntag im Monat statt, von 9 bis 16 Uhr. Private verkaufen direkt neben dem Restaurant The Hangar, das an Markttagen geöffnet ist. Mit dem Auto sind es ab Muri AG zehn Minuten; Parkplätze gibt es beim Flugplatz.",
+   "fr": "Le marché aux puces de l’aérodrome de Buttwil, dans le Freiamt argovien, a lieu le troisième dimanche de chaque mois de mars à octobre, de 9 h à 16 h. Des particuliers s’installent juste à côté du restaurant The Hangar, ouvert les jours de marché. À dix minutes en voiture de Muri AG ; parking à l’aérodrome.",
+   "it": "Il mercatino delle pulci dell’aerodromo di Buttwil, nel Freiamt argoviese, si tiene la terza domenica di ogni mese da marzo a ottobre, dalle 9 alle 16. I privati espongono accanto al ristorante The Hangar, aperto nei giorni di mercato. Dieci minuti in auto da Muri AG; parcheggio all’aerodromo.",
+   "en": "The flea market at Buttwil airfield in the Freiamt runs on the third Sunday of every month from March to October, 9 am to 4 pm. Private sellers set up right next to The Hangar restaurant, which is open on market days. Ten minutes by car from Muri AG; parking at the airfield."
+  }
+ },
+ {
+  "slug": "flohmarkt-gallusplatz-stgallen",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 42.9,
+   "fr": 31.8
+  },
+  "name": "Flohmarkt Gallusplatz",
+  "kind": "flohmarkt",
+  "town": "St. Gallen",
+  "venue": "Gallusplatz",
+  "address_line": "Gallusplatz, 9000 St. Gallen",
+  "postal_code": "9000",
+  "rhythm_de": "Jeden ersten Samstag von April bis November",
+  "season_months": [
+   4,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-07",
+    "start": "07:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-04-03",
+    "start": "07:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-05-01",
+    "start": "07:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-06-05",
+    "start": "07:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://qvgallusplatz.ch/allgemeine-informationen/",
+  "source_pages": [
+   "https://m.stadt.sg.ch/index.php?apid=16346254&jsr=1",
+   "https://klosterviertel.ch/veranstaltungen-und-maerkte/",
+   "https://st.gallen-bodensee.ch/de/map/poi/flohmarkt-gallusplatz-935884b8-a078-46a5-a3ad-ab5515a66284.html"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Jeden ersten Samstag von April bis November findet auf dem historischen Gallusplatz inmitten der St. Galler Altstadt ein Flohmarkt statt. Rund 80 Stände mit Antiquitäten, Raritäten und Vintage-Mode vor der Kulisse von Fachwerkhäusern und dem alten Brunnen.",
+   "fr": "Un marché aux puces sur la Gallusplatz historique, au cœur de la vieille ville de Saint-Gall, le premier samedi de chaque mois d'avril à novembre. Environ 80 stands d'antiquités, de raretés et de mode vintage, devant les maisons à colombages et la vieille fontaine.",
+   "it": "Un mercatino sulla storica Gallusplatz, nel cuore del centro storico di San Gallo, il primo sabato di ogni mese da aprile a novembre. Circa 80 bancarelle di antiquariato, rarità e moda vintage, davanti alle case a graticcio e alla vecchia fontana.",
+   "en": "A flea market on the historic Gallusplatz in the heart of St. Gallen's old town, on the first Saturday of every month from April to November. Around 80 stalls offer antiques, rarities and vintage fashion against a backdrop of half-timbered buildings and the old fountain."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Von April bis November findet jeden ersten Samstag im Monat auf dem Gallusplatz in der St. Galler Altstadt ein Flohmarkt statt. Rund 80 Stände mit Antiquitäten, Raritäten und Vintage-Mode, rundum Fachwerkhäuser und der alte Brunnen. Organisiert vom Quartierverein Gallusplatz, Eintritt frei.",
+   "fr": "D’avril à novembre, le premier samedi du mois, un marché aux puces occupe la Gallusplatz, dans la vieille ville de Saint-Gall. Environ 80 stands d’antiquités, de raretés et de mode vintage, entre maisons à colombages et vieille fontaine. Organisé par l’association de quartier Gallusplatz ; entrée libre.",
+   "it": "Da aprile a novembre, il primo sabato del mese, un mercatino delle pulci occupa la Gallusplatz nel centro storico di San Gallo. Circa 80 bancarelle di antiquariato, rarità e moda vintage, tra case a graticcio e la vecchia fontana. Organizzato dall’associazione di quartiere Gallusplatz; ingresso libero.",
+   "en": "From April to November, a flea market fills the Gallusplatz in St. Gallen’s old town on the first Saturday of every month. Around 80 stalls sell antiques, rarities and vintage fashion, surrounded by half-timbered houses and the old fountain. Organised by the Gallusplatz neighbourhood association; free entry."
+  }
+ },
+ {
+  "slug": "flohmarkt-glarus",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 37.8,
+   "it": 32.6,
+   "fr": 31.4,
+   "de": 30.8
+  },
+  "name": "Flohmarkt Glarus",
+  "kind": "flohmarkt",
+  "town": "Glarus",
+  "venue": "Hauptstrasse Glarus",
+  "address_line": "Hauptstrasse",
+  "postal_code": "8750",
+  "rhythm_de": "Jährlich, am Samstag vor der Landsgemeinde (Anfang Mai)",
+  "season_months": [
+   5,
+   5
+  ],
+  "next_dates": [
+   {
+    "date": "2027-05-01",
+    "start": null,
+    "end": null
+   }
+  ],
+  "website_url": "https://glarus.swiss/service-2/glarus-service/maerkte.html",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt Glarus findet jedes Jahr am Samstag vor der Landsgemeinde entlang der Hauptstrasse statt – mit rund 300 Ständen nach eigenen Angaben der grösste Flohmarkt der Ostschweiz. Organisiert von Glarus Service im Auftrag der Gemeinde. Die Hauptstrasse beginnt gleich beim Bahnhof Glarus.",
+   "fr": "Le marché aux puces de Glaris a lieu chaque année le samedi précédant la Landsgemeinde, le long de la Hauptstrasse – avec quelque 300 stands, le plus grand marché aux puces de Suisse orientale selon les organisateurs. Organisé par Glarus Service pour le compte de la commune. La Hauptstrasse commence juste à la gare de Glaris.",
+   "it": "Il mercatino delle pulci di Glarona si tiene ogni anno il sabato prima della Landsgemeinde lungo la Hauptstrasse – con circa 300 bancarelle, a detta degli organizzatori il più grande mercatino della Svizzera orientale. Organizzato da Glarus Service per conto del comune. La Hauptstrasse inizia proprio alla stazione di Glarona.",
+   "en": "The Glarus flea market takes place every year on the Saturday before the Landsgemeinde along the Hauptstrasse – with around 300 stands, by its own account the largest flea market in eastern Switzerland. Organised by Glarus Service on behalf of the municipality. The Hauptstrasse starts right at Glarus station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt Glarus findet jedes Jahr am Samstag vor der Landsgemeinde statt, also Anfang Mai, mitten in der Stadt zwischen Spielhof und Gemeindehausplatz. Mit über 150 Ständen gehört er zu den grössten Märkten der Region. Organisiert wird er von Glarus Service im Auftrag der Gemeinde Glarus. Der Markt liegt wenige Minuten vom Bahnhof.",
+   "fr": "Le marché aux puces de Glaris a lieu chaque année le samedi qui précède la Landsgemeinde, début mai, au centre-ville entre le Spielhof et la Gemeindehausplatz. Avec plus de 150 stands, c’est l’un des plus grands marchés de la région. Il est organisé par Glarus Service pour le compte de la commune. Le marché est à quelques minutes de la gare.",
+   "it": "Il mercatino delle pulci di Glarona si tiene ogni anno il sabato prima della Landsgemeinde, all’inizio di maggio, in centro tra lo Spielhof e la Gemeindehausplatz. Con oltre 150 bancarelle è uno dei mercati più grandi della regione. Lo organizza Glarus Service per conto del comune. Il mercato è a pochi minuti dalla stazione.",
+   "en": "The Glarus flea market takes place every year on the Saturday before the Landsgemeinde, the open-air cantonal assembly, in early May, in the town centre between Spielhof and Gemeindehausplatz. With more than 150 stands it is one of the largest markets in the region. It is run by Glarus Service on behalf of the municipality. The market is a few minutes from the station."
+  }
+ },
+ {
+  "slug": "flohmarkt-grosse-halle-bern",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 34.4,
+   "fr": 33.3
+  },
+  "name": "Flohmarkt Grosse Halle",
+  "kind": "hallenflohmarkt",
+  "town": "Bern",
+  "venue": "Schützenweg 1",
+  "address_line": "Schützenmattstrasse 7, 3012 Bern",
+  "postal_code": "3012",
+  "rhythm_de": "1. Sonntag des Monats, ausser Januar und August",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-11-01",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-12-06",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-02-07",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-03-07",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://flohmarkt.grossehalle.ch",
+  "source_pages": [
+   "https://www.grossehalle.ch/programm/flohmarkt",
+   "https://farm.myswitzerland.com/de/veranstaltungen/flohmarkt-grosse-halle-bern_Ad677TL"
+  ],
+  "facts_we_hold": {
+   "setting": "both",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Jeden ersten Sonntag im Monat findet in und um die Grosse Halle (Schützenmattstrasse 7) ein grosser Flohmarkt statt – direkt beim Hauptbahnhof. Möbel, Kleidung, Bücher, Vinyl, Werkzeug und Kuriositäten aller Art. Ausser im Januar und August.",
+   "fr": "Le premier dimanche de chaque mois, un grand marché aux puces occupe la Grosse Halle et ses abords, Schützenmattstrasse 7, juste à côté de la gare. Meubles, vêtements, livres, vinyles, outils et curiosités en tout genre. Sauf en janvier et en août.",
+   "it": "La prima domenica di ogni mese un grande mercatino occupa la Grosse Halle e i dintorni, Schützenmattstrasse 7, accanto alla stazione centrale. Mobili, vestiti, libri, vinili, attrezzi e curiosità di ogni tipo. Tranne a gennaio e ad agosto.",
+   "en": "On the first Sunday of every month a large flea market fills the Grosse Halle and its surroundings at Schützenmattstrasse 7, right by the main station. Furniture, clothes, books, vinyl, tools and curiosities of every kind. Except in January and August."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt in und um die Grosse Halle der Reitschule an der Schützenmattstrasse 7 gehört zu den grössten der Schweiz. Er findet jeden ersten Sonntag im Monat statt, ausser im Januar und August, gleich beim Hauptbahnhof Bern. Das Angebot ist riesig: Möbel, Kleider, Bücher, Vinyl, Werkzeug und Kuriositäten aller Art. Organisiert vom Verein Grosse Halle; der Eintritt ist frei.",
+   "fr": "Le marché aux puces dans et autour de la Grosse Halle de la Reitschule, Schützenmattstrasse 7, compte parmi les plus grands de Suisse. Il a lieu le premier dimanche de chaque mois, sauf en janvier et en août, tout près de la gare centrale de Berne. L’offre est immense : meubles, vêtements, livres, vinyles, outils et curiosités en tout genre. Organisé par le Verein Grosse Halle ; entrée libre.",
+   "it": "Il mercatino dentro e attorno alla Grosse Halle della Reitschule, Schützenmattstrasse 7, è tra i più grandi della Svizzera. Si tiene la prima domenica di ogni mese, tranne gennaio e agosto, a due passi dalla stazione centrale di Berna. L’offerta è enorme: mobili, vestiti, libri, vinili, attrezzi e curiosità di ogni genere. Organizza il Verein Grosse Halle; l’ingresso è libero.",
+   "en": "The flea market in and around the Grosse Halle of the Reitschule, Schützenmattstrasse 7, is one of the largest in Switzerland. It runs on the first Sunday of every month except January and August, right by Bern’s main station. The range is huge: furniture, clothes, books, vinyl, tools and curiosities of every kind. Organised by the Verein Grosse Halle; entry is free."
+  }
+ },
+ {
+  "slug": "flohmarkt-kanzlei-zuerich",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 61.2,
+   "de": 57.4,
+   "it": 54.7,
+   "fr": 45.3
+  },
+  "name": "Flohmarkt Kanzlei",
+  "kind": "flohmarkt",
+  "town": "Zürich",
+  "venue": "Kanzleiareal (Helvetiaplatz)",
+  "address_line": "Kanzleistrasse 56, 8004 Zürich",
+  "postal_code": "8004",
+  "rhythm_de": "Jeden Samstag, ganzjährig",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "07:20:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-10-24",
+    "start": "07:20:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-10-31",
+    "start": "07:20:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-11-07",
+    "start": "07:20:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.flohmarktkanzlei.ch",
+  "source_pages": [
+   "https://www.flohmarktkanzlei.ch/",
+   "https://www.zuerich.com/de/besuchen/shopping/kanzlei-flohmarkt"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 300,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Ganzjahres-Flohmarkt auf dem Kanzleiareal beim Helvetiaplatz — jeden Samstag, bei jedem Wetter. Bis zu 300 Verkäuferinnen und Verkäufer bieten alles von Vinyl und Vintage-Mode bis zu Werkzeug, Fahrrädern und Kleinmöbeln. Man weiss nie, was man findet. Früh kommen für die ersten Stücke, kurz vor Schluss für die tiefsten Preise.",
+   "fr": "Marché aux puces ouvert toute l'année, juste à côté de la Helvetiaplatz, dans le Kreis 4. Tous les samedis, qu'il pleuve ou qu'il fasse beau, jusqu'à 300 vendeurs s'installent sur la place avec des disques, des vêtements vintage, des vélos, des outils, des petits meubles, de l'électronique, des bijoux et tout ce qui a refait surface dans la semaine. Multiculturel, bruyant, bondé et imprévisible — moins un marché vintage trié sur le volet qu'un portrait de la ville. Venez tôt pour avoir le premier choix, tard pour les prix les plus bas.",
+   "it": "Mercatino delle pulci aperto tutto l'anno, proprio accanto a Helvetiaplatz nel Kreis 4. Ogni sabato, con il sole o con la pioggia, fino a 300 venditori si distribuiscono per la piazza con dischi, abbigliamento vintage, biciclette, attrezzi, piccoli mobili, elettronica, gioielli e qualsiasi altra cosa sia capitata quella settimana. Multiculturale, rumoroso, affollato e imprevedibile: più uno spaccato della città che un mercato vintage curato. Arriva presto per scegliere per primo, arriva tardi per i prezzi più bassi.",
+   "en": "A year-round flea market right beside Helvetiaplatz in Kreis 4. Every Saturday, rain or shine, up to 300 sellers spread across the square with records, vintage clothing, bicycles, tools, small furniture, electronics, jewellery and whatever else turned up that week. Multicultural, noisy, crowded and unpredictable — less a curated vintage market than a cross-section of the city. Come early for the first pick, come late for the lowest prices."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der grösste Ganzjahres-Flohmarkt der Schweiz — jeden Samstag, bei jedem Wetter, auf dem Kanzleiareal beim Helvetiaplatz. Bis zu 400 Verkäuferinnen und Verkäufer bieten alles von Vinyl und Vintage-Mode bis zu Werkzeug, Fahrrädern und Kleinmöbeln. Die Atmosphäre ist lebendig und unvorhersehbar — man weiss nie, was man findet. Früh kommen für die besten Stücke, kurz vor Schluss für die besten Preise.",
+   "fr": "Le plus grand marché aux puces de Zurich, ouvert toute l'année, juste à côté de la Helvetiaplatz dans le 4e arrondissement. Tous les samedis, qu'il pleuve ou qu'il fasse beau, jusqu'à 400 vendeurs s'installent sur la place avec des disques, des vêtements vintage, des vélos, des outils, des petits meubles, des appareils électroniques, des bijoux et tout ce qui a pu se présenter cette semaine-là. L'ambiance est urbaine et authentique : multiculturelle, bruyante, bondée et véritablement imprévisible, dans le bon sens du terme. Moins un marché vintage soigneusement sélectionné, plus un véritable échantillon vivant de la ville. Venez tôt pour les meilleures trouvailles, venez tard pour les meilleurs prix.",
+   "it": "Il più grande mercatino delle pulci di Zurigo, aperto tutto l'anno, proprio accanto a Helvetiaplatz nel Quartiere 4. Ogni sabato, con il sole o con la pioggia, fino a 400 venditori si distribuiscono per la piazza con dischi, abbigliamento vintage, biciclette, attrezzi, piccoli mobili, elettronica, gioielli e qualsiasi altra cosa sia capitata quella settimana. L'atmosfera è urbana e genuina: multiculturale, rumorosa, affollata e davvero imprevedibile nel senso migliore del termine. Più che un mercato vintage curato, è uno spaccato vivace della città. Arriva presto per i migliori affari, arriva tardi per i prezzi più convenienti.",
+   "en": "Zürich's biggest year-round flea market, right beside Helvetiaplatz in Kreis 4. Every Saturday, rain or shine, up to 400 sellers spread across the square with records, vintage clothing, bicycles, tools, small furniture, electronics, jewellery and whatever else turned up that week. The atmosphere is urban and unfiltered — multicultural, noisy, crowded, and genuinely unpredictable in the best way. Less curated vintage market, more living cross-section of the city. Come early for the best finds, come late for the best prices."
+  }
+ },
+ {
+  "slug": "flohmarkt-lenzburg-metzgplatz",
+  "task": "keep our German; write new en/fr from our German",
+  "locales_to_write": [
+   "en",
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "fr": 50,
+   "en": 30
+  },
+  "name": "Flohmarkt Lenzburg Metzgplatz",
+  "kind": "flohmarkt",
+  "town": "Lenzburg",
+  "venue": "Metzgplatz",
+  "address_line": "Metzgplatz, Lenzburg",
+  "postal_code": "5600",
+  "rhythm_de": "Dreimal jährlich.",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": null,
+    "end": null
+   }
+  ],
+  "website_url": "https://www.beim-kramer.ch/flohmi-lenzburg",
+  "source_pages": [
+   "https://eventfrog.ch/de/p/maerkte/second-hand/flohmarkt-lenzburg-7460610833657102818.html",
+   "https://www.beim-kramer.ch/kramereventkalender/2025/3/1/flohmarkt-aarau-9bnjd-56azf",
+   "https://beim-kramer.ch/flohmi-lenzburg"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Ein Flohmarkt unter freiem Himmel auf dem Metzgplatz in Lenzburg, dreimal im Jahr: Bücher, Kleidung, Deko und Spielsachen von Verkäuferinnen und Verkäufern aus der Gegend.",
+   "fr": "Marché aux puces en plein air sur la Metzgplatz de Lenzbourg, trois fois par an : livres, vêtements, objets de décoration et jouets de vendeurs de la région.",
+   "it": "Mercatino all'aperto sulla Metzgplatz di Lenzburg, tre volte all'anno: libri, vestiti, oggetti decorativi e giocattoli di venditori della zona.",
+   "en": "An open-air flea market on the Metzgplatz in Lenzburg, three times a year: books, clothes, decorative items and toys from local sellers."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt auf dem Metzgplatz findet dreimal im Jahr unter freiem Himmel im Städtchen Lenzburg statt. Angeboten wird allgemeines Secondhand: Bücher, Kleider, Deko und Spielsachen. Es ist ein Flohmarkt für die Leute aus Lenzburg und Umgebung, weniger ein Ziel für Sammler. Organisiert von Melanie Masché, der Eintritt ist frei.",
+   "fr": "Un marché aux puces en plein air sur la Metzgplatz de Lenzburg, petite ville historique près d’Aarau, trois fois par an. On y trouve de la seconde main de tous les jours : livres, vêtements, objets de décoration et jouets. C’est un marché local, fait pour les habitants de la région plus que pour les collectionneurs. Organisé par Melanie Masché ; entrée libre.",
+   "it": "Un mercatino delle pulci all’aperto sulla Metzgplatz di Lenzburg, cittadina storica vicino ad Aarau, tre volte l’anno. Si trova usato di ogni giorno: libri, abbigliamento, oggetti decorativi e giocattoli. È un mercato locale, pensato per chi vive in zona più che per i collezionisti. Organizzato da Melanie Masché; ingresso libero.",
+   "en": "An outdoor flea market on the Metzgplatz in Lenzburg, a small historic town near Aarau, held three times a year. The stalls carry general second-hand goods: books, clothing, decorative items and toys. It is a local, community market rather than a destination for collectors. Organised by Melanie Masché; free entry."
+  }
+ },
+ {
+  "slug": "flohmarkt-liestal",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 51.9,
+   "it": 50,
+   "de": 44.4,
+   "fr": 38.5
+  },
+  "name": "Flohmärt Liestal",
+  "kind": "flohmarkt",
+  "town": "Liestal",
+  "venue": "Zeughausplatz, Rosengasse, Kanonengasse",
+  "address_line": "Zeughausplatz",
+  "postal_code": "4410",
+  "rhythm_de": "Zweimal jährlich, ein Samstag im April und im September",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.flohmarkt-liestal.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 104,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmärt Liestal füllt zweimal im Jahr die Altstadt: Zeughausplatz, Rosengasse und Kanonengasse, an einem Samstag im April und einem im September, 8 bis 15 Uhr, rund 100 Stände. Organisiert wird er vom Verein IG Flohmarkt im Auftrag der Stadt; die Ware liegt auf Tischen, nicht am Boden. Vom Bahnhof Liestal sind es fünf Minuten zu Fuss.",
+   "fr": "Deux fois par an, le Flohmärt remplit la vieille ville de Liestal : Zeughausplatz, Rosengasse et Kanonengasse, un samedi d'avril et un de septembre, de 8 h à 15 h, une centaine de stands. Organisé par l'association IG Flohmarkt pour le compte de la ville. Cinq minutes à pied depuis la gare de Liestal.",
+   "it": "Due volte l'anno il Flohmärt riempie il centro storico di Liestal: Zeughausplatz, Rosengasse e Kanonengasse, un sabato di aprile e uno di settembre, dalle 8 alle 15, un centinaio di bancarelle. Organizzato dall'associazione IG Flohmarkt per conto della città; la merce sta sui tavoli, non per terra. Cinque minuti a piedi dalla stazione di Liestal.",
+   "en": "Twice a year the Flohmärt fills Liestal's old town: Zeughausplatz, Rosengasse and Kanonengasse, on a Saturday in April and one in September, 8 am to 3 pm, around 100 stands. Organised by the IG Flohmarkt association on behalf of the town; goods go on tables, not on the ground. Five minutes on foot from Liestal station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmärt Liestal füllt zweimal im Jahr das Stedtli, an einem Samstag im April und einem im September: rund 100 Stände auf dem Zeughausplatz, in der Rosengasse und der Kanonengasse, von 8 bis 15 Uhr. Die Ware liegt auf Tischen, nicht am Boden. Organisiert wird der Markt vom Verein IG Flohmarkt Liestal im Auftrag der Stadt. Vom Bahnhof Liestal sind es fünf Minuten zu Fuss.",
+   "fr": "Deux fois par an, le Flohmärt occupe la vieille ville de Liestal, un samedi d’avril et un samedi de septembre : une centaine de stands sur la Zeughausplatz, dans la Rosengasse et la Kanonengasse, de 8 h à 15 h. La marchandise est présentée sur des tables, pas au sol. Le marché est organisé par l’association IG Flohmarkt Liestal pour le compte de la ville. La gare de Liestal est à cinq minutes à pied.",
+   "it": "Due volte l’anno il Flohmärt riempie il centro storico di Liestal, un sabato di aprile e uno di settembre: un centinaio di bancarelle sulla Zeughausplatz, nella Rosengasse e nella Kanonengasse, dalle 8 alle 15. La merce sta sui tavoli, non per terra. Lo organizza l’associazione IG Flohmarkt Liestal per conto della città. Cinque minuti a piedi dalla stazione di Liestal.",
+   "en": "Twice a year the Flohmärt fills Liestal’s old town, on a Saturday in April and one in September: around 100 stands on Zeughausplatz, Rosengasse and Kanonengasse, 8 am to 3 pm. Goods are laid out on tables, not on the ground. It is organised by the IG Flohmarkt Liestal association on behalf of the town. Five minutes on foot from Liestal station."
+  }
+ },
+ {
+  "slug": "flohmarkt-malters",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 51.4,
+   "it": 47.8,
+   "en": 30
+  },
+  "name": "Flohmarkt Malters",
+  "kind": "flohmarkt",
+  "town": "Malters",
+  "venue": "Gemeindesaal Malters",
+  "address_line": "Bahnhofstrasse 10",
+  "postal_code": "6102",
+  "rhythm_de": "Jährlich, ein Samstag im Herbst, im Gemeindesaal",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-31",
+    "start": "10:00:00",
+    "end": "14:00:00"
+   }
+  ],
+  "website_url": "https://www.elterngruppe-malters.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt Malters ist der Herbstflohmarkt der Elterngruppe im Gemeindesaal an der Bahnhofstrasse – drinnen, auf zwei Etagen, mit einem kostenlosen Deckenflohmarkt für Kinder im Obergeschoss. Gebrauchtes und Selbstgemachtes; Hunde bleiben draussen. Der Saal liegt gleich beim Bahnhof Malters.",
+   "fr": "Le marché aux puces d'automne du groupe de parents de Malters se tient dans la salle communale, sur la Bahnhofstrasse – à l'intérieur, sur deux étages, avec un marché sur couverture pour les enfants à l'étage. Occasions et fait main ; chiens interdits. La salle est juste à côté de la gare de Malters.",
+   "it": "Il mercatino di Malters è il mercatino autunnale del gruppo genitori nella sala comunale in Bahnhofstrasse – al coperto, su due piani, con un mercatino \"sulla coperta\" gratuito per i bambini al piano superiore. Usato e fatto a mano; cani non ammessi. La sala è accanto alla stazione di Malters.",
+   "en": "The Malters flea market is the parents' group's autumn flea market in the Gemeindesaal on Bahnhofstrasse – indoors, on two floors, with a free blanket market for children upstairs. Used goods and handmade things; no dogs. The hall is right by Malters station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt Malters ist der Herbstflohmarkt der Elterngruppe Malters: einmal im Jahr an einem Samstag, von 10 bis 14 Uhr, im Gemeindesaal an der Bahnhofstrasse 10. Er findet drinnen auf zwei Etagen statt; im Obergeschoss verkaufen Kinder auf einem kostenlosen Decken-Flohmarkt. Gebrauchtes und Selbstgemachtes, Hunde bleiben draussen. Der Saal liegt gleich beim Bahnhof Malters.",
+   "fr": "Le marché aux puces de Malters est celui que le groupe de parents organise chaque automne : un samedi par an, de 10 h à 14 h, dans la salle communale, Bahnhofstrasse 10. Il se tient à l’intérieur, sur deux étages ; à l’étage, les enfants vendent sur un marché à la couverture gratuit. Occasion et fait main ; chiens non admis. La salle est juste à côté de la gare de Malters.",
+   "it": "Il mercatino di Malters è quello autunnale del gruppo genitori: una volta l’anno, di sabato, dalle 10 alle 14, nella sala comunale in Bahnhofstrasse 10. Si svolge al coperto su due piani; al piano superiore i bambini vendono in un mercatino sulla coperta gratuito. Usato e fatto a mano; cani non ammessi. La sala è accanto alla stazione di Malters.",
+   "en": "The Malters flea market is the local parents’ group’s autumn market: once a year on a Saturday, 10 am to 2 pm, in the Gemeindesaal at Bahnhofstrasse 10. It is indoors on two floors; upstairs, children sell at a free blanket market. Second-hand and handmade goods; no dogs. The hall is right by Malters station."
+  }
+ },
+ {
+  "slug": "flohmarkt-papieriplatz-cham",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 56.4,
+   "fr": 54.2,
+   "en": 49.1,
+   "it": 35.2
+  },
+  "name": "Flohmarkt auf dem Papieriplatz",
+  "kind": "flohmarkt",
+  "town": "Cham",
+  "venue": "Papieriplatz, Langhuus Kulturfabrik",
+  "address_line": "Fabrikstrasse 9",
+  "postal_code": "6330",
+  "rhythm_de": "Zweimal jährlich, sonntags",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://langhuus.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt auf dem Papieriplatz findet zweimal im Jahr vor dem Langhuus statt, der Kulturfabrik auf dem alten Papieri-Areal in Cham. Sonntags von 10 bis 15 Uhr verkaufen Privatpersonen auf Plätzen von rund neun Quadratmetern. Die Bar im Langhuus ist geöffnet, mit Getränken, Kuchen und einem einfachen Mittagessen. Vom Bahnhof Cham sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces de la Papieriplatz a lieu deux fois par an devant le Langhuus, le centre culturel de l'ancienne papeterie de Cham : le dimanche de 10 h à 15 h, des particuliers y vendent leurs affaires, et le bar du Langhuus sert boissons, gâteaux et un repas simple à midi. Dix minutes à pied depuis la gare de Cham.",
+   "it": "Il mercatino delle pulci sulla Papieriplatz si tiene due volte l'anno davanti al Langhuus, il centro culturale nell'ex cartiera di Cham: la domenica dalle 10 alle 15, con privati che vendono le proprie cose e il bar del Langhuus aperto con bevande, torte e un pranzo semplice. Dieci minuti a piedi dalla stazione di Cham.",
+   "en": "The flea market on the Papieriplatz takes place twice a year in front of the Langhuus, the cultural centre on the old paper-mill site in Cham: Sundays 10 am to 3 pm, private sellers on pitches of around nine square metres, the Langhuus bar open with drinks, cake and a simple lunch. Ten minutes on foot from Cham station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt auf dem Papieriplatz findet zweimal im Jahr an einem Sonntag vor dem Langhuus statt, der Kulturfabrik auf dem alten Papieri-Areal in Cham, jeweils von 10 bis 15 Uhr. Es verkaufen Private. Die Bar des Langhuus ist offen, mit Getränken, Kuchen und einem einfachen Mittagessen. Vom Bahnhof Cham sind es zehn Minuten zu Fuss.",
+   "fr": "Deux fois par an, un dimanche, le marché aux puces de la Papieriplatz s’installe devant le Langhuus, le centre culturel de l’ancienne papeterie de Cham, de 10 h à 15 h. Ce sont des particuliers qui vendent. Le bar du Langhuus est ouvert, avec boissons, gâteaux et un repas simple à midi. Dix minutes à pied depuis la gare de Cham.",
+   "it": "Due volte l’anno, di domenica, il mercatino delle pulci della Papieriplatz si tiene davanti al Langhuus, il centro culturale nell’ex cartiera di Cham, dalle 10 alle 15. A vendere sono privati. Il bar del Langhuus è aperto con bevande, torte e un pranzo semplice. Dalla stazione di Cham sono dieci minuti a piedi.",
+   "en": "The flea market on the Papieriplatz takes place twice a year on a Sunday in front of the Langhuus, the cultural centre on the old paper-mill site in Cham, from 10 am to 3 pm. The sellers are private individuals. The Langhuus bar is open, with drinks, cake and a simple lunch. Cham station is ten minutes away on foot."
+  }
+ },
+ {
+  "slug": "flohmarkt-paulusheim-luzern",
+  "task": "keep our German; write new en/fr/it from our German",
+  "locales_to_write": [
+   "en",
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "fr": 75,
+   "it": 40.9,
+   "en": 38.9
+  },
+  "name": "Flohmarkt Paulusheim (Kinderartikelboerse)",
+  "kind": "kinderflohmarkt",
+  "town": "Luzern",
+  "venue": "Paulusheim",
+  "address_line": "Paulusheim, Moosmattstrasse 4, 6005 Luzern",
+  "postal_code": "6005",
+  "rhythm_de": "Zweimal jährlich, meist März und September",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.kindex.ch/luzern/flohmarkt",
+  "source_pages": [
+   "https://www.littledreamers.ch/post/kinderartikelbörsen-in-und-um-luzern-frühling-2026",
+   "https://www.kindex.ch/",
+   "mailto:flohmarkt_paulusheim@gmx.ch"
+  ],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://www.kindex.ch/luzern/flohmarkt"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Flohmarkt für Kinderkleidung, Spielsachen sowie Baby- und Kinderartikel im Paulusheim in Luzern, zweimal im Jahr – im Frühling und im Herbst. Tische können einen Monat im Voraus per Mail reserviert werden. Für Besucherinnen und Besucher ist der Eintritt frei.",
+   "fr": "Marché aux puces de vêtements d'enfants, de jouets et d'articles pour bébés et enfants au Paulusheim de Lucerne, deux fois par an, au printemps et en automne. Entrée gratuite.",
+   "it": "Mercatino di vestiti, giocattoli e articoli per neonati e bambini al Paulusheim di Lucerna, due volte all'anno, in primavera e in autunno. Ingresso libero.",
+   "en": "A flea market for children's clothes, toys and baby and children's items at the Paulusheim in Lucerne, twice a year in spring and autumn. Tables can be reserved by email a month ahead. Free entry for visitors."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Flohmarkt für Kinderkleider, Spielsachen sowie Baby- und Kinderartikel im Paulusheim an der Moosmattstrasse 4 in Luzern. Er findet zweimal im Jahr statt, im Frühling und im Herbst, meist im März und im September. Organisiert vom Paulusheim; der Eintritt ist frei.",
+   "fr": "Un marché aux puces de vêtements d’enfants, de jouets et d’articles pour bébés et enfants, au Paulusheim, Moosmattstrasse 4, à Lucerne. Il a lieu deux fois par an, au printemps et en automne, le plus souvent en mars et en septembre. Organisé par le Paulusheim ; entrée libre.",
+   "it": "Un mercatino di vestiti per bambini, giocattoli e articoli per neonati e bambini al Paulusheim, Moosmattstrasse 4, a Lucerna. Si tiene due volte l’anno, in primavera e in autunno, di solito a marzo e a settembre. Organizza il Paulusheim; l’ingresso è libero.",
+   "en": "A flea market for children’s clothes, toys and baby and children’s equipment at the Paulusheim, Moosmattstrasse 4 in Lucerne. It is held twice a year, in spring and autumn, usually in March and September. Run by the Paulusheim; entry is free."
+  }
+ },
+ {
+  "slug": "flohmarkt-petersplatz-basel",
+  "task": "keep our German; write new en/fr/it from our German",
+  "locales_to_write": [
+   "en",
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "en": 50.8,
+   "fr": 49.4,
+   "it": 35.7
+  },
+  "name": "Flohmarkt Petersplatz",
+  "kind": "flohmarkt",
+  "town": "Basel",
+  "venue": "Petersplatz",
+  "address_line": "Petersplatz, 4051 Basel",
+  "postal_code": "4051",
+  "rhythm_de": "Jeden Samstag, ganzjährig (ausser Feiertage & Herbstmesse)",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-11-21",
+    "start": "07:30:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-11-28",
+    "start": "07:30:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-12-05",
+    "start": "07:30:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2026-12-12",
+    "start": "07:30:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-petersplatz",
+  "source_pages": [
+   "https://www.basel.com/de/veranstaltungskalender/flohmarkt-petersplatz-b0d6e0e2c4",
+   "https://messen-maerkte.showare.ch/login",
+   "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-petersplatz"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Wöchentlicher Flohmarkt neben der Peterskirche und der Universität, jeden Samstag. Rund 300 Verkäuferinnen und Verkäufer verteilen sich über den Platz: am einen Ende gute Antiquitäten und Vintage-Deko, am anderen Kinderkleidung und günstige Haushaltswaren. So gemischt ist auch das Publikum – Sammler, Studierende, Touristen, Stammgäste und Wiederverkäufer –, und Feilschen gehört dazu. Der Markt findet bei jedem Wetter statt, ausser an Feiertagen und in der Woche der Herbstmesse.",
+   "fr": "Marché aux puces hebdomadaire près de l'église Saint-Pierre et de l'université, tous les samedis. Environ 300 vendeurs s'étalent sur la place, des antiquités de qualité et objets de décoration vintage d'un côté aux vêtements pour enfants et articles ménagers bon marché de l'autre. La clientèle est tout aussi variée — collectionneurs, étudiants, touristes, habitués et revendeurs — et on y marchande. Par tous les temps, sauf les jours fériés et pendant la semaine de la Herbstmesse.",
+   "it": "Mercatino delle pulci settimanale nei pressi della Peterskirche e dell'università, ogni sabato. Circa 300 venditori si distribuiscono per la piazza, dall'antiquariato di qualità e dagli arredi vintage da un lato ai vestiti per bambini e agli articoli per la casa a buon mercato dall'altro. Il pubblico è altrettanto vario — collezionisti, studenti, turisti, habitué e rivenditori — e si contratta. Con qualsiasi tempo, tranne nei giorni festivi e nella settimana della Herbstmesse.",
+   "en": "A weekly flea market beside Peterskirche and the university, every Saturday. Around 300 sellers spread across the square, from quality antiques and vintage décor at one end to children's clothes and cheap household goods at the other. The crowd is as broad — collectors, students, tourists, regulars and resellers — and haggling is expected. It runs in all weathers except on public holidays and in Herbstmesse week."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der grösste wöchentliche Flohmarkt Basels findet jeden Samstag auf dem Petersplatz statt – mitten in der Altstadt von Grossbasel. Seit Jahrzehnten treffen sich hier Sammler, Schnäppchenjäger und Neugierige, um Möbel, Bücher, Kleider, Schmuck und Kuriositäten zu stöbern. Der Markt ist kostenlos zugänglich und wird vom Kanton Basel-Stadt organisiert. An gesetzlichen Feiertagen und während der Herbstmesse findet kein Markt statt.",
+   "fr": "Le plus grand et le plus ancien marché aux puces régulier de Bâle, qui se tient tous les samedis près de l'église Saint-Pierre et de l'université. Environ 300 vendeurs s'étalent sur la place, proposant une offre variée allant des antiquités de qualité et des objets de décoration vintage à une extrémité, aux vêtements pour enfants et aux articles ménagers bon marché à l'autre. La clientèle est tout aussi hétéroclite — collectionneurs, étudiants, touristes, habitués et revendeurs — et la tradition du marchandage y est bien vivante. L'un des rituels classiques du samedi dans la ville, qui a lieu par tous les temps, sauf les jours fériés et pendant la semaine de la Herbstmesse.",
+   "it": "Il mercatino delle pulci più grande e storico di Basilea, che si tiene ogni sabato nei pressi della Peterskirche e dell'università. Circa 300 venditori si distribuiscono per tutta la piazza, offrendo una vasta gamma di articoli che spazia da oggetti d'antiquariato di qualità e arredi vintage da un lato a vestiti per bambini e articoli per la casa a prezzi modici dall'altro. Il pubblico è altrettanto eterogeneo — collezionisti, studenti, turisti, habitué e rivenditori — e la cultura della contrattazione è una vera e propria tradizione. Uno dei classici rituali del sabato della città, che si svolge con qualsiasi tempo, tranne nei giorni festivi e durante la settimana della Herbstmesse.",
+   "en": "Basel's biggest and most established regular flea market, held every Saturday beside Peterskirche and the university. Around 300 sellers spread across the square with a genuine range from quality antiques and vintage décor at one end to children's clothes and cheap household goods at the other. The crowd is correspondingly broad — collectors, students, tourists, regulars and resellers — and the haggling culture is real. One of the city's classic Saturday rituals, running in all weathers except public holidays and Herbstmesse week."
+  }
+ },
+ {
+  "slug": "flohmarkt-presswerk-arbon",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 77.1,
+   "en": 72.7,
+   "it": 71.4,
+   "de": 57.6
+  },
+  "name": "Flohmarkt im Presswerk Arbon",
+  "kind": "flohmarkt",
+  "town": "Arbon",
+  "venue": "Kulturzentrum Presswerk",
+  "address_line": "Hamelstrasse",
+  "postal_code": "9320",
+  "rhythm_de": "Mehrmals jährlich, sonntags, in der Halle",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-11-08",
+    "start": "12:00:00",
+    "end": "17:00:00"
+   }
+  ],
+  "website_url": "https://presswerk-arbon.ch/events/flohmarkt-november-2026/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Im Kulturzentrum Presswerk in Arbon findet mehrmals im Jahr ein Hallen-Flohmarkt statt – drinnen, in der Eventhalle des alten Industriebaus. Rund ums Presswerk gibt es gebührenpflichtige Parkplätze; vom Bahnhof Arbon sind es zehn Minuten zu Fuss.",
+   "fr": "Le centre culturel Presswerk, à Arbon, accueille plusieurs fois par an un marché aux puces couvert, dans la halle de l'ancien bâtiment industriel. Parking payant autour du Presswerk ; dix minutes à pied depuis la gare d'Arbon.",
+   "it": "Il centro culturale Presswerk di Arbon ospita più volte l'anno un mercatino delle pulci al coperto, nella sala eventi del vecchio edificio industriale. Parcheggi a pagamento attorno al Presswerk; dieci minuti a piedi dalla stazione di Arbon.",
+   "en": "The Presswerk cultural centre in Arbon hosts an indoor flea market several times a year, in the event hall of the old industrial building. Paid parking around the Presswerk; ten minutes on foot from Arbon station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Im Kulturzentrum Presswerk an der Hamelstrasse in Arbon findet mehrmals im Jahr an einem Sonntag ein Hallenflohmarkt statt, in der Eventhalle des alten Industriebaus und damit auch bei Regen. Rund ums Presswerk gibt es gebührenpflichtige Parkplätze; vom Bahnhof Arbon sind es zehn Minuten zu Fuss.",
+   "fr": "Le centre culturel Presswerk, Hamelstrasse à Arbon, accueille plusieurs fois par an, un dimanche, un marché aux puces couvert dans la halle de l’ancien bâtiment industriel, donc même par temps de pluie. Parking payant autour du Presswerk ; dix minutes à pied depuis la gare d’Arbon.",
+   "it": "Il centro culturale Presswerk, in Hamelstrasse ad Arbon, ospita più volte l’anno, di domenica, un mercatino delle pulci al coperto nella sala eventi del vecchio edificio industriale, quindi anche con la pioggia. Parcheggi a pagamento attorno al Presswerk; dieci minuti a piedi dalla stazione di Arbon.",
+   "en": "The Presswerk cultural centre on Hamelstrasse in Arbon hosts an indoor flea market on a Sunday several times a year, in the event hall of the old industrial building, so it goes ahead in any weather. Paid parking around the Presswerk; ten minutes on foot from Arbon station."
+  }
+ },
+ {
+  "slug": "flohmarkt-rathausplatz-wettingen",
+  "task": "keep our German; write new fr from our German",
+  "locales_to_write": [
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "fr": 32
+  },
+  "name": "Flohmarkt Rathausplatz Wettingen",
+  "kind": "flohmarkt",
+  "town": "Wettingen",
+  "venue": "Rathausplatz",
+  "address_line": "Rathausplatz, Wettingen",
+  "postal_code": "5430",
+  "rhythm_de": "Monatlich von März bis November, 06:00-16:00 Uhr.",
+  "season_months": [
+   3,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-14",
+    "start": "06:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.wettingen.ch/dienstleistungen/6785",
+  "source_pages": [
+   "https://meine-flohmarkt-termine.de/ort/wettingen",
+   "https://www.wettingen.ch/dienstleistungen/6785"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Flohmarkt auf dem Rathausplatz in Wettingen, monatlich von März bis November: Haushaltswaren, Spielsachen, Kleidung und Bücher von Verkäuferinnen und Verkäufern aus der Gemeinde. Familiär und lokal.",
+   "fr": "Marché aux puces sur la Rathausplatz de Wettingen, chaque mois de mars à novembre : articles ménagers, jouets, vêtements et livres de vendeurs de la commune. Familial et local.",
+   "it": "Mercatino sulla Rathausplatz di Wettingen, ogni mese da marzo a novembre: articoli per la casa, giocattoli, vestiti e libri di venditori del comune. Familiare e locale.",
+   "en": "A flea market on the Rathausplatz in Wettingen, monthly from March to November: household goods, toys, clothes and books from local sellers. Family-oriented and local."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Flohmarkt auf dem Rathausplatz in Wettingen, von März bis November einmal im Monat, jeweils von 6 bis 16 Uhr. Private Verkäuferinnen und Verkäufer aus der Gegend bieten Haushaltsware, Spielzeug, Kleider, Bücher und Dinge für den Alltag an; das Publikum sind vor allem Familien aus der Umgebung. Organisiert von Marcel Schürpf.",
+   "fr": "Un marché aux puces sur la Rathausplatz de Wettingen, une fois par mois de mars à novembre, de 6 h à 16 h. Des vendeurs du coin y proposent articles ménagers, jouets, vêtements, livres et objets du quotidien, devant un public surtout familial et local. Organisé par Marcel Schürpf.",
+   "it": "Un mercatino delle pulci sulla Rathausplatz di Wettingen, una volta al mese da marzo a novembre, dalle 6 alle 16. Venditori della zona propongono articoli per la casa, giocattoli, vestiti, libri e oggetti di uso quotidiano, per un pubblico soprattutto di famiglie del posto. Organizza Marcel Schürpf.",
+   "en": "A flea market on the Rathausplatz in Wettingen, held once a month from March to November, 6 am to 4 pm. Local sellers offer household secondhand, toys, clothes, books and everyday goods, and the crowd is mostly local families. Organised by Marcel Schürpf."
+  }
+ },
+ {
+  "slug": "flohmarkt-rudolf-steiner-schule-basel",
+  "task": "keep our German; write new en from our German",
+  "locales_to_write": [
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 30
+  },
+  "name": "Flohmarkt Rudolf Steiner Schule Basel",
+  "kind": "flohmarkt",
+  "town": "Basel",
+  "venue": "Jakobsbergerholzweg 54",
+  "address_line": "Jakobsbergerholzweg 54, 4059 Basel",
+  "postal_code": "4059",
+  "rhythm_de": "Jährlich, meist im April",
+  "season_months": [
+   4,
+   4
+  ],
+  "next_dates": [
+   {
+    "date": "2027-04-10",
+    "start": null,
+    "end": null
+   },
+   {
+    "date": "2027-04-11",
+    "start": null,
+    "end": null
+   }
+  ],
+  "website_url": "https://www.steinerschule-basel.ch/event/flohmarkt-9/",
+  "source_pages": [
+   "https://www.steinerschule-basel.ch/",
+   "https://www.steinerschule-basel.ch/events/"
+  ],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": 26,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der jährliche Flohmarkt der Rudolf Steiner Schule Basel findet an einem ganzen Wochenende im April auf dem Schulgelände am Jakobsbergerholzweg statt. Ein klassischer Schulflohmarkt mit treuer Stammkundschaft aus der Umgebung: zwei Tage lang stöbern in Kleidung, Büchern, Spielsachen und Haushaltswaren, in entspannter Atmosphäre im Basler Bruderholz-Quartier.",
+   "fr": "Le marché aux puces annuel de l'école Rudolf Steiner de Bâle se tient pendant tout un week-end d'avril dans l'enceinte de l'école, au Jakobsbergerholzweg. Un marché aux puces scolaire traditionnel qui attire une clientèle locale fidèle : deux jours pour chiner parmi les vêtements, les livres, les jouets et les articles ménagers, dans l'ambiance détendue du quartier du Bruderholz à Bâle.",
+   "it": "Il mercatino annuale della Scuola Rudolf Steiner di Basilea occupa un intero fine settimana di aprile, nell'area della scuola in Jakobsbergerholzweg. Un classico mercatino scolastico con un pubblico di quartiere affezionato: due giorni per curiosare tra vestiti, libri, giocattoli e oggetti per la casa, in tutta tranquillità, nel quartiere Bruderholz di Basilea.",
+   "en": "The annual flea market at Rudolf Steiner Schule Basel takes place over a full weekend in April at the school grounds on Jakobsbergerholzweg. A classic school flea market with a loyal local following - two days of browsing clothing, books, toys, and household finds in a relaxed neighbourhood setting in Basel's Bruderholz district."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt der Rudolf Steiner Schule Basel findet einmal im Jahr an einem ganzen Wochenende statt, meist im April, auf dem Schulgelände am Jakobsbergerholzweg im Bruderholz. Ein klassischer Schulflohmarkt mit treuer Stammkundschaft aus dem Quartier: zwei Tage lang Kleider, Bücher, Spielsachen und Haushaltswaren.",
+   "fr": "L’école Rudolf Steiner de Bâle organise son marché aux puces une fois par an, pendant tout un week-end, le plus souvent en avril, dans l’enceinte de l’école au Jakobsbergerholzweg, dans le quartier du Bruderholz. Un marché aux puces scolaire classique, avec une clientèle fidèle du quartier : deux jours de vêtements, livres, jouets et articles ménagers.",
+   "it": "La Scuola Rudolf Steiner di Basilea organizza il suo mercatino una volta l’anno, durante un intero fine settimana, di solito in aprile, nell’area della scuola in Jakobsbergerholzweg, nel quartiere Bruderholz. Un classico mercatino scolastico con una clientela fedele del quartiere: due giorni di vestiti, libri, giocattoli e articoli per la casa.",
+   "en": "The Rudolf Steiner Schule Basel holds its flea market once a year over a full weekend, usually in April, on the school grounds on Jakobsbergerholzweg in the Bruderholz district. A classic school flea market with a loyal local following: two days of clothes, books, toys and household goods."
+  }
+ },
+ {
+  "slug": "flohmarkt-ruemlang",
+  "task": "keep our German; write new fr from our German",
+  "locales_to_write": [
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "fr": 35.7
+  },
+  "name": "Rümlanger Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Rümlang",
+  "venue": "Gemeindehaus Rümlang",
+  "address_line": "Glattalstrasse 201",
+  "postal_code": "8153",
+  "rhythm_de": "Drei Samstage pro Jahr",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": null,
+  "source_pages": [
+   "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/ruemlanger-flohmarkt-2026/",
+   "https://swiss-markt.ch/de/rumlang/ruemlanger-flohmarkt",
+   "https://www.localcities.ch/en/events/rumlang/293/4446569",
+   "https://www.guidle.com/de/veranstaltungen/dies-das/ruemlang/ruemlanger-flohmarkt-2025_AcxgiRG"
+  ],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Für die Pause zwischen den Ständen gibt es Floh’s Bistro mit salzigen und süssen Snacks.",
+   "fr": "Pour une pause entre deux stands, le Floh’s Bistro propose des en-cas salés et sucrés.",
+   "it": "Per una pausa tra le bancarelle c’è il Floh’s Bistro, con spuntini dolci e salati.",
+   "en": "Floh’s Bistro does savoury and sweet snacks for when you need a break from the stalls."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Rümlanger Flohmarkt findet dreimal im Jahr beim Gemeindehaus statt — in April, Juni und September. Rümlang liegt im nördlichen Zürcher Unterland zwischen Opfikon und Bülach, nah am Flughafen, weit weg vom Trubel. Der Markt ist klein, familiär und ohne professionelle Händler — ein klassischer Quartierflohmarkt, bei dem private Haushalte ausräumen und die Nachbarschaft kauft. Wer eine Pause braucht: Floh's Bistro bietet salzige und süsse Snacks direkt am Markt. Wer früh kommt und gezielt sucht, findet Unerwartetes.",
+   "fr": "Le marché aux puces de Rümlang a lieu trois fois par an près de la maison communale — en avril, juin et septembre. Rümlang se situe dans le nord de l'Unterland zurichois, entre Opfikon et Bülach, près de l'aéroport et loin de l'agitation. Le marché est petit, familial et sans marchands professionnels — un marché aux puces de quartier classique où les ménages privés font du tri et où le voisinage achète. Pour faire une pause, le Floh's Bistro propose directement sur le marché des en-cas salés et sucrés. En arrivant tôt et en cherchant attentivement, on trouve des choses inattendues.",
+   "it": "Il mercatino delle pulci di Rümlang si svolge tre volte all'anno presso il municipio — in aprile, giugno e settembre. Rümlang si trova nel nord dello Zürcher Unterland, tra Opfikon e Bülach, vicino all'aeroporto e lontano dalla confusione. Il mercato è piccolo, familiare e senza commercianti professionisti — un classico mercatino di quartiere in cui le famiglie private svuotano casa e il vicinato acquista. Chi ha bisogno di una pausa trova spuntini salati e dolci direttamente al mercato presso il Floh's Bistro. Chi arriva presto e cerca con attenzione trova l'inaspettato.",
+   "en": "The Rümlang flea market takes place three times a year by the municipal building — in April, June, and September. Rümlang lies in the northern Zurich Unterland between Opfikon and Bülach, close to the airport and far from the bustle. The market is small, family-friendly, and free of professional dealers — a classic neighbourhood flea market where private households clear out and the neighbourhood buys. Anyone needing a break can find savoury and sweet snacks directly at the market at Floh's Bistro. Those who arrive early and search purposefully will find the unexpected."
+  }
+ },
+ {
+  "slug": "flohmarkt-sarnen-center",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 77.8,
+   "it": 57.9,
+   "en": 53.2,
+   "fr": 47.8
+  },
+  "name": "Flohmarkt Sarnen-Center",
+  "kind": "flohmarkt",
+  "town": "Sarnen",
+  "venue": "Sarnen-Center",
+  "address_line": "Nelkenstrasse",
+  "postal_code": "6060",
+  "rhythm_de": "Am 2. Samstag im Monat (ausser im März), laut Veranstalter",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": null,
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt beim Sarnen-Center findet auf dem Areal zwischen Coop und Migros an der Nelkenstrasse statt – laut Veranstalter am zweiten Samstag im Monat, ausser im März, von 8 bis 17 Uhr. Organisiert von Flohmarkt Obwalden, Anmeldung per WhatsApp. Vom Bahnhof Sarnen sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces du Sarnen-Center se tient sur le terrain entre la Coop et la Migros, Nelkenstrasse – selon l'organisateur, le deuxième samedi du mois sauf en mars, de 8 h à 17 h. Organisé par Flohmarkt Obwalden. Dix minutes à pied depuis la gare de Sarnen.",
+   "it": "Il mercatino al Sarnen-Center si tiene nell'area tra Coop e Migros in Nelkenstrasse – secondo l'organizzatore il secondo sabato del mese tranne marzo, dalle 8 alle 17. Organizzato da Flohmarkt Obwalden. Dieci minuti a piedi dalla stazione di Sarnen.",
+   "en": "The flea market at the Sarnen-Center takes place on the site between Coop and Migros on Nelkenstrasse – according to the organiser on the second Saturday of the month except March, 8 am to 5 pm. Run by Flohmarkt Obwalden, registration by WhatsApp. Ten minutes on foot from Sarnen station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt beim Sarnen-Center findet auf dem Areal zwischen Coop und Migros an der Nelkenstrasse statt, laut Veranstalter am zweiten Samstag im Monat, ausser im März, von 8 bis 17 Uhr. Die einzelnen Termine gibt Flohmarkt Obwalden als Organisator jeweils bekannt. Vom Bahnhof Sarnen sind es zehn Minuten zu Fuss.",
+   "fr": "Le marché aux puces du Sarnen-Center se tient sur l’espace entre Coop et Migros, Nelkenstrasse. Selon l’organisateur, Flohmarkt Obwalden, il a lieu le deuxième samedi du mois, sauf en mars, de 8 h à 17 h ; les dates sont annoncées par l’organisateur. La gare de Sarnen est à dix minutes à pied.",
+   "it": "Il mercatino al Sarnen-Center si tiene nell’area tra Coop e Migros, in Nelkenstrasse. Secondo l’organizzatore, Flohmarkt Obwalden, ha luogo il secondo sabato del mese, tranne a marzo, dalle 8 alle 17; le singole date vengono comunicate dall’organizzatore. Dalla stazione di Sarnen sono dieci minuti a piedi.",
+   "en": "The flea market at the Sarnen-Center is held on the site between Coop and Migros on Nelkenstrasse. According to the organiser, Flohmarkt Obwalden, it runs on the second Saturday of the month except March, 8 am to 5 pm; the individual dates are announced by the organiser. Sarnen station is ten minutes’ walk away."
+  }
+ },
+ {
+  "slug": "flohmarkt-st-mangen-quartier",
+  "task": "keep our German; write new en/fr/it from our German",
+  "locales_to_write": [
+   "en",
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "fr": 45.2,
+   "en": 35.3,
+   "it": 33.3
+  },
+  "name": "Flohmarkt St. Mangen-Quartier",
+  "kind": "flohmarkt",
+  "town": "St. Gallen",
+  "venue": "Goliathgasse 18",
+  "address_line": "Goliathgasse 18, 9000 St. Gallen",
+  "postal_code": "9000",
+  "rhythm_de": "Jeden letzten Samstag von März bis Oktober",
+  "season_months": [
+   3,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-31",
+    "start": "07:00:00",
+    "end": "17:00:00"
+   },
+   {
+    "date": "2027-03-27",
+    "start": "07:00:00",
+    "end": "17:00:00"
+   },
+   {
+    "date": "2027-04-24",
+    "start": "07:00:00",
+    "end": "17:00:00"
+   },
+   {
+    "date": "2027-05-29",
+    "start": "07:00:00",
+    "end": "17:00:00"
+   }
+  ],
+  "website_url": "https://www.stmangen.ch",
+  "source_pages": [
+   "https://m.stadt.sg.ch/index.php?apid=243613082",
+   "https://www.stmangen.ch/",
+   "https://www.stmangen.ch/flohmarkt/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Jeden letzten Samstag von März bis Oktober werden die Altstadtgassen rund um die Kirche St. Mangen zum Quartierflohmarkt. Rund 100 Stände bieten Vintage-Kleidung, antike Möbel, Bücher und Kuriositäten; organisiert wird er vom Quartierverein St. Mangen.",
+   "fr": "Chaque dernier samedi de mars à octobre, les ruelles de la vieille ville autour de l'église St. Mangen accueillent une centaine de stands de vêtements vintage, de meubles anciens, de livres et de curiosités. Un marché de quartier, organisé par le Quartierverein St. Mangen.",
+   "it": "Ogni ultimo sabato da marzo a ottobre, i vicoli del centro storico intorno alla chiesa di St. Mangen si riempiono di un centinaio di bancarelle di abiti vintage, mobili antichi, libri e curiosità. Un mercato di quartiere, organizzato dal Quartierverein St. Mangen.",
+   "en": "Every last Saturday from March to October, the old town streets around St. Mangen Church fill with around 100 stalls of vintage clothing, antique furniture, books and curiosities. A neighbourhood market, organised by the Quartierverein St. Mangen."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Jeden letzten Samstag von März bis Oktober wird in den Altstadtgassen rund um die Kirche St. Mangen in St. Gallen Flohmarkt gehalten. An rund 100 Ständen gibt es Vintage-Kleider, antike Möbel, Bücher, Spielsachen, Haushaltsartikel und allerlei Trouvaillen, verkauft von Leuten aus dem Quartier. Organisiert vom Quartierverein St. Mangen, der Eintritt ist frei.",
+   "fr": "Chaque dernier samedi du mois, de mars à octobre, les ruelles de la vieille ville autour de l’église St. Mangen, à Saint-Gall, accueillent une centaine de stands. On y trouve vêtements vintage, meubles anciens, livres, jouets, articles ménagers et toutes sortes de trouvailles, vendus surtout par des gens du quartier. Organisé par le Quartierverein St. Mangen ; entrée libre.",
+   "it": "L’ultimo sabato di ogni mese, da marzo a ottobre, i vicoli del centro storico attorno alla chiesa di St. Mangen, a San Gallo, si riempiono di circa 100 bancarelle. Si trovano abiti vintage, mobili antichi, libri, giocattoli, articoli per la casa e curiosità di ogni genere, venduti soprattutto da gente del quartiere. Organizzato dal Quartierverein St. Mangen; ingresso libero.",
+   "en": "On the last Saturday of every month from March to October, the old-town lanes around St. Mangen church in St. Gallen fill with around 100 stalls. Expect vintage clothing, antique furniture, books, toys, household items and all sorts of curiosities, mostly sold by people from the neighbourhood. Organised by the Quartierverein St. Mangen; free entry."
+  }
+ },
+ {
+  "slug": "flohmarkt-theaterplatz-baden",
+  "task": "keep our German; write new it from our German",
+  "locales_to_write": [
+   "it"
+  ],
+  "old_overlap_pct": {
+   "it": 33.3
+  },
+  "name": "Flohmarkt Theaterplatz Baden",
+  "kind": "flohmarkt",
+  "town": "Baden",
+  "venue": "Theaterplatz",
+  "address_line": "Theaterplatz",
+  "postal_code": "5400",
+  "rhythm_de": "Monatlich samstags von Mai bis Oktober, 09:00-16:00 Uhr.",
+  "season_months": [
+   5,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.baden.ch/de/home/leben-wohnen/sicherheit-und-recht/gewerbe-verkehr/informationen-fuer-marktbetreibende.html/186",
+  "source_pages": [
+   "https://umweltblog.baden.ch/agenda/flohmarkt-in-baden-4/#:~:text=Der Flohmarkt auf dem Theaterplatz,16.00 Uhr, Mai – Oktober.",
+   "https://www.deinbaden.ch/de/veranstaltung/27-06-2026-09-00-stadtpolizei-baden-marktwesen-flohmarkt",
+   "https://www.ticketino.com/de/Event/Flohmarkt/212151"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Flohmarkt unter freiem Himmel auf dem Theaterplatz mitten in Baden, an einem Samstag im Monat von Mai bis Oktober: Haushaltswaren, Antiquitäten, Bücher, Deko und Kleidung von Verkäuferinnen und Verkäufern aus der Gegend, mit Cafés rundherum. Eintritt frei.",
+   "fr": "Marché aux puces en plein air sur la Theaterplatz, au centre de Baden, un samedi par mois de mai à octobre : articles ménagers, antiquités, livres, décoration et vêtements de vendeurs de la région, avec des cafés tout autour. Entrée libre.",
+   "it": "Mercatino all'aperto sulla Theaterplatz, nel centro di Baden, un sabato al mese da maggio a ottobre: articoli per la casa, antiquariato, libri, decorazioni e abiti di venditori della zona, con caffè tutt'intorno. Ingresso libero.",
+   "en": "An open-air flea market on the Theaterplatz in central Baden, on one Saturday a month from May to October: household goods, antiques, books, decorative items and clothing from local sellers, with cafés around the square. Free entry."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt auf dem Theaterplatz findet von Mai bis Oktober einmal im Monat an einem Samstag statt, von 9 bis 16 Uhr, mitten in Baden. Lokale Verkäuferinnen und Verkäufer bieten Haushaltssachen, Antiquitäten, Bücher, Deko und Kleider an; rund um den Platz gibt es Cafés. Organisiert von der Stadt Baden, der Eintritt ist frei.",
+   "fr": "Le marché aux puces de la Theaterplatz, au centre de Baden, a lieu un samedi par mois de mai à octobre, de 9 h à 16 h. Des vendeurs de la région y proposent articles ménagers, antiquités, livres, objets de décoration et vêtements ; des cafés entourent la place. Organisé par la Ville de Baden ; entrée libre.",
+   "it": "Il mercatino delle pulci sulla Theaterplatz, nel centro di Baden, si tiene un sabato al mese da maggio a ottobre, dalle 9 alle 16. Venditori della zona propongono articoli per la casa, antiquariato, libri, oggetti decorativi e abbigliamento; attorno alla piazza ci sono diversi caffè. Organizzato dalla Città di Baden; ingresso libero.",
+   "en": "The flea market on Theaterplatz in central Baden runs once a month on a Saturday from May to October, 9 am to 4 pm. Local sellers bring household items, antiques, books, decorative pieces and clothing, and there are cafés around the square. Organised by the town of Baden; free entry."
+  }
+ },
+ {
+  "slug": "flohmarkt-weinfelden",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 43.2,
+   "it": 41,
+   "en": 40,
+   "de": 30.6
+  },
+  "name": "Flohmarkt Weinfelden",
+  "kind": "flohmarkt",
+  "town": "Weinfelden",
+  "venue": "Marktplatz",
+  "address_line": "Marktplatz",
+  "postal_code": "8570",
+  "rhythm_de": "Letzter Samstag im Monat, März bis Oktober (ohne September)",
+  "season_months": [
+   3,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-31",
+    "start": "07:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://www.weinfelden-erleben.ch/erlebnisse-erleben/maerkte",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmarkt Weinfelden findet von März bis Oktober jeweils am letzten Samstag im Monat auf dem Marktplatz statt – im September nicht –, von 7 bis 16 Uhr, mit einem Marktcafé. Der Marktplatz liegt mitten im Städtchen, fünf Minuten vom Bahnhof.",
+   "fr": "Le marché aux puces de Weinfelden a lieu le dernier samedi du mois de mars à octobre – sauf en septembre – sur la Marktplatz, de 7 h à 16 h, avec une buvette. La place est au centre de la petite ville, à cinq minutes de la gare.",
+   "it": "Il mercatino delle pulci di Weinfelden si tiene l'ultimo sabato del mese da marzo a ottobre – non a settembre – sulla Marktplatz, dalle 7 alle 16, con un punto ristoro. La piazza è nel centro della cittadina, a cinque minuti dalla stazione.",
+   "en": "Weinfelden's flea market takes place on the last Saturday of the month from March to October – not in September – on the Marktplatz, from 7 am to 4 pm, with a market café. The square is in the middle of the little town, five minutes from the station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmarkt Weinfelden findet von März bis Oktober an mehreren Samstagen auf dem Marktplatz statt. Er dauert von 7 bis 16 Uhr, und es gibt eine Flohmarktbeiz. Der Marktplatz liegt mitten im Städtli, fünf Minuten vom Bahnhof. Organisiert von Marcel Zellweger.",
+   "fr": "Le marché aux puces de Weinfelden se tient sur la Marktplatz plusieurs samedis entre mars et octobre. Il dure de 7 h à 16 h et dispose de sa propre buvette. La place est au centre de la petite ville, à cinq minutes de la gare. Organisé par Marcel Zellweger.",
+   "it": "Il mercatino delle pulci di Weinfelden si svolge sulla Marktplatz in diversi sabati tra marzo e ottobre. Dura dalle 7 alle 16 e ha un suo punto ristoro. La piazza è nel centro della cittadina, a cinque minuti dalla stazione. Organizzato da Marcel Zellweger.",
+   "en": "Weinfelden’s flea market is held on the Marktplatz on several Saturdays between March and October. It runs from 7 am to 4 pm and has its own market café. The square is in the middle of the little town, five minutes from the station. Organised by Marcel Zellweger."
+  }
+ },
+ {
+  "slug": "flohmarkt-wetzikon",
+  "task": "keep our German; write new en/fr from our German",
+  "locales_to_write": [
+   "en",
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "en": 100,
+   "fr": 38.3
+  },
+  "name": "Grosser Aussen-Flohmarkt Wetzikon",
+  "kind": "flohmarkt",
+  "town": "Wetzikon",
+  "venue": "Eishalle Wetzikon",
+  "address_line": "bei der Eishalle, 8620 Wetzikon",
+  "postal_code": "8620",
+  "rhythm_de": "Zweimal jährlich, Frühling und Herbst",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-24",
+    "start": "08:00:00",
+    "end": "15:00:00"
+   }
+  ],
+  "website_url": "https://www.flohmarkt-wetzikon.ch",
+  "source_pages": [
+   "https://www.wetzikon.ch/de/veranstaltungen/16533_grosser-aussen-flohmarkt-in-8620-wetzikon---zh",
+   "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/grosser-aussen-flohmarkt-in-8620-wetzikon-zh/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Grosser Flohmarkt im Freien bei der Eishalle in Wetzikon, mit rund 10'000 Quadratmetern Verkaufsfläche. Privatleute bringen alles mit: Möbel, Haushaltswaren, Kleidung, Hobbysachen und grössere Posten, die in keinen Stand in der Innenstadt passen würden. Regional, gemächlich und gross genug für einen ganzen Vormittag.",
+   "fr": "Un grand marché aux puces en plein air près de la patinoire de Wetzikon, sur environ 10 000 mètres carrés. Les particuliers y proposent de tout : meubles, articles ménagers, vêtements, objets de loisirs et gros lots qui ne trouveraient pas leur place sur un stand en ville. Une ambiance régionale, un rythme tranquille, et assez d'espace pour y passer une vraie matinée.",
+   "it": "Un grande mercatino all'aperto vicino alla pista di ghiaccio di Wetzikon, con circa 10.000 metri quadrati di bancarelle. I privati portano un po' di tutto: mobili, casalinghi, vestiti, oggetti per il tempo libero e roba ingombrante che non starebbe su una bancarella in centro. Un mercato dal carattere regionale, da girare con calma, e davvero abbastanza grande da passarci una mattinata intera.",
+   "en": "A large outdoor flea market near the ice rink in Wetzikon, with roughly 10,000 square metres of selling space. Private sellers bring the full range — furniture, household goods, clothing, hobby items and large-volume lots that wouldn't fit in a city-centre stall. Regional in feel, unhurried in pace, and genuinely large enough to spend a proper morning in."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Grosser Outdoor-Flohmarkt bei der Eishalle in Wetzikon. Mit fast 10'000 m2 Fläche bietet der Aussen-Flohmarkt Wetzikon viel Platz für Aussteller und Besucher. Keine Voranmeldung nötig - einfach kommen und stöbern. Die Märkte finden bei jedem Wetter statt, ausser bei Sturm oder starkem Dauerregen. Eintritt frei.",
+   "fr": "Un grand marché aux puces en plein air près de la patinoire de Wetzikon, offrant environ 10 000 mètres carrés d'espace de vente. Les particuliers y proposent toute une gamme d'articles : meubles, articles ménagers, vêtements, objets de loisirs et lots volumineux qui ne trouveraient pas leur place dans un stand du centre-ville. Avec son ambiance régionale, son rythme tranquille et sa taille véritablement imposante, c'est l'endroit idéal pour y passer une bonne matinée.",
+   "it": "Un grande mercatino dell'usato all'aperto nei pressi della pista di pattinaggio su ghiaccio di Wetzikon, con circa 10.000 metri quadrati di superficie espositiva. I venditori privati propongono una gamma completa di articoli: mobili, casalinghi, abbigliamento, oggetti per hobby e lotti ingombranti che non troverebbero spazio in una bancarella del centro città. Un'atmosfera tipicamente regionale, un ritmo tranquillo e dimensioni davvero sufficienti per trascorrervi una mattinata intera.",
+   "en": "A large outdoor flea market near the ice rink in Wetzikon, with roughly 10,000 square metres of selling space. Private sellers bring the full range — furniture, household goods, clothing, hobby items and large-volume lots that wouldn't fit in a city-centre stall. Regional in feel, unhurried in pace, and genuinely large enough to spend a proper morning in."
+  }
+ },
+ {
+  "slug": "flohmii-galgenen",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 70.5,
+   "it": 68.6,
+   "de": 45.9,
+   "en": 40
+  },
+  "name": "Flohmii Galgenen",
+  "kind": "flohmarkt",
+  "town": "Galgenen",
+  "venue": "Arthur Weber Areal",
+  "address_line": "Höfliweg 2",
+  "postal_code": "8854",
+  "rhythm_de": "Ein- bis zweimal jährlich, samstags",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2027-06-05",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   },
+   {
+    "date": "2027-09-11",
+    "start": "09:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://flohmii.jimdofree.com/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flohmii Galgenen ist ein privat organisierter Flohmarkt im Freien auf dem Arthur-Weber-Areal in Galgenen in der March, samstags von 9 bis 16 Uhr und bei jedem Wetter. Es gibt Kleidung, Accessoires, Modeschmuck, Kindersachen, Spielzeug, Deko und Bücher – Feilschen erlaubt. Kinder verkaufen kostenlos auf zwei mal zwei Metern. Kostenlose Parkplätze hinter dem Diga-Gebäude; vom Bahnhof Siebnen-Wangen 15 Minuten zu Fuss.",
+   "fr": "Le Flohmii de Galgenen est un marché aux puces privé en plein air sur le site Arthur Weber, à Galgenen, dans la March, le samedi de 9 h à 16 h, par tous les temps : vêtements, accessoires, bijoux fantaisie, affaires d'enfants, jouets, déco, livres – marchander est permis. Parking gratuit derrière le bâtiment Diga ; quinze minutes à pied depuis la gare de Siebnen-Wangen.",
+   "it": "Il Flohmii Galgenen è un mercatino privato all'aperto nell'area Arthur Weber a Galgenen, nella March, il sabato dalle 9 alle 16 e con qualsiasi tempo: vestiti, accessori, bigiotteria, articoli per bambini, giocattoli, decorazioni, libri – contrattare è permesso. Parcheggio gratuito dietro l'edificio Diga; quindici minuti a piedi dalla stazione di Siebnen-Wangen.",
+   "en": "The Flohmii Galgenen is a privately run open-air flea market on the Arthur Weber site in Galgenen in the March district, Saturdays 9 am to 4 pm in any weather: clothes, accessories, costume jewellery, children's things, toys, decor, books – haggling allowed. Children sell for free on a two by two metre spot. Free parking behind the Diga building; 15 minutes on foot from Siebnen-Wangen station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flohmii Galgenen ist ein privat organisierter Flohmarkt unter freiem Himmel auf dem Arthur-Weber-Areal am Höfliweg 2 in Galgenen, in der March. Er findet ein- bis zweimal im Jahr an einem Samstag statt, von 9 bis 16 Uhr und bei jedem Wetter. Es gibt Kleider, Accessoires, Modeschmuck, Kindersachen, Spielzeug, Deko und Bücher; feilschen ist erlaubt. Gratis parkieren kannst du hinter dem Diga-Gebäude; vom Bahnhof Siebnen-Wangen sind es 15 Minuten zu Fuss.",
+   "fr": "Le Flohmii de Galgenen est un marché aux puces privé en plein air, sur le site Arthur Weber, Höfliweg 2, à Galgenen dans la March. Il a lieu une ou deux fois par an, un samedi, de 9 h à 16 h, par tous les temps. Vêtements, accessoires, bijoux fantaisie, affaires d’enfants, jouets, déco et livres ; marchander est permis. Parking gratuit derrière le bâtiment Diga ; la gare de Siebnen-Wangen est à un quart d’heure à pied.",
+   "it": "Il Flohmii Galgenen è un mercatino privato all’aperto nell’area Arthur Weber, Höfliweg 2, a Galgenen nella March. Si tiene una o due volte l’anno, di sabato, dalle 9 alle 16 e con qualsiasi tempo. Vestiti, accessori, bigiotteria, articoli per bambini, giocattoli, decorazioni e libri; contrattare è permesso. Parcheggio gratuito dietro l’edificio Diga; dalla stazione di Siebnen-Wangen sono quindici minuti a piedi.",
+   "en": "Flohmii Galgenen is a privately run open-air flea market on the Arthur Weber site at Höfliweg 2 in Galgenen, in the March district. It takes place once or twice a year on a Saturday, 9 am to 4 pm, whatever the weather. Stalls carry clothes, accessories, costume jewellery, children’s things, toys, decor and books, and haggling is allowed. Free parking behind the Diga building; Siebnen-Wangen station is 15 minutes’ walk away."
+  }
+ },
+ {
+  "slug": "flommbo-flohmarkt-altstaetten",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 80.5,
+   "it": 72.2,
+   "en": 69.2,
+   "fr": 50
+  },
+  "name": "Flommbo Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Altstätten",
+  "venue": "Allmend Rheintal",
+  "address_line": "Oberrieterstrasse 44",
+  "postal_code": "9450",
+  "rhythm_de": "Mehrere Sonntage pro Jahr, bei jeder Witterung",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.flommbo.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Flommbo Flohmarkt findet an mehreren Sonntagen im Jahr auf der Allmend Rheintal in Altstätten statt, Oberrieterstrasse 44, jeweils von 9 bis 16 Uhr und bei jeder Witterung. Genug Parkplätze auf dem Gelände; vom Bahnhof Altstätten SG sind es rund 20 Minuten zu Fuss.",
+   "fr": "Le Flommbo Flohmarkt a lieu plusieurs dimanches par an sur l'Allmend Rheintal, à Altstätten, Oberrieterstrasse 44, de 9 h à 16 h, par tous les temps. Beaucoup de places de stationnement sur place ; environ 20 minutes à pied depuis la gare d'Altstätten SG.",
+   "it": "Il Flommbo Flohmarkt si svolge in diverse domeniche dell'anno sull'Allmend Rheintal ad Altstätten, Oberrieterstrasse 44, dalle 9 alle 16 e con qualsiasi tempo. Molti parcheggi sul posto; circa 20 minuti a piedi dalla stazione di Altstätten SG.",
+   "en": "The Flommbo flea market takes place on several Sundays a year on the Allmend Rheintal in Altstätten, Oberrieterstrasse 44, from 9 am to 4 pm in any weather. Plenty of parking on site; about 20 minutes on foot from Altstätten SG station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Flommbo Flohmarkt findet an mehreren Sonntagen im Jahr auf der Allmend Rheintal in Altstätten statt, Oberrieterstrasse 44, jeweils von 9 bis 16 Uhr und bei jeder Witterung. Auf dem Gelände gibt es genug Parkplätze; vom Bahnhof Altstätten SG sind es rund 20 Minuten zu Fuss.",
+   "fr": "Le Flommbo Flohmarkt se tient plusieurs dimanches par an sur l’Allmend Rheintal à Altstätten, Oberrieterstrasse 44, de 9 h à 16 h, par tous les temps. Les places de parc ne manquent pas sur le site ; la gare d’Altstätten SG est à une vingtaine de minutes à pied.",
+   "it": "Il Flommbo Flohmarkt si svolge in diverse domeniche dell’anno sull’Allmend Rheintal ad Altstätten, Oberrieterstrasse 44, dalle 9 alle 16 e con qualsiasi tempo. Sul posto ci sono parcheggi a sufficienza; dalla stazione di Altstätten SG sono circa 20 minuti a piedi.",
+   "en": "The Flommbo flea market takes place on several Sundays a year on the Allmend Rheintal in Altstätten, Oberrieterstrasse 44, from 9 am to 4 pm in any weather. There is plenty of parking on site; Altstätten SG station is about 20 minutes away on foot."
+  }
+ }
+]

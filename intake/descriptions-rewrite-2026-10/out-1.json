@@ -1,0 +1,413 @@
+[
+  {
+    "slug": "alpin-flohmi-bulle",
+    "description": {
+      "en": "A flea market for used mountain-sport gear, held in Bulle. On the tables you will find climbing kit, ski equipment, hillwalking clothes and other outdoor things that have already had a first life. Mountain Wilderness Switzerland is behind it, and you get in for free."
+    },
+    "sources": [
+      { "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/", "quote": "Du matériel et des vêtements de montagne d'occasion en bon état, pour adultes et enfants." },
+      { "url": "https://mountainwilderness.ch/themen/alpin-flohmi/", "quote": "Mountain Wilderness Schweiz unterstützt dich bei der Organisation eines tollen Events" }
+    ],
+    "conflicts": [
+      "Our next date ends at 21:30; the organiser's French page (mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/) says 18:00 to 21:00.",
+      "On that page the Bulle registration link carries 22-11-2026 while the event is dated 24 Nov 2026 (probably the page's own slip)."
+    ],
+    "notes": "Translated from our German only; venue is CAS Section La Gruyère, Chemin de Bouleyres 79, public entry free per organiser's page."
+  },
+  {
+    "slug": "alpin-flohmi-lausanne",
+    "description": {
+      "en": "A flea market for used mountain-sport gear in Lausanne. Climbing kit, ski equipment, hillwalking clothes and other outdoor items can be bought and sold here, which gives good gear a longer life. Mountain Wilderness Switzerland is behind it, and entry is free.",
+      "fr": "Un marché aux puces pour l'équipement de montagne d'occasion, à Lausanne. Équipement d'escalade, matériel de ski, vêtements pour la marche en montagne et autres articles de plein air s'y achètent et s'y vendent, de façon durable. Mountain Wilderness Suisse est derrière l'événement, et l'entrée est libre."
+    },
+    "sources": [
+      { "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/", "quote": "Du matériel et des vêtements de montagne d'occasion en bon état, pour adultes et enfants." },
+      { "url": "https://mountainwilderness.ch/themen/alpin-flohmi/", "quote": "Alpin-Flohmi Lausanne, 2023 (photo caption); Mittwoch, 11. November 2026" }
+    ],
+    "conflicts": [],
+    "notes": "Translated from our German only. Organiser page: venue Grande Salle du CAS des Diablerets, 18:30-20:30 with 18:30-19:00 for CAS/Mountain Wilderness members only (our 19:00 start is the public one), so dates agree."
+  },
+  {
+    "slug": "alpin-flohmi-yverdon-les-bains",
+    "description": {
+      "en": "In Yverdon-les-Bains, used mountain-sport gear gets a second owner: climbing kit, ski equipment, hillwalking clothes and other outdoor items. The flea market is put on by Mountain Wilderness Switzerland, and entry is free."
+    },
+    "sources": [
+      { "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/", "quote": "Du matériel et des vêtements de montagne d'occasion en bon état, pour adultes et enfants. (Maison de Paroisse, Rue Pestalozzi 6, Yverdon)" }
+    ],
+    "conflicts": [],
+    "notes": "Translated from our German only; date and 18:00-21:00 on the organiser's page match ours."
+  },
+  {
+    "slug": "antik-flohmarkt-fehraltorf",
+    "description": {
+      "en": "Antiques, collectors' pieces and bric-a-brac fill the Heiget-Huus in Fehraltorf and the grounds around it, twice a year. Roughly 80 dealers and exhibitors set up inside the hall, under roofs and outdoors, with no steps anywhere. A little bistro cooks home-made food and grills sausages. The car park is big and free, and from the station you walk for ten minutes.",
+      "fr": "Deux fois l'an, le Heiget-Huus de Fehraltorf et ses abords se remplissent d'antiquités, d'objets de collection et de bric-à-brac. Environ 80 exposants se partagent la halle, les espaces couverts et l'extérieur, sans la moindre marche. Un petit bistrot prépare des plats maison et fait griller des saucisses. Le grand parking est gratuit, et la gare est à dix minutes à pied.",
+      "it": "Due volte l'anno lo Heiget-Huus di Fehraltorf e i suoi dintorni si riempiono di antiquariato, pezzi da collezione e cianfrusaglie. Circa 80 espositori occupano la sala, le zone coperte e l'esterno, tutto senza gradini. Il piccolo bistrot cucina in casa e mette sulla griglia le salsicce. Il grande parcheggio è gratuito e la stazione è a dieci minuti a piedi."
+    },
+    "sources": [
+      { "url": "https://www.ambiente-brocante.ch/events", "quote": "Ca. 80 Aussteller von Nah und Fern; 2x jährlich, im Frühling und Herbst; im und rund ums Heiget-Huus; Kleines feines Bistro mit topfrischen Angeboten, alles hausgemacht; verschiedene Würste vom Grill; Für Besucher stehen genügend Parkplätze zur Verfügung" }
+    ],
+    "conflicts": [
+      "The organiser's home page (ambiente-brocante.ch) says the next event is on 1. März 2027, while its events page says 21. März 2027 (our date is 2027-03-21). 1 March 2027 is a Monday, so the home page is probably a slip, but worth a look.",
+      "We hold 75 stands, the organiser says ca. 80 exhibitors (our German says rund 80)."
+    ],
+    "notes": "Translated from our German only. Free parking and ten minutes from the station are in our German, not on the organiser's page (it says only that there is enough parking)."
+  },
+  {
+    "slug": "bergflohmarkt-chur",
+    "description": {
+      "fr": "Le Bergflohmarkt de Coire se consacre à la montagne : matériel de sport de montagne et d'outdoor d'occasion, plus quelques trouvailles alpines. Il a lieu au Titthof, dans le centre de Coire, non loin de la gare. L'association qui le monte revient régulièrement et publie les dates sur son site. L'entrée est libre."
+    },
+    "sources": [
+      { "url": "https://www.sportanlagenchur.ch/de/bergflohmarkt-chur", "quote": "hochwertige Secondhand-Artikel für die Sommer- und Wintersaison ... Kirchgemeindehaus Titthof, Tittwiesenstrasse 8 ... Der Eintritt ist frei." },
+      { "url": "https://bergflohmarkt.ch/", "quote": "Komm vorbei – Eintritt frei!" }
+    ],
+    "conflicts": [
+      "Our German says the Titthof is 'direkt beim Bahnhof'. The organiser pages only give the address (Kirchgemeindehaus Titthof, Tittwiesenstrasse 8) with a trip planner and no distance to the station; a listing puts it in the city centre. I wrote 'dans le centre de Coire, non loin de la gare'.",
+      "The organiser does not say how often it runs (our German says regularly): the November edition is called the fifth Bergflohmarkt, with about 15 stands per day."
+    ],
+    "notes": "Translated from our German only; 13-14 Nov dates and hours on the organiser's page match ours."
+  },
+  {
+    "slug": "breitsch-maerit-bern",
+    "description": {
+      "de": "Der Breitsch-Märit ist ein Flohmarkt von Haustür zu Haustür: Jedes Jahr im Juni stellen die Leute im Berner Breitenrain-Quartier Vintage-Stücke und Aussortiertes vor den Hauseingang, in den Garten oder vor die Garage. Du schlenderst durchs Quartier und schaust bei den Tischen vorbei. Auch Läden aus der Nachbarschaft machen mit, und für Essen und Trinken ist gesorgt. Ob der Markt bei Regen stattfindet, entscheidet sich erst am Tag selbst. Der Eintritt ist frei.",
+      "fr": "Le Breitsch-Märit est une brocante de porte en porte : chaque année en juin, les habitants du quartier bernois du Breitenrain posent des objets vintage et des affaires triées devant l'entrée de leur immeuble, dans le jardin ou devant le garage. On flâne dans le quartier et on s'arrête aux tables au fil des rues. Des commerces du voisinage participent aussi, avec de quoi manger et boire. Si le marché a lieu quand il pleut, cela se décide le jour même. L'entrée est libre.",
+      "it": "Il Breitsch-Märit è un mercatino da porta a porta: ogni anno a giugno, nel quartiere bernese di Breitenrain, la gente mette oggetti vintage e cose che non servono più davanti al portone, in giardino o davanti al garage. Si passeggia per il quartiere e ci si ferma ai banchi lungo la strada. Partecipano anche i negozi del vicinato, e non mancano cibo e bevande. Se piove, si decide soltanto il giorno stesso se il mercato si tiene. L'ingresso è libero.",
+      "en": "The Breitsch-Märit is a flea market that goes from front door to front door. Every June, people in Bern's Breitenrain district set out vintage pieces and things they no longer need by the house entrance, in the garden or outside the garage. You wander through the neighbourhood and stop at the tables along the way. Local shops join in, with food and drink on offer. Whether it goes ahead in the rain is only decided on the day. Entry is free."
+    },
+    "sources": [
+      { "url": "https://www.breitschmaerit.ch/", "quote": "Am 12. Juni 2027 laden wir ein zum fünften Breitsch-Märit ... Vintage-Schätze ... direkt beim Hauseingang oder im Garten ... etwas Feines zum Essen und Trinken" }
+    ],
+    "conflicts": [],
+    "notes": "Rain decision and free entry come from facts_we_hold; the organiser gives no stand count or transport. Next date 12 June 2027 confirmed."
+  },
+  {
+    "slug": "brocante-de-chambrelien",
+    "description": {
+      "en": "A little brocante of about 20 stalls sets up at the station buffet in Chambrelien, right on the railway line between Neuchâtel and La Chaux-de-Fonds. The day starts in the morning and runs on into the late afternoon. The bistro keeps visitors fed with grilled food, roast chestnuts and pea or pumpkin soup.",
+      "fr": "Une vingtaine de stands s'installent à Chambrelien, au Bistro La Loco, tout contre la ligne ferroviaire qui relie Neuchâtel à La Chaux-de-Fonds. La journée commence le matin et se poursuit jusqu'à la fin de l'après-midi. Le bistrot s'occupe de nourrir les visiteurs : grillades, marrons chauds, soupe aux pois et soupe à la courge.",
+      "it": "Una ventina di banchi si dispone a Chambrelien, attorno al bistrot La Loco, proprio accanto alla tratta ferroviaria tra Neuchâtel e La Chaux-de-Fonds. La giornata comincia al mattino e va avanti fino al pomeriggio inoltrato. Dalla cucina del bistrot arrivano grigliate, caldarroste, zuppa di piselli e zuppa di zucca."
+    },
+    "sources": [
+      { "url": "https://laloco.ch/", "quote": "Brocante & Marché aux Puces RDV le 4 octobre 2026 ... Bienvenue ! Grillades, restauration…" }
+    ],
+    "conflicts": [
+      "The bistro's page lists only Sunday 4 October 2026 (already past) and no 2027 date; we have no next date.",
+      "Stand count (about 20), chestnuts, soups, the train line and the 9:00 start are in our German but not on the bistro's page (it says only grillades, restauration, and general Sunday hours 8:30-16:00)."
+    ],
+    "notes": "Translated from our German only; the clock time is rendered as 'in the morning' because of the no-clock-times rule."
+  },
+  {
+    "slug": "brocante-de-misery",
+    "description": {
+      "de": "Ein Wochenende im September füllt sich der Dorfkern von Misery bei Freiburg mit Brocante-Ständen: draussen auf dem Platz im Dorfzentrum, drinnen in der Turnhalle. Die Aussteller sind bunt gemischt, die Stimmung ist gesellig. Hinter dem Anlass steht der Verein La Brocante des Amis, der auch in Yverdon, Lucens und Avenches Brocantes veranstaltet.",
+      "fr": "Durant un week-end en septembre, le cœur du village de Misery, près de Fribourg, se remplit de stands de brocante : dehors, sur la place centrale du village, et dedans, dans la halle de gym. Les exposants sont très variés et l'ambiance reste conviviale. Derrière l'événement, il y a La Brocante des Amis, une association qui monte aussi des brocantes à Yverdon, Lucens et Avenches.",
+      "it": "Per un fine settimana di settembre il centro di Misery, vicino a Friburgo, si riempie di bancarelle di brocante: all'aperto sulla piazza del paese, al chiuso nella palestra. Gli espositori sono molto diversi tra loro e l'atmosfera è conviviale. L'evento è organizzato dall'associazione La Brocante des Amis, che gestisce brocante anche a Yverdon, Lucens e Avenches.",
+      "en": "For one weekend in September, the centre of Misery, near Fribourg, fills with brocante stalls: outside on the village square, inside in the gym hall. The exhibitors are a varied lot and the mood is friendly. The event is run by the association La Brocante des Amis, which also puts on brocantes in Yverdon, Lucens and Avenches."
+    },
+    "sources": [
+      { "url": "https://brocantedesamis.ch/brocante-de-misery", "quote": "20e édition, 19 & 20 septembre ... la place du centre de Misery ... diversité d'exposants ... conviviale" },
+      { "url": "https://brocantedesamis.ch/", "quote": "Misery: 19-20 septembre; Yverdon (Quai de Nogent), Lucens, Avenches; Notre première brocante a vu le jour en 2020 à Misery." }
+    ],
+    "conflicts": [
+      "Our old text said 'Seit 2007'. The organiser says its first brocante was in 2020 in Misery (association founded 2019), while its Misery page calls the September event the 20th edition. I left any founding year out.",
+      "The organiser describes the outdoor part as the communal car park at the village-centre square; I wrote 'platz im Dorfzentrum'. No 2027 date is published yet (the page shows 19-20 September 2026). Our German bus/drive-time directions were not on the page, so I left them out."
+    ],
+    "notes": "Setting 'both' from facts_we_hold (hall plus open air). Stand count, food and parking unknown, so left out."
+  },
+  {
+    "slug": "brocante-locarno",
+    "description": {
+      "de": "Design, Vintage, Modernariato und Antiquitäten: Das ist das Thema der Brocante Locarno, die jedes Jahr zu Auffahrt zwei Tage lang das Herz der Altstadt füllt. Jedes Stück muss mindestens zwanzig Jahre auf dem Buckel haben, Nachgemachtes hat keinen Platz. Der Markt findet bei jedem Wetter statt. Am zweiten Tag verkaufen auf der Piazza San Francesco Kinder und Jugendliche bis 18 Jahre ihre eigenen Sachen: Bücher, Spiele, Videospiele, Modellbau. Veranstalter ist seit 2026 der Verein Pro Città Vecchia.",
+      "fr": "Design, vintage, modernariato et antiquités : voilà le thème de la Brocante de Locarno, qui occupe chaque année, pour l'Ascension, le cœur de la vieille ville pendant deux jours. Chaque pièce doit avoir au moins vingt ans, et pas question de copies. Le marché a lieu quelle que soit la météo. Le deuxième jour, sur la piazza San Francesco, des enfants et des jeunes jusqu'à 18 ans vendent leurs propres affaires : livres, jeux, jeux vidéo, maquettes. L'association Pro Città Vecchia l'organise depuis 2026.",
+      "it": "Design, vintage, modernariato e antiquariato: è il tema della Brocante Locarno, che ogni anno, per l'Ascensione, riempie per due giorni il cuore della città vecchia. Ogni pezzo deve avere almeno vent'anni, e le copie non sono ammesse. Il mercato si tiene qualunque sia il tempo. Il secondo giorno, in piazza San Francesco, bambini e ragazzi fino a 18 anni vendono le loro cose: libri, giochi, videogiochi, modellismo. L'organizza dal 2026 l'associazione Pro Città Vecchia.",
+      "en": "Design, vintage, modernariato and antiques: that is the Brocante Locarno, which takes over the heart of the old town for two days every year around Ascension. Everything on sale has to be at least twenty years old, and fakes or reproductions are out. It goes ahead whatever the weather. On the second day, children and teenagers up to 18 sell their own things on Piazza San Francesco: books, games, video games and models. Pro Città Vecchia, the local association, has run it since 2026."
+    },
+    "sources": [
+      { "url": "https://www.procittavecchia.ch/media/site/c1bf5fcae6-1758817891/broncante-regolamento-2026-de.pdf", "quote": "authentische Waren mit einem Mindestalter von 20 Jahren ... Die Veranstaltung findet bei jeder Wetterlage statt ... wird ab der Ausgabe 2026 von der Pro Città Vecchia organisiert ... im Herzen der Altstadt von Locarno" },
+      { "url": "https://www.procittavecchia.ch/", "quote": "Possono partecipare come espositori bambini e ragazzi fino a 18 anni (Mercato dell'usato dei bambini, Piazza San Francesco, 8 maggio)" }
+    ],
+    "conflicts": [],
+    "notes": "Next dates 7-8 May 2027, 10:00-19:00 confirmed. Kids' limit on the organiser's page is 18 (our old text said just 'Kinder'). Walking time from the station is not on any organiser page, so left out."
+  },
+  {
+    "slug": "chilbi-flohmarkt-glarus",
+    "description": {
+      "de": "Zur Glarner Chilbi gehört auch ein Flohmarkt, der sich im August rund ums Rathaus ausbreitet. Ein Teil der Verkäuferinnen und Verkäufer ist noch nicht erwachsen: Bis 16 Jahre dürfen Kinder und Jugendliche ihre Sachen anbieten, etwa auf einer Decke am Boden. Vom Bahnhof Glarus ist es nur ein kurzer Fussweg zum Rathaus.",
+      "fr": "La Chilbi de Glaris a aussi son marché aux puces, qui s'étale en août autour de l'hôtel de ville. Une partie des vendeurs n'est pas encore adulte : les enfants et les ados de 16 ans et moins peuvent proposer leurs affaires, par exemple posées sur un plaid. De la gare de Glaris, l'hôtel de ville est à un court trajet à pied.",
+      "it": "La Chilbi di Glarona ha anche il suo mercatino delle pulci, che ad agosto si estende attorno al municipio. Una parte di chi vende non è ancora adulta: i bambini e i ragazzi di 16 anni o meno possono proporre le loro cose, per esempio su una coperta stesa a terra. Dalla stazione di Glarona il municipio si raggiunge con una breve passeggiata.",
+      "en": "The Chilbi in Glarus comes with its own flea market, which spreads out around the Rathaus in August. Not everyone selling is grown up: children and teenagers aged 16 or younger can offer their things, for example from a blanket on the ground. From Glarus station it is a short walk to the Rathaus."
+    },
+    "sources": [
+      { "url": "https://glarus.swiss/service-2/glarus-service/maerkte.html", "quote": "NOT READ: the page returned HTTP 403 to my fetch. Facts used (Chilbi, Rathaus, August, children up to 16) come from our own database text and the old site, which agree." }
+    ],
+    "conflicts": [
+      "I could not read the organiser's page (glarus.swiss answered 403), so none of this text is confirmed by the organiser.",
+      "Independent searches found a Glarus flea market on the Saturday before the Landsgemeinde in May (children free, over 150 stalls between Spielhof and Gemeindehausplatz, children's spots at the Rathausplatz) and a Glarus Chilbi around 15 August, but no Chilbi flea market with an age limit of 16. Please check glarus.swiss by hand before this goes live; if the August market no longer exists, the page may need to go.",
+      "Our old text said 8-16, the old site 9-16; I left hours out."
+    ],
+    "notes": "Lowest-confidence text of the batch: kept to the few facts our database and the old site agree on, flagged for a by-hand check of glarus.swiss."
+  },
+  {
+    "slug": "coffre-ouvert-monthey",
+    "description": {
+      "de": "«Coffre ouvert» heisst offener Kofferraum. In Monthey stehen bis zu 100 Stände mitten in der Stadt, von April bis November jeden Monat; im August ist Pause. Der Markt verteilt sich auf zwei Plätze: den Hof des Vieux-Collège gegenüber der Migros und die Esplanade du Crochetan. Wer zu Hause ausmisten will, findet hier Abnehmer, und wer gern stöbert, findet schöne Stücke aus zweiter Hand. Mit dem Auto parkierst du bei Migros, Coop oder am Bahnhof der AOMC, zwei Gehminuten vom Markt; direkt bei der Esplanade ist Parkieren verboten. Ob der Markt bei schlechtem Wetter stattfindet, wird erst am Tag selbst entschieden.",
+      "fr": "« Coffre ouvert » veut dire coffre de voiture ouvert. À Monthey, jusqu'à 100 stands s'installent en pleine ville, chaque mois d'avril à novembre, avec une pause en août. Le marché se partage entre deux lieux : la cour du Vieux-Collège, en face de la Migros, et l'esplanade du Crochetan. Qui veut faire de la place chez soi y trouve preneur, qui aime chiner y déniche de belles pièces de seconde main. En voiture, on se parque à la Migros, à la Coop ou à la gare de l'AOMC, à deux minutes à pied ; près de l'esplanade, le stationnement est interdit. Par mauvais temps, la décision tombe le jour même.",
+      "it": "«Coffre ouvert» significa bagagliaio aperto. A Monthey, fino a 100 bancarelle si piazzano in pieno centro, ogni mese da aprile a novembre, con una pausa ad agosto. Il mercato si divide su due luoghi: il cortile del Vieux-Collège, di fronte alla Migros, e l'esplanade du Crochetan. Chi vuole fare spazio in casa trova qui chi prende le sue cose, chi ama frugare scova bei pezzi di seconda mano. In auto si parcheggia alla Migros, alla Coop o alla stazione dell'AOMC, a due minuti a piedi; vicino all'esplanade il parcheggio è vietato. Se il tempo è brutto, si decide solo il giorno stesso se il mercato si tiene.",
+      "en": "“Coffre ouvert” means open car boot. In Monthey, up to 100 stalls set up right in the town centre, every month from April to November, with a break in August. The market is split between two spots: the courtyard of the Vieux-Collège, opposite the Migros, and the Esplanade du Crochetan. If you want to clear out at home, you will find takers here; if you like to rummage, you will find good second-hand pieces. By car, park at the Migros, the Coop or the AOMC station, two minutes' walk away; parking next to the Esplanade is not allowed. Whether it goes ahead in bad weather is decided on the day."
+    },
+    "sources": [
+      { "url": "https://www.coffreouvertmonthey.ch/", "quote": "Chaque 1er samedi du mois d'avril à novembre ... Jusqu'à 100 exposants! ... L'occasion pour les uns de se défaire de leurs surplus, pour les autres de dénicher de belles trouvailles ! ... Cour du Vieux-Collège (en face de la Migros) ... Esplanade du Crochetan ... parking Migros/Coop ou gare AOMC, 2 minutes à pied; stationnement interdit près de l'Esplanade" }
+    ],
+    "conflicts": [
+      "The page does not say whether sellers are private people or dealers, nor that goods are sold from car boots (our old texts said 'Privatverkäufer, aus dem Auto und vom Tisch'); I explained only the name.",
+      "The Esplanade du Crochetan address is inconsistent on the page (Av. du Théâtre 9 in one place, Avenue du Crochetan in another). The 2026 list has no August date and marks September and October as full for stall holders. Bad-weather rule comes from facts_we_hold (decided on the day), not from the page."
+    ],
+    "notes": "2026 dates on the page: 4 Apr, 2 May, 6 Jun, 4 Jul, 5 Sep, 3 Oct, 7 Nov; our 7 Nov matches."
+  },
+  {
+    "slug": "coffre-ouvert-oron",
+    "description": {
+      "de": "Beim Coffre ouvert in Oron-la-Ville stehen die Leute mit offenem Kofferraum auf dem Parkplatz der Coop, zwischen Lausanne und Freiburg. Der Markt findet mehrmals im Jahr statt. Die Veranstalter nennen ihn Vide-Grenier und Braderie: Es geht ums Ausmisten und ums Stöbern. Bei Sonne läuft er draussen auf dem Parkplatz, bei Regen zieht er in die Tiefgarage der Coop. Hinter dem Anlass steht Coffre-Ouvert Arc-en-Ciel.",
+      "fr": "Au Coffre ouvert d'Oron-la-Ville, les gens s'installent coffre ouvert sur le parking de la Coop, au nord-est de Lausanne, en direction de Fribourg. Le marché revient plusieurs fois par an. Ses organisateurs parlent de vide-grenier et de braderie : on vient vider ses caisses ou chiner. Quand le temps est beau, tout se passe dehors ; s'il pleut, le marché se replie dans le garage souterrain de la Coop. Derrière l'événement : Coffre-Ouvert Arc-en-Ciel.",
+      "it": "Al Coffre ouvert di Oron-la-Ville la gente si sistema con il bagagliaio aperto sul parcheggio della Coop, a nord-est di Losanna, in direzione di Friburgo. Il mercato torna più volte l'anno. Gli organizzatori parlano di vide-grenier e braderie: si viene a svuotare la cantina o a curiosare. Con il bel tempo tutto si svolge all'aperto; se piove, il mercato si sposta nel garage sotterraneo della Coop. Dietro l'evento c'è Coffre-Ouvert Arc-en-Ciel.",
+      "en": "At the Coffre ouvert in Oron-la-Ville, people set up with their car boots open on the Coop car park, north-east of Lausanne on the way to Fribourg. The market comes back several times a year. The organisers call it a vide-grenier and braderie: it is about clearing out and rummaging. In fine weather it happens outside on the car park; if it rains, it moves into the Coop's underground garage. Coffre-Ouvert Arc-en-Ciel is behind it."
+    },
+    "sources": [
+      { "url": "https://coffre-ouvert-arc-en-ciel-oron-la-ville.mozellosite.com/", "quote": "le DERNIER Coffre Ouvert / Vide Grenier & Braderie de l'année 2026 ... La manifestation en cas de beau temps sera sur le parking extérieur ... Autrement sera au parking souterrain de la COOP" },
+      { "url": "https://coffre-ouvert-arc-en-ciel-oron-la-ville.mozellosite.com/actualites/", "quote": "Prochain Coffre-ouvert le 6 septembre 2026 ... En cas de risque de pluie, la manifestation aura lieu sous le parking de la Coop." }
+    ],
+    "conflicts": [
+      "Our data says 'Jährlich, ein Sonntag im Oktober'. The organiser's site shows several markets a year (6 September 2026, and Sunday 8 November 2026 as 'le DERNIER ... de l'année 2026', then closed until 2027). The rhythm field should change, and the 8 November market is missing from our dates.",
+      "The page says they are 'returning to the original location of the first event for the next two years' without naming it; the 8 November market is still at the Coop car park. The organiser gives no number of sellers (the old text said about 50) and does not say who may sell."
+    ],
+    "notes": "Rhythm in the text is just 'mehrmals im Jahr', which both sources support. 'North-east of Lausanne' is geography, not an organiser statement."
+  },
+  {
+    "slug": "enter-flohmarkt-derendingen",
+    "description": {
+      "de": "Im Enter, der Technikwelt in Derendingen bei Solothurn, wird etwa einmal im Monat in der Eventhalle gestöbert. Zwischen Haushaltsware, Möbeln, Kleidern und Spielzeug liegen viel Technik, Instrumente, Schallplatten, Bücher und Werkzeug; Antikes gibt es auch. Draussen kommt ein Kofferraum-Bereich dazu. Der Eintritt ist frei, und im Enter Restaurant kannst du etwas essen. Mit dem Bus 5 oder 7 fährst du bis «Derendingen Freiheit»; wer mit dem Auto kommt, parkiert auf dem Dach, dort stehen 140 Besucherparkplätze.",
+      "fr": "À l'Enter, le musée de la technique de Derendingen près de Soleure, on fouine environ une fois par mois dans la halle des événements. Entre affaires de maison, meubles, habits et jouets, on trouve beaucoup de technique, des instruments, des disques, des livres et des outils, et aussi des antiquités. Dehors s'ajoute un coin pour vendre depuis le coffre de sa voiture. L'entrée est libre et le restaurant de l'Enter permet de manger sur place. Les bus 5 et 7 s'arrêtent à « Derendingen Freiheit » ; en voiture, on se gare sur le toit, où il y a 140 places pour les visiteurs.",
+      "it": "All'Enter, il museo della tecnica di Derendingen vicino a Soletta, si fruga circa una volta al mese nella sala eventi. Tra casalinghi, mobili e vestiti e giocattoli ci sono molta tecnica, strumenti musicali, dischi, libri e attrezzi, e anche cose antiche. All'esterno c'è in più una zona per vendere dal bagagliaio. L'ingresso è libero e al ristorante Enter si può mangiare. I bus 5 e 7 fermano a «Derendingen Freiheit»; chi arriva in auto parcheggia sul tetto, dove ci sono 140 posti per i visitatori.",
+      "en": "At the Enter technology world in Derendingen near Solothurn, people rummage through the event hall about once a month. Between household goods, furniture, clothes and toys there is plenty of technology, along with instruments, records, books and tools, and some antiques too. An outdoor area for selling from car boots comes on top. Entry is free, and you can eat at the Enter restaurant. Buses 5 and 7 stop at “Derendingen Freiheit”; if you come by car, park on the roof, where there are 140 visitor spaces."
+    },
+    "sources": [
+      { "url": "https://www.enter.ch/de/events/enter-flohmarkt-dezember/", "quote": "Eventhalle ... Kofferraumflohmarkt draussen ... Hausrat, Möbel, Kleider, Spielzeug, Antikes, Technik, Instrumente, Schallplatten, Bücher, Werkzeug ... Eintritt zum Flohmarkt: gratis ... Enter Restaurant" },
+      { "url": "https://www.enter.ch/de/anreise/", "quote": "Bus Nr. 5 oder 7 Richtung «Herzogenbuchsee Bahnhof» bis «Derendingen Freiheit» ... 140 Besucherparkplätze ... Parkplätze auf dem Dach" },
+      { "url": "https://enter.ch/de/flohmaerkte/", "quote": "Ob alte Computer, Konsolen, Radios, Schallplatten, Elektronik, Zubehör, Raritäten oder besondere Fundstücke" }
+    ],
+    "conflicts": [
+      "The December market is listed as 10.00-16.00 on the organiser's event page; our data has 10:00-17:00 for 2026-12-12 (January to March 2027 are 10-16 in ours, as on theirs).",
+      "The organiser lists more dates than we hold: 1 May, 12 June, 3 July and 7 August 2027 (the 'Sa. 01. Mmai 2027' entry has a typo). Our old text's ten minutes on foot from Derendingen station is not on their site, so it is left out."
+    ],
+    "notes": "Indoors plus outdoor car-boot area matches facts_we_hold (both). The organiser's two pages differ in detail; wording draws on the event page for goods."
+  },
+  {
+    "slug": "fete-de-la-brocante-le-landeron",
+    "description": {
+      "de": "Über das letzte Septemberwochenende gehört die mittelalterliche Altstadt von Le Landeron am Bielersee den Händlern: Aus der ganzen Schweiz und dem Ausland kommen sie mit Antiquitäten, Brocante, Design und Vintage, mehr als hundert Stände, einige davon überdacht. Im Schloss gibt es altes Spielzeug, und rund zehn Verpflegungsstände von Vereinen aus dem Ort sorgen fürs Essen. Der Eintritt ist frei. Mit Zug oder Schiff kommst du hin, mit dem Auto parkst du auf einem der rund 1500 Parkplätze in der Nähe. Veranstaltet vom Altstadtverein AVVL; das Fest gibt es seit 1974.",
+      "fr": "À la fin septembre, pour tout un week-end, le bourg médiéval du Landeron, au bord du lac de Bienne, appartient aux marchands : ils viennent de toute la Suisse et de l'étranger avec des antiquités, de la brocante, du design et du vintage, plus d'une centaine de stands, dont certains sont couverts. Le château abrite des jouets anciens, et une dizaine de cantines tenues par des sociétés locales s'occupent de la restauration. L'entrée est gratuite. On y vient en train ou en bateau ; en voiture, plus de 1500 places de parc se trouvent à proximité. La fête est organisée par l'AVVL, l'association du bourg ; elle existe depuis 1974.",
+      "it": "A fine settembre, per un intero fine settimana, il nucleo medievale di Le Landeron, sulle rive del lago di Bienne, appartiene ai commercianti: arrivano da tutta la Svizzera e dall'estero con antiquariato, brocante, design e vintage, oltre cento banchi, alcuni al coperto. Nel castello ci sono giocattoli d'epoca e una decina di stand gastronomici gestiti da società del paese si occupano di cibo e bevande. L'ingresso è libero. Si arriva in treno o in battello; in auto ci sono più di 1500 posti auto nelle vicinanze. La festa è organizzata dall'AVVL, l'associazione del borgo, ed esiste dal 1974.",
+      "en": "Over the last weekend of September, the medieval old town of Le Landeron, on Lake Biel, belongs to the dealers. They come from all over Switzerland and from abroad with antiques, brocante, design and vintage, more than a hundred stalls, some of them under cover. The château holds old toys, and around ten food stands run by local clubs look after the catering. Entry is free. You can arrive by train or boat; by car there are more than 1,500 parking spaces nearby. The AVVL, the old-town association, organises it, and the fair has been going since 1974."
+    },
+    "sources": [
+      { "url": "https://avvl.ch/brocante/", "quote": "plus d'une centaine de stands ... antiquaires et brocanteurs de toute la Suisse et de l'étranger ... une dizaine de cantines ... reste entièrement gratuit pour le public ... plus de 1500 places de parc ... train et bateau ... première édition 1974" }
+    ],
+    "conflicts": [
+      "The page header reads '26, 27, 28 Septembre' but the body and hours list 25-27 September, and it calls Friday 25 September (from noon) the day exhibitors set up ('dès le vendredi 25 septembre à midi'); our old text shows Friday 12-19 as a public day. I wrote only 'the last weekend of September' and did not count days.",
+      "The page gives two sizes ('plus d'une centaine de stands' and 'plusieurs centaines de marchands'); I used the hundred, which matches facts_we_hold. The organiser also calls it the largest outdoor antiques fair in Switzerland; I did not use that. Our old text's ten minutes from the station is not on the page; replaced by the train, boat and parking facts it does give. No 2027 date yet."
+    ],
+    "notes": "Old overlap was 88 percent in Italian; rebuilt from the organiser's facts (château toy section, food stands, parking, 1974)."
+  },
+  {
+    "slug": "fete-livres-disques-ouchy-lausanne",
+    "description": {
+      "de": "Am Seeufer von Ouchy, in Lausanne, bauen an einzelnen Tagen zwischen April und Oktober Fachhändler ihre Tische auf: Vinyl, CDs, DVDs, Comics, Bücher und Bilder. Das ist kein Flohmarkt zum Ausmisten, sondern ein Markt für Sammlerinnen, Musik- und Leseratten, getragen von den Brocanteurs der Romandie. Manchmal sind auch Autorinnen und Autoren aus der Region dabei. Bei Regen fällt er aus, der Eintritt ist frei. Veranstaltet wird er von der Union des Brocanteurs Romands.",
+      "fr": "Sur les rives du Léman, à Ouchy, des professionnels dressent leurs tables certains jours entre avril et octobre : vinyles, CD, DVD, BD, livres et tableaux. Ce n'est pas un vide-grenier, mais un marché de brocanteurs pour les collectionneurs et les amoureux de musique et de lecture. Il arrive que des auteurs de la région soient de la partie. Le marché n'a pas lieu s'il pleut, et l'entrée est libre. Il est organisé par l'Union des Brocanteurs Romands.",
+      "it": "Sulla riva del lago a Ouchy, a Losanna, in alcuni giorni tra aprile e ottobre dei professionisti allestiscono i loro banchi: vinili, CD, DVD, fumetti, libri e dipinti. Non è un mercatino per svuotare la cantina, ma un mercato di brocanteur pensato per collezionisti e per chi ama la musica e la lettura. A volte ci sono anche autori della regione. Se piove, il mercato non si tiene; l'ingresso è libero. Lo organizza l'Union des Brocanteurs Romands.",
+      "en": "On the lakeshore at Ouchy, in Lausanne, professional dealers lay out their tables on selected days between April and October: vinyl, CDs, DVDs, comics, books and paintings. It is not a clear-out flea market but a dealers' market, aimed at collectors and people who love music and reading. Authors from the region sometimes turn up too. It does not run in the rain, and entry is free. The Union des Brocanteurs Romands organises it."
+    },
+    "sources": [
+      { "url": "https://www.fete-livres-disques.ch/", "quote": "Vinyles, CD's, DVD's, BD's, Livres, Tableaux ... des brocanteurs professionnels ... En aucun cas, il s'agit d'un vide grenier ! ... Quelques dimanches à Lausanne, Ouchy" },
+      { "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/fete-livre-disque.html", "quote": "L'Union des Brocanteurs Romands organise des manifestations autour du livre et du disque ... Plusieurs fois par an" }
+    ],
+    "conflicts": [
+      "The organiser's site says the fair returns 'dès avril 2027' with dates to be published in January or February, so there is no date to show yet.",
+      "The organiser and the city name only 'Ouchy'; they do not mention Place de la Navigation (our venue) or the Quai Jean-Pascal-Delamuraz (our old text). Rain-cancellation and free entry come from facts_we_hold, not the pages."
+    ],
+    "notes": "The English copy was 100 percent the old site's; fully rebuilt. No weekday named (it runs on some Sundays)."
+  },
+  {
+    "slug": "flodo-flohmarkt-solothurn",
+    "description": {
+      "de": "FloDo ist ein Flohmarkt unter freiem Himmel auf dem Dornacherplatz in Solothurn, mit über 130 Ständen. Auf den Tischen liegen Gebrauchtes und Rares. Der Verein FloDo hat den Markt nach langer Pause wieder aufgenommen und versteht ihn als Stück Stadtleben und als Beitrag zur Nachhaltigkeit. Die nächsten Termine gibt der Verein auf seiner Website bekannt.",
+      "fr": "FloDo est un marché aux puces en plein air installé sur la Dornacherplatz, à Soleure, avec plus de 130 stands. Sur les tables, de l'occasion et des raretés. Le Verein FloDo a relancé le marché après une longue pause ; il y voit un morceau de vie urbaine et une contribution à la durabilité. Les prochaines dates sont annoncées sur le site de l'association.",
+      "it": "FloDo è un mercatino delle pulci all'aperto sulla Dornacherplatz, a Soletta, con più di 130 bancarelle. Sui banchi si trovano oggetti usati e rarità. Il Verein FloDo lo ha riportato in vita dopo una lunga pausa e lo vive come un pezzo di vita cittadina e un contributo alla sostenibilità. Le prossime date vengono pubblicate sul sito dell'associazione.",
+      "en": "FloDo is an open-air flea market on the Dornacherplatz in Solothurn, with 130 stands and more. On the tables you find used goods and rarities. The Verein FloDo brought the market back after a long break and sees it as a slice of town life and a contribution to sustainability. New dates are announced on the association's website."
+    },
+    "sources": [
+      { "url": "https://flodo.ch/", "quote": "über 130 Ständen ... Rares und Gebrauchtes ... nach langer Pause ... Lebensgefühl, Nachhaltigkeit und (Vor)Stadtleben pur! ... bald wird der neue FloDo Termin bekannt gegeben" }
+    ],
+    "conflicts": [
+      "Our rhythm 'Jährlich, ein Samstag im August' is not on the organiser's site: it says the market returns 'nach langer Pause' and the new date is 'bald' to be announced (2027, no day given). We show no next date, which agrees.",
+      "'Right by the station' (our old text) is not on the organiser's page, so I left it out."
+    ],
+    "notes": "Stand count from the organiser and facts_we_hold (130). The self-description is paraphrased, not quoted."
+  },
+  {
+    "slug": "floh-raritaetenmarkt-europaplatz-bern",
+    "description": {
+      "de": "Der Europaplatz in Bern wird mehrmals im Jahr, an rund sieben Terminen, zum Floh- und Raritätenmarkt unter freiem Himmel. Zu haben ist Gebrauchtes und Rares, Antikes gehört dazu. Der Eintritt ist frei. Veranstaltet wird der Markt vom Brockicenter Bern, das in Sugiez zu Hause ist.",
+      "fr": "Plusieurs fois par an, à environ sept dates, l'Europaplatz de Berne accueille en plein air un marché de brocante et de raretés. On y trouve de l'occasion et des pièces rares, avec des antiquités au milieu. L'entrée est libre. Le marché est organisé par le Brockicenter Bern, basé à Sugiez.",
+      "it": "Più volte l'anno, in circa sette date, l'Europaplatz di Berna ospita all'aperto un mercato di cose usate e rarità. Si trovano oggetti usati e pezzi rari, tra cui anche antiquariato. L'ingresso è libero. Lo organizza il Brockicenter Bern, con sede a Sugiez.",
+      "en": "Several times a year, on around seven dates, Bern's Europaplatz hosts an open-air flea market with rarities. On offer is second-hand stuff and rare finds, antiques among them. Entry is free. The market is run by the Brockicenter Bern, based in Sugiez."
+    },
+    "sources": [
+      { "url": "https://www.brockicenter.ch/flohmarkt.html", "quote": "Das Brockicenter Bern präsentiert wieder diesen Anlass im Jahr 2026 ... Der Flohmarkt findet dieses Jahr 7x statt ... route de la gare 4 1786 Sugiez" },
+      { "url": "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/groesster-flohmarkt-in-bern-europaplatz-2026/", "quote": "Grosser Floh- und Raritätenmarkt Europaplatz Bern ... Europaplatz, 3008 Bern" }
+    ],
+    "conflicts": [
+      "MySwitzerland shows Saturday 24 October 2026 as 08:00 to 23:00; our data has 08:00-16:00. The same listing carries 'NEU MIT CHILBI FLOHMARKT' and an opening-hours table still dated 2024, so it may just be sloppy, but the hours are unconfirmed.",
+      "The organiser's page gives neither hours nor dates, nor who sells (private or dealers) or what is on offer beyond 'Floh- und Raritätenmarkt'; our old 'Privatverkäufer und Händler' is therefore left out."
+    ],
+    "notes": "Thin on purpose: the organiser says very little. Seven dates is for the current year, written as 'rund sieben'."
+  },
+  {
+    "slug": "floh-und-antikmarkt-wynecenter-buchs",
+    "description": {
+      "en": "Next to the Wynecenter shopping centre in Buchs, you can browse antiques, household goods, home décor and collectibles at a market that mixes flea-market finds with antique pieces. Parking is available on site."
+    },
+    "sources": [
+      { "url": "https://wochen-post.ch/veranstaltungen/234578/floh-und-antikmarkt-beim-wynecenter-buchs", "quote": "Bilder, Teppiche, Porzellan, Kleider, Antikes, Kleinmöbel, CDs usw. ... grosses, gut beschildertes Parkplatzangebot ... Im gedeckten Parkhaus auf drei Etagen" },
+      { "url": "https://flohmarkt-mittelland.ch/", "quote": "300 Stände ... gedeckten Parkhaus ... Eintritt Gratis" }
+    ],
+    "conflicts": [],
+    "notes": "Translated from our one-line German. The German is thin: the organiser says it is in the covered car park on three levels with 300 stalls, on the first Sunday of the month from March to December, free entry, so our German could be enriched later. Dates 1 Nov and 6 Dec 2026 are first Sundays."
+  },
+  {
+    "slug": "flohmaert-zueg-ond-sache-beromuenster",
+    "description": {
+      "de": "Zur Kilbi von Beromünster wird das Stiftstheater zum Flohmarkt: Im Festsaal und der Schol, also drinnen, stehen Tische voller Kleider, Antikes und Haushaltssachen. Das Besondere: Wer aus dem Ort kommt, darf Dinge in gutem Zustand vorbeibringen; das Team sortiert sie und verkauft sie, und der Erlös fliesst zurück in den Markt. Im Dorf läuft am selben Tag der Fläcke-Märt. Veranstaltet wird der Markt vom Ortsmarketing der 5-Sterne-Region Beromünster.",
+      "fr": "Le Flohmärt « Züg ond Sache » prend ses quartiers au Stiftstheater de Beromünster, pendant la Kilbi, dans la grande salle (Festsaal) et la Schol, donc à l'intérieur. Les tables sont chargées d'habits, d'antiquités et d'objets de la maison. Particularité : les habitants peuvent apporter des objets en bon état, que l'équipe trie puis vend, et les recettes retournent dans le marché. Le même jour, le Fläcke-Märt bat son plein dans le village. L'événement est organisé par le service de promotion locale de la 5-Sterne-Region Beromünster.",
+      "it": "Durante la Kilbi di Beromünster, lo Stiftstheater diventa un mercatino: nel Festsaal e nella Schol, quindi al coperto, i tavoli sono pieni di vestiti, antiquariato e cose di casa. La particolarità: chi abita in paese può portare oggetti in buono stato, che la squadra seleziona e vende, e il ricavato torna al mercato. Lo stesso giorno in paese c'è anche il Fläcke-Märt. Organizzatore è l'ufficio del marketing locale (5-Sterne-Region Beromünster).",
+      "en": "During Beromünster's Kilbi fair, the Stiftstheater turns into a flea market: in the Festsaal and the Schol, so indoors, tables are piled with clothes, antiques and household things. What makes it special: locals can bring in items in good condition, which the team sorts and sells, and the proceeds go back into the market. The village's own Fläcke-Märt runs the same day. The village's marketing team, 5-Sterne-Region Beromünster, organises it."
+    },
+    "sources": [
+      { "url": "https://www.5-sterne-region.ch/flohmarkt-beromuenster/", "quote": "Kleidung, Antiquitäten, Haushaltsgegenstände und vieles mehr ... Nur schöne und gepflegte Artikel ... Die Einnahmen werden nicht an die Spenderinnen und Spender zurückgezahlt ... Festsaal und Schol des Stiftstheaters ... Ortsmarketing 5-Sterne-Region.ch Beromünster" }
+    ],
+    "conflicts": [
+      "The organiser's page does not mention the Kilbi or the Fläcke-Märt (a web search of the municipality's announcement did show a Kilbi with Fläcke-Märt on the same Saturday, 26 September 2026). The page gives only the next date, Saturday 26 September 2026, no rhythm; 'last Saturday of September' is consistent.",
+      "The bus connection in our old text (from Lucerne or Sursee to Beromünster, Stift) is not on the organiser's page; I left it out. The page says proceeds fund the organisation and development of the market, which I summarised as 'zurück in den Markt'; donors are not paid back."
+    ],
+    "notes": "Kilbi and Fläcke-Märt come from our rhythm field and the municipality's announcement, not the organiser's own page; the clothes-antiques-household list and the donation scheme are on the organiser's page."
+  },
+  {
+    "slug": "flohmarkt-altdorf",
+    "description": {
+      "de": "Im Mai und im September wird der Lehnplatz mitten in Altdorf zum Flohmarkt unter freiem Himmel. Auf den Tischen liegt Gebrauchtes aller Art. Sonst gehört der Platz dem Wochenmarkt mit frischen Produkten von den Bauern; der Flohmarkt steht im Marktangebot der Gemeinde Altdorf.",
+      "fr": "En mai et en septembre, la Lehnplatz, en plein centre d'Altdorf, se transforme en marché aux puces en plein air. Sur les tables, de l'occasion en tout genre. Le reste du temps, la place accueille le marché hebdomadaire de produits frais de la ferme ; le marché aux puces fait partie de l'offre de marchés de la commune d'Altdorf.",
+      "it": "A maggio e a settembre la Lehnplatz, in pieno centro ad Altdorf, si trasforma in un mercatino delle pulci all'aperto. Sui tavoli c'è usato di ogni genere. Il resto dell'anno la piazza ospita il mercato settimanale con prodotti freschi delle aziende agricole; anche il mercatino fa parte dell'offerta di mercati del comune di Altdorf.",
+      "en": "In May and September, the Lehnplatz in the middle of Altdorf becomes an open-air flea market. The tables hold used goods of all kinds. The rest of the time the square belongs to the weekly farmers' market with fresh produce; the flea market is part of the municipality's market programme."
+    },
+    "sources": [
+      { "url": "https://altdorf.ch/themen/kultur-sport-freizeit/warenmarkt", "quote": "Auf dem Lehnplatz werden in regelmässigen Abständen Gebrauchtes verkauft ... 22. Mai und 11. September 2027 jeweils von 08.00 - 16.00 Uhr ... Wochenmarkt jeden Samstagvormittag auf dem Lehnplatz mit frischen Bauernprodukten" }
+    ],
+    "conflicts": [],
+    "notes": "Dates 22 May and 11 Sept 2027 agree with ours. The page does not name the organiser; it sits among the Gemeinde's markets with a municipal contact, which is what 'Marktangebot der Gemeinde' rests on. Station walking time (our old text) is not on the page and left out."
+  },
+  {
+    "slug": "flohmarkt-alte-holzbruecke-olten",
+    "description": {
+      "de": "Olten hat eine alte Holzbrücke mit Dach über die Aare, und darauf findet zwischen März und Oktober einmal im Monat der Flohmarkt statt, jeweils gegen Monatsende. Die Stände reihen sich mitten in der Stadt aneinander, und über dem Kopf hast du ein Dach. Organisiert wird der Markt von der IG Flohmi. Vom Bahnhof ist es ein kurzer Fussweg.",
+      "fr": "Olten possède un vieux pont de bois couvert sur l'Aar, et c'est là que se tient le marché aux puces, une fois par mois entre mars et octobre, vers la fin du mois. Les stands s'alignent en pleine ville, et on a un toit au-dessus de la tête. L'IG Flohmi s'occupe de l'organisation. De la gare, ce n'est qu'une courte marche.",
+      "it": "A Olten un vecchio ponte di legno con il tetto attraversa l'Aar, ed è lì che si tiene il mercatino delle pulci, una volta al mese tra marzo e ottobre, verso la fine del mese. Le bancarelle si allineano in pieno centro e sopra la testa c'è un tetto. Dell'organizzazione si occupa l'IG Flohmi. Dalla stazione basta una breve passeggiata.",
+      "en": "Olten has an old wooden bridge with a roof over the Aare, and that is where the flea market sets up once a month between March and October, usually towards the end of the month. The stalls line up right in the middle of town, with a roof over your head. IG Flohmi organises it. From the station it is a short walk."
+    },
+    "sources": [
+      { "url": "https://www.olten.ch/maerkte/52058", "quote": "Von März bis Oktober, jeweils am letzten Samstag des Monats von 07.30 – 17.00 Uhr ... Flohmarkt auf der alten Holzbrücke ... IG Flohmi" }
+    ],
+    "conflicts": [],
+    "notes": "The organiser's page does not say who sells or what is sold, so the text sticks to place, rhythm and organiser. That the bridge is roofed (gedeckt) and spans the Aare is from our database and general knowledge; 'kurzer Fussweg vom Bahnhof' is likewise not from the page."
+  },
+  {
+    "slug": "flohmarkt-arbon",
+    "description": {
+      "de": "Wer in Arbon am Bodensee nach Seltenem, Skurrilem, Kitschigem und Brauchbarem sucht, geht auf den Fischmarktplatz. Dort ist meist in der ersten Monatshälfte von Mai, Juni und September Flohmarkt, organisiert von der Stadt. Gefeilscht werden darf, und gemütlich bummeln lässt es sich auch: Die Stände stehen bunt nebeneinander.",
+      "fr": "À Arbon, sur les rives du lac de Constance, la Fischmarktplatz accueille des étals de raretés, de curiosités, de kitsch et de choses bien pratiques. Le rendez-vous revient en mai, en juin et en septembre, normalement dans la première quinzaine du mois ; la ville elle-même en est l'organisatrice. Marchander est permis, et flâner entre les stands colorés fait partie de la visite.",
+      "it": "Chi cerca rarità, curiosità, kitsch o cose utili ad Arbon, sul lago di Costanza, va alla Fischmarktplatz. Il mercatino delle pulci vi si tiene di regola nella prima metà di maggio, giugno e settembre ed è organizzato dalla città. Si può contrattare e si passeggia volentieri tra le bancarelle colorate.",
+      "en": "If you are after rarities, oddities, kitsch or things you can actually use, Arbon's Fischmarktplatz on Lake Constance is the place. The flea market is usually held in the first half of May, June and September, and the town organises it. Haggling is welcome, and a relaxed stroll past the colourful stalls is part of the visit."
+    },
+    "sources": [
+      { "url": "https://www.arbon.ch/freizeit/tourismus-und-mobilitaet/veranstaltungen/maerkte.html/198", "quote": "in der Regel am 2. Samstag im Mai, Juni und September ... Raritäten, Kurioses, Kitsch und Brauchbares ... gemütlicher Bummel durch die bunten Stände ... Der nächste Flohmarkt findet am 15. Mai 2027 von 8 bis 16 Uhr statt" }
+    ],
+    "conflicts": [],
+    "notes": "Second Saturday = day 8-14, hence 'erste Monatshälfte' (no weekday allowed). Next date 15 May 2027 confirmed. Altstadt next door and the five-minute walk from the station (old text) are not on the page, so left out."
+  },
+  {
+    "slug": "flohmarkt-arlesheim",
+    "description": {
+      "de": "Der Arleser Flohmärt ist der Dorfflohmarkt von Arlesheim bei Basel: Jedes Jahr im August füllt er den Dorfkern, auf und um den Dorfplatz. Hinter dem Markt steht der Verein Flohmarkt Arlesheim, und die Gemeinde Arlesheim gibt das Datum auf ihrer Website bekannt.",
+      "fr": "L'Arleser Flohmärt est le marché aux puces du village d'Arlesheim, près de Bâle : chaque année en août, il remplit le cœur du village, aux abords de la Dorfplatz. Derrière le marché : le Verein Flohmarkt Arlesheim, et la commune d'Arlesheim en publie la date sur son site.",
+      "it": "L'Arleser Flohmärt è il mercatino del paese di Arlesheim, vicino a Basilea: ogni anno ad agosto riempie il cuore del villaggio, sulla Dorfplatz e attorno. Lo porta avanti l'associazione Verein Flohmarkt Arlesheim, e il comune di Arlesheim ne pubblica la data sul suo sito.",
+      "en": "The Arleser Flohmärt is Arlesheim's village flea market, near Basel: every August it fills the heart of the village, on and around the Dorfplatz. It is run by the Verein Flohmarkt Arlesheim, and the municipality publishes the date on its website."
+    },
+    "sources": [
+      { "url": "https://www.arlesheim.ch/de/wirtschaft/maerkte.php", "quote": "Samstag, 28. August ... von 9 bis 16 Uhr ... Verein Flohmarkt Arlesheim" }
+    ],
+    "conflicts": [
+      "The municipal page gives only the date, hours and the Verein; it does not mention the Dorfkern/Dorfplatz, closed streets or the Tram 10 link in our old text. I kept the village-centre location from our database venue (Dorfkern, Dorfplatz) and left out the closed streets and tram."
+    ],
+    "notes": "Thin because only the date, organiser and our database venue are confirmed. 28 Aug 2027 matches our next date."
+  },
+  {
+    "slug": "flohmarkt-baar",
+    "description": {
+      "de": "Wer in Baar Gebrauchtes sucht, hat dafür vier Termine im Jahr. Dann stehen etwa 70 Stände im Dorf, vor allem von Privatleuten: im Hof bei der Rathus-Schüür und auf dem Schulhausplatz (Marktgasse). Es gibt Secondhand für den Alltag und Stücke für Sammler, und es wird bei jeder Witterung verkauft. Organisiert wird der Flohmarkt von der Gemeinde Baar.",
+      "fr": "À Baar, on peut chiner quatre fois par an. Quelque 70 stands, la plupart privés, se répartissent autour de la Rathus-Schüür et sur la Schulhausplatz, à la Marktgasse. On y trouve de la seconde main pour tous les jours et des pièces pour collectionneurs, et on vend quel que soit le temps. C'est la commune de Baar qui organise le marché.",
+      "it": "A Baar si può frugare quattro volte l'anno. Una settantina di bancarelle, quasi tutte di privati, si dispongono attorno alla Rathus-Schüür e sulla Schulhausplatz, alla Marktgasse. C'è seconda mano per ogni giorno e pezzi per collezionisti, e si vende con qualunque tempo. A organizzare il mercato è il comune di Baar.",
+      "en": "In Baar you can go rummaging four times a year. Some 70 stands, mostly run by private people, are spread around the Rathus-Schüür and across the Schulhausplatz at the Marktgasse. There is second-hand stuff for everyday life and pieces for collectors, and selling goes on whatever the weather. The municipality of Baar organises the market."
+    },
+    "sources": [
+      { "url": "https://www.baar.ch/brauchtummaerkte/29914", "quote": "Viermal pro Jahr findet in Baar ... ein Flohmarkt statt ... Der Flohmarkt Baar wird bei jeder Witterung durchgeführt ... Einwohnergemeinde Baar" }
+    ],
+    "conflicts": [],
+    "notes": "About 70 stands, mostly private, from facts_we_hold and the page. 2026 dates 25 Apr, 27 Jun, 5 Sep, 17 Oct; our 17 Oct matches. The five-minute walk from the station (old text) is not on the page."
+  },
+  {
+    "slug": "flohmarkt-biel",
+    "description": {
+      "de": "In Biel ist von April bis Oktober an ausgewählten Terminen Flohmarkt, je nach Datum in der Altstadt oder auf der Esplanade beim Kongresshaus. Verkauft wird nur Gebrauchtes; Neuware ist nicht erlaubt. Der Markt findet bei jedem Wetter statt, und die Marktpolizei der Stadt organisiert ihn. Mit dem Auto parkierst du in den Parkings Esplanade oder Altstadt.",
+      "fr": "À Bienne, un marché aux puces a lieu à certaines dates entre avril et octobre, selon le jour dans la vieille ville ou sur l'Esplanade, près du Palais des Congrès. On ne vend que de l'occasion : le neuf est interdit. Le marché se tient quelle que soit la météo et dépend de la police des marchés de la ville. En voiture, on se gare dans les parkings de l'Esplanade ou de la vieille ville.",
+      "it": "A Bienne, il mercatino delle pulci si tiene in alcune date da aprile a ottobre, a seconda del giorno nella città vecchia o sull'Esplanade, vicino al Palazzo dei Congressi. Si vende solo usato: il nuovo non è ammesso. Il mercato si svolge qualunque sia il tempo ed è gestito dalla polizia dei mercati della città. In auto si parcheggia nei parcheggi dell'Esplanade o della città vecchia.",
+      "en": "In Biel/Bienne there is a flea market on selected dates between April and October, held either in the old town or on the Esplanade by the Kongresshaus, depending on the date. Only used goods may be sold; new items are not allowed. The market goes ahead in any weather and is run by the city's market police. If you come by car, use the Esplanade or old-town car parks."
+    },
+    "sources": [
+      { "url": "https://www.biel-bienne.ch/de/flohmarkt.html/1417", "quote": "von April bis Oktober am Samstag von 07.00 bis 14.00 Uhr ... Altstadt oder Esplanade beim Kongresshaus ... Es dürfen nur eindeutig als gebraucht erkennbare Waren verkauft werden ... Parkhaus Esplanade oder Altstadt" }
+    ],
+    "conflicts": [
+      "The organiser's page does not say twelve Saturdays or that the two locations alternate (our rhythm says 'Zwölf Samstage'); it says only 'Altstadt oder Esplanade', gives no per-date list and states the 2026 markets are fully booked for stall holders. I wrote 'ausgewählte Termine' and 'je nach Datum'.",
+      "Our next date 2026-10-17 (07:00-14:00) is not confirmable from the page."
+    ],
+    "notes": "The page is written for sellers; I used only visitor facts (used goods only, any weather, market police, parking). Rain rule from facts_we_hold and the page's sellers-stay-open-in-bad-weather rule."
+  },
+  {
+    "slug": "flohmarkt-buerkliplatz-zuerich",
+    "description": {
+      "de": "Von Mai bis Oktober gibt es an der Stadthausanlage beim Bürkliplatz jede Woche einen Flohmarkt, seit über 50 Jahren, nahe am Zürichsee. Rund 300 Verkaufsplätze bieten Antiquitäten, Raritäten, Vintage und Kuriosem an; viele Verkäufer sind Profis, dazwischen stehen auch Privatleute. Ein Kiosk vor Ort hat Mittagsmenüs. Die Haltestelle Bürkliplatz bedienen die Trams 11, 9, 8, 5 und 2 sowie die Busse 161 und 165.",
+      "fr": "De mai à octobre, un marché aux puces s'installe chaque semaine à la Stadthausanlage, près du Bürkliplatz, au bord du lac de Zurich, et cela depuis plus de 50 ans. Environ 300 emplacements accueillent antiquités, raretés, vintage et curiosités ; beaucoup de vendeurs sont des professionnels, mais des particuliers se mêlent à eux. Un kiosque sur place propose des menus de midi. Les trams 11, 9, 8, 5 et 2 ainsi que les bus 161 et 165 desservent l'arrêt Bürkliplatz.",
+      "it": "Da maggio a ottobre, alla Stadthausanlage, vicino al Bürkliplatz e al lago di Zurigo, c'è ogni settimana un mercatino delle pulci, e va avanti da più di 50 anni. Circa 300 posti accolgono antiquariato, rarità, vintage e curiosità; molti venditori sono professionisti, ma tra loro ci sono anche privati. Un chiosco sul posto propone menù di mezzogiorno. Alla fermata Bürkliplatz si arriva con i tram 11, 9, 8, 5 e 2 e con i bus 161 e 165.",
+      "en": "From May to October there is a flea market every week at the Stadthausanlage, next to Bürkliplatz and Lake Zürich, and it has been going for more than 50 years. Around 300 stands hold antiques, rarities, vintage and curiosities; many of the sellers are professionals, with private people among them. A kiosk on site serves lunch menus. Trams 11, 9, 8, 5 and 2 and buses 161 and 165 stop at Bürkliplatz."
+    },
+    "sources": [
+      { "url": "https://buerkli-flohmarkt.ch/flohmarkt-buerkliplatz.html", "quote": "Rund 220 Saisonplätze und 84 Tagesplätze ... Many of the sellers are qualified professionals and connoisseurs ... Der neue Kiosk ist seit dem 4. Januar offen ... Trams 2, 5, 8, 9 und 11 und Busse 161 und 165 halten am Bürkliplatz" },
+      { "url": "https://www.zuerich.com/de/besuchen/shopping/flohmarkt-buerkliplatz", "quote": "Immer samstags, Mai bis Oktober ... seit über 50 Jahren ... Antiquitäten, Vintage und Secondhand" }
+    ],
+    "conflicts": [
+      "Stand count: the organiser says about 220 season plus 84 day stands (about 300, matching our 300); zuerich.com says over 230 season stands. I wrote 'rund 300'.",
+      "The organiser's English summary says sellers set up along Fraumünsterstrasse, Börsenstrasse, Kappelergasse and Münsterhof this year, while its German text says the market returns to the rebuilt Stadthausanlage from 2 May 2026. Our venue is Stadthausanlage; please check where the stands actually stand. The page also lists 1 August and 8 August as known cancellation dates for 2026."
+    ],
+    "notes": "'Over 50 years' from zuerich.com (the organiser's summary says 55th year). Season dates in our data (17, 24, 31 Oct) fall inside the page's season to 31 October."
+  }
+]

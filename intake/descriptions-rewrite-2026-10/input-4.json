@@ -1,0 +1,1444 @@
+[
+ {
+  "slug": "marche-rumine-lausanne-vendredi",
+  "task": "keep our German; write new en/fr/it from our German",
+  "locales_to_write": [
+   "en",
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "it": 35.6,
+   "fr": 35.4,
+   "en": 33.3
+  },
+  "name": "Marché de Rumine",
+  "kind": "brocante",
+  "town": "Lausanne",
+  "venue": "Place de la Riponne",
+  "address_line": "Place de la Riponne, 1005 Lausanne",
+  "postal_code": "1005",
+  "rhythm_de": "Jeden Freitag seit März 2026",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-16",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-10-23",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-10-30",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-11-06",
+    "start": "09:30:00",
+    "end": "18:00:00"
+   }
+  ],
+  "website_url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_pages": [
+   "https://swiss-markt.ch/fr/lausanne/marche-rumine",
+   "https://www.lausanne.ch/dam/jcr:b15a27e4-8dee-4004-bc5e-175d80445157/Doc Marché Rumine.pdf"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein Markt der Stadt ohne Lebensmittel, mit neuer und gebrauchter Ware. Seit März 2026 hilft die Freitagsausgabe mit, dass auf der zentralen Riponne wieder an vier Tagen pro Woche Brocante-Stände stehen.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire où se côtoient articles neufs et de seconde main. Depuis mars 2026, l'édition du vendredi contribue à ramener des stands de brocante quatre jours par semaine sur cette place du centre-ville.",
+   "it": "Il Marché de Rumine, in Place de la Riponne a Losanna, è un mercato comunale non alimentare con articoli nuovi e di seconda mano. Da marzo 2026 l'edizione del venerdì ha contribuito a riportare le bancarelle di brocante nella piazza centrale della Riponne, quattro giorni alla settimana.",
+   "en": "The Marche de Rumine on Place de la Riponne in Lausanne is a city-run non-food market combining new and second-hand goods. Since March 2026, the Friday edition has helped bring brocante stalls back to the central Riponne square four days a week."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Marché de Rumine auf der Place de la Riponne in Lausanne ist ein städtischer Markt ohne Lebensmittel: Brocante-Stände mit Secondhandware, dazu neue Artikel. Die Stände stehen an vier Wochentagen auf der Riponne; dies ist der Freitagsmarkt, im Sommer bis 18 Uhr, im Winter bis 16.30 Uhr. Organisiert von der Stadt Lausanne.",
+   "fr": "Le Marché de Rumine, sur la place de la Riponne à Lausanne, est un marché municipal non alimentaire : des stands de brocante avec de la seconde main, et aussi des articles neufs. Les stands occupent la Riponne quatre jours par semaine ; ici, le marché du vendredi, jusqu’à 18 h en été et 16 h 30 en hiver. Organisé par la Ville de Lausanne.",
+   "it": "Il Marché de Rumine, in place de la Riponne a Losanna, è un mercato comunale non alimentare: bancarelle di brocante con articoli di seconda mano, accanto ad articoli nuovi. Le bancarelle occupano la Riponne quattro giorni alla settimana; questo è il mercato del venerdì, fino alle 18 d’estate e alle 16.30 d’inverno. Organizza la Città di Losanna.",
+   "en": "The Marché de Rumine on Place de la Riponne in Lausanne is a city-run non-food market: brocante stalls with secondhand goods, alongside some new items. The stalls are on the Riponne four days a week; this is the Friday market, open until 6 pm in summer and 4.30 pm in winter. Organised by the City of Lausanne."
+  }
+ },
+ {
+  "slug": "mercatino-pulci-ragazzi-locarno",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "it": 92.1,
+   "en": 77.8,
+   "fr": 64.3,
+   "de": 61.8
+  },
+  "name": "Mercatino delle pulci dei ragazzi",
+  "kind": "flohmarkt",
+  "town": "Locarno",
+  "venue": "Piazza Grande",
+  "address_line": "Piazza Grande",
+  "postal_code": "6600",
+  "rhythm_de": "Jährlich, ein Samstag im Oktober",
+  "season_months": [
+   10,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "10:00:00",
+    "end": "16:30:00"
+   }
+  ],
+  "website_url": "https://www.ggl.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "cancelled",
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://www.ggl.ch/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Beim Mercatino delle pulci dei ragazzi auf der Piazza Grande in Locarno verkaufen Kinder und Jugendliche selbst: Spielzeug, Bücher, Kleidung, Sportsachen und Kleinkram. Die Erwachsenen dürfen nur helfen. Die Piazza Grande liegt fünf Minuten vom Bahnhof entfernt.",
+   "fr": "Au Mercatino delle pulci dei ragazzi, sur la piazza Grande de Locarno, ce sont les enfants et les ados qui vendent : jouets, livres, habits, articles de sport et bricoles, les adultes ne font qu'aider. La piazza Grande est à cinq minutes de la gare.",
+   "it": "Al Mercatino delle pulci dei ragazzi in piazza Grande a Locarno vendono i bambini e i ragazzi in prima persona: giocattoli, libri, vestiti, articoli sportivi e piccoli oggetti, gli adulti possono solo aiutare. Piazza Grande è a cinque minuti dalla stazione.",
+   "en": "At the Mercatino delle pulci dei ragazzi on Locarno's Piazza Grande, children and teenagers do the selling themselves: toys, books, clothes, sports gear and small stuff, adults may only help. Piazza Grande is five minutes from the station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Beim Mercatino delle pulci dei ragazzi auf der Piazza Grande in Locarno verkaufen Kinder und Jugendliche selbst: Spielzeug, Bücher, Kleider, Sportsachen und Kleinkram. Erwachsene dürfen nur helfen. Einmal im Jahr an einem Samstag im Oktober, von 10 bis 16.30 Uhr, Eintritt frei. Bei schlechtem Wetter fällt er aus; der Gruppo Genitori Locarnese gibt das am Vorabend ab 19 Uhr auf ggl.ch bekannt. Die Piazza Grande liegt fünf Minuten vom Bahnhof.",
+   "fr": "Au Mercatino delle pulci dei ragazzi, sur la piazza Grande de Locarno, ce sont les enfants et les adolescents qui vendent : jouets, livres, vêtements, articles de sport et petits objets. Les adultes ne font qu’aider. Une fois par an, un samedi d’octobre, de 10 h à 16 h 30, entrée libre. En cas de mauvais temps, il est annulé ; le Gruppo Genitori Locarnese l’annonce sur ggl.ch la veille dès 19 h. La piazza Grande est à cinq minutes de la gare.",
+   "it": "Al Mercatino delle pulci dei ragazzi in piazza Grande a Locarno vendono i bambini e i ragazzi in prima persona: giocattoli, libri, vestiti, articoli sportivi e piccoli oggetti. Gli adulti possono solo aiutare. Una volta l’anno, un sabato di ottobre, dalle 10 alle 16.30, ingresso libero. In caso di maltempo è annullato; il Gruppo Genitori Locarnese lo comunica su ggl.ch dalle 19 della sera prima. Piazza Grande è a cinque minuti dalla stazione.",
+   "en": "At the Mercatino delle pulci dei ragazzi on Locarno’s Piazza Grande, children and teenagers do the selling themselves: toys, books, clothes, sports gear and odds and ends. Adults may only help. Once a year on a Saturday in October, 10 am to 4.30 pm, free entry. It is cancelled in bad weather; the Gruppo Genitori Locarnese posts the decision on ggl.ch from 7 pm the evening before. Piazza Grande is five minutes from the station."
+  }
+ },
+ {
+  "slug": "mercatino-usato-lugano",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 79.2,
+   "fr": 70.8,
+   "en": 66.7,
+   "it": 50
+  },
+  "name": "Mercatino dell'usato (Città di Lugano)",
+  "kind": "flohmarkt",
+  "town": "Lugano",
+  "venue": "Centro Esposizioni MAC 3",
+  "address_line": "Viale dei Faggi",
+  "postal_code": "6900",
+  "rhythm_de": "Dreimal jährlich, samstags, in der Halle",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercatino-usato/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Das Mercatino dell'usato ist der Secondhand-Markt der Stadt Lugano: dreimal im Jahr, samstags von 11 bis 17 Uhr, in der Halle des Centro Esposizioni MAC 3 am Viale dei Faggi – also auch bei Regen. Verkauft werden gebrauchte, noch funktionierende Dinge in gutem Zustand. Mit dem Bus 2 ab Lugano Centro bis Viale dei Faggi.",
+   "fr": "Le Mercatino dell'usato est le marché de seconde main de la Ville de Lugano : trois fois par an, le samedi de 11 h à 17 h, dans la halle du Centro Esposizioni MAC 3, viale dei Faggi – donc aussi sous la pluie. On y vend des objets d'occasion en bon état et en état de marche. Bus 2 depuis Lugano Centro jusqu'à viale dei Faggi.",
+   "it": "Il Mercatino dell'usato è l'appuntamento con l'usato della Città di Lugano: tre volte l'anno, il sabato dalle 11 alle 17, nel padiglione del Centro Esposizioni MAC 3 in viale dei Faggi, quindi con qualsiasi tempo. Si trovano solo oggetti usati, funzionanti e in buono stato. Bus 2 da Lugano Centro fino a viale dei Faggi.",
+   "en": "The Mercatino dell'usato is the City of Lugano's secondhand market: three times a year, Saturdays 11 am to 5 pm, in the hall of the Centro Esposizioni MAC 3 on Viale dei Faggi – so it runs in any weather. Used items in good working condition only. Bus 2 from Lugano Centro to Viale dei Faggi."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Das Mercatino dell’usato ist der Secondhand-Markt der Stadt Lugano: dreimal im Jahr, samstags von 11 bis 17 Uhr, in der Halle des Centro Esposizioni MAC 3 am Viale dei Faggi, also auch bei Regen. Verkauft werden gebrauchte Dinge in gutem Zustand, die noch funktionieren. Mit dem Bus 2 ab Lugano Centro bis zur Haltestelle Viale dei Faggi.",
+   "fr": "Le Mercatino dell’usato est le marché de seconde main de la Ville de Lugano : trois fois par an, le samedi de 11 h à 17 h, dans la halle du Centro Esposizioni MAC 3, viale dei Faggi, donc aussi par temps de pluie. On n’y vend que des objets d’occasion en bon état et qui fonctionnent. Bus 2 depuis Lugano Centro jusqu’à l’arrêt Viale dei Faggi.",
+   "it": "Il Mercatino dell’usato è il mercatino di seconda mano della Città di Lugano: tre volte l’anno, il sabato dalle 11 alle 17, nel padiglione del Centro Esposizioni MAC 3 in viale dei Faggi, quindi anche con la pioggia. Si vendono solo oggetti usati, in buono stato e funzionanti. Bus 2 da Lugano Centro fino alla fermata Viale dei Faggi.",
+   "en": "The Mercatino dell’usato is the City of Lugano’s second-hand market: three times a year, on Saturdays from 11 am to 5 pm, in the hall of the Centro Esposizioni MAC 3 on Viale dei Faggi, so it runs in any weather. Only used items in good working condition are sold. Bus 2 from Lugano Centro to the Viale dei Faggi stop."
+  }
+ },
+ {
+  "slug": "mercatino-usato-paradiso-lugano",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 82.1,
+   "it": 72.7,
+   "en": 56.4,
+   "de": 34.2
+  },
+  "name": "Mercatino dell'usato Paradiso",
+  "kind": "flohmarkt",
+  "town": "Paradiso",
+  "venue": "Piazza del Municipio",
+  "address_line": "Piazza del Municipio, 6900 Paradiso",
+  "postal_code": "6900",
+  "rhythm_de": "Termine gemäss Gemeinde Paradiso",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-11-04",
+    "start": "09:00:00",
+    "end": "15:30:00"
+   },
+   {
+    "date": "2027-03-03",
+    "start": "09:00:00",
+    "end": "15:30:00"
+   },
+   {
+    "date": "2027-04-07",
+    "start": "09:00:00",
+    "end": "15:30:00"
+   },
+   {
+    "date": "2027-05-05",
+    "start": "09:00:00",
+    "end": "15:30:00"
+   }
+  ],
+  "website_url": "https://paradiso.ch/mc-events/mercatino-dellusato-8/?mc_id=130",
+  "source_pages": [
+   "https://paradiso.ch/cms/wp-content/uploads/2026/07/Eventi-2026_0722.pdf"
+  ],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Am ersten Mittwoch des Monats, von März bis November (ausser Juli und August), findet auf der Piazza del Municipio in Paradiso, wenige Minuten von Lugano entfernt, dieser Wohltätigkeits-Flohmarkt statt. Rund 30 Stände bieten Kleidung, Accessoires, Spielsachen, Bücher und Haushaltswaren an.",
+   "fr": "Le premier mercredi du mois, de mars à novembre (sauf juillet et août), la Piazza del Municipio de Paradiso, à quelques minutes de Lugano, accueille ce marché aux puces caritatif. Une trentaine de stands proposent vêtements, accessoires, jouets, livres et articles ménagers.",
+   "it": "Il primo mercoledì del mese, da marzo a novembre (esclusi luglio e agosto), in Piazza del Municipio a Paradiso, a pochi minuti da Lugano, si tiene questo mercatino dell'usato a scopo benefico. Una trentina di bancarelle propongono abbigliamento, accessori, giocattoli, libri e oggetti per la casa.",
+   "en": "On the first Wednesday of the month from March to November (except July and August), the Piazza del Municipio in Paradiso, a few minutes from Lugano, hosts this charity flea market. Around 30 stalls offer clothing, accessories, toys, books and household items."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Am ersten Mittwoch des Monats, von März bis November (ausser Juli und August), wird die Piazza del Municipio in Paradiso zum Secondhand-Markt für einen guten Zweck. Rund dreissig Stände bieten Kleider, Accessoires, Spielzeug, Bücher und Haushaltswaren in familiärer Quartieratmosphäre, wenige Minuten von Lugano. Der Eintritt ist frei. Organisiert vom Gruppo mamme del mercatino di Paradiso.",
+   "fr": "Le premier mercredi du mois, de mars à novembre (sauf juillet et août), la Piazza del Municipio de Paradiso, à quelques minutes de Lugano, accueille ce marché de seconde main à but caritatif. Une trentaine de stands proposent vêtements, accessoires, jouets, livres et objets pour la maison dans une ambiance familiale de quartier. L’entrée est gratuite. Organisé par le Gruppo mamme del mercatino di Paradiso.",
+   "it": "Il primo mercoledì del mese, da marzo a novembre (esclusi luglio e agosto), la Piazza del Municipio di Paradiso, a pochi minuti da Lugano, si anima con questo mercatino dell’usato a scopo benefico. Una trentina di bancarelle propongono abbigliamento, accessori, giocattoli, libri e oggetti per la casa in un’atmosfera familiare e di quartiere. L’ingresso è gratuito. Organizzato dal Gruppo mamme del mercatino di Paradiso.",
+   "en": "On the first Wednesday of the month from March to November (excluding July and August), the central square of Paradiso - just minutes from Lugano - hosts this community charity flea market. Around 30 stalls offer clothing, accessories, toys, books and household items in a friendly, neighbourhood atmosphere."
+  }
+ },
+ {
+  "slug": "mercato-antiquariato-maghetti-lugano",
+  "task": "keep our German; write new en from our German",
+  "locales_to_write": [
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 51.6
+  },
+  "name": "Mercato dell'antiquariato Maghetti",
+  "kind": "antikmarkt",
+  "town": "Lugano",
+  "venue": "Via Canova / Via Vegezzi / Piazzetta San Rocco",
+  "address_line": "Via Canova / Via Vegezzi / Piazzetta San Rocco, 6900 Lugano",
+  "postal_code": "6900",
+  "rhythm_de": "Jeden Samstag, ganzjährig.",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "08:00:00",
+    "end": "17:00:00"
+   },
+   {
+    "date": "2026-10-24",
+    "start": "08:00:00",
+    "end": "17:00:00"
+   },
+   {
+    "date": "2026-10-31",
+    "start": "08:00:00",
+    "end": "17:00:00"
+   },
+   {
+    "date": "2026-11-07",
+    "start": "08:00:00",
+    "end": "17:00:00"
+   }
+  ],
+  "website_url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/",
+  "source_pages": [
+   "https://luganoeventi.ch/it/eventi/976/mercato-dellantiquariato-e-artigianato/",
+   "https://www.americanexpress.ch/it/magazine/viaggi/mercati-in-ticino",
+   "https://www.ticino.ch/it/commons/details/Mercato-dell-antiquariato-Lugano/2924.html"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "antiques",
+     "source": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Jeden Samstag füllen rund 40 Stände die historischen Gassen des Quartiers Maghetti in Lugano mit Antiquitäten und Gebrauchtem: Bücher, Bilderrahmen, Silberwaren, Vintage-Glas, Kleidung und Sammlerstücke. Ein Markt für die Leute aus der Gegend, das ganze Jahr über.",
+   "fr": "Tous les samedis, une quarantaine de stands occupent les ruelles historiques du quartier Maghetti, à Lugano, avec des antiquités et des objets de seconde main : livres, cadres, argenterie, verrerie vintage, vêtements et objets de collection. Un marché de quartier, toute l'année.",
+   "it": "Ogni sabato, tutto l'anno, una quarantina di bancarelle riempiono i vicoli storici del quartiere Maghetti, a Lugano, con antiquariato e usato: libri, cornici, argenteria, vetri d'epoca, abbigliamento e oggetti da collezione. Un mercato di quartiere.",
+   "en": "Every Saturday, around 40 stalls fill the historic lanes of Lugano's Maghetti quarter with antiques and secondhand goods: books, picture frames, silverware, vintage glassware, clothing and collectibles. A local market, all year round."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Jeden Samstag verwandelt sich das Maghetti-Quartier in Luganos Altstadt in einen Antik- und Secondhand-Markt. Rund vierzig Stände bieten Bücher, Bilderrahmen, Silber, Kristallglas, Vintage-Kleidung und Sammlerstücke – lokal, entspannt, das ganze Jahr. Der Eintritt ist frei. Organisiert von der Città di Lugano.",
+   "fr": "Chaque samedi, le quartier Maghetti, dans la vieille ville de Lugano, se transforme en marché d’antiquités et de seconde main. Une quarantaine de stands proposent livres, cadres, argenterie, cristal, vêtements vintage et objets de collection, dans une ambiance locale et détendue, toute l’année. L’entrée est gratuite. Organisé par la Città di Lugano.",
+   "it": "Ogni sabato, nel pittoresco quartiere Maghetti, tra i vicoli storici di Lugano, si svolge questo mercato dell’antiquariato e dell’usato. Una quarantina di bancarelle propongono libri, cornici, argenteria, cristalli, abbigliamento d’epoca e oggetti da collezione, in un’atmosfera locale e rilassata, tutto l’anno. L’ingresso è gratuito. Organizzato dalla Città di Lugano.",
+   "en": "Every Saturday in Lugano's charming Maghetti quarter, around 40 stalls fill the historic lanes with antiques and secondhand goods: books, picture frames, silverware, vintage glassware, clothing and collectibles. A genuine local market with a relaxed, neighbourhood atmosphere year-round."
+  }
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "task": "keep our German; write new it from our German",
+  "locales_to_write": [
+   "it"
+  ],
+  "old_overlap_pct": {
+   "it": 35.7
+  },
+  "name": "Mercato delle Pulci di Massagno",
+  "kind": "flohmarkt",
+  "town": "Massagno",
+  "venue": "Piazzale del Municipio",
+  "address_line": "Via Giuseppe Motta 53",
+  "postal_code": "6908",
+  "rhythm_de": "Zweimal jährlich, ein Nachmittag im Frühling und einer im Herbst",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Auf den Tischen liegen Secondhand-Sachen, Vintage-Kuriositäten und Stücke, die Leute aus der Gegend selbst gemacht haben; daneben laufen ein paar Workshops.",
+   "fr": "Sur les tables, des objets de seconde main, des curiosités vintage et des créations locales ; quelques ateliers se tiennent à côté.",
+   "it": "Sui banchi oggetti di seconda mano, curiosità vintage e creazioni di gente del posto; accanto, qualche laboratorio.",
+   "en": "Second-hand things, vintage curiosities and pieces made by local people share the tables, and a few workshops run alongside."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Mercato delle Pulci di Massagno ist ein Flohmarkt am Nachmittag auf dem Platz vor dem Gemeindehaus, Via Giuseppe Motta 53, gleich oberhalb von Lugano. Er findet einmal im Jahr an einem Sonntag im Herbst statt, von 13 bis 18 Uhr; bei Regen wird er um eine Woche verschoben. Secondhand, Vintage und lokale Kreationen, dazu ein DJ mit alten Platten, ein Kinderprogramm sowie Essen und Trinken. Mit dem Bus 4 ab Lugano bis Massagno, Municipio.",
+   "fr": "Le Mercato delle Pulci de Massagno est un marché aux puces d’après-midi sur l’esplanade de la mairie, via Giuseppe Motta 53, juste au-dessus de Lugano. Il a lieu une fois par an, un dimanche d’automne, de 13 h à 18 h ; en cas de pluie, il est repoussé d’une semaine. Seconde main, vintage et créations locales, avec un DJ aux vieux vinyles, des animations pour enfants, à boire et à manger. Bus 4 depuis Lugano jusqu’à Massagno, Municipio.",
+   "it": "Il Mercato delle Pulci di Massagno è un mercatino pomeridiano sul piazzale del Municipio, in via Giuseppe Motta 53, appena sopra Lugano. Si tiene una volta l’anno, una domenica d’autunno, dalle 13 alle 18; in caso di pioggia è rinviato di una settimana. Usato, vintage e creazioni locali, con un DJ set di vinili d’epoca, attività per bambini, cibo e bevande. Organizzato con il Comune di Massagno. Bus 4 da Lugano fino a Massagno, Municipio.",
+   "en": "Massagno’s Mercato delle Pulci is an afternoon flea market on the town-hall forecourt at Via Giuseppe Motta 53, just above Lugano. It is held once a year on a Sunday in autumn, 1 pm to 6 pm; if it rains, it moves to the following week. Secondhand, vintage and local makers, plus a DJ playing old records, a children’s programme, food and drink. Bus 4 from Lugano to Massagno, Municipio."
+  }
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "task": "keep our German; write new fr/it from our German",
+  "locales_to_write": [
+   "fr",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "fr": 30.3,
+   "it": 30
+  },
+  "name": "Nostalgie Flohmarkt Worb",
+  "kind": "flohmarkt",
+  "town": "Worb",
+  "venue": "Landi Gelände",
+  "address_line": "Landi Gelände, Worb SBB, Rubigenstrasse 80, 3076 Worb",
+  "postal_code": "3076",
+  "rhythm_de": "Zweiter Sonntag im Monat, März-November",
+  "season_months": [
+   3,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-08",
+    "start": "10:00:00",
+    "end": "16:00:00"
+   }
+  ],
+  "website_url": "https://flohmarkt-3076worb.jimdofree.com",
+  "source_pages": [
+   "https://meine-flohmarkt-termine.de/ort/worb",
+   "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 40,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "antiques",
+     "source": "https://flohmarkt-3076worb.jimdofree.com"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Ein Nostalgie-Flohmarkt beim Bahnhof Worb, südöstlich von Bern. Jeden zweiten Sonntag im Monat, von März bis November, bieten Händler und Private Antiquitäten, Raritäten und nostalgische Fundstücke direkt vom Auto aus an. Eine Reservierung ist nicht nötig.",
+   "fr": "Marché aux puces nostalgique devant la gare de Worb, au sud-est de Berne. Chaque deuxième dimanche du mois, de mars à novembre, marchands et particuliers proposent antiquités, raretés et trouvailles nostalgiques directement depuis leur voiture.",
+   "it": "Mercatino nostalgico accanto alla stazione di Worb, a sud-est di Berna. Ogni seconda domenica del mese, da marzo a novembre, commercianti e privati propongono antiquariato, rarità e pezzi nostalgici direttamente dall'auto.",
+   "en": "Nostalgic flea market by Worb station, south-east of Bern. Every second Sunday of the month from March to November, dealers and private sellers offer antiques, rarities and nostalgic finds directly from their cars. No reservation required."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Nostalgie Flohmarkt Worb findet jeden zweiten Sonntag im Monat von März bis November statt, auf dem Landi-Gelände beim Bahnhof Worb SBB an der Rubigenstrasse 80, südöstlich von Bern. Händler und Private verkaufen Antiquitäten, Raritäten und Nostalgisches direkt aus dem Auto. Organisiert wird der Markt von Jürg Engel.",
+   "fr": "Le Nostalgie Flohmarkt de Worb a lieu chaque deuxième dimanche du mois, de mars à novembre, sur le terrain Landi près de la gare de Worb SBB, Rubigenstrasse 80, au sud-est de Berne. Marchands et particuliers y vendent antiquités, raretés et objets d’autrefois directement depuis leur voiture. Il est organisé par Jürg Engel.",
+   "it": "Il Nostalgie Flohmarkt di Worb si tiene ogni seconda domenica del mese, da marzo a novembre, sull’area Landi vicino alla stazione di Worb SBB, in Rubigenstrasse 80, a sud-est di Berna. Commercianti e privati vendono antiquariato, rarità e oggetti d’altri tempi direttamente dall’auto. Lo organizza Jürg Engel.",
+   "en": "The Nostalgie Flohmarkt Worb takes place on the second Sunday of every month from March to November, on the Landi site by Worb SBB station at Rubigenstrasse 80, south-east of Bern. Dealers and private sellers offer antiques, rarities and nostalgic finds straight from their cars. It is organised by Jürg Engel."
+  }
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "task": "keep our German; write new en/it from our German",
+  "locales_to_write": [
+   "en",
+   "it"
+  ],
+  "old_overlap_pct": {
+   "en": 37.8,
+   "it": 30.6
+  },
+  "name": "PROGR Vintage Flea Market",
+  "kind": "flohmarkt",
+  "town": "Bern",
+  "venue": "PROGR Turnhalle",
+  "address_line": "Waisenhausplatz 30",
+  "postal_code": "3011",
+  "rhythm_de": "Jeden 3. Samstag des Monats",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-17",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   },
+   {
+    "date": "2026-11-21",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   },
+   {
+    "date": "2026-12-19",
+    "start": "10:00:00",
+    "end": "15:00:00"
+   }
+  ],
+  "website_url": "https://www.vintagefleamarket.ch",
+  "source_pages": [
+   "https://www.progr.ch/de/agenda/progr-markt-vintage-flea-market-7418/",
+   "https://www.vintagefleamarket.ch/kontakt",
+   "https://www.progr.ch/de/agenda/vintage-flea-market-7068"
+  ],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "In der PROGR-Turnhalle mitten in Bern findet jeden dritten Samstag im Monat von 10 bis 15 Uhr ein ausgewählter Vintage- und Secondhand-Markt statt: weniger Trödel, mehr Stil – Vintage-Stücke, Designerkleidung und Sammlerstücke.",
+   "fr": "Dans la salle de gym du PROGR, au centre de Berne, un marché vintage et de seconde main, sur sélection, a lieu le troisième samedi de chaque mois, de 10 h à 15 h : moins de bric-à-brac, plus de style — pièces vintage, vêtements de créateurs et objets de collection.",
+   "it": "Nella palestra del PROGR, nel centro di Berna, il terzo sabato di ogni mese dalle 10 alle 15 si tiene un mercato vintage e dell'usato selezionato: meno cianfrusaglie, più stile — pezzi vintage, abiti firmati e oggetti da collezione.",
+   "en": "In the PROGR gym hall in the centre of Bern, a selected vintage and secondhand market runs on the third Saturday of every month from 10 am to 3 pm: less junk, more style — vintage pieces, designer clothes and collectibles."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Jeden dritten Samstag im Monat findet in der PROGR Turnhalle am Waisenhausplatz mitten in Bern ein kuratierter Vintage- und Secondhand-Markt statt, von 10 bis 15 Uhr. Weniger Trödel, dafür Vintage-Stücke, Designerkleider und ausgesuchte Sammlerstücke. Organisiert von VintageFleaMarket.ch, Eintritt frei.",
+   "fr": "Le troisième samedi de chaque mois, la salle de gym du PROGR, sur la Waisenhausplatz au centre de Berne, accueille un marché vintage et seconde main sélectionné, de 10 h à 15 h. Peu de bric-à-brac : surtout des pièces vintage, des vêtements de créateurs et des objets de collection choisis. Organisé par VintageFleaMarket.ch ; entrée libre.",
+   "it": "Il terzo sabato di ogni mese la palestra del PROGR, sulla Waisenhausplatz nel centro di Berna, ospita un mercato vintage e di seconda mano selezionato, dalle 10 alle 15. Poca paccottiglia: soprattutto pezzi vintage, abiti firmati e oggetti da collezione scelti. Organizzato da VintageFleaMarket.ch; ingresso libero.",
+   "en": "On the third Saturday of every month, the PROGR gym hall on Waisenhausplatz in central Bern hosts a curated vintage and secondhand market, from 10 am to 3 pm. Less junk, more vintage pieces, designer clothes and selected collectibles. Organised by VintageFleaMarket.ch; free entry."
+  }
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "task": "keep our German; write new it from our German",
+  "locales_to_write": [
+   "it"
+  ],
+  "old_overlap_pct": {
+   "it": 31.7
+  },
+  "name": "Quartier-Flohmarkt Areal Bach",
+  "kind": "flohmarkt",
+  "town": "St. Gallen",
+  "venue": "Bachstrasse 10",
+  "address_line": "Bachstrasse 10, 9000 St. Gallen",
+  "postal_code": "9000",
+  "rhythm_de": "Spezifische Sonntage von April bis Oktober 2026, bei trockenem Wetter",
+  "season_months": [
+   4,
+   10
+  ],
+  "next_dates": [],
+  "website_url": "https://www.areal-bach.ch",
+  "source_pages": [
+   "https://www.areal-bach.ch/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "cancelled",
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Ein Sonntagsmarkt alle zwei Wochen, von April bis Juni, auf dem ehemaligen Bahnareal Areal Bach im Quartier St. Fiden in St. Gallen: Secondhand-Kleidung, Vintage, Bücher und Haushaltswaren von Leuten aus der Gegend, dazu ein Kaffeewagen und eine Bar.",
+   "fr": "Un dimanche sur deux, d'avril à juin, un marché s'installe sur l'ancien site ferroviaire de l'Areal Bach, dans le quartier de St-Fiden à Saint-Gall : vêtements de seconde main, vintage, livres et articles ménagers vendus par des gens du quartier, avec un café ambulant et un bar.",
+   "it": "Mercato domenicale ogni due settimane da aprile a giugno sull'ex area ferroviaria Areal Bach, nel quartiere di St. Fiden a San Gallo: abiti usati, vintage, libri e articoli per la casa di venditori del quartiere, con un carretto del caffè e un bar.",
+   "en": "A Sunday market every other week from April to June on the former railway grounds of Areal Bach in the St. Fiden district of St. Gallen: secondhand clothing, vintage, books and household goods from local sellers, with a coffee cart and bar."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Quartier-Flohmarkt Areal Bach findet auf dem ehemaligen Bahngelände an der Bachstrasse 10 im St. Galler Quartier St. Fiden statt, an ausgewählten Sonntagen von April bis Oktober und nur bei trockenem Wetter. Lokale Verkäuferinnen und Verkäufer bieten Secondhand-Kleider, Vintage-Mode, Bücher und Haushaltswaren an; ein Kaffeewagen und eine Bar sind vor Ort. Organisiert vom Verein Areal Bach, der Eintritt ist frei.",
+   "fr": "Le marché aux puces de quartier de l’Areal Bach se tient sur une ancienne friche ferroviaire, Bachstrasse 10, dans le quartier de St. Fiden à Saint-Gall, certains dimanches d’avril à octobre et uniquement par temps sec. Des vendeurs du coin proposent vêtements de seconde main, mode vintage, livres et articles ménagers ; un stand à café et un bar sont sur place. Organisé par le Verein Areal Bach ; entrée libre.",
+   "it": "Il mercatino di quartiere dell’Areal Bach si tiene su un ex terreno ferroviario in Bachstrasse 10, nel quartiere di St. Fiden a San Gallo, in alcune domeniche da aprile a ottobre e solo con il tempo asciutto. Venditori della zona propongono abiti di seconda mano, moda vintage, libri e articoli per la casa; sul posto ci sono un carretto del caffè e un bar. Organizzato dal Verein Areal Bach; ingresso libero.",
+   "en": "The Areal Bach neighbourhood flea market is held on former railway grounds at Bachstrasse 10 in St. Gallen’s St. Fiden district, on selected Sundays from April to October and only in dry weather. Local sellers offer second-hand clothing, vintage fashion, books and household goods, and there is a coffee cart and a bar on site. Organised by the Verein Areal Bach; free entry."
+  }
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "task": "keep our German; write new fr from our German",
+  "locales_to_write": [
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "fr": 32.7
+  },
+  "name": "Quartierflohmarkt Pratteln – Gehrenacker und Fröschmatt",
+  "kind": "flohmarkt",
+  "town": "Pratteln",
+  "venue": "Gehrenacker/Fröschmatt",
+  "address_line": "Gehrenacker/Fröschmatt, 4133 Pratteln",
+  "postal_code": "4133",
+  "rhythm_de": "Einmal jährlich, zwischen April und Oktober.",
+  "season_months": [
+   4,
+   4
+  ],
+  "next_dates": [],
+  "website_url": "https://www.pratteln.ch/anlaesseaktuelles",
+  "source_pages": [
+   "https://www.localcities.ch/en/events/pratteln/3857/4729415",
+   "https://mach-mit.pratteln.ch/quartierflohmarkt"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Für einen Sonntag im Jahr wird das Gebiet Gehrenacker und Fröschmatt in Pratteln zu einem weitläufigen Flohmarkt unter freiem Himmel. Die Leute aus dem Quartier verkaufen auf ihren Einfahrten, Gartenwegen und Vorplätzen, verteilt über das ganze Quartier. Das Ganze fühlt sich an wie ein riesiger Garagenflohmarkt der Nachbarschaft. Ein echter Quartieranlass und einer der eigenwilligeren Flohmärkte im Baselbiet.",
+   "fr": "Un dimanche par an, le Quartierflohmarkt de Pratteln fait des quartiers de Gehrenacker et de Fröschmatt un grand marché aux puces en plein air. Les habitants installent leurs stands dans leurs allées, sur leurs chemins de jardin et devant leurs maisons — plus un grand vide-grenier de quartier qu'un marché classique.",
+   "it": "Per una domenica all'anno il Quartierflohmarkt Pratteln trasforma il quartiere di Gehrenacker e Fröschmatt in un grande mercatino all'aperto. Gli abitanti vendono nei propri vialetti, sui sentieri dei giardini e nei cortili di tutto il quartiere: sembra un enorme mercatino tra vicini, davanti a casa. Un vero evento di comunità, tra i mercatini più caratteristici di Basilea Campagna.",
+   "en": "The Quartierflohmarkt Pratteln transforms the Gehrenacker and Fröschmatt neighbourhood into a sprawling open-air flea market for one Sunday a year. Residents set up selling spots on their own driveways, garden paths, and forecourts across the district, giving the whole thing the feel of a giant neighbourhood garage sale. A genuine community event and one of the more characterful flea markets in the Basel-Landschaft area."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Einmal im Jahr, an einem Sonntag, wird das Quartier Gehrenacker und Fröschmatt in Pratteln zum Flohmarkt unter freiem Himmel. Die Anwohnenden verkaufen auf ihren Einfahrten, Gartenwegen und Vorplätzen im ganzen Quartier – das Ganze ist eher ein grosser Garagenflohmarkt als ein klassischer Markt. Organisiert vom Verein Stadtprojekt Basel.",
+   "fr": "Une fois par an, un dimanche, le quartier de Gehrenacker et Fröschmatt, à Pratteln, devient un marché aux puces en plein air. Les habitants vendent dans leurs allées, sur leurs chemins de jardin et devant leurs maisons, dans tout le quartier : cela tient davantage du grand vide-grenier de quartier que du marché classique. Organisé par le Verein Stadtprojekt Basel.",
+   "it": "Una volta l’anno, di domenica, il quartiere di Gehrenacker e Fröschmatt a Pratteln diventa un mercatino all’aperto. I residenti vendono nei vialetti, sui sentieri dei giardini e nei cortili di tutto il quartiere, così l’insieme somiglia più a un grande svuota-cantine di quartiere che a un mercato classico. Organizza il Verein Stadtprojekt Basel.",
+   "en": "Once a year, on a Sunday, the Gehrenacker and Fröschmatt neighbourhood in Pratteln becomes an open-air flea market. Residents sell from their own driveways, garden paths and forecourts across the whole area, so it feels more like one big neighbourhood garage sale than a conventional market. Organised by the Verein Stadtprojekt Basel."
+  }
+ },
+ {
+  "slug": "quartierflohmarkt-saeli-bruch-obergueetsch-luzern",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 79.2,
+   "it": 68.9,
+   "en": 63.2,
+   "fr": 54.5
+  },
+  "name": "Quartierflohmarkt Säli, Bruch, Obergütsch",
+  "kind": "flohmarkt",
+  "town": "Luzern",
+  "venue": "Säli, Bruch, Obergütsch",
+  "address_line": "Zähringerstrasse",
+  "postal_code": "6003",
+  "rhythm_de": "Jährlich, ein Sonntag im September",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://dialogluzern.ch/assemblies/qv-sbo",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Beim Quartierflohmarkt Säli, Bruch, Obergütsch verkaufen die Bewohnerinnen und Bewohner der drei Luzerner Quartiere direkt vor der Haustür, im Garten und im Innenhof. Man spaziert von Stand zu Stand; der Quartierverein veröffentlicht vorher eine Karte mit allen Verkaufsorten. An einem Sonntag im September, 10 bis 16 Uhr. Die Quartiere liegen zehn Minuten vom Bahnhof Luzern entfernt.",
+   "fr": "Au vide-grenier de quartier Säli, Bruch, Obergütsch, les habitants des trois quartiers lucernois vendent devant leur porte, dans les jardins et les cours – une balade de stand en stand, avec une carte de tous les points de vente publiée à l'avance par l'association de quartier. Un dimanche de septembre, de 10 h à 16 h. Les quartiers sont à dix minutes de la gare de Lucerne.",
+   "it": "Al mercatino di quartiere Säli, Bruch, Obergütsch gli abitanti dei tre quartieri di Lucerna vendono davanti alla porta di casa, in giardino e nei cortili – una passeggiata di bancarella in bancarella, con una mappa di tutti i punti vendita pubblicata in anticipo dall'associazione di quartiere. Una domenica di settembre, dalle 10 alle 16. I quartieri sono a dieci minuti dalla stazione di Lucerna.",
+   "en": "At the Säli, Bruch, Obergütsch neighbourhood flea market, residents of the three Lucerne quarters sell right outside their front doors, in gardens and courtyards – a stroll from stand to stand, with a map of all selling spots published beforehand by the neighbourhood association. One Sunday in September, 10 am to 4 pm. The quarters are ten minutes from Lucerne station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Beim Quartierflohmarkt Säli, Bruch, Obergütsch verkaufen die Bewohnerinnen und Bewohner der drei Luzerner Quartiere direkt vor der Haustür, im Garten und im Innenhof. Man geht von Stand zu Stand; der Quartierverein veröffentlicht vorher eine Karte mit allen Verkaufsorten. Einmal im Jahr an einem Sonntag im September, von 10 bis 16 Uhr. Die Quartiere liegen zehn Minuten vom Bahnhof Luzern.",
+   "fr": "Au marché aux puces de quartier Säli, Bruch, Obergütsch, les habitants de ces trois quartiers de Lucerne vendent devant leur porte, dans les jardins et les cours. On se promène de stand en stand ; l’association de quartier publie à l’avance une carte de tous les points de vente. Une fois par an, un dimanche de septembre, de 10 h à 16 h. Les quartiers sont à dix minutes de la gare de Lucerne.",
+   "it": "Al mercatino di quartiere Säli, Bruch, Obergütsch gli abitanti dei tre quartieri di Lucerna vendono davanti alla porta di casa, in giardino e nei cortili. Si passeggia di bancarella in bancarella; l’associazione di quartiere pubblica in anticipo una mappa di tutti i punti vendita. Una volta l’anno, una domenica di settembre, dalle 10 alle 16. I quartieri sono a dieci minuti dalla stazione di Lucerna.",
+   "en": "At the Säli, Bruch, Obergütsch neighbourhood flea market, residents of the three Lucerne quarters sell right outside their front doors, in gardens and courtyards. You walk from stand to stand; the neighbourhood association publishes a map of all the selling spots beforehand. Once a year on a Sunday in September, 10 am to 4 pm. The quarters are ten minutes from Lucerne station."
+  }
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "task": "keep our German; write new en/fr from our German",
+  "locales_to_write": [
+   "en",
+   "fr"
+  ],
+  "old_overlap_pct": {
+   "en": 53.3,
+   "fr": 36
+  },
+  "name": "Quartierflohmarkt St. Johann",
+  "kind": "flohmarkt",
+  "town": "Basel",
+  "venue": "Zentrum Johannes",
+  "address_line": "Mülhauserstrasse 145, 4056 Basel",
+  "postal_code": "4056",
+  "rhythm_de": "Einmal jährlich, zwischen April und Oktober.",
+  "season_months": [
+   8,
+   8
+  ],
+  "next_dates": [],
+  "website_url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Quartierflohmarkt St. Johann füllt das Quartier einen ganzen Samstag im August. Private stellen ihre Stände im ganzen Quartier auf – folge den farbigen Ballons. Über die autofreie Lothringerstrasse reicht der Markt bis ins neue Lysbüchel-Areal, mit Ständen, Spielen und Essen. Das «bring&nimm» ist im St. Johanns-Park beim Badhüsli an der Elsässerstrasse. Eine der grösseren Ausgaben der Reihe – einer von 17 Quartierflohmärkten, die der Verein Stadtprojekt in ganz Basel organisiert.",
+   "fr": "Le Quartierflohmarkt St. Johann occupe tout le quartier pendant un samedi d'août. Les habitants installent leurs stands un peu partout ; suivez les ballons de couleur. Par la Lothringerstrasse, fermée à la circulation, le marché s'étend aussi au nouveau site de Lysbüchel, avec des stands, des jeux et de quoi manger. Le bring&nimm se trouve dans le parc St. Johann, près du Badhüsli, sur l'Elsässerstrasse. C'est l'un des plus grands des 17 marchés aux puces de quartier que le Verein Stadtprojekt organise à Bâle.",
+   "it": "Il Quartierflohmarkt St. Johann riempie il quartiere per un intero sabato di agosto. Gli abitanti allestiscono le bancarelle un po' ovunque: basta seguire i palloncini colorati. Lungo la Lothringerstrasse, chiusa al traffico, il mercatino arriva fino alla nuova area del Lysbüchel, con bancarelle, giochi e cibo. Il bring&nimm è nel St. Johanns-Park, vicino al Badhüsli in Elsässerstrasse. È una delle edizioni più grandi tra i 17 mercatini di quartiere che il Verein Stadtprojekt organizza a Basilea.",
+   "en": "The Quartierflohmarkt St. Johann fills the district for a full Saturday in August. Private residents set up stalls across the neighbourhood — follow the coloured balloons. Along the car-free Lothringerstrasse it also extends into the new Lysbüchel area, with stalls, games and food. The bring-and-take point is in St. Johanns-Park by the Badhüsli on Elsässerstrasse. One of the bigger editions of the series, one of 17 neighbourhood flea markets organised across Basel by Verein Stadtprojekt."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Quartierflohmarkt St. Johann belebt eines der lebendigsten Basler Quartiere an einem ganzen Samstag im August. Private Anwohnende stellen ihre Stände im gesamten Quartier auf; mit farbigen Ballons lassen sich die Standorte leicht finden. Die Ausgabe umfasst zusätzlich eine Lysbüchel-Erweiterung: Über die autofreie Lothringerstrasse führt der Flohmi in das neu entwickelte Lysbüchel-Areal mit Ständen, Spielen und Verpflegung. Der Bring-und-Hol-Punkt befindet sich im St. Johanns-Park beim Badhüsli an der Elsässerstrasse. Eine der grösseren und festlicheren Ausgaben der Quartierflohmi-Reihe.",
+   "fr": "Le marché aux puces du quartier de St. Johann anime l'un des quartiers les plus animés de Bâle pendant toute une journée du mois d'août. Les habitants installent leurs stands un peu partout dans le quartier ; des ballons colorés permettent de les repérer facilement. Cette édition comprend en outre une extension vers Lysbüchel : en passant par la Lothringerstrasse, fermée à la circulation, le Flohmi mène au nouveau site de Lysbüchel, avec des stands, des jeux et de la restauration. Le point de dépôt et de retrait se trouve dans le parc St. Johann, près du Badhüsli, sur l’Elsässerstrasse. L’une des éditions les plus importantes et les plus festives de la série des Flohmi de quartier.",
+   "it": "Il mercatino delle pulci del quartiere di St. Johann anima uno dei quartieri più vivaci di Basilea per un intero sabato di agosto. I residenti allestiscono le loro bancarelle in tutto il quartiere; grazie ai palloncini colorati è facile individuare le postazioni. L'edizione comprende inoltre un'estensione a Lysbüchel: attraverso la Lothringerstrasse, chiusa al traffico, il mercatino conduce alla zona di Lysbüchel, recentemente riqualificata, con bancarelle, giochi e punti di ristoro. Il punto di consegna e ritiro si trova nel parco di St. Johann, presso il Badhüsli in Elsässerstrasse. Una delle edizioni più grandi e festose della serie dei mercatini di quartiere.",
+   "en": "The Quartierflohmarkt St. Johann brings one of Basel's most vibrant neighbourhoods to life for a full Saturday in August. Private residents set up stalls across the district — just follow the coloured balloons. This year's edition includes a special Lysbüchel extension, with the car-free Lothringerstrasse leading into the newly developed Lysbüchel area packed with stalls, games, and food. The bring-and-take point is at St. Johanns-Park by the Badhüsli on Elsässerstrasse. One of the bigger and more festive editions in the Quartierflohmi series. One of 17 neighbourhood flea markets organised across Basel by Verein Stadtprojekt throughout the season."
+  }
+ },
+ {
+  "slug": "quartierflohmi-reinach-nord",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 68.6,
+   "fr": 66,
+   "it": 60,
+   "de": 44.9
+  },
+  "name": "Quartierflohmi Reinach Nord",
+  "kind": "flohmarkt",
+  "town": "Reinach",
+  "venue": "Quartier Reinach Nord",
+  "address_line": "Rosenweg 22",
+  "postal_code": "4153",
+  "rhythm_de": "Jährlich, ein Sonntag im Spätsommer",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://www.qvrn.ch/quartierflohmarkt.html",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Beim Quartierflohmi Reinach Nord verkaufen die Bewohnerinnen und Bewohner vor der eigenen Haustür, im Garten und in der Einfahrt – die Karte auf qvrn.ch zeigt, wo. An einem Sonntag im Spätsommer, 10 bis 16 Uhr, organisiert vom Quartierverein; wer verkauft, gibt eine freiwillige Spende. Ab Basel fährt Tram 11 bis Reinach Nord.",
+   "fr": "Au vide-grenier de quartier de Reinach Nord, les habitants vendent devant leur porte, dans le jardin et l'allée – la carte sur qvrn.ch indique où. Un dimanche de fin d'été, de 10 h à 16 h, organisé par l'association de quartier. Tram 11 depuis Bâle jusqu'à Reinach Nord.",
+   "it": "Al mercatino di quartiere Reinach Nord gli abitanti vendono davanti alla porta di casa, in giardino e nel vialetto: la mappa su qvrn.ch indica dove. Una domenica di fine estate, dalle 10 alle 16; organizza l'associazione di quartiere. Tram 11 da Basilea fino a Reinach Nord.",
+   "en": "At the Reinach Nord neighbourhood flea market, residents sell outside their own front doors, in gardens and driveways – the map on qvrn.ch shows where. One Sunday in late summer, 10 am to 4 pm, organised by the neighbourhood association; sellers take part for a voluntary donation. Tram 11 from Basel to Reinach Nord."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Beim Quartierflohmi Reinach Nord verkaufen die Bewohnerinnen und Bewohner des Quartiers vor der eigenen Haustür, im Garten und in der Einfahrt; die Quartierkarte auf qvrn.ch zeigt, wo. Einmal im Jahr an einem Sonntag im Spätsommer, von 10 bis 16 Uhr, organisiert vom Quartierverein Reinach Nord. Mit dem Tram 11 ab Basel bis Reinach Nord.",
+   "fr": "Au marché aux puces de quartier de Reinach Nord, les habitants vendent devant leur porte, dans le jardin ou l’allée ; la carte sur qvrn.ch indique où. Une fois par an, un dimanche de fin d’été, de 10 h à 16 h, organisé par l’association de quartier Reinach Nord. Depuis Bâle, tram 11 jusqu’à Reinach Nord.",
+   "it": "Al mercatino di quartiere Reinach Nord gli abitanti vendono davanti alla porta di casa, in giardino o nel vialetto; la mappa su qvrn.ch indica dove. Una volta l’anno, una domenica di fine estate, dalle 10 alle 16, organizzato dall’associazione di quartiere Reinach Nord. Da Basilea con il tram 11 fino a Reinach Nord.",
+   "en": "At the Reinach Nord neighbourhood flea market, residents sell outside their own front doors, in gardens and driveways; the map on qvrn.ch shows where. Once a year on a Sunday in late summer, 10 am to 4 pm, organised by the Reinach Nord neighbourhood association. Take tram 11 from Basel to Reinach Nord."
+  }
+ },
+ {
+  "slug": "strassenflohmarkt-rafz",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 39.4,
+   "fr": 38.1,
+   "it": 37.9
+  },
+  "name": "Strassenflohmarkt Rafz",
+  "kind": "strassenmarkt",
+  "town": "Rafz",
+  "venue": "Dorfzentrum Rafz",
+  "address_line": "Märktgasse",
+  "postal_code": "8197",
+  "rhythm_de": "Jährlich",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://www.strassenflohmarkt-rafz.ch/",
+  "source_pages": [
+   "https://www.flohmarktkalender.ch/veranstaltungsort/8197-rafz/"
+  ],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Strassenflohmarkt Rafz findet einmal im Jahr im Dorfzentrum statt: Private Verkäufer füllen die Strassen des Ortes. Das Angebot ist klassisch: Haushaltswaren, Kleidung, Kindersachen, Bücher, Funde aus Dachboden und Keller. Für Kinder gibt es ein Karussell und Spiele, im Märtkafi selbstgebackene Kuchen, Getränke und über Mittag Flammkuchen. Rafz liegt im äussersten Norden des Kantons, nahe der deutschen Grenze – ein Geheimtipp für Flohmarktfans aus dem Unterland und dem benachbarten Schaffhausen.",
+   "fr": "Chaque année, le marché aux puces de rue de Rafz remplit le centre du village de stands de particuliers. L'offre est classique : articles ménagers, vêtements, affaires pour enfants, livres et trouvailles de greniers et de caves. Pour les enfants, il y a un carrousel et des jeux ; le Märtkafi sert des gâteaux maison, des boissons et, à midi, des tartes flambées. Rafz se trouve à l'extrême nord du canton, près de la frontière allemande, non loin de l'Unterland et du canton voisin de Schaffhouse.",
+   "it": "Il mercatino di strada di Rafz si tiene una volta l'anno nel centro del paese, e le vie si riempiono di bancarelle di privati. L'offerta è quella classica: articoli per la casa, vestiti, cose per bambini, libri e oggetti usciti da solai e cantine. Per i bambini ci sono una giostra e dei giochi; al Märtkafi si trovano torte fatte in casa, bevande e, a pranzo, tarte flambée. Rafz è all'estremo nord del cantone, vicino al confine tedesco: una dritta da intenditori per chi ama i mercatini e arriva dall'Unterland o dalla vicina Sciaffusa.",
+   "en": "The Rafz street flea market is an annual event in the village centre where private sellers fill the town's streets. The selection is classic: household goods, clothes, children's items, books, and finds from attics and cellars. Children can enjoy a carousel and games, while the Märtkafi serves homemade cakes, drinks, and tarte flambée at lunchtime. Rafz lies at the far northern edge of the canton near the German border — a genuine insider tip for flea market enthusiasts from the Unterland or neighbouring Schaffhausen."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Strassenflohmarkt Rafz findet einmal im Jahr im Dorfzentrum rund um die Märktgasse statt; private Verkäuferinnen und Verkäufer stellen ihre Sachen direkt auf der Strasse aus. Das Angebot ist klassisch: Haushaltswaren, Kleider, Kindersachen, Bücher, Funde aus Estrich und Keller. Für Kinder gibt es ein Karussell und Spiele, im Märtkafi selbstgebackenen Kuchen, Getränke und über Mittag Flammkuchen. Organisiert von den Rafzer Flomi-Fraue. Rafz liegt im äussersten Norden des Kantons Zürich, nahe der deutschen Grenze.",
+   "fr": "Le marché aux puces de rue de Rafz a lieu une fois par an au centre du village, autour de la Märktgasse ; des particuliers installent leurs affaires directement dans la rue. L’offre est classique : articles ménagers, vêtements, affaires d’enfants, livres, trouvailles de greniers et de caves. Carrousel et jeux pour les enfants ; le Märtkafi sert des gâteaux maison, des boissons et, à midi, des tartes flambées. Organisé par les Rafzer Flomi-Fraue. Rafz se trouve à l’extrême nord du canton de Zurich, près de la frontière allemande.",
+   "it": "Il mercatino di strada di Rafz si tiene una volta l’anno nel centro del paese, attorno alla Märktgasse; i privati espongono le loro cose direttamente in strada. L’offerta è classica: articoli per la casa, vestiti, cose per bambini, libri, oggetti da soffitte e cantine. Per i bambini ci sono una giostra e giochi; al Märtkafi torte fatte in casa, bevande e, a pranzo, tarte flambée. Organizzano le Rafzer Flomi-Fraue. Rafz si trova all’estremo nord del canton Zurigo, vicino al confine tedesco.",
+   "en": "The Rafz street flea market takes place once a year in the village centre around the Märktgasse, with private sellers setting out their things on the street. The range is classic: household goods, clothes, children’s things, books, finds from attics and cellars. Children get a carousel and games, and the Märtkafi serves home-made cake, drinks and tarte flambée at lunchtime. Organised by the Rafzer Flomi-Fraue. Rafz lies at the far northern tip of the canton of Zurich, close to the German border."
+  }
+ },
+ {
+  "slug": "subiger-dorf-flohmarkt",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "it": 50,
+   "fr": 47.1,
+   "en": 41.2,
+   "de": 35.7
+  },
+  "name": "4. Subiger Dorf Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Subingen",
+  "venue": "Dorfzentrum Subingen",
+  "address_line": "Dorfzentrum Subingen, 4553 Subingen",
+  "postal_code": "4553",
+  "rhythm_de": "Jährlich, meist Ende Mai",
+  "season_months": [
+   5,
+   5
+  ],
+  "next_dates": [
+   {
+    "date": "2027-06-05",
+    "start": "10:00:00",
+    "end": "17:00:00"
+   }
+  ],
+  "website_url": "https://sub-kultur.ch",
+  "source_pages": [
+   "https://sub-kultur.ch/events/"
+  ],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der 4. Subiger Dorf Flohmarkt ist ein einmaliger Dorf-Flohmarkt im Dorfzentrum Subingen. Der Eintritt ist frei.",
+   "fr": "Le 4e Subiger Dorf Flohmarkt est un marché aux puces villageois ponctuel au centre de Subingen. L'entrée est gratuite.",
+   "it": "Il Subiger Dorf Flohmarkt è un mercatino delle pulci di paese nel centro di Subingen. L'ingresso è gratuito.",
+   "en": "The 4th Subiger Dorf Flohmarkt is a one-off village flea market in the centre of Subingen. Entry is free."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Subiger Dorf-Flohmarkt ist ein Dorf-Flohmarkt im Dorfzentrum Subingen, organisiert vom Kulturverein Subingen (Subkultur). Er findet einmal im Jahr statt, an einem Samstag im Frühsommer von 10:00 bis 17:00 Uhr. Der Eintritt ist frei.",
+   "fr": "Le Subiger Dorf-Flohmarkt est un marché aux puces villageois au centre de Subingen, organisé par le Kulturverein Subingen (Subkultur). Il a lieu une fois par an, un samedi de début d'été, de 10h00 à 17h00. L'entrée est gratuite.",
+   "it": "Il Subiger Dorf-Flohmarkt è un mercatino di paese nel centro di Subingen, organizzato dal Kulturverein Subingen (Subkultur). Si tiene una volta all'anno, un sabato all'inizio dell'estate, dalle 10:00 alle 17:00. L'ingresso è gratuito.",
+   "en": "Subiger Dorf-Flohmarkt is a village flea market in the centre of Subingen, organised by Kulturverein Subingen (Subkultur). It takes place once a year, on a Saturday in early summer from 10:00 to 17:00. Entry is free."
+  }
+ },
+ {
+  "slug": "svuotacantine-ascona",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 81.3,
+   "it": 74.3,
+   "en": 67.1,
+   "de": 52.3
+  },
+  "name": "Mercatino Svuotacantine Ascona",
+  "kind": "flohmarkt",
+  "town": "Ascona",
+  "venue": "Posteggio Manor Ascona",
+  "address_line": "Via Ferrera 105",
+  "postal_code": "6612",
+  "rhythm_de": "Dreimal jährlich, sonntags, mit Regendatum eine Woche später",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.imercantini.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 99,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Mercatino Svuotacantine Ascona ist ein Kellerräumungsmarkt auf dem Manor-Parkplatz an der Via Ferrera: Private verkaufen aus dem Kofferraum und vom Tisch, bis zu 99 Stände, nur gebrauchte Dinge aus Keller, Dachboden und Garage – keine Neuware, keine Lebensmittel. Dreimal im Jahr an einem Sonntag, 9 bis 17 Uhr; bei Regen eine Woche später. Der Verein I Mercantini veranstaltet ähnliche Märkte in Biasca, Muralto, Giubiasco und Sant'Antonino.",
+   "fr": "Le Mercatino Svuotacantine d'Ascona est un vide-cave sur le parking Manor, via Ferrera : des particuliers vendent depuis leur coffre ou leur table, jusqu'à 99 stands, uniquement des objets usagés sortis des caves, greniers et garages – pas de neuf, pas de nourriture. Trois fois par an, le dimanche de 9 h à 17 h ; s'il pleut, une semaine plus tard. L'association I Mercantini organise des marchés semblables à Biasca, Muralto, Giubiasco et Sant'Antonino.",
+   "it": "Il Mercatino Svuotacantine Ascona è un mercatino svuota-cantine sul posteggio Manor di via Ferrera: privati che vendono dal bagagliaio e dal tavolo, fino a 99 espositori, solo oggetti usati da cantine, solai e garage – niente merce nuova, niente alimentari. Tre volte l'anno, la domenica dalle 9 alle 17; in caso di pioggia si sposta di una settimana. L'Associazione I Mercantini organizza mercatini simili a Biasca, Muralto, Giubiasco e Sant'Antonino.",
+   "en": "The Mercatino Svuotacantine Ascona is a cellar clear-out market on the Manor car park on Via Ferrera: private sellers from their car boots and tables, up to 99 stands, used household items from cellars, attics and garages only – no new goods, no food. Three times a year on a Sunday, 9 am to 5 pm; if it rains, one week later. The I Mercantini association runs similar markets in Biasca, Muralto, Giubiasco and Sant'Antonino."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Mercatino Svuotacantine Ascona ist ein Keller-Räumungsmarkt auf dem Manor-Parkplatz an der Via Ferrera: Private verkaufen aus dem Kofferraum und am Tisch, an bis zu 99 Ständen, nur Gebrauchtes aus Keller, Estrich und Garage – keine Neuware, keine Lebensmittel. Dreimal im Jahr, sonntags von 9 bis 17 Uhr; bei Regen wird er um eine Woche verschoben. Der Verein I Mercantini veranstaltet ähnliche Märkte in Biasca, Muralto, Giubiasco und Sant’Antonino.",
+   "fr": "Le Mercatino Svuotacantine d’Ascona est un vide-cave sur le parking Manor, via Ferrera : des particuliers vendent depuis leur coffre ou sur une table, jusqu’à 99 stands, uniquement des objets usagés sortis des caves, greniers et garages – pas de neuf, pas de nourriture. Trois fois par an, le dimanche de 9 h à 17 h ; en cas de pluie, il est reporté d’une semaine. L’association I Mercantini organise des marchés semblables à Biasca, Muralto, Giubiasco et Sant’Antonino.",
+   "it": "Il Mercatino Svuotacantine di Ascona si tiene sul posteggio Manor di via Ferrera: privati che vendono dal bagagliaio o dal tavolo, fino a 99 espositori, solo oggetti usati da cantine, solai e garage – niente merce nuova, niente alimentari. Tre volte l’anno, la domenica dalle 9 alle 17; in caso di pioggia viene spostato di una settimana. L’Associazione I Mercantini organizza mercatini simili a Biasca, Muralto, Giubiasco e Sant’Antonino.",
+   "en": "The Mercatino Svuotacantine Ascona is a cellar clear-out market on the Manor car park on Via Ferrera: private sellers at up to 99 stands, selling from car boots and tables, and only used things from cellars, attics and garages – no new goods, no food. Three times a year on a Sunday, 9 am to 5 pm; if it rains, it moves to the following week. The I Mercantini association runs similar markets in Biasca, Muralto, Giubiasco and Sant’Antonino."
+  }
+ },
+ {
+  "slug": "svuotacantine-biasca",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 60.3,
+   "en": 41.1,
+   "it": 35.2,
+   "de": 30.6
+  },
+  "name": "Mercatino Svuotacantine Biasca",
+  "kind": "flohmarkt",
+  "town": "Biasca",
+  "venue": "Posteggio Manor Biasca",
+  "address_line": "Via Losanna 2",
+  "postal_code": "6710",
+  "rhythm_de": "Zweimal jährlich, sonntags, mit Regendatum eine Woche später",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-18",
+    "start": null,
+    "end": null
+   }
+  ],
+  "website_url": "https://www.imercantini.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": 65,
+   "seller_mix": "private",
+   "rain_policy": "decided_on_the_day",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Mercatino Svuotacantine Biasca ist der Kellerräumungsmarkt des Vereins I Mercantini auf dem zentralen Manor-Parkplatz in Biasca: Rund 65 Private verkaufen aus dem Kofferraum, nur Gebrauchtes aus Keller, Dachboden und Garage. Zweimal im Jahr an einem Sonntag; bei Regen eine Woche später. Bushaltestellen und Parkplätze für Besucher liegen wenige Meter entfernt.",
+   "fr": "Le Mercatino Svuotacantine de Biasca est le vide-cave de l'association I Mercantini sur le parking Manor, au centre de Biasca : environ 65 particuliers vendent depuis leur coffre, uniquement des objets usagés sortis des caves, greniers et garages. Deux fois par an, le dimanche ; s'il pleut, une semaine plus tard. Arrêts de bus et parking visiteurs à quelques mètres.",
+   "it": "Il Mercatino Svuotacantine Biasca è il mercatino svuota-cantine dell'Associazione I Mercantini sul posteggio Manor, in centro a Biasca: circa 65 privati vendono dal bagagliaio, solo usato da cantine, solai e garage. Due volte l'anno, la domenica; in caso di pioggia si sposta di una settimana. Fermate del bus e parcheggio visitatori a pochi metri.",
+   "en": "The Mercatino Svuotacantine Biasca is the I Mercantini association's cellar clear-out market on the central Manor car park in Biasca: around 65 private sellers from their car boots, used items from cellars, attics and garages only. Twice a year on a Sunday; if it rains, one week later. Bus stops and visitor parking a few metres away."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Mercatino Svuotacantine ist der Kellerräumungsmarkt des Vereins I Mercantini auf dem Manor-Parkplatz im Zentrum von Biasca, Via Losanna 2. Rund 65 Private verkaufen aus dem Kofferraum, und zwar nur Gebrauchtes aus Keller, Estrich und Garage. Er findet zweimal im Jahr an einem Sonntag statt; bei Regen wird er um eine Woche verschoben. Die Stände bleiben bis 17 Uhr. Bushaltestellen und Besucherparkplätze liegen wenige Meter entfernt.",
+   "fr": "Le Mercatino Svuotacantine est le vide-cave de l’association I Mercantini, sur le parking Manor au centre de Biasca, via Losanna 2. Environ 65 particuliers vendent depuis leur coffre, uniquement des objets usagés sortis des caves, greniers et garages. Il a lieu deux fois par an, un dimanche ; en cas de pluie, il est reporté d’une semaine. Les stands restent jusqu’à 17 h. Arrêts de bus et parking visiteurs à quelques mètres.",
+   "it": "Il Mercatino Svuotacantine è il mercatino dell’Associazione I Mercantini sul posteggio Manor, in centro a Biasca, via Losanna 2. Circa 65 privati vendono dal bagagliaio, e solo oggetti usati usciti da cantine, solai e garage. Si tiene due volte l’anno, di domenica; in caso di pioggia slitta di una settimana. Gli espositori restano fino alle 17. Fermate del bus e parcheggio per i visitatori a pochi metri.",
+   "en": "The Mercatino Svuotacantine is the I Mercantini association’s cellar clear-out market on the Manor car park in central Biasca, Via Losanna 2. Around 65 private sellers trade from their car boots, and only used things from cellars, attics and garages are allowed. It runs twice a year on a Sunday; if it rains, it moves one week later. Stands stay until 5 pm. Bus stops and visitor parking are a few metres away."
+  }
+ },
+ {
+  "slug": "talkessel-flohmarkt-seewen",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 68.8,
+   "fr": 64.3,
+   "it": 56.3,
+   "de": 55.3
+  },
+  "name": "Talkessel-Flohmarkt",
+  "kind": "flohmarkt",
+  "town": "Seewen SZ",
+  "venue": "Zeughausareal Seewen",
+  "address_line": "Franzosenstrasse 48",
+  "postal_code": "6423",
+  "rhythm_de": "Mehrmals jährlich, sonntags, in der Halle",
+  "season_months": null,
+  "next_dates": [
+   {
+    "date": "2026-10-25",
+    "start": "09:30:00",
+    "end": "15:00:00"
+   },
+   {
+    "date": "2026-11-28",
+    "start": "12:00:00",
+    "end": "18:00:00"
+   }
+  ],
+  "website_url": "https://www.talkessel-flohmarkt.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Talkessel-Flohmarkt findet mehrmals im Jahr auf dem Zeughausareal in Seewen bei Schwyz statt, in der Holzhalle – also wetterfest. Sonntags von 9.30 bis 15 Uhr, mit Grillstand, Pommes, Bratwurst und Getränken; Parkplätze für Besucher gibt es vor Ort. Vom Bahnhof Seewen-Schwyz sind es fünf Minuten zu Fuss.",
+   "fr": "Le Talkessel-Flohmarkt a lieu plusieurs fois par an sur le site du Zeughaus à Seewen, près de Schwyz, dans la halle en bois – donc à l'abri. Le dimanche de 9 h 30 à 15 h, avec stand de grillades, frites, saucisses et boissons ; parking visiteurs sur place. Cinq minutes à pied depuis la gare de Seewen-Schwyz.",
+   "it": "Il Talkessel-Flohmarkt si tiene più volte l'anno nell'area dello Zeughaus a Seewen, vicino a Schwyz, nel capannone di legno – quindi al riparo. La domenica dalle 9.30 alle 15, con griglia, patatine, salsicce e bevande; parcheggio visitatori sul posto. Cinque minuti a piedi dalla stazione di Seewen-Schwyz.",
+   "en": "The Talkessel flea market takes place several times a year on the Zeughaus site in Seewen near Schwyz, inside the timber hall – so weatherproof. Sundays 9.30 am to 3 pm, with a grill stand, chips, bratwurst and drinks; visitor parking on site. Five minutes on foot from Seewen-Schwyz station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Talkessel-Flohmarkt findet mehrmals im Jahr auf dem Zeughausareal in Seewen bei Schwyz statt, in der Holzhalle und damit wetterfest. Geöffnet ist sonntags von 9.30 bis 15 Uhr; es gibt einen Grillstand mit Bratwurst, Pommes und Getränken sowie Parkplätze für Besucher vor Ort. Dazu kommt ein Weihnachtsflohmarkt an einem Samstag im November. Organisiert von Peter Schilter; vom Bahnhof Seewen-Schwyz sind es fünf Minuten zu Fuss.",
+   "fr": "Le Talkessel-Flohmarkt a lieu plusieurs fois par an sur le site du Zeughaus à Seewen, près de Schwyz, dans la halle en bois, donc à l’abri des intempéries. Il est ouvert le dimanche de 9 h 30 à 15 h, avec un stand de grillades, saucisses, frites et boissons, et un parking visiteurs sur place. S’y ajoute un marché aux puces de Noël un samedi de novembre. Organisé par Peter Schilter ; la gare de Seewen-Schwyz est à cinq minutes à pied.",
+   "it": "Il Talkessel-Flohmarkt si tiene più volte l’anno nell’area dello Zeughaus a Seewen, vicino a Svitto, nel capannone di legno, quindi al riparo dal maltempo. È aperto la domenica dalle 9.30 alle 15, con griglia, salsicce, patatine e bevande, e parcheggio per i visitatori sul posto. A novembre si aggiunge un mercatino di Natale di sabato. Lo organizza Peter Schilter; dalla stazione di Seewen-Schwyz sono cinque minuti a piedi.",
+   "en": "The Talkessel flea market takes place several times a year on the Zeughaus site in Seewen near Schwyz, inside the timber hall, so it is weatherproof. It opens on Sundays from 9.30 am to 3 pm, with a grill stand serving bratwurst, chips and drinks, and visitor parking on site. There is also a Christmas flea market on a Saturday in November. Run by Peter Schilter; five minutes on foot from Seewen-Schwyz station."
+  }
+ },
+ {
+  "slug": "vide-grenier-familles-renens",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 71.1,
+   "it": 70.2,
+   "de": 69.8,
+   "fr": 58.7
+  },
+  "name": "Vide-grenier spécial familles",
+  "kind": "flohmarkt",
+  "town": "Renens",
+  "venue": "Salle de spectacles de Renens",
+  "address_line": "Rue de Lausanne 37",
+  "postal_code": "1020",
+  "rhythm_de": "Jährlich, im Herbst",
+  "season_months": [
+   10,
+   10
+  ],
+  "next_dates": [],
+  "website_url": "https://bulledairrenens.com/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": [
+    {
+     "tag": "kids",
+     "source": "https://bulledairrenens.com/"
+    }
+   ]
+  },
+  "our_current": {
+   "de": "Der Vide-grenier spécial familles in Renens ist ein Flohmarkt für Kinderkleidung, Spielzeug, Kinderbücher und Babysachen in der Salle de spectacles an der Rue de Lausanne 37, organisiert von Bulle d'air, dem Familienangebot der reformierten Kirche. Vom Bahnhof Renens sind es zehn Minuten zu Fuss.",
+   "fr": "Le vide-grenier des familles de Renens réunit habits, jouets, livres pour enfants et articles de puériculture à la salle de spectacles, rue de Lausanne 37. Il est organisé par Bulle d'air, l'offre familles de l'Église réformée. Dix minutes à pied depuis la gare de Renens.",
+   "it": "Il vide-grenier per famiglie di Renens è un mercatino di vestiti, giocattoli, libri per bambini e articoli per la prima infanzia nella Salle de spectacles, rue de Lausanne 37, organizzato da Bulle d'air, l'offerta per famiglie della Chiesa riformata. Dieci minuti a piedi dalla stazione di Renens.",
+   "en": "The family vide-grenier in Renens is a flea market for clothes, toys, children's books and baby gear in the Salle de spectacles at Rue de Lausanne 37, organised by Bulle d'air, the family programme of the reformed church. Ten minutes on foot from Renens station."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Vide-grenier spécial familles in Renens ist ein Flohmarkt für Kleider, Spielzeug, Kinderbücher und Babysachen, einmal im Jahr im Herbst in der Salle de spectacles an der Rue de Lausanne 37. Organisiert wird er von Bulle d’air, dem Familienangebot der reformierten Kirche (EERV). Von 9 bis 15 Uhr, mit rund 30 Ständen, Kinderanimation, kleiner Verpflegung und einer Show am Nachmittag. Vom Bahnhof Renens sind es zehn Minuten zu Fuss.",
+   "fr": "Le vide-grenier spécial familles de Renens, ce sont des habits pour toutes et tous, des jouets, des livres pour enfants et du matériel de puériculture, une fois par an en automne à la salle de spectacles, rue de Lausanne 37. Il est organisé par Bulle d’air, l’offre familles de l’Église réformée (EERV). De 9 h à 15 h, une trentaine de stands, des animations pour les enfants, une petite restauration et un spectacle l’après-midi. Dix minutes à pied depuis la gare de Renens.",
+   "it": "Il vide-grenier per famiglie di Renens è un mercatino di vestiti, giocattoli, libri per bambini e articoli per la prima infanzia, una volta l’anno in autunno nella Salle de spectacles, rue de Lausanne 37. Lo organizza Bulle d’air, l’offerta per famiglie della Chiesa riformata (EERV). Dalle 9 alle 15, con una trentina di bancarelle, animazione per bambini, piccola ristorazione e uno spettacolo nel pomeriggio. Dalla stazione di Renens sono dieci minuti a piedi.",
+   "en": "The family vide-grenier in Renens is a flea market for clothes, toys, children’s books and baby gear, held once a year in autumn in the Salle de spectacles at Rue de Lausanne 37. It is organised by Bulle d’air, the family programme of the reformed church (EERV). From 9 am to 3 pm, with around 30 stands, children’s activities, snacks and an afternoon show. Renens station is ten minutes away on foot."
+  }
+ },
+ {
+  "slug": "vide-grenier-mathod",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 47.1,
+   "it": 36.1
+  },
+  "name": "Vide-grenier de Mathod",
+  "kind": "flohmarkt",
+  "town": "Mathod",
+  "venue": "Grande Salle de Mathod",
+  "address_line": "Rue du Moulin 1bis",
+  "postal_code": "1438",
+  "rhythm_de": "Jährlich, ein Samstag im Oktober",
+  "season_months": [
+   10,
+   10
+  ],
+  "next_dates": [],
+  "website_url": "https://www.mathod.ch/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Vide-grenier de Mathod ist der jährliche Dorfflohmarkt in der Grande Salle von Mathod, einem Dorf zwischen Yverdon-les-Bains und Orbe – drinnen, also wetterfest. Mit dem Bus ab Yverdon bis Mathod, village; Parkplätze beim Saal.",
+   "fr": "Chaque année, Mathod, village entre Yverdon-les-Bains et Orbe, tient son vide-grenier à la Grande Salle – à l'intérieur, donc à l'abri. En bus depuis Yverdon jusqu'à Mathod, village ; parking à la salle.",
+   "it": "Il vide-grenier di Mathod è il mercatino annuale del villaggio, nella Grande Salle di Mathod, tra Yverdon-les-Bains e Orbe – al coperto, quindi con qualsiasi tempo. In bus da Yverdon fino a Mathod, village; parcheggio alla sala.",
+   "en": "The Vide-grenier de Mathod is the annual village flea market in the Grande Salle of Mathod, a village between Yverdon-les-Bains and Orbe – indoors, so weatherproof. Bus from Yverdon to Mathod, village; parking at the hall."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Vide-grenier de Mathod ist der jährliche Dorfflohmarkt in der Grande Salle an der Rue du Moulin 1bis, in Mathod zwischen Yverdon-les-Bains und Orbe. Er findet an einem Samstag im Oktober statt, von 9 bis 16 Uhr, drinnen und damit bei jedem Wetter. Organisiert wird er von der Gemeinde. Mit dem Bus ab Yverdon bis zur Haltestelle Mathod, village; Parkplätze gibt es beim Saal.",
+   "fr": "Le vide-grenier de Mathod est le rendez-vous annuel du village : un samedi d’octobre, de 9 h à 16 h, à la Grande Salle, rue du Moulin 1bis. Tout se passe à l’intérieur, la météo ne compte donc pas. Mathod se trouve entre Yverdon-les-Bains et Orbe, et c’est la commune qui organise. En bus depuis Yverdon jusqu’à l’arrêt Mathod, village ; parking à la salle.",
+   "it": "Il vide-grenier di Mathod è il mercatino annuale del paese: un sabato di ottobre, dalle 9 alle 16, nella Grande Salle in rue du Moulin 1bis, al coperto e quindi con qualsiasi tempo. Mathod si trova tra Yverdon-les-Bains e Orbe; organizza il Comune. In bus da Yverdon fino alla fermata Mathod, village; parcheggio presso la sala.",
+   "en": "The Vide-grenier de Mathod is the village’s annual flea market, held indoors in the Grande Salle at Rue du Moulin 1bis, so the weather doesn’t matter. Mathod lies between Yverdon-les-Bains and Orbe. The market runs on one Saturday in October, 9 am to 4 pm, and is organised by the commune. Take the bus from Yverdon to the Mathod, village stop; there is parking at the hall."
+  }
+ },
+ {
+  "slug": "vide-grenier-onex",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 72.7,
+   "de": 61.5,
+   "it": 47.6,
+   "fr": 44.9
+  },
+  "name": "Vide-grenier d'Onex",
+  "kind": "flohmarkt",
+  "town": "Onex",
+  "venue": "Place du 150ème",
+  "address_line": "Place du 150ème",
+  "postal_code": "1213",
+  "rhythm_de": "Jährlich, ein Sonntag im September",
+  "season_months": [
+   9,
+   9
+  ],
+  "next_dates": [],
+  "website_url": "https://www.onex.ch/mes-loisirs/agenda/vide-grenier-6669",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Vide-grenier d'Onex ist der Quartierflohmarkt der Genfer Vorortsgemeinde: rund 80 Stände auf der Place du 150ème, mitten in Onex-Cité, organisiert vom Quartierverein AHOC. Ab Genf fährt Tram 14 bis Onex-Cité, der Platz liegt direkt an der Haltestelle.",
+   "fr": "Le vide-grenier d'Onex est le marché de quartier de cette commune genevoise : environ 80 stands sur la place du 150ème, au cœur d'Onex-Cité, organisé par l'Association des habitants d'Onex-Cité (AHOC). Tram 14 depuis Genève jusqu'à Onex-Cité ; la place est à l'arrêt même.",
+   "it": "Il vide-grenier d'Onex è il mercatino di quartiere del comune ginevrino: circa 80 bancarelle sulla place du 150ème, nel cuore di Onex-Cité, organizzato dall'associazione degli abitanti AHOC. Tram 14 da Ginevra fino a Onex-Cité; la piazza è proprio alla fermata.",
+   "en": "The Vide-grenier d'Onex is the neighbourhood flea market of this Geneva suburb: around 80 stands on Place du 150ème in the middle of Onex-Cité, organised by the residents' association AHOC. Tram 14 from Geneva to Onex-Cité; the square is right at the stop."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Vide-grenier d’Onex ist der Quartierflohmarkt der Genfer Vorortsgemeinde: einmal im Jahr an einem Sonntag im September, mit rund 80 Ständen auf der Place du 150ème mitten in Onex-Cité. Organisiert wird er vom Quartierverein, der Association des Habitants d’Onex-Cité (AHOC); bisher dauerte er von 11 bis 18 Uhr. Ab Genf fährt das Tram 14 bis Onex-Cité, der Platz liegt direkt an der Haltestelle.",
+   "fr": "Le vide-grenier d’Onex est le vide-grenier du quartier : une fois par an, un dimanche de septembre, environ 80 stands s’installent sur la place du 150ème, au cœur d’Onex-Cité. Il est organisé par l’Association des habitants d’Onex-Cité (AHOC) et s’est tenu jusqu’ici de 11 h à 18 h. Depuis Genève, le tram 14 va jusqu’à Onex-Cité ; la place est juste à l’arrêt.",
+   "it": "Il vide-grenier d’Onex è il mercatino di quartiere di questo comune alle porte di Ginevra: una volta l’anno, una domenica di settembre, con circa 80 bancarelle in place du 150ème, nel cuore di Onex-Cité. Lo organizza l’associazione degli abitanti AHOC; finora si è svolto dalle 11 alle 18. Da Ginevra il tram 14 porta fino a Onex-Cité; la piazza è proprio alla fermata.",
+   "en": "The Vide-grenier d’Onex is the neighbourhood flea market of this Geneva suburb: one Sunday a year in September, with around 80 stands on Place du 150ème in the middle of Onex-Cité. It is organised by the residents’ association AHOC and has so far run from 11 am to 6 pm. Tram 14 from Geneva goes to Onex-Cité; the square is right at the stop."
+  }
+ },
+ {
+  "slug": "vide-grenier-paudex",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 82.4,
+   "it": 80.8,
+   "en": 80.4,
+   "fr": 70.2
+  },
+  "name": "Vide-grenier de Paudex",
+  "kind": "flohmarkt",
+  "town": "Paudex",
+  "venue": "Chemin de la Charrettaz 10",
+  "address_line": "Chemin de la Charrettaz 10",
+  "postal_code": "1094",
+  "rhythm_de": "Zweimal jährlich, ein Samstag im Mai und im Oktober",
+  "season_months": null,
+  "next_dates": [],
+  "website_url": "https://www.paudex.ch/actualites-fr4137.html",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Vide-grenier de Paudex findet zweimal im Jahr in der kleinen Gemeinde am Genfersee zwischen Lausanne und Lutry statt, an einem Samstag im Mai und einem im Oktober, von 8 bis 17 Uhr am Chemin de la Charrettaz 10. Ab Lausanne mit dem Bus 9 bis Paudex; die Charrettaz liegt oberhalb der Hauptstrasse.",
+   "fr": "Le vide-grenier de Paudex a lieu deux fois par an dans la petite commune du bord du Léman, entre Lausanne et Lutry, un samedi de mai et un d'octobre, de 8 h à 17 h au chemin de la Charrettaz 10. Depuis Lausanne, bus 9 jusqu'à Paudex ; la Charrettaz est juste au-dessus de la route principale.",
+   "it": "Il vide-grenier di Paudex si tiene due volte l'anno nel piccolo comune sul Lemano tra Losanna e Lutry, un sabato di maggio e uno di ottobre, dalle 8 alle 17 in chemin de la Charrettaz 10. Da Losanna con il bus 9 fino a Paudex; la Charrettaz è appena sopra la strada principale.",
+   "en": "The Vide-grenier de Paudex takes place twice a year in the small lakeside municipality between Lausanne and Lutry, on a Saturday in May and one in October, from 8 am to 5 pm at Chemin de la Charrettaz 10. Bus 9 from Lausanne to Paudex; the Charrettaz is just above the main road."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Vide-grenier de Paudex findet zweimal im Jahr in der kleinen Gemeinde am Genfersee zwischen Lausanne und Lutry statt, an einem Samstag im Mai und einem im Oktober, jeweils von 8 bis 17 Uhr auf dem Platz beim Denner am Chemin de la Charrettaz 10. Organisiert von der Gemeinde. Ab Lausanne mit dem Bus 9 bis Paudex; die Charrettaz liegt oberhalb der Hauptstrasse.",
+   "fr": "Le vide-grenier de Paudex a lieu deux fois par an dans cette petite commune au bord du Léman, entre Lausanne et Lutry : un samedi de mai et un samedi d’octobre, de 8 h à 17 h, sur la place vers Denner, chemin de la Charrettaz 10. Organisé par la commune. Depuis Lausanne, bus 9 jusqu’à Paudex ; la Charrettaz est juste au-dessus de la route principale.",
+   "it": "Il vide-grenier di Paudex si tiene due volte l’anno in questo piccolo comune sul Lemano, tra Losanna e Lutry: un sabato di maggio e uno di ottobre, dalle 8 alle 17, sulla piazza vicino al Denner in chemin de la Charrettaz 10. Organizzato dal comune. Da Losanna con il bus 9 fino a Paudex; la Charrettaz è appena sopra la strada principale.",
+   "en": "The Vide-grenier de Paudex takes place twice a year in this small lakeside municipality between Lausanne and Lutry, on a Saturday in May and one in October, from 8 am to 5 pm on the square by Denner at Chemin de la Charrettaz 10. The municipality runs it. Take bus 9 from Lausanne to Paudex; the Charrettaz is just above the main road."
+  }
+ },
+ {
+  "slug": "vide-grenier-place-de-milan-lausanne",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "en": 100,
+   "fr": 71.4,
+   "it": 54.3,
+   "de": 51.2
+  },
+  "name": "Vide-Grenier de la Place de Milan",
+  "kind": "flohmarkt",
+  "town": "Lausanne",
+  "venue": "Parc de Milan",
+  "address_line": "Parc de Milan, Lausanne (quartier Sous-Gare)",
+  "postal_code": "1006",
+  "rhythm_de": "Einmal jährlich, im Juni.",
+  "season_months": [
+   6,
+   6
+  ],
+  "next_dates": [],
+  "website_url": "https://asso-sousgare-lausanne.ch/vide-grenier/",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "outdoor",
+   "stall_count": null,
+   "seller_mix": "private",
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Vide-Grenier de la Place de Milan findet im Parc de Milan statt, mitten im Lausanner Quartier Sous-Gare. Private bieten Kleidung, Spielzeug, Nippes und allerlei Haushaltsgegenstände an. Ein geselliger, leicht zugänglicher Flohmarkt in Lausanne, organisiert von der Association Sous-Gare et Cour.",
+   "fr": "Vide-grenier au Parc de Milan, dans le quartier Sous-Gare à Lausanne. Vêtements, jouets, bibelots et objets divers proposés par des particuliers. Organisé par l'Association Sous-Gare et Cour.",
+   "it": "Il Vide-Grenier de la Place de Milan si tiene al Parc de Milan, nel cuore del quartiere Sous-Gare di Losanna. I privati propongono vestiti, giocattoli, soprammobili e oggetti vari per la casa. Un mercatino conviviale e alla portata di tutti, organizzato dall'Association Sous-Gare et Cour.",
+   "en": "Vide-Grenier de la Place de Milan takes place in Parc de Milan in the heart of Lausanne's Sous-Gare district. Private sellers offer clothing, toys, knick-knacks and assorted household goods. It is a friendly and accessible flea market in Lausanne, organised by Association Sous-Gare et Cour."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Vide-Grenier de la Place de Milan findet im Parc de Milan im Herzen des Lausanner Quartiers Sous-Gare statt. Privatpersonen bieten Kleidung, Spielzeug, Nippes und verschiedene Gebrauchsgegenstände an. Ein convivialer und gut zugänglicher Flohmarkt in Lausanne, organisiert von der Association Sous-Gare et Cour.",
+   "fr": "Vide-grenier au parc de Milan, en plein cœur du quartier Sous-Gare à Lausanne. Vêtements, jouets, bibelots et objets divers proposés par des particuliers. Un marché aux puces convivial et accessible, organisé par l’Association Sous-Gare et Cour.",
+   "it": "Il Vide-Grenier de la Place de Milan si svolge al Parc de Milan, nel cuore del quartiere Sous-Gare di Losanna. Privati propongono vestiti, giocattoli, soprammobili e oggetti vari. Un mercatino conviviale e accessibile, organizzato dall’Association Sous-Gare et Cour.",
+   "en": "Vide-Grenier de la Place de Milan takes place in Parc de Milan in the heart of Lausanne's Sous-Gare district. Private sellers offer clothing, toys, knick-knacks and assorted household goods. It is a friendly and accessible flea market in Lausanne, organised by Association Sous-Gare et Cour."
+  }
+ },
+ {
+  "slug": "vide-grenier-prilly",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 60,
+   "fr": 58.7,
+   "en": 55.3,
+   "it": 54.3
+  },
+  "name": "Vide-grenier de Prilly",
+  "kind": "flohmarkt",
+  "town": "Prilly",
+  "venue": "Château de Prilly",
+  "address_line": "Route de Cossonay 40",
+  "postal_code": "1008",
+  "rhythm_de": "Jährlich, im Herbst, an der Journée de la durabilité",
+  "season_months": [
+   10,
+   10
+  ],
+  "next_dates": [],
+  "website_url": "https://www.prilly.ch/accueil",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der Vide-grenier de Prilly gehört zur Journée de la durabilité der Gemeinde: ein Flohmarkt von Privaten rund um das Château de Prilly an der Route de Cossonay 40, mit Ständen, Reparaturcafé und Verpflegung. Ab Lausanne mit dem Bus 9 bis Prilly-Église; das Schloss liegt gleich dahinter.",
+   "fr": "Le vide-grenier de Prilly fait partie de la Journée de la durabilité de la commune : des particuliers vendent autour du château de Prilly, route de Cossonay 40, avec stands, repair café et restauration. Depuis Lausanne, bus 9 jusqu'à Prilly-Église ; le château est juste derrière l'arrêt.",
+   "it": "Il vide-grenier di Prilly fa parte della giornata della sostenibilità del comune: un mercatino di privati attorno al Château de Prilly, route de Cossonay 40, con bancarelle, repair café e ristoro. Da Losanna con il bus 9 fino a Prilly-Église; il castello è subito dietro la fermata.",
+   "en": "The Vide-grenier de Prilly is part of the town's sustainability day: a flea market by private sellers around the Château de Prilly at Route de Cossonay 40, with stands, a repair café and food. Bus 9 from Lausanne to Prilly-Église; the château is just behind the stop."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der Vide-grenier de Prilly gehört zur Journée de la durabilité, dem Nachhaltigkeitstag, den die Gemeinde jeden Herbst veranstaltet: Private verkaufen rund um das Château de Prilly an der Route de Cossonay 40, dazu gibt es ein Reparaturcafé und Verpflegung. Geöffnet von 10 bis 16 Uhr. Ab Lausanne mit dem Bus 9 bis Prilly-Église; das Schloss liegt gleich hinter der Haltestelle.",
+   "fr": "Le vide-grenier de Prilly fait partie de la Journée de la durabilité que la commune organise chaque automne : des particuliers vendent autour du château de Prilly, route de Cossonay 40, à côté d’un repair café et de stands de restauration. De 10 h à 16 h. Depuis Lausanne, bus 9 jusqu’à Prilly-Église ; le château se trouve juste derrière l’arrêt.",
+   "it": "Il vide-grenier di Prilly fa parte della Journée de la durabilité, la giornata della sostenibilità che il comune organizza ogni autunno: privati vendono attorno al Château de Prilly, route de Cossonay 40, accanto a un repair café e a punti ristoro. Dalle 10 alle 16. Da Losanna con il bus 9 fino a Prilly-Église; il castello è subito dietro la fermata.",
+   "en": "The Vide-grenier de Prilly is part of the Journée de la durabilité, the sustainability day the town holds each autumn: private sellers set up around the Château de Prilly at Route de Cossonay 40, alongside a repair café and food. Open 10 am to 4 pm. Take bus 9 from Lausanne to Prilly-Église; the château is just behind the stop."
+  }
+ },
+ {
+  "slug": "vide-grenier-villars-tiercelin",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "de": 36.4
+  },
+  "name": "Vide-grenier de Villars-Tiercelin",
+  "kind": "flohmarkt",
+  "town": "Villars-Tiercelin",
+  "venue": "Grande salle de Villars-Tiercelin",
+  "address_line": "Grande salle",
+  "postal_code": "1058",
+  "rhythm_de": "Ein Sonntag im November",
+  "season_months": [
+   11,
+   11
+  ],
+  "next_dates": [
+   {
+    "date": "2026-11-29",
+    "start": null,
+    "end": null
+   }
+  ],
+  "website_url": "https://www.jorat-menthue.ch/manifestations.php",
+  "source_pages": [],
+  "facts_we_hold": {
+   "setting": "indoor",
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "In der Grande salle von Villars-Tiercelin (Jorat-Menthue) findet ein Vide-grenier statt.",
+   "fr": "À Villars-Tiercelin (Jorat-Menthue), la grande salle accueille un vide-grenier.",
+   "it": "A Villars-Tiercelin (Jorat-Menthue) la Grande salle ospita un vide-grenier.",
+   "en": "In Villars-Tiercelin (Jorat-Menthue), the Grande salle hosts a vide-grenier."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Ein Vide-grenier in der Grande salle von Villars-Tiercelin, einem Dorf der Gemeinde Jorat-Menthue im Gros-de-Vaud. Die Gemeinde führt ihn in ihrem Veranstaltungskalender; Öffnungszeiten und Veranstalter sind dort nicht angegeben.",
+   "fr": "Un vide-grenier à la grande salle de Villars-Tiercelin, village de la commune de Jorat-Menthue dans le Gros-de-Vaud. La commune l'annonce dans son agenda des manifestations ; les horaires et l'organisateur n'y sont pas indiqués.",
+   "it": "Un vide-grenier nella Grande salle di Villars-Tiercelin, villaggio del comune di Jorat-Menthue nel Gros-de-Vaud. Il comune lo segnala nel suo calendario delle manifestazioni; orari e organizzatore non sono indicati.",
+   "en": "A vide-grenier in the Grande salle of Villars-Tiercelin, a village in the municipality of Jorat-Menthue in the Gros-de-Vaud. The municipality lists it in its events calendar; opening hours and organiser are not given there."
+  }
+ },
+ {
+  "slug": "wbz-flohmarkt-reinach",
+  "task": "rewrite all four: German from the facts, then fr/it/en from your new German",
+  "locales_to_write": [
+   "de",
+   "fr",
+   "it",
+   "en"
+  ],
+  "old_overlap_pct": {
+   "fr": 67.2,
+   "en": 55.6,
+   "de": 55.6,
+   "it": 38.6
+  },
+  "name": "WBZ-Flohmarkt Reinach",
+  "kind": "flohmarkt",
+  "town": "Reinach",
+  "venue": "WBZ Reinach",
+  "address_line": "Aumattstrasse 71, 4153 Reinach",
+  "postal_code": "4153",
+  "rhythm_de": "Jährlich, Ende Oktober (vier Tage)",
+  "season_months": [
+   10,
+   10
+  ],
+  "next_dates": [
+   {
+    "date": "2026-10-30",
+    "start": "17:00:00",
+    "end": "21:00:00"
+   },
+   {
+    "date": "2026-10-31",
+    "start": "10:00:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-11-01",
+    "start": "10:00:00",
+    "end": "18:00:00"
+   },
+   {
+    "date": "2026-11-02",
+    "start": "12:00:00",
+    "end": "18:00:00"
+   }
+  ],
+  "website_url": "https://wbz.ch",
+  "source_pages": [
+   "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+   "https://www.reinach-bl.ch/de/veranstaltungen/detail/detail.php?i=10755",
+   "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt?gad_source=1&gad_campaignid=742538844&gbraid=0AAAAADoVoRUXcjRNHp6lipxvcoS18uoVS&gclid=Cj0KCQjwp9vTBhCWARIsANaUrjvVA8ZYr6uinbNvC4CScVIkkJeosD0BsF2LLdapNXsDcDnjDH76dJYaAgLPEALw_wcB"
+  ],
+  "facts_we_hold": {
+   "setting": null,
+   "stall_count": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "getting_there": null,
+   "tags": []
+  },
+  "our_current": {
+   "de": "Der WBZ-Flohmarkt in Reinach dauert vier Tage, jedes Jahr Ende Oktober, im Wohn- und Bürozentrum für Körperbehinderte (WBZ) an der Aumattstrasse 71: Kleidung, Haushaltswaren, Geschirr, Bücher, Schmuck, Korbwaren, Elektronik und Antiquitäten, nach Themen sortiert. Der Erlös kommt direkt Menschen mit Behinderung zugute und finanziert ihre Arbeitsplätze mit.",
+   "fr": "Le marché aux puces WBZ de Reinach dure quatre jours, chaque année à la fin du mois d'octobre, au Centre résidentiel et administratif pour personnes handicapées physiques (WBZ), Aumattstrasse 71 : vêtements, articles ménagers, vaisselle, livres, bijoux, vannerie, électronique et antiquités, classés par catégories. Les recettes vont directement aux personnes en situation de handicap et contribuent au financement de leurs emplois.",
+   "it": "Il mercatino del WBZ di Reinach dura quattro giorni, ogni anno a fine ottobre, al centro abitativo e lavorativo per persone con disabilità fisiche (WBZ) in Aumattstrasse 71: abiti, articoli per la casa, stoviglie, libri, gioielli, cesteria, elettronica e antiquariato, divisi per categoria. Il ricavato va direttamente alle persone con disabilità e aiuta a finanziare i loro posti di lavoro.",
+   "en": "The WBZ flea market in Reinach runs for four days at the end of October each year, at the Residential and Office Centre for People with Physical Disabilities (WBZ), Aumattstrasse 71: clothes, household goods, crockery, books, jewellery, basketware, electronics and antiques, sorted by category. The proceeds go directly to people with disabilities and help fund their jobs."
+  },
+  "old_site_DO_NOT_REUSE": {
+   "de": "Der WBZ-Flohmarkt in Reinach gehört zu den grössten und beliebtesten Flohmärkten der Region Basel. Vier Tage lang, jeweils Ende Oktober, bietet das Wohn- und Bürozentrum für Körperbehinderte (WBZ) an der Aumattstrasse 71 eine riesige Auswahl an: Kleider, Haushaltswaren, Geschirr, Bücher, Schmuck, Korbwaren, Elektronik und Antiquitäten — nach Themenbereichen sortiert, was die Schatzsuche besonders übersichtlich macht. Der Erlös kommt direkt Menschen mit Behinderung zugute und finanziert ihre Arbeitsplätze mit. Ein Pflichttermin für alle, die einen grossen Hallenflohmarkt mit echtem sozialem Mehrwert suchen.",
+   "fr": "Le marché aux puces WBZ de Reinach compte parmi les plus grands et les plus populaires de la région de Bâle. Pendant quatre jours, chaque année à la fin du mois d'octobre, le Centre résidentiel et administratif pour personnes handicapées physiques (WBZ), situé Aumattstrasse 71, propose un choix immense : vêtements, articles ménagers, vaisselle, livres, bijoux, vannerie, électronique et antiquités — classés par catégories, ce qui rend la chasse aux trésors particulièrement claire. Les recettes bénéficient directement aux personnes en situation de handicap et contribuent au financement de leurs emplois. Un rendez-vous incontournable pour toutes celles et ceux qui recherchent un grand marché aux puces couvert avec une véritable valeur sociale ajoutée.",
+   "it": "Il mercatino delle pulci WBZ di Reinach è uno dei più grandi e apprezzati della regione di Basilea. Per quattro giorni, ogni anno alla fine di ottobre, il Centro residenziale e amministrativo per persone con disabilità fisiche (WBZ) in Aumattstrasse 71 offre una vastissima scelta: abiti, articoli per la casa, stoviglie, libri, gioielli, cesteria, elettronica e antiquariato — suddivisi per categorie tematiche, rendendo la ricerca dei tesori particolarmente ordinata. Il ricavato va direttamente a beneficio delle persone con disabilità e contribuisce a finanziare i loro posti di lavoro. Un appuntamento imperdibile per chi cerca un grande mercatino coperto con un autentico valore sociale aggiunto.",
+   "en": "The WBZ flea market in Reinach is one of the largest and most popular flea markets in the Basel region. For four days at the end of October each year, the Residential and Office Centre for People with Physical Disabilities (WBZ) at Aumattstrasse 71 offers an enormous selection: clothes, household goods, crockery, books, jewellery, basketware, electronics, and antiques — sorted by category, making the treasure hunt particularly easy to navigate. The proceeds directly benefit people with disabilities and help finance their jobs. An essential date for anyone looking for a large indoor flea market with genuine social value."
+  }
+ }
+]

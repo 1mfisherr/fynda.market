@@ -1,0 +1,617 @@
+[
+ {
+  "slug": "marche-rumine-lausanne-vendredi",
+  "description": {
+   "en": "The Marché de Rumine has no food stalls: it is all things, new and second-hand, from clothes and books to furniture. The City of Lausanne runs it on the Place de la Riponne, in the middle of town. Since March the square has had brocante stalls four days a week again, and this is one of those days.",
+   "fr": "Au Marché de Rumine, pas de nourriture : seulement des objets, neufs ou de seconde main, des vêtements aux livres en passant par les meubles. C'est la Ville de Lausanne qui l'organise, sur la place de la Riponne, en plein centre. Depuis mars, la place retrouve des stands de brocante quatre jours par semaine, et ce marché est l'un de ces jours.",
+   "it": "Al Marché de Rumine non si vende cibo: solo oggetti, nuovi e di seconda mano, dai vestiti ai libri fino ai mobili. È la Città di Losanna a gestirlo, sulla place de la Riponne, in pieno centro. Da marzo la piazza ha di nuovo bancarelle di brocante quattro giorni a settimana, e questo mercato è uno di quei giorni."
+  },
+  "sources": [
+   {
+    "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+    "quote": "Dès le 3 mars 2026, le marché non-alimentaire réinvestit la place de la Riponne"
+   },
+   {
+    "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+    "quote": "Produits non alimentaires neufs et de seconde main (meubles, vêtements, chaussures, livres, artisanat, ...)"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Page lists four market days a week (two days 09:30-18:00, two days morning only); no weekday or year used in the texts; our German says Freitagsausgabe, rewritten as 'this is one of those days'."
+ },
+ {
+  "slug": "mercatino-pulci-ragazzi-locarno",
+  "description": {
+   "de": "Einmal im Jahr, im Oktober, wird die Piazza Grande in Locarno zum Flohmarkt für Kinder und Jugendliche. Organisiert wird er vom Gruppo Genitori Locarnese, einer Elterngruppe aus der Region. Der Markt findet unter freiem Himmel statt und fällt bei schlechtem Wetter aus.",
+   "fr": "À Locarno, une fois par an, en octobre, la piazza Grande se transforme en marché aux puces pour les enfants et les ados. C'est le Gruppo Genitori Locarnese, un groupe de parents de la région, qui l'organise. Tout se passe en plein air : si le temps est mauvais, le marché est annulé.",
+   "it": "A Locarno, una volta l'anno, in ottobre, Piazza Grande diventa un mercatino delle pulci per bambini e ragazzi. Lo organizza il Gruppo Genitori Locarnese, un gruppo di genitori della regione. Si svolge all'aperto e, se il tempo è brutto, viene annullato.",
+   "en": "Once a year, in October, Piazza Grande in Locarno becomes a flea market for children and teenagers. It is organised by the Gruppo Genitori Locarnese, a parents' group from the area. It takes place in the open air and is called off if the weather is bad."
+  },
+  "sources": [
+   {
+    "url": "https://www.ggl.ch/",
+    "quote": "Mercatino delle pulci per ragazzi/e in Piazza Grande"
+   },
+   {
+    "url": "https://www.ggl.ch/",
+    "quote": "Gruppo Genitori Locarnese (page owner; event listed in its autumn calendar)"
+   }
+  ],
+  "conflicts": [
+   "The organiser's page gives only the title and the date (a Saturday in October) and a link for stall sign-up; nothing about who sells, hours, fee or the rain rule. The rain rule (cancelled) comes from facts_we_hold; 'children sell themselves' and 'five minutes from the station' (old text) are not on the page and were left out."
+  ],
+  "notes": "Thin on purpose: only what the title, the parents' group and our held facts support. Reviewer may want to ask the GGL for a line about who sells."
+ },
+ {
+  "slug": "mercatino-usato-lugano",
+  "description": {
+   "de": "Gebrauchtes, das noch funktioniert, bekommt hier ein zweites Leben: Das ist die Idee des Mercatino dell'usato, des Secondhand-Markts der Stadt Lugano. Er findet mehrmals im Jahr drinnen statt, im Centro Esposizioni MAC 3 (Viale dei Faggi), also bei jedem Wetter. Auf den Tischen liegen Dinge in gutem Zustand, die ihre Besitzer nicht mehr brauchen.",
+   "fr": "Donner une seconde vie à ce qui marche encore mais ne sert plus : c'est le principe de ce marché d'occasion, organisé plusieurs fois par an par la Ville de Lugano. Il se tient à l'abri, dans le Centro Esposizioni MAC 3, par tous les temps. Sur les tables, des objets en bon état dont leurs propriétaires n'ont plus l'usage.",
+   "it": "Il Mercatino dell'usato dà una seconda vita a ciò che non serve più ma funziona ancora. Lo organizza la Città di Lugano più volte l'anno, al coperto, nel Centro Esposizioni MAC 3 (viale dei Faggi), quindi con qualsiasi tempo. Sui banchi trovi oggetti in buono stato, messi in vendita da chi non li usa più.",
+   "en": "The Mercatino dell'usato gives things a second life when they still work but are no longer wanted. The City of Lugano runs it several times a year, indoors at the Centro Esposizioni MAC 3 (Viale dei Faggi), so the weather does not matter. On the tables you find used things in good condition."
+  },
+  "sources": [
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercatino-usato/",
+    "quote": "pensato per valorizzare il recupero di oggetti che non vengono più utilizzati, ma che si rivelano ancora funzionanti e in buono stato"
+   },
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercatino-usato/",
+    "quote": "Le edizioni 2026 del Mercatino dell'usato si svolgeranno dalle ore 11 alle 17, al Centro Esposizioni (MAC 3), in Viale dei Faggi"
+   }
+  ],
+  "conflicts": [
+   "lugano.ch's overview page (mercati-mercatini) says the usato is held 'quattro volte all'anno' at the 'Capannone di Pregassona'; the market's own page says the 2026 editions are at the Centro Esposizioni MAC 3. We say three times a year. The detail page lists only 19 September 2026 (registration closed) and no later date, and our next_dates is empty. I wrote 'mehrmals im Jahr' (several times).",
+   "Bus 2 from Lugano Centro (our old line) is not on the organiser's page and was left out. 'Indoors' comes from facts_we_hold; the page itself does not say hall or indoor."
+  ],
+  "notes": "Frequency and venue worth a call to Lugano Eventi e congressi before the next date goes live."
+ },
+ {
+  "slug": "mercatino-usato-paradiso-lugano",
+  "description": {
+   "de": "Zwischen März und November stehen fast jeden Monat Tische mit Secondhand-Sachen auf der Piazza del Municipio von Paradiso, direkt neben Lugano. Der Gruppo mamme di Paradiso, eine Müttergruppe, organisiert den Markt zugunsten einer guten Sache. Wenn das Wetter unsicher ist, wird er um eine Woche verschoben.",
+   "fr": "À Paradiso, tout contre Lugano, les tables de seconde main s'étalent presque chaque mois entre mars et novembre sur la piazza del Municipio. C'est le Gruppo mamme di Paradiso, un groupe de mamans, qui l'organise, au profit d'une cause caritative. Si le temps est incertain, le marché est repoussé d'une semaine.",
+   "it": "Quasi ogni mese tra marzo e novembre, a Paradiso, a due passi da Lugano, i banchi dell'usato si dispongono in Piazza del Municipio. Lo organizza il Gruppo mamme di Paradiso, a scopo di beneficenza. Se il tempo è incerto, si rimanda alla settimana dopo.",
+   "en": "From March to November, nearly every month, tables of second-hand things fill the Piazza del Municipio in Paradiso, right next to Lugano. The Gruppo mamme di Paradiso, a group of mothers, runs the market for charity. If the weather looks uncertain, it moves to the following week."
+  },
+  "sources": [
+   {
+    "url": "https://www.laregione.ch/agenda/evento/61379/mercatino-dell-usato-a-scopo-benefico",
+    "quote": "Il Gruppo mamme di Paradiso organizza ... in Piazza Municipale un mercatino dell'usato a scopo di beneficenza. In caso di tempo incerto il mercoledì successivo."
+   },
+   {
+    "url": "https://paradiso.ch/cms/wp-content/uploads/2026/07/Eventi-2026_0722.pdf",
+    "quote": "Mercatino usato listed under MARZO, APRILE, MAGGIO, GIUGNO, LUGLIO, SETTEMBRE, OTTOBRE, NOVEMBRE (Comune di Paradiso events calendar)"
+   }
+  ],
+  "conflicts": [
+   "The Comune's own 2026 events calendar lists the Mercatino usato in July as well (and June), none in August; our rhythm says 'March to November except July and August'. The texts say only 'nearly every month, March to November'.",
+   "The Comune's market page (paradiso.ch/mc-events/mercatino-dellusato-8) is an empty stub for a 2025 edition. Organiser, charity purpose and weather rule come from the La Regione / Ticinonline agenda listing, not from the organiser. 'About 30 stalls' and the goods list (old text) could not be confirmed anywhere and were left out."
+  ],
+  "notes": "Thin: organiser's page has no description. First Wednesday of the month is the pattern in the calendar, left out because weekdays are not allowed."
+ },
+ {
+  "slug": "mercato-antiquariato-maghetti-lugano",
+  "description": {
+   "en": "Once a week, all year round, around 40 stalls spread through the old lanes of Lugano's Maghetti quarter, around Via Canova, Via Vegezzi and Piazza San Rocco. Look for antiques and used things: books, picture frames, silver, old glass, clothes and collectors' pieces, with some handmade work among them. It is a market for people who live nearby."
+  },
+  "sources": [
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/",
+    "quote": "Gli appassionati di oggetti antichi, vintage o di articoli artigianali possono trovare pezzi unici e originali."
+   },
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/",
+    "quote": "Mercato dell'antiquariato e artigianato ... Quartiere Maghetti (Via Canova, Via Vegezzi, Piazza San Rocco e Piazzale ex-Scuole)"
+   }
+  ],
+  "conflicts": [],
+  "notes": "'Around 40 stalls' comes from our German; the City's page gives no count. The City's name for it is antiques and craft market, so I added the handmade line."
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "description": {
+   "it": "Sui tavoli trovi oggetti di seconda mano, curiosità vintage e cose fatte a mano da gente della zona; intorno ci sono anche alcuni workshop. Si svolge nel piazzale davanti al Municipio di Massagno, in un pomeriggio pensato per tutta la famiglia, all'insegna del riuso e della creatività."
+  },
+  "sources": [
+   {
+    "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+    "quote": "un pomeriggio di riuso, creatività e sostenibilità per tutta la famiglia! Troverete oggetti di seconda mano, curiosità vintage, creazioni locali e alcuni workshop."
+   },
+   {
+    "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+    "quote": "nel piazzale del Municipio, in via Giuseppe Motta 53"
+   }
+  ],
+  "conflicts": [
+   "Massagno's page shows one edition in September (the 2026 edition, with a DJ set and a yoga workshop as new items). Our rhythm says twice a year (one afternoon in spring, one in autumn); the old text said once a year. A spring edition is not confirmed."
+  ],
+  "notes": "Our German is only 140 characters and says nothing about the place; I translated it and added the venue and the organiser's 'whole family' line so the Italian reaches the 120-character minimum. The German could take the same lines."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "description": {
+   "fr": "Un marché aux puces à l'ancienne, tenu dans l'agglomération bernoise, sur le terrain de la Landi juste à côté de la gare de Worb. Une fois par mois, entre mars et novembre, jusqu'à 40 vendeurs, marchands et particuliers, s'installent avec leur voiture : antiquités, raretés, objets d'autrefois. Pour une pause, sandwichs et café au shop de la station-service Landi.",
+   "it": "Mercatino dal sapore nostalgico sull'area Landi, accanto alla stazione di Worb, nell'agglomerato di Berna. Una volta al mese, tra marzo e novembre, fino a 40 venditori, commercianti e privati, espongono direttamente dall'auto antiquariato, rarità e pezzi d'altri tempi. Per un boccone ci sono sandwich e caffè allo shop della stazione di servizio Landi."
+  },
+  "sources": [
+   {
+    "url": "https://flohmarkt-3076worb.jimdofree.com",
+    "quote": "Der 2. Sonntag im Monat : Ab März bis November!"
+   },
+   {
+    "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+    "quote": "Deine Verkaufsfläche ist dein Auto, oder Autolänge"
+   },
+   {
+    "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+    "quote": "Verpflegung: Sandwiches, Kaffi ect... finden Sie im Tankstellenshop der Landi."
+   }
+  ],
+  "conflicts": [
+   "Our German ends 'Eine Reservierung ist nicht nötig'. The organiser requires sellers to reserve a spot by e-mail (first 40 requests); only visitors need nothing. Left that sentence out of fr/it; the German may want it removed or reworded.",
+   "In July and August the organiser allows only about half the usual sellers (restricted allocation)."
+  ],
+  "notes": "'Up to 40' is our stall_count; the dates the organiser lists for 2026 (8 Nov last) match our next date."
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "description": {
+   "en": "Once a month the gym hall of the PROGR cultural centre, in the middle of Bern, hosts a hand-picked vintage and second-hand market. Fewer odds and ends, more eye for style: on the tables you find vintage clothes, accessories, rare records, shoes with character, jewellery and collectors' pieces.",
+   "it": "Una volta al mese la palestra del centro culturale PROGR, nel cuore di Berna, ospita un mercato vintage e dell'usato dove la merce è scelta con cura. Meno ciarpame, più stile: sui banchi ci sono abiti e accessori vintage, dischi rari, scarpe di carattere, gioielli e pezzi da collezione."
+  },
+  "sources": [
+   {
+    "url": "https://www.progr.ch/de/agenda/progr-markt-vintage-flea-market-7418/",
+    "quote": "Jeden dritten Samstag im Monat findet der PROGR MARKT «vintage flea market» in der PROGR Turnhalle statt."
+   },
+   {
+    "url": "https://www.progr.ch/de/agenda/progr-markt-vintage-flea-market-7418/",
+    "quote": "edle Accessoires, rare Schallplatten, charaktervolle Schuhe, einzigartigen Schmuck, stilvolle Kleider"
+   }
+  ],
+  "conflicts": [
+   "The PROGR page is dated 15.02.2025 and vintagefleamarket.ch says 'Neue Termine folgen in Kürze'; its dates page returned 404. The three dates we show (third Saturday: 17 Oct, 21 Nov, 19 Dec) could not be confirmed on the organiser's own pages.",
+   "Our German says 'Designerkleidung'; the organiser lists records, shoes, jewellery and dresses but not designer clothes. I used the organiser's list."
+  ],
+  "notes": "Organiser is Barbara Müller (vintagefleamarket.ch). 'Third Saturday' left out (weekday rule) and written as 'once a month'."
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "description": {
+   "it": "Nell'ex area ferroviaria Areal Bach, nel quartiere di St. Fiden a San Gallo, nella bella stagione si tiene a date fisse un mercatino di quartiere, ma solo se il tempo è asciutto. Le bancarelle vendono di tutto un po', come in ogni mercatino delle pulci: vestiti usati, accessori, un po' di vintage, oggetti per la casa e libri. Per un caffè o da bere c'è il bar mobile sul posto."
+  },
+  "sources": [
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "In regelmässigen Abständen findet bei trockener Witterung auf dem Areal Bach ein Quartier-Flohmarkt statt."
+   },
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "Snacks und Getränke gibt es beim Barwagen vom Areal Bach und beim Gastropartner Gustav Gleis."
+   },
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "In der Zeit von Anfang April bis Mitte Oktober"
+   }
+  ],
+  "conflicts": [
+   "Our German says 'alle zwei Wochen, von April bis Juni'. The organiser says the flea market runs 'in regelmässigen Abständen' on dry days, in a season from early April to mid-October (season opening 12 April 2026, on dry weather). I followed the organiser in the Italian ('a date fisse nella bella stagione'); the German should be corrected the same way.",
+   "Our German has 'Kaffeewagen und Bar'; the organiser names a Barwagen and a restaurant partner (Gustav Gleis)."
+  ],
+  "notes": "Seller types ('local people') from our German; the organiser lists typical flea-market goods, second-hand clothes, vintage fashion, accessories and crafts."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "description": {
+   "fr": "Un jour par an, tout un quartier de Pratteln, Gehrenacker et Fröschmatt, ouvre ses jardins, ses cours et ses entrées de garage. Les habitants y posent leurs affaires d'occasion, de maison en maison, et on se promène de l'un à l'autre en suivant le plan du quartier. Les vendeurs sont des particuliers, sur leur propre terrain : l'ambiance est celle d'un grand vide-grenier entre voisins."
+  },
+  "sources": [
+   {
+    "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+    "quote": "Über das ganze Quartier verteilt entstehen kleine Verkaufsplätze mit gebrauchten Dingen, die ein neues Zuhause suchen."
+   },
+   {
+    "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+    "quote": "Die Verkaufsstände befinden sich auf privatem Grund (z. B. Garten, Vorplatz oder Einfahrt), nicht auf öffentlichem Boden"
+   },
+   {
+    "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+    "quote": "Der Quartierflohmarkt richtet sich an Private; gewerbliche Anbieter sind nicht vorgesehen."
+   }
+  ],
+  "conflicts": [
+   "The organiser's page names it 'Quartierflohmarkt Gehrenacker-Rankacker' in its heading (and 'Gehrenacker - Fröschmatt' in the title). The date shown there is a Sunday in April 2026 (10-16), which fits our month. No date for next year yet.",
+   "Our old text names the Verein Stadtprojekt Basel as organiser; the Pratteln page is run by the town's 'Mach mit' platform / Quartierarbeit and names no such association. Not used."
+  ],
+  "notes": "Our German's closing line ('einer der eigenwilligeren Flohmärkte im Baselbiet') is a judgement and was not carried over."
+ },
+ {
+  "slug": "quartierflohmarkt-saeli-bruch-obergueetsch-luzern",
+  "description": {
+   "de": "In drei Luzerner Quartieren, Säli, Bruch und Obergütsch, stehen die Tische an einem Tag im September auf Trottoirs, in Vorgärten und Innenhöfen. Du schlenderst von Haus zu Haus, kommst mit den Nachbarn ins Gespräch und findest, was ein Haushalt nicht mehr braucht. Wo genau verkauft wird, zeigt ein Plan, den der Quartierverein veröffentlicht.",
+   "fr": "Un jour de septembre, les trottoirs, les jardins devant les maisons et les cours intérieures de trois quartiers de Lucerne, Säli, Bruch et Obergütsch, se garnissent de tables. On flâne de maison en maison, on bavarde avec les voisins et on repart avec ce dont un ménage n'avait plus besoin. Un plan publié par l'association de quartier montre où l'on vend.",
+   "it": "Un giorno di settembre, marciapiedi, giardinetti e cortili di tre quartieri di Lucerna, Säli, Bruch e Obergütsch, si riempiono di banchetti. Si passeggia di casa in casa, si chiacchiera con i vicini e si porta a casa ciò che una famiglia non usa più. Dove si vende lo mostra una mappa pubblicata dall'associazione del quartiere.",
+   "en": "On one day in September, the pavements, front gardens and courtyards of three Lucerne neighbourhoods, Säli, Bruch and Obergütsch, fill up with tables. You wander from house to house, get talking to the neighbours and take home whatever a household no longer needed. A map from the neighbourhood association shows where people are selling."
+  },
+  "sources": [
+   {
+    "url": "https://dialogluzern.ch/assemblies/qv-sbo/f/493/meetings/982",
+    "quote": "Auf den Gehsteigen, Innenhöfen und Vorgärten der Quartiere Säli, Bruch, Obergütsch."
+   },
+   {
+    "url": "https://dialogluzern.ch/assemblies/qv-sbo/f/493/meetings/982",
+    "quote": "An diesem Sonntag wird man durchs Quartier schlendern, mit Nachbar*innen ins Gespräch kommen"
+   },
+   {
+    "url": "https://dialogluzern.ch/assemblies/qv-sbo/f/493/meetings/982",
+    "quote": "Du kannst alles verkaufen, was dein Haushalt nicht mehr braucht."
+   }
+  ],
+  "conflicts": [],
+  "notes": "Event page: 13 September 2026, 10-16, plan with all selling places. 'Ten minutes from the station' (old text) is not on the page and was left out."
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "description": {
+   "en": "For a whole day in August the St. Johann quarter of Basel turns into one big flea market. Residents sell from their doorsteps, yards and gardens all over the neighbourhood, and coloured balloons mark the way. Fatiostrasse and parts of Jungstrasse and Lothringerstrasse are closed to cars for the day. A bring-and-take corner stands next to the Badhüsli in St. Johanns-Park (Elsässerstrasse 2): leave what you no longer need, take what you like.",
+   "fr": "Pendant une journée d'août, tout le quartier de St. Johann, à Bâle, se transforme en marché aux puces. Des particuliers vendent devant chez eux, dans les cours et les jardins, et des ballons de couleur montrent le chemin. La Fatiostrasse et des tronçons de la Jungstrasse et de la Lothringerstrasse sont fermés aux voitures pour l'occasion. Un coin « bring&nimm » est installé au Badhüsli, dans le parc St. Johann (Elsässerstrasse 2) : on y dépose ce dont on n'a plus besoin et on prend ce qui plaît."
+  },
+  "sources": [
+   {
+    "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+    "quote": "Einfach den bunten Ballons folgen und sich überraschen lassen."
+   },
+   {
+    "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+    "quote": "Dieses Jahr werden die Fatiostrasse sowie Abschnitte der Jung- und Lothringerstrasse autofrei sein."
+   },
+   {
+    "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+    "quote": "Elsässerstrasse 2, beim Badhüsli am St Johanns Park"
+   },
+   {
+    "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+    "quote": "Gefällt dir etwas? Nimm es mit, es gehört dir!"
+   }
+  ],
+  "conflicts": [
+   "Our German says the market reaches 'ins neue Lysbüchel-Areal, mit Ständen, Spielen und Essen' along the car-free Lothringerstrasse, is 'eine der grösseren Ausgaben' and 'einer von 17 Quartierflohmärkten'. The organiser's 2026 page (a Saturday in August, 10-17) mentions no Lysbüchel extension, only the car-free Fatiostrasse and parts of Jung- and Lothringerstrasse, and its menu lists 18 neighbourhoods. The en/fr follow the 2026 page; the German needs the same fix."
+  ],
+  "notes": "Weekday and the 'bigger edition' claim left out. The Quartierflohmis are run by volunteer residents (page); the Verein Stadtprojekt name from our German is not on this page."
+ },
+ {
+  "slug": "quartierflohmi-reinach-nord",
+  "description": {
+   "de": "Einmal im Jahr verwandelt sich das Wohnquartier Reinach Nord in einen Flohmarkt: Wer dort wohnt, stellt Gebrauchtes vor dem Haus, im Garten oder in der Einfahrt aus, und du spazierst von Adresse zu Adresse. Organisiert wird der Quartierflohmi ehrenamtlich vom Vorstand des Quartiervereins Reinach Nord.",
+   "fr": "Une fois par an, le quartier résidentiel de Reinach Nord devient un marché aux puces : les habitants exposent leurs affaires devant la maison, dans le jardin ou dans l'allée, et on va d'une adresse à l'autre. Le comité de l'association de quartier organise le tout, à titre bénévole.",
+   "it": "Una volta l'anno il quartiere residenziale di Reinach Nord si trasforma in un mercatino: chi ci abita espone l'usato davanti a casa, in giardino o nel vialetto, e tu vai a spasso da un indirizzo all'altro. A organizzare, a titolo di volontariato, è il comitato dell'associazione di quartiere.",
+   "en": "Once a year the residential neighbourhood of Reinach Nord turns into a flea market: people who live there put used things out at the front of the house, in the garden or on the driveway, and you wander from address to address. The board of the neighbourhood association organises it as volunteers."
+  },
+  "sources": [
+   {
+    "url": "https://www.qvrn.ch/quartierflohmarkt.html",
+    "quote": "Der Quartierflohmi Reinach Nord wird vom engagierten Vorstand des Quartiervereins Reinach Nord ehrenamtlich organisiert."
+   },
+   {
+    "url": "https://www.qvrn.ch/agenda.html",
+    "quote": "Wann: 25.04.2026 / 10:00 - 16:00 Was: Quartierflohmi Reinach Nord"
+   }
+  ],
+  "conflicts": [
+   "The organiser's agenda lists the Quartierflohmi on 25 April 2026 (a Saturday, spring). We show 'ein Sonntag im Spätsommer' (season month 9). The rhythm line looks wrong. No season is named in the texts.",
+   "The page shows no map and no tram line; the 'map on qvrn.ch' and 'Tram 11' of the old text were left out. That residents sell in front of their own houses is how every Quartierflohmi works and what our data says, but this page only shows a sign-up form asking for an address."
+  ],
+  "notes": "Needs a fact check by Delfim or a mail to the Quartierverein: date pattern and where the stalls are."
+ },
+ {
+  "slug": "strassenflohmarkt-rafz",
+  "description": {
+   "de": "Einmal im Jahr, im September, wird die Märktgass im Dorfzentrum von Rafz zur Flohmarktstrasse. Hier verkaufen Privatleute ihre eigenen, gebrauchten Sachen; Neuware gibt es nicht. Im Märtkafi gibt es Kaffee, Kuchen und Zopf, am Flammkuchenstand Nachschub für den Hunger, und für die Kinder sind Attraktionen aufgebaut. Organisiert wird der Markt von den Rafzer Flomi-Fraue.",
+   "fr": "Une fois par an, en septembre, la Märktgass, au centre du village de Rafz, devient une rue de brocante. Des particuliers y vendent leurs propres affaires d'occasion, rien de neuf. Au Märtkafi, café, gâteaux et tresse ; un stand de tartes flambées et des attractions pour les enfants complètent le tableau. Ce sont les Rafzer Flomi-Fraue qui organisent.",
+   "it": "Una volta l'anno, a settembre, la Märktgass, nel centro di Rafz, diventa una via di mercatino. I privati vendono le proprie cose usate, niente merce nuova. Al Märtkafi ci sono caffè, torte e treccia, c'è uno stand di tarte flambée e per i bambini ci sono attrazioni. A organizzare sono le Rafzer Flomi-Fraue.",
+   "en": "Once a year, in September, the Märktgass in the centre of Rafz becomes a flea market street. Private people sell their own used things, nothing new. The Märtkafi serves coffee, cake and braided Zopf bread, there is a Flammkuchen stand, and the children get attractions of their own. The Rafzer Flomi-Fraue organise it."
+  },
+  "sources": [
+   {
+    "url": "https://www.strassenflohmarkt-rafz.ch/",
+    "quote": "Am Samstag, 19. September 2026, verwandelte sich die Märktgass einmal mehr in einen lebendigen Treffpunkt."
+   },
+   {
+    "url": "https://www.strassenflohmarkt-rafz.ch/",
+    "quote": "Im Märtkafi wurde Kaffee ausgeschenkt, Kuchen und Zopf serviert"
+   },
+   {
+    "url": "https://www.strassenflohmarkt-rafz.ch/strassenflohmarkt/marktreglement-strassenflohmarkt/",
+    "quote": "Es dürfen nur gebrauchte Gegenstände veräussert werden."
+   }
+  ],
+  "conflicts": [],
+  "notes": "The organiser reports a '7. Strassenflohmarkt' in September 2026 and says the next date will be announced; 'once a year' follows our rhythm line, since seven editions since 2016 suggests not strictly every year. The carousel and the lunchtime Flammkuchen of our old text are not on the page; left out."
+ },
+ {
+  "slug": "subiger-dorf-flohmarkt",
+  "description": {
+   "de": "Einmal im Jahr, im Frühsommer, wird das Dorfzentrum von Subingen zum Flohmarkt. Die Leute aus dem Dorf räumen Häuser, Keller und Wohnungen aus und geben ihren Sachen die Chance auf ein zweites Zuhause. Der Kulturverein SubKultur organisiert den Anlass; einen Verpflegungsstand wird er künftig nicht mehr betreiben.",
+   "fr": "Une fois par an, au début de l'été, le centre du village de Subingen se transforme en vide-grenier. Les habitants vident maisons, caves et appartements pour donner à leurs affaires une chance de trouver un nouveau foyer. L'association culturelle SubKultur organise l'événement ; elle ne tiendra plus de stand de restauration.",
+   "it": "Una volta l'anno, all'inizio dell'estate, il centro di Subingen diventa un mercatino di paese. Gli abitanti svuotano case, cantine e appartamenti e danno ai loro oggetti la possibilità di una seconda vita in un'altra casa. L'evento è organizzato dall'associazione culturale SubKultur, che non gestirà più un punto di ristoro.",
+   "en": "Once a year, in early summer, the centre of Subingen turns into a village flea market. People from the village clear out their houses, cellars and flats and give their things a chance at a new home. The cultural association SubKultur organises it, and it will no longer run a food stand."
+  },
+  "sources": [
+   {
+    "url": "https://sub-kultur.ch/event/dorfflohmarkt-2/",
+    "quote": "Räumt eure Häuser, Keller und Wohnungen leer und gebt euren Sachen die Chance in einem neuen Haushalt ein neues Leben zu finden"
+   },
+   {
+    "url": "https://sub-kultur.ch/events/",
+    "quote": "SubKultur wird keinen Verpflegungsstand mehr anbieten"
+   }
+  ],
+  "conflicts": [
+   "The organiser's next edition is a Saturday in early June 2027 (10-17); our rhythm says 'meist Ende Mai'. The organiser calls it 'Dorfflohmarkt', not '4. Subiger Dorf Flohmarkt'."
+  ],
+  "notes": "I did not state a month: early June is 'early summer'. The food-stand line is the organiser's own change for the next edition and will go stale if they bring one back."
+ },
+ {
+  "slug": "svuotacantine-ascona",
+  "description": {
+   "de": "Hier wird der Keller geleert: Auf dem Manor-Parkplatz in Ascona (Via Ferrera) haben Privatleute bis zu 99 Plätze, an denen sie aus dem Auto oder von eigenen Tischen verkaufen, was in Keller, Dachboden oder Garage nicht mehr gebraucht wird. Alles ist erkennbar gebraucht, Neuware und Essen gibt es nicht. Den Markt gibt es hier seit 2018; hinter ihm steht der Verein I Mercantini, der ähnliche Märkte auch in Giubiasco, Sant'Antonino und Biasca macht. Bei schlechtem Wetter kann er verschoben werden.",
+   "fr": "Ici, on vide les caves : sur le parking Manor d'Ascona (via Ferrera), jusqu'à 99 particuliers vendent depuis leur voiture ou une table ce qui dort dans une cave, un grenier ou un garage. Tout est visiblement d'occasion, rien de neuf et rien à manger. Le marché existe ici depuis 2018, et l'association I Mercantini en organise d'autres à Giubiasco, Sant'Antonino et Biasca. En cas de mauvais temps, il peut être reporté.",
+   "it": "Qui si svuotano le cantine: sul posteggio Manor di Ascona (via Ferrera) fino a 99 privati vendono dall'auto o da un tavolo ciò che non serve più in cantina, in soffitta o in garage. Tutto è chiaramente usato: niente merce nuova, niente da mangiare. Il mercatino esiste qui dal 2018, e l'associazione I Mercantini ne organizza altri a Giubiasco, Sant'Antonino e Biasca. Con il maltempo può essere rinviato.",
+   "en": "This one is for clearing out cellars: on the Manor car park in Ascona (Via Ferrera), up to 99 private sellers set up at their cars or at a table with whatever has been sitting in a cellar, attic or garage. Everything is plainly second-hand, with no new goods and no food. The market has been held here since 2018, and the association I Mercantini runs similar ones in Giubiasco, Sant'Antonino and Biasca. In bad weather it can be postponed."
+  },
+  "sources": [
+   {
+    "url": "https://www.imercantini.ch/eventi-2026",
+    "quote": "Ascona - Posteggio MANOR Ascona - Via Ferrera, 6612 Ascona - Al massimo 99 postazioni per evento."
+   },
+   {
+    "url": "https://www.imercantini.ch/le-8-regole",
+    "quote": "Tutti oggetti palesemente usati e non nuovi provenienti da cantine, solai o garage"
+   },
+   {
+    "url": "https://www.imercantini.ch/",
+    "quote": "Il primo Svuotacantine nasce nel 2018 sul piazzale della Manor di Ascona"
+   },
+   {
+    "url": "https://www.imercantini.ch/regolamento-2026",
+    "quote": "In caso di condizioni meteorologiche avverse, l'evento potrà essere interrotto o rinviato."
+   }
+  ],
+  "conflicts": [
+   "The organiser's 2026 events page shows Ascona with 'programma in allestimento' (no dates); the home page says registrations for the May Ascona edition are closed. 'Three times a year' (our rhythm) and 'a week later when it rains' are not stated for Ascona (the one-week reserve date is shown for Biasca only). I wrote 'can be postponed'."
+  ],
+  "notes": "Muralto and Contone appear only in the photo galleries of past events, so I named only the three towns with event pages."
+ },
+ {
+  "slug": "svuotacantine-biasca",
+  "description": {
+   "de": "Auf dem Manor-Parkplatz mitten in Biasca verkaufen rund 65 Privatleute aus dem Auto, was sich in Keller, Dachboden und Garage angesammelt hat. Bushaltestellen sind nah, und für Besucher gibt es Parkplätze ganz in der Nähe. Der Verein I Mercantini macht den Markt zweimal im Jahr; wenn das Wetter nicht mitspielt, gibt es ein Ersatzdatum eine Woche später.",
+   "fr": "Sur le parking Manor, en plein centre de Biasca, environ 65 particuliers vendent depuis leur voiture ce qui traîne dans leur cave, leur grenier ou leur garage. Des arrêts de bus sont tout proches, et des places de parking existent pour les visiteurs. L'association I Mercantini organise le marché deux fois par an ; si le temps ne s'y prête pas, il y a une date de repli une semaine plus tard.",
+   "it": "Sul posteggio della Manor, in pieno centro a Biasca, vendono dall'auto circa 65 privati quello che si è accumulato in cantina, in soffitta o in garage. Le fermate del bus sono vicinissime e ci sono parcheggi per i visitatori. L'associazione I Mercantini lo organizza due volte l'anno; se il tempo non regge, c'è una data di riserva una settimana dopo.",
+   "en": "On the Manor car park in the middle of Biasca, some 65 private sellers sell out of their cars whatever has piled up in cellars, attics and garages. Bus stops are close by, and there is parking for visitors. The association I Mercantini holds the market twice a year, and if the weather is bad there is a back-up date a week later."
+  },
+  "sources": [
+   {
+    "url": "https://www.imercantini.ch/svuotacantine-biasca-2026",
+    "quote": "Un posteggio molto centrale, accessibile e con fermate del bus nelle immediate vicinanze, offre spazio a ca. 65 espositori"
+   },
+   {
+    "url": "https://www.imercantini.ch/svuotacantine-biasca-2026",
+    "quote": "Svuotacantine del 18 ottobre 2026 - data di riserva in caso di meteo sfavorevole 25 ottobre 2026"
+   },
+   {
+    "url": "https://www.imercantini.ch/le-8-regole",
+    "quote": "Tutti oggetti palesemente usati e non nuovi provenienti da cantine, solai o garage"
+   }
+  ],
+  "conflicts": [
+   "Our rain_policy says 'decided on the day'; the organiser gives a fixed reserve date one week later (18 Oct, reserve 25 Oct). The page lists two 2026 editions (12 April and 18 October); the 18 October date matches ours, and the home page calls it the last event of 2026. 'Via Losanna 2' is not on the page."
+  ],
+  "notes": "Everything checked against the organiser's own Biasca page."
+ },
+ {
+  "slug": "talkessel-flohmarkt-seewen",
+  "description": {
+   "de": "Seit 2019 gibt es im Zeughausareal Seewen einen Flohmarkt für den ganzen Talkessel, anfangs einmal im Jahr, inzwischen mehrmals, im Spätherbst auch als Weihnachtsflohmarkt. Der Markt findet drinnen statt. Auf den Tischen liegt nur, was klar als gebraucht erkennbar ist, und Elektrogeräte kannst du vor Ort ausprobieren. Ein Grillstand mit Pommes, Bratwurst und Cervelat sowie ein Getränkestand sorgen für das Essen, und für Besucher gibt es viele Parkplätze.",
+   "fr": "Depuis 2019, le site du Zeughausareal à Seewen accueille un marché aux puces pour toute la région du Talkessel, d'abord une fois par an, maintenant plusieurs fois, avec une édition de Noël à la fin de l'automne. Le marché se tient à l'intérieur. Seuls des objets visiblement d'occasion sont posés sur les tables, et on peut tester les appareils électriques sur place. Un stand de grillades (frites, saucisses) et un stand de boissons sont là pour la restauration, et les visiteurs trouvent beaucoup de places de parc.",
+   "it": "Dal 2019 sul Zeughausareal di Seewen, vicino a Svitto, c'è un mercatino per tutto il Talkessel: all'inizio una volta sola, oggi più volte l'anno, con un'edizione natalizia a fine autunno. Il mercato si tiene al coperto. Sui banchi c'è solo roba riconoscibilmente usata e gli apparecchi elettrici si possono provare sul posto. Una griglia con patatine, salsicce e cervelat e un banco delle bevande pensano al cibo, e per i visitatori c'è molto parcheggio.",
+   "en": "Since 2019 the Zeughausareal in Seewen has hosted a flea market for the whole Talkessel basin, once a year at first and now several times, with a Christmas edition in late autumn. It is held indoors. Only things that clearly look used are on the tables, and you can try out electrical items on the spot. A grill stand serves chips, bratwurst and cervelat, a drinks stand sits next to it, and there is plenty of parking for visitors."
+  },
+  "sources": [
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/",
+    "quote": "Der Flohmarkt wurde im Jahr 2019 das erste Mal durchgeführt als einmalige Sache."
+   },
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/infos/",
+    "quote": "Grillstand auf Platz mit Pommes Frites, Bratwürste, Cervelats / Getränkestand vorhanden"
+   },
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/regeln/",
+    "quote": "Ausschliesslich Waren, die klar als gebraucht erkennbar sind, das heisst, keine Neuwaren!"
+   },
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/regeln/",
+    "quote": "Elektrische Geräte können auf dem Areal getestet werden."
+   }
+  ],
+  "conflicts": [
+   "The organiser's pages do not say the market is in a hall or indoors (they speak of a grill stand 'auf Platz'); 'indoors' rests on facts_we_hold (setting indoor, rain: runs). If that fact is wrong the sentence 'findet drinnen statt' must go.",
+   "'Five minutes on foot from Seewen-Schwyz station' (old and current text) is not on the page and was left out. The info page heading says 'Daten 2025' above the 2026 dates (a typo on their side); the dates match ours (25 Oct and the Christmas market 28 Nov)."
+  ],
+  "notes": "Christmas market and the regular dates match our next_dates."
+ },
+ {
+  "slug": "vide-grenier-familles-renens",
+  "description": {
+   "de": "Ein Flohmarkt für Familien, drinnen in der Salle de spectacles von Renens: Auf den Tischen liegt Secondhand-Ware, die von Familie zu Familie weiterwandert. Am Nachmittag gibt es eine Show, und für den kleinen Hunger werden Hotdogs, Sandwiches und selbstgebackenes Gebäck verkauft. Hinter dem Markt steht Bulle d'air, das Angebot für Kinder und Familien der reformierten Kirche in Renens; er findet jeden Herbst statt.",
+   "fr": "Un vide-grenier pensé pour les familles, à l'intérieur de la salle de spectacles de Renens. Sur les tables, des affaires de seconde main qui passent d'une famille à l'autre. L'après-midi, il y a un spectacle, et pour la petite faim, des hot-dogs, des sandwichs et des pâtisseries maison. Il a lieu tous les ans, à l'automne, avec Bulle d'air, qui propose à Renens des activités pour enfants et familles, en lien avec l'Église réformée.",
+   "it": "Un vide-grenier pensato per le famiglie, al coperto nella Salle de spectacles di Renens. Sui tavoli c'è roba di seconda mano che passa da una famiglia all'altra. Nel pomeriggio c'è uno spettacolo e, per lo spuntino, hot dog, panini e dolci fatti in casa. Lo organizza una volta l'anno, in autunno, Bulle d'air, la proposta per bambini e famiglie della Chiesa riformata di Renens.",
+   "en": "A flea market made for families, held indoors in the town's Salle de spectacles in Renens. The tables hold second-hand things that pass from one family to the next. There is a show in the afternoon, and for a small bite you can get hot dogs, sandwiches and home-baked pastries. It takes place every autumn and is run by Bulle d'air, a group offering activities for children and families in Renens, linked to the Reformed Church."
+  },
+  "sources": [
+   {
+    "url": "https://bulledairrenens.com/vide-grenier/",
+    "quote": "Vide grenier spéciale familles à la salle de spectacle de Renens. Venez vendre ou chiner des articles de seconde main dans une ambiance conviviale."
+   },
+   {
+    "url": "https://bulledairrenens.com/vide-grenier/",
+    "quote": "Petite restauration sur place : hot-dogs, sandwiches et pâtisseries maison."
+   },
+   {
+    "url": "https://bulledairrenens.com/",
+    "quote": "Bulle d'air propose à Renens des activités pour les enfants, les familles"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Organiser's page names a show in the afternoon and the food; that Bulle d'air belongs to the reformed church (EERV) rests on the site linking to eerv.ch and on our data. The 2026 edition was 3 October (past); 'ten minutes from the station' and 'about 30 stands' (old text) are not on the page and were left out."
+ },
+ {
+  "slug": "vide-grenier-mathod",
+  "description": {
+   "de": "Im Oktober, einmal im Jahr, füllt sich die Grande Salle von Mathod mit Flohmarkttischen. Das Dorf liegt im Waadtland, zwischen Yverdon-les-Bains und Orbe. Weil alles drinnen stattfindet, spielt das Wetter keine Rolle. Das Datum steht im Veranstaltungskalender der Gemeinde.",
+   "fr": "Une fois par an, en octobre, la Grande Salle de Mathod se remplit de tables de vide-grenier. Le village se trouve dans le canton de Vaud, entre Yverdon-les-Bains et Orbe. Les tables sont à l'abri dans la salle, quel que soit le temps. La date figure dans l'agenda des manifestations de la commune.",
+   "it": "Una volta l'anno, a ottobre, la Grande Salle di Mathod si riempie di tavoli da vide-grenier. Il villaggio è nel canton Vaud, tra Yverdon-les-Bains e Orbe. Si sta al coperto, quindi il meteo non conta. La data è nel calendario degli eventi del comune.",
+   "en": "Once a year, in October, the Grande Salle in Mathod fills with flea market tables. The village lies in canton Vaud, between Yverdon-les-Bains and Orbe. The tables are indoors, so the weather does not matter. The date is in the commune's events calendar."
+  },
+  "sources": [
+   {
+    "url": "https://www.mathod.ch/events/",
+    "quote": "Vide grenier de Mathod - 3 octobre à 9h00 - 16h00 - Grande salle de Mathod - Rue du Moulin 1bis"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Thin: the commune's listing gives only name, place and hours. Bus 'Mathod, village', parking and 'organised by the commune' (old text) are not on the commune's pages and were left out; 'indoors' is facts_we_hold plus the hall."
+ },
+ {
+  "slug": "vide-grenier-onex",
+  "description": {
+   "de": "Einmal im Jahr, im September, wird die Place du 150ème mitten in Onex-Cité, am Rand von Genf, zum Flohmarkt: Bis zu 80 Stände bieten Gegenstände und Kleider an. Das Ganze findet unter freiem Himmel statt. Organisiert wird es von der Bewohnerorganisation des Viertels, der Association des Habitants Onex-Cité (AHOC).",
+   "fr": "Dans le quartier d'Onex-Cité, aux portes de Genève, la place du 150ème accueille une fois par an, en septembre, jusqu'à 80 stands qui vendent objets et habits, en plein air. L'Association des Habitants Onex-Cité (AHOC) organise l'événement.",
+   "it": "Una volta all'anno, a settembre, la place du 150ème di Onex-Cité, a pochi passi da Ginevra, si riempie di bancarelle all'aperto: fino a 80, con oggetti e vestiti. L'evento è organizzato dall'AHOC, l'associazione che riunisce gli abitanti del quartiere.",
+   "en": "In the Onex-Cité district on the edge of Geneva, the Place du 150ème fills once a year, in September, with up to 80 stalls selling household items and clothes, all in the open air. The residents' association, the Association des Habitants Onex-Cité (AHOC), organises it."
+  },
+  "sources": [
+   {
+    "url": "https://www.onex.ch/mes-loisirs/agenda/vide-grenier-6669",
+    "quote": "Vente d'objets et habits sur la place du 150ème. Un événement proposé par l'Association des Habitants Onex Cité."
+   }
+  ],
+  "conflicts": [
+   "The commune's page does not show a date or stall count in its text. 'Up to 80' comes from a third-party listing (vide-greniers.org, reported in search: a Sunday in late September, 11-18, 80 exhibitors maximum, outdoors) and from our current text. A tram 14 stop at Onex-Cité could not be confirmed, so no transport line is given."
+  ],
+  "notes": "Organiser's page is the commune's agenda entry; the stall number is the one claim resting on a third-party listing."
+ },
+ {
+  "slug": "vide-grenier-paudex",
+  "description": {
+   "de": "Paudex liegt direkt am Genfersee, östlich von Lausanne, und hier steht der Vide-grenier am Chemin de la Charrettaz: ein Dorfflohmarkt, auf dem Privatleute aussortierte Sachen aus ihren Haushalten verkaufen. Er findet zweimal im Jahr statt, im Frühling und im Herbst.",
+   "fr": "Paudex est un petit village au bord du Léman, à l'est de Lausanne. Au chemin de la Charrettaz, des particuliers y vendent ce dont ils n'ont plus besoin, deux fois par an, au printemps et en automne.",
+   "it": "Paudex è un piccolo paese sulla riva del Lemano, a est di Losanna. Lungo il chemin de la Charrettaz i privati vendono ciò che non serve più: il mercatino si tiene in primavera e in autunno.",
+   "en": "Paudex is a small village on the shore of Lake Geneva, just east of Lausanne. On the Chemin de la Charrettaz, private people sell what they no longer need, twice a year, in spring and in autumn."
+  },
+  "sources": [
+   {
+    "url": "https://www.paudex.ch/actualites-fr4137.html",
+    "quote": "(no mention of the vide-grenier on the commune's news page)"
+   },
+   {
+    "url": "https://vide-greniers.org/evenements/Paudex-VD",
+    "quote": "third-party listing: vide-grenier au chemin de la Charrettaz, Paudex (reported in search)"
+   }
+  ],
+  "conflicts": [
+   "Paudex's own site has nothing on this market. A third-party listing (vide-greniers.org, read through search) shows an edition on a Saturday in early October 2026 at 'chemin de la Charrettaz 6' (we show no. 10), 8-17, about 40 exhibitors, run by a private organiser, in existence since 2014; it is not run by the commune as the old text says. A May edition is not confirmed anywhere; 'spring and autumn' follows our rhythm line."
+  ],
+  "notes": "Thin and the least verified of my batch. Suggest asking the commune or the listing's organiser for the address and rhythm before relying on it."
+ },
+ {
+  "slug": "vide-grenier-place-de-milan-lausanne",
+  "description": {
+   "de": "Einmal im Jahr, im Juni, verkaufen Privatleute im Parc de Milan Gebrauchtes aus ihren Haushalten. Der Park liegt im Lausanner Quartier Sous-Gare, unterhalb des Bahnhofs; den Flohmarkt organisiert der Quartierverein, die Association Sous-Gare. Er findet unter freiem Himmel statt und läuft auch bei Regen.",
+   "fr": "Une fois par an, en juin, des particuliers vendent des affaires d'occasion au parc de Milan. Le parc se trouve dans le quartier Sous-Gare de Lausanne, sous la gare ; le marché est organisé par l'association de quartier, l'Association Sous-Gare. Il se tient en plein air et a lieu même sous la pluie.",
+   "it": "Una volta l'anno, a giugno, nel Parc de Milan i privati vendono oggetti usati di casa. Il parco si trova nel quartiere Sous-Gare, a Losanna, sotto la stazione; il mercatino è organizzato dall'associazione di quartiere, l'Association Sous-Gare. Si svolge all'aperto e si tiene anche con la pioggia.",
+   "en": "Once a year, in June, private sellers set up in the Parc de Milan with used things from their homes. The park is in Lausanne's Sous-Gare quarter, below the station, and the neighbourhood association, the Association Sous-Gare, runs the market. It is held outdoors and goes ahead even in the rain."
+  },
+  "sources": [
+   {
+    "url": "https://asso-sousgare-lausanne.ch/vide-grenier/",
+    "quote": "Vide grenier 2024 ... 8 juin 2024 (post on the Association Sous-Gare site)"
+   },
+   {
+    "url": "https://asso-sousgare-lausanne.ch/",
+    "quote": "défend les intérêts généraux des quartiers Sous-Gare de Lausanne, favorise leur animation"
+   }
+  ],
+  "conflicts": [
+   "The association's page only has a 2024 post (8 June 2024) and a 'Règlement vide-grenier' document; I found no 2025 or 2026 edition announced, so the market may have paused. Private sellers, outdoors and 'runs in rain' come from facts_we_hold. The association is now called 'Association Sous-Gare' (footer: Société de développement des quartiers Sous-Gare & Cour)."
+  ],
+  "notes": "Old text said clothes, toys, knick-knacks; not on the organiser's page, left out. Our English was identical to the old one, so this is fully rewritten."
+ },
+ {
+  "slug": "vide-grenier-prilly",
+  "description": {
+   "de": "Im Herbst, am Nachhaltigkeitstag der Gemeinde, verwandelt sich das Umfeld des Château de Prilly in einen Flohmarkt. Privatleute verkaufen Gebrauchtes, ein Reparaturcafé gibt kaputten Dingen eine zweite Chance, und für Essen und Trinken ist gesorgt. Das Schloss an der Route de Cossonay ist zugleich der Sitz der Gemeindeverwaltung.",
+   "fr": "En automne, pour la journée de la durabilité de la commune, les abords du château de Prilly se transforment en vide-grenier. Des particuliers y vendent de l'occasion, un repair café donne une seconde chance aux objets abîmés, et de quoi boire et manger est prévu. Le château, route de Cossonay 40, abrite aussi l'administration communale.",
+   "it": "In autunno, nella giornata della sostenibilità del comune, i dintorni del Château de Prilly diventano un mercatino. I privati vendono usato, un repair café dà una seconda possibilità agli oggetti rotti e non mancano cibo e bevande. Il castello, in route de Cossonay 40, ospita anche l'amministrazione comunale.",
+   "en": "In autumn, on the town's sustainability day, the grounds around the Château de Prilly turn into a flea market. Private sellers offer used things, a repair café gives broken items a second chance, and there is food and drink. The château, on Route de Cossonay 40, also houses the town administration."
+  },
+  "sources": [
+   {
+    "url": "https://www.prilly.ch/accueil",
+    "quote": "Administration communale, Route de Cossonay 40, 1008 Prilly (footer)"
+   },
+   {
+    "url": "https://www.prilly.ch/loisirs-vie-associative/evenements-manifestations/evenements",
+    "quote": "(no vide-grenier or Journée de la durabilité listed)"
+   }
+  ],
+  "conflicts": [
+   "Prilly's own event pages (agenda, 'grandes manifestations communales') do not list a vide-grenier or a Journée de la durabilité for 2026. A third-party listing read through search describes a sustainability day around the château in September 2025 with a clothing swap, flea market and repair/sewing workshops. The repair café and the food rest on our database text and that older listing; the autumn date is unconfirmed. A separate vide-grenier in Prilly on 26-27 September 2026 (chemin de Bellevue) appears on vide-greniers.org; it may be a different event."
+  ],
+  "notes": "Least certain text of the batch together with Paudex; I would not put it on a page with a next date until the commune confirms the day."
+ },
+ {
+  "slug": "vide-grenier-villars-tiercelin",
+  "description": {
+   "de": "Im November gibt es im Dorfsaal von Villars-Tiercelin, der Grande salle, einen Vide-grenier, also einen Flohmarkt, drinnen. Villars-Tiercelin ist ein Dorf im Waadtländer Jorat. Genauere Angaben zu Zeiten und Veranstalter macht die Gemeinde Jorat-Menthue nicht; schau im Zweifel dort nach.",
+   "fr": "En novembre, un vide-grenier se tient dans la grande salle du village de Villars-Tiercelin, donc à l'abri. Le village est situé dans le Jorat vaudois. Jorat-Menthue, la commune dont il fait partie, ne précise ni les horaires ni l'organisateur : en cas de doute, renseignez-vous auprès d'elle.",
+   "it": "A novembre la Grande salle di Villars-Tiercelin ospita un vide-grenier, quindi al coperto, nella sala del paese. Villars-Tiercelin è un villaggio del Jorat vodese. Il comune di Jorat-Menthue non dà altri dettagli su orari e organizzatore: nel dubbio, chiedi direttamente a loro.",
+   "en": "In November the Grande salle in Villars-Tiercelin hosts a vide-grenier, so it is held indoors, in the village hall. Villars-Tiercelin is a village in the Vaud Jorat. The commune of Jorat-Menthue gives no more detail on times or organiser, so if in doubt, ask them directly."
+  },
+  "sources": [
+   {
+    "url": "https://www.jorat-menthue.ch/manifestations.php",
+    "quote": "Vide Grenier - Grande salle / 1058 Villars-Tiercelin - 29.11.2026"
+   }
+  ],
+  "conflicts": [],
+  "notes": "The commune's listing has only the name, place and date, so the text says so plainly."
+ },
+ {
+  "slug": "wbz-flohmarkt-reinach",
+  "description": {
+   "de": "Freiwillige sammeln das ganze Jahr über Dinge, vom Aktenkoffer bis zur Zuckerdose, und Ende Oktober werden sie vier Tage lang im WBZ in Reinach verkauft, einem Wohn- und Arbeitsort für Menschen mit Körperbehinderung. Auf den Tischen liegen Kleider, Haushaltswaren, Geschirr, Spiele, Taschen, Schmuck, Korbwaren, Bilder, Elektronik und Antiquitäten. Der Erlös hilft Menschen mit Behinderung und trägt dazu bei, Arbeitsplätze zu schaffen, die zu ihren Fähigkeiten passen.",
+   "fr": "Toute l'année, des bénévoles récoltent des objets, de la mallette à la sucrière ; à la fin octobre, ils sont mis en vente pendant quatre jours au WBZ de Reinach, un lieu de vie et de travail pour personnes handicapées physiques. Sur les tables : vêtements, articles de ménage, vaisselle, jeux, sacs, bijoux, vannerie, tableaux, électronique et antiquités. Les recettes profitent aux personnes handicapées et aident à créer des emplois adaptés à leurs capacités.",
+   "it": "Per tutto l'anno dei volontari raccolgono oggetti, dalla ventiquattrore alla zuccheriera; a fine ottobre vengono venduti per quattro giorni al WBZ di Reinach, un centro dove persone con disabilità fisiche vivono e lavorano. Sui tavoli: abiti, articoli per la casa, stoviglie, giochi, borse, gioielli, cesteria, quadri, elettronica e antiquariato. Il ricavato va alle persone con disabilità e aiuta a creare posti di lavoro adatti alle loro capacità.",
+   "en": "Volunteers collect things all year long, from briefcases to sugar bowls. Then, for four days around the end of October, everything goes on sale at the WBZ in Reinach, a place where people with a physical disability live and work. The tables hold crockery, clothes, household goods, games, bags, jewellery, basketware, pictures, electronics and antiques. Whatever the sales bring in supports people living with a disability and helps create jobs that fit their abilities."
+  },
+  "sources": [
+   {
+    "url": "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+    "quote": "Während des ganzen Jahres sammeln freiwillige Helfende Gegenstände von A wie Aktenkoffer bis Z wie Zuckerdosen"
+   },
+   {
+    "url": "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+    "quote": "jeweils Ende Oktober während vier Tagen einem grossen Publikum anzubieten"
+   },
+   {
+    "url": "https://www.wbz.ch/dienstleistungen-produkte/flohmarkt",
+    "quote": "dabei kommt der Erlös Menschen mit Behinderung zugute und trägt unter anderem dazu bei, Arbeitsplätze für sie zu schaffen"
+   }
+  ],
+  "conflicts": [],
+  "notes": "Opening days and hours on the WBZ and Reinach pages (30 Oct to 2 Nov, evening on the first day) match ours. The organiser's own page calls it one of the largest and finest in the region; not used. 'Hall' and 'sorted by theme' (old text) are not on the page and were left out."
+ }
+]
