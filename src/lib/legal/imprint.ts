@@ -21,7 +21,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         p: [
           'fynda.market is operated by:',
           'Delfim Almeida\nZurich, Switzerland\nEmail: contact@fynda.market',
-          'fynda.market is a digital directory for flea markets, brocantes and secondhand markets across Switzerland.',
+          'fynda.market is a digital directory for flea markets, brocantes and secondhand markets in Switzerland and Germany.',
         ],
       },
       {
@@ -59,7 +59,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         p: [
           'fynda.market wird betrieben von:',
           'Delfim Almeida\nZürich, Schweiz\nE-Mail: contact@fynda.market',
-          'fynda.market ist ein digitales Verzeichnis für Flohmärkte, Brockenstuben und Secondhand-Märkte in der ganzen Schweiz.',
+          'fynda.market ist ein digitales Verzeichnis für Flohmärkte, Brockenstuben und Secondhand-Märkte in der Schweiz und in Deutschland.',
         ],
       },
       {
@@ -97,7 +97,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         p: [
           'fynda.market est exploité par :',
           'Delfim Almeida\nZurich, Suisse\nCourriel : contact@fynda.market',
-          "fynda.market est un annuaire numérique des brocantes, vide-greniers et marchés d'occasion en Suisse.",
+          "fynda.market est un annuaire numérique des brocantes, vide-greniers et marchés d'occasion en Suisse et en Allemagne.",
         ],
       },
       {
@@ -135,7 +135,7 @@ export const IMPRINT: Record<Locale, LegalDoc> = {
         p: [
           'fynda.market è gestito da:',
           'Delfim Almeida\nZurigo, Svizzera\nE-mail: contact@fynda.market',
-          "fynda.market è un elenco digitale di mercatini delle pulci, mercatini dell'usato e mercati di seconda mano in tutta la Svizzera.",
+          "fynda.market è un elenco digitale di mercatini delle pulci, mercatini dell'usato e mercati di seconda mano in Svizzera e in Germania.",
         ],
       },
       {

@@ -18,14 +18,14 @@
  * so the page a crawler sees is the page in the template. Nothing is
  * personalised on the server; there is no server.
  */
-import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, homePath, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props { locale?: Locale }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const s = t(locale);
 ---
-<a class="pill" href="/" data-place-pill data-locale={locale} hidden aria-label={s.yourTown}>
+<a class="pill" href={homePath(locale)} data-place-pill data-locale={locale} hidden aria-label={s.yourTown}>
   <span data-place-name></span>
 </a>
 

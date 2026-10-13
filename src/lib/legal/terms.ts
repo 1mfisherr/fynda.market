@@ -28,7 +28,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '2. What fynda.market is',
         p: [
-          'fynda.market is a directory. We research and publish information about flea markets, brocantes, and secondhand events across Switzerland.',
+          'fynda.market is a directory. We research and publish information about flea markets, brocantes, and secondhand events in Switzerland and Germany.',
           "fynda.market does not organise any of the listed markets, does not sell tickets or stands, and is not part of any agreement between a visitor and a market organiser. We don't control whether a market actually happens.",
         ],
       },
@@ -114,7 +114,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '2. Was fynda.market ist',
         p: [
-          'fynda.market ist ein Verzeichnis. Wir recherchieren und veröffentlichen Angaben zu Flohmärkten, Brockenstuben und Secondhand-Anlässen in der ganzen Schweiz.',
+          'fynda.market ist ein Verzeichnis. Wir recherchieren und veröffentlichen Angaben zu Flohmärkten, Brockenstuben und Secondhand-Anlässen in der Schweiz und in Deutschland.',
           'fynda.market organisiert keinen der aufgeführten Märkte, verkauft keine Tickets und keine Standplätze und ist nicht Teil einer Vereinbarung zwischen Besucherinnen und Veranstaltern. Wir haben keinen Einfluss darauf, ob ein Markt tatsächlich stattfindet.',
         ],
       },
@@ -200,7 +200,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '2. Ce qu’est fynda.market',
         p: [
-          "fynda.market est un annuaire. Nous recherchons et publions des informations sur les brocantes, vide-greniers et événements d'occasion en Suisse.",
+          "fynda.market est un annuaire. Nous recherchons et publions des informations sur les brocantes, vide-greniers et événements d'occasion en Suisse et en Allemagne.",
           "fynda.market n'organise aucun des marchés répertoriés, ne vend ni billets ni emplacements, et n'est partie à aucun accord entre un visiteur et un organisateur. Nous ne contrôlons pas si un marché a réellement lieu.",
         ],
       },
@@ -286,7 +286,7 @@ export const TERMS: Record<Locale, LegalDoc> = {
       {
         h: '2. Che cos’è fynda.market',
         p: [
-          "fynda.market è un elenco. Raccogliamo e pubblichiamo informazioni su mercatini delle pulci, mercatini dell'usato ed eventi di seconda mano in tutta la Svizzera.",
+          "fynda.market è un elenco. Raccogliamo e pubblichiamo informazioni su mercatini delle pulci, mercatini dell'usato ed eventi di seconda mano in Svizzera e in Germania.",
           'fynda.market non organizza nessuno dei mercatini elencati, non vende biglietti né banchi e non è parte di alcun accordo tra un visitatore e un organizzatore. Non abbiamo alcun controllo sul fatto che un mercatino si tenga davvero.',
         ],
       },

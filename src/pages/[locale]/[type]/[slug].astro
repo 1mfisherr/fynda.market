@@ -135,7 +135,7 @@ const event = next ? {
       price: market.entryFee,
       priceCurrency: COUNTRY[market.countryCode].currency,
       availability: 'https://schema.org/InStock',
-      validFrom: `${next.date}T00:00:00`,
+      validFrom: toIsoWithOffset(next.date, undefined, market.timezone),
       url,
     },
   } : {}),
@@ -426,7 +426,7 @@ const description = next
       could only be answered by parsing the path back into a slug. */}
   <div class="market" data-market={market.id}>
     <div class="photo-hero">
-      <PhotoOrArt market={market} width={720} height={210} loading="eager" />
+      <PhotoOrArt market={market} width={720} height={210} loading="eager" alt={[market.name, cityForTitle].filter(Boolean).join(', ')} />
       {/* Filled, not white text laid over a photograph, where it was legible
           on a dark picture and invisible on a bright one. The fill is the
           kind's own line colour — docs/BRAND.md gives the line colours exactly

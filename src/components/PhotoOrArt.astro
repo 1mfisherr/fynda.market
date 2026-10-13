@@ -2,8 +2,11 @@
 import type { Market } from '../lib/types';
 import { THUMB_ABOVE_WIDTH, heroSources, photoUrl } from '../lib/images';
 import PlaceholderArt from './PlaceholderArt.astro';
-interface Props { market: Market; width: number; height: number; loading?: 'eager' | 'lazy'; }
-const { market, width, height, loading = 'lazy' } = Astro.props;
+/* `alt` is empty by default: beside a row's market name, a description would make
+   a screen reader say the name twice. The market page's hero stands alone and
+   names what it shows. */
+interface Props { market: Market; width: number; height: number; loading?: 'eager' | 'lazy'; alt?: string; }
+const { market, width, height, loading = 'lazy', alt = '' } = Astro.props;
 // A 74px square asks for the 148px file, not the 1440px hero — src/lib/images.ts.
 const src = market.imageUrl ? photoUrl(market.imageUrl, width) : undefined;
 // A hero sends phones the 720px file. A `srcset` would let a 3x phone pick the
@@ -18,8 +21,8 @@ const priority: 'high' | undefined = loading === 'eager' ? 'high' : undefined;
   ? sources
     ? <picture>
         <source media="(max-width: 899px)" srcset={sources.medium} />
-        <img {src} alt="" {width} {height} {loading} decoding="async" fetchpriority={priority} />
+        <img {src} {alt} {width} {height} {loading} decoding="async" fetchpriority={priority} />
       </picture>
-    : <img {src} alt="" {width} {height} {loading} decoding="async" fetchpriority={priority} />
+    : <img {src} {alt} {width} {height} {loading} decoding="async" fetchpriority={priority} />
   : <PlaceholderArt kind={market.kind} seed={market.slug} rounded="sm" />}
 <style>picture { display:block; height:100%; } img { display:block; width:100%; height:100%; object-fit:cover; }</style>
