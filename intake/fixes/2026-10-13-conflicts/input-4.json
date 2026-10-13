@@ -1,0 +1,2458 @@
+[
+ {
+  "slug": "marche-rumine-lausanne-samedi",
+  "ours": {
+   "name": "Marché de Rumine",
+   "status": "active",
+   "town": "Lausanne",
+   "venue": "Place de la Riponne",
+   "address": "Place de la Riponne, 1005 Lausanne, 1005",
+   "lat": 46.52359,
+   "lng": 6.63288,
+   "rhythm_de": "Jeden Samstag seit März 2026",
+   "rhythm_en": "Every Saturday since March 2026",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-26",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-03",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-10",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-31",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-07",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-14",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-21",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-28",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-05",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-12",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-19",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-26",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-02",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-09",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-16",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-23",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-30",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-06",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-13",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-20",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-27",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-06",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-13",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-20",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-27",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-03",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-10",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-17",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-24",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-01",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-08",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-15",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-22",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-29",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-05",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-12",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-19",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-26",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-03",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-10",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-17",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-24",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-31",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-07",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-14",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-21",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-28",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-04",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-11",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-18",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-25",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-02",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-09",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-16",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-23",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-30",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-06",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-13",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-20",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-27",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-04",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-11",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-18",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-25",
+     "start": "08:30:00",
+     "end": "13:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Same as the other two Rumine entries: the city lists a Friday market that we do not hold, and describes the market as mostly new goods.",
+   "The metro stop comes from a third-party listing (swiss-markt.ch), not the city's page, which only links to the public transport operator."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+    "quote": "marché non-alimentaire ... Mercredi et samedi: 8h30 à 13h00 ... place de la Riponne"
+   },
+   {
+    "url": "https://swiss-markt.ch/fr/lausanne/marche-rumine",
+    "quote": "Nearest public transport stop: Riponne - Maurice Béjart, about 60 m (third-party listing)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "marche-rumine-lausanne-vendredi",
+  "ours": {
+   "name": "Marché de Rumine",
+   "status": "active",
+   "town": "Lausanne",
+   "venue": "Place de la Riponne",
+   "address": "Place de la Riponne, 1005 Lausanne, 1005",
+   "lat": 46.52359,
+   "lng": 6.63288,
+   "rhythm_de": "Jeden Freitag seit März 2026",
+   "rhythm_en": "Every Friday since March 2026",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-18",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-25",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-02",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-09",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-16",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-23",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-30",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-06",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-13",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-20",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-27",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-04",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-11",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-18",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-25",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-01",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-08",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-15",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-22",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-29",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-05",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-12",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-19",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-26",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-05",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-12",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-19",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-26",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-02",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-09",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-16",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-23",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-30",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-07",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-14",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-21",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-28",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-04",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-11",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-18",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-25",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-02",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-09",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-16",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-23",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-30",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-06",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-13",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-20",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-27",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-03",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-10",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-17",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-24",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-01",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-08",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-15",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-22",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-29",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-05",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-12",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-19",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-26",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-03",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-10",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-17",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-24",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-31",
+     "start": "09:30:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The page lists four market days a week with two sets of hours (two days 09:30-18:00, two days 08:30-13:00); we show Friday 09:30-18:00, which fits. The text names no day.",
+   "The page does not say outright that the City organises the market; it is on lausanne.ch under 'Marchés lausannois' and run by the city's Service de l'économie. The text says 'one of Lausanne's city markets'."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+    "quote": "Dès le 3 mars 2026, le marché non-alimentaire réinvestit la place de la Riponne"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "mercatino-pulci-ragazzi-locarno",
+  "ours": {
+   "name": "Mercatino delle pulci dei ragazzi",
+   "status": "active",
+   "town": "Locarno",
+   "venue": "Piazza Grande",
+   "address": "Piazza Grande, 6600",
+   "lat": 46.1692181,
+   "lng": 8.7949702,
+   "rhythm_de": "Jährlich, ein Samstag im Oktober",
+   "rhythm_en": "Once a year, a Saturday in October",
+   "season_months": [
+    10,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "cancelled",
+   "entry_fee": "0.00",
+   "website": "https://www.ggl.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-17",
+     "start": "10:00:00",
+     "end": "16:30:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's page gives only the title and the date (a Saturday in October) and a link for stall sign-up; nothing about who sells, hours, fee or the rain rule. The rain rule (cancelled) comes from facts_we_hold; 'children sell themselves' and 'five minutes from the station' (old text) are not on the page and were left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.ggl.ch/",
+    "quote": "Mercatino delle pulci per ragazzi/e in Piazza Grande"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "mercatino-usato-lugano",
+  "ours": {
+   "name": "Mercatino dell'usato (Città di Lugano)",
+   "status": "active",
+   "town": "Lugano",
+   "venue": "Centro Esposizioni MAC 3",
+   "address": "Viale dei Faggi, 6900",
+   "lat": 46.0081245,
+   "lng": 8.9642322,
+   "rhythm_de": "Dreimal jährlich, samstags, in der Halle",
+   "rhythm_en": "Three times a year, on Saturdays, indoors",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercatino-usato/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "11:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "lugano.ch's overview page (mercati-mercatini) says the usato is held 'quattro volte all'anno' at the 'Capannone di Pregassona'; the market's own page says the 2026 editions are at the Centro Esposizioni MAC 3. We say three times a year. The detail page lists only 19 September 2026 (registration closed) and no later date, and our next_dates is empty. I wrote 'mehrmals im Jahr' (several times).",
+   "Bus 2 from Lugano Centro (our old line) is not on the organiser's page and was left out. 'Indoors' comes from facts_we_hold; the page itself does not say hall or indoor."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercatino-usato/",
+    "quote": "pensato per valorizzare il recupero di oggetti che non vengono più utilizzati, ma che si rivelano ancora funzionanti e in buono stato"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "mercatino-usato-paradiso-lugano",
+  "ours": {
+   "name": "Mercatino dell'usato Paradiso",
+   "status": "active",
+   "town": "Paradiso",
+   "venue": "Piazza del Municipio",
+   "address": "Piazza del Municipio, 6900 Paradiso, 6900",
+   "lat": 45.9891,
+   "lng": 8.9495,
+   "rhythm_de": "Date pubblicate dal Comune di Paradiso",
+   "rhythm_en": "Dates published by the municipality of Paradiso",
+   "season_months": null,
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://paradiso.ch/mc-events/mercatino-dellusato-8/?mc_id=130",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-07",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-04",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-03",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-07",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-05",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-02",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-01",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-06",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-03",
+     "start": "09:00:00",
+     "end": "15:30:00",
+     "status": "unverified",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The Comune's own 2026 events calendar lists the Mercatino usato in July as well (and June), none in August; our rhythm says 'March to November except July and August'. The texts say only 'nearly every month, March to November'.",
+   "The Comune's market page (paradiso.ch/mc-events/mercatino-dellusato-8) is an empty stub for a 2025 edition. Organiser, charity purpose and weather rule come from the La Regione / Ticinonline agenda listing, not from the organiser. 'About 30 stalls' and the goods list (old text) could not be confirmed anywhere and were left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.laregione.ch/agenda/evento/61379/mercatino-dell-usato-a-scopo-benefico",
+    "quote": "Il Gruppo mamme di Paradiso organizza ... in Piazza Municipale un mercatino dell'usato a scopo di beneficenza. In caso di tempo incerto il mercoledì successivo."
+   },
+   {
+    "url": "https://paradiso.ch/cms/wp-content/uploads/2026/07/Eventi-2026_0722.pdf",
+    "quote": "Mercatino usato listed under MARZO, APRILE, MAGGIO, GIUGNO, LUGLIO, SETTEMBRE, OTTOBRE, NOVEMBRE (Comune di Paradiso events calendar)"
+   }
+  ],
+  "in_keep_ours": true
+ },
+ {
+  "slug": "mercato-antiquariato-maghetti-lugano",
+  "ours": {
+   "name": "Mercato dell'antiquariato Maghetti",
+   "status": "active",
+   "town": "Lugano",
+   "venue": "Via Canova / Via Vegezzi / Piazzetta San Rocco",
+   "address": "Via Canova / Via Vegezzi / Piazzetta San Rocco, 6900 Lugano, 6900",
+   "lat": 46.0046,
+   "lng": 8.9534,
+   "rhythm_de": "Jeden Samstag, ganzjährig.",
+   "rhythm_en": "Every Saturday, all year round.",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-26",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-03",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-10",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-31",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-07",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-14",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-21",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-28",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-05",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-12",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-19",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-26",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-02",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-09",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-16",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-23",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-30",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-06",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-13",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-20",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-27",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-06",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-13",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-20",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-27",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-03",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-10",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-17",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-24",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-01",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-08",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-15",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-22",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-29",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-05",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-12",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-19",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-26",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-03",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-10",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-17",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-24",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-31",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-07",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-14",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-21",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-28",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-04",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-11",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-18",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-25",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-02",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-09",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-16",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-23",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-30",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-06",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-13",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-20",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-27",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-04",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-11",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-18",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-25",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our kept text says 'rund 40 Stände'; no page (City of Lugano, ticino.ch, luganoeventi.ch) gives a stall count, so it is left out. 'ganzjährig' is also not stated on the City's page (only 'ogni sabato'); the text says 'every week'.",
+   "The City's name for the market is 'Mercato dell'antiquariato e artigianato' (antiques and crafts)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/",
+    "quote": "Gli appassionati di oggetti antichi, vintage o di articoli artigianali possono trovare pezzi unici e originali."
+   },
+   {
+    "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/",
+    "quote": "Mercato dell'antiquariato e artigianato ... Quartiere Maghetti (Via Canova, Via Vegezzi, Piazza San Rocco e Piazzale ex-Scuole)"
+   },
+   {
+    "url": "https://www.ticino.ch/it/commons/details/Mercato-dell-antiquariato-Lugano/2924.html",
+    "quote": "offerti in bella vista sulle bancarelle ... Non mancano pezzi pregiati e di valore."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "ours": {
+   "name": "Mercato delle Pulci di Massagno",
+   "status": "active",
+   "town": "Massagno",
+   "venue": "Piazzale del Municipio",
+   "address": "Via Giuseppe Motta 53, 6908",
+   "lat": 46.0117619,
+   "lng": 8.9461243,
+   "rhythm_de": "Zweimal jährlich, ein Nachmittag im Frühling und einer im Herbst",
+   "rhythm_en": "Twice a year, an afternoon in spring and one in autumn",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-20",
+     "start": "13:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Massagno's page shows one edition in September (the 2026 edition, with a DJ set and a yoga workshop as new items). Our rhythm says twice a year (one afternoon in spring, one in autumn); the old text said once a year. A spring edition is not confirmed.",
+   "Rhythm: Massagno's page shows a single edition in September (20 Sept 2026); our rhythm says twice a year (one afternoon in spring, one in autumn), an older text said once a year. A spring edition is not confirmed. The text names no rhythm.",
+   "Not on the page, so not used: the old site's food and drink, children's programme, bus 4 and postponement in rain."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+    "quote": "un pomeriggio di riuso, creatività e sostenibilità per tutta la famiglia! Troverete oggetti di seconda mano, curiosità vintage, creazioni locali e alcuni workshop."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "ours": {
+   "name": "Nostalgie Flohmarkt Worb",
+   "status": "active",
+   "town": "Worb",
+   "venue": "Landi Gelände",
+   "address": "Landi Gelände, Worb SBB, Rubigenstrasse 80, 3076 Worb, 3076",
+   "lat": 46.9152286,
+   "lng": 7.5650095,
+   "rhythm_de": "Zweiter Sonntag im Monat, März-November",
+   "rhythm_en": "Second Sunday of the month, March to November",
+   "season_months": [
+    3,
+    11
+   ],
+   "stall_count": 40,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://flohmarkt-3076worb.jimdofree.com",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-13",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-11",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-08",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our German ends 'Eine Reservierung ist nicht nötig'. The organiser requires sellers to reserve a spot by e-mail (first 40 requests); only visitors need nothing. Left that sentence out of fr/it; the German may want it removed or reworded.",
+   "In July and August the organiser allows only about half the usual sellers (restricted allocation).",
+   "Our kept German ended 'Eine Reservierung ist nicht nötig'. The organiser requires sellers to reserve a spot by e-mail; only visitors need nothing. Left out of all four texts.",
+   "July and August dates are marked 'Eingeschränkt mit Platz vergabe' (fewer sellers). The 8 Nov 2026 date we show is on the organiser's list (visitors 10:00-16:00).",
+   "The page addresses 'Händler' and 'Aussteller' and does not say whether private sellers are among them, so the text names neither group."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://flohmarkt-3076worb.jimdofree.com",
+    "quote": "Der 2. Sonntag im Monat : Ab März bis November!"
+   },
+   {
+    "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+    "quote": "Deine Verkaufsfläche ist dein Auto, oder Autolänge"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "ours": {
+   "name": "PROGR Vintage Flea Market",
+   "status": "active",
+   "town": "Bern",
+   "venue": "PROGR Turnhalle",
+   "address": "Waisenhausplatz 30, 3011",
+   "lat": 46.9501284,
+   "lng": 7.4440058,
+   "rhythm_de": "Jeden 3. Samstag des Monats",
+   "rhythm_en": "Every 3rd Saturday of the month",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "website": "https://www.vintagefleamarket.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "10:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-21",
+     "start": "10:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-19",
+     "start": "10:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The PROGR page is dated 15.02.2025 and vintagefleamarket.ch says 'Neue Termine folgen in Kürze'; its dates page returned 404. The three dates we show (third Saturday: 17 Oct, 21 Nov, 19 Dec) could not be confirmed on the organiser's own pages.",
+   "Our German says 'Designerkleidung'; the organiser lists records, shoes, jewellery and dresses but not designer clothes. I used the organiser's list.",
+   "The PROGR page is from 2025 and vintagefleamarket.ch gives no 2026 dates ('Neue Termine folgen in Kürze'; its dates page returned 404). The three dates we show (17 Oct, 21 Nov, 19 Dec 2026) could not be confirmed on the organiser's own pages.",
+   "Our German said 'Designerkleidung'; the organiser lists accessories, records, shoes, jewellery and dresses but no designer clothes, so it is left out. The old PROGR listing also gave different hours (10:30-16:00) than the newer 10:00-15:00 we show."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.progr.ch/de/agenda/progr-markt-vintage-flea-market-7418/",
+    "quote": "Jeden dritten Samstag im Monat findet der PROGR MARKT «vintage flea market» in der PROGR Turnhalle statt."
+   },
+   {
+    "url": "https://www.vintagefleamarket.ch",
+    "quote": "FÜR alle Schnäppchenjäger:Innen, Fashionistas und Vintage-Liebhaber:Innen!"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "ours": {
+   "name": "Quartier-Flohmarkt Areal Bach",
+   "status": "active",
+   "town": "St. Gallen",
+   "venue": "Bachstrasse 10",
+   "address": "Bachstrasse 10, 9000 St. Gallen, 9000",
+   "lat": 47.434,
+   "lng": 9.385,
+   "rhythm_de": "Spezifische Sonntage von April bis Oktober 2026, bei trockenem Wetter",
+   "rhythm_en": "Selected Sundays, April to October 2026, in dry weather",
+   "season_months": [
+    4,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "cancelled",
+   "entry_fee": "0.00",
+   "website": "https://www.areal-bach.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-20",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-04",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our German says 'alle zwei Wochen, von April bis Juni'. The organiser says the flea market runs 'in regelmässigen Abständen' on dry days, in a season from early April to mid-October (season opening 12 April 2026, on dry weather). I followed the organiser in the Italian ('a date fisse nella bella stagione'); the German should be corrected the same way.",
+   "Our German has 'Kaffeewagen und Bar'; the organiser names a Barwagen and a restaurant partner (Gustav Gleis).",
+   "Our kept German said 'alle zwei Wochen, von April bis Juni'. The organiser says the market runs 'in regelmässigen Abständen' on dry days within a season from early April to mid-October (2026 season opened on 12 April). A 2021 listing on the same site said every two weeks on Sundays, but that is not current. The text follows the organiser.",
+   "Our German said 'Kaffeewagen und Bar' and 'Leute aus der Gegend'; the organiser names a Barwagen and the restaurant partner Gustav Gleis, and says nothing about who sells. Both are corrected or left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.areal-bach.ch/",
+    "quote": "In regelmässigen Abständen findet bei trockener Witterung auf dem Areal Bach ein Quartier-Flohmarkt statt."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "ours": {
+   "name": "Quartierflohmarkt Pratteln – Gehrenacker und Fröschmatt",
+   "status": "active",
+   "town": "Pratteln",
+   "venue": "Gehrenacker/Fröschmatt",
+   "address": "Gehrenacker/Fröschmatt, 4133 Pratteln, 4133",
+   "lat": 47.521333,
+   "lng": 7.701849,
+   "rhythm_de": "Einmal jährlich, zwischen April und Oktober.",
+   "rhythm_en": "Once a year, between April and October.",
+   "season_months": [
+    4,
+    4
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.pratteln.ch/anlaesseaktuelles",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "The organiser's page names it 'Quartierflohmarkt Gehrenacker-Rankacker' in its heading (and 'Gehrenacker - Fröschmatt' in the title). The date shown there is a Sunday in April 2026 (10-16), which fits our month. No date for next year yet.",
+   "Our old text names the Verein Stadtprojekt Basel as organiser; the Pratteln page is run by the town's 'Mach mit' platform / Quartierarbeit and names no such association. Not used.",
+   "The organiser's heading says 'Quartierflohmarkt Gehrenacker-Rankacker' (the title and body say Gehrenacker and Fröschmatt). The date shown there is a Sunday in April 2026 (10:00-16:00), which fits our month; no date for next year yet.",
+   "Our old text names the Verein Stadtprojekt Basel as organiser; the Pratteln page is run on the town's 'Mach mit' platform (Quartierarbeit Pratteln) and names no such association. Not used."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+    "quote": "Über das ganze Quartier verteilt entstehen kleine Verkaufsplätze mit gebrauchten Dingen, die ein neues Zuhause suchen."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "ours": {
+   "name": "Quartierflohmarkt St. Johann",
+   "status": "active",
+   "town": "Basel",
+   "venue": "Zentrum Johannes",
+   "address": "Mülhauserstrasse 145, 4056 Basel, 4056",
+   "lat": 47.5656144,
+   "lng": 7.5747116,
+   "rhythm_de": "Einmal jährlich, zwischen April und Oktober.",
+   "rhythm_en": "Once a year, between April and October.",
+   "season_months": [
+    8,
+    8
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "Our German says the market reaches 'ins neue Lysbüchel-Areal, mit Ständen, Spielen und Essen' along the car-free Lothringerstrasse, is 'eine der grösseren Ausgaben' and 'einer von 17 Quartierflohmärkten'. The organiser's 2026 page (a Saturday in August, 10-17) mentions no Lysbüchel extension, only the car-free Fatiostrasse and parts of Jung- and Lothringerstrasse, and its menu lists 18 neighbourhoods. The en/fr follow the 2026 page; the German needs the same fix.",
+   "Our kept German says the market reaches 'ins neue Lysbüchel-Areal ... über die autofreie Lothringerstrasse', is 'eine der grösseren Ausgaben' and 'einer von 17 Quartierflohmärkten' of the Verein Stadtprojekt. The organiser's 2026 page (a Saturday in August, 10:00-17:00) mentions no Lysbüchel extension, only the car-free Fatiostrasse and parts of Jung- and Lothringerstrasse, names no association, and its menu lists 18 neighbourhoods. All four texts leave these claims out.",
+   "The page says the car-free streets and the bring&nimm are for 'dieses Jahr' / the 2026 edition; the text says generally that part of the streets is car-free that day."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+    "quote": "Einfach den bunten Ballons folgen und sich überraschen lassen."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "quartierflohmi-reinach-nord",
+  "ours": {
+   "name": "Quartierflohmi Reinach Nord",
+   "status": "active",
+   "town": "Reinach",
+   "venue": "Quartier Reinach Nord",
+   "address": "Rosenweg 22, 4153",
+   "lat": 47.5086354,
+   "lng": 7.6019306,
+   "rhythm_de": "Jährlich, ein Sonntag im Spätsommer",
+   "rhythm_en": "Once a year, a Sunday in late summer",
+   "season_months": [
+    9,
+    9
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.qvrn.ch/quartierflohmarkt.html",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "The organiser's agenda lists the Quartierflohmi on 25 April 2026 (a Saturday, spring). We show 'ein Sonntag im Spätsommer' (season month 9). The rhythm line looks wrong. No season is named in the texts.",
+   "The page shows no map and no tram line; the 'map on qvrn.ch' and 'Tram 11' of the old text were left out. That residents sell in front of their own houses is how every Quartierflohmi works and what our data says, but this page only shows a sign-up form asking for an address."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.qvrn.ch/quartierflohmarkt.html",
+    "quote": "Der Quartierflohmi Reinach Nord wird vom engagierten Vorstand des Quartiervereins Reinach Nord ehrenamtlich organisiert."
+   },
+   {
+    "url": "https://www.qvrn.ch/agenda.html",
+    "quote": "Wann: 25.04.2026 / 10:00 - 16:00 Was: Quartierflohmi Reinach Nord"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "subiger-dorf-flohmarkt",
+  "ours": {
+   "name": "Subiger Dorf-Flohmarkt",
+   "status": "active",
+   "town": "Subingen",
+   "venue": "Dorfzentrum Subingen",
+   "address": "Dorfzentrum Subingen, 4553 Subingen, 4553",
+   "lat": 47.1942069,
+   "lng": 7.6140819,
+   "rhythm_de": "Jährlich, meist Ende Mai",
+   "rhythm_en": "Once a year, usually late May",
+   "season_months": [
+    5,
+    5
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://sub-kultur.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2027-06-05",
+     "start": "10:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "manual"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's next edition is a Saturday in early June 2027 (10-17); our rhythm says 'meist Ende Mai'. The organiser calls it 'Dorfflohmarkt', not '4. Subiger Dorf Flohmarkt'."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://sub-kultur.ch/event/dorfflohmarkt-2/",
+    "quote": "Räumt eure Häuser, Keller und Wohnungen leer und gebt euren Sachen die Chance in einem neuen Haushalt ein neues Leben zu finden"
+   },
+   {
+    "url": "https://sub-kultur.ch/events/",
+    "quote": "SubKultur wird keinen Verpflegungsstand mehr anbieten"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "svuotacantine-ascona",
+  "ours": {
+   "name": "Mercatino Svuotacantine Ascona",
+   "status": "active",
+   "town": "Ascona",
+   "venue": "Posteggio Manor Ascona",
+   "address": "Via Ferrera 105, 6612",
+   "lat": 46.1627433,
+   "lng": 8.7752708,
+   "rhythm_de": "Dreimal jährlich, sonntags, mit Regendatum eine Woche später",
+   "rhythm_en": "Three times a year, on Sundays, with a rain date a week later",
+   "season_months": null,
+   "stall_count": 99,
+   "setting": "outdoor",
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.imercantini.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-20",
+     "start": "09:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's 2026 events page shows Ascona with 'programma in allestimento' (no dates); the home page says registrations for the May Ascona edition are closed. 'Three times a year' (our rhythm) and 'a week later when it rains' are not stated for Ascona (the one-week reserve date is shown for Biasca only). I wrote 'can be postponed'."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.imercantini.ch/eventi-2026",
+    "quote": "Ascona - Posteggio MANOR Ascona - Via Ferrera, 6612 Ascona - Al massimo 99 postazioni per evento."
+   },
+   {
+    "url": "https://www.imercantini.ch/le-8-regole",
+    "quote": "Tutti oggetti palesemente usati e non nuovi provenienti da cantine, solai o garage"
+   },
+   {
+    "url": "https://www.imercantini.ch/",
+    "quote": "Il primo Svuotacantine nasce nel 2018 sul piazzale della Manor di Ascona"
+   },
+   {
+    "url": "https://www.imercantini.ch/regolamento-2026",
+    "quote": "In caso di condizioni meteorologiche avverse, l'evento potrà essere interrotto o rinviato."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "svuotacantine-biasca",
+  "ours": {
+   "name": "Mercatino Svuotacantine Biasca",
+   "status": "active",
+   "town": "Biasca",
+   "venue": "Posteggio Manor Biasca",
+   "address": "Via Losanna 2, 6710",
+   "lat": 46.3555015,
+   "lng": 8.9701602,
+   "rhythm_de": "Zweimal jährlich, sonntags, mit Regendatum eine Woche später",
+   "rhythm_en": "Twice a year, on Sundays, with a rain date a week later",
+   "season_months": null,
+   "stall_count": 65,
+   "setting": "outdoor",
+   "seller_mix": "private",
+   "rain_policy": "decided_on_the_day",
+   "entry_fee": null,
+   "website": "https://www.imercantini.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-18",
+     "start": null,
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our rain_policy says 'decided on the day'; the organiser gives a fixed reserve date one week later (18 Oct, reserve 25 Oct). The page lists two 2026 editions (12 April and 18 October); the 18 October date matches ours, and the home page calls it the last event of 2026. 'Via Losanna 2' is not on the page."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.imercantini.ch/svuotacantine-biasca-2026",
+    "quote": "Un posteggio molto centrale, accessibile e con fermate del bus nelle immediate vicinanze, offre spazio a ca. 65 espositori"
+   },
+   {
+    "url": "https://www.imercantini.ch/le-8-regole",
+    "quote": "Tutti oggetti palesemente usati e non nuovi provenienti da cantine, solai o garage"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "talkessel-flohmarkt-seewen",
+  "ours": {
+   "name": "Talkessel-Flohmarkt",
+   "status": "active",
+   "town": "Seewen SZ",
+   "venue": "Zeughausareal Seewen",
+   "address": "Franzosenstrasse 48, 6423",
+   "lat": 47.0211681,
+   "lng": 8.6322934,
+   "rhythm_de": "Mehrmals jährlich, sonntags, in der Halle",
+   "rhythm_en": "Several times a year, on Sundays, indoors",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://www.talkessel-flohmarkt.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-27",
+     "start": "09:30:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-25",
+     "start": "09:30:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-28",
+     "start": "12:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's pages do not say the market is in a hall or indoors (they speak of a grill stand 'auf Platz'); 'indoors' rests on facts_we_hold (setting indoor, rain: runs). If that fact is wrong the sentence 'findet drinnen statt' must go.",
+   "'Five minutes on foot from Seewen-Schwyz station' (old and current text) is not on the page and was left out. The info page heading says 'Daten 2025' above the 2026 dates (a typo on their side); the dates match ours (25 Oct and the Christmas market 28 Nov)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/",
+    "quote": "Der Flohmarkt wurde im Jahr 2019 das erste Mal durchgeführt als einmalige Sache."
+   },
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/infos/",
+    "quote": "Grillstand auf Platz mit Pommes Frites, Bratwürste, Cervelats / Getränkestand vorhanden"
+   },
+   {
+    "url": "https://www.talkessel-flohmarkt.ch/regeln/",
+    "quote": "Ausschliesslich Waren, die klar als gebraucht erkennbar sind, das heisst, keine Neuwaren!"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "vide-grenier-onex",
+  "ours": {
+   "name": "Vide-grenier d'Onex",
+   "status": "active",
+   "town": "Onex",
+   "venue": "Place du 150ème",
+   "address": "Place du 150ème, 1213",
+   "lat": 46.1879932,
+   "lng": 6.1002188,
+   "rhythm_de": "Jährlich, ein Sonntag im September",
+   "rhythm_en": "Once a year, a Sunday in September",
+   "season_months": [
+    9,
+    9
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.onex.ch/mes-loisirs/agenda/vide-grenier-6669",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-27",
+     "start": "11:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The commune's page does not show a date or stall count in its text. 'Up to 80' comes from a third-party listing (vide-greniers.org, reported in search: a Sunday in late September, 11-18, 80 exhibitors maximum, outdoors) and from our current text. A tram 14 stop at Onex-Cité could not be confirmed, so no transport line is given."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.onex.ch/mes-loisirs/agenda/vide-grenier-6669",
+    "quote": "Vente d'objets et habits sur la place du 150ème. Un événement proposé par l'Association des Habitants Onex Cité."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "vide-grenier-paudex",
+  "ours": {
+   "name": "Vide-grenier de Paudex",
+   "status": "active",
+   "town": "Paudex",
+   "venue": "Chemin de la Charrettaz 10",
+   "address": "Chemin de la Charrettaz 10, 1094",
+   "lat": 46.5063918,
+   "lng": 6.6711795,
+   "rhythm_de": "Zweimal jährlich, ein Samstag im Mai und im Oktober",
+   "rhythm_en": "Twice a year, a Saturday in May and one in October",
+   "season_months": null,
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.paudex.ch/actualites-fr4137.html",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-03",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Paudex's own site has nothing on this market. A third-party listing (vide-greniers.org, read through search) shows an edition on a Saturday in early October 2026 at 'chemin de la Charrettaz 6' (we show no. 10), 8-17, about 40 exhibitors, run by a private organiser, in existence since 2014; it is not run by the commune as the old text says. A May edition is not confirmed anywhere; 'spring and autumn' follows our rhythm line."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.paudex.ch/actualites-fr4137.html",
+    "quote": "(no mention of the vide-grenier on the commune's news page)"
+   },
+   {
+    "url": "https://vide-greniers.org/evenements/Paudex-VD",
+    "quote": "third-party listing: vide-grenier au chemin de la Charrettaz, Paudex (reported in search)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "vide-grenier-place-de-milan-lausanne",
+  "ours": {
+   "name": "Vide-Grenier de la Place de Milan",
+   "status": "active",
+   "town": "Lausanne",
+   "venue": "Parc de Milan",
+   "address": "Parc de Milan, Lausanne (quartier Sous-Gare), 1006",
+   "lat": 46.5143126,
+   "lng": 6.6227867,
+   "rhythm_de": "Einmal jährlich, im Juni.",
+   "rhythm_en": "Once a year, in June.",
+   "season_months": [
+    6,
+    6
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": "private",
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "website": "https://asso-sousgare-lausanne.ch/vide-grenier/",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "The association's page only has a 2024 post (8 June 2024) and a 'Règlement vide-grenier' document; I found no 2025 or 2026 edition announced, so the market may have paused. Private sellers, outdoors and 'runs in rain' come from facts_we_hold. The association is now called 'Association Sous-Gare' (footer: Société de développement des quartiers Sous-Gare & Cour)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://asso-sousgare-lausanne.ch/vide-grenier/",
+    "quote": "Vide grenier 2024 ... 8 juin 2024 (post on the Association Sous-Gare site)"
+   },
+   {
+    "url": "https://asso-sousgare-lausanne.ch/",
+    "quote": "défend les intérêts généraux des quartiers Sous-Gare de Lausanne, favorise leur animation"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "vide-grenier-prilly",
+  "ours": {
+   "name": "Vide-grenier de Prilly",
+   "status": "active",
+   "town": "Prilly",
+   "venue": "Château de Prilly",
+   "address": "Route de Cossonay 40, 1008",
+   "lat": 46.5353338,
+   "lng": 6.605303,
+   "rhythm_de": "Jährlich, im Herbst, an der Journée de la durabilité",
+   "rhythm_en": "Once a year, in autumn, on the Journée de la durabilité",
+   "season_months": [
+    10,
+    10
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.prilly.ch/accueil",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-03",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Prilly's own event pages (agenda, 'grandes manifestations communales') do not list a vide-grenier or a Journée de la durabilité for 2026. A third-party listing read through search describes a sustainability day around the château in September 2025 with a clothing swap, flea market and repair/sewing workshops. The repair café and the food rest on our database text and that older listing; the autumn date is unconfirmed. A separate vide-grenier in Prilly on 26-27 September 2026 (chemin de Bellevue) appears on vide-greniers.org; it may be a different event."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.prilly.ch/accueil",
+    "quote": "Administration communale, Route de Cossonay 40, 1008 Prilly (footer)"
+   },
+   {
+    "url": "https://www.prilly.ch/loisirs-vie-associative/evenements-manifestations/evenements",
+    "quote": "(no vide-grenier or Journée de la durabilité listed)"
+   }
+  ],
+  "in_keep_ours": false
+ }
+]

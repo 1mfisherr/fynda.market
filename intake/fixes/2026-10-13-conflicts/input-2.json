@@ -1,0 +1,1963 @@
+[
+ {
+  "slug": "flohmarkt-glarus",
+  "ours": {
+   "name": "Flohmarkt Glarus",
+   "status": "active",
+   "town": "Glarus",
+   "venue": "Hauptstrasse Glarus",
+   "address": "Hauptstrasse, 8750",
+   "lat": 47.0403,
+   "lng": 9.068,
+   "rhythm_de": "Jährlich, am Samstag vor der Landsgemeinde (Anfang Mai)",
+   "rhythm_en": "Once a year, the Saturday before the Landsgemeinde (early May)",
+   "season_months": [
+    5,
+    5
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://glarus.swiss/service-2/glarus-service/maerkte.html",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2027-05-01",
+     "start": null,
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our data says venue \"Hauptstrasse Glarus\" and our current text says \"rund 300 Stände ... grösster Flohmarkt der Ostschweiz\", with the Hauptstrasse \"starting at the station\". The regional tourism entry (via search summary) says the stalls run between Spielhof and Gemeindehausplatz and gives \"über 150\" stands; a 2023 report said about 142. I used the tourism entry.",
+   "glarus.swiss (the municipal page we list) and glarnerland.ch both answer 403 (Cloudflare challenge) to scripted reading; I did not bypass it. Please have someone open both pages once and confirm the venue and stall count."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://glarnerland.ch/en/map/detail-event/landsgemeinde-flohmarkt--id--eve_wt1_bcegigecbb.html",
+    "quote": "READ ONLY THROUGH A SEARCH-ENGINE SUMMARY (the page itself returned a Cloudflare 403): Flohmarkt am Samstag vor der Landsgemeinde … über 150 Standbetreiber zwischen Spielhof und Gemeindehausplatz · Kinder: Teilnahme kostenlos, reservierte Plätze (u. a. rund um den Stadtbrunnen) · Beizen und Essensstände, Strassenmusiker · Kinderbahn auf dem Stadtplatz"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-grosse-halle-bern",
+  "ours": {
+   "name": "Flohmarkt Grosse Halle",
+   "status": "active",
+   "town": "Bern",
+   "venue": "Schützenweg 1",
+   "address": "Schützenmattstrasse 7, 3012 Bern, 3012",
+   "lat": 46.9468,
+   "lng": 7.4365,
+   "rhythm_de": "1. Sonntag des Monats, ausser Januar und August",
+   "rhythm_en": "1st Sunday of the month, except January and August",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "both",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://flohmarkt.grossehalle.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-04",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-01",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-06",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-07",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-07",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-04",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-02",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-06",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-04",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser calls itself part of the Grosse Halle; the page does not mention the Reitschule (the old text did). I did not.",
+   "The organiser says it is \"einer der grössten Flohmärkte der Schweiz\" - left out as boasting."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://flohmarkt.grossehalle.ch",
+    "quote": "Seit 1997 ist er ein fester Teil des Berner Stadtlebens. Jeden Monat besuchen rund 3’000 Personen den Flohmarkt. Der Flohmarkt findet zehnmal im Jahr statt … Im Januar und im August findet der Flohmi nicht statt. · Hier bekommen gebrauchte Dinge ein zweites Leben · Überdachte Sektoren (A/B/C/G) … nicht überdachte Sektoren (D/E/F/H) · wird ein günstiges Mittagessen zubereitet und vor Ort verkauft (Verein Medina) · Achtung: Auf der Schützenmatte stehen während dem Flohmarkt keine Parkplätze zur Verfügung."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-kanzlei-zuerich",
+  "ours": {
+   "name": "Flohmarkt Kanzlei",
+   "status": "active",
+   "town": "Zürich",
+   "venue": "Kanzleiareal (Helvetiaplatz)",
+   "address": "Kanzleistrasse 56, 8004 Zürich, 8004",
+   "lat": 47.37566,
+   "lng": 8.52587,
+   "rhythm_de": "Jeden Samstag, ganzjährig",
+   "rhythm_en": "Every Saturday, all year",
+   "season_months": null,
+   "stall_count": 300,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.flohmarktkanzlei.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-26",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-03",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-10",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-31",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-07",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-14",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-21",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-28",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-05",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-12",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-19",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-26",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-02",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-09",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-16",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-23",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-30",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-06",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-13",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-20",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-27",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-06",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-13",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-20",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-27",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-03",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-10",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-17",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-24",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-08",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-15",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-22",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-29",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-05",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-12",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-19",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-26",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-03",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-10",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-17",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-24",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-31",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-07",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-14",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-21",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-28",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-04",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-11",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-18",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-25",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-02",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-09",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-16",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-23",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-30",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-06",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-13",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-20",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-27",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-04",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-11",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-18",
+     "start": "07:20:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our old text said \"bis zu 400\" sellers; our database says 300. I used 300 (the database figure) - the organiser's own site could not be read by script, so please check the number there."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.zuerich.com/de/besuchen/shopping/kanzlei-flohmarkt",
+    "quote": "Mitten im Ausgeh-Quartier · An diesem Flohmi ergattern die Zürcher nicht nur ihre Schätze, hier verkaufen sie diese auch wieder. Man findet hier alles: vom Pelzmantel über Küchenutensilien bis hin zu Radios, Ledertaschen und Schmuck. · Lederwaren, Schmuck, Schallplatten und mehr · Hauptbahnhof Zürich 1.1 km 10 min"
+   },
+   {
+    "url": "https://www.flohmarktkanzlei.ch/",
+    "quote": "ORGANISER SITE IS A JAVASCRIPT APP - TEXT NOT READABLE BY SCRIPT. Only the page header (Kanzleistrasse 56, 8004 Zürich) could be read. \"Bis zu 300 Verkaufende\" and \"outdoors\" come from our database."
+   }
+  ],
+  "in_keep_ours": true
+ },
+ {
+  "slug": "flohmarkt-lenzburg-metzgplatz",
+  "ours": {
+   "name": "Flohmarkt Lenzburg Metzgplatz",
+   "status": "active",
+   "town": "Lenzburg",
+   "venue": "Metzgplatz",
+   "address": "Metzgplatz, Lenzburg, 5600",
+   "lat": 47.3867207,
+   "lng": 8.1807136,
+   "rhythm_de": "Dreimal jährlich.",
+   "rhythm_en": "Three times a year",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.beim-kramer.ch/flohmi-lenzburg",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-17",
+     "start": null,
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Eventfrog gives the venue as 'Alter Gemeindesaal Lenzburg, Metzgplatz' (old town); our data says outdoor. I did not say outdoors or indoors in the text; please check.",
+   "Our old German listed books, clothes, deco and toys from local sellers; the sources name vintage clothes, deco and small rarities only. Books, toys and 'sellers from the area' dropped."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.beim-kramer.ch/flohmi-lenzburg",
+    "quote": "Translation of our German text only; the organiser page was not used for new facts."
+   },
+   {
+    "url": "https://eventfrog.ch/de/p/maerkte/second-hand/flohmarkt-lenzburg-7460610833657102818.html",
+    "quote": "Vintage Kleidung, Deko oder kleine Raritäten ... Alter Gemeindesaal Lenzburg, Metzgplatz, 5600 Lenzburg ... Verpflegungsmöglichkeiten vor Ort ... Gratis WC Anlage ... Parkmöglichkeiten in unmittelbarer Nähe (kostenpflichtig)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-liestal",
+  "ours": {
+   "name": "Flohmärt Liestal",
+   "status": "active",
+   "town": "Liestal",
+   "venue": "Zeughausplatz, Rosengasse, Kanonengasse",
+   "address": "Zeughausplatz, 4410",
+   "lat": 47.485391,
+   "lng": 7.7352177,
+   "rhythm_de": "Zweimal jährlich, ein Samstag im April und im September",
+   "rhythm_en": "Twice a year, a Saturday in April and one in September",
+   "season_months": null,
+   "stall_count": 104,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.flohmarkt-liestal.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "08:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Their own page shows two different April dates: \"25. April 2026\" in the body and \"26. April 2026\" in the menu (26 April 2026 is a Sunday, so the menu is probably a typo)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.flohmarkt-liestal.ch/",
+    "quote": "DER FLOHMARKT AM 19. SEPTEMBER IST MIT 104 STÄNDEN KOMPLETT AUSGEBUCHT · Daten Flohmärkte 2026: 25. April 2026 / 19. September 2026"
+   },
+   {
+    "url": "https://www.flohmarkt-liestal.ch/fragen-und-antworten",
+    "quote": "wichtig ist das keine Ware am Boden präsentiert wird. Die Waren sollten auf einem Tisch präsentiert werden. · Die Organisatoren des Flohmarktes sind auf dem Flohmarkt selber mit einem Stand beim Museum Baselland präsent."
+   },
+   {
+    "url": "https://www.flohmarkt-liestal.ch/verein-ig-flohmarkt-liestal",
+    "quote": "Der Verein Interessensgemeinschaft Flohmarkt Liestal organisiert den Flohmarkt Liestal im Auftrag der Stadt Liestal."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-malters",
+  "ours": {
+   "name": "Flohmarkt Malters",
+   "status": "active",
+   "town": "Malters",
+   "venue": "Gemeindesaal Malters",
+   "address": "Bahnhofstrasse 10, 6102",
+   "lat": 47.0381928,
+   "lng": 8.1820125,
+   "rhythm_de": "Jährlich, ein Samstag im Herbst, im Gemeindesaal",
+   "rhythm_en": "Once a year, a Saturday in autumn, in the village hall",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": "private",
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.elterngruppe-malters.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-31",
+     "start": "10:00:00",
+     "end": "14:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our current text (and the old text) say a free children's blanket market is \"im Obergeschoss\". The organiser's concept paper names the ground floor (Erdgeschoss) and basement (Untergeschoss) and does not mention a blanket market at all. I wrote nothing about it.",
+   "The old/current text says \"gleich beim Bahnhof\"; the organiser only gives Bahnhofstrasse, so I wrote only that."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.elterngruppe-malters.ch/clubdesk/w_elterngruppe-malters/fileservlet?type=file&id=1001241&s=djEtOod5DgaYZBzWT-KB-YbAs7Z-IPeQiUM4xwBQ5zFQ30U=",
+    "quote": "Konzept Flohmarkt Malters: Der Flohmarkt, wie wir ihn einst kannten, ist zurück in Malters. · Die Elterngruppe Malters als Organisatorin des Flohmarktes · zuerst werden die Tische im Erdgeschoss und danach im Untergeschoss des Gemeindesaals vergeben · Gebrauchte Ware sowie Kunst- und Handwerk · Smartphones, Tablets, Smartwatches … Computer inkl. Peripherie (not sold) · Im Gemeindesaal gilt ein allgemeines Hundeverbot."
+   },
+   {
+    "url": "https://www.elterngruppe-malters.ch/",
+    "quote": "Hier zur Anmeldung für den Flohmarkt (banner; the market is the Elterngruppe's)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-papieriplatz-cham",
+  "ours": {
+   "name": "Flohmarkt auf dem Papieriplatz",
+   "status": "active",
+   "town": "Cham",
+   "venue": "Papieriplatz, Langhuus Kulturfabrik",
+   "address": "Fabrikstrasse 9, 6330",
+   "lat": 47.1852919,
+   "lng": 8.459182,
+   "rhythm_de": "Zweimal jährlich, sonntags",
+   "rhythm_en": "Twice a year, on Sundays",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://langhuus.ch/",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "Left out because the organiser does not say it: \"Es verkaufen Privatleute\" and \"ten minutes from the station\" (old/current text). Posts show 3 May and 6 September 2026 at Papieriplatz, so \"twice a year\" holds; our next_dates is empty."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://langhuus.ch/blog/2026/08/08/flohmarkt-auf-dem-papieriplatz-5/",
+    "quote": "Die Langhuus Bar ist offen. Nebst diversen Getränken und Kuchen bieten wir ein einfaches Mitagessen an. · Mit lieben Grüssen euer Langhuus-Flohmarktteam."
+   },
+   {
+    "url": "https://langhuus.ch/blog/",
+    "quote": "Unser Haus mit «Industrie-Groove» auf dem Papieri-Areal bietet Raum für alles Mögliche: … Flohmarkt, … · Das Langhuus mit Kulturraum, Bar und Atelier"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-paulusheim-luzern",
+  "ours": {
+   "name": "Flohmarkt Paulusheim (Kinderartikelbörse)",
+   "status": "active",
+   "town": "Luzern",
+   "venue": "Paulusheim",
+   "address": "Paulusheim, Moosmattstrasse 4, 6005 Luzern, 6005",
+   "lat": 47.0416222,
+   "lng": 8.3032343,
+   "rhythm_de": "Zweimal jährlich, meist März und September",
+   "rhythm_en": "Twice a year, usually March and September",
+   "season_months": null,
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.kindex.ch/luzern/flohmarkt",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "No page of the organiser itself found (a search for a Paulusheim site found nothing). The only source is the directory kindex.ch, which lists Frühling and Herbst editions of 2026 and calls Frau Karin Gautschi the organiser.",
+   "Kindex says the autumn edition 'fand am 12.09.2026 statt' and the spring one on 14.03.2026, and that the next date is 'noch nicht bekannt' for both; we show no next date, which fits.",
+   "Our old German also said children's items for babies and 'Tische können einen Monat im Voraus per Mail reserviert werden'; the first is not on kindex (it lists only Kinderkleider und Spielsachen) and the second is seller matter. Both left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.kindex.ch/luzern/flohmarkt",
+    "quote": "Flohmarkt Paulusheim für Kinderkleider und Spielsachen · Frühling 2026 … Herbst 2026 (two editions a year)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-petersplatz-basel",
+  "ours": {
+   "name": "Flohmarkt Petersplatz",
+   "status": "active",
+   "town": "Basel",
+   "venue": "Petersplatz",
+   "address": "Petersplatz, 4051 Basel, 4051",
+   "lat": 47.5578,
+   "lng": 7.5808,
+   "rhythm_de": "Jeden Samstag, ganzjährig (ausser Feiertage & Herbstmesse)",
+   "rhythm_en": "Every Saturday, all year (except public holidays and the Herbstmesse)",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-petersplatz",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-26",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-03",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-21",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-28",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-05",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-12",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-19",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-02",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-09",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-16",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-23",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-30",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-06",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-13",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-20",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-27",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-06",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-13",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-20",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-27",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-03",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-10",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-17",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-24",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-08",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-15",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-22",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-29",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-05",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-12",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-19",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-26",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-03",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-10",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-17",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-24",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-31",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-07",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-14",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-21",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-28",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-04",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-11",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-18",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-25",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-02",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-09",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-16",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-13",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-20",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "unverified",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-27",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-04",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-11",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-12-18",
+     "start": "07:30:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Kanton page: \"Im Jahr 2026 findet kein Markt statt: … vom 10. Oktober bis 19. November\" (Herbstmesse period); our first listed date after that is 21.11.2026, which fits.",
+   "The \"300 sellers\", \"haggling\" and \"mixed crowd\" lines in our German are not on the canton page (they came from the old text); I translated the German as asked but a reviewer may want to confirm or drop them.",
+   "Kanton page: no market in 2026 from 10 October to 19 November (Herbstmesse period); our first listed date after that is 21.11.2026, which fits.",
+   "The '300 sellers', 'mixed crowd of collectors, students, tourists, regulars and resellers' and 'in all weathers' lines in our old German are not on the canton's pages (they came from the old text). Left out; 'bei der Universität' rests on a canton council document, not on the market page."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.bs.ch/verwaltung/praesidialdepartement/aemter-und-bereiche/aussenbeziehungen-und-standortmarketing/messen-und-maerkte/basler-maerkte/flohmarkt-petersplatz",
+    "quote": "Von edlen Antiquitäten bis zu Latzhosen für die Kleinen gibt es hier alles … · Kein Markt an allgemeinen Feiertagen. Kein Markt während der Basler Herbstmesse."
+   },
+   {
+    "url": "https://www.bs.ch/veranstaltungen/flohmarkt-petersplatz",
+    "quote": "Der grösste Flohmarkt der Stadt lädt zum Entdecken und Feilschen. ... Ausser an allgemeinen Feiertagen sowie während der Basler Herbstmesse. (organiser: Aussenbeziehungen und Standortmarketing, Messen und Märkte)"
+   },
+   {
+    "url": "https://grosserrat.bs.ch/dokumente/100412/000000412460.pdf",
+    "quote": "Council document: the square lies close to the university (Kollegiengebäude); a flea market takes place there every Saturday in the rest of the year (as read via a search summary)"
+   }
+  ],
+  "in_keep_ours": true
+ },
+ {
+  "slug": "flohmarkt-presswerk-arbon",
+  "ours": {
+   "name": "Flohmarkt im Presswerk Arbon",
+   "status": "active",
+   "town": "Arbon",
+   "venue": "Kulturzentrum Presswerk",
+   "address": "Hamelstrasse, 9320",
+   "lat": 47.5100398,
+   "lng": 9.4311282,
+   "rhythm_de": "Mehrmals jährlich, sonntags, in der Halle",
+   "rhythm_en": "Several times a year, on Sundays, indoors",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://presswerk-arbon.ch/events/flohmarkt-november-2026/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-11-08",
+     "start": "12:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Left out because the page does not say it: \"ten minutes on foot from Arbon station\". The address on the page is Hamelstrasse 15 (our data: Hamelstrasse)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://presswerk-arbon.ch/events/flohmarkt-november-2026/",
+    "quote": "Eventhalle · Hereinspaziert zum verweilen und stöbern · Parkplätze: … rund ums Presswerk öffentliche, gebührenpflichtige Parkplätze … · Das Presswerk Restaurant ist bis 18.00 Uhr geöffnet."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-rathausplatz-wettingen",
+  "ours": {
+   "name": "Flohmarkt Rathausplatz Wettingen",
+   "status": "active",
+   "town": "Wettingen",
+   "venue": "Rathausplatz",
+   "address": "Rathausplatz, Wettingen, 5430",
+   "lat": 47.4639,
+   "lng": 8.3228,
+   "rhythm_de": "Monatlich von März bis November, 06:00-16:00 Uhr.",
+   "rhythm_en": "Monthly, March to November, 06:00–16:00",
+   "season_months": [
+    3,
+    11
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.wettingen.ch/dienstleistungen/6785",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-10",
+     "start": "06:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-14",
+     "start": "06:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our old German listed household goods, toys, clothes and books from local sellers, 'familiär und lokal'; the municipality's page names no goods and no kind of seller (it only bans weapons), so all of that is left out.",
+   "The municipality's page names no organiser, only a contact person; and it does not say whether entry is free (our data says 0.00)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.wettingen.ch/dienstleistungen/6785",
+    "quote": "Translation of our German text only."
+   },
+   {
+    "url": "https://meine-flohmarkt-termine.de/ort/wettingen",
+    "quote": "Flohmarkt-Trödelmarkt, 5430 Wettingen, Rathausplatz"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-rudolf-steiner-schule-basel",
+  "ours": {
+   "name": "Flohmarkt Rudolf Steiner Schule Basel",
+   "status": "active",
+   "town": "Basel",
+   "venue": "Jakobsbergerholzweg 54",
+   "address": "Jakobsbergerholzweg 54, 4059 Basel, 4059",
+   "lat": 47.533348,
+   "lng": 7.601078,
+   "rhythm_de": "Jährlich, meist im April",
+   "rhythm_en": "Once a year, usually in April",
+   "season_months": [
+    4,
+    4
+   ],
+   "stall_count": 26,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.steinerschule-basel.ch/event/flohmarkt-9/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": null,
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-10",
+     "start": null,
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-11",
+     "start": null,
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our data says setting \"indoor\" (and 26 stalls) while our German says \"auf dem Schulgelände\"; the school's page says neither. Please check before relying on either.",
+   "Our data says setting 'indoor' and 26 stalls, while our old German said 'auf dem Schulgelände'; the school's pages say neither (they only say 'an der Schule'). I wrote neither indoor nor outdoor, and used '26 stalls' only as 'rund zwei Dutzend'. Please check before relying on either.",
+   "Our old German said 'meist im April' and loyal regulars from the neighbourhood; the school confirms April weekends (18-19 April 2026, 10-11 April 2027) but says nothing about regulars or the atmosphere; dropped."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.steinerschule-basel.ch/event/flohmarkt-9/",
+    "quote": "Am Wochenende vom 18. bis 19. April 2026 ist an der Schule wieder Flohmarkt. (Rudolf Steiner Schule Basel, Jakobsbergerholzweg 54)"
+   },
+   {
+    "url": "https://www.steinerschule-basel.ch/events/",
+    "quote": "Für unseren Flohmarkt sammeln wir gerne gut erhaltene saubere Gegenstände aus Haus und Heim. ... Am Wochenende vom 10. bis 11. April 2027 ist an der Schule wieder Flohmarkt."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-ruemlang",
+  "ours": {
+   "name": "Rümlanger Flohmarkt",
+   "status": "active",
+   "town": "Rümlang",
+   "venue": "Gemeindehaus Rümlang",
+   "address": "Glattalstrasse 201, 8153",
+   "lat": 47.450242,
+   "lng": 8.5302402,
+   "rhythm_de": "Drei Samstage pro Jahr",
+   "rhythm_en": "Three Saturdays a year",
+   "season_months": null,
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": null,
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "08:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "localcities.ch lists 'Rümlanger 20.00 / Auswärtige 30.00' next to the event, in the entry field; it is probably a stand fee by residence (the same page invites exhibitors to contact the organiser), but our data says entry free (0.00). Please check; I did not mention entry in the text.",
+   "No 2027 dates found: the sources list only the 2026 dates (11 April, 13 June, 19 September), all Saturdays, which fits our rhythm 'drei Samstage pro Jahr'."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.localcities.ch/en/events/rumlang/293/4446569",
+    "quote": "Gemeindehaus Rümlang, Glattalstrasse 201 · Rümlanger Flohmarkt: 11.4/ 13.6/19.9 · Für eine Pause am regen Markttreiben bietet sich Floh's Bistro mit salzigen und süssen Snacks an."
+   },
+   {
+    "url": "https://swiss-markt.ch/de/rumlang/ruemlanger-flohmarkt",
+    "quote": "Flohmarkt, wo Besucher durch die verschiedenen Stände wandeln und Schätze entdecken können. ... Floh's Bistro bietet herzhafte und süße Snacks."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-sarnen-center",
+  "ours": {
+   "name": "Flohmarkt Sarnen-Center",
+   "status": "active",
+   "town": "Sarnen",
+   "venue": "Sarnen-Center",
+   "address": "Nelkenstrasse, 6060",
+   "lat": 46.8971382,
+   "lng": 8.2509542,
+   "rhythm_de": "Am 2. Samstag im Monat (ausser im März), laut Veranstalter",
+   "rhythm_en": "2nd Saturday of the month (not in March), according to the organiser",
+   "season_months": null,
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": null,
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-10",
+     "start": "08:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "No website of the organiser; luzern.com's page now answers 410 Gone and myswitzerland.com's would not load for me. Listings disagree on 2026 dates (one shows 11 Jul/8 Aug/12 Sep/10 Oct, another only 12 Sep and 10 Oct)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.myswitzerland.com/en-ch/experiences/events/flohmarkt-sarnen/",
+    "quote": "No organiser website exists. Listings (read via search summaries, myswitzerland.com / luzern.com): Beim Sarnen-Center zwischen Coop & Migros (Nelkenstrasse, 6060 Sarnen) · every second Saturday except March · organiser \"Flohmarkt Obwalden\" (Facebook)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-st-mangen-quartier",
+  "ours": {
+   "name": "Flohmarkt St. Mangen-Quartier",
+   "status": "active",
+   "town": "St. Gallen",
+   "venue": "Goliathgasse 18",
+   "address": "Goliathgasse 18, 9000 St. Gallen, 9000",
+   "lat": 47.4268,
+   "lng": 9.3761,
+   "rhythm_de": "Jeden letzten Samstag von März bis Oktober",
+   "rhythm_en": "Every last Saturday, March to October",
+   "season_months": [
+    3,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.stmangen.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-26",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-31",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-27",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-24",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-29",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-26",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-31",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-28",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-25",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-30",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our old German said about 100 stalls, vintage clothes and antique furniture, and 'Altstadtgassen rund um die Kirche St. Mangen'; the organiser's page gives no stall count, no list of goods and no street apart from the city listing's address Goliathgasse 18. All left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.stmangen.ch/flohmarkt/",
+    "quote": "Der Quartierverein St. Mangen veranstaltet seit 1979 den traditionellen Flohmarkt. Er findet jeweils von März bis Oktober am letzten Samstag im Monat statt."
+   },
+   {
+    "url": "https://m.stadt.sg.ch/index.php?apid=243613082",
+    "quote": "St. Mangen Quartier, Goliathgasse 18, 9000 St. Gallen"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-theaterplatz-baden",
+  "ours": {
+   "name": "Flohmarkt Theaterplatz Baden",
+   "status": "active",
+   "town": "Baden",
+   "venue": "Theaterplatz",
+   "address": "Theaterplatz, 5400",
+   "lat": 47.4736827,
+   "lng": 8.3086822,
+   "rhythm_de": "Monatlich samstags von Mai bis Oktober, 09:00-16:00 Uhr.",
+   "rhythm_en": "Monthly on a Saturday, May to October, 09:00–16:00",
+   "season_months": [
+    5,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.baden.ch/de/home/leben-wohnen/sicherheit-und-recht/gewerbe-verkehr/informationen-fuer-marktbetreibende.html/186",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-26",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "cancelled",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The city's page lists planned dates for March and April 2026 (28 March and 25 April, cancelled for building work), so the season is not only May to October as our data says; I wrote 'von Frühling bis Herbst'.",
+   "The Umweltblog says 'jeden letzten Samstag im Monat', but the city's 2026 dates include 16 May and 17 October, which are not last Saturdays; our rhythm text only says monthly, which fits."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.baden.ch/de/home/leben-wohnen/sicherheit-und-recht/gewerbe-verkehr/informationen-fuer-marktbetreibende.html/186",
+    "quote": "Translation of our German text only."
+   },
+   {
+    "url": "https://umweltblog.baden.ch/agenda/flohmarkt-in-baden-4/",
+    "quote": "Second-Hand-Trouvaillen ... Mai – Oktober"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-weinfelden",
+  "ours": {
+   "name": "Flohmarkt Weinfelden",
+   "status": "active",
+   "town": "Weinfelden",
+   "venue": "Marktplatz",
+   "address": "Marktplatz, 8570",
+   "lat": 47.5669755,
+   "lng": 9.1099566,
+   "rhythm_de": "Letzter Samstag im Monat, März bis Oktober (ohne September)",
+   "rhythm_en": "Last Saturday of the month, March to October (not September)",
+   "season_months": [
+    3,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.weinfelden-erleben.ch/erlebnisse-erleben/maerkte",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-31",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "A myswitzerland.com listing (seen only via search summary) shows 2026 dates 25 July, 29 August and 10 October; the third is not a last Saturday. The town's own page says \"letzter Samstag\", and our date 31.10.2026 follows that."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.weinfelden-erleben.ch/erlebnisse-erleben/maerkte",
+    "quote": "Der Flohmarkt findet jeweils am letzten Samstag im Monat (März bis Oktober, ohne September) auf dem Marktplatz Weinfelden statt und bietet ein vielfältiges Angebot und eine Flohmarktbeiz."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-wetzikon",
+  "ours": {
+   "name": "Grosser Aussen-Flohmarkt Wetzikon",
+   "status": "active",
+   "town": "Wetzikon",
+   "venue": "Eishalle Wetzikon",
+   "address": "bei der Eishalle, 8620 Wetzikon, 8620",
+   "lat": 47.3153143,
+   "lng": 8.7995257,
+   "rhythm_de": "Zweimal jährlich, Frühling und Herbst",
+   "rhythm_en": "Twice a year, spring and autumn",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "website": "https://www.flohmarkt-wetzikon.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-26",
+     "start": "08:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "08:00:00",
+     "end": "15:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser says: \"2026 finden nur 3 Flohmärkte statt\" (25 April, 26 September, 24 October); our rhythm says \"Zweimal jährlich, Frühling und Herbst\". 24 Oct 2026 is the date we show.",
+   "The organiser page does not say \"Privatleute\" (it says \"Aussteller/Innen\", and bans new goods in bulk); our German says private sellers - translated as asked.",
+   "Rhythm: the organiser says only three markets take place in 2026 (25 April, 26 September, 24 October). We show 'Zweimal jährlich, Frühling und Herbst'. The text says 'a few times a year, between spring and autumn', which fits both. The date we show (24 Oct 2026, 08:00-15:00) is on their page.",
+   "The organiser's page never says 'private sellers' (it says exhibitors and bans new goods in bulk), so the text does not say 'private'. Our setting/rain data agree with the page (outdoor, runs in any weather except storm or heavy lasting rain)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.flohmarkt-wetzikon.ch",
+    "quote": "fast 10'000 m2 Platz · Unsere Flohmärkte finden bei jeder Witterung statt (ausser bei Sturm und starkem Dauerregen) · Mit guter Verpflegung inkl. Grill durch die weitum bekannte Metzgerei Eichenberger aus Wetzikon"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmii-galgenen",
+  "ours": {
+   "name": "Flohmii Galgenen",
+   "status": "active",
+   "town": "Galgenen",
+   "venue": "Arthur Weber Areal",
+   "address": "Höfliweg 2, 8854",
+   "lat": 47.1850937,
+   "lng": 8.8692793,
+   "rhythm_de": "Ein- bis zweimal jährlich, samstags",
+   "rhythm_en": "Once or twice a year, on Saturdays",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://flohmii.jimdofree.com/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-05",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-11",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Left out because the organiser does not say it: \"privat organisiert\", \"kostenlose Parkplätze\" (the page says the spaces are sponsored by Diga) and \"15 Minuten zu Fuss vom Bahnhof Siebnen-Wangen\". Dates on the site: 5 June 2027 and 11 September 2027, which match ours."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://flohmii.jimdofree.com/wo-wie-was/",
+    "quote": "Arthur Weber Areal, Höfliweg 2, 8854 Galgenen SZ · Es findet bei jedem Wetter statt! · Damenkleider, Accessoires, Modeschmuck, Taschen, Schuhe, Kinderkleider, Spielzeuge, Männerartikel, Deko-Artikel, Bücher, elektronische Gadgets etc. · Parkmöglichkeiten: PP hinter dem Diga Gebäude … dürfen von den Ausstellern und Besucher benutzt werden."
+   },
+   {
+    "url": "https://flohmii.jimdofree.com/",
+    "quote": "Es darf gehandelt werden. · Für KINDER: Die Kinder können dort ihre eigenen Waren verkaufen, wie zum Beispiel Spielzeug, Spiele oder andere Kinderartikel."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flommbo-flohmarkt-altstaetten",
+  "ours": {
+   "name": "Flommbo Flohmarkt",
+   "status": "active",
+   "town": "Altstätten",
+   "venue": "Allmend Rheintal",
+   "address": "Oberrieterstrasse 44, 9450",
+   "lat": 47.3751439,
+   "lng": 9.5497484,
+   "rhythm_de": "Mehrere Sonntage pro Jahr, bei jeder Witterung",
+   "rhythm_en": "Several Sundays a year, in any weather",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://www.flommbo.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-20",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-11",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The site lists the next market as 11 October 2026 (a Sunday, already past) and a link \"Termine 2027\" that I could not open. Our database has no next dates. Left out because not on the site: \"genug Parkplätze auf dem Gelände\" and \"20 Minuten zu Fuss vom Bahnhof\"."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.flommbo.ch/",
+    "quote": "Flommbo Altstätten · Allmend Rheintal, Oberrieterstrasse 44, 9450 Altstätten · Der Flohmarkt finden bei jeder Witterung statt! · Flommbo Effretikon · Hallenmarkt (menu entry)"
+   },
+   {
+    "url": "https://www.flommbo.ch/reservation",
+    "quote": "Stand mit Fahrzeug (Non Food) … Fahrzeug direkt am Stand parkierbar"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flughafen-flohmarkt-kloten-zuerich",
+  "ours": {
+   "name": "Flughafen Flohmarkt Kloten",
+   "status": "active",
+   "town": "Kloten",
+   "venue": "Flughafen Zürich",
+   "address": "Flughafen Zürich, 8058 Kloten, 8058",
+   "lat": 47.4582,
+   "lng": 8.5555,
+   "rhythm_de": "Jährlicher Sondertermin am Flughafen Zürich",
+   "rhythm_en": "Once a year, a special edition at Zurich Airport",
+   "season_months": null,
+   "stall_count": 450,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.flughafen-flohmarkt.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2027-05-22",
+     "start": null,
+     "end": null,
+     "status": "unverified",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our venue is 'Flughafen Zürich' and the old text says 'on the airport grounds'. The organiser says the market is on the military driving-school ground Oelberg, below the Holberg, in Kloten; only the parking is at the airport (car park P6). Venue and address line may need changing.",
+   "Our date 22 May 2027 matches the organiser's page (subject to official permits)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://flughafen-flohmarkt.ch/besucher/",
+    "quote": "Der Flohmarkt findet auf dem Militär Fahrschulplatz Oelberg unterhalb des Holbergs in Kloten statt. / Alle Besucherparkplätze befinden sich ausschliesslich im Flughafen Parkhaus P6. / Kies, nicht asphaltiert. / Leider können wir keinerlei Sitz- resp. Ruhegelegenheiten anbieten. / Der Flohmarkt ist ab den folgenden Haltestellen in wenigen Minuten zu Fuss erreichbar."
+   },
+   {
+    "url": "https://flughafen-flohmarkt.ch/geschichte/",
+    "quote": "Im Sommer 1983 ist es soweit (first market, for Swissair Group staff) / 2019: ca. 450 Verkaufsplätzen / 2007: nur noch einmal jährlich – im Mai – statt"
+   },
+   {
+    "url": "https://flughafen-flohmarkt.ch/elementor-2138/",
+    "quote": "Alle Verpflegungsstände am Flohmarkt befinden sich zentriert in unserem Foodcenter."
+   },
+   {
+    "url": "https://flughafen-flohmarkt.ch/",
+    "quote": "Next market 22 May 2027, vorbehältlich der behördlichen Bewilligungen"
+   }
+  ],
+  "in_keep_ours": false
+ }
+]

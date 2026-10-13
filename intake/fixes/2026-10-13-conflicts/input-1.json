@@ -1,0 +1,1244 @@
+[
+ {
+  "slug": "alpin-flohmi-bulle",
+  "ours": {
+   "name": "Alpin-Flohmi Bulle",
+   "status": "active",
+   "town": "Bulle",
+   "venue": "CAS Section La Gruyère",
+   "address": "Chemin de Bouleyres 79, 1630 Bulle, 1630",
+   "lat": 46.6157571,
+   "lng": 7.0654529,
+   "rhythm_de": "Jährlich, November",
+   "rhythm_en": "Once a year, in November",
+   "season_months": [
+    11,
+    11
+   ],
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://mountainwilderness.ch/themen/alpin-flohmi/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-11-24",
+     "start": "18:00:00",
+     "end": "21:30:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our next date ends at 21:30; the organiser's French page (mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/) says 18:00 to 21:00.",
+   "On that page the Bulle registration link carries 22-11-2026 while the event is dated 24 Nov 2026 (probably the page's own slip).",
+   "Our next date ends at 21:30; the organiser's French page (mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/) says 18:00 to 21:00 for Bulle.",
+   "On that page the Bulle booking link carries 22-11-2026 while the event is dated 24 Nov 2026 (probably the page's own slip). The German page gives no venue or time for Bulle, only the date."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Du matériel et des vêtements de montagne d'occasion en bon état, pour adultes et enfants."
+   },
+   {
+    "url": "https://mountainwilderness.ch/themen/alpin-flohmi/",
+    "quote": "Mountain Wilderness Schweiz unterstützt dich bei der Organisation eines tollen Events"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "antik-flohmarkt-fehraltorf",
+  "ours": {
+   "name": "Antik-, Floh- und Sammlermarkt Fehraltorf",
+   "status": "active",
+   "town": "Fehraltorf",
+   "venue": "Mehrzweckgebäude Heiget-Huus",
+   "address": "Schulhausstrasse 22, 8320",
+   "lat": 47.3884977,
+   "lng": 8.7552364,
+   "rhythm_de": "Zweimal jährlich, im Frühling und im Herbst, sonntags",
+   "rhythm_en": "Twice a year, in spring and autumn, on a Sunday",
+   "season_months": null,
+   "stall_count": 75,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://www.ambiente-brocante.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-27",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-21",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's home page (ambiente-brocante.ch) says the next event is on 1. März 2027, while its events page says 21. März 2027 (our date is 2027-03-21). 1 March 2027 is a Monday, so the home page is probably a slip, but worth a look.",
+   "We hold 75 stands, the organiser says ca. 80 exhibitors (our German says rund 80).",
+   "The organiser's home page (ambiente-brocante.ch) banner reads 'am 1. März 2027' while its events page says Sunday 21 March 2027 (our date is 2027-03-21). 1 March 2027 is a Monday; the home page banner looks like a link artifact with a stray '2' before '1.', but worth a look.",
+   "We hold 75 stands; the organiser says ca. 80 exhibitors (I used 'rund 80', the organiser's figure).",
+   "Our old German said free parking and ten minutes on foot from the station; neither is on the organiser's page (it only says there is enough parking). Both left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.ambiente-brocante.ch/events",
+    "quote": "Ca. 80 Aussteller von Nah und Fern; 2x jährlich, im Frühling und Herbst; im und rund ums Heiget-Huus; Kleines feines Bistro mit topfrischen Angeboten, alles hausgemacht; verschiedene Würste vom Grill; Für Besucher stehen genügend Parkplätze zur Verfügung"
+   },
+   {
+    "url": "https://www.ambiente-brocante.ch/",
+    "quote": "Preiswerte Antiquitäten aller Art (gallery: lamps, furniture, mirrors, glass and vases, pictures)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "bergflohmarkt-chur",
+  "ours": {
+   "name": "Bergflohmarkt Chur",
+   "status": "active",
+   "town": "Chur",
+   "venue": "Titthof Chur",
+   "address": "Titthof Chur, Tittwiesenstrasse 8, 7000 Chur, 7000",
+   "lat": 46.8552763,
+   "lng": 9.5286724,
+   "rhythm_de": "Regelmässige Sonderausgaben, Termine gemäss Organisator",
+   "rhythm_en": "Regular special editions, dates set by the organiser",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": "mixed",
+   "rain_policy": "runs",
+   "entry_fee": "0.00",
+   "website": "https://bergflohmarkt.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-11-13",
+     "start": "17:00:00",
+     "end": "21:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-14",
+     "start": "10:00:00",
+     "end": "14:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our German says the Titthof is 'direkt beim Bahnhof'. The organiser pages only give the address (Kirchgemeindehaus Titthof, Tittwiesenstrasse 8) with a trip planner and no distance to the station; a listing puts it in the city centre. I wrote 'dans le centre de Coire, non loin de la gare'.",
+   "The organiser does not say how often it runs (our German says regularly): the November edition is called the fifth Bergflohmarkt, with about 15 stands per day.",
+   "Our old German said the Titthof is directly at the station; the organiser's pages give only the address (Kirchgemeindehaus Titthof, Tittwiesenstrasse 8, with a trip planner), no distance to the station. Left out.",
+   "The organiser does not say how often the market runs (our data says regular special editions); the November edition is called the fifth Bergflohmarkt with about 15 stands per day. I did not state any rhythm in the text."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.sportanlagenchur.ch/de/bergflohmarkt-chur",
+    "quote": "hochwertige Secondhand-Artikel für die Sommer- und Wintersaison ... Kirchgemeindehaus Titthof, Tittwiesenstrasse 8 ... Der Eintritt ist frei."
+   },
+   {
+    "url": "https://bergflohmarkt.ch/",
+    "quote": "Komm vorbei – Eintritt frei!"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "brocante-de-chambrelien",
+  "ours": {
+   "name": "Brocante de Chambrelien",
+   "status": "active",
+   "town": "Chambrelien",
+   "venue": "Buffet de la Gare de Chambrelien (Bistro La Loco)",
+   "address": "Route de la Gare 4, 2019",
+   "lat": 46.9672276,
+   "lng": 6.8125779,
+   "rhythm_de": null,
+   "rhythm_en": null,
+   "season_months": null,
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://laloco.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-04",
+     "start": "09:00:00",
+     "end": null,
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The bistro's page lists only Sunday 4 October 2026 (already past) and no 2027 date; we have no next date.",
+   "Stand count (about 20), chestnuts, soups, the train line and the 9:00 start are in our German but not on the bistro's page (it says only grillades, restauration, and general Sunday hours 8:30-16:00).",
+   "The bistro's pages list only Sunday 4 October 2026 (already past) and no 2027 date, and say nothing on how often the brocante runs; we have no next date.",
+   "Stand count (about 20), chestnuts, pea and pumpkin soup, the Neuchâtel-La Chaux-de-Fonds line and the 9:00 start are in our old German but not on the bistro's pages (they list grillades, restauration, boissons, exposants, and general Sunday hours 8:30-16:00). All left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://laloco.ch/",
+    "quote": "Brocante & Marché aux Puces RDV le 4 octobre 2026 ... Bienvenue ! Grillades, restauration…"
+   },
+   {
+    "url": "https://laloco.ch/brocante-marche-au-puces-le-4-octobre-2026/",
+    "quote": "Exposants, restauration, grillades, boissons. (Bistro La Loco, Buffet de la Gare de Chambrelien, Route de la Gare 4, 2019 Chambrelien)"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Chambrelien_railway_station",
+    "quote": "Chambrelien railway station is a railway station in the municipality of Rochefort, in the Swiss canton of Neuchâtel."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "brocante-de-misery",
+  "ours": {
+   "name": "Brocante de Misery",
+   "status": "active",
+   "town": "Misery",
+   "venue": "Place du Centre et salle de gym",
+   "address": "Place du Centre, 1721",
+   "lat": 46.8516921,
+   "lng": 7.0660249,
+   "rhythm_de": "Jährlich, ein Wochenende im September",
+   "rhythm_en": "Once a year, a weekend in September",
+   "season_months": [
+    9,
+    9
+   ],
+   "stall_count": null,
+   "setting": "both",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://brocantedesamis.ch/brocante-de-misery",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "09:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-20",
+     "start": "09:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our old text said 'Seit 2007'. The organiser says its first brocante was in 2020 in Misery (association founded 2019), while its Misery page calls the September event the 20th edition. I left any founding year out.",
+   "The organiser describes the outdoor part as the communal car park at the village-centre square; I wrote 'platz im Dorfzentrum'. No 2027 date is published yet (the page shows 19-20 September 2026). Our German bus/drive-time directions were not on the page, so I left them out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://brocantedesamis.ch/brocante-de-misery",
+    "quote": "20e édition, 19 & 20 septembre ... la place du centre de Misery ... diversité d'exposants ... conviviale"
+   },
+   {
+    "url": "https://brocantedesamis.ch/",
+    "quote": "Misery: 19-20 septembre; Yverdon (Quai de Nogent), Lucens, Avenches; Notre première brocante a vu le jour en 2020 à Misery."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "chilbi-flohmarkt-glarus",
+  "ours": {
+   "name": "Chilbi-Flohmarkt Glarus",
+   "status": "active",
+   "town": "Glarus",
+   "venue": "Rund ums Rathaus",
+   "address": "Rathausplatz, 8750",
+   "lat": 47.0398589,
+   "lng": 9.0674854,
+   "rhythm_de": "Jährlich, ein Samstag im August, zur Chilbi",
+   "rhythm_en": "Once a year, a Saturday in August, during the Chilbi fair",
+   "season_months": [
+    8,
+    8
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://glarus.swiss/service-2/glarus-service/maerkte.html",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2027-08-21",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "I could not read the organiser's page (glarus.swiss answered 403), so none of this text is confirmed by the organiser.",
+   "Independent searches found a Glarus flea market on the Saturday before the Landsgemeinde in May (children free, over 150 stalls between Spielhof and Gemeindehausplatz, children's spots at the Rathausplatz) and a Glarus Chilbi around 15 August, but no Chilbi flea market with an age limit of 16. Please check glarus.swiss by hand before this goes live; if the August market no longer exists, the page may need to go.",
+   "Our old text said 8-16, the old site 9-16; I left hours out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://glarus.swiss/service-2/glarus-service/maerkte.html",
+    "quote": "NOT READ: the page returned HTTP 403 to my fetch. Facts used (Chilbi, Rathaus, August, children up to 16) come from our own database text and the old site, which agree."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "coffre-ouvert-monthey",
+  "ours": {
+   "name": "Coffre ouvert Monthey",
+   "status": "active",
+   "town": "Monthey",
+   "venue": "Cour du Vieux-Collège / Esplanade du Crochetan",
+   "address": "Avenue de la Gare 17, 1870",
+   "lat": 46.2541222,
+   "lng": 6.9501838,
+   "rhythm_de": "Erster Samstag im Monat, April bis November",
+   "rhythm_en": "First Saturday of the month, April to November",
+   "season_months": [
+    4,
+    11
+   ],
+   "stall_count": 100,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "decided_on_the_day",
+   "entry_fee": null,
+   "website": "https://www.coffreouvertmonthey.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-03",
+     "start": "09:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-07",
+     "start": "09:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The page does not say whether sellers are private people or dealers, nor that goods are sold from car boots (our old texts said 'Privatverkäufer, aus dem Auto und vom Tisch'); I explained only the name.",
+   "The Esplanade du Crochetan address is inconsistent on the page (Av. du Théâtre 9 in one place, Avenue du Crochetan in another). The 2026 list has no August date and marks September and October as full for stall holders. Bad-weather rule comes from facts_we_hold (decided on the day), not from the page."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.coffreouvertmonthey.ch/",
+    "quote": "Chaque 1er samedi du mois d'avril à novembre ... Jusqu'à 100 exposants! ... L'occasion pour les uns de se défaire de leurs surplus, pour les autres de dénicher de belles trouvailles ! ... Cour du Vieux-Collège (en face de la Migros) ... Esplanade du Crochetan ... parking Migros/Coop ou gare AOMC, 2 minutes à pied; stationnement interdit près de l'Esplanade"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "coffre-ouvert-oron",
+  "ours": {
+   "name": "Coffre ouvert d'Oron",
+   "status": "active",
+   "town": "Oron-la-Ville",
+   "venue": "Parking extérieur Coop",
+   "address": "Route de Lausanne 31, 1610",
+   "lat": 46.5705373,
+   "lng": 6.8202541,
+   "rhythm_de": "Jährlich, ein Sonntag im Oktober",
+   "rhythm_en": "Once a year, a Sunday in October",
+   "season_months": [
+    10,
+    10
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://coffre-ouvert-arc-en-ciel-oron-la-ville.mozellosite.com/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-04",
+     "start": "08:30:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our data says 'Jährlich, ein Sonntag im Oktober'. The organiser's site shows several markets a year (6 September 2026, and Sunday 8 November 2026 as 'le DERNIER ... de l'année 2026', then closed until 2027). The rhythm field should change, and the 8 November market is missing from our dates.",
+   "The page says they are 'returning to the original location of the first event for the next two years' without naming it; the 8 November market is still at the Coop car park. The organiser gives no number of sellers (the old text said about 50) and does not say who may sell."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://coffre-ouvert-arc-en-ciel-oron-la-ville.mozellosite.com/",
+    "quote": "le DERNIER Coffre Ouvert / Vide Grenier & Braderie de l'année 2026 ... La manifestation en cas de beau temps sera sur le parking extérieur ... Autrement sera au parking souterrain de la COOP"
+   },
+   {
+    "url": "https://coffre-ouvert-arc-en-ciel-oron-la-ville.mozellosite.com/actualites/",
+    "quote": "Prochain Coffre-ouvert le 6 septembre 2026 ... En cas de risque de pluie, la manifestation aura lieu sous le parking de la Coop."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "enter-flohmarkt-derendingen",
+  "ours": {
+   "name": "Enter Flohmarkt",
+   "status": "active",
+   "town": "Derendingen",
+   "venue": "Enter Technikwelt, Eventhalle",
+   "address": "Gewerbestrasse 4, 4552",
+   "lat": 47.196997,
+   "lng": 7.5962355,
+   "rhythm_de": "Etwa monatlich, samstags, in der Halle",
+   "rhythm_en": "About once a month, on Saturdays, indoors",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "both",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://enter.ch/de/flohmaerkte/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-10",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-12-12",
+     "start": "10:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-01-02",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-02-06",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-03-06",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-01",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-12",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-03",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-07",
+     "start": "10:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The December market is listed as 10.00-16.00 on the organiser's event page; our data has 10:00-17:00 for 2026-12-12 (January to March 2027 are 10-16 in ours, as on theirs).",
+   "The organiser lists more dates than we hold: 1 May, 12 June, 3 July and 7 August 2027 (the 'Sa. 01. Mmai 2027' entry has a typo). Our old text's ten minutes on foot from Derendingen station is not on their site, so it is left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.enter.ch/de/events/enter-flohmarkt-dezember/",
+    "quote": "Eventhalle ... Kofferraumflohmarkt draussen ... Hausrat, Möbel, Kleider, Spielzeug, Antikes, Technik, Instrumente, Schallplatten, Bücher, Werkzeug ... Eintritt zum Flohmarkt: gratis ... Enter Restaurant"
+   },
+   {
+    "url": "https://www.enter.ch/de/anreise/",
+    "quote": "Bus Nr. 5 oder 7 Richtung «Herzogenbuchsee Bahnhof» bis «Derendingen Freiheit» ... 140 Besucherparkplätze ... Parkplätze auf dem Dach"
+   },
+   {
+    "url": "https://enter.ch/de/flohmaerkte/",
+    "quote": "Ob alte Computer, Konsolen, Radios, Schallplatten, Elektronik, Zubehör, Raritäten oder besondere Fundstücke"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "fete-de-la-brocante-le-landeron",
+  "ours": {
+   "name": "Fête de la Brocante du Landeron",
+   "status": "active",
+   "town": "Le Landeron",
+   "venue": "Bourg médiéval du Landeron",
+   "address": "Ville, 2525",
+   "lat": 47.0505534,
+   "lng": 7.0645063,
+   "rhythm_de": "Jährlich, letztes Wochenende im September",
+   "rhythm_en": "Once a year, the last weekend of September",
+   "season_months": [
+    9,
+    9
+   ],
+   "stall_count": 100,
+   "setting": "outdoor",
+   "seller_mix": "trader",
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://avvl.ch/brocante/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-25",
+     "start": "12:00:00",
+     "end": "19:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-26",
+     "start": "09:00:00",
+     "end": "19:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-27",
+     "start": "09:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The page header reads '26, 27, 28 Septembre' but the body and hours list 25-27 September, and it calls Friday 25 September (from noon) the day exhibitors set up ('dès le vendredi 25 septembre à midi'); our old text shows Friday 12-19 as a public day. I wrote only 'the last weekend of September' and did not count days.",
+   "The page gives two sizes ('plus d'une centaine de stands' and 'plusieurs centaines de marchands'); I used the hundred, which matches facts_we_hold. The organiser also calls it the largest outdoor antiques fair in Switzerland; I did not use that. Our old text's ten minutes from the station is not on the page; replaced by the train, boat and parking facts it does give. No 2027 date yet."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://avvl.ch/brocante/",
+    "quote": "plus d'une centaine de stands ... antiquaires et brocanteurs de toute la Suisse et de l'étranger ... une dizaine de cantines ... reste entièrement gratuit pour le public ... plus de 1500 places de parc ... train et bateau ... première édition 1974"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "fete-livres-disques-ouchy-lausanne",
+  "ours": {
+   "name": "Fête Livres & Disques Ouchy",
+   "status": "active",
+   "town": "Lausanne",
+   "venue": "Place de la Navigation",
+   "address": "Place de la Navigation, 1006",
+   "lat": 46.5068501,
+   "lng": 6.6252192,
+   "rhythm_de": "Ausgewählte Sonntage von April bis Oktober",
+   "rhythm_en": "Selected Sundays, April to October",
+   "season_months": [
+    4,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": "trader",
+   "rain_policy": "cancelled",
+   "entry_fee": "0.00",
+   "website": "https://www.fete-livres-disques.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-04",
+     "start": "09:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-11",
+     "start": "09:00:00",
+     "end": "18:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's site says the fair returns 'dès avril 2027' with dates to be published in January or February, so there is no date to show yet.",
+   "The organiser and the city name only 'Ouchy'; they do not mention Place de la Navigation (our venue) or the Quai Jean-Pascal-Delamuraz (our old text). Rain-cancellation and free entry come from facts_we_hold, not the pages."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.fete-livres-disques.ch/",
+    "quote": "Vinyles, CD's, DVD's, BD's, Livres, Tableaux ... des brocanteurs professionnels ... En aucun cas, il s'agit d'un vide grenier ! ... Quelques dimanches à Lausanne, Ouchy"
+   },
+   {
+    "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/fete-livre-disque.html",
+    "quote": "L'Union des Brocanteurs Romands organise des manifestations autour du livre et du disque ... Plusieurs fois par an"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flodo-flohmarkt-solothurn",
+  "ours": {
+   "name": "FloDo – Flohmarkt Dornacherplatz",
+   "status": "active",
+   "town": "Solothurn",
+   "venue": "Dornacherplatz",
+   "address": "Dornacherplatz, 4500",
+   "lat": 47.2045311,
+   "lng": 7.5377729,
+   "rhythm_de": "Jährlich, ein Samstag im August",
+   "rhythm_en": "Once a year, a Saturday in August",
+   "season_months": [
+    8,
+    8
+   ],
+   "stall_count": 130,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://flodo.ch/",
+   "getting_there": null,
+   "dates": []
+  },
+  "claims_to_check": [
+   "Our rhythm 'Jährlich, ein Samstag im August' is not on the organiser's site: it says the market returns 'nach langer Pause' and the new date is 'bald' to be announced (2027, no day given). We show no next date, which agrees.",
+   "'Right by the station' (our old text) is not on the organiser's page, so I left it out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://flodo.ch/",
+    "quote": "über 130 Ständen ... Rares und Gebrauchtes ... nach langer Pause ... Lebensgefühl, Nachhaltigkeit und (Vor)Stadtleben pur! ... bald wird der neue FloDo Termin bekannt gegeben"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "floh-raritaetenmarkt-europaplatz-bern",
+  "ours": {
+   "name": "Grosser Floh- und Raritätenmarkt Europaplatz",
+   "status": "active",
+   "town": "Bern",
+   "venue": "Europaplatz",
+   "address": "Europaplatz, 3008 Bern, 3008",
+   "lat": 46.9437523,
+   "lng": 7.4067087,
+   "rhythm_de": "Mehrmals jährlich, samstags",
+   "rhythm_en": "Several times a year, on Saturdays",
+   "season_months": null,
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://www.brockicenter.ch",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-26",
+     "start": "08:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "08:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "MySwitzerland shows Saturday 24 October 2026 as 08:00 to 23:00; our data has 08:00-16:00. The same listing carries 'NEU MIT CHILBI FLOHMARKT' and an opening-hours table still dated 2024, so it may just be sloppy, but the hours are unconfirmed.",
+   "The organiser's page gives neither hours nor dates, nor who sells (private or dealers) or what is on offer beyond 'Floh- und Raritätenmarkt'; our old 'Privatverkäufer und Händler' is therefore left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.brockicenter.ch/flohmarkt.html",
+    "quote": "Das Brockicenter Bern präsentiert wieder diesen Anlass im Jahr 2026 ... Der Flohmarkt findet dieses Jahr 7x statt ... route de la gare 4 1786 Sugiez"
+   },
+   {
+    "url": "https://www.myswitzerland.com/de-ch/erlebnisse/veranstaltungen/groesster-flohmarkt-in-bern-europaplatz-2026/",
+    "quote": "Grosser Floh- und Raritätenmarkt Europaplatz Bern ... Europaplatz, 3008 Bern"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmaert-zueg-ond-sache-beromuenster",
+  "ours": {
+   "name": "Flohmärt «Züg ond Sache»",
+   "status": "active",
+   "town": "Beromünster",
+   "venue": "Stiftstheater Beromünster",
+   "address": "Stift 28, 6215",
+   "lat": 47.2060144,
+   "lng": 8.1907584,
+   "rhythm_de": "Jährlich, letzter Samstag im September, zur Kilbi",
+   "rhythm_en": "Once a year, the last Saturday of September, during the Kilbi fair",
+   "season_months": [
+    9,
+    9
+   ],
+   "stall_count": null,
+   "setting": "indoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.5-sterne-region.ch/flohmarkt-beromuenster/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-26",
+     "start": "10:00:00",
+     "end": "17:30:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's page does not mention the Kilbi or the Fläcke-Märt (a web search of the municipality's announcement did show a Kilbi with Fläcke-Märt on the same Saturday, 26 September 2026). The page gives only the next date, Saturday 26 September 2026, no rhythm; 'last Saturday of September' is consistent.",
+   "The bus connection in our old text (from Lucerne or Sursee to Beromünster, Stift) is not on the organiser's page; I left it out. The page says proceeds fund the organisation and development of the market, which I summarised as 'zurück in den Markt'; donors are not paid back."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.5-sterne-region.ch/flohmarkt-beromuenster/",
+    "quote": "Kleidung, Antiquitäten, Haushaltsgegenstände und vieles mehr ... Nur schöne und gepflegte Artikel ... Die Einnahmen werden nicht an die Spenderinnen und Spender zurückgezahlt ... Festsaal und Schol des Stiftstheaters ... Ortsmarketing 5-Sterne-Region.ch Beromünster"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-arlesheim",
+  "ours": {
+   "name": "Arleser Flohmärt",
+   "status": "active",
+   "town": "Arlesheim",
+   "venue": "Dorfkern Arlesheim",
+   "address": "Dorfplatz, 4144",
+   "lat": 47.4931125,
+   "lng": 7.6202048,
+   "rhythm_de": "Jährlich, ein Samstag im August",
+   "rhythm_en": "Once a year, a Saturday in August",
+   "season_months": [
+    8,
+    8
+   ],
+   "stall_count": null,
+   "setting": null,
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.arlesheim.ch/de/wirtschaft/maerkte.php",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2027-08-28",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The municipal page gives only the date, hours and the Verein; it does not mention the Dorfkern/Dorfplatz, closed streets or the Tram 10 link in our old text. I kept the village-centre location from our database venue (Dorfkern, Dorfplatz) and left out the closed streets and tram."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.arlesheim.ch/de/wirtschaft/maerkte.php",
+    "quote": "Samstag, 28. August ... von 9 bis 16 Uhr ... Verein Flohmarkt Arlesheim"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-biel",
+  "ours": {
+   "name": "Flohmarkt Biel/Bienne",
+   "status": "active",
+   "town": "Biel/Bienne",
+   "venue": "Esplanade beim Kongresshaus",
+   "address": "Zentralstrasse 60, 2502",
+   "lat": 47.1348773,
+   "lng": 7.2478976,
+   "rhythm_de": "Zwölf Samstage von April bis Oktober",
+   "rhythm_en": "Twelve Saturdays from April to October",
+   "season_months": [
+    4,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://www.biel-bienne.ch/de/flohmarkt.html/1417",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "07:00:00",
+     "end": "14:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-03",
+     "start": "07:00:00",
+     "end": "14:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "07:00:00",
+     "end": "14:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The organiser's page does not say twelve Saturdays or that the two locations alternate (our rhythm says 'Zwölf Samstage'); it says only 'Altstadt oder Esplanade', gives no per-date list and states the 2026 markets are fully booked for stall holders. I wrote 'ausgewählte Termine' and 'je nach Datum'.",
+   "Our next date 2026-10-17 (07:00-14:00) is not confirmable from the page."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.biel-bienne.ch/de/flohmarkt.html/1417",
+    "quote": "von April bis Oktober am Samstag von 07.00 bis 14.00 Uhr ... Altstadt oder Esplanade beim Kongresshaus ... Es dürfen nur eindeutig als gebraucht erkennbare Waren verkauft werden ... Parkhaus Esplanade oder Altstadt"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-buerkliplatz-zuerich",
+  "ours": {
+   "name": "Flohmarkt Bürkliplatz",
+   "status": "active",
+   "town": "Zürich",
+   "venue": "Stadthausanlage",
+   "address": "Stadthausanlage, 8001 Zürich, 8001",
+   "lat": 47.36734,
+   "lng": 8.54085,
+   "rhythm_de": "Jeden Samstag, Mai–Oktober",
+   "rhythm_en": "Every Saturday, May to October",
+   "season_months": [
+    5,
+    10
+   ],
+   "stall_count": 300,
+   "setting": "outdoor",
+   "seller_mix": "mixed",
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://buerkli-flohmarkt.ch/flohmarkt-buerkliplatz.html",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-19",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-09-26",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-03",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-10",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-17",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-24",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-31",
+     "start": "07:00:00",
+     "end": "17:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Stand count: the organiser says about 220 season plus 84 day stands (about 300, matching our 300); zuerich.com says over 230 season stands. I wrote 'rund 300'.",
+   "The organiser's English summary says sellers set up along Fraumünsterstrasse, Börsenstrasse, Kappelergasse and Münsterhof this year, while its German text says the market returns to the rebuilt Stadthausanlage from 2 May 2026. Our venue is Stadthausanlage; please check where the stands actually stand. The page also lists 1 August and 8 August as known cancellation dates for 2026."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://buerkli-flohmarkt.ch/flohmarkt-buerkliplatz.html",
+    "quote": "Rund 220 Saisonplätze und 84 Tagesplätze ... Many of the sellers are qualified professionals and connoisseurs ... Der neue Kiosk ist seit dem 4. Januar offen ... Trams 2, 5, 8, 9 und 11 und Busse 161 und 165 halten am Bürkliplatz"
+   },
+   {
+    "url": "https://www.zuerich.com/de/besuchen/shopping/flohmarkt-buerkliplatz",
+    "quote": "Immer samstags, Mai bis Oktober ... seit über 50 Jahren ... Antiquitäten, Vintage und Secondhand"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-burstelpark-frauenfeld",
+  "ours": {
+   "name": "Flohmarkt im Burstelpark",
+   "status": "active",
+   "town": "Frauenfeld",
+   "venue": "Burstelpark",
+   "address": "Thundorferstrasse 29, 8500",
+   "lat": 47.5544766,
+   "lng": 8.9011282,
+   "rhythm_de": "Jeweils am 2. Samstag im Monat, April bis Oktober",
+   "rhythm_en": "2nd Saturday of the month, April to October",
+   "season_months": [
+    4,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.frauenfeld.ch/kultur-freizeit/freizeit/maerkte/flohmarkt.html/635",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-10",
+     "start": "08:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The town page names a person as \"Verantwortlich\" (Uesslingen), not the town itself; the old text said \"Die Stadt organisiert ihn\". I did not say who organises.",
+   "Not on the page, so left out: \"gleich hinter dem Alterszentrum\" and \"ten minutes from the station\" (both from the old text)."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.frauenfeld.ch/kultur-freizeit/freizeit/maerkte/flohmarkt.html/635",
+    "quote": "Flohmarkt im Burstelpark – jeweils am 2. Samstag im Monat · Das Befahren des Burstelparkes ist verboten! … auf dem gebührenfreien Parkplatz beim Rüegerholz abgestellt werden. · Der Verkauf ab Boden ist nicht erlaubt. Ein Tisch ist mitzubringen! · Waffen, Drogen, Lebensmittel, Pflanzen und anstössige Lektüre dürfen nicht feilgeboten werden."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-dreispitzpark-kreuzlingen",
+  "ours": {
+   "name": "Flohmarkt im Dreispitzpark",
+   "status": "active",
+   "town": "Kreuzlingen",
+   "venue": "Dreispitzpark",
+   "address": "Hauptstrasse / Pestalozzistrasse, 8280",
+   "lat": 47.6473307,
+   "lng": 9.1762359,
+   "rhythm_de": "Jeden ersten Samstag im Monat, März bis November (ausser August)",
+   "rhythm_en": "First Saturday of the month, March to November (not August)",
+   "season_months": [
+    3,
+    11
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": "runs",
+   "entry_fee": null,
+   "website": "https://www.flohmarkt-dreispitz.ch/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-03",
+     "start": "06:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-07",
+     "start": "06:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Our old text said \"bis zu 100 Ausstellende\" and \"ten minutes from the station\"; neither is on the organiser's pages, so both are left out."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.flohmarkt-dreispitz.ch/termine",
+    "quote": "März bis und mit November (August Sommerpause), immer am ersten Samstag im Monat, findet unser Flomi bei jeder Witterung statt."
+   },
+   {
+    "url": "https://www.flohmarkt-dreispitz.ch/",
+    "quote": "unter den Platanen im Park · Dreispitzpark liegt zwischen Hauptstrasse/Pestalozzistrasse/Parkstrasse · direkt neben dem Dreispitzpark gibt es einen grossen Parkplatz (Bärenplatz) · Alternativ erreichen Sie uns auch bequem mit öffentlichen Verkehrsmitteln."
+   },
+   {
+    "url": "https://www.flohmarkt-dreispitz.ch/infos",
+    "quote": "Verkauf von Neuwaren, Lebensmittel, Waffen, … sind verboten."
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-flugplatz-buttwil",
+  "ours": {
+   "name": "Flohmarkt Flugplatz Buttwil",
+   "status": "active",
+   "town": "Buttwil",
+   "venue": "Flugplatz Buttwil, beim Restaurant The Hangar",
+   "address": "Flugplatzstrasse, 5632",
+   "lat": 47.2648215,
+   "lng": 8.3019581,
+   "rhythm_de": "Jeden 3. Sonntag im Monat, März bis Oktober",
+   "rhythm_en": "3rd Sunday of the month, March to October",
+   "season_months": [
+    3,
+    10
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": null,
+   "website": "https://www.hangar-buttwil.ch/event/flohmarkt-2026/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-09-20",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-10-18",
+     "start": "09:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "The event page shows a range \"20.09.2025 — 19.10.2026\" and puts the rhythm and dates into two flyer images I could not read. So \"third Sunday of the month, March to October\" and our date 18.10.2026 are NOT confirmed by text (19.10.2026 is a Monday - probably a typo on their page).",
+   "Not on the organiser's page, so left out: \"Es verkaufen Privatleute\" and \"ten minutes by car from Muri\"."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://www.hangar-buttwil.ch/",
+    "quote": "Am Flugplatz in Buttwil / AG, bietet Familien Aviatikfans und allen welche die schöne Gegend geniessen einen tollen Platz. · Restaurant - Bar - Flight Lounge · open Sunday (opening hours listed)"
+   },
+   {
+    "url": "https://www.hangar-buttwil.ch/event/flohmarkt-2026/",
+    "quote": "Flohmarkt 2026 · The Hangar · Airport · 5632 Buttwil (rhythm and dates are only on two flyer images, which I could not read)"
+   }
+  ],
+  "in_keep_ours": false
+ },
+ {
+  "slug": "flohmarkt-gallusplatz-stgallen",
+  "ours": {
+   "name": "Flohmarkt Gallusplatz",
+   "status": "active",
+   "town": "St. Gallen",
+   "venue": "Gallusplatz",
+   "address": "Gallusplatz, 9000 St. Gallen, 9000",
+   "lat": 47.4227,
+   "lng": 9.3756,
+   "rhythm_de": "Jeden ersten Samstag von April bis November",
+   "rhythm_en": "Every first Saturday, April to November",
+   "season_months": [
+    4,
+    11
+   ],
+   "stall_count": null,
+   "setting": "outdoor",
+   "seller_mix": null,
+   "rain_policy": null,
+   "entry_fee": "0.00",
+   "website": "https://qvgallusplatz.ch/allgemeine-informationen/",
+   "getting_there": null,
+   "dates": [
+    {
+     "date": "2026-10-03",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2026-11-07",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-04-03",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-05-01",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-06-05",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-07-03",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-08-07",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-09-04",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-10-02",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    },
+    {
+     "date": "2027-11-06",
+     "start": "07:00:00",
+     "end": "16:00:00",
+     "status": "confirmed",
+     "origin": "import"
+    }
+   ]
+  },
+  "claims_to_check": [
+   "Left out because no organiser page confirms them: \"rund 80 Stände\", \"Antiquitäten, Raritäten und Vintage-Mode\", \"Fachwerkhäuser\" (our current text and the old text). Two bodies list the market (Quartierverein Gallusplatz and Klosterviertel-Gesellschaft), so I did not name an organiser."
+  ],
+  "pages_the_writer_read": [
+   {
+    "url": "https://st.gallen-bodensee.ch/de/map/poi/flohmarkt-gallusplatz-935884b8-a078-46a5-a3ad-ab5515a66284.html",
+    "quote": "Von April bis November schmücken immer am ersten Samstag im Monat die Verkaufsstände des Flohmarkts den Gallusplatz. Hier wird allerhand feilgeboten. Aber auch die Bänke rund um die Linde sowie der Gallusbrunnen laden zum Verweilen und Geniessen ein."
+   },
+   {
+    "url": "https://qvgallusplatz.ch/allgemeine-informationen/",
+    "quote": "Flohmarkt und Christchindlimarkt am Gallusplatz · Flohmarkt: jeden ersten Samstag im Monat, April bis November · Christchindlimarkt im Advent"
+   },
+   {
+    "url": "https://klosterviertel.ch/veranstaltungen-und-maerkte/",
+    "quote": "Flohmarkt November … 07.11.2026 … Gallusplatz"
+   }
+  ],
+  "in_keep_ours": false
+ }
+]
