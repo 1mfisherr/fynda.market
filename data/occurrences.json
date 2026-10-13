@@ -595,6 +595,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "coffre-ouvert-oron",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "coffre-ouvert-villeneuve",
     "date": "2026-10-31",
     "status": "confirmed"
@@ -3410,6 +3415,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+    "date": "2027-02-10",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2026-10-17",
     "status": "confirmed"
@@ -3687,6 +3697,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2027-02-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-mercredi",
+    "date": "2027-02-10",
     "status": "confirmed"
   },
   {
@@ -4832,6 +4847,16 @@
   {
     "marketSlug": "troedelmarkt-marheinekeplatz-berlin",
     "date": "2027-01-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-koeln-godorf",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-koeln-godorf",
+    "date": "2026-12-06",
     "status": "confirmed"
   },
   {
