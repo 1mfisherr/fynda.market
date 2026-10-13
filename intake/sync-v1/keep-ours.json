@@ -409,5 +409,61 @@
     "url": "https://www.associationcalabash.ch/reglement/",
     "quote": "le premier dimanche de chaque mois, durant toute l’année",
     "decided": "2026-10-09"
+  },
+  {
+    "slug": "alpin-flohmi-bulle",
+    "kind": "hours",
+    "dates": [
+      "2026-11-24"
+    ],
+    "reason": "The organiser gives 18:00 to 21:00 for Bulle; v1 has 21:30.",
+    "url": "https://mountainwilderness.ch/fr/themen/marche-aux-puces-alpin/",
+    "quote": "Mardi 24 novembre 2026, de 18h00 à 21h00",
+    "decided": "2026-10-13"
+  },
+  {
+    "slug": "enter-flohmarkt-derendingen",
+    "kind": "hours",
+    "dates": [
+      "2026-12-12"
+    ],
+    "reason": "The December market ends at 16:00, not 17:00.",
+    "url": "https://www.enter.ch/de/events/enter-flohmarkt-dezember/",
+    "quote": "10.00 – 16.00 Uhr",
+    "decided": "2026-10-13"
+  },
+  {
+    "slug": "flughafen-flohmarkt-kloten-zuerich",
+    "kind": "hours",
+    "dates": [
+      "2027-05-22"
+    ],
+    "reason": "Open to visitors 07:00 to 16:00 per the organiser.",
+    "url": "https://flughafen-flohmarkt.ch/besucher/",
+    "quote": "Der Flohmarkt für Besucher ist zwischen 07:00 und 16:00 Uhr geöffnet.",
+    "decided": "2026-10-13"
+  },
+  {
+    "slug": "coffre-ouvert-oron",
+    "kind": "remove",
+    "dates": [
+      "2026-11-08"
+    ],
+    "reason": "On the organiser page as the last market of 2026; v1 does not have it.",
+    "url": "https://coffre-ouvert-arc-en-ciel-oron-la-ville.mozellosite.com/",
+    "quote": "Dimanche 8 Novembre Oron-la-Ville dés 6h.30 à 17h.00",
+    "decided": "2026-10-13"
+  },
+  {
+    "slug": "hallen-flohmarkt-flumserei",
+    "kind": "remove",
+    "dates": [
+      "2027-04-03",
+      "2027-09-25"
+    ],
+    "reason": "Both 2027 dates are on the organiser page; v1 does not have them.",
+    "url": "https://www.flumserei.ch/flohmarkt",
+    "quote": "Samstag, 3. April 2027, 8 – 16 Uhr / Samstag, 25. September 2027, 8 – 16 Uhr",
+    "decided": "2026-10-13"
   }
 ]

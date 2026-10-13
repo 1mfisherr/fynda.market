@@ -1,0 +1,639 @@
+[
+ {
+  "slug": "fundus-flohmarkt-arena-root",
+  "claim": "Rhythm: the organiser's home page says 'Einmal im Monat am Sonntag von 10-15 Uhr öffnen wir die Tore zum fundus'; our rhythm says 'Mehrmals jährlich, ausgewählte Sonntage'. Its event list shows only October and November 2026, and listings on myfarm.ch show far fewer than twelve a year. The text names no rhythm.",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Mehrmals jährlich, ausgewählte Sonntage / Several times a year, selected Sundays",
+  "organiser_says": "The organiser's home page says the market is open once a month, on a Sunday, 10:00 to 15:00.",
+  "quote": "Einmal im Monat am Sonntag von 10-15 Uhr öffnen wir die Tore zum fundus.",
+  "url": "https://www.fundusflohmarkt.ch",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Einmal im Monat, sonntags",
+    "en": "Once a month, on Sundays"
+   }
+  },
+  "note": "Low impact: ours is vaguer, not wrong. The calendar so far lists only 25 Oct and 29 Nov 2026, and third-party listings show gaps (29 Jun 2025, 30 Nov 2025, 26 Apr 2026), so keeping our vaguer line is the safe fallback."
+ },
+ {
+  "slug": "fundus-flohmarkt-arena-root",
+  "claim": "Our date 20 December 2026 is not on the organiser's page (it lists 25 October and 29 November only).",
+  "verdict": "unclear",
+  "field": "date_remove",
+  "ours": "2026-12-20, 10:00-15:00, status confirmed (origin import)",
+  "organiser_says": "The home page and the registration page list only Sunday 25 Oct 2026 and Sunday 29 Nov 2026 (both 10:00-15:00). No December date and no 2027 date is published.",
+  "quote": "So., 29. Nov. fundus Flohmarkt November 2026 / ARENA Root ... 29. Nov. 2026, 10:00 – 15:00",
+  "url": "https://www.fundusflohmarkt.ch/anmeldung-tischreservation",
+  "source_type": "organiser",
+  "note": "Not on the organiser's page, so 'confirmed' is unsupported, but the page shows only the next two events and does not say December is cancelled. Suggest downgrading 20 Dec to unverified, not removing. 20 Dec 2026 is a Sunday."
+ },
+ {
+  "slug": "fundus-flohmarkt-arena-root",
+  "claim": "Venue address: luzern.com lists both 'Schulstrasse 18' and 'Turnhallen Widmermatte, Schulstrasse 16'; the organiser gives only 'ARENA Root, Schulstrasse 16'.",
+  "verdict": "not_confirmed",
+  "field": "address",
+  "ours": "ARENA Root, Schulstrasse 16, 6037 Root",
+  "organiser_says": "The organiser gives Schulstrasse 16 on its home, registration and contact pages. 'Schulstrasse 18' appears only on third-party listings (luzern.com, myfarm.ch).",
+  "quote": "ARENA Root, Schulstrasse 16, 6037 Root, Schweiz",
+  "url": "https://www.fundusflohmarkt.ch",
+  "source_type": "organiser",
+  "note": "Ours matches the organiser. Also confirmed on the organiser's site: indoor ('Indoorflohmarkt ... bei jedem Wetter'), 10:00-15:00, over 50 stalls, free parking."
+ },
+ {
+  "slug": "grenzueberschreitender-flohmarkt-kreuzlingen-konstanz",
+  "claim": "Length: the organiser's site calls it a '25-Stunden-Flohmarkt' (sales from Saturday 14:00 to Sunday 15:00); our rhythm line says 24 hours. The Konstanz tourist office calls it the '24h-Flohmarkt'.",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Jährlich, ein Wochenende im Juni, 24 Stunden / Once a year, a weekend in June, 24 hours",
+  "organiser_says": "The organiser calls it a 25-hour flea market: start Saturday 13 June 2026 at 14:00, end Sunday 14 June 2026 at 15:00 (14:00 to 15:00 next day is 25 hours).",
+  "quote": "25 Stunden, 2 Länder, 1 Flohmarkt",
+  "url": "https://www.flohmarkt-kreuzlingen.ch/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Jährlich, ein Wochenende im Juni, 25 Stunden",
+    "en": "Once a year, a weekend in June, 25 hours"
+   }
+  },
+  "note": "Also '25-Stunden-Flohmarktes' on /informationen. The '24h' wording is the Konstanz tourist office (third party). See the NEW line on whether 'Jährlich' is stated at all."
+ },
+ {
+  "slug": "grenzueberschreitender-flohmarkt-kreuzlingen-konstanz",
+  "claim": "The organiser's home page says the market 'kehrt 2026 zurück' and is held 'erstmals an einem neuen Standort' (Klein Venedig, Konstanz, and Seestrasse, Kreuzlingen), so the stall count (about 1000) from earlier years may no longer hold; I left the number out. No date after 13/14 June 2026 is published yet (our data has none, which matches).",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty; no dates held",
+  "organiser_says": "The organiser's pages give no stall count and no date after 13/14 June 2026; the market 'returns in 2026' at a new location.",
+  "quote": "Der legendäre grenzüberschreitende Flohmarkt Kreuzlingen (CH) / Konstanz (D) kehrt 2026 zurück – in völlig neuer Form!",
+  "url": "https://www.flohmarkt-kreuzlingen.ch/",
+  "source_type": "organiser",
+  "note": "Nothing to fix: ours holds no count and no date, which matches the page. Leave the 1000 stalls out."
+ },
+ {
+  "slug": "grenzueberschreitender-flohmarkt-kreuzlingen-konstanz",
+  "claim": "NEW: 'Jährlich' (once a year) is not stated by the organiser, and its only dates have passed",
+  "verdict": "unclear",
+  "field": "rhythm",
+  "ours": "Jährlich, ein Wochenende im Juni / Once a year, a weekend in June; no upcoming date",
+  "organiser_says": "The page speaks only of the 2026 edition (13-14 June 2026, now past), a return 'in a completely new form' after a break, with no word on later years.",
+  "quote": "Im kommenden Jahr findet der Flohmarkt endlich wieder statt – erstmals an einem neuen Standort",
+  "url": "https://www.flohmarkt-kreuzlingen.ch/",
+  "source_type": "organiser",
+  "note": "The page was written in 2025 ('im kommenden Jahr') and not updated after the June 2026 edition. Keep 'jährlich' only if the caller accepts it as inferred; the organiser promises nothing for 2027."
+ },
+ {
+  "slug": "grosser-flohmarkt-thun",
+  "claim": "Season: our data says June to November. The organiser's 'Aussteller Infos' page lists 2026 dates from 29 March (29 March, 26 April or 3 May, 31 May, 28 June), and the main page lists the rest (26 July, 30 August, 27 September, 1 November). So the season is spring to autumn, not June to November.",
+  "verdict": "confirmed",
+  "field": "season",
+  "ours": "season June-November [6, 11]; rhythm 'Mehrere Sonntage pro Jahr, Juni bis November'",
+  "organiser_says": "The organiser's exhibitor page lists 2026 dates from 29 March, then 26 April or 3 May, 31 May and 28 June; the main page lists 28 June, 26 July, 30 August, 27 September and 1 November. So the 2026 season ran from March to November.",
+  "quote": "29. März 2026 / 26. April oder 3. Mai 2026 (definitives Datum online, wenn der Spielplan des FC Thun bekannt ist) / 31. Mai 2026 / 28. Juni 2026",
+  "url": "https://christophoesch.ch/flohmarkt-thun-aussteller-infos.html",
+  "source_type": "organiser",
+  "fix": {
+   "field": "season",
+   "value": [
+    3,
+    11
+   ]
+  },
+  "fix_also": [
+   {
+    "field": "rhythm",
+    "value": {
+     "de": "Mehrere Sonntage pro Jahr, März bis November",
+     "en": "Several Sundays a year, March to November"
+    }
+   }
+  ],
+  "note": "Based on the 2026 programme only (all listed dates are Sundays, checked); 2027 is not published. Our two dates, 27 Sep and 1 Nov 2026 (10:00-15:00), match the organiser; 'findet im Freien und bei jeder Witterung statt' matches setting outdoor / rain 'runs'."
+ },
+ {
+  "slug": "grosser-flohmarkt-thun",
+  "claim": "The old/our text says '80 to 120 exhibitors'. The organiser's pages give no count; only a third-party listing (vide-greniers.org, run by 'Brocante Oesch') says 120 maximum. I wrote 'up to 120'.",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty",
+  "organiser_says": "Neither organiser page gives a number of exhibitors or stalls; they give pitch sizes (5 x 5 m CHF 65, 7.5 x 5 m CHF 85). 'Up to 120' comes only from a third-party listing (vide-greniers.org).",
+  "quote": "Der Flohmarkt findet im Freien und bei jeder Witterung statt.",
+  "url": "https://christophoesch.ch/flohmarkt-thun-aussteller-infos.html",
+  "source_type": "organiser",
+  "note": "Nothing to fix in our data (count empty). Do not state '80 to 120' or 'up to 120' as the organiser's figure."
+ },
+ {
+  "slug": "hallen-flohmarkt-flumserei",
+  "claim": "The organiser's flea-market page lists three dates: Saturday 5 December 2026, Saturday 3 April 2027 and Saturday 25 September 2027. We hold only the December date; the April and September 2027 dates are missing from our data.",
+  "verdict": "confirmed",
+  "field": "date_add",
+  "ours": "dates held: 2026-09-26 (past) and 2026-12-05 (08:00-16:00); nothing in 2027",
+  "organiser_says": "The organiser's flea-market page lists three Saturdays, 8:00-16:00: 5 Dec 2026, 3 Apr 2027 and 25 Sep 2027. Its hall plan for 3 April 2027 was updated 12.10.2026.",
+  "quote": "Samstag, 5. Dezember 2026, 8 – 16 Uhr / Samstag, 3. April 2027, 8 – 16 Uhr / Samstag, 25. September 2027, 8 – 16 Uhr",
+  "url": "https://www.flumserei.ch/flohmarkt",
+  "source_type": "organiser",
+  "fix": {
+   "field": "date_add",
+   "value": [
+    {
+     "date": "2027-04-03",
+     "start": "08:00",
+     "end": "16:00"
+    },
+    {
+     "date": "2027-09-25",
+     "start": "08:00",
+     "end": "16:00"
+    }
+   ]
+  },
+  "note": "Both new dates are Saturdays (checked). 5 Dec 2026 already matches ours."
+ },
+ {
+  "slug": "hallen-flohmarkt-flumserei",
+  "claim": "The organiser says 'während den Wintermonaten', but two of its three dates are in April and September, so 'winter' alone is wrong. I wrote 'three times a year' (organiser's three listed dates) and left winter out.",
+  "verdict": "not_confirmed",
+  "field": "rhythm",
+  "ours": "Dreimal jährlich, samstags, in der geheizten Halle / Three times a year, on Saturdays, in the heated hall",
+  "organiser_says": "The organiser says the market is held 'in the winter months' in the heated hall, yet two of its three listed dates are 3 April and 25 September 2027.",
+  "quote": "Der Flohmarkt findet während den Wintermonaten in der geheizten Halle der Flumserei auf einer Fläche von über 1'600 m2 statt.",
+  "url": "https://www.flumserei.ch/flohmarkt",
+  "source_type": "organiser",
+  "note": "Our line does not say 'winter', so nothing to fix. 'Dreimal jährlich' is our inference from the dates (Sep 2026, Dec 2026, Apr 2027), not an organiser statement."
+ },
+ {
+  "slug": "hallen-flohmarkt-flumserei",
+  "claim": "The 'ten minutes on foot from Flums station' in our text is not on the organiser's pages (they only say the station and a bus stop are close); I left it out.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "getting_there empty (no 'ten minutes on foot' held in the data)",
+  "organiser_says": "The organiser says only that Flums has its own station and a bus stop is very close.",
+  "quote": "Flums besitzt einen eigenen Bahnhof, eine Bushaltestelle befindet sich ganz in der Nähe der Flumserei.",
+  "url": "https://flumserei.ch/die-flumserei/standort/",
+  "source_type": "organiser",
+  "note": "Keep the walking time out of the text; the organiser gives none."
+ },
+ {
+  "slug": "herbst-flohmarkt-richterswil",
+  "claim": "None on date or place (25 Sep 2027 matches; the last Saturday of September). Not found on the organiser's pages: 'five minutes on foot from Richterswil station' from our current text, so I left it out.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "getting_there empty; date 2027-09-25 08:00-14:30 at Wisshusplatz",
+  "organiser_says": "The municipality's page announces the 2027 edition only: Saturday 25 September 2027, 08:00-14:30, Wisshusplatz. No walking time from the station is given.",
+  "quote": "Der Herbst-Flohmarkt findet am Samstag, 25. September 2027 von 08.00 bis 14.30 Uhr auf dem Wisshusplatz in Richterswil statt.",
+  "url": "https://www.richterswil.ch/online-schalter/91370/detail",
+  "source_type": "commune",
+  "note": "Date, time and place match ours. 'Last Saturday of September' is our inference (26 Sep 2026 and 25 Sep 2027 are both last Saturdays); the commune states no rhythm. Keep 'five minutes from the station' out. The download PDF could not be read here."
+ },
+ {
+  "slug": "kinder-flohmi-schloss-arbon",
+  "claim": "The organiser's page does not say whether the market is indoors; our data says indoor (setting) and the name says 'im Schloss', so I wrote 'at the castle' without 'indoors'. The page also says the stalls for the coming edition are fully booked (seller side; visitors are not affected).",
+  "verdict": "not_confirmed",
+  "field": "setting",
+  "ours": "setting indoor; 2026-10-24 10:00-13:00",
+  "organiser_says": "The city's page says the Kinder-Flohmi is 'im Schloss Arbon' on 24 October 2026, 10:00-13:00, free, organised by the city with the Familienverein Arbon; it does not say indoors or outdoors (a 'Platzplan' PDF is linked, which I could not read).",
+  "quote": "Der nächste Kinder-Flohmi findet am 24. Oktober 2026 von 10 bis 13 Uhr statt.",
+  "url": "https://www.arbon.ch/freizeit/tourismus-und-mobilitaet/veranstaltungen/maerkte.html/198",
+  "source_type": "commune",
+  "note": "Nothing contradicts ours; the page just does not say. Date, time and free entry match. Stalls for this edition are fully booked (sellers only). 24 Oct 2026 is a Saturday."
+ },
+ {
+  "slug": "kinderflohmarkt-chur",
+  "claim": "Our current text says the market runs 10.30 to 14.30; the 2025 tourist listing says 10:30 to 15:00. I wrote no times.",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "2026-09-19, 10:30-14:30 (now past)",
+  "organiser_says": "The organiser's pages give no opening hours; they say only that stall places are handed out from 9:30. The 10:30-15:00 figure is a 2025 listing on graubuenden.ch (third party).",
+  "quote": "Die Plätze werden ab 9.30 Uhr von der JUAR zugeteilt.",
+  "url": "https://www.jugendarbeitchur.ch/regeln/",
+  "source_type": "commune",
+  "note": "Neither 14:30 nor 15:00 can be confirmed from the organiser. The 19 Sep 2026 edition is over and no 2027 date is published (the agenda lists only October 2026 events)."
+ },
+ {
+  "slug": "kinderflohmarkt-chur",
+  "claim": "The organiser's own page names neither venue nor date (it points to a 'Kalender'); venue, stall count and rain rule come from press and the Graubünden tourist listing. No 2026 or 2027 date found on any page (our data has none).",
+  "verdict": "not_confirmed",
+  "field": "venue_name",
+  "ours": "Alexanderplatz – Bahnhofstrasse; rain 'decided on the day'",
+  "organiser_says": "The organiser's rules page does name the place (registration at the info stand on Alexanderplatz), the rain rule, and the 2026 weekend (event information from Friday noon 18 Sep 2026, i.e. Saturday 19 Sep). It gives no stall count ('Platzzahl ist beschränkt').",
+  "quote": "Bitte vorgängig am «Infostand» auf dem Alexanderplatz anmelden. / Der Flohmarkt wird nur bei starkem Regen abgesagt.",
+  "url": "https://www.jugendarbeitchur.ch/regeln/",
+  "source_type": "commune",
+  "note": "The writer's 'neither venue nor date' holds for the main page only. 'Bahnhofstrasse' and '60 stalls' come from the press and the tourist listing, not the organiser. Rain: organiser says cancelled only in heavy rain."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-schindlergut",
+  "claim": "The GZ's Kinderflohmarkt page did not load for me (404); the facts come from a search-engine summary of it: toys, dolls, cars, games, books, clothes; no fee, no sign-up needed; setting up from 13:30; only in fine weather; last listed edition Wednesday 2 September 2026, 14:00 to 17:00. Please check the page by hand. It is an afternoon event on a weekday, not a weekend one.",
+  "verdict": "unclear",
+  "field": "other",
+  "ours": "Occasionally, outdoors and in good weather only; no dates held; setting empty",
+  "organiser_says": "The GZ's Kinderflohmarkt page still returns 404. The GZ Schindlergut programme (listing from 13 Oct 2026) and the GZ site search for 'kinderflohmarkt' show no such event.",
+  "quote": "Search Results for kinderflohmarkt (no hits for GZ Schindlergut)",
+  "url": "https://gz-zh.ch/gz-schindlergut/programm/",
+  "source_type": "organiser",
+  "note": "Nothing on the organiser's site can be read, so the facts (toys, free, 13:30 set-up, fine weather only, Wednesday 14:00-17:00) stay third-party/search-summary only. The listed 2 Sep 2026 edition has passed. Suggest keeping the facts out or marking the market unverified."
+ },
+ {
+  "slug": "kinderflohmarkt-gz-schindlergut",
+  "claim": "The GZ home page does not mention the market at all.",
+  "verdict": "unclear",
+  "field": "other",
+  "ours": "Kinderflohmarkt GZ Schindlergut, active, no dates",
+  "organiser_says": "Checked: the GZ Schindlergut home page does not mention a flea market, and its programme page does not list one either. The market may no longer run.",
+  "quote": "eine kleine Oase für Jung und Alt von nah und fern - mitten im Schigu Park.",
+  "url": "https://gz-zh.ch/gz-schindlergut/",
+  "source_type": "organiser",
+  "note": "The writer's observation is correct, but it is silence, not proof that it ended. Ask the GZ before the page claims any date."
+ },
+ {
+  "slug": "kinderflohmarkt-winterthur-altstadt",
+  "claim": "Our kept German said children and young people sell 'Kleidung'. The organiser says clothes and food are not wanted and that sellers are children and families; clothing and 'Jugendliche' are left out.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Kept German text: children and young people sell, including 'Kleidung'; seller_mix private",
+  "organiser_says": "The organiser's terms: sold by children and families; only toys are sold, clothing and food are not wanted. Items listed: toys, books, board games, dolls, craft material.",
+  "quote": "Nur Verkauf von Spielwaren (Bekleidung und Esswaren sind nicht erwünscht)",
+  "url": "https://junge-altstadt.ch/event/kinderflohmi/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "Description: sellers are children and families; toys, books, board games, dolls and craft material; no clothing or food. Drop 'Kleidung' and 'Jugendliche'."
+  },
+  "note": "Also on the page: each family gets a 2 x 2 m pitch; blankets, tables, chairs and parasols allowed, no tents."
+ },
+ {
+  "slug": "kinderflohmarkt-winterthur-altstadt",
+  "claim": "The organiser's listing is for 4 July 2026 (9:00-13:00); its sellers' places were full (waiting list). No future date is published yet, so none is shown. The page does not name an organiser for this event; the text only says it is in the Junge Altstadt's programme.",
+  "verdict": "not_confirmed",
+  "field": "date_add",
+  "ours": "no dates held; rhythm 'Jährlich', season July",
+  "organiser_says": "The organiser lists only Saturday 4 July 2026, 9:00-13:00 (sellers' places full, waiting list) and the events overview shows the Kinderflohmarkt in July; no later date is published. The page says it is in the Junge Altstadt's programme but does not name the organiser for this event.",
+  "quote": "Der Kinderflohmarkt findet wie gewohnt am Samstag, 4. Juli 2026 von 9 bis 13 Uhr statt.",
+  "url": "https://junge-altstadt.ch/event/kinderflohmi/",
+  "source_type": "organiser",
+  "note": "Matches ours (no future date). Do not add 4 July 2026: it has passed. The events overview says the page lists events 'die von der Jungen Altstadt organisiert werden' plus extra events of the Gassenvereinigungen, so the organiser is probably but not explicitly Junge Altstadt."
+ },
+ {
+  "slug": "kinderflohmarkt-winterthur-altstadt",
+  "claim": "NEW: venue is Steinberggasse and Metzggasse, not Steinberggasse alone",
+  "verdict": "confirmed",
+  "field": "venue_name",
+  "ours": "Steinberggasse, Altstadt Winterthur",
+  "organiser_says": "The organiser says the market takes over both Steinberggasse and Metzggasse; its events overview calls it 'Kinderflohmarkt Steinberggasse-Metzggasse'.",
+  "quote": "Von 9 bis 13 Uhr verwandeln sich die Steinberggasse und Metzggasse in ein buntes Paradies für kleine Verkäufer und grosse Schnäppchenjäger.",
+  "url": "https://junge-altstadt.ch/event/kinderflohmi/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "venue_name",
+   "value": "Steinberggasse und Metzggasse, Altstadt Winterthur"
+  },
+  "note": "Minor; the address and coordinates on Steinberggasse can stay."
+ },
+ {
+  "slug": "kofmehl-flohmi-solothurn",
+  "claim": "Rhythm: we say 'once a year on a Saturday in September'. The organiser's pages show the 30th edition on 7 Sep 2024, the 31st on 3 May 2025 and a September 2026 edition (12 Sep 2026, announced on their home page). So it is not fixed to September every year, and May 2025 was one.",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Jährlich, ein Samstag im September / Once a year, a Saturday in September; season [9, 9]",
+  "organiser_says": "The organiser's event pages show Saturday editions in May and September: 6 May 2023 (29th), 7 Sep 2024 (30th), 3 May 2025 (31st), 13 Sep 2025 (32nd), 9 May 2026 (33rd), the 2025 and 2026 pages say 9:00-15:00, free. So it is not once a year in September.",
+  "quote": "Samstag.09.05.2026 - Unter der Leporellobrücke ... Zum 33. Mal steht der mittlerweile über die Regionalgrenzen hinaus bekannte Kofmehl-Flohmi unter der Leporello-Brücke direkt neben dem Kofmehl auf dem Programm!",
+  "url": "https://kofmehl.net/programm/flohmi-25/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Ein- bis zweimal jährlich, samstags, zuletzt im Mai und im September",
+    "en": "Once or twice a year, on a Saturday, most recently in May and September"
+   }
+  },
+  "fix_also": [
+   {
+    "field": "season",
+    "value": [
+     5,
+     9
+    ]
+   }
+  ],
+  "note": "Earlier years: 18 Jun 2022, 6 May 2023, 7 Sep 2024, so the months vary. I could not find the 12 Sep 2026 edition: kofmehl.net/programm/flohmi-26 returns 404 and the home page no longer mentions it. No next date is published."
+ },
+ {
+  "slug": "kofmehl-flohmi-solothurn",
+  "claim": "'Since 1993' in our current text is not on the organiser's pages (they count the 11th edition in April 2012, the 19th in April 2016, the 30th in 2024, the 31st in 2025), so I used 'more than thirty times'. No next date is published yet.",
+  "verdict": "unclear",
+  "field": "other",
+  "ours": "'Since 1993' in the text",
+  "organiser_says": "The organiser counts editions (11th on 21 April 2012, 33rd on 9 May 2026) but names no start year; 1993 is not on any Kofmehl page I read.",
+  "quote": "Der 11. Kofmehl-Flohmarkt findet am Samstag, 21. April 2012 unter der Leporello-Brücke statt",
+  "url": "https://kofmehl.net/11-kofmehl-flohmi/",
+  "source_type": "organiser",
+  "note": "'Since 1993' is unsupported; 'more than thirty times' is supported ('Zum 33. Mal'). Leave 1993 out."
+ },
+ {
+  "slug": "ladies-flohmarkt-fundus-root",
+  "claim": "The Ladies-Flohmarkt is NOT on the organiser's website (fundusflohmarkt.ch home, info-besucher, über-uns, event pages): none of 'Ladies', 'Frauen', 'Abend', 'Ticket' appears. Web searches (luzern.com, myfarm.ch) find only the regular fundus market (daytime, over 50 stalls) and no Ladies edition in Root. I could not confirm that it exists, that it is women-only, that it is in the evening, that it has music, or that tickets are needed.",
+  "verdict": "unclear",
+  "field": "other",
+  "ours": "Ladies-Flohmarkt by fundus Root; one date 2026-09-27 10:00-15:00 (origin manual)",
+  "organiser_says": "The organiser's site (home, registration, info for visitors, about us, contact) mentions no Ladies edition; none of 'Ladies', 'Frauen', 'Abend', 'Ticket' appears. It lists only its regular indoor flea market, Sundays 10:00-15:00.",
+  "quote": "Der fundus Flohmarkt ist ein Indoorflohmarkt und findet somit bei jedem Wetter statt.",
+  "url": "https://www.fundusflohmarkt.ch/anmeldung-tischreservation",
+  "source_type": "organiser",
+  "note": "Silence, not a denial. Our one Ladies date (27 Sep 2026, 10:00-15:00) has already passed and falls on the same day, hours and venue as the regular fundus date we hold for 27 Sep. A web search finds no Ladies edition in Root either. Suggest hiding the page until the organiser confirms."
+ },
+ {
+  "slug": "ladies-flohmarkt-fundus-root",
+  "claim": "Our current text and rhythm line ('Einmal im Monat, sonntags') both claim things the organiser does not publish for this event: monthly rhythm (our text itself says irregular), women only, evening, music, tickets.",
+  "verdict": "unclear",
+  "field": "rhythm",
+  "ours": "Einmal im Monat, sonntags. / Once a month, on Sundays.",
+  "organiser_says": "'Once a month on a Sunday' is the organiser's wording for the regular fundus market, not for a Ladies edition; nothing is published about a women-only, evening, music or ticketed event.",
+  "quote": "Einmal im Monat am Sonntag von 10-15 Uhr öffnen wir die Tore zum fundus.",
+  "url": "https://www.fundusflohmarkt.ch",
+  "source_type": "organiser",
+  "note": "Our rhythm line for the Ladies page borrows the regular market's. If the page stays, use no rhythm and none of the unproven details."
+ },
+ {
+  "slug": "letziplunder-flohmarkt-basel",
+  "claim": "Our current text says the market 'is by the Basler Papiermühle, the Swiss Museum for Paper, Writing and Print'. The organiser's page only says 'der Platz hinter der Papiermühle' and does not mention the museum; fine as is. Dates for 2027 are not yet published (our data has none, which matches). Our months 'June and September' are not stated by the organiser; the Zonta Club Basel page mentions an autumn edition (September).",
+  "verdict": "unclear",
+  "field": "rhythm",
+  "ours": "Zweimal jährlich, Juni und September / Twice a year, June and September",
+  "organiser_says": "The organiser says twice a year, from 8:30, on the square behind the Papiermühle; it names no months and says the 2027 dates will be published soon. Our 19 Sep 2026 date (Saturday, 08:30-16:00) fits the 8:30-16:00 hours.",
+  "quote": "Zweimal im Jahr findet der besondere Flohmarkt im St. Alban-Tal auf dem Letziplatz statt.",
+  "url": "https://www.letziplunder.com/der-flohmi/",
+  "source_type": "organiser",
+  "note": "'Twice a year' is confirmed, the months are not. If they cannot be confirmed, 'Zweimal jährlich' alone is safe. 'Hinter der Papiermühle' is on the page; the museum is not."
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "claim": "Our German (kept) says 'Damenmode ... ganz auf das ausgerichtet, was du wirklich trägst', which is itself a translation of the old English text. The organiser's listing says: good-condition secondhand clothing for women, men and children, accessories, jewellery, shoes, deco and home accessories, 'fast 70 Stände', a bistro with drinks and snacks, entry free. Consider rewriting the German too.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Kept German: 'Damenmode ... ganz auf das ausgerichtet, was du wirklich trägst', 'kuratiert', 'Designerlabels'",
+  "organiser_says": "The organiser's Dietikon page says sellers may offer things for women, children and men, plus deco and home accessories; its home page lists second-hand clothing, accessories, jewellery and shoes from designer labels, vintage, known brands or no-name pieces. So it is not women's fashion only.",
+  "quote": "Verkauft werden dürfen Sachen für Frauen, Kinder, Männer und Deko/ Homeaccessoires",
+  "url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-dietikon-mädelsflohmarkt-xxl/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "Description: second-hand clothes and accessories for women, men and children, plus deco and home accessories; designer, vintage, brand-name and no-name pieces. Drop 'Damenmode', 'kuratiert' and the 'was du wirklich trägst' line."
+  },
+  "note": "The organiser's home page says 'ausschliesslich ... Ware für Frauen', but that is its Zürich market; the Dietikon page widens it. Dietikon is in the Stadthalle, Untergeschoss."
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "claim": "Our kept German ('Damenmode ... ganz auf das ausgerichtet, was du wirklich trägst', 'kuratiert', 'Designerlabels') was a translation of the old English text. The organiser's listing says: secondhand clothing for women, men and children plus deco, almost 70 stalls, bistro, and mentions designer, vintage and no-name pieces. Rewritten from that; 'kuratiert' and the fashion-event framing are gone.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Same kept German text (fashion-event framing, 'kuratiert')",
+  "organiser_says": "Women/men/children/deco and designer, vintage, brand and no-name pieces are on the organiser's pages. 'Almost 70 stalls' and the bistro appear only on myfarm.ch (third party), not on the organiser's pages.",
+  "quote": "Indoor-Shopping in einmaliger Atmosphäre: Secondhand Bekleidung, Accessoires, Schmuck und Schuhe ob Designer Label, Vintage, bekannte Brands oder no name Stücke.",
+  "url": "https://www.maedelsflohmarkt.ch",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "Same rewrite as the previous claim; do not use 'fast 70 Stände' or the bistro (third-party only). The fashion framing is the organiser's own ('Fashion-Flohmarkt', 'Fashionistas'), so it need not be removed; only 'kuratiert' lacks support."
+  },
+  "note": "The organiser also stresses quality: 'Billigware / Ramsch' not wanted."
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "claim": "The date we show (8 Nov 2026, 12:00-17:00) matches the organiser's listing on myfarm.ch.",
+  "verdict": "not_confirmed",
+  "field": "date_time",
+  "ours": "2026-11-08, 12:00-17:00",
+  "organiser_says": "The organiser's Dietikon page gives Sunday 8 November 2026, visitors 12:00-17:00, Stadthalle Dietikon, Fondlistrasse 15; its price table lists 8 March and 8 November 2026, which supports 'March and November'.",
+  "quote": "ÖFFNUNGSZEITEN FÜR BESUCHER : 12 - 17 UHR",
+  "url": "https://www.maedelsflohmarkt.ch/anmeldung-2026-dietikon-mädelsflohmarkt-xxl/",
+  "source_type": "organiser",
+  "note": "Matches ours (8 Nov 2026 is a Sunday). Stalls are sold out."
+ },
+ {
+  "slug": "maedelsflohmarkt-xxl-dietikon",
+  "claim": "NEW: free entry for Dietikon is not stated on the organiser's Dietikon page",
+  "verdict": "unclear",
+  "field": "entry_fee",
+  "ours": "entry_fee 0.00",
+  "organiser_says": "'Eintritt frei' appears on the organiser's home page only next to the Zürich address (Pfingstweidstrasse 101); the Dietikon page does not mention entry. Only myfarm.ch (third party) says free for Dietikon.",
+  "quote": "ADRESSE: Pfingstweidstrasse 101, 8005 Zürich ÖFFNUNGSZEITEN jeweils: 11 bis 16 Uhr EINTRITT FREI !!!",
+  "url": "https://www.maedelsflohmarkt.ch",
+  "source_type": "organiser",
+  "note": "Probably free, but the organiser does not say so for Dietikon."
+ },
+ {
+  "slug": "marche-aux-puces-archipel-sion",
+  "claim": "'March to November, not August' is from our own data; the organiser's page only lists the autumn 2026 dates (6 Sep, 4 Oct, 1 Nov), and nothing there says what the season is. The page also says nothing about food or a bar, and nothing about getting there (the 'ten minutes from the station' in our text is not on it, so I left it out).",
+  "verdict": "unclear",
+  "field": "season",
+  "ours": "season March-November [3, 11]; 'Erster Sonntag im Monat, März bis November (ausser August)'",
+  "organiser_says": "The organiser says only 'every first Sunday of the month', 8:30-13:00, free, run by Sion Puces; its upcoming dates are 6 Sep, 4 Oct and 1 Nov 2026. No season and no August exception is stated, and the page still lists dates already past, so it may be stale.",
+  "quote": "Chaque premier dimanche du mois de 8h30 à 13h00",
+  "url": "https://archipelsion.ch/agenda/marche-aux-puces/",
+  "source_type": "organiser",
+  "note": "Our season and 'not August' are unsupported but not contradicted. A third-party listing (vide-greniers.org) shows a 6 Dec 2026 edition, which would break 'to November'. Safe wording until the organiser says otherwise: 'Jeden ersten Sonntag im Monat'. Our 4 Oct and 1 Nov 2026 dates match (both Sundays)."
+ },
+ {
+  "slug": "marche-aux-puces-coupole-biel",
+  "claim": "The CAJ programme page lists only one flea market, on 29 November 2026 (Grande salle). Our three later dates (10 Jan, 14 Feb, 14 Mar 2027) and the 'about every six weeks from October to March' rhythm are not on that page.",
+  "verdict": "unclear",
+  "field": "date_add",
+  "ours": "dates 2026-10-11, 2026-11-29 (confirmed) and 2027-01-10, 2027-02-14, 2027-03-14 (unverified); rhythm 'about every six weeks, Sundays, October to March'",
+  "organiser_says": "The CAJ programme lists events only up to 6 Dec 2026, and the one flea market on it is Sunday 29 Nov 2026, 11:00-16:00, Grande salle. January to March 2027 is simply not published yet.",
+  "quote": "Marché aux puces ... Start: 11:00 End: 16:00 ... Grande salle",
+  "url": "https://caj.ch/fr/coupole/programme/",
+  "source_type": "organiser",
+  "note": "29 Nov matches ours. The three 2027 dates stay 'unverified' and the 'six weeks' rhythm is not stated by the organiser. This market has dates settled by hand (in_keep_ours), so leave them."
+ },
+ {
+  "slug": "marche-aux-puces-coupole-biel",
+  "claim": "Our current text says 'indoors, so rain doesn't matter'. The organiser also allows outdoor stalls ('À l'extérieur, aucune inscription n'est nécessaire'), so part of the market is outside.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "setting 'both' already; text says 'indoors, so rain doesn't matter'",
+  "organiser_says": "The organiser says sellers can register for stalls inside, and outside no registration is needed, so part of the market is outdoors.",
+  "quote": "Inscription pour l'intérieur. À l'extérieur, aucune inscription n'est nécessaire.",
+  "url": "https://caj.ch/fr-ch/coupole/programme/march-aux-puces-2026-11-29/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "Description: drop 'indoors, so rain doesn't matter'; say there are stalls inside the Grande salle (booked ahead) and outside (no registration). Keep setting 'both'."
+  },
+  "note": "Also: free entry for visitors, no food or drink sales."
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-place-python",
+  "claim": "The city's page lists a second edition each month, on the first Saturday, at the cathedral (it replaces the Place St-Jean, which is under construction). Our entry covers the last-Saturday edition only; if the first-Saturday edition is not on our site, it may be missing.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "Last-Saturday edition only (Place Python); the first-Saturday edition is a separate market on our site",
+  "organiser_says": "The page lists a second edition on the first Saturday of the month at the cathedral. Our live site already has it as its own market, 'marche-aux-puces-fribourg-cathedrale' (every first Saturday, March to November, Sat 7 Nov 2026 as the only upcoming date).",
+  "quote": "Premiers samedis du mois de mars à novembre, le marché a lieu autour de la cathédrale (en remplacement de la place St Jean qui est en travaux)",
+  "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+  "source_type": "third_party",
+  "note": "Not missing. The page is Fribourg Tourisme et Région (third party), not the city; its last-Saturday dates (26 Sep, 31 Oct, 28 Nov 2026) match ours."
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-place-python",
+  "claim": "NEW: the city's own page calls the last-Saturday event a 'Vide-grenier', and its 30-50 exhibitors and hours belong to the first-Saturday flea market",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "'Marché aux puces de Fribourg (Place Python)', stall_count 30, hours 08:00-16:30, website = the tourism page, 'twice a month' in the text",
+  "organiser_says": "The City of Fribourg's markets page: flea market on the first Saturday of the month, March to November, Place du Petit-Saint-Jean, 8:00-16:00, 30 to 50 exhibitors; a separate 'Vide-grenier' on the last Saturday, March to November, Place Georges-Python or Place Jean-Tinguely, with no hours and no stall count.",
+  "quote": "Vide-grenier / De mars à novembre, chaque dernier samedi du mois. / Place Georges-Python ou place Jean-Tinguely (si place Georges-Python occupée)",
+  "url": "https://www.ville-fribourg.ch/marches-fribourg",
+  "source_type": "commune",
+  "fix": {
+   "field": "other",
+   "value": "For the Place Python entry: stall_count empty (30-50 is the first-Saturday flea market); the city gives no hours for the vide-grenier, so 08:00-16:30 comes from the tourism page only; website -> https://www.ville-fribourg.ch/marches-fribourg. Place Jean-Tinguely is probably the same square as 'place de l'Équilibre' (not verified)."
+  },
+  "note": "The city page puts the first-Saturday market at Petit-Saint-Jean, the tourism page at the cathedral because Petit-Saint-Jean is under works; the city page may lag, so do not change the cathedral entry's venue without asking."
+ },
+ {
+  "slug": "marche-aux-puces-fribourg-place-python",
+  "claim": "NEW: all 2027 dates are rule-generated, not published",
+  "verdict": "unclear",
+  "field": "date_add",
+  "ours": "11 dates from 2027-03-27 to 2027-11-27, status confirmed (origin import), all last Saturdays",
+  "organiser_says": "Neither the city nor the tourism page lists any 2027 date; both give only 2026 dates plus the rule 'chaque dernier samedi, de mars à novembre'.",
+  "quote": "Place Georges-Python ou Equilibre 8h-16h30: 28.03.26 25.04.26 30.05.26 27.06.26 25.07.26 29.08.26 26.09.26 31.10.26 28.11.26",
+  "url": "https://fribourg.ch/fr/fribourg/marches/marche-aux-puces/",
+  "source_type": "third_party",
+  "note": "All 2027 dates are last Saturdays (weekdays checked), so they follow the stated rule, but 'confirmed' overstates them."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+  "claim": "The city of Geneva's page says 'Les marchés aux puces se tiennent les mercredis, samedis et dimanches' (every Sunday?), while the tpg page and Geneva Tourism say the first Sunday of the month. We show first Sundays only.",
+  "verdict": "unclear",
+  "field": "rhythm",
+  "ours": "Jeden 1. Sonntag des Monats / Every 1st Sunday of the month; first Sundays only",
+  "organiser_says": "The City of Geneva's page contradicts itself: it says the flea markets are held Wednesdays, Saturdays and Sundays, and in the same text that the flea traders are on the Plaine every Wednesday and Saturday. It also links a 2026 Sunday flea-market plan (brocante daily traders). 'First Sunday only' comes from tpg and Geneva Tourism (third party).",
+  "quote": "Les marchés aux puces se tiennent les mercredis, samedis et dimanches.",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "Not settled. If it is every Sunday, we show too few Sundays but nothing we show is wrong. A third-party listing (vide-greniers.org) shows 4 and 11 Oct 2026, which hints at every Sunday. This market has settled dates (in_keep_ours); ask the city before changing."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+  "claim": "Hours: the city says sales run 6:30 to 17:15 in winter and 6:30 to 18:15 in summer. We show 17:15 for every date; some of our dates may fall in summer-time hours.",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "end time 17:15 for Oct 2026 to Mar 2027 and Nov-Dec 2027; 18:15 for Apr-Oct 2027",
+  "organiser_says": "The City says sales run 6:30-17:15 in winter and 6:30-18:15 in summer, with no dates for the change.",
+  "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "The city gives winter (6:30-17:15) and summer (6:30-18:15) hours but not the date the season changes, so neither our cut-over nor the clock-change reading can be confirmed. No sales on 1 August. Note 4 Oct 2026 (17:15) vs 3 Oct 2027 (18:15): the cut-over differs between years."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
+  "claim": "'Over 300 stalls' (ours/old site) vs the organiser side: about 300 registered traders, with fewer actually present depending on the weather. I wrote that the number depends on the weather and left out '300' in this text.",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty",
+  "organiser_says": "The City gives no number of stalls. 'About 300 registered traders, fewer present depending on the weather' comes from broc-antic.com (third party).",
+  "quote": "Cette brocante à ciel ouvert attire une foule de spécialistes et de curieux",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "Nothing to fix in the data; leave '300' out of the text."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+  "claim": "Hours: the city says sales run 6:30 to 17:15 in winter and 6:30 to 18:15 in summer; we show 17:15 for 14, 21 and 28 October. Summer time ends on 25 October, so the first dates may run to 18:15.",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "end time 17:15 for 14, 21 and 28 Oct 2026 (and 7 Oct); 18:15 until 30 Sep 2026",
+  "organiser_says": "The City says winter 6:30-17:15, summer 6:30-18:15, with no dates for the change; so a switch on 25 Oct (clock change) cannot be confirmed.",
+  "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "The city gives winter (6:30-17:15) and summer (6:30-18:15) hours but not the date the season changes, so neither our cut-over nor the clock-change reading can be confirmed. No sales on 1 August."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+  "claim": "'Over 300 stalls' (ours/old site) vs the organiser side: about 300 registered traders, fewer actually present depending on the weather.",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty",
+  "organiser_says": "The City gives no number of stalls; '300 registered traders' is broc-antic.com (third party).",
+  "quote": "Les marchandes et marchands des puces et de la brocante investissent le pourtour de la plaine tous les mercredis et samedis.",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "Nothing to fix in the data."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-samstag",
+  "claim": "Hours: the city says sales run 6:30 to 17:15 in winter and 6:30 to 18:15 in summer; we show 17:15 for all dates, including 17 and 24 October, which may be on summer hours.",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "end time 17:15 from 3 Oct 2026 to 27 Mar 2027 (incl. 17 and 24 Oct 2026); 18:15 from 3 Apr to 30 Oct 2027",
+  "organiser_says": "The City says winter 6:30-17:15, summer 6:30-18:15, with no dates for the change, so 17 and 24 Oct cannot be called wrong.",
+  "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été (n'a pas lieu le 1er août).",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "The city gives winter (6:30-17:15) and summer (6:30-18:15) hours but not the date the season changes, so neither our cut-over nor the clock-change reading can be confirmed. No sales on 1 August."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-samstag",
+  "claim": "'Over 300 stalls' (ours/old site) vs the organiser side: about 300 registered traders, fewer actually present depending on the weather. I left the number out of this text.",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty",
+  "organiser_says": "The City gives no number of stalls; '300 registered traders' is broc-antic.com (third party).",
+  "quote": "Cette brocante à ciel ouvert attire une foule de spécialistes et de curieux",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "Nothing to fix in the data."
+ },
+ {
+  "slug": "marche-aux-puces-plainpalais-geneve-samstag",
+  "claim": "NEW: our summer/winter hours switch at different dates in 2026 and 2027",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "2026: 18:15 until 26 Sep, 17:15 from 3 Oct. 2027: 17:15 until 27 Mar, 18:15 from 3 Apr to 30 Oct, 17:15 from 6 Nov (Wednesday and first-Sunday entries show the same pattern)",
+  "organiser_says": "The City names no change-over dates, so one of the two years is probably wrong (summer hours end 1 Oct in 2026 but run to 31 Oct in 2027).",
+  "quote": "de 6h30 à 17h15 l'hiver; de 6h30 à 18h15 l'été",
+  "url": "https://www.geneve.ch/marche-plainpalais",
+  "source_type": "commune",
+  "note": "Needs one rule, ideally from the city's market rules or by asking the city; until then a visitor sees an hour's difference for the same weeks."
+ },
+ {
+  "slug": "marche-rumine-lausanne-mardi",
+  "claim": "The city's page lists four market days: Tuesday and Friday (9:30 to 18:00) and Wednesday and Saturday (8:30 to 13:00). Our data has Tuesday, Wednesday and Saturday only; the Friday market is missing (or deliberately left out).",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "Tuesday entry 09:30-18:00; the Friday, Wednesday and Saturday editions are separate entries",
+  "organiser_says": "The City lists Tuesday and Friday 9:30-18:00 and Wednesday and Saturday 8:30-13:00 from 3 March 2026. Our live site already has 'marche-rumine-lausanne-vendredi' (every Friday since March 2026, 09:30-18:00) and 'marche-rumine-lausanne-samedi'.",
+  "quote": "mardi et vendredi de 09h30 à 18h / mercredi et samedi de 08h30 à 13h",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "The Friday market is not missing. Tuesday (2026-09-15 on) and Wednesday hours match the city; 3 March 2026 was a Tuesday."
+ },
+ {
+  "slug": "marche-rumine-lausanne-mardi",
+  "claim": "The city describes it first as a non-food market with 'une grande variété d'articles neufs' (new textiles, manufactured goods), with second-hand and curios only among them; it never calls it a brocante or flea market. Our 'kind: brocante' and 'flea market' framing may promise too much second-hand.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "Labelled 'Brocante'; live text: 'city-run non-food market combining new and second-hand goods'",
+  "organiser_says": "The City's page leads with new goods but also says 'chiner' and 'objets insolites' and lists new and second-hand products. The City's market information sheet (version 20.11.2023) says brocante is among the goods, so the word is the City's own.",
+  "quote": "Le marché de Rumine accueille exclusivement des produits non alimentaires (textiles, brocante, livres, etc.).",
+  "url": "https://www.lausanne.ch/dam/jcr:b15a27e4-8dee-4004-bc5e-175d80445157/Doc%20March%C3%A9%20Rumine.pdf",
+  "source_type": "commune",
+  "note": "The writer's 'never calls it a brocante' is not correct. Our live description is already balanced; the 'Brocante' label is acceptable if the text keeps the new-and-second-hand wording."
+ },
+ {
+  "slug": "marche-rumine-lausanne-mercredi",
+  "claim": "Our data has no Friday market; the city lists Tuesday, Wednesday, Friday and Saturday. The city also describes mainly new goods rather than a flea market. See the Tuesday entry.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "Wednesday entry 08:30-13:00; Tuesday, Friday and Saturday are separate entries",
+  "organiser_says": "The City lists Tuesday, Wednesday, Friday and Saturday. All four are on our live site (marche-rumine-lausanne-mardi, -mercredi, -vendredi, -samedi).",
+  "quote": "mercredi et samedi de 08h30 à 13h",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "No Friday gap. Wednesday hours match the city; the new-goods framing is dealt with in the Tuesday entry."
+ }
+]

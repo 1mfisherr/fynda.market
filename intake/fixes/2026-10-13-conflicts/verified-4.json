@@ -1,0 +1,716 @@
+[
+ {
+  "slug": "marche-rumine-lausanne-samedi",
+  "claim": "Same as the other two Rumine entries: the city lists a Friday market that we do not hold, and describes the market as mostly new goods.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "Saturday market 08:30-13:00; Tuesday, Wednesday and Friday are held as sister entries; seller_mix empty",
+  "organiser_says": "City lists four days from 3 March 2026 (Tue and Fri 09:30-18:00, Wed and Sat 08:30-13:00). It calls the market a place to browse unusual objects and also a wide range of new goods; its fee table says non-food products, new and second-hand.",
+  "quote": "mardi et vendredi de 09h30 à 18h / mercredi et samedi de 08h30 à 13h",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "We already hold the Friday (marche-rumine-lausanne-vendredi) and the Tuesday and Wednesday. The page says second-hand and new, not mostly new. Nothing to change."
+ },
+ {
+  "slug": "marche-rumine-lausanne-samedi",
+  "claim": "The metro stop comes from a third-party listing (swiss-markt.ch), not the city's page, which only links to the public transport operator.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "getting_there empty (no stop held)",
+  "organiser_says": "The city page names no stop; its line on public transport only links to the operator (t-l.ch).",
+  "quote": "S'y rendre en transports publics",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "The claim is about the writer text, not our data. The Riponne stop exists only on swiss-markt.ch (third party), so keep it out unless Delfim accepts a third-party source."
+ },
+ {
+  "slug": "marche-rumine-lausanne-vendredi",
+  "claim": "The page lists four market days a week with two sets of hours (two days 09:30-18:00, two days 08:30-13:00); we show Friday 09:30-18:00, which fits. The text names no day.",
+  "verdict": "not_confirmed",
+  "field": "date_time",
+  "ours": "Fridays 09:30-18:00",
+  "organiser_says": "Friday 09:30-18:00 on the city page, same as ours (Tuesday and Friday 09:30-18:00, Wednesday and Saturday 08:30-13:00).",
+  "quote": "mardi et vendredi de 09h30 à 18h",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "Matches ours. The text should simply not name a day (we have one entry per day)."
+ },
+ {
+  "slug": "marche-rumine-lausanne-vendredi",
+  "claim": "The page does not say outright that the City organises the market; it is on lausanne.ch under 'Marchés lausannois' and run by the city's Service de l'économie. The text says 'one of Lausanne's city markets'.",
+  "verdict": "not_confirmed",
+  "field": "organiser",
+  "ours": "city market, organiser not stated in our fields",
+  "organiser_says": "The page is on lausanne.ch under Marchés lausannois; permit applications go to the city Service de l'économie, whose Bureau des manifestations et des marchés is the contact. The word organise is not used.",
+  "quote": "La demande de participation doit être adressée au Service de l’économie",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "One of Lausanne's city markets is a fair reading; keep it out of the text as a claim of 'organised by' if we want to be literal."
+ },
+ {
+  "slug": "marche-rumine-lausanne-vendredi",
+  "claim": "NEW: our Friday dates run to 31 Dec 2027 including 25 Dec 2026 and 1 Jan 2027",
+  "verdict": "unclear",
+  "field": "date_remove",
+  "ours": "Fridays 2026-09-18 to 2027-12-31 with no gaps (also Saturday 26 Dec 2026, 2 Jan 2027 on the Saturday entry)",
+  "organiser_says": "The city page gives no holiday closures or end date, only: from 3 March 2026, these hours.",
+  "quote": "Dès le 3 mars 2026, le marché non-alimentaire réinvestit la place de la Riponne",
+  "url": "https://www.lausanne.ch/vie-pratique/economie-et-commerces/marches-et-commerce-itinerant/marches-lausannois/marche-de-rumine.html",
+  "source_type": "commune",
+  "note": "Dates are projected from the weekly pattern. Unknown whether the market runs on Christmas Day and New Year; I could not read the PDF conditions sheet. Low risk, check before December."
+ },
+ {
+  "slug": "mercatino-pulci-ragazzi-locarno",
+  "claim": "The organiser's page gives only the title and the date (a Saturday in October) and a link for stall sign-up; nothing about who sells, hours, fee or the rain rule. The rain rule (cancelled) comes from facts_we_hold; 'children sell themselves' and 'five minutes from the station' (old text) are not on the page and were left out.",
+  "verdict": "not_confirmed",
+  "field": "date_time",
+  "ours": "Saturday 17 Oct 2026, 10:00-16:30, rain: cancelled, fee 0",
+  "organiser_says": "The Gruppo Genitori Locarnese autumn calendar lists Saturday 17 October, Mercatino delle pulci per ragazzi/e in Piazza Grande, with a registration link. No hours, fee, who sells or rain rule on any ggl.ch page.",
+  "quote": "Mercatino delle pulci per ragazzi/e in Piazza Grande",
+  "url": "https://www.ggl.ch/index.php/appuntamenti/188-calendario-set-nov26",
+  "source_type": "organiser",
+  "note": "Date and place agree (17 Oct 2026 is a Saturday). Hours 10:00-16:30 and rain cancelled have no organiser source: the registration form sits behind a bot check and the PDF calendar was unreadable. Nothing contradicts them."
+ },
+ {
+  "slug": "mercatino-usato-lugano",
+  "claim": "lugano.ch's overview page (mercati-mercatini) says the usato is held 'quattro volte all'anno' at the 'Capannone di Pregassona'; the market's own page says the 2026 editions are at the Centro Esposizioni MAC 3. We say three times a year. The detail page lists only 19 September 2026 (registration closed) and no later date, and our next_dates is empty. I wrote 'mehrmals im Jahr' (several times).",
+  "verdict": "unclear",
+  "field": "rhythm",
+  "ours": "Dreimal jährlich, samstags, in der Halle",
+  "organiser_says": "The city overview says four times a year in the 'Capannone di Pregassona'; the market's own page says the 2026 editions (plural, no count) are at the Centro Esposizioni MAC 3, 11:00-17:00, and lists only 19 Sept 2026. The overview is stale on the venue, so its 'four' is doubtful; nothing supports 'three'.",
+  "quote": "Si tiene quattro volte all'anno nel Capannone di Pregassona",
+  "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/",
+  "source_type": "commune",
+  "note": "Our 'three times' has no source. Safest rhythm: 'Mehrmals jährlich, samstags, in der Halle' / 'Several times a year, on Saturdays, indoors'. 19 Sept 2026 is past; no later date is published."
+ },
+ {
+  "slug": "mercatino-usato-lugano",
+  "claim": "Bus 2 from Lugano Centro (our old line) is not on the organiser's page and was left out. 'Indoors' comes from facts_we_hold; the page itself does not say hall or indoor.",
+  "verdict": "not_confirmed",
+  "field": "setting",
+  "ours": "indoor",
+  "organiser_says": "Own page: editions at the Centro Esposizioni (MAC 3), Viale dei Faggi, 11:00-17:00. The overview calls the place a Capannone (shed/hall). Neither says indoor in so many words; nothing contradicts it. No bus line on either page.",
+  "quote": "Le edizioni 2026 del Mercatino dell'usato si svolgeranno dalle ore 11 alle 17, al Centro Esposizioni (MAC 3), in Viale dei Faggi",
+  "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercatino-usato/",
+  "source_type": "commune",
+  "note": "Bus 2 is correctly left out. Indoor is plausible for an exhibition centre."
+ },
+ {
+  "slug": "mercatino-usato-paradiso-lugano",
+  "claim": "The Comune's own 2026 events calendar lists the Mercatino usato in July as well (and June), none in August; our rhythm says 'March to November except July and August'. The texts say only 'nearly every month, March to November'.",
+  "verdict": "not_confirmed",
+  "field": "rhythm",
+  "ours": "Date pubblicate dal Comune di Paradiso; 2026-10-07 and 2026-11-04 confirmed, 2027 dates unverified placeholders (none in July or August)",
+  "organiser_says": "The Comune's 2026 events calendar (version of 10 Sept 2026) lists Mercatino usato in March (4), April (1), May (6), June (3), July (1), September (2), October (7), November (4); none in January, February, August, December. All eight days are first Wednesdays.",
+  "quote": "Mercatino usato (7) under OTTOBRE; Mercatino usato (4) under NOVEMBRE; also listed under LUGLIO (1)",
+  "url": "https://paradiso.ch/cms/wp-content/uploads/2026/09/Eventi-2026_0910.pdf",
+  "source_type": "commune",
+  "note": "Our current rhythm line makes no July claim, so nothing to change; the July 2026 edition did exist, so the older wording except July and August was wrong. Our 2027 placeholders skip July and stay unverified until the 2027 calendar is out. Read from the PDF text; weekdays checked."
+ },
+ {
+  "slug": "mercatino-usato-paradiso-lugano",
+  "claim": "The Comune's market page (paradiso.ch/mc-events/mercatino-dellusato-8) is an empty stub for a 2025 edition. Organiser, charity purpose and weather rule come from the La Regione / Ticinonline agenda listing, not from the organiser. 'About 30 stalls' and the goods list (old text) could not be confirmed anywhere and were left out.",
+  "verdict": "unclear",
+  "field": "organiser",
+  "ours": "organiser, charity purpose and weather rule not held in our fields",
+  "organiser_says": "The Comune's market page is an empty stub dated 3 Sept 2025. Organiser (Gruppo mamme di Paradiso), charity purpose, hours 9.00-15.30 and the rain rule come only from the La Regione agenda.",
+  "quote": "Il Gruppo mamme di Paradiso organizza mercoledì 4 marzo dalle ore 9.00 fino alle ore 15.30 in Piazza Municipale un mercatino dell'usato a scopo di beneficenza. In caso di tempo incerto il mercoledì successivo.",
+  "url": "https://www.laregione.ch/agenda/evento/61379/mercatino-dell-usato-a-scopo-benefico",
+  "source_type": "third_party",
+  "note": "Dates are confirmed by the Comune; organiser, charity, hours and rain rule are third-party only (and about the 4 March 2026 edition). State them as reported or leave out. About 30 stalls: no source."
+ },
+ {
+  "slug": "mercato-antiquariato-maghetti-lugano",
+  "claim": "Our kept text says 'rund 40 Stände'; no page (City of Lugano, ticino.ch, luganoeventi.ch) gives a stall count, so it is left out. 'ganzjährig' is also not stated on the City's page (only 'ogni sabato'); the text says 'every week'.",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty (kept German text says rund 40 Stände)",
+  "organiser_says": "City page: every Saturday 08:00-17:00, no season, no stall count on any city page.",
+  "quote": "tutti i sabati 8.00-17.00",
+  "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/mercato-antiquariato/",
+  "source_type": "commune",
+  "note": "Nothing to change in our fields. 'Rund 40 Stände' has no source and should stay out; 'ganzjährig' follows from tutti i sabati."
+ },
+ {
+  "slug": "mercato-antiquariato-maghetti-lugano",
+  "claim": "The City's name for the market is 'Mercato dell'antiquariato e artigianato' (antiques and crafts).",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Name: Mercato dell'antiquariato Maghetti",
+  "organiser_says": "The City's name is 'Mercato dell'antiquariato e artigianato' (antiques and crafts). The overview also lists a fourth spot, Piazzale ex-Scuole; the detail page names Via Canova, Via Vegezzi, Piazza San Rocco.",
+  "quote": "Mercato dell'antiquariato e artigianato",
+  "url": "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/mercati-mercatini/",
+  "source_type": "commune",
+  "fix": {
+   "field": "other",
+   "value": "Display name \"Mercato dell'antiquariato e artigianato (Maghetti)\"; optionally add Piazzale ex-Scuole to the venue line"
+  },
+  "note": "Cosmetic, low priority. Slug stays."
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "claim": "Massagno's page shows one edition in September (the 2026 edition, with a DJ set and a yoga workshop as new items). Our rhythm says twice a year (one afternoon in spring, one in autumn); the old text said once a year. A spring edition is not confirmed.",
+  "verdict": "not_confirmed",
+  "field": "rhythm",
+  "ours": "Twice a year, an afternoon in spring and one in autumn; date 20 Sep 2026",
+  "organiser_says": "The commune's own events archive lists editions on 7 Jun 2025, 4 Oct 2025 (postponed from 27 Sept), 18 Apr 2026 (13:00, Piazza Girasole) and 20 Sep 2026 (via Motta). So two a year, spring and autumn.",
+  "quote": "18.04.2026 / 13:00 Piazza Girasole Mercato delle Pulci Mercatino dell'usato con oggetti di seconda mano, curiosità vintage e creazioni locali e workshop.",
+  "url": "https://www.massagno.ch/Archivio-eventi",
+  "source_type": "commune",
+  "note": "The writer was wrong: a spring edition is confirmed, our rhythm is right. The cantonal culture agenda (ti.ch, third party) also lists 18 Apr 2026, Associazione La Ghirlanda. Venue changes by edition (Piazza Girasole in spring 2026 and autumn 2025, Piazzale del Municipio on 20 Sep 2026)."
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "claim": "Rhythm: Massagno's page shows a single edition in September (20 Sept 2026); our rhythm says twice a year (one afternoon in spring, one in autumn), an older text said once a year. A spring edition is not confirmed. The text names no rhythm.",
+  "verdict": "not_confirmed",
+  "field": "rhythm",
+  "ours": "Twice a year, an afternoon in spring and one in autumn",
+  "organiser_says": "Same as above: the commune archive shows a spring edition (18 Apr 2026) and an autumn one (20 Sep 2026).",
+  "quote": "18.04.2026 / 13:00 Piazza Girasole Mercato delle Pulci",
+  "url": "https://www.massagno.ch/Archivio-eventi",
+  "source_type": "commune",
+  "note": "Duplicate of the first claim. Keep the rhythm; the text may name it."
+ },
+ {
+  "slug": "mercato-delle-pulci-massagno",
+  "claim": "Not on the page, so not used: the old site's food and drink, children's programme, bus 4 and postponement in rain.",
+  "verdict": "not_confirmed",
+  "field": "other",
+  "ours": "no food, children programme, bus or rain rule held",
+  "organiser_says": "The 2026 page mentions second-hand goods, vintage, local creations, workshops, a DJ set and a yoga workshop; no food, children's programme, bus or rain rule.",
+  "quote": "Troverete oggetti di seconda mano, curiosità vintage, creazioni locali e alcuni workshop.",
+  "url": "https://www.massagno.ch/Mercato-delle-Pulci-85680600",
+  "source_type": "commune",
+  "note": "Nothing to change. The 2025 autumn edition was postponed from 27 Sept to 4 Oct (reason not stated), so a weather fallback may exist but is not published."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "claim": "Our German ends 'Eine Reservierung ist nicht nötig'. The organiser requires sellers to reserve a spot by e-mail (first 40 requests); only visitors need nothing. Left that sentence out of fr/it; the German may want it removed or reworded.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "German text ends 'Eine Reservierung ist nicht nötig'",
+  "organiser_says": "Sellers must reserve a spot by e-mail on the Thursday before the market from 20:00; the first 40 requests are taken. Visitors need nothing.",
+  "quote": "Platz Reservationen werden per E -Mail ... Jeweils am Donnerstag vor dem Markt ab 20:00Uhr angenommen. Die ersten 40 Anmeldungen",
+  "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: replace 'Eine Reservierung ist nicht nötig' with: Besucher brauchen nichts zu reservieren; Verkäufer melden sich per E-Mail an (Reservation am Donnerstag vor dem Markt ab 20:00 Uhr, die ersten 40 Anmeldungen)."
+  },
+  "note": "An older Berner Zeitung piece reposted on the organiser about page says no pre-reservation; the current rules page supersedes it."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "claim": "In July and August the organiser allows only about half the usual sellers (restricted allocation).",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "stall_count 40, no seasonal note",
+  "organiser_says": "In July and August only about half the usual sellers; 12 July and 9 Aug 2026 are marked 'Eingeschränkt mit Platz vergabe'.",
+  "quote": "evt. im Monat Juli und August ist nur die Hälfte Aussteller wegen Korn Abgabe möglich",
+  "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "Optional note in the description: in July and August only about half the usual stalls (restricted allocation)."
+  },
+  "note": "Both dates are past; matters only when 2027 dates are added. No change to dates or stall_count."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "claim": "Our kept German ended 'Eine Reservierung ist nicht nötig'. The organiser requires sellers to reserve a spot by e-mail; only visitors need nothing. Left out of all four texts.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "German text ends 'Eine Reservierung ist nicht nötig'",
+  "organiser_says": "Same as the first claim: sellers reserve by e-mail (Thursday before, from 20:00, first 40); visitors need nothing.",
+  "quote": "Platz Reservationen werden per E -Mail ... Jeweils am Donnerstag vor dem Markt ab 20:00Uhr angenommen.",
+  "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: replace 'Eine Reservierung ist nicht nötig' with: Besucher brauchen nichts zu reservieren; Verkäufer melden sich per E-Mail an."
+  },
+  "note": "Duplicate of the first claim."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "claim": "July and August dates are marked 'Eingeschränkt mit Platz vergabe' (fewer sellers). The 8 Nov 2026 date we show is on the organiser's list (visitors 10:00-16:00).",
+  "verdict": "not_confirmed",
+  "field": "date_time",
+  "ours": "13 Sep, 11 Oct, 8 Nov 2026, 10:00-16:00",
+  "organiser_says": "Organiser list for 2026: 8 March, 12 April, 10 May, 14 June, 12 July*, 9 Aug*, 13 Sept, 11 Oct, 8 Nov (second Sunday); visitors 10:00-16:00, sellers from 7:30.",
+  "quote": "11.Oktober, 08. November 2026",
+  "url": "https://flohmarkt-3076worb.jimdofree.com",
+  "source_type": "organiser",
+  "note": "Our dates and hours match (8 Nov 2026 is a Sunday). The restricted marks on 12 July and 9 Aug are real."
+ },
+ {
+  "slug": "nostalgie-flohmarkt-worb-bern",
+  "claim": "The page addresses 'Händler' and 'Aussteller' and does not say whether private sellers are among them, so the text names neither group.",
+  "verdict": "not_confirmed",
+  "field": "seller_mix",
+  "ours": "empty",
+  "organiser_says": "The page speaks of Händler and Aussteller, allows 'Haushaltsauflösungen', bans bike and electronics dealers; it never says private or trade.",
+  "quote": "Verkaufen darf man alles schöne, Antique, seltene, Haushaltsauflösungen",
+  "url": "https://flohmarkt-3076worb.jimdofree.com/vorgehen-regeln/",
+  "source_type": "organiser",
+  "note": "Leave seller_mix empty."
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "claim": "The PROGR page is dated 15.02.2025 and vintagefleamarket.ch says 'Neue Termine folgen in Kürze'; its dates page returned 404. The three dates we show (third Saturday: 17 Oct, 21 Nov, 19 Dec) could not be confirmed on the organiser's own pages.",
+  "verdict": "not_confirmed",
+  "field": "date_add",
+  "ours": "17 Oct, 21 Nov, 19 Dec 2026 (10:00-15:00); 19 Sep 2026 10:00-16:00 (past)",
+  "organiser_says": "The organiser's dates page now lists 17 October, 21 November and 19 December 2026, always the 3rd Saturday, 10:00-15:00 in the PROGR Turnhalle; PROGR's own agenda for 17.10.2026 says 10-15 Uhr.",
+  "quote": "Der \"PROGR VINTAGE FLEA MARKET\" findet immer jeweils am 3. Samstag im Monat in der PROGR Turnhalle statt. von 10.00 bis 15.00 uhr.",
+  "url": "https://www.vintagefleamarket.ch/termine-infos",
+  "source_type": "organiser",
+  "note": "The writer pages were stale; all three dates are now confirmed by the organiser (weekdays checked). Our past 19 Sep date shows 16:00 end, irrelevant now."
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "claim": "Our German says 'Designerkleidung'; the organiser lists records, shoes, jewellery and dresses but not designer clothes. I used the organiser's list.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "German text says 'Designerkleidung'",
+  "organiser_says": "Organiser: a flea market for vintage clothes and accessories; stalls with accessories, rare records, shoes, jewellery, stylish dresses. No designer clothes.",
+  "quote": "Einfach gesagt: Flohmarkt für Vintage Kleider und Accessoires.",
+  "url": "https://www.progr.ch/de/agenda/progr-markt-vintage-flea-market-7993/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: replace 'Designerkleidung' with Vintage-Kleider, Accessoires, Schallplatten, Schuhe, Schmuck."
+  },
+  "note": "Unsupported rather than flatly contradicted; use the organiser words."
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "claim": "The PROGR page is from 2025 and vintagefleamarket.ch gives no 2026 dates ('Neue Termine folgen in Kürze'; its dates page returned 404). The three dates we show (17 Oct, 21 Nov, 19 Dec 2026) could not be confirmed on the organiser's own pages.",
+  "verdict": "not_confirmed",
+  "field": "date_add",
+  "ours": "17 Oct, 21 Nov, 19 Dec 2026",
+  "organiser_says": "Same as the first claim: dates now on the organiser page and the PROGR agenda.",
+  "quote": "17. oktober ... 21. november ... 19. dezember",
+  "url": "https://www.vintagefleamarket.ch/termine-infos",
+  "source_type": "organiser",
+  "note": "Duplicate of the first claim: dates confirmed."
+ },
+ {
+  "slug": "progr-vintage-flea-market-bern",
+  "claim": "Our German said 'Designerkleidung'; the organiser lists accessories, records, shoes, jewellery and dresses but no designer clothes, so it is left out. The old PROGR listing also gave different hours (10:30-16:00) than the newer 10:00-15:00 we show.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "German text says 'Designerkleidung'; hours 10:00-15:00",
+  "organiser_says": "Organiser lists vintage clothes and accessories, records, shoes, jewellery, no designer clothes. Hours 10:00-15:00 (the older 10:30-16:00 is gone).",
+  "quote": "Einfach gesagt: Flohmarkt für Vintage Kleider und Accessoires.",
+  "url": "https://www.progr.ch/de/agenda/progr-markt-vintage-flea-market-7993/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: drop 'Designerkleidung'; say Vintage-Kleider und Accessoires."
+  },
+  "note": "Hours we show (10:00-15:00) are right; only the designer wording needs to go."
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "claim": "Our German says 'alle zwei Wochen, von April bis Juni'. The organiser says the flea market runs 'in regelmässigen Abständen' on dry days, in a season from early April to mid-October (season opening 12 April 2026, on dry weather). I followed the organiser in the Italian ('a date fisse nella bella stagione'); the German should be corrected the same way.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Kept German: 'alle zwei Wochen, von April bis Juni'; rhythm line: Selected Sundays, April to October, dry weather",
+  "organiser_says": "News of 16 Sept 2026: the flea markets are a popular event every two weeks on Sundays, all stalls booked for the season. Season: opening 12 April 2026 (dry weather); earlier years early April to mid-October. So 'every two weeks' stands; 'April to June' does not.",
+  "quote": "Die Areal Bach Quartier Flohmärkte sind ein beliebter Anlass alle zwei Wochen sonntags.",
+  "url": "https://www.areal-bach.ch/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: 'alle zwei Wochen sonntags, von April bis Oktober, bei trockenem Wetter' (not 'April bis Juni')."
+  },
+  "note": "The writer premise is wrong: every two weeks is current (16/09/2026), not only a 2021 listing. Our rhythm line is fine. The two dates we hold (20 Sep, 4 Oct) are on no organiser page I could read; both are past."
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "claim": "Our German has 'Kaffeewagen und Bar'; the organiser names a Barwagen and a restaurant partner (Gustav Gleis).",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "German says 'Kaffeewagen und Bar'",
+  "organiser_says": "Food and drink come from the Barwagen on the site and the restaurant partner Gustav Gleis.",
+  "quote": "Für Essen und Getränke sorgen der Barwagen am Areal Bach und der Gastropartner Gustav Gleis.",
+  "url": "https://www.areal-bach.ch/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: 'Kaffeewagen und Bar' becomes 'Barwagen und der Gastropartner Gustav Gleis'."
+  },
+  "note": "Small wording fix."
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "claim": "Our kept German said 'alle zwei Wochen, von April bis Juni'. The organiser says the market runs 'in regelmässigen Abständen' on dry days within a season from early April to mid-October (2026 season opened on 12 April). A 2021 listing on the same site said every two weeks on Sundays, but that is not current. The text follows the organiser.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Kept German: 'alle zwei Wochen, von April bis Juni'",
+  "organiser_says": "Every two weeks on Sundays (16 Sept 2026 post); season runs from April into the autumn, not to June.",
+  "quote": "Die Areal Bach Quartier Flohmärkte sind ein beliebter Anlass alle zwei Wochen sonntags.",
+  "url": "https://www.areal-bach.ch/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: 'alle zwei Wochen sonntags, von April bis Oktober, bei trockenem Wetter'."
+  },
+  "note": "The claim that every two weeks is not current is wrong; only 'April bis Juni' is wrong."
+ },
+ {
+  "slug": "quartier-flohmarkt-areal-bach",
+  "claim": "Our German said 'Kaffeewagen und Bar' and 'Leute aus der Gegend'; the organiser names a Barwagen and the restaurant partner Gustav Gleis, and says nothing about who sells. Both are corrected or left out.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "German says 'Kaffeewagen und Bar' and 'Leute aus der Gegend'",
+  "organiser_says": "Barwagen and Gustav Gleis named for food and drink; the page says nothing about who sells (stand applicants ask for the documents by mail).",
+  "quote": "Für Essen und Getränke sorgen der Barwagen am Areal Bach und der Gastropartner Gustav Gleis.",
+  "url": "https://www.areal-bach.ch/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: Barwagen und Gastropartner Gustav Gleis; remove 'Leute aus der Gegend'."
+  },
+  "note": "Leute aus der Gegend is unsupported: drop it."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "claim": "The organiser's page names it 'Quartierflohmarkt Gehrenacker-Rankacker' in its heading (and 'Gehrenacker - Fröschmatt' in the title). The date shown there is a Sunday in April 2026 (10-16), which fits our month. No date for next year yet.",
+  "verdict": "not_confirmed",
+  "field": "season",
+  "ours": "season [4,4], rhythm: Einmal jährlich, zwischen April und Oktober",
+  "organiser_says": "Page title Quartierflohmarkt Gehrenacker - Fröschmatt, heading 'Gehrenacker-Rankacker'. One edition: Sunday 19 April 2026, 10.00-16.00. No later date.",
+  "quote": "Sonntag, 19. April 2026 / 10.00 - 16.00 Uhr",
+  "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+  "source_type": "commune",
+  "note": "April matches our season. But our rhythm line says 'between April and October': see NEW below."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "claim": "Our old text names the Verein Stadtprojekt Basel as organiser; the Pratteln page is run by the town's 'Mach mit' platform / Quartierarbeit and names no such association. Not used.",
+  "verdict": "not_confirmed",
+  "field": "organiser",
+  "ours": "organiser not held; old text named Verein Stadtprojekt Basel",
+  "organiser_says": "The page is on the town's Mach mit, Pratteln platform and mentions the WhatsApp info channel of the Quartierarbeit Pratteln; it names no association and no 'organised by'.",
+  "quote": "WhatsApp-Infokanal der Quartierarbeit Pratteln",
+  "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+  "source_type": "commune",
+  "note": "Do not name Verein Stadtprojekt Basel for Pratteln. Organiser looks like the town Quartierarbeit but the page never says so; leave empty."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "claim": "The organiser's heading says 'Quartierflohmarkt Gehrenacker-Rankacker' (the title and body say Gehrenacker and Fröschmatt). The date shown there is a Sunday in April 2026 (10:00-16:00), which fits our month; no date for next year yet.",
+  "verdict": "not_confirmed",
+  "field": "season",
+  "ours": "season [4,4]",
+  "organiser_says": "Same as the first claim: Sunday 19 April 2026 10.00-16.00; heading says Rankacker, title and body say Fröschmatt.",
+  "quote": "Sonntag, 19. April 2026 / 10.00 - 16.00 Uhr",
+  "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+  "source_type": "commune",
+  "note": "Duplicate of the first claim."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "claim": "Our old text names the Verein Stadtprojekt Basel as organiser; the Pratteln page is run on the town's 'Mach mit' platform (Quartierarbeit Pratteln) and names no such association. Not used.",
+  "verdict": "not_confirmed",
+  "field": "organiser",
+  "ours": "organiser not held",
+  "organiser_says": "Same as the second claim: Mach mit platform of the town; no association named.",
+  "quote": "WhatsApp-Infokanal der Quartierarbeit Pratteln",
+  "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+  "source_type": "commune",
+  "note": "Duplicate of the second claim."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "claim": "NEW: Pratteln seller_mix is private only",
+  "verdict": "confirmed",
+  "field": "seller_mix",
+  "ours": "seller_mix empty",
+  "organiser_says": "Stalls are on private ground (garden, forecourt, driveway) and the market is for private persons; commercial sellers are not intended.",
+  "quote": "Der Quartierflohmarkt richtet sich an Private; gewerbliche Anbieter sind nicht vorgesehen.",
+  "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+  "source_type": "commune",
+  "fix": {
+   "field": "seller_mix",
+   "value": "private"
+  },
+  "note": "Organiser page, 2026 edition."
+ },
+ {
+  "slug": "quartierflohmarkt-pratteln-gehrenacker",
+  "claim": "NEW: Pratteln rhythm line says April to October but the only edition is in April",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Einmal jährlich, zwischen April und Oktober. (season [4,4])",
+  "organiser_says": "One edition shown: Sunday 19 April 2026. The page does not say it recurs yearly.",
+  "quote": "Sonntag, 19. April 2026",
+  "url": "https://mach-mit.pratteln.ch/quartierflohmarkt",
+  "source_type": "commune",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Ein Sonntag im April (2026: 19. April)",
+    "en": "A Sunday in April (2026: 19 April)"
+   }
+  },
+  "note": "Recurrence is not stated; the wording stays careful."
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "claim": "Our German says the market reaches 'ins neue Lysbüchel-Areal, mit Ständen, Spielen und Essen' along the car-free Lothringerstrasse, is 'eine der grösseren Ausgaben' and 'einer von 17 Quartierflohmärkten'. The organiser's 2026 page (a Saturday in August, 10-17) mentions no Lysbüchel extension, only the car-free Fatiostrasse and parts of Jung- and Lothringerstrasse, and its menu lists 18 neighbourhoods. The en/fr follow the 2026 page; the German needs the same fix.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Kept German mentions Lysbüchel-Areal, 'eine der grösseren Ausgaben', 'einer von 17 Quartierflohmärkten'",
+  "organiser_says": "2026 page: Saturday 8 August, 10:00-17:00; this year the Fatiostrasse and sections of Jung- and Lothringerstrasse are car-free. No Lysbüchel, no 'larger edition'; the menu lists 18 neighbourhood entries (two are Riehen).",
+  "quote": "Dieses Jahr werden die Fatiostrasse sowie Abschnitte der Jung- und Lothringerstrasse autofrei sein.",
+  "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "German description: remove Lysbüchel, 'eine der grösseren Ausgaben' and 'einer von 17'; keep only what the page says (Saturday, 10-17, stalls in courtyards and gardens, space at the Johannes Zentrum for residents without room)."
+  },
+  "note": "Unsupported for 2026 (older editions may have had Lysbüchel); not proven false for past years."
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "claim": "Our kept German says the market reaches 'ins neue Lysbüchel-Areal ... über die autofreie Lothringerstrasse', is 'eine der grösseren Ausgaben' and 'einer von 17 Quartierflohmärkten' of the Verein Stadtprojekt. The organiser's 2026 page (a Saturday in August, 10:00-17:00) mentions no Lysbüchel extension, only the car-free Fatiostrasse and parts of Jung- and Lothringerstrasse, names no association, and its menu lists 18 neighbourhoods. All four texts leave these claims out.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "Same kept German text",
+  "organiser_says": "Same as the first claim; also no association named on the page.",
+  "quote": "Dieses Jahr werden die Fatiostrasse sowie Abschnitte der Jung- und Lothringerstrasse autofrei sein.",
+  "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "As above: drop Lysbüchel, larger edition and 17 neighbourhoods."
+  },
+  "note": "Duplicate of the first claim."
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "claim": "The page says the car-free streets and the bring&nimm are for 'dieses Jahr' / the 2026 edition; the text says generally that part of the streets is car-free that day.",
+  "verdict": "confirmed",
+  "field": "other",
+  "ours": "text says generally that part of the streets are car-free that day",
+  "organiser_says": "The car-free streets are stated for 'dieses Jahr' only. The bring&nimm line is not tied to a year on the German page.",
+  "quote": "Dieses Jahr werden die Fatiostrasse sowie Abschnitte der Jung- und Lothringerstrasse autofrei sein.",
+  "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "other",
+   "value": "Description: 'In 2026 part of Fatiostrasse, Jung- and Lothringerstrasse are car-free' or drop the line."
+  },
+  "note": "Minor; say 2026 or leave out until next year."
+ },
+ {
+  "slug": "quartierflohmarkt-st-johann",
+  "claim": "NEW: St. Johann rhythm line says April to October but the edition is on a Saturday in August",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Einmal jährlich, zwischen April und Oktober. (season [8,8])",
+  "organiser_says": "Saturday 8 August 2026, 10:00-17:00; no other date.",
+  "quote": "Samstag, 8. August 2026",
+  "url": "https://www.quartierflohmibasel.ch/de/st-johann/info/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Einmal jährlich, ein Samstag im August",
+    "en": "Once a year, a Saturday in August"
+   }
+  },
+  "note": "Season is already [8,8]. Recurrence in other years is not stated on this page."
+ },
+ {
+  "slug": "quartierflohmi-reinach-nord",
+  "claim": "The organiser's agenda lists the Quartierflohmi on 25 April 2026 (a Saturday, spring). We show 'ein Sonntag im Spätsommer' (season month 9). The rhythm line looks wrong. No season is named in the texts.",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Jährlich, ein Sonntag im Spätsommer; season [9,9]; no dates",
+  "organiser_says": "Organiser agenda for 2026 (it also lists 4 Jan and 1-26 Dec): Quartierflohmi on Saturday 25 April 2026, 10:00-16:00. No September edition listed.",
+  "quote": "Wann: 25.04.2026 / 10:00 - 16:00 Was: Quartierflohmi Reinach Nord",
+  "url": "https://www.qvrn.ch/agenda.html",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Einmal jährlich, ein Samstag im Frühling (2026: 25. April)",
+    "en": "Once a year, a Saturday in spring (2026: 25 April)"
+   }
+  },
+  "note": "Season and rhythm are wrong (a Saturday in spring, not a Sunday in late summer). Past date; no 2027 date yet."
+ },
+ {
+  "slug": "quartierflohmi-reinach-nord",
+  "claim": "The page shows no map and no tram line; the 'map on qvrn.ch' and 'Tram 11' of the old text were left out. That residents sell in front of their own houses is how every Quartierflohmi works and what our data says, but this page only shows a sign-up form asking for an address.",
+  "verdict": "not_confirmed",
+  "field": "setting",
+  "ours": "setting empty",
+  "organiser_says": "The market page shows only a sign-up form asking for an address; no map or tram line. 'Residents sell in front of their own houses' is not stated.",
+  "quote": "Anmeldung zum Mitmachen",
+  "url": "https://www.qvrn.ch/quartierflohmarkt.html",
+  "source_type": "organiser",
+  "note": "Nothing to change; keep map and Tram 11 out."
+ },
+ {
+  "slug": "quartierflohmi-reinach-nord",
+  "claim": "NEW: Reinach Nord season month should be April",
+  "verdict": "confirmed",
+  "field": "season",
+  "ours": "season_months [9,9]",
+  "organiser_says": "The one listed 2026 edition is 25 April.",
+  "quote": "Wann: 25.04.2026 / 10:00 - 16:00 Was: Quartierflohmi Reinach Nord",
+  "url": "https://www.qvrn.ch/agenda.html",
+  "source_type": "organiser",
+  "fix": {
+   "field": "season",
+   "value": [
+    4,
+    4
+   ]
+  },
+  "note": "Goes with the rhythm fix."
+ },
+ {
+  "slug": "subiger-dorf-flohmarkt",
+  "claim": "The organiser's next edition is a Saturday in early June 2027 (10-17); our rhythm says 'meist Ende Mai'. The organiser calls it 'Dorfflohmarkt', not '4. Subiger Dorf Flohmarkt'.",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Jährlich, meist Ende Mai; season [5,5]; date 5 Jun 2027 10:00-17:00",
+  "organiser_says": "Organiser event calendar: 5 June 2027 (Saturday), 10:00-17:00, called Dorfflohmarkt; the previous edition was 30 May 2026 (events feed). SubKultur no longer runs a food stall.",
+  "quote": "5. Juni 2027 @ 10:00 - 17:00",
+  "url": "https://sub-kultur.ch/event/dorfflohmarkt-2/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Jährlich, Ende Mai oder Anfang Juni",
+    "en": "Once a year, late May or early June"
+   }
+  },
+  "note": "Our date matches. Late May in 2026 and early June in 2027: say so. The name Dorfflohmarkt (no 4.) is the organiser wording."
+ },
+ {
+  "slug": "svuotacantine-ascona",
+  "claim": "The organiser's 2026 events page shows Ascona with 'programma in allestimento' (no dates); the home page says registrations for the May Ascona edition are closed. 'Three times a year' (our rhythm) and 'a week later when it rains' are not stated for Ascona (the one-week reserve date is shown for Biasca only). I wrote 'can be postponed'.",
+  "verdict": "unclear",
+  "field": "rhythm",
+  "ours": "Dreimal jährlich, sonntags, mit Regendatum eine Woche später; date 20 Sep 2026 (past); 99 stalls",
+  "organiser_says": "2026 events page: Ascona, max 99 stalls per event, always 09:00-17:00, programme in preparation (no dates). Rules: the event may be interrupted or postponed. The reserve date one week later is shown for Biasca only. The home page says registrations for the May Ascona market are closed.",
+  "quote": "In caso di condizioni meteorologiche avverse, l’evento potrà essere interrotto o rinviato.",
+  "url": "https://www.imercantini.ch/regolamento-2026",
+  "source_type": "organiser",
+  "note": "Neither three times a year nor a rain date a week later is stated for Ascona. Soften to several times a year, on Sundays; rain: may be postponed. 99 stalls and the hours are confirmed."
+ },
+ {
+  "slug": "svuotacantine-biasca",
+  "claim": "Our rain_policy says 'decided on the day'; the organiser gives a fixed reserve date one week later (18 Oct, reserve 25 Oct). The page lists two 2026 editions (12 April and 18 October); the 18 October date matches ours, and the home page calls it the last event of 2026. 'Via Losanna 2' is not on the page.",
+  "verdict": "confirmed",
+  "field": "rain_policy",
+  "ours": "rain_policy decided_on_the_day (our rhythm line already says rain date a week later)",
+  "organiser_says": "Biasca page: 18 October 2026 with a fixed reserve date one week later (25 October 2026) in case of bad weather; the home page calls it the last event of 2026. About 65 stalls.",
+  "quote": "data di riserva in caso di meteo sfavorevole 25 ottobre 2026",
+  "url": "https://www.imercantini.ch/svuotacantine-biasca-2026",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rain_policy",
+   "value": "postponed to a fixed reserve date one week later (25 Oct 2026 for the 18 Oct edition)"
+  },
+  "note": "18 Oct 2026 is a Sunday. Via Losanna 2 and opening hours are not on the Biasca page (other sites say 09:00-17:00); 65 stalls confirmed."
+ },
+ {
+  "slug": "talkessel-flohmarkt-seewen",
+  "claim": "The organiser's pages do not say the market is in a hall or indoors (they speak of a grill stand 'auf Platz'); 'indoors' rests on facts_we_hold (setting indoor, rain: runs). If that fact is wrong the sentence 'findet drinnen statt' must go.",
+  "verdict": "not_confirmed",
+  "field": "setting",
+  "ours": "indoor, rain: runs",
+  "organiser_says": "Prices page: 'we are new in a hall' where fixed tables are provided for space and fire-safety reasons. Only the grill and drinks stand are outside (auf Platz).",
+  "quote": "Wir sind neu in einer Halle, in der aus Platzgründen keine eigenen Tische aufgestellt werden können",
+  "url": "https://www.talkessel-flohmarkt.ch/preise/",
+  "source_type": "organiser",
+  "note": "The claim is wrong: the organiser says hall. 'findet drinnen statt' can stay."
+ },
+ {
+  "slug": "talkessel-flohmarkt-seewen",
+  "claim": "'Five minutes on foot from Seewen-Schwyz station' (old and current text) is not on the page and was left out. The info page heading says 'Daten 2025' above the 2026 dates (a typo on their side); the dates match ours (25 Oct and the Christmas market 28 Nov).",
+  "verdict": "not_confirmed",
+  "field": "date_time",
+  "ours": "27 Sep, 25 Oct 2026 (09:30-15:00), 28 Nov 2026 (12:00-18:00)",
+  "organiser_says": "Infos page, Daten 2026: 29.03, 26.04, 27.09, 25.10 (09:30-15:00) and Christmas flea market 28.11.2026 (12:00-18:00). The home page still says Daten 2025 above the same dates (a typo).",
+  "quote": "25.10.2026 von 09.30 Uhr – 15.00 Uhr",
+  "url": "https://www.talkessel-flohmarkt.ch/infos/",
+  "source_type": "organiser",
+  "note": "Dates and hours match ours. Five minutes on foot from the station is on no page; nothing in ours."
+ },
+ {
+  "slug": "talkessel-flohmarkt-seewen",
+  "claim": "NEW: Talkessel rhythm says Sundays but the Christmas flea market is on a Saturday",
+  "verdict": "confirmed",
+  "field": "rhythm",
+  "ours": "Mehrmals jährlich, sonntags, in der Halle",
+  "organiser_says": "Christmas flea market on 28 November 2026 (a Saturday), 12:00-18:00; the other dates are Sundays.",
+  "quote": "Weihnachtsflohmarkt: 28.11.2026 von 12:00 Uhr – 18:00 Uhr",
+  "url": "https://www.talkessel-flohmarkt.ch/infos/",
+  "source_type": "organiser",
+  "fix": {
+   "field": "rhythm",
+   "value": {
+    "de": "Mehrmals jährlich, meist sonntags, in der Halle",
+    "en": "Several times a year, mostly Sundays, indoors"
+   }
+  },
+  "note": "Small wording fix."
+ },
+ {
+  "slug": "vide-grenier-onex",
+  "claim": "The commune's page does not show a date or stall count in its text. 'Up to 80' comes from a third-party listing (vide-greniers.org, reported in search: a Sunday in late September, 11-18, 80 exhibitors maximum, outdoors) and from our current text. A tram 14 stop at Onex-Cité could not be confirmed, so no transport line is given.",
+  "verdict": "not_confirmed",
+  "field": "stall_count",
+  "ours": "stall_count empty; 27 Sep 2026 11:00-18:00",
+  "organiser_says": "Commune page: sale of objects and clothes on the place du 150ème, proposed by the Association des Habitants Onex Cité; seller fee CHF 15 a table, CHF 5 the spot. Its embedded event data starts 2026-09-27. No stall count, hours or tram line in the readable text.",
+  "quote": "Vente d'objets et habits sur la place du 150ème. Un évènement proposé par l'Association des Habitants Onex Cité.",
+  "url": "https://www.onex.ch/mes-loisirs/agenda/vide-grenier-6669",
+  "source_type": "commune",
+  "note": "Date matches (a Sunday, now past). The 'up to 80' stalls and 11:00-18:00 are third-party only (vide-greniers.org): keep stall_count empty, hours unverified."
+ },
+ {
+  "slug": "vide-grenier-paudex",
+  "claim": "Paudex's own site has nothing on this market. A third-party listing (vide-greniers.org, read through search) shows an edition on a Saturday in early October 2026 at 'chemin de la Charrettaz 6' (we show no. 10), 8-17, about 40 exhibitors, run by a private organiser, in existence since 2014; it is not run by the commune as the old text says. A May edition is not confirmed anywhere; 'spring and autumn' follows our rhythm line.",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "3 Oct 2026 08:00-17:00 at Chemin de la Charrettaz 10",
+  "organiser_says": "The commune news page has nothing on this market. Only vide-greniers.org lists it (Saturday 3 Oct 2026, 8-17, chemin de la Charrettaz 6, about 40 exhibitors, private organiser).",
+  "quote": "",
+  "url": "https://vide-greniers.org/evenements/Paudex-VD",
+  "source_type": "third_party",
+  "note": "Date (past) and the house number 6 against our 10 rest on a third party only; the commune does not run it. Leave as is; ask the organiser before the next edition."
+ },
+ {
+  "slug": "vide-grenier-place-de-milan-lausanne",
+  "claim": "The association's page only has a 2024 post (8 June 2024) and a 'Règlement vide-grenier' document; I found no 2025 or 2026 edition announced, so the market may have paused. Private sellers, outdoors and 'runs in rain' come from facts_we_hold. The association is now called 'Association Sous-Gare' (footer: Société de développement des quartiers Sous-Gare & Cour).",
+  "verdict": "not_confirmed",
+  "field": "status",
+  "ours": "active; rhythm Einmal jährlich, im Juni; no dates",
+  "organiser_says": "The association's history page lists the vide-grenier at Place or Parc de Milan in 2022, 2023, 2024 and 2025 (the 2025 edition took place). Its upcoming-events list shows no 2026 vide-grenier; that page was last updated around May 2026. No sign of an end or a pause.",
+  "quote": "Nous avons eu le plaisir de vous retrouver pour une nouvelle édition ensoleillée du vide-grenier !",
+  "url": "https://asso-sousgare-lausanne.ch/historique/",
+  "source_type": "organiser",
+  "note": "The writer saw only the 2024 post; the 2025 edition exists. No 2026 or 2027 date is published and we hold none: fine. Keep active. The body is now called Association Sous-Gare (Société de développement des quartiers Sous-Gare & Cour)."
+ },
+ {
+  "slug": "vide-grenier-prilly",
+  "claim": "Prilly's own event pages (agenda, 'grandes manifestations communales') do not list a vide-grenier or a Journée de la durabilité for 2026. A third-party listing read through search describes a sustainability day around the château in September 2025 with a clothing swap, flea market and repair/sewing workshops. The repair café and the food rest on our database text and that older listing; the autumn date is unconfirmed. A separate vide-grenier in Prilly on 26-27 September 2026 (chemin de Bellevue) appears on vide-greniers.org; it may be a different event.",
+  "verdict": "unclear",
+  "field": "date_time",
+  "ours": "3 Oct 2026 10:00-16:00 at Château de Prilly (past)",
+  "organiser_says": "The commune current event list (13 Oct 2026) shows only upcoming events and no vide-grenier or Journée de la durabilité; a third-party agenda (vide-greniers.org) lists Prilly - Journée de la durabilité - vide-dressing/vide-grenier on Saturday 3 Oct 2026. A separate vide-grenier on 26-27 Sept 2026 (chemin de Bellevue) is another event.",
+  "quote": "",
+  "url": "https://www.prilly.ch/loisirs-vie-associative/evenements-manifestations/evenements",
+  "source_type": "third_party",
+  "note": "Date is past, so no visitor harm. Hours, repair café and food rest on third parties or our old text. A next-edition date must come from the commune."
+ }
+]

@@ -99,6 +99,12 @@ const kind = LINES[market.kind];
 
 const site = 'https://fynda.market';
 const url = `${site}${marketPath(locale, market.slug)}`;
+/** The address line without a trailing ", 8001 Zürich" — the street alone, or the line as it is. */
+const streetOnly = (line: string, postalCode?: string | null) => {
+  if (!postalCode) return line;
+  const at = line.search(new RegExp(`,\\s*${postalCode}\\b`));
+  return at > 0 ? line.slice(0, at).trim() : line;
+};
 const event = next ? {
   '@type': 'Event',
   name: market.name,
@@ -109,7 +115,10 @@ const event = next ? {
   location: {
     '@type': 'Place',
     name: market.venueName,
-    address: { '@type': 'PostalAddress', streetAddress: market.addressLine, postalCode: market.postalCode, addressLocality: market.city, addressCountry: market.countryCode },
+    // v1's address lines often end in the postcode and town, which postalCode and
+    // addressLocality already carry: "Stadthausanlage, 8001 Zürich" is the street
+    // "Stadthausanlage" (276 Events repeated it, audit 2026-10-13).
+    address: { '@type': 'PostalAddress', streetAddress: streetOnly(market.addressLine, market.postalCode), postalCode: market.postalCode, addressLocality: market.city, addressCountry: market.countryCode },
     geo: { '@type': 'GeoCoordinates', latitude: market.lat, longitude: market.lng },
   },
   url,
