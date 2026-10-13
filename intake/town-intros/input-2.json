@@ -139,7 +139,7 @@
    "de",
    "en"
   ],
-  "market_count": 5,
+  "market_count": 6,
   "markets": [
    {
     "slug": "flohmarkt-daglfing-muenchen",
@@ -232,6 +232,24 @@
     "description_de": "An ausgewählten Samstagen von April bis November auf dem Freigelände der Messe München, 75.000 Quadratmeter Verkaufsfläche. Von April bis Oktober 6 bis 15 Uhr, im November 7 bis 14 Uhr. Eintritt frei, Parken 3 Euro; U2 Messestadt Ost, Eingang gegenüber dem Messeturm. Seit 1993.",
     "tags": null,
     "dates_next_120_days": "4"
+   },
+   {
+    "slug": "flohmarkt-theresienwiese-muenchen",
+    "kind": "flohmarkt",
+    "setting": null,
+    "stall_count": null,
+    "seller_mix": null,
+    "rain_policy": null,
+    "season_from": 4,
+    "season_to": 4,
+    "venue": "Theresienwiese",
+    "name": "Flohmarkt Theresienwiese",
+    "rhythm_de": "Einmal im Jahr, an einem Samstag im April, während des Frühlingsfests",
+    "rhythm_en": "Once a year, on a Saturday in April, during the Frühlingsfest",
+    "description_en": "Once a year, in April, the Theresienwiese turns into one big flea market, right in the middle of the Frühlingsfest. Only private people sell here, and nothing is new: on the tables is whatever a household has gathered over the years. From 7 in the morning to 4 in the afternoon, in the open air between Theresienhöhe and Bavariaring. Parking on the southern part of the meadow is 5 euros a car. The Bavarian Red Cross has run it for more than 30 years, and what the stall and parking fees leave over pays for its social work.",
+    "description_de": "Einmal im Jahr, im April, wird die Theresienwiese zum großen Flohmarkt, mitten im Frühlingsfest. Verkaufen dürfen nur Privatleute, und Neues gibt es nicht: Auf den Tischen liegt, was sich in einem Haushalt über die Jahre angesammelt hat. Von 7 bis 16 Uhr unter freiem Himmel, zwischen Theresienhöhe und Bavariaring. Parken im Südteil der Wiese kostet 5 Euro pro Auto. Veranstalter ist das Bayerische Rote Kreuz, seit über 30 Jahren; was von den Stand- und Parkgebühren übrig bleibt, finanziert seine soziale Arbeit.",
+    "tags": null,
+    "dates_next_120_days": "0"
    }
   ]
  },

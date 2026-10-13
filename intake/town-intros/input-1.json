@@ -1808,7 +1808,7 @@
    "de",
    "en"
   ],
-  "market_count": 10,
+  "market_count": 12,
   "markets": [
    {
     "slug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
@@ -1923,6 +1923,24 @@
     "dates_next_120_days": "2"
    },
    {
+    "slug": "troedelmarkt-metro-koeln-godorf",
+    "kind": "troedelmarkt",
+    "setting": null,
+    "stall_count": null,
+    "seller_mix": null,
+    "rain_policy": null,
+    "season_from": null,
+    "season_to": null,
+    "venue": "METRO Köln-Godorf",
+    "name": "Trödelmarkt am METRO Köln-Godorf",
+    "rhythm_de": "Etwa einmal im Monat",
+    "rhythm_en": "About once a month",
+    "description_en": "About once a month from 11 to 6 on the METRO grounds in Godorf, next to IKEA and OBI. Plenty of stalls with second-hand and new goods, much of it under cover, plus a wide choice of food. Tram 16 runs to Godorf Bahnhof, and entry is free.",
+    "description_de": "Etwa einmal im Monat von 11 bis 18 Uhr auf dem Gelände des METRO in Godorf, gleich bei IKEA und OBI. Viele Stände mit Trödel und Neuware, ein großer Teil davon überdacht, dazu reichlich Essen und Trinken. Die Straßenbahnlinie 16 fährt bis Godorf Bahnhof; der Eintritt ist frei.",
+    "tags": null,
+    "dates_next_120_days": "2"
+   },
+   {
     "slug": "flohmarkt-riehler-guertel-koeln",
     "kind": "flohmarkt",
     "setting": "outdoor",
@@ -1996,6 +2014,24 @@
     "tags": [
      "antiques"
     ],
+    "dates_next_120_days": "0"
+   },
+   {
+    "slug": "troedelmarkt-porta-koeln-lind",
+    "kind": "troedelmarkt",
+    "setting": null,
+    "stall_count": null,
+    "seller_mix": null,
+    "rain_policy": null,
+    "season_from": 3,
+    "season_to": 10,
+    "venue": "PORTA Köln-Lind",
+    "name": "Trödelmarkt am PORTA Köln-Lind",
+    "rhythm_de": "Von März bis Oktober",
+    "rhythm_en": "March to October",
+    "description_en": "A second-hand market in the Köln-Süd business park in Lind, held every year from March to October, 11 to 6. It is popular with private sellers and has a small choice of food stalls. Buses 162 and 167 serve it, and entry is free.",
+    "description_de": "Ein Trödelmarkt im Gewerbegebiet Köln-Süd in Lind, der jedes Jahr von März bis Oktober von 11 bis 18 Uhr stattfindet. Er ist vor allem bei privaten Trödlern beliebt, dazu gibt es eine kleine Auswahl an Essensständen. Die Buslinien 162 und 167 fahren hin; der Eintritt ist frei.",
+    "tags": null,
     "dates_next_120_days": "0"
    }
   ]
