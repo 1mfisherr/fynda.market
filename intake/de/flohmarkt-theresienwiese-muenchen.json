@@ -1,0 +1,49 @@
+{
+  "slug": "flohmarkt-theresienwiese-muenchen",
+  "name": "Flohmarkt Theresienwiese",
+  "kind": "flohmarkt",
+  "town": "München",
+  "region": "Bayern",
+  "venue": {
+    "name": "Theresienwiese",
+    "address": "Theresienwiese",
+    "postal_code": "80336"
+  },
+  "lat": 48.1318,
+  "lng": 11.5478,
+  "rhythm": {
+    "de": "Einmal im Jahr, an einem Samstag im April, während des Frühlingsfests",
+    "en": "Once a year, on a Saturday in April, during the Frühlingsfest"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "16:00"
+  },
+  "dates": [],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.brk-muenchen.de/start/angebote/flohmaerkte/theresienwiese.html",
+  "organiser": {
+    "name": "BRK-Kreisverband München",
+    "website": "https://www.brk-muenchen.de/",
+    "email": "flohmarkt@brk-muenchen.de"
+  },
+  "source_page": "https://www.brk-muenchen.de/start/angebote/flohmaerkte/theresienwiese.html",
+  "facts": [
+    "once a year in April, 'im Rahmen des 60. Münchner Frühlingsfests'; last held 18 April 2026",
+    "'Beginn des Flohmarktes: Samstag 07:00 Uhr, Ende: Samstag 16:00 Uhr' (Hinweisblatt 2026)",
+    "outdoor, on the Theresienwiese between Theresienhöhe and Bavariaring (Lageplan 2026)",
+    "private sellers only: 'Ausgeschlossen sind gewerbsmäßige Händler'",
+    "household goods only; no new goods, large furniture, cars or car parts, food, animals or plants",
+    "parking on the southern part of the Theresienwiese, 5 € a car per day, open to sellers and visitors",
+    "run by the Rot Kreuz Betriebe of the BRK-Kreisverband München for over 30 years; surpluses from stall and parking fees fund social work",
+    "stalls sold in advance through München Ticket, from 1 × 2 m to 8 × 6 m"
+  ],
+  "checked": "2026-10-13",
+  "notes": "Annual: one Saturday in April during the Frühlingsfest. The organiser page still shows 2026 (18 April); the 2027 date is not out, so no date is imported and the market opens as 'Back in April' (season 4–4, set in the publish migration). Hours, rules and parking from the 2026 PDFs linked on the page (Hinweisblatt, Hinweisblatt Parkplätze, Preisinfos, Lageplan). Visitor entry is not stated anywhere. Postal code and coordinates for the market area between Theresienhöhe and Bavariaring, the western half of OpenStreetMap's Theresienwiese outline, where the Lageplan puts the stalls. Same organiser and e-mail as Flohmarkt im Olympiapark.",
+  "description": {
+    "de": "Einmal im Jahr, im April, wird die Theresienwiese zum großen Flohmarkt, mitten im Frühlingsfest. Verkaufen dürfen nur Privatleute, und Neues gibt es nicht: Auf den Tischen liegt, was sich in einem Haushalt über die Jahre angesammelt hat. Von 7 bis 16 Uhr unter freiem Himmel, zwischen Theresienhöhe und Bavariaring. Parken im Südteil der Wiese kostet 5 Euro pro Auto. Veranstalter ist das Bayerische Rote Kreuz, seit über 30 Jahren; was von den Stand- und Parkgebühren übrig bleibt, finanziert seine soziale Arbeit.",
+    "en": "Once a year, in April, the Theresienwiese turns into one big flea market, right in the middle of the Frühlingsfest. Only private people sell here, and nothing is new: on the tables is whatever a household has gathered over the years. From 7 in the morning to 4 in the afternoon, in the open air between Theresienhöhe and Bavariaring. Parking on the southern part of the meadow is 5 euros a car. The Bavarian Red Cross has run it for more than 30 years, and what the stall and parking fees leave over pays for its social work."
+  }
+}

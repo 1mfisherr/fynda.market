@@ -113,15 +113,16 @@ await withClient(DB_URL, async (client) => {
     for (const w of written) {
       const credit = credits.get(w.file) ?? null;
       await client.query(`update public.markets set image_url = $2, image_credit = $3::jsonb, updated_at = now() where id = $1`, [w.id, w.url, credit && JSON.stringify(credit)]);
-      await client.query(
-        `update public.facts set superseded_by = $1
-          where entity_type = 'market' and entity_id = $1 and field = 'image_url' and superseded_by is null`,
-        [w.id]
-      );
-      await client.query(
+      const { rows: [fact] } = await client.query(
         `insert into public.facts (entity_type, entity_id, field, value, source_type, source_ref, observed_at, confidence)
-         values ('market', $1, 'image_url', $2::jsonb, 'manual', $3, now(), 'confirmed')`,
+         values ('market', $1, 'image_url', $2::jsonb, 'manual', $3, now(), 'confirmed') returning id`,
         [w.id, JSON.stringify(w.url), credits.has(w.file) ? credits.get(w.file).source_url : `supplied by hand as "${w.file}"`]
+      );
+      // The photo it replaces points at the fact that replaced it.
+      await client.query(
+        `update public.facts set superseded_by = $2
+          where entity_type = 'market' and entity_id = $1 and field = 'image_url' and superseded_by is null and id <> $2`,
+        [w.id, fact.id]
       );
     }
     await client.query('commit');
