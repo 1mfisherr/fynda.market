@@ -3240,6 +3240,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "les-puces-du-cpo-lausanne",
+    "date": "2027-02-11",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "liesberger-flohmarkt",
     "date": "2026-11-15",
     "status": "confirmed"
@@ -3522,11 +3527,6 @@
   {
     "marketSlug": "marche-calabash-lausanne",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne-mardi",
-    "date": "2026-10-13",
     "status": "confirmed"
   },
   {
@@ -4922,11 +4922,6 @@
   {
     "marketSlug": "troedelmarkt-universitaet-dortmund",
     "date": "2026-12-19",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
-    "date": "2026-10-13",
     "status": "confirmed"
   },
   {
