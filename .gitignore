@@ -37,3 +37,6 @@ stickers/*
 
 # Market Watch snapshots: last pages read, on the PC only (docs/WATCH-SPEC.md).
 watch-data/
+
+# Organisers to phone: names with phone numbers, on the PC only (docs/PLAN.md, Next 4).
+calls/

@@ -8,10 +8,12 @@ depth are reliable. Visual design, spacing, responsiveness and JS behaviour were
 
 ## The headline finding
 
-**There is no credible bilingual, nationwide, flea-market-specific Swiss directory.**
+**There is no credible bilingual, nationwide, flea-market-specific Swiss directory.** True on 2026-08-29; by 2026-10-14 two new ones rank on Bing (first two rows).
 
 | Site | State |
 |---|---|
+| swiss-markt.ch | *Added 2026-10-14.* 1,723 Swiss markets of every kind (weekly, flea, Christmas, Chilbi), by canton and town; Google star ratings on cards; Heute / Wochenende / Datum; "In meiner Nähe"; claims dates are checked against official sources (communes, tourism offices). German, a WERBUNG slot in lists. Ranks top 3 on Bing for `flohmarkt zürich`, `flohmarkt luzern` |
+| flohfindr.ch | *Added 2026-10-14.* "Est. 2026", 107 flea markets in 26 cantons, also Brockis and vintage. Stall count, fee and style on every card; filters Wann / Wo / Was; a map; "Markt eintragen". German, playful brutalist design. Ranks above us on Bing for `flohmarkt luzern` |
 | flohmarktkalender.ch | Functional, but **run from Austria** (footer phone +43). German only. WordPress/stock-photo feel. Has the correct Swiss geography model: 26 cantons **plus 8 Großregionen** (Espace Mittelland, Genferseeregion, Nordwestschweiz, Ostschweiz, Tessin, Zentralschweiz, Zürich, Liechtenstein). Three submission routes incl. **email** — a real accessibility win for older organisers. |
 | wann-ist-flohmarkt.ch | **DOWN.** Fatal PHP error: `Call to undefined function mysql_connect()`. Claimed 412 markets. Abandoned incumbent. |
 | flohmarkttermine.ch | **No search of any kind.** Month links in the header. Jimdo-class. Rich per listing (3–6 photos each), structurally useless. |
