@@ -70,6 +70,7 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
         h: '6. Saved markets and your town',
         p: [
           'The markets you save and the town you pick on the home page stay in your own browser. They are not sent to us. They disappear if you clear your browser data or use another device.',
+          'If you have not picked a town, the home page shows the markets near the town your internet connection roughly comes from. Our host, Cloudflare, reads that rough place from the connection, as it does for every website; we put it into the page you are sent and keep nothing of it.',
         ],
       },
       {
@@ -196,7 +197,10 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         h: '6. Gemerkte Märkte und Ihr Ort',
-        p: ['Die Märkte, die Sie sich merken, und der Ort, den Sie auf der Startseite wählen, bleiben in Ihrem eigenen Browser. Sie werden nicht an uns gesendet. Sie verschwinden, wenn Sie Ihre Browserdaten löschen oder ein anderes Gerät benutzen.'],
+        p: [
+          'Die Märkte, die Sie sich merken, und der Ort, den Sie auf der Startseite wählen, bleiben in Ihrem eigenen Browser. Sie werden nicht an uns gesendet. Sie verschwinden, wenn Sie Ihre Browserdaten löschen oder ein anderes Gerät benutzen.',
+          'Haben Sie keinen Ort gewählt, zeigt die Startseite die Märkte rund um den Ort, aus dem Ihre Internetverbindung ungefähr kommt. Unser Hoster Cloudflare liest diesen ungefähren Ort aus der Verbindung, wie bei jeder Website; wir setzen ihn in die Seite, die Sie erhalten, und speichern nichts davon.',
+        ],
       },
       {
         h: '7. Der Newsletter',
@@ -314,7 +318,10 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         h: '6. Marchés enregistrés et votre commune',
-        p: ["Les marchés que vous enregistrez et la commune que vous choisissez sur la page d'accueil restent dans votre propre navigateur. Ils ne nous sont pas envoyés. Ils disparaissent si vous effacez les données de votre navigateur ou changez d'appareil."],
+        p: [
+          "Les marchés que vous enregistrez et la commune que vous choisissez sur la page d'accueil restent dans votre propre navigateur. Ils ne nous sont pas envoyés. Ils disparaissent si vous effacez les données de votre navigateur ou changez d'appareil.",
+          "Si vous n'avez pas choisi de commune, la page d'accueil montre les marchés autour de l'endroit d'où vient à peu près votre connexion internet. Notre hébergeur, Cloudflare, lit cet endroit approximatif dans la connexion, comme pour tout site web ; nous l'inscrivons dans la page qui vous est envoyée et n'en gardons rien.",
+        ],
       },
       {
         h: '7. La newsletter',
@@ -432,7 +439,10 @@ export const PRIVACY: Record<Locale, LegalDoc> = {
       },
       {
         h: '6. Mercatini salvati e la tua località',
-        p: ["I mercatini che salvi e la località che scegli nella pagina iniziale restano nel tuo browser. Non ci vengono inviati. Scompaiono se cancelli i dati del browser o usi un altro dispositivo."],
+        p: [
+          "I mercatini che salvi e la località che scegli nella pagina iniziale restano nel tuo browser. Non ci vengono inviati. Scompaiono se cancelli i dati del browser o usi un altro dispositivo.",
+          "Se non hai scelto una località, la pagina iniziale mostra i mercatini vicino al luogo da cui proviene, più o meno, la tua connessione internet. Il nostro hosting, Cloudflare, legge questo luogo approssimativo dalla connessione, come per ogni sito; lo inseriamo nella pagina che ti viene inviata e non ne conserviamo nulla.",
+        ],
       },
       {
         h: '7. La newsletter',

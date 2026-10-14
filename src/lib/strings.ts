@@ -85,6 +85,12 @@ export interface Strings {
   thisWeekend: string;
   thisWeekendLede: (n: number, from: string, to: string) => string;
   allWeekend: (n: number) => string;
+  /** The weekend block led by the visitor's town (index.astro). {town} and {n} are filled in the browser. */
+  weekendNear: string;
+  weekendNearLede: (one: boolean, from: string, to: string) => string;
+  notNear: string;
+  changeTown: string;
+  allWeekendEverywhere: (n: number) => string;
   /** The market page's dates list opens at five; this is the rest of it. */
   allDates: (n: number) => string;
   /* The home page's one question, asked below the markets — TownPicker. */
@@ -533,6 +539,11 @@ const de: Strings = {
   homeOrganiserAction: 'Ihre Seite übernehmen',
   thisWeekend: 'Dieses Wochenende',
   allWeekend: (n) => `Alle ${n} am Wochenende`,
+  weekendNear: 'Dieses Wochenende rund um {town}',
+  weekendNearLede: (one, from, to) => `{n} ${one ? 'Markt' : 'Märkte'} im Umkreis von 30 km, ${from}${to === from ? '' : ` und ${to}`}`,
+  notNear: 'Nicht in der Nähe von {town}?',
+  changeTown: 'Ändern',
+  allWeekendEverywhere: (n) => `Alle ${n} am Wochenende, überall`,
   allDates: (n) => `Alle ${n} Termine`,
   yourTown: 'Deine Stadt',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'Markt' : 'Märkte'}, ${from}${to === from ? '' : ` und ${to}`}`,
@@ -819,6 +830,11 @@ const en: Strings = {
   homeOrganiserAction: 'Claim your page',
   thisWeekend: 'This weekend',
   allWeekend: (n) => `All ${n} this weekend`,
+  weekendNear: 'This weekend near {town}',
+  weekendNearLede: (one, from, to) => `{n} ${one ? 'market' : 'markets'} within 30 km, ${from}${to === from ? '' : ` and ${to}`}`,
+  notNear: 'Not near {town}?',
+  changeTown: 'Change',
+  allWeekendEverywhere: (n) => `All ${n} this weekend, everywhere`,
   allDates: (n) => `All ${n} dates`,
   yourTown: 'Your town',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'market' : 'markets'}, ${from}${to === from ? '' : ` and ${to}`}`,
@@ -1110,6 +1126,11 @@ const fr: Strings = {
   homeOrganiserAction: 'Prendre en main votre page',
   thisWeekend: 'Ce week-end',
   allWeekend: (n) => `Les ${n} du week-end`,
+  weekendNear: 'Ce week-end autour de {town}',
+  weekendNearLede: (one, from, to) => `{n} ${one ? 'brocante' : 'brocantes'} à moins de 30 km, ${from}${to === from ? '' : ` et ${to}`}`,
+  notNear: 'Pas près de {town} ?',
+  changeTown: 'Changer',
+  allWeekendEverywhere: (n) => `Les ${n} du week-end, partout`,
   allDates: (n) => `Les ${n} dates`,
   yourTown: 'Votre ville',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'brocante' : 'brocantes'}, ${from}${to === from ? '' : ` et ${to}`}`,
@@ -1399,6 +1420,11 @@ const it: Strings = {
   homeOrganiserAction: 'Prendi in mano la tua pagina',
   thisWeekend: 'Questo fine settimana',
   allWeekend: (n) => `Tutti i ${n} del fine settimana`,
+  weekendNear: 'Questo fine settimana intorno a {town}',
+  weekendNearLede: (one, from, to) => `{n} ${one ? 'mercatino' : 'mercatini'} entro 30 km, ${from}${to === from ? '' : ` e ${to}`}`,
+  notNear: 'Non sei vicino a {town}?',
+  changeTown: 'Cambia',
+  allWeekendEverywhere: (n) => `Tutti i ${n} del fine settimana, ovunque`,
   allDates: (n) => `Tutte le ${n} date`,
   yourTown: 'La tua città',
   thisWeekendLede: (n, from, to) => `${n} ${n === 1 ? 'mercatino' : 'mercatini'}, ${from}${to === from ? '' : ` e ${to}`}`,

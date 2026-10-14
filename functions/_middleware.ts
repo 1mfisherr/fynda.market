@@ -66,9 +66,31 @@ function daysUntil(date: string | undefined): number | null {
   return days < -1 ? -1 : Math.min(days, 400);
 }
 
+/**
+ * The home page's "This weekend near {town}" when the visitor never picked a
+ * town (Delfim, 2026-10-14, design/home-town-v1.html). Cloudflare already
+ * knows roughly where a connection comes from; the page gets that point as a
+ * meta tag, rounded to about a kilometre, and the browser names the nearest
+ * town of ours from it. Nothing is stored and nothing is asked — the browser's
+ * location prompt was denied 11 times of 13. Often wrong by a town, which is
+ * why the page says "Not near Zurich? Change".
+ */
+const HOME_RE = /^\/(de|fr|it|en)\/$/;
+function withNear(response: Response, request: Request): Response {
+  const cf = request.cf as { latitude?: string; longitude?: string } | undefined;
+  const lat = Number(cf?.latitude), lng = Number(cf?.longitude);
+  if (!cf?.latitude || !cf?.longitude || !Number.isFinite(lat) || !Number.isFinite(lng)) return response;
+  const near = `<meta name="fynda:near" content="${lat.toFixed(2)},${lng.toFixed(2)}">`;
+  const rewritten = new HTMLRewriter().on('head', { element(head) { head.append(near, { html: true }); } }).transform(response);
+  // One visitor's point must never be kept and served to the next.
+  const out = new Response(rewritten.body, rewritten);
+  out.headers.set('Cache-Control', 'private, no-cache');
+  return out;
+}
+
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, next, env, waitUntil } = context;
-  const response = await next();
+  let response = await next();
 
   // Only real page loads. Assets and redirects are not page views, and
   // counting them would inflate exactly the number we most need to trust.
@@ -77,6 +99,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (response.status !== 200 && response.status !== 404) return response;
 
   const url = new URL(request.url);
+  if (response.status === 200 && HOME_RE.test(url.pathname)) response = withNear(response, request);
 
   /*
    * `?intern=1` marks this browser as ours for a year and nothing it does is
