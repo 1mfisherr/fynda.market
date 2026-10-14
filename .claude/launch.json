@@ -36,6 +36,14 @@
         "8788"
       ],
       "port": 8788
+    },
+    {
+      "name": "design",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "design/serve.mjs"
+      ],
+      "port": 4400
     }
   ]
 }
