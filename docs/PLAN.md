@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-10-14, end of session — everything below is live (pushed and deployed that evening).
+Updated 2026-10-15, end of session — everything below is live (pushed and deployed that evening).
 
 ---
 
@@ -49,6 +49,7 @@ Not built: country page (parked) · text search · organiser photo upload.
 8. Buffer.
 
 **Read, on these dates** — nothing to build until then:
+- 2026-10-19: the 20 welcome letters again — link opens, edits, stops (the 2026-10-15 query); Delfim: replies, Resend bounces.
 - 2026-10-17: Search Console → Indexing → Sitemaps *Last read* after the resubmit; Indexing → Pages — *excluded by noindex* falling, *discovered – not indexed* shrinking.
 - 2026-10-18 Search Console export (none was made 2026-10-11): does Germany earn anything; Bremen (1 market) and Saarland (2) as thin → lose their page?
 - 2026-10-25 and 2026-11-01 exports: the titles (no year without a date since 2026-10-09), and Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit (1.8% clicks on 20 Sep; all run 18 Oct) — above 3% means the new titles work.
@@ -64,6 +65,7 @@ Parked: country page (the front door carries the towns); German text search (set
 
 Each waits on Delfim or on data. Don't assume an answer.
 
+- **Replace the old site's photos** — proposed 2026-10-15 as the first move against the site-wide judgement (Commons, organisers' own with permission, Delfim's), no answer yet. Search Console's *discovered – not indexed* is falling (≈900 → 550 by 12 Oct), mostly German pages, the newest.
 - **Delfim's own photos.** 247 of 263 Swiss photos are the old site's pictures. Delfim said "would be nice" (2026-10-14) to photographing markets near him; waiting for his town, then a list of nearby markets still on old photos.
 - **Ceilings.** Resend free: 100 mails a day → paid plan before ~80 subscribers. Cloudflare Pages: 20,000 files per deploy (~2,800 now, ~6–8 per market) → images to R2 before ~2,500 more markets. Near me carries every market → split by country or load as data past ~800. Database ~50 MB of 500.
 - **German silent visits count as bots** (`bot_likely` rule 1 predates Germany). Revisit when German traffic exists.
