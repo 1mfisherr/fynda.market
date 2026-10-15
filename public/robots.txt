@@ -16,5 +16,9 @@ Allow: /
 # its visits on 1,569 of them while 896 real pages waited (Search Console,
 # 2026-10-10). The bare forms stay open; the per-market copies do not.
 Disallow: /*?markt=
+# The "add to calendar" files: 125 of them were crawled and sat in "crawled –
+# not indexed" beside the real pages (Search Console, 2026-10-15). A calendar
+# app fetches them with no regard for this file; only crawlers stop.
+Disallow: /ics/
 
 Sitemap: https://fynda.market/sitemap-index.xml
