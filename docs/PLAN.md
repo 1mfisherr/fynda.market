@@ -65,7 +65,7 @@ Parked: country page (the front door carries the towns); German text search (set
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **Replace the old site's photos** — proposed 2026-10-15 as the first move against the site-wide judgement (Commons, organisers' own with permission, Delfim's), no answer yet. Search Console's *discovered – not indexed* is falling (≈900 → 550 by 12 Oct), mostly German pages, the newest.
+- **Replace the old site's photos** — decided 2026-10-17: Delfim finds them, 20 at a time, most-seen-in-Google first (246 left: markets whose live `image_url` fact is still the v1 import); files named as the market, then `import-photos.mjs`. Batch 1 given 2026-10-17, from Stücki to Rumine. Search Console's *discovered – not indexed* is falling (≈900 → 550 by 12 Oct), mostly German pages, the newest.
 - **Delfim's own photos.** 247 of 263 Swiss photos are the old site's pictures. Delfim said "would be nice" (2026-10-14) to photographing markets near him; waiting for his town, then a list of nearby markets still on old photos.
 - **Ceilings.** Resend free: 100 mails a day → paid plan before ~80 subscribers. Cloudflare Pages: 20,000 files per deploy (~2,800 now, ~6–8 per market) → images to R2 before ~2,500 more markets. Near me carries every market → split by country or load as data past ~800. Database ~50 MB of 500.
 - **German silent visits count as bots** (`bot_likely` rule 1 predates Germany). Revisit when German traffic exists.
