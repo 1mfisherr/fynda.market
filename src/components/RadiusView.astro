@@ -241,6 +241,13 @@ const DEFAULT_KM = 25;
   [data-js][data-state='before'] #list,
   [data-js][data-state='refused'] #list { display: none; }
   [data-state='locating'] #list { opacity: 0.45; transition: opacity var(--duration-base) var(--ease-base); }
+  /* A phone that says no while the list shows: the sheet rises over it, and
+     the list keeps its room, unseen, until the sheet goes. Dropping it under
+     the sheet pulled the footer up with no tap to answer for it (Lighthouse
+     layout shift 0.63, 2026-10-17); after the tap that closes the sheet, the
+     same move is the visitor's own. */
+  [data-js][data-list-held][data-state='refused'] #list,
+  [data-js][data-list-held][data-state='before'] #list { display: block; visibility: hidden; }
 </style>
 
 <script>
@@ -286,6 +293,7 @@ const DEFAULT_KM = 25;
     function openSheet(yes: boolean) {
       sheet.hidden = !yes;
       document.documentElement.style.overflow = yes ? 'hidden' : '';
+      if (!yes) page!.removeAttribute('data-list-held');
     }
 
     /* The URL says what is on screen, so a list can be shared and Back works. */
@@ -299,6 +307,8 @@ const DEFAULT_KM = 25;
     }
 
     function render() {
+      const was = page!.getAttribute('data-state');
+      if ((was === 'locating' || was === 'located') && (state === 'refused' || state === 'before')) page!.setAttribute('data-list-held', '');
       page!.setAttribute('data-state', state);
       placeLabel.textContent = origin
         ? `${origin.town ? (d.nearTown ?? '').replace('{town}', origin.town.name) : d.nearYou} · ${km} km`
