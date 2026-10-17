@@ -325,9 +325,10 @@ async function write(d, ours) {
         for (const dte of m.dates) {
           const occurrence = await one(
             `insert into public.occurrences
-               (market_id, date, start_time, end_time, status, origin, cancellation_note, confirmed_at)
-             values ($1,$2,$3,$4,$5,'import',$6,$7) returning id`,
-            [row.id, dte.date, dte.start_time, dte.end_time, dte.status, dte.cancellation_note, dte.confirmed_at]);
+               (market_id, date, start_time, end_time, status, origin, confirmed_at)
+             values ($1,$2,$3,$4,$5,'import',$6) returning id`,
+            // no cancellation_note: v1's is one German line that every locale would print
+            [row.id, dte.date, dte.start_time, dte.end_time, dte.status, dte.confirmed_at]);
           occurrences += 1;
           if (dte.status === 'confirmed' && dte.confirmed_at) {
             await fact('occurrence', occurrence.id, 'date', dte.date, {

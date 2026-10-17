@@ -288,7 +288,8 @@ await withClient(DB_URL, async (c) => {
         [w.market_id, w.date, w.st, w.et, w.status, w.stampAt]);
       if (w.status === 'confirmed') await fact(c, row.id, w.date, w.source, w.stampAt);
     } else if (w.op === 'cancel') {
-      await c.query(`update public.occurrences set status = 'cancelled', cancellation_note = $2, updated_at = now() where id = $1`, [w.id, w.note]);
+      // v1's reason is one German line; every locale would print it, so the date carries the status alone.
+      await c.query(`update public.occurrences set status = 'cancelled', cancellation_note = null, updated_at = now() where id = $1`, [w.id]);
       await fact(c, w.id, w.date, w.source, w.stampAt);
     } else if (w.op === 'hours') {
       await c.query(`update public.occurrences set start_time = $2, end_time = $3, updated_at = now() where id = $1`, [w.id, w.st, w.et]);
