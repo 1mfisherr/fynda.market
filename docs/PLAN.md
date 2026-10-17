@@ -2,7 +2,7 @@
 
 What is true now and what happens next. **Read first, every session; update before ending one.** Status and decisions only — the story is in git and `archive/PLAN-log-2026-09.md`.
 
-Updated 2026-10-17 — the Market Watch run read through; two migrations applied to the live database, not yet pushed.
+Updated 2026-10-17, end of session — everything below is live (pushed and deployed that evening): the Market Watch run read through, Near me's jump fixed, the Telegram report rewritten, photo batch 1 (19 of 20).
 
 ---
 
@@ -50,7 +50,8 @@ Not built: country page (parked) · text search · organiser photo upload.
 
 **Read, on these dates** — nothing to build until then:
 - 2026-10-19: the 20 welcome letters again — link opens, edits, stops (the 2026-10-15 query); Delfim: replies, Resend bounces.
-- 2026-10-17: Search Console → Indexing → Sitemaps *Last read* after the resubmit; Indexing → Pages — *excluded by noindex* falling, *discovered – not indexed* shrinking.
+- 2026-10-18: the 10 photos replaced under the same file name show on the live site (Cloudflare keeps an image a day). 2026-10-24, the next Market Watch: does the new Telegram report read cleanly, links behind words.
+- 2026-10-17 (not yet read): Search Console → Indexing → Sitemaps *Last read* after the resubmit; Indexing → Pages — *excluded by noindex* falling, *discovered – not indexed* shrinking.
 - Done 2026-10-17, the 28-day export to 14 Oct (`docs/GSCdata/17.10.26 - 28 days/`): **no recovery** — 2–6 impressions a day since 4 Oct, against 600–3,000 before; 493 clicks in the 28 days, all but ~4 before 1 Oct. Germany: 20 clicks on 17 pages, all before the drop. Saarland's page earned 4 clicks — it stays; Bremen's had no impressions, nothing to judge — it stays too until there is.
 - 2026-10-25 and 2026-11-01 exports: the titles (no year without a date since 2026-10-09), and Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit (1.8% clicks on 20 Sep; all run 18 Oct) — above 3% means the new titles work.
 - 2026-10-21: Near me allow rate (`geo_prompt` granted ÷ requested); below ~30% the button is in the wrong place. Expect too little data.
