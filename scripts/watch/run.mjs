@@ -357,23 +357,30 @@ const runId = await withClient(DB_URL, async (c) => {
   }
 
   // The message Delfim gets — written here, sent by the site, which holds the Telegram key.
-  const lines = [`Market Watch · ${short(today)}`,
-    `${pages.length} page(s) read · ${stamps.size} date(s) re-confirmed · ${decisions.length} to decide${notes.length ? ` · ${notes.length} page(s) broken` : ''}`];
-  lines.push(...swiss);
-  lines.push(...speed);
+  // Telegram HTML: links sit behind a word, not as a raw address (Delfim, 2026-10-17: "the message is a mess").
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const link = (href, text) => `<a href="${esc(href)}">${esc(text)}</a>`;
+  const n = (k, one, many = `${one}s`) => `${k} ${k === 1 ? one : many}`;
+  // Four dates or fewer by name; more as a count and a range — the page holds the list.
+  const when = (dates) => dates.length <= 4 ? dates.map(short).join(', ') : `${dates.length} dates, ${short(dates[0])} – ${short(dates.at(-1))}`;
+  const lines = [`<b>Market Watch · ${esc(short(today))}</b>`,
+    `${n(pages.length, 'page')} read · ${n(stamps.size, 'date')} re-confirmed · ${decisions.length} to decide${notes.length ? ` · ${n(notes.length, 'page')} broken` : ''}`];
+  lines.push(...swiss.map(esc));
+  lines.push(...speed.map(esc));
   if (answer.ai === 'no_login' && questions.length) lines.push(`⚠ ${questions.length} question(s) waiting: the AI login is missing or expired. On the PC, run: claude setup-token`);
   decisions.forEach(({ f, approve, dismiss }, i) => {
-    const what = { new_date: 'new date', cancelled: 'cancelled', missing: 'date not on the page', hours: `hours ${f.start}–${f.end}` }[f.kind];
+    const what = { new_date: 'New dates', cancelled: 'Cancelled', missing: 'Not on the page', hours: `New hours ${f.start}–${f.end}` }[f.kind];
     lines.push([
-      `${i + 1}. ${f.q.market.name} (${f.q.market.town}) — ${what}: ${f.dates.map(short).join(', ')}`,
-      f.summary,
-      f.quote ? `“${f.quote.slice(0, 220)}” ${f.verified ? '(quote checked)' : '(NOT verified — read the page)'}` : '(no quote)',
-      f.q.url,
-      approve ? `✅ Approve: ${approve}` : '(no signing secret — decide by hand)',
-      dismiss ? `❌ Dismiss: ${dismiss}` : '',
+      `<b>${i + 1}. ${esc(f.q.market.name)}</b> (${esc(f.q.market.town)})`,
+      `${what}: ${esc(when([...f.dates].sort()))}`,
+      // A new date's quote only repeats the dates; any other finding needs the page's own words.
+      f.kind !== 'new_date' && f.summary ? esc(f.summary) : '',
+      f.kind !== 'new_date' && f.quote ? `<i>“${esc(f.quote.slice(0, 160))}”</i>` : '',
+      `${link(f.q.url, "Organiser's page")} · ${f.verified ? 'quote checked' : '⚠ quote NOT found — read the page'}`,
+      approve ? `✅ ${link(approve, 'Approve')}   ❌ ${link(dismiss, 'Dismiss')}` : '(no signing secret — decide by hand)',
     ].filter(Boolean).join('\n'));
   });
-  for (const n of notes) lines.push(`! ${markets.get(n.market)?.name}: ${n.why}\n${n.src.url}`);
+  for (const x of notes) lines.push(`⚠ <b>${esc(markets.get(x.market)?.name ?? '?')}</b>: ${esc(x.why)} — ${link(x.src.url, 'page')}. Nothing to tap; for a Claude session.`);
   const report = lines.join('\n\n');
   await c.query(`update public.watch_runs set report = $2, finished_at = now() where id = $1`, [run.id, report]);
   await c.query('commit');

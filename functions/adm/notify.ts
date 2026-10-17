@@ -52,7 +52,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (!row.report) return json(200, { ok: true, sent: 0 });
 
   const parts = chunks(row.report);
-  for (const part of parts) await ping(env, part);
+  // The run writes Telegram HTML since 2026-10-17; reports written before that are plain text.
+  const html = row.report.startsWith('<b>');
+  for (const part of parts) await ping(env, part, html);
   await updateRows(env, 'watch_runs', `id=eq.${run}`, { notified_at: new Date().toISOString() });
   return json(200, { ok: true, sent: parts.length });
 };

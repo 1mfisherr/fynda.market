@@ -65,7 +65,8 @@ export async function hmacHex(key: string, message: string): Promise<string> {
 export const domainOf = (email: string | null | undefined): string =>
   email && email.includes('@') ? `…@${email.split('@').pop()}` : 'no address';
 
-export async function ping(env: FormEnv, text: string): Promise<void> {
+/** `html`: the text is Telegram HTML (`<b>`, `<i>`, `<a>`), its own text escaped by the caller. */
+export async function ping(env: FormEnv, text: string, html = false): Promise<void> {
   // Trimmed, and not optional. A secret set by piping a value into the CLI
   // arrives with the shell's trailing newline attached, which puts a line break
   // inside the request URL and inside the chat id. The first newsletter signup
@@ -78,7 +79,7 @@ export async function ping(env: FormEnv, text: string): Promise<void> {
     const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ chat_id: chat, text, disable_web_page_preview: true }),
+      body: JSON.stringify({ chat_id: chat, text, disable_web_page_preview: true, ...(html ? { parse_mode: 'HTML' } : {}) }),
     });
     // Telegram answers 200 with ok:false for a bad chat id, so the status alone
     // is not the answer. This line is the difference between a silent failure
