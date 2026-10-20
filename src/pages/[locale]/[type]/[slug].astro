@@ -82,8 +82,9 @@ export async function getStaticPaths() {
         params: { locale, type: LOCALE[locale].segments.market, slug: market.slug },
         props: {
           locale, market, alternates, nearby, nearbyKind, nearbyKm,
-          // Whether the town has a page worth sending someone to from here.
+          // Whether the town, and the canton, have a page worth sending someone to from here.
           townHasOthers,
+          regionHasOthers: all.some((m) => m.regionSlug === market.regionSlug && m.countryCode === market.countryCode && m.id !== market.id),
           towns: townHasOthers ? [] : townsAround(market.citySlug, index),
         },
       });
@@ -95,9 +96,9 @@ export async function getStaticPaths() {
 /** Which question the nearby block answers — src/lib/nearby.ts, and `around` is the folded town page's *Within 25 km*. */
 type NearbyKind = 'day' | 'meanwhile' | 'around';
 
-const { locale, market, alternates, nearby, nearbyKind, nearbyKm, townHasOthers, towns } = Astro.props as {
+const { locale, market, alternates, nearby, nearbyKind, nearbyKm, townHasOthers, regionHasOthers, towns } = Astro.props as {
   locale: Locale; market: Market; alternates: { locale: Locale; path: string }[]; nearby: Nearby[]; nearbyKind: NearbyKind; nearbyKm: number;
-  townHasOthers: boolean; towns: (TownEntry & { km: number })[];
+  townHasOthers: boolean; regionHasOthers: boolean; towns: (TownEntry & { km: number })[];
 };
 const s = t(locale);
 const next = market.next;
@@ -180,7 +181,8 @@ const jsonLd = {
     // is what finally makes this trail true rather than plausible.
     { '@type': 'BreadcrumbList', itemListElement: [
       { name: 'fynda.market', item: `${site}${homePath(locale)}` },
-      ...(cityState ? [] : [{ name: market.region, item: `${site}${regionPath(locale, market.countryCode, market.countrySlug, market.regionSlug)}` }]),
+      // A canton of one market has no page either (src/lib/towns.ts regionHref).
+      ...(cityState || !regionHasOthers ? [] : [{ name: market.region, item: `${site}${regionPath(locale, market.countryCode, market.countrySlug, market.regionSlug)}` }]),
       // A town of one market has no page: the trail goes canton → market.
       ...(townHasOthers ? [{ name: market.city, item: `${site}${cityPath(locale, market.countrySlug, market.citySlug)}` }] : []),
       { name: market.name, item: url },
@@ -508,7 +510,9 @@ const description = next
         {!cityState && (
           <>
             <span aria-hidden="true">·</span>
-            <a href={regionPath(locale, market.countryCode, market.countrySlug, market.regionSlug)}>{s.regionLabel(market.region, market.countryCode)}</a>
+            {regionHasOthers
+              ? <a href={regionPath(locale, market.countryCode, market.countrySlug, market.regionSlug)}>{s.regionLabel(market.region, market.countryCode)}</a>
+              : <span class="town">{s.regionLabel(market.region, market.countryCode)}</span>}
           </>
         )}
       </p>

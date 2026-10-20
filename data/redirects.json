@@ -1740,6 +1740,54 @@
     "to": "/it/mercato/pop-up-flohmi-industrie45-zug/"
   },
   {
+    "from": "/de/schweiz/kanton/jura/",
+    "to": "/de/markt/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/de/schweiz/kanton/obwalden/",
+    "to": "/de/markt/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/de/schweiz/kanton/uri/",
+    "to": "/de/markt/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/en/switzerland/canton/jura/",
+    "to": "/en/market/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/en/switzerland/canton/obwalden/",
+    "to": "/en/market/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/en/switzerland/canton/uri/",
+    "to": "/en/market/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/fr/suisse/canton/jura/",
+    "to": "/fr/marche/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/fr/suisse/canton/obwalden/",
+    "to": "/fr/marche/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/fr/suisse/canton/uri/",
+    "to": "/fr/marche/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/it/svizzera/cantone/jura/",
+    "to": "/it/mercato/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/it/svizzera/cantone/obwalden/",
+    "to": "/it/mercato/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/it/svizzera/cantone/uri/",
+    "to": "/it/mercato/flohmarkt-altdorf/"
+  },
+  {
     "from": "/de/deutschland/bundesland/berlin/",
     "to": "/de/deutschland/berlin/"
   },
@@ -1764,6 +1812,26 @@
     "to": "/en/market/flohmarkt-hansa-carre-bremen/"
   },
   {
+    "from": "/de/markt/marche-aux-puces-plainpalais-geneve-mittwoch/",
+    "to": "/de/markt/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/de/markt/marche-aux-puces-plainpalais-geneve-samstag/",
+    "to": "/de/markt/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/de/markt/marche-rumine-lausanne-mercredi/",
+    "to": "/de/markt/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/de/markt/marche-rumine-lausanne-samedi/",
+    "to": "/de/markt/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/de/markt/marche-rumine-lausanne-vendredi/",
+    "to": "/de/markt/marche-rumine-lausanne/"
+  },
+  {
     "from": "/de/markt/marches-tunnel-lausanne-mardi/",
     "to": "/de/schweiz/lausanne/"
   },
@@ -1782,6 +1850,26 @@
   {
     "from": "/de/markt/vide-grenier-prelaz-valency-lausanne/",
     "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/en/market/marche-aux-puces-plainpalais-geneve-mittwoch/",
+    "to": "/en/market/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/en/market/marche-aux-puces-plainpalais-geneve-samstag/",
+    "to": "/en/market/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/en/market/marche-rumine-lausanne-mercredi/",
+    "to": "/en/market/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/en/market/marche-rumine-lausanne-samedi/",
+    "to": "/en/market/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/en/market/marche-rumine-lausanne-vendredi/",
+    "to": "/en/market/marche-rumine-lausanne/"
   },
   {
     "from": "/en/market/marches-tunnel-lausanne-mardi/",
@@ -1804,6 +1892,26 @@
     "to": "/en/switzerland/lausanne/"
   },
   {
+    "from": "/fr/marche/marche-aux-puces-plainpalais-geneve-mittwoch/",
+    "to": "/fr/marche/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/fr/marche/marche-aux-puces-plainpalais-geneve-samstag/",
+    "to": "/fr/marche/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/fr/marche/marche-rumine-lausanne-mercredi/",
+    "to": "/fr/marche/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/fr/marche/marche-rumine-lausanne-samedi/",
+    "to": "/fr/marche/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/fr/marche/marche-rumine-lausanne-vendredi/",
+    "to": "/fr/marche/marche-rumine-lausanne/"
+  },
+  {
     "from": "/fr/marche/marches-tunnel-lausanne-mardi/",
     "to": "/fr/suisse/lausanne/"
   },
@@ -1822,6 +1930,26 @@
   {
     "from": "/fr/marche/vide-grenier-prelaz-valency-lausanne/",
     "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/it/mercato/marche-aux-puces-plainpalais-geneve-mittwoch/",
+    "to": "/it/mercato/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/it/mercato/marche-aux-puces-plainpalais-geneve-samstag/",
+    "to": "/it/mercato/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/it/mercato/marche-rumine-lausanne-mercredi/",
+    "to": "/it/mercato/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/it/mercato/marche-rumine-lausanne-samedi/",
+    "to": "/it/mercato/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/it/mercato/marche-rumine-lausanne-vendredi/",
+    "to": "/it/mercato/marche-rumine-lausanne/"
   },
   {
     "from": "/it/mercato/marches-tunnel-lausanne-mardi/",
@@ -1938,6 +2066,38 @@
   {
     "from": "/it/svizzera/zurigo/",
     "to": "/it/svizzera/zurich/"
+  },
+  {
+    "from": "/de/markt/marche-aux-puces-plainpalais-geneve-erster-sonntag/",
+    "to": "/de/markt/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/de/markt/marche-rumine-lausanne-mardi/",
+    "to": "/de/markt/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/en/market/marche-aux-puces-plainpalais-geneve-erster-sonntag/",
+    "to": "/en/market/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/en/market/marche-rumine-lausanne-mardi/",
+    "to": "/en/market/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/fr/marche/marche-aux-puces-plainpalais-geneve-erster-sonntag/",
+    "to": "/fr/marche/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/fr/marche/marche-rumine-lausanne-mardi/",
+    "to": "/fr/marche/marche-rumine-lausanne/"
+  },
+  {
+    "from": "/it/mercato/marche-aux-puces-plainpalais-geneve-erster-sonntag/",
+    "to": "/it/mercato/marche-aux-puces-plainpalais-geneve/"
+  },
+  {
+    "from": "/it/mercato/marche-rumine-lausanne-mardi/",
+    "to": "/it/mercato/marche-rumine-lausanne/"
   },
   {
     "from": "/de/schweiz/kanton/freiburg/",

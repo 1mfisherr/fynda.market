@@ -627,7 +627,7 @@ check('Sitemap matches the indexable pages', () => {
 /* market is a template that slipped past src/lib/towns.ts hasTownPage.        */
 /* -------------------------------------------------------------------------- */
 
-check('One-market towns have no page of their own', () => {
+check('One-market towns and cantons have no page of their own', () => {
   const own = (html) => {
     const main = html.match(/<main[\s\S]*?>([\s\S]*?)<\/main>/i);
     return (main ? main[1] : html)
@@ -637,16 +637,18 @@ check('One-market towns have no page of their own', () => {
   const stray = [];
   let towns = 0;
 
+  // Cantons and Bundesländer too (src/lib/towns.ts regionHref): Jura, Obwalden and Uri on 2026-10-20.
   for (const page of pages) {
-    if (routeTypeOf(page.url) !== 'region or city') continue;
+    const type = routeTypeOf(page.url);
+    if (type !== 'region or city' && type !== 'region') continue;
     towns++;
     const links = new Set([...own(page.html).matchAll(/href="(\/(?:de|fr|it|en)\/(?:markt|marche|mercato|market)\/[a-z0-9-]+\/)"/g)].map((m) => m[1]));
-    if (links.size === 1) stray.push(`${page.url}  — a town page for one market, ${[...links][0]}`);
+    if (links.size === 1) stray.push(`${page.url}  — a place page for one market, ${[...links][0]}`);
   }
 
-  if (towns === 0) return skip('no town pages in dist');
-  if (stray.length) return fail(`${stray.length} town page(s) exist for a single market`, [...stray, config.townPages.why]);
-  return pass(`${towns} town pages, every one with two markets or more`);
+  if (towns === 0) return skip('no town or canton pages in dist');
+  if (stray.length) return fail(`${stray.length} place page(s) exist for a single market`, [...stray, config.townPages.why]);
+  return pass(`${towns} town and canton pages, every one with two markets or more`);
 });
 
 /* -------------------------------------------------------------------------- */

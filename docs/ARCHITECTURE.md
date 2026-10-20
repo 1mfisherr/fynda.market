@@ -148,7 +148,7 @@ Four layers, each knowing only the one below: `tokens.css` (values, no selectors
 | 8 | hreflang clusters | One bad link voiding a cluster |
 | 9 | Retired addresses still land | A rename killing every shared link |
 | 10 | Sitemap = indexable pages | Asking Google to index a `noindex` page |
-| 11 | One-market towns have no page of their own | A town page built for a single market — the doorway shape Google's rules name; the address 301s to the market (2026-10-20) |
+| 11 | One-market towns and cantons have no page of their own | A town or canton page built for a single market — the doorway shape Google's rules name; the address 301s to the market (2026-10-20) |
 
 A fixtures build says `SKIP` where a check needs real data; that is waiting, not passing.
 

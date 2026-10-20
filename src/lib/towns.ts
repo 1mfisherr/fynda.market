@@ -6,7 +6,7 @@
  * town's market venues — good enough to measure "25 km from Zürich" from, and
  * it needs no extra query.
  */
-import { cityPath, countryName, marketPath, type Locale } from './i18n.ts';
+import { cityPath, countryName, marketPath, regionPath, type Locale } from './i18n.ts';
 import { DISTANCE_MAX_KM, distanceKm } from './geo.ts';
 import type { Market } from './types';
 
@@ -30,6 +30,24 @@ export function townHref(locale: Locale, townMarkets: Market[]): string {
 /** True when the town has a page of its own — two markets or more. */
 export function hasTownPage(townMarkets: Market[]): boolean {
   return townMarkets.length > 1;
+}
+
+/**
+ * The same rule one level up: a canton or Bundesland of one market — Jura,
+ * Obwalden and Uri on 2026-10-20 — has no page, its market's page stands for
+ * it, and its address 301s there. A city-state never has a region page at all
+ * (src/lib/i18n.ts isCityState); its town page answers for it.
+ */
+export function regionHref(locale: Locale, regionMarkets: Market[]): string {
+  const [first] = regionMarkets;
+  return regionMarkets.length === 1
+    ? marketPath(locale, first.slug)
+    : regionPath(locale, first.countryCode, first.countrySlug, first.regionSlug);
+}
+
+/** True when the region has a page of its own — two markets or more. */
+export function hasRegionPage(regionMarkets: Market[]): boolean {
+  return regionMarkets.length > 1;
 }
 
 export interface TownEntry {

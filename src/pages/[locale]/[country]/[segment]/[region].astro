@@ -28,7 +28,7 @@ import { byMarket, datedRows, lastChecked, undatedMarkets } from '../../../../li
 import { formatDate, formatDateShort, formatTimeRange } from '../../../../lib/format';
 import { LOCALES, homePath, isCityState, regionPath, regionSegment, type Locale } from '../../../../lib/i18n';
 import { t } from '../../../../lib/strings';
-import { townHref } from '../../../../lib/towns';
+import { hasRegionPage, townHref } from '../../../../lib/towns';
 import { fitTitle } from '../../../../lib/titles';
 import type { Market } from '../../../../lib/types';
 
@@ -56,6 +56,8 @@ export async function getStaticPaths() {
       // Berlin, Hamburg, Bremen: the town page is this page. src/lib/i18n.ts.
       if (isCityState(sample.countryCode, region)) continue;
       const here = markets.filter((m) => m.regionSlug === region);
+      // A canton of one market has no page: its market's page is it (src/lib/towns.ts regionHref).
+      if (!hasRegionPage(here)) continue;
       const alternates = LOCALES.map((other) => {
         const country = countryOf.get(other)!.get(region);
         return country ? { locale: other, path: regionPath(other, sample.countryCode, country, region) } : null;

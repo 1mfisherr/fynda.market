@@ -70,6 +70,10 @@ const ISO2 = `select id, iso2 from public.countries`;
  * too, and the address goes to the home page in the same language — never to
  * a region page, which the content floor may have withheld.
  *
+ * A closed market whose hub is live was merged into it, not ended (2026-10-20,
+ * Plainpalais and Rumine: one market per weekday folded into one), and its
+ * addresses go to the hub's page instead.
+ *
  * The first case (2026-09-27): a vide-grenier in Lausanne that was a one-off
  * inside the city's Caravane des quartiers. Markets that were imported already
  * closed and never had a page get lines too; a redirect nobody follows costs
@@ -81,7 +85,11 @@ const ENDED = `
            where cs.entity_type = 'city' and cs.entity_id = ci.id
              and cs.locale = s.locale and cs.is_current)           as city,
          exists (select 1 from public.publishable_cities pc
-                  where pc.city_id = ci.id)                         as city_live
+                  where pc.city_id = ci.id)                         as city_live,
+         (select hs.slug from public.publishable_markets hp
+            join public.slugs hs on hs.entity_type = 'market' and hs.entity_id = hp.id
+                                and hs.locale = s.locale and hs.is_current
+           where hp.id = m.hub_market_id)                            as hub
     from public.markets m
     join public.venues v   on v.id = m.venue_id
     join public.cities ci  on ci.id = v.city_id
@@ -114,6 +122,23 @@ const LONE = `
                         and ms.locale = cs.locale
    where pc.market_count = 1
    order by cs.locale, cs.slug
+`;
+
+/**
+ * Cantons and Bundesländer of one market (2026-10-20: Jura, Obwalden, Uri) —
+ * the same rule as LONE one level up: no page of their own, the address 301s
+ * to the market. City-states are skipped below: they never had a region page,
+ * and their old one is the city-state line in buildRedirects.
+ */
+const LONE_REGION = `
+  select pr.region_id, rs.locale, rs.slug as region, ms.slug as market, pr.country_id
+    from public.publishable_regions pr
+    join public.publishable_markets pm on pm.region_id = pr.region_id
+    join public.slugs rs on rs.entity_type = 'region' and rs.entity_id = pr.region_id and rs.is_current
+    join public.slugs ms on ms.entity_type = 'market' and ms.entity_id = pm.id and ms.is_current
+                        and ms.locale = rs.locale
+   where pr.market_count = 1
+   order by rs.locale, rs.slug
 `;
 
 /**
@@ -158,6 +183,20 @@ export async function buildRedirects() {
     }
     const townPage = (cityId, locale, country, slug) => lone.get(`${cityId}|${locale}`) ?? `/${locale}/${country}/${slug}/`;
 
+    const loneRegion = new Map();
+    for (const r of await rows(LONE_REGION)) {
+      const segments = LOCALE[r.locale]?.segments;
+      const country = countryNow.get(`${r.country_id}|${r.locale}`);
+      const code = iso2.get(r.country_id);
+      if (!segments || !country || !COUNTRY[code]?.locales.includes(r.locale)) continue;
+      if ((COUNTRY[code].cityStates ?? []).includes(r.region)) continue;
+      const to = `/${r.locale}/${segments.market}/${r.market}/`;
+      loneRegion.set(`${r.region_id}|${r.locale}`, to);
+      exact.push({ from: `/${r.locale}/${country}/${regionSegment(r.locale, code)}/${r.region}/`, to });
+    }
+    const regionPage = (regionId, locale, country, code, slug) =>
+      loneRegion.get(`${regionId}|${locale}`) ?? `/${locale}/${country}/${regionSegment(locale, code)}/${slug}/`;
+
     /* A city-state's region page was published for one night (2026-09-22)
        before it was folded into its town page, and a published address never
        dies. Its words come from the country, so a new city-state needs no line
@@ -181,7 +220,11 @@ export async function buildRedirects() {
       if (!segments || !country) continue;
       exact.push({
         from: `/${r.locale}/${segments.market}/${r.was}/`,
-        to: r.city_live && r.city ? townPage(r.city_id, r.locale, country, r.city) : `/${r.locale}/`,
+        /* Closed with a live hub is merged, not ended: the address goes to the
+           market that holds its dates now (Plainpalais, Rumine — 2026-10-20). */
+        to: r.hub
+          ? `/${r.locale}/${segments.market}/${r.hub}/`
+          : r.city_live && r.city ? townPage(r.city_id, r.locale, country, r.city) : `/${r.locale}/`,
       });
     }
 
@@ -200,7 +243,7 @@ export async function buildRedirects() {
         const seg = regionSegment(locale, code);
         exact.push({
           from: `/${locale}/${country}/${seg}/${was}/`,
-          to: `/${locale}/${country}/${seg}/${now}/`,
+          to: regionPage(r.entity_id, locale, country, code, now),
         });
       } else if (r.entity_type === 'market') {
         const seg = segments.market;

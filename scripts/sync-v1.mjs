@@ -80,7 +80,7 @@ const v1Dates = await query(`
    where d.date >= $1::date`, [today], V1_URL);
 
 const ourMarkets = await query(`
-  select m.id, m.slug, m.status, m.website_url, v.address_line, v.postal_code
+  select m.id, m.slug, m.status, m.hub_market_id, m.website_url, v.address_line, v.postal_code
     from public.markets m
     join public.venues v on v.id = m.venue_id
     join public.cities c on c.id = v.city_id
@@ -104,6 +104,21 @@ const ours = await query(`
    where h.table_name = 'occurrences' and h.changed_at >= $1::date
      and h.who not in ('sync-v1.mjs', 'import-v1.mjs', 'import-v1-additions.mjs')`, [SINCE]);
 
+/* A market merged into its hub — closed, its hub live — holds no dates of its
+   own: Plainpalais and Rumine were one market per weekday in v1 and are one
+   market here (2026-10-20, migration 20261020120000). v1 still lists them
+   apart, so each v1 date is filed under the market that holds it, and the
+   hub is compared against all of its series' dates at once — compared one
+   weekday at a time, every other weekday would read as "v1 does not list it". */
+const ourById = new Map(ourMarkets.map((m) => [m.id, m]));
+const holderOf = (m) => {
+  const hub = m.hub_market_id && ourById.get(m.hub_market_id);
+  return m.status === 'permanently_closed' && hub?.status === 'active' ? hub : m;
+};
+const slugIndex = new Map(ourMarkets.map((m) => [m.slug, m]));
+const holderSlug = (slug) => (slugIndex.has(slug) ? holderOf(slugIndex.get(slug)).slug : slug);
+const merged = new Set(ourMarkets.filter((m) => holderOf(m) !== m).map((m) => m.slug));
+
 // market|date → which kinds of our own change touched that date, and when.
 const touched = new Map();
 for (const h of ours) {
@@ -118,7 +133,8 @@ for (const h of ours) {
     if (fields.includes('date')) tags.push('moved');
   }
   if (!tags.length) continue; // a stamp alone is not a fix
-  const key = `${h.slug}|${h.date}`;
+  // Under the market that holds the date now: a fix made before a merge still counts.
+  const key = `${holderSlug(h.slug)}|${h.date}`;
   const seen = touched.get(key) ?? { tags: new Set(), on: h.on };
   for (const t of tags) seen.tags.add(t);
   touched.set(key, seen);
@@ -146,7 +162,9 @@ function undoes(slug, date, kind) {
 const v1BySlug = new Map(v1Markets.map((m) => [m.slug, m]));
 const ourBySlug = new Map(ourMarkets.map((m) => [m.slug, m]));
 const group = (rows) => rows.reduce((map, r) => map.set(r.slug, [...(map.get(r.slug) ?? []), r]), new Map());
-const v1DatesBySlug = group(v1Dates);
+
+// Each v1 date under the market that holds it (holderOf, above).
+const v1DatesBySlug = group(v1Dates.map((d) => ({ ...d, from: d.slug, slug: holderSlug(d.slug) })));
 const ourDatesBySlug = group(ourDates);
 
 const changes = [];      // { slug, kind, date, what, flag, write }
@@ -155,6 +173,7 @@ const stampWrites = [];
 
 for (const ourMarket of ourMarkets) {
   if (ONLY && ourMarket.slug !== ONLY) continue;
+  if (merged.has(ourMarket.slug)) continue; // its dates are compared under its hub
   const v1 = v1BySlug.get(ourMarket.slug);
   if (!v1) continue;
 
@@ -173,8 +192,10 @@ for (const ourMarket of ourMarkets) {
   const mine = new Map((ourDatesBySlug.get(ourMarket.slug) ?? []).map((d) => [d.date, d]));
   const stampAt = STAMP_TODAY ? new Date().toISOString() : v1.last_verified_at?.toISOString?.() ?? null;
   const source = v1.source_url || v1.website_url || 'v1';
-  const push = (kind, date, what, write) => changes.push({
-    slug: ourMarket.slug, kind, date, what, write, flag: undoes(ourMarket.slug, date, kind),
+  // `from` is the v1 market the date came from — a merged one's own slug, which
+  // is what keep-ours.json names for the dates settled before the merge.
+  const push = (kind, date, what, write, from = ourMarket.slug) => changes.push({
+    slug: ourMarket.slug, from, kind, date, what, write, flag: undoes(ourMarket.slug, date, kind),
   });
 
   for (const [date, t] of theirs) {
@@ -184,7 +205,7 @@ for (const ourMarket of ourMarkets) {
 
     if (!o) {
       if (tStatus === 'cancelled') continue; // nothing to cancel here
-      push('add', date, `add, ${hours(t.st, t.et)}`, { op: 'insert', market_id: ourMarket.id, date, st: t.st, et: t.et, status: tStatus, stampAt: tStatus === 'confirmed' ? stampAt : null, source });
+      push('add', date, `add, ${hours(t.st, t.et)}`, { op: 'insert', market_id: ourMarket.id, date, st: t.st, et: t.et, status: tStatus, stampAt: tStatus === 'confirmed' ? stampAt : null, source }, t.from);
       continue;
     }
     if (o.origin === 'organiser') {
@@ -192,15 +213,15 @@ for (const ourMarket of ourMarkets) {
       continue;
     }
     if (tStatus === 'cancelled') {
-      if (o.status !== 'cancelled') push('cancel', date, `cancel${t.cancellation_note ? ` — "${t.cancellation_note}"` : ''}`, { op: 'cancel', id: o.id, date, note: t.cancellation_note, source, stampAt });
+      if (o.status !== 'cancelled') push('cancel', date, `cancel${t.cancellation_note ? ` — "${t.cancellation_note}"` : ''}`, { op: 'cancel', id: o.id, date, note: t.cancellation_note, source, stampAt }, t.from);
       continue;
     }
     if ((t.st && t.st !== o.st) || (t.et && t.et !== o.et)) {
-      push('hours', date, `hours ${hours(o.st, o.et)} → ${hours(t.st, t.et)}`, { op: 'hours', id: o.id, date, st: t.st ?? o.st, et: t.et ?? o.et, source, stampAt });
+      push('hours', date, `hours ${hours(o.st, o.et)} → ${hours(t.st, t.et)}`, { op: 'hours', id: o.id, date, st: t.st ?? o.st, et: t.et ?? o.et, source, stampAt }, t.from);
     }
     if (o.status !== tStatus) {
       const label = (s) => (s === 'unverified' ? 'not yet confirmed' : s);
-      push('status', date, `${label(o.status)} → ${label(tStatus)}`, { op: 'status', id: o.id, date, status: tStatus, source, stampAt });
+      push('status', date, `${label(o.status)} → ${label(tStatus)}`, { op: 'status', id: o.id, date, status: tStatus, source, stampAt }, t.from);
     }
     if (stampAt && tStatus === 'confirmed' && (!o.confirmed_at || new Date(o.confirmed_at) < new Date(stampAt))) {
       stampWrites.push({ id: o.id, date, stampAt, source, status: o.status });
@@ -223,7 +244,7 @@ const onlyOurs = ourMarkets.filter((m) => m.status === 'active' && !v1BySlug.has
 
 // What gets written: not what we decided to keep, and nothing flagged unless accepted.
 for (const c of changes) {
-  c.kept = KEEP.find((k) => k.slug === c.slug && k.kind === c.kind && (!k.dates || k.dates.includes(c.date))) ?? null;
+  c.kept = KEEP.find((k) => (k.slug === c.slug || k.slug === c.from) && k.kind === c.kind && (!k.dates || k.dates.includes(c.date))) ?? null;
   c.writes = !c.kept && (!c.flag || ACCEPT_FLAGGED);
 }
 const writes = changes.filter((c) => c.writes);

@@ -84,6 +84,8 @@ Not here: any `Event` markup, category sub-pages, a map. Measured against v1's 2
 
 ## Region — `/{locale}/{country}/{canton}/[region]/`
 
+**A canton or Bundesland of one market has no page (2026-10-20)** — Jura, Obwalden, Uri: the same rule as a town of one market (§City), the address 301s to the market, links go through `src/lib/towns.ts` `regionHref`, and the market page shows the canton as plain text. Glarus, Graubünden and Saarland list the same markets as their one town page and keep both: people search the canton and the town by different names.
+
 Built for `flohmarkt nrw` / `flohmarkt bayern` at German launch; in Switzerland the best-earning type per page (0.5 clicks/page, 7 days to 2026-09-18). **Towns first, with counts**, then the When control and every market in the canton, one row each — dated ones first, then the signup card, then the rest under *No date yet* (as on the city page). No density gate — the content floor measures the rendered page; Schaffhausen with one market clears it. The region template for every country is decided with Germany on real counts (`PLAN.md` step 6).
 
 ## Near me — `/{locale}/{nearby}/`

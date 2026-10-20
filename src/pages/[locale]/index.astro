@@ -20,7 +20,7 @@ import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
 import TownSearch from '../../components/TownSearch.astro';
-import { townHref, townIndex } from '../../lib/towns';
+import { regionHref, townHref, townIndex } from '../../lib/towns';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
 import { COUNTRY, LOCALES, countryName, homePath, isCityState, localeTag, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
@@ -430,7 +430,9 @@ const jsonLd = {
 
       <Section id={several ? `regionen-${country.code.toLowerCase()}` : 'kantone'} title={s.regionsOf(country.code)} lede={s.regionsLede} level={several ? 'sub' : undefined}>
         <PillList items={country.regions.map(([slug, region]) => ({
-          href: isCityState(country.code, slug) ? townHref(locale, markets.filter((m) => m.regionSlug === slug)) : regionPath(locale, country.code, country.slug, slug),
+          href: isCityState(country.code, slug)
+            ? townHref(locale, markets.filter((m) => m.regionSlug === slug))
+            : regionHref(locale, markets.filter((m) => m.regionSlug === slug && m.countryCode === country.code)),
           label: region,
           meta: String(markets.filter((m) => m.regionSlug === slug).length),
         }))} />
