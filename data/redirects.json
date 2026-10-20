@@ -4,6 +4,1742 @@
     "to": "/de/umkreis/"
   },
   {
+    "from": "/de/deutschland/aachen/",
+    "to": "/de/markt/troedelmarkt-100-5-arena-aachen/"
+  },
+  {
+    "from": "/de/schweiz/aadorf/",
+    "to": "/de/markt/hallenflohmarkt-aadorf/"
+  },
+  {
+    "from": "/de/schweiz/adliswil/",
+    "to": "/de/markt/flohmarkt-adliswil/"
+  },
+  {
+    "from": "/de/schweiz/affoltern-am-albis/",
+    "to": "/de/markt/saeuliaemtler-flohmarkt-affoltern/"
+  },
+  {
+    "from": "/de/schweiz/allschwil/",
+    "to": "/de/markt/quartierflohmi-neu-allschwil/"
+  },
+  {
+    "from": "/de/schweiz/altdorf/",
+    "to": "/de/markt/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/de/schweiz/altstaetten/",
+    "to": "/de/markt/flommbo-flohmarkt-altstaetten/"
+  },
+  {
+    "from": "/de/schweiz/arboldswil/",
+    "to": "/de/markt/hallenflohmarkt-arboldswil/"
+  },
+  {
+    "from": "/de/schweiz/arlesheim/",
+    "to": "/de/markt/flohmarkt-arlesheim/"
+  },
+  {
+    "from": "/de/schweiz/ascona/",
+    "to": "/de/markt/svuotacantine-ascona/"
+  },
+  {
+    "from": "/de/schweiz/baar/",
+    "to": "/de/markt/flohmarkt-baar/"
+  },
+  {
+    "from": "/de/schweiz/biasca/",
+    "to": "/de/markt/svuotacantine-biasca/"
+  },
+  {
+    "from": "/de/deutschland/bochum/",
+    "to": "/de/markt/troedelmarkt-ruhr-park-bochum/"
+  },
+  {
+    "from": "/de/deutschland/bonn/",
+    "to": "/de/markt/flohmarkt-rheinaue-bonn/"
+  },
+  {
+    "from": "/de/schweiz/bottmingen/",
+    "to": "/de/markt/quartierflohmarkt-bottmingen/"
+  },
+  {
+    "from": "/de/deutschland/brandenburg-an-der-havel/",
+    "to": "/de/markt/flohmaxx-beetzsee-center-brandenburg-an-der-havel/"
+  },
+  {
+    "from": "/de/deutschland/braunschweig/",
+    "to": "/de/markt/flohmarkt-schuetzenplatz-braunschweig/"
+  },
+  {
+    "from": "/de/deutschland/bremen/",
+    "to": "/de/markt/flohmarkt-hansa-carre-bremen/"
+  },
+  {
+    "from": "/de/schweiz/buchs-ag/",
+    "to": "/de/markt/floh-und-antikmarkt-wynecenter-buchs/"
+  },
+  {
+    "from": "/de/schweiz/buchs-sg/",
+    "to": "/de/markt/modelleisenbahn-auto-spielzeugboerse-buchs-sg/"
+  },
+  {
+    "from": "/de/schweiz/buelach/",
+    "to": "/de/markt/flohmarkt-buelach-stadthalle/"
+  },
+  {
+    "from": "/de/schweiz/burgdorf/",
+    "to": "/de/markt/grosse-burgdorfer-brocante/"
+  },
+  {
+    "from": "/de/schweiz/buttwil/",
+    "to": "/de/markt/flohmarkt-flugplatz-buttwil/"
+  },
+  {
+    "from": "/de/schweiz/carouge/",
+    "to": "/de/markt/brocante-de-carouge-geneve/"
+  },
+  {
+    "from": "/de/schweiz/cham/",
+    "to": "/de/markt/flohmarkt-papieriplatz-cham/"
+  },
+  {
+    "from": "/de/schweiz/chambrelien/",
+    "to": "/de/markt/brocante-de-chambrelien/"
+  },
+  {
+    "from": "/de/deutschland/cottbus/",
+    "to": "/de/markt/nachtflohmarkt-cottbus/"
+  },
+  {
+    "from": "/de/deutschland/dortmund/",
+    "to": "/de/markt/troedelmarkt-universitaet-dortmund/"
+  },
+  {
+    "from": "/de/deutschland/dresden/",
+    "to": "/de/markt/elbeflohmarkt-dresden/"
+  },
+  {
+    "from": "/de/deutschland/duesseldorf/",
+    "to": "/de/markt/troedelmarkt-aachener-platz-duesseldorf/"
+  },
+  {
+    "from": "/de/schweiz/ebikon/",
+    "to": "/de/markt/flohmarkt-mall-of-switzerland-ebikon/"
+  },
+  {
+    "from": "/de/schweiz/echichens/",
+    "to": "/de/markt/vide-grenier-echichens/"
+  },
+  {
+    "from": "/de/schweiz/ecublens/",
+    "to": "/de/markt/brocante-vide-grenier-55-plus-ecublens/"
+  },
+  {
+    "from": "/de/schweiz/emmenbruecke/",
+    "to": "/de/markt/flohmarkt-emmen/"
+  },
+  {
+    "from": "/de/deutschland/erfurt/",
+    "to": "/de/markt/nachtflohmarkt-messe-erfurt/"
+  },
+  {
+    "from": "/de/schweiz/fehraltorf/",
+    "to": "/de/markt/antik-flohmarkt-fehraltorf/"
+  },
+  {
+    "from": "/de/schweiz/flums/",
+    "to": "/de/markt/hallen-flohmarkt-flumserei/"
+  },
+  {
+    "from": "/de/schweiz/frauenfeld/",
+    "to": "/de/markt/flohmarkt-burstelpark-frauenfeld/"
+  },
+  {
+    "from": "/de/deutschland/freiburg-im-breisgau/",
+    "to": "/de/markt/riesenflohmarkt-freiburg/"
+  },
+  {
+    "from": "/de/schweiz/galgenen/",
+    "to": "/de/markt/flohmii-galgenen/"
+  },
+  {
+    "from": "/de/deutschland/gelsenkirchen/",
+    "to": "/de/markt/troedelmarkt-veltins-arena-gelsenkirchen/"
+  },
+  {
+    "from": "/de/schweiz/glattbrugg/",
+    "to": "/de/markt/flohmarkt-glattbrugg/"
+  },
+  {
+    "from": "/de/schweiz/glovelier/",
+    "to": "/de/markt/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/de/schweiz/grabs/",
+    "to": "/de/markt/floh-sammler-antikmarkt-grabs/"
+  },
+  {
+    "from": "/de/schweiz/haerkingen/",
+    "to": "/de/markt/haerkinger-flohmi/"
+  },
+  {
+    "from": "/de/deutschland/halle-saale/",
+    "to": "/de/markt/antik-und-troedelmarkt-messe-halle-saale/"
+  },
+  {
+    "from": "/de/deutschland/hannover/",
+    "to": "/de/markt/altstadtflohmarkt-hannover/"
+  },
+  {
+    "from": "/de/schweiz/hinwil/",
+    "to": "/de/markt/flohmarkt-hinwil/"
+  },
+  {
+    "from": "/de/schweiz/hoelstein/",
+    "to": "/de/markt/hallenflohmarkt-hoelstein/"
+  },
+  {
+    "from": "/de/schweiz/horgen/",
+    "to": "/de/markt/flohmarkt-dorfplatz-horgen/"
+  },
+  {
+    "from": "/de/schweiz/interlaken/",
+    "to": "/de/markt/alpin-flohmi-interlaken/"
+  },
+  {
+    "from": "/de/deutschland/karlsruhe/",
+    "to": "/de/markt/gross-flohmarkt-messplatz-karlsruhe/"
+  },
+  {
+    "from": "/de/deutschland/kassel/",
+    "to": "/de/markt/xxl-flohmarkt-messe-kassel/"
+  },
+  {
+    "from": "/de/deutschland/kiel/",
+    "to": "/de/markt/flohmarkt-innenstadt-kiel/"
+  },
+  {
+    "from": "/de/schweiz/koeniz/",
+    "to": "/de/markt/modellbahnboerse-koeniz/"
+  },
+  {
+    "from": "/de/schweiz/kriens/",
+    "to": "/de/markt/flohmarkt-hofmattplatz-kriens/"
+  },
+  {
+    "from": "/de/schweiz/la-chaux-de-fonds/",
+    "to": "/de/markt/hyper-bazar-la-chaux-de-fonds/"
+  },
+  {
+    "from": "/de/schweiz/la-neuveville/",
+    "to": "/de/markt/alpin-flohmi-la-neuveville/"
+  },
+  {
+    "from": "/de/deutschland/landau-in-der-pfalz/",
+    "to": "/de/markt/flohmarkt-am-cc-landau/"
+  },
+  {
+    "from": "/de/schweiz/le-landeron/",
+    "to": "/de/markt/fete-de-la-brocante-le-landeron/"
+  },
+  {
+    "from": "/de/schweiz/lenzburg/",
+    "to": "/de/markt/flohmarkt-lenzburg-metzgplatz/"
+  },
+  {
+    "from": "/de/schweiz/les-brenets/",
+    "to": "/de/markt/vide-grenier-brocante-les-brenets/"
+  },
+  {
+    "from": "/de/schweiz/liesberg/",
+    "to": "/de/markt/liesberger-flohmarkt/"
+  },
+  {
+    "from": "/de/schweiz/liestal/",
+    "to": "/de/markt/flohmarkt-liestal/"
+  },
+  {
+    "from": "/de/deutschland/ludwigshafen-am-rhein/",
+    "to": "/de/markt/troedelmarkt-metro-ludwigshafen/"
+  },
+  {
+    "from": "/de/deutschland/luebeck/",
+    "to": "/de/markt/flohmarkt-citti-park-luebeck/"
+  },
+  {
+    "from": "/de/schweiz/lyssach/",
+    "to": "/de/markt/nostalgie-flohmarkt-lyssach/"
+  },
+  {
+    "from": "/de/deutschland/magdeburg/",
+    "to": "/de/markt/nachtflohmarkt-magdeburg/"
+  },
+  {
+    "from": "/de/deutschland/mainz/",
+    "to": "/de/markt/krempelmarkt-rheinufer-mainz/"
+  },
+  {
+    "from": "/de/schweiz/malters/",
+    "to": "/de/markt/flohmarkt-malters/"
+  },
+  {
+    "from": "/de/deutschland/mannheim/",
+    "to": "/de/markt/mannheimer-krempelmarkt-mannheim/"
+  },
+  {
+    "from": "/de/schweiz/massagno/",
+    "to": "/de/markt/mercato-delle-pulci-massagno/"
+  },
+  {
+    "from": "/de/schweiz/mathod/",
+    "to": "/de/markt/vide-grenier-mathod/"
+  },
+  {
+    "from": "/de/schweiz/mellingen/",
+    "to": "/de/markt/floh-und-antiquitaetenmarkt-mellingen/"
+  },
+  {
+    "from": "/de/schweiz/misery/",
+    "to": "/de/markt/brocante-de-misery/"
+  },
+  {
+    "from": "/de/schweiz/monthey/",
+    "to": "/de/markt/coffre-ouvert-monthey/"
+  },
+  {
+    "from": "/de/schweiz/morges/",
+    "to": "/de/markt/brocantissima-morges/"
+  },
+  {
+    "from": "/de/schweiz/muenchwilen-tg/",
+    "to": "/de/markt/romeo-hallenflohmarkt-muenchwilen/"
+  },
+  {
+    "from": "/de/schweiz/muensingen/",
+    "to": "/de/markt/flohmarkt-schlossgut-muensingen/"
+  },
+  {
+    "from": "/de/schweiz/muralto/",
+    "to": "/de/markt/svuotacantine-muralto/"
+  },
+  {
+    "from": "/de/schweiz/muttenz/",
+    "to": "/de/markt/flohmi-muttenz/"
+  },
+  {
+    "from": "/de/schweiz/neuchatel/",
+    "to": "/de/markt/marche-aux-puces-jardin-anglais-neuchatel/"
+  },
+  {
+    "from": "/de/schweiz/neuhausen/",
+    "to": "/de/markt/modelleisenbahn-auto-spielzeugboerse-neuhausen/"
+  },
+  {
+    "from": "/de/deutschland/neumuenster/",
+    "to": "/de/markt/nord-flohmarkt-holstenhallen-neumuenster/"
+  },
+  {
+    "from": "/de/deutschland/nuernberg/",
+    "to": "/de/markt/nuernberg-nightmarket/"
+  },
+  {
+    "from": "/de/schweiz/oetwil-am-see/",
+    "to": "/de/markt/flohmarkt-oetwil-am-see/"
+  },
+  {
+    "from": "/de/schweiz/olten/",
+    "to": "/de/markt/flohmarkt-alte-holzbruecke-olten/"
+  },
+  {
+    "from": "/de/schweiz/onex/",
+    "to": "/de/markt/vide-grenier-onex/"
+  },
+  {
+    "from": "/de/schweiz/oron-la-ville/",
+    "to": "/de/markt/coffre-ouvert-oron/"
+  },
+  {
+    "from": "/de/deutschland/osnabrueck/",
+    "to": "/de/markt/flohmarkt-halle-gartlage-osnabrueck/"
+  },
+  {
+    "from": "/de/schweiz/paradiso/",
+    "to": "/de/markt/mercatino-usato-paradiso-lugano/"
+  },
+  {
+    "from": "/de/schweiz/paudex/",
+    "to": "/de/markt/vide-grenier-paudex/"
+  },
+  {
+    "from": "/de/deutschland/potsdam/",
+    "to": "/de/markt/floh-und-bauernmarkt-weberplatz-potsdam/"
+  },
+  {
+    "from": "/de/schweiz/prilly/",
+    "to": "/de/markt/vide-grenier-prilly/"
+  },
+  {
+    "from": "/de/schweiz/rafz/",
+    "to": "/de/markt/strassenflohmarkt-rafz/"
+  },
+  {
+    "from": "/de/schweiz/renens/",
+    "to": "/de/markt/vide-grenier-familles-renens/"
+  },
+  {
+    "from": "/de/schweiz/richterswil/",
+    "to": "/de/markt/herbst-flohmarkt-richterswil/"
+  },
+  {
+    "from": "/de/schweiz/romanshorn/",
+    "to": "/de/markt/floh-sammler-antikmarkt-romanshorn/"
+  },
+  {
+    "from": "/de/deutschland/rostock/",
+    "to": "/de/markt/nachtflohmarkt-rostock/"
+  },
+  {
+    "from": "/de/schweiz/rothenburg/",
+    "to": "/de/markt/flohmarkt-ace-cafe-rothenburg/"
+  },
+  {
+    "from": "/de/schweiz/ruemlang/",
+    "to": "/de/markt/flohmarkt-ruemlang/"
+  },
+  {
+    "from": "/de/schweiz/sarnen/",
+    "to": "/de/markt/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/de/schweiz/saxon/",
+    "to": "/de/markt/vide-grenier-ecobroc-saxon/"
+  },
+  {
+    "from": "/de/schweiz/schaffhausen/",
+    "to": "/de/markt/flohmarkt-mosergarten-schaffhausen/"
+  },
+  {
+    "from": "/de/schweiz/schlieren/",
+    "to": "/de/markt/flohmarkt-schlieren-herbstmarkt/"
+  },
+  {
+    "from": "/de/deutschland/schwerin/",
+    "to": "/de/markt/flohmaxx-stadthafen-schwerin/"
+  },
+  {
+    "from": "/de/schweiz/seewen-sz/",
+    "to": "/de/markt/talkessel-flohmarkt-seewen/"
+  },
+  {
+    "from": "/de/schweiz/sion/",
+    "to": "/de/markt/marche-aux-puces-archipel-sion/"
+  },
+  {
+    "from": "/de/schweiz/spreitenbach/",
+    "to": "/de/markt/shoppi-flohmi-spreitenbach/"
+  },
+  {
+    "from": "/de/deutschland/stuttgart/",
+    "to": "/de/markt/flohmarkt-karlsplatz-stuttgart/"
+  },
+  {
+    "from": "/de/schweiz/subingen/",
+    "to": "/de/markt/subiger-dorf-flohmarkt/"
+  },
+  {
+    "from": "/de/schweiz/therwil/",
+    "to": "/de/markt/hallenflohmarkt-therwil/"
+  },
+  {
+    "from": "/de/deutschland/ulm/",
+    "to": "/de/markt/flohmarkt-ulm-messe/"
+  },
+  {
+    "from": "/de/schweiz/villars-tiercelin/",
+    "to": "/de/markt/vide-grenier-villars-tiercelin/"
+  },
+  {
+    "from": "/de/schweiz/villeneuve/",
+    "to": "/de/markt/coffre-ouvert-villeneuve/"
+  },
+  {
+    "from": "/de/schweiz/waedenswil/",
+    "to": "/de/markt/flohmarkt-seeplatz-waedenswil/"
+  },
+  {
+    "from": "/de/schweiz/wald/",
+    "to": "/de/markt/vinylboerse-villa-flora-wald/"
+  },
+  {
+    "from": "/de/schweiz/weinfelden/",
+    "to": "/de/markt/flohmarkt-weinfelden/"
+  },
+  {
+    "from": "/de/deutschland/weissenfels/",
+    "to": "/de/markt/flohmarkt-ekz-schoene-aussicht-weissenfels/"
+  },
+  {
+    "from": "/de/schweiz/wettingen/",
+    "to": "/de/markt/flohmarkt-rathausplatz-wettingen/"
+  },
+  {
+    "from": "/de/schweiz/wetzikon/",
+    "to": "/de/markt/flohmarkt-wetzikon/"
+  },
+  {
+    "from": "/de/deutschland/wismar/",
+    "to": "/de/markt/flohmarkt-markt-und-eventhalle-wismar/"
+  },
+  {
+    "from": "/de/schweiz/worb/",
+    "to": "/de/markt/nostalgie-flohmarkt-worb-bern/"
+  },
+  {
+    "from": "/de/deutschland/wuppertal/",
+    "to": "/de/markt/troedelmarkt-barmen-rathaus-wuppertal/"
+  },
+  {
+    "from": "/de/schweiz/zollikon/",
+    "to": "/de/markt/puppen-baeren-spielzeugboerse-zollikon/"
+  },
+  {
+    "from": "/de/schweiz/zug/",
+    "to": "/de/markt/pop-up-flohmi-industrie45-zug/"
+  },
+  {
+    "from": "/en/germany/aachen/",
+    "to": "/en/market/troedelmarkt-100-5-arena-aachen/"
+  },
+  {
+    "from": "/en/switzerland/aadorf/",
+    "to": "/en/market/hallenflohmarkt-aadorf/"
+  },
+  {
+    "from": "/en/switzerland/adliswil/",
+    "to": "/en/market/flohmarkt-adliswil/"
+  },
+  {
+    "from": "/en/switzerland/affoltern-am-albis/",
+    "to": "/en/market/saeuliaemtler-flohmarkt-affoltern/"
+  },
+  {
+    "from": "/en/switzerland/allschwil/",
+    "to": "/en/market/quartierflohmi-neu-allschwil/"
+  },
+  {
+    "from": "/en/switzerland/altdorf/",
+    "to": "/en/market/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/en/switzerland/altstaetten/",
+    "to": "/en/market/flommbo-flohmarkt-altstaetten/"
+  },
+  {
+    "from": "/en/switzerland/arboldswil/",
+    "to": "/en/market/hallenflohmarkt-arboldswil/"
+  },
+  {
+    "from": "/en/switzerland/arlesheim/",
+    "to": "/en/market/flohmarkt-arlesheim/"
+  },
+  {
+    "from": "/en/switzerland/ascona/",
+    "to": "/en/market/svuotacantine-ascona/"
+  },
+  {
+    "from": "/en/switzerland/baar/",
+    "to": "/en/market/flohmarkt-baar/"
+  },
+  {
+    "from": "/en/switzerland/biasca/",
+    "to": "/en/market/svuotacantine-biasca/"
+  },
+  {
+    "from": "/en/germany/bochum/",
+    "to": "/en/market/troedelmarkt-ruhr-park-bochum/"
+  },
+  {
+    "from": "/en/germany/bonn/",
+    "to": "/en/market/flohmarkt-rheinaue-bonn/"
+  },
+  {
+    "from": "/en/switzerland/bottmingen/",
+    "to": "/en/market/quartierflohmarkt-bottmingen/"
+  },
+  {
+    "from": "/en/germany/brandenburg-an-der-havel/",
+    "to": "/en/market/flohmaxx-beetzsee-center-brandenburg-an-der-havel/"
+  },
+  {
+    "from": "/en/germany/braunschweig/",
+    "to": "/en/market/flohmarkt-schuetzenplatz-braunschweig/"
+  },
+  {
+    "from": "/en/germany/bremen/",
+    "to": "/en/market/flohmarkt-hansa-carre-bremen/"
+  },
+  {
+    "from": "/en/switzerland/buchs-ag/",
+    "to": "/en/market/floh-und-antikmarkt-wynecenter-buchs/"
+  },
+  {
+    "from": "/en/switzerland/buchs-sg/",
+    "to": "/en/market/modelleisenbahn-auto-spielzeugboerse-buchs-sg/"
+  },
+  {
+    "from": "/en/switzerland/buelach/",
+    "to": "/en/market/flohmarkt-buelach-stadthalle/"
+  },
+  {
+    "from": "/en/switzerland/burgdorf/",
+    "to": "/en/market/grosse-burgdorfer-brocante/"
+  },
+  {
+    "from": "/en/switzerland/buttwil/",
+    "to": "/en/market/flohmarkt-flugplatz-buttwil/"
+  },
+  {
+    "from": "/en/switzerland/carouge/",
+    "to": "/en/market/brocante-de-carouge-geneve/"
+  },
+  {
+    "from": "/en/switzerland/cham/",
+    "to": "/en/market/flohmarkt-papieriplatz-cham/"
+  },
+  {
+    "from": "/en/switzerland/chambrelien/",
+    "to": "/en/market/brocante-de-chambrelien/"
+  },
+  {
+    "from": "/en/germany/cottbus/",
+    "to": "/en/market/nachtflohmarkt-cottbus/"
+  },
+  {
+    "from": "/en/germany/dortmund/",
+    "to": "/en/market/troedelmarkt-universitaet-dortmund/"
+  },
+  {
+    "from": "/en/germany/dresden/",
+    "to": "/en/market/elbeflohmarkt-dresden/"
+  },
+  {
+    "from": "/en/germany/duesseldorf/",
+    "to": "/en/market/troedelmarkt-aachener-platz-duesseldorf/"
+  },
+  {
+    "from": "/en/switzerland/ebikon/",
+    "to": "/en/market/flohmarkt-mall-of-switzerland-ebikon/"
+  },
+  {
+    "from": "/en/switzerland/echichens/",
+    "to": "/en/market/vide-grenier-echichens/"
+  },
+  {
+    "from": "/en/switzerland/ecublens/",
+    "to": "/en/market/brocante-vide-grenier-55-plus-ecublens/"
+  },
+  {
+    "from": "/en/switzerland/emmenbruecke/",
+    "to": "/en/market/flohmarkt-emmen/"
+  },
+  {
+    "from": "/en/germany/erfurt/",
+    "to": "/en/market/nachtflohmarkt-messe-erfurt/"
+  },
+  {
+    "from": "/en/switzerland/fehraltorf/",
+    "to": "/en/market/antik-flohmarkt-fehraltorf/"
+  },
+  {
+    "from": "/en/switzerland/flums/",
+    "to": "/en/market/hallen-flohmarkt-flumserei/"
+  },
+  {
+    "from": "/en/switzerland/frauenfeld/",
+    "to": "/en/market/flohmarkt-burstelpark-frauenfeld/"
+  },
+  {
+    "from": "/en/germany/freiburg-im-breisgau/",
+    "to": "/en/market/riesenflohmarkt-freiburg/"
+  },
+  {
+    "from": "/en/switzerland/galgenen/",
+    "to": "/en/market/flohmii-galgenen/"
+  },
+  {
+    "from": "/en/germany/gelsenkirchen/",
+    "to": "/en/market/troedelmarkt-veltins-arena-gelsenkirchen/"
+  },
+  {
+    "from": "/en/switzerland/glattbrugg/",
+    "to": "/en/market/flohmarkt-glattbrugg/"
+  },
+  {
+    "from": "/en/switzerland/glovelier/",
+    "to": "/en/market/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/en/switzerland/grabs/",
+    "to": "/en/market/floh-sammler-antikmarkt-grabs/"
+  },
+  {
+    "from": "/en/switzerland/haerkingen/",
+    "to": "/en/market/haerkinger-flohmi/"
+  },
+  {
+    "from": "/en/germany/halle-saale/",
+    "to": "/en/market/antik-und-troedelmarkt-messe-halle-saale/"
+  },
+  {
+    "from": "/en/germany/hannover/",
+    "to": "/en/market/altstadtflohmarkt-hannover/"
+  },
+  {
+    "from": "/en/switzerland/hinwil/",
+    "to": "/en/market/flohmarkt-hinwil/"
+  },
+  {
+    "from": "/en/switzerland/hoelstein/",
+    "to": "/en/market/hallenflohmarkt-hoelstein/"
+  },
+  {
+    "from": "/en/switzerland/horgen/",
+    "to": "/en/market/flohmarkt-dorfplatz-horgen/"
+  },
+  {
+    "from": "/en/switzerland/interlaken/",
+    "to": "/en/market/alpin-flohmi-interlaken/"
+  },
+  {
+    "from": "/en/germany/karlsruhe/",
+    "to": "/en/market/gross-flohmarkt-messplatz-karlsruhe/"
+  },
+  {
+    "from": "/en/germany/kassel/",
+    "to": "/en/market/xxl-flohmarkt-messe-kassel/"
+  },
+  {
+    "from": "/en/germany/kiel/",
+    "to": "/en/market/flohmarkt-innenstadt-kiel/"
+  },
+  {
+    "from": "/en/switzerland/koeniz/",
+    "to": "/en/market/modellbahnboerse-koeniz/"
+  },
+  {
+    "from": "/en/switzerland/kriens/",
+    "to": "/en/market/flohmarkt-hofmattplatz-kriens/"
+  },
+  {
+    "from": "/en/switzerland/la-chaux-de-fonds/",
+    "to": "/en/market/hyper-bazar-la-chaux-de-fonds/"
+  },
+  {
+    "from": "/en/switzerland/la-neuveville/",
+    "to": "/en/market/alpin-flohmi-la-neuveville/"
+  },
+  {
+    "from": "/en/germany/landau-in-der-pfalz/",
+    "to": "/en/market/flohmarkt-am-cc-landau/"
+  },
+  {
+    "from": "/en/switzerland/le-landeron/",
+    "to": "/en/market/fete-de-la-brocante-le-landeron/"
+  },
+  {
+    "from": "/en/switzerland/lenzburg/",
+    "to": "/en/market/flohmarkt-lenzburg-metzgplatz/"
+  },
+  {
+    "from": "/en/switzerland/les-brenets/",
+    "to": "/en/market/vide-grenier-brocante-les-brenets/"
+  },
+  {
+    "from": "/en/switzerland/liesberg/",
+    "to": "/en/market/liesberger-flohmarkt/"
+  },
+  {
+    "from": "/en/switzerland/liestal/",
+    "to": "/en/market/flohmarkt-liestal/"
+  },
+  {
+    "from": "/en/germany/ludwigshafen-am-rhein/",
+    "to": "/en/market/troedelmarkt-metro-ludwigshafen/"
+  },
+  {
+    "from": "/en/germany/luebeck/",
+    "to": "/en/market/flohmarkt-citti-park-luebeck/"
+  },
+  {
+    "from": "/en/switzerland/lyssach/",
+    "to": "/en/market/nostalgie-flohmarkt-lyssach/"
+  },
+  {
+    "from": "/en/germany/magdeburg/",
+    "to": "/en/market/nachtflohmarkt-magdeburg/"
+  },
+  {
+    "from": "/en/germany/mainz/",
+    "to": "/en/market/krempelmarkt-rheinufer-mainz/"
+  },
+  {
+    "from": "/en/switzerland/malters/",
+    "to": "/en/market/flohmarkt-malters/"
+  },
+  {
+    "from": "/en/germany/mannheim/",
+    "to": "/en/market/mannheimer-krempelmarkt-mannheim/"
+  },
+  {
+    "from": "/en/switzerland/massagno/",
+    "to": "/en/market/mercato-delle-pulci-massagno/"
+  },
+  {
+    "from": "/en/switzerland/mathod/",
+    "to": "/en/market/vide-grenier-mathod/"
+  },
+  {
+    "from": "/en/switzerland/mellingen/",
+    "to": "/en/market/floh-und-antiquitaetenmarkt-mellingen/"
+  },
+  {
+    "from": "/en/switzerland/misery/",
+    "to": "/en/market/brocante-de-misery/"
+  },
+  {
+    "from": "/en/switzerland/monthey/",
+    "to": "/en/market/coffre-ouvert-monthey/"
+  },
+  {
+    "from": "/en/switzerland/morges/",
+    "to": "/en/market/brocantissima-morges/"
+  },
+  {
+    "from": "/en/switzerland/muenchwilen-tg/",
+    "to": "/en/market/romeo-hallenflohmarkt-muenchwilen/"
+  },
+  {
+    "from": "/en/switzerland/muensingen/",
+    "to": "/en/market/flohmarkt-schlossgut-muensingen/"
+  },
+  {
+    "from": "/en/switzerland/muralto/",
+    "to": "/en/market/svuotacantine-muralto/"
+  },
+  {
+    "from": "/en/switzerland/muttenz/",
+    "to": "/en/market/flohmi-muttenz/"
+  },
+  {
+    "from": "/en/switzerland/neuchatel/",
+    "to": "/en/market/marche-aux-puces-jardin-anglais-neuchatel/"
+  },
+  {
+    "from": "/en/switzerland/neuhausen/",
+    "to": "/en/market/modelleisenbahn-auto-spielzeugboerse-neuhausen/"
+  },
+  {
+    "from": "/en/germany/neumuenster/",
+    "to": "/en/market/nord-flohmarkt-holstenhallen-neumuenster/"
+  },
+  {
+    "from": "/en/germany/nuernberg/",
+    "to": "/en/market/nuernberg-nightmarket/"
+  },
+  {
+    "from": "/en/switzerland/oetwil-am-see/",
+    "to": "/en/market/flohmarkt-oetwil-am-see/"
+  },
+  {
+    "from": "/en/switzerland/olten/",
+    "to": "/en/market/flohmarkt-alte-holzbruecke-olten/"
+  },
+  {
+    "from": "/en/switzerland/onex/",
+    "to": "/en/market/vide-grenier-onex/"
+  },
+  {
+    "from": "/en/switzerland/oron-la-ville/",
+    "to": "/en/market/coffre-ouvert-oron/"
+  },
+  {
+    "from": "/en/germany/osnabrueck/",
+    "to": "/en/market/flohmarkt-halle-gartlage-osnabrueck/"
+  },
+  {
+    "from": "/en/switzerland/paradiso/",
+    "to": "/en/market/mercatino-usato-paradiso-lugano/"
+  },
+  {
+    "from": "/en/switzerland/paudex/",
+    "to": "/en/market/vide-grenier-paudex/"
+  },
+  {
+    "from": "/en/germany/potsdam/",
+    "to": "/en/market/floh-und-bauernmarkt-weberplatz-potsdam/"
+  },
+  {
+    "from": "/en/switzerland/prilly/",
+    "to": "/en/market/vide-grenier-prilly/"
+  },
+  {
+    "from": "/en/switzerland/rafz/",
+    "to": "/en/market/strassenflohmarkt-rafz/"
+  },
+  {
+    "from": "/en/switzerland/renens/",
+    "to": "/en/market/vide-grenier-familles-renens/"
+  },
+  {
+    "from": "/en/switzerland/richterswil/",
+    "to": "/en/market/herbst-flohmarkt-richterswil/"
+  },
+  {
+    "from": "/en/switzerland/romanshorn/",
+    "to": "/en/market/floh-sammler-antikmarkt-romanshorn/"
+  },
+  {
+    "from": "/en/germany/rostock/",
+    "to": "/en/market/nachtflohmarkt-rostock/"
+  },
+  {
+    "from": "/en/switzerland/rothenburg/",
+    "to": "/en/market/flohmarkt-ace-cafe-rothenburg/"
+  },
+  {
+    "from": "/en/switzerland/ruemlang/",
+    "to": "/en/market/flohmarkt-ruemlang/"
+  },
+  {
+    "from": "/en/switzerland/sarnen/",
+    "to": "/en/market/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/en/switzerland/saxon/",
+    "to": "/en/market/vide-grenier-ecobroc-saxon/"
+  },
+  {
+    "from": "/en/switzerland/schaffhausen/",
+    "to": "/en/market/flohmarkt-mosergarten-schaffhausen/"
+  },
+  {
+    "from": "/en/switzerland/schlieren/",
+    "to": "/en/market/flohmarkt-schlieren-herbstmarkt/"
+  },
+  {
+    "from": "/en/germany/schwerin/",
+    "to": "/en/market/flohmaxx-stadthafen-schwerin/"
+  },
+  {
+    "from": "/en/switzerland/seewen-sz/",
+    "to": "/en/market/talkessel-flohmarkt-seewen/"
+  },
+  {
+    "from": "/en/switzerland/sion/",
+    "to": "/en/market/marche-aux-puces-archipel-sion/"
+  },
+  {
+    "from": "/en/switzerland/spreitenbach/",
+    "to": "/en/market/shoppi-flohmi-spreitenbach/"
+  },
+  {
+    "from": "/en/germany/stuttgart/",
+    "to": "/en/market/flohmarkt-karlsplatz-stuttgart/"
+  },
+  {
+    "from": "/en/switzerland/subingen/",
+    "to": "/en/market/subiger-dorf-flohmarkt/"
+  },
+  {
+    "from": "/en/switzerland/therwil/",
+    "to": "/en/market/hallenflohmarkt-therwil/"
+  },
+  {
+    "from": "/en/germany/ulm/",
+    "to": "/en/market/flohmarkt-ulm-messe/"
+  },
+  {
+    "from": "/en/switzerland/villars-tiercelin/",
+    "to": "/en/market/vide-grenier-villars-tiercelin/"
+  },
+  {
+    "from": "/en/switzerland/villeneuve/",
+    "to": "/en/market/coffre-ouvert-villeneuve/"
+  },
+  {
+    "from": "/en/switzerland/waedenswil/",
+    "to": "/en/market/flohmarkt-seeplatz-waedenswil/"
+  },
+  {
+    "from": "/en/switzerland/wald/",
+    "to": "/en/market/vinylboerse-villa-flora-wald/"
+  },
+  {
+    "from": "/en/switzerland/weinfelden/",
+    "to": "/en/market/flohmarkt-weinfelden/"
+  },
+  {
+    "from": "/en/germany/weissenfels/",
+    "to": "/en/market/flohmarkt-ekz-schoene-aussicht-weissenfels/"
+  },
+  {
+    "from": "/en/switzerland/wettingen/",
+    "to": "/en/market/flohmarkt-rathausplatz-wettingen/"
+  },
+  {
+    "from": "/en/switzerland/wetzikon/",
+    "to": "/en/market/flohmarkt-wetzikon/"
+  },
+  {
+    "from": "/en/germany/wismar/",
+    "to": "/en/market/flohmarkt-markt-und-eventhalle-wismar/"
+  },
+  {
+    "from": "/en/switzerland/worb/",
+    "to": "/en/market/nostalgie-flohmarkt-worb-bern/"
+  },
+  {
+    "from": "/en/germany/wuppertal/",
+    "to": "/en/market/troedelmarkt-barmen-rathaus-wuppertal/"
+  },
+  {
+    "from": "/en/switzerland/zollikon/",
+    "to": "/en/market/puppen-baeren-spielzeugboerse-zollikon/"
+  },
+  {
+    "from": "/en/switzerland/zug/",
+    "to": "/en/market/pop-up-flohmi-industrie45-zug/"
+  },
+  {
+    "from": "/fr/suisse/aadorf/",
+    "to": "/fr/marche/hallenflohmarkt-aadorf/"
+  },
+  {
+    "from": "/fr/suisse/adliswil/",
+    "to": "/fr/marche/flohmarkt-adliswil/"
+  },
+  {
+    "from": "/fr/suisse/affoltern-am-albis/",
+    "to": "/fr/marche/saeuliaemtler-flohmarkt-affoltern/"
+  },
+  {
+    "from": "/fr/suisse/allschwil/",
+    "to": "/fr/marche/quartierflohmi-neu-allschwil/"
+  },
+  {
+    "from": "/fr/suisse/altdorf/",
+    "to": "/fr/marche/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/fr/suisse/altstaetten/",
+    "to": "/fr/marche/flommbo-flohmarkt-altstaetten/"
+  },
+  {
+    "from": "/fr/suisse/arboldswil/",
+    "to": "/fr/marche/hallenflohmarkt-arboldswil/"
+  },
+  {
+    "from": "/fr/suisse/arlesheim/",
+    "to": "/fr/marche/flohmarkt-arlesheim/"
+  },
+  {
+    "from": "/fr/suisse/ascona/",
+    "to": "/fr/marche/svuotacantine-ascona/"
+  },
+  {
+    "from": "/fr/suisse/baar/",
+    "to": "/fr/marche/flohmarkt-baar/"
+  },
+  {
+    "from": "/fr/suisse/biasca/",
+    "to": "/fr/marche/svuotacantine-biasca/"
+  },
+  {
+    "from": "/fr/suisse/bottmingen/",
+    "to": "/fr/marche/quartierflohmarkt-bottmingen/"
+  },
+  {
+    "from": "/fr/suisse/buchs-ag/",
+    "to": "/fr/marche/floh-und-antikmarkt-wynecenter-buchs/"
+  },
+  {
+    "from": "/fr/suisse/buchs-sg/",
+    "to": "/fr/marche/modelleisenbahn-auto-spielzeugboerse-buchs-sg/"
+  },
+  {
+    "from": "/fr/suisse/buelach/",
+    "to": "/fr/marche/flohmarkt-buelach-stadthalle/"
+  },
+  {
+    "from": "/fr/suisse/burgdorf/",
+    "to": "/fr/marche/grosse-burgdorfer-brocante/"
+  },
+  {
+    "from": "/fr/suisse/buttwil/",
+    "to": "/fr/marche/flohmarkt-flugplatz-buttwil/"
+  },
+  {
+    "from": "/fr/suisse/carouge/",
+    "to": "/fr/marche/brocante-de-carouge-geneve/"
+  },
+  {
+    "from": "/fr/suisse/cham/",
+    "to": "/fr/marche/flohmarkt-papieriplatz-cham/"
+  },
+  {
+    "from": "/fr/suisse/chambrelien/",
+    "to": "/fr/marche/brocante-de-chambrelien/"
+  },
+  {
+    "from": "/fr/suisse/ebikon/",
+    "to": "/fr/marche/flohmarkt-mall-of-switzerland-ebikon/"
+  },
+  {
+    "from": "/fr/suisse/echichens/",
+    "to": "/fr/marche/vide-grenier-echichens/"
+  },
+  {
+    "from": "/fr/suisse/ecublens/",
+    "to": "/fr/marche/brocante-vide-grenier-55-plus-ecublens/"
+  },
+  {
+    "from": "/fr/suisse/emmenbruecke/",
+    "to": "/fr/marche/flohmarkt-emmen/"
+  },
+  {
+    "from": "/fr/suisse/fehraltorf/",
+    "to": "/fr/marche/antik-flohmarkt-fehraltorf/"
+  },
+  {
+    "from": "/fr/suisse/flums/",
+    "to": "/fr/marche/hallen-flohmarkt-flumserei/"
+  },
+  {
+    "from": "/fr/suisse/frauenfeld/",
+    "to": "/fr/marche/flohmarkt-burstelpark-frauenfeld/"
+  },
+  {
+    "from": "/fr/suisse/galgenen/",
+    "to": "/fr/marche/flohmii-galgenen/"
+  },
+  {
+    "from": "/fr/suisse/glattbrugg/",
+    "to": "/fr/marche/flohmarkt-glattbrugg/"
+  },
+  {
+    "from": "/fr/suisse/glovelier/",
+    "to": "/fr/marche/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/fr/suisse/grabs/",
+    "to": "/fr/marche/floh-sammler-antikmarkt-grabs/"
+  },
+  {
+    "from": "/fr/suisse/haerkingen/",
+    "to": "/fr/marche/haerkinger-flohmi/"
+  },
+  {
+    "from": "/fr/suisse/hinwil/",
+    "to": "/fr/marche/flohmarkt-hinwil/"
+  },
+  {
+    "from": "/fr/suisse/hoelstein/",
+    "to": "/fr/marche/hallenflohmarkt-hoelstein/"
+  },
+  {
+    "from": "/fr/suisse/horgen/",
+    "to": "/fr/marche/flohmarkt-dorfplatz-horgen/"
+  },
+  {
+    "from": "/fr/suisse/interlaken/",
+    "to": "/fr/marche/alpin-flohmi-interlaken/"
+  },
+  {
+    "from": "/fr/suisse/koeniz/",
+    "to": "/fr/marche/modellbahnboerse-koeniz/"
+  },
+  {
+    "from": "/fr/suisse/kriens/",
+    "to": "/fr/marche/flohmarkt-hofmattplatz-kriens/"
+  },
+  {
+    "from": "/fr/suisse/la-chaux-de-fonds/",
+    "to": "/fr/marche/hyper-bazar-la-chaux-de-fonds/"
+  },
+  {
+    "from": "/fr/suisse/la-neuveville/",
+    "to": "/fr/marche/alpin-flohmi-la-neuveville/"
+  },
+  {
+    "from": "/fr/suisse/le-landeron/",
+    "to": "/fr/marche/fete-de-la-brocante-le-landeron/"
+  },
+  {
+    "from": "/fr/suisse/lenzburg/",
+    "to": "/fr/marche/flohmarkt-lenzburg-metzgplatz/"
+  },
+  {
+    "from": "/fr/suisse/les-brenets/",
+    "to": "/fr/marche/vide-grenier-brocante-les-brenets/"
+  },
+  {
+    "from": "/fr/suisse/liesberg/",
+    "to": "/fr/marche/liesberger-flohmarkt/"
+  },
+  {
+    "from": "/fr/suisse/liestal/",
+    "to": "/fr/marche/flohmarkt-liestal/"
+  },
+  {
+    "from": "/fr/suisse/lyssach/",
+    "to": "/fr/marche/nostalgie-flohmarkt-lyssach/"
+  },
+  {
+    "from": "/fr/suisse/malters/",
+    "to": "/fr/marche/flohmarkt-malters/"
+  },
+  {
+    "from": "/fr/suisse/massagno/",
+    "to": "/fr/marche/mercato-delle-pulci-massagno/"
+  },
+  {
+    "from": "/fr/suisse/mathod/",
+    "to": "/fr/marche/vide-grenier-mathod/"
+  },
+  {
+    "from": "/fr/suisse/mellingen/",
+    "to": "/fr/marche/floh-und-antiquitaetenmarkt-mellingen/"
+  },
+  {
+    "from": "/fr/suisse/misery/",
+    "to": "/fr/marche/brocante-de-misery/"
+  },
+  {
+    "from": "/fr/suisse/monthey/",
+    "to": "/fr/marche/coffre-ouvert-monthey/"
+  },
+  {
+    "from": "/fr/suisse/morges/",
+    "to": "/fr/marche/brocantissima-morges/"
+  },
+  {
+    "from": "/fr/suisse/muenchwilen-tg/",
+    "to": "/fr/marche/romeo-hallenflohmarkt-muenchwilen/"
+  },
+  {
+    "from": "/fr/suisse/muensingen/",
+    "to": "/fr/marche/flohmarkt-schlossgut-muensingen/"
+  },
+  {
+    "from": "/fr/suisse/muralto/",
+    "to": "/fr/marche/svuotacantine-muralto/"
+  },
+  {
+    "from": "/fr/suisse/muttenz/",
+    "to": "/fr/marche/flohmi-muttenz/"
+  },
+  {
+    "from": "/fr/suisse/neuchatel/",
+    "to": "/fr/marche/marche-aux-puces-jardin-anglais-neuchatel/"
+  },
+  {
+    "from": "/fr/suisse/neuhausen/",
+    "to": "/fr/marche/modelleisenbahn-auto-spielzeugboerse-neuhausen/"
+  },
+  {
+    "from": "/fr/suisse/oetwil-am-see/",
+    "to": "/fr/marche/flohmarkt-oetwil-am-see/"
+  },
+  {
+    "from": "/fr/suisse/olten/",
+    "to": "/fr/marche/flohmarkt-alte-holzbruecke-olten/"
+  },
+  {
+    "from": "/fr/suisse/onex/",
+    "to": "/fr/marche/vide-grenier-onex/"
+  },
+  {
+    "from": "/fr/suisse/oron-la-ville/",
+    "to": "/fr/marche/coffre-ouvert-oron/"
+  },
+  {
+    "from": "/fr/suisse/paradiso/",
+    "to": "/fr/marche/mercatino-usato-paradiso-lugano/"
+  },
+  {
+    "from": "/fr/suisse/paudex/",
+    "to": "/fr/marche/vide-grenier-paudex/"
+  },
+  {
+    "from": "/fr/suisse/prilly/",
+    "to": "/fr/marche/vide-grenier-prilly/"
+  },
+  {
+    "from": "/fr/suisse/rafz/",
+    "to": "/fr/marche/strassenflohmarkt-rafz/"
+  },
+  {
+    "from": "/fr/suisse/renens/",
+    "to": "/fr/marche/vide-grenier-familles-renens/"
+  },
+  {
+    "from": "/fr/suisse/richterswil/",
+    "to": "/fr/marche/herbst-flohmarkt-richterswil/"
+  },
+  {
+    "from": "/fr/suisse/romanshorn/",
+    "to": "/fr/marche/floh-sammler-antikmarkt-romanshorn/"
+  },
+  {
+    "from": "/fr/suisse/rothenburg/",
+    "to": "/fr/marche/flohmarkt-ace-cafe-rothenburg/"
+  },
+  {
+    "from": "/fr/suisse/ruemlang/",
+    "to": "/fr/marche/flohmarkt-ruemlang/"
+  },
+  {
+    "from": "/fr/suisse/sarnen/",
+    "to": "/fr/marche/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/fr/suisse/saxon/",
+    "to": "/fr/marche/vide-grenier-ecobroc-saxon/"
+  },
+  {
+    "from": "/fr/suisse/schaffhausen/",
+    "to": "/fr/marche/flohmarkt-mosergarten-schaffhausen/"
+  },
+  {
+    "from": "/fr/suisse/schlieren/",
+    "to": "/fr/marche/flohmarkt-schlieren-herbstmarkt/"
+  },
+  {
+    "from": "/fr/suisse/seewen-sz/",
+    "to": "/fr/marche/talkessel-flohmarkt-seewen/"
+  },
+  {
+    "from": "/fr/suisse/sion/",
+    "to": "/fr/marche/marche-aux-puces-archipel-sion/"
+  },
+  {
+    "from": "/fr/suisse/spreitenbach/",
+    "to": "/fr/marche/shoppi-flohmi-spreitenbach/"
+  },
+  {
+    "from": "/fr/suisse/subingen/",
+    "to": "/fr/marche/subiger-dorf-flohmarkt/"
+  },
+  {
+    "from": "/fr/suisse/therwil/",
+    "to": "/fr/marche/hallenflohmarkt-therwil/"
+  },
+  {
+    "from": "/fr/suisse/villars-tiercelin/",
+    "to": "/fr/marche/vide-grenier-villars-tiercelin/"
+  },
+  {
+    "from": "/fr/suisse/villeneuve/",
+    "to": "/fr/marche/coffre-ouvert-villeneuve/"
+  },
+  {
+    "from": "/fr/suisse/waedenswil/",
+    "to": "/fr/marche/flohmarkt-seeplatz-waedenswil/"
+  },
+  {
+    "from": "/fr/suisse/wald/",
+    "to": "/fr/marche/vinylboerse-villa-flora-wald/"
+  },
+  {
+    "from": "/fr/suisse/weinfelden/",
+    "to": "/fr/marche/flohmarkt-weinfelden/"
+  },
+  {
+    "from": "/fr/suisse/wettingen/",
+    "to": "/fr/marche/flohmarkt-rathausplatz-wettingen/"
+  },
+  {
+    "from": "/fr/suisse/wetzikon/",
+    "to": "/fr/marche/flohmarkt-wetzikon/"
+  },
+  {
+    "from": "/fr/suisse/worb/",
+    "to": "/fr/marche/nostalgie-flohmarkt-worb-bern/"
+  },
+  {
+    "from": "/fr/suisse/zollikon/",
+    "to": "/fr/marche/puppen-baeren-spielzeugboerse-zollikon/"
+  },
+  {
+    "from": "/fr/suisse/zug/",
+    "to": "/fr/marche/pop-up-flohmi-industrie45-zug/"
+  },
+  {
+    "from": "/it/svizzera/aadorf/",
+    "to": "/it/mercato/hallenflohmarkt-aadorf/"
+  },
+  {
+    "from": "/it/svizzera/adliswil/",
+    "to": "/it/mercato/flohmarkt-adliswil/"
+  },
+  {
+    "from": "/it/svizzera/affoltern-am-albis/",
+    "to": "/it/mercato/saeuliaemtler-flohmarkt-affoltern/"
+  },
+  {
+    "from": "/it/svizzera/allschwil/",
+    "to": "/it/mercato/quartierflohmi-neu-allschwil/"
+  },
+  {
+    "from": "/it/svizzera/altdorf/",
+    "to": "/it/mercato/flohmarkt-altdorf/"
+  },
+  {
+    "from": "/it/svizzera/altstaetten/",
+    "to": "/it/mercato/flommbo-flohmarkt-altstaetten/"
+  },
+  {
+    "from": "/it/svizzera/arboldswil/",
+    "to": "/it/mercato/hallenflohmarkt-arboldswil/"
+  },
+  {
+    "from": "/it/svizzera/arlesheim/",
+    "to": "/it/mercato/flohmarkt-arlesheim/"
+  },
+  {
+    "from": "/it/svizzera/ascona/",
+    "to": "/it/mercato/svuotacantine-ascona/"
+  },
+  {
+    "from": "/it/svizzera/baar/",
+    "to": "/it/mercato/flohmarkt-baar/"
+  },
+  {
+    "from": "/it/svizzera/biasca/",
+    "to": "/it/mercato/svuotacantine-biasca/"
+  },
+  {
+    "from": "/it/svizzera/bottmingen/",
+    "to": "/it/mercato/quartierflohmarkt-bottmingen/"
+  },
+  {
+    "from": "/it/svizzera/buchs-ag/",
+    "to": "/it/mercato/floh-und-antikmarkt-wynecenter-buchs/"
+  },
+  {
+    "from": "/it/svizzera/buchs-sg/",
+    "to": "/it/mercato/modelleisenbahn-auto-spielzeugboerse-buchs-sg/"
+  },
+  {
+    "from": "/it/svizzera/buelach/",
+    "to": "/it/mercato/flohmarkt-buelach-stadthalle/"
+  },
+  {
+    "from": "/it/svizzera/burgdorf/",
+    "to": "/it/mercato/grosse-burgdorfer-brocante/"
+  },
+  {
+    "from": "/it/svizzera/buttwil/",
+    "to": "/it/mercato/flohmarkt-flugplatz-buttwil/"
+  },
+  {
+    "from": "/it/svizzera/carouge/",
+    "to": "/it/mercato/brocante-de-carouge-geneve/"
+  },
+  {
+    "from": "/it/svizzera/cham/",
+    "to": "/it/mercato/flohmarkt-papieriplatz-cham/"
+  },
+  {
+    "from": "/it/svizzera/chambrelien/",
+    "to": "/it/mercato/brocante-de-chambrelien/"
+  },
+  {
+    "from": "/it/svizzera/ebikon/",
+    "to": "/it/mercato/flohmarkt-mall-of-switzerland-ebikon/"
+  },
+  {
+    "from": "/it/svizzera/echichens/",
+    "to": "/it/mercato/vide-grenier-echichens/"
+  },
+  {
+    "from": "/it/svizzera/ecublens/",
+    "to": "/it/mercato/brocante-vide-grenier-55-plus-ecublens/"
+  },
+  {
+    "from": "/it/svizzera/emmenbruecke/",
+    "to": "/it/mercato/flohmarkt-emmen/"
+  },
+  {
+    "from": "/it/svizzera/fehraltorf/",
+    "to": "/it/mercato/antik-flohmarkt-fehraltorf/"
+  },
+  {
+    "from": "/it/svizzera/flums/",
+    "to": "/it/mercato/hallen-flohmarkt-flumserei/"
+  },
+  {
+    "from": "/it/svizzera/frauenfeld/",
+    "to": "/it/mercato/flohmarkt-burstelpark-frauenfeld/"
+  },
+  {
+    "from": "/it/svizzera/galgenen/",
+    "to": "/it/mercato/flohmii-galgenen/"
+  },
+  {
+    "from": "/it/svizzera/glattbrugg/",
+    "to": "/it/mercato/flohmarkt-glattbrugg/"
+  },
+  {
+    "from": "/it/svizzera/glovelier/",
+    "to": "/it/mercato/marche-aux-puces-glovelier/"
+  },
+  {
+    "from": "/it/svizzera/grabs/",
+    "to": "/it/mercato/floh-sammler-antikmarkt-grabs/"
+  },
+  {
+    "from": "/it/svizzera/haerkingen/",
+    "to": "/it/mercato/haerkinger-flohmi/"
+  },
+  {
+    "from": "/it/svizzera/hinwil/",
+    "to": "/it/mercato/flohmarkt-hinwil/"
+  },
+  {
+    "from": "/it/svizzera/hoelstein/",
+    "to": "/it/mercato/hallenflohmarkt-hoelstein/"
+  },
+  {
+    "from": "/it/svizzera/horgen/",
+    "to": "/it/mercato/flohmarkt-dorfplatz-horgen/"
+  },
+  {
+    "from": "/it/svizzera/interlaken/",
+    "to": "/it/mercato/alpin-flohmi-interlaken/"
+  },
+  {
+    "from": "/it/svizzera/koeniz/",
+    "to": "/it/mercato/modellbahnboerse-koeniz/"
+  },
+  {
+    "from": "/it/svizzera/kriens/",
+    "to": "/it/mercato/flohmarkt-hofmattplatz-kriens/"
+  },
+  {
+    "from": "/it/svizzera/la-chaux-de-fonds/",
+    "to": "/it/mercato/hyper-bazar-la-chaux-de-fonds/"
+  },
+  {
+    "from": "/it/svizzera/la-neuveville/",
+    "to": "/it/mercato/alpin-flohmi-la-neuveville/"
+  },
+  {
+    "from": "/it/svizzera/le-landeron/",
+    "to": "/it/mercato/fete-de-la-brocante-le-landeron/"
+  },
+  {
+    "from": "/it/svizzera/lenzburg/",
+    "to": "/it/mercato/flohmarkt-lenzburg-metzgplatz/"
+  },
+  {
+    "from": "/it/svizzera/les-brenets/",
+    "to": "/it/mercato/vide-grenier-brocante-les-brenets/"
+  },
+  {
+    "from": "/it/svizzera/liesberg/",
+    "to": "/it/mercato/liesberger-flohmarkt/"
+  },
+  {
+    "from": "/it/svizzera/liestal/",
+    "to": "/it/mercato/flohmarkt-liestal/"
+  },
+  {
+    "from": "/it/svizzera/lyssach/",
+    "to": "/it/mercato/nostalgie-flohmarkt-lyssach/"
+  },
+  {
+    "from": "/it/svizzera/malters/",
+    "to": "/it/mercato/flohmarkt-malters/"
+  },
+  {
+    "from": "/it/svizzera/massagno/",
+    "to": "/it/mercato/mercato-delle-pulci-massagno/"
+  },
+  {
+    "from": "/it/svizzera/mathod/",
+    "to": "/it/mercato/vide-grenier-mathod/"
+  },
+  {
+    "from": "/it/svizzera/mellingen/",
+    "to": "/it/mercato/floh-und-antiquitaetenmarkt-mellingen/"
+  },
+  {
+    "from": "/it/svizzera/misery/",
+    "to": "/it/mercato/brocante-de-misery/"
+  },
+  {
+    "from": "/it/svizzera/monthey/",
+    "to": "/it/mercato/coffre-ouvert-monthey/"
+  },
+  {
+    "from": "/it/svizzera/morges/",
+    "to": "/it/mercato/brocantissima-morges/"
+  },
+  {
+    "from": "/it/svizzera/muenchwilen-tg/",
+    "to": "/it/mercato/romeo-hallenflohmarkt-muenchwilen/"
+  },
+  {
+    "from": "/it/svizzera/muensingen/",
+    "to": "/it/mercato/flohmarkt-schlossgut-muensingen/"
+  },
+  {
+    "from": "/it/svizzera/muralto/",
+    "to": "/it/mercato/svuotacantine-muralto/"
+  },
+  {
+    "from": "/it/svizzera/muttenz/",
+    "to": "/it/mercato/flohmi-muttenz/"
+  },
+  {
+    "from": "/it/svizzera/neuchatel/",
+    "to": "/it/mercato/marche-aux-puces-jardin-anglais-neuchatel/"
+  },
+  {
+    "from": "/it/svizzera/neuhausen/",
+    "to": "/it/mercato/modelleisenbahn-auto-spielzeugboerse-neuhausen/"
+  },
+  {
+    "from": "/it/svizzera/oetwil-am-see/",
+    "to": "/it/mercato/flohmarkt-oetwil-am-see/"
+  },
+  {
+    "from": "/it/svizzera/olten/",
+    "to": "/it/mercato/flohmarkt-alte-holzbruecke-olten/"
+  },
+  {
+    "from": "/it/svizzera/onex/",
+    "to": "/it/mercato/vide-grenier-onex/"
+  },
+  {
+    "from": "/it/svizzera/oron-la-ville/",
+    "to": "/it/mercato/coffre-ouvert-oron/"
+  },
+  {
+    "from": "/it/svizzera/paradiso/",
+    "to": "/it/mercato/mercatino-usato-paradiso-lugano/"
+  },
+  {
+    "from": "/it/svizzera/paudex/",
+    "to": "/it/mercato/vide-grenier-paudex/"
+  },
+  {
+    "from": "/it/svizzera/prilly/",
+    "to": "/it/mercato/vide-grenier-prilly/"
+  },
+  {
+    "from": "/it/svizzera/rafz/",
+    "to": "/it/mercato/strassenflohmarkt-rafz/"
+  },
+  {
+    "from": "/it/svizzera/renens/",
+    "to": "/it/mercato/vide-grenier-familles-renens/"
+  },
+  {
+    "from": "/it/svizzera/richterswil/",
+    "to": "/it/mercato/herbst-flohmarkt-richterswil/"
+  },
+  {
+    "from": "/it/svizzera/romanshorn/",
+    "to": "/it/mercato/floh-sammler-antikmarkt-romanshorn/"
+  },
+  {
+    "from": "/it/svizzera/rothenburg/",
+    "to": "/it/mercato/flohmarkt-ace-cafe-rothenburg/"
+  },
+  {
+    "from": "/it/svizzera/ruemlang/",
+    "to": "/it/mercato/flohmarkt-ruemlang/"
+  },
+  {
+    "from": "/it/svizzera/sarnen/",
+    "to": "/it/mercato/flohmarkt-sarnen-center/"
+  },
+  {
+    "from": "/it/svizzera/saxon/",
+    "to": "/it/mercato/vide-grenier-ecobroc-saxon/"
+  },
+  {
+    "from": "/it/svizzera/schaffhausen/",
+    "to": "/it/mercato/flohmarkt-mosergarten-schaffhausen/"
+  },
+  {
+    "from": "/it/svizzera/schlieren/",
+    "to": "/it/mercato/flohmarkt-schlieren-herbstmarkt/"
+  },
+  {
+    "from": "/it/svizzera/seewen-sz/",
+    "to": "/it/mercato/talkessel-flohmarkt-seewen/"
+  },
+  {
+    "from": "/it/svizzera/sion/",
+    "to": "/it/mercato/marche-aux-puces-archipel-sion/"
+  },
+  {
+    "from": "/it/svizzera/spreitenbach/",
+    "to": "/it/mercato/shoppi-flohmi-spreitenbach/"
+  },
+  {
+    "from": "/it/svizzera/subingen/",
+    "to": "/it/mercato/subiger-dorf-flohmarkt/"
+  },
+  {
+    "from": "/it/svizzera/therwil/",
+    "to": "/it/mercato/hallenflohmarkt-therwil/"
+  },
+  {
+    "from": "/it/svizzera/villars-tiercelin/",
+    "to": "/it/mercato/vide-grenier-villars-tiercelin/"
+  },
+  {
+    "from": "/it/svizzera/villeneuve/",
+    "to": "/it/mercato/coffre-ouvert-villeneuve/"
+  },
+  {
+    "from": "/it/svizzera/waedenswil/",
+    "to": "/it/mercato/flohmarkt-seeplatz-waedenswil/"
+  },
+  {
+    "from": "/it/svizzera/wald/",
+    "to": "/it/mercato/vinylboerse-villa-flora-wald/"
+  },
+  {
+    "from": "/it/svizzera/weinfelden/",
+    "to": "/it/mercato/flohmarkt-weinfelden/"
+  },
+  {
+    "from": "/it/svizzera/wettingen/",
+    "to": "/it/mercato/flohmarkt-rathausplatz-wettingen/"
+  },
+  {
+    "from": "/it/svizzera/wetzikon/",
+    "to": "/it/mercato/flohmarkt-wetzikon/"
+  },
+  {
+    "from": "/it/svizzera/worb/",
+    "to": "/it/mercato/nostalgie-flohmarkt-worb-bern/"
+  },
+  {
+    "from": "/it/svizzera/zollikon/",
+    "to": "/it/mercato/puppen-baeren-spielzeugboerse-zollikon/"
+  },
+  {
+    "from": "/it/svizzera/zug/",
+    "to": "/it/mercato/pop-up-flohmi-industrie45-zug/"
+  },
+  {
     "from": "/de/deutschland/bundesland/berlin/",
     "to": "/de/deutschland/berlin/"
   },
@@ -21,11 +1757,11 @@
   },
   {
     "from": "/de/deutschland/bundesland/bremen/",
-    "to": "/de/deutschland/bremen/"
+    "to": "/de/markt/flohmarkt-hansa-carre-bremen/"
   },
   {
     "from": "/en/germany/state/bremen/",
-    "to": "/en/germany/bremen/"
+    "to": "/en/market/flohmarkt-hansa-carre-bremen/"
   },
   {
     "from": "/de/markt/marches-tunnel-lausanne-mardi/",
@@ -153,7 +1889,7 @@
   },
   {
     "from": "/fr/suisse/schaffhouse/",
-    "to": "/fr/suisse/schaffhausen/"
+    "to": "/fr/marche/flohmarkt-mosergarten-schaffhausen/"
   },
   {
     "from": "/fr/suisse/thoune/",
@@ -193,7 +1929,7 @@
   },
   {
     "from": "/it/svizzera/sciaffusa/",
-    "to": "/it/svizzera/schaffhausen/"
+    "to": "/it/mercato/flohmarkt-mosergarten-schaffhausen/"
   },
   {
     "from": "/it/svizzera/zuerich/",

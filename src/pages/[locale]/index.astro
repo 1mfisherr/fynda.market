@@ -20,10 +20,10 @@ import TownShortcut from '../../components/TownShortcut.astro';
 import TypeGrid from '../../components/TypeGrid.astro';
 import { getMarkets } from '../../lib/markets';
 import TownSearch from '../../components/TownSearch.astro';
-import { townIndex } from '../../lib/towns';
+import { townHref, townIndex } from '../../lib/towns';
 import { datedRows, weekendLead } from '../../lib/lists';
 import { formatDateShort } from '../../lib/format';
-import { COUNTRY, LOCALES, cityPath, countryName, homePath, isCityState, localeTag, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
+import { COUNTRY, LOCALES, countryName, homePath, isCityState, localeTag, marketPath, nearbyPath, regionPath, utilityPath } from '../../lib/i18n';
 import { t } from '../../lib/strings';
 import { TOWN_KEY } from '../../lib/local-keys';
 
@@ -422,7 +422,7 @@ const jsonLd = {
       )}
       <Section id={several ? `orte-${country.code.toLowerCase()}` : 'staedte'} title={s.cities} lede={s.citiesLede} level={several ? 'sub' : undefined}>
         <PlaceCloud items={country.cities.map(([slug, city]) => ({
-          href: cityPath(locale, country.slug, slug),
+          href: townHref(locale, markets.filter((m) => m.citySlug === slug)),
           label: city,
           count: markets.filter((m) => m.citySlug === slug).length,
         }))} />
@@ -430,7 +430,7 @@ const jsonLd = {
 
       <Section id={several ? `regionen-${country.code.toLowerCase()}` : 'kantone'} title={s.regionsOf(country.code)} lede={s.regionsLede} level={several ? 'sub' : undefined}>
         <PillList items={country.regions.map(([slug, region]) => ({
-          href: isCityState(country.code, slug) ? cityPath(locale, country.slug, slug) : regionPath(locale, country.code, country.slug, slug),
+          href: isCityState(country.code, slug) ? townHref(locale, markets.filter((m) => m.regionSlug === slug)) : regionPath(locale, country.code, country.slug, slug),
           label: region,
           meta: String(markets.filter((m) => m.regionSlug === slug).length),
         }))} />

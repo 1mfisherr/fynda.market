@@ -76,7 +76,7 @@ const ISO2 = `select id, iso2 from public.countries`;
  * nothing, a 404 on an address someone did follow costs a visitor.
  */
 const ENDED = `
-  select s.locale, s.slug as was, r.country_id,
+  select s.locale, s.slug as was, r.country_id, ci.id as city_id,
          (select cs.slug from public.slugs cs
            where cs.entity_type = 'city' and cs.entity_id = ci.id
              and cs.locale = s.locale and cs.is_current)           as city,
@@ -89,6 +89,31 @@ const ENDED = `
     join public.slugs s    on s.entity_type = 'market' and s.entity_id = m.id
    where m.status = 'permanently_closed'
    order by s.locale, s.slug
+`;
+
+/**
+ * Towns of one market, whose town page is no longer built (2026-10-20).
+ *
+ * Each repeated its only market's page, and the two traded the same query
+ * between them for weeks; Google's doorway rule names "pages targeted at
+ * specific regions or cities that funnel users to one page". So the market's
+ * page is the town's page, and the town's address — published for six weeks,
+ * in Google's index and people's bookmarks — 301s to it. `publishable_cities`
+ * counts what the site builds from, so this cannot disagree with the pages;
+ * the moment a second market goes live, the row leaves this query and the
+ * town page is built again. Current slugs in both tables: a retired town slug
+ * is in RETIRED and resolved through `lone` there.
+ */
+const LONE = `
+  select pc.city_id, cs.locale, cs.slug as city, ms.slug as market, r.country_id
+    from public.publishable_cities pc
+    join public.publishable_markets pm on pm.city_id = pc.city_id
+    join public.regions r on r.id = pc.region_id
+    join public.slugs cs on cs.entity_type = 'city' and cs.entity_id = pc.city_id and cs.is_current
+    join public.slugs ms on ms.entity_type = 'market' and ms.entity_id = pm.id and ms.is_current
+                        and ms.locale = cs.locale
+   where pc.market_count = 1
+   order by cs.locale, cs.slug
 `;
 
 /**
@@ -115,6 +140,24 @@ export async function buildRedirects() {
 
     const exact = [...MOVED];
 
+    /* Where a town's address lands: its page, or its only market's page. Every
+       line below that points at a town asks this, so a closed market's address
+       or a town's retired slug never lands on a second redirect — Cloudflare
+       follows none. */
+    const lone = new Map();
+    const loneBySlug = new Map();
+    for (const r of await rows(LONE)) {
+      const segments = LOCALE[r.locale]?.segments;
+      const country = countryNow.get(`${r.country_id}|${r.locale}`);
+      // Only the locales the country publishes in: a German town has no French address to move.
+      if (!segments || !country || !COUNTRY[iso2.get(r.country_id)]?.locales.includes(r.locale)) continue;
+      const to = `/${r.locale}/${segments.market}/${r.market}/`;
+      lone.set(`${r.city_id}|${r.locale}`, to);
+      loneBySlug.set(`${r.country_id}|${r.locale}|${r.city}`, to);
+      exact.push({ from: `/${r.locale}/${country}/${r.city}/`, to });
+    }
+    const townPage = (cityId, locale, country, slug) => lone.get(`${cityId}|${locale}`) ?? `/${locale}/${country}/${slug}/`;
+
     /* A city-state's region page was published for one night (2026-09-22)
        before it was folded into its town page, and a published address never
        dies. Its words come from the country, so a new city-state needs no line
@@ -126,7 +169,8 @@ export async function buildRedirects() {
           if (!country) continue;
           exact.push({
             from: `/${locale}/${country}/${regionSegment(locale, code)}/${slug}/`,
-            to: `/${locale}/${country}/${slug}/`,
+            // Bremen has one market, so its town page is that market's page (2026-10-20).
+            to: loneBySlug.get(`${countryId}|${locale}|${slug}`) ?? `/${locale}/${country}/${slug}/`,
           });
         }
       }
@@ -137,7 +181,7 @@ export async function buildRedirects() {
       if (!segments || !country) continue;
       exact.push({
         from: `/${r.locale}/${segments.market}/${r.was}/`,
-        to: r.city_live && r.city ? `/${r.locale}/${country}/${r.city}/` : `/${r.locale}/`,
+        to: r.city_live && r.city ? townPage(r.city_id, r.locale, country, r.city) : `/${r.locale}/`,
       });
     }
 
@@ -151,7 +195,7 @@ export async function buildRedirects() {
       if (!segments || !country || !code) continue;
 
       if (r.entity_type === 'city') {
-        exact.push({ from: `/${locale}/${country}/${was}/`, to: `/${locale}/${country}/${now}/` });
+        exact.push({ from: `/${locale}/${country}/${was}/`, to: townPage(r.entity_id, locale, country, now) });
       } else if (r.entity_type === 'region') {
         const seg = regionSegment(locale, code);
         exact.push({

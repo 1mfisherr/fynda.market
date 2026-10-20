@@ -47,9 +47,8 @@
     "why": "v1 shipped ~8500 URLs for 157 markets. Roughly 1.2 is the target; 2.0 is the hard ceiling. Counted PER LOCALE: four languages of the same market is four full pages, not four empty cells, so the denominator is entities x locales. Changed 2026-08-31 — the old aggregate count would have blocked translation outright, which is the rule getting in the way of the product rather than protecting it."
   },
 
-  "townCopy": {
-    "max": 0.6,
-    "why": "A town with one market shows the market, never its description again: two pages saying the same is what the spam update punished (PAGES.md §City). Share of the town page's own six-word runs also on the market page; 0.41 at most on 2026-10-12."
+  "townPages": {
+    "why": "A town of one market has no page: its market's page is the town's page and the town's address 301s there (PAGES.md §City, 2026-10-20). Two pages for one market traded the same query for weeks and are the doorway shape Google's spam rules name."
   },
 
   "contentFloor": {

@@ -71,11 +71,6 @@
   },
   {
     "marketSlug": "antik-und-buchmarkt-am-bodemuseum-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "antik-und-buchmarkt-am-bodemuseum-berlin",
     "date": "2026-10-24",
     "status": "confirmed"
   },
@@ -221,11 +216,6 @@
   },
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "antikmarkt-ostbahnhof-berlin",
     "date": "2026-10-25",
     "status": "confirmed"
   },
@@ -272,16 +262,6 @@
   {
     "marketSlug": "antikmarkt-ostbahnhof-berlin",
     "date": "2027-01-17",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "auer-dult-muenchen",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "auer-dult-muenchen",
-    "date": "2026-10-19",
     "status": "confirmed"
   },
   {
@@ -347,11 +327,6 @@
   {
     "marketSlug": "bergflohmarkt-chur",
     "date": "2026-11-14",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "berliner-troedelmarkt-strasse-des-17-juni-berlin",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -696,11 +671,6 @@
   },
   {
     "marketSlug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "floh-und-antiquitaetenmarkt-schadaumaerit-thun",
     "date": "2026-11-15",
     "status": "confirmed"
   },
@@ -986,11 +956,6 @@
   },
   {
     "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-am-arkonaplatz-berlin",
     "date": "2026-10-25",
     "status": "confirmed"
   },
@@ -1081,11 +1046,6 @@
   },
   {
     "marketSlug": "flohmarkt-am-mauerpark-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-am-mauerpark-berlin",
     "date": "2026-10-25",
     "status": "confirmed"
   },
@@ -1137,11 +1097,6 @@
   {
     "marketSlug": "flohmarkt-am-mauerpark-berlin",
     "date": "2027-01-17",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-am-rathaus-schoeneberg-berlin",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -1530,16 +1485,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "flohmarkt-flugplatz-buttwil",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-friedrichshagen-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "flohmarkt-friedrichshagen-berlin",
     "date": "2026-10-25",
     "status": "confirmed"
@@ -1577,11 +1522,6 @@
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -1812,11 +1752,6 @@
   {
     "marketSlug": "flohmarkt-halle-gartlage-osnabrueck",
     "date": "2026-12-19",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-hansa-carre-bremen",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -2055,16 +1990,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "flohmarkt-minigolf-lido-luzern",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-nippes-koeln",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "flohmarkt-nippes-koeln",
     "date": "2026-11-29",
     "status": "confirmed"
@@ -2256,11 +2181,6 @@
   },
   {
     "marketSlug": "flohmarkt-rheinenergiestadion-koeln",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-rheinenergiestadion-koeln",
     "date": "2026-12-06",
     "status": "confirmed"
   },
@@ -2372,11 +2292,6 @@
   {
     "marketSlug": "flohmarkt-stadtbibliothek-aarau",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-stuecki-basel",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -2522,11 +2437,6 @@
   {
     "marketSlug": "flohmaxx-stadthafen-schwerin",
     "date": "2026-10-25",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmi-am-see-bern",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -2770,11 +2680,6 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "kinderflohmarkt-gz-bachwiesen",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
     "marketSlug": "kinderkleider-spielwaren-flohmarkt-luzern-b102",
     "date": "2026-10-24",
     "status": "confirmed"
@@ -2787,11 +2692,6 @@
   {
     "marketSlug": "krempelmarkt-rheinufer-mainz",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "kunst-und-troedelmarkt-fehrbelliner-platz-berlin",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -3225,6 +3125,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-aux-puces-plainpalais-geneve-mittwoch",
+    "date": "2027-02-17",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-aux-puces-plainpalais-geneve-samstag",
     "date": "2026-10-24",
     "status": "confirmed"
@@ -3415,6 +3320,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "marche-rumine-lausanne-mardi",
+    "date": "2027-02-16",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2026-10-21",
     "status": "confirmed"
@@ -3497,6 +3407,11 @@
   {
     "marketSlug": "marche-rumine-lausanne-mercredi",
     "date": "2027-02-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "marche-rumine-lausanne-mercredi",
+    "date": "2027-02-17",
     "status": "confirmed"
   },
   {
@@ -3996,11 +3911,6 @@
   },
   {
     "marketSlug": "nowkoelln-flowmarkt-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "nowkoelln-flowmarkt-berlin",
     "date": "2026-11-01",
     "status": "confirmed"
   },
@@ -4052,16 +3962,6 @@
   {
     "marketSlug": "puppen-baeren-spielzeugboerse-zollikon",
     "date": "2026-11-01",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "quartierflohmarkt-hirzbrunnen",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "raw-flohmarkt-berlin",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -4117,11 +4017,6 @@
   {
     "marketSlug": "raw-flohmarkt-berlin",
     "date": "2027-01-17",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "riesenflohmarkt-freiburg",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -4252,11 +4147,6 @@
   {
     "marketSlug": "strandgut-flohmarkt-neubad-luzern",
     "date": "2027-02-14",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "svuotacantine-biasca",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -4401,11 +4291,6 @@
   },
   {
     "marketSlug": "troedelmarkt-hansamarkt-berlin",
-    "date": "2026-10-18",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "troedelmarkt-hansamarkt-berlin",
     "date": "2026-10-25",
     "status": "confirmed"
   },
@@ -4502,11 +4387,6 @@
   {
     "marketSlug": "troedelmarkt-ikea-koeln-godorf",
     "date": "2026-12-27",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "troedelmarkt-marheinekeplatz-berlin",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {
@@ -4697,11 +4577,6 @@
   {
     "marketSlug": "troedelmarkt-universitaet-dortmund",
     "date": "2026-12-19",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "troedelmarkt-veltins-arena-gelsenkirchen",
-    "date": "2026-10-18",
     "status": "confirmed"
   },
   {

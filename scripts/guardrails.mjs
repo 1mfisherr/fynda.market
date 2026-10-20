@@ -615,57 +615,38 @@ check('Sitemap matches the indexable pages', () => {
 });
 
 /* -------------------------------------------------------------------------- */
-/* 11 — a one-market town is not its market's page again                      */
+/* 11 — a town of one market has no page of its own                           */
 /*                                                                            */
-/* A town with one market shows that market as its feature, never its         */
-/* description (PAGES.md §City): two pages saying the same thing is the        */
-/* pattern the September update punished. Measured as the share of the town   */
-/* page's own six-word runs that also appear on the market page, forms and     */
-/* other towns' rows left out. 2026-10-12: 434 such pages, median 0.29,        */
-/* highest 0.41 (Muralto — the market's name and season line); pasting the     */
-/* market's description in would put Muralto near 0.68.                       */
+/* Until 2026-10-20 the rule was softer: a one-market town page could exist    */
+/* as long as it did not repeat its market's page (0.41 of its six-word runs   */
+/* at most, over 434 pages). It was not enough. The two pages traded the same  */
+/* query between them for weeks, and Google's doorway rule names "pages        */
+/* targeted at specific regions or cities that funnel users to one page". So   */
+/* now the market's page is the town's page, the town's address 301s to it     */
+/* (scripts/redirects.mjs), and a town page in dist that links to exactly one  */
+/* market is a template that slipped past src/lib/towns.ts hasTownPage.        */
 /* -------------------------------------------------------------------------- */
 
-check('One-market towns are not a copy', () => {
-  const max = config.townCopy.max;
+check('One-market towns have no page of their own', () => {
   const own = (html) => {
     const main = html.match(/<main[\s\S]*?>([\s\S]*?)<\/main>/i);
     return (main ? main[1] : html)
       .replace(/<aside[^>]*data-outside-floor[^>]*>[\s\S]*?<\/aside>/gi, ' ')
       .replace(/<form[\s\S]*?<\/form>/gi, ' ');
   };
-  const runs = (body) => {
-    const words = body.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ')
-      .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase().split(' ');
-    const set = new Set();
-    for (let i = 0; i + 6 <= words.length; i++) set.add(words.slice(i, i + 6).join(' '));
-    return set;
-  };
-  const byUrl = new Map(pages.map((page) => [page.url, page]));
-  const copies = [];
-  let checked = 0;
-  let highest = 0;
+  const stray = [];
+  let towns = 0;
 
   for (const page of pages) {
     if (routeTypeOf(page.url) !== 'region or city') continue;
-    const body = own(page.html);
-    const links = new Set([...body.matchAll(/href="(\/(?:de|fr|it|en)\/(?:markt|marche|mercato|market)\/[a-z0-9-]+\/)"/g)].map((m) => m[1]));
-    if (links.size !== 1) continue;
-    const market = byUrl.get([...links][0]);
-    if (!market) continue;
-    const town = runs(body);
-    const theirs = runs(own(market.html));
-    let shared = 0;
-    for (const run of town) if (theirs.has(run)) shared++;
-    const share = town.size ? shared / town.size : 0;
-    checked++;
-    highest = Math.max(highest, share);
-    if (share > max) copies.push(`${page.url}  — ${Math.round(share * 100)}% of it is on ${market.url}`);
+    towns++;
+    const links = new Set([...own(page.html).matchAll(/href="(\/(?:de|fr|it|en)\/(?:markt|marche|mercato|market)\/[a-z0-9-]+\/)"/g)].map((m) => m[1]));
+    if (links.size === 1) stray.push(`${page.url}  — a town page for one market, ${[...links][0]}`);
   }
 
-  if (checked === 0) return skip('no one-market town pages in dist');
-  if (copies.length) return fail(`${copies.length} town page(s) repeat their only market's page`, [...copies, config.townCopy.why]);
-  return pass(`${checked} one-market town pages, the most alike ${Math.round(highest * 100)}% (ceiling ${Math.round(max * 100)}%)`);
+  if (towns === 0) return skip('no town pages in dist');
+  if (stray.length) return fail(`${stray.length} town page(s) exist for a single market`, [...stray, config.townPages.why]);
+  return pass(`${towns} town pages, every one with two markets or more`);
 });
 
 /* -------------------------------------------------------------------------- */

@@ -18,8 +18,10 @@ import Icon from '../../../components/Icon.astro';
 import PhotoOrArt from '../../../components/PhotoOrArt.astro';
 import Section from '../../../components/Section.astro';
 import MarketRow from '../../../components/MarketRow.astro';
+import PillList from '../../../components/PillList.astro';
 import { meanwhileNearby, sameDayNearby } from '../../../lib/nearby';
-import type { Nearby } from '../../../lib/lists';
+import { nearbyMarkets, type Nearby } from '../../../lib/lists';
+import { townIndex, townsAround, type TownEntry } from '../../../lib/towns';
 import { seasonLabel } from '../../../lib/season';
 import { kmLabel } from '../../../lib/geo';
 import { getMarkets, withinHorizon } from '../../../lib/markets';
@@ -53,20 +55,36 @@ export async function getStaticPaths() {
   const paths = [];
   for (const locale of LOCALES) {
     const all = byLocale.get(locale)!;
+    const index = townIndex(locale, all);
     for (const market of all) {
       const alternates = LOCALES.map((l) => {
         const slug = slugOf.get(l)!.get(market.id);
         return slug ? { locale: l, path: marketPath(l, slug) } : null;
       }).filter(Boolean) as { locale: Locale; path: string }[];
 
+      /* A town of one market has no page of its own (2026-10-20): this page is
+         the town's page, the town's address 301s here, and the two blocks the
+         town page carried move in — *Within 25 km* where this page's own
+         nearby block would be empty, and *Towns nearby* at the foot. */
+      const townHasOthers = all.some((m) => m.citySlug === market.citySlug && m.id !== market.id);
+      // A market with a date: the others that day. Without one: what is on meanwhile.
+      let nearby = market.next ? sameDayNearby(market, all) : meanwhileNearby(market, all);
+      let nearbyKind: NearbyKind = market.next ? 'day' : 'meanwhile';
+      let nearbyKm = 0;
+      if (!townHasOthers && nearby.length === 0) {
+        const around = nearbyMarkets([market], all);
+        nearby = around.rows;
+        nearbyKind = 'around';
+        nearbyKm = around.km;
+      }
+
       paths.push({
         params: { locale, type: LOCALE[locale].segments.market, slug: market.slug },
         props: {
-          locale, market, alternates,
-          // A market with a date: the others that day. Without one: what is on meanwhile.
-          nearby: market.next ? sameDayNearby(market, all) : meanwhileNearby(market, all),
+          locale, market, alternates, nearby, nearbyKind, nearbyKm,
           // Whether the town has a page worth sending someone to from here.
-          townHasOthers: all.some((m) => m.citySlug === market.citySlug && m.id !== market.id),
+          townHasOthers,
+          towns: townHasOthers ? [] : townsAround(market.citySlug, index),
         },
       });
     }
@@ -74,8 +92,12 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { locale, market, alternates, nearby, townHasOthers } = Astro.props as {
-  locale: Locale; market: Market; alternates: { locale: Locale; path: string }[]; nearby: Nearby[]; townHasOthers: boolean;
+/** Which question the nearby block answers — src/lib/nearby.ts, and `around` is the folded town page's *Within 25 km*. */
+type NearbyKind = 'day' | 'meanwhile' | 'around';
+
+const { locale, market, alternates, nearby, nearbyKind, nearbyKm, townHasOthers, towns } = Astro.props as {
+  locale: Locale; market: Market; alternates: { locale: Locale; path: string }[]; nearby: Nearby[]; nearbyKind: NearbyKind; nearbyKm: number;
+  townHasOthers: boolean; towns: (TownEntry & { km: number })[];
 };
 const s = t(locale);
 const next = market.next;
@@ -159,7 +181,8 @@ const jsonLd = {
     { '@type': 'BreadcrumbList', itemListElement: [
       { name: 'fynda.market', item: `${site}${homePath(locale)}` },
       ...(cityState ? [] : [{ name: market.region, item: `${site}${regionPath(locale, market.countryCode, market.countrySlug, market.regionSlug)}` }]),
-      { name: market.city, item: `${site}${cityPath(locale, market.countrySlug, market.citySlug)}` },
+      // A town of one market has no page: the trail goes canton → market.
+      ...(townHasOthers ? [{ name: market.city, item: `${site}${cityPath(locale, market.countrySlug, market.citySlug)}` }] : []),
       { name: market.name, item: url },
     ].map((step, i) => ({ '@type': 'ListItem', position: i + 1, ...step })) },
   ],
@@ -211,7 +234,7 @@ const afterLine = after
 /* "0,7 km" in German, "0.7 km" in English — one decimal under a kilometre,
    where rounding would print "1 km" for a two-minute walk. */
 const km = (n: number) => kmLabel(n, localeTag(locale));
-const nearbyTitle = !next ? s.meanwhileNearby : next.date === today ? s.nearbyToday : next.date === tomorrow ? s.nearbyTomorrow : s.nearbyOn(formatDate(next.date, locale));
+const nearbyTitle = nearbyKind === 'around' ? s.nearbyHeading(nearbyKm) : !next ? s.meanwhileNearby : next.date === today ? s.nearbyToday : next.date === tomorrow ? s.nearbyTomorrow : s.nearbyOn(formatDate(next.date, locale));
 
 /* The preview a chat app shows for a shared link: the market's own picture,
    made at build time by scripts/postbuild.mjs as a JPEG, because not every chat
@@ -473,7 +496,11 @@ const description = next
           breadcrumb existed in the structured data and nowhere a person could
           see it. Parent links, not a related-market list. */}
       <p class="where">
-        <a href={cityPath(locale, market.countrySlug, market.citySlug)}>{market.city}</a>
+        {/* The town's name is a link only where the town has a page: a town of
+            one market has none, and a link to this very page is a dead tap. */}
+        {townHasOthers
+          ? <a href={cityPath(locale, market.countrySlug, market.citySlug)}>{market.city}</a>
+          : <span class="town">{market.city}</span>}
         {/* "Kanton Genf", not "Genf": Genève, Luzern, Zürich, Bern and five
             more name both a city and its canton, so the bare pair read as the
             same word printed twice. The label string exists for this. A
@@ -626,16 +653,21 @@ const description = next
           Compact rows: this market is the page, they are a footnote. The
           script below drops rows that have closed and renames the block once
           this market has. */}
+      {/* `around` is the folded town page's *Within 25 km*: other towns' markets
+          on other days, so each row says its day, and the block sits outside
+          this page's content floor as it did there (guardrail 3). */}
       {nearby.length > 0 && (
+        <aside data-outside-floor={nearbyKind === 'around' ? '' : undefined}>
         <Section level="sub" title={nearbyTitle} id="nearby">
           <div class="gutter nearby" data-nearby data-still-open={next?.date === today ? s.nearbyStillOpen : undefined}>
-            {nearby.map(({ market: m, km: d }) => <MarketRow market={m} locale={locale} variant="compact" showDay={!next} distance={km(d)} />)}
+            {nearby.map(({ market: m, km: d }) => <MarketRow market={m} locale={locale} variant="compact" showDay={!next || nearbyKind === 'around'} distance={km(d)} />)}
           </div>
           {!next && townHasOthers && (
             <p class="gutter town-link"><a href={cityPath(locale, market.countrySlug, market.citySlug)}>{s.allMarketsIn(market.city)} →</a></p>
           )}
           <p class="gutter crow">{s.straightLine}</p>
         </Section>
+        </aside>
       )}
 
       {market.description && (
@@ -772,6 +804,14 @@ const description = next
 
       {/* The type legend used to close this page. It teaches a colour system
           for reading lists, and there is no list on the page of one market. */}
+
+      {/* The folded town page's *Towns nearby* (src/lib/towns.ts): navigation,
+          so at the foot, only on the page that stands for its whole town. */}
+      {towns.length > 0 && (
+        <Section level="sub" title={s.townsNearby} id="towns">
+          <PillList items={towns.map((town) => ({ href: town.href, label: town.name, meta: `${km(town.km)} · ${s.marketCount(town.n)}` }))} />
+        </Section>
+      )}
   </div>
 </div>
   {/* After the first save in this browser: your saved markets, by e-mail. Opened by the save script below. */}
@@ -819,8 +859,8 @@ const description = next
     font-size: var(--text-small);
     font-weight: var(--weight-semibold);
   }
-  .where a { color: var(--color-grey); }
-  .where > span { color: var(--color-line); }
+  .where a, .where .town { color: var(--color-grey); }
+  .where > span[aria-hidden] { color: var(--color-line); }
 
   h1 { font-size: var(--text-market-name); letter-spacing: var(--tracking-tight); }
 

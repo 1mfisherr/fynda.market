@@ -6,9 +6,31 @@
  * town's market venues — good enough to measure "25 km from Zürich" from, and
  * it needs no extra query.
  */
-import { cityPath, countryName, type Locale } from './i18n';
+import { cityPath, countryName, marketPath, type Locale } from './i18n.ts';
 import { DISTANCE_MAX_KM, distanceKm } from './geo.ts';
 import type { Market } from './types';
+
+/**
+ * Where a link to a town goes: its town page, or — for a town of one market —
+ * straight to that market's page, which is the only page the town has.
+ *
+ * 2026-10-20: the 126 one-market towns (434 pages) stopped getting a page of
+ * their own. Each repeated its market's page in sixty words of its own, and
+ * Google's doorway rule names "pages targeted at specific regions or cities
+ * that funnel users to one page". The two pages had been trading the same
+ * query between them for weeks (Rafz, Worb, Schaffhausen — PLAN.md). Every
+ * link to a town goes through here, so no page can link to a town page that
+ * was never built; the old addresses 301 to the market (scripts/redirects.mjs).
+ */
+export function townHref(locale: Locale, townMarkets: Market[]): string {
+  const [first] = townMarkets;
+  return townMarkets.length === 1 ? marketPath(locale, first.slug) : cityPath(locale, first.countrySlug, first.citySlug);
+}
+
+/** True when the town has a page of its own — two markets or more. */
+export function hasTownPage(townMarkets: Market[]): boolean {
+  return townMarkets.length > 1;
+}
 
 export interface TownEntry {
   slug: string;
@@ -30,7 +52,7 @@ export function townIndex(locale: Locale, markets: Market[]): TownEntry[] {
       return {
         slug: m.citySlug,
         name: m.city,
-        href: cityPath(locale, m.countrySlug, m.citySlug),
+        href: townHref(locale, mine),
         region: m.region,
         country: countryName(locale, m.countryCode),
         n: mine.length,

@@ -24,7 +24,7 @@ import { LOCALES, cityPath, homePath, isCityState, localeTag, marketPath, region
 import { seasonLabel } from '../../../lib/season';
 import { t } from '../../../lib/strings';
 import { fitTitle } from '../../../lib/titles';
-import { townIndex, townsAround } from '../../../lib/towns';
+import { hasTownPage, townIndex, townsAround } from '../../../lib/towns';
 import { townFacts } from '../../../lib/town-facts';
 import type { Market } from '../../../lib/types';
 
@@ -52,6 +52,10 @@ export async function getStaticPaths() {
     const index = townIndex(locale, markets);
     for (const [stadt, sample] of cities) {
       const here = markets.filter((m) => m.citySlug === stadt);
+      /* A town of one market has no page: its market's page is the town's
+         page, and this address 301s there (src/lib/towns.ts townHref,
+         scripts/redirects.mjs). It comes back by itself at a second market. */
+      if (!hasTownPage(here)) continue;
       const around = nearbyMarkets(here, markets);
       /* A thin town already lists what is around it; a busy one gets its empty weekend days filled. */
       const weekend = around.rows.length ? [] : weekendAround(here, markets);
@@ -63,6 +67,8 @@ export async function getStaticPaths() {
 
       paths.push({
         params: { locale, country: sample.countrySlug, stadt },
+        // `only` branches below (a one-market town) are kept for the day a town
+        // page is built with one market again; today none is.
         props: { locale, city: sample.city, stadt, region: sample.region, regionSlug: sample.regionSlug, markets: here, nearby: around.rows, nearbyKm: around.km, weekend, towns, alternates },
       });
     }
