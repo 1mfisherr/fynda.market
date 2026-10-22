@@ -8,7 +8,7 @@
  *   and turns a windows-1252 "März" into "M�rz", which breaks month matching.
  * - A page with almost no text is opened in Edge (already on Windows), once.
  * - A challenge page, a 429 or a login wall is never fought: the source is
- *   marked and a person deals with it (docs/WATCH-SPEC.md §Fetching rules).
+ *   marked and a person deals with it (docs/WATCH.md).
  */
 
 import { execFile } from 'node:child_process';

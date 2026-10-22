@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Market Finder, step 1: the recurring markets meine-flohmarkt-termine.de lists
- * (docs/WATCH-SPEC.md §The finder). Online since 2004; its robots.txt allows
+ * (docs/WATCH.md). Online since 2004; its robots.txt allows
  * the detail pages, and ~90% of its recurring German markets link to their
  * organiser.
  *

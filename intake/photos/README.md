@@ -2,14 +2,7 @@
 
 137 of 260 Swiss markets still show the picture the old site used (2026-10-21). Google read our pages as copies partly because of them, so every one gets replaced with a better, real photo of that market.
 
-## How a batch runs
-
-1. Take the next 20 markets whose `image_url` fact is still the v1 import, soonest next date first (Search Console impressions are 0 for all of them, so they can't be ranked that way). Skip every market in **Tried** below.
-2. Four Sonnet agents, five markets each, search Bing Images (Google shows agents a CAPTCHA), the organiser's own site and gallery, local press and Wikimedia Commons. When several markets shared one old photo, one new photo serves all of them.
-3. Delfim picks: he sees each find beside the old photo. Always compare them, because an organiser's "own" picture is sometimes the old site's.
-4. `node scripts/import-photos.mjs "<folder>" --dry`, then without `--dry`. The source page goes into the fact's `source_ref`. A Commons photo is credited under the picture.
-
-What Delfim has settled: Google Images finds are fine (2026-10-17, after one warning). An AI-made photo is acceptable if it shows the market (2026-10-18). Stock never ships. Keep the old photo when the find is weaker, shows another event, or centres one identifiable person.
+How a batch runs, and what Delfim has settled: the `photo-batch` skill (`.claude/skills/photo-batch/SKILL.md`). This file is the log.
 
 ## Wrong photos still live
 

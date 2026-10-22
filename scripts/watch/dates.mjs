@@ -2,7 +2,7 @@
  * Every date a page states, read the way a person would — the watcher's eyes.
  *
  * Pure: lines in, dates out, no network, no database. `dates.test.mjs` holds
- * the cases that matter (docs/WATCH-SPEC.md §Date extraction rules).
+ * the cases that matter (docs/WATCH.md).
  *
  * Why our own and not chrono-node: tested 2026-10-09, chrono reads nothing in
  * "Sa 24.10.", only the last day of "3./10./17. Mai", accepts a weekday that

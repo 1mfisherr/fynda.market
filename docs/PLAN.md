@@ -2,9 +2,11 @@
 
 What is true now and what happens next. **Read first, every session; rewrite before ending one.**
 
-This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `npm run verify` warns past 15 KB and fails past 20 KB. The October detail this page used to carry is in `archive/PLAN-log-2026-10.md`.
+This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `scripts/docs-check.mjs` warns past 15 KB and fails past 20 KB.
 
 Updated 2026-10-22.
+
+**Left off:** nothing half-done. **Unpushed:** none. **Live changes:** none.
 
 ---
 
@@ -17,9 +19,9 @@ Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **343 markets
 | **Google** | Impressions fell overnight on 1 Oct, from ~1,000 a day to almost none, and have not come back. It matches Google's September 2026 spam update: a judgement of the whole site, not a fault — the 13 Oct audit found it technically clean. Every page type and language is equally out, including the old top earners (Zürich, Basel, Bern, Genève). The likeliest reasons were pages that looked like the old site's (texts rewritten 13 Oct; photos in progress) and one-market town pages (folded 20 Oct). See **Recovery plan** below. Search Console exports go into `docs/GSCdata/` every Sunday |
 | **Indexing** (read 18 Oct, data to 11 Oct) | 263 indexed and still falling (peak 576 on 19 Sep). 976 *crawled – not indexed*, 550 *discovered*. `robots.txt` keeps crawlers off the per-market form addresses (`/*?markt=`) and the calendar files (`/ics/`); none of the 1,500 sitemap pages is blocked (checked 22 Oct). *Validate fix* and *Request indexing* do nothing for a site-wide demotion — don't use them |
 | **Town and region pages** | A town or region needs two markets for its own page. A one-market town's address 301s to its market (since 20 Oct, guardrail 11), and so does Bremen's. Towns of four or more markets have a **What row** (`src/lib/town-facts.ts`) and a paragraph written by hand, never generated. `PAGES.md` §City, §Region |
-| **Market pages** | What decides a trip (what's sold, stalls, setting, who sells, fee, rain), *Earlier this year*, *Were you there?*, *Tell me when it's back* for markets between editions, *Meanwhile, nearby*. `PAGES.md` §Market |
-| **Newsletter** | Friday 02:07 UTC, 6 subscribers. Saved markets by e-mail (`/k`) lead the mail. Resend free plan: 100 mails a day. `PAGES.md` §Newsletter |
-| **Keeping dates true** | Switzerland copied weekly from v1 (`sync-v1.mjs`, inside the Market Watch). Everything else is the **Market Watch**, weekly on Delfim's PC; he approves its findings in Telegram (`ARCHITECTURE.md` §Watch, what's left to build in `WATCH-SPEC.md`). A cancelled date carries no reason text. Open: Puces du CPO 23 Dec 2027; Fribourg Vieille Ville 16:00 or 16:30; Weberplatz Potsdam's source is a 2016 page — dismiss its *source broken* |
+| **Market pages** | What decides a trip (what's sold, stalls, setting, who sells, fee, rain), *Earlier this year*, *Were you there?*, *Tell me when it's back* for markets between editions, *Meanwhile, nearby*. `MARKET-PAGE.md` §Market |
+| **Newsletter** | Friday 02:07 UTC, 6 subscribers. Saved markets by e-mail (`/k`) lead the mail. Resend free plan: 100 mails a day. `PAGES.md` §Utility, `MARKET-PAGE.md` §Market |
+| **Keeping dates true** | Switzerland copied weekly from v1 (`sync-v1.mjs`, inside the Market Watch). Everything else is the **Market Watch**, weekly on Delfim's PC; he approves its findings in Telegram (`WATCH.md`). A cancelled date carries no reason text. Open: Puces du CPO 23 Dec 2027; Fribourg Vieille Ville 16:00 or 16:30; Weberplatz Potsdam's source is a 2016 page — dismiss its *source broken* |
 | **Organisers** | Built end to end: claim, personal link, date mail, cancellation, alerts, edit page. 20 welcome letters went 2026-10-12; one link opened (VAL Bern), no edits, no stops. The date mail is a dry run until `ORGANISER_SENDING=on`. Bergflohmarkt Chur is `test = true` |
 | **Copy** | Voice: `BRAND.md` §Voice and `.claude/rules/copy.md`. Visitors du/vous/tu, organisers Sie/vous/tu. DE/FR/IT had an editor's pass on 10 Oct, not a native speaker's |
 | **Analytics** | First-party, read in Metabase on Delfim's PC. Before the drop 25–100 people a day, 75% on phones, two-thirds from Google; since then single digits to ~25. A market-page landing leaves 82% of the time after ~18 s. `?intern=1` stops a browser being counted |
@@ -57,8 +59,8 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 8. **Analytics partitioning.** Claude's advice: wait until traffic returns (database 50 MB of 500). Not decided.
 
 **Read on these dates.** Nothing to build until then:
-- Overdue (was 19 Oct): the 20 welcome letters — link opens, edits, stops. Delfim: replies, Resend bounces.
-- Overdue (was 21 Oct): Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place.
+- 2026-10-19: the 20 welcome letters — link opens, edits, stops. Delfim: replies, Resend bounces.
+- 2026-10-21: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place.
 - 2026-10-24, Market Watch: does the Telegram report read cleanly?
 - 2026-10-25 and 2026-11-01 exports: indexed above 263; *excluded by noindex* falling from 1,569. The folded towns' addresses (Rafz, Worb, Schaffhausen, Adliswil, Wettingen, Liesberg) show *Page with redirect*, and their market pages are indexed. Titles: Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit above 3% clicks (were 1.8%).
 - 2026-11-07: *Tell me when it's back* rows against undated market-page views (84% used to leave without a tap). *Were you there?* answers. *Meanwhile, nearby* clicks — if nobody clicks it, it goes. Home `market_click` per view since *This weekend near…* (14 Oct).

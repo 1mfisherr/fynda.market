@@ -26,19 +26,20 @@ import { execFileSync } from 'node:child_process';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const quiet = process.argv.includes('--quiet');
 
-// Bytes. Set at each file's size after the 2026-10-22 cut, with some room.
+// Bytes: [target, ceiling], set just above each file's size after the 2026-10-22 cut.
+// Lower them when a file shrinks; never raise them.
 const budgets = {
-  'CLAUDE.md': [9_500, 11_000],
+  'CLAUDE.md': [10_000, 11_000],
   'README.md': [1_500, 2_500],
-  'docs/README.md': [4_000, 5_000],
+  'docs/README.md': [4_500, 5_000],
   'docs/PLAN.md': [15_000, 20_000],
-  'docs/ARCHITECTURE.md': [16_000, 18_000],
-  'docs/PAGES.md': [16_000, 18_000],
-  'docs/MARKET-PAGE.md': [13_000, 15_000],
+  'docs/ARCHITECTURE.md': [16_000, 17_000],
+  'docs/PAGES.md': [16_500, 18_000],
+  'docs/MARKET-PAGE.md': [12_500, 14_000],
   'docs/WATCH.md': [6_000, 8_000],
-  'docs/STACK.md': [12_000, 14_000],
-  'docs/BRAND.md': [15_000, 16_000],
-  'docs/PRODUCT.md': [10_000, 11_000],
+  'docs/STACK.md': [12_500, 14_000],
+  'docs/BRAND.md': [15_500, 16_000],
+  'docs/PRODUCT.md': [10_500, 11_000],
   'docs/IDEAS.md': [6_000, 8_000],
 };
 const DEFAULT = [6_000, 8_000];
@@ -134,10 +135,10 @@ const SHINGLE = 12;
 const seen = new Map();
 const pairs = new Map();
 for (const file of docs) {
-  const w = texts[file].toLowerCase().replace(/`[^`]*`/g, ' ').match(/[a-zäöüéèà']+/g) ?? [];
+  // The one sentence meant to be quoted everywhere is left out.
+  const w = texts[file].toLowerCase().replace(/`[^`]*`/g, ' ').replace(/a page exists because[^.]*\./g, ' ').match(/[a-zäöüéèà']+/g) ?? [];
   for (let i = 0; i + SHINGLE <= w.length; i++) {
     const s = w.slice(i, i + SHINGLE).join(' ');
-    if (s.includes('page exists because there is content for it')) continue; // the one quote meant to be repeated
     const other = seen.get(s);
     if (!other) seen.set(s, file);
     // A repeated passage is many overlapping runs; one line per pair of files.

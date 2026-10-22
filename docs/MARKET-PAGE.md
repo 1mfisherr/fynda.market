@@ -1,0 +1,59 @@
+# The market page
+
+The page most visitors land on, the organiser's edit page that feeds it, and what the page holds about a market. The other page types and the principles they share are in `PAGES.md`.
+
+## Market — `/{locale}/{market}/[slug]/`
+
+Name and venue queries, 40% of clicks; the highest-intent visitor. Job: confirm it is happening, then get them there.
+
+**Title: the place and the next date, with its own year** — *Flohmi am See Bern – Werkhof Egelsee – 18. Okt 2026*. When it runs long, the words *nächster Termin* go before the venue does, then the town, then the venue; a street address is never the venue here. With no date coming it is *name – venue, town* and **no year**: a year with no date in it does not match its title. The year is the date's, never the build's. **Description: the facts, not the title again** — date, hours, place, indoors or out, the next two dates; with no date, the rhythm and when it last ran. Cut to whole sentences within 160 characters in `Base.astro` (`fitDescription`), so no template counts.
+
+1. Photo, never stock, with **Save** on it — saving and going are different decisions. A Wikimedia Commons photo of the venue is fine when there is none of the market; photographer and licence sit quietly under it (`markets.image_credit`). The organiser's own photo is the best source; the press and Commons come next, and the page it came from goes in the fact's `source_ref`. Stock never; an AI-made picture only if it shows this market (Delfim, 2026-10-18).
+2. Kind and town, then the name.
+3. **The status line in words, and it knows the hour** (`design/market-v1.html`, `src/lib/clock.ts`). Today and tomorrow resolve in the build, the minute in the browser: *Opens in 40 min*, *Open now*, *Closes in 1 h 10 min*, then **Over for today** with *Next: Sat 3 Oct* (it used to say *Today* in red all evening). Without JavaScript it says Today and the times. **With no date, the same place says when it is back** (`design/nodate-v1.html`): *Back in April* or *Usually in September* in the accent, from the months it runs (`src/lib/season.ts`), else *No date yet* in ink; under it the rhythm and *Last held Sun 4 Oct*. A market between editions is a place with a season, not an event that ended — 84% of visitors to undated pages left without a tap.
+4. Cancellation notice with the reason, when it applies.
+5. **The decision strip:** distance from the picked town (only within 50 km), rhythm (with a date — without one it is under the status), upcoming-date count (cancelled not counted), then what decides a trip: what's sold (tags), stalls, indoors or out, who sells, a fee (only when there is one), what rain does. Each only when held; two to a row on a phone; no strip when nothing is held. Under it the check stamp: "Checked 19 Sep" · "Confirmed by the organiser, 19 Sep" (accent) — with a date only. Every published date has been checked: a guessed one (`unverified`) is not published.
+6. **Directions, primary** (55% of outbound clicks) · **Organiser website, secondary** (45%) · **Add to calendar** and **Share** side by side, quieter. Share opens the phone's own share sheet (a computer copies the link); a shared link previews with the market's own photo (`/share/{name}.jpg`, made in `postbuild.mjs`). The address under *Getting there* links to directions too.
+6a. **Were you there?** (`design/next-v1.html`) — first under the buttons, on the day once the market has closed and for two days after its last date: *Yes, it was on* / *No, it wasn't*, posted to `/v` (`date_answers`, anonymous, once per device). A yes makes the date *Seen on*; a no reaches Delfim in Telegram. It is the only evidence that a listed date ran.
+**After a yes, one question about the first fact the page lacks** (stalls band, who sold, indoors or out) to `/f` (`fact_answers`). No answer is published alone: three different connections agreeing publish it, else Approve / Reject in Telegram. It lands only where the market has no value — never over an organiser's or our research — as a `facts` row with source `visitor`. Size is a band (`markets.size_band`), shown under *Stalls* only where no count is known.
+6b. **No date: *Tell me when it's back*** — first under the buttons, in the signup card's place (one form per page). One address, one e-mail the night a date appears (`functions/b.ts`, `scripts/send-date-alerts.mjs`), and an unticked box for the weekly mail around the town. The date is what this visitor came for; it is also the subscriber we wanted from these pages.
+6c. **Also today, nearby** — up to three other markets on the same date within 15 km, closest first, in `MarketRow`'s compact rows, because this market is the page and they are a footnote (full rows were too big). *Also tomorrow* / *Also on Sun 27 Sep* before the day; once this market has closed, *Still open nearby*; a closed row is dropped. **With no date it is *Meanwhile, nearby***: the three soonest dated markets within 25 km (`soonestAround`, `src/lib/lists.ts`) and *All markets in Zurich →*. Absent when nothing qualifies.
+7. All upcoming dates — visible content, one `Event` in markup. Under them **the record**: *Earlier this year*, this year's past dates newest first, the rest behind *All 21 dates*. "Earlier", not "held": a date was listed; only a visitor's yes makes it *Seen on*. A row carries a word only when it is an exception: Today, Cancelled, Provisional, Not confirmed yet, Confirmed by the organiser. A date in another year shows the year.
+8. Address, times.
+8b. **The signup card**, straight after the dates and above the organiser line (`design/newsletter.html`). With no date, 6b has taken its place.
+9. **"Is this your market?"** — on every unclaimed market, after the dates: claim it to confirm dates, add a photo or cancel a day; free, no account needed. From three people waiting it opens with them, in bold: *12 people are waiting for its next date.* Above it the organiser's name.
+10. **"Something not right?"** — the report card, same name as the report page and footer link.
+11. **A market alone in its town stands for the town** (§City): the town's name in the orientation line is plain text, not a link to itself; the breadcrumb runs canton → market; where its own nearby block would be empty it carries the thin town page's *Within 25 km* (`nearbyMarkets`, outside the content floor, each row with its day), and *Towns nearby* closes the page.
+
+Not here: "related markets" by similarity (the doorway pattern — links that exist because a template can make them; *Also today, nearby* is the opposite: a handful, only when the same day and place make them true, no new URL), reviews, ratings, an embedded map, a fee line when it is free, the type legend. Measured by outbound clicks per view; v1 did 87–145%.
+
+## Organiser page — `/a/{token}/edit`
+
+A Cloudflare Function, not a static page (`functions/a/[[path]].ts`, copy in `functions/_organiser-copy.ts`); in the organiser's own language; `noindex`; one 720px column on every width; controls as `BRAND.md` §Controls. Delfim: **"the more organisers use it the better the product — this should be our north star."**
+
+**The voice is Delfim writing to a person**, in full sentences: why their answer matters to visitors, then what they can do. Rejected: clipped lines ("one tap, no account"), walkthroughs of what the system does, "we're building", metaphors, any weekday that is not a real date. The welcome mail (`functions/_mail.ts`) is the same letter. Organisers don't know the site, so the page says who is writing before it asks anything ("copied from your website" was rejected as a machine apologising).
+
+Top to bottom:
+
+- **Head:** eyebrow, name, town and rhythm, a link to the public page (new tab), the photo as visitors see it.
+- **Opening:** a thank-you, who Delfim is, and the real count of people who looked last month (`market_people_30d`, people not crawlers, shown only from 20 up).
+- **Next date, "Is it still on?":** the date in accent and *Yes, it's on* / *Something's changed* side by side — nothing is written on tap; the answer travels with the edits to the one Confirm button at the foot (Delfim pressed the earlier one-tap button before reading the page). With no date and people waiting the card is one line, *12 people are waiting for your next date* — the market's own alerts and its town's, from the first person; the welcome letter says the same line under its button.
+- **Your dates:** date, times, stamp, *Cancel* (asks once; mails subscribers) and *Add a date*. The next six show, the rest fold. A date can be **moved**: the same row on its new day, confirmed by the organiser, and no mail — a move is not a cancellation.
+- **About the market:** stalls, indoors or out, rain, entry, website, where to book a stall, getting there, tag chips, "in your words" free text (shown as theirs, never touched), photo by replying to the mail. **Confirm** is the one filled button; "Yes" stamps the next date confirmed by the organiser today, "Something's changed" is counted and answered by the edits, no choice is an edit, not an answer.
+- **Foot:** the link is theirs and anyone with it can change the page; anything else — reply to the mail; where to stop mail.
+
+Out, on purpose: the name, address and description (four languages; an organiser editing one makes a mess — "in your words" is the safe version), photo upload (mail reply for now), anything about accounts. Segmented choices are bordered buttons with the chosen one filled — a row of same-weight words did not read as clickable.
+
+Schema: `20260921120000_organiser_page.sql` — `stall_booking`, `getting_there`, `organiser_note` (+ its locale), six tags, the `market_people_30d` view. The market page shows the note under *From the organiser*, the booking line under the host line, and tags in the strip as *what's sold* (food excepted).
+
+## What decides a trip, and what we hold
+
+From 636 reviews of 90 markets (CH and DE): size and stall count 51% · price level 38% · private sellers vs traders 28% · when to arrive 22% · food 22% · covered or open air 21%. We hold dates and fees — what everyone publishes — and little of what people decide on. The question being asked is "lohnt sich das?", not "when is it on".
+
+Fields worth collecting, in order: stall count · who may sell · real timing (when the good stock is gone) · getting there as advice · covered or open-air · dogs, toilets, strollers. Organisers supply size, setting and the rain answer; the rest is the organiser page's next ask.
+
+**Decided:** built — save, organiser facts (size, setting, rain, who sells in `markets.seller_mix`) in the decision strip, filled only where an organiser or a facts pass gave them (`scripts/set-market-facts.mjs`).
+**Distance on cards:** once a visitor has picked a town, every list card within 50 km of it carries the pill (straight line, list order unchanged; `design/distance-v1.html`) — not from GPS, Near me measures its own; cards that already carry a distance keep theirs.
+**A list shows only what is on or still to come:** a row whose market has closed for the day moves to its next date (under its own day on a town page, in date order on a region page and in Near me's bands) or leaves the list; the home page's *This weekend* drops it before the first paint (`src/lib/row-shift.ts`). Only the market page itself says *Over for today*.
+Later — reliability score ("ran 11 of its last 12 dates", only our ledger can compute it).
+No — reviews, ratings, similarity-based related markets, embedded map, a row of social-network buttons (one Share that opens the phone's own sheet is not that), fee on cards, badges beyond the three.

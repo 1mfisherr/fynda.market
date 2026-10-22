@@ -43,7 +43,7 @@ export function page(
   .saved p { margin: 0; color: #6E6C68; }
   .btn { display: block; box-sizing: border-box; width: 100%; padding: 14px 16px; margin: 12px 0 0; border: 1px solid #111110; border-radius: 6px; background: #111110; color: #fff; font: inherit; font-weight: 500; text-align: center; text-decoration: none; cursor: pointer; }
   .btn.secondary { background: #fff; color: #111110; }
-  /* The organiser page (docs/PAGES.md §Organiser page). Controls are
+  /* The organiser page (docs/MARKET-PAGE.md §Organiser page). Controls are
      editorial, as on the site: a hairline under bold text with a small
      uppercase label; a segmented choice underlined in the accent; one filled
      button per moment. Type is fluid on the site's two anchors. */

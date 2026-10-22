@@ -5,7 +5,7 @@
  * new markets). One reading of the source, so the two can never disagree on a
  * canton, a kind or a date.
  *
- * docs/ARCHITECTURE.md §Import says what is decided here and why.
+ * .claude/skills/add-markets/SKILL.md says what is decided here and why.
  */
 
 import { withClient, V1_URL } from '../db.mjs';

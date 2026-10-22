@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The Market Watch's daily run (docs/WATCH-SPEC.md).
+ * The Market Watch's daily run (docs/WATCH.md).
  *
  *   node scripts/watch/run.mjs              every source, everything written, Telegram told
  *   node scripts/watch/run.mjs --if-due     the same, unless a run finished in the last six days — what

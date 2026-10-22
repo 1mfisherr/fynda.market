@@ -260,7 +260,7 @@ async function labels(env: Env, market: Market, locale: Locale): Promise<{ marke
 export type { Organiser, OrganiserCopy };
 
 /* -------------------------------------------------------------------------- */
-/* The edit page — docs/PAGES.md §Organiser page                              */
+/* The edit page — docs/MARKET-PAGE.md §Organiser page                              */
 /* -------------------------------------------------------------------------- */
 
 interface Facts {

@@ -22,7 +22,7 @@ Nothing here is scoped or promised. An idea leaves this file only when someone w
 
 ## Multi-market routing — parked
 
-People chain markets, but they never search for a tool to plan it (zero route/tour queries in v1's 1,000 queries), routes cannot be pages (six Zürich markets on one Saturday is ~50 route URLs per city-day — geo × time, which guardrails reject), and the distances need a sentence, not a planner. Built instead: *Also today, nearby* (`PAGES.md` §Market). If ever built, curated by an editor (Lange Nacht der Museen Berlin's ~10 hand-written routes), never generated.
+People chain markets, but they never search for a tool to plan it (zero route/tour queries in v1's 1,000 queries), routes cannot be pages (six Zürich markets on one Saturday is ~50 route URLs per city-day — geo × time, which guardrails reject), and the distances need a sentence, not a planner. Built instead: *Also today, nearby* (`MARKET-PAGE.md` §Market). If ever built, curated by an editor (Lange Nacht der Museen Berlin's ~10 hand-written routes), never generated.
 
 Two findings worth acting on outside routing:
 - **Nobody at scale reasons about closing times.** Flea markets have brutal pack-up times and we hold times on 98% of dates; "Bis 13:00 — danach wird abgebaut" is a decision-changing sentence nobody in the category writes. It is a Germany feature more than a Swiss one (Berlin has ~11 Sunday markets at once).

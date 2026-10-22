@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Market Finder, step 2: which leads are markets we lack, and does the
- * organiser's own page show a date for them? (docs/WATCH-SPEC.md §The finder)
+ * organiser's own page show a date for them? (docs/WATCH.md)
  *
  *   node scripts/finder/check.mjs intake/finder/leads-mft-<date>.json [--country DE] [--limit n]
  *     → intake/finder/check-<date>.json: candidates, dropped (with the reason), known

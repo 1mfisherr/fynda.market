@@ -11,6 +11,6 @@ paths:
 - Reads and updates go through `_rest.ts` (PostgREST as the service role, every rejection logged). Pages a Function renders use `_page.ts`, which mirrors the site's wordmark and tokens by hand — change `Wordmark.astro` or `tokens.css`, change it too. Delfim's one-tap decisions are signed links from `_admin.ts`; an organiser's identity is a token from `_link.ts`, the one module the Node scripts import, so it imports nothing.
 - Writes go as the service role: PostgREST needs SELECT for an upsert with `return=representation`.
 - Every form endpoint also answers a plain `<form method="post">` with a redirect to an anchor — it must work with JavaScript off.
-- Log rejections inside `waitUntil()` (see CLAUDE.md §Gotchas).
+- Log rejections inside `waitUntil()` — nothing else will tell you a write there failed.
 - Event `props` shapes are fixed by a check constraint per event name, last redefined by the newest migration that touches `analytics_events` (`grep -l analytics_events supabase/migrations/*`). A row that does not match is dropped, not errored.
 - Verify a change by posting to the **live** endpoint after deploy and reading the row back with `scripts/db.mjs`.

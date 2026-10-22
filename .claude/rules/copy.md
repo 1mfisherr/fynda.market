@@ -1,17 +1,3 @@
----
-paths:
-  - "src/lib/strings.ts"
-  - "src/lib/utility-copy.ts"
-  - "src/lib/titles.ts"
-  - "src/lib/vocabulary.ts"
-  - "src/lib/legal/**"
-  - "functions/_organiser-copy.ts"
-  - "functions/_mail.ts"
-  - "functions/_page.ts"
-  - "scripts/send-*.mjs"
-  - "intake/**"
----
-
 # Copy
 
 These rules cover everything a visitor or organiser reads, in every locale: interface strings, market descriptions, town paragraphs, mails and the organiser page. The brand line and the voice itself are in `docs/BRAND.md` §Voice. Every rule below came from Delfim rejecting a draft.

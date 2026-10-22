@@ -119,47 +119,7 @@ Status: `confirmed | tentative | cancelled`, with `cancellation_note`; maps 1:1 
 
 ## Import
 
-**The live v1 Supabase project is the only source** (`V1_DATABASE_URL`). Local backups are stale — read for shape, never import. Delfim keeps adding markets there; they come across in batches.
-
-- `import-v1.mjs` ran once. It deletes what it owns and reloads, which the live database no longer survives (organiser links, hand edits, the mail log). Never again.
-- `import-v1-additions.mjs` is the batch tool. A market is new when its slug is not here; cantons, towns, venues and organisers are matched and reused, nothing existing is updated. An organiser arriving with an e-mail gets a link at once. Cantons are matched among Swiss regions only (BE, SH and NW are also Bundesland codes).
-- `--hidden` brings markets in unverified, for a batch whose texts are rewritten before it ships — v1's words never go live; `intake/descriptions-v1-winter/check.mjs` checks the rewrites. Add the rhythm lines the import lists.
-- It prints the German-only rhythm lines it added; their en/fr/it go into `texts` by hand before the deploy (the site falls back to German otherwise).
-- Then `import-images.mjs` (a photo already in `public/images` satisfies its fact and is left alone) and `FYNDA_DATA_SOURCE=supabase npm run verify`.
-- Importers read v1 through `scripts/lib/v1.mjs`; place names and slugs come from `scripts/lib/places.mjs`, which `localise-places.mjs` also uses, so a new canton needs its fr/it/en names there first.
-
-Decided at import: **a town is the postal town on the venue** (Emmenbrücke, not Emmen; Seewen SZ, not Schwyz — what the address says and what people search; one hand exception, Interlaken for a hall in Wilderswil), never a free-text column. Cantons normalised; market kind inferred from the name, recorded as `inferred`; stock photos dropped.
-
-**Swiss dates come from v1, weekly.** v1's watch checks Switzerland; fynda.market copies. The Market Watch's weekly run starts `sync-v1.mjs --apply` and puts its result — and any change it held back — in the Telegram report.
-
-- `sync-v1.mjs` compares every upcoming Swiss date (adds, cancellations, hours, status, removals) and, with `--apply`, writes them with v1's check date as the "confirmed on" stamp and a `facts` row naming v1's source page.
-- v1's *tentative* is our `unverified`: kept, never published.
-- A change that would undo one of our own edits since `--since` is held back unless `--accept-flagged`.
-- `intake/sync-v1/keep-ours.json` lists the differences settled in our favour after reading the organiser's page. They are skipped every week and should be corrected in v1.
-- It never copies text and never touches a date an organiser gave us.
-
-## Watch
-
-Every other country's dates are kept true by the Market Watch, on Delfim's PC (`scripts/watch/`, spec `WATCH-SPEC.md`).
-
-**How it runs**
-- Windows starts `run.mjs --if-due` five minutes after each login (`schedule.ps1`, `weekly.cmd`). It runs only when the last run is six days old, so every page is read once a week whenever the PC is on. Each run first adds the pages of markets added since.
-- `sources.mjs` builds the list: a market's website, `market_private.source_url`, every `website_crawl` fact.
-- A page is fetched politely: our own User-Agent, robots.txt, one request per host every 3–5 s, ETag.
-- `dates.mjs` reads dates with our own four-language reader, strict on purpose: a miss costs a question, a wrong read would cost a wrong stamp.
-- `decide.mjs` stamps our dates the page shows plainly (the `confirm.mjs` write; `unverified` becomes `confirmed`) and turns differences into questions.
-- Only questions go to AI: Haiku through `claude -p` on Delfim's subscription (`CLAUDE_CODE_OAUTH_TOKEN` in `.env.local`), no tools, every quote checked on the page and its date re-read by our extractor.
-- Findings reach Telegram through `/adm/notify` with signed Approve / Dismiss links; `watch_decide()` applies one in a transaction.
-
-**Rules, each with its case in `decide.test.mjs`**
-- An unchanged page raises no new questions; a question once asked is never asked again.
-- A page that stops naming its market is "source broken", never "cancelled".
-- **Listing sites, guides, tourism boards and Wikipedia are never a source** (`LISTING` in `sources.mjs`).
-- **A new date must be written as this market's** — on its own line, in the caption under it, or under the nearest heading that names a market — because organisers list their other markets on the same page. A line with "nur …" that does not name us is another market's day.
-- **An earlier start with the same end is the sellers' gate**, not new hours.
-- A page that states "every Saturday" never makes a date "missing".
-
-**The Finder.** `scripts/finder/` finds markets we lack: `leads-mft.mjs` reads meine-flohmarkt-termine.de's recurring flea markets (name, town, postcode, organiser link — nothing else is kept from a directory), `check.mjs` drops ours and keeps those whose organiser page shows an upcoming date beside their town. Candidates become intake files by hand (`intake/README.md`); the finder never writes to the database.
+Markets come in from the live v1 project or from intake files; the steps and the rules decided at import are in the `add-markets` skill. Swiss dates are copied from v1 weekly, every other country is read by the Market Watch: `WATCH.md`.
 
 ## Structured data
 
@@ -168,10 +128,6 @@ Google supports the event experience only on pages about a single event. So a ma
 ## Generated prose
 
 Google's scaled-content policy covers AI text "no matter how it's created". The line: **generated prose may present facts we hold; it may not substitute for facts we do not hold.**
-
-## Styles
-
-Four layers, tokens → base → components → pages; guardrail 7 compares class names across `src/`, the one check that reads source. The rules are in `.claude/rules/styles.md`.
 
 ## The eleven guardrails
 

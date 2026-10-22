@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Import the v1 data. docs/ARCHITECTURE.md §Import says what it decides.
+ * Import the v1 data. .claude/skills/add-markets/SKILL.md says what it decides.
  *
  *   node scripts/import-v1.mjs --dry-run    read v1, report, write nothing
  *   node scripts/import-v1.mjs              replace the imported tables

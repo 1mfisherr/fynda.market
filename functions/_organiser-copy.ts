@@ -3,7 +3,7 @@
  *
  * Four languages, one shape. `%m` is the market, `%d` a date, `%n` a number.
  * The button pages are short on purpose: the button in the mail was the act,
- * this only says it worked. The edit page's copy is docs/PAGES.md §Organiser
+ * this only says it worked. The edit page's copy is docs/MARKET-PAGE.md §Organiser
  * page, approved line by line on 2026-09-21 — a person writing to a person.
  */
 
@@ -35,7 +35,7 @@ export interface OrganiserCopy {
   stoppedTitle: string;
   stoppedBody: string;
   toPage: string;
-  /** The edit page — docs/PAGES.md §Organiser page. */
+  /** The edit page — docs/MARKET-PAGE.md §Organiser page. */
   chooseMarket: string;
   eyebrow: string;
   hello: string;

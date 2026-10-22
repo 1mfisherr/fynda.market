@@ -35,7 +35,7 @@ metabase/.env
 stickers/*
 !stickers/fynda-qr.*
 
-# Market Watch snapshots: last pages read, on the PC only (docs/WATCH-SPEC.md).
+# Market Watch snapshots: last pages read, on the PC only (docs/WATCH.md).
 watch-data/
 
 # Organisers to phone: names with phone numbers, on the PC only (docs/PLAN.md, Next 4).

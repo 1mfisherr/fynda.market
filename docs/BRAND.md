@@ -66,7 +66,8 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Wordmark
 
-**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". The logo is a soft-serif wordmark: near-black letters, the `y` and the full stop in the accent. The compact mark is the same `y.` alone. It is always the image, never the name typed in Schibsted Grotesk — a logo may have its own typeface, the site may not have two. The masters are `public/brand/fynda-wordmark.svg` and `fynda-mark.svg`, fills set to `--color-ink` and `--color-accent`; the icons and share image are derived from them (opaque white where iOS and Android want no transparency), and `fynda-wordmark-mail.png` is for e-mails, which cannot show SVG. The name is written out in full in page titles, structured data and e-mail subjects. The only exception is the imprint and privacy policy, where the operator's name is a legal statement rather than branding.
+**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". The logo is a soft-serif wordmark: near-black letters, the `y` and the full stop in the accent. The compact mark is the same `y.` alone. It is always the image, never the name typed in Schibsted Grotesk — a logo may have its own typeface, the site may not have two.
+The masters are `public/brand/fynda-wordmark.svg` and `fynda-mark.svg`, fills set to `--color-ink` and `--color-accent`; the icons and share image are derived from them (opaque white where iOS and Android want no transparency), and `fynda-wordmark-mail.png` is for e-mails, which cannot show SVG. The name is written out in full in page titles, structured data and e-mail subjects. The only exception is the imprint and privacy policy, where the operator's name is a legal statement rather than branding.
 
 ## Voice
 
