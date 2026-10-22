@@ -139,7 +139,7 @@ if (!process.env.GITHUB_ACTIONS && !buildOnly && !process.argv.includes('--allow
 */
 // The session-end deploy is when PLAN.md gets rewritten, so its size is checked
 // here; the nightly publish only rebuilds data and must never stop over a doc.
-if (!process.env.GITHUB_ACTIONS) run('Checking the read-first docs', join(root, 'scripts/docs-size.mjs'), []);
+if (!process.env.GITHUB_ACTIONS) run('Checking the docs', join(root, 'scripts/docs-check.mjs'), ['--quiet']);
 run('Running the tests', null, ['--test', join(root, 'src/lib/digest.test.ts')]);
 run('Emitting data files', join(root, 'scripts/emit-data.mjs'), []);
 run('Building the site', binOf('astro'), ['build']);
