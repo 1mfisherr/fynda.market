@@ -8,7 +8,8 @@ paths:
 
 # Styling and templates
 
-- **Four layers: tokens → base → components → pages.** A page styles only what nothing else could want. A component never sets its own outer margin — the parent supplies `.gutter`. Guardrail 7 fails the build on drift.
+- **Four layers, each knowing only the one below:** `tokens.css` (values, no selectors) → `base.css` (elements, `.button`, `.stack`, `.gutter`) → components (scoped, only what is theirs) → pages (order and data). A page styles only what nothing else could want.
+- No selector defined by two pages. A component never sets its own outer margin — the parent supplies `.gutter`. No raw hex or px outside `tokens.css` except inside `@media`. No CSS framework. Guardrail 7 fails the build on drift.
 - Colour, type, spacing and motion come from `src/styles/tokens.css`. Never hardcoded.
 - **One breakpoint, 900px.** A media query cannot read a token, so `--breakpoint-wide` is repeated in each query with the comment that says so. Anything read rather than scanned caps at `--measure`.
 - The type scale is fluid, 375px → 1440px at 1.3×. A clamp's minimum is the phone value, so mobile stays byte-identical when the desk changes.

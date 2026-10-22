@@ -1,0 +1,59 @@
+# Replacing the old site's photos
+
+137 of 260 Swiss markets still show the picture the old site used (2026-10-21). Google read our pages as copies partly because of them, so every one gets replaced with a better, real photo of that market.
+
+## How a batch runs
+
+1. Take the next 20 markets whose `image_url` fact is still the v1 import, soonest next date first (Search Console impressions are 0 for all of them, so they can't be ranked that way). Skip every market in **Tried** below.
+2. Four Sonnet agents, five markets each, search Bing Images (Google shows agents a CAPTCHA), the organiser's own site and gallery, local press and Wikimedia Commons. When several markets shared one old photo, one new photo serves all of them.
+3. Delfim picks: he sees each find beside the old photo. Always compare them, because an organiser's "own" picture is sometimes the old site's.
+4. `node scripts/import-photos.mjs "<folder>" --dry`, then without `--dry`. The source page goes into the fact's `source_ref`. A Commons photo is credited under the picture.
+
+What Delfim has settled: Google Images finds are fine (2026-10-17, after one warning). An AI-made photo is acceptable if it shows the market (2026-10-18). Stock never ships. Keep the old photo when the find is weaker, shows another event, or centres one identifiable person.
+
+## Wrong photos still live
+
+Each one needs a photo from its organiser, which the welcome letters or calls can ask for:
+
+- Oetwil am See: Wollishofen's picture
+- Adliswil: another Adliswil event
+- Emmen: Emmen in the Netherlands
+- Echichens: a big street market, but it is a 10-stall children's sale in a hall
+- Dietikon: the Zürich Tanzwerk edition's picture
+- Ecublens: a brick-house street sale, probably northern France
+- Aadorf: a lake view that doesn't match the hall
+- Oron: a Provence-style street market
+- Thun: the organiser's poster
+- Villars-Tiercelin: a French vide-grenier with French plates
+- Therwil: a city street, not Therwil
+- Enter Modellbau-Börse: the flea market's picture
+- Fribourg photo/paper fair: a model-car table
+- Fribourg toy fair: looks like a stamp fair
+- Enter Retrotechnikmarkt: the photo is right, but it shows video games while our text says computers and radios. Check the text
+
+Also owed: **Stücki**, a new market (first date 20 Sep 2026) with no real photo anywhere. Delfim's AI image can go up if he sends it again, otherwise use the organiser's or one taken there (15 Nov, 13 Dec). **Weihnachtsdekomarkt Strengelbach** has no photo yet.
+
+## Tried
+
+Already searched. Don't search them again unless something new turns up, such as an organiser gallery or press coverage of a new edition.
+
+**Replaced:**
+- 2026-10-17: batch 1 (17 markets), Bürkliplatz, Hirzbrunnen
+- 2026-10-18: Liesberger Flohmarkt, Marché Calabash, Alpin-Flohmi (all 9), Rumine (all 4), Presswerk Arbon (both), Lenzburg, Dübendorf, GZ Hirzenbach, Muttenz, Mädelsflohmarkt, Säuliämtler, Wädenswil, Beromünster, Worb, Flon, Wynecenter Buchs, Markthalle Basel (night), Dampfzentrale, the airport market, Baden Bazaar, Gallusplatz, Night-Flohmarkt Kloten, Lugano, Dietikon, Europaplatz Bern, Hölstein, Arbon (unsure it is the flea market)
+- 2026-10-20: Rüticenter, Schmittiplatz Pratteln, Gellert, FLOSCH, Bullingerhof, Rafz, Wetzikon, Grosse Halle, Europaplatz Floh- und Raritätenmarkt, Strandgut Neubad, St. Mangen, Place de Milan, Theaterplatz Baden, Vinyl Market Basel, Rosental/Erlenmatt, Innerstadt, Wollishofen am See, Mellingen, Stadtbibliothek Aarau, Ladies and ARENA Root, Mall of Switzerland, Paulusheim, Fête Livres & Disques Ouchy, Svuotacantine Ascona, Lyssach, Bienzgut, Talkessel Seewen, Malters, Hallenflohmarkt Uster, Grabs, Neuhausen model railway fair, Puces du CPO, EcoBroc Saxon, Puppenbörse Zollikon, Vinylbörse Wald
+- 2026-10-21: Sion L'Archipel, Coffre ouvert Monthey, Grosse Burgdorfer Brocante, Härkingen, Ace Cafe Luzern, Dreispitzpark Kreuzlingen, Mercalibro, Lusso e Vintage Lugano, Brocante de la Gruyère, Enter Flohmarkt, Enter Retrotechnikmarkt, Metalbörse, Modellbahnbörse Köniz, Buchs SG toy fair, Flumserei, ROMEO Münchwilen, Shoppi Flohmi
+
+**Kept the old one** (the find was worse):
+- Lutry, Galerie 17 Terra, Glarus, B102 Luzern, Carouge, Romanshorn (only 512 px exists), Comicbörse Zürich (only 300 px exists)
+- Kriens: AI-made, and it stays
+
+**Nothing better found**, so only the organiser has one:
+- VRD Riehen, Kriens, Rümlang, GZ Heuried, Vevey Bains Payés, Steiner Schule Basel, Bruderholzallee, Sallaz, Slow Fashion, the STAGE
+- Stellwerk, Wettingen, Markthalle Basel (day), GZ Seebach, Klybeck, Bülach
+- Musiker Flohmarkt, Reinach Nord, Vide-Grenier Bern Altstadt, Biasca, NerdYartist, Musikflohmarkt, Paradiso, Bern CD-Börse, Sarnen-Center
+- Disco Flohmi, Nachtflohmarkt Stellwerk, Münsingen, Arboldswil, Olten, Kinder-Flohmi Arbon, Hinterhof St. Gallen
+- Les Brenets, Glattbrugg, Hinwil, Zug industrie45, Amriswil
+- the four Dakota fairs (Fribourg ×3, Genève; their media are flyers only), Zürcher Schallplattenbörse, Coupole Biel, Brocantissima Morges
+- plus every market in **Wrong photos still live** above
+
+Delfim's own photos: he'd photograph markets near him ("would be nice", 2026-10-14). Waiting for his town, then a list of nearby markets still on old photos.

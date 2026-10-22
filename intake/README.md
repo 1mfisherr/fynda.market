@@ -1,6 +1,6 @@
 # Intake
 
-Markets researched by hand or by agent before they enter the database. One JSON file per market in `intake/<country>/<slug>.json` (`de`, `ch`); `node scripts/import-intake.mjs intake/ch --dry-run` shows what would be created, without the flag it creates it as `status = 'unverified'` — not published until someone flips it to `active` (`docs/GERMANY-SPEC.md` §Data intake).
+Markets researched by hand or by agent before they enter the database. One JSON file per market in `intake/<country>/<slug>.json` (`de`, `ch`); `node scripts/import-intake.mjs intake/ch --dry-run` shows what would be created, without the flag it creates it as `status = 'unverified'` — not published until someone flips it to `active` (`docs/ARCHITECTURE.md` §Import).
 
 A country is its places file in `scripts/lib/` (`places-de.mjs`, `places.mjs` for Switzerland), which exports `intake`: currency, time zone, the box its coordinates must fall in, its locales and its regions. A new country is a new places file and one line in `PLACES` in the importer — nothing else in it is about any one country.
 

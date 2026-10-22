@@ -37,11 +37,11 @@ The most important fact on the page is the only accented thing on the page. Hier
 | `--color-paper` | `#F5F4F2` | Panels, chips, image placeholders |
 | `--color-white` | `#FFFFFF` | Page ground |
 
-**Category colours are the line colours.** They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row, as a two-letter code, and as the fill of the market page's kind pill. That third form was added 2026-09-06: the pill was white text laid over a photograph, legible on a dark picture and invisible on a bright one. Never anywhere else, and never without a legend on the page — except on a market page, which shows one kind and needs no key to it.
+**Category colours are the line colours.** They mark **one thing only: the type of market**, the way a transit map colours its lines — as a rail down the left edge of a list row, as a two-letter code, and as the fill of the market page's kind pill. The pill is a filled colour, not text over the photograph (white text vanished on a bright picture). Never anywhere else, and never without a legend on the page — except on a market page, which shows one kind and needs no key to it.
 
 Flohmarkt `FM` `#FF4A2B` · Halle `HA` `#3D5AFE` · Nacht `NA` `#7C3AED` · Kinder `KI` `#F5A524` · Trödel `TR` `#E4007F`
 
-The earlier rule said "icons only, never as fill or text". That rule could not produce a system, only decoration. The test is unchanged in spirit: **colour must carry information.** The accent still marks dates and status and nothing else; the line colours mark type and nothing else. A cancelled market loses its line colour — the system says "not happening" without a badge.
+The test is **colour must carry information.** The accent marks dates and status and nothing else; the line colours mark type and nothing else. A cancelled market loses its line colour — the system says "not happening" without a badge.
 
 **Status:** confirmed uses the accent; cancelled greys out with a strikethrough; unverified stays grey and says so. **Never colour alone — always a word beside it.**
 
@@ -66,7 +66,7 @@ Column widths that hold text are fluid on the same two anchors, or a 30% larger 
 
 ## Wordmark
 
-**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". The logo (chosen 2026-09-17) is a soft-serif wordmark: near-black letters, the `y` and the full stop in the accent. The compact mark is the same `y.` alone. It is always the image, never the name typed in Schibsted Grotesk — a logo may have its own typeface, the site may not have two. Files, all in `public/`: `brand/fynda-wordmark.svg` and `brand/fynda-mark.svg` are the masters, traced from the PNGs beside them, with the fills set by hand to `--color-ink` and `--color-accent`; `favicon.svg`/`.ico`, `apple-touch-icon.png`, `icon-192/512.png` (opaque white, iOS and Android want no transparency) and `og-image.png` (1200×630, the share image) are derived from them. `brand/fynda-wordmark-mail.png` is for the e-mails, which cannot show SVG. The name is written out in full in page titles, structured data and e-mail subjects. The only exception is the imprint and privacy policy, where the operator's name is a legal statement rather than branding.
+**The name is `fynda.market`, never `Fynda`.** The way Booking.com is not "Booking". The logo is a soft-serif wordmark: near-black letters, the `y` and the full stop in the accent. The compact mark is the same `y.` alone. It is always the image, never the name typed in Schibsted Grotesk — a logo may have its own typeface, the site may not have two. The masters are `public/brand/fynda-wordmark.svg` and `fynda-mark.svg`, fills set to `--color-ink` and `--color-accent`; the icons and share image are derived from them (opaque white where iOS and Android want no transparency), and `fynda-wordmark-mail.png` is for e-mails, which cannot show SVG. The name is written out in full in page titles, structured data and e-mail subjects. The only exception is the imprint and privacy policy, where the operator's name is a legal statement rather than branding.
 
 ## Voice
 
@@ -83,24 +83,24 @@ Written in English first, then per language (`strings.ts`); a European site that
 
 Your uncertainty is the fun; ours is the job. The site does not talk about itself beyond that: no "we check every date" paragraphs, no trust badges — each date carries its own stamp, and that is the whole argument.
 
-- **The voice lives in two places** — the headline and the empty states. Every functional line (labels, hints, ledes, buttons) is as plain as a road sign. A wink on every line is a tic, not a voice (the 2026-09-19 draft died of this).
+- **The voice lives where a person would speak** — headlines, empty states, cancellations, status lines. Labels, hints and buttons are as plain as a road sign. A wink on every line is a tic, not a voice.
 - **Say what is true, plainly.** "Not yet confirmed" beats silence and beats pretending.
 - **Short sentences.** A person is standing outside on a phone.
 - **Never manufacture urgency.** No "don't miss out", no countdowns.
 - **No superlatives, no "verified".** The weak sites lean on both; a date and a source next to the fact do the work.
 - **Errors and empty states get the same care as headlines** — they are where trust is won.
 
-All German, French and Italian copy needs a native speaker's pass before it ships.
+The rules that came from rejected drafts are in `.claude/rules/copy.md`. German, French and Italian have had an editor's pass; a native speaker's is still owed (`PLAN.md`).
 
 ## E-mail
 
 A mail client is not a browser: it throws away stylesheets, ignores web fonts, and a quarter of opens are in a dark mode the client applies itself. So the mails are one 600px column of tables with every colour written inline and a system font stack in place of Schibsted Grotesk.
 
-**Every market carries its photograph, in the mail as on the site.** It is the break from the category and the mail is no place to stop making the argument. **One market is shown large** with its wide photograph — theirs where they have a town, because a picture of somewhere they cannot get to is a worse opening than one of somewhere they can — and the rest are rows with the 148px square at 80px. Never the hero on a row: a dozen 1440px files is two megabytes of image for squares the size of a stamp. The heroes are not one shape (900×500 and 1440×1080 both exist), so the lead's height is left to the picture.
+**Every market carries its photograph, in the mail as on the site.** **One market is shown large** with its wide photograph — theirs where they have a town, because a picture of somewhere they cannot get to is a worse opening than one of somewhere they can — and the rest are rows with the 148px square at 80px, never the hero (a dozen 1440px files is two megabytes for stamp-sized squares). The lead's height is left to the picture.
 
-**Eight markets, then the link.** The cap covers the whole mail, not one section of it: their own town has first claim and the rest of the country gets what is left. Whatever is cut is what "see all" is for, and it points at their own town's page when their town is what got cut. The mail is a prompt; the site is the list.
+**Eight markets, then the link** (the count and how a town's mail is chosen: `PAGES.md` §Utility). The mail is a prompt; the site is the list.
 
-WebP is fine: ~98% of clients render it and Gmail converts it server-side. Gmail and Apple Mail load images by default; classic Outlook for Windows does not, so every row reads without them — `alt` is empty on purpose, because the market's name is the next thing in the markup and a screen reader should not say it twice.
+Classic Outlook for Windows does not load images, so every row reads without them — `alt` is empty on purpose, because the market's name is the next thing in the markup and a screen reader should not say it twice.
 
 The rules that carry over unchanged: **the accent marks the date**, said once on a day band rather than once per row, which is what keeps it loud; **only the exceptional market kinds carry a type badge** (`BADGED_KINDS`), because an ordinary flea market is the rule; and a cancelled market is struck through, says the word, and loses its type colour. The badge rides on the quiet line with the time and the town, not beside the name — a table cell has no width to push against, and a long name put the badge outside the card. In a list row it is a small tag tinted in its line colour, above the name, and a distance ends the grey venue line — no pills on a row (Delfim, 2026-10-11, `design/pills-v1.html` A).
 
@@ -108,9 +108,9 @@ Dark mode is defined for the clients that honour `prefers-color-scheme` and igno
 
 ## Imagery
 
-Real photos from real market visits. **No stock, no AI images** — competitors have no photos because nobody went, and that is a trust signal that cannot be bought quickly.
+**One real photo per market. Stock never ships** — competitors have no photos because nobody went, and that is a trust signal that cannot be bought quickly. An AI-made photo is acceptable when it shows the market (Delfim, 2026-10-18).
 
-Until the photos exist, listings use **flat object illustrations** — a chair, a lamp, a radio, a crate — on tinted grounds. Not a stopgap: most markets will never have a photo, and an empty grey box is what makes a directory look dead. The illustration set is permanent furniture.
+Where no photo exists yet, a **flat object illustration** (`PlaceholderArt`, one per market kind, on a tinted ground) stands in: an empty grey box is what makes a directory look dead.
 
 ---
 
@@ -130,17 +130,17 @@ No off-the-shelf theme, no UI-kit look. Use a headless library for the fiddly ac
 
 ## Controls are editorial
 
-Decided 2026-09-18, after six looks were mocked (glass, gradient, brutalist, bento, dark, editorial): **controls are set in the text, not in boxes.** A field is a hairline under bold text with a small uppercase label above it. A choice with up to four options is a segmented group — hairline above and below, the chosen option underlined 2.5px in the accent, the others quiet grey. A long list (the 55 towns) is a bottom sheet of plain links, never a dropdown. The one filled button on a page is its primary action. Glass over a photo was the better-looking option and was declined because it does not connect with the rest of the site; the accent rule holds — the underline is status, "this is what you chose".
+**Controls are set in the text, not in boxes.** A field is a hairline under bold text with a small uppercase label above it. A choice with up to four options is a segmented group — hairline above and below, the chosen option underlined 2.5px in the accent, the others quiet grey. A long list (the towns) is a bottom sheet of plain links, never a dropdown. The one filled button on a page is its primary action. Glass over a photo was declined because it does not connect with the rest of the site; the accent rule holds — the underline is status, "this is what you chose".
 
 ## The picture is the argument
 
-A flea market is stuff you can see. Every market gets a picture — a photograph where we have one, an illustration from the permanent set where we do not — and it is sized to be a reason to go, not a smudge: **16:10 at full width on a lead, a square beside a compact row**. There is no empty box, ever: an empty grey square is what makes a directory look dead.
+A flea market is stuff you can see. Every market gets a picture — a photograph where we have one, an illustration where we do not — and it is sized to be a reason to go, not a smudge: **16:10 at full width on a lead, a square beside a compact row**. There is no empty box, ever: an empty grey square is what makes a directory look dead.
 
-A list opens with one or two markets at full size and continues compact. A block with one size in it has no rhythm, and rhythm is most of what separates a page from a database dump. Recorded 2026-09-05, after a version that shrank the picture to 56px and read as exactly that.
+A list opens with one or two markets at full size and continues compact. A block with one size in it has no rhythm, and rhythm is most of what separates a page from a database dump. (A 56px picture read as a database dump.)
 
 ## Rank with weight, not with size
 
-Where a block has to show that some things are bigger than others, **the type weight and colour do it, and the size stays put.** A block sized by value looks alive on a desktop and ragged on a phone, where fifty-five items at five sizes wrap into a mess — and a page read on a phone 81% of the time cannot afford that. Four steps, chosen at the real gaps in the data, not a continuous scale nobody can decode. `components/PlaceCloud.astro`.
+Where a block has to show that some things are bigger than others, **the type weight and colour do it, and the size stays put.** A block sized by value looks alive on a desktop and ragged on a phone, where dozens of items at five sizes wrap into a mess — and a page read on a phone 81% of the time cannot afford that. Four steps, chosen at the real gaps in the data, not a continuous scale nobody can decode. `components/PlaceCloud.astro`.
 
 ## One loud thing
 
@@ -167,16 +167,3 @@ A staggered rise on load is the one place motion is worth spending on — it mus
 **WCAG 2.2 AA**, built in from the start — 2.2 rather than 2.1 because its additions are design-time decisions that can't be retrofitted. Three that bite: focus must never hide behind the sticky bottom bar, a 24x24px target floor, and any drag control needs a tap alternative. The European Accessibility Act has been enforceable since June 2025, but the practical argument is stronger than the legal one: accessible markup is clearer markup, and clearer markup is what Google and AI systems parse best.
 
 **LCP under 2s on 4G mobile** is a design constraint, not a later optimisation — it decides what can be on the first screen. Explicit dimensions on every image, video and embed.
-
-## To do
-
-- [ ] Wordmark clear-space rules
-- [ ] Icon set: market types, status, actions
-- [ ] Illustration set: 8–12 objects, one style
-- [ ] Tone-of-voice examples, before and after
-- [ ] Every German string checked by a native speaker
-
----
-
-owner: Delfim
-last_reviewed: 2026-09-16

@@ -1,0 +1,25 @@
+---
+paths:
+  - "src/lib/strings.ts"
+  - "src/lib/utility-copy.ts"
+  - "src/lib/titles.ts"
+  - "src/lib/vocabulary.ts"
+  - "src/lib/legal/**"
+  - "functions/_organiser-copy.ts"
+  - "functions/_mail.ts"
+  - "functions/_page.ts"
+  - "scripts/send-*.mjs"
+  - "intake/**"
+---
+
+# Copy
+
+These rules cover everything a visitor or organiser reads, in every locale: interface strings, market descriptions, town paragraphs, mails and the organiser page. The brand line and the voice itself are in `docs/BRAND.md` §Voice. Every rule below came from Delfim rejecting a draft.
+
+- **Write with a voice, never as an "AI writer".** A factually clean line with no personality was rejected: "0 branding on the tone of voice". Use concrete images (seven in the morning, teacups, rain), short sentences and dry warmth, as if you were a friend who knows where the markets are. Never use abstract verbs (discover, explore), "trusted" or spec-sheet lines. The voice belongs wherever a person would speak: headlines, empty states, cancellations, status lines. Labels, buttons and hints stay plain, like road signs. When the voice for a new surface isn't settled, offer two or three short samples.
+- **Name no weekday unless it is part of a real date.** "Sunday 4 October" is fine. "On a Sunday", "the weekend" and "getting up early" are not, because markets run on any day. The "good Sunday morning" is a feeling for the writer, not a word for the page.
+- **The country is a fact, never the headline.** A European site that starts in Switzerland: "260 markets across Switzerland so far" works, "Flea markets in Switzerland" as a headline doesn't. Copy must not need rewriting when the next country arrives.
+- **Write for visitors only.** No pitch prices, booking, registration or seller rules in descriptions. A seller fact appears only as what it means to a buyer ("every seller lives locally"), and any price must be one a visitor pays.
+- **Write to an organiser as a letter from Delfim, in full sentences.** Say who he is, why he is writing and what they gain: visitors trust a confirmed date, more people come, a cancellation reaches people before they drive out. Then say what they can do. No clipped slogans ("One link, no login", "It takes a minute"), and no description of what the system does. When a fact speaks for itself ("12 people are waiting for your next date"), add nothing after it.
+- **Nothing shared across locales is German.** Where one language stands for all, it is English. Each language is written for itself, not translated word for word: no calques, and no regional words that read oddly across the border.
+- **Never name the old site** in any copy.

@@ -137,6 +137,9 @@ if (!process.env.GITHUB_ACTIONS && !buildOnly && !process.argv.includes('--allow
   They take a fifth of a second; the type checks stay in `verify` and CI,
   where a red one blocks the push rather than the publish.
 */
+// The session-end deploy is when PLAN.md gets rewritten, so its size is checked
+// here; the nightly publish only rebuilds data and must never stop over a doc.
+if (!process.env.GITHUB_ACTIONS) run('Checking the read-first docs', join(root, 'scripts/docs-size.mjs'), []);
 run('Running the tests', null, ['--test', join(root, 'src/lib/digest.test.ts')]);
 run('Emitting data files', join(root, 'scripts/emit-data.mjs'), []);
 run('Building the site', binOf('astro'), ['build']);

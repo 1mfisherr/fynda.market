@@ -10,7 +10,7 @@
  * venue or an organiser that exists is matched and reused, never touched; nothing
  * already here is updated. A market arrives as `unverified`, which the build does
  * not publish (publishable_markets reads `active` only) — someone flips it after
- * the spot-check and the photos (docs/GERMANY-SPEC.md).
+ * the spot-check and the photos (intake/README.md).
  *
  * Every date is `confirmed` as of the day the organiser's page was read: the
  * ones it lists, and the ones derived from the rhythm it states — if the

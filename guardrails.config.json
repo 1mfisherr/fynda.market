@@ -2,7 +2,7 @@
   "distDir": "dist",
   "dataDir": "data",
 
-  "_comment": "Enforces docs/ARCHITECTURE.md. These thresholds are defaults that encode past failures, not laws — see ARCHITECTURE.md 'How to read this document'. Changing one is a normal move: state what the rule was protecting against and why that is outweighed, and change the doc in the same commit. What is forbidden is loosening a number to make a red build go green.",
+  "_comment": "Enforces docs/ARCHITECTURE.md. These thresholds are defaults that encode past failures, not laws (CLAUDE.md, under the Settled table). Changing one is a normal move: state what the rule was protecting against and why that is outweighed, and change the doc in the same commit. What is forbidden is loosening a number to make a red build go green.",
 
   "_locales": ["de", "fr", "it", "en"],
   "_localeComment": "Switzerland publishes in four languages; every other country will get its own plus English. A locale is not a page multiplier in the v1 sense — the same market in Italian is a full page with the same dates and address, not an empty cell in a matrix. See ARCHITECTURE.md 'Locales'.",
