@@ -6,7 +6,7 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-10-23.
 
-**Left off:** nothing half-done. **Unpushed:** plan notes and the 23 Oct photo batch (15 photos). **Live changes (23 Oct, in the database, on the site after the nightly build):** v1 sync (7 dates, 1,052 stamps), Bochum 3 Jan 2027 approved, Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed.
+**Left off:** nothing half-done. **Unpushed:** this line only. **Live (deployed 23 Oct, checked):** 15 new photos; v1 sync (7 dates, 1,052 stamps); Bochum 3 Jan 2027; Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed and redirecting. That deploy sent 964 URLs to IndexNow — the "batch mode" Bing warns about (Recovery plan, 5).
 
 ---
 
