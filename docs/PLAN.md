@@ -22,7 +22,7 @@ Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **343 markets
 | **Market pages** | What decides a trip (what's sold, stalls, setting, who sells, fee, rain), *Earlier this year*, *Were you there?*, *Tell me when it's back* for markets between editions, *Meanwhile, nearby*. `MARKET-PAGE.md` §Market |
 | **Newsletter** | Friday 02:07 UTC, 7 subscribers (the 7th, 23 Oct, a real visitor from a Neuchâtel market page). Saved markets by e-mail (`/k`) lead the mail. Resend free plan: 100 mails a day. `PAGES.md` §Utility, `MARKET-PAGE.md` §Market |
 | **Keeping dates true** | Switzerland copied weekly from v1 (`sync-v1.mjs`, inside the Market Watch). Everything else is the **Market Watch**, weekly on Delfim's PC; he approves its findings in Telegram (`WATCH.md`). A cancelled date carries no reason text. Open: Puces du CPO 23 Dec 2027; Fribourg Vieille Ville 16:00 or 16:30; Weberplatz Potsdam's source is a 2016 page — dismiss its *source broken* |
-| **Organisers** | Built end to end: claim, personal link, date mail, cancellation, alerts, edit page. 20 welcome letters went 2026-10-12; one link opened (VAL Bern), no edits, no stops. The date mail is a dry run until `ORGANISER_SENDING=on`. Bergflohmarkt Chur is `test = true` |
+| **Organisers** | Built end to end: claim, personal link, date mail, cancellation, alerts, edit page. 20 welcome letters went 2026-10-12; two links opened that day (one VAL Bern), nothing since, no edits, answers or stops (read 23 Oct). Delfim's inbox and Resend bounces not yet read. The date mail is a dry run until `ORGANISER_SENDING=on`. Bergflohmarkt Chur is `test = true` |
 | **Copy** | Voice: `BRAND.md` §Voice and `.claude/rules/copy.md`. Visitors du/vous/tu, organisers Sie/vous/tu. DE/FR/IT had an editor's pass on 10 Oct, not a native speaker's |
 | **Analytics** | First-party, read in Metabase on Delfim's PC. Before the drop 25–100 people a day, 75% on phones, two-thirds from Google; since then 1–27 a day, about 6 in the week of 19 Oct; Google sends almost no one since 5 Oct (read 23 Oct). A market-page landing leaves 82% of the time after ~18 s. `?intern=1` stops a browser being counted |
 | **Speed** | Real visitors on phones well inside Google's "good"; lab scores 94–100. `scripts/perf.mjs` runs weekly in the Market Watch report, and by hand after a UI change |
@@ -59,8 +59,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 8. **Analytics partitioning.** Claude's advice: wait until traffic returns (database 50 MB of 500). Not decided.
 
 **Read on these dates.** Nothing to build until then:
-- 2026-10-19: the 20 welcome letters — link opens, edits, stops. Delfim: replies, Resend bounces.
-- 2026-10-21: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place.
+- 2026-12-01: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place. On 23 Oct only 7 people had been asked, 2 allowed: too few to judge.
 - 2026-10-24, Market Watch: does the Telegram report read cleanly?
 - 2026-10-25 and 2026-11-01 exports: indexed above 263; *excluded by noindex* falling from 1,569. The folded towns' addresses (Rafz, Worb, Schaffhausen, Adliswil, Wettingen, Liesberg) show *Page with redirect*, and their market pages are indexed. Titles: Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit above 3% clicks (were 1.8%).
 - 2026-11-07: *Tell me when it's back* rows against undated market-page views (84% used to leave without a tap). *Were you there?* answers. *Meanwhile, nearby* clicks — if nobody clicks it, it goes. Home `market_click` per view since *This weekend near…* (14 Oct).
