@@ -457,8 +457,11 @@ const id = `sub-${variant}`;
              — and a signup that was refused looks identical to one that
              worked. The funnel is only worth having if the last step is true. */
           /* An alert is its own funnel, counted in its own table (date_alerts);
-             telling analytics it was a newsletter signup would blur both. */
-          if (!form.hasAttribute('data-alert')) form.dispatchEvent(new CustomEvent('fynda:newsletter', {
+             telling analytics it was a newsletter signup would blur both. Its
+             weekly tick is a newsletter signup, though, and went uncounted
+             until 2026-10-23 (the first one that day had no event). */
+          const weekly = form.hasAttribute('data-alert') && fields.weekly === '1';
+          if (!form.hasAttribute('data-alert') || (weekly && outcome === 'ok')) form.dispatchEvent(new CustomEvent('fynda:newsletter', {
             bubbles: true,
             detail: {
               outcome:

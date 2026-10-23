@@ -36,6 +36,9 @@ console.log(`postbuild: ${moved} locale 404 pages in place`);
  * (last read 28 Sep, Search Console 2026-10-10). The calendar's day cells go
  * too (components/DateFilters.astro): yesterday's number leaving the grid is
  * not news. A market's new date, a new text, a cancellation still are.
+ * So go the "checked on" stamps (`data-stamp`): a weekly re-check moved 952
+ * pages at once on 2026-10-23, the IndexNow batch Bing warns about. A date
+ * the organiser confirmed still counts: its row says so outside the stamp.
  */
 function readable(html) {
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
@@ -43,6 +46,7 @@ function readable(html) {
   const body = (html.split(/<body[^>]*>/)[1] ?? html)
     .replace(/<(script|style|template)\b[\s\S]*?<\/\1>/g, ' ')
     .replace(/<(span|button) class="cell[^"]*"[^>]*>[^<]*<\/\1>/g, ' ')
+    .replace(/<(p|span)\b[^>]*\bdata-stamp\b[^>]*>[^<]*<\/\1>/g, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -59,7 +63,12 @@ if (existsSync(sitemap)) {
     hashes[path] = createHash('sha1').update(readable(readFileSync(file, 'utf8'))).digest('hex').slice(0, 16);
   }
 }
-writeFileSync(join(dist, '_hashes.json'), JSON.stringify(hashes));
+/* Which readable() made these hashes. Bump it whenever readable() changes:
+   the first publish after compares a new recipe with the old, so every page
+   looks changed. With a different recipe live, that publish keeps every
+   page's <lastmod> and IndexNow sends only added and removed pages. */
+const RECIPE = '2';
+writeFileSync(join(dist, '_hashes.json'), JSON.stringify({ __recipe: RECIPE, ...hashes }));
 console.log(`postbuild: ${Object.keys(hashes).length} page hashes in _hashes.json`);
 
 /*
@@ -115,8 +124,11 @@ if (process.env.FYNDA_DATA_SOURCE === 'supabase' && existsSync(sitemap)) {
   const [wasHash, wasDay] = await Promise.all([live('_hashes.json'), live('_modified.json')]);
   if (wasHash) {
     const modified = {};
+    const sameRecipe = wasHash.__recipe === RECIPE;
+    if (!sameRecipe) console.log(`postbuild: hash recipe ${wasHash.__recipe ?? '1'} → ${RECIPE}, every page keeps its <lastmod>`);
     for (const [path, hash] of Object.entries(hashes)) {
-      modified[path] = wasHash[path] === hash && wasDay?.[path] ? wasDay[path] : today;
+      const unchanged = sameRecipe ? wasHash[path] === hash : wasHash[path] !== undefined;
+      modified[path] = unchanged && wasDay?.[path] ? wasDay[path] : today;
     }
     writeFileSync(join(dist, '_modified.json'), JSON.stringify(modified));
     const xml = readFileSync(sitemap, 'utf8').replace(/<url><loc>([^<]+)<\/loc>/g, (whole, loc) => {

@@ -564,7 +564,7 @@ const description = next
         </ul>
         {/* The stamp is about the next date; with none there is nothing to have checked. */}
         {next && (
-          <p class:list={['stamp', { organiser: next.origin === 'organiser' }]}>
+          <p class:list={['stamp', { organiser: next.origin === 'organiser' }]} data-stamp>
             {stampMain}{stampAlso ? ` · ${stampAlso}` : ''}
           </p>
         )}

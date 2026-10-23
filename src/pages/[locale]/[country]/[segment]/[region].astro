@@ -138,7 +138,7 @@ const jsonLd = {
     <h1>{heading}</h1>
     <p class="answer">{answer}</p>
     {rows.length > 0 && (
-      <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · {s.lastChecked(formatDateShort(checked, locale))}</>}</p>
+      <p class="meta">{s.dateCount(rows.length)} {s.inNextMonths(Math.round(HORIZON_DAYS / 30))}{checked && <> · <span data-stamp>{s.lastChecked(formatDateShort(checked, locale))}</span></>}</p>
     )}
   </section>
 

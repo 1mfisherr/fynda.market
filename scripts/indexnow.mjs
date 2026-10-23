@@ -58,9 +58,12 @@ async function plan() {
     firstRun = true;
   }
 
-  const changed = Object.keys(built).filter((path) => live[path] !== undefined && live[path] !== built[path]);
-  const added = Object.keys(built).filter((path) => live[path] === undefined);
-  const removed = Object.keys(live).filter((path) => built[path] === undefined);
+  // A new hash recipe (postbuild.mjs) makes every page look changed once; that publish sends only added and removed.
+  const sameRecipe = firstRun || live.__recipe === built.__recipe;
+  const pages = (manifest) => Object.keys(manifest).filter((path) => path.startsWith('/'));
+  const changed = sameRecipe ? pages(built).filter((path) => live[path] !== undefined && live[path] !== built[path]) : [];
+  const added = pages(built).filter((path) => live[path] === undefined);
+  const removed = pages(live).filter((path) => built[path] === undefined);
   const urls = [...changed, ...added, ...removed].map((path) => `${SITE}${path}`);
 
   return { firstRun, changed: changed.length, added: added.length, removed: removed.length, urls };
@@ -95,7 +98,7 @@ async function submitPlan(urls) {
 
 if (mode === 'all') {
   const built = JSON.parse(readFileSync(join(root, 'dist/_hashes.json'), 'utf8'));
-  await submit(Object.keys(built).map((path) => `${SITE}${path}`));
+  await submit(Object.keys(built).filter((path) => path.startsWith('/')).map((path) => `${SITE}${path}`));
 } else if (mode === 'submit') {
   if (!existsSync(planFile)) {
     console.log('  IndexNow: no plan file — nothing submitted.');
