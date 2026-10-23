@@ -56,7 +56,8 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 5. **Owed to organisers:** the photo upload they were promised.
 6. **Small, decided:** say why a market pauses (*Paused for the Herbstmesse until 21 Nov*) where we hold the reason.
 7. **Germany, deep in four cities.** Berlin: 19 markets researched, left for spring (`intake/batch-berlin/README.md`). Köln: ROLLER Marsdorf stays `unverified` until Melan lists a date; GLOBUS Marsdorf and SELGROS Butzweilerhof have no photo; for spring, Immenhof (23 May 2027), Cölln P6 (4 Apr 2027), Weidenpesch (6 May 2027). Finder leads: a camera fair (Berlin), Krims & Krams at Bahnwärter Thiel (München); 28 German candidates outside the four cities wait for January (`intake/finder/check-de-2026-10-09.json`).
-8. **Analytics partitioning.** Claude's advice: wait until traffic returns (database 50 MB of 500). Not decided.
+8. **Small, found 2026-10-23.** Signups are not counted as events: no `newsletter_submit` since 10 Oct, though subscriber rows arrive (the 23 Oct one has none). And a deploy announces every page whose only change is the "checked" stamp — 964 URLs on 23 Oct, the IndexNow batch Bing warns about; leave those out.
+9. **Analytics partitioning.** Claude's advice: wait until traffic returns (database 50 MB of 500). Not decided.
 
 **Read on these dates.** Nothing to build until then:
 - 2026-12-01: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place. On 23 Oct only 7 people had been asked, 2 allowed: too few to judge.
