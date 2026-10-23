@@ -85,3 +85,11 @@ v1 minted a URL per date per locale: one weekly market made 208 pages, 91% of th
 
 Keep every decision Delfim made this session, in his words; the next step; files changed; commands run with their results. The session-start hook re-adds the git state.
 <!-- Maintainers: one home per fact; budget in scripts/docs-check.mjs. -->
+
+## Planner day check
+
+This project is `fynda` ("Fynda") in the owner's weekly planner at C:\Users\delfi\Documents\Planner.
+
+At the start of each session, before other work, read C:\Users\delfi\Documents\Planner\week.js and find today's date in `days`. If today has no `deep` or `chores` item for `fynda`, say in one line: "Not a Fynda day. Next one is <day>." (the next date in week.js that lists `fynda`), then ask whether to continue. If the owner says yes, carry on and don't ask again this session. If week.js is missing or doesn't include today, use RHYTHM.md in the same folder instead. If neither can be read, skip the check without mentioning it.
+
+Never edit files in the Planner folder from this project.

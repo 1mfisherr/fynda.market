@@ -4,7 +4,7 @@ What is true now and what happens next. **Read first, every session; rewrite bef
 
 This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `scripts/docs-check.mjs` warns past 15 KB and fails past 20 KB.
 
-Updated 2026-10-22.
+Updated 2026-10-23.
 
 **Left off:** nothing half-done. **Unpushed:** plan notes and the 23 Oct photo batch (15 photos). **Live changes (23 Oct, in the database, on the site after the nightly build):** v1 sync (7 dates, 1,052 stamps), Bochum 3 Jan 2027 approved, Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed.
 
