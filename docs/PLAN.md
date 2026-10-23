@@ -6,13 +6,13 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-10-22.
 
-**Left off:** nothing half-done. **Unpushed:** none. **Live changes:** none.
+**Left off:** nothing half-done. **Unpushed:** plan notes only (23 Oct). **Live changes (23 Oct, in the database, on the site after the nightly build):** v1 sync (7 dates, 1,052 stamps), Bochum 3 Jan 2027 approved, Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed.
 
 ---
 
 ## Now
 
-Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **343 markets**, 260 Swiss in de/fr/it/en and 83 German in de/en, in 175 towns, 23 cantons and 16 Bundesländer. 1,532 pages, 1,500 of them in the sitemap. 94 markets have no upcoming date (annual ones between editions). Rebuilt nightly by GitHub (23:07 UTC, again at 03:07). Eleven guardrails and 84 tests gate every publish.
+Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **341 markets**, 258 Swiss in de/fr/it/en and 83 German in de/en, in 175 towns, 23 cantons and 16 Bundesländer. About 1,530 pages, 1,500 of them in the sitemap. 94 markets have no upcoming date (annual ones between editions). Rebuilt nightly by GitHub (23:07 UTC, again at 03:07). Eleven guardrails and 84 tests gate every publish.
 
 | Running | State |
 |---|---|
@@ -39,7 +39,7 @@ Google's own pages say recovery from a spam update comes when its systems "learn
 2. The market page gets what nobody else has: real photos (`intake/photos/README.md`), the checked-on stamp, facts with their sources.
 3. Languages stay as they are: no case found of a site recovering by cutting them.
 4. Links from organisers: the welcome letters and the dates box (below). The safest links there are.
-5. Bing Webmaster Tools, which needs Delfim's sign-in. Bing, and ChatGPT through Bing, are the doors still open.
+5. Bing Webmaster Tools: connected (seen 23 Oct). 38 impressions, 0 clicks since 20 Sep. Its one open warning: IndexNow "batch mode" — likely the days when a stamp change makes hundreds of pages differ at once (`scripts/indexnow.mjs` already sends only changed pages). Bing, and ChatGPT through Bing, are the doors still open.
 
 Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshness, more page types, the Indexing API.
 
@@ -50,7 +50,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 **Until the end of 2026: perfect the site, add markets slowly. From January: expansion**, more of Germany and then other countries, with the finder (Delfim, 2026-10-09).
 
 1. **Organiser welcome letters.** No more until one organiser answers with a reply or an edit (Delfim, 2026-10-14). Then 90 a day until all 192 have one, the German ones included. To send: GitHub → Actions → *Organiser welcome* → *Run workflow*; a preview goes to the address in the last box. "Did it leave?" is a query on `organiser_mail_sends`. After that, set `ORGANISER_SENDING=on`.
-2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 137 left.
+2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 136 left.
 3. **Delfim: call or write to ten organisers** the letter reached. The list is in `calls/` on his PC (gitignored: phone numbers). He calls once traffic picks up (his call, 2026-10-14). Claude's view, said once: the calls are part of how traffic comes back.
 4. **Organiser share kit**: a link, a poster QR code, a badge for organisers with a personal link, visit counts. **Proposed 2026-10-14, no answer yet:** lead it with a **dates box** an organiser pastes on their own site — their next dates, kept current, linking to us. Ask on the calls before building.
 5. **Owed to organisers:** the photo upload they were promised.
@@ -71,7 +71,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **Unclear facts, look again in January** (the welcome letters may answer first): Wollishofen am See, Kofmehl, Cozy Sunday Stellwerk, Folie Voltaire, Mosergarten, Paulusheim, Friedrichshagen, GZ Heuried, Hottingen, Schindlergut. Also Glarus (both; the site blocks automated reading), Weinfelden's date (next 27 Mar 2027), Baden's season, Biel's "twelve Saturdays", Bürkliplatz 230 or 220 stands. **Delfim to decide:** Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut have no organiser page.
+- **Unclear facts, look again in January** (the welcome letters may answer first): Wollishofen am See, Kofmehl, Cozy Sunday Stellwerk, Folie Voltaire, Mosergarten, Paulusheim, Friedrichshagen, GZ Heuried, Hottingen. Also Glarus (both; the site blocks automated reading), Weinfelden's date (next 27 Mar 2027), Baden's season, Biel's "twelve Saturdays", Bürkliplatz 230 or 220 stands.
 - **Delfim's own photos** of markets near him ("would be nice", 2026-10-14). Waiting for his town.
 - **A native speaker** over DE/FR/IT.
 - **German silent visits count as bots** (`bot_likely` rule 1 predates Germany). Revisit when German traffic exists.
@@ -88,11 +88,11 @@ Each waits on Delfim or on data. Don't assume an answer.
 
 ## Data
 
-- **Markets.** 343 `active`, 10 closed. Five of the closed ones are *merged*: a closed market with a `hub_market_id` takes its dates from the hub (Plainpalais, Rumine), and its address 301s there. Fribourg's Cathédrale and Place Python stay two markets.
+- **Markets.** 341 `active`, 12 closed (Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed 23 Oct, Delfim: no organiser page, no date). Five of the closed ones are *merged*: a closed market with a `hub_market_id` takes its dates from the hub (Plainpalais, Rumine), and its address 301s there. Fribourg's Cathédrale and Place Python stay two markets.
 - **Organisers.** 33 Swiss markets carry *Confirmed by the organiser*; a trigger refuses to undo that unless the session sets `fynda.allow_unverify`. 217 organisers with a live market, 158 with an e-mail and a personal link.
 - **Dates.** A date derived from an organiser's stated rhythm counts as checked on the day we read their page. A date v1 calls tentative is not published. No page says *Not confirmed yet*.
 - **Facts.** Every fact carries its source URL and quote, and is never overwritten (`set-market-facts.mjs`). Setting is known for 278 markets, who sells 101, rain 70, stalls 51, tags 81. Websites give indoor/outdoor for ~8 in 10 markets and the rest rarely; the gaps come from organisers and visitors (`/f`). The "checked" stamp means dates checked, not facts (Delfim, 2026-09-28). Holstenhallen Neumünster and Bülach stay blank on setting: they are outdoor in summer and indoor in winter. The 64 markets added 2026-09-20 keep times, fees and parking in `market_private.admin_notes` until a facts pass reads them.
-- **Photos.** 137 of 260 Swiss photos are still the old site's (`intake/photos/README.md`).
+- **Photos.** 136 of 258 Swiss photos are still the old site's (`intake/photos/README.md`).
 - **History.** Every change to a market, date, venue, text or tag lands in `history` (append-only). `market_stats_monthly` holds a row per month per region since September 2026.
 - **Found in texts, not yet acted on:**
   - Hardmatt Strengelbach runs a Saturday-morning flea market (not listed).
