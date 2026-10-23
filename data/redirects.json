@@ -396,6 +396,10 @@
     "to": "/de/markt/floh-sammler-antikmarkt-romanshorn/"
   },
   {
+    "from": "/de/schweiz/root/",
+    "to": "/de/markt/fundus-flohmarkt-arena-root/"
+  },
+  {
     "from": "/de/deutschland/rostock/",
     "to": "/de/markt/nachtflohmarkt-rostock/"
   },
@@ -900,6 +904,10 @@
     "to": "/en/market/floh-sammler-antikmarkt-romanshorn/"
   },
   {
+    "from": "/en/switzerland/root/",
+    "to": "/en/market/fundus-flohmarkt-arena-root/"
+  },
+  {
     "from": "/en/germany/rostock/",
     "to": "/en/market/nachtflohmarkt-rostock/"
   },
@@ -1292,6 +1300,10 @@
     "to": "/fr/marche/floh-sammler-antikmarkt-romanshorn/"
   },
   {
+    "from": "/fr/suisse/root/",
+    "to": "/fr/marche/fundus-flohmarkt-arena-root/"
+  },
+  {
     "from": "/fr/suisse/rothenburg/",
     "to": "/fr/marche/flohmarkt-ace-cafe-rothenburg/"
   },
@@ -1656,6 +1668,10 @@
     "to": "/it/mercato/floh-sammler-antikmarkt-romanshorn/"
   },
   {
+    "from": "/it/svizzera/root/",
+    "to": "/it/mercato/fundus-flohmarkt-arena-root/"
+  },
+  {
     "from": "/it/svizzera/rothenburg/",
     "to": "/it/mercato/flohmarkt-ace-cafe-rothenburg/"
   },
@@ -1812,6 +1828,14 @@
     "to": "/en/market/flohmarkt-hansa-carre-bremen/"
   },
   {
+    "from": "/de/markt/kinderflohmarkt-gz-schindlergut/",
+    "to": "/de/schweiz/zurich/"
+  },
+  {
+    "from": "/de/markt/ladies-flohmarkt-fundus-root/",
+    "to": "/de/markt/fundus-flohmarkt-arena-root/"
+  },
+  {
     "from": "/de/markt/marche-aux-puces-plainpalais-geneve-mittwoch/",
     "to": "/de/markt/marche-aux-puces-plainpalais-geneve/"
   },
@@ -1850,6 +1874,14 @@
   {
     "from": "/de/markt/vide-grenier-prelaz-valency-lausanne/",
     "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/en/market/kinderflohmarkt-gz-schindlergut/",
+    "to": "/en/switzerland/zurich/"
+  },
+  {
+    "from": "/en/market/ladies-flohmarkt-fundus-root/",
+    "to": "/en/market/fundus-flohmarkt-arena-root/"
   },
   {
     "from": "/en/market/marche-aux-puces-plainpalais-geneve-mittwoch/",
@@ -1892,6 +1924,14 @@
     "to": "/en/switzerland/lausanne/"
   },
   {
+    "from": "/fr/marche/kinderflohmarkt-gz-schindlergut/",
+    "to": "/fr/suisse/zurich/"
+  },
+  {
+    "from": "/fr/marche/ladies-flohmarkt-fundus-root/",
+    "to": "/fr/marche/fundus-flohmarkt-arena-root/"
+  },
+  {
     "from": "/fr/marche/marche-aux-puces-plainpalais-geneve-mittwoch/",
     "to": "/fr/marche/marche-aux-puces-plainpalais-geneve/"
   },
@@ -1930,6 +1970,14 @@
   {
     "from": "/fr/marche/vide-grenier-prelaz-valency-lausanne/",
     "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/it/mercato/kinderflohmarkt-gz-schindlergut/",
+    "to": "/it/svizzera/zurich/"
+  },
+  {
+    "from": "/it/mercato/ladies-flohmarkt-fundus-root/",
+    "to": "/it/mercato/fundus-flohmarkt-arena-root/"
   },
   {
     "from": "/it/mercato/marche-aux-puces-plainpalais-geneve-mittwoch/",
