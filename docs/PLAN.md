@@ -6,7 +6,7 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-10-22.
 
-**Left off:** nothing half-done. **Unpushed:** plan notes only (23 Oct). **Live changes (23 Oct, in the database, on the site after the nightly build):** v1 sync (7 dates, 1,052 stamps), Bochum 3 Jan 2027 approved, Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed.
+**Left off:** nothing half-done. **Unpushed:** plan notes and the 23 Oct photo batch (15 photos). **Live changes (23 Oct, in the database, on the site after the nightly build):** v1 sync (7 dates, 1,052 stamps), Bochum 3 Jan 2027 approved, Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed.
 
 ---
 
@@ -50,7 +50,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 **Until the end of 2026: perfect the site, add markets slowly. From January: expansion**, more of Germany and then other countries, with the finder (Delfim, 2026-10-09).
 
 1. **Organiser welcome letters.** No more until one organiser answers with a reply or an edit (Delfim, 2026-10-14). Then 90 a day until all 192 have one, the German ones included. To send: GitHub → Actions → *Organiser welcome* → *Run workflow*; a preview goes to the address in the last box. "Did it leave?" is a query on `organiser_mail_sends`. After that, set `ORGANISER_SENDING=on`.
-2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 136 left.
+2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 121 left.
 3. **Delfim: call or write to ten organisers** the letter reached. The list is in `calls/` on his PC (gitignored: phone numbers). He calls once traffic picks up (his call, 2026-10-14). Claude's view, said once: the calls are part of how traffic comes back.
 4. **Organiser share kit**: a link, a poster QR code, a badge for organisers with a personal link, visit counts. **Proposed 2026-10-14, no answer yet:** lead it with a **dates box** an organiser pastes on their own site — their next dates, kept current, linking to us. Ask on the calls before building.
 5. **Owed to organisers:** the photo upload they were promised.
@@ -92,7 +92,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Organisers.** 33 Swiss markets carry *Confirmed by the organiser*; a trigger refuses to undo that unless the session sets `fynda.allow_unverify`. 217 organisers with a live market, 158 with an e-mail and a personal link.
 - **Dates.** A date derived from an organiser's stated rhythm counts as checked on the day we read their page. A date v1 calls tentative is not published. No page says *Not confirmed yet*.
 - **Facts.** Every fact carries its source URL and quote, and is never overwritten (`set-market-facts.mjs`). Setting is known for 278 markets, who sells 101, rain 70, stalls 51, tags 81. Websites give indoor/outdoor for ~8 in 10 markets and the rest rarely; the gaps come from organisers and visitors (`/f`). The "checked" stamp means dates checked, not facts (Delfim, 2026-09-28). Holstenhallen Neumünster and Bülach stay blank on setting: they are outdoor in summer and indoor in winter. The 64 markets added 2026-09-20 keep times, fees and parking in `market_private.admin_notes` until a facts pass reads them.
-- **Photos.** 136 of 258 Swiss photos are still the old site's (`intake/photos/README.md`).
+- **Photos.** 121 of 258 Swiss photos are still the old site's (`intake/photos/README.md`).
 - **History.** Every change to a market, date, venue, text or tag lands in `history` (append-only). `market_stats_monthly` holds a row per month per region since September 2026.
 - **Found in texts, not yet acted on:**
   - Hardmatt Strengelbach runs a Saturday-morning flea market (not listed).
