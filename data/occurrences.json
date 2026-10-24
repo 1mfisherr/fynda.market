@@ -261,11 +261,6 @@
   },
   {
     "marketSlug": "auer-dult-muenchen",
-    "date": "2026-10-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "auer-dult-muenchen",
     "date": "2026-10-24",
     "status": "confirmed"
   },
@@ -617,6 +612,11 @@
   {
     "marketSlug": "enter-retrotechnikmarkt-derendingen",
     "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "enter-vinyl-film-buecher-boerse-derendingen",
+    "date": "2027-02-21",
     "status": "confirmed"
   },
   {
@@ -1221,11 +1221,6 @@
   },
   {
     "marketSlug": "flohmarkt-daglfing-muenchen",
-    "date": "2026-10-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-daglfing-muenchen",
     "date": "2026-10-24",
     "status": "confirmed"
   },
@@ -1502,11 +1497,6 @@
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
-    "date": "2026-10-23",
     "status": "confirmed"
   },
   {
@@ -1981,11 +1971,6 @@
   },
   {
     "marketSlug": "flohmarkt-olympiapark-muenchen",
-    "date": "2026-10-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-olympiapark-muenchen",
     "date": "2026-10-24",
     "status": "confirmed"
   },
@@ -2207,11 +2192,6 @@
   {
     "marketSlug": "flohmarkt-schlossgut-muensingen",
     "date": "2026-11-22",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-schuetzenplatz-braunschweig",
-    "date": "2026-10-23",
     "status": "confirmed"
   },
   {
@@ -2652,6 +2632,11 @@
   {
     "marketSlug": "hallenflohmarkt-uster",
     "date": "2027-01-24",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "hallenflohmarkt-uster",
+    "date": "2027-02-21",
     "status": "confirmed"
   },
   {
@@ -3226,11 +3211,6 @@
   },
   {
     "marketSlug": "marche-rumine-lausanne",
-    "date": "2026-10-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne",
     "date": "2026-10-24",
     "status": "confirmed"
   },
@@ -3701,11 +3681,6 @@
   },
   {
     "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
-    "date": "2026-10-23",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "midnightbazar-nachtflohmarkt-muenchen",
     "date": "2026-10-30",
     "status": "confirmed"
   },
@@ -3852,11 +3827,6 @@
   {
     "marketSlug": "nachtflohmarkt-rostock",
     "date": "2026-10-24",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "nachtflohmarkt-stellwerk-bern",
-    "date": "2026-10-23",
     "status": "confirmed"
   },
   {
@@ -4135,6 +4105,11 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "strandgut-flohmarkt-neubad-luzern",
+    "date": "2027-02-21",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "talkessel-flohmarkt-seewen",
     "date": "2026-10-25",
     "status": "confirmed"
@@ -4347,6 +4322,11 @@
   {
     "marketSlug": "troedelmarkt-hansamarkt-berlin",
     "date": "2027-02-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-hansamarkt-berlin",
+    "date": "2027-02-21",
     "status": "confirmed"
   },
   {
