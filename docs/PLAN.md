@@ -81,7 +81,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Claude Startups** membership (accepted October 2026, under the flightbrief.news address): $1,000 of API credit, no use planned yet.
 - **Ceilings.** Cloudflare `_redirects`: 2,000 lines, 1,054 used; another fold this size needs Bulk Redirects. Resend free: 100 a day, so a paid plan before ~80 subscribers. Cloudflare Pages: 20,000 files, ~2,800 used; images to R2 before ~2,500 more markets. Near me carries every market; split it past ~800. Database ~50 MB of 500.
 - **Rejected, don't propose again:** the annual dates mail; the *Upload your dates* box; size on each row and bigger markets first; neighbourhood names on town rows; nearest stop and walking time; a calendar feed per town; cash/TWINT as a fact; getting-there advice by hand; exact predicted dates; a month strip on town pages; a map; a rain forecast.
-- **Closed:** flea markets only, no Christmas or weekly markets (2026-10-14). The old site stays live as an independent competitor. Germany keeps growing through the drop. The bare address goes to `/en/`. Dateless markets stay `active` with their page. Analytics first-party; Metabase on Delfim's PC only. A closed market redirects to its town, or home.
+- **Closed:** flea markets only, no Christmas or weekly markets (2026-10-14). A charity's second-hand rooms open on set days (one seller, donated goods, like Hardmatt Strengelbach's Saturday mornings) are a second-hand shop, not a flea market: not listed (Claude's call, 2026-10-24). The old site stays live as an independent competitor. Germany keeps growing through the drop. The bare address goes to `/en/`. Dateless markets stay `active` with their page. Analytics first-party; Metabase on Delfim's PC only. A closed market redirects to its town, or home.
 - **Not built:** country page (parked; the front door carries the towns), German text search (settle compounds in `STACK.md` first), organiser photo upload (owed, above). *Markets here ran on N days this year* waits until 2027, when a full year of dates exists.
 
 ---
@@ -95,8 +95,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Photos.** 121 of 258 Swiss photos are still the old site's (`intake/photos/README.md`).
 - **History.** Every change to a market, date, venue, text or tag lands in `history` (append-only). `market_stats_monthly` holds a row per month per region since September 2026.
 - **Found in texts, not yet acted on:**
-  - Hardmatt Strengelbach runs a Saturday-morning flea market (not listed).
-  - Modellbau Kreuzlingen has an Amriswil fair on 3–4 Apr 2027.
+  - Modellbau Kreuzlingen has an Amriswil fair on 3–4 Apr 2027 (its stall-table shop, read 24 Oct), in neither database. No hall or hours published yet: look again in January, then it goes into v1 like any Swiss market.
   - Mercalibro Bellinzona changed hands; its link points to the old organiser.
   - Hallenflohmarkt Uster has a new team since March 2026.
   - Romanshorn: fliba says "am Hafen, beim Seepark (Hafenstr. 68)", we say "beim alten Fähreplatz".
