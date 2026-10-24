@@ -12,10 +12,9 @@
  *
  * Two things it refuses to carry over:
  *
- *   Stock photographs. Eleven facts point at pexels.com. docs/BRAND.md is
- *   explicit — real photos from real visits, no stock, no AI — and the
- *   illustration fallback is permanent furniture, not a gap. Those markets keep
- *   their illustration.
+ *   Photographs hotlinked from elsewhere. Eleven facts point at pexels.com;
+ *   only files we hold are served, so those markets keep their illustration
+ *   until a photo is imported (docs/BRAND.md says which kinds may be).
  *
  *   Spaces and capitals in filenames. Twelve files are named "Flohmarkt
  *   Petersplatz.webp", which v1 then had to percent-encode into its own URLs.

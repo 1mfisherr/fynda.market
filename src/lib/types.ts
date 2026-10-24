@@ -87,7 +87,7 @@ export interface Market {
    * to the German `markets.recurrence_text`.
    */
   recurrenceText?: string;
-  /** Null until we have been there. No stock, no AI images — docs/BRAND.md. */
+  /** Null until a photo exists. Real first; stock or AI only as docs/BRAND.md allows. */
   imageUrl?: string;
   /** The photographer and licence, where the licence asks for a credit (Wikimedia Commons, CC BY / BY-SA). */
   imageCredit?: { author: string; licence: string; licenceUrl?: string; sourceUrl: string };

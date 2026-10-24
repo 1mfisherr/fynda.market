@@ -58,7 +58,7 @@ Procedures are skills, loaded when the task needs them: `end-session`, `photo-ba
 | Brand | White, near-black, one accent for dates and status only. Schibsted Grotesk, self-hosted (`docs/BRAND.md`) |
 | Tags | Filters, not URLs; six. A tag marks what is special about a market, never what every flea market has |
 | Newsletter | Friday, list in our Postgres; a subscription is a town, a canton, or everything, plus saved markets (`docs/PAGES.md` §Utility) |
-| Photos | Every market has one. Stock never ships |
+| Photos | Every market has one: real first, stock where nothing real exists |
 
 A rule that blocks something good is a bug in the doc: say what it protected against, why that is outweighed, and change doc and config in the same commit. Never route around one silently. The one forbidden move is loosening a guardrail threshold to turn a red build green.
 

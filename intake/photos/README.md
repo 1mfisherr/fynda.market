@@ -26,7 +26,7 @@ Each one needs a photo from its organiser, which the welcome letters or calls ca
 - Glovelier: the Neuchâtel Jardin anglais picture
 - Flohmarkt Minigolf Lido Luzern: a crowded old-town square, not the Lido
 - Flohmarkt Eiszentrum Luzern: a staged table that looks AI-made, not the market
-- Flohmärt «Züg ond Sache» Beromünster: an illustrated poster whose picture is credited to iStock — stock on the site
+- Flohmärt «Züg ond Sache» Beromünster: an illustrated poster (its picture is iStock)
 - Horgen Dorfplatz, Puces du Loup: posters
 - Les Puces de la Folie: the garden pavilion with no stalls
 - Quartierflohmarkt Lehenmatt: the organiser's Breite photo, now on Breite's page (Lehenmatt's first edition was 28 Jun 2026; no photo of it anywhere)

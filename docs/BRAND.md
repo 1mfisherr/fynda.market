@@ -109,7 +109,7 @@ Dark mode is defined for the clients that honour `prefers-color-scheme` and igno
 
 ## Imagery
 
-**One real photo per market. Stock never ships** — competitors have no photos because nobody went, and that is a trust signal that cannot be bought quickly. An AI-made photo is acceptable when it shows the market (Delfim, 2026-10-18).
+**One photo per market, a real one wherever it exists** — competitors have no photos because nobody went, so a real one is a trust signal. Where nothing real exists, a stock photo that fits the market is acceptable (Delfim, 2026-10-24), as is an AI-made photo that shows the market (Delfim, 2026-10-18).
 
 Where no photo exists yet, a **flat object illustration** (`PlaceholderArt`, one per market kind, on a tinted ground) stands in: an empty grey box is what makes a directory look dead.
 

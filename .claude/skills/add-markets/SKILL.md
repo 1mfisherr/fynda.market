@@ -18,7 +18,7 @@ Every write here changes the live database at once — say so to Delfim. A new m
 
 - `import-v1.mjs` ran once. It deletes what it owns and reloads, which the live database no longer survives (organiser links, hand edits, the mail log). **Never again.**
 - Importers read v1 through `scripts/lib/v1.mjs`; place names and slugs come from `scripts/lib/places.mjs`, which `localise-places.mjs` also uses, so a new canton needs its fr/it/en names there first.
-- **A town is the postal town on the venue** (Emmenbrücke, not Emmen; Seewen SZ, not Schwyz — what the address says and what people search; one hand exception, Interlaken for a hall in Wilderswil), never a free-text column. Cantons normalised; market kind inferred from the name, recorded as `inferred`; stock photos dropped.
+- **A town is the postal town on the venue** (Emmenbrücke, not Emmen; Seewen SZ, not Schwyz — what the address says and what people search; one hand exception, Interlaken for a hall in Wilderswil), never a free-text column. Cantons normalised; market kind inferred from the name, recorded as `inferred`; v1's photos hotlinked from elsewhere (pexels.com) are not carried over.
 
 ## From research (every country but Switzerland)
 
