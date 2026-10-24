@@ -185,10 +185,10 @@
       "2027-10-02",
       "2027-11-06"
     ],
-    "reason": "unclear — The town's page gives 8–16 (v1) but still names the old square, closed for works until 2028, so it looks out of date; the tourist office's current 2026 page (fribourg.ch) says 'Cathédrale 8h-16h30' (ours). Neither is the organiser; only the stall-booking number could settle it.",
+    "reason": "8–16:30 is ours, settled. The tourist office's current page (fribourg.ch) lists the 2026 dates under 'Cathédrale 8h-16h30'. The town's page gives 8–16 (v1) but still names the old square, closed for works until 2028, and its own bus note diverts line 4 until 16:36 on market days, which fits 16:30.",
     "url": "https://www.ville-fribourg.ch/marches-fribourg",
     "quote": "De mars à novembre: chaque premier samedi du mois Quartier de l’Auge (place du Petit Saint-Jean) De 8h00 à 16h00",
-    "decided": "2026-10-09"
+    "decided": "2026-10-24"
   },
   {
     "slug": "marche-aux-puces-plainpalais-geneve-erster-sonntag",
