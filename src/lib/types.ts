@@ -87,6 +87,13 @@ export interface Market {
    * to the German `markets.recurrence_text`.
    */
   recurrenceText?: string;
+  /**
+   * Why it is not on right now, when a break we hold the reason for covers
+   * today: "Paused for the Herbstmesse, Basel's autumn fair." Written per
+   * locale in texts (market_pause), never generated; a locale without one
+   * gets nothing (MARKET-PAGE.md §Market).
+   */
+  pause?: string;
   /** Null until a photo exists. Real first; stock or AI only as docs/BRAND.md allows. */
   imageUrl?: string;
   /** The photographer and licence, where the licence asks for a credit (Wikimedia Commons, CC BY / BY-SA). */

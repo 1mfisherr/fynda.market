@@ -532,6 +532,9 @@ const description = next
           {timeRange && (
             <p class="clock" data-clock-range data-over-text={canBeLive ? s.todayRange.replace('{t}', `${timeRange} ${s.timeSuffix}`.trim()) : undefined}>{timeRange} {s.timeSuffix}</p>
           )}
+          {/* Why the next date is further off than the rhythm says, while a break
+              we know the reason for is on (Delfim, 2026-10-24, design/pause-v1.html). */}
+          {market.pause && <p class="pause">{market.pause}</p>}
           {/* The single most useful thing we ever tell anyone, and the reason
               this site deserves to exist. It was held in the database and
               never rendered. */}
@@ -920,6 +923,14 @@ const description = next
     font-variant-numeric: tabular-nums;
   }
   .clock span { color: var(--color-grey); font-weight: var(--weight-regular); }
+  /* The hours' size, so it reads as part of the date block rather than body text. */
+  .pause {
+    margin-block-start: var(--space-1);
+    max-width: var(--measure);
+    font-size: var(--text-date);
+    line-height: var(--leading-snug);
+    color: var(--color-grey);
+  }
   .reason {
     margin-block-start: var(--space-2);
     max-width: var(--measure);

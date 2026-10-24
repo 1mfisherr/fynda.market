@@ -14,6 +14,7 @@ import pg from 'pg';
 import type { CountryCode } from './i18n';
 import type { Market, MarketKind, Occurrence, OccurrenceStatus } from './types';
 import { requireConnectionString } from './connection-string.ts';
+import { todayIso } from './format.ts';
 
 interface Row {
   slug: string;
@@ -38,6 +39,7 @@ interface Row {
   image_url: string | null;
   website_url: string | null;
   recurrence_text: string | null;
+  pauses: { from: string; until: string; reason: string }[] | null;
   organiser_name: string | null;
   verified_by: Market['verifiedBy'] | null;
   verified_at: string | null;
@@ -113,6 +115,15 @@ const SQL = `
     m.organiser_note_locale,
     org.name                                        as organiser_name,
     coalesce(rt.value, m.recurrence_text)           as recurrence_text,
+    -- Breaks not yet over, with their sentence in this locale only; which one
+    -- covers today is decided below on Zurich's clock, not the database's.
+    (
+      select jsonb_agg(jsonb_build_object('from', mp.starts_on, 'until', mp.ends_on, 'reason', pt.value))
+        from public.market_pauses mp
+        join public.texts pt on pt.entity_type = 'market_pause' and pt.entity_id = mp.id
+                            and pt.locale = $1 and pt.field = 'label'
+       where mp.market_id = p.id and mp.ends_on >= current_date - 1
+    )                                               as pauses,
     (
       select max(date)::text from public.occurrences
        where market_id = p.id and date < current_date and status <> 'cancelled'
@@ -216,6 +227,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
 
   try {
     const { rows } = await client.query<Row>(SQL, [locale]);
+    const today = todayIso();
 
     return rows.map((row) => {
       const dates = (row.occurrences ?? []).map(toOccurrence);
@@ -246,6 +258,7 @@ export async function fetchMarkets(locale = 'de'): Promise<Market[]> {
         upcoming: dates.filter((_, i) => i !== nextIndex),
         imageUrl: row.image_url ?? undefined,
         recurrenceText: row.recurrence_text ?? undefined,
+        pause: row.pauses?.find((b) => b.from <= today && today <= b.until)?.reason,
         verifiedBy: row.verified_by ?? undefined,
         verifiedAt: row.verified_at ?? undefined,
         organiserName: row.organiser_name ?? undefined,
