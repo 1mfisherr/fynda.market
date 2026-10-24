@@ -6,7 +6,7 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-10-24.
 
-**Left off:** nothing half-done, nothing unpushed. **Live (23 Oct, checked):** 15 new photos; v1 sync (7 dates, 1,052 stamps); Bochum 3 Jan 2027; Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed and redirecting; a newsletter tick in *Tell me when it's back* now counts as `newsletter_submit` (it never did); stamp-only changes no longer reach IndexNow or `<lastmod>`.
+**Left off:** nothing half-done, nothing unpushed. **Live (24 Oct, checked):** 9 new photos (Buttwil's poster and Mercantico's promo card gone); Weberplatz Potsdam's 2016 page off the watch list and its *source broken* dismissed. The Market Watch report of 23 Oct read cleanly (both findings decided within minutes); next run about 30 Oct.
 
 ---
 
@@ -60,7 +60,6 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 
 **Read on these dates.** Nothing to build until then:
 - 2026-12-01: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place. On 23 Oct only 7 people had been asked, 2 allowed: too few to judge.
-- 2026-10-24, Market Watch: does the Telegram report read cleanly?
 - 2026-10-25 and 2026-11-01 exports: indexed above 263; *excluded by noindex* falling from 1,569. The folded towns' addresses (Rafz, Worb, Schaffhausen, Adliswil, Wettingen, Liesberg) show *Page with redirect*, and their market pages are indexed. Titles: Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit above 3% clicks (were 1.8%).
 - 2026-11-07: *Tell me when it's back* rows against undated market-page views (84% used to leave without a tap). *Were you there?* answers. *Meanwhile, nearby* clicks — if nobody clicks it, it goes. Home `market_click` per view since *This weekend near…* (14 Oct).
 - Four weeks after the next letters: organiser answer rate (`organiser_funnel`). Over 25%, build more for organisers; 10–25%, keep it as a data feed; under 10%, stop.
