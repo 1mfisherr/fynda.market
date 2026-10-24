@@ -4,7 +4,7 @@ What is true now and what happens next. **Read first, every session; rewrite bef
 
 This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `scripts/docs-check.mjs` warns past 15 KB and fails past 20 KB.
 
-Updated 2026-10-23.
+Updated 2026-10-24.
 
 **Left off:** nothing half-done, nothing unpushed. **Live (23 Oct, checked):** 15 new photos; v1 sync (7 dates, 1,052 stamps); Bochum 3 Jan 2027; Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed and redirecting; a newsletter tick in *Tell me when it's back* now counts as `newsletter_submit` (it never did); stamp-only changes no longer reach IndexNow or `<lastmod>`.
 
@@ -50,7 +50,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 **Until the end of 2026: perfect the site, add markets slowly. From January: expansion**, more of Germany and then other countries, with the finder (Delfim, 2026-10-09).
 
 1. **Organiser welcome letters.** No more until one organiser answers with a reply or an edit (Delfim, 2026-10-14). Then 90 a day until all 192 have one, the German ones included. To send: GitHub → Actions → *Organiser welcome* → *Run workflow*; a preview goes to the address in the last box. "Did it leave?" is a query on `organiser_mail_sends`. After that, set `ORGANISER_SENDING=on`.
-2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 121 left.
+2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 112 left.
 3. **Delfim: call or write to ten organisers** the letter reached. The list is in `calls/` on his PC (gitignored: phone numbers). He calls once traffic picks up (his call, 2026-10-14). Claude's view, said once: the calls are part of how traffic comes back.
 4. **Organiser share kit**: a link, a poster QR code, a badge for organisers with a personal link, visit counts. **Proposed 2026-10-14, no answer yet:** lead it with a **dates box** an organiser pastes on their own site — their next dates, kept current, linking to us. Ask on the calls before building.
 5. **Owed to organisers:** the photo upload they were promised.
@@ -71,7 +71,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 
 Each waits on Delfim or on data. Don't assume an answer.
 
-- **Unclear facts, look again in January** (the welcome letters may answer first): Wollishofen am See, Kofmehl, Cozy Sunday Stellwerk, Folie Voltaire, Mosergarten, Paulusheim, Friedrichshagen, GZ Heuried, Hottingen. Also Glarus (both; the site blocks automated reading), Weinfelden's date (next 27 Mar 2027), Baden's season, Biel's "twelve Saturdays", Bürkliplatz 230 or 220 stands.
+- **Unclear facts, look again in January** (the welcome letters may answer first): Wollishofen am See, Kofmehl, Cozy Sunday Stellwerk, Folie Voltaire, Mosergarten, Paulusheim, Friedrichshagen, GZ Heuried, Hottingen. Also Glarus (both; the site blocks automated reading), Weinfelden's date (next 27 Mar 2027), Baden's season, Biel's "twelve Saturdays", Bürkliplatz 230 or 220 stands. Roggenweg Zofingen: no trace after September 2023, may have stopped.
 - **Delfim's own photos** of markets near him ("would be nice", 2026-10-14). Waiting for his town.
 - **A native speaker** over DE/FR/IT.
 - **German silent visits count as bots** (`bot_likely` rule 1 predates Germany). Revisit when German traffic exists.
@@ -92,7 +92,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Organisers.** 33 Swiss markets carry *Confirmed by the organiser*; a trigger refuses to undo that unless the session sets `fynda.allow_unverify`. 217 organisers with a live market, 158 with an e-mail and a personal link.
 - **Dates.** A date derived from an organiser's stated rhythm counts as checked on the day we read their page. A date v1 calls tentative is not published. No page says *Not confirmed yet*.
 - **Facts.** Every fact carries its source URL and quote, and is never overwritten (`set-market-facts.mjs`). Setting is known for 278 markets, who sells 101, rain 70, stalls 51, tags 81. Websites give indoor/outdoor for ~8 in 10 markets and the rest rarely; the gaps come from organisers and visitors (`/f`). The "checked" stamp means dates checked, not facts (Delfim, 2026-09-28). Holstenhallen Neumünster and Bülach stay blank on setting: they are outdoor in summer and indoor in winter. The 64 markets added 2026-09-20 keep times, fees and parking in `market_private.admin_notes` until a facts pass reads them.
-- **Photos.** 121 of 258 Swiss photos are still the old site's (`intake/photos/README.md`).
+- **Photos.** 112 of 258 Swiss photos are still the old site's (`intake/photos/README.md`).
 - **History.** Every change to a market, date, venue, text or tag lands in `history` (append-only). `market_stats_monthly` holds a row per month per region since September 2026.
 - **Found in texts, not yet acted on:**
   - Modellbau Kreuzlingen has an Amriswil fair on 3–4 Apr 2027 (its stall-table shop, read 24 Oct), in neither database. No hall or hours published yet: look again in January, then it goes into v1 like any Swiss market.
