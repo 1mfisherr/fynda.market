@@ -6,7 +6,7 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-10-24.
 
-**Left off:** a second photo batch of 24 Oct (13 photos) and the pause line (its table and Petersplatz's row already live) are committed but **not pushed or deployed** (Delfim: "dont push"); the live site shows the old pictures for those 13 until the next deploy. **Live (24 Oct, checked):** 9 new photos (Buttwil's poster and Mercantico's promo card gone); Weberplatz Potsdam's 2016 page off the watch list and its *source broken* dismissed. The Market Watch report of 23 Oct read cleanly (both findings decided within minutes); next run about 30 Oct.
+**Left off:** nothing half-done, nothing unpushed. **Live (24 Oct, checked):** 22 new photos in two batches (posters gone at Buttwil, Mercantico, Kofmehl and Chur; St. Johann and Niederholz no longer show other markets); Petersplatz says *Paused for the Herbstmesse* until 19 Nov (`market_pauses`, migration applied 24 Oct); Weberplatz Potsdam's 2016 page off the watch list. Stock photos are allowed where nothing real exists (Delfim). The Market Watch report of 23 Oct read cleanly; next run about 30 Oct.
 
 ---
 
@@ -54,7 +54,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 3. **Delfim: call or write to ten organisers** the letter reached. The list is in `calls/` on his PC (gitignored: phone numbers). He calls once traffic picks up (his call, 2026-10-14). Claude's view, said once: the calls are part of how traffic comes back.
 4. **Organiser share kit**: a link, a poster QR code, a badge for organisers with a personal link, visit counts. **Proposed 2026-10-14, no answer yet:** lead it with a **dates box** an organiser pastes on their own site — their next dates, kept current, linking to us. Ask on the calls before building.
 5. **Owed to organisers:** the photo upload they were promised.
-6. **Why a market pauses:** built (Delfim chose wording B, 2026-10-24); the table and Petersplatz's break are in the live database since 24 Oct, the page line ships with the next deploy. Next candidate: Puces du CPO's Christmas break, once its dates are known.
+6. **Why a market pauses:** live since 2026-10-24 (wording B). Add a break whenever a market's own page names one (`MARKET-PAGE.md` §Market 3); next candidate, Puces du CPO's Christmas break once its dates are out.
 7. **Germany, deep in four cities.** Berlin: 19 markets researched, left for spring (`intake/batch-berlin/README.md`). Köln: ROLLER Marsdorf stays `unverified` until Melan lists a date; GLOBUS Marsdorf and SELGROS Butzweilerhof have no photo; for spring, Immenhof (23 May 2027), Cölln P6 (4 Apr 2027), Weidenpesch (6 May 2027). Finder leads: a camera fair (Berlin), Krims & Krams at Bahnwärter Thiel (München); 28 German candidates outside the four cities wait for January (`intake/finder/check-de-2026-10-09.json`).
 8. **Analytics partitioning.** Claude's advice: wait until traffic returns (database 50 MB of 500). Not decided.
 
