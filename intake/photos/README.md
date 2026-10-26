@@ -1,38 +1,18 @@
 # Replacing the old site's photos
 
-99 of 258 Swiss markets still show the picture the old site used (2026-10-24). Google read our pages as copies partly because of them, so every one gets replaced with a better, real photo of that market.
+55 of 258 Swiss markets still show the picture the old site used (2026-10-26). Google read our pages as copies partly because of them, so every one gets replaced: a real photo of the market first, free stock where nothing real exists (Delfim, 2026-10-24). Almost every one left has been searched with nothing real found, so the rest are stock unless an organiser sends one.
 
 How a batch runs, and what Delfim has settled: the `photo-batch` skill (`.claude/skills/photo-batch/SKILL.md`). This file is the log.
 
 ## Wrong photos still live
 
-Each one needs a photo from its organiser, which the welcome letters or calls can ask for:
+Each one needs a photo from its organiser, which the welcome letters or calls can ask for, or a stock photo next batch:
 
-- Oetwil am See: Wollishofen's picture
-- Adliswil: another Adliswil event
-- Emmen: Emmen in the Netherlands
 - Echichens: a big street market, but it is a 10-stall children's sale in a hall
-- Dietikon: the Zürich Tanzwerk edition's picture
-- Ecublens: a brick-house street sale, probably northern France
-- Aadorf: a lake view that doesn't match the hall
-- Oron: a Provence-style street market
-- Thun: the organiser's poster
-- Villars-Tiercelin: a French vide-grenier with French plates
-- Therwil: a city street, not Therwil
-- Enter Modellbau-Börse: the flea market's picture
-- Fribourg photo/paper fair: a model-car table
-- Fribourg toy fair: looks like a stamp fair
 - Enter Retrotechnikmarkt: the photo is right, but it shows video games while our text says computers and radios. Check the text
-- Glovelier: the Neuchâtel Jardin anglais picture
-- Flohmarkt Minigolf Lido Luzern: a crowded old-town square, not the Lido
-- Flohmarkt Eiszentrum Luzern: a staged table that looks AI-made, not the market
 - Flohmärt «Züg ond Sache» Beromünster: an illustrated poster (its picture is iStock)
-- Horgen Dorfplatz, Puces du Loup: posters
-- Les Puces de la Folie: the garden pavilion with no stalls
-- Quartierflohmarkt Lehenmatt: the organiser's Breite photo, now on Breite's page (Lehenmatt's first edition was 28 Jun 2026; no photo of it anywhere)
-- Quartierflohmarkt Spalen/Holbein: probably Matthäus (the same painted KINDER! road marking)
+- Horgen Dorfplatz: a poster
 - Quartierflohmarkt Pratteln Gehrenacker: an aerial shot of a street procession, not a flea market
-- Kinderflohmarkt Uster: the organiser's photo of its adult flea market
 
 Also owed: **Stücki**, a new market (first date 20 Sep 2026) with no real photo anywhere. Delfim's AI image can go up if he sends it again, otherwise use the organiser's or one taken there (15 Nov, 13 Dec). **Weihnachtsdekomarkt Strengelbach** has no photo yet.
 
@@ -48,6 +28,8 @@ Already searched. Don't search them again unless something new turns up, such as
 - 2026-10-23: Enter vinyl/film/book fair, Uster Stadthausplatz (cropped wide), Hyper Bazar, Brocante Locarno, Altdorf, Galgenen, Subingen, Breitsch-Märit, Richterswil, WBZ Reinach, Chambrelien, Misery, Quai de Nogent Yverdon, Le Landeron, Baar. Two researcher agents; Bing Images by script returned noise, the organisers' sites and press did the work
 - 2026-10-24: Papieriplatz Cham, Liestal, Letziplunder, Kreuzlingen–Konstanz (Konstanz side, evening), Burstelpark Frauenfeld, Flommbo Altstätten, Heimstrasse Bern, Flugplatz Buttwil (was a poster), Mercantico Bellinzona (was a promo card). Four agents; organiser galleries (one found through a WordPress media list) and press did the work, Commons had nothing
 - 2026-10-24 (second batch): Quartierflohmärkte Bottmingen (cropped from the town's 2025 annual report), Breite/St. Alban, Gotthelf/Iselin, Gundeli, Matthäus, Neubad, Riehen/Niederholz (600 px, but the live one was the Keltenweg market), St. Johann (the live one was Matthäus); Schlieren, Kofmehl Solothurn (was a poster), Kinderflohmarkt Winterthur, Chur (was a poster), GZ Hottingen. The organiser's galleries (quartierflohmibasel.ch/de/<slug>/impressionen/) stop at 818 px; bigger copies came from umweltbasel.ch, agendabasel.ch and press
+
+- 2026-10-26: batches 11 and 12, 44 markets, eight Sonnet agents. Real: Prilly (the château square, from loisirs.ch), the Locarno children's market (the organiser's photo via laRegione), Markthalle Basel (the organiser's photo of its night market in the same hall), Olten's bridge itself (Commons, no stalls). Stock for the other 40, the source page in each fact's `source_ref`, Commons credits under the picture: Emmen, GZ Seebach, Oetwil, Thun, Glattbrugg, Musiker Zürich, Ecublens, Oron, Adliswil, Mädelsflohmarkt XXL Dietikon, Lido and Eiszentrum Luzern, Therwil, Lehenmatt (black and white), Spalen/Holbein, Kinderflohmarkt Uster, Villars-Tiercelin, Glovelier, Puces du Loup, Folie, Aadorf (these five from Pixabay, 1280 px), Enter Modellbau, the two Fribourg bourses, both record fairs, the STAGE, Cozy Sunday, Münsingen, GZ Heuried, industrie45, Amriswil, Wettingen, Bülach, Paradiso, Les Brenets, Brocante de Fribourg, the Geneva toy bourse, Swiss Vintage and Design, Brocantissima. Portraits cropped to 3:2. Lessons: Pixabay serves agents 1280 px at most; agents pick the same stock photo for different markets, so check look-alikes (`dupes.mjs` in the session scratchpad compared 16×16 hashes); a real photo of another market is still a wrong photo (Hinwil's find was Bürkliplatz)
 
 **Kept the old one** (the find was worse):
 - Lutry, Galerie 17 Terra, Glarus, B102 Luzern, Carouge, Romanshorn (only 512 px exists), Comicbörse Zürich (only 300 px exists)
@@ -69,6 +51,8 @@ Already searched. Don't search them again unless something new turns up, such as
 - Kreisflohmi Zürich (the site has only illustrations), Roggenweg Zofingen (no trace after Sep 2023: may have stopped)
 - Obere Mühle Dübendorf (only a drawing exists), FloDo Solothurn (press photos show the earlier market at the same square)
 - the four Dakota fairs (Fribourg ×3, Genève; their media are flyers only), Zürcher Schallplattenbörse, Coupole Biel, Brocantissima Morges
+- 2026-10-26, nothing but posters: Massagno, Muralto, Renens familles, Mathod, Onex, Paudex, Vide-Grenier de Lutry (kept: the quay photo may be the old site's)
+- 2026-10-26, stock found but the same photo went to another market, so search again: Steiner Schule Basel, Pratteln Gehrenacker, Musikflohmarkt Basel, Echichens, Horgen, Coupole Biel, Beromünster, Hinwil
 - plus every market in **Wrong photos still live** above
 
 Delfim's own photos: he'd photograph markets near him ("would be nice", 2026-10-14). Waiting for his town, then a list of nearby markets still on old photos.
