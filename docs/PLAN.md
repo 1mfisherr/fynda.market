@@ -95,8 +95,5 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **History.** Every change to a market, date, venue, text or tag lands in `history` (append-only). `market_stats_monthly` holds a row per month per region since September 2026.
 - **Found in texts, not yet acted on:**
   - Modellbau Kreuzlingen has an Amriswil fair on 3–4 Apr 2027 (its stall-table shop, read 24 Oct), in neither database. No hall or hours published yet: look again in January, then it goes into v1 like any Swiss market.
-  - Mercalibro Bellinzona changed hands; its link points to the old organiser.
-  - Hallenflohmarkt Uster has a new team since March 2026.
-  - Romanshorn: fliba says "am Hafen, beim Seepark (Hafenstr. 68)", we say "beim alten Fähreplatz".
   - Amriswil's flyer names a different contact from Romanshorn's.
 - **Data as a product** (one day): facts with provenance and history, never visitor rows, and only counts over 10+ people. Not before ~10,000 dates. `reference/analytics-research/monetise.md`.
