@@ -33,7 +33,7 @@ Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **341 markets
 
 ## Recovery plan (2026-10-20)
 
-Google's own pages say recovery from a spam update comes when its systems "learn over a period of months" that the site complies, usually at a later update. There is no button and no request to file. Documented recoveries came at the next update, five months in one case. So, in order:
+Google's own pages say recovery from a spam update comes when its systems "learn over a period of months" that the site complies, usually at a later update. There is no button and no request to file. Documented recoveries came at the next update, five months in one case; a site hit in August 2026 came back during the September update (Glenn Gabe). Our 1 Oct drop matches that update's second wave (30 Sep); experts name templated pages made at scale as its target. Google ran four spam updates in 2026 (March, June, August, September), so each new one is a chance (research read 26 Oct; Reddit blocks our tools). So, in order:
 
 1. One-market towns folded into their markets — done.
 2. The market page gets what nobody else has: real photos (`intake/photos/README.md`), the checked-on stamp, facts with their sources.
