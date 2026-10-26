@@ -397,6 +397,19 @@ const venueForTitle = market.venueName && !says(market.name, market.venueName) &
 /* "Flohmi Muttenz – Muttenz" says Muttenz twice; the town goes in only when
    the name does not already carry it. */
 const cityForTitle = says(market.name, market.city) ? undefined : market.city;
+
+/* The square or hall under the name, where it says something the name and the
+   town do not — "Place de la Riponne" was only far down, under Getting there
+   (Delfim, 2026-10-26, design/reminder-v1.html). */
+const placeUnderName = market.venueName && !says(market.name, market.venueName) && market.venueName !== market.city
+  ? market.venueName
+  : undefined;
+
+/* The Friday e-mail lists a saved market only when it is on that weekend
+   (src/lib/digest.ts), so the button that offers it shows only for a market
+   with a Saturday or Sunday ahead: a Tuesday market would be a promise the
+   e-mail never keeps. */
+const hasWeekendDate = dates.some((o) => o.status !== 'cancelled' && [0, 6].includes(new Date(`${o.date}T12:00:00Z`).getUTCDay()));
 /* The next date is what people search for — 144 of 632 queries in the week to
    2026-09-20 carried a year — so it goes in the title, the way the town pages
    already do, and the year is the date's own. The build year put "Termine
@@ -517,6 +530,7 @@ const description = next
         )}
       </p>
       <h1>{market.name}</h1>
+      {placeUnderName && <p class="place">{placeUnderName}</p>}
 
       {next && (
         <div class:list={['status', { cancelled }]}>
@@ -540,6 +554,13 @@ const description = next
               never rendered. */}
           {afterLine && <p class="after" data-after hidden>{afterLine}</p>}
           {cancelled && next.cancellationNote && <p class="reason">{next.cancellationNote}</p>}
+          {/* Saves the market and opens the Friday e-mail box (components/SavedAsk.astro)
+              — the e-mail we already send, offered where people decide, not behind
+              the bookmark on the photo (Delfim, 2026-10-26, design/reminder-v1.html).
+              Hidden by the script below once this browser is signed up. */}
+          {!cancelled && hasWeekendDate && (
+            <Button class="remind" data-remind><Icon name="mail" size={15} />{s.remindFriday}</Button>
+          )}
         </div>
       )}
 
@@ -870,6 +891,12 @@ const description = next
   .where > span[aria-hidden] { color: var(--color-line); }
 
   h1 { font-size: var(--text-market-name); letter-spacing: var(--tracking-tight); }
+  .place {
+    margin-block-start: var(--space-half);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+    color: var(--color-grey);
+  }
 
   .host { font-size: var(--text-small); color: var(--color-grey); }
   .note { white-space: pre-line; }
@@ -923,6 +950,10 @@ const description = next
     font-variant-numeric: tabular-nums;
   }
   .clock span { color: var(--color-grey); font-weight: var(--weight-regular); }
+  /* Under the hours, sized like the buttons under the photo's actions — a
+     second step, never as loud as Directions. */
+  .status :global(.remind) { margin-block-start: var(--space-3); border-color: var(--color-ink); }
+  .status :global(.remind[hidden]) { display: none; }
   /* The hours' size, so it reads as part of the date block rather than body text. */
   .pause {
     margin-block-start: var(--space-1);
@@ -1290,13 +1321,31 @@ const description = next
     // click and not on the first paint of a market that was already saved.
     button.addEventListener('animationend', () => { delete button.dataset.justSaved; });
 
-    button.addEventListener('click', () => {
-      const saved = read();
-      const next = saved.includes(slug) ? saved.filter((s) => s !== slug) : [...saved, slug];
+    const store = (next: string[]) => {
       try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* private mode */ }
       paint(next.includes(slug));
       // Signed up for their saved markets by e-mail: the server's list follows.
       syncSaved(next);
+    };
+
+    // The Friday e-mail button under the hours: saves the market (never unsaves
+    // it) and opens the e-mail box at once, asked before or not — this tap is
+    // the asking. Gone once this browser is signed up: their saves already
+    // reach the e-mail through the bookmark.
+    const remind = document.querySelector<HTMLButtonElement>('[data-remind]');
+    if (remind) {
+      if (savedToken()) remind.hidden = true;
+      remind.addEventListener('click', () => {
+        const saved = read();
+        if (!saved.includes(slug)) store([...saved, slug]);
+        document.dispatchEvent(new CustomEvent('fynda:saved-ask'));
+      });
+    }
+
+    button.addEventListener('click', () => {
+      const saved = read();
+      const next = saved.includes(slug) ? saved.filter((s) => s !== slug) : [...saved, slug];
+      store(next);
       // The first save in this browser offers the e-mail, once (components/SavedAsk.astro).
       if (next.includes(slug) && !savedToken() && !wasAsked()) {
         setTimeout(() => document.dispatchEvent(new CustomEvent('fynda:saved-ask')), 450);

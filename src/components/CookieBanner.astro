@@ -73,12 +73,15 @@ const s = t(locale);
     position: sticky;
     inset-block-end: 0;
     z-index: 10;
-    padding-block: var(--space-3);
+    padding-block: var(--space-2);
   }
+  /* Slim on a phone (Delfim, 2026-10-26, design/reminder-v1.html): it used to
+     take the bottom 40% of a first visit's first screen, Directions included.
+     Two lines of words over two equal buttons side by side. */
   .box {
     display: grid;
-    gap: var(--space-3);
-    padding: var(--space-4);
+    gap: var(--space-2);
+    padding: var(--space-3);
     border: var(--border-width) solid var(--glass-edge);
     border-radius: var(--radius-md);
     /* Frosted glass: the page shows through, blurred, so the banner reads as a
@@ -97,7 +100,7 @@ const s = t(locale);
     .box { background: var(--color-paper); border-color: var(--color-line); }
   }
   .box p { margin: 0; font-size: var(--text-small); }
-  .choices { display: grid; gap: var(--space-2); }
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
 
   /* Keep in step with --breakpoint-wide. */
   @media (min-width: 900px) {

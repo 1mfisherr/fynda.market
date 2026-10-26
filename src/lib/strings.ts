@@ -146,6 +146,8 @@ export interface Strings {
   addToCalendar: string;
   save: string;
   savedState: string;
+  /** Under the time, only for a market with a weekend date: saves it and opens the Friday e-mail box (design/reminder-v1.html). */
+  remindFriday: string;
   gettingThere: string;
   dates: string;
   wasItDifferent: string;
@@ -581,6 +583,7 @@ const de: Strings = {
   addToCalendar: 'In den Kalender eintragen',
   save: 'Merken',
   savedState: 'Gemerkt',
+  remindFriday: 'In meine Freitags-E-Mail',
   gettingThere: 'Anfahrt',
   dates: 'Termine',
   wasItDifferent: 'Stimmt etwas nicht?',
@@ -714,8 +717,8 @@ const de: Strings = {
   footerTerms: 'Nutzungsbedingungen',
   footerCookies: 'Cookies',
   cookieTitle: 'Cookies?',
-  cookieBody: 'Damit sehen wir, wie fynda.market genutzt wird, und können die Seite verbessern. Nie mit dir als Person verknüpft, nie verkauft.',
-  cookieMore: 'Mehr zu Cookies',
+  cookieBody: 'Nur um zu sehen, wie fynda.market genutzt wird. Nie verkauft.',
+  cookieMore: 'Mehr',
   cookieAccept: 'Einverstanden',
   cookieEssential: 'Nur notwendige',
   footerAbout: 'Über fynda.market',
@@ -872,6 +875,7 @@ const en: Strings = {
   addToCalendar: 'Add to calendar',
   save: 'Save',
   savedState: 'Saved',
+  remindFriday: 'Add it to my Friday e-mail',
   gettingThere: 'Getting there',
   dates: 'Dates',
   wasItDifferent: 'Something not right?',
@@ -1004,8 +1008,8 @@ const en: Strings = {
   footerTerms: 'Terms',
   footerCookies: 'Cookies',
   cookieTitle: 'Cookies?',
-  cookieBody: 'We use them to see how fynda.market is used and make it better. Never linked to you as a person, never sold.',
-  cookieMore: 'About cookies',
+  cookieBody: 'Only to see how fynda.market is used. Never sold.',
+  cookieMore: 'More',
   cookieAccept: 'Accept',
   cookieEssential: 'Only essential',
   footerAbout: 'About fynda.market',
@@ -1168,6 +1172,7 @@ const fr: Strings = {
   addToCalendar: 'Ajouter au calendrier',
   save: 'Enregistrer',
   savedState: 'Enregistré',
+  remindFriday: 'Ajouter à mon e-mail du vendredi',
   gettingThere: "Comment s'y rendre",
   dates: 'Dates',
   wasItDifferent: 'Quelque chose ne va pas ?',
@@ -1304,8 +1309,8 @@ const fr: Strings = {
   footerTerms: "Conditions d'utilisation",
   footerCookies: 'Cookies',
   cookieTitle: 'Des cookies ?',
-  cookieBody: "Ils nous servent à comprendre comment fynda.market est utilisé, pour l'améliorer. Jamais reliés à votre personne, jamais vendus.",
-  cookieMore: 'En savoir plus sur les cookies',
+  cookieBody: 'Seulement pour voir comment fynda.market est utilisé. Jamais vendus.',
+  cookieMore: 'Détails',
   cookieAccept: "D'accord",
   cookieEssential: 'Seulement le nécessaire',
   footerAbout: 'À propos',
@@ -1462,6 +1467,7 @@ const it: Strings = {
   addToCalendar: 'Aggiungi al calendario',
   save: 'Salva',
   savedState: 'Salvato',
+  remindFriday: 'Aggiungi alla mia e-mail del venerdì',
   gettingThere: 'Come arrivare',
   dates: 'Date',
   wasItDifferent: 'Qualcosa non torna?',
@@ -1599,8 +1605,8 @@ const it: Strings = {
   footerTerms: 'Condizioni generali',
   footerCookies: 'Cookie',
   cookieTitle: 'Cookie?',
-  cookieBody: 'Li usiamo per capire come si usa fynda.market e migliorarlo. Mai ricondotti a te, mai venduti.',
-  cookieMore: 'Di più sui cookie',
+  cookieBody: 'Solo per capire come si usa fynda.market. Mai venduti.',
+  cookieMore: 'Di più',
   cookieAccept: 'Va bene',
   cookieEssential: 'Solo quelli necessari',
   footerAbout: 'Chi siamo',

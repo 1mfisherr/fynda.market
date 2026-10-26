@@ -148,6 +148,13 @@
     const ort = (el as HTMLElement).dataset.townSlug;
     if (ort) { send('filter_changed', { filter: 'ort', value: ort }, el); return; }
 
+    // The Friday e-mail button under the hours (design/reminder-v1.html): a save
+    // that asks for the e-mail, told apart from the bookmark by its action.
+    if ((el as HTMLElement).dataset.remind !== undefined) {
+      send('market_save', { action: 'remind' }, el);
+      return;
+    }
+
     if ((el as HTMLElement).dataset.save !== undefined) {
       // The button reports what it became, so add and remove stay separable.
       const added = el.getAttribute('aria-pressed') !== 'true';

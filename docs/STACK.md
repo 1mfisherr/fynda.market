@@ -100,7 +100,7 @@ The requirement is **own the data, collect everything, keep it private** — not
 
 **Identity, two layers**
 - Layer 1, always: `HMAC(ip + user agent)` under a key that carries the date, so one person is one hash today and another tomorrow.
-- Layer 2, with consent: `fynda_consent=granted` and `fynda_id` (a uuid, 13 months), both first-party cookies set by `CookieBanner.astro`. `_collect.ts` writes `visitor_id` only when the first says granted, and the table refuses it otherwise. "Only essential" keeps layer 1.
+- Layer 2, with consent: `fynda_consent=granted` and `fynda_id` (a uuid, 13 months), both first-party cookies set by `CookieBanner.astro`, a slim bar on a phone since 2026-10-26 (two lines over two equal buttons; it used to cover 40% of a first screen). `_collect.ts` writes `visitor_id` only when the first says granted, and the table refuses it otherwise. "Only essential" keeps layer 1.
 - Any third-party analytics tool loads only behind the same consent and is named in the privacy page the day it is added. Germany needs a banner, so it exists from day one.
 
 **Bots**
