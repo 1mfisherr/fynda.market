@@ -4,7 +4,7 @@ What is true now and what happens next. **Read first, every session; rewrite bef
 
 This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `scripts/docs-check.mjs` warns past 15 KB and fails past 20 KB.
 
-Updated 2026-10-24.
+Updated 2026-10-26.
 
 **Left off:** nothing half-done, nothing unpushed. **Live (24 Oct, checked):** 22 new photos in two batches (posters gone at Buttwil, Mercantico, Kofmehl and Chur; St. Johann and Niederholz no longer show other markets); Petersplatz says *Paused for the Herbstmesse* until 19 Nov (`market_pauses`, migration applied 24 Oct); Weberplatz Potsdam's 2016 page off the watch list. Stock photos are allowed where nothing real exists (Delfim). The Market Watch report of 23 Oct read cleanly; next run about 30 Oct.
 
@@ -16,7 +16,7 @@ Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **341 markets
 
 | Running | State |
 |---|---|
-| **Google** | Impressions fell overnight on 1 Oct, from ~1,000 a day to almost none, and have not come back. It matches Google's September 2026 spam update: a judgement of the whole site, not a fault — the 13 Oct audit found it technically clean. Every page type and language is equally out, including the old top earners (Zürich, Basel, Bern, Genève). The likeliest reasons were pages that looked like the old site's (texts rewritten 13 Oct; photos in progress) and one-market town pages (folded 20 Oct). See **Recovery plan** below. Search Console exports go into `docs/GSCdata/` every Sunday |
+| **Google** | Impressions fell overnight on 1 Oct, from ~1,000 a day to almost none, and have not come back: 0–2 a day from 19 to 24 Oct, no click since 3 Oct (25 Oct export). It matches Google's September 2026 spam update: a judgement of the whole site, not a fault — the 13 Oct audit found it technically clean. Every page type and language is equally out, including the old top earners (Zürich, Basel, Bern, Genève). The likeliest reasons were pages that looked like the old site's (texts rewritten 13 Oct; photos in progress) and one-market town pages (folded 20 Oct). See **Recovery plan** below. Search Console exports go into `docs/GSCdata/` every Sunday |
 | **Indexing** (read 18 Oct, data to 11 Oct) | 263 indexed and still falling (peak 576 on 19 Sep). 976 *crawled – not indexed*, 550 *discovered*. `robots.txt` keeps crawlers off the per-market form addresses (`/*?markt=`) and the calendar files (`/ics/`); none of the 1,500 sitemap pages is blocked (checked 22 Oct). *Validate fix* and *Request indexing* do nothing for a site-wide demotion — don't use them |
 | **Town and region pages** | A town or region needs two markets for its own page. A one-market town's address 301s to its market (since 20 Oct, guardrail 11), and so does Bremen's. Towns of four or more markets have a **What row** (`src/lib/town-facts.ts`) and a paragraph written by hand, never generated. `PAGES.md` §City, §Region |
 | **Market pages** | What decides a trip (what's sold, stalls, setting, who sells, fee, rain), *Earlier this year*, *Were you there?*, *Tell me when it's back* for markets between editions, *Meanwhile, nearby*. `MARKET-PAGE.md` §Market |
@@ -60,7 +60,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 
 **Read on these dates.** Nothing to build until then:
 - 2026-12-01: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place. On 23 Oct only 7 people had been asked, 2 allowed: too few to judge.
-- 2026-10-25 and 2026-11-01 exports: indexed above 263; *excluded by noindex* falling from 1,569. The folded towns' addresses (Rafz, Worb, Schaffhausen, Adliswil, Wettingen, Liesberg) show *Page with redirect*, and their market pages are indexed. Titles: Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit above 3% clicks (were 1.8%).
+- 2026-11-01 export, **with the indexing report** (Indexing → Pages → Export; the 25 Oct export was the performance report only): indexed above 263; *excluded by noindex* falling from 1,569. The folded towns' addresses (Rafz, Worb, Schaffhausen, Adliswil, Wettingen, Liesberg) show *Page with redirect*, and their market pages are indexed. Titles: Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit above 3% clicks (were 1.8%).
 - 2026-11-07: *Tell me when it's back* rows against undated market-page views (84% used to leave without a tap). *Were you there?* answers. *Meanwhile, nearby* clicks — if nobody clicks it, it goes. Home `market_click` per view since *This weekend near…* (14 Oct).
 - Four weeks after the next letters: organiser answer rate (`organiser_funnel`). Over 25%, build more for organisers; 10–25%, keep it as a data feed; under 10%, stop.
 
