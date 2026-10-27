@@ -11,7 +11,7 @@ What runs, where, and the constraints behind each choice — what is actually ru
 | Component | Choice | Why |
 |---|---|---|
 | Framework | **Astro, `output: 'static'`, no islands** | v1's two SEO bug classes — cache staleness and Suspense layout shift — cannot happen in a static file. And the whole URL space exists as files in `dist/`, which is what makes the guardrails checkable at all |
-| Hosting | **Cloudflare Pages**, uploaded by `scripts/deploy.mjs` via `wrangler` | Static requests free and unlimited, egress free. v1's billable middleware invocations are unpriceable here |
+| Hosting | **Cloudflare Pages**, uploaded by `scripts/deploy.mjs` via `wrangler`. `fynda.market` is the only host: `www` is a proxied CNAME that a Cloudflare Redirect Rule 301s to `https://fynda.market/` with path and query, and *Always Use HTTPS* is on (both set 2026-10-27) | Static requests free and unlimited, egress free. v1's billable middleware invocations are unpriceable here |
 | Publishing | **Locally or from GitHub Actions — never Cloudflare's own builder** | Building on Cloudflare failed repeatedly for reasons unrelated to the site: a password copied into a second place, a "retry" that replays the old commit, a dropped Git link, an IPv6-only database host. Building elsewhere removes all of it |
 | Runtime code | **Pages Functions** in `functions/` (see below) | The only things a static site cannot do: count a visit and accept a form. Nothing reads the database at runtime to render a page |
 | Database | **Supabase Postgres + PostGIS**, `eu-west-1`, read by the build through `pg` (`src/lib/supabase.ts`) | Radius search is one indexed function. Free tier carries the pilot |
