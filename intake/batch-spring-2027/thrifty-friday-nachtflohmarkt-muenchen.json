@@ -1,0 +1,51 @@
+{
+  "slug": "thrifty-friday-nachtflohmarkt-muenchen",
+  "name": "Thrifty Friday Nachtflohmarkt",
+  "kind": "nachtflohmarkt",
+  "town": "München",
+  "region": "Bayern",
+  "venue": {
+    "name": "Pineapple Park, Alte Paketposthalle",
+    "address": "Arnulfstraße 195-199",
+    "postal_code": "80634"
+  },
+  "lat": 48.1470,
+  "lng": 11.5234,
+  "rhythm": {
+    "de": "An einzelnen Freitagen",
+    "en": "On selected Fridays"
+  },
+  "opening": {
+    "start": "17:00",
+    "end": "23:00"
+  },
+  "dates": ["2026-10-30", "2026-11-06", "2026-11-13"],
+  "dates_from": "listed",
+  "fee": 5,
+  "currency": "EUR",
+  "website": "https://midnightbazar.de/termine",
+  "organiser": {
+    "name": "Midnightbazar UG",
+    "website": "https://www.midnightbazar.de",
+    "email": "info@midnightbazar.de"
+  },
+  "source_page": "https://midnightbazar.de/termine",
+  "facts": [
+    "dates page: 'Thrifty Friday - Nachtflohmarkt mit Live-Musik - 30.10.2026', '... Jazz & Covers - Nachtflohmarkt mit Franzi Koko Trio - 06.11.2026', '... mit Peace Rebel Radio - 13.11.2026', each '17:00-23:00 Uhr'",
+    "place: 'Paketposthalle, 80634 München' / 'Pineapple Park'; market info page: 'Paketposthalle, Arnulfstrasse 195-199'",
+    "'Afterwork-Bummeln beim Thrifty Friday mit Live-Musik'",
+    "entry (Nachtflohmarkt info page): 'Regular, 5€ zzgl. VVK Abendkasse: 5€' (early-bird tickets 3 and 4 € plus booking fee)",
+    "'4-5 Foodtrucks im Aussenbereich, Eintritt frei'",
+    "'Auf dem Nachtflohmarkt kommen Kinder unter 12 Jahren kostenlos in die Halle'",
+    "'Hunde sind bei uns herzliche Willkommen. Bitte die Leine nicht vergessen!'",
+    "'An den Bars nur Kartenzahlung möglich'",
+    "'Sbahn Hirschgarten, Bus 62 Wilhelm-Hale Straße, Straßenbahn 16/17 Ausstieg Briefzentrum'; parking fee 5 €, 'Bitte möglichst öffentlich kommen!'",
+    "the hall is part of 'ein großes Zwischennutzungsprojekt Pineapple Park' (temporary use)"
+  ],
+  "checked": "2026-10-27",
+  "notes": "Only the three dates titled 'Thrifty Friday' are imported. The same organiser has other night markets on the same dates page (31 Oct, 7 and 14 Nov Saturdays; 20 Nov Friday 'Nachtflohmarkt x Lateinamerikanisches Wochenende', 17:00-22:00), which are a different named event and were left out; the 20 Nov Friday could be added if Delfim wants one Friday-night market. Fee: 5 € is the Regular/Abendkasse price on the general Nachtflohmarkt info page, not stated for Thrifty Friday itself (its booking button opens a ticket shop that could not be read). Postal code: the dates page says 80634, the info page says 80639; 80634 is also what OpenStreetMap gives for Arnulfstraße 195-199. Coordinates: OpenStreetMap, Pineapple Park building. The Pineapple Park is a temporary-use project, so the venue may end. The page does not name a person; the Impressum names Midnightbazar UG, Ligsalzstraße 12, 80339 München.",
+  "description": {
+    "de": "Beim Thrifty Friday wird die Alte Paketposthalle in München abends zum Nachtflohmarkt, von 17 bis 23 Uhr. Dazu gibt es Live-Musik, am 6. November Jazz mit dem Franzi Koko Trio, am 13. November Peace Rebel Radio. Draußen stehen vier, fünf Foodtrucks, und für den Hund reicht eine Leine. An den Bars wird nur mit Karte bezahlt. Der Eintritt kostet an der Abendkasse 5 Euro, Kinder unter 12 kommen kostenlos in die Halle.",
+    "en": "On Thrifty Friday the old Paketposthalle in Munich becomes a night flea market, from 5 in the afternoon to 11 at night. Live music comes with it: jazz from the Franzi Koko Trio on 6 November, Peace Rebel Radio on 13 November. Outside stand four or five food trucks, and dogs are welcome on a lead. The bars take cards only. Entry at the door is 5 euros, and children under 12 go into the hall free."
+  }
+}

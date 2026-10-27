@@ -1,0 +1,49 @@
+{
+  "slug": "flohmarkt-stadthalle-kelkheim",
+  "name": "Flohmarkt Stadthalle Kelkheim",
+  "kind": "hallenflohmarkt",
+  "town": "Kelkheim (Taunus)",
+  "region": "Hessen",
+  "venue": {
+    "name": "Stadthalle Kelkheim",
+    "address": "Gagernring 1",
+    "postal_code": "65779"
+  },
+  "lat": 50.14,
+  "lng": 8.4497,
+  "rhythm": {
+    "de": "An einzelnen Samstagen, nach Terminkalender",
+    "en": "On selected Saturdays, as listed in the calendar"
+  },
+  "opening": {
+    "start": "14:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-11-14",
+    "2026-11-21"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.weiss-maerkte.de/index.php?p=standorte&m=oLdmo",
+  "organiser": {
+    "name": "Weiß Veranstaltungsservice (Joachim Weiß)",
+    "website": "https://www.weiss-maerkte.de/",
+    "email": "info@weiss-maerkte.de"
+  },
+  "source_page": "https://www.weiss-maerkte.de/index.php?p=standorte&m=oLdmo",
+  "facts": [
+    "'Endlich wieder trödeln in der Stadthalle Kelkheim!'",
+    "listed 14:00–17:00 h on both dates (sellers set up from 12:30)",
+    "indoor: 'Die Veranstaltung ist überdacht', format 'Hallenmarkt'",
+    "Floh- und Trödelmarkt",
+    "seller space is in the hall's Mitte, Wand, Foyer and Bühne areas"
+  ],
+  "checked": "2026-10-27",
+  "notes": "Only two Flohmarkt dates are published (Sat 14 and 21 Nov 2026), nothing for December-February. The Sundays 15 and 22 Nov in the same hall are different events ('Retro Game Markt', 'Just 4 Girls Flohmarkt', admission charged) and are not included. The page states no visitor admission, so fee is null. The page asks sellers for a 10 € deposit (Kaution), which is not a visitor fee. The page does not say whether the hall's whole space or part is used. Coordinates are Stadthalle Kelkheim from OpenStreetMap. Organiser address: Max-Planck-Str. 24, 65779 Kelkheim (Impressum). Worth adding only if Delfim accepts a market with two dates.",
+  "description": {
+    "de": "Zwei Nachmittage im November, am 14. und am 21., von 14 bis 17 Uhr, trödelt Kelkheim drinnen: in der Stadthalle am Gagernring, im Trockenen. Der Veranstalter schreibt: \"Endlich wieder trödeln in der Stadthalle Kelkheim!\" Die Tische stehen in der Halle, im Foyer und auf der Bühne.",
+    "en": "On two afternoons in November, the 14th and the 21st, from 2 to 5, Kelkheim does its rummaging indoors: in the Stadthalle on Gagernring, out of the rain. The organiser puts it as \"Endlich wieder trödeln in der Stadthalle Kelkheim!\", finally rummaging in the Stadthalle again. Tables fill the hall, the foyer and the stage."
+  }
+}

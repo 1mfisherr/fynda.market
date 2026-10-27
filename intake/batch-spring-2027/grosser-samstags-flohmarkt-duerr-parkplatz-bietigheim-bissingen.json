@@ -1,0 +1,50 @@
+{
+  "slug": "grosser-samstags-flohmarkt-duerr-parkplatz-bietigheim-bissingen",
+  "name": "Großer Samstags-Flohmarkt DÜRR-Parkplatz",
+  "kind": "flohmarkt",
+  "town": "Bietigheim-Bissingen",
+  "region": "Baden-Württemberg",
+  "venue": {
+    "name": "DÜRR-Parkplatz",
+    "address": "Fritz-Lieken-Straße 8",
+    "postal_code": "74321"
+  },
+  "lat": 48.9373,
+  "lng": 9.1306,
+  "rhythm": {
+    "de": "Von März bis einschließlich November jeden Samstag, außer an gesetzlichen Feiertagen",
+    "en": "Every Saturday from March to November, except on public holidays"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "15:00"
+  },
+  "dates": ["2026-10-31", "2026-11-07", "2026-11-14", "2026-11-21", "2026-11-28"],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://flohmarkt-timke.de/flohmarkt-termine/",
+  "organiser": {
+    "name": "Veranstaltungsagentur Timke",
+    "website": "https://flohmarkt-timke.de/",
+    "email": "info-flohmarkt@gmx.com"
+  },
+  "source_page": "https://flohmarkt-timke.de/event/9142/",
+  "facts": [
+    "'JEDEN Samstag ... von März bis einschl. November ... (außer an gesetzlichen Feiertagen)'",
+    "'DÜRR-Parkplatz, Fritz-Lieken-Straße 8, Laiern IV, 74321 Bietigheim-Biss.'",
+    "'von 9 bis 15 Uhr, Platzvergabe ab 7 Uhr' (9–15 is the market; 7 is stall allocation)",
+    "'Besucherparkplätze ausreichend vorhanden'",
+    "'Der Samstags-FLOHMARKT in der Region'",
+    "outdoor car park; the organiser can call the market off in bad weather at set-up time ('Sollte es zur Aufbauzeit regnen ... und der Markt wird von uns abgesagt')",
+    "new goods only 'auf Anfrage' with the organiser's approval (Marktbedingungen: 'Der Verkauf von Neuwaren ist grundsätzlich verboten, soweit nicht vom Veranstalter ausdrücklich genehmigt')",
+    "visitor entry fee: not stated on the page",
+    "organiser office phone 07147 / 1 33 99, Monday to Friday 9–12 and 16–20"
+  ],
+  "checked": "2026-10-27",
+  "notes": "Dates come from the organiser's own calendar (flohmarkt-timke.de/flohmarkt-termine/, one entry per Saturday: 31 Oct and 7, 14, 21, 28 Nov). The page says the market runs 'von März bis einschl. November', so the calendar ends on 28 Nov by the page's own rule: no December-February dates exist. Visitor entry is not stated anywhere (fee null); stall prices are on the page but not recorded. Same organiser as the Karlsruhe Messplatz market already in the database, a different venue. The timke.com address redirects to flohmarkt-timke.de. E-mail: info-flohmarkt@gmx.com is the 'Infos per E-Mail' address on the home page; the Impressum gives info@timke.com. Coordinates are the OpenStreetMap address point for Fritz-Lieken-Straße 8 (the car park next to it is not mapped separately).",
+  "description": {
+    "de": "Von März bis November steht auf dem DÜRR-Parkplatz in Bietigheim-Bissingen jede Woche ein Flohmarkt, nur an gesetzlichen Feiertagen nicht. Die Tische bauen sich zwischen den Autos auf, geöffnet ist von 9 bis 15 Uhr. Besucherparkplätze gibt es genug, man muss also nicht ums Eck suchen. Neuware gibt es nur nach Absprache mit dem Veranstalter. Bei schlechtem Wetter kann der Markt ausfallen, bevor er aufgebaut ist.",
+    "en": "From March to November there is a flea market on the DÜRR car park in Bietigheim-Bissingen every week, except on public holidays. Tables go up between the cars, and it is open from 9 in the morning to 3 in the afternoon. There are plenty of visitor spaces, so nobody circles the block. New goods only turn up if the organiser has agreed to them. In bad weather the market can be called off before it is set up."
+  }
+}

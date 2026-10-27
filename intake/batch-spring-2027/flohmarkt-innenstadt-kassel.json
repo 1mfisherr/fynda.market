@@ -1,0 +1,50 @@
+{
+  "slug": "flohmarkt-innenstadt-kassel",
+  "name": "Flohmarkt in der Kasseler Innenstadt",
+  "kind": "flohmarkt",
+  "town": "Kassel",
+  "region": "Hessen",
+  "venue": {
+    "name": "Untere Wilhelmsstraße und Karlsplatz",
+    "address": "Wilhelmsstraße 31",
+    "postal_code": "34117"
+  },
+  "lat": 51.3122,
+  "lng": 9.4940,
+  "rhythm": {
+    "de": "Von April bis Oktober am 1., 3. und 5. Samstag im Monat; zweimal im Jahr zweitägig, zur Casseler Freyheit",
+    "en": "April to October on the 1st, 3rd and 5th Saturday of the month; twice a year over two days, for the Casseler Freyheit"
+  },
+  "opening": {
+    "start": "09:00",
+    "end": "16:30"
+  },
+  "dates": ["2026-10-31", "2026-11-01"],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.flohmarkt-mit-herz.de/innenstadt-kassel",
+  "organiser": {
+    "name": "Flohmarkt mit Herz (Regina Hohmann)",
+    "website": "https://www.flohmarkt-mit-herz.de",
+    "email": "info@flohmarkt-mit-herz.de"
+  },
+  "source_page": "https://www.flohmarkt-mit-herz.de/innenstadt-kassel",
+  "facts": [
+    "'Termine des Flohmarkts: 31. Oktober 2026, 01. November 2026'",
+    "'Zur „Casseler Freyheit“ mit verkaufsoffenem Sonntag trödeln wir zweimal im Jahr zweitägig. 2026 am 11./12. April und am 31. Oktober/1. November in der Wilhelmsstraße'",
+    "'Unser Innenstadtflohmarkt findet von April bis Oktober jeweils am 1./ 3. und 5. Samstag im Monat statt (mit einigen Ausnahmen!)'",
+    "'Verkauf ist von 9.00 Uhr bis 16.30 Uhr'; Marktinfos: 'Geöffnet für Besucher*innen: Sa.: 9.00-16.30 Uhr'",
+    "'Der Freiluftflohmarkt mit etwa 40 Aussteller*innen': 'Porzellan, Gläser, Weißwäsche, Bilder, alten Schmuck, Bücher und Bildbände', 'gebrauchten Hausrat, selbsthergestellte Handarbeiten und Kinderspielzeug'",
+    "'in der Unteren Wilhelmsstraße und auf dem Karlsplatz'; arrival address 'Wilhelmsstraße 31, 34117 Kassel'",
+    "'ÖPNV: Haltestelle Rathaus, Tram 1,3,4,5,6,7,8'",
+    "'Während der Verkaufszeit ist der Markt Fussgängerzone' (FAQ), cars only for set-up and take-down",
+    "visitor entry fee: not stated on the page"
+  ],
+  "checked": "2026-10-27",
+  "notes": "Only two dates fall in the window: 31 Oct and 1 Nov 2026 (the two-day 'Casseler Freyheit' edition), confirmed by the organiser's public calendar feed (one entry 31 Oct-1 Nov). The regular Saturdays end in October, and the page gives no dates for 2027, so the market has nothing after 1 Nov until spring; the rhythm text is the page's own and is written for the whole year. Hours: the Marktinfos say 'Sa.: 9.00-16.30'; the sentence on the two-day edition says 'Verkauf ist von 9.00 Uhr bis 16.30 Uhr', so Sunday 1 Nov is assumed to match. The 'über uns' page still places the city market on Friedrichsplatz; the market page says Untere Wilhelmsstraße and Karlsplatz, which is used here. Wilhelmsstraße 31 is the arrival address the page gives, not necessarily the middle of the stalls; coordinates are halfway between it and Karlsplatz (OpenStreetMap). Entry fee not stated (null). A different organiser from the Messe Kassel market already in the database.",
+  "description": {
+    "de": "Mitten in Kassel, in der Unteren Wilhelmsstraße und auf dem Karlsplatz, stehen rund 40 Stände unter freiem Himmel. Auf den Tischen liegen Porzellan, Gläser, Weißwäsche, Bilder, alter Schmuck, Bücher und Bildbände, dazu Hausrat, Handarbeiten und Kinderspielzeug. Zur „Casseler Freyheit“ ist der Markt zweitägig, am 31. Oktober und am 1. November, von 9 bis 16:30 Uhr, und am 1. November haben auch die Geschäfte offen. Mit dem Auto kommt hier niemand an den Stand: Während der Marktzeit ist es Fußgängerzone, die Haltestelle Rathaus ist nah.",
+    "en": "In the middle of Kassel, along the Untere Wilhelmsstraße and on the Karlsplatz, about 40 stalls stand in the open air. On the tables: porcelain, glasses, white linen, pictures, old jewellery, books and art books, plus household things, handicrafts and children's toys. For the Casseler Freyheit the market runs two days, 31 October and 1 November, from 9 to 4:30, and on 1 November the shops are open too. No cars at the stalls: while the market is on it is a pedestrian zone, and the Rathaus tram stop is close."
+  }
+}

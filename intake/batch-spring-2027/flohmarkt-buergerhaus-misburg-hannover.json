@@ -1,0 +1,49 @@
+{
+  "slug": "flohmarkt-buergerhaus-misburg-hannover",
+  "name": "Flohmarkt im Bürgerhaus Misburg",
+  "kind": "hallenflohmarkt",
+  "town": "Hannover",
+  "region": "Niedersachsen",
+  "venue": {
+    "name": "Bürgerhaus Misburg",
+    "address": "Seckbruchstraße 20",
+    "postal_code": "30629"
+  },
+  "lat": 52.3938,
+  "lng": 9.8623,
+  "rhythm": {
+    "de": "Mehrmals im Jahr, drinnen im großen Saal",
+    "en": "Several times a year, indoors in the big hall"
+  },
+  "opening": {
+    "start": "14:00",
+    "end": "17:00"
+  },
+  "dates": [
+    "2026-11-29"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Bürgerhaus-Misburg/Alle-Veranstaltungen-Kurse/Flohmarkt",
+  "organiser": {
+    "name": "Bürgerhaus Misburg / Kulturbüro Misburg-Anderten (Landeshauptstadt Hannover)",
+    "website": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Bürgerhaus-Misburg",
+    "email": "kulturbuero-misburg@hannover-stadt.de"
+  },
+  "source_page": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Bürgerhaus-Misburg/Alle-Veranstaltungen-Kurse/Flohmarkt",
+  "facts": [
+    "'Am Sonntag den 29.11.2026 findet von 14 - 17 Uhr erneut der beliebte Flohmarkt im großen Saal des Bürgerhauses Misburg statt'",
+    "indoors: 'ganz ungestört von jedem Wetter'",
+    "'vergessene Schätze finden und sich mit allerlei Nützlichem eindecken'",
+    "'Kaffee und Kuchen gibt es wieder gegen Spende'",
+    "venue: Bürgerhaus Misburg, Seckbruchstr. 20, 30629 Hannover",
+    "stalls for the 29 Nov date are already full ('LEIDER SIND ALLE STANDPLÄTZE BEREITS AUSGEBUCHT')"
+  ],
+  "checked": "2026-10-27",
+  "notes": "The page is the Bürgerhaus's own page on hannover.de (the Bürgerhaus's old address buergerhaus-misburg.de forwards to it); last updated 24.09.2026. Only one date is listed, 29 Nov 2026; nothing for January or February. Entry fee for visitors is not stated on the page, so fee is null. 'erneut' implies earlier editions but the page gives no rhythm; 'several times a year' is our reading, so the market may open as a single-date page. A search snippet mentioned a 4 Oct 2026 edition cancelled; I could not open that page, so treat as unverified. Contact e-mail on the page is for sellers' registration; the Bürgerhaus phone is +49 511 168 32252. Coordinates: OpenStreetMap, Bürgerhaus Misburg node.",
+  "description": {
+    "de": "Ein Flohmarkt im großen Saal des Bürgerhauses Misburg, von 14 bis 17 Uhr und, wie der Veranstalter schreibt, ganz ungestört von jedem Wetter. Man findet vergessene Schätze und allerlei Nützliches. Kaffee und Kuchen gibt es gegen Spende. Er findet nur einige Male im Jahr statt.",
+    "en": "A flea market in the big hall of the Bürgerhaus Misburg, from 2 to 5 in the afternoon and, as the organiser writes, undisturbed by any weather. You find forgotten treasures and all sorts of useful things. Coffee and cake are by donation. It happens only a few times a year."
+  }
+}
