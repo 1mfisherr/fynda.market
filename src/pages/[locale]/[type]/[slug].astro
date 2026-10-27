@@ -302,7 +302,10 @@ const weekdayOf = (iso: string) => parseDate(iso).getDay();
 const earlierLine = (() => {
   if (earlier.length <= EARLIER_SHOWN) return undefined;
   const oldest = parseDate(earlier[earlier.length - 1].date);
-  const since = `${oldest.getDate()}${locale === 'de' ? '.' : ''} ${s.monthsLong[oldest.getMonth()]}`;
+  // The first date we hold, not the market's first: "5 Sundays since 27 September"
+  // is true of a market that runs all year; "so far this year" was not (Delfim, 2026-10-27).
+  const day = oldest.getDate();
+  const since = `${locale === 'fr' && day === 1 ? '1er' : day}${locale === 'de' ? '.' : ''} ${s.monthsLong[oldest.getMonth()]}`;
   const sameDay = earlier.every((o) => weekdayOf(o.date) === weekdayOf(earlier[0].date)) ? weekdayOf(earlier[0].date) : undefined;
   return s.earlierSummary(earlier.length, sameDay, since, earlier.filter((o) => o.status === 'cancelled').length);
 })();
