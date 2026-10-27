@@ -1,0 +1,8 @@
+Reason,Source,Validation,Pages
+Page with redirect,Website,Failed,3
+Crawled - currently not indexed,Google systems,Failed,1010
+Blocked due to other 4xx issue,Website,Not Started,1
+Not found (404),Website,Not Started,1
+Blocked by robots.txt,Website,Not Started,1
+Discovered - currently not indexed,Google systems,Not Started,533
+Excluded by ‘noindex’ tag,Website,Started,1569
