@@ -3,7 +3,7 @@
 # Supabase's free plan keeps no backups at all (docs/STACK.md). This job takes
 # one every night at 02:30 UTC, half an hour before the publish, encrypts it
 # and keeps it in this repository's artifact store for 90 days. It costs
-# nothing: GitHub's free minutes and a 1 MB file.
+# nothing: GitHub's free minutes and a few MB a night (robot rows left out).
 #
 # The repository is public, so the file is encrypted before it leaves the
 # runner: age, to the public key below. The private half exists only in
@@ -78,8 +78,12 @@ jobs:
         run: |
           set -euo pipefail
           day=$(date -u +%F)
+          # crawler_hits is the last 30 days of raw robot rows, half the database
+          # (50 MB of 107 on 2026-10-27); its daily totals live in crawler_daily,
+          # which is kept. The table itself is still dumped, empty.
           /usr/lib/postgresql/17/bin/pg_dump "$SUPABASE_DB_URL" \
             --format=custom --schema=public --no-owner \
+            --exclude-table-data=public.crawler_hits \
             --file="fynda-$day.dump"
           # A dump that is suddenly tiny is a failure that returned 0.
           size=$(stat -c %s "fynda-$day.dump")
