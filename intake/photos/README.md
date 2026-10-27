@@ -1,6 +1,6 @@
 # Replacing the old site's photos
 
-55 of 258 Swiss markets still show the picture the old site used (2026-10-26). Google read our pages as copies partly because of them, so every one gets replaced: a real photo of the market first, free stock where nothing real exists (Delfim, 2026-10-24). Almost every one left has been searched with nothing real found, so the rest are stock unless an organiser sends one.
+38 of 258 Swiss markets still show the picture the old site used (2026-10-27). Google read our pages as copies partly because of them, so every one gets replaced: a real photo of the market first, free stock where nothing real exists (Delfim, 2026-10-24). Almost every one left has been searched with nothing real found, so the rest are stock unless an organiser sends one.
 
 How a batch runs, and what Delfim has settled: the `photo-batch` skill (`.claude/skills/photo-batch/SKILL.md`). This file is the log.
 
@@ -8,13 +8,9 @@ How a batch runs, and what Delfim has settled: the `photo-batch` skill (`.claude
 
 Each one needs a photo from its organiser, which the welcome letters or calls can ask for, or a stock photo next batch:
 
-- Echichens: a big street market, but it is a 10-stall children's sale in a hall
 - Enter Retrotechnikmarkt: the photo is right, but it shows video games while our text says computers and radios. Check the text
-- Flohmärt «Züg ond Sache» Beromünster: an illustrated poster (its picture is iStock)
-- Horgen Dorfplatz: a poster
-- Quartierflohmarkt Pratteln Gehrenacker: an aerial shot of a street procession, not a flea market
 
-Also owed: **Stücki**, a new market (first date 20 Sep 2026) with no real photo anywhere. Delfim's AI image can go up if he sends it again, otherwise use the organiser's or one taken there (15 Nov, 13 Dec). **Weihnachtsdekomarkt Strengelbach** has no photo yet.
+Also owed: **Stücki** has a stock photo since 27 Oct; a real one when the organiser has one, or Delfim's AI image if he sends it again. **Weihnachtsdekomarkt Strengelbach** has no photo yet.
 
 ## Tried
 
@@ -33,7 +29,10 @@ Already searched. Don't search them again unless something new turns up, such as
 
 - 2026-10-27: seven new German markets (no old photo), two Sonnet agents, Delfim picked. Real, from the organisers' galleries: Frankfurt-Höchst (Weiß), Mainz Uni (MP Märkte). Real venue: Leipzig Westwerk (Commons, Derbrauni, CC BY 4.0, cropped 3:2), Stöcken (the city's photo of the Stadtteilzentrum). Stock (Pexels): Nürnberg Flughafen, Berlin Marienfelde, Berlin Spandau — nothing real exists; retrothek.de has Marienfelde at 800 px with a watermark
 
+- 2026-10-27: batch 13, 20 markets, four Sonnet agents, Delfim picked 17. Real venue (Commons, credited): Obere Mühle Dübendorf, Arbon castle (the Kinder-Flohmi). Stock for the rest, nothing real existing: Echichens, Hinwil, Stücki, Musikflohmarkt Basel, Steiner Schule Basel, Beromünster, Horgen, Pratteln Gehrenacker, Disco Flohmi, FloDo, Rümlang, Arboldswil, Hinterhof St. Gallen, GZ Heuried, Kreisflohmi. Source pages in the facts; every stock ID checked against the 66 already used
+
 **Kept the old one** (the find was worse):
+- 2026-10-27, Delfim: the Coupole Biel (its poster stays; the finds were the dome without a market), Bruderholzallee, Sarnen-Center
 - Lutry, Galerie 17 Terra, Glarus, B102 Luzern, Carouge, Romanshorn (only 512 px exists), Comicbörse Zürich (only 300 px exists)
 - Kriens: AI-made, and it stays
 - Weinfelden, Arlesheim: the only photo online is the one already live
