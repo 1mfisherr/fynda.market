@@ -188,10 +188,6 @@
     "to": "/de/markt/antik-und-troedelmarkt-messe-halle-saale/"
   },
   {
-    "from": "/de/deutschland/hannover/",
-    "to": "/de/markt/altstadtflohmarkt-hannover/"
-  },
-  {
     "from": "/de/schweiz/hinwil/",
     "to": "/de/markt/flohmarkt-hinwil/"
   },
@@ -276,10 +272,6 @@
     "to": "/de/markt/nachtflohmarkt-magdeburg/"
   },
   {
-    "from": "/de/deutschland/mainz/",
-    "to": "/de/markt/krempelmarkt-rheinufer-mainz/"
-  },
-  {
     "from": "/de/schweiz/malters/",
     "to": "/de/markt/flohmarkt-malters/"
   },
@@ -338,10 +330,6 @@
   {
     "from": "/de/deutschland/neumuenster/",
     "to": "/de/markt/nord-flohmarkt-holstenhallen-neumuenster/"
-  },
-  {
-    "from": "/de/deutschland/nuernberg/",
-    "to": "/de/markt/nuernberg-nightmarket/"
   },
   {
     "from": "/de/schweiz/oetwil-am-see/",
@@ -696,10 +684,6 @@
     "to": "/en/market/antik-und-troedelmarkt-messe-halle-saale/"
   },
   {
-    "from": "/en/germany/hannover/",
-    "to": "/en/market/altstadtflohmarkt-hannover/"
-  },
-  {
     "from": "/en/switzerland/hinwil/",
     "to": "/en/market/flohmarkt-hinwil/"
   },
@@ -784,10 +768,6 @@
     "to": "/en/market/nachtflohmarkt-magdeburg/"
   },
   {
-    "from": "/en/germany/mainz/",
-    "to": "/en/market/krempelmarkt-rheinufer-mainz/"
-  },
-  {
     "from": "/en/switzerland/malters/",
     "to": "/en/market/flohmarkt-malters/"
   },
@@ -846,10 +826,6 @@
   {
     "from": "/en/germany/neumuenster/",
     "to": "/en/market/nord-flohmarkt-holstenhallen-neumuenster/"
-  },
-  {
-    "from": "/en/germany/nuernberg/",
-    "to": "/en/market/nuernberg-nightmarket/"
   },
   {
     "from": "/en/switzerland/oetwil-am-see/",

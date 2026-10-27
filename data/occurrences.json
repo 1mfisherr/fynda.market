@@ -1340,6 +1340,96 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-04",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-11",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-18",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-25",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-02",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-09",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-flughafen-nuernberg",
+    "date": "2026-12-30",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-friedrichshagen-berlin",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -1727,6 +1817,81 @@
   {
     "marketSlug": "flohmarkt-hofmattplatz-kriens",
     "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-10-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-11-26",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-12-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-12-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-12-17",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+    "date": "2026-12-19",
     "status": "confirmed"
   },
   {
@@ -2210,6 +2375,81 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-10-31",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-11-07",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-11-14",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-11-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-11-28",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-12-05",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-12-12",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2026-12-19",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-01-09",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-01-16",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-01-23",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-01-30",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-02-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-02-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "flohmarkt-uni-mainz",
+    "date": "2027-02-20",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "flohmarkt-vogesenplatz-basel",
     "date": "2026-10-31",
     "status": "confirmed"
@@ -2522,6 +2762,26 @@
   {
     "marketSlug": "hallenflohmarkt-uster",
     "date": "2027-02-21",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "kiezflohmarkt-westwerk-plagwitz-leipzig",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "kiezflohmarkt-westwerk-plagwitz-leipzig",
+    "date": "2026-11-15",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "kiezflohmarkt-westwerk-plagwitz-leipzig",
+    "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "kiezflohmarkt-westwerk-plagwitz-leipzig",
+    "date": "2026-12-20",
     "status": "confirmed"
   },
   {
@@ -3875,6 +4135,21 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "stoeckener-flohmarkt-hannover",
+    "date": "2026-11-15",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "stoeckener-flohmarkt-hannover",
+    "date": "2027-01-09",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "stoeckener-flohmarkt-hannover",
+    "date": "2027-02-13",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "strandgut-flohmarkt-neubad-luzern",
     "date": "2026-11-01",
     "status": "confirmed"
@@ -4140,6 +4415,46 @@
     "status": "confirmed"
   },
   {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2026-12-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2027-01-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2027-01-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-kaufland-spandau-berlin",
+    "date": "2027-01-17",
+    "status": "confirmed"
+  },
+  {
     "marketSlug": "troedelmarkt-marheinekeplatz-berlin",
     "date": "2026-10-31",
     "status": "confirmed"
@@ -4262,6 +4577,56 @@
   {
     "marketSlug": "troedelmarkt-metro-ludwigshafen",
     "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-11-01",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-11-08",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-11-29",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-12-06",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-12-13",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-12-20",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2026-12-27",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2027-01-03",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2027-01-10",
+    "status": "confirmed"
+  },
+  {
+    "marketSlug": "troedelmarkt-metro-marienfelde-berlin",
+    "date": "2027-01-17",
     "status": "confirmed"
   },
   {
