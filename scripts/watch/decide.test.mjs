@@ -130,3 +130,55 @@ test('a page that says "every Saturday" does not make the dates it leaves out mi
   assert.deepEqual(r.questions, []);
   assert.deepEqual(r.stamp, ['2026-10-17', '2026-10-24', '2026-10-31']);
 });
+
+/* Rule pages (rules.mjs, 2026-10-27): a date we hold that the organiser's stated rhythm produces is stamped. */
+
+test('a weekly rule stamps the dates we hold on that weekday, and no other', () => {
+  const p = page(['Flohmarkt am Mauerpark', 'Jeden Sonntag von 10 bis 18 Uhr']);
+  const r = decide(p, market(['2026-10-11', '2026-10-18', '2026-10-17']));
+  assert.deepEqual(r.stamp, ['2026-10-11', '2026-10-18']);
+  assert.deepEqual(r.questions, []);
+});
+
+test('"jeden Samstag und Sonntag" and "jedes Wochenende" cover both days', () => {
+  for (const line of ['ganzjährig jeden Samstag und Sonntag', 'An jedem Wochenende (ausser an Feiertagen)']) {
+    assert.deepEqual(decide(page(['Flohmarkt am Mauerpark', line]), market(['2026-10-17', '2026-10-18', '2026-10-16'])).stamp, ['2026-10-17', '2026-10-18'], line);
+  }
+});
+
+test('"jeden 3. Sonntag" stamps only the third Sunday', () => {
+  const p = page(['Flohmarkt am Mauerpark', 'jeden Samstag und jeden 3. Sonntag im Monat']);
+  assert.deepEqual(decide(p, market(['2026-10-18', '2026-10-25', '2026-10-24'])).stamp, ['2026-10-18', '2026-10-24']);
+});
+
+test('a rule never stamps a holiday, Christmas week or the quiet November Sundays', () => {
+  const p = page(['Flohmarkt am Mauerpark', 'Jeden Sonntag']);
+  // All Saints, Volkstrauertag, Totensonntag, 27 Dec; 29 Nov is an ordinary Sunday.
+  assert.deepEqual(decide(p, market(['2026-11-01', '2026-11-15', '2026-11-22', '2026-11-29', '2026-12-27'])).stamp, ['2026-11-29']);
+});
+
+test('a page that speaks of a season or a break stamps nothing by rule', () => {
+  for (const line of ['Winterpause Dezember bis Februar', 'Von April bis Oktober', 'Letzter Markt 2026 am 28.11.2026']) {
+    assert.deepEqual(decide(page(['Flohmarkt am Mauerpark', 'Jeden Sonntag', line]), market(['2026-10-18'])).stamp, [], line);
+  }
+});
+
+test('a negated rule is no rule', () => {
+  assert.deepEqual(decide(page(['Flohmarkt am Mauerpark', 'Kein Markt jeden Sonntag']), market(['2026-10-18'])).stamp, []);
+});
+
+test('on a calendar of several markets, only a rule naming this market counts', () => {
+  const lines = ['Unsere Märkte', 'Arkonaplatz: jeden Sonntag', 'Mauerpark: jeden Samstag'];
+  assert.deepEqual(decide(page(lines, { marketsCovered: 2 }), market(['2026-10-17', '2026-10-18'])).stamp, ['2026-10-17']);
+});
+
+test('a rule with other hours than ours stamps nothing; the sellers\' gate is not other hours', () => {
+  const ours = (start, end) => market([{ date: '2026-10-18', status: 'confirmed', start, end, origin: 'import' }]);
+  assert.deepEqual(decide(page(['Flohmarkt am Mauerpark', 'Jeden Sonntag 8-16 Uhr']), ours('10:00', '18:00')).stamp, []);
+  assert.deepEqual(decide(page(['Flohmarkt am Mauerpark', 'Jeden Sonntag 9-18 Uhr']), ours('10:00', '18:00')).stamp, ['2026-10-18']);
+});
+
+test('inside a span of listed dates the list decides, not the rule', () => {
+  const p = page(['Flohmarkt am Mauerpark', 'Jeden Sonntag', 'So 11.10.2026', 'So 25.10.2026']);
+  assert.deepEqual(decide(p, market(['2026-10-11', '2026-10-18', '2026-10-25', '2026-11-08'])).stamp, ['2026-10-11', '2026-10-25', '2026-11-08']);
+});

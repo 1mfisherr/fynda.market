@@ -19,6 +19,7 @@
  */
 
 import { hoursIn, normalise } from './dates.mjs';
+import { rulesIn, ruleCovers, quietDay, SEASON_RE } from './rules.mjs';
 
 const FLEA = /floh|trödel|troedel|antik|brocante|puces|vide[- ]grenier|vide[- ]dressing|mercatin|bazar|basar|börse|boerse|flea|markt|marché|march[eé]|mercato|market/iu;
 
@@ -117,6 +118,19 @@ export function decide(page, market) {
   const shown = inSpan.filter((o) => on.has(o.date)).length;
   const fullSchedule = inSpan.length > 0 && shown / inSpan.length >= 0.6;
 
+  // The page's own rules for this market ("jeden Sonntag 8–17 Uhr"), when it is safe to read them:
+  // not stale, no season or break anywhere on it, and the rule written as this market's (rules.mjs).
+  const rules = page.stale || lower.some((l) => SEASON_RE.test(l)) ? [] : rulesIn(page.lines).filter((r) =>
+    dedicated || mentions(lower[r.line], market.tokens) || mentions(heading(r.line), market.tokens));
+  const byRule = (o) => {
+    if (quietDay(o.date) || (last && o.date <= last)) return false; // inside a listed span, the list decides
+    const rule = rules.find((r) => ruleCovers(r, o.date));
+    if (!rule) return false;
+    const h = hoursIn(page.lines[rule.line]);
+    const sellersGate = h && o.start && o.end && h.end === o.end && h.start < o.start;
+    return !h || !o.start || sellersGate || (h.start === o.start && (!o.end || h.end === o.end));
+  };
+
   const stamp = [];
   const questions = [];
   // One question per kind (and per set of hours), its dates together: ten identical answers are one decision.
@@ -151,6 +165,11 @@ export function decide(page, market) {
         stamp.push(o.date);
       }
       // Otherwise the page shows the day but not its year: no stamp, and nothing an AI could settle.
+      continue;
+    }
+    // Not listed, but the organiser's stated rhythm produces it: checked today, like a listed date.
+    if (byRule(o)) {
+      stamp.push(o.date);
       continue;
     }
     // Inside the page's list but absent — only meaningful on a page about this market alone.

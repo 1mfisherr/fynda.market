@@ -32,6 +32,8 @@ Every other country's dates are kept true by the Market Watch, on Delfim's PC (`
 - **A new date must be written as this market's** — on its own line, in the caption under it, or under the nearest heading that names a market — because organisers list their other markets on the same page. A line with "nur …" that does not name us is another market's day.
 - **An earlier start with the same end is the sellers' gate**, not new hours.
 - A page that states "every Saturday" never makes a date "missing".
+- **A stated rule stamps the dates we hold that it produces** (`rules.mjs`, 2026-10-27): "jeden Sonntag", "jeden 3. Sonntag", "jedes Wochenende", "Immer Samstags". Code, no AI; it never adds a date. Not on a page that speaks of a season, a break or a last market; not on a line that negates; never a public holiday, 24 Dec – 1 Jan or the two quiet November Sundays; not inside a span of listed dates; not when the rule's hours differ from ours.
+- **Every market read by hand is stamped the same day** (Delfim, 2026-10-27: "always mark the markets that were checked with today's date as checked"). Where a town's own event calendar is the only page, it counts (hannover.de, 27 Oct).
 
 **The Finder.** `scripts/finder/` finds markets we lack: `leads-mft.mjs` reads meine-flohmarkt-termine.de's recurring flea markets (name, town, postcode, organiser link — nothing else is kept from a directory), `check.mjs` drops ours and keeps those whose organiser page shows an upcoming date beside their town. Candidates become intake files by hand (`intake/README.md`); the finder never writes to the database.
 
@@ -39,7 +41,7 @@ Every other country's dates are kept true by the Market Watch, on Delfim's PC (`
 
 Open, Delfim's call once the Watch has run well for a month: whether Switzerland moves from v1's copy to our own watcher, so one system runs.
 
-- **Rule pages.** "Jeden ersten Samstag von April bis Oktober": the AI turns the rule into JSON once (`{weekday, nth, months, exceptions}`), keyed by a hash of the paragraph; code expands it and compares. Today such a page stamps nothing and asks nothing.
+- **Rule pages with seasons.** "Jeden ersten Samstag von April bis Oktober" stamps nothing yet: the AI could turn the rule into JSON once (`{weekday, nth, months, exceptions}`), keyed by a hash of the paragraph, and code expand it. Plain weekly rules are read since 2026-10-27.
 - **Exclusions scoped to their words.** A line like "außer 3. + 31.10 … Termine Sonntags: 29.11. + 20.12." marks every date on it excluded, so the Sundays become a cancellation question (the AI settles it; nothing changes alone). The exclusion should reach only the dates after its own word.
 - **Hours on the page, not on the date line.** "Öffnungszeiten 8–16 Uhr" in a sidebar is ignored; only hours on a date's own line are compared.
 - **Finder: the doubtful leads.** Of 223 new German leads on 2026-10-09, 191 were dropped: 110 because no date sat beside their town and a flea-market word on the organiser page (the check is strict on purpose), 57 for no organiser page or only a directory or social one, 24 unreachable or closed to robots. Send the first group to the AI step; the second needs a person or the organiser.
