@@ -47,7 +47,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 
 ## Next, in order
 
-**Until the end of 2026: perfect the site, add markets slowly. From January: expansion**, more of Germany and then other countries, with the finder (Delfim, 2026-10-09).
+**Until the end of 2026: perfect the site, add markets slowly. From January: expansion**, more of Germany and then other countries, with the finder (Delfim, 2026-10-09). **Germany deep before France** (Delfim, 2026-10-27: "yes this order please"): German visitors already come, through ChatGPT; France waits until Germany is deep and a spam update has passed.
 
 1. **Organiser welcome letters.** No more until one organiser answers with a reply or an edit (Delfim, 2026-10-14). Then 90 a day until all 192 have one, the German ones included. To send: GitHub → Actions → *Organiser welcome* → *Run workflow*; a preview goes to the address in the last box. "Did it leave?" is a query on `organiser_mail_sends`. After that, set `ORGANISER_SENDING=on`.
 2. **Photos.** Replace the old site's pictures, 20 at a time, Sonnet agents finding and Delfim choosing: `intake/photos/README.md`. 55 left, nearly all searched already, so stock unless an organiser sends one.
@@ -77,7 +77,6 @@ Each waits on Delfim or on data. Don't assume an answer.
 - **Content floor** counts characters; it should count verified facts. Fix before any bulk prose.
 - **Would vendors pay for anything?** Five conversations would settle it. `IDEAS.md`.
 - **Cross-border locales**: let Search Console decide.
-- **France, now or later?** Asked 2026-10-27. Claude's advice: keep Delfim's January order — Germany deep first (83 markets in 43 towns; ChatGPT already sends real German visitors), France after a spam update has passed. Waits on Delfim.
 - **Claude Startups** membership (accepted October 2026, under the flightbrief.news address): $1,000 of API credit, no use planned yet.
 - **Ceilings.** Cloudflare `_redirects`: 2,000 lines, ~1,150 used; another fold this size needs Bulk Redirects. Resend free: 100 a day, so a paid plan before ~80 subscribers. Cloudflare Pages: 20,000 files, ~2,800 used; images to R2 before ~2,500 more markets. Near me carries every market; split it past ~800. Database 107 MB of 500 (27 Oct); the nightly backup leaves out the robot rows.
 - **Rejected, don't propose again:** the annual dates mail; the *Upload your dates* box; size on each row and bigger markets first; neighbourhood names on town rows; nearest stop and walking time; a calendar feed per town; cash/TWINT as a fact; getting-there advice by hand; exact predicted dates; a month strip on town pages; a map; a rain forecast.
