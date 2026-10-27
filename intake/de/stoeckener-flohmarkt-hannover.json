@@ -1,7 +1,7 @@
 {
   "slug": "stoeckener-flohmarkt-hannover",
   "name": "Stöckener Flohmarkt",
-  "kind": "hallenflohmarkt",
+  "kind": "flohmarkt",
   "town": "Hannover",
   "region": "Niedersachsen",
   "venue": {
@@ -12,8 +12,8 @@
   "lat": 52.4094,
   "lng": 9.6631,
   "rhythm": {
-    "de": "Mehrmals im Jahr, drinnen im Saal",
-    "en": "Several times a year, indoors in the hall"
+    "de": "Mehrmals im Jahr",
+    "en": "Several times a year"
   },
   "opening": {
     "start": "10:00",
@@ -43,9 +43,9 @@
     "address: Eichsfelder Str. 101, 30419 Hannover"
   ],
   "checked": "2026-10-27",
-  "notes": "The page is the Stadtteilzentrum's own page on hannover.de (the centre's old address stz-stoecken.de now forwards to it); last updated 22.10.2026 by the city. Three listed dates, then nothing. Hours and free entry are as printed on the page. Rhythm 'several times a year' is our wording from three dates a few weeks apart, the page states none. The page says 'Innenflohmärkte' in the plural, which suggests the centre also runs outdoor ones in other seasons; not stated. Contact e-mail is the one on the flea-market page for sellers' registration; the centre's phone is +49 511 168-43551. Coordinates: OpenStreetMap, the Stadtteilzentrum Stöcken building.",
+  "notes": "The page is the Stadtteilzentrum's own page on hannover.de (the centre's old address stz-stoecken.de now forwards to it); last updated 22.10.2026 by the city. Three listed dates, then nothing. Hours and free entry are as printed on the page. Rhythm 'several times a year' is our wording from three dates a few weeks apart, the page states none. The page says 'Innenflohmärkte' in the plural, which suggests the centre also runs outdoor ones in other seasons; not stated. Contact e-mail is the one on the flea-market page for sellers' registration; the centre's phone is +49 511 168-43551. Coordinates: OpenStreetMap, the Stadtteilzentrum Stöcken building. 27 Oct: the city page puts the Sept/Oct dates on the forecourt and 15 Nov \"im Saal\"; kind and wording changed so it does not read as an indoor market.",
   "description": {
-    "de": "Ein Flohmarkt im Saal des Stadtteilzentrums Stöcken, also drinnen, von 10 bis 14 Uhr. Wer Lust hat auf Stöbern, Feilschen und ein Gespräch am Tisch, ist hier richtig; so sagt es der Veranstalter selbst. Der Eintritt ist frei. Er findet nur einige Male im Jahr statt.",
-    "en": "A flea market in the hall of the Stadtteilzentrum Stöcken, so indoors, from 10 in the morning to 2 in the afternoon. Come for rummaging, haggling and a chat across a table, which is how the organiser puts it. Entry is free. It happens only a few times a year."
+    "de": "Ein Flohmarkt am Stadtteilzentrum Stöcken, von 10 bis 14 Uhr: im Herbst auf dem Vorplatz, im November drinnen im Saal. Wer Lust hat auf Stöbern, Feilschen und ein Gespräch am Tisch, ist hier richtig; so sagt es der Veranstalter selbst. Der Eintritt ist frei. Er findet nur einige Male im Jahr statt.",
+    "en": "A flea market at the Stadtteilzentrum Stöcken, from 10 in the morning to 2 in the afternoon: out on the forecourt in autumn, inside in the hall in November. Come for rummaging, haggling and a chat across a table, which is how the organiser puts it. Entry is free. It happens only a few times a year."
   }
 }
