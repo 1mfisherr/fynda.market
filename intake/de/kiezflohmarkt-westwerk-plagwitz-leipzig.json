@@ -1,0 +1,52 @@
+{
+  "slug": "kiezflohmarkt-westwerk-plagwitz-leipzig",
+  "name": "Kiezflohmarkt Plagwitz im Westwerk",
+  "kind": "flohmarkt",
+  "town": "Leipzig",
+  "region": "Sachsen",
+  "venue": {
+    "name": "Westwerk Leipzig",
+    "address": "Karl-Heine-Straße 93",
+    "postal_code": "04229"
+  },
+  "lat": 51.3302,
+  "lng": 12.3315,
+  "rhythm": {
+    "de": "An ausgewählten Sonntagen, meist im Abstand von zwei Wochen",
+    "en": "On selected Sundays, mostly two weeks apart"
+  },
+  "opening": {
+    "start": "10:00",
+    "end": "16:00"
+  },
+  "dates": [
+    "2026-11-01",
+    "2026-11-15",
+    "2026-12-06",
+    "2026-12-20"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.kiezflohmarkt-plagwitz.de",
+  "organiser": {
+    "name": "Stefan Range",
+    "website": "https://www.kiezflohmarkt-plagwitz.de",
+    "email": "kontakt@kiezflohmarkt-plagwitz.de"
+  },
+  "source_page": "https://www.kiezflohmarkt-plagwitz.de",
+  "facts": [
+    "'Der Kiezflohmarkt im Westwerk lädt zum Schlendern ein. Vertrödle deinen Tag, finde deinen neuen Schatz oder lass dich einfach nur inspirieren.'",
+    "'Aktuelle Flohmarkt Termine 2026': Sonntag 01.11., 15.11., 06.12. and 20.12.2026, each 'Westwerk Leipzig, Karl-Heine-Straße 93, 04229 Leipzig, 10:00Uhr bis 16:00Uhr'",
+    "goods: 'Klamotten, Fahrrädern, LPs, Büchern, Möbeln, Second Hand oder einfach nur Krims und Krams - nur Neuware sollte es nicht sein'",
+    "stalls both inside the hall and outside (stall fee list: 'außen', 'innen'); 'In der Halle gilt absolutes Rauchverbot'",
+    "visitor entry fee: not stated on the page",
+    "the 2026 list on the page runs every two weeks (4 Jan to 20 Dec, no July dates)"
+  ],
+  "checked": "2026-10-27",
+  "notes": "Four dates listed for 2026 after today; nothing yet for 2027, so the market's January dates are unknown (in 2026 it ran 4 and 18 Jan). The two-week rhythm is read off the list, not stated by the organiser, so the dates are 'listed' and the rhythm text says 'mostly'. 1 and 15 Nov are marked 'ausgebucht' (stalls full, which does not affect visitors). Hours 10:00–16:00 are visitor hours; set-up is from 09:00. Entry fee not stated (null). Organiser: the Impressum names Stefan Range, Zschochersche Str. 30, 04229 Leipzig, e-mail kontakt@kiezflohmarkt-plagwitz.de (on the Impressum page, not the home page). Coordinates from OpenStreetMap's Westwerk entry (Karl-Heine-Straße 85-93).",
+  "description": {
+    "de": "Im Westwerk in Leipzig-Plagwitz ist Kiezflohmarkt, von 10 bis 16 Uhr. Es ist ein Markt zum Schlendern: Kleidung, Fahrräder, Schallplatten, Bücher, Möbel und allerlei Krims und Krams, nur Neuware soll es nicht sein. Die Stände stehen drinnen in der Halle und draußen. Die Termine liegen meist zwei Wochen auseinander.",
+    "en": "The Westwerk in Leipzig-Plagwitz holds its neighbourhood flea market from 10 in the morning to 4 in the afternoon. It is a market for wandering: clothes, bikes, records, books, furniture and plenty of odds and ends, but nothing new. Stalls stand both in the hall and outside. Dates mostly fall two weeks apart."
+  }
+}

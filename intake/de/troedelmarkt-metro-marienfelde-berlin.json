@@ -1,0 +1,60 @@
+{
+  "slug": "troedelmarkt-metro-marienfelde-berlin",
+  "name": "Trödelmarkt Berlin Marienfelde (Metro)",
+  "kind": "troedelmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Metro Marienfelde",
+    "address": "Buckower Chaussee 25-35",
+    "postal_code": "12277"
+  },
+  "lat": 52.4127,
+  "lng": 13.3902,
+  "rhythm": {
+    "de": "Sonntags",
+    "en": "Sundays"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-29",
+    "2026-12-06",
+    "2026-12-13",
+    "2026-12-20",
+    "2026-12-27",
+    "2027-01-03",
+    "2027-01-10",
+    "2027-01-17"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://hoefges-troedelmarkt.com/termine/",
+  "organiser": {
+    "name": "Höfges Event Group GmbH",
+    "website": "https://hoefges-troedelmarkt.com/",
+    "email": "info@hoefges.com"
+  },
+  "source_page": "https://hoefges-troedelmarkt.com/termine/",
+  "facts": [
+    "market opening times in the organiser's feed: '7 - 14 Uhr'",
+    "at the Metro in Marienfelde, Buckower Chaussee 25-35, 12277 Berlin",
+    "'jeden Sonntag viele Besucher, besonders im Winter, mit seiner großflächigen Überdachung' (the market is covered)",
+    "'Es darf ausschließlich nur Trödel verkauft werden' (second-hand only)",
+    "'ausreichend Parkplätze sind vorhanden'",
+    "S-Bahn S2, bus 277",
+    "food and drink: 'Für ihr leibliches Wohl ist gesorgt'",
+    "entry free: 'Eintritt ist immer kostenlos' (organiser's homepage)"
+  ],
+  "checked": "2026-10-27",
+  "notes": "The Termine page fills itself from the organiser's own feed (wp-json/ts-events/v1/events, marketId 226); the dates and hours are the feed's. The text says 'jeden Sonntag' but the feed lists only the 10 dates shown: 15 and 22 Nov are not listed, and nothing after 17 Jan 2027 yet, so the rhythm is shown as 'Sundays' while the dates are only the listed ones. 27 Dec 2026 and 3 Jan 2027 are listed by the organiser, so kept. Entry 'immer kostenlos' is stated on the organiser's homepage, not on the Termine page. Coordinates: OpenStreetMap, just south of the Metro building where the organiser's site plan (Berlin_Marienfelde.pdf) puts the covered stalls. E-mail info@hoefges.com and info@hoefges-troedelmarkt.com are both on the organiser's Kontakt page; same one as the Wuppertal file. Same organiser as Trödelmarkt Barmen Rathaus.",
+  "description": {
+    "de": "Der Markt steht neben dem Metro in Marienfelde, und im Winter ist das sein Vorteil: Die Stände stehen unter einem großflächigen Dach. Von 7 bis 14 Uhr gibt es Trödel, nur Trödel, also Gebrauchtes und keine Neuware. Der Eintritt ist frei, Parkplätze sind genug da, und ohne Auto kommt man mit der S2 oder dem Bus 277 her. Fürs leibliche Wohl ist gesorgt.",
+    "en": "The market sits beside the Metro in Marienfelde, and in winter that is its advantage: the stalls stand under one large roof. From 7 in the morning to 2 in the afternoon it is second-hand goods and nothing else, so no new stock. Entry is free, there is plenty of parking, and without a car you can come on the S2 or bus 277. Food and drink are looked after."
+  }
+}

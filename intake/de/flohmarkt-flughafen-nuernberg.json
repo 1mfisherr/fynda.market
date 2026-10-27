@@ -1,0 +1,62 @@
+{
+  "slug": "flohmarkt-flughafen-nuernberg",
+  "name": "Flohmarkt Flughafen Nürnberg",
+  "kind": "flohmarkt",
+  "town": "Nürnberg",
+  "region": "Bayern",
+  "venue": {
+    "name": "Flughafen Nürnberg, Großparkplatz P7",
+    "address": "Flughafenstraße 100",
+    "postal_code": "90411"
+  },
+  "lat": 49.4943,
+  "lng": 11.0785,
+  "rhythm": {
+    "de": "Mittwochs und samstags, nach Terminkalender",
+    "en": "Wednesdays and Saturdays, as listed in the calendar"
+  },
+  "dates": [
+    "2026-10-31",
+    "2026-11-04",
+    "2026-11-07",
+    "2026-11-11",
+    "2026-11-14",
+    "2026-11-18",
+    "2026-11-21",
+    "2026-11-25",
+    "2026-11-28",
+    "2026-12-02",
+    "2026-12-05",
+    "2026-12-09",
+    "2026-12-12",
+    "2026-12-16",
+    "2026-12-19",
+    "2026-12-23",
+    "2026-12-27",
+    "2026-12-30"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.troedelteam-graage.de/events",
+  "organiser": {
+    "name": "Trödelteam Graage",
+    "website": "https://www.troedelteam-graage.de/",
+    "email": "info@troedelteam-graage.de"
+  },
+  "source_page": "https://www.troedelteam-graage.de/events",
+  "facts": [
+    "'Riesenflohmarkt auf dem Gelände des Flughafens P7'",
+    "'Der Platz befindet sich in Nürnberg in der Flughafenstrasse 100. Grossparkplatz P7. Direkt am Flughafen/Airport Nürnberg.'",
+    "'U-Bahn Linie 2 Haltestelle Nürnberg Flughafen sowie Bus Linie 30 Haltestelle Luftamt oder Bus Linie 33 Haltestelle Flughafenstrasse'",
+    "dates on Wednesdays and Saturdays, plus one Sunday (27 Dec 2026)",
+    "Trödel und Neuware erlaubt (second-hand and new goods)",
+    "outdoor car park"
+  ],
+  "checked": "2026-10-27",
+  "notes": "Visitor hours are NOT stated anywhere on the organiser's site: the event pages show no times, and the shop pages only say 'Einlass und Aufbau ab 6 Uhr erlaubt' (Wed/Sat) and 'ab 8 Uhr' (Sun 27 Dec), which is sellers' entry. So no opening is given. Visitor entry fee also not stated (the tickets are seller pitch tickets), so fee is null. 18 dates are listed on the events calendar (two pages), last 30 Dec 2026; January/February 2027 not published. 23, 27 and 30 Dec fall in the Christmas week we would normally leave out for derived dates, but they are listed by the organiser, so they are included. Some product pages for Wed 9 Dec, 16 Dec, 23 Dec and 30 Dec carry the internal code 'Meistersingerhalle...' (probably copy-pasted from another Nürnberg market) while their event entries and titles say Flughafen: worth a glance before publishing those four. Coordinates are the airport terminal address in OSM; P7 itself is a car park nearby and was not found as a separate OSM object. The user brief calls Saturday and Sunday one market; the page lists Wed + Sat, and a single Sunday on 27 Dec.",
+  "description": {
+    "de": "Ein Riesenflohmarkt auf dem Großparkplatz P7, direkt am Nürnberger Flughafen, zweimal pro Woche. Gebrauchtes und Neuware liegen nebeneinander. Mit der U-Bahn-Linie 2 bis Flughafen, oder mit dem Bus 30 (Luftamt) oder 33 (Flughafenstrasse).",
+    "en": "A giant flea market on the big car park P7, right beside Nuremberg airport, twice a week. Second-hand things lie next to new stock. Take U-Bahn line 2 to Flughafen, or bus 30 (Luftamt) or 33 (Flughafenstrasse)."
+  }
+}

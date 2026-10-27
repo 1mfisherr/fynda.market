@@ -1,0 +1,64 @@
+{
+  "slug": "flohmarkt-uni-mainz",
+  "name": "Flohmarkt Uni Mainz",
+  "kind": "flohmarkt",
+  "town": "Mainz",
+  "region": "Rheinland-Pfalz",
+  "venue": {
+    "name": "Uniparkplatz am Dalheimer Weg",
+    "address": "Dalheimer Weg",
+    "postal_code": "55128"
+  },
+  "lat": 49.9885,
+  "lng": 8.2375,
+  "rhythm": {
+    "de": "Jeden Samstag, außer an Feiertagen",
+    "en": "Every Saturday, except on public holidays"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "13:00"
+  },
+  "dates": [
+    "2026-10-31",
+    "2026-11-07",
+    "2026-11-14",
+    "2026-11-21",
+    "2026-11-28",
+    "2026-12-05",
+    "2026-12-12",
+    "2026-12-19",
+    "2027-01-09",
+    "2027-01-16",
+    "2027-01-23",
+    "2027-01-30",
+    "2027-02-06",
+    "2027-02-13",
+    "2027-02-20"
+  ],
+  "dates_from": "rhythm",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://mp-maerkte.de/marianne-preuss-marktservice-uni-mainz/",
+  "organiser": {
+    "name": "Marktservice Marianne Preuss (MP Märkte)",
+    "website": "https://mp-maerkte.de/",
+    "email": "famariannepreuss@aol.com"
+  },
+  "source_page": "https://mp-maerkte.de/",
+  "facts": [
+    "'Jeden Samstag Flohmarkt an der Uni Mainz von 07 - 13 Uhr!'",
+    "'Seit mehr als 25 Jahren gibt es den beliebten Flohmarkt für Jung und Alt an der Uni in Mainz.'",
+    "'Der Markt findet jeden Samstag bei jedem Wetter statt, außer an gesetzlichen Feiertagen.'",
+    "'ACHTUNG! 3. Oktober 2026, 26. Dezember 2026 und 02. Januar 2027 sind Feiertage. Es finden keine Flohmärkte statt.'",
+    "on the university car park: 'Anfahrt Albert – Schweitzer-Str. oder Mz. Bretzenheim Ostergraben'",
+    "second-hand ('Trödel') and new goods ('Neuwaren') sold",
+    "'jeder kann mitmachen, keine Anmeldung, einfach kommen' (open to anyone to sell)"
+  ],
+  "checked": "2026-10-27",
+  "notes": "No individual dates are listed; derived from the stated rhythm (every Saturday 07:00–13:00, no market on public holidays). Saturdays from 31 Oct 2026 to 20 Feb 2027 are included, minus 26 Dec 2026 and 2 Jan 2027, which the organiser names as no-market days. 15 dates. The page states no visitor entry fee, so fee is null. The organiser's address is not on the pages read (the Kontakt page shows phone 06723-990823 and the e-mail above, no street). Coordinates: OSM 'Parkplatz am Dalheimer Weg' (Staudingerweg), on the campus side. Different from the existing Krempelmarkt Rheinufer Mainz.",
+  "description": {
+    "de": "Seit mehr als 25 Jahren gibt es den Flohmarkt auf dem Uniparkplatz am Dalheimer Weg, \"für Jung und Alt\". Jede Woche von 7 bis 13 Uhr, bei jedem Wetter, nur an Feiertagen ist frei. Gebrauchtes und Neuware. Anfahrt über die Albert-Schweitzer-Straße oder von Bretzenheim über den Ostergraben.",
+    "en": "The flea market on the university car park at Dalheimer Weg has been going for more than 25 years, \"for young and old\" as the organiser puts it. Every week from 7 in the morning to 1 in the afternoon, whatever the weather, with public holidays off. Second-hand things and new stock. Drive in from Albert-Schweitzer-Straße, or from Bretzenheim along the Ostergraben."
+  }
+}

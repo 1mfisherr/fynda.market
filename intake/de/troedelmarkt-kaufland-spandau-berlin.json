@@ -1,0 +1,57 @@
+{
+  "slug": "troedelmarkt-kaufland-spandau-berlin",
+  "name": "Trödelmarkt Berlin Spandau Kaufland",
+  "kind": "troedelmarkt",
+  "town": "Berlin",
+  "region": "Berlin",
+  "venue": {
+    "name": "Kaufland Spandau",
+    "address": "Pichelswerder Straße 6",
+    "postal_code": "13597"
+  },
+  "lat": 52.5293,
+  "lng": 13.2142,
+  "rhythm": {
+    "de": "Mehrere Sonntage im Monat",
+    "en": "Several Sundays a month"
+  },
+  "opening": {
+    "start": "07:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-11-01",
+    "2026-11-08",
+    "2026-11-29",
+    "2026-12-13",
+    "2026-12-27",
+    "2027-01-03",
+    "2027-01-10",
+    "2027-01-17"
+  ],
+  "dates_from": "listed",
+  "fee": 0,
+  "currency": "EUR",
+  "website": "https://hoefges-troedelmarkt.com/termine/",
+  "organiser": {
+    "name": "Höfges Event Group GmbH",
+    "website": "https://hoefges-troedelmarkt.com/",
+    "email": "info@hoefges.com"
+  },
+  "source_page": "https://hoefges-troedelmarkt.com/termine/",
+  "facts": [
+    "market opening times in the organiser's feed: '7.00 - 14.00 Uhr'",
+    "at Kaufland, Pichelswerder Straße 6, 13597 Berlin-Spandau ('Unser neuer Markt in Berlin Spandau bei Kaufland')",
+    "'Es darf ausschließlich Trödel verkauft werden. Der Verkauf von Neuwaren ist strengstens verboten.'",
+    "'Es sind ausreichend Parkplätze vorhanden'",
+    "'Ausgewählte Gastronomen kümmern sich um ihr leibliches Wohl'",
+    "U7 Altstadt Spandau, bus M45 Teltower Straße, S9 Stresow",
+    "entry free: 'Eintritt ist immer kostenlos' (organiser's homepage)"
+  ],
+  "checked": "2026-10-27",
+  "notes": "The Termine page fills itself from the organiser's own feed (wp-json/ts-events/v1/events, marketId 360); dates and hours are the feed's: 8 dates, no gaps explained (15 and 22 Nov, 6 and 20 Dec are not listed). Nothing after 17 Jan 2027 yet. 27 Dec 2026 and 3 Jan 2027 are listed by the organiser, so kept. The page does not say whether the market is outdoors or covered, so facts and description say neither. Entry 'immer kostenlos' is stated on the organiser's homepage, not on the Termine page. Coordinates: OpenStreetMap, the Kaufland at Pichelswerderstraße 6. Same organiser and e-mail as the Marienfelde file.",
+  "description": {
+    "de": "Ein Markt bei Kaufland an der Pichelswerder Straße in Spandau, von 7 bis 14 Uhr, an ausgewählten Tagen statt jede Woche. Verkauft wird Trödel; Neuware ist ausdrücklich verboten, hier liegt also Gebrauchtes. Der Eintritt ist frei, Parkplätze gibt es genug, und ausgewählte Gastronomen sorgen für das Essen. Ohne Auto kommt man mit der U7 bis Altstadt Spandau, der S9 bis Stresow oder dem Bus M45.",
+    "en": "A market at the Kaufland on Pichelswerder Straße in Spandau, from 7 in the morning to 2 in the afternoon, on chosen dates rather than every week. What is sold is second-hand; new goods are strictly forbidden, so it is used things on the tables. Entry is free, there is plenty of parking, and selected caterers look after the food. Without a car: the U7 to Altstadt Spandau, the S9 to Stresow or the M45 bus."
+  }
+}

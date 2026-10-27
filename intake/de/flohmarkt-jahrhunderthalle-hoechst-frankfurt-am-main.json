@@ -1,0 +1,65 @@
+{
+  "slug": "flohmarkt-jahrhunderthalle-hoechst-frankfurt-am-main",
+  "name": "Flohmarkt Jahrhunderthalle Höchst",
+  "kind": "flohmarkt",
+  "town": "Frankfurt am Main",
+  "region": "Hessen",
+  "venue": {
+    "name": "Jahrhunderthalle Frankfurt, Parkplatz B",
+    "address": "Pfaffenwiese 301",
+    "postal_code": "65929"
+  },
+  "lat": 50.09914,
+  "lng": 8.51972,
+  "rhythm": {
+    "de": "Donnerstags und samstags, nach Terminkalender",
+    "en": "Thursdays and Saturdays, as listed in the calendar"
+  },
+  "opening": {
+    "start": "08:00",
+    "end": "14:00"
+  },
+  "dates": [
+    "2026-10-29",
+    "2026-10-31",
+    "2026-11-05",
+    "2026-11-07",
+    "2026-11-12",
+    "2026-11-14",
+    "2026-11-19",
+    "2026-11-21",
+    "2026-11-26",
+    "2026-12-03",
+    "2026-12-05",
+    "2026-12-10",
+    "2026-12-12",
+    "2026-12-17",
+    "2026-12-19"
+  ],
+  "dates_from": "listed",
+  "fee": null,
+  "currency": "EUR",
+  "website": "https://www.weiss-maerkte.de/index.php?p=standorte&m=pB78r",
+  "organiser": {
+    "name": "Weiß Veranstaltungsservice (Joachim Weiß)",
+    "website": "https://www.weiss-maerkte.de/",
+    "email": "info@weiss-maerkte.de"
+  },
+  "source_page": "https://www.weiss-maerkte.de/index.php?p=standorte&m=pB78r",
+  "facts": [
+    "'Den Flohmarkt an der Jahrhunderthalle gibt es seit über 30 Jahren'",
+    "'Unter den groß gewachsenen Kastanienbäumen kann ausgiebig getrödelt werden'",
+    "'Der Flohmarkt findet regelmäßig an donnerstags und samstags statt'",
+    "dates listed as 08:00–14:00 h (sellers arrive 05:00–08:00; this is the listed market time)",
+    "outdoor: 'Überdachung: Freier Himmel'",
+    "Floh- und Trödelmarkt, second-hand ('Trödel') and new goods ('Neuware') both allowed",
+    "'Dank der guten Busverbindungen und der vielen Parkplätze ist der Markt gut zu erreichen'",
+    "'Jeder kann mitmachen! Einfach hinfahren, Standplatz zuweisen lassen und verkaufen' (open to anyone to sell)"
+  ],
+  "checked": "2026-10-27",
+  "notes": "15 dates listed on the organiser's calendar, last 19 Dec 2026; nothing published for January/February 2027 yet. Thursdays and Saturdays are listed under two calendar titles ('Jahrhunderthalle Frankfurt Höchst' and '... SAMSTAG') but have the same venue, hours and organiser, so treated as one market. The page does not state a visitor fee, so fee is null. The organiser calls it 'Höchst'; the car park is in OSM's Sindlingen/Siedlung Friedenau area (postal 65929, Frankfurt). Coordinates are the marker on the organiser's own embedded map. A separate covered 'Antikmarkt Jahrhunderthalle' on 15 Nov 2026 (admission charged) is another event and is not included. Saturday 31 Oct and 7 Nov listed hours were identical to Thursdays (08:00–14:00; the Saturday page gives arrival until 07:30).",
+  "description": {
+    "de": "Seit über 30 Jahren wird in Höchst unter den hohen Kastanien an der Jahrhunderthalle getrödelt. Gleich zwei Mal pro Woche, von 8 bis 14 Uhr, auf dem Parkplatz B unter freiem Himmel. Auf den Tischen liegt Gebrauchtes, dazu auch Neuware. Parkplätze gibt es viele, und der Bus fährt auch hin.",
+    "en": "For more than 30 years, people in Höchst have rummaged under the tall chestnut trees by the Jahrhunderthalle. Twice a week, from 8 in the morning to 2 in the afternoon, on car park B with nothing but sky overhead. On the tables there is second-hand stuff, and some new stock too. Parking is plentiful, and buses run out this way."
+  }
+}
