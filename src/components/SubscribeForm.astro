@@ -228,6 +228,20 @@ const id = `sub-${variant}`;
 
   .subscribe-form { display: grid; gap: var(--space-3); }
 
+  /* Drawn like the town search: bold words on a line, not a white box
+     (BRAND.md §Controls are editorial; Delfim, 2026-11-02,
+     design/home-polish-v1.html). An error still turns the line to the accent,
+     beside the words that say what went wrong. */
+  .subscribe-form :global(.field input) {
+    padding-inline: 0;
+    border: 0;
+    border-block-end: calc(var(--border-width) * 2) solid var(--color-ink);
+    border-radius: 0;
+    background: transparent;
+    font-size: var(--text-body);
+  }
+  .subscribe-form :global(.field input[aria-invalid='true']) { border-block-end-color: var(--color-accent); }
+
   .tick { display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--text-small); line-height: var(--leading-snug); cursor: pointer; }
   .tick input { flex: none; width: var(--space-5); height: var(--space-5); margin: 0; accent-color: var(--color-ink); }
 

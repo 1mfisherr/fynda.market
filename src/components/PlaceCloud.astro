@@ -55,7 +55,10 @@ const step = (n: number) => (n >= 10 ? 3 : n >= 4 ? 2 : n >= 2 ? 1 : 0);
 </ul>
 
 <style>
-  .cloud { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-items: baseline; }
+  /* Rows a step closer than they were: 132 Swiss towns were two and a half
+     phone screens (2026-11-02). A row is still 28px apart, over the 24px a
+     tap needs. */
+  .cloud { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: baseline; }
 
   .place {
     font-size: var(--text-row-name);
@@ -75,6 +78,7 @@ const step = (n: number) => (n >= 10 ? 3 : n >= 4 ? 2 : n >= 2 ? 1 : 0);
   .s1 { color: var(--color-grey); font-weight: var(--weight-semibold); }
   .s2 { color: var(--color-ink); font-weight: var(--weight-bold); }
   .s3 { color: var(--color-ink); font-weight: var(--weight-black); }
-  /* The top step earns the accent on its number, and only there. */
-  .s3 i { color: var(--color-accent-text); }
+  /* The top step's number in ink. It was the accent until 2026-11-02, but the
+     accent marks dates and status only (BRAND.md; Delfim, design/home-polish-v1.html). */
+  .s3 i { color: var(--color-ink); }
 </style>

@@ -142,7 +142,7 @@ const jsonLd = {
         and for nothing else. */}
     <div class="says">
       <p class="promise" set:html={s.homePromise(markets.length)}></p>
-      <p class="ask meta">{s.homeOrganiserAsk} <Button href={utilityPath(locale, 'organiser')}>{s.homeOrganiserAction}</Button></p>
+      <p class="ask meta">{s.homeOrganiserAsk} <a href={utilityPath(locale, 'organiser')}>{s.homeOrganiserAction}</a></p>
     </div>
   </section>
 
@@ -372,10 +372,16 @@ const jsonLd = {
       });
 
       section.querySelectorAll('[data-weekend]').forEach(function (b) { b.hidden = b !== near; });
+      /* For the newsletter's town field further down — see the script after it. */
+      near.dataset.town = town.slug;
+      near.dataset.townName = town.name;
       section.querySelector('h2').textContent = d.title.replace('{town}', town.name);
       var lede = section.querySelector('.lede');
       if (lede) {
-        lede.textContent = (close.length === 1 ? d.ledeOne : d.ledeMany).replace('{n}', String(close.length)) + ' · ';
+        /* The change link on a line of its own: run on after a dot, it broke
+           across two lines on a phone. */
+        lede.textContent = (close.length === 1 ? d.ledeOne : d.ledeMany).replace('{n}', String(close.length));
+        lede.appendChild(document.createElement('br'));
         var change = document.createElement('a');
         change.href = '#town-search';
         change.setAttribute('data-change-town', '');
@@ -396,8 +402,28 @@ const jsonLd = {
       900px, and only the first is filled — CtaCard takes `variant`. */}
   <div class="asks gutter">
     <SubscribeForm locale={locale} pick anchors />
-    <CtaCard kind="organiser" locale={locale} variant="secondary" />
+    <CtaCard kind="organiser" locale={locale} variant="link" />
   </div>
+
+  {/* The weekend block knows the visitor's town; the newsletter asks for one.
+      Filled in only when it is a town the newsletter knows, and only into an
+      empty field, so it never overwrites what someone typed (Delfim,
+      2026-11-02, design/home-polish-v1.html). */}
+  <script is:inline>
+    (function () {
+      var near = document.querySelector('[data-weekend="near"]');
+      var slug = document.querySelector('[data-town-pick] [data-town-slug]');
+      var input = document.querySelector('[data-town-pick] input[name="town"]');
+      if (!near || !near.dataset.town || !slug || !input || input.value) return;
+      try {
+        /* [slug, name, region, country, count], SubscribeForm's list. */
+        var known = JSON.parse(slug.dataset.towns || '[]').some(function (t) { return t[0] === near.dataset.town; });
+        if (!known) return;
+      } catch (e) { return; }
+      input.value = near.dataset.townName;
+      slug.value = near.dataset.town;
+    })();
+  </script>
 
   {cancelled.length > 0 && (
     <Section title={s.cancelledThisWeek}>
@@ -420,7 +446,7 @@ const jsonLd = {
           <span class="meta">{s.countryCount(country.markets, country.cities.length)}</span>
         </h2>
       )}
-      <Section id={several ? `orte-${country.code.toLowerCase()}` : 'staedte'} title={s.cities} lede={s.citiesLede} level={several ? 'sub' : undefined}>
+      <Section id={several ? `orte-${country.code.toLowerCase()}` : 'staedte'} title={s.cities} lede={s.citiesLede} level={several ? 'sub' : undefined} band={false}>
         <PlaceCloud items={country.cities.map(([slug, city]) => ({
           href: townHref(locale, markets.filter((m) => m.citySlug === slug)),
           label: city,
@@ -428,7 +454,7 @@ const jsonLd = {
         }))} />
       </Section>
 
-      <Section id={several ? `regionen-${country.code.toLowerCase()}` : 'kantone'} title={s.regionsOf(country.code)} lede={s.regionsLede} level={several ? 'sub' : undefined}>
+      <Section id={several ? `regionen-${country.code.toLowerCase()}` : 'kantone'} title={s.regionsOf(country.code)} lede={s.regionsLede} level={several ? 'sub' : undefined} band={false}>
         <PillList items={country.regions.map(([slug, region]) => ({
           href: isCityState(country.code, slug)
             ? townHref(locale, markets.filter((m) => m.regionSlug === slug))
@@ -514,14 +540,26 @@ const jsonLd = {
     align-items: baseline;
     gap: var(--space-2);
     margin: var(--space-7) 0 0;
+    padding-block-end: var(--space-3);
+    /* A hairline inside the gutter, where the 8px grey band of a 'sub'
+       section used to run edge to edge under it (Section band={false}). The
+       gutter is padding, so a border would run edge to edge too. */
+    background: linear-gradient(var(--color-line), var(--color-line)) center bottom / calc(100% - 2 * var(--space-page)) var(--border-width) no-repeat;
     font-size: var(--text-section);
     letter-spacing: var(--tracking-tight);
   }
-  .country .meta { margin-inline-start: auto; font-size: var(--text-small); }
+  /* Its own spacing and weight: inherited from the heading, 13px text at a
+     21px heading's tight tracking ran "258markets·132towns" together. */
+  .country .meta { margin-inline-start: auto; font-size: var(--text-small); font-weight: var(--weight-medium); letter-spacing: normal; }
+  .country + :global(.section) { margin-block-start: var(--space-4); }
 
   /* The promise under the headline. One size up from body, because it is the
      sentence the page exists to make. */
   .shortcut-slot { margin-inline: var(--space-page); }
+
+  /* The return-visit card and the search sit closer to the claim than the
+     page's usual gap: they answer it. Read by .stack (base.css). */
+  .shortcut-slot, .search { --stack-space: var(--space-5); }
 
   /* The control sits in the page's own gutter; it draws no box of its own
      (BRAND.md §Controls are editorial). */
@@ -536,9 +574,11 @@ const jsonLd = {
     line-height: 1.28;
   }
   .promise :global(b) { color: var(--color-accent-text); font-weight: var(--weight-black); }
-  /* The organiser line: a question in grey and the site's small pill beside it,
-     so it reads as one quiet action, not as a link buried in a sentence. */
+  /* The organiser line: a question in grey and an underlined link beside it.
+     It was the site's pill, which made it a second button under the headline
+     (Delfim, 2026-11-02, design/home-polish-v1.html). */
   .ask { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
+  .ask a { padding-block: var(--space-1); color: var(--color-ink); font-weight: var(--weight-semibold); text-decoration: underline; text-underline-offset: var(--space-half); }
 
   .calloffs li {
     display: grid;
@@ -546,7 +586,8 @@ const jsonLd = {
     border-block-end: var(--border-width) solid var(--color-line);
     font-size: var(--text-small);
   }
-  .calloffs a { font-weight: var(--weight-bold); }
+  /* Struck through, as a cancelled market is everywhere (BRAND.md §Status). */
+  .calloffs a { color: var(--color-grey); font-weight: var(--weight-bold); text-decoration: line-through; text-decoration-thickness: calc(var(--border-width) * 1.5); }
   .calloffs em { font-style: normal; }
 
   .proof { max-width: var(--measure); line-height: var(--leading-body); }

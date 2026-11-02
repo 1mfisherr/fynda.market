@@ -242,17 +242,35 @@ h1 {
   color: var(--color-surface);
 }
 
+/* A market's kind, where it is the exception: a small tag in its line colour,
+   tinted, the exception said quietly. The text is the colour darkened, so amber
+   and red read too. Set `--tag` to the kind's line token. The rows carry it
+   (MarketRow) and the home page's legend shows the same tags (TypeGrid), so it
+   is defined once here. */
+.tag {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-xs);
+  background: color-mix(in srgb, var(--tag) 12%, var(--color-white));
+  color: color-mix(in srgb, var(--tag) 60%, var(--color-ink));
+  font-size: var(--text-tiny);
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
 /* The row that holds an expander. Two pages have one now — the home page's
    weekend list and the market page's dates — and guardrail 7 is right that the
    spacing cannot be decided twice. */
 .more { margin-block-start: var(--space-4); }
 
 /* The expander at the foot of a day. Reads as "there is more here", not as an
-   action equal in weight to the markets above it. */
+   action equal in weight to the markets above it: an outline, never filled.
+   It was dashed and grey until 2026-11-02, which read as switched off (Delfim,
+   design/home-polish-v1.html). */
 .button[data-variant='quiet'] {
   width: 100%;
-  border-style: dashed;
-  color: var(--color-grey);
 }
 
 /* Keep in step with --breakpoint-wide; a media query cannot read a token. */

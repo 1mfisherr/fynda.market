@@ -28,9 +28,12 @@ interface Props {
   href?: string;
   /**
    * How loud the button is. Where two cards sit together only one of them can
-   * be the filled one, or neither reads as the thing to do.
+   * be the filled one, or neither reads as the thing to do. `link` drops the
+   * card and the button: a hairline, the words and an underlined link — the
+   * home page's organiser ask, which sat as a second grey box under the
+   * newsletter (Delfim, 2026-11-02, design/home-polish-v1.html).
    */
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'link';
   /** One short line under the button — the claim card's "Free. Always." */
   note?: string;
   /** A fact that makes the ask, before the body, in bold — "12 people are waiting for its next date." */
@@ -45,12 +48,14 @@ const COPY = {
 } as const;
 const copy = COPY[kind];
 ---
-<section class="cta">
+<section class:list={['cta', { plain: variant === 'link' }]}>
   <h2>{copy.title}</h2>
   <p class="meta">{lead && <><b class="lead">{lead}</b>{' '}</>}{body ?? copy.body}</p>
   {/* A caller's own href carries the market in its query — a form address
       per market, which Google crawled 1,569 of by 2026-10-04 (robots.txt). */}
-  <Button href={href ?? utilityPath(locale, copy.key)} rel={href ? 'nofollow' : undefined} variant={variant} block>{copy.action}</Button>
+  {variant === 'link'
+    ? <a class="go" href={href ?? utilityPath(locale, copy.key)} rel={href ? 'nofollow' : undefined}>{copy.action}</a>
+    : <Button href={href ?? utilityPath(locale, copy.key)} rel={href ? 'nofollow' : undefined} variant={variant} block>{copy.action}</Button>}
   {note && <p class="meta note">{note}</p>}
 </section>
 
@@ -72,6 +77,21 @@ const copy = COPY[kind];
   /* Sitting on the floor of the card rather than floating in the slack. Where
      the card is alone the row collapses to the button and this does nothing. */
   .cta > :last-child { align-self: end; }
+  .plain {
+    grid-template-rows: auto;
+    padding: var(--space-5) 0 0;
+    border-block-start: var(--border-width) solid var(--color-line);
+    border-radius: 0;
+    background: none;
+  }
+  .go {
+    justify-self: start;
+    padding-block: var(--space-1);
+    color: var(--color-ink);
+    font-weight: var(--weight-bold);
+    text-decoration: underline;
+    text-underline-offset: var(--space-half);
+  }
   .note { text-align: center; margin: 0; }
   .lead { color: var(--color-ink); font-weight: var(--weight-bold); }
 </style>

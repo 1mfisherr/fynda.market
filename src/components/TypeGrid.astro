@@ -1,67 +1,36 @@
 ---
 /**
- * The five market types, as tiles — the block above the FAQ on the home page.
+ * The market types — the block above the FAQ on the home page.
  *
- * TypeLegend is the other half of this: a row of two-letter codes beside a
- * list, explaining the badges on the rows next to it. This one is not a key,
- * it is a block of the home page, so it gets the room the approved design gave
- * it — the icon on a coloured tile, the word underneath.
+ * It shows the tags exactly as the rows carry them (`.tag`, base.css), and
+ * only the kinds that carry one: an ordinary flea market is the rule and has
+ * no tag, so a "Flea" tile taught nothing a row would ever show. Until
+ * 2026-11-02 this was five coloured tiles explaining a stripe the rows had
+ * lost in October (Delfim, design/home-polish-v1.html).
  *
- * The mark itself is LineBadge, in its 'tile' shape — the same component the
- * market page and the legend use inline. This file owns the grid and the
- * labels, and nothing about how a kind is drawn.
+ * TypeLegend is the other key: two-letter codes beside a list.
  */
-import LineBadge from './LineBadge.astro';
-import { LEGEND, LINES } from '../lib/vocabulary';
+import { BADGED_KINDS, LEGEND, LINES } from '../lib/vocabulary';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/strings';
 
 interface Props { locale?: Locale }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const s = t(locale);
+const kinds = LEGEND.filter((kind) => BADGED_KINDS.has(kind));
 ---
 <ul class="types list-reset gutter" aria-label={s.marketTypes}>
-  {LEGEND.map((kind) => (
-    <li>
-      <LineBadge kind={kind} variant="tile" />
-      <span class="label">{LINES[kind].short[locale]}</span>
-    </li>
+  {kinds.map((kind) => (
+    <li><i class="tag" style={`--tag:var(${LINES[kind].token})`}>{LINES[kind].short[locale]}</i></li>
   ))}
 </ul>
 
 <style>
-  /* Five kinds, so five columns — they are equal members of one set and a
-     4 + 1 grid would read as a hierarchy that does not exist. */
   .types {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--space-2);
-  }
-  li {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-1);
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
   }
-  .label {
-    overflow: hidden;
-    color: var(--color-ink);
-    font-size: var(--text-tiny);
-    font-weight: var(--weight-bold);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  /* The tiles are a legend, not a hero. Given the whole width they become five
-     200px bars, so they stop at the reading column and the labels get the room
-     they were being clipped out of. Keep in step with --breakpoint-wide. */
-  @media (min-width: 900px) {
-    /* Centred, because the cap is the point: five tiles held to 720px inside a
-       1200px wrapper sat against the left edge with 480px of nothing beside
-       them, which reads as a block that failed to load rather than one that
-       chose its width. A row of five equal things is symmetrical anyway — it
-       has no first column to line a heading up with. */
-    .types { max-width: var(--content-max); margin-inline: auto; gap: var(--space-3); }
-    .label { font-size: var(--text-micro); }
-  }
+  /* A legend, so a size up from the row's tag: read on its own, not beside a name. */
+  .types .tag { font-size: var(--text-small); line-height: 1.8; }
 </style>

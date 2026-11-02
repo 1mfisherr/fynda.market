@@ -692,7 +692,7 @@ const de: Strings = {
 
   citiesLede: '',
   regionsLede: 'Für Wochenenden, an denen in deiner Stadt nichts läuft.',
-  typesLede: 'Der Streifen am Termin zeigt die Art des Markts.',
+  typesLede: 'Ein kleines Etikett markiert Märkte, die kein gewöhnlicher Flohmarkt sind.',
 
   faq: [
     { q: 'Findet er wirklich statt?',
@@ -983,7 +983,7 @@ const en: Strings = {
 
   citiesLede: '',
   regionsLede: 'For when your own town has a quiet weekend.',
-  typesLede: 'The stripe on a date shows the kind of market.',
+  typesLede: "A small tag marks a market that isn't an ordinary flea market.",
 
   faq: [
     { q: 'Is it actually on?',
@@ -1284,7 +1284,7 @@ const fr: Strings = {
 
   citiesLede: '',
   regionsLede: "Pour les week-ends où il ne se passe rien dans votre commune.",
-  typesLede: 'La bande sur une date indique le type de brocante.',
+  typesLede: "Une petite étiquette signale un marché qui n'est pas une brocante ordinaire.",
 
   faq: [
     { q: 'A-t-elle vraiment lieu ?',
@@ -1580,7 +1580,7 @@ const it: Strings = {
 
   citiesLede: '',
   regionsLede: "Per i fine settimana in cui nella tua città non c'è niente.",
-  typesLede: 'La striscia sulla data indica il tipo di mercatino.',
+  typesLede: 'Una piccola etichetta segnala un mercato che non è un mercatino qualunque.',
 
   faq: [
     { q: 'Si fa davvero?',

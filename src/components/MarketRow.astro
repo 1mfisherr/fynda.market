@@ -202,10 +202,10 @@ const facts = factLine && factLine.charAt(0).toLocaleUpperCase(locale) + factLin
   .hours { color:var(--color-grey); font-size:var(--text-small); font-weight:var(--weight-semibold); white-space:nowrap; }
   .flag { font-size:var(--text-small); font-weight:var(--weight-bold); }
   .flag.bad { color:var(--color-accent-text); }
-  /* The kind: a small tag in its line colour, tinted — the exception, said
-     quietly. The text is the colour darkened, so amber and red read too. */
-  .tag { display:inline-block; padding:0 var(--space-2); border-radius:var(--radius-xs); background:color-mix(in srgb, var(--tag) 12%, var(--color-white)); color:color-mix(in srgb, var(--tag) 60%, var(--color-ink)); font-size:var(--text-tiny); font-style:normal; font-weight:var(--weight-bold); line-height:1.6; white-space:nowrap; }
-  .km { color:var(--color-ink); font-weight:var(--weight-semibold); font-variant-numeric:var(--figures-tabular); white-space:nowrap; }
+  /* The kind's tag is `.tag` in base.css, shared with the home page legend. */
+  /* Proportional figures: tabular ones give the decimal point a digit's width,
+     so "0.7 km" read "0 . 7 km". */
+  .km { color:var(--color-ink); font-weight:var(--weight-semibold); white-space:nowrap; }
   .where.after .km::before { content:' · '; color:var(--color-quiet); font-weight:var(--weight-regular); }
 
   /* One loud thing. Everything below it steps down a weight. */

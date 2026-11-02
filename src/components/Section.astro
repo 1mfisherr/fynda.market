@@ -19,10 +19,16 @@ interface Props {
    * page), which the approved design sets smaller and separates with a band.
    */
   level?: 'page' | 'sub';
+  /**
+   * The band above a 'sub' section. The home page sets its towns and regions
+   * at 'sub' size under a country heading that already draws the line, so it
+   * turns the band off there.
+   */
+  band?: boolean;
 }
-const { title, id, lede, level = 'page' } = Astro.props;
+const { title, id, lede, level = 'page', band = true } = Astro.props;
 ---
-<section id={id} class:list={['section', { sub: level === 'sub' }]}>
+<section id={id} class:list={['section', { sub: level === 'sub', bandless: level === 'sub' && !band }]}>
   {title && <h2 class="gutter" data-level={level === 'sub' ? 'sub' : undefined}>{title}</h2>}
   {lede && <p class="lede gutter meta">{lede}</p>}
   <div class="body"><slot /></div>
@@ -42,6 +48,7 @@ const { title, id, lede, level = 'page' } = Astro.props;
     border-block-start: var(--section-divider) solid var(--color-paper);
   }
   .sub > .body { margin-block-start: var(--space-row); }
+  .bandless { padding-block-end: 0; border-block-start: 0; }
   /* Nothing to space away from when there is no heading. */
   .section > .body:first-child { margin-block-start: 0; }
 </style>
