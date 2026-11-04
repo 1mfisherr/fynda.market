@@ -6,7 +6,7 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-11-04.
 
-**Left off:** all pushed and deployed (4 Nov, evening): Enter Retrotechnikmarkt closed in the live database and its addresses now 301 to Derendingen; Search Console read (still flat; the indexing report hadn't refreshed). **Live 4 Nov: home page polish v1** (Delfim, 2026-11-02, "do it all" on `design/home-polish-v1.html`; `PAGES.md` §Home). **Waiting for Delfim:**
+**Left off:** all pushed and deployed (4 Nov, evening): Enter Retrotechnikmarkt closed in the live database and its addresses now 301 to Derendingen, whose paragraph no longer names it (migration applied 4 Nov); Search Console read (still flat; the indexing report hadn't refreshed). **Live 4 Nov: home page polish v1** (Delfim, 2026-11-02, "do it all" on `design/home-polish-v1.html`; `PAGES.md` §Home). **Waiting for Delfim:**
 - **Round two** of the home page (`design/home-v8.html`: copy, the expander's arrow and centring, one-market towns folded behind one line, the FAQ no longer promising a photo upload). Not in the source. He moved on to a new look before answering, so it may change with the direction.
 - **A new look.** References in `design/references-2026-11.html`; Claude's bet is warm paper, mono dates and bigger photos. Next: a before-and-after home mockup in the direction he picks.
 
