@@ -4,9 +4,14 @@ What is true now and what happens next. **Read first, every session; rewrite bef
 
 This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `scripts/docs-check.mjs` warns past 15 KB and fails past 20 KB.
 
-Updated 2026-11-02.
+Updated 2026-11-04.
 
-**Left off:** nothing half-done, all pushed and deployed (27 Oct). **Live 27 Oct:** 30 German markets read by hand and stamped (Flohdom Hamburg 31 Oct and Mauerpark 25 Oct cancelled, Gelsenkirchen 21 Nov ends 11:00, 31 dates added, hours for Wismar, Hansamarkt, Bochum); the Watch stamps rule pages (`WATCH.md`); the record line counts "since"; seven new German markets (Next §7); photo batch 13 (17 replaced; a replaced photo shows within a day, Cloudflare's cache). `www` 301s to the bare address. Open: Agra Leipzig's 29–30 Dec ("29. – 30. DEZ.", a Tuesday–Wednesday). **Fix in v1:** the 26 Oct list went to the other AI; the next `sync-v1.mjs` dry run shows whether it landed. New for v1: Sarnen-Center 14 Nov; Alpin-Flohmi Luzern 12 Nov 17:30–20:00; ACE Café Rothenburg from 08:00; Zürcher Schallplattenbörse 22 Nov missing, 4 Apr 2027 unconfirmed; Mercalibro 4 Nov and 2 Dec, Steiner Schule Basel 10–11 Apr 2027 not on their pages. **Saturday 31 Oct:** close Enter Retrotechnikmarkt (Delfim, 2026-10-26); its address then 301s to its town.
+**Left off:** all pushed and deployed (4 Nov). **Live 4 Nov: home page polish v1** (Delfim, 2026-11-02, "do it all" on `design/home-polish-v1.html`; `PAGES.md` §Home). **Waiting for Delfim:**
+- **Round two** of the home page (`design/home-v8.html`: copy, the expander's arrow and centring, one-market towns folded behind one line, the FAQ no longer promising a photo upload). Not in the source. He moved on to a new look before answering, so it may change with the direction.
+- **A new look.** References in `design/references-2026-11.html`; Claude's bet is warm paper, mono dates and bigger photos. Next: a before-and-after home mockup in the direction he picks.
+- **Overdue: close Enter Retrotechnikmarkt** (Delfim, 2026-10-26, for 31 Oct). Still `active` on 4 Nov; Claude's session had no permission to write the live database. The fix is `status = 'permanently_closed'` on `enter-retrotechnikmarkt-derendingen`, then a deploy, so its address 301s to its town.
+
+Open: Agra Leipzig's 29–30 Dec ("29. – 30. DEZ.", a Tuesday–Wednesday). **Fix in v1:** the 26 Oct list went to the other AI, and the next `sync-v1.mjs` dry run shows whether it landed. Sarnen-Center 14 Nov; Alpin-Flohmi Luzern 12 Nov 17:30–20:00; ACE Café Rothenburg from 08:00; Zürcher Schallplattenbörse 22 Nov missing, 4 Apr 2027 unconfirmed; Mercalibro 4 Nov and 2 Dec, Steiner Schule Basel 10–11 Apr 2027 not on their pages.
 
 ---
 
