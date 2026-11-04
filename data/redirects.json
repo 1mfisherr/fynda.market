@@ -1804,6 +1804,10 @@
     "to": "/en/market/flohmarkt-hansa-carre-bremen/"
   },
   {
+    "from": "/de/markt/enter-retrotechnikmarkt-derendingen/",
+    "to": "/de/schweiz/derendingen/"
+  },
+  {
     "from": "/de/markt/kinderflohmarkt-gz-schindlergut/",
     "to": "/de/schweiz/zurich/"
   },
@@ -1850,6 +1854,10 @@
   {
     "from": "/de/markt/vide-grenier-prelaz-valency-lausanne/",
     "to": "/de/schweiz/lausanne/"
+  },
+  {
+    "from": "/en/market/enter-retrotechnikmarkt-derendingen/",
+    "to": "/en/switzerland/derendingen/"
   },
   {
     "from": "/en/market/kinderflohmarkt-gz-schindlergut/",
@@ -1900,6 +1908,10 @@
     "to": "/en/switzerland/lausanne/"
   },
   {
+    "from": "/fr/marche/enter-retrotechnikmarkt-derendingen/",
+    "to": "/fr/suisse/derendingen/"
+  },
+  {
     "from": "/fr/marche/kinderflohmarkt-gz-schindlergut/",
     "to": "/fr/suisse/zurich/"
   },
@@ -1946,6 +1958,10 @@
   {
     "from": "/fr/marche/vide-grenier-prelaz-valency-lausanne/",
     "to": "/fr/suisse/lausanne/"
+  },
+  {
+    "from": "/it/mercato/enter-retrotechnikmarkt-derendingen/",
+    "to": "/it/svizzera/derendingen/"
   },
   {
     "from": "/it/mercato/kinderflohmarkt-gz-schindlergut/",

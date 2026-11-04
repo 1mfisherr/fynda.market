@@ -6,18 +6,17 @@ This page is state, not a log. A session changes the lines it made untrue. What 
 
 Updated 2026-11-04.
 
-**Left off:** all pushed and deployed (4 Nov). **Live 4 Nov: home page polish v1** (Delfim, 2026-11-02, "do it all" on `design/home-polish-v1.html`; `PAGES.md` §Home). **Waiting for Delfim:**
+**Left off:** all pushed and deployed (4 Nov, evening): Enter Retrotechnikmarkt closed in the live database and its addresses now 301 to Derendingen; Search Console read (still flat; the indexing report hadn't refreshed). **Live 4 Nov: home page polish v1** (Delfim, 2026-11-02, "do it all" on `design/home-polish-v1.html`; `PAGES.md` §Home). **Waiting for Delfim:**
 - **Round two** of the home page (`design/home-v8.html`: copy, the expander's arrow and centring, one-market towns folded behind one line, the FAQ no longer promising a photo upload). Not in the source. He moved on to a new look before answering, so it may change with the direction.
 - **A new look.** References in `design/references-2026-11.html`; Claude's bet is warm paper, mono dates and bigger photos. Next: a before-and-after home mockup in the direction he picks.
-- **Overdue: close Enter Retrotechnikmarkt** (Delfim, 2026-10-26, for 31 Oct). Still `active` on 4 Nov; Claude's session had no permission to write the live database. The fix is `status = 'permanently_closed'` on `enter-retrotechnikmarkt-derendingen`, then a deploy, so its address 301s to its town.
 
-Open: Agra Leipzig's 29–30 Dec ("29. – 30. DEZ.", a Tuesday–Wednesday). **Fix in v1:** the 26 Oct list went to the other AI, and the next `sync-v1.mjs` dry run shows whether it landed. Sarnen-Center 14 Nov; Alpin-Flohmi Luzern 12 Nov 17:30–20:00; ACE Café Rothenburg from 08:00; Zürcher Schallplattenbörse 22 Nov missing, 4 Apr 2027 unconfirmed; Mercalibro 4 Nov and 2 Dec, Steiner Schule Basel 10–11 Apr 2027 not on their pages.
+Open: Agra Leipzig's 29–30 Dec ("29. – 30. DEZ.", a Tuesday–Wednesday). **Fix in v1:** close Enter Retrotechnikmarkt there too (closed here 4 Nov; until then each `sync-v1.mjs` run lists it under "look at", and changes nothing). Also the 26 Oct list went to the other AI, and the next `sync-v1.mjs` dry run shows whether it landed. Sarnen-Center 14 Nov; Alpin-Flohmi Luzern 12 Nov 17:30–20:00; ACE Café Rothenburg from 08:00; Zürcher Schallplattenbörse 22 Nov missing, 4 Apr 2027 unconfirmed; Mercalibro 4 Nov and 2 Dec, Steiner Schule Basel 10–11 Apr 2027 not on their pages.
 
 ---
 
 ## Now
 
-Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **348 markets**, 258 Swiss in de/fr/it/en and 90 German in de/en, in 175 towns, 23 cantons and 16 Bundesländer. About 1,540 pages, 1,508 of them in the sitemap. 128 markets have no upcoming date (rising through winter) (annual ones between editions). Rebuilt nightly by GitHub (23:07 UTC, again at 03:07). Eleven guardrails and 84 tests gate every publish.
+Live at `fynda.market` since 2026-09-04, Germany since 2026-09-22: **347 markets**, 257 Swiss in de/fr/it/en and 90 German in de/en, in 175 towns, 23 cantons and 16 Bundesländer. About 1,540 pages, 1,508 of them in the sitemap. 128 markets have no upcoming date (rising through winter) (annual ones between editions). Rebuilt nightly by GitHub (23:07 UTC, again at 03:07). Eleven guardrails and 84 tests gate every publish.
 
 | Running | State |
 |---|---|
@@ -92,7 +91,7 @@ Each waits on Delfim or on data. Don't assume an answer.
 
 ## Data
 
-- **Markets.** 341 `active`, 12 closed (Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed 23 Oct, Delfim: no organiser page, no date). Five of the closed ones are *merged*: a closed market with a `hub_market_id` takes its dates from the hub (Plainpalais, Rumine), and its address 301s there. Fribourg's Cathédrale and Place Python stay two markets.
+- **Markets.** 340 `active`, 13 closed (Ladies-Flohmarkt Root and Kinderflohmarkt GZ Schindlergut closed 23 Oct, Delfim: no organiser page, no date; Enter Retrotechnikmarkt 4 Nov, Delfim: off its organiser's calendar, both dates cancelled). Five of the closed ones are *merged*: a closed market with a `hub_market_id` takes its dates from the hub (Plainpalais, Rumine), and its address 301s there. Fribourg's Cathédrale and Place Python stay two markets.
 - **Organisers.** 33 Swiss markets carry *Confirmed by the organiser*; a trigger refuses to undo that unless the session sets `fynda.allow_unverify`. 217 organisers with a live market, 158 with an e-mail and a personal link.
 - **Dates.** A date derived from an organiser's stated rhythm counts as checked on the day we read their page. A date v1 calls tentative is not published. No page says *Not confirmed yet*.
 - **Facts.** Every fact carries its source URL and quote, and is never overwritten (`set-market-facts.mjs`). Setting is known for 278 markets, who sells 101, rain 70, stalls 51, tags 81. Websites give indoor/outdoor for ~8 in 10 markets and the rest rarely; the gaps come from organisers and visitors (`/f`). The "checked" stamp means dates checked, not facts (Delfim, 2026-09-28). Holstenhallen Neumünster and Bülach stay blank on setting: they are outdoor in summer and indoor in winter. The 64 markets added 2026-09-20 keep times, fees and parking in `market_private.admin_notes` until a facts pass reads them.
