@@ -581,11 +581,6 @@
   },
   {
     "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
-    "date": "2026-11-04",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohdom-bahrenfelder-trabrennbahn-hamburg",
     "date": "2026-11-07",
     "status": "confirmed"
   },
@@ -1191,11 +1186,6 @@
   },
   {
     "marketSlug": "flohmarkt-flughafen-nuernberg",
-    "date": "2026-11-04",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-flughafen-nuernberg",
     "date": "2026-11-07",
     "status": "confirmed"
   },
@@ -1302,11 +1292,6 @@
   {
     "marketSlug": "flohmarkt-gallusplatz-stgallen",
     "date": "2026-11-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-galopprennbahn-weidenpesch-koeln",
-    "date": "2026-11-04",
     "status": "confirmed"
   },
   {
@@ -1552,11 +1537,6 @@
   {
     "marketSlug": "flohmarkt-grosse-halle-bern",
     "date": "2027-02-07",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "flohmarkt-gz-heuried",
-    "date": "2026-11-22",
     "status": "confirmed"
   },
   {
@@ -2771,11 +2751,6 @@
   },
   {
     "marketSlug": "marche-aux-puces-plainpalais-geneve",
-    "date": "2026-11-04",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-aux-puces-plainpalais-geneve",
     "date": "2026-11-07",
     "status": "confirmed"
   },
@@ -2972,11 +2947,6 @@
   {
     "marketSlug": "marche-calabash-lausanne",
     "date": "2026-12-06",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "marche-rumine-lausanne",
-    "date": "2026-11-04",
     "status": "confirmed"
   },
   {
@@ -3320,13 +3290,13 @@
     "status": "confirmed"
   },
   {
-    "marketSlug": "martinsmarkt-maternusplatz-koeln",
-    "date": "2026-11-08",
+    "marketSlug": "marche-rumine-lausanne",
+    "date": "2027-03-05",
     "status": "confirmed"
   },
   {
-    "marketSlug": "mercalibro-bellinzona",
-    "date": "2026-11-04",
+    "marketSlug": "martinsmarkt-maternusplatz-koeln",
+    "date": "2026-11-08",
     "status": "confirmed"
   },
   {
@@ -3342,11 +3312,6 @@
   {
     "marketSlug": "mercatino-lusso-vintage-lugano",
     "date": "2026-11-15",
-    "status": "confirmed"
-  },
-  {
-    "marketSlug": "mercatino-usato-paradiso-lugano",
-    "date": "2026-11-04",
     "status": "confirmed"
   },
   {

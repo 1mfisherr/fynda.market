@@ -1808,6 +1808,10 @@
     "to": "/de/schweiz/derendingen/"
   },
   {
+    "from": "/de/markt/flohmarkt-gz-heuried/",
+    "to": "/de/schweiz/zurich/"
+  },
+  {
     "from": "/de/markt/kinderflohmarkt-gz-schindlergut/",
     "to": "/de/schweiz/zurich/"
   },
@@ -1858,6 +1862,10 @@
   {
     "from": "/en/market/enter-retrotechnikmarkt-derendingen/",
     "to": "/en/switzerland/derendingen/"
+  },
+  {
+    "from": "/en/market/flohmarkt-gz-heuried/",
+    "to": "/en/switzerland/zurich/"
   },
   {
     "from": "/en/market/kinderflohmarkt-gz-schindlergut/",
@@ -1912,6 +1920,10 @@
     "to": "/fr/suisse/derendingen/"
   },
   {
+    "from": "/fr/marche/flohmarkt-gz-heuried/",
+    "to": "/fr/suisse/zurich/"
+  },
+  {
     "from": "/fr/marche/kinderflohmarkt-gz-schindlergut/",
     "to": "/fr/suisse/zurich/"
   },
@@ -1962,6 +1974,10 @@
   {
     "from": "/it/mercato/enter-retrotechnikmarkt-derendingen/",
     "to": "/it/svizzera/derendingen/"
+  },
+  {
+    "from": "/it/mercato/flohmarkt-gz-heuried/",
+    "to": "/it/svizzera/zurich/"
   },
   {
     "from": "/it/mercato/kinderflohmarkt-gz-schindlergut/",
