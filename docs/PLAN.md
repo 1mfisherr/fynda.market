@@ -4,9 +4,9 @@ What is true now and what happens next. **Read first, every session; rewrite bef
 
 This page is state, not a log. A session changes the lines it made untrue. What it did goes in the commit message. A running log, like the photo batches, lives beside its work (`intake/photos/README.md`). `scripts/docs-check.mjs` warns past 15 KB and fails past 20 KB.
 
-Updated 2026-11-06.
+Updated 2026-11-12.
 
-**Left off:** nothing half-done; all pushed and deployed (5 Nov). Waiting on the GZ Heuried's answer (see Organisers). Live: home page polish v1 (4 Nov, `PAGES.md` §Home). **Waiting for Delfim:**
+**Left off:** nothing half-done; all pushed; last deploy 5 Nov, nothing visitor-facing since. Waiting on the GZ Heuried's answer (see Organisers). The 7 Nov read: Delfim says it was done on 9 Nov, but no session or commit holds the outcome; ask him for it before redoing it. Live: home page polish v1 (4 Nov, `PAGES.md` §Home). **Waiting for Delfim:**
 - **Round two** of the home page (`design/home-v8.html`: copy, the expander's arrow and centring, one-market towns folded behind one line, the FAQ no longer promising a photo upload). Not in the source. He moved on to a new look before answering, so it may change with the direction.
 - **A new look.** References in `design/references-2026-11.html`; Claude's bet is warm paper, mono dates and bigger photos. Next: a before-and-after home mockup in the direction he picks.
 
@@ -65,7 +65,7 @@ Don't: a new domain (the demotion can follow it), mass AI rewrites, faked freshn
 **Read on these dates.** Nothing to build until then:
 - 2026-12-01: Near me allow rate (`geo_prompt` granted ÷ requested). Below ~30%, the button is in the wrong place. On 23 Oct only 7 people had been asked, 2 allowed: too few to judge.
 - **The indexing report, still unread** (8 Nov brought only the performance export). The 4 Nov export was identical to 27 Oct's, both ending 23 Oct: Google had not refreshed the report in 12 days (not filed twice). Our own log can't stand in: it records no redirects, so a folded town's recrawl never shows there. Looking for: indexed above 253; Google's data then reaches past the 20 Oct fold for the first time; *excluded by noindex* falling from 1,569. The folded towns' addresses (Rafz, Worb, Schaffhausen, Adliswil, Wettingen, Liesberg) show *Page with redirect*, and their market pages are indexed. Titles: Stücki, Flohmi am See, GZ Bachwiesen, Schadaumärit above 3% clicks (were 1.8%).
-- 2026-11-07: *Add it to my Friday e-mail* taps (`market_save`, `action: remind`) and the sign-ups after them, against the 3 saves in 270 landings before. *Tell me when it's back* rows against undated market-page views (84% used to leave without a tap). *Were you there?* answers. *Meanwhile, nearby* clicks — if nobody clicks it, it goes. Home `market_click` per view since *This weekend near…* (14 Oct).
+- 2026-11-07 (read 9 Nov per Delfim, outcome not recorded): *Add it to my Friday e-mail* taps (`market_save`, `action: remind`) and the sign-ups after them, against the 3 saves in 270 landings before. *Tell me when it's back* rows against undated market-page views (84% used to leave without a tap). *Were you there?* answers. *Meanwhile, nearby* clicks — if nobody clicks it, it goes. Home `market_click` per view since *This weekend near…* (14 Oct).
 - Four weeks after the next letters: organiser answer rate (`organiser_funnel`). Over 25%, build more for organisers; 10–25%, keep it as a data feed; under 10%, stop.
 
 ---
